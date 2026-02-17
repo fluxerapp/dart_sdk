@@ -1,6 +1,6 @@
 name: fluxer_dart
-version: 1.0.0
-description: Fluxer Dart SDK
+version: 1.0.1
+description: Dart SDK for Fluxer a free and open source instant messaging and VoIP platform.
 homepage: https://fluxer.app
 repository: https://github.com/fluxerapp/dart_sdk
 
