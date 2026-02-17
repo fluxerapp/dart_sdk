@@ -14,11 +14,13 @@
     <img src="https://img.shields.io/badge/Docs-docs.fluxer.app-blue" alt="Documentation" /></a>
   <a href="./LICENSE">
     <img src="https://img.shields.io/badge/License-AGPLv3-purple" alt="AGPLv3 License" /></a>
+  <a href="https://pub.dev/packages/fluxer_dart">
+    <img src="https://img.shields.io/badge/pub.dev-fluxer__dart-blue" alt="pub.dev package" /></a>
 </p>
 
 # Fluxer Dart SDK
 
-Fluxer is a **free and open source instant messaging and VoIP platform** for friends, groups, and communities. Self-host it and every feature is unlocked. This is a package for Dart / Flutter that allows you access to the Fluxer API.
+Fluxer is a **free and open source instant messaging and VoIP platform** for friends, groups, and communities. Self-host it and every feature is unlocked. This is a package for Dart / Flutter that allows you access to the Fluxer API, and it's also used in the offical Fluxer app!
 
 > [!NOTE]
 > Improved README with more real examples coming soon.
