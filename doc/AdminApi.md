@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**addIpBan**](AdminApi.md#addipban) | **POST** /admin/bans/ip/add | Add IP ban
 [**addPhoneBan**](AdminApi.md#addphoneban) | **POST** /admin/bans/phone/add | Add phone ban
 [**addSnowflakeReservation**](AdminApi.md#addsnowflakereservation) | **POST** /admin/snowflake-reservations/add | Add snowflake reservation
+[**adminResendVerificationEmail**](AdminApi.md#adminresendverificationemail) | **POST** /admin/users/resend-verification-email | Resend verification email
 [**approveDiscoveryApplication**](AdminApi.md#approvediscoveryapplication) | **POST** /admin/discovery/applications/{guild_id}/approve | Approve discovery application
 [**approveSystemDmJob**](AdminApi.md#approvesystemdmjob) | **POST** /admin/system-dm-jobs/{job_id}/approve | Approve system DM job
 [**banGuildMember**](AdminApi.md#banguildmember) | **POST** /admin/guilds/ban-member | Ban guild member
@@ -38,6 +39,7 @@ Method | HTTP request | Description
 [**deleteGuild**](AdminApi.md#deleteguild) | **POST** /admin/guilds/delete | Delete guild
 [**deleteMessage**](AdminApi.md#deletemessage) | **POST** /admin/messages/delete | Delete single message
 [**deleteSnowflakeReservation**](AdminApi.md#deletesnowflakereservation) | **POST** /admin/snowflake-reservations/delete | Delete snowflake reservation
+[**deleteUserWebauthnCredential**](AdminApi.md#deleteuserwebauthncredential) | **POST** /admin/users/delete-webauthn-credential | Delete user WebAuthn credential
 [**deleteVoiceRegion**](AdminApi.md#deletevoiceregion) | **POST** /admin/voice/regions/delete | Delete voice region
 [**deleteVoiceServer**](AdminApi.md#deletevoiceserver) | **POST** /admin/voice/servers/delete | Delete voice server
 [**disableUserMfa**](AdminApi.md#disableusermfa) | **POST** /admin/users/disable-mfa | Disable user MFA
@@ -77,6 +79,7 @@ Method | HTTP request | Description
 [**listUserDmChannels**](AdminApi.md#listuserdmchannels) | **POST** /admin/users/list-dm-channels | List user DM channels
 [**listUserGuilds**](AdminApi.md#listuserguilds) | **POST** /admin/users/list-guilds | List user guilds
 [**listUserSessions**](AdminApi.md#listusersessions) | **POST** /admin/users/list-sessions | List user sessions
+[**listUserWebauthnCredentials**](AdminApi.md#listuserwebauthncredentials) | **POST** /admin/users/list-webauthn-credentials | List user WebAuthn credentials
 [**listVisionarySlots**](AdminApi.md#listvisionaryslots) | **GET** /admin/visionary-slots | List all visionary slots
 [**listVoiceRegions**](AdminApi.md#listvoiceregions) | **POST** /admin/voice/regions/list | List voice regions
 [**listVoiceServers**](AdminApi.md#listvoiceservers) | **POST** /admin/voice/servers/list | List voice servers
@@ -306,6 +309,52 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**SuccessResponse**](SuccessResponse.md)
+
+### Authorization
+
+[adminApiKey](../README.md#adminApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **adminResendVerificationEmail**
+> adminResendVerificationEmail(resendVerificationEmailRequest)
+
+Resend verification email
+
+Resend the account verification email for a user. Creates audit log entry and honours email verification resend limits. Requires USER_UPDATE_EMAIL permission.
+
+### Example
+```dart
+import 'package:fluxer_dart/api.dart';
+// TODO Configure API key authorization: adminApiKey
+//defaultApiClient.getAuthentication<ApiKeyAuth>('adminApiKey').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('adminApiKey').apiKeyPrefix = 'Bearer';
+
+final api = FluxerDart().getAdminApi();
+final ResendVerificationEmailRequest resendVerificationEmailRequest = ; // ResendVerificationEmailRequest | 
+
+try {
+    api.adminResendVerificationEmail(resendVerificationEmailRequest);
+} catch on DioException (e) {
+    print('Exception when calling AdminApi->adminResendVerificationEmail: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resendVerificationEmailRequest** | [**ResendVerificationEmailRequest**](ResendVerificationEmailRequest.md)|  | 
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 
@@ -1481,6 +1530,52 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**SuccessResponse**](SuccessResponse.md)
+
+### Authorization
+
+[adminApiKey](../README.md#adminApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deleteUserWebauthnCredential**
+> deleteUserWebauthnCredential(deleteWebAuthnCredentialRequest)
+
+Delete user WebAuthn credential
+
+Delete a specific WebAuthn credential (passkey/security key) from a user account. Creates audit log entry. Requires USER_UPDATE_MFA permission.
+
+### Example
+```dart
+import 'package:fluxer_dart/api.dart';
+// TODO Configure API key authorization: adminApiKey
+//defaultApiClient.getAuthentication<ApiKeyAuth>('adminApiKey').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('adminApiKey').apiKeyPrefix = 'Bearer';
+
+final api = FluxerDart().getAdminApi();
+final DeleteWebAuthnCredentialRequest deleteWebAuthnCredentialRequest = ; // DeleteWebAuthnCredentialRequest | 
+
+try {
+    api.deleteUserWebauthnCredential(deleteWebAuthnCredentialRequest);
+} catch on DioException (e) {
+    print('Exception when calling AdminApi->deleteUserWebauthnCredential: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **deleteWebAuthnCredentialRequest** | [**DeleteWebAuthnCredentialRequest**](DeleteWebAuthnCredentialRequest.md)|  | 
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 
@@ -3302,6 +3397,53 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListUserSessionsResponse**](ListUserSessionsResponse.md)
+
+### Authorization
+
+[adminApiKey](../README.md#adminApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **listUserWebauthnCredentials**
+> BuiltList<WebAuthnCredentialResponse> listUserWebauthnCredentials(listWebAuthnCredentialsRequest)
+
+List user WebAuthn credentials
+
+List all WebAuthn credentials (passkeys/security keys) registered for a user. Returns credential names, creation dates, and last usage. Creates audit log entry. Requires USER_UPDATE_MFA permission.
+
+### Example
+```dart
+import 'package:fluxer_dart/api.dart';
+// TODO Configure API key authorization: adminApiKey
+//defaultApiClient.getAuthentication<ApiKeyAuth>('adminApiKey').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('adminApiKey').apiKeyPrefix = 'Bearer';
+
+final api = FluxerDart().getAdminApi();
+final ListWebAuthnCredentialsRequest listWebAuthnCredentialsRequest = ; // ListWebAuthnCredentialsRequest | 
+
+try {
+    final response = api.listUserWebauthnCredentials(listWebAuthnCredentialsRequest);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling AdminApi->listUserWebauthnCredentials: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **listWebAuthnCredentialsRequest** | [**ListWebAuthnCredentialsRequest**](ListWebAuthnCredentialsRequest.md)|  | 
+
+### Return type
+
+[**BuiltList&lt;WebAuthnCredentialResponse&gt;**](WebAuthnCredentialResponse.md)
 
 ### Authorization
 

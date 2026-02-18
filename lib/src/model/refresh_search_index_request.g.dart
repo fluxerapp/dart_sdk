@@ -27,6 +27,9 @@ const RefreshSearchIndexRequestIndexTypeEnum
 const RefreshSearchIndexRequestIndexTypeEnum
     _$refreshSearchIndexRequestIndexTypeEnum_favoriteMemes =
     const RefreshSearchIndexRequestIndexTypeEnum._('favoriteMemes');
+const RefreshSearchIndexRequestIndexTypeEnum
+    _$refreshSearchIndexRequestIndexTypeEnum_discovery =
+    const RefreshSearchIndexRequestIndexTypeEnum._('discovery');
 
 RefreshSearchIndexRequestIndexTypeEnum
     _$refreshSearchIndexRequestIndexTypeEnumValueOf(String name) {
@@ -45,6 +48,8 @@ RefreshSearchIndexRequestIndexTypeEnum
       return _$refreshSearchIndexRequestIndexTypeEnum_guildMembers;
     case 'favoriteMemes':
       return _$refreshSearchIndexRequestIndexTypeEnum_favoriteMemes;
+    case 'discovery':
+      return _$refreshSearchIndexRequestIndexTypeEnum_discovery;
     default:
       throw ArgumentError(name);
   }
@@ -60,6 +65,7 @@ final BuiltSet<RefreshSearchIndexRequestIndexTypeEnum>
   _$refreshSearchIndexRequestIndexTypeEnum_channelMessages,
   _$refreshSearchIndexRequestIndexTypeEnum_guildMembers,
   _$refreshSearchIndexRequestIndexTypeEnum_favoriteMemes,
+  _$refreshSearchIndexRequestIndexTypeEnum_discovery,
 ]);
 
 Serializer<RefreshSearchIndexRequestIndexTypeEnum>
@@ -76,6 +82,7 @@ class _$RefreshSearchIndexRequestIndexTypeEnumSerializer
     'channelMessages': 'channel_messages',
     'guildMembers': 'guild_members',
     'favoriteMemes': 'favorite_memes',
+    'discovery': 'discovery',
   };
   static const Map<Object, String> _fromWire = const <Object, String>{
     'guilds': 'guilds',
@@ -85,6 +92,7 @@ class _$RefreshSearchIndexRequestIndexTypeEnumSerializer
     'channel_messages': 'channelMessages',
     'guild_members': 'guildMembers',
     'favorite_memes': 'favoriteMemes',
+    'discovery': 'discovery',
   };
 
   @override

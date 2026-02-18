@@ -10,6 +10,7 @@ import 'package:fluxer_dart/src/auth/basic_auth.dart';
 import 'package:fluxer_dart/src/auth/bearer_auth.dart';
 import 'package:fluxer_dart/src/auth/oauth.dart';
 import 'package:fluxer_dart/src/api/admin_api.dart';
+import 'package:fluxer_dart/src/api/attachments_api.dart';
 import 'package:fluxer_dart/src/api/auth_api.dart';
 import 'package:fluxer_dart/src/api/billing_api.dart';
 import 'package:fluxer_dart/src/api/channels_api.dart';
@@ -104,6 +105,12 @@ class FluxerDart {
   /// by doing that all interceptors will not be executed
   AdminApi getAdminApi() {
     return AdminApi(dio, serializers);
+  }
+
+  /// Get AttachmentsApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  AttachmentsApi getAttachmentsApi() {
+    return AttachmentsApi(dio, serializers);
   }
 
   /// Get AuthApi instance, base route and serializer can be overridden by a given but be careful,

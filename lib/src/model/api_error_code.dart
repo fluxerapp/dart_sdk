@@ -27,6 +27,11 @@ class APIErrorCode extends EnumClass {
   static const APIErrorCode BAD_REQUEST = _$BAD_REQUEST;
 
   /// Error codes returned by API operations
+  @BuiltValueEnumConst(wireName: r'BLUESKY_OAUTH_AUTHORIZATION_FAILED')
+  static const APIErrorCode BLUESKY_OAUTH_AUTHORIZATION_FAILED =
+      _$BLUESKY_OAUTH_AUTHORIZATION_FAILED;
+
+  /// Error codes returned by API operations
   @BuiltValueEnumConst(wireName: r'BLUESKY_OAUTH_CALLBACK_FAILED')
   static const APIErrorCode BLUESKY_OAUTH_CALLBACK_FAILED =
       _$BLUESKY_OAUTH_CALLBACK_FAILED;
@@ -215,6 +220,26 @@ class APIErrorCode extends EnumClass {
   /// Error codes returned by API operations
   @BuiltValueEnumConst(wireName: r'CHANNEL_INDEXING')
   static const APIErrorCode CHANNEL_INDEXING = _$CHANNEL_INDEXING;
+
+  /// Error codes returned by API operations
+  @BuiltValueEnumConst(wireName: r'CHUNKED_UPLOAD_CHUNK_INDEX_OUT_OF_RANGE')
+  static const APIErrorCode CHUNKED_UPLOAD_CHUNK_INDEX_OUT_OF_RANGE =
+      _$CHUNKED_UPLOAD_CHUNK_INDEX_OUT_OF_RANGE;
+
+  /// Error codes returned by API operations
+  @BuiltValueEnumConst(wireName: r'CHUNKED_UPLOAD_INCOMPLETE')
+  static const APIErrorCode CHUNKED_UPLOAD_INCOMPLETE =
+      _$CHUNKED_UPLOAD_INCOMPLETE;
+
+  /// Error codes returned by API operations
+  @BuiltValueEnumConst(wireName: r'CHUNKED_UPLOAD_NOT_FOUND')
+  static const APIErrorCode CHUNKED_UPLOAD_NOT_FOUND =
+      _$CHUNKED_UPLOAD_NOT_FOUND;
+
+  /// Error codes returned by API operations
+  @BuiltValueEnumConst(wireName: r'CHUNKED_UPLOAD_NOT_OWNED')
+  static const APIErrorCode CHUNKED_UPLOAD_NOT_OWNED =
+      _$CHUNKED_UPLOAD_NOT_OWNED;
 
   /// Error codes returned by API operations
   @BuiltValueEnumConst(wireName: r'COMMUNICATION_DISABLED')

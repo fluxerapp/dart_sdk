@@ -22,7 +22,7 @@ abstract class RefreshSearchIndexRequest
   /// Type of search index to refresh
   @BuiltValueField(wireName: r'index_type')
   RefreshSearchIndexRequestIndexTypeEnum get indexType;
-  // enum indexTypeEnum {  guilds,  users,  reports,  audit_logs,  channel_messages,  guild_members,  favorite_memes,  };
+  // enum indexTypeEnum {  guilds,  users,  reports,  audit_logs,  channel_messages,  guild_members,  favorite_memes,  discovery,  };
 
   @BuiltValueField(wireName: r'guild_id')
   String? get guildId;
@@ -190,6 +190,11 @@ class RefreshSearchIndexRequestIndexTypeEnum extends EnumClass {
   @BuiltValueEnumConst(wireName: r'favorite_memes')
   static const RefreshSearchIndexRequestIndexTypeEnum favoriteMemes =
       _$refreshSearchIndexRequestIndexTypeEnum_favoriteMemes;
+
+  /// Type of search index to refresh
+  @BuiltValueEnumConst(wireName: r'discovery')
+  static const RefreshSearchIndexRequestIndexTypeEnum discovery =
+      _$refreshSearchIndexRequestIndexTypeEnum_discovery;
 
   static Serializer<RefreshSearchIndexRequestIndexTypeEnum> get serializer =>
       _$refreshSearchIndexRequestIndexTypeEnumSerializer;

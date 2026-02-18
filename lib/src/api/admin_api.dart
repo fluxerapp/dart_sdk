@@ -47,6 +47,7 @@ import 'package:fluxer_dart/src/model/delete_snowflake_reservation_request.dart'
 import 'package:fluxer_dart/src/model/delete_voice_region_request.dart';
 import 'package:fluxer_dart/src/model/delete_voice_response.dart';
 import 'package:fluxer_dart/src/model/delete_voice_server_request.dart';
+import 'package:fluxer_dart/src/model/delete_web_authn_credential_request.dart';
 import 'package:fluxer_dart/src/model/disable_for_suspicious_activity_request.dart';
 import 'package:fluxer_dart/src/model/disable_mfa_request.dart';
 import 'package:fluxer_dart/src/model/discovery_admin_reject_request.dart';
@@ -103,6 +104,7 @@ import 'package:fluxer_dart/src/model/list_voice_regions_request.dart';
 import 'package:fluxer_dart/src/model/list_voice_regions_response.dart';
 import 'package:fluxer_dart/src/model/list_voice_servers_request.dart';
 import 'package:fluxer_dart/src/model/list_voice_servers_response.dart';
+import 'package:fluxer_dart/src/model/list_web_authn_credentials_request.dart';
 import 'package:fluxer_dart/src/model/lookup_guild_request.dart';
 import 'package:fluxer_dart/src/model/lookup_guild_response.dart';
 import 'package:fluxer_dart/src/model/lookup_message_by_attachment_request.dart';
@@ -125,6 +127,7 @@ import 'package:fluxer_dart/src/model/reload_all_guilds_response.dart';
 import 'package:fluxer_dart/src/model/reload_guild_request.dart';
 import 'package:fluxer_dart/src/model/reload_guilds_request.dart';
 import 'package:fluxer_dart/src/model/report_admin_response_schema.dart';
+import 'package:fluxer_dart/src/model/resend_verification_email_request.dart';
 import 'package:fluxer_dart/src/model/reserve_visionary_slot_request.dart';
 import 'package:fluxer_dart/src/model/resolve_report_request.dart';
 import 'package:fluxer_dart/src/model/resolve_report_response.dart';
@@ -166,6 +169,7 @@ import 'package:fluxer_dart/src/model/update_voice_server_response.dart';
 import 'package:fluxer_dart/src/model/user_mutation_response.dart';
 import 'package:fluxer_dart/src/model/verify_user_email_request.dart';
 import 'package:fluxer_dart/src/model/visionary_slot_operation_response.dart';
+import 'package:fluxer_dart/src/model/web_authn_credential_response.dart';
 
 class AdminApi {
   final Dio _dio;
@@ -494,6 +498,80 @@ class AdminApi {
       statusMessage: _response.statusMessage,
       extra: _response.extra,
     );
+  }
+
+  /// Resend verification email
+  /// Resend the account verification email for a user. Creates audit log entry and honours email verification resend limits. Requires USER_UPDATE_EMAIL permission.
+  ///
+  /// Parameters:
+  /// * [resendVerificationEmailRequest]
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future]
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<void>> adminResendVerificationEmail({
+    required ResendVerificationEmailRequest resendVerificationEmailRequest,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/admin/users/resend-verification-email';
+    final _options = Options(
+      method: r'POST',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'adminApiKey',
+            'keyName': 'Authorization',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: 'application/json',
+      validateStatus: validateStatus,
+    );
+
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(ResendVerificationEmailRequest);
+      _bodyData = _serializers.serialize(resendVerificationEmailRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    return _response;
   }
 
   /// Approve discovery application
@@ -2981,6 +3059,80 @@ class AdminApi {
       statusMessage: _response.statusMessage,
       extra: _response.extra,
     );
+  }
+
+  /// Delete user WebAuthn credential
+  /// Delete a specific WebAuthn credential (passkey/security key) from a user account. Creates audit log entry. Requires USER_UPDATE_MFA permission.
+  ///
+  /// Parameters:
+  /// * [deleteWebAuthnCredentialRequest]
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future]
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<void>> deleteUserWebauthnCredential({
+    required DeleteWebAuthnCredentialRequest deleteWebAuthnCredentialRequest,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/admin/users/delete-webauthn-credential';
+    final _options = Options(
+      method: r'POST',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'adminApiKey',
+            'keyName': 'Authorization',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: 'application/json',
+      validateStatus: validateStatus,
+    );
+
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(DeleteWebAuthnCredentialRequest);
+      _bodyData = _serializers.serialize(deleteWebAuthnCredentialRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    return _response;
   }
 
   /// Delete voice region
@@ -6704,6 +6856,111 @@ class AdminApi {
     }
 
     return Response<ListUserSessionsResponse>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// List user WebAuthn credentials
+  /// List all WebAuthn credentials (passkeys/security keys) registered for a user. Returns credential names, creation dates, and last usage. Creates audit log entry. Requires USER_UPDATE_MFA permission.
+  ///
+  /// Parameters:
+  /// * [listWebAuthnCredentialsRequest]
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [BuiltList<WebAuthnCredentialResponse>] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<BuiltList<WebAuthnCredentialResponse>>>
+      listUserWebauthnCredentials({
+    required ListWebAuthnCredentialsRequest listWebAuthnCredentialsRequest,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/admin/users/list-webauthn-credentials';
+    final _options = Options(
+      method: r'POST',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'adminApiKey',
+            'keyName': 'Authorization',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: 'application/json',
+      validateStatus: validateStatus,
+    );
+
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(ListWebAuthnCredentialsRequest);
+      _bodyData = _serializers.serialize(listWebAuthnCredentialsRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    BuiltList<WebAuthnCredentialResponse>? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(
+                  BuiltList, [FullType(WebAuthnCredentialResponse)]),
+            ) as BuiltList<WebAuthnCredentialResponse>;
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<BuiltList<WebAuthnCredentialResponse>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

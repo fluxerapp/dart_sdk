@@ -92,11 +92,16 @@ import 'package:fluxer_dart/src/model/channel_update_voice_request.dart';
 import 'package:fluxer_dart/src/model/clear_guild_fields_request.dart';
 import 'package:fluxer_dart/src/model/clear_user_fields_request.dart';
 import 'package:fluxer_dart/src/model/codes_response.dart';
+import 'package:fluxer_dart/src/model/complete_chunked_upload_request.dart';
+import 'package:fluxer_dart/src/model/complete_chunked_upload_request_etags_inner.dart';
+import 'package:fluxer_dart/src/model/complete_chunked_upload_response.dart';
 import 'package:fluxer_dart/src/model/connection_response.dart';
 import 'package:fluxer_dart/src/model/connection_verification_response.dart';
 import 'package:fluxer_dart/src/model/create_admin_api_key_request.dart';
 import 'package:fluxer_dart/src/model/create_admin_api_key_response.dart';
 import 'package:fluxer_dart/src/model/create_checkout_session_request.dart';
+import 'package:fluxer_dart/src/model/create_chunked_upload_request.dart';
+import 'package:fluxer_dart/src/model/create_chunked_upload_response.dart';
 import 'package:fluxer_dart/src/model/create_connection_request.dart';
 import 'package:fluxer_dart/src/model/create_favorite_meme_body_schema.dart';
 import 'package:fluxer_dart/src/model/create_favorite_meme_from_url_body_schema.dart';
@@ -122,6 +127,7 @@ import 'package:fluxer_dart/src/model/delete_snowflake_reservation_request.dart'
 import 'package:fluxer_dart/src/model/delete_voice_region_request.dart';
 import 'package:fluxer_dart/src/model/delete_voice_response.dart';
 import 'package:fluxer_dart/src/model/delete_voice_server_request.dart';
+import 'package:fluxer_dart/src/model/delete_web_authn_credential_request.dart';
 import 'package:fluxer_dart/src/model/disable_for_suspicious_activity_request.dart';
 import 'package:fluxer_dart/src/model/disable_mfa_request.dart';
 import 'package:fluxer_dart/src/model/disable_totp_request.dart';
@@ -318,6 +324,7 @@ import 'package:fluxer_dart/src/model/list_voice_regions_request.dart';
 import 'package:fluxer_dart/src/model/list_voice_regions_response.dart';
 import 'package:fluxer_dart/src/model/list_voice_servers_request.dart';
 import 'package:fluxer_dart/src/model/list_voice_servers_response.dart';
+import 'package:fluxer_dart/src/model/list_web_authn_credentials_request.dart';
 import 'package:fluxer_dart/src/model/locale.dart';
 import 'package:fluxer_dart/src/model/login_request.dart';
 import 'package:fluxer_dart/src/model/logout_auth_sessions_request.dart';
@@ -442,6 +449,7 @@ import 'package:fluxer_dart/src/model/report_response.dart';
 import 'package:fluxer_dart/src/model/report_status.dart';
 import 'package:fluxer_dart/src/model/report_type.dart';
 import 'package:fluxer_dart/src/model/report_user_request.dart';
+import 'package:fluxer_dart/src/model/resend_verification_email_request.dart';
 import 'package:fluxer_dart/src/model/reserve_visionary_slot_request.dart';
 import 'package:fluxer_dart/src/model/reset_password_request.dart';
 import 'package:fluxer_dart/src/model/resolve_report_request.dart';
@@ -522,6 +530,7 @@ import 'package:fluxer_dart/src/model/update_voice_region_response_region.dart';
 import 'package:fluxer_dart/src/model/update_voice_server_request.dart';
 import 'package:fluxer_dart/src/model/update_voice_server_response.dart';
 import 'package:fluxer_dart/src/model/update_voice_server_response_server.dart';
+import 'package:fluxer_dart/src/model/upload_chunk_response.dart';
 import 'package:fluxer_dart/src/model/url_response.dart';
 import 'package:fluxer_dart/src/model/user_admin_response_schema.dart';
 import 'package:fluxer_dart/src/model/user_authenticator_types.dart';
@@ -674,11 +683,16 @@ part 'serializers.g.dart';
   ClearGuildFieldsRequest,
   ClearUserFieldsRequest,
   CodesResponse,
+  CompleteChunkedUploadRequest,
+  CompleteChunkedUploadRequestEtagsInner,
+  CompleteChunkedUploadResponse,
   ConnectionResponse,
   ConnectionVerificationResponse,
   CreateAdminApiKeyRequest,
   CreateAdminApiKeyResponse,
   CreateCheckoutSessionRequest,
+  CreateChunkedUploadRequest,
+  CreateChunkedUploadResponse,
   CreateConnectionRequest,
   CreateFavoriteMemeBodySchema,
   CreateFavoriteMemeFromUrlBodySchema,
@@ -704,6 +718,7 @@ part 'serializers.g.dart';
   DeleteVoiceRegionRequest,
   DeleteVoiceResponse,
   DeleteVoiceServerRequest,
+  DeleteWebAuthnCredentialRequest,
   DisableForSuspiciousActivityRequest,
   DisableMfaRequest,
   DisableTotpRequest,
@@ -900,6 +915,7 @@ part 'serializers.g.dart';
   ListVoiceRegionsResponse,
   ListVoiceServersRequest,
   ListVoiceServersResponse,
+  ListWebAuthnCredentialsRequest,
   Locale,
   LoginRequest,
   LogoutAuthSessionsRequest,
@@ -1024,6 +1040,7 @@ part 'serializers.g.dart';
   ReportStatus,
   ReportType,
   ReportUserRequest,
+  ResendVerificationEmailRequest,
   ReserveVisionarySlotRequest,
   ResetPasswordRequest,
   ResolveReportRequest,
@@ -1104,6 +1121,7 @@ part 'serializers.g.dart';
   UpdateVoiceServerRequest,
   UpdateVoiceServerResponse,
   UpdateVoiceServerResponseServer,
+  UploadChunkResponse,
   UrlResponse,
   UserAdminResponseSchema,
   UserAuthenticatorTypes,
