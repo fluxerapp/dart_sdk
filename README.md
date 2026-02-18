@@ -53,8 +53,64 @@ dependencies:
 
 ## Getting Started
 
+### Basic Usage
+
+```dart
+import 'package:fluxer_dart/fluxer_dart.dart';
+
+final fluxer = FluxerDart();
+
+fluxer.setBearerAuth('bearerToken', 'your_token_here');
+
+final usersApi = fluxer.getUsersApi();
+```
+
+### Bot Token Authentication
+
+For bot users, use `setApiKey` with the `botToken` auth name:
+
+```dart
+import 'package:fluxer_dart/fluxer_dart.dart';
+
+final fluxer = FluxerDart();
+
+fluxer.setApiKey('botToken', 'Bot your_bot_token_here');
+
+final channelsApi = fluxer.getChannelsApi();
+```
+
+### Admin API Key Authentication
+
+For admin endpoints, use `setApiKey` with the `adminApiKey` auth name:
+
+```dart
+import 'package:fluxer_dart/fluxer_dart.dart';
+
+final fluxer = FluxerDart();
+
+fluxer.setApiKey('adminApiKey', 'your_admin_key_here');
+
+final adminApi = fluxer.getAdminApi();
+```
+
+### Self-Hosted Instance
+
+If you are running a self-hosted Fluxer instance, pass `basePathOverride` to point the SDK at your own API endpoint:
+
+```dart
+import 'package:fluxer_dart/fluxer_dart.dart';
+
+final fluxer = FluxerDart(
+  basePathOverride: 'https://api.your-domain.com/v1',
+);
+
+fluxer.setBearerAuth('bearerToken', 'your_token_here');
+
+final usersApi = fluxer.getUsersApi();
+```
+
 > [!NOTE]
-> Improved README with more real examples coming soon.
+> The default base path is `https://api.fluxer.app/v1`. When providing `basePathOverride`, include the full path with the version prefix (e.g. `/v1`).
 >
 
 ## Issues & Bug Reports
