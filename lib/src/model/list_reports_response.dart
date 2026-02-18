@@ -13,26 +13,33 @@ part 'list_reports_response.g.dart';
 /// ListReportsResponse
 ///
 /// Properties:
-/// * [reports] 
+/// * [reports]
 @BuiltValue()
-abstract class ListReportsResponse implements Built<ListReportsResponse, ListReportsResponseBuilder> {
+abstract class ListReportsResponse
+    implements Built<ListReportsResponse, ListReportsResponseBuilder> {
   @BuiltValueField(wireName: r'reports')
   BuiltList<ReportAdminResponseSchema> get reports;
 
   ListReportsResponse._();
 
-  factory ListReportsResponse([void updates(ListReportsResponseBuilder b)]) = _$ListReportsResponse;
+  factory ListReportsResponse([void updates(ListReportsResponseBuilder b)]) =
+      _$ListReportsResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ListReportsResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListReportsResponse> get serializer => _$ListReportsResponseSerializer();
+  static Serializer<ListReportsResponse> get serializer =>
+      _$ListReportsResponseSerializer();
 }
 
-class _$ListReportsResponseSerializer implements PrimitiveSerializer<ListReportsResponse> {
+class _$ListReportsResponseSerializer
+    implements PrimitiveSerializer<ListReportsResponse> {
   @override
-  final Iterable<Type> types = const [ListReportsResponse, _$ListReportsResponse];
+  final Iterable<Type> types = const [
+    ListReportsResponse,
+    _$ListReportsResponse
+  ];
 
   @override
   final String wireName = r'ListReportsResponse';
@@ -45,7 +52,8 @@ class _$ListReportsResponseSerializer implements PrimitiveSerializer<ListReports
     yield r'reports';
     yield serializers.serialize(
       object.reports,
-      specifiedType: const FullType(BuiltList, [FullType(ReportAdminResponseSchema)]),
+      specifiedType:
+          const FullType(BuiltList, [FullType(ReportAdminResponseSchema)]),
     );
   }
 
@@ -55,7 +63,9 @@ class _$ListReportsResponseSerializer implements PrimitiveSerializer<ListReports
     ListReportsResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -73,7 +83,8 @@ class _$ListReportsResponseSerializer implements PrimitiveSerializer<ListReports
         case r'reports':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ReportAdminResponseSchema)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(ReportAdminResponseSchema)]),
           ) as BuiltList<ReportAdminResponseSchema>;
           result.reports.replace(valueDes);
           break;
@@ -105,4 +116,3 @@ class _$ListReportsResponseSerializer implements PrimitiveSerializer<ListReports
     return result.build();
   }
 }
-

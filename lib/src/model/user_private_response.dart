@@ -18,49 +18,50 @@ part 'user_private_response.g.dart';
 /// * [id] - The unique identifier (snowflake) for this user
 /// * [username] - The username of the user, not unique across the platform
 /// * [discriminator] - The four-digit discriminator tag of the user
-/// * [globalName] 
-/// * [avatar] 
-/// * [avatarColor] 
+/// * [globalName]
+/// * [avatar]
+/// * [avatarColor]
 /// * [flags] - The public flags on the user account
 /// * [isStaff] - Whether the user has staff permissions
 /// * [acls] - Access control list entries for the user
 /// * [traits] - Special traits assigned to the user account
-/// * [email] 
-/// * [phone] 
-/// * [bio] 
-/// * [pronouns] 
-/// * [accentColor] 
-/// * [banner] 
-/// * [bannerColor] 
+/// * [email]
+/// * [phone]
+/// * [bio]
+/// * [pronouns]
+/// * [accentColor]
+/// * [banner]
+/// * [bannerColor]
 /// * [mfaEnabled] - Whether multi-factor authentication is enabled
 /// * [verified] - Whether the email address has been verified
 /// * [premiumType] - The type of premium subscription
-/// * [premiumSince] 
-/// * [premiumUntil] 
+/// * [premiumSince]
+/// * [premiumUntil]
 /// * [premiumWillCancel] - Whether premium is set to cancel at the end of the billing period
-/// * [premiumBillingCycle] 
-/// * [premiumLifetimeSequence] 
+/// * [premiumBillingCycle]
+/// * [premiumLifetimeSequence]
 /// * [premiumBadgeHidden] - Whether the premium badge is hidden on the profile
 /// * [premiumBadgeMasked] - Whether the premium badge shows a masked appearance
 /// * [premiumBadgeTimestampHidden] - Whether the premium start timestamp is hidden
 /// * [premiumBadgeSequenceHidden] - Whether the lifetime sequence number is hidden
 /// * [premiumPurchaseDisabled] - Whether premium purchases are disabled for this account
 /// * [premiumEnabledOverride] - Whether premium features are enabled via override
-/// * [passwordLastChangedAt] 
-/// * [requiredActions] 
+/// * [passwordLastChangedAt]
+/// * [requiredActions]
 /// * [nsfwAllowed] - Whether the user is allowed to view NSFW content
 /// * [hasDismissedPremiumOnboarding] - Whether the user has dismissed the premium onboarding flow
 /// * [hasEverPurchased] - Whether the user has ever made a purchase
 /// * [hasUnreadGiftInventory] - Whether there are unread items in the gift inventory
 /// * [unreadGiftInventoryCount] - The number of unread gift inventory items
 /// * [usedMobileClient] - Whether the user has ever used the mobile client
-/// * [pendingBulkMessageDeletion] 
+/// * [pendingBulkMessageDeletion]
 /// * [bot] - Whether the user is a bot account
 /// * [system] - Whether the user is an official system user
 /// * [emailBounced] - Whether the current email address is marked as bounced by the mail provider
 /// * [authenticatorTypes] - The types of authenticators configured for MFA
 @BuiltValue()
-abstract class UserPrivateResponse implements Built<UserPrivateResponse, UserPrivateResponseBuilder> {
+abstract class UserPrivateResponse
+    implements Built<UserPrivateResponse, UserPrivateResponseBuilder> {
   /// The unique identifier (snowflake) for this user
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -223,18 +224,24 @@ abstract class UserPrivateResponse implements Built<UserPrivateResponse, UserPri
 
   UserPrivateResponse._();
 
-  factory UserPrivateResponse([void updates(UserPrivateResponseBuilder b)]) = _$UserPrivateResponse;
+  factory UserPrivateResponse([void updates(UserPrivateResponseBuilder b)]) =
+      _$UserPrivateResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UserPrivateResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UserPrivateResponse> get serializer => _$UserPrivateResponseSerializer();
+  static Serializer<UserPrivateResponse> get serializer =>
+      _$UserPrivateResponseSerializer();
 }
 
-class _$UserPrivateResponseSerializer implements PrimitiveSerializer<UserPrivateResponse> {
+class _$UserPrivateResponseSerializer
+    implements PrimitiveSerializer<UserPrivateResponse> {
   @override
-  final Iterable<Type> types = const [UserPrivateResponse, _$UserPrivateResponse];
+  final Iterable<Type> types = const [
+    UserPrivateResponse,
+    _$UserPrivateResponse
+  ];
 
   @override
   final String wireName = r'UserPrivateResponse';
@@ -260,15 +267,19 @@ class _$UserPrivateResponseSerializer implements PrimitiveSerializer<UserPrivate
       specifiedType: const FullType(String),
     );
     yield r'global_name';
-    yield object.globalName == null ? null : serializers.serialize(
-      object.globalName,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.globalName == null
+        ? null
+        : serializers.serialize(
+            object.globalName,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'avatar';
-    yield object.avatar == null ? null : serializers.serialize(
-      object.avatar,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.avatar == null
+        ? null
+        : serializers.serialize(
+            object.avatar,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'avatar_color';
     yield serializers.serialize(
       object.avatarColor,
@@ -295,35 +306,45 @@ class _$UserPrivateResponseSerializer implements PrimitiveSerializer<UserPrivate
       specifiedType: const FullType(BuiltList, [FullType(String)]),
     );
     yield r'email';
-    yield object.email == null ? null : serializers.serialize(
-      object.email,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.email == null
+        ? null
+        : serializers.serialize(
+            object.email,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'phone';
-    yield object.phone == null ? null : serializers.serialize(
-      object.phone,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.phone == null
+        ? null
+        : serializers.serialize(
+            object.phone,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'bio';
-    yield object.bio == null ? null : serializers.serialize(
-      object.bio,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.bio == null
+        ? null
+        : serializers.serialize(
+            object.bio,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'pronouns';
-    yield object.pronouns == null ? null : serializers.serialize(
-      object.pronouns,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.pronouns == null
+        ? null
+        : serializers.serialize(
+            object.pronouns,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'accent_color';
     yield serializers.serialize(
       object.accentColor,
       specifiedType: const FullType(int),
     );
     yield r'banner';
-    yield object.banner == null ? null : serializers.serialize(
-      object.banner,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.banner == null
+        ? null
+        : serializers.serialize(
+            object.banner,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'banner_color';
     yield serializers.serialize(
       object.bannerColor,
@@ -340,30 +361,38 @@ class _$UserPrivateResponseSerializer implements PrimitiveSerializer<UserPrivate
       specifiedType: const FullType(bool),
     );
     yield r'premium_type';
-    yield object.premiumType == null ? null : serializers.serialize(
-      object.premiumType,
-      specifiedType: const FullType.nullable(UserPremiumTypes),
-    );
+    yield object.premiumType == null
+        ? null
+        : serializers.serialize(
+            object.premiumType,
+            specifiedType: const FullType.nullable(UserPremiumTypes),
+          );
     yield r'premium_since';
-    yield object.premiumSince == null ? null : serializers.serialize(
-      object.premiumSince,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.premiumSince == null
+        ? null
+        : serializers.serialize(
+            object.premiumSince,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'premium_until';
-    yield object.premiumUntil == null ? null : serializers.serialize(
-      object.premiumUntil,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.premiumUntil == null
+        ? null
+        : serializers.serialize(
+            object.premiumUntil,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'premium_will_cancel';
     yield serializers.serialize(
       object.premiumWillCancel,
       specifiedType: const FullType(bool),
     );
     yield r'premium_billing_cycle';
-    yield object.premiumBillingCycle == null ? null : serializers.serialize(
-      object.premiumBillingCycle,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.premiumBillingCycle == null
+        ? null
+        : serializers.serialize(
+            object.premiumBillingCycle,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'premium_lifetime_sequence';
     yield serializers.serialize(
       object.premiumLifetimeSequence,
@@ -400,15 +429,20 @@ class _$UserPrivateResponseSerializer implements PrimitiveSerializer<UserPrivate
       specifiedType: const FullType(bool),
     );
     yield r'password_last_changed_at';
-    yield object.passwordLastChangedAt == null ? null : serializers.serialize(
-      object.passwordLastChangedAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.passwordLastChangedAt == null
+        ? null
+        : serializers.serialize(
+            object.passwordLastChangedAt,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'required_actions';
-    yield object.requiredActions == null ? null : serializers.serialize(
-      object.requiredActions,
-      specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
-    );
+    yield object.requiredActions == null
+        ? null
+        : serializers.serialize(
+            object.requiredActions,
+            specifiedType:
+                const FullType.nullable(BuiltList, [FullType(String)]),
+          );
     yield r'nsfw_allowed';
     yield serializers.serialize(
       object.nsfwAllowed,
@@ -440,10 +474,13 @@ class _$UserPrivateResponseSerializer implements PrimitiveSerializer<UserPrivate
       specifiedType: const FullType(bool),
     );
     yield r'pending_bulk_message_deletion';
-    yield object.pendingBulkMessageDeletion == null ? null : serializers.serialize(
-      object.pendingBulkMessageDeletion,
-      specifiedType: const FullType.nullable(UserPrivateResponsePendingBulkMessageDeletion),
-    );
+    yield object.pendingBulkMessageDeletion == null
+        ? null
+        : serializers.serialize(
+            object.pendingBulkMessageDeletion,
+            specifiedType: const FullType.nullable(
+                UserPrivateResponsePendingBulkMessageDeletion),
+          );
     if (object.bot != null) {
       yield r'bot';
       yield serializers.serialize(
@@ -469,7 +506,8 @@ class _$UserPrivateResponseSerializer implements PrimitiveSerializer<UserPrivate
       yield r'authenticator_types';
       yield serializers.serialize(
         object.authenticatorTypes,
-        specifiedType: const FullType(BuiltList, [FullType(UserAuthenticatorTypes)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(UserAuthenticatorTypes)]),
       );
     }
   }
@@ -480,7 +518,9 @@ class _$UserPrivateResponseSerializer implements PrimitiveSerializer<UserPrivate
     UserPrivateResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -734,7 +774,8 @@ class _$UserPrivateResponseSerializer implements PrimitiveSerializer<UserPrivate
         case r'required_actions':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+            specifiedType:
+                const FullType.nullable(BuiltList, [FullType(String)]),
           ) as BuiltList<String>?;
           if (valueDes == null) continue;
           result.requiredActions.replace(valueDes);
@@ -784,7 +825,8 @@ class _$UserPrivateResponseSerializer implements PrimitiveSerializer<UserPrivate
         case r'pending_bulk_message_deletion':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(UserPrivateResponsePendingBulkMessageDeletion),
+            specifiedType: const FullType.nullable(
+                UserPrivateResponsePendingBulkMessageDeletion),
           ) as UserPrivateResponsePendingBulkMessageDeletion?;
           if (valueDes == null) continue;
           result.pendingBulkMessageDeletion.replace(valueDes);
@@ -813,7 +855,8 @@ class _$UserPrivateResponseSerializer implements PrimitiveSerializer<UserPrivate
         case r'authenticator_types':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(UserAuthenticatorTypes)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(UserAuthenticatorTypes)]),
           ) as BuiltList<UserAuthenticatorTypes>;
           result.authenticatorTypes.replace(valueDes);
           break;
@@ -845,4 +888,3 @@ class _$UserPrivateResponseSerializer implements PrimitiveSerializer<UserPrivate
     return result.build();
   }
 }
-

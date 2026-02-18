@@ -19,7 +19,8 @@ part 'tenor_gif_response.g.dart';
 /// * [width] - Width of the GIF in pixels
 /// * [height] - Height of the GIF in pixels
 @BuiltValue()
-abstract class TenorGifResponse implements Built<TenorGifResponse, TenorGifResponseBuilder> {
+abstract class TenorGifResponse
+    implements Built<TenorGifResponse, TenorGifResponseBuilder> {
   /// The unique Tenor result id
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -50,16 +51,19 @@ abstract class TenorGifResponse implements Built<TenorGifResponse, TenorGifRespo
 
   TenorGifResponse._();
 
-  factory TenorGifResponse([void updates(TenorGifResponseBuilder b)]) = _$TenorGifResponse;
+  factory TenorGifResponse([void updates(TenorGifResponseBuilder b)]) =
+      _$TenorGifResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(TenorGifResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<TenorGifResponse> get serializer => _$TenorGifResponseSerializer();
+  static Serializer<TenorGifResponse> get serializer =>
+      _$TenorGifResponseSerializer();
 }
 
-class _$TenorGifResponseSerializer implements PrimitiveSerializer<TenorGifResponse> {
+class _$TenorGifResponseSerializer
+    implements PrimitiveSerializer<TenorGifResponse> {
   @override
   final Iterable<Type> types = const [TenorGifResponse, _$TenorGifResponse];
 
@@ -114,7 +118,9 @@ class _$TenorGifResponseSerializer implements PrimitiveSerializer<TenorGifRespon
     TenorGifResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -206,4 +212,3 @@ class _$TenorGifResponseSerializer implements PrimitiveSerializer<TenorGifRespon
     return result.build();
   }
 }
-

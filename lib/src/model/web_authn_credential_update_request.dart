@@ -14,13 +14,16 @@ part 'web_authn_credential_update_request.g.dart';
 ///
 /// Properties:
 /// * [name] - New name for the credential
-/// * [password] 
+/// * [password]
 /// * [mfaMethod] - MFA method to use for verification
 /// * [mfaCode] - MFA verification code from authenticator app or SMS
 /// * [webauthnResponse] - WebAuthn authentication response
 /// * [webauthnChallenge] - WebAuthn challenge string
 @BuiltValue()
-abstract class WebAuthnCredentialUpdateRequest implements Built<WebAuthnCredentialUpdateRequest, WebAuthnCredentialUpdateRequestBuilder> {
+abstract class WebAuthnCredentialUpdateRequest
+    implements
+        Built<WebAuthnCredentialUpdateRequest,
+            WebAuthnCredentialUpdateRequestBuilder> {
   /// New name for the credential
   @BuiltValueField(wireName: r'name')
   String get name;
@@ -47,18 +50,25 @@ abstract class WebAuthnCredentialUpdateRequest implements Built<WebAuthnCredenti
 
   WebAuthnCredentialUpdateRequest._();
 
-  factory WebAuthnCredentialUpdateRequest([void updates(WebAuthnCredentialUpdateRequestBuilder b)]) = _$WebAuthnCredentialUpdateRequest;
+  factory WebAuthnCredentialUpdateRequest(
+          [void updates(WebAuthnCredentialUpdateRequestBuilder b)]) =
+      _$WebAuthnCredentialUpdateRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(WebAuthnCredentialUpdateRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<WebAuthnCredentialUpdateRequest> get serializer => _$WebAuthnCredentialUpdateRequestSerializer();
+  static Serializer<WebAuthnCredentialUpdateRequest> get serializer =>
+      _$WebAuthnCredentialUpdateRequestSerializer();
 }
 
-class _$WebAuthnCredentialUpdateRequestSerializer implements PrimitiveSerializer<WebAuthnCredentialUpdateRequest> {
+class _$WebAuthnCredentialUpdateRequestSerializer
+    implements PrimitiveSerializer<WebAuthnCredentialUpdateRequest> {
   @override
-  final Iterable<Type> types = const [WebAuthnCredentialUpdateRequest, _$WebAuthnCredentialUpdateRequest];
+  final Iterable<Type> types = const [
+    WebAuthnCredentialUpdateRequest,
+    _$WebAuthnCredentialUpdateRequest
+  ];
 
   @override
   final String wireName = r'WebAuthnCredentialUpdateRequest';
@@ -84,7 +94,8 @@ class _$WebAuthnCredentialUpdateRequestSerializer implements PrimitiveSerializer
       yield r'mfa_method';
       yield serializers.serialize(
         object.mfaMethod,
-        specifiedType: const FullType(WebAuthnCredentialUpdateRequestMfaMethodEnum),
+        specifiedType:
+            const FullType(WebAuthnCredentialUpdateRequestMfaMethodEnum),
       );
     }
     if (object.mfaCode != null) {
@@ -116,7 +127,9 @@ class _$WebAuthnCredentialUpdateRequestSerializer implements PrimitiveSerializer
     WebAuthnCredentialUpdateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -148,7 +161,8 @@ class _$WebAuthnCredentialUpdateRequestSerializer implements PrimitiveSerializer
         case r'mfa_method':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(WebAuthnCredentialUpdateRequestMfaMethodEnum),
+            specifiedType:
+                const FullType(WebAuthnCredentialUpdateRequestMfaMethodEnum),
           ) as WebAuthnCredentialUpdateRequestMfaMethodEnum;
           result.mfaMethod = valueDes;
           break;
@@ -203,22 +217,30 @@ class _$WebAuthnCredentialUpdateRequestSerializer implements PrimitiveSerializer
 }
 
 class WebAuthnCredentialUpdateRequestMfaMethodEnum extends EnumClass {
-
   /// MFA method to use for verification
   @BuiltValueEnumConst(wireName: r'totp')
-  static const WebAuthnCredentialUpdateRequestMfaMethodEnum totp = _$webAuthnCredentialUpdateRequestMfaMethodEnum_totp;
+  static const WebAuthnCredentialUpdateRequestMfaMethodEnum totp =
+      _$webAuthnCredentialUpdateRequestMfaMethodEnum_totp;
+
   /// MFA method to use for verification
   @BuiltValueEnumConst(wireName: r'sms')
-  static const WebAuthnCredentialUpdateRequestMfaMethodEnum sms = _$webAuthnCredentialUpdateRequestMfaMethodEnum_sms;
+  static const WebAuthnCredentialUpdateRequestMfaMethodEnum sms =
+      _$webAuthnCredentialUpdateRequestMfaMethodEnum_sms;
+
   /// MFA method to use for verification
   @BuiltValueEnumConst(wireName: r'webauthn')
-  static const WebAuthnCredentialUpdateRequestMfaMethodEnum webauthn = _$webAuthnCredentialUpdateRequestMfaMethodEnum_webauthn;
+  static const WebAuthnCredentialUpdateRequestMfaMethodEnum webauthn =
+      _$webAuthnCredentialUpdateRequestMfaMethodEnum_webauthn;
 
-  static Serializer<WebAuthnCredentialUpdateRequestMfaMethodEnum> get serializer => _$webAuthnCredentialUpdateRequestMfaMethodEnumSerializer;
+  static Serializer<WebAuthnCredentialUpdateRequestMfaMethodEnum>
+      get serializer =>
+          _$webAuthnCredentialUpdateRequestMfaMethodEnumSerializer;
 
-  const WebAuthnCredentialUpdateRequestMfaMethodEnum._(String name): super(name);
+  const WebAuthnCredentialUpdateRequestMfaMethodEnum._(String name)
+      : super(name);
 
-  static BuiltSet<WebAuthnCredentialUpdateRequestMfaMethodEnum> get values => _$webAuthnCredentialUpdateRequestMfaMethodEnumValues;
-  static WebAuthnCredentialUpdateRequestMfaMethodEnum valueOf(String name) => _$webAuthnCredentialUpdateRequestMfaMethodEnumValueOf(name);
+  static BuiltSet<WebAuthnCredentialUpdateRequestMfaMethodEnum> get values =>
+      _$webAuthnCredentialUpdateRequestMfaMethodEnumValues;
+  static WebAuthnCredentialUpdateRequestMfaMethodEnum valueOf(String name) =>
+      _$webAuthnCredentialUpdateRequestMfaMethodEnumValueOf(name);
 }
-

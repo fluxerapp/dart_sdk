@@ -11,10 +11,13 @@ part 'delete_all_user_messages_request.g.dart';
 /// DeleteAllUserMessagesRequest
 ///
 /// Properties:
-/// * [userId] 
-/// * [dryRun] 
+/// * [userId]
+/// * [dryRun]
 @BuiltValue()
-abstract class DeleteAllUserMessagesRequest implements Built<DeleteAllUserMessagesRequest, DeleteAllUserMessagesRequestBuilder> {
+abstract class DeleteAllUserMessagesRequest
+    implements
+        Built<DeleteAllUserMessagesRequest,
+            DeleteAllUserMessagesRequestBuilder> {
   @BuiltValueField(wireName: r'user_id')
   String get userId;
 
@@ -23,18 +26,25 @@ abstract class DeleteAllUserMessagesRequest implements Built<DeleteAllUserMessag
 
   DeleteAllUserMessagesRequest._();
 
-  factory DeleteAllUserMessagesRequest([void updates(DeleteAllUserMessagesRequestBuilder b)]) = _$DeleteAllUserMessagesRequest;
+  factory DeleteAllUserMessagesRequest(
+          [void updates(DeleteAllUserMessagesRequestBuilder b)]) =
+      _$DeleteAllUserMessagesRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(DeleteAllUserMessagesRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<DeleteAllUserMessagesRequest> get serializer => _$DeleteAllUserMessagesRequestSerializer();
+  static Serializer<DeleteAllUserMessagesRequest> get serializer =>
+      _$DeleteAllUserMessagesRequestSerializer();
 }
 
-class _$DeleteAllUserMessagesRequestSerializer implements PrimitiveSerializer<DeleteAllUserMessagesRequest> {
+class _$DeleteAllUserMessagesRequestSerializer
+    implements PrimitiveSerializer<DeleteAllUserMessagesRequest> {
   @override
-  final Iterable<Type> types = const [DeleteAllUserMessagesRequest, _$DeleteAllUserMessagesRequest];
+  final Iterable<Type> types = const [
+    DeleteAllUserMessagesRequest,
+    _$DeleteAllUserMessagesRequest
+  ];
 
   @override
   final String wireName = r'DeleteAllUserMessagesRequest';
@@ -64,7 +74,9 @@ class _$DeleteAllUserMessagesRequestSerializer implements PrimitiveSerializer<De
     DeleteAllUserMessagesRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +133,3 @@ class _$DeleteAllUserMessagesRequestSerializer implements PrimitiveSerializer<De
     return result.build();
   }
 }
-

@@ -12,26 +12,35 @@ part 'list_phone_bans_response_schema.g.dart';
 /// ListPhoneBansResponseSchema
 ///
 /// Properties:
-/// * [bans] 
+/// * [bans]
 @BuiltValue()
-abstract class ListPhoneBansResponseSchema implements Built<ListPhoneBansResponseSchema, ListPhoneBansResponseSchemaBuilder> {
+abstract class ListPhoneBansResponseSchema
+    implements
+        Built<ListPhoneBansResponseSchema, ListPhoneBansResponseSchemaBuilder> {
   @BuiltValueField(wireName: r'bans')
   BuiltList<String> get bans;
 
   ListPhoneBansResponseSchema._();
 
-  factory ListPhoneBansResponseSchema([void updates(ListPhoneBansResponseSchemaBuilder b)]) = _$ListPhoneBansResponseSchema;
+  factory ListPhoneBansResponseSchema(
+          [void updates(ListPhoneBansResponseSchemaBuilder b)]) =
+      _$ListPhoneBansResponseSchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ListPhoneBansResponseSchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListPhoneBansResponseSchema> get serializer => _$ListPhoneBansResponseSchemaSerializer();
+  static Serializer<ListPhoneBansResponseSchema> get serializer =>
+      _$ListPhoneBansResponseSchemaSerializer();
 }
 
-class _$ListPhoneBansResponseSchemaSerializer implements PrimitiveSerializer<ListPhoneBansResponseSchema> {
+class _$ListPhoneBansResponseSchemaSerializer
+    implements PrimitiveSerializer<ListPhoneBansResponseSchema> {
   @override
-  final Iterable<Type> types = const [ListPhoneBansResponseSchema, _$ListPhoneBansResponseSchema];
+  final Iterable<Type> types = const [
+    ListPhoneBansResponseSchema,
+    _$ListPhoneBansResponseSchema
+  ];
 
   @override
   final String wireName = r'ListPhoneBansResponseSchema';
@@ -54,7 +63,9 @@ class _$ListPhoneBansResponseSchemaSerializer implements PrimitiveSerializer<Lis
     ListPhoneBansResponseSchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +115,3 @@ class _$ListPhoneBansResponseSchemaSerializer implements PrimitiveSerializer<Lis
     return result.build();
   }
 }
-

@@ -14,25 +14,32 @@ part 'reload_guilds_request.g.dart';
 /// Properties:
 /// * [guildIds] - List of guild IDs to reload
 @BuiltValue()
-abstract class ReloadGuildsRequest implements Built<ReloadGuildsRequest, ReloadGuildsRequestBuilder> {
+abstract class ReloadGuildsRequest
+    implements Built<ReloadGuildsRequest, ReloadGuildsRequestBuilder> {
   /// List of guild IDs to reload
   @BuiltValueField(wireName: r'guild_ids')
   BuiltList<String> get guildIds;
 
   ReloadGuildsRequest._();
 
-  factory ReloadGuildsRequest([void updates(ReloadGuildsRequestBuilder b)]) = _$ReloadGuildsRequest;
+  factory ReloadGuildsRequest([void updates(ReloadGuildsRequestBuilder b)]) =
+      _$ReloadGuildsRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ReloadGuildsRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ReloadGuildsRequest> get serializer => _$ReloadGuildsRequestSerializer();
+  static Serializer<ReloadGuildsRequest> get serializer =>
+      _$ReloadGuildsRequestSerializer();
 }
 
-class _$ReloadGuildsRequestSerializer implements PrimitiveSerializer<ReloadGuildsRequest> {
+class _$ReloadGuildsRequestSerializer
+    implements PrimitiveSerializer<ReloadGuildsRequest> {
   @override
-  final Iterable<Type> types = const [ReloadGuildsRequest, _$ReloadGuildsRequest];
+  final Iterable<Type> types = const [
+    ReloadGuildsRequest,
+    _$ReloadGuildsRequest
+  ];
 
   @override
   final String wireName = r'ReloadGuildsRequest';
@@ -55,7 +62,9 @@ class _$ReloadGuildsRequestSerializer implements PrimitiveSerializer<ReloadGuild
     ReloadGuildsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -105,4 +114,3 @@ class _$ReloadGuildsRequestSerializer implements PrimitiveSerializer<ReloadGuild
     return result.build();
   }
 }
-

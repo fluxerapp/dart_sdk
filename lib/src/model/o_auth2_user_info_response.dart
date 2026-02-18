@@ -15,13 +15,14 @@ part 'o_auth2_user_info_response.g.dart';
 /// * [id] - The unique identifier of the user
 /// * [username] - The username of the user
 /// * [discriminator] - The discriminator of the user
-/// * [globalName] 
-/// * [avatar] 
-/// * [email] 
-/// * [verified] 
+/// * [globalName]
+/// * [avatar]
+/// * [email]
+/// * [verified]
 /// * [flags] - The public flags on the user account
 @BuiltValue()
-abstract class OAuth2UserInfoResponse implements Built<OAuth2UserInfoResponse, OAuth2UserInfoResponseBuilder> {
+abstract class OAuth2UserInfoResponse
+    implements Built<OAuth2UserInfoResponse, OAuth2UserInfoResponseBuilder> {
   /// The subject identifier of the user
   @BuiltValueField(wireName: r'sub')
   String get sub;
@@ -56,18 +57,25 @@ abstract class OAuth2UserInfoResponse implements Built<OAuth2UserInfoResponse, O
 
   OAuth2UserInfoResponse._();
 
-  factory OAuth2UserInfoResponse([void updates(OAuth2UserInfoResponseBuilder b)]) = _$OAuth2UserInfoResponse;
+  factory OAuth2UserInfoResponse(
+          [void updates(OAuth2UserInfoResponseBuilder b)]) =
+      _$OAuth2UserInfoResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(OAuth2UserInfoResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<OAuth2UserInfoResponse> get serializer => _$OAuth2UserInfoResponseSerializer();
+  static Serializer<OAuth2UserInfoResponse> get serializer =>
+      _$OAuth2UserInfoResponseSerializer();
 }
 
-class _$OAuth2UserInfoResponseSerializer implements PrimitiveSerializer<OAuth2UserInfoResponse> {
+class _$OAuth2UserInfoResponseSerializer
+    implements PrimitiveSerializer<OAuth2UserInfoResponse> {
   @override
-  final Iterable<Type> types = const [OAuth2UserInfoResponse, _$OAuth2UserInfoResponse];
+  final Iterable<Type> types = const [
+    OAuth2UserInfoResponse,
+    _$OAuth2UserInfoResponse
+  ];
 
   @override
   final String wireName = r'OAuth2UserInfoResponse';
@@ -98,15 +106,19 @@ class _$OAuth2UserInfoResponseSerializer implements PrimitiveSerializer<OAuth2Us
       specifiedType: const FullType(String),
     );
     yield r'global_name';
-    yield object.globalName == null ? null : serializers.serialize(
-      object.globalName,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.globalName == null
+        ? null
+        : serializers.serialize(
+            object.globalName,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'avatar';
-    yield object.avatar == null ? null : serializers.serialize(
-      object.avatar,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.avatar == null
+        ? null
+        : serializers.serialize(
+            object.avatar,
+            specifiedType: const FullType.nullable(String),
+          );
     if (object.email != null) {
       yield r'email';
       yield serializers.serialize(
@@ -136,7 +148,9 @@ class _$OAuth2UserInfoResponseSerializer implements PrimitiveSerializer<OAuth2Us
     OAuth2UserInfoResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -246,4 +260,3 @@ class _$OAuth2UserInfoResponseSerializer implements PrimitiveSerializer<OAuth2Us
     return result.build();
   }
 }
-

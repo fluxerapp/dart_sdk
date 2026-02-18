@@ -15,11 +15,12 @@ part 'relationship_response.g.dart';
 /// Properties:
 /// * [id] - The unique identifier for the relationship
 /// * [type] - The type of relationship (friend, blocked, pending, etc.)
-/// * [user] 
-/// * [nickname] 
+/// * [user]
+/// * [nickname]
 /// * [since] - ISO8601 timestamp of when the relationship was established
 @BuiltValue()
-abstract class RelationshipResponse implements Built<RelationshipResponse, RelationshipResponseBuilder> {
+abstract class RelationshipResponse
+    implements Built<RelationshipResponse, RelationshipResponseBuilder> {
   /// The unique identifier for the relationship
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -41,18 +42,24 @@ abstract class RelationshipResponse implements Built<RelationshipResponse, Relat
 
   RelationshipResponse._();
 
-  factory RelationshipResponse([void updates(RelationshipResponseBuilder b)]) = _$RelationshipResponse;
+  factory RelationshipResponse([void updates(RelationshipResponseBuilder b)]) =
+      _$RelationshipResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(RelationshipResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<RelationshipResponse> get serializer => _$RelationshipResponseSerializer();
+  static Serializer<RelationshipResponse> get serializer =>
+      _$RelationshipResponseSerializer();
 }
 
-class _$RelationshipResponseSerializer implements PrimitiveSerializer<RelationshipResponse> {
+class _$RelationshipResponseSerializer
+    implements PrimitiveSerializer<RelationshipResponse> {
   @override
-  final Iterable<Type> types = const [RelationshipResponse, _$RelationshipResponse];
+  final Iterable<Type> types = const [
+    RelationshipResponse,
+    _$RelationshipResponse
+  ];
 
   @override
   final String wireName = r'RelationshipResponse';
@@ -78,10 +85,12 @@ class _$RelationshipResponseSerializer implements PrimitiveSerializer<Relationsh
       specifiedType: const FullType(UserPartialResponse),
     );
     yield r'nickname';
-    yield object.nickname == null ? null : serializers.serialize(
-      object.nickname,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.nickname == null
+        ? null
+        : serializers.serialize(
+            object.nickname,
+            specifiedType: const FullType.nullable(String),
+          );
     if (object.since != null) {
       yield r'since';
       yield serializers.serialize(
@@ -97,7 +106,9 @@ class _$RelationshipResponseSerializer implements PrimitiveSerializer<Relationsh
     RelationshipResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -176,4 +187,3 @@ class _$RelationshipResponseSerializer implements PrimitiveSerializer<Relationsh
     return result.build();
   }
 }
-

@@ -4,15 +4,12 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:fluxer_dart/src/model/dsa_report_email_send_request.dart';
 import 'package:fluxer_dart/src/model/dsa_report_email_verify_request.dart';
 import 'package:fluxer_dart/src/model/dsa_report_request.dart';
-import 'package:fluxer_dart/src/model/error.dart';
-import 'package:fluxer_dart/src/model/get_well_known_fluxer429_response.dart';
 import 'package:fluxer_dart/src/model/ok_response.dart';
 import 'package:fluxer_dart/src/model/report_guild_request.dart';
 import 'package:fluxer_dart/src/model/report_message_request.dart';
@@ -21,7 +18,6 @@ import 'package:fluxer_dart/src/model/report_user_request.dart';
 import 'package:fluxer_dart/src/model/ticket_response.dart';
 
 class ReportsApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -32,7 +28,7 @@ class ReportsApi {
   /// Creates a DSA complaint report with verified email for Digital Services Act compliance.
   ///
   /// Parameters:
-  /// * [dsaReportRequest] 
+  /// * [dsaReportRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -42,7 +38,7 @@ class ReportsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [ReportResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ReportResponse>> createDsaReport({ 
+  Future<Response<ReportResponse>> createDsaReport({
     required DsaReportRequest dsaReportRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -69,11 +65,11 @@ class ReportsApi {
 
     try {
       const _type = FullType(DsaReportRequest);
-      _bodyData = _serializers.serialize(dsaReportRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(dsaReportRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -96,11 +92,12 @@ class ReportsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ReportResponse),
-      ) as ReportResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(ReportResponse),
+            ) as ReportResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -127,7 +124,7 @@ class ReportsApi {
   /// Submits a report about a guild to moderators for policy violation review.
   ///
   /// Parameters:
-  /// * [reportGuildRequest] 
+  /// * [reportGuildRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -137,7 +134,7 @@ class ReportsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [ReportResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ReportResponse>> reportGuild({ 
+  Future<Response<ReportResponse>> reportGuild({
     required ReportGuildRequest reportGuildRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -159,7 +156,8 @@ class ReportsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -176,11 +174,11 @@ class ReportsApi {
 
     try {
       const _type = FullType(ReportGuildRequest);
-      _bodyData = _serializers.serialize(reportGuildRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(reportGuildRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -203,11 +201,12 @@ class ReportsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ReportResponse),
-      ) as ReportResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(ReportResponse),
+            ) as ReportResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -234,7 +233,7 @@ class ReportsApi {
   /// Submits a report about a message to moderators for content violation review.
   ///
   /// Parameters:
-  /// * [reportMessageRequest] 
+  /// * [reportMessageRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -244,7 +243,7 @@ class ReportsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [ReportResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ReportResponse>> reportMessage({ 
+  Future<Response<ReportResponse>> reportMessage({
     required ReportMessageRequest reportMessageRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -266,7 +265,8 @@ class ReportsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -283,11 +283,11 @@ class ReportsApi {
 
     try {
       const _type = FullType(ReportMessageRequest);
-      _bodyData = _serializers.serialize(reportMessageRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(reportMessageRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -310,11 +310,12 @@ class ReportsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ReportResponse),
-      ) as ReportResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(ReportResponse),
+            ) as ReportResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -341,7 +342,7 @@ class ReportsApi {
   /// Submits a report about a user to moderators for content violation or behaviour review.
   ///
   /// Parameters:
-  /// * [reportUserRequest] 
+  /// * [reportUserRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -351,7 +352,7 @@ class ReportsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [ReportResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ReportResponse>> reportUser({ 
+  Future<Response<ReportResponse>> reportUser({
     required ReportUserRequest reportUserRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -373,7 +374,8 @@ class ReportsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -390,11 +392,11 @@ class ReportsApi {
 
     try {
       const _type = FullType(ReportUserRequest);
-      _bodyData = _serializers.serialize(reportUserRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(reportUserRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -417,11 +419,12 @@ class ReportsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ReportResponse),
-      ) as ReportResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(ReportResponse),
+            ) as ReportResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -448,7 +451,7 @@ class ReportsApi {
   /// Initiates DSA (Digital Services Act) report submission by sending verification email to reporter.
   ///
   /// Parameters:
-  /// * [dsaReportEmailSendRequest] 
+  /// * [dsaReportEmailSendRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -458,7 +461,7 @@ class ReportsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [OkResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<OkResponse>> sendDsaReportEmail({ 
+  Future<Response<OkResponse>> sendDsaReportEmail({
     required DsaReportEmailSendRequest dsaReportEmailSendRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -485,11 +488,11 @@ class ReportsApi {
 
     try {
       const _type = FullType(DsaReportEmailSendRequest);
-      _bodyData = _serializers.serialize(dsaReportEmailSendRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(dsaReportEmailSendRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -512,11 +515,12 @@ class ReportsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(OkResponse),
-      ) as OkResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(OkResponse),
+            ) as OkResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -543,7 +547,7 @@ class ReportsApi {
   /// Verifies the DSA report email and creates a report ticket for legal compliance.
   ///
   /// Parameters:
-  /// * [dsaReportEmailVerifyRequest] 
+  /// * [dsaReportEmailVerifyRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -553,7 +557,7 @@ class ReportsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [TicketResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<TicketResponse>> verifyDsaReportEmail({ 
+  Future<Response<TicketResponse>> verifyDsaReportEmail({
     required DsaReportEmailVerifyRequest dsaReportEmailVerifyRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -580,11 +584,11 @@ class ReportsApi {
 
     try {
       const _type = FullType(DsaReportEmailVerifyRequest);
-      _bodyData = _serializers.serialize(dsaReportEmailVerifyRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(dsaReportEmailVerifyRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -607,11 +611,12 @@ class ReportsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(TicketResponse),
-      ) as TicketResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(TicketResponse),
+            ) as TicketResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -633,5 +638,4 @@ class ReportsApi {
       extra: _response.extra,
     );
   }
-
 }

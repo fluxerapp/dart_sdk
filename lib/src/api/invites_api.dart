@@ -4,21 +4,17 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:built_collection/built_collection.dart';
 import 'package:fluxer_dart/src/api_util.dart';
 import 'package:fluxer_dart/src/model/channel_invite_create_request.dart';
-import 'package:fluxer_dart/src/model/error.dart';
-import 'package:fluxer_dart/src/model/get_well_known_fluxer429_response.dart';
 import 'package:fluxer_dart/src/model/invite_metadata_response_schema.dart';
 import 'package:fluxer_dart/src/model/invite_response_schema.dart';
 import 'package:fluxer_dart/src/model/pack_invite_create_request.dart';
 
 class InvitesApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -39,7 +35,7 @@ class InvitesApi {
   ///
   /// Returns a [Future] containing a [Response] with a [InviteResponseSchema] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<InviteResponseSchema>> acceptInvite({ 
+  Future<Response<InviteResponseSchema>> acceptInvite({
     required String inviteCode,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -48,7 +44,10 @@ class InvitesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/invites/{invite_code}'.replaceAll('{' r'invite_code' '}', encodeQueryParameter(_serializers, inviteCode, const FullType(String)).toString());
+    final _path = r'/invites/{invite_code}'.replaceAll(
+        '{' r'invite_code' '}',
+        encodeQueryParameter(_serializers, inviteCode, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -61,7 +60,8 @@ class InvitesApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -85,11 +85,12 @@ class InvitesApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(InviteResponseSchema),
-      ) as InviteResponseSchema;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(InviteResponseSchema),
+            ) as InviteResponseSchema;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -117,7 +118,7 @@ class InvitesApi {
   ///
   /// Parameters:
   /// * [channelId] - The ID of the channel
-  /// * [channelInviteCreateRequest] 
+  /// * [channelInviteCreateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -127,7 +128,7 @@ class InvitesApi {
   ///
   /// Returns a [Future] containing a [Response] with a [InviteMetadataResponseSchema] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<InviteMetadataResponseSchema>> createChannelInvite({ 
+  Future<Response<InviteMetadataResponseSchema>> createChannelInvite({
     required String channelId,
     required ChannelInviteCreateRequest channelInviteCreateRequest,
     CancelToken? cancelToken,
@@ -137,7 +138,10 @@ class InvitesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/channels/{channel_id}/invites'.replaceAll('{' r'channel_id' '}', encodeQueryParameter(_serializers, channelId, const FullType(String)).toString());
+    final _path = r'/channels/{channel_id}/invites'.replaceAll(
+        '{' r'channel_id' '}',
+        encodeQueryParameter(_serializers, channelId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -150,7 +154,8 @@ class InvitesApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -167,11 +172,11 @@ class InvitesApi {
 
     try {
       const _type = FullType(ChannelInviteCreateRequest);
-      _bodyData = _serializers.serialize(channelInviteCreateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(channelInviteCreateRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -194,11 +199,12 @@ class InvitesApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(InviteMetadataResponseSchema),
-      ) as InviteMetadataResponseSchema;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(InviteMetadataResponseSchema),
+            ) as InviteMetadataResponseSchema;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -226,7 +232,7 @@ class InvitesApi {
   ///
   /// Parameters:
   /// * [packId] - The ID of the pack
-  /// * [packInviteCreateRequest] 
+  /// * [packInviteCreateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -236,7 +242,7 @@ class InvitesApi {
   ///
   /// Returns a [Future] containing a [Response] with a [InviteMetadataResponseSchema] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<InviteMetadataResponseSchema>> createPackInvite({ 
+  Future<Response<InviteMetadataResponseSchema>> createPackInvite({
     required String packId,
     required PackInviteCreateRequest packInviteCreateRequest,
     CancelToken? cancelToken,
@@ -246,7 +252,10 @@ class InvitesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/packs/{pack_id}/invites'.replaceAll('{' r'pack_id' '}', encodeQueryParameter(_serializers, packId, const FullType(String)).toString());
+    final _path = r'/packs/{pack_id}/invites'.replaceAll(
+        '{' r'pack_id' '}',
+        encodeQueryParameter(_serializers, packId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -259,7 +268,8 @@ class InvitesApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -276,11 +286,11 @@ class InvitesApi {
 
     try {
       const _type = FullType(PackInviteCreateRequest);
-      _bodyData = _serializers.serialize(packInviteCreateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(packInviteCreateRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -303,11 +313,12 @@ class InvitesApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(InviteMetadataResponseSchema),
-      ) as InviteMetadataResponseSchema;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(InviteMetadataResponseSchema),
+            ) as InviteMetadataResponseSchema;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -344,7 +355,7 @@ class InvitesApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> deleteInvite({ 
+  Future<Response<void>> deleteInvite({
     required String inviteCode,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -353,7 +364,10 @@ class InvitesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/invites/{invite_code}'.replaceAll('{' r'invite_code' '}', encodeQueryParameter(_serializers, inviteCode, const FullType(String)).toString());
+    final _path = r'/invites/{invite_code}'.replaceAll(
+        '{' r'invite_code' '}',
+        encodeQueryParameter(_serializers, inviteCode, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -366,7 +380,8 @@ class InvitesApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -403,7 +418,7 @@ class InvitesApi {
   ///
   /// Returns a [Future] containing a [Response] with a [InviteResponseSchema] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<InviteResponseSchema>> getInvite({ 
+  Future<Response<InviteResponseSchema>> getInvite({
     required String inviteCode,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -412,7 +427,10 @@ class InvitesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/invites/{invite_code}'.replaceAll('{' r'invite_code' '}', encodeQueryParameter(_serializers, inviteCode, const FullType(String)).toString());
+    final _path = r'/invites/{invite_code}'.replaceAll(
+        '{' r'invite_code' '}',
+        encodeQueryParameter(_serializers, inviteCode, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -437,11 +455,12 @@ class InvitesApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(InviteResponseSchema),
-      ) as InviteResponseSchema;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(InviteResponseSchema),
+            ) as InviteResponseSchema;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -478,7 +497,7 @@ class InvitesApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<InviteMetadataResponseSchema>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<InviteMetadataResponseSchema>>> listChannelInvites({ 
+  Future<Response<BuiltList<InviteMetadataResponseSchema>>> listChannelInvites({
     required String channelId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -487,7 +506,10 @@ class InvitesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/channels/{channel_id}/invites'.replaceAll('{' r'channel_id' '}', encodeQueryParameter(_serializers, channelId, const FullType(String)).toString());
+    final _path = r'/channels/{channel_id}/invites'.replaceAll(
+        '{' r'channel_id' '}',
+        encodeQueryParameter(_serializers, channelId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -500,7 +522,8 @@ class InvitesApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -524,11 +547,13 @@ class InvitesApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(InviteMetadataResponseSchema)]),
-      ) as BuiltList<InviteMetadataResponseSchema>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(
+                  BuiltList, [FullType(InviteMetadataResponseSchema)]),
+            ) as BuiltList<InviteMetadataResponseSchema>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -565,7 +590,7 @@ class InvitesApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<InviteMetadataResponseSchema>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<InviteMetadataResponseSchema>>> listGuildInvites({ 
+  Future<Response<BuiltList<InviteMetadataResponseSchema>>> listGuildInvites({
     required String guildId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -574,7 +599,10 @@ class InvitesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/invites'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/invites'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -587,7 +615,8 @@ class InvitesApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -611,11 +640,13 @@ class InvitesApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(InviteMetadataResponseSchema)]),
-      ) as BuiltList<InviteMetadataResponseSchema>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(
+                  BuiltList, [FullType(InviteMetadataResponseSchema)]),
+            ) as BuiltList<InviteMetadataResponseSchema>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -652,7 +683,7 @@ class InvitesApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<InviteMetadataResponseSchema>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<InviteMetadataResponseSchema>>> listPackInvites({ 
+  Future<Response<BuiltList<InviteMetadataResponseSchema>>> listPackInvites({
     required String packId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -661,7 +692,10 @@ class InvitesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/packs/{pack_id}/invites'.replaceAll('{' r'pack_id' '}', encodeQueryParameter(_serializers, packId, const FullType(String)).toString());
+    final _path = r'/packs/{pack_id}/invites'.replaceAll(
+        '{' r'pack_id' '}',
+        encodeQueryParameter(_serializers, packId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -674,7 +708,8 @@ class InvitesApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -698,11 +733,13 @@ class InvitesApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(InviteMetadataResponseSchema)]),
-      ) as BuiltList<InviteMetadataResponseSchema>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(
+                  BuiltList, [FullType(InviteMetadataResponseSchema)]),
+            ) as BuiltList<InviteMetadataResponseSchema>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -724,5 +761,4 @@ class InvitesApi {
       extra: _response.extra,
     );
   }
-
 }

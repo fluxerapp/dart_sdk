@@ -13,10 +13,11 @@ part 'search_guilds_response.g.dart';
 /// SearchGuildsResponse
 ///
 /// Properties:
-/// * [guilds] 
-/// * [total] 
+/// * [guilds]
+/// * [total]
 @BuiltValue()
-abstract class SearchGuildsResponse implements Built<SearchGuildsResponse, SearchGuildsResponseBuilder> {
+abstract class SearchGuildsResponse
+    implements Built<SearchGuildsResponse, SearchGuildsResponseBuilder> {
   @BuiltValueField(wireName: r'guilds')
   BuiltList<GuildAdminResponse> get guilds;
 
@@ -25,18 +26,24 @@ abstract class SearchGuildsResponse implements Built<SearchGuildsResponse, Searc
 
   SearchGuildsResponse._();
 
-  factory SearchGuildsResponse([void updates(SearchGuildsResponseBuilder b)]) = _$SearchGuildsResponse;
+  factory SearchGuildsResponse([void updates(SearchGuildsResponseBuilder b)]) =
+      _$SearchGuildsResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SearchGuildsResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SearchGuildsResponse> get serializer => _$SearchGuildsResponseSerializer();
+  static Serializer<SearchGuildsResponse> get serializer =>
+      _$SearchGuildsResponseSerializer();
 }
 
-class _$SearchGuildsResponseSerializer implements PrimitiveSerializer<SearchGuildsResponse> {
+class _$SearchGuildsResponseSerializer
+    implements PrimitiveSerializer<SearchGuildsResponse> {
   @override
-  final Iterable<Type> types = const [SearchGuildsResponse, _$SearchGuildsResponse];
+  final Iterable<Type> types = const [
+    SearchGuildsResponse,
+    _$SearchGuildsResponse
+  ];
 
   @override
   final String wireName = r'SearchGuildsResponse';
@@ -64,7 +71,9 @@ class _$SearchGuildsResponseSerializer implements PrimitiveSerializer<SearchGuil
     SearchGuildsResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -82,7 +91,8 @@ class _$SearchGuildsResponseSerializer implements PrimitiveSerializer<SearchGuil
         case r'guilds':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(GuildAdminResponse)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(GuildAdminResponse)]),
           ) as BuiltList<GuildAdminResponse>;
           result.guilds.replace(valueDes);
           break;
@@ -121,4 +131,3 @@ class _$SearchGuildsResponseSerializer implements PrimitiveSerializer<SearchGuil
     return result.build();
   }
 }
-

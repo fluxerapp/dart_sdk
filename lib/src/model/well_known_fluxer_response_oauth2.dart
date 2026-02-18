@@ -17,7 +17,10 @@ part 'well_known_fluxer_response_oauth2.g.dart';
 /// * [userinfoEndpoint] - OAuth2 userinfo endpoint URL
 /// * [scopesSupported] - Supported OAuth2 scopes
 @BuiltValue()
-abstract class WellKnownFluxerResponseOauth2 implements Built<WellKnownFluxerResponseOauth2, WellKnownFluxerResponseOauth2Builder> {
+abstract class WellKnownFluxerResponseOauth2
+    implements
+        Built<WellKnownFluxerResponseOauth2,
+            WellKnownFluxerResponseOauth2Builder> {
   /// OAuth2 authorization endpoint URL
   @BuiltValueField(wireName: r'authorization_endpoint')
   String get authorizationEndpoint;
@@ -36,18 +39,25 @@ abstract class WellKnownFluxerResponseOauth2 implements Built<WellKnownFluxerRes
 
   WellKnownFluxerResponseOauth2._();
 
-  factory WellKnownFluxerResponseOauth2([void updates(WellKnownFluxerResponseOauth2Builder b)]) = _$WellKnownFluxerResponseOauth2;
+  factory WellKnownFluxerResponseOauth2(
+          [void updates(WellKnownFluxerResponseOauth2Builder b)]) =
+      _$WellKnownFluxerResponseOauth2;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(WellKnownFluxerResponseOauth2Builder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<WellKnownFluxerResponseOauth2> get serializer => _$WellKnownFluxerResponseOauth2Serializer();
+  static Serializer<WellKnownFluxerResponseOauth2> get serializer =>
+      _$WellKnownFluxerResponseOauth2Serializer();
 }
 
-class _$WellKnownFluxerResponseOauth2Serializer implements PrimitiveSerializer<WellKnownFluxerResponseOauth2> {
+class _$WellKnownFluxerResponseOauth2Serializer
+    implements PrimitiveSerializer<WellKnownFluxerResponseOauth2> {
   @override
-  final Iterable<Type> types = const [WellKnownFluxerResponseOauth2, _$WellKnownFluxerResponseOauth2];
+  final Iterable<Type> types = const [
+    WellKnownFluxerResponseOauth2,
+    _$WellKnownFluxerResponseOauth2
+  ];
 
   @override
   final String wireName = r'WellKnownFluxerResponseOauth2';
@@ -85,7 +95,9 @@ class _$WellKnownFluxerResponseOauth2Serializer implements PrimitiveSerializer<W
     WellKnownFluxerResponseOauth2 object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -156,4 +168,3 @@ class _$WellKnownFluxerResponseOauth2Serializer implements PrimitiveSerializer<W
     return result.build();
   }
 }
-

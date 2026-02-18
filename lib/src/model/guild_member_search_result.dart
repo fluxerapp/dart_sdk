@@ -18,14 +18,15 @@ part 'guild_member_search_result.g.dart';
 /// * [userId] - User ID
 /// * [username] - Username
 /// * [discriminator] - Zero-padded 4-digit discriminator
-/// * [globalName] 
-/// * [nickname] 
+/// * [globalName]
+/// * [nickname]
 /// * [roleIds] - Role IDs
 /// * [joinedAt] - Unix timestamp of when the member joined
-/// * [supplemental] 
+/// * [supplemental]
 /// * [isBot] - Whether the user is a bot
 @BuiltValue()
-abstract class GuildMemberSearchResult implements Built<GuildMemberSearchResult, GuildMemberSearchResultBuilder> {
+abstract class GuildMemberSearchResult
+    implements Built<GuildMemberSearchResult, GuildMemberSearchResultBuilder> {
   /// Composite ID (guildId:userId)
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -69,18 +70,25 @@ abstract class GuildMemberSearchResult implements Built<GuildMemberSearchResult,
 
   GuildMemberSearchResult._();
 
-  factory GuildMemberSearchResult([void updates(GuildMemberSearchResultBuilder b)]) = _$GuildMemberSearchResult;
+  factory GuildMemberSearchResult(
+          [void updates(GuildMemberSearchResultBuilder b)]) =
+      _$GuildMemberSearchResult;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildMemberSearchResultBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildMemberSearchResult> get serializer => _$GuildMemberSearchResultSerializer();
+  static Serializer<GuildMemberSearchResult> get serializer =>
+      _$GuildMemberSearchResultSerializer();
 }
 
-class _$GuildMemberSearchResultSerializer implements PrimitiveSerializer<GuildMemberSearchResult> {
+class _$GuildMemberSearchResultSerializer
+    implements PrimitiveSerializer<GuildMemberSearchResult> {
   @override
-  final Iterable<Type> types = const [GuildMemberSearchResult, _$GuildMemberSearchResult];
+  final Iterable<Type> types = const [
+    GuildMemberSearchResult,
+    _$GuildMemberSearchResult
+  ];
 
   @override
   final String wireName = r'GuildMemberSearchResult';
@@ -116,15 +124,19 @@ class _$GuildMemberSearchResultSerializer implements PrimitiveSerializer<GuildMe
       specifiedType: const FullType(String),
     );
     yield r'global_name';
-    yield object.globalName == null ? null : serializers.serialize(
-      object.globalName,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.globalName == null
+        ? null
+        : serializers.serialize(
+            object.globalName,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'nickname';
-    yield object.nickname == null ? null : serializers.serialize(
-      object.nickname,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.nickname == null
+        ? null
+        : serializers.serialize(
+            object.nickname,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'role_ids';
     yield serializers.serialize(
       object.roleIds,
@@ -153,7 +165,9 @@ class _$GuildMemberSearchResultSerializer implements PrimitiveSerializer<GuildMe
     GuildMemberSearchResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -275,4 +289,3 @@ class _$GuildMemberSearchResultSerializer implements PrimitiveSerializer<GuildMe
     return result.build();
   }
 }
-

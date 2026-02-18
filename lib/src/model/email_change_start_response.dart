@@ -13,12 +13,14 @@ part 'email_change_start_response.g.dart';
 /// Properties:
 /// * [ticket] - Ticket returned for email change actions
 /// * [requireOriginal] - Whether verification of the original email is required
-/// * [originalEmail] 
-/// * [originalProof] 
-/// * [originalCodeExpiresAt] 
-/// * [resendAvailableAt] 
+/// * [originalEmail]
+/// * [originalProof]
+/// * [originalCodeExpiresAt]
+/// * [resendAvailableAt]
 @BuiltValue()
-abstract class EmailChangeStartResponse implements Built<EmailChangeStartResponse, EmailChangeStartResponseBuilder> {
+abstract class EmailChangeStartResponse
+    implements
+        Built<EmailChangeStartResponse, EmailChangeStartResponseBuilder> {
   /// Ticket returned for email change actions
   @BuiltValueField(wireName: r'ticket')
   String get ticket;
@@ -41,18 +43,25 @@ abstract class EmailChangeStartResponse implements Built<EmailChangeStartRespons
 
   EmailChangeStartResponse._();
 
-  factory EmailChangeStartResponse([void updates(EmailChangeStartResponseBuilder b)]) = _$EmailChangeStartResponse;
+  factory EmailChangeStartResponse(
+          [void updates(EmailChangeStartResponseBuilder b)]) =
+      _$EmailChangeStartResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(EmailChangeStartResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<EmailChangeStartResponse> get serializer => _$EmailChangeStartResponseSerializer();
+  static Serializer<EmailChangeStartResponse> get serializer =>
+      _$EmailChangeStartResponseSerializer();
 }
 
-class _$EmailChangeStartResponseSerializer implements PrimitiveSerializer<EmailChangeStartResponse> {
+class _$EmailChangeStartResponseSerializer
+    implements PrimitiveSerializer<EmailChangeStartResponse> {
   @override
-  final Iterable<Type> types = const [EmailChangeStartResponse, _$EmailChangeStartResponse];
+  final Iterable<Type> types = const [
+    EmailChangeStartResponse,
+    _$EmailChangeStartResponse
+  ];
 
   @override
   final String wireName = r'EmailChangeStartResponse';
@@ -73,25 +82,33 @@ class _$EmailChangeStartResponseSerializer implements PrimitiveSerializer<EmailC
       specifiedType: const FullType(bool),
     );
     yield r'original_email';
-    yield object.originalEmail == null ? null : serializers.serialize(
-      object.originalEmail,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.originalEmail == null
+        ? null
+        : serializers.serialize(
+            object.originalEmail,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'original_proof';
-    yield object.originalProof == null ? null : serializers.serialize(
-      object.originalProof,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.originalProof == null
+        ? null
+        : serializers.serialize(
+            object.originalProof,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'original_code_expires_at';
-    yield object.originalCodeExpiresAt == null ? null : serializers.serialize(
-      object.originalCodeExpiresAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.originalCodeExpiresAt == null
+        ? null
+        : serializers.serialize(
+            object.originalCodeExpiresAt,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'resend_available_at';
-    yield object.resendAvailableAt == null ? null : serializers.serialize(
-      object.resendAvailableAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.resendAvailableAt == null
+        ? null
+        : serializers.serialize(
+            object.resendAvailableAt,
+            specifiedType: const FullType.nullable(String),
+          );
   }
 
   @override
@@ -100,7 +117,9 @@ class _$EmailChangeStartResponseSerializer implements PrimitiveSerializer<EmailC
     EmailChangeStartResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -189,4 +208,3 @@ class _$EmailChangeStartResponseSerializer implements PrimitiveSerializer<EmailC
     return result.build();
   }
 }
-

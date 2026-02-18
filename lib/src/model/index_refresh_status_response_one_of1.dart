@@ -21,7 +21,10 @@ part 'index_refresh_status_response_one_of1.g.dart';
 /// * [failedAt] - ISO 8601 timestamp when the job failed
 /// * [error] - Error message if the job failed
 @BuiltValue()
-abstract class IndexRefreshStatusResponseOneOf1 implements Built<IndexRefreshStatusResponseOneOf1, IndexRefreshStatusResponseOneOf1Builder> {
+abstract class IndexRefreshStatusResponseOneOf1
+    implements
+        Built<IndexRefreshStatusResponseOneOf1,
+            IndexRefreshStatusResponseOneOf1Builder> {
   /// Current status of the index refresh job
   @BuiltValueField(wireName: r'status')
   IndexRefreshStatusResponseOneOf1StatusEnum get status;
@@ -57,18 +60,25 @@ abstract class IndexRefreshStatusResponseOneOf1 implements Built<IndexRefreshSta
 
   IndexRefreshStatusResponseOneOf1._();
 
-  factory IndexRefreshStatusResponseOneOf1([void updates(IndexRefreshStatusResponseOneOf1Builder b)]) = _$IndexRefreshStatusResponseOneOf1;
+  factory IndexRefreshStatusResponseOneOf1(
+          [void updates(IndexRefreshStatusResponseOneOf1Builder b)]) =
+      _$IndexRefreshStatusResponseOneOf1;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(IndexRefreshStatusResponseOneOf1Builder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<IndexRefreshStatusResponseOneOf1> get serializer => _$IndexRefreshStatusResponseOneOf1Serializer();
+  static Serializer<IndexRefreshStatusResponseOneOf1> get serializer =>
+      _$IndexRefreshStatusResponseOneOf1Serializer();
 }
 
-class _$IndexRefreshStatusResponseOneOf1Serializer implements PrimitiveSerializer<IndexRefreshStatusResponseOneOf1> {
+class _$IndexRefreshStatusResponseOneOf1Serializer
+    implements PrimitiveSerializer<IndexRefreshStatusResponseOneOf1> {
   @override
-  final Iterable<Type> types = const [IndexRefreshStatusResponseOneOf1, _$IndexRefreshStatusResponseOneOf1];
+  final Iterable<Type> types = const [
+    IndexRefreshStatusResponseOneOf1,
+    _$IndexRefreshStatusResponseOneOf1
+  ];
 
   @override
   final String wireName = r'IndexRefreshStatusResponseOneOf1';
@@ -138,7 +148,9 @@ class _$IndexRefreshStatusResponseOneOf1Serializer implements PrimitiveSerialize
     IndexRefreshStatusResponseOneOf1 object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -156,7 +168,8 @@ class _$IndexRefreshStatusResponseOneOf1Serializer implements PrimitiveSerialize
         case r'status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(IndexRefreshStatusResponseOneOf1StatusEnum),
+            specifiedType:
+                const FullType(IndexRefreshStatusResponseOneOf1StatusEnum),
           ) as IndexRefreshStatusResponseOneOf1StatusEnum;
           result.status = valueDes;
           break;
@@ -239,22 +252,28 @@ class _$IndexRefreshStatusResponseOneOf1Serializer implements PrimitiveSerialize
 }
 
 class IndexRefreshStatusResponseOneOf1StatusEnum extends EnumClass {
-
   /// Current status of the index refresh job
   @BuiltValueEnumConst(wireName: r'in_progress')
-  static const IndexRefreshStatusResponseOneOf1StatusEnum inProgress = _$indexRefreshStatusResponseOneOf1StatusEnum_inProgress;
+  static const IndexRefreshStatusResponseOneOf1StatusEnum inProgress =
+      _$indexRefreshStatusResponseOneOf1StatusEnum_inProgress;
+
   /// Current status of the index refresh job
   @BuiltValueEnumConst(wireName: r'completed')
-  static const IndexRefreshStatusResponseOneOf1StatusEnum completed = _$indexRefreshStatusResponseOneOf1StatusEnum_completed;
+  static const IndexRefreshStatusResponseOneOf1StatusEnum completed =
+      _$indexRefreshStatusResponseOneOf1StatusEnum_completed;
+
   /// Current status of the index refresh job
   @BuiltValueEnumConst(wireName: r'failed')
-  static const IndexRefreshStatusResponseOneOf1StatusEnum failed = _$indexRefreshStatusResponseOneOf1StatusEnum_failed;
+  static const IndexRefreshStatusResponseOneOf1StatusEnum failed =
+      _$indexRefreshStatusResponseOneOf1StatusEnum_failed;
 
-  static Serializer<IndexRefreshStatusResponseOneOf1StatusEnum> get serializer => _$indexRefreshStatusResponseOneOf1StatusEnumSerializer;
+  static Serializer<IndexRefreshStatusResponseOneOf1StatusEnum>
+      get serializer => _$indexRefreshStatusResponseOneOf1StatusEnumSerializer;
 
-  const IndexRefreshStatusResponseOneOf1StatusEnum._(String name): super(name);
+  const IndexRefreshStatusResponseOneOf1StatusEnum._(String name) : super(name);
 
-  static BuiltSet<IndexRefreshStatusResponseOneOf1StatusEnum> get values => _$indexRefreshStatusResponseOneOf1StatusEnumValues;
-  static IndexRefreshStatusResponseOneOf1StatusEnum valueOf(String name) => _$indexRefreshStatusResponseOneOf1StatusEnumValueOf(name);
+  static BuiltSet<IndexRefreshStatusResponseOneOf1StatusEnum> get values =>
+      _$indexRefreshStatusResponseOneOf1StatusEnumValues;
+  static IndexRefreshStatusResponseOneOf1StatusEnum valueOf(String name) =>
+      _$indexRefreshStatusResponseOneOf1StatusEnumValueOf(name);
 }
-

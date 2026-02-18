@@ -12,16 +12,18 @@ part 'admin_audit_log_response_schema.g.dart';
 /// AdminAuditLogResponseSchema
 ///
 /// Properties:
-/// * [logId] 
-/// * [adminUserId] 
-/// * [targetType] 
+/// * [logId]
+/// * [adminUserId]
+/// * [targetType]
 /// * [targetId] - The ID of the affected entity (user, channel, role, invite code, etc.)
-/// * [action] 
-/// * [auditLogReason] 
-/// * [metadata] 
-/// * [createdAt] 
+/// * [action]
+/// * [auditLogReason]
+/// * [metadata]
+/// * [createdAt]
 @BuiltValue()
-abstract class AdminAuditLogResponseSchema implements Built<AdminAuditLogResponseSchema, AdminAuditLogResponseSchemaBuilder> {
+abstract class AdminAuditLogResponseSchema
+    implements
+        Built<AdminAuditLogResponseSchema, AdminAuditLogResponseSchemaBuilder> {
   @BuiltValueField(wireName: r'log_id')
   String get logId;
 
@@ -49,18 +51,25 @@ abstract class AdminAuditLogResponseSchema implements Built<AdminAuditLogRespons
 
   AdminAuditLogResponseSchema._();
 
-  factory AdminAuditLogResponseSchema([void updates(AdminAuditLogResponseSchemaBuilder b)]) = _$AdminAuditLogResponseSchema;
+  factory AdminAuditLogResponseSchema(
+          [void updates(AdminAuditLogResponseSchemaBuilder b)]) =
+      _$AdminAuditLogResponseSchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(AdminAuditLogResponseSchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<AdminAuditLogResponseSchema> get serializer => _$AdminAuditLogResponseSchemaSerializer();
+  static Serializer<AdminAuditLogResponseSchema> get serializer =>
+      _$AdminAuditLogResponseSchemaSerializer();
 }
 
-class _$AdminAuditLogResponseSchemaSerializer implements PrimitiveSerializer<AdminAuditLogResponseSchema> {
+class _$AdminAuditLogResponseSchemaSerializer
+    implements PrimitiveSerializer<AdminAuditLogResponseSchema> {
   @override
-  final Iterable<Type> types = const [AdminAuditLogResponseSchema, _$AdminAuditLogResponseSchema];
+  final Iterable<Type> types = const [
+    AdminAuditLogResponseSchema,
+    _$AdminAuditLogResponseSchema
+  ];
 
   @override
   final String wireName = r'AdminAuditLogResponseSchema';
@@ -96,14 +105,17 @@ class _$AdminAuditLogResponseSchemaSerializer implements PrimitiveSerializer<Adm
       specifiedType: const FullType(String),
     );
     yield r'audit_log_reason';
-    yield object.auditLogReason == null ? null : serializers.serialize(
-      object.auditLogReason,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.auditLogReason == null
+        ? null
+        : serializers.serialize(
+            object.auditLogReason,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'metadata';
     yield serializers.serialize(
       object.metadata,
-      specifiedType: const FullType(BuiltMap, [FullType(String), FullType(String)]),
+      specifiedType:
+          const FullType(BuiltMap, [FullType(String), FullType(String)]),
     );
     yield r'created_at';
     yield serializers.serialize(
@@ -118,7 +130,9 @@ class _$AdminAuditLogResponseSchemaSerializer implements PrimitiveSerializer<Adm
     AdminAuditLogResponseSchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -179,7 +193,8 @@ class _$AdminAuditLogResponseSchemaSerializer implements PrimitiveSerializer<Adm
         case r'metadata':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(String)]),
+            specifiedType:
+                const FullType(BuiltMap, [FullType(String), FullType(String)]),
           ) as BuiltMap<String, String>;
           result.metadata.replace(valueDes);
           break;
@@ -218,4 +233,3 @@ class _$AdminAuditLogResponseSchemaSerializer implements PrimitiveSerializer<Adm
     return result.build();
   }
 }
-

@@ -17,8 +17,8 @@ part 'guild_invite_metadata_response.g.dart';
 /// Properties:
 /// * [code] - The unique invite code
 /// * [type] - The type of invite (guild)
-/// * [guild] 
-/// * [channel] 
+/// * [guild]
+/// * [channel]
 /// * [memberCount] - The approximate total member count of the guild
 /// * [presenceCount] - The approximate online member count of the guild
 /// * [temporary] - Whether the invite grants temporary membership
@@ -26,10 +26,12 @@ part 'guild_invite_metadata_response.g.dart';
 /// * [uses] - The number of times this invite has been used
 /// * [maxUses] - The maximum number of times this invite can be used
 /// * [maxAge] - The duration in seconds before the invite expires
-/// * [inviter] 
-/// * [expiresAt] 
+/// * [inviter]
+/// * [expiresAt]
 @BuiltValue()
-abstract class GuildInviteMetadataResponse implements Built<GuildInviteMetadataResponse, GuildInviteMetadataResponseBuilder> {
+abstract class GuildInviteMetadataResponse
+    implements
+        Built<GuildInviteMetadataResponse, GuildInviteMetadataResponseBuilder> {
   /// The unique invite code
   @BuiltValueField(wireName: r'code')
   String get code;
@@ -81,18 +83,25 @@ abstract class GuildInviteMetadataResponse implements Built<GuildInviteMetadataR
 
   GuildInviteMetadataResponse._();
 
-  factory GuildInviteMetadataResponse([void updates(GuildInviteMetadataResponseBuilder b)]) = _$GuildInviteMetadataResponse;
+  factory GuildInviteMetadataResponse(
+          [void updates(GuildInviteMetadataResponseBuilder b)]) =
+      _$GuildInviteMetadataResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildInviteMetadataResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildInviteMetadataResponse> get serializer => _$GuildInviteMetadataResponseSerializer();
+  static Serializer<GuildInviteMetadataResponse> get serializer =>
+      _$GuildInviteMetadataResponseSerializer();
 }
 
-class _$GuildInviteMetadataResponseSerializer implements PrimitiveSerializer<GuildInviteMetadataResponse> {
+class _$GuildInviteMetadataResponseSerializer
+    implements PrimitiveSerializer<GuildInviteMetadataResponse> {
   @override
-  final Iterable<Type> types = const [GuildInviteMetadataResponse, _$GuildInviteMetadataResponse];
+  final Iterable<Type> types = const [
+    GuildInviteMetadataResponse,
+    _$GuildInviteMetadataResponse
+  ];
 
   @override
   final String wireName = r'GuildInviteMetadataResponse';
@@ -179,7 +188,9 @@ class _$GuildInviteMetadataResponseSerializer implements PrimitiveSerializer<Gui
     GuildInviteMetadataResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -317,16 +328,18 @@ class _$GuildInviteMetadataResponseSerializer implements PrimitiveSerializer<Gui
 }
 
 class GuildInviteMetadataResponseTypeEnum extends EnumClass {
-
   /// The type of invite (guild)
   @BuiltValueEnumConst(wireNumber: 0)
-  static const GuildInviteMetadataResponseTypeEnum number0 = _$guildInviteMetadataResponseTypeEnum_number0;
+  static const GuildInviteMetadataResponseTypeEnum number0 =
+      _$guildInviteMetadataResponseTypeEnum_number0;
 
-  static Serializer<GuildInviteMetadataResponseTypeEnum> get serializer => _$guildInviteMetadataResponseTypeEnumSerializer;
+  static Serializer<GuildInviteMetadataResponseTypeEnum> get serializer =>
+      _$guildInviteMetadataResponseTypeEnumSerializer;
 
-  const GuildInviteMetadataResponseTypeEnum._(String name): super(name);
+  const GuildInviteMetadataResponseTypeEnum._(String name) : super(name);
 
-  static BuiltSet<GuildInviteMetadataResponseTypeEnum> get values => _$guildInviteMetadataResponseTypeEnumValues;
-  static GuildInviteMetadataResponseTypeEnum valueOf(String name) => _$guildInviteMetadataResponseTypeEnumValueOf(name);
+  static BuiltSet<GuildInviteMetadataResponseTypeEnum> get values =>
+      _$guildInviteMetadataResponseTypeEnumValues;
+  static GuildInviteMetadataResponseTypeEnum valueOf(String name) =>
+      _$guildInviteMetadataResponseTypeEnumValueOf(name);
 }
-

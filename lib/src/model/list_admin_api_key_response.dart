@@ -15,12 +15,13 @@ part 'list_admin_api_key_response.g.dart';
 /// * [keyId] - Unique identifier for the API key
 /// * [name] - Display name for the API key
 /// * [createdAt] - ISO 8601 timestamp when the key was created
-/// * [lastUsedAt] 
-/// * [expiresAt] 
+/// * [lastUsedAt]
+/// * [expiresAt]
 /// * [createdByUserId] - User ID of the admin who created this key
 /// * [acls] - List of access control permissions for the key
 @BuiltValue()
-abstract class ListAdminApiKeyResponse implements Built<ListAdminApiKeyResponse, ListAdminApiKeyResponseBuilder> {
+abstract class ListAdminApiKeyResponse
+    implements Built<ListAdminApiKeyResponse, ListAdminApiKeyResponseBuilder> {
   /// Unique identifier for the API key
   @BuiltValueField(wireName: r'key_id')
   String get keyId;
@@ -49,18 +50,25 @@ abstract class ListAdminApiKeyResponse implements Built<ListAdminApiKeyResponse,
 
   ListAdminApiKeyResponse._();
 
-  factory ListAdminApiKeyResponse([void updates(ListAdminApiKeyResponseBuilder b)]) = _$ListAdminApiKeyResponse;
+  factory ListAdminApiKeyResponse(
+          [void updates(ListAdminApiKeyResponseBuilder b)]) =
+      _$ListAdminApiKeyResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ListAdminApiKeyResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListAdminApiKeyResponse> get serializer => _$ListAdminApiKeyResponseSerializer();
+  static Serializer<ListAdminApiKeyResponse> get serializer =>
+      _$ListAdminApiKeyResponseSerializer();
 }
 
-class _$ListAdminApiKeyResponseSerializer implements PrimitiveSerializer<ListAdminApiKeyResponse> {
+class _$ListAdminApiKeyResponseSerializer
+    implements PrimitiveSerializer<ListAdminApiKeyResponse> {
   @override
-  final Iterable<Type> types = const [ListAdminApiKeyResponse, _$ListAdminApiKeyResponse];
+  final Iterable<Type> types = const [
+    ListAdminApiKeyResponse,
+    _$ListAdminApiKeyResponse
+  ];
 
   @override
   final String wireName = r'ListAdminApiKeyResponse';
@@ -86,15 +94,19 @@ class _$ListAdminApiKeyResponseSerializer implements PrimitiveSerializer<ListAdm
       specifiedType: const FullType(String),
     );
     yield r'last_used_at';
-    yield object.lastUsedAt == null ? null : serializers.serialize(
-      object.lastUsedAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.lastUsedAt == null
+        ? null
+        : serializers.serialize(
+            object.lastUsedAt,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'expires_at';
-    yield object.expiresAt == null ? null : serializers.serialize(
-      object.expiresAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.expiresAt == null
+        ? null
+        : serializers.serialize(
+            object.expiresAt,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'created_by_user_id';
     yield serializers.serialize(
       object.createdByUserId,
@@ -113,7 +125,9 @@ class _$ListAdminApiKeyResponseSerializer implements PrimitiveSerializer<ListAdm
     ListAdminApiKeyResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -207,4 +221,3 @@ class _$ListAdminApiKeyResponseSerializer implements PrimitiveSerializer<ListAdm
     return result.build();
   }
 }
-

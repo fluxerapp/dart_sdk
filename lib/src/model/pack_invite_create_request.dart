@@ -11,11 +11,12 @@ part 'pack_invite_create_request.g.dart';
 /// PackInviteCreateRequest
 ///
 /// Properties:
-/// * [maxUses] 
-/// * [maxAge] 
-/// * [unique] 
+/// * [maxUses]
+/// * [maxAge]
+/// * [unique]
 @BuiltValue()
-abstract class PackInviteCreateRequest implements Built<PackInviteCreateRequest, PackInviteCreateRequestBuilder> {
+abstract class PackInviteCreateRequest
+    implements Built<PackInviteCreateRequest, PackInviteCreateRequestBuilder> {
   @BuiltValueField(wireName: r'max_uses')
   int? get maxUses;
 
@@ -27,18 +28,25 @@ abstract class PackInviteCreateRequest implements Built<PackInviteCreateRequest,
 
   PackInviteCreateRequest._();
 
-  factory PackInviteCreateRequest([void updates(PackInviteCreateRequestBuilder b)]) = _$PackInviteCreateRequest;
+  factory PackInviteCreateRequest(
+          [void updates(PackInviteCreateRequestBuilder b)]) =
+      _$PackInviteCreateRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PackInviteCreateRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PackInviteCreateRequest> get serializer => _$PackInviteCreateRequestSerializer();
+  static Serializer<PackInviteCreateRequest> get serializer =>
+      _$PackInviteCreateRequestSerializer();
 }
 
-class _$PackInviteCreateRequestSerializer implements PrimitiveSerializer<PackInviteCreateRequest> {
+class _$PackInviteCreateRequestSerializer
+    implements PrimitiveSerializer<PackInviteCreateRequest> {
   @override
-  final Iterable<Type> types = const [PackInviteCreateRequest, _$PackInviteCreateRequest];
+  final Iterable<Type> types = const [
+    PackInviteCreateRequest,
+    _$PackInviteCreateRequest
+  ];
 
   @override
   final String wireName = r'PackInviteCreateRequest';
@@ -77,7 +85,9 @@ class _$PackInviteCreateRequestSerializer implements PrimitiveSerializer<PackInv
     PackInviteCreateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -144,4 +154,3 @@ class _$PackInviteCreateRequestSerializer implements PrimitiveSerializer<PackInv
     return result.build();
   }
 }
-

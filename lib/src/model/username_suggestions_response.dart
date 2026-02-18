@@ -14,25 +14,34 @@ part 'username_suggestions_response.g.dart';
 /// Properties:
 /// * [suggestions] - List of suggested usernames
 @BuiltValue()
-abstract class UsernameSuggestionsResponse implements Built<UsernameSuggestionsResponse, UsernameSuggestionsResponseBuilder> {
+abstract class UsernameSuggestionsResponse
+    implements
+        Built<UsernameSuggestionsResponse, UsernameSuggestionsResponseBuilder> {
   /// List of suggested usernames
   @BuiltValueField(wireName: r'suggestions')
   BuiltList<String> get suggestions;
 
   UsernameSuggestionsResponse._();
 
-  factory UsernameSuggestionsResponse([void updates(UsernameSuggestionsResponseBuilder b)]) = _$UsernameSuggestionsResponse;
+  factory UsernameSuggestionsResponse(
+          [void updates(UsernameSuggestionsResponseBuilder b)]) =
+      _$UsernameSuggestionsResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UsernameSuggestionsResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UsernameSuggestionsResponse> get serializer => _$UsernameSuggestionsResponseSerializer();
+  static Serializer<UsernameSuggestionsResponse> get serializer =>
+      _$UsernameSuggestionsResponseSerializer();
 }
 
-class _$UsernameSuggestionsResponseSerializer implements PrimitiveSerializer<UsernameSuggestionsResponse> {
+class _$UsernameSuggestionsResponseSerializer
+    implements PrimitiveSerializer<UsernameSuggestionsResponse> {
   @override
-  final Iterable<Type> types = const [UsernameSuggestionsResponse, _$UsernameSuggestionsResponse];
+  final Iterable<Type> types = const [
+    UsernameSuggestionsResponse,
+    _$UsernameSuggestionsResponse
+  ];
 
   @override
   final String wireName = r'UsernameSuggestionsResponse';
@@ -55,7 +64,9 @@ class _$UsernameSuggestionsResponseSerializer implements PrimitiveSerializer<Use
     UsernameSuggestionsResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -105,4 +116,3 @@ class _$UsernameSuggestionsResponseSerializer implements PrimitiveSerializer<Use
     return result.build();
   }
 }
-

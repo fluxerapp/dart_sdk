@@ -12,12 +12,13 @@ part 'resolve_report_response.g.dart';
 /// ResolveReportResponse
 ///
 /// Properties:
-/// * [reportId] 
-/// * [status] 
-/// * [resolvedAt] 
-/// * [publicComment] 
+/// * [reportId]
+/// * [status]
+/// * [resolvedAt]
+/// * [publicComment]
 @BuiltValue()
-abstract class ResolveReportResponse implements Built<ResolveReportResponse, ResolveReportResponseBuilder> {
+abstract class ResolveReportResponse
+    implements Built<ResolveReportResponse, ResolveReportResponseBuilder> {
   @BuiltValueField(wireName: r'report_id')
   String get reportId;
 
@@ -33,18 +34,24 @@ abstract class ResolveReportResponse implements Built<ResolveReportResponse, Res
 
   ResolveReportResponse._();
 
-  factory ResolveReportResponse([void updates(ResolveReportResponseBuilder b)]) = _$ResolveReportResponse;
+  factory ResolveReportResponse(
+      [void updates(ResolveReportResponseBuilder b)]) = _$ResolveReportResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ResolveReportResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ResolveReportResponse> get serializer => _$ResolveReportResponseSerializer();
+  static Serializer<ResolveReportResponse> get serializer =>
+      _$ResolveReportResponseSerializer();
 }
 
-class _$ResolveReportResponseSerializer implements PrimitiveSerializer<ResolveReportResponse> {
+class _$ResolveReportResponseSerializer
+    implements PrimitiveSerializer<ResolveReportResponse> {
   @override
-  final Iterable<Type> types = const [ResolveReportResponse, _$ResolveReportResponse];
+  final Iterable<Type> types = const [
+    ResolveReportResponse,
+    _$ResolveReportResponse
+  ];
 
   @override
   final String wireName = r'ResolveReportResponse';
@@ -65,15 +72,19 @@ class _$ResolveReportResponseSerializer implements PrimitiveSerializer<ResolveRe
       specifiedType: const FullType(ReportStatus),
     );
     yield r'resolved_at';
-    yield object.resolvedAt == null ? null : serializers.serialize(
-      object.resolvedAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.resolvedAt == null
+        ? null
+        : serializers.serialize(
+            object.resolvedAt,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'public_comment';
-    yield object.publicComment == null ? null : serializers.serialize(
-      object.publicComment,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.publicComment == null
+        ? null
+        : serializers.serialize(
+            object.publicComment,
+            specifiedType: const FullType.nullable(String),
+          );
   }
 
   @override
@@ -82,7 +93,9 @@ class _$ResolveReportResponseSerializer implements PrimitiveSerializer<ResolveRe
     ResolveReportResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -155,4 +168,3 @@ class _$ResolveReportResponseSerializer implements PrimitiveSerializer<ResolveRe
     return result.build();
   }
 }
-

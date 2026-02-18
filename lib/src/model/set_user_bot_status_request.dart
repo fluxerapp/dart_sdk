@@ -11,10 +11,11 @@ part 'set_user_bot_status_request.g.dart';
 /// SetUserBotStatusRequest
 ///
 /// Properties:
-/// * [userId] 
+/// * [userId]
 /// * [bot] - Whether the user should be marked as a bot
 @BuiltValue()
-abstract class SetUserBotStatusRequest implements Built<SetUserBotStatusRequest, SetUserBotStatusRequestBuilder> {
+abstract class SetUserBotStatusRequest
+    implements Built<SetUserBotStatusRequest, SetUserBotStatusRequestBuilder> {
   @BuiltValueField(wireName: r'user_id')
   String get userId;
 
@@ -24,18 +25,25 @@ abstract class SetUserBotStatusRequest implements Built<SetUserBotStatusRequest,
 
   SetUserBotStatusRequest._();
 
-  factory SetUserBotStatusRequest([void updates(SetUserBotStatusRequestBuilder b)]) = _$SetUserBotStatusRequest;
+  factory SetUserBotStatusRequest(
+          [void updates(SetUserBotStatusRequestBuilder b)]) =
+      _$SetUserBotStatusRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SetUserBotStatusRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SetUserBotStatusRequest> get serializer => _$SetUserBotStatusRequestSerializer();
+  static Serializer<SetUserBotStatusRequest> get serializer =>
+      _$SetUserBotStatusRequestSerializer();
 }
 
-class _$SetUserBotStatusRequestSerializer implements PrimitiveSerializer<SetUserBotStatusRequest> {
+class _$SetUserBotStatusRequestSerializer
+    implements PrimitiveSerializer<SetUserBotStatusRequest> {
   @override
-  final Iterable<Type> types = const [SetUserBotStatusRequest, _$SetUserBotStatusRequest];
+  final Iterable<Type> types = const [
+    SetUserBotStatusRequest,
+    _$SetUserBotStatusRequest
+  ];
 
   @override
   final String wireName = r'SetUserBotStatusRequest';
@@ -63,7 +71,9 @@ class _$SetUserBotStatusRequestSerializer implements PrimitiveSerializer<SetUser
     SetUserBotStatusRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -120,4 +130,3 @@ class _$SetUserBotStatusRequestSerializer implements PrimitiveSerializer<SetUser
     return result.build();
   }
 }
-

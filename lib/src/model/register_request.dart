@@ -13,13 +13,14 @@ part 'register_request.g.dart';
 /// Properties:
 /// * [dateOfBirth] - Date of birth in YYYY-MM-DD format
 /// * [consent] - Whether user consents to terms of service
-/// * [email] 
-/// * [username] 
+/// * [email]
+/// * [username]
 /// * [globalName] - Display name shown to other users
-/// * [password] 
-/// * [inviteCode] 
+/// * [password]
+/// * [inviteCode]
 @BuiltValue()
-abstract class RegisterRequest implements Built<RegisterRequest, RegisterRequestBuilder> {
+abstract class RegisterRequest
+    implements Built<RegisterRequest, RegisterRequestBuilder> {
   /// Date of birth in YYYY-MM-DD format
   @BuiltValueField(wireName: r'date_of_birth')
   String get dateOfBirth;
@@ -46,16 +47,19 @@ abstract class RegisterRequest implements Built<RegisterRequest, RegisterRequest
 
   RegisterRequest._();
 
-  factory RegisterRequest([void updates(RegisterRequestBuilder b)]) = _$RegisterRequest;
+  factory RegisterRequest([void updates(RegisterRequestBuilder b)]) =
+      _$RegisterRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(RegisterRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<RegisterRequest> get serializer => _$RegisterRequestSerializer();
+  static Serializer<RegisterRequest> get serializer =>
+      _$RegisterRequestSerializer();
 }
 
-class _$RegisterRequestSerializer implements PrimitiveSerializer<RegisterRequest> {
+class _$RegisterRequestSerializer
+    implements PrimitiveSerializer<RegisterRequest> {
   @override
   final Iterable<Type> types = const [RegisterRequest, _$RegisterRequest];
 
@@ -120,7 +124,9 @@ class _$RegisterRequestSerializer implements PrimitiveSerializer<RegisterRequest
     RegisterRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -213,4 +219,3 @@ class _$RegisterRequestSerializer implements PrimitiveSerializer<RegisterRequest
     return result.build();
   }
 }
-

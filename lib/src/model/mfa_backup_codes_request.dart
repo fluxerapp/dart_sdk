@@ -14,13 +14,14 @@ part 'mfa_backup_codes_request.g.dart';
 ///
 /// Properties:
 /// * [regenerate] - Whether to regenerate backup codes
-/// * [password] 
+/// * [password]
 /// * [mfaMethod] - MFA method to use for verification
 /// * [mfaCode] - MFA verification code from authenticator app or SMS
 /// * [webauthnResponse] - WebAuthn authentication response
 /// * [webauthnChallenge] - WebAuthn challenge string
 @BuiltValue()
-abstract class MfaBackupCodesRequest implements Built<MfaBackupCodesRequest, MfaBackupCodesRequestBuilder> {
+abstract class MfaBackupCodesRequest
+    implements Built<MfaBackupCodesRequest, MfaBackupCodesRequestBuilder> {
   /// Whether to regenerate backup codes
   @BuiltValueField(wireName: r'regenerate')
   bool get regenerate;
@@ -47,18 +48,24 @@ abstract class MfaBackupCodesRequest implements Built<MfaBackupCodesRequest, Mfa
 
   MfaBackupCodesRequest._();
 
-  factory MfaBackupCodesRequest([void updates(MfaBackupCodesRequestBuilder b)]) = _$MfaBackupCodesRequest;
+  factory MfaBackupCodesRequest(
+      [void updates(MfaBackupCodesRequestBuilder b)]) = _$MfaBackupCodesRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(MfaBackupCodesRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<MfaBackupCodesRequest> get serializer => _$MfaBackupCodesRequestSerializer();
+  static Serializer<MfaBackupCodesRequest> get serializer =>
+      _$MfaBackupCodesRequestSerializer();
 }
 
-class _$MfaBackupCodesRequestSerializer implements PrimitiveSerializer<MfaBackupCodesRequest> {
+class _$MfaBackupCodesRequestSerializer
+    implements PrimitiveSerializer<MfaBackupCodesRequest> {
   @override
-  final Iterable<Type> types = const [MfaBackupCodesRequest, _$MfaBackupCodesRequest];
+  final Iterable<Type> types = const [
+    MfaBackupCodesRequest,
+    _$MfaBackupCodesRequest
+  ];
 
   @override
   final String wireName = r'MfaBackupCodesRequest';
@@ -116,7 +123,9 @@ class _$MfaBackupCodesRequestSerializer implements PrimitiveSerializer<MfaBackup
     MfaBackupCodesRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -203,22 +212,28 @@ class _$MfaBackupCodesRequestSerializer implements PrimitiveSerializer<MfaBackup
 }
 
 class MfaBackupCodesRequestMfaMethodEnum extends EnumClass {
-
   /// MFA method to use for verification
   @BuiltValueEnumConst(wireName: r'totp')
-  static const MfaBackupCodesRequestMfaMethodEnum totp = _$mfaBackupCodesRequestMfaMethodEnum_totp;
+  static const MfaBackupCodesRequestMfaMethodEnum totp =
+      _$mfaBackupCodesRequestMfaMethodEnum_totp;
+
   /// MFA method to use for verification
   @BuiltValueEnumConst(wireName: r'sms')
-  static const MfaBackupCodesRequestMfaMethodEnum sms = _$mfaBackupCodesRequestMfaMethodEnum_sms;
+  static const MfaBackupCodesRequestMfaMethodEnum sms =
+      _$mfaBackupCodesRequestMfaMethodEnum_sms;
+
   /// MFA method to use for verification
   @BuiltValueEnumConst(wireName: r'webauthn')
-  static const MfaBackupCodesRequestMfaMethodEnum webauthn = _$mfaBackupCodesRequestMfaMethodEnum_webauthn;
+  static const MfaBackupCodesRequestMfaMethodEnum webauthn =
+      _$mfaBackupCodesRequestMfaMethodEnum_webauthn;
 
-  static Serializer<MfaBackupCodesRequestMfaMethodEnum> get serializer => _$mfaBackupCodesRequestMfaMethodEnumSerializer;
+  static Serializer<MfaBackupCodesRequestMfaMethodEnum> get serializer =>
+      _$mfaBackupCodesRequestMfaMethodEnumSerializer;
 
-  const MfaBackupCodesRequestMfaMethodEnum._(String name): super(name);
+  const MfaBackupCodesRequestMfaMethodEnum._(String name) : super(name);
 
-  static BuiltSet<MfaBackupCodesRequestMfaMethodEnum> get values => _$mfaBackupCodesRequestMfaMethodEnumValues;
-  static MfaBackupCodesRequestMfaMethodEnum valueOf(String name) => _$mfaBackupCodesRequestMfaMethodEnumValueOf(name);
+  static BuiltSet<MfaBackupCodesRequestMfaMethodEnum> get values =>
+      _$mfaBackupCodesRequestMfaMethodEnumValues;
+  static MfaBackupCodesRequestMfaMethodEnum valueOf(String name) =>
+      _$mfaBackupCodesRequestMfaMethodEnumValueOf(name);
 }
-

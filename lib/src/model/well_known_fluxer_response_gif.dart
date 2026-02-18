@@ -14,7 +14,9 @@ part 'well_known_fluxer_response_gif.g.dart';
 /// Properties:
 /// * [provider] - GIF provider used by the instance GIF picker
 @BuiltValue()
-abstract class WellKnownFluxerResponseGif implements Built<WellKnownFluxerResponseGif, WellKnownFluxerResponseGifBuilder> {
+abstract class WellKnownFluxerResponseGif
+    implements
+        Built<WellKnownFluxerResponseGif, WellKnownFluxerResponseGifBuilder> {
   /// GIF provider used by the instance GIF picker
   @BuiltValueField(wireName: r'provider')
   WellKnownFluxerResponseGifProviderEnum get provider;
@@ -22,18 +24,25 @@ abstract class WellKnownFluxerResponseGif implements Built<WellKnownFluxerRespon
 
   WellKnownFluxerResponseGif._();
 
-  factory WellKnownFluxerResponseGif([void updates(WellKnownFluxerResponseGifBuilder b)]) = _$WellKnownFluxerResponseGif;
+  factory WellKnownFluxerResponseGif(
+          [void updates(WellKnownFluxerResponseGifBuilder b)]) =
+      _$WellKnownFluxerResponseGif;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(WellKnownFluxerResponseGifBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<WellKnownFluxerResponseGif> get serializer => _$WellKnownFluxerResponseGifSerializer();
+  static Serializer<WellKnownFluxerResponseGif> get serializer =>
+      _$WellKnownFluxerResponseGifSerializer();
 }
 
-class _$WellKnownFluxerResponseGifSerializer implements PrimitiveSerializer<WellKnownFluxerResponseGif> {
+class _$WellKnownFluxerResponseGifSerializer
+    implements PrimitiveSerializer<WellKnownFluxerResponseGif> {
   @override
-  final Iterable<Type> types = const [WellKnownFluxerResponseGif, _$WellKnownFluxerResponseGif];
+  final Iterable<Type> types = const [
+    WellKnownFluxerResponseGif,
+    _$WellKnownFluxerResponseGif
+  ];
 
   @override
   final String wireName = r'WellKnownFluxerResponseGif';
@@ -56,7 +65,9 @@ class _$WellKnownFluxerResponseGifSerializer implements PrimitiveSerializer<Well
     WellKnownFluxerResponseGif object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -74,7 +85,8 @@ class _$WellKnownFluxerResponseGifSerializer implements PrimitiveSerializer<Well
         case r'provider':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(WellKnownFluxerResponseGifProviderEnum),
+            specifiedType:
+                const FullType(WellKnownFluxerResponseGifProviderEnum),
           ) as WellKnownFluxerResponseGifProviderEnum;
           result.provider = valueDes;
           break;
@@ -108,19 +120,23 @@ class _$WellKnownFluxerResponseGifSerializer implements PrimitiveSerializer<Well
 }
 
 class WellKnownFluxerResponseGifProviderEnum extends EnumClass {
-
   /// GIF provider used by the instance GIF picker
   @BuiltValueEnumConst(wireName: r'klipy')
-  static const WellKnownFluxerResponseGifProviderEnum klipy = _$wellKnownFluxerResponseGifProviderEnum_klipy;
+  static const WellKnownFluxerResponseGifProviderEnum klipy =
+      _$wellKnownFluxerResponseGifProviderEnum_klipy;
+
   /// GIF provider used by the instance GIF picker
   @BuiltValueEnumConst(wireName: r'tenor')
-  static const WellKnownFluxerResponseGifProviderEnum tenor = _$wellKnownFluxerResponseGifProviderEnum_tenor;
+  static const WellKnownFluxerResponseGifProviderEnum tenor =
+      _$wellKnownFluxerResponseGifProviderEnum_tenor;
 
-  static Serializer<WellKnownFluxerResponseGifProviderEnum> get serializer => _$wellKnownFluxerResponseGifProviderEnumSerializer;
+  static Serializer<WellKnownFluxerResponseGifProviderEnum> get serializer =>
+      _$wellKnownFluxerResponseGifProviderEnumSerializer;
 
-  const WellKnownFluxerResponseGifProviderEnum._(String name): super(name);
+  const WellKnownFluxerResponseGifProviderEnum._(String name) : super(name);
 
-  static BuiltSet<WellKnownFluxerResponseGifProviderEnum> get values => _$wellKnownFluxerResponseGifProviderEnumValues;
-  static WellKnownFluxerResponseGifProviderEnum valueOf(String name) => _$wellKnownFluxerResponseGifProviderEnumValueOf(name);
+  static BuiltSet<WellKnownFluxerResponseGifProviderEnum> get values =>
+      _$wellKnownFluxerResponseGifProviderEnumValues;
+  static WellKnownFluxerResponseGifProviderEnum valueOf(String name) =>
+      _$wellKnownFluxerResponseGifProviderEnumValueOf(name);
 }
-

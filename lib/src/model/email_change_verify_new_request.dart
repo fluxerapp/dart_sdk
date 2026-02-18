@@ -15,7 +15,9 @@ part 'email_change_verify_new_request.g.dart';
 /// * [code] - Verification code sent to the original email address
 /// * [originalProof] - Proof token obtained from verifying the original email
 @BuiltValue()
-abstract class EmailChangeVerifyNewRequest implements Built<EmailChangeVerifyNewRequest, EmailChangeVerifyNewRequestBuilder> {
+abstract class EmailChangeVerifyNewRequest
+    implements
+        Built<EmailChangeVerifyNewRequest, EmailChangeVerifyNewRequestBuilder> {
   /// Email change ticket identifier
   @BuiltValueField(wireName: r'ticket')
   String get ticket;
@@ -30,18 +32,25 @@ abstract class EmailChangeVerifyNewRequest implements Built<EmailChangeVerifyNew
 
   EmailChangeVerifyNewRequest._();
 
-  factory EmailChangeVerifyNewRequest([void updates(EmailChangeVerifyNewRequestBuilder b)]) = _$EmailChangeVerifyNewRequest;
+  factory EmailChangeVerifyNewRequest(
+          [void updates(EmailChangeVerifyNewRequestBuilder b)]) =
+      _$EmailChangeVerifyNewRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(EmailChangeVerifyNewRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<EmailChangeVerifyNewRequest> get serializer => _$EmailChangeVerifyNewRequestSerializer();
+  static Serializer<EmailChangeVerifyNewRequest> get serializer =>
+      _$EmailChangeVerifyNewRequestSerializer();
 }
 
-class _$EmailChangeVerifyNewRequestSerializer implements PrimitiveSerializer<EmailChangeVerifyNewRequest> {
+class _$EmailChangeVerifyNewRequestSerializer
+    implements PrimitiveSerializer<EmailChangeVerifyNewRequest> {
   @override
-  final Iterable<Type> types = const [EmailChangeVerifyNewRequest, _$EmailChangeVerifyNewRequest];
+  final Iterable<Type> types = const [
+    EmailChangeVerifyNewRequest,
+    _$EmailChangeVerifyNewRequest
+  ];
 
   @override
   final String wireName = r'EmailChangeVerifyNewRequest';
@@ -74,7 +83,9 @@ class _$EmailChangeVerifyNewRequestSerializer implements PrimitiveSerializer<Ema
     EmailChangeVerifyNewRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -138,4 +149,3 @@ class _$EmailChangeVerifyNewRequestSerializer implements PrimitiveSerializer<Ema
     return result.build();
   }
 }
-

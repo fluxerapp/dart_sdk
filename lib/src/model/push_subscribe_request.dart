@@ -13,10 +13,11 @@ part 'push_subscribe_request.g.dart';
 ///
 /// Properties:
 /// * [endpoint] - The push subscription endpoint URL
-/// * [keys] 
+/// * [keys]
 /// * [userAgent] - The user agent string
 @BuiltValue()
-abstract class PushSubscribeRequest implements Built<PushSubscribeRequest, PushSubscribeRequestBuilder> {
+abstract class PushSubscribeRequest
+    implements Built<PushSubscribeRequest, PushSubscribeRequestBuilder> {
   /// The push subscription endpoint URL
   @BuiltValueField(wireName: r'endpoint')
   String get endpoint;
@@ -30,18 +31,24 @@ abstract class PushSubscribeRequest implements Built<PushSubscribeRequest, PushS
 
   PushSubscribeRequest._();
 
-  factory PushSubscribeRequest([void updates(PushSubscribeRequestBuilder b)]) = _$PushSubscribeRequest;
+  factory PushSubscribeRequest([void updates(PushSubscribeRequestBuilder b)]) =
+      _$PushSubscribeRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PushSubscribeRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PushSubscribeRequest> get serializer => _$PushSubscribeRequestSerializer();
+  static Serializer<PushSubscribeRequest> get serializer =>
+      _$PushSubscribeRequestSerializer();
 }
 
-class _$PushSubscribeRequestSerializer implements PrimitiveSerializer<PushSubscribeRequest> {
+class _$PushSubscribeRequestSerializer
+    implements PrimitiveSerializer<PushSubscribeRequest> {
   @override
-  final Iterable<Type> types = const [PushSubscribeRequest, _$PushSubscribeRequest];
+  final Iterable<Type> types = const [
+    PushSubscribeRequest,
+    _$PushSubscribeRequest
+  ];
 
   @override
   final String wireName = r'PushSubscribeRequest';
@@ -76,7 +83,9 @@ class _$PushSubscribeRequestSerializer implements PrimitiveSerializer<PushSubscr
     PushSubscribeRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -140,4 +149,3 @@ class _$PushSubscribeRequestSerializer implements PrimitiveSerializer<PushSubscr
     return result.build();
   }
 }
-

@@ -13,11 +13,13 @@ part 'o_auth2_authorization_response.g.dart';
 /// OAuth2AuthorizationResponse
 ///
 /// Properties:
-/// * [application] 
+/// * [application]
 /// * [scopes] - The list of granted OAuth2 scopes
 /// * [authorizedAt] - The timestamp when the authorization was granted
 @BuiltValue()
-abstract class OAuth2AuthorizationResponse implements Built<OAuth2AuthorizationResponse, OAuth2AuthorizationResponseBuilder> {
+abstract class OAuth2AuthorizationResponse
+    implements
+        Built<OAuth2AuthorizationResponse, OAuth2AuthorizationResponseBuilder> {
   @BuiltValueField(wireName: r'application')
   OAuth2AuthorizationResponseApplication get application;
 
@@ -31,18 +33,25 @@ abstract class OAuth2AuthorizationResponse implements Built<OAuth2AuthorizationR
 
   OAuth2AuthorizationResponse._();
 
-  factory OAuth2AuthorizationResponse([void updates(OAuth2AuthorizationResponseBuilder b)]) = _$OAuth2AuthorizationResponse;
+  factory OAuth2AuthorizationResponse(
+          [void updates(OAuth2AuthorizationResponseBuilder b)]) =
+      _$OAuth2AuthorizationResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(OAuth2AuthorizationResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<OAuth2AuthorizationResponse> get serializer => _$OAuth2AuthorizationResponseSerializer();
+  static Serializer<OAuth2AuthorizationResponse> get serializer =>
+      _$OAuth2AuthorizationResponseSerializer();
 }
 
-class _$OAuth2AuthorizationResponseSerializer implements PrimitiveSerializer<OAuth2AuthorizationResponse> {
+class _$OAuth2AuthorizationResponseSerializer
+    implements PrimitiveSerializer<OAuth2AuthorizationResponse> {
   @override
-  final Iterable<Type> types = const [OAuth2AuthorizationResponse, _$OAuth2AuthorizationResponse];
+  final Iterable<Type> types = const [
+    OAuth2AuthorizationResponse,
+    _$OAuth2AuthorizationResponse
+  ];
 
   @override
   final String wireName = r'OAuth2AuthorizationResponse';
@@ -75,7 +84,9 @@ class _$OAuth2AuthorizationResponseSerializer implements PrimitiveSerializer<OAu
     OAuth2AuthorizationResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -93,7 +104,8 @@ class _$OAuth2AuthorizationResponseSerializer implements PrimitiveSerializer<OAu
         case r'application':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(OAuth2AuthorizationResponseApplication),
+            specifiedType:
+                const FullType(OAuth2AuthorizationResponseApplication),
           ) as OAuth2AuthorizationResponseApplication;
           result.application.replace(valueDes);
           break;
@@ -139,4 +151,3 @@ class _$OAuth2AuthorizationResponseSerializer implements PrimitiveSerializer<OAu
     return result.build();
   }
 }
-

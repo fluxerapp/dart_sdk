@@ -13,14 +13,15 @@ part 'search_audit_logs_request.g.dart';
 ///
 /// Properties:
 /// * [query] - Search query string
-/// * [adminUserId] 
+/// * [adminUserId]
 /// * [targetId] - Filter by target entity ID (user, channel, role, invite code, etc.)
 /// * [sortBy] - Field to sort audit logs by
 /// * [sortOrder] - Sort order direction
 /// * [limit] - Maximum number of entries to return
 /// * [offset] - Number of entries to skip
 @BuiltValue()
-abstract class SearchAuditLogsRequest implements Built<SearchAuditLogsRequest, SearchAuditLogsRequestBuilder> {
+abstract class SearchAuditLogsRequest
+    implements Built<SearchAuditLogsRequest, SearchAuditLogsRequestBuilder> {
   /// Search query string
   @BuiltValueField(wireName: r'query')
   String? get query;
@@ -52,18 +53,25 @@ abstract class SearchAuditLogsRequest implements Built<SearchAuditLogsRequest, S
 
   SearchAuditLogsRequest._();
 
-  factory SearchAuditLogsRequest([void updates(SearchAuditLogsRequestBuilder b)]) = _$SearchAuditLogsRequest;
+  factory SearchAuditLogsRequest(
+          [void updates(SearchAuditLogsRequestBuilder b)]) =
+      _$SearchAuditLogsRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SearchAuditLogsRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SearchAuditLogsRequest> get serializer => _$SearchAuditLogsRequestSerializer();
+  static Serializer<SearchAuditLogsRequest> get serializer =>
+      _$SearchAuditLogsRequestSerializer();
 }
 
-class _$SearchAuditLogsRequestSerializer implements PrimitiveSerializer<SearchAuditLogsRequest> {
+class _$SearchAuditLogsRequestSerializer
+    implements PrimitiveSerializer<SearchAuditLogsRequest> {
   @override
-  final Iterable<Type> types = const [SearchAuditLogsRequest, _$SearchAuditLogsRequest];
+  final Iterable<Type> types = const [
+    SearchAuditLogsRequest,
+    _$SearchAuditLogsRequest
+  ];
 
   @override
   final String wireName = r'SearchAuditLogsRequest';
@@ -130,7 +138,9 @@ class _$SearchAuditLogsRequestSerializer implements PrimitiveSerializer<SearchAu
     SearchAuditLogsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -224,36 +234,45 @@ class _$SearchAuditLogsRequestSerializer implements PrimitiveSerializer<SearchAu
 }
 
 class SearchAuditLogsRequestSortByEnum extends EnumClass {
-
   /// Field to sort audit logs by
   @BuiltValueEnumConst(wireName: r'createdAt')
-  static const SearchAuditLogsRequestSortByEnum createdAt = _$searchAuditLogsRequestSortByEnum_createdAt;
+  static const SearchAuditLogsRequestSortByEnum createdAt =
+      _$searchAuditLogsRequestSortByEnum_createdAt;
+
   /// Field to sort audit logs by
   @BuiltValueEnumConst(wireName: r'relevance')
-  static const SearchAuditLogsRequestSortByEnum relevance = _$searchAuditLogsRequestSortByEnum_relevance;
+  static const SearchAuditLogsRequestSortByEnum relevance =
+      _$searchAuditLogsRequestSortByEnum_relevance;
 
-  static Serializer<SearchAuditLogsRequestSortByEnum> get serializer => _$searchAuditLogsRequestSortByEnumSerializer;
+  static Serializer<SearchAuditLogsRequestSortByEnum> get serializer =>
+      _$searchAuditLogsRequestSortByEnumSerializer;
 
-  const SearchAuditLogsRequestSortByEnum._(String name): super(name);
+  const SearchAuditLogsRequestSortByEnum._(String name) : super(name);
 
-  static BuiltSet<SearchAuditLogsRequestSortByEnum> get values => _$searchAuditLogsRequestSortByEnumValues;
-  static SearchAuditLogsRequestSortByEnum valueOf(String name) => _$searchAuditLogsRequestSortByEnumValueOf(name);
+  static BuiltSet<SearchAuditLogsRequestSortByEnum> get values =>
+      _$searchAuditLogsRequestSortByEnumValues;
+  static SearchAuditLogsRequestSortByEnum valueOf(String name) =>
+      _$searchAuditLogsRequestSortByEnumValueOf(name);
 }
 
 class SearchAuditLogsRequestSortOrderEnum extends EnumClass {
-
   /// Sort order direction
   @BuiltValueEnumConst(wireName: r'asc')
-  static const SearchAuditLogsRequestSortOrderEnum asc = _$searchAuditLogsRequestSortOrderEnum_asc;
+  static const SearchAuditLogsRequestSortOrderEnum asc =
+      _$searchAuditLogsRequestSortOrderEnum_asc;
+
   /// Sort order direction
   @BuiltValueEnumConst(wireName: r'desc')
-  static const SearchAuditLogsRequestSortOrderEnum desc = _$searchAuditLogsRequestSortOrderEnum_desc;
+  static const SearchAuditLogsRequestSortOrderEnum desc =
+      _$searchAuditLogsRequestSortOrderEnum_desc;
 
-  static Serializer<SearchAuditLogsRequestSortOrderEnum> get serializer => _$searchAuditLogsRequestSortOrderEnumSerializer;
+  static Serializer<SearchAuditLogsRequestSortOrderEnum> get serializer =>
+      _$searchAuditLogsRequestSortOrderEnumSerializer;
 
-  const SearchAuditLogsRequestSortOrderEnum._(String name): super(name);
+  const SearchAuditLogsRequestSortOrderEnum._(String name) : super(name);
 
-  static BuiltSet<SearchAuditLogsRequestSortOrderEnum> get values => _$searchAuditLogsRequestSortOrderEnumValues;
-  static SearchAuditLogsRequestSortOrderEnum valueOf(String name) => _$searchAuditLogsRequestSortOrderEnumValueOf(name);
+  static BuiltSet<SearchAuditLogsRequestSortOrderEnum> get values =>
+      _$searchAuditLogsRequestSortOrderEnumValues;
+  static SearchAuditLogsRequestSortOrderEnum valueOf(String name) =>
+      _$searchAuditLogsRequestSortOrderEnumValueOf(name);
 }
-

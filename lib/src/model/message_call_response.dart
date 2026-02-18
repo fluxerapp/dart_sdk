@@ -13,9 +13,10 @@ part 'message_call_response.g.dart';
 ///
 /// Properties:
 /// * [participants] - The user IDs of participants in the call
-/// * [endedTimestamp] 
+/// * [endedTimestamp]
 @BuiltValue()
-abstract class MessageCallResponse implements Built<MessageCallResponse, MessageCallResponseBuilder> {
+abstract class MessageCallResponse
+    implements Built<MessageCallResponse, MessageCallResponseBuilder> {
   /// The user IDs of participants in the call
   @BuiltValueField(wireName: r'participants')
   BuiltList<String> get participants;
@@ -25,18 +26,24 @@ abstract class MessageCallResponse implements Built<MessageCallResponse, Message
 
   MessageCallResponse._();
 
-  factory MessageCallResponse([void updates(MessageCallResponseBuilder b)]) = _$MessageCallResponse;
+  factory MessageCallResponse([void updates(MessageCallResponseBuilder b)]) =
+      _$MessageCallResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(MessageCallResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<MessageCallResponse> get serializer => _$MessageCallResponseSerializer();
+  static Serializer<MessageCallResponse> get serializer =>
+      _$MessageCallResponseSerializer();
 }
 
-class _$MessageCallResponseSerializer implements PrimitiveSerializer<MessageCallResponse> {
+class _$MessageCallResponseSerializer
+    implements PrimitiveSerializer<MessageCallResponse> {
   @override
-  final Iterable<Type> types = const [MessageCallResponse, _$MessageCallResponse];
+  final Iterable<Type> types = const [
+    MessageCallResponse,
+    _$MessageCallResponse
+  ];
 
   @override
   final String wireName = r'MessageCallResponse';
@@ -66,7 +73,9 @@ class _$MessageCallResponseSerializer implements PrimitiveSerializer<MessageCall
     MessageCallResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -124,4 +133,3 @@ class _$MessageCallResponseSerializer implements PrimitiveSerializer<MessageCall
     return result.build();
   }
 }
-

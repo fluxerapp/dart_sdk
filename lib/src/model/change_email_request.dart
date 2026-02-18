@@ -11,10 +11,11 @@ part 'change_email_request.g.dart';
 /// ChangeEmailRequest
 ///
 /// Properties:
-/// * [userId] 
-/// * [email] 
+/// * [userId]
+/// * [email]
 @BuiltValue()
-abstract class ChangeEmailRequest implements Built<ChangeEmailRequest, ChangeEmailRequestBuilder> {
+abstract class ChangeEmailRequest
+    implements Built<ChangeEmailRequest, ChangeEmailRequestBuilder> {
   @BuiltValueField(wireName: r'user_id')
   String get userId;
 
@@ -23,16 +24,19 @@ abstract class ChangeEmailRequest implements Built<ChangeEmailRequest, ChangeEma
 
   ChangeEmailRequest._();
 
-  factory ChangeEmailRequest([void updates(ChangeEmailRequestBuilder b)]) = _$ChangeEmailRequest;
+  factory ChangeEmailRequest([void updates(ChangeEmailRequestBuilder b)]) =
+      _$ChangeEmailRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ChangeEmailRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ChangeEmailRequest> get serializer => _$ChangeEmailRequestSerializer();
+  static Serializer<ChangeEmailRequest> get serializer =>
+      _$ChangeEmailRequestSerializer();
 }
 
-class _$ChangeEmailRequestSerializer implements PrimitiveSerializer<ChangeEmailRequest> {
+class _$ChangeEmailRequestSerializer
+    implements PrimitiveSerializer<ChangeEmailRequest> {
   @override
   final Iterable<Type> types = const [ChangeEmailRequest, _$ChangeEmailRequest];
 
@@ -62,7 +66,9 @@ class _$ChangeEmailRequestSerializer implements PrimitiveSerializer<ChangeEmailR
     ChangeEmailRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -119,4 +125,3 @@ class _$ChangeEmailRequestSerializer implements PrimitiveSerializer<ChangeEmailR
     return result.build();
   }
 }
-

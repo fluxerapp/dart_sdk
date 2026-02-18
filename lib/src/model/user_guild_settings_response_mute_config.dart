@@ -11,10 +11,13 @@ part 'user_guild_settings_response_mute_config.g.dart';
 /// UserGuildSettingsResponseMuteConfig
 ///
 /// Properties:
-/// * [endTime] 
+/// * [endTime]
 /// * [selectedTimeWindow] - The selected mute duration in seconds
 @BuiltValue()
-abstract class UserGuildSettingsResponseMuteConfig implements Built<UserGuildSettingsResponseMuteConfig, UserGuildSettingsResponseMuteConfigBuilder> {
+abstract class UserGuildSettingsResponseMuteConfig
+    implements
+        Built<UserGuildSettingsResponseMuteConfig,
+            UserGuildSettingsResponseMuteConfigBuilder> {
   @BuiltValueField(wireName: r'end_time')
   String? get endTime;
 
@@ -24,18 +27,25 @@ abstract class UserGuildSettingsResponseMuteConfig implements Built<UserGuildSet
 
   UserGuildSettingsResponseMuteConfig._();
 
-  factory UserGuildSettingsResponseMuteConfig([void updates(UserGuildSettingsResponseMuteConfigBuilder b)]) = _$UserGuildSettingsResponseMuteConfig;
+  factory UserGuildSettingsResponseMuteConfig(
+          [void updates(UserGuildSettingsResponseMuteConfigBuilder b)]) =
+      _$UserGuildSettingsResponseMuteConfig;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UserGuildSettingsResponseMuteConfigBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UserGuildSettingsResponseMuteConfig> get serializer => _$UserGuildSettingsResponseMuteConfigSerializer();
+  static Serializer<UserGuildSettingsResponseMuteConfig> get serializer =>
+      _$UserGuildSettingsResponseMuteConfigSerializer();
 }
 
-class _$UserGuildSettingsResponseMuteConfigSerializer implements PrimitiveSerializer<UserGuildSettingsResponseMuteConfig> {
+class _$UserGuildSettingsResponseMuteConfigSerializer
+    implements PrimitiveSerializer<UserGuildSettingsResponseMuteConfig> {
   @override
-  final Iterable<Type> types = const [UserGuildSettingsResponseMuteConfig, _$UserGuildSettingsResponseMuteConfig];
+  final Iterable<Type> types = const [
+    UserGuildSettingsResponseMuteConfig,
+    _$UserGuildSettingsResponseMuteConfig
+  ];
 
   @override
   final String wireName = r'UserGuildSettingsResponseMuteConfig';
@@ -46,10 +56,12 @@ class _$UserGuildSettingsResponseMuteConfigSerializer implements PrimitiveSerial
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     yield r'end_time';
-    yield object.endTime == null ? null : serializers.serialize(
-      object.endTime,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.endTime == null
+        ? null
+        : serializers.serialize(
+            object.endTime,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'selected_time_window';
     yield serializers.serialize(
       object.selectedTimeWindow,
@@ -63,7 +75,9 @@ class _$UserGuildSettingsResponseMuteConfigSerializer implements PrimitiveSerial
     UserGuildSettingsResponseMuteConfig object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +135,3 @@ class _$UserGuildSettingsResponseMuteConfigSerializer implements PrimitiveSerial
     return result.build();
   }
 }
-

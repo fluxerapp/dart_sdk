@@ -12,26 +12,35 @@ part 'get_archive_response_schema.g.dart';
 /// GetArchiveResponseSchema
 ///
 /// Properties:
-/// * [archive] 
+/// * [archive]
 @BuiltValue()
-abstract class GetArchiveResponseSchema implements Built<GetArchiveResponseSchema, GetArchiveResponseSchemaBuilder> {
+abstract class GetArchiveResponseSchema
+    implements
+        Built<GetArchiveResponseSchema, GetArchiveResponseSchemaBuilder> {
   @BuiltValueField(wireName: r'archive')
   AdminArchiveResponseSchema? get archive;
 
   GetArchiveResponseSchema._();
 
-  factory GetArchiveResponseSchema([void updates(GetArchiveResponseSchemaBuilder b)]) = _$GetArchiveResponseSchema;
+  factory GetArchiveResponseSchema(
+          [void updates(GetArchiveResponseSchemaBuilder b)]) =
+      _$GetArchiveResponseSchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GetArchiveResponseSchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GetArchiveResponseSchema> get serializer => _$GetArchiveResponseSchemaSerializer();
+  static Serializer<GetArchiveResponseSchema> get serializer =>
+      _$GetArchiveResponseSchemaSerializer();
 }
 
-class _$GetArchiveResponseSchemaSerializer implements PrimitiveSerializer<GetArchiveResponseSchema> {
+class _$GetArchiveResponseSchemaSerializer
+    implements PrimitiveSerializer<GetArchiveResponseSchema> {
   @override
-  final Iterable<Type> types = const [GetArchiveResponseSchema, _$GetArchiveResponseSchema];
+  final Iterable<Type> types = const [
+    GetArchiveResponseSchema,
+    _$GetArchiveResponseSchema
+  ];
 
   @override
   final String wireName = r'GetArchiveResponseSchema';
@@ -42,10 +51,12 @@ class _$GetArchiveResponseSchemaSerializer implements PrimitiveSerializer<GetArc
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     yield r'archive';
-    yield object.archive == null ? null : serializers.serialize(
-      object.archive,
-      specifiedType: const FullType.nullable(AdminArchiveResponseSchema),
-    );
+    yield object.archive == null
+        ? null
+        : serializers.serialize(
+            object.archive,
+            specifiedType: const FullType.nullable(AdminArchiveResponseSchema),
+          );
   }
 
   @override
@@ -54,7 +65,9 @@ class _$GetArchiveResponseSchemaSerializer implements PrimitiveSerializer<GetArc
     GetArchiveResponseSchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -105,4 +118,3 @@ class _$GetArchiveResponseSchemaSerializer implements PrimitiveSerializer<GetArc
     return result.build();
   }
 }
-

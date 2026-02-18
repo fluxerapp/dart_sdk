@@ -11,11 +11,13 @@ part 'list_user_change_log_request.g.dart';
 /// ListUserChangeLogRequest
 ///
 /// Properties:
-/// * [userId] 
+/// * [userId]
 /// * [limit] - Maximum number of entries to return
 /// * [pageToken] - Pagination token for the next page of results
 @BuiltValue()
-abstract class ListUserChangeLogRequest implements Built<ListUserChangeLogRequest, ListUserChangeLogRequestBuilder> {
+abstract class ListUserChangeLogRequest
+    implements
+        Built<ListUserChangeLogRequest, ListUserChangeLogRequestBuilder> {
   @BuiltValueField(wireName: r'user_id')
   String get userId;
 
@@ -29,18 +31,25 @@ abstract class ListUserChangeLogRequest implements Built<ListUserChangeLogReques
 
   ListUserChangeLogRequest._();
 
-  factory ListUserChangeLogRequest([void updates(ListUserChangeLogRequestBuilder b)]) = _$ListUserChangeLogRequest;
+  factory ListUserChangeLogRequest(
+          [void updates(ListUserChangeLogRequestBuilder b)]) =
+      _$ListUserChangeLogRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ListUserChangeLogRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListUserChangeLogRequest> get serializer => _$ListUserChangeLogRequestSerializer();
+  static Serializer<ListUserChangeLogRequest> get serializer =>
+      _$ListUserChangeLogRequestSerializer();
 }
 
-class _$ListUserChangeLogRequestSerializer implements PrimitiveSerializer<ListUserChangeLogRequest> {
+class _$ListUserChangeLogRequestSerializer
+    implements PrimitiveSerializer<ListUserChangeLogRequest> {
   @override
-  final Iterable<Type> types = const [ListUserChangeLogRequest, _$ListUserChangeLogRequest];
+  final Iterable<Type> types = const [
+    ListUserChangeLogRequest,
+    _$ListUserChangeLogRequest
+  ];
 
   @override
   final String wireName = r'ListUserChangeLogRequest';
@@ -77,7 +86,9 @@ class _$ListUserChangeLogRequestSerializer implements PrimitiveSerializer<ListUs
     ListUserChangeLogRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -141,4 +152,3 @@ class _$ListUserChangeLogRequestSerializer implements PrimitiveSerializer<ListUs
     return result.build();
   }
 }
-

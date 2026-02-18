@@ -18,7 +18,8 @@ part 'slack_webhook_request.g.dart';
 /// * [iconUrl] - Override the default icon of the webhook
 /// * [attachments] - Array of attachment objects
 @BuiltValue()
-abstract class SlackWebhookRequest implements Built<SlackWebhookRequest, SlackWebhookRequestBuilder> {
+abstract class SlackWebhookRequest
+    implements Built<SlackWebhookRequest, SlackWebhookRequestBuilder> {
   /// Main text content of the message
   @BuiltValueField(wireName: r'text')
   String? get text;
@@ -37,18 +38,24 @@ abstract class SlackWebhookRequest implements Built<SlackWebhookRequest, SlackWe
 
   SlackWebhookRequest._();
 
-  factory SlackWebhookRequest([void updates(SlackWebhookRequestBuilder b)]) = _$SlackWebhookRequest;
+  factory SlackWebhookRequest([void updates(SlackWebhookRequestBuilder b)]) =
+      _$SlackWebhookRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SlackWebhookRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SlackWebhookRequest> get serializer => _$SlackWebhookRequestSerializer();
+  static Serializer<SlackWebhookRequest> get serializer =>
+      _$SlackWebhookRequestSerializer();
 }
 
-class _$SlackWebhookRequestSerializer implements PrimitiveSerializer<SlackWebhookRequest> {
+class _$SlackWebhookRequestSerializer
+    implements PrimitiveSerializer<SlackWebhookRequest> {
   @override
-  final Iterable<Type> types = const [SlackWebhookRequest, _$SlackWebhookRequest];
+  final Iterable<Type> types = const [
+    SlackWebhookRequest,
+    _$SlackWebhookRequest
+  ];
 
   @override
   final String wireName = r'SlackWebhookRequest';
@@ -83,7 +90,8 @@ class _$SlackWebhookRequestSerializer implements PrimitiveSerializer<SlackWebhoo
       yield r'attachments';
       yield serializers.serialize(
         object.attachments,
-        specifiedType: const FullType(BuiltList, [FullType(SlackWebhookRequestAttachmentsInner)]),
+        specifiedType: const FullType(
+            BuiltList, [FullType(SlackWebhookRequestAttachmentsInner)]),
       );
     }
   }
@@ -94,7 +102,9 @@ class _$SlackWebhookRequestSerializer implements PrimitiveSerializer<SlackWebhoo
     SlackWebhookRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -133,7 +143,8 @@ class _$SlackWebhookRequestSerializer implements PrimitiveSerializer<SlackWebhoo
         case r'attachments':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(SlackWebhookRequestAttachmentsInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(SlackWebhookRequestAttachmentsInner)]),
           ) as BuiltList<SlackWebhookRequestAttachmentsInner>;
           result.attachments.replace(valueDes);
           break;
@@ -165,4 +176,3 @@ class _$SlackWebhookRequestSerializer implements PrimitiveSerializer<SlackWebhoo
     return result.build();
   }
 }
-

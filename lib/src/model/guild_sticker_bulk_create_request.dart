@@ -15,25 +15,35 @@ part 'guild_sticker_bulk_create_request.g.dart';
 /// Properties:
 /// * [stickers] - Array of sticker objects to create (1-50 stickers per batch)
 @BuiltValue()
-abstract class GuildStickerBulkCreateRequest implements Built<GuildStickerBulkCreateRequest, GuildStickerBulkCreateRequestBuilder> {
+abstract class GuildStickerBulkCreateRequest
+    implements
+        Built<GuildStickerBulkCreateRequest,
+            GuildStickerBulkCreateRequestBuilder> {
   /// Array of sticker objects to create (1-50 stickers per batch)
   @BuiltValueField(wireName: r'stickers')
   BuiltList<GuildStickerCreateRequest> get stickers;
 
   GuildStickerBulkCreateRequest._();
 
-  factory GuildStickerBulkCreateRequest([void updates(GuildStickerBulkCreateRequestBuilder b)]) = _$GuildStickerBulkCreateRequest;
+  factory GuildStickerBulkCreateRequest(
+          [void updates(GuildStickerBulkCreateRequestBuilder b)]) =
+      _$GuildStickerBulkCreateRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildStickerBulkCreateRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildStickerBulkCreateRequest> get serializer => _$GuildStickerBulkCreateRequestSerializer();
+  static Serializer<GuildStickerBulkCreateRequest> get serializer =>
+      _$GuildStickerBulkCreateRequestSerializer();
 }
 
-class _$GuildStickerBulkCreateRequestSerializer implements PrimitiveSerializer<GuildStickerBulkCreateRequest> {
+class _$GuildStickerBulkCreateRequestSerializer
+    implements PrimitiveSerializer<GuildStickerBulkCreateRequest> {
   @override
-  final Iterable<Type> types = const [GuildStickerBulkCreateRequest, _$GuildStickerBulkCreateRequest];
+  final Iterable<Type> types = const [
+    GuildStickerBulkCreateRequest,
+    _$GuildStickerBulkCreateRequest
+  ];
 
   @override
   final String wireName = r'GuildStickerBulkCreateRequest';
@@ -46,7 +56,8 @@ class _$GuildStickerBulkCreateRequestSerializer implements PrimitiveSerializer<G
     yield r'stickers';
     yield serializers.serialize(
       object.stickers,
-      specifiedType: const FullType(BuiltList, [FullType(GuildStickerCreateRequest)]),
+      specifiedType:
+          const FullType(BuiltList, [FullType(GuildStickerCreateRequest)]),
     );
   }
 
@@ -56,7 +67,9 @@ class _$GuildStickerBulkCreateRequestSerializer implements PrimitiveSerializer<G
     GuildStickerBulkCreateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -74,7 +87,8 @@ class _$GuildStickerBulkCreateRequestSerializer implements PrimitiveSerializer<G
         case r'stickers':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(GuildStickerCreateRequest)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(GuildStickerCreateRequest)]),
           ) as BuiltList<GuildStickerCreateRequest>;
           result.stickers.replace(valueDes);
           break;
@@ -106,4 +120,3 @@ class _$GuildStickerBulkCreateRequestSerializer implements PrimitiveSerializer<G
     return result.build();
   }
 }
-

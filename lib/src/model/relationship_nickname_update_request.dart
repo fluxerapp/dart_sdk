@@ -11,26 +11,36 @@ part 'relationship_nickname_update_request.g.dart';
 /// RelationshipNicknameUpdateRequest
 ///
 /// Properties:
-/// * [nickname] 
+/// * [nickname]
 @BuiltValue()
-abstract class RelationshipNicknameUpdateRequest implements Built<RelationshipNicknameUpdateRequest, RelationshipNicknameUpdateRequestBuilder> {
+abstract class RelationshipNicknameUpdateRequest
+    implements
+        Built<RelationshipNicknameUpdateRequest,
+            RelationshipNicknameUpdateRequestBuilder> {
   @BuiltValueField(wireName: r'nickname')
   String? get nickname;
 
   RelationshipNicknameUpdateRequest._();
 
-  factory RelationshipNicknameUpdateRequest([void updates(RelationshipNicknameUpdateRequestBuilder b)]) = _$RelationshipNicknameUpdateRequest;
+  factory RelationshipNicknameUpdateRequest(
+          [void updates(RelationshipNicknameUpdateRequestBuilder b)]) =
+      _$RelationshipNicknameUpdateRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(RelationshipNicknameUpdateRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<RelationshipNicknameUpdateRequest> get serializer => _$RelationshipNicknameUpdateRequestSerializer();
+  static Serializer<RelationshipNicknameUpdateRequest> get serializer =>
+      _$RelationshipNicknameUpdateRequestSerializer();
 }
 
-class _$RelationshipNicknameUpdateRequestSerializer implements PrimitiveSerializer<RelationshipNicknameUpdateRequest> {
+class _$RelationshipNicknameUpdateRequestSerializer
+    implements PrimitiveSerializer<RelationshipNicknameUpdateRequest> {
   @override
-  final Iterable<Type> types = const [RelationshipNicknameUpdateRequest, _$RelationshipNicknameUpdateRequest];
+  final Iterable<Type> types = const [
+    RelationshipNicknameUpdateRequest,
+    _$RelationshipNicknameUpdateRequest
+  ];
 
   @override
   final String wireName = r'RelationshipNicknameUpdateRequest';
@@ -41,10 +51,12 @@ class _$RelationshipNicknameUpdateRequestSerializer implements PrimitiveSerializ
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     yield r'nickname';
-    yield object.nickname == null ? null : serializers.serialize(
-      object.nickname,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.nickname == null
+        ? null
+        : serializers.serialize(
+            object.nickname,
+            specifiedType: const FullType.nullable(String),
+          );
   }
 
   @override
@@ -53,7 +65,9 @@ class _$RelationshipNicknameUpdateRequestSerializer implements PrimitiveSerializ
     RelationshipNicknameUpdateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +118,3 @@ class _$RelationshipNicknameUpdateRequestSerializer implements PrimitiveSerializ
     return result.build();
   }
 }
-

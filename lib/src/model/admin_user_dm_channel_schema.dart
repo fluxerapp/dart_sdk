@@ -12,13 +12,15 @@ part 'admin_user_dm_channel_schema.g.dart';
 /// AdminUserDmChannelSchema
 ///
 /// Properties:
-/// * [channelId] 
-/// * [channelType] 
-/// * [recipientIds] 
-/// * [lastMessageId] 
-/// * [isOpen] 
+/// * [channelId]
+/// * [channelType]
+/// * [recipientIds]
+/// * [lastMessageId]
+/// * [isOpen]
 @BuiltValue()
-abstract class AdminUserDmChannelSchema implements Built<AdminUserDmChannelSchema, AdminUserDmChannelSchemaBuilder> {
+abstract class AdminUserDmChannelSchema
+    implements
+        Built<AdminUserDmChannelSchema, AdminUserDmChannelSchemaBuilder> {
   @BuiltValueField(wireName: r'channel_id')
   String get channelId;
 
@@ -36,18 +38,25 @@ abstract class AdminUserDmChannelSchema implements Built<AdminUserDmChannelSchem
 
   AdminUserDmChannelSchema._();
 
-  factory AdminUserDmChannelSchema([void updates(AdminUserDmChannelSchemaBuilder b)]) = _$AdminUserDmChannelSchema;
+  factory AdminUserDmChannelSchema(
+          [void updates(AdminUserDmChannelSchemaBuilder b)]) =
+      _$AdminUserDmChannelSchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(AdminUserDmChannelSchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<AdminUserDmChannelSchema> get serializer => _$AdminUserDmChannelSchemaSerializer();
+  static Serializer<AdminUserDmChannelSchema> get serializer =>
+      _$AdminUserDmChannelSchemaSerializer();
 }
 
-class _$AdminUserDmChannelSchemaSerializer implements PrimitiveSerializer<AdminUserDmChannelSchema> {
+class _$AdminUserDmChannelSchemaSerializer
+    implements PrimitiveSerializer<AdminUserDmChannelSchema> {
   @override
-  final Iterable<Type> types = const [AdminUserDmChannelSchema, _$AdminUserDmChannelSchema];
+  final Iterable<Type> types = const [
+    AdminUserDmChannelSchema,
+    _$AdminUserDmChannelSchema
+  ];
 
   @override
   final String wireName = r'AdminUserDmChannelSchema';
@@ -90,7 +99,9 @@ class _$AdminUserDmChannelSchemaSerializer implements PrimitiveSerializer<AdminU
     AdminUserDmChannelSchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -168,4 +179,3 @@ class _$AdminUserDmChannelSchemaSerializer implements PrimitiveSerializer<AdminU
     return result.build();
   }
 }
-

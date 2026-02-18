@@ -18,7 +18,10 @@ part 'pack_dashboard_response_sticker.g.dart';
 /// * [installed] - List of packs the user has installed
 /// * [created] - List of packs the user has created
 @BuiltValue()
-abstract class PackDashboardResponseSticker implements Built<PackDashboardResponseSticker, PackDashboardResponseStickerBuilder> {
+abstract class PackDashboardResponseSticker
+    implements
+        Built<PackDashboardResponseSticker,
+            PackDashboardResponseStickerBuilder> {
   /// Maximum number of packs the user can install
   @BuiltValueField(wireName: r'installed_limit')
   int get installedLimit;
@@ -37,18 +40,25 @@ abstract class PackDashboardResponseSticker implements Built<PackDashboardRespon
 
   PackDashboardResponseSticker._();
 
-  factory PackDashboardResponseSticker([void updates(PackDashboardResponseStickerBuilder b)]) = _$PackDashboardResponseSticker;
+  factory PackDashboardResponseSticker(
+          [void updates(PackDashboardResponseStickerBuilder b)]) =
+      _$PackDashboardResponseSticker;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PackDashboardResponseStickerBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PackDashboardResponseSticker> get serializer => _$PackDashboardResponseStickerSerializer();
+  static Serializer<PackDashboardResponseSticker> get serializer =>
+      _$PackDashboardResponseStickerSerializer();
 }
 
-class _$PackDashboardResponseStickerSerializer implements PrimitiveSerializer<PackDashboardResponseSticker> {
+class _$PackDashboardResponseStickerSerializer
+    implements PrimitiveSerializer<PackDashboardResponseSticker> {
   @override
-  final Iterable<Type> types = const [PackDashboardResponseSticker, _$PackDashboardResponseSticker];
+  final Iterable<Type> types = const [
+    PackDashboardResponseSticker,
+    _$PackDashboardResponseSticker
+  ];
 
   @override
   final String wireName = r'PackDashboardResponseSticker';
@@ -86,7 +96,9 @@ class _$PackDashboardResponseStickerSerializer implements PrimitiveSerializer<Pa
     PackDashboardResponseSticker object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -118,14 +130,16 @@ class _$PackDashboardResponseStickerSerializer implements PrimitiveSerializer<Pa
         case r'installed':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(PackSummaryResponse)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(PackSummaryResponse)]),
           ) as BuiltList<PackSummaryResponse>;
           result.installed.replace(valueDes);
           break;
         case r'created':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(PackSummaryResponse)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(PackSummaryResponse)]),
           ) as BuiltList<PackSummaryResponse>;
           result.created.replace(valueDes);
           break;
@@ -157,4 +171,3 @@ class _$PackDashboardResponseStickerSerializer implements PrimitiveSerializer<Pa
     return result.build();
   }
 }
-

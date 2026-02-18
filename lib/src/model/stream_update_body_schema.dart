@@ -13,25 +13,33 @@ part 'stream_update_body_schema.g.dart';
 /// Properties:
 /// * [region] - The preferred voice region for the stream (1-64 characters)
 @BuiltValue()
-abstract class StreamUpdateBodySchema implements Built<StreamUpdateBodySchema, StreamUpdateBodySchemaBuilder> {
+abstract class StreamUpdateBodySchema
+    implements Built<StreamUpdateBodySchema, StreamUpdateBodySchemaBuilder> {
   /// The preferred voice region for the stream (1-64 characters)
   @BuiltValueField(wireName: r'region')
   String? get region;
 
   StreamUpdateBodySchema._();
 
-  factory StreamUpdateBodySchema([void updates(StreamUpdateBodySchemaBuilder b)]) = _$StreamUpdateBodySchema;
+  factory StreamUpdateBodySchema(
+          [void updates(StreamUpdateBodySchemaBuilder b)]) =
+      _$StreamUpdateBodySchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(StreamUpdateBodySchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<StreamUpdateBodySchema> get serializer => _$StreamUpdateBodySchemaSerializer();
+  static Serializer<StreamUpdateBodySchema> get serializer =>
+      _$StreamUpdateBodySchemaSerializer();
 }
 
-class _$StreamUpdateBodySchemaSerializer implements PrimitiveSerializer<StreamUpdateBodySchema> {
+class _$StreamUpdateBodySchemaSerializer
+    implements PrimitiveSerializer<StreamUpdateBodySchema> {
   @override
-  final Iterable<Type> types = const [StreamUpdateBodySchema, _$StreamUpdateBodySchema];
+  final Iterable<Type> types = const [
+    StreamUpdateBodySchema,
+    _$StreamUpdateBodySchema
+  ];
 
   @override
   final String wireName = r'StreamUpdateBodySchema';
@@ -56,7 +64,9 @@ class _$StreamUpdateBodySchemaSerializer implements PrimitiveSerializer<StreamUp
     StreamUpdateBodySchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -106,4 +116,3 @@ class _$StreamUpdateBodySchemaSerializer implements PrimitiveSerializer<StreamUp
     return result.build();
   }
 }
-

@@ -16,7 +16,8 @@ part 'web_authn_mfa_request.g.dart';
 /// * [challenge] - The challenge string from authentication options
 /// * [ticket] - The MFA ticket from the login response
 @BuiltValue()
-abstract class WebAuthnMfaRequest implements Built<WebAuthnMfaRequest, WebAuthnMfaRequestBuilder> {
+abstract class WebAuthnMfaRequest
+    implements Built<WebAuthnMfaRequest, WebAuthnMfaRequestBuilder> {
   /// WebAuthn authentication response
   @BuiltValueField(wireName: r'response')
   JsonObject get response;
@@ -31,16 +32,19 @@ abstract class WebAuthnMfaRequest implements Built<WebAuthnMfaRequest, WebAuthnM
 
   WebAuthnMfaRequest._();
 
-  factory WebAuthnMfaRequest([void updates(WebAuthnMfaRequestBuilder b)]) = _$WebAuthnMfaRequest;
+  factory WebAuthnMfaRequest([void updates(WebAuthnMfaRequestBuilder b)]) =
+      _$WebAuthnMfaRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(WebAuthnMfaRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<WebAuthnMfaRequest> get serializer => _$WebAuthnMfaRequestSerializer();
+  static Serializer<WebAuthnMfaRequest> get serializer =>
+      _$WebAuthnMfaRequestSerializer();
 }
 
-class _$WebAuthnMfaRequestSerializer implements PrimitiveSerializer<WebAuthnMfaRequest> {
+class _$WebAuthnMfaRequestSerializer
+    implements PrimitiveSerializer<WebAuthnMfaRequest> {
   @override
   final Iterable<Type> types = const [WebAuthnMfaRequest, _$WebAuthnMfaRequest];
 
@@ -75,7 +79,9 @@ class _$WebAuthnMfaRequestSerializer implements PrimitiveSerializer<WebAuthnMfaR
     WebAuthnMfaRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -139,4 +145,3 @@ class _$WebAuthnMfaRequestSerializer implements PrimitiveSerializer<WebAuthnMfaR
     return result.build();
   }
 }
-

@@ -15,7 +15,10 @@ part 'slack_webhook_request_attachments_inner_fields_inner.g.dart';
 /// * [value] - Value of the field
 /// * [short] - Whether the field should be displayed as a short column
 @BuiltValue()
-abstract class SlackWebhookRequestAttachmentsInnerFieldsInner implements Built<SlackWebhookRequestAttachmentsInnerFieldsInner, SlackWebhookRequestAttachmentsInnerFieldsInnerBuilder> {
+abstract class SlackWebhookRequestAttachmentsInnerFieldsInner
+    implements
+        Built<SlackWebhookRequestAttachmentsInnerFieldsInner,
+            SlackWebhookRequestAttachmentsInnerFieldsInnerBuilder> {
   /// Title of the field
   @BuiltValueField(wireName: r'title')
   String? get title;
@@ -30,18 +33,30 @@ abstract class SlackWebhookRequestAttachmentsInnerFieldsInner implements Built<S
 
   SlackWebhookRequestAttachmentsInnerFieldsInner._();
 
-  factory SlackWebhookRequestAttachmentsInnerFieldsInner([void updates(SlackWebhookRequestAttachmentsInnerFieldsInnerBuilder b)]) = _$SlackWebhookRequestAttachmentsInnerFieldsInner;
+  factory SlackWebhookRequestAttachmentsInnerFieldsInner(
+          [void updates(
+              SlackWebhookRequestAttachmentsInnerFieldsInnerBuilder b)]) =
+      _$SlackWebhookRequestAttachmentsInnerFieldsInner;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(SlackWebhookRequestAttachmentsInnerFieldsInnerBuilder b) => b;
+  static void _defaults(
+          SlackWebhookRequestAttachmentsInnerFieldsInnerBuilder b) =>
+      b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SlackWebhookRequestAttachmentsInnerFieldsInner> get serializer => _$SlackWebhookRequestAttachmentsInnerFieldsInnerSerializer();
+  static Serializer<SlackWebhookRequestAttachmentsInnerFieldsInner>
+      get serializer =>
+          _$SlackWebhookRequestAttachmentsInnerFieldsInnerSerializer();
 }
 
-class _$SlackWebhookRequestAttachmentsInnerFieldsInnerSerializer implements PrimitiveSerializer<SlackWebhookRequestAttachmentsInnerFieldsInner> {
+class _$SlackWebhookRequestAttachmentsInnerFieldsInnerSerializer
+    implements
+        PrimitiveSerializer<SlackWebhookRequestAttachmentsInnerFieldsInner> {
   @override
-  final Iterable<Type> types = const [SlackWebhookRequestAttachmentsInnerFieldsInner, _$SlackWebhookRequestAttachmentsInnerFieldsInner];
+  final Iterable<Type> types = const [
+    SlackWebhookRequestAttachmentsInnerFieldsInner,
+    _$SlackWebhookRequestAttachmentsInnerFieldsInner
+  ];
 
   @override
   final String wireName = r'SlackWebhookRequestAttachmentsInnerFieldsInner';
@@ -80,7 +95,9 @@ class _$SlackWebhookRequestAttachmentsInnerFieldsInnerSerializer implements Prim
     SlackWebhookRequestAttachmentsInnerFieldsInner object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -144,4 +161,3 @@ class _$SlackWebhookRequestAttachmentsInnerFieldsInnerSerializer implements Prim
     return result.build();
   }
 }
-

@@ -11,24 +11,28 @@ part 'ban_email_request.g.dart';
 /// BanEmailRequest
 ///
 /// Properties:
-/// * [email] 
+/// * [email]
 @BuiltValue()
-abstract class BanEmailRequest implements Built<BanEmailRequest, BanEmailRequestBuilder> {
+abstract class BanEmailRequest
+    implements Built<BanEmailRequest, BanEmailRequestBuilder> {
   @BuiltValueField(wireName: r'email')
   String get email;
 
   BanEmailRequest._();
 
-  factory BanEmailRequest([void updates(BanEmailRequestBuilder b)]) = _$BanEmailRequest;
+  factory BanEmailRequest([void updates(BanEmailRequestBuilder b)]) =
+      _$BanEmailRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(BanEmailRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<BanEmailRequest> get serializer => _$BanEmailRequestSerializer();
+  static Serializer<BanEmailRequest> get serializer =>
+      _$BanEmailRequestSerializer();
 }
 
-class _$BanEmailRequestSerializer implements PrimitiveSerializer<BanEmailRequest> {
+class _$BanEmailRequestSerializer
+    implements PrimitiveSerializer<BanEmailRequest> {
   @override
   final Iterable<Type> types = const [BanEmailRequest, _$BanEmailRequest];
 
@@ -53,7 +57,9 @@ class _$BanEmailRequestSerializer implements PrimitiveSerializer<BanEmailRequest
     BanEmailRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,4 +109,3 @@ class _$BanEmailRequestSerializer implements PrimitiveSerializer<BanEmailRequest
     return result.build();
   }
 }
-

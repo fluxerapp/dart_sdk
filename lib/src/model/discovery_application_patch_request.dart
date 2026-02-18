@@ -14,7 +14,10 @@ part 'discovery_application_patch_request.g.dart';
 /// * [description] - Updated description for discovery listing
 /// * [categoryType] - Updated discovery category type
 @BuiltValue()
-abstract class DiscoveryApplicationPatchRequest implements Built<DiscoveryApplicationPatchRequest, DiscoveryApplicationPatchRequestBuilder> {
+abstract class DiscoveryApplicationPatchRequest
+    implements
+        Built<DiscoveryApplicationPatchRequest,
+            DiscoveryApplicationPatchRequestBuilder> {
   /// Updated description for discovery listing
   @BuiltValueField(wireName: r'description')
   String? get description;
@@ -25,18 +28,25 @@ abstract class DiscoveryApplicationPatchRequest implements Built<DiscoveryApplic
 
   DiscoveryApplicationPatchRequest._();
 
-  factory DiscoveryApplicationPatchRequest([void updates(DiscoveryApplicationPatchRequestBuilder b)]) = _$DiscoveryApplicationPatchRequest;
+  factory DiscoveryApplicationPatchRequest(
+          [void updates(DiscoveryApplicationPatchRequestBuilder b)]) =
+      _$DiscoveryApplicationPatchRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(DiscoveryApplicationPatchRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<DiscoveryApplicationPatchRequest> get serializer => _$DiscoveryApplicationPatchRequestSerializer();
+  static Serializer<DiscoveryApplicationPatchRequest> get serializer =>
+      _$DiscoveryApplicationPatchRequestSerializer();
 }
 
-class _$DiscoveryApplicationPatchRequestSerializer implements PrimitiveSerializer<DiscoveryApplicationPatchRequest> {
+class _$DiscoveryApplicationPatchRequestSerializer
+    implements PrimitiveSerializer<DiscoveryApplicationPatchRequest> {
   @override
-  final Iterable<Type> types = const [DiscoveryApplicationPatchRequest, _$DiscoveryApplicationPatchRequest];
+  final Iterable<Type> types = const [
+    DiscoveryApplicationPatchRequest,
+    _$DiscoveryApplicationPatchRequest
+  ];
 
   @override
   final String wireName = r'DiscoveryApplicationPatchRequest';
@@ -68,7 +78,9 @@ class _$DiscoveryApplicationPatchRequestSerializer implements PrimitiveSerialize
     DiscoveryApplicationPatchRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -125,4 +137,3 @@ class _$DiscoveryApplicationPatchRequestSerializer implements PrimitiveSerialize
     return result.build();
   }
 }
-

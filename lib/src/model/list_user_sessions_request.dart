@@ -11,26 +11,34 @@ part 'list_user_sessions_request.g.dart';
 /// ListUserSessionsRequest
 ///
 /// Properties:
-/// * [userId] 
+/// * [userId]
 @BuiltValue()
-abstract class ListUserSessionsRequest implements Built<ListUserSessionsRequest, ListUserSessionsRequestBuilder> {
+abstract class ListUserSessionsRequest
+    implements Built<ListUserSessionsRequest, ListUserSessionsRequestBuilder> {
   @BuiltValueField(wireName: r'user_id')
   String get userId;
 
   ListUserSessionsRequest._();
 
-  factory ListUserSessionsRequest([void updates(ListUserSessionsRequestBuilder b)]) = _$ListUserSessionsRequest;
+  factory ListUserSessionsRequest(
+          [void updates(ListUserSessionsRequestBuilder b)]) =
+      _$ListUserSessionsRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ListUserSessionsRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListUserSessionsRequest> get serializer => _$ListUserSessionsRequestSerializer();
+  static Serializer<ListUserSessionsRequest> get serializer =>
+      _$ListUserSessionsRequestSerializer();
 }
 
-class _$ListUserSessionsRequestSerializer implements PrimitiveSerializer<ListUserSessionsRequest> {
+class _$ListUserSessionsRequestSerializer
+    implements PrimitiveSerializer<ListUserSessionsRequest> {
   @override
-  final Iterable<Type> types = const [ListUserSessionsRequest, _$ListUserSessionsRequest];
+  final Iterable<Type> types = const [
+    ListUserSessionsRequest,
+    _$ListUserSessionsRequest
+  ];
 
   @override
   final String wireName = r'ListUserSessionsRequest';
@@ -53,7 +61,9 @@ class _$ListUserSessionsRequestSerializer implements PrimitiveSerializer<ListUse
     ListUserSessionsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,4 +113,3 @@ class _$ListUserSessionsRequestSerializer implements PrimitiveSerializer<ListUse
     return result.build();
   }
 }
-

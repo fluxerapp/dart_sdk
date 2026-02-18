@@ -14,14 +14,16 @@ part 'user_profile_full_response_user.g.dart';
 /// * [id] - The unique identifier (snowflake) for this user
 /// * [username] - The username of the user, not unique across the platform
 /// * [discriminator] - The four-digit discriminator tag of the user
-/// * [globalName] 
-/// * [avatar] 
-/// * [avatarColor] 
+/// * [globalName]
+/// * [avatar]
+/// * [avatarColor]
 /// * [flags] - The public flags on the user account
 /// * [bot] - Whether the user is a bot account
 /// * [system] - Whether the user is an official system user
 @BuiltValue()
-abstract class UserProfileFullResponseUser implements Built<UserProfileFullResponseUser, UserProfileFullResponseUserBuilder> {
+abstract class UserProfileFullResponseUser
+    implements
+        Built<UserProfileFullResponseUser, UserProfileFullResponseUserBuilder> {
   /// The unique identifier (snowflake) for this user
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -57,18 +59,25 @@ abstract class UserProfileFullResponseUser implements Built<UserProfileFullRespo
 
   UserProfileFullResponseUser._();
 
-  factory UserProfileFullResponseUser([void updates(UserProfileFullResponseUserBuilder b)]) = _$UserProfileFullResponseUser;
+  factory UserProfileFullResponseUser(
+          [void updates(UserProfileFullResponseUserBuilder b)]) =
+      _$UserProfileFullResponseUser;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UserProfileFullResponseUserBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UserProfileFullResponseUser> get serializer => _$UserProfileFullResponseUserSerializer();
+  static Serializer<UserProfileFullResponseUser> get serializer =>
+      _$UserProfileFullResponseUserSerializer();
 }
 
-class _$UserProfileFullResponseUserSerializer implements PrimitiveSerializer<UserProfileFullResponseUser> {
+class _$UserProfileFullResponseUserSerializer
+    implements PrimitiveSerializer<UserProfileFullResponseUser> {
   @override
-  final Iterable<Type> types = const [UserProfileFullResponseUser, _$UserProfileFullResponseUser];
+  final Iterable<Type> types = const [
+    UserProfileFullResponseUser,
+    _$UserProfileFullResponseUser
+  ];
 
   @override
   final String wireName = r'UserProfileFullResponseUser';
@@ -94,15 +103,19 @@ class _$UserProfileFullResponseUserSerializer implements PrimitiveSerializer<Use
       specifiedType: const FullType(String),
     );
     yield r'global_name';
-    yield object.globalName == null ? null : serializers.serialize(
-      object.globalName,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.globalName == null
+        ? null
+        : serializers.serialize(
+            object.globalName,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'avatar';
-    yield object.avatar == null ? null : serializers.serialize(
-      object.avatar,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.avatar == null
+        ? null
+        : serializers.serialize(
+            object.avatar,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'avatar_color';
     yield serializers.serialize(
       object.avatarColor,
@@ -135,7 +148,9 @@ class _$UserProfileFullResponseUserSerializer implements PrimitiveSerializer<Use
     UserProfileFullResponseUser object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -243,4 +258,3 @@ class _$UserProfileFullResponseUserSerializer implements PrimitiveSerializer<Use
     return result.build();
   }
 }
-

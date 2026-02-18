@@ -10,26 +10,30 @@ import 'package:built_value/serializer.dart';
 part 'guild_verification_level.g.dart';
 
 class GuildVerificationLevel extends EnumClass {
-
   /// Required verification level for members
   @BuiltValueEnumConst(wireNumber: 0)
   static const GuildVerificationLevel number0 = _$number0;
+
   /// Required verification level for members
   @BuiltValueEnumConst(wireNumber: 1)
   static const GuildVerificationLevel number1 = _$number1;
+
   /// Required verification level for members
   @BuiltValueEnumConst(wireNumber: 2)
   static const GuildVerificationLevel number2 = _$number2;
+
   /// Required verification level for members
   @BuiltValueEnumConst(wireNumber: 3)
   static const GuildVerificationLevel number3 = _$number3;
+
   /// Required verification level for members
   @BuiltValueEnumConst(wireNumber: 4)
   static const GuildVerificationLevel number4 = _$number4;
 
-  static Serializer<GuildVerificationLevel> get serializer => _$guildVerificationLevelSerializer;
+  static Serializer<GuildVerificationLevel> get serializer =>
+      _$guildVerificationLevelSerializer;
 
-  const GuildVerificationLevel._(String name): super(name);
+  const GuildVerificationLevel._(String name) : super(name);
 
   static BuiltSet<GuildVerificationLevel> get values => _$values;
   static GuildVerificationLevel valueOf(String name) => _$valueOf(name);
@@ -41,5 +45,5 @@ class GuildVerificationLevel extends EnumClass {
 /// corresponding Angular template.
 ///
 /// Trigger mixin generation by writing a line like this one next to your enum.
-abstract class GuildVerificationLevelMixin = Object with _$GuildVerificationLevelMixin;
-
+abstract class GuildVerificationLevelMixin = Object
+    with _$GuildVerificationLevelMixin;

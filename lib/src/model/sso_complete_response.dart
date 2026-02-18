@@ -15,7 +15,8 @@ part 'sso_complete_response.g.dart';
 /// * [userId] - ID of the authenticated user
 /// * [redirectTo] - URL to redirect the user to after completion
 @BuiltValue()
-abstract class SsoCompleteResponse implements Built<SsoCompleteResponse, SsoCompleteResponseBuilder> {
+abstract class SsoCompleteResponse
+    implements Built<SsoCompleteResponse, SsoCompleteResponseBuilder> {
   /// Authentication token for the session
   @BuiltValueField(wireName: r'token')
   String get token;
@@ -30,18 +31,24 @@ abstract class SsoCompleteResponse implements Built<SsoCompleteResponse, SsoComp
 
   SsoCompleteResponse._();
 
-  factory SsoCompleteResponse([void updates(SsoCompleteResponseBuilder b)]) = _$SsoCompleteResponse;
+  factory SsoCompleteResponse([void updates(SsoCompleteResponseBuilder b)]) =
+      _$SsoCompleteResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SsoCompleteResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SsoCompleteResponse> get serializer => _$SsoCompleteResponseSerializer();
+  static Serializer<SsoCompleteResponse> get serializer =>
+      _$SsoCompleteResponseSerializer();
 }
 
-class _$SsoCompleteResponseSerializer implements PrimitiveSerializer<SsoCompleteResponse> {
+class _$SsoCompleteResponseSerializer
+    implements PrimitiveSerializer<SsoCompleteResponse> {
   @override
-  final Iterable<Type> types = const [SsoCompleteResponse, _$SsoCompleteResponse];
+  final Iterable<Type> types = const [
+    SsoCompleteResponse,
+    _$SsoCompleteResponse
+  ];
 
   @override
   final String wireName = r'SsoCompleteResponse';
@@ -74,7 +81,9 @@ class _$SsoCompleteResponseSerializer implements PrimitiveSerializer<SsoComplete
     SsoCompleteResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -138,4 +147,3 @@ class _$SsoCompleteResponseSerializer implements PrimitiveSerializer<SsoComplete
     return result.build();
   }
 }
-

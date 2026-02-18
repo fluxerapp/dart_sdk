@@ -12,13 +12,16 @@ part 'lookup_guild_response_guild_channels_inner.g.dart';
 /// LookupGuildResponseGuildChannelsInner
 ///
 /// Properties:
-/// * [id] 
-/// * [name] 
+/// * [id]
+/// * [name]
 /// * [type] - The type of the channel
-/// * [position] 
-/// * [parentId] 
+/// * [position]
+/// * [parentId]
 @BuiltValue()
-abstract class LookupGuildResponseGuildChannelsInner implements Built<LookupGuildResponseGuildChannelsInner, LookupGuildResponseGuildChannelsInnerBuilder> {
+abstract class LookupGuildResponseGuildChannelsInner
+    implements
+        Built<LookupGuildResponseGuildChannelsInner,
+            LookupGuildResponseGuildChannelsInnerBuilder> {
   @BuiltValueField(wireName: r'id')
   String get id;
 
@@ -38,18 +41,25 @@ abstract class LookupGuildResponseGuildChannelsInner implements Built<LookupGuil
 
   LookupGuildResponseGuildChannelsInner._();
 
-  factory LookupGuildResponseGuildChannelsInner([void updates(LookupGuildResponseGuildChannelsInnerBuilder b)]) = _$LookupGuildResponseGuildChannelsInner;
+  factory LookupGuildResponseGuildChannelsInner(
+          [void updates(LookupGuildResponseGuildChannelsInnerBuilder b)]) =
+      _$LookupGuildResponseGuildChannelsInner;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(LookupGuildResponseGuildChannelsInnerBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<LookupGuildResponseGuildChannelsInner> get serializer => _$LookupGuildResponseGuildChannelsInnerSerializer();
+  static Serializer<LookupGuildResponseGuildChannelsInner> get serializer =>
+      _$LookupGuildResponseGuildChannelsInnerSerializer();
 }
 
-class _$LookupGuildResponseGuildChannelsInnerSerializer implements PrimitiveSerializer<LookupGuildResponseGuildChannelsInner> {
+class _$LookupGuildResponseGuildChannelsInnerSerializer
+    implements PrimitiveSerializer<LookupGuildResponseGuildChannelsInner> {
   @override
-  final Iterable<Type> types = const [LookupGuildResponseGuildChannelsInner, _$LookupGuildResponseGuildChannelsInner];
+  final Iterable<Type> types = const [
+    LookupGuildResponseGuildChannelsInner,
+    _$LookupGuildResponseGuildChannelsInner
+  ];
 
   @override
   final String wireName = r'LookupGuildResponseGuildChannelsInner';
@@ -65,14 +75,17 @@ class _$LookupGuildResponseGuildChannelsInnerSerializer implements PrimitiveSeri
       specifiedType: const FullType(String),
     );
     yield r'name';
-    yield object.name == null ? null : serializers.serialize(
-      object.name,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.name == null
+        ? null
+        : serializers.serialize(
+            object.name,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'type';
     yield serializers.serialize(
       object.type,
-      specifiedType: const FullType(LookupGuildResponseGuildChannelsInnerTypeEnum),
+      specifiedType:
+          const FullType(LookupGuildResponseGuildChannelsInnerTypeEnum),
     );
     yield r'position';
     yield serializers.serialize(
@@ -92,7 +105,9 @@ class _$LookupGuildResponseGuildChannelsInnerSerializer implements PrimitiveSeri
     LookupGuildResponseGuildChannelsInner object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -125,7 +140,8 @@ class _$LookupGuildResponseGuildChannelsInnerSerializer implements PrimitiveSeri
         case r'type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(LookupGuildResponseGuildChannelsInnerTypeEnum),
+            specifiedType:
+                const FullType(LookupGuildResponseGuildChannelsInnerTypeEnum),
           ) as LookupGuildResponseGuildChannelsInnerTypeEnum;
           result.type = valueDes;
           break;
@@ -173,34 +189,50 @@ class _$LookupGuildResponseGuildChannelsInnerSerializer implements PrimitiveSeri
 }
 
 class LookupGuildResponseGuildChannelsInnerTypeEnum extends EnumClass {
-
   /// The type of the channel
   @BuiltValueEnumConst(wireNumber: 0)
-  static const LookupGuildResponseGuildChannelsInnerTypeEnum number0 = _$lookupGuildResponseGuildChannelsInnerTypeEnum_number0;
+  static const LookupGuildResponseGuildChannelsInnerTypeEnum number0 =
+      _$lookupGuildResponseGuildChannelsInnerTypeEnum_number0;
+
   /// The type of the channel
   @BuiltValueEnumConst(wireNumber: 1)
-  static const LookupGuildResponseGuildChannelsInnerTypeEnum number1 = _$lookupGuildResponseGuildChannelsInnerTypeEnum_number1;
+  static const LookupGuildResponseGuildChannelsInnerTypeEnum number1 =
+      _$lookupGuildResponseGuildChannelsInnerTypeEnum_number1;
+
   /// The type of the channel
   @BuiltValueEnumConst(wireNumber: 2)
-  static const LookupGuildResponseGuildChannelsInnerTypeEnum number2 = _$lookupGuildResponseGuildChannelsInnerTypeEnum_number2;
+  static const LookupGuildResponseGuildChannelsInnerTypeEnum number2 =
+      _$lookupGuildResponseGuildChannelsInnerTypeEnum_number2;
+
   /// The type of the channel
   @BuiltValueEnumConst(wireNumber: 3)
-  static const LookupGuildResponseGuildChannelsInnerTypeEnum number3 = _$lookupGuildResponseGuildChannelsInnerTypeEnum_number3;
+  static const LookupGuildResponseGuildChannelsInnerTypeEnum number3 =
+      _$lookupGuildResponseGuildChannelsInnerTypeEnum_number3;
+
   /// The type of the channel
   @BuiltValueEnumConst(wireNumber: 4)
-  static const LookupGuildResponseGuildChannelsInnerTypeEnum number4 = _$lookupGuildResponseGuildChannelsInnerTypeEnum_number4;
+  static const LookupGuildResponseGuildChannelsInnerTypeEnum number4 =
+      _$lookupGuildResponseGuildChannelsInnerTypeEnum_number4;
+
   /// The type of the channel
   @BuiltValueEnumConst(wireNumber: 998)
-  static const LookupGuildResponseGuildChannelsInnerTypeEnum number998 = _$lookupGuildResponseGuildChannelsInnerTypeEnum_number998;
+  static const LookupGuildResponseGuildChannelsInnerTypeEnum number998 =
+      _$lookupGuildResponseGuildChannelsInnerTypeEnum_number998;
+
   /// The type of the channel
   @BuiltValueEnumConst(wireNumber: 999)
-  static const LookupGuildResponseGuildChannelsInnerTypeEnum number999 = _$lookupGuildResponseGuildChannelsInnerTypeEnum_number999;
+  static const LookupGuildResponseGuildChannelsInnerTypeEnum number999 =
+      _$lookupGuildResponseGuildChannelsInnerTypeEnum_number999;
 
-  static Serializer<LookupGuildResponseGuildChannelsInnerTypeEnum> get serializer => _$lookupGuildResponseGuildChannelsInnerTypeEnumSerializer;
+  static Serializer<LookupGuildResponseGuildChannelsInnerTypeEnum>
+      get serializer =>
+          _$lookupGuildResponseGuildChannelsInnerTypeEnumSerializer;
 
-  const LookupGuildResponseGuildChannelsInnerTypeEnum._(String name): super(name);
+  const LookupGuildResponseGuildChannelsInnerTypeEnum._(String name)
+      : super(name);
 
-  static BuiltSet<LookupGuildResponseGuildChannelsInnerTypeEnum> get values => _$lookupGuildResponseGuildChannelsInnerTypeEnumValues;
-  static LookupGuildResponseGuildChannelsInnerTypeEnum valueOf(String name) => _$lookupGuildResponseGuildChannelsInnerTypeEnumValueOf(name);
+  static BuiltSet<LookupGuildResponseGuildChannelsInnerTypeEnum> get values =>
+      _$lookupGuildResponseGuildChannelsInnerTypeEnumValues;
+  static LookupGuildResponseGuildChannelsInnerTypeEnum valueOf(String name) =>
+      _$lookupGuildResponseGuildChannelsInnerTypeEnumValueOf(name);
 }
-

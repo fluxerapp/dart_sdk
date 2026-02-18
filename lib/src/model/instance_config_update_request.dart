@@ -12,15 +12,17 @@ part 'instance_config_update_request.g.dart';
 /// InstanceConfigUpdateRequest
 ///
 /// Properties:
-/// * [manualReviewEnabled] 
-/// * [manualReviewScheduleEnabled] 
-/// * [manualReviewScheduleStartHourUtc] 
-/// * [manualReviewScheduleEndHourUtc] 
-/// * [registrationAlertsWebhookUrl] 
-/// * [systemAlertsWebhookUrl] 
-/// * [sso] 
+/// * [manualReviewEnabled]
+/// * [manualReviewScheduleEnabled]
+/// * [manualReviewScheduleStartHourUtc]
+/// * [manualReviewScheduleEndHourUtc]
+/// * [registrationAlertsWebhookUrl]
+/// * [systemAlertsWebhookUrl]
+/// * [sso]
 @BuiltValue()
-abstract class InstanceConfigUpdateRequest implements Built<InstanceConfigUpdateRequest, InstanceConfigUpdateRequestBuilder> {
+abstract class InstanceConfigUpdateRequest
+    implements
+        Built<InstanceConfigUpdateRequest, InstanceConfigUpdateRequestBuilder> {
   @BuiltValueField(wireName: r'manual_review_enabled')
   bool? get manualReviewEnabled;
 
@@ -44,18 +46,25 @@ abstract class InstanceConfigUpdateRequest implements Built<InstanceConfigUpdate
 
   InstanceConfigUpdateRequest._();
 
-  factory InstanceConfigUpdateRequest([void updates(InstanceConfigUpdateRequestBuilder b)]) = _$InstanceConfigUpdateRequest;
+  factory InstanceConfigUpdateRequest(
+          [void updates(InstanceConfigUpdateRequestBuilder b)]) =
+      _$InstanceConfigUpdateRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(InstanceConfigUpdateRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<InstanceConfigUpdateRequest> get serializer => _$InstanceConfigUpdateRequestSerializer();
+  static Serializer<InstanceConfigUpdateRequest> get serializer =>
+      _$InstanceConfigUpdateRequestSerializer();
 }
 
-class _$InstanceConfigUpdateRequestSerializer implements PrimitiveSerializer<InstanceConfigUpdateRequest> {
+class _$InstanceConfigUpdateRequestSerializer
+    implements PrimitiveSerializer<InstanceConfigUpdateRequest> {
   @override
-  final Iterable<Type> types = const [InstanceConfigUpdateRequest, _$InstanceConfigUpdateRequest];
+  final Iterable<Type> types = const [
+    InstanceConfigUpdateRequest,
+    _$InstanceConfigUpdateRequest
+  ];
 
   @override
   final String wireName = r'InstanceConfigUpdateRequest';
@@ -122,7 +131,9 @@ class _$InstanceConfigUpdateRequestSerializer implements PrimitiveSerializer<Ins
     InstanceConfigUpdateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -216,4 +227,3 @@ class _$InstanceConfigUpdateRequestSerializer implements PrimitiveSerializer<Ins
     return result.build();
   }
 }
-

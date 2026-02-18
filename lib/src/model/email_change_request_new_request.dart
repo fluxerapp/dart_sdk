@@ -12,10 +12,13 @@ part 'email_change_request_new_request.g.dart';
 ///
 /// Properties:
 /// * [ticket] - Email change ticket identifier
-/// * [newEmail] 
+/// * [newEmail]
 /// * [originalProof] - Proof token obtained from verifying the original email
 @BuiltValue()
-abstract class EmailChangeRequestNewRequest implements Built<EmailChangeRequestNewRequest, EmailChangeRequestNewRequestBuilder> {
+abstract class EmailChangeRequestNewRequest
+    implements
+        Built<EmailChangeRequestNewRequest,
+            EmailChangeRequestNewRequestBuilder> {
   /// Email change ticket identifier
   @BuiltValueField(wireName: r'ticket')
   String get ticket;
@@ -29,18 +32,25 @@ abstract class EmailChangeRequestNewRequest implements Built<EmailChangeRequestN
 
   EmailChangeRequestNewRequest._();
 
-  factory EmailChangeRequestNewRequest([void updates(EmailChangeRequestNewRequestBuilder b)]) = _$EmailChangeRequestNewRequest;
+  factory EmailChangeRequestNewRequest(
+          [void updates(EmailChangeRequestNewRequestBuilder b)]) =
+      _$EmailChangeRequestNewRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(EmailChangeRequestNewRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<EmailChangeRequestNewRequest> get serializer => _$EmailChangeRequestNewRequestSerializer();
+  static Serializer<EmailChangeRequestNewRequest> get serializer =>
+      _$EmailChangeRequestNewRequestSerializer();
 }
 
-class _$EmailChangeRequestNewRequestSerializer implements PrimitiveSerializer<EmailChangeRequestNewRequest> {
+class _$EmailChangeRequestNewRequestSerializer
+    implements PrimitiveSerializer<EmailChangeRequestNewRequest> {
   @override
-  final Iterable<Type> types = const [EmailChangeRequestNewRequest, _$EmailChangeRequestNewRequest];
+  final Iterable<Type> types = const [
+    EmailChangeRequestNewRequest,
+    _$EmailChangeRequestNewRequest
+  ];
 
   @override
   final String wireName = r'EmailChangeRequestNewRequest';
@@ -73,7 +83,9 @@ class _$EmailChangeRequestNewRequestSerializer implements PrimitiveSerializer<Em
     EmailChangeRequestNewRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -137,4 +149,3 @@ class _$EmailChangeRequestNewRequestSerializer implements PrimitiveSerializer<Em
     return result.build();
   }
 }
-

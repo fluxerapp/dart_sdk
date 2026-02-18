@@ -14,7 +14,7 @@ part 'error.g.dart';
 /// Error
 ///
 /// Properties:
-/// * [code] 
+/// * [code]
 /// * [message] - Human-readable error message
 /// * [errors] - Field-specific validation errors
 @BuiltValue()
@@ -68,7 +68,8 @@ class _$ErrorSerializer implements PrimitiveSerializer<Error> {
       yield r'errors';
       yield serializers.serialize(
         object.errors,
-        specifiedType: const FullType(BuiltList, [FullType(ValidationErrorItem)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(ValidationErrorItem)]),
       );
     }
   }
@@ -79,7 +80,9 @@ class _$ErrorSerializer implements PrimitiveSerializer<Error> {
     Error object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -111,7 +114,8 @@ class _$ErrorSerializer implements PrimitiveSerializer<Error> {
         case r'errors':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ValidationErrorItem)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(ValidationErrorItem)]),
           ) as BuiltList<ValidationErrorItem>;
           result.errors.replace(valueDes);
           break;
@@ -143,4 +147,3 @@ class _$ErrorSerializer implements PrimitiveSerializer<Error> {
     return result.build();
   }
 }
-

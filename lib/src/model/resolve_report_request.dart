@@ -11,10 +11,11 @@ part 'resolve_report_request.g.dart';
 /// ResolveReportRequest
 ///
 /// Properties:
-/// * [reportId] 
+/// * [reportId]
 /// * [publicComment] - Public comment to include with the resolution
 @BuiltValue()
-abstract class ResolveReportRequest implements Built<ResolveReportRequest, ResolveReportRequestBuilder> {
+abstract class ResolveReportRequest
+    implements Built<ResolveReportRequest, ResolveReportRequestBuilder> {
   @BuiltValueField(wireName: r'report_id')
   String get reportId;
 
@@ -24,18 +25,24 @@ abstract class ResolveReportRequest implements Built<ResolveReportRequest, Resol
 
   ResolveReportRequest._();
 
-  factory ResolveReportRequest([void updates(ResolveReportRequestBuilder b)]) = _$ResolveReportRequest;
+  factory ResolveReportRequest([void updates(ResolveReportRequestBuilder b)]) =
+      _$ResolveReportRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ResolveReportRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ResolveReportRequest> get serializer => _$ResolveReportRequestSerializer();
+  static Serializer<ResolveReportRequest> get serializer =>
+      _$ResolveReportRequestSerializer();
 }
 
-class _$ResolveReportRequestSerializer implements PrimitiveSerializer<ResolveReportRequest> {
+class _$ResolveReportRequestSerializer
+    implements PrimitiveSerializer<ResolveReportRequest> {
   @override
-  final Iterable<Type> types = const [ResolveReportRequest, _$ResolveReportRequest];
+  final Iterable<Type> types = const [
+    ResolveReportRequest,
+    _$ResolveReportRequest
+  ];
 
   @override
   final String wireName = r'ResolveReportRequest';
@@ -65,7 +72,9 @@ class _$ResolveReportRequestSerializer implements PrimitiveSerializer<ResolveRep
     ResolveReportRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -122,4 +131,3 @@ class _$ResolveReportRequestSerializer implements PrimitiveSerializer<ResolveRep
     return result.build();
   }
 }
-

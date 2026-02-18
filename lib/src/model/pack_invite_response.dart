@@ -16,12 +16,13 @@ part 'pack_invite_response.g.dart';
 /// Properties:
 /// * [code] - The unique invite code
 /// * [type] - The type of pack invite (emoji or sticker pack)
-/// * [pack] 
+/// * [pack]
 /// * [temporary] - Whether the invite grants temporary access
-/// * [inviter] 
-/// * [expiresAt] 
+/// * [inviter]
+/// * [expiresAt]
 @BuiltValue()
-abstract class PackInviteResponse implements Built<PackInviteResponse, PackInviteResponseBuilder> {
+abstract class PackInviteResponse
+    implements Built<PackInviteResponse, PackInviteResponseBuilder> {
   /// The unique invite code
   @BuiltValueField(wireName: r'code')
   String get code;
@@ -46,16 +47,19 @@ abstract class PackInviteResponse implements Built<PackInviteResponse, PackInvit
 
   PackInviteResponse._();
 
-  factory PackInviteResponse([void updates(PackInviteResponseBuilder b)]) = _$PackInviteResponse;
+  factory PackInviteResponse([void updates(PackInviteResponseBuilder b)]) =
+      _$PackInviteResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PackInviteResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PackInviteResponse> get serializer => _$PackInviteResponseSerializer();
+  static Serializer<PackInviteResponse> get serializer =>
+      _$PackInviteResponseSerializer();
 }
 
-class _$PackInviteResponseSerializer implements PrimitiveSerializer<PackInviteResponse> {
+class _$PackInviteResponseSerializer
+    implements PrimitiveSerializer<PackInviteResponse> {
   @override
   final Iterable<Type> types = const [PackInviteResponse, _$PackInviteResponse];
 
@@ -109,7 +113,9 @@ class _$PackInviteResponseSerializer implements PrimitiveSerializer<PackInviteRe
     PackInviteResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -198,19 +204,23 @@ class _$PackInviteResponseSerializer implements PrimitiveSerializer<PackInviteRe
 }
 
 class PackInviteResponseTypeEnum extends EnumClass {
-
   /// The type of pack invite (emoji or sticker pack)
   @BuiltValueEnumConst(wireNumber: 2)
-  static const PackInviteResponseTypeEnum number2 = _$packInviteResponseTypeEnum_number2;
+  static const PackInviteResponseTypeEnum number2 =
+      _$packInviteResponseTypeEnum_number2;
+
   /// The type of pack invite (emoji or sticker pack)
   @BuiltValueEnumConst(wireNumber: 3)
-  static const PackInviteResponseTypeEnum number3 = _$packInviteResponseTypeEnum_number3;
+  static const PackInviteResponseTypeEnum number3 =
+      _$packInviteResponseTypeEnum_number3;
 
-  static Serializer<PackInviteResponseTypeEnum> get serializer => _$packInviteResponseTypeEnumSerializer;
+  static Serializer<PackInviteResponseTypeEnum> get serializer =>
+      _$packInviteResponseTypeEnumSerializer;
 
-  const PackInviteResponseTypeEnum._(String name): super(name);
+  const PackInviteResponseTypeEnum._(String name) : super(name);
 
-  static BuiltSet<PackInviteResponseTypeEnum> get values => _$packInviteResponseTypeEnumValues;
-  static PackInviteResponseTypeEnum valueOf(String name) => _$packInviteResponseTypeEnumValueOf(name);
+  static BuiltSet<PackInviteResponseTypeEnum> get values =>
+      _$packInviteResponseTypeEnumValues;
+  static PackInviteResponseTypeEnum valueOf(String name) =>
+      _$packInviteResponseTypeEnumValueOf(name);
 }
-

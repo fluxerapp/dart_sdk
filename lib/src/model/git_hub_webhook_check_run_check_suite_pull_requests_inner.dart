@@ -11,26 +11,41 @@ part 'git_hub_webhook_check_run_check_suite_pull_requests_inner.g.dart';
 /// GitHubWebhookCheckRunCheckSuitePullRequestsInner
 ///
 /// Properties:
-/// * [number] 
+/// * [number]
 @BuiltValue()
-abstract class GitHubWebhookCheckRunCheckSuitePullRequestsInner implements Built<GitHubWebhookCheckRunCheckSuitePullRequestsInner, GitHubWebhookCheckRunCheckSuitePullRequestsInnerBuilder> {
+abstract class GitHubWebhookCheckRunCheckSuitePullRequestsInner
+    implements
+        Built<GitHubWebhookCheckRunCheckSuitePullRequestsInner,
+            GitHubWebhookCheckRunCheckSuitePullRequestsInnerBuilder> {
   @BuiltValueField(wireName: r'number')
   int get number;
 
   GitHubWebhookCheckRunCheckSuitePullRequestsInner._();
 
-  factory GitHubWebhookCheckRunCheckSuitePullRequestsInner([void updates(GitHubWebhookCheckRunCheckSuitePullRequestsInnerBuilder b)]) = _$GitHubWebhookCheckRunCheckSuitePullRequestsInner;
+  factory GitHubWebhookCheckRunCheckSuitePullRequestsInner(
+          [void updates(
+              GitHubWebhookCheckRunCheckSuitePullRequestsInnerBuilder b)]) =
+      _$GitHubWebhookCheckRunCheckSuitePullRequestsInner;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(GitHubWebhookCheckRunCheckSuitePullRequestsInnerBuilder b) => b;
+  static void _defaults(
+          GitHubWebhookCheckRunCheckSuitePullRequestsInnerBuilder b) =>
+      b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GitHubWebhookCheckRunCheckSuitePullRequestsInner> get serializer => _$GitHubWebhookCheckRunCheckSuitePullRequestsInnerSerializer();
+  static Serializer<GitHubWebhookCheckRunCheckSuitePullRequestsInner>
+      get serializer =>
+          _$GitHubWebhookCheckRunCheckSuitePullRequestsInnerSerializer();
 }
 
-class _$GitHubWebhookCheckRunCheckSuitePullRequestsInnerSerializer implements PrimitiveSerializer<GitHubWebhookCheckRunCheckSuitePullRequestsInner> {
+class _$GitHubWebhookCheckRunCheckSuitePullRequestsInnerSerializer
+    implements
+        PrimitiveSerializer<GitHubWebhookCheckRunCheckSuitePullRequestsInner> {
   @override
-  final Iterable<Type> types = const [GitHubWebhookCheckRunCheckSuitePullRequestsInner, _$GitHubWebhookCheckRunCheckSuitePullRequestsInner];
+  final Iterable<Type> types = const [
+    GitHubWebhookCheckRunCheckSuitePullRequestsInner,
+    _$GitHubWebhookCheckRunCheckSuitePullRequestsInner
+  ];
 
   @override
   final String wireName = r'GitHubWebhookCheckRunCheckSuitePullRequestsInner';
@@ -53,7 +68,9 @@ class _$GitHubWebhookCheckRunCheckSuitePullRequestsInnerSerializer implements Pr
     GitHubWebhookCheckRunCheckSuitePullRequestsInner object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,4 +120,3 @@ class _$GitHubWebhookCheckRunCheckSuitePullRequestsInnerSerializer implements Pr
     return result.build();
   }
 }
-

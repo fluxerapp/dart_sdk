@@ -4,21 +4,17 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:built_collection/built_collection.dart';
 import 'package:fluxer_dart/src/api_util.dart';
-import 'package:fluxer_dart/src/model/error.dart';
-import 'package:fluxer_dart/src/model/get_well_known_fluxer429_response.dart';
 import 'package:fluxer_dart/src/model/locale.dart';
 import 'package:fluxer_dart/src/model/tenor_featured_response.dart';
 import 'package:fluxer_dart/src/model/tenor_gif_response.dart';
 import 'package:fluxer_dart/src/model/tenor_register_share_request.dart';
 
 class TenorApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -29,7 +25,7 @@ class TenorApi {
   /// Retrieves currently featured GIFs from Tenor based on user locale.
   ///
   /// Parameters:
-  /// * [locale] 
+  /// * [locale]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -39,7 +35,7 @@ class TenorApi {
   ///
   /// Returns a [Future] containing a [Response] with a [TenorFeaturedResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<TenorFeaturedResponse>> getTenorFeatured({ 
+  Future<Response<TenorFeaturedResponse>> getTenorFeatured({
     Locale? locale,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -61,7 +57,8 @@ class TenorApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -74,7 +71,9 @@ class TenorApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (locale != null) r'locale': encodeQueryParameter(_serializers, locale, const FullType(Locale)),
+      if (locale != null)
+        r'locale':
+            encodeQueryParameter(_serializers, locale, const FullType(Locale)),
     };
 
     final _response = await _dio.request<Object>(
@@ -90,11 +89,12 @@ class TenorApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(TenorFeaturedResponse),
-      ) as TenorFeaturedResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(TenorFeaturedResponse),
+            ) as TenorFeaturedResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -121,8 +121,8 @@ class TenorApi {
   /// Returns search term suggestions from Tenor based on the partial query provided.
   ///
   /// Parameters:
-  /// * [q] 
-  /// * [locale] 
+  /// * [q]
+  /// * [locale]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -132,7 +132,7 @@ class TenorApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<String>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<String>>> getTenorSearchSuggestions({ 
+  Future<Response<BuiltList<String>>> getTenorSearchSuggestions({
     required String q,
     Locale? locale,
     CancelToken? cancelToken,
@@ -155,7 +155,8 @@ class TenorApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -169,7 +170,9 @@ class TenorApi {
 
     final _queryParameters = <String, dynamic>{
       r'q': encodeQueryParameter(_serializers, q, const FullType(String)),
-      if (locale != null) r'locale': encodeQueryParameter(_serializers, locale, const FullType(Locale)),
+      if (locale != null)
+        r'locale':
+            encodeQueryParameter(_serializers, locale, const FullType(Locale)),
     };
 
     final _response = await _dio.request<Object>(
@@ -185,11 +188,12 @@ class TenorApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(String)]),
-      ) as BuiltList<String>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(BuiltList, [FullType(String)]),
+            ) as BuiltList<String>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -216,7 +220,7 @@ class TenorApi {
   /// Retrieves trending/featured GIFs from Tenor based on user locale and popularity.
   ///
   /// Parameters:
-  /// * [locale] 
+  /// * [locale]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -226,7 +230,7 @@ class TenorApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<TenorGifResponse>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<TenorGifResponse>>> getTenorTrendingGifs({ 
+  Future<Response<BuiltList<TenorGifResponse>>> getTenorTrendingGifs({
     Locale? locale,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -248,7 +252,8 @@ class TenorApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -261,7 +266,9 @@ class TenorApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (locale != null) r'locale': encodeQueryParameter(_serializers, locale, const FullType(Locale)),
+      if (locale != null)
+        r'locale':
+            encodeQueryParameter(_serializers, locale, const FullType(Locale)),
     };
 
     final _response = await _dio.request<Object>(
@@ -277,11 +284,13 @@ class TenorApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(TenorGifResponse)]),
-      ) as BuiltList<TenorGifResponse>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType:
+                  const FullType(BuiltList, [FullType(TenorGifResponse)]),
+            ) as BuiltList<TenorGifResponse>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -308,7 +317,7 @@ class TenorApi {
   /// Registers a shared GIF with Tenor to help tune search results.
   ///
   /// Parameters:
-  /// * [tenorRegisterShareRequest] 
+  /// * [tenorRegisterShareRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -318,7 +327,7 @@ class TenorApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> registerTenorGifShare({ 
+  Future<Response<void>> registerTenorGifShare({
     required TenorRegisterShareRequest tenorRegisterShareRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -340,7 +349,8 @@ class TenorApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -357,11 +367,11 @@ class TenorApi {
 
     try {
       const _type = FullType(TenorRegisterShareRequest);
-      _bodyData = _serializers.serialize(tenorRegisterShareRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(tenorRegisterShareRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -387,8 +397,8 @@ class TenorApi {
   /// Searches Tenor for GIFs matching the given query string and locale.
   ///
   /// Parameters:
-  /// * [q] 
-  /// * [locale] 
+  /// * [q]
+  /// * [locale]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -398,7 +408,7 @@ class TenorApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<TenorGifResponse>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<TenorGifResponse>>> searchTenorGifs({ 
+  Future<Response<BuiltList<TenorGifResponse>>> searchTenorGifs({
     required String q,
     Locale? locale,
     CancelToken? cancelToken,
@@ -421,7 +431,8 @@ class TenorApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -435,7 +446,9 @@ class TenorApi {
 
     final _queryParameters = <String, dynamic>{
       r'q': encodeQueryParameter(_serializers, q, const FullType(String)),
-      if (locale != null) r'locale': encodeQueryParameter(_serializers, locale, const FullType(Locale)),
+      if (locale != null)
+        r'locale':
+            encodeQueryParameter(_serializers, locale, const FullType(Locale)),
     };
 
     final _response = await _dio.request<Object>(
@@ -451,11 +464,13 @@ class TenorApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(TenorGifResponse)]),
-      ) as BuiltList<TenorGifResponse>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType:
+                  const FullType(BuiltList, [FullType(TenorGifResponse)]),
+            ) as BuiltList<TenorGifResponse>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -477,5 +492,4 @@ class TenorApi {
       extra: _response.extra,
     );
   }
-
 }

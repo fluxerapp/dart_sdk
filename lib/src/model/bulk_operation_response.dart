@@ -13,10 +13,11 @@ part 'bulk_operation_response.g.dart';
 /// BulkOperationResponse
 ///
 /// Properties:
-/// * [successful] 
-/// * [failed] 
+/// * [successful]
+/// * [failed]
 @BuiltValue()
-abstract class BulkOperationResponse implements Built<BulkOperationResponse, BulkOperationResponseBuilder> {
+abstract class BulkOperationResponse
+    implements Built<BulkOperationResponse, BulkOperationResponseBuilder> {
   @BuiltValueField(wireName: r'successful')
   BuiltList<String> get successful;
 
@@ -25,18 +26,24 @@ abstract class BulkOperationResponse implements Built<BulkOperationResponse, Bul
 
   BulkOperationResponse._();
 
-  factory BulkOperationResponse([void updates(BulkOperationResponseBuilder b)]) = _$BulkOperationResponse;
+  factory BulkOperationResponse(
+      [void updates(BulkOperationResponseBuilder b)]) = _$BulkOperationResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(BulkOperationResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<BulkOperationResponse> get serializer => _$BulkOperationResponseSerializer();
+  static Serializer<BulkOperationResponse> get serializer =>
+      _$BulkOperationResponseSerializer();
 }
 
-class _$BulkOperationResponseSerializer implements PrimitiveSerializer<BulkOperationResponse> {
+class _$BulkOperationResponseSerializer
+    implements PrimitiveSerializer<BulkOperationResponse> {
   @override
-  final Iterable<Type> types = const [BulkOperationResponse, _$BulkOperationResponse];
+  final Iterable<Type> types = const [
+    BulkOperationResponse,
+    _$BulkOperationResponse
+  ];
 
   @override
   final String wireName = r'BulkOperationResponse';
@@ -54,7 +61,8 @@ class _$BulkOperationResponseSerializer implements PrimitiveSerializer<BulkOpera
     yield r'failed';
     yield serializers.serialize(
       object.failed,
-      specifiedType: const FullType(BuiltList, [FullType(BulkOperationFailedResponse)]),
+      specifiedType:
+          const FullType(BuiltList, [FullType(BulkOperationFailedResponse)]),
     );
   }
 
@@ -64,7 +72,9 @@ class _$BulkOperationResponseSerializer implements PrimitiveSerializer<BulkOpera
     BulkOperationResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -89,7 +99,8 @@ class _$BulkOperationResponseSerializer implements PrimitiveSerializer<BulkOpera
         case r'failed':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(BulkOperationFailedResponse)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(BulkOperationFailedResponse)]),
           ) as BuiltList<BulkOperationFailedResponse>;
           result.failed.replace(valueDes);
           break;
@@ -121,4 +132,3 @@ class _$BulkOperationResponseSerializer implements PrimitiveSerializer<BulkOpera
     return result.build();
   }
 }
-

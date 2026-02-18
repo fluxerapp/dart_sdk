@@ -13,17 +13,20 @@ part 'channel_create_category_request.g.dart';
 /// ChannelCreateCategoryRequest
 ///
 /// Properties:
-/// * [type] 
+/// * [type]
 /// * [name] - The name of the category
-/// * [topic] 
-/// * [url] 
-/// * [parentId] 
-/// * [bitrate] 
-/// * [userLimit] 
+/// * [topic]
+/// * [url]
+/// * [parentId]
+/// * [bitrate]
+/// * [userLimit]
 /// * [permissionOverwrites] - Permission overwrites for roles and members
 /// * [nsfw] - Whether the channel is marked as NSFW
 @BuiltValue()
-abstract class ChannelCreateCategoryRequest implements Built<ChannelCreateCategoryRequest, ChannelCreateCategoryRequestBuilder> {
+abstract class ChannelCreateCategoryRequest
+    implements
+        Built<ChannelCreateCategoryRequest,
+            ChannelCreateCategoryRequestBuilder> {
   @BuiltValueField(wireName: r'type')
   ChannelCreateCategoryRequestTypeEnum get type;
   // enum typeEnum {  4,  };
@@ -57,18 +60,25 @@ abstract class ChannelCreateCategoryRequest implements Built<ChannelCreateCatego
 
   ChannelCreateCategoryRequest._();
 
-  factory ChannelCreateCategoryRequest([void updates(ChannelCreateCategoryRequestBuilder b)]) = _$ChannelCreateCategoryRequest;
+  factory ChannelCreateCategoryRequest(
+          [void updates(ChannelCreateCategoryRequestBuilder b)]) =
+      _$ChannelCreateCategoryRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ChannelCreateCategoryRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ChannelCreateCategoryRequest> get serializer => _$ChannelCreateCategoryRequestSerializer();
+  static Serializer<ChannelCreateCategoryRequest> get serializer =>
+      _$ChannelCreateCategoryRequestSerializer();
 }
 
-class _$ChannelCreateCategoryRequestSerializer implements PrimitiveSerializer<ChannelCreateCategoryRequest> {
+class _$ChannelCreateCategoryRequestSerializer
+    implements PrimitiveSerializer<ChannelCreateCategoryRequest> {
   @override
-  final Iterable<Type> types = const [ChannelCreateCategoryRequest, _$ChannelCreateCategoryRequest];
+  final Iterable<Type> types = const [
+    ChannelCreateCategoryRequest,
+    _$ChannelCreateCategoryRequest
+  ];
 
   @override
   final String wireName = r'ChannelCreateCategoryRequest';
@@ -127,7 +137,8 @@ class _$ChannelCreateCategoryRequestSerializer implements PrimitiveSerializer<Ch
       yield r'permission_overwrites';
       yield serializers.serialize(
         object.permissionOverwrites,
-        specifiedType: const FullType(BuiltList, [FullType(ChannelOverwriteRequest)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(ChannelOverwriteRequest)]),
       );
     }
     if (object.nsfw != null) {
@@ -145,7 +156,9 @@ class _$ChannelCreateCategoryRequestSerializer implements PrimitiveSerializer<Ch
     ChannelCreateCategoryRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -216,7 +229,8 @@ class _$ChannelCreateCategoryRequestSerializer implements PrimitiveSerializer<Ch
         case r'permission_overwrites':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ChannelOverwriteRequest)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(ChannelOverwriteRequest)]),
           ) as BuiltList<ChannelOverwriteRequest>;
           result.permissionOverwrites.replace(valueDes);
           break;
@@ -257,15 +271,17 @@ class _$ChannelCreateCategoryRequestSerializer implements PrimitiveSerializer<Ch
 }
 
 class ChannelCreateCategoryRequestTypeEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireNumber: 4)
-  static const ChannelCreateCategoryRequestTypeEnum number4 = _$channelCreateCategoryRequestTypeEnum_number4;
+  static const ChannelCreateCategoryRequestTypeEnum number4 =
+      _$channelCreateCategoryRequestTypeEnum_number4;
 
-  static Serializer<ChannelCreateCategoryRequestTypeEnum> get serializer => _$channelCreateCategoryRequestTypeEnumSerializer;
+  static Serializer<ChannelCreateCategoryRequestTypeEnum> get serializer =>
+      _$channelCreateCategoryRequestTypeEnumSerializer;
 
-  const ChannelCreateCategoryRequestTypeEnum._(String name): super(name);
+  const ChannelCreateCategoryRequestTypeEnum._(String name) : super(name);
 
-  static BuiltSet<ChannelCreateCategoryRequestTypeEnum> get values => _$channelCreateCategoryRequestTypeEnumValues;
-  static ChannelCreateCategoryRequestTypeEnum valueOf(String name) => _$channelCreateCategoryRequestTypeEnumValueOf(name);
+  static BuiltSet<ChannelCreateCategoryRequestTypeEnum> get values =>
+      _$channelCreateCategoryRequestTypeEnumValues;
+  static ChannelCreateCategoryRequestTypeEnum valueOf(String name) =>
+      _$channelCreateCategoryRequestTypeEnumValueOf(name);
 }
-

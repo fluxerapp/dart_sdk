@@ -16,11 +16,12 @@ part 'guild_admin_response.g.dart';
 /// * [name] - The name of the guild
 /// * [features] - Array of guild feature flags
 /// * [ownerId] - The ID of the guild owner
-/// * [icon] 
-/// * [banner] 
+/// * [icon]
+/// * [banner]
 /// * [memberCount] - The number of members in the guild
 @BuiltValue()
-abstract class GuildAdminResponse implements Built<GuildAdminResponse, GuildAdminResponseBuilder> {
+abstract class GuildAdminResponse
+    implements Built<GuildAdminResponse, GuildAdminResponseBuilder> {
   /// The unique identifier for this guild
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -49,16 +50,19 @@ abstract class GuildAdminResponse implements Built<GuildAdminResponse, GuildAdmi
 
   GuildAdminResponse._();
 
-  factory GuildAdminResponse([void updates(GuildAdminResponseBuilder b)]) = _$GuildAdminResponse;
+  factory GuildAdminResponse([void updates(GuildAdminResponseBuilder b)]) =
+      _$GuildAdminResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildAdminResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildAdminResponse> get serializer => _$GuildAdminResponseSerializer();
+  static Serializer<GuildAdminResponse> get serializer =>
+      _$GuildAdminResponseSerializer();
 }
 
-class _$GuildAdminResponseSerializer implements PrimitiveSerializer<GuildAdminResponse> {
+class _$GuildAdminResponseSerializer
+    implements PrimitiveSerializer<GuildAdminResponse> {
   @override
   final Iterable<Type> types = const [GuildAdminResponse, _$GuildAdminResponse];
 
@@ -91,15 +95,19 @@ class _$GuildAdminResponseSerializer implements PrimitiveSerializer<GuildAdminRe
       specifiedType: const FullType(String),
     );
     yield r'icon';
-    yield object.icon == null ? null : serializers.serialize(
-      object.icon,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.icon == null
+        ? null
+        : serializers.serialize(
+            object.icon,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'banner';
-    yield object.banner == null ? null : serializers.serialize(
-      object.banner,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.banner == null
+        ? null
+        : serializers.serialize(
+            object.banner,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'member_count';
     yield serializers.serialize(
       object.memberCount,
@@ -113,7 +121,9 @@ class _$GuildAdminResponseSerializer implements PrimitiveSerializer<GuildAdminRe
     GuildAdminResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -207,4 +217,3 @@ class _$GuildAdminResponseSerializer implements PrimitiveSerializer<GuildAdminRe
     return result.build();
   }
 }
-

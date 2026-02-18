@@ -12,34 +12,40 @@ part 'custom_status_payload_expires_at.g.dart';
 
 /// When the custom status expires
 @BuiltValue()
-abstract class CustomStatusPayloadExpiresAt implements Built<CustomStatusPayloadExpiresAt, CustomStatusPayloadExpiresAtBuilder> {
+abstract class CustomStatusPayloadExpiresAt
+    implements
+        Built<CustomStatusPayloadExpiresAt,
+            CustomStatusPayloadExpiresAtBuilder> {
   /// One Of [String], [int]
   OneOf get oneOf;
 
   CustomStatusPayloadExpiresAt._();
 
-  factory CustomStatusPayloadExpiresAt([void updates(CustomStatusPayloadExpiresAtBuilder b)]) = _$CustomStatusPayloadExpiresAt;
+  factory CustomStatusPayloadExpiresAt(
+          [void updates(CustomStatusPayloadExpiresAtBuilder b)]) =
+      _$CustomStatusPayloadExpiresAt;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CustomStatusPayloadExpiresAtBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CustomStatusPayloadExpiresAt> get serializer => _$CustomStatusPayloadExpiresAtSerializer();
+  static Serializer<CustomStatusPayloadExpiresAt> get serializer =>
+      _$CustomStatusPayloadExpiresAtSerializer();
 }
 
-class _$CustomStatusPayloadExpiresAtSerializer implements PrimitiveSerializer<CustomStatusPayloadExpiresAt> {
+class _$CustomStatusPayloadExpiresAtSerializer
+    implements PrimitiveSerializer<CustomStatusPayloadExpiresAt> {
   @override
-  final Iterable<Type> types = const [CustomStatusPayloadExpiresAt, _$CustomStatusPayloadExpiresAt];
+  final Iterable<Type> types = const [
+    CustomStatusPayloadExpiresAt,
+    _$CustomStatusPayloadExpiresAt
+  ];
 
   @override
   final String wireName = r'CustomStatusPayloadExpiresAt';
 
   Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    CustomStatusPayloadExpiresAt object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-  }
+      Serializers serializers, CustomStatusPayloadExpiresAt object) sync* {}
 
   @override
   Object serialize(
@@ -48,7 +54,8 @@ class _$CustomStatusPayloadExpiresAtSerializer implements PrimitiveSerializer<Cu
     FullType specifiedType = FullType.unspecified,
   }) {
     final oneOf = object.oneOf;
-    return serializers.serialize(oneOf.value, specifiedType: FullType(oneOf.valueType))!;
+    return serializers.serialize(oneOf.value,
+        specifiedType: FullType(oneOf.valueType))!;
   }
 
   @override
@@ -59,10 +66,13 @@ class _$CustomStatusPayloadExpiresAtSerializer implements PrimitiveSerializer<Cu
   }) {
     final result = CustomStatusPayloadExpiresAtBuilder();
     Object? oneOfDataSrc;
-    final targetType = const FullType(OneOf, [FullType(String), FullType(int), ]);
+    final targetType = const FullType(OneOf, [
+      FullType(String),
+      FullType(int),
+    ]);
     oneOfDataSrc = serialized;
-    result.oneOf = serializers.deserialize(oneOfDataSrc, specifiedType: targetType) as OneOf;
+    result.oneOf = serializers.deserialize(oneOfDataSrc,
+        specifiedType: targetType) as OneOf;
     return result.build();
   }
 }
-

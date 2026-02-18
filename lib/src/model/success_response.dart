@@ -14,7 +14,8 @@ part 'success_response.g.dart';
 /// Properties:
 /// * [success] - Whether the operation succeeded
 @BuiltValue()
-abstract class SuccessResponse implements Built<SuccessResponse, SuccessResponseBuilder> {
+abstract class SuccessResponse
+    implements Built<SuccessResponse, SuccessResponseBuilder> {
   /// Whether the operation succeeded
   @BuiltValueField(wireName: r'success')
   SuccessResponseSuccessEnum get success;
@@ -22,16 +23,19 @@ abstract class SuccessResponse implements Built<SuccessResponse, SuccessResponse
 
   SuccessResponse._();
 
-  factory SuccessResponse([void updates(SuccessResponseBuilder b)]) = _$SuccessResponse;
+  factory SuccessResponse([void updates(SuccessResponseBuilder b)]) =
+      _$SuccessResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SuccessResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SuccessResponse> get serializer => _$SuccessResponseSerializer();
+  static Serializer<SuccessResponse> get serializer =>
+      _$SuccessResponseSerializer();
 }
 
-class _$SuccessResponseSerializer implements PrimitiveSerializer<SuccessResponse> {
+class _$SuccessResponseSerializer
+    implements PrimitiveSerializer<SuccessResponse> {
   @override
   final Iterable<Type> types = const [SuccessResponse, _$SuccessResponse];
 
@@ -56,7 +60,9 @@ class _$SuccessResponseSerializer implements PrimitiveSerializer<SuccessResponse
     SuccessResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -108,16 +114,18 @@ class _$SuccessResponseSerializer implements PrimitiveSerializer<SuccessResponse
 }
 
 class SuccessResponseSuccessEnum extends EnumClass {
-
   /// Whether the operation succeeded
   @BuiltValueEnumConst(wireName: r'true')
-  static const SuccessResponseSuccessEnum true_ = _$successResponseSuccessEnum_true_;
+  static const SuccessResponseSuccessEnum true_ =
+      _$successResponseSuccessEnum_true_;
 
-  static Serializer<SuccessResponseSuccessEnum> get serializer => _$successResponseSuccessEnumSerializer;
+  static Serializer<SuccessResponseSuccessEnum> get serializer =>
+      _$successResponseSuccessEnumSerializer;
 
-  const SuccessResponseSuccessEnum._(String name): super(name);
+  const SuccessResponseSuccessEnum._(String name) : super(name);
 
-  static BuiltSet<SuccessResponseSuccessEnum> get values => _$successResponseSuccessEnumValues;
-  static SuccessResponseSuccessEnum valueOf(String name) => _$successResponseSuccessEnumValueOf(name);
+  static BuiltSet<SuccessResponseSuccessEnum> get values =>
+      _$successResponseSuccessEnumValues;
+  static SuccessResponseSuccessEnum valueOf(String name) =>
+      _$successResponseSuccessEnumValueOf(name);
 }
-

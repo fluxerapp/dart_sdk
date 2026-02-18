@@ -12,27 +12,34 @@ part 'delete_message_response.g.dart';
 /// DeleteMessageResponse
 ///
 /// Properties:
-/// * [success] 
+/// * [success]
 @BuiltValue()
-abstract class DeleteMessageResponse implements Built<DeleteMessageResponse, DeleteMessageResponseBuilder> {
+abstract class DeleteMessageResponse
+    implements Built<DeleteMessageResponse, DeleteMessageResponseBuilder> {
   @BuiltValueField(wireName: r'success')
   DeleteMessageResponseSuccessEnum get success;
   // enum successEnum {  true,  };
 
   DeleteMessageResponse._();
 
-  factory DeleteMessageResponse([void updates(DeleteMessageResponseBuilder b)]) = _$DeleteMessageResponse;
+  factory DeleteMessageResponse(
+      [void updates(DeleteMessageResponseBuilder b)]) = _$DeleteMessageResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(DeleteMessageResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<DeleteMessageResponse> get serializer => _$DeleteMessageResponseSerializer();
+  static Serializer<DeleteMessageResponse> get serializer =>
+      _$DeleteMessageResponseSerializer();
 }
 
-class _$DeleteMessageResponseSerializer implements PrimitiveSerializer<DeleteMessageResponse> {
+class _$DeleteMessageResponseSerializer
+    implements PrimitiveSerializer<DeleteMessageResponse> {
   @override
-  final Iterable<Type> types = const [DeleteMessageResponse, _$DeleteMessageResponse];
+  final Iterable<Type> types = const [
+    DeleteMessageResponse,
+    _$DeleteMessageResponse
+  ];
 
   @override
   final String wireName = r'DeleteMessageResponse';
@@ -55,7 +62,9 @@ class _$DeleteMessageResponseSerializer implements PrimitiveSerializer<DeleteMes
     DeleteMessageResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -107,15 +116,17 @@ class _$DeleteMessageResponseSerializer implements PrimitiveSerializer<DeleteMes
 }
 
 class DeleteMessageResponseSuccessEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'true')
-  static const DeleteMessageResponseSuccessEnum true_ = _$deleteMessageResponseSuccessEnum_true_;
+  static const DeleteMessageResponseSuccessEnum true_ =
+      _$deleteMessageResponseSuccessEnum_true_;
 
-  static Serializer<DeleteMessageResponseSuccessEnum> get serializer => _$deleteMessageResponseSuccessEnumSerializer;
+  static Serializer<DeleteMessageResponseSuccessEnum> get serializer =>
+      _$deleteMessageResponseSuccessEnumSerializer;
 
-  const DeleteMessageResponseSuccessEnum._(String name): super(name);
+  const DeleteMessageResponseSuccessEnum._(String name) : super(name);
 
-  static BuiltSet<DeleteMessageResponseSuccessEnum> get values => _$deleteMessageResponseSuccessEnumValues;
-  static DeleteMessageResponseSuccessEnum valueOf(String name) => _$deleteMessageResponseSuccessEnumValueOf(name);
+  static BuiltSet<DeleteMessageResponseSuccessEnum> get values =>
+      _$deleteMessageResponseSuccessEnumValues;
+  static DeleteMessageResponseSuccessEnum valueOf(String name) =>
+      _$deleteMessageResponseSuccessEnumValueOf(name);
 }
-

@@ -14,7 +14,9 @@ part 'auth_token_with_user_id_response.g.dart';
 /// * [token] - Authentication token for API requests
 /// * [userId] - ID of the authenticated user
 @BuiltValue()
-abstract class AuthTokenWithUserIdResponse implements Built<AuthTokenWithUserIdResponse, AuthTokenWithUserIdResponseBuilder> {
+abstract class AuthTokenWithUserIdResponse
+    implements
+        Built<AuthTokenWithUserIdResponse, AuthTokenWithUserIdResponseBuilder> {
   /// Authentication token for API requests
   @BuiltValueField(wireName: r'token')
   String get token;
@@ -25,18 +27,25 @@ abstract class AuthTokenWithUserIdResponse implements Built<AuthTokenWithUserIdR
 
   AuthTokenWithUserIdResponse._();
 
-  factory AuthTokenWithUserIdResponse([void updates(AuthTokenWithUserIdResponseBuilder b)]) = _$AuthTokenWithUserIdResponse;
+  factory AuthTokenWithUserIdResponse(
+          [void updates(AuthTokenWithUserIdResponseBuilder b)]) =
+      _$AuthTokenWithUserIdResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(AuthTokenWithUserIdResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<AuthTokenWithUserIdResponse> get serializer => _$AuthTokenWithUserIdResponseSerializer();
+  static Serializer<AuthTokenWithUserIdResponse> get serializer =>
+      _$AuthTokenWithUserIdResponseSerializer();
 }
 
-class _$AuthTokenWithUserIdResponseSerializer implements PrimitiveSerializer<AuthTokenWithUserIdResponse> {
+class _$AuthTokenWithUserIdResponseSerializer
+    implements PrimitiveSerializer<AuthTokenWithUserIdResponse> {
   @override
-  final Iterable<Type> types = const [AuthTokenWithUserIdResponse, _$AuthTokenWithUserIdResponse];
+  final Iterable<Type> types = const [
+    AuthTokenWithUserIdResponse,
+    _$AuthTokenWithUserIdResponse
+  ];
 
   @override
   final String wireName = r'AuthTokenWithUserIdResponse';
@@ -64,7 +73,9 @@ class _$AuthTokenWithUserIdResponseSerializer implements PrimitiveSerializer<Aut
     AuthTokenWithUserIdResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +132,3 @@ class _$AuthTokenWithUserIdResponseSerializer implements PrimitiveSerializer<Aut
     return result.build();
   }
 }
-

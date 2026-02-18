@@ -13,23 +13,27 @@ part 'email_token_response.g.dart';
 /// Properties:
 /// * [emailToken] - The email change token to use for updating email
 @BuiltValue()
-abstract class EmailTokenResponse implements Built<EmailTokenResponse, EmailTokenResponseBuilder> {
+abstract class EmailTokenResponse
+    implements Built<EmailTokenResponse, EmailTokenResponseBuilder> {
   /// The email change token to use for updating email
   @BuiltValueField(wireName: r'email_token')
   String get emailToken;
 
   EmailTokenResponse._();
 
-  factory EmailTokenResponse([void updates(EmailTokenResponseBuilder b)]) = _$EmailTokenResponse;
+  factory EmailTokenResponse([void updates(EmailTokenResponseBuilder b)]) =
+      _$EmailTokenResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(EmailTokenResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<EmailTokenResponse> get serializer => _$EmailTokenResponseSerializer();
+  static Serializer<EmailTokenResponse> get serializer =>
+      _$EmailTokenResponseSerializer();
 }
 
-class _$EmailTokenResponseSerializer implements PrimitiveSerializer<EmailTokenResponse> {
+class _$EmailTokenResponseSerializer
+    implements PrimitiveSerializer<EmailTokenResponse> {
   @override
   final Iterable<Type> types = const [EmailTokenResponse, _$EmailTokenResponse];
 
@@ -54,7 +58,9 @@ class _$EmailTokenResponseSerializer implements PrimitiveSerializer<EmailTokenRe
     EmailTokenResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +110,3 @@ class _$EmailTokenResponseSerializer implements PrimitiveSerializer<EmailTokenRe
     return result.build();
   }
 }
-

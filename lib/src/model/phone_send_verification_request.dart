@@ -11,26 +11,36 @@ part 'phone_send_verification_request.g.dart';
 /// PhoneSendVerificationRequest
 ///
 /// Properties:
-/// * [phone] 
+/// * [phone]
 @BuiltValue()
-abstract class PhoneSendVerificationRequest implements Built<PhoneSendVerificationRequest, PhoneSendVerificationRequestBuilder> {
+abstract class PhoneSendVerificationRequest
+    implements
+        Built<PhoneSendVerificationRequest,
+            PhoneSendVerificationRequestBuilder> {
   @BuiltValueField(wireName: r'phone')
   String get phone;
 
   PhoneSendVerificationRequest._();
 
-  factory PhoneSendVerificationRequest([void updates(PhoneSendVerificationRequestBuilder b)]) = _$PhoneSendVerificationRequest;
+  factory PhoneSendVerificationRequest(
+          [void updates(PhoneSendVerificationRequestBuilder b)]) =
+      _$PhoneSendVerificationRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PhoneSendVerificationRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PhoneSendVerificationRequest> get serializer => _$PhoneSendVerificationRequestSerializer();
+  static Serializer<PhoneSendVerificationRequest> get serializer =>
+      _$PhoneSendVerificationRequestSerializer();
 }
 
-class _$PhoneSendVerificationRequestSerializer implements PrimitiveSerializer<PhoneSendVerificationRequest> {
+class _$PhoneSendVerificationRequestSerializer
+    implements PrimitiveSerializer<PhoneSendVerificationRequest> {
   @override
-  final Iterable<Type> types = const [PhoneSendVerificationRequest, _$PhoneSendVerificationRequest];
+  final Iterable<Type> types = const [
+    PhoneSendVerificationRequest,
+    _$PhoneSendVerificationRequest
+  ];
 
   @override
   final String wireName = r'PhoneSendVerificationRequest';
@@ -53,7 +63,9 @@ class _$PhoneSendVerificationRequestSerializer implements PrimitiveSerializer<Ph
     PhoneSendVerificationRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,4 +115,3 @@ class _$PhoneSendVerificationRequestSerializer implements PrimitiveSerializer<Ph
     return result.build();
   }
 }
-

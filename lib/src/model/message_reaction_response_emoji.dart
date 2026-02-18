@@ -12,10 +12,13 @@ part 'message_reaction_response_emoji.g.dart';
 ///
 /// Properties:
 /// * [name] - The name of the emoji (or Unicode character for standard emojis)
-/// * [id] 
-/// * [animated] 
+/// * [id]
+/// * [animated]
 @BuiltValue()
-abstract class MessageReactionResponseEmoji implements Built<MessageReactionResponseEmoji, MessageReactionResponseEmojiBuilder> {
+abstract class MessageReactionResponseEmoji
+    implements
+        Built<MessageReactionResponseEmoji,
+            MessageReactionResponseEmojiBuilder> {
   /// The name of the emoji (or Unicode character for standard emojis)
   @BuiltValueField(wireName: r'name')
   String get name;
@@ -28,18 +31,25 @@ abstract class MessageReactionResponseEmoji implements Built<MessageReactionResp
 
   MessageReactionResponseEmoji._();
 
-  factory MessageReactionResponseEmoji([void updates(MessageReactionResponseEmojiBuilder b)]) = _$MessageReactionResponseEmoji;
+  factory MessageReactionResponseEmoji(
+          [void updates(MessageReactionResponseEmojiBuilder b)]) =
+      _$MessageReactionResponseEmoji;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(MessageReactionResponseEmojiBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<MessageReactionResponseEmoji> get serializer => _$MessageReactionResponseEmojiSerializer();
+  static Serializer<MessageReactionResponseEmoji> get serializer =>
+      _$MessageReactionResponseEmojiSerializer();
 }
 
-class _$MessageReactionResponseEmojiSerializer implements PrimitiveSerializer<MessageReactionResponseEmoji> {
+class _$MessageReactionResponseEmojiSerializer
+    implements PrimitiveSerializer<MessageReactionResponseEmoji> {
   @override
-  final Iterable<Type> types = const [MessageReactionResponseEmoji, _$MessageReactionResponseEmoji];
+  final Iterable<Type> types = const [
+    MessageReactionResponseEmoji,
+    _$MessageReactionResponseEmoji
+  ];
 
   @override
   final String wireName = r'MessageReactionResponseEmoji';
@@ -76,7 +86,9 @@ class _$MessageReactionResponseEmojiSerializer implements PrimitiveSerializer<Me
     MessageReactionResponseEmoji object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -141,4 +153,3 @@ class _$MessageReactionResponseEmojiSerializer implements PrimitiveSerializer<Me
     return result.build();
   }
 }
-

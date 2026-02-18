@@ -13,25 +13,34 @@ part 'password_change_ticket_request.g.dart';
 /// Properties:
 /// * [ticket] - Password change ticket identifier
 @BuiltValue()
-abstract class PasswordChangeTicketRequest implements Built<PasswordChangeTicketRequest, PasswordChangeTicketRequestBuilder> {
+abstract class PasswordChangeTicketRequest
+    implements
+        Built<PasswordChangeTicketRequest, PasswordChangeTicketRequestBuilder> {
   /// Password change ticket identifier
   @BuiltValueField(wireName: r'ticket')
   String get ticket;
 
   PasswordChangeTicketRequest._();
 
-  factory PasswordChangeTicketRequest([void updates(PasswordChangeTicketRequestBuilder b)]) = _$PasswordChangeTicketRequest;
+  factory PasswordChangeTicketRequest(
+          [void updates(PasswordChangeTicketRequestBuilder b)]) =
+      _$PasswordChangeTicketRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PasswordChangeTicketRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PasswordChangeTicketRequest> get serializer => _$PasswordChangeTicketRequestSerializer();
+  static Serializer<PasswordChangeTicketRequest> get serializer =>
+      _$PasswordChangeTicketRequestSerializer();
 }
 
-class _$PasswordChangeTicketRequestSerializer implements PrimitiveSerializer<PasswordChangeTicketRequest> {
+class _$PasswordChangeTicketRequestSerializer
+    implements PrimitiveSerializer<PasswordChangeTicketRequest> {
   @override
-  final Iterable<Type> types = const [PasswordChangeTicketRequest, _$PasswordChangeTicketRequest];
+  final Iterable<Type> types = const [
+    PasswordChangeTicketRequest,
+    _$PasswordChangeTicketRequest
+  ];
 
   @override
   final String wireName = r'PasswordChangeTicketRequest';
@@ -54,7 +63,9 @@ class _$PasswordChangeTicketRequestSerializer implements PrimitiveSerializer<Pas
     PasswordChangeTicketRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +115,3 @@ class _$PasswordChangeTicketRequestSerializer implements PrimitiveSerializer<Pas
     return result.build();
   }
 }
-

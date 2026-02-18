@@ -15,7 +15,10 @@ part 'limit_config_get_response_limit_config_rules_inner_filters.g.dart';
 /// * [traits] - Trait filters that must match for the rule to apply
 /// * [guildFeatures] - Guild feature flags required for the rule to apply
 @BuiltValue()
-abstract class LimitConfigGetResponseLimitConfigRulesInnerFilters implements Built<LimitConfigGetResponseLimitConfigRulesInnerFilters, LimitConfigGetResponseLimitConfigRulesInnerFiltersBuilder> {
+abstract class LimitConfigGetResponseLimitConfigRulesInnerFilters
+    implements
+        Built<LimitConfigGetResponseLimitConfigRulesInnerFilters,
+            LimitConfigGetResponseLimitConfigRulesInnerFiltersBuilder> {
   /// Trait filters that must match for the rule to apply
   @BuiltValueField(wireName: r'traits')
   BuiltList<String>? get traits;
@@ -26,18 +29,31 @@ abstract class LimitConfigGetResponseLimitConfigRulesInnerFilters implements Bui
 
   LimitConfigGetResponseLimitConfigRulesInnerFilters._();
 
-  factory LimitConfigGetResponseLimitConfigRulesInnerFilters([void updates(LimitConfigGetResponseLimitConfigRulesInnerFiltersBuilder b)]) = _$LimitConfigGetResponseLimitConfigRulesInnerFilters;
+  factory LimitConfigGetResponseLimitConfigRulesInnerFilters(
+          [void updates(
+              LimitConfigGetResponseLimitConfigRulesInnerFiltersBuilder b)]) =
+      _$LimitConfigGetResponseLimitConfigRulesInnerFilters;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(LimitConfigGetResponseLimitConfigRulesInnerFiltersBuilder b) => b;
+  static void _defaults(
+          LimitConfigGetResponseLimitConfigRulesInnerFiltersBuilder b) =>
+      b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<LimitConfigGetResponseLimitConfigRulesInnerFilters> get serializer => _$LimitConfigGetResponseLimitConfigRulesInnerFiltersSerializer();
+  static Serializer<LimitConfigGetResponseLimitConfigRulesInnerFilters>
+      get serializer =>
+          _$LimitConfigGetResponseLimitConfigRulesInnerFiltersSerializer();
 }
 
-class _$LimitConfigGetResponseLimitConfigRulesInnerFiltersSerializer implements PrimitiveSerializer<LimitConfigGetResponseLimitConfigRulesInnerFilters> {
+class _$LimitConfigGetResponseLimitConfigRulesInnerFiltersSerializer
+    implements
+        PrimitiveSerializer<
+            LimitConfigGetResponseLimitConfigRulesInnerFilters> {
   @override
-  final Iterable<Type> types = const [LimitConfigGetResponseLimitConfigRulesInnerFilters, _$LimitConfigGetResponseLimitConfigRulesInnerFilters];
+  final Iterable<Type> types = const [
+    LimitConfigGetResponseLimitConfigRulesInnerFilters,
+    _$LimitConfigGetResponseLimitConfigRulesInnerFilters
+  ];
 
   @override
   final String wireName = r'LimitConfigGetResponseLimitConfigRulesInnerFilters';
@@ -69,7 +85,9 @@ class _$LimitConfigGetResponseLimitConfigRulesInnerFiltersSerializer implements 
     LimitConfigGetResponseLimitConfigRulesInnerFilters object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -126,4 +144,3 @@ class _$LimitConfigGetResponseLimitConfigRulesInnerFiltersSerializer implements 
     return result.build();
   }
 }
-

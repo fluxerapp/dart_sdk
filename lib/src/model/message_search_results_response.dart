@@ -18,7 +18,10 @@ part 'message_search_results_response.g.dart';
 /// * [hitsPerPage] - The maximum number of messages returned per page
 /// * [page] - The current page number
 @BuiltValue()
-abstract class MessageSearchResultsResponse implements Built<MessageSearchResultsResponse, MessageSearchResultsResponseBuilder> {
+abstract class MessageSearchResultsResponse
+    implements
+        Built<MessageSearchResultsResponse,
+            MessageSearchResultsResponseBuilder> {
   /// The messages matching the search query
   @BuiltValueField(wireName: r'messages')
   BuiltList<MessageSearchResultsResponseMessagesInner> get messages;
@@ -37,18 +40,25 @@ abstract class MessageSearchResultsResponse implements Built<MessageSearchResult
 
   MessageSearchResultsResponse._();
 
-  factory MessageSearchResultsResponse([void updates(MessageSearchResultsResponseBuilder b)]) = _$MessageSearchResultsResponse;
+  factory MessageSearchResultsResponse(
+          [void updates(MessageSearchResultsResponseBuilder b)]) =
+      _$MessageSearchResultsResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(MessageSearchResultsResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<MessageSearchResultsResponse> get serializer => _$MessageSearchResultsResponseSerializer();
+  static Serializer<MessageSearchResultsResponse> get serializer =>
+      _$MessageSearchResultsResponseSerializer();
 }
 
-class _$MessageSearchResultsResponseSerializer implements PrimitiveSerializer<MessageSearchResultsResponse> {
+class _$MessageSearchResultsResponseSerializer
+    implements PrimitiveSerializer<MessageSearchResultsResponse> {
   @override
-  final Iterable<Type> types = const [MessageSearchResultsResponse, _$MessageSearchResultsResponse];
+  final Iterable<Type> types = const [
+    MessageSearchResultsResponse,
+    _$MessageSearchResultsResponse
+  ];
 
   @override
   final String wireName = r'MessageSearchResultsResponse';
@@ -61,7 +71,8 @@ class _$MessageSearchResultsResponseSerializer implements PrimitiveSerializer<Me
     yield r'messages';
     yield serializers.serialize(
       object.messages,
-      specifiedType: const FullType(BuiltList, [FullType(MessageSearchResultsResponseMessagesInner)]),
+      specifiedType: const FullType(
+          BuiltList, [FullType(MessageSearchResultsResponseMessagesInner)]),
     );
     yield r'total';
     yield serializers.serialize(
@@ -86,7 +97,9 @@ class _$MessageSearchResultsResponseSerializer implements PrimitiveSerializer<Me
     MessageSearchResultsResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,7 +117,8 @@ class _$MessageSearchResultsResponseSerializer implements PrimitiveSerializer<Me
         case r'messages':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(MessageSearchResultsResponseMessagesInner)]),
+            specifiedType: const FullType(BuiltList,
+                [FullType(MessageSearchResultsResponseMessagesInner)]),
           ) as BuiltList<MessageSearchResultsResponseMessagesInner>;
           result.messages.replace(valueDes);
           break;
@@ -157,4 +171,3 @@ class _$MessageSearchResultsResponseSerializer implements PrimitiveSerializer<Me
     return result.build();
   }
 }
-

@@ -11,26 +11,35 @@ part 'guild_vanity_url_update_request.g.dart';
 /// GuildVanityURLUpdateRequest
 ///
 /// Properties:
-/// * [code] 
+/// * [code]
 @BuiltValue()
-abstract class GuildVanityURLUpdateRequest implements Built<GuildVanityURLUpdateRequest, GuildVanityURLUpdateRequestBuilder> {
+abstract class GuildVanityURLUpdateRequest
+    implements
+        Built<GuildVanityURLUpdateRequest, GuildVanityURLUpdateRequestBuilder> {
   @BuiltValueField(wireName: r'code')
   String? get code;
 
   GuildVanityURLUpdateRequest._();
 
-  factory GuildVanityURLUpdateRequest([void updates(GuildVanityURLUpdateRequestBuilder b)]) = _$GuildVanityURLUpdateRequest;
+  factory GuildVanityURLUpdateRequest(
+          [void updates(GuildVanityURLUpdateRequestBuilder b)]) =
+      _$GuildVanityURLUpdateRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildVanityURLUpdateRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildVanityURLUpdateRequest> get serializer => _$GuildVanityURLUpdateRequestSerializer();
+  static Serializer<GuildVanityURLUpdateRequest> get serializer =>
+      _$GuildVanityURLUpdateRequestSerializer();
 }
 
-class _$GuildVanityURLUpdateRequestSerializer implements PrimitiveSerializer<GuildVanityURLUpdateRequest> {
+class _$GuildVanityURLUpdateRequestSerializer
+    implements PrimitiveSerializer<GuildVanityURLUpdateRequest> {
   @override
-  final Iterable<Type> types = const [GuildVanityURLUpdateRequest, _$GuildVanityURLUpdateRequest];
+  final Iterable<Type> types = const [
+    GuildVanityURLUpdateRequest,
+    _$GuildVanityURLUpdateRequest
+  ];
 
   @override
   final String wireName = r'GuildVanityURLUpdateRequest';
@@ -55,7 +64,9 @@ class _$GuildVanityURLUpdateRequestSerializer implements PrimitiveSerializer<Gui
     GuildVanityURLUpdateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -106,4 +117,3 @@ class _$GuildVanityURLUpdateRequestSerializer implements PrimitiveSerializer<Gui
     return result.build();
   }
 }
-

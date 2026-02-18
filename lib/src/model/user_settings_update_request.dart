@@ -22,11 +22,11 @@ part 'user_settings_update_request.g.dart';
 ///
 /// Properties:
 /// * [flags] - Friend source flags
-/// * [status] 
-/// * [statusResetsAt] 
-/// * [statusResetsTo] 
-/// * [theme] 
-/// * [locale] 
+/// * [status]
+/// * [statusResetsAt]
+/// * [statusResetsTo]
+/// * [theme]
+/// * [locale]
 /// * [restrictedGuilds] - Guilds with DM restrictions
 /// * [botRestrictedGuilds] - Guilds with bot DM restrictions
 /// * [defaultGuildsRestricted] - Default DM restriction for new guilds
@@ -44,14 +44,16 @@ part 'user_settings_update_request.g.dart';
 /// * [incomingCallFlags] - Incoming call settings
 /// * [groupDmAddPermissionFlags] - Group DM add permissions
 /// * [guildFolders] - Guild folder organization
-/// * [customStatus] 
+/// * [customStatus]
 /// * [afkTimeout] - AFK timeout in seconds
 /// * [timeFormat] - Time format preference
 /// * [developerMode] - Developer mode enabled
 /// * [trustedDomains] - Trusted external link domains. Use \"*\" to trust all domains.
 /// * [defaultHideMutedChannels] - Hide muted channels by default in new guilds
 @BuiltValue()
-abstract class UserSettingsUpdateRequest implements Built<UserSettingsUpdateRequest, UserSettingsUpdateRequestBuilder> {
+abstract class UserSettingsUpdateRequest
+    implements
+        Built<UserSettingsUpdateRequest, UserSettingsUpdateRequestBuilder> {
   /// Friend source flags
   @BuiltValueField(wireName: r'flags')
   int? get flags;
@@ -171,18 +173,25 @@ abstract class UserSettingsUpdateRequest implements Built<UserSettingsUpdateRequ
 
   UserSettingsUpdateRequest._();
 
-  factory UserSettingsUpdateRequest([void updates(UserSettingsUpdateRequestBuilder b)]) = _$UserSettingsUpdateRequest;
+  factory UserSettingsUpdateRequest(
+          [void updates(UserSettingsUpdateRequestBuilder b)]) =
+      _$UserSettingsUpdateRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UserSettingsUpdateRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UserSettingsUpdateRequest> get serializer => _$UserSettingsUpdateRequestSerializer();
+  static Serializer<UserSettingsUpdateRequest> get serializer =>
+      _$UserSettingsUpdateRequestSerializer();
 }
 
-class _$UserSettingsUpdateRequestSerializer implements PrimitiveSerializer<UserSettingsUpdateRequest> {
+class _$UserSettingsUpdateRequestSerializer
+    implements PrimitiveSerializer<UserSettingsUpdateRequest> {
   @override
-  final Iterable<Type> types = const [UserSettingsUpdateRequest, _$UserSettingsUpdateRequest];
+  final Iterable<Type> types = const [
+    UserSettingsUpdateRequest,
+    _$UserSettingsUpdateRequest
+  ];
 
   @override
   final String wireName = r'UserSettingsUpdateRequest';
@@ -210,7 +219,8 @@ class _$UserSettingsUpdateRequestSerializer implements PrimitiveSerializer<UserS
       yield r'status_resets_at';
       yield serializers.serialize(
         object.statusResetsAt,
-        specifiedType: const FullType.nullable(UserSettingsUpdateRequestStatusResetsAt),
+        specifiedType:
+            const FullType.nullable(UserSettingsUpdateRequestStatusResetsAt),
       );
     }
     if (object.statusResetsTo != null) {
@@ -350,7 +360,8 @@ class _$UserSettingsUpdateRequestSerializer implements PrimitiveSerializer<UserS
       yield r'guild_folders';
       yield serializers.serialize(
         object.guildFolders,
-        specifiedType: const FullType(BuiltList, [FullType(UserSettingsUpdateRequestGuildFoldersInner)]),
+        specifiedType: const FullType(
+            BuiltList, [FullType(UserSettingsUpdateRequestGuildFoldersInner)]),
       );
     }
     if (object.customStatus != null) {
@@ -403,7 +414,9 @@ class _$UserSettingsUpdateRequestSerializer implements PrimitiveSerializer<UserS
     UserSettingsUpdateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -435,7 +448,8 @@ class _$UserSettingsUpdateRequestSerializer implements PrimitiveSerializer<UserS
         case r'status_resets_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(UserSettingsUpdateRequestStatusResetsAt),
+            specifiedType: const FullType.nullable(
+                UserSettingsUpdateRequestStatusResetsAt),
           ) as UserSettingsUpdateRequestStatusResetsAt?;
           if (valueDes == null) continue;
           result.statusResetsAt.replace(valueDes);
@@ -577,7 +591,8 @@ class _$UserSettingsUpdateRequestSerializer implements PrimitiveSerializer<UserS
         case r'guild_folders':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(UserSettingsUpdateRequestGuildFoldersInner)]),
+            specifiedType: const FullType(BuiltList,
+                [FullType(UserSettingsUpdateRequestGuildFoldersInner)]),
           ) as BuiltList<UserSettingsUpdateRequestGuildFoldersInner>;
           result.guildFolders.replace(valueDes);
           break;
@@ -652,4 +667,3 @@ class _$UserSettingsUpdateRequestSerializer implements PrimitiveSerializer<UserS
     return result.build();
   }
 }
-

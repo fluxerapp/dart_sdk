@@ -11,10 +11,11 @@ part 'update_guild_name_request.g.dart';
 /// UpdateGuildNameRequest
 ///
 /// Properties:
-/// * [guildId] 
+/// * [guildId]
 /// * [name] - New name for the guild
 @BuiltValue()
-abstract class UpdateGuildNameRequest implements Built<UpdateGuildNameRequest, UpdateGuildNameRequestBuilder> {
+abstract class UpdateGuildNameRequest
+    implements Built<UpdateGuildNameRequest, UpdateGuildNameRequestBuilder> {
   @BuiltValueField(wireName: r'guild_id')
   String get guildId;
 
@@ -24,18 +25,25 @@ abstract class UpdateGuildNameRequest implements Built<UpdateGuildNameRequest, U
 
   UpdateGuildNameRequest._();
 
-  factory UpdateGuildNameRequest([void updates(UpdateGuildNameRequestBuilder b)]) = _$UpdateGuildNameRequest;
+  factory UpdateGuildNameRequest(
+          [void updates(UpdateGuildNameRequestBuilder b)]) =
+      _$UpdateGuildNameRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UpdateGuildNameRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UpdateGuildNameRequest> get serializer => _$UpdateGuildNameRequestSerializer();
+  static Serializer<UpdateGuildNameRequest> get serializer =>
+      _$UpdateGuildNameRequestSerializer();
 }
 
-class _$UpdateGuildNameRequestSerializer implements PrimitiveSerializer<UpdateGuildNameRequest> {
+class _$UpdateGuildNameRequestSerializer
+    implements PrimitiveSerializer<UpdateGuildNameRequest> {
   @override
-  final Iterable<Type> types = const [UpdateGuildNameRequest, _$UpdateGuildNameRequest];
+  final Iterable<Type> types = const [
+    UpdateGuildNameRequest,
+    _$UpdateGuildNameRequest
+  ];
 
   @override
   final String wireName = r'UpdateGuildNameRequest';
@@ -63,7 +71,9 @@ class _$UpdateGuildNameRequestSerializer implements PrimitiveSerializer<UpdateGu
     UpdateGuildNameRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -120,4 +130,3 @@ class _$UpdateGuildNameRequestSerializer implements PrimitiveSerializer<UpdateGu
     return result.build();
   }
 }
-

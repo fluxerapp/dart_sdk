@@ -13,13 +13,14 @@ part 'audit_log_webhook_response.g.dart';
 ///
 /// Properties:
 /// * [id] - The unique identifier for this webhook
-/// * [type] 
+/// * [type]
 /// * [name] - The name of the webhook
-/// * [guildId] 
-/// * [channelId] 
-/// * [avatarHash] 
+/// * [guildId]
+/// * [channelId]
+/// * [avatarHash]
 @BuiltValue()
-abstract class AuditLogWebhookResponse implements Built<AuditLogWebhookResponse, AuditLogWebhookResponseBuilder> {
+abstract class AuditLogWebhookResponse
+    implements Built<AuditLogWebhookResponse, AuditLogWebhookResponseBuilder> {
   /// The unique identifier for this webhook
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -43,18 +44,25 @@ abstract class AuditLogWebhookResponse implements Built<AuditLogWebhookResponse,
 
   AuditLogWebhookResponse._();
 
-  factory AuditLogWebhookResponse([void updates(AuditLogWebhookResponseBuilder b)]) = _$AuditLogWebhookResponse;
+  factory AuditLogWebhookResponse(
+          [void updates(AuditLogWebhookResponseBuilder b)]) =
+      _$AuditLogWebhookResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(AuditLogWebhookResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<AuditLogWebhookResponse> get serializer => _$AuditLogWebhookResponseSerializer();
+  static Serializer<AuditLogWebhookResponse> get serializer =>
+      _$AuditLogWebhookResponseSerializer();
 }
 
-class _$AuditLogWebhookResponseSerializer implements PrimitiveSerializer<AuditLogWebhookResponse> {
+class _$AuditLogWebhookResponseSerializer
+    implements PrimitiveSerializer<AuditLogWebhookResponse> {
   @override
-  final Iterable<Type> types = const [AuditLogWebhookResponse, _$AuditLogWebhookResponse];
+  final Iterable<Type> types = const [
+    AuditLogWebhookResponse,
+    _$AuditLogWebhookResponse
+  ];
 
   @override
   final String wireName = r'AuditLogWebhookResponse';
@@ -108,7 +116,9 @@ class _$AuditLogWebhookResponseSerializer implements PrimitiveSerializer<AuditLo
     AuditLogWebhookResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -194,4 +204,3 @@ class _$AuditLogWebhookResponseSerializer implements PrimitiveSerializer<AuditLo
     return result.build();
   }
 }
-

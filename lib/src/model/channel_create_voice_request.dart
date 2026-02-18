@@ -13,17 +13,19 @@ part 'channel_create_voice_request.g.dart';
 /// ChannelCreateVoiceRequest
 ///
 /// Properties:
-/// * [type] 
+/// * [type]
 /// * [name] - The name of the channel
-/// * [topic] 
-/// * [url] 
-/// * [parentId] 
-/// * [bitrate] 
-/// * [userLimit] 
+/// * [topic]
+/// * [url]
+/// * [parentId]
+/// * [bitrate]
+/// * [userLimit]
 /// * [permissionOverwrites] - Permission overwrites for roles and members
 /// * [nsfw] - Whether the channel is marked as NSFW
 @BuiltValue()
-abstract class ChannelCreateVoiceRequest implements Built<ChannelCreateVoiceRequest, ChannelCreateVoiceRequestBuilder> {
+abstract class ChannelCreateVoiceRequest
+    implements
+        Built<ChannelCreateVoiceRequest, ChannelCreateVoiceRequestBuilder> {
   @BuiltValueField(wireName: r'type')
   ChannelCreateVoiceRequestTypeEnum get type;
   // enum typeEnum {  2,  };
@@ -57,18 +59,25 @@ abstract class ChannelCreateVoiceRequest implements Built<ChannelCreateVoiceRequ
 
   ChannelCreateVoiceRequest._();
 
-  factory ChannelCreateVoiceRequest([void updates(ChannelCreateVoiceRequestBuilder b)]) = _$ChannelCreateVoiceRequest;
+  factory ChannelCreateVoiceRequest(
+          [void updates(ChannelCreateVoiceRequestBuilder b)]) =
+      _$ChannelCreateVoiceRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ChannelCreateVoiceRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ChannelCreateVoiceRequest> get serializer => _$ChannelCreateVoiceRequestSerializer();
+  static Serializer<ChannelCreateVoiceRequest> get serializer =>
+      _$ChannelCreateVoiceRequestSerializer();
 }
 
-class _$ChannelCreateVoiceRequestSerializer implements PrimitiveSerializer<ChannelCreateVoiceRequest> {
+class _$ChannelCreateVoiceRequestSerializer
+    implements PrimitiveSerializer<ChannelCreateVoiceRequest> {
   @override
-  final Iterable<Type> types = const [ChannelCreateVoiceRequest, _$ChannelCreateVoiceRequest];
+  final Iterable<Type> types = const [
+    ChannelCreateVoiceRequest,
+    _$ChannelCreateVoiceRequest
+  ];
 
   @override
   final String wireName = r'ChannelCreateVoiceRequest';
@@ -127,7 +136,8 @@ class _$ChannelCreateVoiceRequestSerializer implements PrimitiveSerializer<Chann
       yield r'permission_overwrites';
       yield serializers.serialize(
         object.permissionOverwrites,
-        specifiedType: const FullType(BuiltList, [FullType(ChannelOverwriteRequest)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(ChannelOverwriteRequest)]),
       );
     }
     if (object.nsfw != null) {
@@ -145,7 +155,9 @@ class _$ChannelCreateVoiceRequestSerializer implements PrimitiveSerializer<Chann
     ChannelCreateVoiceRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -216,7 +228,8 @@ class _$ChannelCreateVoiceRequestSerializer implements PrimitiveSerializer<Chann
         case r'permission_overwrites':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ChannelOverwriteRequest)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(ChannelOverwriteRequest)]),
           ) as BuiltList<ChannelOverwriteRequest>;
           result.permissionOverwrites.replace(valueDes);
           break;
@@ -257,15 +270,17 @@ class _$ChannelCreateVoiceRequestSerializer implements PrimitiveSerializer<Chann
 }
 
 class ChannelCreateVoiceRequestTypeEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireNumber: 2)
-  static const ChannelCreateVoiceRequestTypeEnum number2 = _$channelCreateVoiceRequestTypeEnum_number2;
+  static const ChannelCreateVoiceRequestTypeEnum number2 =
+      _$channelCreateVoiceRequestTypeEnum_number2;
 
-  static Serializer<ChannelCreateVoiceRequestTypeEnum> get serializer => _$channelCreateVoiceRequestTypeEnumSerializer;
+  static Serializer<ChannelCreateVoiceRequestTypeEnum> get serializer =>
+      _$channelCreateVoiceRequestTypeEnumSerializer;
 
-  const ChannelCreateVoiceRequestTypeEnum._(String name): super(name);
+  const ChannelCreateVoiceRequestTypeEnum._(String name) : super(name);
 
-  static BuiltSet<ChannelCreateVoiceRequestTypeEnum> get values => _$channelCreateVoiceRequestTypeEnumValues;
-  static ChannelCreateVoiceRequestTypeEnum valueOf(String name) => _$channelCreateVoiceRequestTypeEnumValueOf(name);
+  static BuiltSet<ChannelCreateVoiceRequestTypeEnum> get values =>
+      _$channelCreateVoiceRequestTypeEnumValues;
+  static ChannelCreateVoiceRequestTypeEnum valueOf(String name) =>
+      _$channelCreateVoiceRequestTypeEnumValueOf(name);
 }
-

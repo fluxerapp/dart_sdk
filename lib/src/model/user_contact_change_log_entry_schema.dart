@@ -11,15 +11,18 @@ part 'user_contact_change_log_entry_schema.g.dart';
 /// UserContactChangeLogEntrySchema
 ///
 /// Properties:
-/// * [eventId] 
-/// * [field] 
-/// * [oldValue] 
-/// * [newValue] 
-/// * [reason] 
-/// * [actorUserId] 
-/// * [eventAt] 
+/// * [eventId]
+/// * [field]
+/// * [oldValue]
+/// * [newValue]
+/// * [reason]
+/// * [actorUserId]
+/// * [eventAt]
 @BuiltValue()
-abstract class UserContactChangeLogEntrySchema implements Built<UserContactChangeLogEntrySchema, UserContactChangeLogEntrySchemaBuilder> {
+abstract class UserContactChangeLogEntrySchema
+    implements
+        Built<UserContactChangeLogEntrySchema,
+            UserContactChangeLogEntrySchemaBuilder> {
   @BuiltValueField(wireName: r'event_id')
   String get eventId;
 
@@ -43,18 +46,25 @@ abstract class UserContactChangeLogEntrySchema implements Built<UserContactChang
 
   UserContactChangeLogEntrySchema._();
 
-  factory UserContactChangeLogEntrySchema([void updates(UserContactChangeLogEntrySchemaBuilder b)]) = _$UserContactChangeLogEntrySchema;
+  factory UserContactChangeLogEntrySchema(
+          [void updates(UserContactChangeLogEntrySchemaBuilder b)]) =
+      _$UserContactChangeLogEntrySchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UserContactChangeLogEntrySchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UserContactChangeLogEntrySchema> get serializer => _$UserContactChangeLogEntrySchemaSerializer();
+  static Serializer<UserContactChangeLogEntrySchema> get serializer =>
+      _$UserContactChangeLogEntrySchemaSerializer();
 }
 
-class _$UserContactChangeLogEntrySchemaSerializer implements PrimitiveSerializer<UserContactChangeLogEntrySchema> {
+class _$UserContactChangeLogEntrySchemaSerializer
+    implements PrimitiveSerializer<UserContactChangeLogEntrySchema> {
   @override
-  final Iterable<Type> types = const [UserContactChangeLogEntrySchema, _$UserContactChangeLogEntrySchema];
+  final Iterable<Type> types = const [
+    UserContactChangeLogEntrySchema,
+    _$UserContactChangeLogEntrySchema
+  ];
 
   @override
   final String wireName = r'UserContactChangeLogEntrySchema';
@@ -75,25 +85,33 @@ class _$UserContactChangeLogEntrySchemaSerializer implements PrimitiveSerializer
       specifiedType: const FullType(String),
     );
     yield r'old_value';
-    yield object.oldValue == null ? null : serializers.serialize(
-      object.oldValue,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.oldValue == null
+        ? null
+        : serializers.serialize(
+            object.oldValue,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'new_value';
-    yield object.newValue == null ? null : serializers.serialize(
-      object.newValue,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.newValue == null
+        ? null
+        : serializers.serialize(
+            object.newValue,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'reason';
-    yield object.reason == null ? null : serializers.serialize(
-      object.reason,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.reason == null
+        ? null
+        : serializers.serialize(
+            object.reason,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'actor_user_id';
-    yield object.actorUserId == null ? null : serializers.serialize(
-      object.actorUserId,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.actorUserId == null
+        ? null
+        : serializers.serialize(
+            object.actorUserId,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'event_at';
     yield serializers.serialize(
       object.eventAt,
@@ -107,7 +125,9 @@ class _$UserContactChangeLogEntrySchemaSerializer implements PrimitiveSerializer
     UserContactChangeLogEntrySchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -203,4 +223,3 @@ class _$UserContactChangeLogEntrySchemaSerializer implements PrimitiveSerializer
     return result.build();
   }
 }
-

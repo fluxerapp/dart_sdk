@@ -14,9 +14,12 @@ part 'email_change_request_new_response.g.dart';
 /// * [ticket] - Ticket associated with the email change attempt
 /// * [newEmail] - The new email address the user wants to verify
 /// * [newCodeExpiresAt] - ISO8601 timestamp when the new email code expires
-/// * [resendAvailableAt] 
+/// * [resendAvailableAt]
 @BuiltValue()
-abstract class EmailChangeRequestNewResponse implements Built<EmailChangeRequestNewResponse, EmailChangeRequestNewResponseBuilder> {
+abstract class EmailChangeRequestNewResponse
+    implements
+        Built<EmailChangeRequestNewResponse,
+            EmailChangeRequestNewResponseBuilder> {
   /// Ticket associated with the email change attempt
   @BuiltValueField(wireName: r'ticket')
   String get ticket;
@@ -34,18 +37,25 @@ abstract class EmailChangeRequestNewResponse implements Built<EmailChangeRequest
 
   EmailChangeRequestNewResponse._();
 
-  factory EmailChangeRequestNewResponse([void updates(EmailChangeRequestNewResponseBuilder b)]) = _$EmailChangeRequestNewResponse;
+  factory EmailChangeRequestNewResponse(
+          [void updates(EmailChangeRequestNewResponseBuilder b)]) =
+      _$EmailChangeRequestNewResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(EmailChangeRequestNewResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<EmailChangeRequestNewResponse> get serializer => _$EmailChangeRequestNewResponseSerializer();
+  static Serializer<EmailChangeRequestNewResponse> get serializer =>
+      _$EmailChangeRequestNewResponseSerializer();
 }
 
-class _$EmailChangeRequestNewResponseSerializer implements PrimitiveSerializer<EmailChangeRequestNewResponse> {
+class _$EmailChangeRequestNewResponseSerializer
+    implements PrimitiveSerializer<EmailChangeRequestNewResponse> {
   @override
-  final Iterable<Type> types = const [EmailChangeRequestNewResponse, _$EmailChangeRequestNewResponse];
+  final Iterable<Type> types = const [
+    EmailChangeRequestNewResponse,
+    _$EmailChangeRequestNewResponse
+  ];
 
   @override
   final String wireName = r'EmailChangeRequestNewResponse';
@@ -71,10 +81,12 @@ class _$EmailChangeRequestNewResponseSerializer implements PrimitiveSerializer<E
       specifiedType: const FullType(String),
     );
     yield r'resend_available_at';
-    yield object.resendAvailableAt == null ? null : serializers.serialize(
-      object.resendAvailableAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.resendAvailableAt == null
+        ? null
+        : serializers.serialize(
+            object.resendAvailableAt,
+            specifiedType: const FullType.nullable(String),
+          );
   }
 
   @override
@@ -83,7 +95,9 @@ class _$EmailChangeRequestNewResponseSerializer implements PrimitiveSerializer<E
     EmailChangeRequestNewResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -155,4 +169,3 @@ class _$EmailChangeRequestNewResponseSerializer implements PrimitiveSerializer<E
     return result.build();
   }
 }
-

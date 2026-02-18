@@ -11,10 +11,13 @@ part 'transfer_guild_ownership_request.g.dart';
 /// TransferGuildOwnershipRequest
 ///
 /// Properties:
-/// * [guildId] 
-/// * [newOwnerId] 
+/// * [guildId]
+/// * [newOwnerId]
 @BuiltValue()
-abstract class TransferGuildOwnershipRequest implements Built<TransferGuildOwnershipRequest, TransferGuildOwnershipRequestBuilder> {
+abstract class TransferGuildOwnershipRequest
+    implements
+        Built<TransferGuildOwnershipRequest,
+            TransferGuildOwnershipRequestBuilder> {
   @BuiltValueField(wireName: r'guild_id')
   String get guildId;
 
@@ -23,18 +26,25 @@ abstract class TransferGuildOwnershipRequest implements Built<TransferGuildOwner
 
   TransferGuildOwnershipRequest._();
 
-  factory TransferGuildOwnershipRequest([void updates(TransferGuildOwnershipRequestBuilder b)]) = _$TransferGuildOwnershipRequest;
+  factory TransferGuildOwnershipRequest(
+          [void updates(TransferGuildOwnershipRequestBuilder b)]) =
+      _$TransferGuildOwnershipRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(TransferGuildOwnershipRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<TransferGuildOwnershipRequest> get serializer => _$TransferGuildOwnershipRequestSerializer();
+  static Serializer<TransferGuildOwnershipRequest> get serializer =>
+      _$TransferGuildOwnershipRequestSerializer();
 }
 
-class _$TransferGuildOwnershipRequestSerializer implements PrimitiveSerializer<TransferGuildOwnershipRequest> {
+class _$TransferGuildOwnershipRequestSerializer
+    implements PrimitiveSerializer<TransferGuildOwnershipRequest> {
   @override
-  final Iterable<Type> types = const [TransferGuildOwnershipRequest, _$TransferGuildOwnershipRequest];
+  final Iterable<Type> types = const [
+    TransferGuildOwnershipRequest,
+    _$TransferGuildOwnershipRequest
+  ];
 
   @override
   final String wireName = r'TransferGuildOwnershipRequest';
@@ -62,7 +72,9 @@ class _$TransferGuildOwnershipRequestSerializer implements PrimitiveSerializer<T
     TransferGuildOwnershipRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -119,4 +131,3 @@ class _$TransferGuildOwnershipRequestSerializer implements PrimitiveSerializer<T
     return result.build();
   }
 }
-

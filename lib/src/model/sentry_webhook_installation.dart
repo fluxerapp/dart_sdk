@@ -11,26 +11,35 @@ part 'sentry_webhook_installation.g.dart';
 /// SentryWebhookInstallation
 ///
 /// Properties:
-/// * [uuid] 
+/// * [uuid]
 @BuiltValue()
-abstract class SentryWebhookInstallation implements Built<SentryWebhookInstallation, SentryWebhookInstallationBuilder> {
+abstract class SentryWebhookInstallation
+    implements
+        Built<SentryWebhookInstallation, SentryWebhookInstallationBuilder> {
   @BuiltValueField(wireName: r'uuid')
   String get uuid;
 
   SentryWebhookInstallation._();
 
-  factory SentryWebhookInstallation([void updates(SentryWebhookInstallationBuilder b)]) = _$SentryWebhookInstallation;
+  factory SentryWebhookInstallation(
+          [void updates(SentryWebhookInstallationBuilder b)]) =
+      _$SentryWebhookInstallation;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SentryWebhookInstallationBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SentryWebhookInstallation> get serializer => _$SentryWebhookInstallationSerializer();
+  static Serializer<SentryWebhookInstallation> get serializer =>
+      _$SentryWebhookInstallationSerializer();
 }
 
-class _$SentryWebhookInstallationSerializer implements PrimitiveSerializer<SentryWebhookInstallation> {
+class _$SentryWebhookInstallationSerializer
+    implements PrimitiveSerializer<SentryWebhookInstallation> {
   @override
-  final Iterable<Type> types = const [SentryWebhookInstallation, _$SentryWebhookInstallation];
+  final Iterable<Type> types = const [
+    SentryWebhookInstallation,
+    _$SentryWebhookInstallation
+  ];
 
   @override
   final String wireName = r'SentryWebhookInstallation';
@@ -53,7 +62,9 @@ class _$SentryWebhookInstallationSerializer implements PrimitiveSerializer<Sentr
     SentryWebhookInstallation object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,4 +114,3 @@ class _$SentryWebhookInstallationSerializer implements PrimitiveSerializer<Sentr
     return result.build();
   }
 }
-

@@ -17,7 +17,8 @@ part 'o_auth2_token_response.g.dart';
 /// * [refreshToken] - The refresh token for obtaining new access tokens
 /// * [scope] - The space-separated list of granted scopes
 @BuiltValue()
-abstract class OAuth2TokenResponse implements Built<OAuth2TokenResponse, OAuth2TokenResponseBuilder> {
+abstract class OAuth2TokenResponse
+    implements Built<OAuth2TokenResponse, OAuth2TokenResponseBuilder> {
   /// The access token for API authorization
   @BuiltValueField(wireName: r'access_token')
   String get accessToken;
@@ -40,18 +41,24 @@ abstract class OAuth2TokenResponse implements Built<OAuth2TokenResponse, OAuth2T
 
   OAuth2TokenResponse._();
 
-  factory OAuth2TokenResponse([void updates(OAuth2TokenResponseBuilder b)]) = _$OAuth2TokenResponse;
+  factory OAuth2TokenResponse([void updates(OAuth2TokenResponseBuilder b)]) =
+      _$OAuth2TokenResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(OAuth2TokenResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<OAuth2TokenResponse> get serializer => _$OAuth2TokenResponseSerializer();
+  static Serializer<OAuth2TokenResponse> get serializer =>
+      _$OAuth2TokenResponseSerializer();
 }
 
-class _$OAuth2TokenResponseSerializer implements PrimitiveSerializer<OAuth2TokenResponse> {
+class _$OAuth2TokenResponseSerializer
+    implements PrimitiveSerializer<OAuth2TokenResponse> {
   @override
-  final Iterable<Type> types = const [OAuth2TokenResponse, _$OAuth2TokenResponse];
+  final Iterable<Type> types = const [
+    OAuth2TokenResponse,
+    _$OAuth2TokenResponse
+  ];
 
   @override
   final String wireName = r'OAuth2TokenResponse';
@@ -94,7 +101,9 @@ class _$OAuth2TokenResponseSerializer implements PrimitiveSerializer<OAuth2Token
     OAuth2TokenResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -172,4 +181,3 @@ class _$OAuth2TokenResponseSerializer implements PrimitiveSerializer<OAuth2Token
     return result.build();
   }
 }
-

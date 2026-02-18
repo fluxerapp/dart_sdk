@@ -14,10 +14,12 @@ part 'message_reference_response.g.dart';
 /// Properties:
 /// * [channelId] - The ID of the channel containing the referenced message
 /// * [messageId] - The ID of the referenced message
-/// * [type] 
-/// * [guildId] 
+/// * [type]
+/// * [guildId]
 @BuiltValue()
-abstract class MessageReferenceResponse implements Built<MessageReferenceResponse, MessageReferenceResponseBuilder> {
+abstract class MessageReferenceResponse
+    implements
+        Built<MessageReferenceResponse, MessageReferenceResponseBuilder> {
   /// The ID of the channel containing the referenced message
   @BuiltValueField(wireName: r'channel_id')
   String get channelId;
@@ -35,18 +37,25 @@ abstract class MessageReferenceResponse implements Built<MessageReferenceRespons
 
   MessageReferenceResponse._();
 
-  factory MessageReferenceResponse([void updates(MessageReferenceResponseBuilder b)]) = _$MessageReferenceResponse;
+  factory MessageReferenceResponse(
+          [void updates(MessageReferenceResponseBuilder b)]) =
+      _$MessageReferenceResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(MessageReferenceResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<MessageReferenceResponse> get serializer => _$MessageReferenceResponseSerializer();
+  static Serializer<MessageReferenceResponse> get serializer =>
+      _$MessageReferenceResponseSerializer();
 }
 
-class _$MessageReferenceResponseSerializer implements PrimitiveSerializer<MessageReferenceResponse> {
+class _$MessageReferenceResponseSerializer
+    implements PrimitiveSerializer<MessageReferenceResponse> {
   @override
-  final Iterable<Type> types = const [MessageReferenceResponse, _$MessageReferenceResponse];
+  final Iterable<Type> types = const [
+    MessageReferenceResponse,
+    _$MessageReferenceResponse
+  ];
 
   @override
   final String wireName = r'MessageReferenceResponse';
@@ -86,7 +95,9 @@ class _$MessageReferenceResponseSerializer implements PrimitiveSerializer<Messag
     MessageReferenceResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -157,4 +168,3 @@ class _$MessageReferenceResponseSerializer implements PrimitiveSerializer<Messag
     return result.build();
   }
 }
-

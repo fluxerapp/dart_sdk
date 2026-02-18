@@ -10,17 +10,18 @@ import 'package:built_value/serializer.dart';
 part 'default_message_notifications.g.dart';
 
 class DefaultMessageNotifications extends EnumClass {
-
   /// Default notification level for new members
   @BuiltValueEnumConst(wireNumber: 0)
   static const DefaultMessageNotifications number0 = _$number0;
+
   /// Default notification level for new members
   @BuiltValueEnumConst(wireNumber: 1)
   static const DefaultMessageNotifications number1 = _$number1;
 
-  static Serializer<DefaultMessageNotifications> get serializer => _$defaultMessageNotificationsSerializer;
+  static Serializer<DefaultMessageNotifications> get serializer =>
+      _$defaultMessageNotificationsSerializer;
 
-  const DefaultMessageNotifications._(String name): super(name);
+  const DefaultMessageNotifications._(String name) : super(name);
 
   static BuiltSet<DefaultMessageNotifications> get values => _$values;
   static DefaultMessageNotifications valueOf(String name) => _$valueOf(name);
@@ -32,5 +33,5 @@ class DefaultMessageNotifications extends EnumClass {
 /// corresponding Angular template.
 ///
 /// Trigger mixin generation by writing a line like this one next to your enum.
-abstract class DefaultMessageNotificationsMixin = Object with _$DefaultMessageNotificationsMixin;
-
+abstract class DefaultMessageNotificationsMixin = Object
+    with _$DefaultMessageNotificationsMixin;

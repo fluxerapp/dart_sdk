@@ -11,10 +11,13 @@ part 'sentry_webhook_data_issue_metadata.g.dart';
 /// SentryWebhookDataIssueMetadata
 ///
 /// Properties:
-/// * [value] 
-/// * [type] 
+/// * [value]
+/// * [type]
 @BuiltValue()
-abstract class SentryWebhookDataIssueMetadata implements Built<SentryWebhookDataIssueMetadata, SentryWebhookDataIssueMetadataBuilder> {
+abstract class SentryWebhookDataIssueMetadata
+    implements
+        Built<SentryWebhookDataIssueMetadata,
+            SentryWebhookDataIssueMetadataBuilder> {
   @BuiltValueField(wireName: r'value')
   String get value;
 
@@ -23,18 +26,25 @@ abstract class SentryWebhookDataIssueMetadata implements Built<SentryWebhookData
 
   SentryWebhookDataIssueMetadata._();
 
-  factory SentryWebhookDataIssueMetadata([void updates(SentryWebhookDataIssueMetadataBuilder b)]) = _$SentryWebhookDataIssueMetadata;
+  factory SentryWebhookDataIssueMetadata(
+          [void updates(SentryWebhookDataIssueMetadataBuilder b)]) =
+      _$SentryWebhookDataIssueMetadata;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SentryWebhookDataIssueMetadataBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SentryWebhookDataIssueMetadata> get serializer => _$SentryWebhookDataIssueMetadataSerializer();
+  static Serializer<SentryWebhookDataIssueMetadata> get serializer =>
+      _$SentryWebhookDataIssueMetadataSerializer();
 }
 
-class _$SentryWebhookDataIssueMetadataSerializer implements PrimitiveSerializer<SentryWebhookDataIssueMetadata> {
+class _$SentryWebhookDataIssueMetadataSerializer
+    implements PrimitiveSerializer<SentryWebhookDataIssueMetadata> {
   @override
-  final Iterable<Type> types = const [SentryWebhookDataIssueMetadata, _$SentryWebhookDataIssueMetadata];
+  final Iterable<Type> types = const [
+    SentryWebhookDataIssueMetadata,
+    _$SentryWebhookDataIssueMetadata
+  ];
 
   @override
   final String wireName = r'SentryWebhookDataIssueMetadata';
@@ -62,7 +72,9 @@ class _$SentryWebhookDataIssueMetadataSerializer implements PrimitiveSerializer<
     SentryWebhookDataIssueMetadata object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -119,4 +131,3 @@ class _$SentryWebhookDataIssueMetadataSerializer implements PrimitiveSerializer<
     return result.build();
   }
 }
-

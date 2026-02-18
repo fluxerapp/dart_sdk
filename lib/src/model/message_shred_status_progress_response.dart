@@ -13,16 +13,19 @@ part 'message_shred_status_progress_response.g.dart';
 ///
 /// Properties:
 /// * [status] - Current message shred job status
-/// * [requested] 
-/// * [total] 
-/// * [processed] 
-/// * [skipped] 
-/// * [startedAt] 
-/// * [completedAt] 
-/// * [failedAt] 
-/// * [error] 
+/// * [requested]
+/// * [total]
+/// * [processed]
+/// * [skipped]
+/// * [startedAt]
+/// * [completedAt]
+/// * [failedAt]
+/// * [error]
 @BuiltValue()
-abstract class MessageShredStatusProgressResponse implements Built<MessageShredStatusProgressResponse, MessageShredStatusProgressResponseBuilder> {
+abstract class MessageShredStatusProgressResponse
+    implements
+        Built<MessageShredStatusProgressResponse,
+            MessageShredStatusProgressResponseBuilder> {
   /// Current message shred job status
   @BuiltValueField(wireName: r'status')
   MessageShredStatusProgressResponseStatusEnum get status;
@@ -54,18 +57,25 @@ abstract class MessageShredStatusProgressResponse implements Built<MessageShredS
 
   MessageShredStatusProgressResponse._();
 
-  factory MessageShredStatusProgressResponse([void updates(MessageShredStatusProgressResponseBuilder b)]) = _$MessageShredStatusProgressResponse;
+  factory MessageShredStatusProgressResponse(
+          [void updates(MessageShredStatusProgressResponseBuilder b)]) =
+      _$MessageShredStatusProgressResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(MessageShredStatusProgressResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<MessageShredStatusProgressResponse> get serializer => _$MessageShredStatusProgressResponseSerializer();
+  static Serializer<MessageShredStatusProgressResponse> get serializer =>
+      _$MessageShredStatusProgressResponseSerializer();
 }
 
-class _$MessageShredStatusProgressResponseSerializer implements PrimitiveSerializer<MessageShredStatusProgressResponse> {
+class _$MessageShredStatusProgressResponseSerializer
+    implements PrimitiveSerializer<MessageShredStatusProgressResponse> {
   @override
-  final Iterable<Type> types = const [MessageShredStatusProgressResponse, _$MessageShredStatusProgressResponse];
+  final Iterable<Type> types = const [
+    MessageShredStatusProgressResponse,
+    _$MessageShredStatusProgressResponse
+  ];
 
   @override
   final String wireName = r'MessageShredStatusProgressResponse';
@@ -78,7 +88,8 @@ class _$MessageShredStatusProgressResponseSerializer implements PrimitiveSeriali
     yield r'status';
     yield serializers.serialize(
       object.status,
-      specifiedType: const FullType(MessageShredStatusProgressResponseStatusEnum),
+      specifiedType:
+          const FullType(MessageShredStatusProgressResponseStatusEnum),
     );
     yield r'requested';
     yield serializers.serialize(
@@ -136,7 +147,9 @@ class _$MessageShredStatusProgressResponseSerializer implements PrimitiveSeriali
     MessageShredStatusProgressResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -154,7 +167,8 @@ class _$MessageShredStatusProgressResponseSerializer implements PrimitiveSeriali
         case r'status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(MessageShredStatusProgressResponseStatusEnum),
+            specifiedType:
+                const FullType(MessageShredStatusProgressResponseStatusEnum),
           ) as MessageShredStatusProgressResponseStatusEnum;
           result.status = valueDes;
           break;
@@ -244,22 +258,30 @@ class _$MessageShredStatusProgressResponseSerializer implements PrimitiveSeriali
 }
 
 class MessageShredStatusProgressResponseStatusEnum extends EnumClass {
-
   /// Current message shred job status
   @BuiltValueEnumConst(wireName: r'in_progress')
-  static const MessageShredStatusProgressResponseStatusEnum inProgress = _$messageShredStatusProgressResponseStatusEnum_inProgress;
+  static const MessageShredStatusProgressResponseStatusEnum inProgress =
+      _$messageShredStatusProgressResponseStatusEnum_inProgress;
+
   /// Current message shred job status
   @BuiltValueEnumConst(wireName: r'completed')
-  static const MessageShredStatusProgressResponseStatusEnum completed = _$messageShredStatusProgressResponseStatusEnum_completed;
+  static const MessageShredStatusProgressResponseStatusEnum completed =
+      _$messageShredStatusProgressResponseStatusEnum_completed;
+
   /// Current message shred job status
   @BuiltValueEnumConst(wireName: r'failed')
-  static const MessageShredStatusProgressResponseStatusEnum failed = _$messageShredStatusProgressResponseStatusEnum_failed;
+  static const MessageShredStatusProgressResponseStatusEnum failed =
+      _$messageShredStatusProgressResponseStatusEnum_failed;
 
-  static Serializer<MessageShredStatusProgressResponseStatusEnum> get serializer => _$messageShredStatusProgressResponseStatusEnumSerializer;
+  static Serializer<MessageShredStatusProgressResponseStatusEnum>
+      get serializer =>
+          _$messageShredStatusProgressResponseStatusEnumSerializer;
 
-  const MessageShredStatusProgressResponseStatusEnum._(String name): super(name);
+  const MessageShredStatusProgressResponseStatusEnum._(String name)
+      : super(name);
 
-  static BuiltSet<MessageShredStatusProgressResponseStatusEnum> get values => _$messageShredStatusProgressResponseStatusEnumValues;
-  static MessageShredStatusProgressResponseStatusEnum valueOf(String name) => _$messageShredStatusProgressResponseStatusEnumValueOf(name);
+  static BuiltSet<MessageShredStatusProgressResponseStatusEnum> get values =>
+      _$messageShredStatusProgressResponseStatusEnumValues;
+  static MessageShredStatusProgressResponseStatusEnum valueOf(String name) =>
+      _$messageShredStatusProgressResponseStatusEnumValueOf(name);
 }
-

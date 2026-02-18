@@ -11,26 +11,35 @@ part 'dsa_report_email_send_request.g.dart';
 /// DsaReportEmailSendRequest
 ///
 /// Properties:
-/// * [email] 
+/// * [email]
 @BuiltValue()
-abstract class DsaReportEmailSendRequest implements Built<DsaReportEmailSendRequest, DsaReportEmailSendRequestBuilder> {
+abstract class DsaReportEmailSendRequest
+    implements
+        Built<DsaReportEmailSendRequest, DsaReportEmailSendRequestBuilder> {
   @BuiltValueField(wireName: r'email')
   String get email;
 
   DsaReportEmailSendRequest._();
 
-  factory DsaReportEmailSendRequest([void updates(DsaReportEmailSendRequestBuilder b)]) = _$DsaReportEmailSendRequest;
+  factory DsaReportEmailSendRequest(
+          [void updates(DsaReportEmailSendRequestBuilder b)]) =
+      _$DsaReportEmailSendRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(DsaReportEmailSendRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<DsaReportEmailSendRequest> get serializer => _$DsaReportEmailSendRequestSerializer();
+  static Serializer<DsaReportEmailSendRequest> get serializer =>
+      _$DsaReportEmailSendRequestSerializer();
 }
 
-class _$DsaReportEmailSendRequestSerializer implements PrimitiveSerializer<DsaReportEmailSendRequest> {
+class _$DsaReportEmailSendRequestSerializer
+    implements PrimitiveSerializer<DsaReportEmailSendRequest> {
   @override
-  final Iterable<Type> types = const [DsaReportEmailSendRequest, _$DsaReportEmailSendRequest];
+  final Iterable<Type> types = const [
+    DsaReportEmailSendRequest,
+    _$DsaReportEmailSendRequest
+  ];
 
   @override
   final String wireName = r'DsaReportEmailSendRequest';
@@ -53,7 +62,9 @@ class _$DsaReportEmailSendRequestSerializer implements PrimitiveSerializer<DsaRe
     DsaReportEmailSendRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,4 +114,3 @@ class _$DsaReportEmailSendRequestSerializer implements PrimitiveSerializer<DsaRe
     return result.build();
   }
 }
-

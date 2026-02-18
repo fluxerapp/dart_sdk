@@ -12,9 +12,11 @@ part 'reserve_visionary_slot_request.g.dart';
 ///
 /// Properties:
 /// * [slotIndex] - Slot index to reserve (must be >= 1)
-/// * [userId] 
+/// * [userId]
 @BuiltValue()
-abstract class ReserveVisionarySlotRequest implements Built<ReserveVisionarySlotRequest, ReserveVisionarySlotRequestBuilder> {
+abstract class ReserveVisionarySlotRequest
+    implements
+        Built<ReserveVisionarySlotRequest, ReserveVisionarySlotRequestBuilder> {
   /// Slot index to reserve (must be >= 1)
   @BuiltValueField(wireName: r'slot_index')
   int get slotIndex;
@@ -24,18 +26,25 @@ abstract class ReserveVisionarySlotRequest implements Built<ReserveVisionarySlot
 
   ReserveVisionarySlotRequest._();
 
-  factory ReserveVisionarySlotRequest([void updates(ReserveVisionarySlotRequestBuilder b)]) = _$ReserveVisionarySlotRequest;
+  factory ReserveVisionarySlotRequest(
+          [void updates(ReserveVisionarySlotRequestBuilder b)]) =
+      _$ReserveVisionarySlotRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ReserveVisionarySlotRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ReserveVisionarySlotRequest> get serializer => _$ReserveVisionarySlotRequestSerializer();
+  static Serializer<ReserveVisionarySlotRequest> get serializer =>
+      _$ReserveVisionarySlotRequestSerializer();
 }
 
-class _$ReserveVisionarySlotRequestSerializer implements PrimitiveSerializer<ReserveVisionarySlotRequest> {
+class _$ReserveVisionarySlotRequestSerializer
+    implements PrimitiveSerializer<ReserveVisionarySlotRequest> {
   @override
-  final Iterable<Type> types = const [ReserveVisionarySlotRequest, _$ReserveVisionarySlotRequest];
+  final Iterable<Type> types = const [
+    ReserveVisionarySlotRequest,
+    _$ReserveVisionarySlotRequest
+  ];
 
   @override
   final String wireName = r'ReserveVisionarySlotRequest';
@@ -63,7 +72,9 @@ class _$ReserveVisionarySlotRequestSerializer implements PrimitiveSerializer<Res
     ReserveVisionarySlotRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -120,4 +131,3 @@ class _$ReserveVisionarySlotRequestSerializer implements PrimitiveSerializer<Res
     return result.build();
   }
 }
-

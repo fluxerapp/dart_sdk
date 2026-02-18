@@ -12,26 +12,35 @@ part 'update_voice_server_response.g.dart';
 /// UpdateVoiceServerResponse
 ///
 /// Properties:
-/// * [server] 
+/// * [server]
 @BuiltValue()
-abstract class UpdateVoiceServerResponse implements Built<UpdateVoiceServerResponse, UpdateVoiceServerResponseBuilder> {
+abstract class UpdateVoiceServerResponse
+    implements
+        Built<UpdateVoiceServerResponse, UpdateVoiceServerResponseBuilder> {
   @BuiltValueField(wireName: r'server')
   UpdateVoiceServerResponseServer get server;
 
   UpdateVoiceServerResponse._();
 
-  factory UpdateVoiceServerResponse([void updates(UpdateVoiceServerResponseBuilder b)]) = _$UpdateVoiceServerResponse;
+  factory UpdateVoiceServerResponse(
+          [void updates(UpdateVoiceServerResponseBuilder b)]) =
+      _$UpdateVoiceServerResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UpdateVoiceServerResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UpdateVoiceServerResponse> get serializer => _$UpdateVoiceServerResponseSerializer();
+  static Serializer<UpdateVoiceServerResponse> get serializer =>
+      _$UpdateVoiceServerResponseSerializer();
 }
 
-class _$UpdateVoiceServerResponseSerializer implements PrimitiveSerializer<UpdateVoiceServerResponse> {
+class _$UpdateVoiceServerResponseSerializer
+    implements PrimitiveSerializer<UpdateVoiceServerResponse> {
   @override
-  final Iterable<Type> types = const [UpdateVoiceServerResponse, _$UpdateVoiceServerResponse];
+  final Iterable<Type> types = const [
+    UpdateVoiceServerResponse,
+    _$UpdateVoiceServerResponse
+  ];
 
   @override
   final String wireName = r'UpdateVoiceServerResponse';
@@ -54,7 +63,9 @@ class _$UpdateVoiceServerResponseSerializer implements PrimitiveSerializer<Updat
     UpdateVoiceServerResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +115,3 @@ class _$UpdateVoiceServerResponseSerializer implements PrimitiveSerializer<Updat
     return result.build();
   }
 }
-

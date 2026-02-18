@@ -16,7 +16,10 @@ part 'bulk_update_guild_features_request.g.dart';
 /// * [addFeatures] - Guild features to add to all specified guilds
 /// * [removeFeatures] - Guild features to remove from all specified guilds
 @BuiltValue()
-abstract class BulkUpdateGuildFeaturesRequest implements Built<BulkUpdateGuildFeaturesRequest, BulkUpdateGuildFeaturesRequestBuilder> {
+abstract class BulkUpdateGuildFeaturesRequest
+    implements
+        Built<BulkUpdateGuildFeaturesRequest,
+            BulkUpdateGuildFeaturesRequestBuilder> {
   /// List of guild IDs to update
   @BuiltValueField(wireName: r'guild_ids')
   BuiltList<String> get guildIds;
@@ -31,18 +34,25 @@ abstract class BulkUpdateGuildFeaturesRequest implements Built<BulkUpdateGuildFe
 
   BulkUpdateGuildFeaturesRequest._();
 
-  factory BulkUpdateGuildFeaturesRequest([void updates(BulkUpdateGuildFeaturesRequestBuilder b)]) = _$BulkUpdateGuildFeaturesRequest;
+  factory BulkUpdateGuildFeaturesRequest(
+          [void updates(BulkUpdateGuildFeaturesRequestBuilder b)]) =
+      _$BulkUpdateGuildFeaturesRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(BulkUpdateGuildFeaturesRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<BulkUpdateGuildFeaturesRequest> get serializer => _$BulkUpdateGuildFeaturesRequestSerializer();
+  static Serializer<BulkUpdateGuildFeaturesRequest> get serializer =>
+      _$BulkUpdateGuildFeaturesRequestSerializer();
 }
 
-class _$BulkUpdateGuildFeaturesRequestSerializer implements PrimitiveSerializer<BulkUpdateGuildFeaturesRequest> {
+class _$BulkUpdateGuildFeaturesRequestSerializer
+    implements PrimitiveSerializer<BulkUpdateGuildFeaturesRequest> {
   @override
-  final Iterable<Type> types = const [BulkUpdateGuildFeaturesRequest, _$BulkUpdateGuildFeaturesRequest];
+  final Iterable<Type> types = const [
+    BulkUpdateGuildFeaturesRequest,
+    _$BulkUpdateGuildFeaturesRequest
+  ];
 
   @override
   final String wireName = r'BulkUpdateGuildFeaturesRequest';
@@ -79,7 +89,9 @@ class _$BulkUpdateGuildFeaturesRequestSerializer implements PrimitiveSerializer<
     BulkUpdateGuildFeaturesRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -143,4 +155,3 @@ class _$BulkUpdateGuildFeaturesRequestSerializer implements PrimitiveSerializer<
     return result.build();
   }
 }
-

@@ -13,9 +13,10 @@ part 'bot_token_reset_response.g.dart';
 ///
 /// Properties:
 /// * [token] - The new bot token
-/// * [bot] 
+/// * [bot]
 @BuiltValue()
-abstract class BotTokenResetResponse implements Built<BotTokenResetResponse, BotTokenResetResponseBuilder> {
+abstract class BotTokenResetResponse
+    implements Built<BotTokenResetResponse, BotTokenResetResponseBuilder> {
   /// The new bot token
   @BuiltValueField(wireName: r'token')
   String get token;
@@ -25,18 +26,24 @@ abstract class BotTokenResetResponse implements Built<BotTokenResetResponse, Bot
 
   BotTokenResetResponse._();
 
-  factory BotTokenResetResponse([void updates(BotTokenResetResponseBuilder b)]) = _$BotTokenResetResponse;
+  factory BotTokenResetResponse(
+      [void updates(BotTokenResetResponseBuilder b)]) = _$BotTokenResetResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(BotTokenResetResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<BotTokenResetResponse> get serializer => _$BotTokenResetResponseSerializer();
+  static Serializer<BotTokenResetResponse> get serializer =>
+      _$BotTokenResetResponseSerializer();
 }
 
-class _$BotTokenResetResponseSerializer implements PrimitiveSerializer<BotTokenResetResponse> {
+class _$BotTokenResetResponseSerializer
+    implements PrimitiveSerializer<BotTokenResetResponse> {
   @override
-  final Iterable<Type> types = const [BotTokenResetResponse, _$BotTokenResetResponse];
+  final Iterable<Type> types = const [
+    BotTokenResetResponse,
+    _$BotTokenResetResponse
+  ];
 
   @override
   final String wireName = r'BotTokenResetResponse';
@@ -64,7 +71,9 @@ class _$BotTokenResetResponseSerializer implements PrimitiveSerializer<BotTokenR
     BotTokenResetResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +130,3 @@ class _$BotTokenResetResponseSerializer implements PrimitiveSerializer<BotTokenR
     return result.build();
   }
 }
-

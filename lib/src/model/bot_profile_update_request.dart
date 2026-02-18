@@ -11,14 +11,15 @@ part 'bot_profile_update_request.g.dart';
 /// BotProfileUpdateRequest
 ///
 /// Properties:
-/// * [username] 
+/// * [username]
 /// * [discriminator] - The discriminator of the bot
 /// * [avatar] - Base64-encoded image data
 /// * [banner] - Base64-encoded image data
-/// * [bio] 
+/// * [bio]
 /// * [botFlags] - The bot user flags
 @BuiltValue()
-abstract class BotProfileUpdateRequest implements Built<BotProfileUpdateRequest, BotProfileUpdateRequestBuilder> {
+abstract class BotProfileUpdateRequest
+    implements Built<BotProfileUpdateRequest, BotProfileUpdateRequestBuilder> {
   @BuiltValueField(wireName: r'username')
   String? get username;
 
@@ -43,18 +44,25 @@ abstract class BotProfileUpdateRequest implements Built<BotProfileUpdateRequest,
 
   BotProfileUpdateRequest._();
 
-  factory BotProfileUpdateRequest([void updates(BotProfileUpdateRequestBuilder b)]) = _$BotProfileUpdateRequest;
+  factory BotProfileUpdateRequest(
+          [void updates(BotProfileUpdateRequestBuilder b)]) =
+      _$BotProfileUpdateRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(BotProfileUpdateRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<BotProfileUpdateRequest> get serializer => _$BotProfileUpdateRequestSerializer();
+  static Serializer<BotProfileUpdateRequest> get serializer =>
+      _$BotProfileUpdateRequestSerializer();
 }
 
-class _$BotProfileUpdateRequestSerializer implements PrimitiveSerializer<BotProfileUpdateRequest> {
+class _$BotProfileUpdateRequestSerializer
+    implements PrimitiveSerializer<BotProfileUpdateRequest> {
   @override
-  final Iterable<Type> types = const [BotProfileUpdateRequest, _$BotProfileUpdateRequest];
+  final Iterable<Type> types = const [
+    BotProfileUpdateRequest,
+    _$BotProfileUpdateRequest
+  ];
 
   @override
   final String wireName = r'BotProfileUpdateRequest';
@@ -114,7 +122,9 @@ class _$BotProfileUpdateRequestSerializer implements PrimitiveSerializer<BotProf
     BotProfileUpdateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -200,4 +210,3 @@ class _$BotProfileUpdateRequestSerializer implements PrimitiveSerializer<BotProf
     return result.build();
   }
 }
-

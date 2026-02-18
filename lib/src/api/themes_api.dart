@@ -4,17 +4,13 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:fluxer_dart/src/model/error.dart';
-import 'package:fluxer_dart/src/model/get_well_known_fluxer429_response.dart';
 import 'package:fluxer_dart/src/model/theme_create_request.dart';
 import 'package:fluxer_dart/src/model/theme_create_response.dart';
 
 class ThemesApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -25,7 +21,7 @@ class ThemesApi {
   /// Creates a new custom theme with CSS styling that can be shared with other users.
   ///
   /// Parameters:
-  /// * [themeCreateRequest] 
+  /// * [themeCreateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -35,7 +31,7 @@ class ThemesApi {
   ///
   /// Returns a [Future] containing a [Response] with a [ThemeCreateResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ThemeCreateResponse>> createTheme({ 
+  Future<Response<ThemeCreateResponse>> createTheme({
     required ThemeCreateRequest themeCreateRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -57,7 +53,8 @@ class ThemesApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -74,11 +71,11 @@ class ThemesApi {
 
     try {
       const _type = FullType(ThemeCreateRequest);
-      _bodyData = _serializers.serialize(themeCreateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(themeCreateRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -101,11 +98,12 @@ class ThemesApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ThemeCreateResponse),
-      ) as ThemeCreateResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(ThemeCreateResponse),
+            ) as ThemeCreateResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -127,5 +125,4 @@ class ThemesApi {
       extra: _response.extra,
     );
   }
-
 }

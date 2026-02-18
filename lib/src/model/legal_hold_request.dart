@@ -13,23 +13,27 @@ part 'legal_hold_request.g.dart';
 /// Properties:
 /// * [expiresAt] - ISO 8601 timestamp when the legal hold expires
 @BuiltValue()
-abstract class LegalHoldRequest implements Built<LegalHoldRequest, LegalHoldRequestBuilder> {
+abstract class LegalHoldRequest
+    implements Built<LegalHoldRequest, LegalHoldRequestBuilder> {
   /// ISO 8601 timestamp when the legal hold expires
   @BuiltValueField(wireName: r'expires_at')
   String? get expiresAt;
 
   LegalHoldRequest._();
 
-  factory LegalHoldRequest([void updates(LegalHoldRequestBuilder b)]) = _$LegalHoldRequest;
+  factory LegalHoldRequest([void updates(LegalHoldRequestBuilder b)]) =
+      _$LegalHoldRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(LegalHoldRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<LegalHoldRequest> get serializer => _$LegalHoldRequestSerializer();
+  static Serializer<LegalHoldRequest> get serializer =>
+      _$LegalHoldRequestSerializer();
 }
 
-class _$LegalHoldRequestSerializer implements PrimitiveSerializer<LegalHoldRequest> {
+class _$LegalHoldRequestSerializer
+    implements PrimitiveSerializer<LegalHoldRequest> {
   @override
   final Iterable<Type> types = const [LegalHoldRequest, _$LegalHoldRequest];
 
@@ -56,7 +60,9 @@ class _$LegalHoldRequestSerializer implements PrimitiveSerializer<LegalHoldReque
     LegalHoldRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -106,4 +112,3 @@ class _$LegalHoldRequestSerializer implements PrimitiveSerializer<LegalHoldReque
     return result.build();
   }
 }
-

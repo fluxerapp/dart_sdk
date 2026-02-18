@@ -13,25 +13,35 @@ part 'create_checkout_session_request.g.dart';
 /// Properties:
 /// * [priceId] - The Stripe price ID for the subscription plan
 @BuiltValue()
-abstract class CreateCheckoutSessionRequest implements Built<CreateCheckoutSessionRequest, CreateCheckoutSessionRequestBuilder> {
+abstract class CreateCheckoutSessionRequest
+    implements
+        Built<CreateCheckoutSessionRequest,
+            CreateCheckoutSessionRequestBuilder> {
   /// The Stripe price ID for the subscription plan
   @BuiltValueField(wireName: r'price_id')
   String get priceId;
 
   CreateCheckoutSessionRequest._();
 
-  factory CreateCheckoutSessionRequest([void updates(CreateCheckoutSessionRequestBuilder b)]) = _$CreateCheckoutSessionRequest;
+  factory CreateCheckoutSessionRequest(
+          [void updates(CreateCheckoutSessionRequestBuilder b)]) =
+      _$CreateCheckoutSessionRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CreateCheckoutSessionRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CreateCheckoutSessionRequest> get serializer => _$CreateCheckoutSessionRequestSerializer();
+  static Serializer<CreateCheckoutSessionRequest> get serializer =>
+      _$CreateCheckoutSessionRequestSerializer();
 }
 
-class _$CreateCheckoutSessionRequestSerializer implements PrimitiveSerializer<CreateCheckoutSessionRequest> {
+class _$CreateCheckoutSessionRequestSerializer
+    implements PrimitiveSerializer<CreateCheckoutSessionRequest> {
   @override
-  final Iterable<Type> types = const [CreateCheckoutSessionRequest, _$CreateCheckoutSessionRequest];
+  final Iterable<Type> types = const [
+    CreateCheckoutSessionRequest,
+    _$CreateCheckoutSessionRequest
+  ];
 
   @override
   final String wireName = r'CreateCheckoutSessionRequest';
@@ -54,7 +64,9 @@ class _$CreateCheckoutSessionRequestSerializer implements PrimitiveSerializer<Cr
     CreateCheckoutSessionRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +116,3 @@ class _$CreateCheckoutSessionRequestSerializer implements PrimitiveSerializer<Cr
     return result.build();
   }
 }
-

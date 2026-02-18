@@ -16,15 +16,16 @@ part 'application_bot_response.g.dart';
 /// * [id] - The unique identifier of the bot user
 /// * [username] - The username of the bot
 /// * [discriminator] - The discriminator of the bot
-/// * [bio] 
+/// * [bio]
 /// * [flags] - The bot user flags
-/// * [avatar] 
-/// * [banner] 
+/// * [avatar]
+/// * [banner]
 /// * [token] - The bot token for authentication
 /// * [mfaEnabled] - Whether the bot has MFA enabled
 /// * [authenticatorTypes] - The types of authenticators enabled
 @BuiltValue()
-abstract class ApplicationBotResponse implements Built<ApplicationBotResponse, ApplicationBotResponseBuilder> {
+abstract class ApplicationBotResponse
+    implements Built<ApplicationBotResponse, ApplicationBotResponseBuilder> {
   /// The unique identifier of the bot user
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -64,18 +65,25 @@ abstract class ApplicationBotResponse implements Built<ApplicationBotResponse, A
 
   ApplicationBotResponse._();
 
-  factory ApplicationBotResponse([void updates(ApplicationBotResponseBuilder b)]) = _$ApplicationBotResponse;
+  factory ApplicationBotResponse(
+          [void updates(ApplicationBotResponseBuilder b)]) =
+      _$ApplicationBotResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ApplicationBotResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ApplicationBotResponse> get serializer => _$ApplicationBotResponseSerializer();
+  static Serializer<ApplicationBotResponse> get serializer =>
+      _$ApplicationBotResponseSerializer();
 }
 
-class _$ApplicationBotResponseSerializer implements PrimitiveSerializer<ApplicationBotResponse> {
+class _$ApplicationBotResponseSerializer
+    implements PrimitiveSerializer<ApplicationBotResponse> {
   @override
-  final Iterable<Type> types = const [ApplicationBotResponse, _$ApplicationBotResponse];
+  final Iterable<Type> types = const [
+    ApplicationBotResponse,
+    _$ApplicationBotResponse
+  ];
 
   @override
   final String wireName = r'ApplicationBotResponse';
@@ -101,10 +109,12 @@ class _$ApplicationBotResponseSerializer implements PrimitiveSerializer<Applicat
       specifiedType: const FullType(String),
     );
     yield r'bio';
-    yield object.bio == null ? null : serializers.serialize(
-      object.bio,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.bio == null
+        ? null
+        : serializers.serialize(
+            object.bio,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'flags';
     yield serializers.serialize(
       object.flags,
@@ -153,7 +163,9 @@ class _$ApplicationBotResponseSerializer implements PrimitiveSerializer<Applicat
     ApplicationBotResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -237,7 +249,8 @@ class _$ApplicationBotResponseSerializer implements PrimitiveSerializer<Applicat
         case r'authenticator_types':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(AuthenticatorType)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(AuthenticatorType)]),
           ) as BuiltList<AuthenticatorType>;
           result.authenticatorTypes.replace(valueDes);
           break;
@@ -269,4 +282,3 @@ class _$ApplicationBotResponseSerializer implements PrimitiveSerializer<Applicat
     return result.build();
   }
 }
-

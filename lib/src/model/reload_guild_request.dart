@@ -11,24 +11,28 @@ part 'reload_guild_request.g.dart';
 /// ReloadGuildRequest
 ///
 /// Properties:
-/// * [guildId] 
+/// * [guildId]
 @BuiltValue()
-abstract class ReloadGuildRequest implements Built<ReloadGuildRequest, ReloadGuildRequestBuilder> {
+abstract class ReloadGuildRequest
+    implements Built<ReloadGuildRequest, ReloadGuildRequestBuilder> {
   @BuiltValueField(wireName: r'guild_id')
   String get guildId;
 
   ReloadGuildRequest._();
 
-  factory ReloadGuildRequest([void updates(ReloadGuildRequestBuilder b)]) = _$ReloadGuildRequest;
+  factory ReloadGuildRequest([void updates(ReloadGuildRequestBuilder b)]) =
+      _$ReloadGuildRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ReloadGuildRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ReloadGuildRequest> get serializer => _$ReloadGuildRequestSerializer();
+  static Serializer<ReloadGuildRequest> get serializer =>
+      _$ReloadGuildRequestSerializer();
 }
 
-class _$ReloadGuildRequestSerializer implements PrimitiveSerializer<ReloadGuildRequest> {
+class _$ReloadGuildRequestSerializer
+    implements PrimitiveSerializer<ReloadGuildRequest> {
   @override
   final Iterable<Type> types = const [ReloadGuildRequest, _$ReloadGuildRequest];
 
@@ -53,7 +57,9 @@ class _$ReloadGuildRequestSerializer implements PrimitiveSerializer<ReloadGuildR
     ReloadGuildRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,4 +109,3 @@ class _$ReloadGuildRequestSerializer implements PrimitiveSerializer<ReloadGuildR
     return result.build();
   }
 }
-

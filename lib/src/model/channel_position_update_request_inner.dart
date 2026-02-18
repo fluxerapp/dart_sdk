@@ -11,12 +11,15 @@ part 'channel_position_update_request_inner.g.dart';
 /// ChannelPositionUpdateRequestInner
 ///
 /// Properties:
-/// * [id] 
+/// * [id]
 /// * [position] - New position for the channel
-/// * [parentId] 
+/// * [parentId]
 /// * [lockPermissions] - Whether to sync permissions with the new parent
 @BuiltValue()
-abstract class ChannelPositionUpdateRequestInner implements Built<ChannelPositionUpdateRequestInner, ChannelPositionUpdateRequestInnerBuilder> {
+abstract class ChannelPositionUpdateRequestInner
+    implements
+        Built<ChannelPositionUpdateRequestInner,
+            ChannelPositionUpdateRequestInnerBuilder> {
   @BuiltValueField(wireName: r'id')
   String get id;
 
@@ -33,18 +36,25 @@ abstract class ChannelPositionUpdateRequestInner implements Built<ChannelPositio
 
   ChannelPositionUpdateRequestInner._();
 
-  factory ChannelPositionUpdateRequestInner([void updates(ChannelPositionUpdateRequestInnerBuilder b)]) = _$ChannelPositionUpdateRequestInner;
+  factory ChannelPositionUpdateRequestInner(
+          [void updates(ChannelPositionUpdateRequestInnerBuilder b)]) =
+      _$ChannelPositionUpdateRequestInner;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ChannelPositionUpdateRequestInnerBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ChannelPositionUpdateRequestInner> get serializer => _$ChannelPositionUpdateRequestInnerSerializer();
+  static Serializer<ChannelPositionUpdateRequestInner> get serializer =>
+      _$ChannelPositionUpdateRequestInnerSerializer();
 }
 
-class _$ChannelPositionUpdateRequestInnerSerializer implements PrimitiveSerializer<ChannelPositionUpdateRequestInner> {
+class _$ChannelPositionUpdateRequestInnerSerializer
+    implements PrimitiveSerializer<ChannelPositionUpdateRequestInner> {
   @override
-  final Iterable<Type> types = const [ChannelPositionUpdateRequestInner, _$ChannelPositionUpdateRequestInner];
+  final Iterable<Type> types = const [
+    ChannelPositionUpdateRequestInner,
+    _$ChannelPositionUpdateRequestInner
+  ];
 
   @override
   final String wireName = r'ChannelPositionUpdateRequestInner';
@@ -88,7 +98,9 @@ class _$ChannelPositionUpdateRequestInnerSerializer implements PrimitiveSerializ
     ChannelPositionUpdateRequestInner object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -159,4 +171,3 @@ class _$ChannelPositionUpdateRequestInnerSerializer implements PrimitiveSerializ
     return result.build();
   }
 }
-

@@ -13,12 +13,15 @@ part 'ncmec_submission_status_response.g.dart';
 ///
 /// Properties:
 /// * [status] - NCMEC submission status
-/// * [ncmecReportId] 
-/// * [submittedAt] 
-/// * [submittedByAdminId] 
-/// * [failureReason] 
+/// * [ncmecReportId]
+/// * [submittedAt]
+/// * [submittedByAdminId]
+/// * [failureReason]
 @BuiltValue()
-abstract class NcmecSubmissionStatusResponse implements Built<NcmecSubmissionStatusResponse, NcmecSubmissionStatusResponseBuilder> {
+abstract class NcmecSubmissionStatusResponse
+    implements
+        Built<NcmecSubmissionStatusResponse,
+            NcmecSubmissionStatusResponseBuilder> {
   /// NCMEC submission status
   @BuiltValueField(wireName: r'status')
   NcmecSubmissionStatusResponseStatusEnum get status;
@@ -38,18 +41,25 @@ abstract class NcmecSubmissionStatusResponse implements Built<NcmecSubmissionSta
 
   NcmecSubmissionStatusResponse._();
 
-  factory NcmecSubmissionStatusResponse([void updates(NcmecSubmissionStatusResponseBuilder b)]) = _$NcmecSubmissionStatusResponse;
+  factory NcmecSubmissionStatusResponse(
+          [void updates(NcmecSubmissionStatusResponseBuilder b)]) =
+      _$NcmecSubmissionStatusResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(NcmecSubmissionStatusResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<NcmecSubmissionStatusResponse> get serializer => _$NcmecSubmissionStatusResponseSerializer();
+  static Serializer<NcmecSubmissionStatusResponse> get serializer =>
+      _$NcmecSubmissionStatusResponseSerializer();
 }
 
-class _$NcmecSubmissionStatusResponseSerializer implements PrimitiveSerializer<NcmecSubmissionStatusResponse> {
+class _$NcmecSubmissionStatusResponseSerializer
+    implements PrimitiveSerializer<NcmecSubmissionStatusResponse> {
   @override
-  final Iterable<Type> types = const [NcmecSubmissionStatusResponse, _$NcmecSubmissionStatusResponse];
+  final Iterable<Type> types = const [
+    NcmecSubmissionStatusResponse,
+    _$NcmecSubmissionStatusResponse
+  ];
 
   @override
   final String wireName = r'NcmecSubmissionStatusResponse';
@@ -65,25 +75,31 @@ class _$NcmecSubmissionStatusResponseSerializer implements PrimitiveSerializer<N
       specifiedType: const FullType(NcmecSubmissionStatusResponseStatusEnum),
     );
     yield r'ncmec_report_id';
-    yield object.ncmecReportId == null ? null : serializers.serialize(
-      object.ncmecReportId,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.ncmecReportId == null
+        ? null
+        : serializers.serialize(
+            object.ncmecReportId,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'submitted_at';
-    yield object.submittedAt == null ? null : serializers.serialize(
-      object.submittedAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.submittedAt == null
+        ? null
+        : serializers.serialize(
+            object.submittedAt,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'submitted_by_admin_id';
     yield serializers.serialize(
       object.submittedByAdminId,
       specifiedType: const FullType(String),
     );
     yield r'failure_reason';
-    yield object.failureReason == null ? null : serializers.serialize(
-      object.failureReason,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.failureReason == null
+        ? null
+        : serializers.serialize(
+            object.failureReason,
+            specifiedType: const FullType.nullable(String),
+          );
   }
 
   @override
@@ -92,7 +108,9 @@ class _$NcmecSubmissionStatusResponseSerializer implements PrimitiveSerializer<N
     NcmecSubmissionStatusResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -110,7 +128,8 @@ class _$NcmecSubmissionStatusResponseSerializer implements PrimitiveSerializer<N
         case r'status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(NcmecSubmissionStatusResponseStatusEnum),
+            specifiedType:
+                const FullType(NcmecSubmissionStatusResponseStatusEnum),
           ) as NcmecSubmissionStatusResponseStatusEnum;
           result.status = valueDes;
           break;
@@ -175,22 +194,28 @@ class _$NcmecSubmissionStatusResponseSerializer implements PrimitiveSerializer<N
 }
 
 class NcmecSubmissionStatusResponseStatusEnum extends EnumClass {
-
   /// NCMEC submission status
   @BuiltValueEnumConst(wireName: r'not_submitted')
-  static const NcmecSubmissionStatusResponseStatusEnum notSubmitted = _$ncmecSubmissionStatusResponseStatusEnum_notSubmitted;
+  static const NcmecSubmissionStatusResponseStatusEnum notSubmitted =
+      _$ncmecSubmissionStatusResponseStatusEnum_notSubmitted;
+
   /// NCMEC submission status
   @BuiltValueEnumConst(wireName: r'submitted')
-  static const NcmecSubmissionStatusResponseStatusEnum submitted = _$ncmecSubmissionStatusResponseStatusEnum_submitted;
+  static const NcmecSubmissionStatusResponseStatusEnum submitted =
+      _$ncmecSubmissionStatusResponseStatusEnum_submitted;
+
   /// NCMEC submission status
   @BuiltValueEnumConst(wireName: r'failed')
-  static const NcmecSubmissionStatusResponseStatusEnum failed = _$ncmecSubmissionStatusResponseStatusEnum_failed;
+  static const NcmecSubmissionStatusResponseStatusEnum failed =
+      _$ncmecSubmissionStatusResponseStatusEnum_failed;
 
-  static Serializer<NcmecSubmissionStatusResponseStatusEnum> get serializer => _$ncmecSubmissionStatusResponseStatusEnumSerializer;
+  static Serializer<NcmecSubmissionStatusResponseStatusEnum> get serializer =>
+      _$ncmecSubmissionStatusResponseStatusEnumSerializer;
 
-  const NcmecSubmissionStatusResponseStatusEnum._(String name): super(name);
+  const NcmecSubmissionStatusResponseStatusEnum._(String name) : super(name);
 
-  static BuiltSet<NcmecSubmissionStatusResponseStatusEnum> get values => _$ncmecSubmissionStatusResponseStatusEnumValues;
-  static NcmecSubmissionStatusResponseStatusEnum valueOf(String name) => _$ncmecSubmissionStatusResponseStatusEnumValueOf(name);
+  static BuiltSet<NcmecSubmissionStatusResponseStatusEnum> get values =>
+      _$ncmecSubmissionStatusResponseStatusEnumValues;
+  static NcmecSubmissionStatusResponseStatusEnum valueOf(String name) =>
+      _$ncmecSubmissionStatusResponseStatusEnumValueOf(name);
 }
-

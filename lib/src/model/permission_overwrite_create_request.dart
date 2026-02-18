@@ -13,10 +13,13 @@ part 'permission_overwrite_create_request.g.dart';
 ///
 /// Properties:
 /// * [type] - The type of overwrite (0 = role, 1 = member)
-/// * [allow] 
-/// * [deny] 
+/// * [allow]
+/// * [deny]
 @BuiltValue()
-abstract class PermissionOverwriteCreateRequest implements Built<PermissionOverwriteCreateRequest, PermissionOverwriteCreateRequestBuilder> {
+abstract class PermissionOverwriteCreateRequest
+    implements
+        Built<PermissionOverwriteCreateRequest,
+            PermissionOverwriteCreateRequestBuilder> {
   /// The type of overwrite (0 = role, 1 = member)
   @BuiltValueField(wireName: r'type')
   PermissionOverwriteCreateRequestTypeEnum get type;
@@ -30,18 +33,25 @@ abstract class PermissionOverwriteCreateRequest implements Built<PermissionOverw
 
   PermissionOverwriteCreateRequest._();
 
-  factory PermissionOverwriteCreateRequest([void updates(PermissionOverwriteCreateRequestBuilder b)]) = _$PermissionOverwriteCreateRequest;
+  factory PermissionOverwriteCreateRequest(
+          [void updates(PermissionOverwriteCreateRequestBuilder b)]) =
+      _$PermissionOverwriteCreateRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PermissionOverwriteCreateRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PermissionOverwriteCreateRequest> get serializer => _$PermissionOverwriteCreateRequestSerializer();
+  static Serializer<PermissionOverwriteCreateRequest> get serializer =>
+      _$PermissionOverwriteCreateRequestSerializer();
 }
 
-class _$PermissionOverwriteCreateRequestSerializer implements PrimitiveSerializer<PermissionOverwriteCreateRequest> {
+class _$PermissionOverwriteCreateRequestSerializer
+    implements PrimitiveSerializer<PermissionOverwriteCreateRequest> {
   @override
-  final Iterable<Type> types = const [PermissionOverwriteCreateRequest, _$PermissionOverwriteCreateRequest];
+  final Iterable<Type> types = const [
+    PermissionOverwriteCreateRequest,
+    _$PermissionOverwriteCreateRequest
+  ];
 
   @override
   final String wireName = r'PermissionOverwriteCreateRequest';
@@ -78,7 +88,9 @@ class _$PermissionOverwriteCreateRequestSerializer implements PrimitiveSerialize
     PermissionOverwriteCreateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -96,7 +108,8 @@ class _$PermissionOverwriteCreateRequestSerializer implements PrimitiveSerialize
         case r'type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(PermissionOverwriteCreateRequestTypeEnum),
+            specifiedType:
+                const FullType(PermissionOverwriteCreateRequestTypeEnum),
           ) as PermissionOverwriteCreateRequestTypeEnum;
           result.type = valueDes;
           break;
@@ -144,19 +157,23 @@ class _$PermissionOverwriteCreateRequestSerializer implements PrimitiveSerialize
 }
 
 class PermissionOverwriteCreateRequestTypeEnum extends EnumClass {
-
   /// The type of overwrite (0 = role, 1 = member)
   @BuiltValueEnumConst(wireNumber: 0)
-  static const PermissionOverwriteCreateRequestTypeEnum number0 = _$permissionOverwriteCreateRequestTypeEnum_number0;
+  static const PermissionOverwriteCreateRequestTypeEnum number0 =
+      _$permissionOverwriteCreateRequestTypeEnum_number0;
+
   /// The type of overwrite (0 = role, 1 = member)
   @BuiltValueEnumConst(wireNumber: 1)
-  static const PermissionOverwriteCreateRequestTypeEnum number1 = _$permissionOverwriteCreateRequestTypeEnum_number1;
+  static const PermissionOverwriteCreateRequestTypeEnum number1 =
+      _$permissionOverwriteCreateRequestTypeEnum_number1;
 
-  static Serializer<PermissionOverwriteCreateRequestTypeEnum> get serializer => _$permissionOverwriteCreateRequestTypeEnumSerializer;
+  static Serializer<PermissionOverwriteCreateRequestTypeEnum> get serializer =>
+      _$permissionOverwriteCreateRequestTypeEnumSerializer;
 
-  const PermissionOverwriteCreateRequestTypeEnum._(String name): super(name);
+  const PermissionOverwriteCreateRequestTypeEnum._(String name) : super(name);
 
-  static BuiltSet<PermissionOverwriteCreateRequestTypeEnum> get values => _$permissionOverwriteCreateRequestTypeEnumValues;
-  static PermissionOverwriteCreateRequestTypeEnum valueOf(String name) => _$permissionOverwriteCreateRequestTypeEnumValueOf(name);
+  static BuiltSet<PermissionOverwriteCreateRequestTypeEnum> get values =>
+      _$permissionOverwriteCreateRequestTypeEnumValues;
+  static PermissionOverwriteCreateRequestTypeEnum valueOf(String name) =>
+      _$permissionOverwriteCreateRequestTypeEnumValueOf(name);
 }
-

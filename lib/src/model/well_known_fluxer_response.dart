@@ -23,19 +23,20 @@ part 'well_known_fluxer_response.g.dart';
 ///
 /// Properties:
 /// * [apiCodeVersion] - Version of the API server code
-/// * [endpoints] 
-/// * [captcha] 
-/// * [features] 
-/// * [gif] 
-/// * [sso] 
-/// * [limits] 
-/// * [push] 
-/// * [appPublic] 
-/// * [federation] 
-/// * [publicKey] 
-/// * [oauth2] 
+/// * [endpoints]
+/// * [captcha]
+/// * [features]
+/// * [gif]
+/// * [sso]
+/// * [limits]
+/// * [push]
+/// * [appPublic]
+/// * [federation]
+/// * [publicKey]
+/// * [oauth2]
 @BuiltValue()
-abstract class WellKnownFluxerResponse implements Built<WellKnownFluxerResponse, WellKnownFluxerResponseBuilder> {
+abstract class WellKnownFluxerResponse
+    implements Built<WellKnownFluxerResponse, WellKnownFluxerResponseBuilder> {
   /// Version of the API server code
   @BuiltValueField(wireName: r'api_code_version')
   int get apiCodeVersion;
@@ -75,18 +76,25 @@ abstract class WellKnownFluxerResponse implements Built<WellKnownFluxerResponse,
 
   WellKnownFluxerResponse._();
 
-  factory WellKnownFluxerResponse([void updates(WellKnownFluxerResponseBuilder b)]) = _$WellKnownFluxerResponse;
+  factory WellKnownFluxerResponse(
+          [void updates(WellKnownFluxerResponseBuilder b)]) =
+      _$WellKnownFluxerResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(WellKnownFluxerResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<WellKnownFluxerResponse> get serializer => _$WellKnownFluxerResponseSerializer();
+  static Serializer<WellKnownFluxerResponse> get serializer =>
+      _$WellKnownFluxerResponseSerializer();
 }
 
-class _$WellKnownFluxerResponseSerializer implements PrimitiveSerializer<WellKnownFluxerResponse> {
+class _$WellKnownFluxerResponseSerializer
+    implements PrimitiveSerializer<WellKnownFluxerResponse> {
   @override
-  final Iterable<Type> types = const [WellKnownFluxerResponse, _$WellKnownFluxerResponse];
+  final Iterable<Type> types = const [
+    WellKnownFluxerResponse,
+    _$WellKnownFluxerResponse
+  ];
 
   @override
   final String wireName = r'WellKnownFluxerResponse';
@@ -170,7 +178,9 @@ class _$WellKnownFluxerResponseSerializer implements PrimitiveSerializer<WellKno
     WellKnownFluxerResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -297,4 +307,3 @@ class _$WellKnownFluxerResponseSerializer implements PrimitiveSerializer<WellKno
     return result.build();
   }
 }
-

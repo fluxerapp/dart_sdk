@@ -16,7 +16,10 @@ part 'well_known_fluxer_response_public_key.g.dart';
 /// * [algorithm] - Key algorithm
 /// * [publicKeyBase64] - Base64-encoded public key
 @BuiltValue()
-abstract class WellKnownFluxerResponsePublicKey implements Built<WellKnownFluxerResponsePublicKey, WellKnownFluxerResponsePublicKeyBuilder> {
+abstract class WellKnownFluxerResponsePublicKey
+    implements
+        Built<WellKnownFluxerResponsePublicKey,
+            WellKnownFluxerResponsePublicKeyBuilder> {
   /// Key identifier
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -32,18 +35,25 @@ abstract class WellKnownFluxerResponsePublicKey implements Built<WellKnownFluxer
 
   WellKnownFluxerResponsePublicKey._();
 
-  factory WellKnownFluxerResponsePublicKey([void updates(WellKnownFluxerResponsePublicKeyBuilder b)]) = _$WellKnownFluxerResponsePublicKey;
+  factory WellKnownFluxerResponsePublicKey(
+          [void updates(WellKnownFluxerResponsePublicKeyBuilder b)]) =
+      _$WellKnownFluxerResponsePublicKey;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(WellKnownFluxerResponsePublicKeyBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<WellKnownFluxerResponsePublicKey> get serializer => _$WellKnownFluxerResponsePublicKeySerializer();
+  static Serializer<WellKnownFluxerResponsePublicKey> get serializer =>
+      _$WellKnownFluxerResponsePublicKeySerializer();
 }
 
-class _$WellKnownFluxerResponsePublicKeySerializer implements PrimitiveSerializer<WellKnownFluxerResponsePublicKey> {
+class _$WellKnownFluxerResponsePublicKeySerializer
+    implements PrimitiveSerializer<WellKnownFluxerResponsePublicKey> {
   @override
-  final Iterable<Type> types = const [WellKnownFluxerResponsePublicKey, _$WellKnownFluxerResponsePublicKey];
+  final Iterable<Type> types = const [
+    WellKnownFluxerResponsePublicKey,
+    _$WellKnownFluxerResponsePublicKey
+  ];
 
   @override
   final String wireName = r'WellKnownFluxerResponsePublicKey';
@@ -61,7 +71,8 @@ class _$WellKnownFluxerResponsePublicKeySerializer implements PrimitiveSerialize
     yield r'algorithm';
     yield serializers.serialize(
       object.algorithm,
-      specifiedType: const FullType(WellKnownFluxerResponsePublicKeyAlgorithmEnum),
+      specifiedType:
+          const FullType(WellKnownFluxerResponsePublicKeyAlgorithmEnum),
     );
     yield r'public_key_base64';
     yield serializers.serialize(
@@ -76,7 +87,9 @@ class _$WellKnownFluxerResponsePublicKeySerializer implements PrimitiveSerialize
     WellKnownFluxerResponsePublicKey object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -101,7 +114,8 @@ class _$WellKnownFluxerResponsePublicKeySerializer implements PrimitiveSerialize
         case r'algorithm':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(WellKnownFluxerResponsePublicKeyAlgorithmEnum),
+            specifiedType:
+                const FullType(WellKnownFluxerResponsePublicKeyAlgorithmEnum),
           ) as WellKnownFluxerResponsePublicKeyAlgorithmEnum;
           result.algorithm = valueDes;
           break;
@@ -142,16 +156,20 @@ class _$WellKnownFluxerResponsePublicKeySerializer implements PrimitiveSerialize
 }
 
 class WellKnownFluxerResponsePublicKeyAlgorithmEnum extends EnumClass {
-
   /// Key algorithm
   @BuiltValueEnumConst(wireName: r'x25519')
-  static const WellKnownFluxerResponsePublicKeyAlgorithmEnum x25519 = _$wellKnownFluxerResponsePublicKeyAlgorithmEnum_x25519;
+  static const WellKnownFluxerResponsePublicKeyAlgorithmEnum x25519 =
+      _$wellKnownFluxerResponsePublicKeyAlgorithmEnum_x25519;
 
-  static Serializer<WellKnownFluxerResponsePublicKeyAlgorithmEnum> get serializer => _$wellKnownFluxerResponsePublicKeyAlgorithmEnumSerializer;
+  static Serializer<WellKnownFluxerResponsePublicKeyAlgorithmEnum>
+      get serializer =>
+          _$wellKnownFluxerResponsePublicKeyAlgorithmEnumSerializer;
 
-  const WellKnownFluxerResponsePublicKeyAlgorithmEnum._(String name): super(name);
+  const WellKnownFluxerResponsePublicKeyAlgorithmEnum._(String name)
+      : super(name);
 
-  static BuiltSet<WellKnownFluxerResponsePublicKeyAlgorithmEnum> get values => _$wellKnownFluxerResponsePublicKeyAlgorithmEnumValues;
-  static WellKnownFluxerResponsePublicKeyAlgorithmEnum valueOf(String name) => _$wellKnownFluxerResponsePublicKeyAlgorithmEnumValueOf(name);
+  static BuiltSet<WellKnownFluxerResponsePublicKeyAlgorithmEnum> get values =>
+      _$wellKnownFluxerResponsePublicKeyAlgorithmEnumValues;
+  static WellKnownFluxerResponsePublicKeyAlgorithmEnum valueOf(String name) =>
+      _$wellKnownFluxerResponsePublicKeyAlgorithmEnumValueOf(name);
 }
-

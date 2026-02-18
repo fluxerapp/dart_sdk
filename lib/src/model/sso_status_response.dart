@@ -13,10 +13,11 @@ part 'sso_status_response.g.dart';
 /// Properties:
 /// * [enabled] - Whether SSO is enabled for this instance
 /// * [enforced] - Whether SSO is required for all users
-/// * [displayName] 
+/// * [displayName]
 /// * [redirectUri] - OAuth redirect URI for SSO
 @BuiltValue()
-abstract class SsoStatusResponse implements Built<SsoStatusResponse, SsoStatusResponseBuilder> {
+abstract class SsoStatusResponse
+    implements Built<SsoStatusResponse, SsoStatusResponseBuilder> {
   /// Whether SSO is enabled for this instance
   @BuiltValueField(wireName: r'enabled')
   bool get enabled;
@@ -34,16 +35,19 @@ abstract class SsoStatusResponse implements Built<SsoStatusResponse, SsoStatusRe
 
   SsoStatusResponse._();
 
-  factory SsoStatusResponse([void updates(SsoStatusResponseBuilder b)]) = _$SsoStatusResponse;
+  factory SsoStatusResponse([void updates(SsoStatusResponseBuilder b)]) =
+      _$SsoStatusResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SsoStatusResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SsoStatusResponse> get serializer => _$SsoStatusResponseSerializer();
+  static Serializer<SsoStatusResponse> get serializer =>
+      _$SsoStatusResponseSerializer();
 }
 
-class _$SsoStatusResponseSerializer implements PrimitiveSerializer<SsoStatusResponse> {
+class _$SsoStatusResponseSerializer
+    implements PrimitiveSerializer<SsoStatusResponse> {
   @override
   final Iterable<Type> types = const [SsoStatusResponse, _$SsoStatusResponse];
 
@@ -66,10 +70,12 @@ class _$SsoStatusResponseSerializer implements PrimitiveSerializer<SsoStatusResp
       specifiedType: const FullType(bool),
     );
     yield r'display_name';
-    yield object.displayName == null ? null : serializers.serialize(
-      object.displayName,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.displayName == null
+        ? null
+        : serializers.serialize(
+            object.displayName,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'redirect_uri';
     yield serializers.serialize(
       object.redirectUri,
@@ -83,7 +89,9 @@ class _$SsoStatusResponseSerializer implements PrimitiveSerializer<SsoStatusResp
     SsoStatusResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -155,4 +163,3 @@ class _$SsoStatusResponseSerializer implements PrimitiveSerializer<SsoStatusResp
     return result.build();
   }
 }
-

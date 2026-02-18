@@ -17,7 +17,10 @@ part 'scheduled_message_allowed_mentions_schema.g.dart';
 /// * [roles] - Array of role IDs to mention
 /// * [repliedUser] - Whether to mention the author of the replied message
 @BuiltValue()
-abstract class ScheduledMessageAllowedMentionsSchema implements Built<ScheduledMessageAllowedMentionsSchema, ScheduledMessageAllowedMentionsSchemaBuilder> {
+abstract class ScheduledMessageAllowedMentionsSchema
+    implements
+        Built<ScheduledMessageAllowedMentionsSchema,
+            ScheduledMessageAllowedMentionsSchemaBuilder> {
   /// Types of mentions to parse from content
   @BuiltValueField(wireName: r'parse')
   BuiltList<ScheduledMessageAllowedMentionsSchemaParseEnum>? get parse;
@@ -37,18 +40,25 @@ abstract class ScheduledMessageAllowedMentionsSchema implements Built<ScheduledM
 
   ScheduledMessageAllowedMentionsSchema._();
 
-  factory ScheduledMessageAllowedMentionsSchema([void updates(ScheduledMessageAllowedMentionsSchemaBuilder b)]) = _$ScheduledMessageAllowedMentionsSchema;
+  factory ScheduledMessageAllowedMentionsSchema(
+          [void updates(ScheduledMessageAllowedMentionsSchemaBuilder b)]) =
+      _$ScheduledMessageAllowedMentionsSchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ScheduledMessageAllowedMentionsSchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ScheduledMessageAllowedMentionsSchema> get serializer => _$ScheduledMessageAllowedMentionsSchemaSerializer();
+  static Serializer<ScheduledMessageAllowedMentionsSchema> get serializer =>
+      _$ScheduledMessageAllowedMentionsSchemaSerializer();
 }
 
-class _$ScheduledMessageAllowedMentionsSchemaSerializer implements PrimitiveSerializer<ScheduledMessageAllowedMentionsSchema> {
+class _$ScheduledMessageAllowedMentionsSchemaSerializer
+    implements PrimitiveSerializer<ScheduledMessageAllowedMentionsSchema> {
   @override
-  final Iterable<Type> types = const [ScheduledMessageAllowedMentionsSchema, _$ScheduledMessageAllowedMentionsSchema];
+  final Iterable<Type> types = const [
+    ScheduledMessageAllowedMentionsSchema,
+    _$ScheduledMessageAllowedMentionsSchema
+  ];
 
   @override
   final String wireName = r'ScheduledMessageAllowedMentionsSchema';
@@ -62,7 +72,8 @@ class _$ScheduledMessageAllowedMentionsSchemaSerializer implements PrimitiveSeri
       yield r'parse';
       yield serializers.serialize(
         object.parse,
-        specifiedType: const FullType(BuiltList, [FullType(ScheduledMessageAllowedMentionsSchemaParseEnum)]),
+        specifiedType: const FullType(BuiltList,
+            [FullType(ScheduledMessageAllowedMentionsSchemaParseEnum)]),
       );
     }
     if (object.users != null) {
@@ -94,7 +105,9 @@ class _$ScheduledMessageAllowedMentionsSchemaSerializer implements PrimitiveSeri
     ScheduledMessageAllowedMentionsSchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -112,7 +125,8 @@ class _$ScheduledMessageAllowedMentionsSchemaSerializer implements PrimitiveSeri
         case r'parse':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ScheduledMessageAllowedMentionsSchemaParseEnum)]),
+            specifiedType: const FullType(BuiltList,
+                [FullType(ScheduledMessageAllowedMentionsSchemaParseEnum)]),
           ) as BuiltList<ScheduledMessageAllowedMentionsSchemaParseEnum>;
           result.parse.replace(valueDes);
           break;
@@ -167,22 +181,30 @@ class _$ScheduledMessageAllowedMentionsSchemaSerializer implements PrimitiveSeri
 }
 
 class ScheduledMessageAllowedMentionsSchemaParseEnum extends EnumClass {
-
   /// Types of mentions to parse from content
   @BuiltValueEnumConst(wireName: r'users')
-  static const ScheduledMessageAllowedMentionsSchemaParseEnum users = _$scheduledMessageAllowedMentionsSchemaParseEnum_users;
+  static const ScheduledMessageAllowedMentionsSchemaParseEnum users =
+      _$scheduledMessageAllowedMentionsSchemaParseEnum_users;
+
   /// Types of mentions to parse from content
   @BuiltValueEnumConst(wireName: r'roles')
-  static const ScheduledMessageAllowedMentionsSchemaParseEnum roles = _$scheduledMessageAllowedMentionsSchemaParseEnum_roles;
+  static const ScheduledMessageAllowedMentionsSchemaParseEnum roles =
+      _$scheduledMessageAllowedMentionsSchemaParseEnum_roles;
+
   /// Types of mentions to parse from content
   @BuiltValueEnumConst(wireName: r'everyone')
-  static const ScheduledMessageAllowedMentionsSchemaParseEnum everyone = _$scheduledMessageAllowedMentionsSchemaParseEnum_everyone;
+  static const ScheduledMessageAllowedMentionsSchemaParseEnum everyone =
+      _$scheduledMessageAllowedMentionsSchemaParseEnum_everyone;
 
-  static Serializer<ScheduledMessageAllowedMentionsSchemaParseEnum> get serializer => _$scheduledMessageAllowedMentionsSchemaParseEnumSerializer;
+  static Serializer<ScheduledMessageAllowedMentionsSchemaParseEnum>
+      get serializer =>
+          _$scheduledMessageAllowedMentionsSchemaParseEnumSerializer;
 
-  const ScheduledMessageAllowedMentionsSchemaParseEnum._(String name): super(name);
+  const ScheduledMessageAllowedMentionsSchemaParseEnum._(String name)
+      : super(name);
 
-  static BuiltSet<ScheduledMessageAllowedMentionsSchemaParseEnum> get values => _$scheduledMessageAllowedMentionsSchemaParseEnumValues;
-  static ScheduledMessageAllowedMentionsSchemaParseEnum valueOf(String name) => _$scheduledMessageAllowedMentionsSchemaParseEnumValueOf(name);
+  static BuiltSet<ScheduledMessageAllowedMentionsSchemaParseEnum> get values =>
+      _$scheduledMessageAllowedMentionsSchemaParseEnumValues;
+  static ScheduledMessageAllowedMentionsSchemaParseEnum valueOf(String name) =>
+      _$scheduledMessageAllowedMentionsSchemaParseEnumValueOf(name);
 }
-

@@ -11,26 +11,35 @@ part 'terminate_sessions_request.g.dart';
 /// TerminateSessionsRequest
 ///
 /// Properties:
-/// * [userId] 
+/// * [userId]
 @BuiltValue()
-abstract class TerminateSessionsRequest implements Built<TerminateSessionsRequest, TerminateSessionsRequestBuilder> {
+abstract class TerminateSessionsRequest
+    implements
+        Built<TerminateSessionsRequest, TerminateSessionsRequestBuilder> {
   @BuiltValueField(wireName: r'user_id')
   String get userId;
 
   TerminateSessionsRequest._();
 
-  factory TerminateSessionsRequest([void updates(TerminateSessionsRequestBuilder b)]) = _$TerminateSessionsRequest;
+  factory TerminateSessionsRequest(
+          [void updates(TerminateSessionsRequestBuilder b)]) =
+      _$TerminateSessionsRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(TerminateSessionsRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<TerminateSessionsRequest> get serializer => _$TerminateSessionsRequestSerializer();
+  static Serializer<TerminateSessionsRequest> get serializer =>
+      _$TerminateSessionsRequestSerializer();
 }
 
-class _$TerminateSessionsRequestSerializer implements PrimitiveSerializer<TerminateSessionsRequest> {
+class _$TerminateSessionsRequestSerializer
+    implements PrimitiveSerializer<TerminateSessionsRequest> {
   @override
-  final Iterable<Type> types = const [TerminateSessionsRequest, _$TerminateSessionsRequest];
+  final Iterable<Type> types = const [
+    TerminateSessionsRequest,
+    _$TerminateSessionsRequest
+  ];
 
   @override
   final String wireName = r'TerminateSessionsRequest';
@@ -53,7 +62,9 @@ class _$TerminateSessionsRequestSerializer implements PrimitiveSerializer<Termin
     TerminateSessionsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,4 +114,3 @@ class _$TerminateSessionsRequestSerializer implements PrimitiveSerializer<Termin
     return result.build();
   }
 }
-

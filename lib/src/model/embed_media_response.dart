@@ -13,16 +13,17 @@ part 'embed_media_response.g.dart';
 /// Properties:
 /// * [url] - The URL of the media
 /// * [flags] - The bitwise flags for this media
-/// * [proxyUrl] 
-/// * [contentType] 
-/// * [contentHash] 
-/// * [width] 
-/// * [height] 
-/// * [description] 
-/// * [placeholder] 
-/// * [duration] 
+/// * [proxyUrl]
+/// * [contentType]
+/// * [contentHash]
+/// * [width]
+/// * [height]
+/// * [description]
+/// * [placeholder]
+/// * [duration]
 @BuiltValue()
-abstract class EmbedMediaResponse implements Built<EmbedMediaResponse, EmbedMediaResponseBuilder> {
+abstract class EmbedMediaResponse
+    implements Built<EmbedMediaResponse, EmbedMediaResponseBuilder> {
   /// The URL of the media
   @BuiltValueField(wireName: r'url')
   String get url;
@@ -57,16 +58,19 @@ abstract class EmbedMediaResponse implements Built<EmbedMediaResponse, EmbedMedi
 
   EmbedMediaResponse._();
 
-  factory EmbedMediaResponse([void updates(EmbedMediaResponseBuilder b)]) = _$EmbedMediaResponse;
+  factory EmbedMediaResponse([void updates(EmbedMediaResponseBuilder b)]) =
+      _$EmbedMediaResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(EmbedMediaResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<EmbedMediaResponse> get serializer => _$EmbedMediaResponseSerializer();
+  static Serializer<EmbedMediaResponse> get serializer =>
+      _$EmbedMediaResponseSerializer();
 }
 
-class _$EmbedMediaResponseSerializer implements PrimitiveSerializer<EmbedMediaResponse> {
+class _$EmbedMediaResponseSerializer
+    implements PrimitiveSerializer<EmbedMediaResponse> {
   @override
   final Iterable<Type> types = const [EmbedMediaResponse, _$EmbedMediaResponse];
 
@@ -152,7 +156,9 @@ class _$EmbedMediaResponseSerializer implements PrimitiveSerializer<EmbedMediaRe
     EmbedMediaResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -270,4 +276,3 @@ class _$EmbedMediaResponseSerializer implements PrimitiveSerializer<EmbedMediaRe
     return result.build();
   }
 }
-

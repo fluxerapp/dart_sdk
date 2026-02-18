@@ -12,26 +12,33 @@ part 'user_mutation_response.g.dart';
 /// UserMutationResponse
 ///
 /// Properties:
-/// * [user] 
+/// * [user]
 @BuiltValue()
-abstract class UserMutationResponse implements Built<UserMutationResponse, UserMutationResponseBuilder> {
+abstract class UserMutationResponse
+    implements Built<UserMutationResponse, UserMutationResponseBuilder> {
   @BuiltValueField(wireName: r'user')
   UserAdminResponseSchema get user;
 
   UserMutationResponse._();
 
-  factory UserMutationResponse([void updates(UserMutationResponseBuilder b)]) = _$UserMutationResponse;
+  factory UserMutationResponse([void updates(UserMutationResponseBuilder b)]) =
+      _$UserMutationResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UserMutationResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UserMutationResponse> get serializer => _$UserMutationResponseSerializer();
+  static Serializer<UserMutationResponse> get serializer =>
+      _$UserMutationResponseSerializer();
 }
 
-class _$UserMutationResponseSerializer implements PrimitiveSerializer<UserMutationResponse> {
+class _$UserMutationResponseSerializer
+    implements PrimitiveSerializer<UserMutationResponse> {
   @override
-  final Iterable<Type> types = const [UserMutationResponse, _$UserMutationResponse];
+  final Iterable<Type> types = const [
+    UserMutationResponse,
+    _$UserMutationResponse
+  ];
 
   @override
   final String wireName = r'UserMutationResponse';
@@ -54,7 +61,9 @@ class _$UserMutationResponseSerializer implements PrimitiveSerializer<UserMutati
     UserMutationResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +113,3 @@ class _$UserMutationResponseSerializer implements PrimitiveSerializer<UserMutati
     return result.build();
   }
 }
-

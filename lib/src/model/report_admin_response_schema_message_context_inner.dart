@@ -13,17 +13,20 @@ part 'report_admin_response_schema_message_context_inner.g.dart';
 /// ReportAdminResponseSchemaMessageContextInner
 ///
 /// Properties:
-/// * [id] 
-/// * [channelId] 
-/// * [guildId] 
-/// * [content] 
-/// * [timestamp] 
-/// * [attachments] 
-/// * [authorId] 
-/// * [authorUsername] 
-/// * [authorDiscriminator] 
+/// * [id]
+/// * [channelId]
+/// * [guildId]
+/// * [content]
+/// * [timestamp]
+/// * [attachments]
+/// * [authorId]
+/// * [authorUsername]
+/// * [authorDiscriminator]
 @BuiltValue()
-abstract class ReportAdminResponseSchemaMessageContextInner implements Built<ReportAdminResponseSchemaMessageContextInner, ReportAdminResponseSchemaMessageContextInnerBuilder> {
+abstract class ReportAdminResponseSchemaMessageContextInner
+    implements
+        Built<ReportAdminResponseSchemaMessageContextInner,
+            ReportAdminResponseSchemaMessageContextInnerBuilder> {
   @BuiltValueField(wireName: r'id')
   String get id;
 
@@ -53,18 +56,30 @@ abstract class ReportAdminResponseSchemaMessageContextInner implements Built<Rep
 
   ReportAdminResponseSchemaMessageContextInner._();
 
-  factory ReportAdminResponseSchemaMessageContextInner([void updates(ReportAdminResponseSchemaMessageContextInnerBuilder b)]) = _$ReportAdminResponseSchemaMessageContextInner;
+  factory ReportAdminResponseSchemaMessageContextInner(
+          [void updates(
+              ReportAdminResponseSchemaMessageContextInnerBuilder b)]) =
+      _$ReportAdminResponseSchemaMessageContextInner;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(ReportAdminResponseSchemaMessageContextInnerBuilder b) => b;
+  static void _defaults(
+          ReportAdminResponseSchemaMessageContextInnerBuilder b) =>
+      b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ReportAdminResponseSchemaMessageContextInner> get serializer => _$ReportAdminResponseSchemaMessageContextInnerSerializer();
+  static Serializer<ReportAdminResponseSchemaMessageContextInner>
+      get serializer =>
+          _$ReportAdminResponseSchemaMessageContextInnerSerializer();
 }
 
-class _$ReportAdminResponseSchemaMessageContextInnerSerializer implements PrimitiveSerializer<ReportAdminResponseSchemaMessageContextInner> {
+class _$ReportAdminResponseSchemaMessageContextInnerSerializer
+    implements
+        PrimitiveSerializer<ReportAdminResponseSchemaMessageContextInner> {
   @override
-  final Iterable<Type> types = const [ReportAdminResponseSchemaMessageContextInner, _$ReportAdminResponseSchemaMessageContextInner];
+  final Iterable<Type> types = const [
+    ReportAdminResponseSchemaMessageContextInner,
+    _$ReportAdminResponseSchemaMessageContextInner
+  ];
 
   @override
   final String wireName = r'ReportAdminResponseSchemaMessageContextInner';
@@ -102,7 +117,8 @@ class _$ReportAdminResponseSchemaMessageContextInnerSerializer implements Primit
     yield r'attachments';
     yield serializers.serialize(
       object.attachments,
-      specifiedType: const FullType(BuiltList, [FullType(LookupMessageResponseMessagesInnerAttachmentsInner)]),
+      specifiedType: const FullType(BuiltList,
+          [FullType(LookupMessageResponseMessagesInnerAttachmentsInner)]),
     );
     yield r'author_id';
     yield serializers.serialize(
@@ -127,7 +143,9 @@ class _$ReportAdminResponseSchemaMessageContextInnerSerializer implements Primit
     ReportAdminResponseSchemaMessageContextInner object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -180,7 +198,8 @@ class _$ReportAdminResponseSchemaMessageContextInnerSerializer implements Primit
         case r'attachments':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(LookupMessageResponseMessagesInnerAttachmentsInner)]),
+            specifiedType: const FullType(BuiltList,
+                [FullType(LookupMessageResponseMessagesInnerAttachmentsInner)]),
           ) as BuiltList<LookupMessageResponseMessagesInnerAttachmentsInner>;
           result.attachments.replace(valueDes);
           break;
@@ -233,4 +252,3 @@ class _$ReportAdminResponseSchemaMessageContextInnerSerializer implements Primit
     return result.build();
   }
 }
-

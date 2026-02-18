@@ -13,25 +13,32 @@ part 'o_auth2_consent_response.g.dart';
 /// Properties:
 /// * [redirectTo] - The URL to redirect the user to after consent
 @BuiltValue()
-abstract class OAuth2ConsentResponse implements Built<OAuth2ConsentResponse, OAuth2ConsentResponseBuilder> {
+abstract class OAuth2ConsentResponse
+    implements Built<OAuth2ConsentResponse, OAuth2ConsentResponseBuilder> {
   /// The URL to redirect the user to after consent
   @BuiltValueField(wireName: r'redirect_to')
   String get redirectTo;
 
   OAuth2ConsentResponse._();
 
-  factory OAuth2ConsentResponse([void updates(OAuth2ConsentResponseBuilder b)]) = _$OAuth2ConsentResponse;
+  factory OAuth2ConsentResponse(
+      [void updates(OAuth2ConsentResponseBuilder b)]) = _$OAuth2ConsentResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(OAuth2ConsentResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<OAuth2ConsentResponse> get serializer => _$OAuth2ConsentResponseSerializer();
+  static Serializer<OAuth2ConsentResponse> get serializer =>
+      _$OAuth2ConsentResponseSerializer();
 }
 
-class _$OAuth2ConsentResponseSerializer implements PrimitiveSerializer<OAuth2ConsentResponse> {
+class _$OAuth2ConsentResponseSerializer
+    implements PrimitiveSerializer<OAuth2ConsentResponse> {
   @override
-  final Iterable<Type> types = const [OAuth2ConsentResponse, _$OAuth2ConsentResponse];
+  final Iterable<Type> types = const [
+    OAuth2ConsentResponse,
+    _$OAuth2ConsentResponse
+  ];
 
   @override
   final String wireName = r'OAuth2ConsentResponse';
@@ -54,7 +61,9 @@ class _$OAuth2ConsentResponseSerializer implements PrimitiveSerializer<OAuth2Con
     OAuth2ConsentResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +113,3 @@ class _$OAuth2ConsentResponseSerializer implements PrimitiveSerializer<OAuth2Con
     return result.build();
   }
 }
-

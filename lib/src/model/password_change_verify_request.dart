@@ -14,7 +14,9 @@ part 'password_change_verify_request.g.dart';
 /// * [ticket] - Password change ticket identifier
 /// * [code] - Verification code sent to the email address
 @BuiltValue()
-abstract class PasswordChangeVerifyRequest implements Built<PasswordChangeVerifyRequest, PasswordChangeVerifyRequestBuilder> {
+abstract class PasswordChangeVerifyRequest
+    implements
+        Built<PasswordChangeVerifyRequest, PasswordChangeVerifyRequestBuilder> {
   /// Password change ticket identifier
   @BuiltValueField(wireName: r'ticket')
   String get ticket;
@@ -25,18 +27,25 @@ abstract class PasswordChangeVerifyRequest implements Built<PasswordChangeVerify
 
   PasswordChangeVerifyRequest._();
 
-  factory PasswordChangeVerifyRequest([void updates(PasswordChangeVerifyRequestBuilder b)]) = _$PasswordChangeVerifyRequest;
+  factory PasswordChangeVerifyRequest(
+          [void updates(PasswordChangeVerifyRequestBuilder b)]) =
+      _$PasswordChangeVerifyRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PasswordChangeVerifyRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PasswordChangeVerifyRequest> get serializer => _$PasswordChangeVerifyRequestSerializer();
+  static Serializer<PasswordChangeVerifyRequest> get serializer =>
+      _$PasswordChangeVerifyRequestSerializer();
 }
 
-class _$PasswordChangeVerifyRequestSerializer implements PrimitiveSerializer<PasswordChangeVerifyRequest> {
+class _$PasswordChangeVerifyRequestSerializer
+    implements PrimitiveSerializer<PasswordChangeVerifyRequest> {
   @override
-  final Iterable<Type> types = const [PasswordChangeVerifyRequest, _$PasswordChangeVerifyRequest];
+  final Iterable<Type> types = const [
+    PasswordChangeVerifyRequest,
+    _$PasswordChangeVerifyRequest
+  ];
 
   @override
   final String wireName = r'PasswordChangeVerifyRequest';
@@ -64,7 +73,9 @@ class _$PasswordChangeVerifyRequestSerializer implements PrimitiveSerializer<Pas
     PasswordChangeVerifyRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +132,3 @@ class _$PasswordChangeVerifyRequestSerializer implements PrimitiveSerializer<Pas
     return result.build();
   }
 }
-

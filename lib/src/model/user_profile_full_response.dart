@@ -20,18 +20,19 @@ part 'user_profile_full_response.g.dart';
 /// UserProfileFullResponse
 ///
 /// Properties:
-/// * [user] 
-/// * [userProfile] 
-/// * [guildMember] 
-/// * [guildMemberProfile] 
+/// * [user]
+/// * [userProfile]
+/// * [guildMember]
+/// * [guildMemberProfile]
 /// * [premiumType] - The type of premium subscription
 /// * [premiumSince] - ISO8601 timestamp of when premium was activated
-/// * [premiumLifetimeSequence] 
+/// * [premiumLifetimeSequence]
 /// * [mutualFriends] - Array of mutual friends
 /// * [mutualGuilds] - Array of mutual guilds
 /// * [connectedAccounts] - Array of verified external connections
 @BuiltValue()
-abstract class UserProfileFullResponse implements Built<UserProfileFullResponse, UserProfileFullResponseBuilder> {
+abstract class UserProfileFullResponse
+    implements Built<UserProfileFullResponse, UserProfileFullResponseBuilder> {
   @BuiltValueField(wireName: r'user')
   UserProfileFullResponseUser get user;
 
@@ -70,18 +71,25 @@ abstract class UserProfileFullResponse implements Built<UserProfileFullResponse,
 
   UserProfileFullResponse._();
 
-  factory UserProfileFullResponse([void updates(UserProfileFullResponseBuilder b)]) = _$UserProfileFullResponse;
+  factory UserProfileFullResponse(
+          [void updates(UserProfileFullResponseBuilder b)]) =
+      _$UserProfileFullResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UserProfileFullResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UserProfileFullResponse> get serializer => _$UserProfileFullResponseSerializer();
+  static Serializer<UserProfileFullResponse> get serializer =>
+      _$UserProfileFullResponseSerializer();
 }
 
-class _$UserProfileFullResponseSerializer implements PrimitiveSerializer<UserProfileFullResponse> {
+class _$UserProfileFullResponseSerializer
+    implements PrimitiveSerializer<UserProfileFullResponse> {
   @override
-  final Iterable<Type> types = const [UserProfileFullResponse, _$UserProfileFullResponse];
+  final Iterable<Type> types = const [
+    UserProfileFullResponse,
+    _$UserProfileFullResponse
+  ];
 
   @override
   final String wireName = r'UserProfileFullResponse';
@@ -112,7 +120,8 @@ class _$UserProfileFullResponseSerializer implements PrimitiveSerializer<UserPro
       yield r'guild_member_profile';
       yield serializers.serialize(
         object.guildMemberProfile,
-        specifiedType: const FullType.nullable(UserProfileFullResponseGuildMemberProfile),
+        specifiedType:
+            const FullType.nullable(UserProfileFullResponseGuildMemberProfile),
       );
     }
     if (object.premiumType != null) {
@@ -140,21 +149,24 @@ class _$UserProfileFullResponseSerializer implements PrimitiveSerializer<UserPro
       yield r'mutual_friends';
       yield serializers.serialize(
         object.mutualFriends,
-        specifiedType: const FullType(BuiltList, [FullType(UserPartialResponse)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(UserPartialResponse)]),
       );
     }
     if (object.mutualGuilds != null) {
       yield r'mutual_guilds';
       yield serializers.serialize(
         object.mutualGuilds,
-        specifiedType: const FullType(BuiltList, [FullType(MutualGuildResponse)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(MutualGuildResponse)]),
       );
     }
     if (object.connectedAccounts != null) {
       yield r'connected_accounts';
       yield serializers.serialize(
         object.connectedAccounts,
-        specifiedType: const FullType(BuiltList, [FullType(ConnectionResponse)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(ConnectionResponse)]),
       );
     }
   }
@@ -165,7 +177,9 @@ class _$UserProfileFullResponseSerializer implements PrimitiveSerializer<UserPro
     UserProfileFullResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -204,7 +218,8 @@ class _$UserProfileFullResponseSerializer implements PrimitiveSerializer<UserPro
         case r'guild_member_profile':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(UserProfileFullResponseGuildMemberProfile),
+            specifiedType: const FullType.nullable(
+                UserProfileFullResponseGuildMemberProfile),
           ) as UserProfileFullResponseGuildMemberProfile?;
           if (valueDes == null) continue;
           result.guildMemberProfile.replace(valueDes);
@@ -233,21 +248,24 @@ class _$UserProfileFullResponseSerializer implements PrimitiveSerializer<UserPro
         case r'mutual_friends':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(UserPartialResponse)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(UserPartialResponse)]),
           ) as BuiltList<UserPartialResponse>;
           result.mutualFriends.replace(valueDes);
           break;
         case r'mutual_guilds':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(MutualGuildResponse)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(MutualGuildResponse)]),
           ) as BuiltList<MutualGuildResponse>;
           result.mutualGuilds.replace(valueDes);
           break;
         case r'connected_accounts':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ConnectionResponse)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(ConnectionResponse)]),
           ) as BuiltList<ConnectionResponse>;
           result.connectedAccounts.replace(valueDes);
           break;
@@ -279,4 +297,3 @@ class _$UserProfileFullResponseSerializer implements PrimitiveSerializer<UserPro
     return result.build();
   }
 }
-

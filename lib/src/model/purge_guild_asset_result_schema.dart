@@ -15,9 +15,11 @@ part 'purge_guild_asset_result_schema.g.dart';
 /// * [id] - Unique identifier of the asset
 /// * [assetType] - Type of guild asset
 /// * [foundInDb] - Whether the asset was found in the database
-/// * [guildId] 
+/// * [guildId]
 @BuiltValue()
-abstract class PurgeGuildAssetResultSchema implements Built<PurgeGuildAssetResultSchema, PurgeGuildAssetResultSchemaBuilder> {
+abstract class PurgeGuildAssetResultSchema
+    implements
+        Built<PurgeGuildAssetResultSchema, PurgeGuildAssetResultSchemaBuilder> {
   /// Unique identifier of the asset
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -36,18 +38,25 @@ abstract class PurgeGuildAssetResultSchema implements Built<PurgeGuildAssetResul
 
   PurgeGuildAssetResultSchema._();
 
-  factory PurgeGuildAssetResultSchema([void updates(PurgeGuildAssetResultSchemaBuilder b)]) = _$PurgeGuildAssetResultSchema;
+  factory PurgeGuildAssetResultSchema(
+          [void updates(PurgeGuildAssetResultSchemaBuilder b)]) =
+      _$PurgeGuildAssetResultSchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PurgeGuildAssetResultSchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PurgeGuildAssetResultSchema> get serializer => _$PurgeGuildAssetResultSchemaSerializer();
+  static Serializer<PurgeGuildAssetResultSchema> get serializer =>
+      _$PurgeGuildAssetResultSchemaSerializer();
 }
 
-class _$PurgeGuildAssetResultSchemaSerializer implements PrimitiveSerializer<PurgeGuildAssetResultSchema> {
+class _$PurgeGuildAssetResultSchemaSerializer
+    implements PrimitiveSerializer<PurgeGuildAssetResultSchema> {
   @override
-  final Iterable<Type> types = const [PurgeGuildAssetResultSchema, _$PurgeGuildAssetResultSchema];
+  final Iterable<Type> types = const [
+    PurgeGuildAssetResultSchema,
+    _$PurgeGuildAssetResultSchema
+  ];
 
   @override
   final String wireName = r'PurgeGuildAssetResultSchema';
@@ -85,7 +94,9 @@ class _$PurgeGuildAssetResultSchemaSerializer implements PrimitiveSerializer<Pur
     PurgeGuildAssetResultSchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -110,7 +121,8 @@ class _$PurgeGuildAssetResultSchemaSerializer implements PrimitiveSerializer<Pur
         case r'asset_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(PurgeGuildAssetResultSchemaAssetTypeEnum),
+            specifiedType:
+                const FullType(PurgeGuildAssetResultSchemaAssetTypeEnum),
           ) as PurgeGuildAssetResultSchemaAssetTypeEnum;
           result.assetType = valueDes;
           break;
@@ -158,22 +170,28 @@ class _$PurgeGuildAssetResultSchemaSerializer implements PrimitiveSerializer<Pur
 }
 
 class PurgeGuildAssetResultSchemaAssetTypeEnum extends EnumClass {
-
   /// Type of guild asset
   @BuiltValueEnumConst(wireName: r'emoji')
-  static const PurgeGuildAssetResultSchemaAssetTypeEnum emoji = _$purgeGuildAssetResultSchemaAssetTypeEnum_emoji;
+  static const PurgeGuildAssetResultSchemaAssetTypeEnum emoji =
+      _$purgeGuildAssetResultSchemaAssetTypeEnum_emoji;
+
   /// Type of guild asset
   @BuiltValueEnumConst(wireName: r'sticker')
-  static const PurgeGuildAssetResultSchemaAssetTypeEnum sticker = _$purgeGuildAssetResultSchemaAssetTypeEnum_sticker;
+  static const PurgeGuildAssetResultSchemaAssetTypeEnum sticker =
+      _$purgeGuildAssetResultSchemaAssetTypeEnum_sticker;
+
   /// Type of guild asset
   @BuiltValueEnumConst(wireName: r'unknown')
-  static const PurgeGuildAssetResultSchemaAssetTypeEnum unknown = _$purgeGuildAssetResultSchemaAssetTypeEnum_unknown;
+  static const PurgeGuildAssetResultSchemaAssetTypeEnum unknown =
+      _$purgeGuildAssetResultSchemaAssetTypeEnum_unknown;
 
-  static Serializer<PurgeGuildAssetResultSchemaAssetTypeEnum> get serializer => _$purgeGuildAssetResultSchemaAssetTypeEnumSerializer;
+  static Serializer<PurgeGuildAssetResultSchemaAssetTypeEnum> get serializer =>
+      _$purgeGuildAssetResultSchemaAssetTypeEnumSerializer;
 
-  const PurgeGuildAssetResultSchemaAssetTypeEnum._(String name): super(name);
+  const PurgeGuildAssetResultSchemaAssetTypeEnum._(String name) : super(name);
 
-  static BuiltSet<PurgeGuildAssetResultSchemaAssetTypeEnum> get values => _$purgeGuildAssetResultSchemaAssetTypeEnumValues;
-  static PurgeGuildAssetResultSchemaAssetTypeEnum valueOf(String name) => _$purgeGuildAssetResultSchemaAssetTypeEnumValueOf(name);
+  static BuiltSet<PurgeGuildAssetResultSchemaAssetTypeEnum> get values =>
+      _$purgeGuildAssetResultSchemaAssetTypeEnumValues;
+  static PurgeGuildAssetResultSchemaAssetTypeEnum valueOf(String name) =>
+      _$purgeGuildAssetResultSchemaAssetTypeEnumValueOf(name);
 }
-

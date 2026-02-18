@@ -11,26 +11,35 @@ part 'trigger_guild_archive_request.g.dart';
 /// TriggerGuildArchiveRequest
 ///
 /// Properties:
-/// * [guildId] 
+/// * [guildId]
 @BuiltValue()
-abstract class TriggerGuildArchiveRequest implements Built<TriggerGuildArchiveRequest, TriggerGuildArchiveRequestBuilder> {
+abstract class TriggerGuildArchiveRequest
+    implements
+        Built<TriggerGuildArchiveRequest, TriggerGuildArchiveRequestBuilder> {
   @BuiltValueField(wireName: r'guild_id')
   String get guildId;
 
   TriggerGuildArchiveRequest._();
 
-  factory TriggerGuildArchiveRequest([void updates(TriggerGuildArchiveRequestBuilder b)]) = _$TriggerGuildArchiveRequest;
+  factory TriggerGuildArchiveRequest(
+          [void updates(TriggerGuildArchiveRequestBuilder b)]) =
+      _$TriggerGuildArchiveRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(TriggerGuildArchiveRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<TriggerGuildArchiveRequest> get serializer => _$TriggerGuildArchiveRequestSerializer();
+  static Serializer<TriggerGuildArchiveRequest> get serializer =>
+      _$TriggerGuildArchiveRequestSerializer();
 }
 
-class _$TriggerGuildArchiveRequestSerializer implements PrimitiveSerializer<TriggerGuildArchiveRequest> {
+class _$TriggerGuildArchiveRequestSerializer
+    implements PrimitiveSerializer<TriggerGuildArchiveRequest> {
   @override
-  final Iterable<Type> types = const [TriggerGuildArchiveRequest, _$TriggerGuildArchiveRequest];
+  final Iterable<Type> types = const [
+    TriggerGuildArchiveRequest,
+    _$TriggerGuildArchiveRequest
+  ];
 
   @override
   final String wireName = r'TriggerGuildArchiveRequest';
@@ -53,7 +62,9 @@ class _$TriggerGuildArchiveRequestSerializer implements PrimitiveSerializer<Trig
     TriggerGuildArchiveRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,4 +114,3 @@ class _$TriggerGuildArchiveRequestSerializer implements PrimitiveSerializer<Trig
     return result.build();
   }
 }
-

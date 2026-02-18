@@ -17,7 +17,10 @@ part 'well_known_fluxer_response_app_public.g.dart';
 /// * [sentryProjectId] - Sentry project ID
 /// * [sentryPublicKey] - Sentry public key
 @BuiltValue()
-abstract class WellKnownFluxerResponseAppPublic implements Built<WellKnownFluxerResponseAppPublic, WellKnownFluxerResponseAppPublicBuilder> {
+abstract class WellKnownFluxerResponseAppPublic
+    implements
+        Built<WellKnownFluxerResponseAppPublic,
+            WellKnownFluxerResponseAppPublicBuilder> {
   /// Sentry DSN for client-side error reporting
   @BuiltValueField(wireName: r'sentry_dsn')
   String get sentryDsn;
@@ -40,18 +43,25 @@ abstract class WellKnownFluxerResponseAppPublic implements Built<WellKnownFluxer
 
   WellKnownFluxerResponseAppPublic._();
 
-  factory WellKnownFluxerResponseAppPublic([void updates(WellKnownFluxerResponseAppPublicBuilder b)]) = _$WellKnownFluxerResponseAppPublic;
+  factory WellKnownFluxerResponseAppPublic(
+          [void updates(WellKnownFluxerResponseAppPublicBuilder b)]) =
+      _$WellKnownFluxerResponseAppPublic;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(WellKnownFluxerResponseAppPublicBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<WellKnownFluxerResponseAppPublic> get serializer => _$WellKnownFluxerResponseAppPublicSerializer();
+  static Serializer<WellKnownFluxerResponseAppPublic> get serializer =>
+      _$WellKnownFluxerResponseAppPublicSerializer();
 }
 
-class _$WellKnownFluxerResponseAppPublicSerializer implements PrimitiveSerializer<WellKnownFluxerResponseAppPublic> {
+class _$WellKnownFluxerResponseAppPublicSerializer
+    implements PrimitiveSerializer<WellKnownFluxerResponseAppPublic> {
   @override
-  final Iterable<Type> types = const [WellKnownFluxerResponseAppPublic, _$WellKnownFluxerResponseAppPublic];
+  final Iterable<Type> types = const [
+    WellKnownFluxerResponseAppPublic,
+    _$WellKnownFluxerResponseAppPublic
+  ];
 
   @override
   final String wireName = r'WellKnownFluxerResponseAppPublic';
@@ -94,7 +104,9 @@ class _$WellKnownFluxerResponseAppPublicSerializer implements PrimitiveSerialize
     WellKnownFluxerResponseAppPublic object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -172,4 +184,3 @@ class _$WellKnownFluxerResponseAppPublicSerializer implements PrimitiveSerialize
     return result.build();
   }
 }
-

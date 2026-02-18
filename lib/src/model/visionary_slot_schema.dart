@@ -12,9 +12,10 @@ part 'visionary_slot_schema.g.dart';
 ///
 /// Properties:
 /// * [slotIndex] - The slot index
-/// * [userId] 
+/// * [userId]
 @BuiltValue()
-abstract class VisionarySlotSchema implements Built<VisionarySlotSchema, VisionarySlotSchemaBuilder> {
+abstract class VisionarySlotSchema
+    implements Built<VisionarySlotSchema, VisionarySlotSchemaBuilder> {
   /// The slot index
   @BuiltValueField(wireName: r'slot_index')
   int get slotIndex;
@@ -24,18 +25,24 @@ abstract class VisionarySlotSchema implements Built<VisionarySlotSchema, Visiona
 
   VisionarySlotSchema._();
 
-  factory VisionarySlotSchema([void updates(VisionarySlotSchemaBuilder b)]) = _$VisionarySlotSchema;
+  factory VisionarySlotSchema([void updates(VisionarySlotSchemaBuilder b)]) =
+      _$VisionarySlotSchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(VisionarySlotSchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<VisionarySlotSchema> get serializer => _$VisionarySlotSchemaSerializer();
+  static Serializer<VisionarySlotSchema> get serializer =>
+      _$VisionarySlotSchemaSerializer();
 }
 
-class _$VisionarySlotSchemaSerializer implements PrimitiveSerializer<VisionarySlotSchema> {
+class _$VisionarySlotSchemaSerializer
+    implements PrimitiveSerializer<VisionarySlotSchema> {
   @override
-  final Iterable<Type> types = const [VisionarySlotSchema, _$VisionarySlotSchema];
+  final Iterable<Type> types = const [
+    VisionarySlotSchema,
+    _$VisionarySlotSchema
+  ];
 
   @override
   final String wireName = r'VisionarySlotSchema';
@@ -63,7 +70,9 @@ class _$VisionarySlotSchemaSerializer implements PrimitiveSerializer<VisionarySl
     VisionarySlotSchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -120,4 +129,3 @@ class _$VisionarySlotSchemaSerializer implements PrimitiveSerializer<VisionarySl
     return result.build();
   }
 }
-

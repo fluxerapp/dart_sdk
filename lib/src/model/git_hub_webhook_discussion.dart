@@ -12,14 +12,15 @@ part 'git_hub_webhook_discussion.g.dart';
 /// GitHubWebhookDiscussion
 ///
 /// Properties:
-/// * [title] 
-/// * [number] 
-/// * [htmlUrl] 
-/// * [user] 
-/// * [answerHtmlUrl] 
-/// * [body] 
+/// * [title]
+/// * [number]
+/// * [htmlUrl]
+/// * [user]
+/// * [answerHtmlUrl]
+/// * [body]
 @BuiltValue()
-abstract class GitHubWebhookDiscussion implements Built<GitHubWebhookDiscussion, GitHubWebhookDiscussionBuilder> {
+abstract class GitHubWebhookDiscussion
+    implements Built<GitHubWebhookDiscussion, GitHubWebhookDiscussionBuilder> {
   @BuiltValueField(wireName: r'title')
   String get title;
 
@@ -40,18 +41,25 @@ abstract class GitHubWebhookDiscussion implements Built<GitHubWebhookDiscussion,
 
   GitHubWebhookDiscussion._();
 
-  factory GitHubWebhookDiscussion([void updates(GitHubWebhookDiscussionBuilder b)]) = _$GitHubWebhookDiscussion;
+  factory GitHubWebhookDiscussion(
+          [void updates(GitHubWebhookDiscussionBuilder b)]) =
+      _$GitHubWebhookDiscussion;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GitHubWebhookDiscussionBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GitHubWebhookDiscussion> get serializer => _$GitHubWebhookDiscussionSerializer();
+  static Serializer<GitHubWebhookDiscussion> get serializer =>
+      _$GitHubWebhookDiscussionSerializer();
 }
 
-class _$GitHubWebhookDiscussionSerializer implements PrimitiveSerializer<GitHubWebhookDiscussion> {
+class _$GitHubWebhookDiscussionSerializer
+    implements PrimitiveSerializer<GitHubWebhookDiscussion> {
   @override
-  final Iterable<Type> types = const [GitHubWebhookDiscussion, _$GitHubWebhookDiscussion];
+  final Iterable<Type> types = const [
+    GitHubWebhookDiscussion,
+    _$GitHubWebhookDiscussion
+  ];
 
   @override
   final String wireName = r'GitHubWebhookDiscussion';
@@ -103,7 +111,9 @@ class _$GitHubWebhookDiscussionSerializer implements PrimitiveSerializer<GitHubW
     GitHubWebhookDiscussion object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -190,4 +200,3 @@ class _$GitHubWebhookDiscussionSerializer implements PrimitiveSerializer<GitHubW
     return result.build();
   }
 }
-

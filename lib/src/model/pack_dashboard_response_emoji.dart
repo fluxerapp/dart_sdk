@@ -18,7 +18,9 @@ part 'pack_dashboard_response_emoji.g.dart';
 /// * [installed] - List of packs the user has installed
 /// * [created] - List of packs the user has created
 @BuiltValue()
-abstract class PackDashboardResponseEmoji implements Built<PackDashboardResponseEmoji, PackDashboardResponseEmojiBuilder> {
+abstract class PackDashboardResponseEmoji
+    implements
+        Built<PackDashboardResponseEmoji, PackDashboardResponseEmojiBuilder> {
   /// Maximum number of packs the user can install
   @BuiltValueField(wireName: r'installed_limit')
   int get installedLimit;
@@ -37,18 +39,25 @@ abstract class PackDashboardResponseEmoji implements Built<PackDashboardResponse
 
   PackDashboardResponseEmoji._();
 
-  factory PackDashboardResponseEmoji([void updates(PackDashboardResponseEmojiBuilder b)]) = _$PackDashboardResponseEmoji;
+  factory PackDashboardResponseEmoji(
+          [void updates(PackDashboardResponseEmojiBuilder b)]) =
+      _$PackDashboardResponseEmoji;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PackDashboardResponseEmojiBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PackDashboardResponseEmoji> get serializer => _$PackDashboardResponseEmojiSerializer();
+  static Serializer<PackDashboardResponseEmoji> get serializer =>
+      _$PackDashboardResponseEmojiSerializer();
 }
 
-class _$PackDashboardResponseEmojiSerializer implements PrimitiveSerializer<PackDashboardResponseEmoji> {
+class _$PackDashboardResponseEmojiSerializer
+    implements PrimitiveSerializer<PackDashboardResponseEmoji> {
   @override
-  final Iterable<Type> types = const [PackDashboardResponseEmoji, _$PackDashboardResponseEmoji];
+  final Iterable<Type> types = const [
+    PackDashboardResponseEmoji,
+    _$PackDashboardResponseEmoji
+  ];
 
   @override
   final String wireName = r'PackDashboardResponseEmoji';
@@ -86,7 +95,9 @@ class _$PackDashboardResponseEmojiSerializer implements PrimitiveSerializer<Pack
     PackDashboardResponseEmoji object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -118,14 +129,16 @@ class _$PackDashboardResponseEmojiSerializer implements PrimitiveSerializer<Pack
         case r'installed':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(PackSummaryResponse)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(PackSummaryResponse)]),
           ) as BuiltList<PackSummaryResponse>;
           result.installed.replace(valueDes);
           break;
         case r'created':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(PackSummaryResponse)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(PackSummaryResponse)]),
           ) as BuiltList<PackSummaryResponse>;
           result.created.replace(valueDes);
           break;
@@ -157,4 +170,3 @@ class _$PackDashboardResponseEmojiSerializer implements PrimitiveSerializer<Pack
     return result.build();
   }
 }
-

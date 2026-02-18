@@ -54,7 +54,9 @@ class _$UrlResponseSerializer implements PrimitiveSerializer<UrlResponse> {
     UrlResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +106,3 @@ class _$UrlResponseSerializer implements PrimitiveSerializer<UrlResponse> {
     return result.build();
   }
 }
-

@@ -16,16 +16,19 @@ part 'group_dm_invite_metadata_response.g.dart';
 /// Properties:
 /// * [code] - The unique invite code
 /// * [type] - The type of invite (group DM)
-/// * [channel] 
+/// * [channel]
 /// * [memberCount] - The current member count of the group DM
 /// * [temporary] - Whether the invite grants temporary membership
 /// * [createdAt] - ISO8601 timestamp of when the invite was created
 /// * [uses] - The number of times this invite has been used
 /// * [maxUses] - The maximum number of times this invite can be used
-/// * [inviter] 
-/// * [expiresAt] 
+/// * [inviter]
+/// * [expiresAt]
 @BuiltValue()
-abstract class GroupDmInviteMetadataResponse implements Built<GroupDmInviteMetadataResponse, GroupDmInviteMetadataResponseBuilder> {
+abstract class GroupDmInviteMetadataResponse
+    implements
+        Built<GroupDmInviteMetadataResponse,
+            GroupDmInviteMetadataResponseBuilder> {
   /// The unique invite code
   @BuiltValueField(wireName: r'code')
   String get code;
@@ -66,18 +69,25 @@ abstract class GroupDmInviteMetadataResponse implements Built<GroupDmInviteMetad
 
   GroupDmInviteMetadataResponse._();
 
-  factory GroupDmInviteMetadataResponse([void updates(GroupDmInviteMetadataResponseBuilder b)]) = _$GroupDmInviteMetadataResponse;
+  factory GroupDmInviteMetadataResponse(
+          [void updates(GroupDmInviteMetadataResponseBuilder b)]) =
+      _$GroupDmInviteMetadataResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GroupDmInviteMetadataResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GroupDmInviteMetadataResponse> get serializer => _$GroupDmInviteMetadataResponseSerializer();
+  static Serializer<GroupDmInviteMetadataResponse> get serializer =>
+      _$GroupDmInviteMetadataResponseSerializer();
 }
 
-class _$GroupDmInviteMetadataResponseSerializer implements PrimitiveSerializer<GroupDmInviteMetadataResponse> {
+class _$GroupDmInviteMetadataResponseSerializer
+    implements PrimitiveSerializer<GroupDmInviteMetadataResponse> {
   @override
-  final Iterable<Type> types = const [GroupDmInviteMetadataResponse, _$GroupDmInviteMetadataResponse];
+  final Iterable<Type> types = const [
+    GroupDmInviteMetadataResponse,
+    _$GroupDmInviteMetadataResponse
+  ];
 
   @override
   final String wireName = r'GroupDmInviteMetadataResponse';
@@ -149,7 +159,9 @@ class _$GroupDmInviteMetadataResponseSerializer implements PrimitiveSerializer<G
     GroupDmInviteMetadataResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -174,7 +186,8 @@ class _$GroupDmInviteMetadataResponseSerializer implements PrimitiveSerializer<G
         case r'type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(GroupDmInviteMetadataResponseTypeEnum),
+            specifiedType:
+                const FullType(GroupDmInviteMetadataResponseTypeEnum),
           ) as GroupDmInviteMetadataResponseTypeEnum;
           result.type = valueDes;
           break;
@@ -266,16 +279,18 @@ class _$GroupDmInviteMetadataResponseSerializer implements PrimitiveSerializer<G
 }
 
 class GroupDmInviteMetadataResponseTypeEnum extends EnumClass {
-
   /// The type of invite (group DM)
   @BuiltValueEnumConst(wireNumber: 1)
-  static const GroupDmInviteMetadataResponseTypeEnum number1 = _$groupDmInviteMetadataResponseTypeEnum_number1;
+  static const GroupDmInviteMetadataResponseTypeEnum number1 =
+      _$groupDmInviteMetadataResponseTypeEnum_number1;
 
-  static Serializer<GroupDmInviteMetadataResponseTypeEnum> get serializer => _$groupDmInviteMetadataResponseTypeEnumSerializer;
+  static Serializer<GroupDmInviteMetadataResponseTypeEnum> get serializer =>
+      _$groupDmInviteMetadataResponseTypeEnumSerializer;
 
-  const GroupDmInviteMetadataResponseTypeEnum._(String name): super(name);
+  const GroupDmInviteMetadataResponseTypeEnum._(String name) : super(name);
 
-  static BuiltSet<GroupDmInviteMetadataResponseTypeEnum> get values => _$groupDmInviteMetadataResponseTypeEnumValues;
-  static GroupDmInviteMetadataResponseTypeEnum valueOf(String name) => _$groupDmInviteMetadataResponseTypeEnumValueOf(name);
+  static BuiltSet<GroupDmInviteMetadataResponseTypeEnum> get values =>
+      _$groupDmInviteMetadataResponseTypeEnumValues;
+  static GroupDmInviteMetadataResponseTypeEnum valueOf(String name) =>
+      _$groupDmInviteMetadataResponseTypeEnumValueOf(name);
 }
-

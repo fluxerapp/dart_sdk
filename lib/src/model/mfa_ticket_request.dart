@@ -13,23 +13,27 @@ part 'mfa_ticket_request.g.dart';
 /// Properties:
 /// * [ticket] - The MFA ticket from the login response
 @BuiltValue()
-abstract class MfaTicketRequest implements Built<MfaTicketRequest, MfaTicketRequestBuilder> {
+abstract class MfaTicketRequest
+    implements Built<MfaTicketRequest, MfaTicketRequestBuilder> {
   /// The MFA ticket from the login response
   @BuiltValueField(wireName: r'ticket')
   String get ticket;
 
   MfaTicketRequest._();
 
-  factory MfaTicketRequest([void updates(MfaTicketRequestBuilder b)]) = _$MfaTicketRequest;
+  factory MfaTicketRequest([void updates(MfaTicketRequestBuilder b)]) =
+      _$MfaTicketRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(MfaTicketRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<MfaTicketRequest> get serializer => _$MfaTicketRequestSerializer();
+  static Serializer<MfaTicketRequest> get serializer =>
+      _$MfaTicketRequestSerializer();
 }
 
-class _$MfaTicketRequestSerializer implements PrimitiveSerializer<MfaTicketRequest> {
+class _$MfaTicketRequestSerializer
+    implements PrimitiveSerializer<MfaTicketRequest> {
   @override
   final Iterable<Type> types = const [MfaTicketRequest, _$MfaTicketRequest];
 
@@ -54,7 +58,9 @@ class _$MfaTicketRequestSerializer implements PrimitiveSerializer<MfaTicketReque
     MfaTicketRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +110,3 @@ class _$MfaTicketRequestSerializer implements PrimitiveSerializer<MfaTicketReque
     return result.build();
   }
 }
-

@@ -11,10 +11,12 @@ part 'force_add_user_to_guild_request.g.dart';
 /// ForceAddUserToGuildRequest
 ///
 /// Properties:
-/// * [userId] 
-/// * [guildId] 
+/// * [userId]
+/// * [guildId]
 @BuiltValue()
-abstract class ForceAddUserToGuildRequest implements Built<ForceAddUserToGuildRequest, ForceAddUserToGuildRequestBuilder> {
+abstract class ForceAddUserToGuildRequest
+    implements
+        Built<ForceAddUserToGuildRequest, ForceAddUserToGuildRequestBuilder> {
   @BuiltValueField(wireName: r'user_id')
   String get userId;
 
@@ -23,18 +25,25 @@ abstract class ForceAddUserToGuildRequest implements Built<ForceAddUserToGuildRe
 
   ForceAddUserToGuildRequest._();
 
-  factory ForceAddUserToGuildRequest([void updates(ForceAddUserToGuildRequestBuilder b)]) = _$ForceAddUserToGuildRequest;
+  factory ForceAddUserToGuildRequest(
+          [void updates(ForceAddUserToGuildRequestBuilder b)]) =
+      _$ForceAddUserToGuildRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ForceAddUserToGuildRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ForceAddUserToGuildRequest> get serializer => _$ForceAddUserToGuildRequestSerializer();
+  static Serializer<ForceAddUserToGuildRequest> get serializer =>
+      _$ForceAddUserToGuildRequestSerializer();
 }
 
-class _$ForceAddUserToGuildRequestSerializer implements PrimitiveSerializer<ForceAddUserToGuildRequest> {
+class _$ForceAddUserToGuildRequestSerializer
+    implements PrimitiveSerializer<ForceAddUserToGuildRequest> {
   @override
-  final Iterable<Type> types = const [ForceAddUserToGuildRequest, _$ForceAddUserToGuildRequest];
+  final Iterable<Type> types = const [
+    ForceAddUserToGuildRequest,
+    _$ForceAddUserToGuildRequest
+  ];
 
   @override
   final String wireName = r'ForceAddUserToGuildRequest';
@@ -62,7 +71,9 @@ class _$ForceAddUserToGuildRequestSerializer implements PrimitiveSerializer<Forc
     ForceAddUserToGuildRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -119,4 +130,3 @@ class _$ForceAddUserToGuildRequestSerializer implements PrimitiveSerializer<Forc
     return result.build();
   }
 }
-

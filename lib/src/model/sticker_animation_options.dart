@@ -10,20 +10,22 @@ import 'package:built_value/serializer.dart';
 part 'sticker_animation_options.g.dart';
 
 class StickerAnimationOptions extends EnumClass {
-
   /// Sticker animation preference
   @BuiltValueEnumConst(wireNumber: 0)
   static const StickerAnimationOptions number0 = _$number0;
+
   /// Sticker animation preference
   @BuiltValueEnumConst(wireNumber: 1)
   static const StickerAnimationOptions number1 = _$number1;
+
   /// Sticker animation preference
   @BuiltValueEnumConst(wireNumber: 2)
   static const StickerAnimationOptions number2 = _$number2;
 
-  static Serializer<StickerAnimationOptions> get serializer => _$stickerAnimationOptionsSerializer;
+  static Serializer<StickerAnimationOptions> get serializer =>
+      _$stickerAnimationOptionsSerializer;
 
-  const StickerAnimationOptions._(String name): super(name);
+  const StickerAnimationOptions._(String name) : super(name);
 
   static BuiltSet<StickerAnimationOptions> get values => _$values;
   static StickerAnimationOptions valueOf(String name) => _$valueOf(name);
@@ -35,5 +37,5 @@ class StickerAnimationOptions extends EnumClass {
 /// corresponding Angular template.
 ///
 /// Trigger mixin generation by writing a line like this one next to your enum.
-abstract class StickerAnimationOptionsMixin = Object with _$StickerAnimationOptionsMixin;
-
+abstract class StickerAnimationOptionsMixin = Object
+    with _$StickerAnimationOptionsMixin;

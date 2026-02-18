@@ -16,26 +16,27 @@ part 'channel_response.g.dart';
 /// Properties:
 /// * [id] - The unique identifier (snowflake) for this channel
 /// * [type] - The type of the channel
-/// * [guildId] 
+/// * [guildId]
 /// * [name] - The name of the channel
-/// * [topic] 
-/// * [url] 
-/// * [icon] 
-/// * [ownerId] 
-/// * [position] 
-/// * [parentId] 
-/// * [bitrate] 
-/// * [userLimit] 
-/// * [rtcRegion] 
-/// * [lastMessageId] 
-/// * [lastPinTimestamp] 
+/// * [topic]
+/// * [url]
+/// * [icon]
+/// * [ownerId]
+/// * [position]
+/// * [parentId]
+/// * [bitrate]
+/// * [userLimit]
+/// * [rtcRegion]
+/// * [lastMessageId]
+/// * [lastPinTimestamp]
 /// * [permissionOverwrites] - The permission overwrites for this channel
 /// * [recipients] - The recipients of the DM channel
 /// * [nsfw] - Whether the channel is marked as NSFW
-/// * [rateLimitPerUser] 
+/// * [rateLimitPerUser]
 /// * [nicks] - Custom nicknames for users in this channel (for group DMs)
 @BuiltValue()
-abstract class ChannelResponse implements Built<ChannelResponse, ChannelResponseBuilder> {
+abstract class ChannelResponse
+    implements Built<ChannelResponse, ChannelResponseBuilder> {
   /// The unique identifier (snowflake) for this channel
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -105,16 +106,19 @@ abstract class ChannelResponse implements Built<ChannelResponse, ChannelResponse
 
   ChannelResponse._();
 
-  factory ChannelResponse([void updates(ChannelResponseBuilder b)]) = _$ChannelResponse;
+  factory ChannelResponse([void updates(ChannelResponseBuilder b)]) =
+      _$ChannelResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ChannelResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ChannelResponse> get serializer => _$ChannelResponseSerializer();
+  static Serializer<ChannelResponse> get serializer =>
+      _$ChannelResponseSerializer();
 }
 
-class _$ChannelResponseSerializer implements PrimitiveSerializer<ChannelResponse> {
+class _$ChannelResponseSerializer
+    implements PrimitiveSerializer<ChannelResponse> {
   @override
   final Iterable<Type> types = const [ChannelResponse, _$ChannelResponse];
 
@@ -231,14 +235,16 @@ class _$ChannelResponseSerializer implements PrimitiveSerializer<ChannelResponse
       yield r'permission_overwrites';
       yield serializers.serialize(
         object.permissionOverwrites,
-        specifiedType: const FullType(BuiltList, [FullType(ChannelOverwriteResponse)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(ChannelOverwriteResponse)]),
       );
     }
     if (object.recipients != null) {
       yield r'recipients';
       yield serializers.serialize(
         object.recipients,
-        specifiedType: const FullType(BuiltList, [FullType(UserPartialResponse)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(UserPartialResponse)]),
       );
     }
     if (object.nsfw != null) {
@@ -259,7 +265,8 @@ class _$ChannelResponseSerializer implements PrimitiveSerializer<ChannelResponse
       yield r'nicks';
       yield serializers.serialize(
         object.nicks,
-        specifiedType: const FullType(BuiltMap, [FullType(String), FullType(String)]),
+        specifiedType:
+            const FullType(BuiltMap, [FullType(String), FullType(String)]),
       );
     }
   }
@@ -270,7 +277,9 @@ class _$ChannelResponseSerializer implements PrimitiveSerializer<ChannelResponse
     ChannelResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -398,14 +407,16 @@ class _$ChannelResponseSerializer implements PrimitiveSerializer<ChannelResponse
         case r'permission_overwrites':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ChannelOverwriteResponse)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(ChannelOverwriteResponse)]),
           ) as BuiltList<ChannelOverwriteResponse>;
           result.permissionOverwrites.replace(valueDes);
           break;
         case r'recipients':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(UserPartialResponse)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(UserPartialResponse)]),
           ) as BuiltList<UserPartialResponse>;
           result.recipients.replace(valueDes);
           break;
@@ -426,7 +437,8 @@ class _$ChannelResponseSerializer implements PrimitiveSerializer<ChannelResponse
         case r'nicks':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(String)]),
+            specifiedType:
+                const FullType(BuiltMap, [FullType(String), FullType(String)]),
           ) as BuiltMap<String, String>;
           result.nicks.replace(valueDes);
           break;
@@ -458,4 +470,3 @@ class _$ChannelResponseSerializer implements PrimitiveSerializer<ChannelResponse
     return result.build();
   }
 }
-

@@ -11,10 +11,13 @@ part 'disable_for_suspicious_activity_request.g.dart';
 /// DisableForSuspiciousActivityRequest
 ///
 /// Properties:
-/// * [userId] 
+/// * [userId]
 /// * [flags] - Bitmask of suspicious activity flags that triggered the disable
 @BuiltValue()
-abstract class DisableForSuspiciousActivityRequest implements Built<DisableForSuspiciousActivityRequest, DisableForSuspiciousActivityRequestBuilder> {
+abstract class DisableForSuspiciousActivityRequest
+    implements
+        Built<DisableForSuspiciousActivityRequest,
+            DisableForSuspiciousActivityRequestBuilder> {
   @BuiltValueField(wireName: r'user_id')
   String get userId;
 
@@ -24,18 +27,25 @@ abstract class DisableForSuspiciousActivityRequest implements Built<DisableForSu
 
   DisableForSuspiciousActivityRequest._();
 
-  factory DisableForSuspiciousActivityRequest([void updates(DisableForSuspiciousActivityRequestBuilder b)]) = _$DisableForSuspiciousActivityRequest;
+  factory DisableForSuspiciousActivityRequest(
+          [void updates(DisableForSuspiciousActivityRequestBuilder b)]) =
+      _$DisableForSuspiciousActivityRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(DisableForSuspiciousActivityRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<DisableForSuspiciousActivityRequest> get serializer => _$DisableForSuspiciousActivityRequestSerializer();
+  static Serializer<DisableForSuspiciousActivityRequest> get serializer =>
+      _$DisableForSuspiciousActivityRequestSerializer();
 }
 
-class _$DisableForSuspiciousActivityRequestSerializer implements PrimitiveSerializer<DisableForSuspiciousActivityRequest> {
+class _$DisableForSuspiciousActivityRequestSerializer
+    implements PrimitiveSerializer<DisableForSuspiciousActivityRequest> {
   @override
-  final Iterable<Type> types = const [DisableForSuspiciousActivityRequest, _$DisableForSuspiciousActivityRequest];
+  final Iterable<Type> types = const [
+    DisableForSuspiciousActivityRequest,
+    _$DisableForSuspiciousActivityRequest
+  ];
 
   @override
   final String wireName = r'DisableForSuspiciousActivityRequest';
@@ -63,7 +73,9 @@ class _$DisableForSuspiciousActivityRequestSerializer implements PrimitiveSerial
     DisableForSuspiciousActivityRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -120,4 +132,3 @@ class _$DisableForSuspiciousActivityRequestSerializer implements PrimitiveSerial
     return result.build();
   }
 }
-

@@ -12,10 +12,11 @@ part 'set_user_traits_request.g.dart';
 /// SetUserTraitsRequest
 ///
 /// Properties:
-/// * [userId] 
+/// * [userId]
 /// * [traits] - List of traits to assign to the user
 @BuiltValue()
-abstract class SetUserTraitsRequest implements Built<SetUserTraitsRequest, SetUserTraitsRequestBuilder> {
+abstract class SetUserTraitsRequest
+    implements Built<SetUserTraitsRequest, SetUserTraitsRequestBuilder> {
   @BuiltValueField(wireName: r'user_id')
   String get userId;
 
@@ -25,18 +26,24 @@ abstract class SetUserTraitsRequest implements Built<SetUserTraitsRequest, SetUs
 
   SetUserTraitsRequest._();
 
-  factory SetUserTraitsRequest([void updates(SetUserTraitsRequestBuilder b)]) = _$SetUserTraitsRequest;
+  factory SetUserTraitsRequest([void updates(SetUserTraitsRequestBuilder b)]) =
+      _$SetUserTraitsRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SetUserTraitsRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SetUserTraitsRequest> get serializer => _$SetUserTraitsRequestSerializer();
+  static Serializer<SetUserTraitsRequest> get serializer =>
+      _$SetUserTraitsRequestSerializer();
 }
 
-class _$SetUserTraitsRequestSerializer implements PrimitiveSerializer<SetUserTraitsRequest> {
+class _$SetUserTraitsRequestSerializer
+    implements PrimitiveSerializer<SetUserTraitsRequest> {
   @override
-  final Iterable<Type> types = const [SetUserTraitsRequest, _$SetUserTraitsRequest];
+  final Iterable<Type> types = const [
+    SetUserTraitsRequest,
+    _$SetUserTraitsRequest
+  ];
 
   @override
   final String wireName = r'SetUserTraitsRequest';
@@ -64,7 +71,9 @@ class _$SetUserTraitsRequestSerializer implements PrimitiveSerializer<SetUserTra
     SetUserTraitsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +130,3 @@ class _$SetUserTraitsRequestSerializer implements PrimitiveSerializer<SetUserTra
     return result.build();
   }
 }
-

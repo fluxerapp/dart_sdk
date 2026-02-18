@@ -16,7 +16,8 @@ part 'sudo_mfa_methods_response.g.dart';
 /// * [webauthn] - Whether WebAuthn is enabled
 /// * [hasMfa] - Whether any MFA method is enabled
 @BuiltValue()
-abstract class SudoMfaMethodsResponse implements Built<SudoMfaMethodsResponse, SudoMfaMethodsResponseBuilder> {
+abstract class SudoMfaMethodsResponse
+    implements Built<SudoMfaMethodsResponse, SudoMfaMethodsResponseBuilder> {
   /// Whether TOTP is enabled
   @BuiltValueField(wireName: r'totp')
   bool get totp;
@@ -35,18 +36,25 @@ abstract class SudoMfaMethodsResponse implements Built<SudoMfaMethodsResponse, S
 
   SudoMfaMethodsResponse._();
 
-  factory SudoMfaMethodsResponse([void updates(SudoMfaMethodsResponseBuilder b)]) = _$SudoMfaMethodsResponse;
+  factory SudoMfaMethodsResponse(
+          [void updates(SudoMfaMethodsResponseBuilder b)]) =
+      _$SudoMfaMethodsResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SudoMfaMethodsResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SudoMfaMethodsResponse> get serializer => _$SudoMfaMethodsResponseSerializer();
+  static Serializer<SudoMfaMethodsResponse> get serializer =>
+      _$SudoMfaMethodsResponseSerializer();
 }
 
-class _$SudoMfaMethodsResponseSerializer implements PrimitiveSerializer<SudoMfaMethodsResponse> {
+class _$SudoMfaMethodsResponseSerializer
+    implements PrimitiveSerializer<SudoMfaMethodsResponse> {
   @override
-  final Iterable<Type> types = const [SudoMfaMethodsResponse, _$SudoMfaMethodsResponse];
+  final Iterable<Type> types = const [
+    SudoMfaMethodsResponse,
+    _$SudoMfaMethodsResponse
+  ];
 
   @override
   final String wireName = r'SudoMfaMethodsResponse';
@@ -84,7 +92,9 @@ class _$SudoMfaMethodsResponseSerializer implements PrimitiveSerializer<SudoMfaM
     SudoMfaMethodsResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -155,4 +165,3 @@ class _$SudoMfaMethodsResponseSerializer implements PrimitiveSerializer<SudoMfaM
     return result.build();
   }
 }
-

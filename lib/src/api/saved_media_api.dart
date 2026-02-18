@@ -4,7 +4,6 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
@@ -12,13 +11,10 @@ import 'package:built_collection/built_collection.dart';
 import 'package:fluxer_dart/src/api_util.dart';
 import 'package:fluxer_dart/src/model/create_favorite_meme_body_schema.dart';
 import 'package:fluxer_dart/src/model/create_favorite_meme_from_url_body_schema.dart';
-import 'package:fluxer_dart/src/model/error.dart';
 import 'package:fluxer_dart/src/model/favorite_meme_response.dart';
-import 'package:fluxer_dart/src/model/get_well_known_fluxer429_response.dart';
 import 'package:fluxer_dart/src/model/update_favorite_meme_body_schema.dart';
 
 class SavedMediaApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -31,7 +27,7 @@ class SavedMediaApi {
   /// Parameters:
   /// * [channelId] - The ID of the channel
   /// * [messageId] - The ID of the message
-  /// * [createFavoriteMemeBodySchema] 
+  /// * [createFavoriteMemeBodySchema]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -41,7 +37,7 @@ class SavedMediaApi {
   ///
   /// Returns a [Future] containing a [Response] with a [FavoriteMemeResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<FavoriteMemeResponse>> createMemeFromMessage({ 
+  Future<Response<FavoriteMemeResponse>> createMemeFromMessage({
     required String channelId,
     required String messageId,
     required CreateFavoriteMemeBodySchema createFavoriteMemeBodySchema,
@@ -52,7 +48,17 @@ class SavedMediaApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/channels/{channel_id}/messages/{message_id}/memes'.replaceAll('{' r'channel_id' '}', encodeQueryParameter(_serializers, channelId, const FullType(String)).toString()).replaceAll('{' r'message_id' '}', encodeQueryParameter(_serializers, messageId, const FullType(String)).toString());
+    final _path = r'/channels/{channel_id}/messages/{message_id}/memes'
+        .replaceAll(
+            '{' r'channel_id' '}',
+            encodeQueryParameter(
+                    _serializers, channelId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'message_id' '}',
+            encodeQueryParameter(
+                    _serializers, messageId, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -65,7 +71,8 @@ class SavedMediaApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -82,11 +89,11 @@ class SavedMediaApi {
 
     try {
       const _type = FullType(CreateFavoriteMemeBodySchema);
-      _bodyData = _serializers.serialize(createFavoriteMemeBodySchema, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(createFavoriteMemeBodySchema,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -109,11 +116,12 @@ class SavedMediaApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(FavoriteMemeResponse),
-      ) as FavoriteMemeResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(FavoriteMemeResponse),
+            ) as FavoriteMemeResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -140,7 +148,7 @@ class SavedMediaApi {
   /// Saves a new meme to favorites from a provided URL.
   ///
   /// Parameters:
-  /// * [createFavoriteMemeFromUrlBodySchema] 
+  /// * [createFavoriteMemeFromUrlBodySchema]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -150,8 +158,9 @@ class SavedMediaApi {
   ///
   /// Returns a [Future] containing a [Response] with a [FavoriteMemeResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<FavoriteMemeResponse>> createMemeFromUrl({ 
-    required CreateFavoriteMemeFromUrlBodySchema createFavoriteMemeFromUrlBodySchema,
+  Future<Response<FavoriteMemeResponse>> createMemeFromUrl({
+    required CreateFavoriteMemeFromUrlBodySchema
+        createFavoriteMemeFromUrlBodySchema,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -172,7 +181,8 @@ class SavedMediaApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -189,11 +199,11 @@ class SavedMediaApi {
 
     try {
       const _type = FullType(CreateFavoriteMemeFromUrlBodySchema);
-      _bodyData = _serializers.serialize(createFavoriteMemeFromUrlBodySchema, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(createFavoriteMemeFromUrlBodySchema,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -216,11 +226,12 @@ class SavedMediaApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(FavoriteMemeResponse),
-      ) as FavoriteMemeResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(FavoriteMemeResponse),
+            ) as FavoriteMemeResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -257,7 +268,7 @@ class SavedMediaApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> deleteFavoriteMeme({ 
+  Future<Response<void>> deleteFavoriteMeme({
     required String memeId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -266,7 +277,10 @@ class SavedMediaApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/users/@me/memes/{meme_id}'.replaceAll('{' r'meme_id' '}', encodeQueryParameter(_serializers, memeId, const FullType(String)).toString());
+    final _path = r'/users/@me/memes/{meme_id}'.replaceAll(
+        '{' r'meme_id' '}',
+        encodeQueryParameter(_serializers, memeId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -279,7 +293,8 @@ class SavedMediaApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -316,7 +331,7 @@ class SavedMediaApi {
   ///
   /// Returns a [Future] containing a [Response] with a [FavoriteMemeResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<FavoriteMemeResponse>> getFavoriteMeme({ 
+  Future<Response<FavoriteMemeResponse>> getFavoriteMeme({
     required String memeId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -325,7 +340,10 @@ class SavedMediaApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/users/@me/memes/{meme_id}'.replaceAll('{' r'meme_id' '}', encodeQueryParameter(_serializers, memeId, const FullType(String)).toString());
+    final _path = r'/users/@me/memes/{meme_id}'.replaceAll(
+        '{' r'meme_id' '}',
+        encodeQueryParameter(_serializers, memeId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -338,7 +356,8 @@ class SavedMediaApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -362,11 +381,12 @@ class SavedMediaApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(FavoriteMemeResponse),
-      ) as FavoriteMemeResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(FavoriteMemeResponse),
+            ) as FavoriteMemeResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -402,7 +422,7 @@ class SavedMediaApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<FavoriteMemeResponse>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<FavoriteMemeResponse>>> listFavoriteMemes({ 
+  Future<Response<BuiltList<FavoriteMemeResponse>>> listFavoriteMemes({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -423,7 +443,8 @@ class SavedMediaApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -447,11 +468,13 @@ class SavedMediaApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(FavoriteMemeResponse)]),
-      ) as BuiltList<FavoriteMemeResponse>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType:
+                  const FullType(BuiltList, [FullType(FavoriteMemeResponse)]),
+            ) as BuiltList<FavoriteMemeResponse>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -479,7 +502,7 @@ class SavedMediaApi {
   ///
   /// Parameters:
   /// * [memeId] - The meme id
-  /// * [updateFavoriteMemeBodySchema] 
+  /// * [updateFavoriteMemeBodySchema]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -489,7 +512,7 @@ class SavedMediaApi {
   ///
   /// Returns a [Future] containing a [Response] with a [FavoriteMemeResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<FavoriteMemeResponse>> updateFavoriteMeme({ 
+  Future<Response<FavoriteMemeResponse>> updateFavoriteMeme({
     required String memeId,
     required UpdateFavoriteMemeBodySchema updateFavoriteMemeBodySchema,
     CancelToken? cancelToken,
@@ -499,7 +522,10 @@ class SavedMediaApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/users/@me/memes/{meme_id}'.replaceAll('{' r'meme_id' '}', encodeQueryParameter(_serializers, memeId, const FullType(String)).toString());
+    final _path = r'/users/@me/memes/{meme_id}'.replaceAll(
+        '{' r'meme_id' '}',
+        encodeQueryParameter(_serializers, memeId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -512,7 +538,8 @@ class SavedMediaApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -529,11 +556,11 @@ class SavedMediaApi {
 
     try {
       const _type = FullType(UpdateFavoriteMemeBodySchema);
-      _bodyData = _serializers.serialize(updateFavoriteMemeBodySchema, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(updateFavoriteMemeBodySchema,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -556,11 +583,12 @@ class SavedMediaApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(FavoriteMemeResponse),
-      ) as FavoriteMemeResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(FavoriteMemeResponse),
+            ) as FavoriteMemeResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -582,5 +610,4 @@ class SavedMediaApi {
       extra: _response.extra,
     );
   }
-
 }

@@ -18,15 +18,16 @@ part 'message_snapshot_response.g.dart';
 /// * [timestamp] - The ISO 8601 timestamp of when the original message was created
 /// * [type] - The type of message
 /// * [flags] - Message flags bitfield
-/// * [content] 
-/// * [editedTimestamp] 
-/// * [mentions] 
-/// * [mentionRoles] 
-/// * [embeds] 
-/// * [attachments] 
-/// * [stickers] 
+/// * [content]
+/// * [editedTimestamp]
+/// * [mentions]
+/// * [mentionRoles]
+/// * [embeds]
+/// * [attachments]
+/// * [stickers]
 @BuiltValue()
-abstract class MessageSnapshotResponse implements Built<MessageSnapshotResponse, MessageSnapshotResponseBuilder> {
+abstract class MessageSnapshotResponse
+    implements Built<MessageSnapshotResponse, MessageSnapshotResponseBuilder> {
   /// The ISO 8601 timestamp of when the original message was created
   @BuiltValueField(wireName: r'timestamp')
   DateTime get timestamp;
@@ -63,18 +64,25 @@ abstract class MessageSnapshotResponse implements Built<MessageSnapshotResponse,
 
   MessageSnapshotResponse._();
 
-  factory MessageSnapshotResponse([void updates(MessageSnapshotResponseBuilder b)]) = _$MessageSnapshotResponse;
+  factory MessageSnapshotResponse(
+          [void updates(MessageSnapshotResponseBuilder b)]) =
+      _$MessageSnapshotResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(MessageSnapshotResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<MessageSnapshotResponse> get serializer => _$MessageSnapshotResponseSerializer();
+  static Serializer<MessageSnapshotResponse> get serializer =>
+      _$MessageSnapshotResponseSerializer();
 }
 
-class _$MessageSnapshotResponseSerializer implements PrimitiveSerializer<MessageSnapshotResponse> {
+class _$MessageSnapshotResponseSerializer
+    implements PrimitiveSerializer<MessageSnapshotResponse> {
   @override
-  final Iterable<Type> types = const [MessageSnapshotResponse, _$MessageSnapshotResponse];
+  final Iterable<Type> types = const [
+    MessageSnapshotResponse,
+    _$MessageSnapshotResponse
+  ];
 
   @override
   final String wireName = r'MessageSnapshotResponse';
@@ -131,21 +139,24 @@ class _$MessageSnapshotResponseSerializer implements PrimitiveSerializer<Message
       yield r'embeds';
       yield serializers.serialize(
         object.embeds,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(MessageEmbedResponse)]),
+        specifiedType: const FullType.nullable(
+            BuiltList, [FullType(MessageEmbedResponse)]),
       );
     }
     if (object.attachments != null) {
       yield r'attachments';
       yield serializers.serialize(
         object.attachments,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(MessageAttachmentResponse)]),
+        specifiedType: const FullType.nullable(
+            BuiltList, [FullType(MessageAttachmentResponse)]),
       );
     }
     if (object.stickers != null) {
       yield r'stickers';
       yield serializers.serialize(
         object.stickers,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(MessageStickerResponse)]),
+        specifiedType: const FullType.nullable(
+            BuiltList, [FullType(MessageStickerResponse)]),
       );
     }
   }
@@ -156,7 +167,9 @@ class _$MessageSnapshotResponseSerializer implements PrimitiveSerializer<Message
     MessageSnapshotResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -211,7 +224,8 @@ class _$MessageSnapshotResponseSerializer implements PrimitiveSerializer<Message
         case r'mentions':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+            specifiedType:
+                const FullType.nullable(BuiltList, [FullType(String)]),
           ) as BuiltList<String>?;
           if (valueDes == null) continue;
           result.mentions.replace(valueDes);
@@ -219,7 +233,8 @@ class _$MessageSnapshotResponseSerializer implements PrimitiveSerializer<Message
         case r'mention_roles':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+            specifiedType:
+                const FullType.nullable(BuiltList, [FullType(String)]),
           ) as BuiltList<String>?;
           if (valueDes == null) continue;
           result.mentionRoles.replace(valueDes);
@@ -227,7 +242,8 @@ class _$MessageSnapshotResponseSerializer implements PrimitiveSerializer<Message
         case r'embeds':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(MessageEmbedResponse)]),
+            specifiedType: const FullType.nullable(
+                BuiltList, [FullType(MessageEmbedResponse)]),
           ) as BuiltList<MessageEmbedResponse>?;
           if (valueDes == null) continue;
           result.embeds.replace(valueDes);
@@ -235,7 +251,8 @@ class _$MessageSnapshotResponseSerializer implements PrimitiveSerializer<Message
         case r'attachments':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(MessageAttachmentResponse)]),
+            specifiedType: const FullType.nullable(
+                BuiltList, [FullType(MessageAttachmentResponse)]),
           ) as BuiltList<MessageAttachmentResponse>?;
           if (valueDes == null) continue;
           result.attachments.replace(valueDes);
@@ -243,7 +260,8 @@ class _$MessageSnapshotResponseSerializer implements PrimitiveSerializer<Message
         case r'stickers':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(MessageStickerResponse)]),
+            specifiedType: const FullType.nullable(
+                BuiltList, [FullType(MessageStickerResponse)]),
           ) as BuiltList<MessageStickerResponse>?;
           if (valueDes == null) continue;
           result.stickers.replace(valueDes);
@@ -278,40 +296,58 @@ class _$MessageSnapshotResponseSerializer implements PrimitiveSerializer<Message
 }
 
 class MessageSnapshotResponseTypeEnum extends EnumClass {
-
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 0)
-  static const MessageSnapshotResponseTypeEnum number0 = _$messageSnapshotResponseTypeEnum_number0;
+  static const MessageSnapshotResponseTypeEnum number0 =
+      _$messageSnapshotResponseTypeEnum_number0;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 1)
-  static const MessageSnapshotResponseTypeEnum number1 = _$messageSnapshotResponseTypeEnum_number1;
+  static const MessageSnapshotResponseTypeEnum number1 =
+      _$messageSnapshotResponseTypeEnum_number1;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 2)
-  static const MessageSnapshotResponseTypeEnum number2 = _$messageSnapshotResponseTypeEnum_number2;
+  static const MessageSnapshotResponseTypeEnum number2 =
+      _$messageSnapshotResponseTypeEnum_number2;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 3)
-  static const MessageSnapshotResponseTypeEnum number3 = _$messageSnapshotResponseTypeEnum_number3;
+  static const MessageSnapshotResponseTypeEnum number3 =
+      _$messageSnapshotResponseTypeEnum_number3;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 4)
-  static const MessageSnapshotResponseTypeEnum number4 = _$messageSnapshotResponseTypeEnum_number4;
+  static const MessageSnapshotResponseTypeEnum number4 =
+      _$messageSnapshotResponseTypeEnum_number4;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 5)
-  static const MessageSnapshotResponseTypeEnum number5 = _$messageSnapshotResponseTypeEnum_number5;
+  static const MessageSnapshotResponseTypeEnum number5 =
+      _$messageSnapshotResponseTypeEnum_number5;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 6)
-  static const MessageSnapshotResponseTypeEnum number6 = _$messageSnapshotResponseTypeEnum_number6;
+  static const MessageSnapshotResponseTypeEnum number6 =
+      _$messageSnapshotResponseTypeEnum_number6;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 7)
-  static const MessageSnapshotResponseTypeEnum number7 = _$messageSnapshotResponseTypeEnum_number7;
+  static const MessageSnapshotResponseTypeEnum number7 =
+      _$messageSnapshotResponseTypeEnum_number7;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 19)
-  static const MessageSnapshotResponseTypeEnum number19 = _$messageSnapshotResponseTypeEnum_number19;
+  static const MessageSnapshotResponseTypeEnum number19 =
+      _$messageSnapshotResponseTypeEnum_number19;
 
-  static Serializer<MessageSnapshotResponseTypeEnum> get serializer => _$messageSnapshotResponseTypeEnumSerializer;
+  static Serializer<MessageSnapshotResponseTypeEnum> get serializer =>
+      _$messageSnapshotResponseTypeEnumSerializer;
 
-  const MessageSnapshotResponseTypeEnum._(String name): super(name);
+  const MessageSnapshotResponseTypeEnum._(String name) : super(name);
 
-  static BuiltSet<MessageSnapshotResponseTypeEnum> get values => _$messageSnapshotResponseTypeEnumValues;
-  static MessageSnapshotResponseTypeEnum valueOf(String name) => _$messageSnapshotResponseTypeEnumValueOf(name);
+  static BuiltSet<MessageSnapshotResponseTypeEnum> get values =>
+      _$messageSnapshotResponseTypeEnumValues;
+  static MessageSnapshotResponseTypeEnum valueOf(String name) =>
+      _$messageSnapshotResponseTypeEnumValueOf(name);
 }
-

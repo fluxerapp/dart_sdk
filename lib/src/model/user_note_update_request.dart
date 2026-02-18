@@ -11,26 +11,33 @@ part 'user_note_update_request.g.dart';
 /// UserNoteUpdateRequest
 ///
 /// Properties:
-/// * [note] 
+/// * [note]
 @BuiltValue()
-abstract class UserNoteUpdateRequest implements Built<UserNoteUpdateRequest, UserNoteUpdateRequestBuilder> {
+abstract class UserNoteUpdateRequest
+    implements Built<UserNoteUpdateRequest, UserNoteUpdateRequestBuilder> {
   @BuiltValueField(wireName: r'note')
   String? get note;
 
   UserNoteUpdateRequest._();
 
-  factory UserNoteUpdateRequest([void updates(UserNoteUpdateRequestBuilder b)]) = _$UserNoteUpdateRequest;
+  factory UserNoteUpdateRequest(
+      [void updates(UserNoteUpdateRequestBuilder b)]) = _$UserNoteUpdateRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UserNoteUpdateRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UserNoteUpdateRequest> get serializer => _$UserNoteUpdateRequestSerializer();
+  static Serializer<UserNoteUpdateRequest> get serializer =>
+      _$UserNoteUpdateRequestSerializer();
 }
 
-class _$UserNoteUpdateRequestSerializer implements PrimitiveSerializer<UserNoteUpdateRequest> {
+class _$UserNoteUpdateRequestSerializer
+    implements PrimitiveSerializer<UserNoteUpdateRequest> {
   @override
-  final Iterable<Type> types = const [UserNoteUpdateRequest, _$UserNoteUpdateRequest];
+  final Iterable<Type> types = const [
+    UserNoteUpdateRequest,
+    _$UserNoteUpdateRequest
+  ];
 
   @override
   final String wireName = r'UserNoteUpdateRequest';
@@ -55,7 +62,9 @@ class _$UserNoteUpdateRequestSerializer implements PrimitiveSerializer<UserNoteU
     UserNoteUpdateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -106,4 +115,3 @@ class _$UserNoteUpdateRequestSerializer implements PrimitiveSerializer<UserNoteU
     return result.build();
   }
 }
-

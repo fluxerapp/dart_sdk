@@ -10,23 +10,26 @@ import 'package:built_value/serializer.dart';
 part 'user_status_type.g.dart';
 
 class UserStatusType extends EnumClass {
-
   /// User online status
   @BuiltValueEnumConst(wireName: r'online')
   static const UserStatusType online = _$online;
+
   /// User online status
   @BuiltValueEnumConst(wireName: r'dnd')
   static const UserStatusType dnd = _$dnd;
+
   /// User online status
   @BuiltValueEnumConst(wireName: r'idle')
   static const UserStatusType idle = _$idle;
+
   /// User online status
   @BuiltValueEnumConst(wireName: r'invisible')
   static const UserStatusType invisible = _$invisible;
 
-  static Serializer<UserStatusType> get serializer => _$userStatusTypeSerializer;
+  static Serializer<UserStatusType> get serializer =>
+      _$userStatusTypeSerializer;
 
-  const UserStatusType._(String name): super(name);
+  const UserStatusType._(String name) : super(name);
 
   static BuiltSet<UserStatusType> get values => _$values;
   static UserStatusType valueOf(String name) => _$valueOf(name);
@@ -39,4 +42,3 @@ class UserStatusType extends EnumClass {
 ///
 /// Trigger mixin generation by writing a line like this one next to your enum.
 abstract class UserStatusTypeMixin = Object with _$UserStatusTypeMixin;
-

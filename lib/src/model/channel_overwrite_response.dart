@@ -17,7 +17,9 @@ part 'channel_overwrite_response.g.dart';
 /// * [allow] - The bitwise value of allowed permissions
 /// * [deny] - The bitwise value of denied permissions
 @BuiltValue()
-abstract class ChannelOverwriteResponse implements Built<ChannelOverwriteResponse, ChannelOverwriteResponseBuilder> {
+abstract class ChannelOverwriteResponse
+    implements
+        Built<ChannelOverwriteResponse, ChannelOverwriteResponseBuilder> {
   /// The unique identifier for the role or user this overwrite applies to
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -37,18 +39,25 @@ abstract class ChannelOverwriteResponse implements Built<ChannelOverwriteRespons
 
   ChannelOverwriteResponse._();
 
-  factory ChannelOverwriteResponse([void updates(ChannelOverwriteResponseBuilder b)]) = _$ChannelOverwriteResponse;
+  factory ChannelOverwriteResponse(
+          [void updates(ChannelOverwriteResponseBuilder b)]) =
+      _$ChannelOverwriteResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ChannelOverwriteResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ChannelOverwriteResponse> get serializer => _$ChannelOverwriteResponseSerializer();
+  static Serializer<ChannelOverwriteResponse> get serializer =>
+      _$ChannelOverwriteResponseSerializer();
 }
 
-class _$ChannelOverwriteResponseSerializer implements PrimitiveSerializer<ChannelOverwriteResponse> {
+class _$ChannelOverwriteResponseSerializer
+    implements PrimitiveSerializer<ChannelOverwriteResponse> {
   @override
-  final Iterable<Type> types = const [ChannelOverwriteResponse, _$ChannelOverwriteResponse];
+  final Iterable<Type> types = const [
+    ChannelOverwriteResponse,
+    _$ChannelOverwriteResponse
+  ];
 
   @override
   final String wireName = r'ChannelOverwriteResponse';
@@ -86,7 +95,9 @@ class _$ChannelOverwriteResponseSerializer implements PrimitiveSerializer<Channe
     ChannelOverwriteResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -159,19 +170,23 @@ class _$ChannelOverwriteResponseSerializer implements PrimitiveSerializer<Channe
 }
 
 class ChannelOverwriteResponseTypeEnum extends EnumClass {
-
   /// The type of entity the overwrite applies to
   @BuiltValueEnumConst(wireNumber: 0)
-  static const ChannelOverwriteResponseTypeEnum number0 = _$channelOverwriteResponseTypeEnum_number0;
+  static const ChannelOverwriteResponseTypeEnum number0 =
+      _$channelOverwriteResponseTypeEnum_number0;
+
   /// The type of entity the overwrite applies to
   @BuiltValueEnumConst(wireNumber: 1)
-  static const ChannelOverwriteResponseTypeEnum number1 = _$channelOverwriteResponseTypeEnum_number1;
+  static const ChannelOverwriteResponseTypeEnum number1 =
+      _$channelOverwriteResponseTypeEnum_number1;
 
-  static Serializer<ChannelOverwriteResponseTypeEnum> get serializer => _$channelOverwriteResponseTypeEnumSerializer;
+  static Serializer<ChannelOverwriteResponseTypeEnum> get serializer =>
+      _$channelOverwriteResponseTypeEnumSerializer;
 
-  const ChannelOverwriteResponseTypeEnum._(String name): super(name);
+  const ChannelOverwriteResponseTypeEnum._(String name) : super(name);
 
-  static BuiltSet<ChannelOverwriteResponseTypeEnum> get values => _$channelOverwriteResponseTypeEnumValues;
-  static ChannelOverwriteResponseTypeEnum valueOf(String name) => _$channelOverwriteResponseTypeEnumValueOf(name);
+  static BuiltSet<ChannelOverwriteResponseTypeEnum> get values =>
+      _$channelOverwriteResponseTypeEnumValues;
+  static ChannelOverwriteResponseTypeEnum valueOf(String name) =>
+      _$channelOverwriteResponseTypeEnumValueOf(name);
 }
-

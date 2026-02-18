@@ -54,7 +54,9 @@ class _$OkResponseSerializer implements PrimitiveSerializer<OkResponse> {
     OkResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +106,3 @@ class _$OkResponseSerializer implements PrimitiveSerializer<OkResponse> {
     return result.build();
   }
 }
-

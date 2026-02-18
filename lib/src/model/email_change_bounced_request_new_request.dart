@@ -11,26 +11,36 @@ part 'email_change_bounced_request_new_request.g.dart';
 /// EmailChangeBouncedRequestNewRequest
 ///
 /// Properties:
-/// * [newEmail] 
+/// * [newEmail]
 @BuiltValue()
-abstract class EmailChangeBouncedRequestNewRequest implements Built<EmailChangeBouncedRequestNewRequest, EmailChangeBouncedRequestNewRequestBuilder> {
+abstract class EmailChangeBouncedRequestNewRequest
+    implements
+        Built<EmailChangeBouncedRequestNewRequest,
+            EmailChangeBouncedRequestNewRequestBuilder> {
   @BuiltValueField(wireName: r'new_email')
   String get newEmail;
 
   EmailChangeBouncedRequestNewRequest._();
 
-  factory EmailChangeBouncedRequestNewRequest([void updates(EmailChangeBouncedRequestNewRequestBuilder b)]) = _$EmailChangeBouncedRequestNewRequest;
+  factory EmailChangeBouncedRequestNewRequest(
+          [void updates(EmailChangeBouncedRequestNewRequestBuilder b)]) =
+      _$EmailChangeBouncedRequestNewRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(EmailChangeBouncedRequestNewRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<EmailChangeBouncedRequestNewRequest> get serializer => _$EmailChangeBouncedRequestNewRequestSerializer();
+  static Serializer<EmailChangeBouncedRequestNewRequest> get serializer =>
+      _$EmailChangeBouncedRequestNewRequestSerializer();
 }
 
-class _$EmailChangeBouncedRequestNewRequestSerializer implements PrimitiveSerializer<EmailChangeBouncedRequestNewRequest> {
+class _$EmailChangeBouncedRequestNewRequestSerializer
+    implements PrimitiveSerializer<EmailChangeBouncedRequestNewRequest> {
   @override
-  final Iterable<Type> types = const [EmailChangeBouncedRequestNewRequest, _$EmailChangeBouncedRequestNewRequest];
+  final Iterable<Type> types = const [
+    EmailChangeBouncedRequestNewRequest,
+    _$EmailChangeBouncedRequestNewRequest
+  ];
 
   @override
   final String wireName = r'EmailChangeBouncedRequestNewRequest';
@@ -53,7 +63,9 @@ class _$EmailChangeBouncedRequestNewRequestSerializer implements PrimitiveSerial
     EmailChangeBouncedRequestNewRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,4 +115,3 @@ class _$EmailChangeBouncedRequestNewRequestSerializer implements PrimitiveSerial
     return result.build();
   }
 }
-

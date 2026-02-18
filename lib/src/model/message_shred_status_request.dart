@@ -11,26 +11,35 @@ part 'message_shred_status_request.g.dart';
 /// MessageShredStatusRequest
 ///
 /// Properties:
-/// * [jobId] 
+/// * [jobId]
 @BuiltValue()
-abstract class MessageShredStatusRequest implements Built<MessageShredStatusRequest, MessageShredStatusRequestBuilder> {
+abstract class MessageShredStatusRequest
+    implements
+        Built<MessageShredStatusRequest, MessageShredStatusRequestBuilder> {
   @BuiltValueField(wireName: r'job_id')
   String get jobId;
 
   MessageShredStatusRequest._();
 
-  factory MessageShredStatusRequest([void updates(MessageShredStatusRequestBuilder b)]) = _$MessageShredStatusRequest;
+  factory MessageShredStatusRequest(
+          [void updates(MessageShredStatusRequestBuilder b)]) =
+      _$MessageShredStatusRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(MessageShredStatusRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<MessageShredStatusRequest> get serializer => _$MessageShredStatusRequestSerializer();
+  static Serializer<MessageShredStatusRequest> get serializer =>
+      _$MessageShredStatusRequestSerializer();
 }
 
-class _$MessageShredStatusRequestSerializer implements PrimitiveSerializer<MessageShredStatusRequest> {
+class _$MessageShredStatusRequestSerializer
+    implements PrimitiveSerializer<MessageShredStatusRequest> {
   @override
-  final Iterable<Type> types = const [MessageShredStatusRequest, _$MessageShredStatusRequest];
+  final Iterable<Type> types = const [
+    MessageShredStatusRequest,
+    _$MessageShredStatusRequest
+  ];
 
   @override
   final String wireName = r'MessageShredStatusRequest';
@@ -53,7 +62,9 @@ class _$MessageShredStatusRequestSerializer implements PrimitiveSerializer<Messa
     MessageShredStatusRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,4 +114,3 @@ class _$MessageShredStatusRequestSerializer implements PrimitiveSerializer<Messa
     return result.build();
   }
 }
-

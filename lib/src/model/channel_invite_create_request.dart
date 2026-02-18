@@ -11,12 +11,14 @@ part 'channel_invite_create_request.g.dart';
 /// ChannelInviteCreateRequest
 ///
 /// Properties:
-/// * [maxUses] 
-/// * [maxAge] 
-/// * [unique] 
-/// * [temporary] 
+/// * [maxUses]
+/// * [maxAge]
+/// * [unique]
+/// * [temporary]
 @BuiltValue()
-abstract class ChannelInviteCreateRequest implements Built<ChannelInviteCreateRequest, ChannelInviteCreateRequestBuilder> {
+abstract class ChannelInviteCreateRequest
+    implements
+        Built<ChannelInviteCreateRequest, ChannelInviteCreateRequestBuilder> {
   @BuiltValueField(wireName: r'max_uses')
   int? get maxUses;
 
@@ -31,18 +33,25 @@ abstract class ChannelInviteCreateRequest implements Built<ChannelInviteCreateRe
 
   ChannelInviteCreateRequest._();
 
-  factory ChannelInviteCreateRequest([void updates(ChannelInviteCreateRequestBuilder b)]) = _$ChannelInviteCreateRequest;
+  factory ChannelInviteCreateRequest(
+          [void updates(ChannelInviteCreateRequestBuilder b)]) =
+      _$ChannelInviteCreateRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ChannelInviteCreateRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ChannelInviteCreateRequest> get serializer => _$ChannelInviteCreateRequestSerializer();
+  static Serializer<ChannelInviteCreateRequest> get serializer =>
+      _$ChannelInviteCreateRequestSerializer();
 }
 
-class _$ChannelInviteCreateRequestSerializer implements PrimitiveSerializer<ChannelInviteCreateRequest> {
+class _$ChannelInviteCreateRequestSerializer
+    implements PrimitiveSerializer<ChannelInviteCreateRequest> {
   @override
-  final Iterable<Type> types = const [ChannelInviteCreateRequest, _$ChannelInviteCreateRequest];
+  final Iterable<Type> types = const [
+    ChannelInviteCreateRequest,
+    _$ChannelInviteCreateRequest
+  ];
 
   @override
   final String wireName = r'ChannelInviteCreateRequest';
@@ -88,7 +97,9 @@ class _$ChannelInviteCreateRequestSerializer implements PrimitiveSerializer<Chan
     ChannelInviteCreateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -163,4 +174,3 @@ class _$ChannelInviteCreateRequestSerializer implements PrimitiveSerializer<Chan
     return result.build();
   }
 }
-

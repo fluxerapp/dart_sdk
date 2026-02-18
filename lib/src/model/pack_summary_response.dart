@@ -14,14 +14,15 @@ part 'pack_summary_response.g.dart';
 /// Properties:
 /// * [id] - The unique identifier (snowflake) for the pack
 /// * [name] - The display name of the pack
-/// * [description] 
+/// * [description]
 /// * [type] - The type of expression pack (emoji or sticker)
 /// * [creatorId] - The ID of the user who created the pack
 /// * [createdAt] - ISO8601 timestamp of when the pack was created
 /// * [updatedAt] - ISO8601 timestamp of when the pack was last updated
 /// * [installedAt] - ISO8601 timestamp of when the pack was installed by the user
 @BuiltValue()
-abstract class PackSummaryResponse implements Built<PackSummaryResponse, PackSummaryResponseBuilder> {
+abstract class PackSummaryResponse
+    implements Built<PackSummaryResponse, PackSummaryResponseBuilder> {
   /// The unique identifier (snowflake) for the pack
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -56,18 +57,24 @@ abstract class PackSummaryResponse implements Built<PackSummaryResponse, PackSum
 
   PackSummaryResponse._();
 
-  factory PackSummaryResponse([void updates(PackSummaryResponseBuilder b)]) = _$PackSummaryResponse;
+  factory PackSummaryResponse([void updates(PackSummaryResponseBuilder b)]) =
+      _$PackSummaryResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PackSummaryResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PackSummaryResponse> get serializer => _$PackSummaryResponseSerializer();
+  static Serializer<PackSummaryResponse> get serializer =>
+      _$PackSummaryResponseSerializer();
 }
 
-class _$PackSummaryResponseSerializer implements PrimitiveSerializer<PackSummaryResponse> {
+class _$PackSummaryResponseSerializer
+    implements PrimitiveSerializer<PackSummaryResponse> {
   @override
-  final Iterable<Type> types = const [PackSummaryResponse, _$PackSummaryResponse];
+  final Iterable<Type> types = const [
+    PackSummaryResponse,
+    _$PackSummaryResponse
+  ];
 
   @override
   final String wireName = r'PackSummaryResponse';
@@ -88,10 +95,12 @@ class _$PackSummaryResponseSerializer implements PrimitiveSerializer<PackSummary
       specifiedType: const FullType(String),
     );
     yield r'description';
-    yield object.description == null ? null : serializers.serialize(
-      object.description,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.description == null
+        ? null
+        : serializers.serialize(
+            object.description,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'type';
     yield serializers.serialize(
       object.type,
@@ -127,7 +136,9 @@ class _$PackSummaryResponseSerializer implements PrimitiveSerializer<PackSummary
     PackSummaryResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -229,19 +240,23 @@ class _$PackSummaryResponseSerializer implements PrimitiveSerializer<PackSummary
 }
 
 class PackSummaryResponseTypeEnum extends EnumClass {
-
   /// The type of expression pack (emoji or sticker)
   @BuiltValueEnumConst(wireName: r'emoji')
-  static const PackSummaryResponseTypeEnum emoji = _$packSummaryResponseTypeEnum_emoji;
+  static const PackSummaryResponseTypeEnum emoji =
+      _$packSummaryResponseTypeEnum_emoji;
+
   /// The type of expression pack (emoji or sticker)
   @BuiltValueEnumConst(wireName: r'sticker')
-  static const PackSummaryResponseTypeEnum sticker = _$packSummaryResponseTypeEnum_sticker;
+  static const PackSummaryResponseTypeEnum sticker =
+      _$packSummaryResponseTypeEnum_sticker;
 
-  static Serializer<PackSummaryResponseTypeEnum> get serializer => _$packSummaryResponseTypeEnumSerializer;
+  static Serializer<PackSummaryResponseTypeEnum> get serializer =>
+      _$packSummaryResponseTypeEnumSerializer;
 
-  const PackSummaryResponseTypeEnum._(String name): super(name);
+  const PackSummaryResponseTypeEnum._(String name) : super(name);
 
-  static BuiltSet<PackSummaryResponseTypeEnum> get values => _$packSummaryResponseTypeEnumValues;
-  static PackSummaryResponseTypeEnum valueOf(String name) => _$packSummaryResponseTypeEnumValueOf(name);
+  static BuiltSet<PackSummaryResponseTypeEnum> get values =>
+      _$packSummaryResponseTypeEnumValues;
+  static PackSummaryResponseTypeEnum valueOf(String name) =>
+      _$packSummaryResponseTypeEnumValueOf(name);
 }
-

@@ -17,7 +17,10 @@ part 'well_known_fluxer_response_features.g.dart';
 /// * [selfHosted] - Whether this is a self-hosted instance
 /// * [manualReviewEnabled] - Whether manual review mode is enabled for registrations
 @BuiltValue()
-abstract class WellKnownFluxerResponseFeatures implements Built<WellKnownFluxerResponseFeatures, WellKnownFluxerResponseFeaturesBuilder> {
+abstract class WellKnownFluxerResponseFeatures
+    implements
+        Built<WellKnownFluxerResponseFeatures,
+            WellKnownFluxerResponseFeaturesBuilder> {
   /// Whether SMS-based MFA is available
   @BuiltValueField(wireName: r'sms_mfa_enabled')
   bool get smsMfaEnabled;
@@ -40,18 +43,25 @@ abstract class WellKnownFluxerResponseFeatures implements Built<WellKnownFluxerR
 
   WellKnownFluxerResponseFeatures._();
 
-  factory WellKnownFluxerResponseFeatures([void updates(WellKnownFluxerResponseFeaturesBuilder b)]) = _$WellKnownFluxerResponseFeatures;
+  factory WellKnownFluxerResponseFeatures(
+          [void updates(WellKnownFluxerResponseFeaturesBuilder b)]) =
+      _$WellKnownFluxerResponseFeatures;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(WellKnownFluxerResponseFeaturesBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<WellKnownFluxerResponseFeatures> get serializer => _$WellKnownFluxerResponseFeaturesSerializer();
+  static Serializer<WellKnownFluxerResponseFeatures> get serializer =>
+      _$WellKnownFluxerResponseFeaturesSerializer();
 }
 
-class _$WellKnownFluxerResponseFeaturesSerializer implements PrimitiveSerializer<WellKnownFluxerResponseFeatures> {
+class _$WellKnownFluxerResponseFeaturesSerializer
+    implements PrimitiveSerializer<WellKnownFluxerResponseFeatures> {
   @override
-  final Iterable<Type> types = const [WellKnownFluxerResponseFeatures, _$WellKnownFluxerResponseFeatures];
+  final Iterable<Type> types = const [
+    WellKnownFluxerResponseFeatures,
+    _$WellKnownFluxerResponseFeatures
+  ];
 
   @override
   final String wireName = r'WellKnownFluxerResponseFeatures';
@@ -94,7 +104,9 @@ class _$WellKnownFluxerResponseFeaturesSerializer implements PrimitiveSerializer
     WellKnownFluxerResponseFeatures object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -172,4 +184,3 @@ class _$WellKnownFluxerResponseFeaturesSerializer implements PrimitiveSerializer
     return result.build();
   }
 }
-

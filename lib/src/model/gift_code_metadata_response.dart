@@ -15,11 +15,13 @@ part 'gift_code_metadata_response.g.dart';
 /// * [code] - The unique gift code string
 /// * [durationMonths] - Duration of the subscription gift in months
 /// * [createdAt] - Timestamp when the gift code was created
-/// * [createdBy] 
-/// * [redeemedAt] 
-/// * [redeemedBy] 
+/// * [createdBy]
+/// * [redeemedAt]
+/// * [redeemedBy]
 @BuiltValue()
-abstract class GiftCodeMetadataResponse implements Built<GiftCodeMetadataResponse, GiftCodeMetadataResponseBuilder> {
+abstract class GiftCodeMetadataResponse
+    implements
+        Built<GiftCodeMetadataResponse, GiftCodeMetadataResponseBuilder> {
   /// The unique gift code string
   @BuiltValueField(wireName: r'code')
   String get code;
@@ -43,18 +45,25 @@ abstract class GiftCodeMetadataResponse implements Built<GiftCodeMetadataRespons
 
   GiftCodeMetadataResponse._();
 
-  factory GiftCodeMetadataResponse([void updates(GiftCodeMetadataResponseBuilder b)]) = _$GiftCodeMetadataResponse;
+  factory GiftCodeMetadataResponse(
+          [void updates(GiftCodeMetadataResponseBuilder b)]) =
+      _$GiftCodeMetadataResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GiftCodeMetadataResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GiftCodeMetadataResponse> get serializer => _$GiftCodeMetadataResponseSerializer();
+  static Serializer<GiftCodeMetadataResponse> get serializer =>
+      _$GiftCodeMetadataResponseSerializer();
 }
 
-class _$GiftCodeMetadataResponseSerializer implements PrimitiveSerializer<GiftCodeMetadataResponse> {
+class _$GiftCodeMetadataResponseSerializer
+    implements PrimitiveSerializer<GiftCodeMetadataResponse> {
   @override
-  final Iterable<Type> types = const [GiftCodeMetadataResponse, _$GiftCodeMetadataResponse];
+  final Iterable<Type> types = const [
+    GiftCodeMetadataResponse,
+    _$GiftCodeMetadataResponse
+  ];
 
   @override
   final String wireName = r'GiftCodeMetadataResponse';
@@ -106,7 +115,9 @@ class _$GiftCodeMetadataResponseSerializer implements PrimitiveSerializer<GiftCo
     GiftCodeMetadataResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -193,4 +204,3 @@ class _$GiftCodeMetadataResponseSerializer implements PrimitiveSerializer<GiftCo
     return result.build();
   }
 }
-

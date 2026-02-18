@@ -15,12 +15,13 @@ part 'user_session_response.g.dart';
 /// * [createdAt] - ISO timestamp when the session was created
 /// * [approxLastUsedAt] - ISO timestamp of the session last usage (approximate)
 /// * [clientIp] - Client IP address
-/// * [clientIpReverse] 
-/// * [clientOs] 
-/// * [clientPlatform] 
-/// * [clientLocation] 
+/// * [clientIpReverse]
+/// * [clientOs]
+/// * [clientPlatform]
+/// * [clientLocation]
 @BuiltValue()
-abstract class UserSessionResponse implements Built<UserSessionResponse, UserSessionResponseBuilder> {
+abstract class UserSessionResponse
+    implements Built<UserSessionResponse, UserSessionResponseBuilder> {
   /// Hashed session identifier (base64url)
   @BuiltValueField(wireName: r'session_id_hash')
   String get sessionIdHash;
@@ -51,18 +52,24 @@ abstract class UserSessionResponse implements Built<UserSessionResponse, UserSes
 
   UserSessionResponse._();
 
-  factory UserSessionResponse([void updates(UserSessionResponseBuilder b)]) = _$UserSessionResponse;
+  factory UserSessionResponse([void updates(UserSessionResponseBuilder b)]) =
+      _$UserSessionResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UserSessionResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UserSessionResponse> get serializer => _$UserSessionResponseSerializer();
+  static Serializer<UserSessionResponse> get serializer =>
+      _$UserSessionResponseSerializer();
 }
 
-class _$UserSessionResponseSerializer implements PrimitiveSerializer<UserSessionResponse> {
+class _$UserSessionResponseSerializer
+    implements PrimitiveSerializer<UserSessionResponse> {
   @override
-  final Iterable<Type> types = const [UserSessionResponse, _$UserSessionResponse];
+  final Iterable<Type> types = const [
+    UserSessionResponse,
+    _$UserSessionResponse
+  ];
 
   @override
   final String wireName = r'UserSessionResponse';
@@ -93,25 +100,33 @@ class _$UserSessionResponseSerializer implements PrimitiveSerializer<UserSession
       specifiedType: const FullType(String),
     );
     yield r'client_ip_reverse';
-    yield object.clientIpReverse == null ? null : serializers.serialize(
-      object.clientIpReverse,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.clientIpReverse == null
+        ? null
+        : serializers.serialize(
+            object.clientIpReverse,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'client_os';
-    yield object.clientOs == null ? null : serializers.serialize(
-      object.clientOs,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.clientOs == null
+        ? null
+        : serializers.serialize(
+            object.clientOs,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'client_platform';
-    yield object.clientPlatform == null ? null : serializers.serialize(
-      object.clientPlatform,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.clientPlatform == null
+        ? null
+        : serializers.serialize(
+            object.clientPlatform,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'client_location';
-    yield object.clientLocation == null ? null : serializers.serialize(
-      object.clientLocation,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.clientLocation == null
+        ? null
+        : serializers.serialize(
+            object.clientLocation,
+            specifiedType: const FullType.nullable(String),
+          );
   }
 
   @override
@@ -120,7 +135,9 @@ class _$UserSessionResponseSerializer implements PrimitiveSerializer<UserSession
     UserSessionResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -223,4 +240,3 @@ class _$UserSessionResponseSerializer implements PrimitiveSerializer<UserSession
     return result.build();
   }
 }
-

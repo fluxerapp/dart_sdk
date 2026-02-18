@@ -14,7 +14,8 @@ part 'mfa_backup_code_response.g.dart';
 /// * [code] - The backup code
 /// * [consumed] - Whether the code has been used
 @BuiltValue()
-abstract class MfaBackupCodeResponse implements Built<MfaBackupCodeResponse, MfaBackupCodeResponseBuilder> {
+abstract class MfaBackupCodeResponse
+    implements Built<MfaBackupCodeResponse, MfaBackupCodeResponseBuilder> {
   /// The backup code
   @BuiltValueField(wireName: r'code')
   String get code;
@@ -25,18 +26,24 @@ abstract class MfaBackupCodeResponse implements Built<MfaBackupCodeResponse, Mfa
 
   MfaBackupCodeResponse._();
 
-  factory MfaBackupCodeResponse([void updates(MfaBackupCodeResponseBuilder b)]) = _$MfaBackupCodeResponse;
+  factory MfaBackupCodeResponse(
+      [void updates(MfaBackupCodeResponseBuilder b)]) = _$MfaBackupCodeResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(MfaBackupCodeResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<MfaBackupCodeResponse> get serializer => _$MfaBackupCodeResponseSerializer();
+  static Serializer<MfaBackupCodeResponse> get serializer =>
+      _$MfaBackupCodeResponseSerializer();
 }
 
-class _$MfaBackupCodeResponseSerializer implements PrimitiveSerializer<MfaBackupCodeResponse> {
+class _$MfaBackupCodeResponseSerializer
+    implements PrimitiveSerializer<MfaBackupCodeResponse> {
   @override
-  final Iterable<Type> types = const [MfaBackupCodeResponse, _$MfaBackupCodeResponse];
+  final Iterable<Type> types = const [
+    MfaBackupCodeResponse,
+    _$MfaBackupCodeResponse
+  ];
 
   @override
   final String wireName = r'MfaBackupCodeResponse';
@@ -64,7 +71,9 @@ class _$MfaBackupCodeResponseSerializer implements PrimitiveSerializer<MfaBackup
     MfaBackupCodeResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +130,3 @@ class _$MfaBackupCodeResponseSerializer implements PrimitiveSerializer<MfaBackup
     return result.build();
   }
 }
-

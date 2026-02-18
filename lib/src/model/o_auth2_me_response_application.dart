@@ -13,13 +13,15 @@ part 'o_auth2_me_response_application.g.dart';
 /// Properties:
 /// * [id] - The unique identifier of the application
 /// * [name] - The name of the application
-/// * [icon] 
-/// * [description] 
+/// * [icon]
+/// * [description]
 /// * [botPublic] - Whether the bot can be invited by anyone
 /// * [botRequireCodeGrant] - Whether the bot requires OAuth2 code grant
 /// * [flags] - The application flags
 @BuiltValue()
-abstract class OAuth2MeResponseApplication implements Built<OAuth2MeResponseApplication, OAuth2MeResponseApplicationBuilder> {
+abstract class OAuth2MeResponseApplication
+    implements
+        Built<OAuth2MeResponseApplication, OAuth2MeResponseApplicationBuilder> {
   /// The unique identifier of the application
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -48,18 +50,25 @@ abstract class OAuth2MeResponseApplication implements Built<OAuth2MeResponseAppl
 
   OAuth2MeResponseApplication._();
 
-  factory OAuth2MeResponseApplication([void updates(OAuth2MeResponseApplicationBuilder b)]) = _$OAuth2MeResponseApplication;
+  factory OAuth2MeResponseApplication(
+          [void updates(OAuth2MeResponseApplicationBuilder b)]) =
+      _$OAuth2MeResponseApplication;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(OAuth2MeResponseApplicationBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<OAuth2MeResponseApplication> get serializer => _$OAuth2MeResponseApplicationSerializer();
+  static Serializer<OAuth2MeResponseApplication> get serializer =>
+      _$OAuth2MeResponseApplicationSerializer();
 }
 
-class _$OAuth2MeResponseApplicationSerializer implements PrimitiveSerializer<OAuth2MeResponseApplication> {
+class _$OAuth2MeResponseApplicationSerializer
+    implements PrimitiveSerializer<OAuth2MeResponseApplication> {
   @override
-  final Iterable<Type> types = const [OAuth2MeResponseApplication, _$OAuth2MeResponseApplication];
+  final Iterable<Type> types = const [
+    OAuth2MeResponseApplication,
+    _$OAuth2MeResponseApplication
+  ];
 
   @override
   final String wireName = r'OAuth2MeResponseApplication';
@@ -80,15 +89,19 @@ class _$OAuth2MeResponseApplicationSerializer implements PrimitiveSerializer<OAu
       specifiedType: const FullType(String),
     );
     yield r'icon';
-    yield object.icon == null ? null : serializers.serialize(
-      object.icon,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.icon == null
+        ? null
+        : serializers.serialize(
+            object.icon,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'description';
-    yield object.description == null ? null : serializers.serialize(
-      object.description,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.description == null
+        ? null
+        : serializers.serialize(
+            object.description,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'bot_public';
     yield serializers.serialize(
       object.botPublic,
@@ -112,7 +125,9 @@ class _$OAuth2MeResponseApplicationSerializer implements PrimitiveSerializer<OAu
     OAuth2MeResponseApplication object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -206,4 +221,3 @@ class _$OAuth2MeResponseApplicationSerializer implements PrimitiveSerializer<OAu
     return result.build();
   }
 }
-

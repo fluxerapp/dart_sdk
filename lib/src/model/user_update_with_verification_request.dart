@@ -13,17 +13,17 @@ part 'user_update_with_verification_request.g.dart';
 /// UserUpdateWithVerificationRequest
 ///
 /// Properties:
-/// * [username] 
+/// * [username]
 /// * [discriminator] - The 4-digit discriminator tag
-/// * [globalName] 
-/// * [email] 
-/// * [newPassword] 
-/// * [password] 
+/// * [globalName]
+/// * [email]
+/// * [newPassword]
+/// * [password]
 /// * [avatar] - Base64-encoded image data
 /// * [banner] - Base64-encoded image data
-/// * [bio] 
-/// * [pronouns] 
-/// * [accentColor] 
+/// * [bio]
+/// * [pronouns]
+/// * [accentColor]
 /// * [premiumBadgeHidden] - Whether to hide the premium badge
 /// * [premiumBadgeMasked] - Whether to mask the premium badge
 /// * [premiumBadgeTimestampHidden] - Whether to hide premium badge timestamp
@@ -38,7 +38,10 @@ part 'user_update_with_verification_request.g.dart';
 /// * [webauthnResponse] - WebAuthn authentication response
 /// * [webauthnChallenge] - WebAuthn challenge string
 @BuiltValue()
-abstract class UserUpdateWithVerificationRequest implements Built<UserUpdateWithVerificationRequest, UserUpdateWithVerificationRequestBuilder> {
+abstract class UserUpdateWithVerificationRequest
+    implements
+        Built<UserUpdateWithVerificationRequest,
+            UserUpdateWithVerificationRequestBuilder> {
   @BuiltValueField(wireName: r'username')
   String? get username;
 
@@ -130,18 +133,25 @@ abstract class UserUpdateWithVerificationRequest implements Built<UserUpdateWith
 
   UserUpdateWithVerificationRequest._();
 
-  factory UserUpdateWithVerificationRequest([void updates(UserUpdateWithVerificationRequestBuilder b)]) = _$UserUpdateWithVerificationRequest;
+  factory UserUpdateWithVerificationRequest(
+          [void updates(UserUpdateWithVerificationRequestBuilder b)]) =
+      _$UserUpdateWithVerificationRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UserUpdateWithVerificationRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UserUpdateWithVerificationRequest> get serializer => _$UserUpdateWithVerificationRequestSerializer();
+  static Serializer<UserUpdateWithVerificationRequest> get serializer =>
+      _$UserUpdateWithVerificationRequestSerializer();
 }
 
-class _$UserUpdateWithVerificationRequestSerializer implements PrimitiveSerializer<UserUpdateWithVerificationRequest> {
+class _$UserUpdateWithVerificationRequestSerializer
+    implements PrimitiveSerializer<UserUpdateWithVerificationRequest> {
   @override
-  final Iterable<Type> types = const [UserUpdateWithVerificationRequest, _$UserUpdateWithVerificationRequest];
+  final Iterable<Type> types = const [
+    UserUpdateWithVerificationRequest,
+    _$UserUpdateWithVerificationRequest
+  ];
 
   @override
   final String wireName = r'UserUpdateWithVerificationRequest';
@@ -295,7 +305,8 @@ class _$UserUpdateWithVerificationRequestSerializer implements PrimitiveSerializ
       yield r'mfa_method';
       yield serializers.serialize(
         object.mfaMethod,
-        specifiedType: const FullType(UserUpdateWithVerificationRequestMfaMethodEnum),
+        specifiedType:
+            const FullType(UserUpdateWithVerificationRequestMfaMethodEnum),
       );
     }
     if (object.mfaCode != null) {
@@ -327,7 +338,9 @@ class _$UserUpdateWithVerificationRequestSerializer implements PrimitiveSerializ
     UserUpdateWithVerificationRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -489,7 +502,8 @@ class _$UserUpdateWithVerificationRequestSerializer implements PrimitiveSerializ
         case r'mfa_method':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(UserUpdateWithVerificationRequestMfaMethodEnum),
+            specifiedType:
+                const FullType(UserUpdateWithVerificationRequestMfaMethodEnum),
           ) as UserUpdateWithVerificationRequestMfaMethodEnum;
           result.mfaMethod = valueDes;
           break;
@@ -544,22 +558,30 @@ class _$UserUpdateWithVerificationRequestSerializer implements PrimitiveSerializ
 }
 
 class UserUpdateWithVerificationRequestMfaMethodEnum extends EnumClass {
-
   /// MFA method to use for verification
   @BuiltValueEnumConst(wireName: r'totp')
-  static const UserUpdateWithVerificationRequestMfaMethodEnum totp = _$userUpdateWithVerificationRequestMfaMethodEnum_totp;
+  static const UserUpdateWithVerificationRequestMfaMethodEnum totp =
+      _$userUpdateWithVerificationRequestMfaMethodEnum_totp;
+
   /// MFA method to use for verification
   @BuiltValueEnumConst(wireName: r'sms')
-  static const UserUpdateWithVerificationRequestMfaMethodEnum sms = _$userUpdateWithVerificationRequestMfaMethodEnum_sms;
+  static const UserUpdateWithVerificationRequestMfaMethodEnum sms =
+      _$userUpdateWithVerificationRequestMfaMethodEnum_sms;
+
   /// MFA method to use for verification
   @BuiltValueEnumConst(wireName: r'webauthn')
-  static const UserUpdateWithVerificationRequestMfaMethodEnum webauthn = _$userUpdateWithVerificationRequestMfaMethodEnum_webauthn;
+  static const UserUpdateWithVerificationRequestMfaMethodEnum webauthn =
+      _$userUpdateWithVerificationRequestMfaMethodEnum_webauthn;
 
-  static Serializer<UserUpdateWithVerificationRequestMfaMethodEnum> get serializer => _$userUpdateWithVerificationRequestMfaMethodEnumSerializer;
+  static Serializer<UserUpdateWithVerificationRequestMfaMethodEnum>
+      get serializer =>
+          _$userUpdateWithVerificationRequestMfaMethodEnumSerializer;
 
-  const UserUpdateWithVerificationRequestMfaMethodEnum._(String name): super(name);
+  const UserUpdateWithVerificationRequestMfaMethodEnum._(String name)
+      : super(name);
 
-  static BuiltSet<UserUpdateWithVerificationRequestMfaMethodEnum> get values => _$userUpdateWithVerificationRequestMfaMethodEnumValues;
-  static UserUpdateWithVerificationRequestMfaMethodEnum valueOf(String name) => _$userUpdateWithVerificationRequestMfaMethodEnumValueOf(name);
+  static BuiltSet<UserUpdateWithVerificationRequestMfaMethodEnum> get values =>
+      _$userUpdateWithVerificationRequestMfaMethodEnumValues;
+  static UserUpdateWithVerificationRequestMfaMethodEnum valueOf(String name) =>
+      _$userUpdateWithVerificationRequestMfaMethodEnumValueOf(name);
 }
-

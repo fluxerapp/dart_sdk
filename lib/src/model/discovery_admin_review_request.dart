@@ -13,25 +13,34 @@ part 'discovery_admin_review_request.g.dart';
 /// Properties:
 /// * [reason] - Review reason
 @BuiltValue()
-abstract class DiscoveryAdminReviewRequest implements Built<DiscoveryAdminReviewRequest, DiscoveryAdminReviewRequestBuilder> {
+abstract class DiscoveryAdminReviewRequest
+    implements
+        Built<DiscoveryAdminReviewRequest, DiscoveryAdminReviewRequestBuilder> {
   /// Review reason
   @BuiltValueField(wireName: r'reason')
   String? get reason;
 
   DiscoveryAdminReviewRequest._();
 
-  factory DiscoveryAdminReviewRequest([void updates(DiscoveryAdminReviewRequestBuilder b)]) = _$DiscoveryAdminReviewRequest;
+  factory DiscoveryAdminReviewRequest(
+          [void updates(DiscoveryAdminReviewRequestBuilder b)]) =
+      _$DiscoveryAdminReviewRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(DiscoveryAdminReviewRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<DiscoveryAdminReviewRequest> get serializer => _$DiscoveryAdminReviewRequestSerializer();
+  static Serializer<DiscoveryAdminReviewRequest> get serializer =>
+      _$DiscoveryAdminReviewRequestSerializer();
 }
 
-class _$DiscoveryAdminReviewRequestSerializer implements PrimitiveSerializer<DiscoveryAdminReviewRequest> {
+class _$DiscoveryAdminReviewRequestSerializer
+    implements PrimitiveSerializer<DiscoveryAdminReviewRequest> {
   @override
-  final Iterable<Type> types = const [DiscoveryAdminReviewRequest, _$DiscoveryAdminReviewRequest];
+  final Iterable<Type> types = const [
+    DiscoveryAdminReviewRequest,
+    _$DiscoveryAdminReviewRequest
+  ];
 
   @override
   final String wireName = r'DiscoveryAdminReviewRequest';
@@ -56,7 +65,9 @@ class _$DiscoveryAdminReviewRequestSerializer implements PrimitiveSerializer<Dis
     DiscoveryAdminReviewRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -106,4 +117,3 @@ class _$DiscoveryAdminReviewRequestSerializer implements PrimitiveSerializer<Dis
     return result.build();
   }
 }
-

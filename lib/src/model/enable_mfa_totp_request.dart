@@ -15,13 +15,14 @@ part 'enable_mfa_totp_request.g.dart';
 /// Properties:
 /// * [secret] - The TOTP secret key
 /// * [code] - The TOTP verification code
-/// * [password] 
+/// * [password]
 /// * [mfaMethod] - MFA method to use for verification
 /// * [mfaCode] - MFA verification code from authenticator app or SMS
 /// * [webauthnResponse] - WebAuthn authentication response
 /// * [webauthnChallenge] - WebAuthn challenge string
 @BuiltValue()
-abstract class EnableMfaTotpRequest implements Built<EnableMfaTotpRequest, EnableMfaTotpRequestBuilder> {
+abstract class EnableMfaTotpRequest
+    implements Built<EnableMfaTotpRequest, EnableMfaTotpRequestBuilder> {
   /// The TOTP secret key
   @BuiltValueField(wireName: r'secret')
   String get secret;
@@ -52,18 +53,24 @@ abstract class EnableMfaTotpRequest implements Built<EnableMfaTotpRequest, Enabl
 
   EnableMfaTotpRequest._();
 
-  factory EnableMfaTotpRequest([void updates(EnableMfaTotpRequestBuilder b)]) = _$EnableMfaTotpRequest;
+  factory EnableMfaTotpRequest([void updates(EnableMfaTotpRequestBuilder b)]) =
+      _$EnableMfaTotpRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(EnableMfaTotpRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<EnableMfaTotpRequest> get serializer => _$EnableMfaTotpRequestSerializer();
+  static Serializer<EnableMfaTotpRequest> get serializer =>
+      _$EnableMfaTotpRequestSerializer();
 }
 
-class _$EnableMfaTotpRequestSerializer implements PrimitiveSerializer<EnableMfaTotpRequest> {
+class _$EnableMfaTotpRequestSerializer
+    implements PrimitiveSerializer<EnableMfaTotpRequest> {
   @override
-  final Iterable<Type> types = const [EnableMfaTotpRequest, _$EnableMfaTotpRequest];
+  final Iterable<Type> types = const [
+    EnableMfaTotpRequest,
+    _$EnableMfaTotpRequest
+  ];
 
   @override
   final String wireName = r'EnableMfaTotpRequest';
@@ -126,7 +133,9 @@ class _$EnableMfaTotpRequestSerializer implements PrimitiveSerializer<EnableMfaT
     EnableMfaTotpRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -220,22 +229,28 @@ class _$EnableMfaTotpRequestSerializer implements PrimitiveSerializer<EnableMfaT
 }
 
 class EnableMfaTotpRequestMfaMethodEnum extends EnumClass {
-
   /// MFA method to use for verification
   @BuiltValueEnumConst(wireName: r'totp')
-  static const EnableMfaTotpRequestMfaMethodEnum totp = _$enableMfaTotpRequestMfaMethodEnum_totp;
+  static const EnableMfaTotpRequestMfaMethodEnum totp =
+      _$enableMfaTotpRequestMfaMethodEnum_totp;
+
   /// MFA method to use for verification
   @BuiltValueEnumConst(wireName: r'sms')
-  static const EnableMfaTotpRequestMfaMethodEnum sms = _$enableMfaTotpRequestMfaMethodEnum_sms;
+  static const EnableMfaTotpRequestMfaMethodEnum sms =
+      _$enableMfaTotpRequestMfaMethodEnum_sms;
+
   /// MFA method to use for verification
   @BuiltValueEnumConst(wireName: r'webauthn')
-  static const EnableMfaTotpRequestMfaMethodEnum webauthn = _$enableMfaTotpRequestMfaMethodEnum_webauthn;
+  static const EnableMfaTotpRequestMfaMethodEnum webauthn =
+      _$enableMfaTotpRequestMfaMethodEnum_webauthn;
 
-  static Serializer<EnableMfaTotpRequestMfaMethodEnum> get serializer => _$enableMfaTotpRequestMfaMethodEnumSerializer;
+  static Serializer<EnableMfaTotpRequestMfaMethodEnum> get serializer =>
+      _$enableMfaTotpRequestMfaMethodEnumSerializer;
 
-  const EnableMfaTotpRequestMfaMethodEnum._(String name): super(name);
+  const EnableMfaTotpRequestMfaMethodEnum._(String name) : super(name);
 
-  static BuiltSet<EnableMfaTotpRequestMfaMethodEnum> get values => _$enableMfaTotpRequestMfaMethodEnumValues;
-  static EnableMfaTotpRequestMfaMethodEnum valueOf(String name) => _$enableMfaTotpRequestMfaMethodEnumValueOf(name);
+  static BuiltSet<EnableMfaTotpRequestMfaMethodEnum> get values =>
+      _$enableMfaTotpRequestMfaMethodEnumValues;
+  static EnableMfaTotpRequestMfaMethodEnum valueOf(String name) =>
+      _$enableMfaTotpRequestMfaMethodEnumValueOf(name);
 }
-

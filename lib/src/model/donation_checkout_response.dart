@@ -13,25 +13,34 @@ part 'donation_checkout_response.g.dart';
 /// Properties:
 /// * [url] - Stripe checkout URL to redirect the user to
 @BuiltValue()
-abstract class DonationCheckoutResponse implements Built<DonationCheckoutResponse, DonationCheckoutResponseBuilder> {
+abstract class DonationCheckoutResponse
+    implements
+        Built<DonationCheckoutResponse, DonationCheckoutResponseBuilder> {
   /// Stripe checkout URL to redirect the user to
   @BuiltValueField(wireName: r'url')
   String get url;
 
   DonationCheckoutResponse._();
 
-  factory DonationCheckoutResponse([void updates(DonationCheckoutResponseBuilder b)]) = _$DonationCheckoutResponse;
+  factory DonationCheckoutResponse(
+          [void updates(DonationCheckoutResponseBuilder b)]) =
+      _$DonationCheckoutResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(DonationCheckoutResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<DonationCheckoutResponse> get serializer => _$DonationCheckoutResponseSerializer();
+  static Serializer<DonationCheckoutResponse> get serializer =>
+      _$DonationCheckoutResponseSerializer();
 }
 
-class _$DonationCheckoutResponseSerializer implements PrimitiveSerializer<DonationCheckoutResponse> {
+class _$DonationCheckoutResponseSerializer
+    implements PrimitiveSerializer<DonationCheckoutResponse> {
   @override
-  final Iterable<Type> types = const [DonationCheckoutResponse, _$DonationCheckoutResponse];
+  final Iterable<Type> types = const [
+    DonationCheckoutResponse,
+    _$DonationCheckoutResponse
+  ];
 
   @override
   final String wireName = r'DonationCheckoutResponse';
@@ -54,7 +63,9 @@ class _$DonationCheckoutResponseSerializer implements PrimitiveSerializer<Donati
     DonationCheckoutResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +115,3 @@ class _$DonationCheckoutResponseSerializer implements PrimitiveSerializer<Donati
     return result.build();
   }
 }
-

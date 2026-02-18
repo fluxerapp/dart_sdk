@@ -14,10 +14,11 @@ part 'audit_log_change_schema.g.dart';
 ///
 /// Properties:
 /// * [key] - The field that changed
-/// * [oldValue] 
-/// * [newValue] 
+/// * [oldValue]
+/// * [newValue]
 @BuiltValue()
-abstract class AuditLogChangeSchema implements Built<AuditLogChangeSchema, AuditLogChangeSchemaBuilder> {
+abstract class AuditLogChangeSchema
+    implements Built<AuditLogChangeSchema, AuditLogChangeSchemaBuilder> {
   /// The field that changed
   @BuiltValueField(wireName: r'key')
   String get key;
@@ -30,18 +31,24 @@ abstract class AuditLogChangeSchema implements Built<AuditLogChangeSchema, Audit
 
   AuditLogChangeSchema._();
 
-  factory AuditLogChangeSchema([void updates(AuditLogChangeSchemaBuilder b)]) = _$AuditLogChangeSchema;
+  factory AuditLogChangeSchema([void updates(AuditLogChangeSchemaBuilder b)]) =
+      _$AuditLogChangeSchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(AuditLogChangeSchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<AuditLogChangeSchema> get serializer => _$AuditLogChangeSchemaSerializer();
+  static Serializer<AuditLogChangeSchema> get serializer =>
+      _$AuditLogChangeSchemaSerializer();
 }
 
-class _$AuditLogChangeSchemaSerializer implements PrimitiveSerializer<AuditLogChangeSchema> {
+class _$AuditLogChangeSchemaSerializer
+    implements PrimitiveSerializer<AuditLogChangeSchema> {
   @override
-  final Iterable<Type> types = const [AuditLogChangeSchema, _$AuditLogChangeSchema];
+  final Iterable<Type> types = const [
+    AuditLogChangeSchema,
+    _$AuditLogChangeSchema
+  ];
 
   @override
   final String wireName = r'AuditLogChangeSchema';
@@ -78,7 +85,9 @@ class _$AuditLogChangeSchemaSerializer implements PrimitiveSerializer<AuditLogCh
     AuditLogChangeSchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,7 +112,8 @@ class _$AuditLogChangeSchemaSerializer implements PrimitiveSerializer<AuditLogCh
         case r'old_value':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(AuditLogChangeSchemaOldValue),
+            specifiedType:
+                const FullType.nullable(AuditLogChangeSchemaOldValue),
           ) as AuditLogChangeSchemaOldValue?;
           if (valueDes == null) continue;
           result.oldValue.replace(valueDes);
@@ -111,7 +121,8 @@ class _$AuditLogChangeSchemaSerializer implements PrimitiveSerializer<AuditLogCh
         case r'new_value':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(AuditLogChangeSchemaNewValue),
+            specifiedType:
+                const FullType.nullable(AuditLogChangeSchemaNewValue),
           ) as AuditLogChangeSchemaNewValue?;
           if (valueDes == null) continue;
           result.newValue.replace(valueDes);
@@ -144,4 +155,3 @@ class _$AuditLogChangeSchemaSerializer implements PrimitiveSerializer<AuditLogCh
     return result.build();
   }
 }
-

@@ -12,34 +12,40 @@ part 'user_settings_update_request_status_resets_at.g.dart';
 
 /// When status resets
 @BuiltValue()
-abstract class UserSettingsUpdateRequestStatusResetsAt implements Built<UserSettingsUpdateRequestStatusResetsAt, UserSettingsUpdateRequestStatusResetsAtBuilder> {
+abstract class UserSettingsUpdateRequestStatusResetsAt
+    implements
+        Built<UserSettingsUpdateRequestStatusResetsAt,
+            UserSettingsUpdateRequestStatusResetsAtBuilder> {
   /// One Of [String], [int]
   OneOf get oneOf;
 
   UserSettingsUpdateRequestStatusResetsAt._();
 
-  factory UserSettingsUpdateRequestStatusResetsAt([void updates(UserSettingsUpdateRequestStatusResetsAtBuilder b)]) = _$UserSettingsUpdateRequestStatusResetsAt;
+  factory UserSettingsUpdateRequestStatusResetsAt(
+          [void updates(UserSettingsUpdateRequestStatusResetsAtBuilder b)]) =
+      _$UserSettingsUpdateRequestStatusResetsAt;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UserSettingsUpdateRequestStatusResetsAtBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UserSettingsUpdateRequestStatusResetsAt> get serializer => _$UserSettingsUpdateRequestStatusResetsAtSerializer();
+  static Serializer<UserSettingsUpdateRequestStatusResetsAt> get serializer =>
+      _$UserSettingsUpdateRequestStatusResetsAtSerializer();
 }
 
-class _$UserSettingsUpdateRequestStatusResetsAtSerializer implements PrimitiveSerializer<UserSettingsUpdateRequestStatusResetsAt> {
+class _$UserSettingsUpdateRequestStatusResetsAtSerializer
+    implements PrimitiveSerializer<UserSettingsUpdateRequestStatusResetsAt> {
   @override
-  final Iterable<Type> types = const [UserSettingsUpdateRequestStatusResetsAt, _$UserSettingsUpdateRequestStatusResetsAt];
+  final Iterable<Type> types = const [
+    UserSettingsUpdateRequestStatusResetsAt,
+    _$UserSettingsUpdateRequestStatusResetsAt
+  ];
 
   @override
   final String wireName = r'UserSettingsUpdateRequestStatusResetsAt';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    UserSettingsUpdateRequestStatusResetsAt object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-  }
+  Iterable<Object?> _serializeProperties(Serializers serializers,
+      UserSettingsUpdateRequestStatusResetsAt object) sync* {}
 
   @override
   Object serialize(
@@ -48,7 +54,8 @@ class _$UserSettingsUpdateRequestStatusResetsAtSerializer implements PrimitiveSe
     FullType specifiedType = FullType.unspecified,
   }) {
     final oneOf = object.oneOf;
-    return serializers.serialize(oneOf.value, specifiedType: FullType(oneOf.valueType))!;
+    return serializers.serialize(oneOf.value,
+        specifiedType: FullType(oneOf.valueType))!;
   }
 
   @override
@@ -59,10 +66,13 @@ class _$UserSettingsUpdateRequestStatusResetsAtSerializer implements PrimitiveSe
   }) {
     final result = UserSettingsUpdateRequestStatusResetsAtBuilder();
     Object? oneOfDataSrc;
-    final targetType = const FullType(OneOf, [FullType(String), FullType(int), ]);
+    final targetType = const FullType(OneOf, [
+      FullType(String),
+      FullType(int),
+    ]);
     oneOfDataSrc = serialized;
-    result.oneOf = serializers.deserialize(oneOfDataSrc, specifiedType: targetType) as OneOf;
+    result.oneOf = serializers.deserialize(oneOfDataSrc,
+        specifiedType: targetType) as OneOf;
     return result.build();
   }
 }
-

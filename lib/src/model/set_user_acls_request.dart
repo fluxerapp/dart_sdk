@@ -12,10 +12,11 @@ part 'set_user_acls_request.g.dart';
 /// SetUserAclsRequest
 ///
 /// Properties:
-/// * [userId] 
+/// * [userId]
 /// * [acls] - List of access control permissions to assign
 @BuiltValue()
-abstract class SetUserAclsRequest implements Built<SetUserAclsRequest, SetUserAclsRequestBuilder> {
+abstract class SetUserAclsRequest
+    implements Built<SetUserAclsRequest, SetUserAclsRequestBuilder> {
   @BuiltValueField(wireName: r'user_id')
   String get userId;
 
@@ -25,16 +26,19 @@ abstract class SetUserAclsRequest implements Built<SetUserAclsRequest, SetUserAc
 
   SetUserAclsRequest._();
 
-  factory SetUserAclsRequest([void updates(SetUserAclsRequestBuilder b)]) = _$SetUserAclsRequest;
+  factory SetUserAclsRequest([void updates(SetUserAclsRequestBuilder b)]) =
+      _$SetUserAclsRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SetUserAclsRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SetUserAclsRequest> get serializer => _$SetUserAclsRequestSerializer();
+  static Serializer<SetUserAclsRequest> get serializer =>
+      _$SetUserAclsRequestSerializer();
 }
 
-class _$SetUserAclsRequestSerializer implements PrimitiveSerializer<SetUserAclsRequest> {
+class _$SetUserAclsRequestSerializer
+    implements PrimitiveSerializer<SetUserAclsRequest> {
   @override
   final Iterable<Type> types = const [SetUserAclsRequest, _$SetUserAclsRequest];
 
@@ -64,7 +68,9 @@ class _$SetUserAclsRequestSerializer implements PrimitiveSerializer<SetUserAclsR
     SetUserAclsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +127,3 @@ class _$SetUserAclsRequestSerializer implements PrimitiveSerializer<SetUserAclsR
     return result.build();
   }
 }
-

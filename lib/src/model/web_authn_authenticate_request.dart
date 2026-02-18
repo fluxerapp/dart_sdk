@@ -15,7 +15,9 @@ part 'web_authn_authenticate_request.g.dart';
 /// * [response] - WebAuthn authentication response
 /// * [challenge] - The challenge string from authentication options
 @BuiltValue()
-abstract class WebAuthnAuthenticateRequest implements Built<WebAuthnAuthenticateRequest, WebAuthnAuthenticateRequestBuilder> {
+abstract class WebAuthnAuthenticateRequest
+    implements
+        Built<WebAuthnAuthenticateRequest, WebAuthnAuthenticateRequestBuilder> {
   /// WebAuthn authentication response
   @BuiltValueField(wireName: r'response')
   JsonObject get response;
@@ -26,18 +28,25 @@ abstract class WebAuthnAuthenticateRequest implements Built<WebAuthnAuthenticate
 
   WebAuthnAuthenticateRequest._();
 
-  factory WebAuthnAuthenticateRequest([void updates(WebAuthnAuthenticateRequestBuilder b)]) = _$WebAuthnAuthenticateRequest;
+  factory WebAuthnAuthenticateRequest(
+          [void updates(WebAuthnAuthenticateRequestBuilder b)]) =
+      _$WebAuthnAuthenticateRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(WebAuthnAuthenticateRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<WebAuthnAuthenticateRequest> get serializer => _$WebAuthnAuthenticateRequestSerializer();
+  static Serializer<WebAuthnAuthenticateRequest> get serializer =>
+      _$WebAuthnAuthenticateRequestSerializer();
 }
 
-class _$WebAuthnAuthenticateRequestSerializer implements PrimitiveSerializer<WebAuthnAuthenticateRequest> {
+class _$WebAuthnAuthenticateRequestSerializer
+    implements PrimitiveSerializer<WebAuthnAuthenticateRequest> {
   @override
-  final Iterable<Type> types = const [WebAuthnAuthenticateRequest, _$WebAuthnAuthenticateRequest];
+  final Iterable<Type> types = const [
+    WebAuthnAuthenticateRequest,
+    _$WebAuthnAuthenticateRequest
+  ];
 
   @override
   final String wireName = r'WebAuthnAuthenticateRequest';
@@ -65,7 +74,9 @@ class _$WebAuthnAuthenticateRequestSerializer implements PrimitiveSerializer<Web
     WebAuthnAuthenticateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -122,4 +133,3 @@ class _$WebAuthnAuthenticateRequestSerializer implements PrimitiveSerializer<Web
     return result.build();
   }
 }
-

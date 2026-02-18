@@ -16,7 +16,9 @@ part 'discovery_guild_list_response.g.dart';
 /// * [guilds] - Discovery guild results
 /// * [total] - Total number of matching guilds
 @BuiltValue()
-abstract class DiscoveryGuildListResponse implements Built<DiscoveryGuildListResponse, DiscoveryGuildListResponseBuilder> {
+abstract class DiscoveryGuildListResponse
+    implements
+        Built<DiscoveryGuildListResponse, DiscoveryGuildListResponseBuilder> {
   /// Discovery guild results
   @BuiltValueField(wireName: r'guilds')
   BuiltList<DiscoveryGuildResponse> get guilds;
@@ -27,18 +29,25 @@ abstract class DiscoveryGuildListResponse implements Built<DiscoveryGuildListRes
 
   DiscoveryGuildListResponse._();
 
-  factory DiscoveryGuildListResponse([void updates(DiscoveryGuildListResponseBuilder b)]) = _$DiscoveryGuildListResponse;
+  factory DiscoveryGuildListResponse(
+          [void updates(DiscoveryGuildListResponseBuilder b)]) =
+      _$DiscoveryGuildListResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(DiscoveryGuildListResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<DiscoveryGuildListResponse> get serializer => _$DiscoveryGuildListResponseSerializer();
+  static Serializer<DiscoveryGuildListResponse> get serializer =>
+      _$DiscoveryGuildListResponseSerializer();
 }
 
-class _$DiscoveryGuildListResponseSerializer implements PrimitiveSerializer<DiscoveryGuildListResponse> {
+class _$DiscoveryGuildListResponseSerializer
+    implements PrimitiveSerializer<DiscoveryGuildListResponse> {
   @override
-  final Iterable<Type> types = const [DiscoveryGuildListResponse, _$DiscoveryGuildListResponse];
+  final Iterable<Type> types = const [
+    DiscoveryGuildListResponse,
+    _$DiscoveryGuildListResponse
+  ];
 
   @override
   final String wireName = r'DiscoveryGuildListResponse';
@@ -51,7 +60,8 @@ class _$DiscoveryGuildListResponseSerializer implements PrimitiveSerializer<Disc
     yield r'guilds';
     yield serializers.serialize(
       object.guilds,
-      specifiedType: const FullType(BuiltList, [FullType(DiscoveryGuildResponse)]),
+      specifiedType:
+          const FullType(BuiltList, [FullType(DiscoveryGuildResponse)]),
     );
     yield r'total';
     yield serializers.serialize(
@@ -66,7 +76,9 @@ class _$DiscoveryGuildListResponseSerializer implements PrimitiveSerializer<Disc
     DiscoveryGuildListResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -84,7 +96,8 @@ class _$DiscoveryGuildListResponseSerializer implements PrimitiveSerializer<Disc
         case r'guilds':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(DiscoveryGuildResponse)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(DiscoveryGuildResponse)]),
           ) as BuiltList<DiscoveryGuildResponse>;
           result.guilds.replace(valueDes);
           break;
@@ -123,4 +136,3 @@ class _$DiscoveryGuildListResponseSerializer implements PrimitiveSerializer<Disc
     return result.build();
   }
 }
-

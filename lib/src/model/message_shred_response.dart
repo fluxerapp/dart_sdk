@@ -12,11 +12,12 @@ part 'message_shred_response.g.dart';
 /// MessageShredResponse
 ///
 /// Properties:
-/// * [success] 
-/// * [jobId] 
-/// * [requested] 
+/// * [success]
+/// * [jobId]
+/// * [requested]
 @BuiltValue()
-abstract class MessageShredResponse implements Built<MessageShredResponse, MessageShredResponseBuilder> {
+abstract class MessageShredResponse
+    implements Built<MessageShredResponse, MessageShredResponseBuilder> {
   @BuiltValueField(wireName: r'success')
   MessageShredResponseSuccessEnum get success;
   // enum successEnum {  true,  };
@@ -29,18 +30,24 @@ abstract class MessageShredResponse implements Built<MessageShredResponse, Messa
 
   MessageShredResponse._();
 
-  factory MessageShredResponse([void updates(MessageShredResponseBuilder b)]) = _$MessageShredResponse;
+  factory MessageShredResponse([void updates(MessageShredResponseBuilder b)]) =
+      _$MessageShredResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(MessageShredResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<MessageShredResponse> get serializer => _$MessageShredResponseSerializer();
+  static Serializer<MessageShredResponse> get serializer =>
+      _$MessageShredResponseSerializer();
 }
 
-class _$MessageShredResponseSerializer implements PrimitiveSerializer<MessageShredResponse> {
+class _$MessageShredResponseSerializer
+    implements PrimitiveSerializer<MessageShredResponse> {
   @override
-  final Iterable<Type> types = const [MessageShredResponse, _$MessageShredResponse];
+  final Iterable<Type> types = const [
+    MessageShredResponse,
+    _$MessageShredResponse
+  ];
 
   @override
   final String wireName = r'MessageShredResponse';
@@ -75,7 +82,9 @@ class _$MessageShredResponseSerializer implements PrimitiveSerializer<MessageShr
     MessageShredResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -141,15 +150,17 @@ class _$MessageShredResponseSerializer implements PrimitiveSerializer<MessageShr
 }
 
 class MessageShredResponseSuccessEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'true')
-  static const MessageShredResponseSuccessEnum true_ = _$messageShredResponseSuccessEnum_true_;
+  static const MessageShredResponseSuccessEnum true_ =
+      _$messageShredResponseSuccessEnum_true_;
 
-  static Serializer<MessageShredResponseSuccessEnum> get serializer => _$messageShredResponseSuccessEnumSerializer;
+  static Serializer<MessageShredResponseSuccessEnum> get serializer =>
+      _$messageShredResponseSuccessEnumSerializer;
 
-  const MessageShredResponseSuccessEnum._(String name): super(name);
+  const MessageShredResponseSuccessEnum._(String name) : super(name);
 
-  static BuiltSet<MessageShredResponseSuccessEnum> get values => _$messageShredResponseSuccessEnumValues;
-  static MessageShredResponseSuccessEnum valueOf(String name) => _$messageShredResponseSuccessEnumValueOf(name);
+  static BuiltSet<MessageShredResponseSuccessEnum> get values =>
+      _$messageShredResponseSuccessEnumValues;
+  static MessageShredResponseSuccessEnum valueOf(String name) =>
+      _$messageShredResponseSuccessEnumValueOf(name);
 }
-

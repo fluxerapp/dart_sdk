@@ -18,23 +18,24 @@ part 'message_embed_response.g.dart';
 ///
 /// Properties:
 /// * [type] - The type of embed (e.g., rich, image, video, gifv, article, link)
-/// * [url] 
-/// * [title] 
-/// * [color] 
-/// * [timestamp] 
-/// * [description] 
-/// * [author] 
-/// * [image] 
-/// * [thumbnail] 
-/// * [footer] 
-/// * [fields] 
-/// * [provider] 
-/// * [video] 
-/// * [audio] 
-/// * [nsfw] 
-/// * [children] 
+/// * [url]
+/// * [title]
+/// * [color]
+/// * [timestamp]
+/// * [description]
+/// * [author]
+/// * [image]
+/// * [thumbnail]
+/// * [footer]
+/// * [fields]
+/// * [provider]
+/// * [video]
+/// * [audio]
+/// * [nsfw]
+/// * [children]
 @BuiltValue()
-abstract class MessageEmbedResponse implements Built<MessageEmbedResponse, MessageEmbedResponseBuilder> {
+abstract class MessageEmbedResponse
+    implements Built<MessageEmbedResponse, MessageEmbedResponseBuilder> {
   /// The type of embed (e.g., rich, image, video, gifv, article, link)
   @BuiltValueField(wireName: r'type')
   String get type;
@@ -86,18 +87,24 @@ abstract class MessageEmbedResponse implements Built<MessageEmbedResponse, Messa
 
   MessageEmbedResponse._();
 
-  factory MessageEmbedResponse([void updates(MessageEmbedResponseBuilder b)]) = _$MessageEmbedResponse;
+  factory MessageEmbedResponse([void updates(MessageEmbedResponseBuilder b)]) =
+      _$MessageEmbedResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(MessageEmbedResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<MessageEmbedResponse> get serializer => _$MessageEmbedResponseSerializer();
+  static Serializer<MessageEmbedResponse> get serializer =>
+      _$MessageEmbedResponseSerializer();
 }
 
-class _$MessageEmbedResponseSerializer implements PrimitiveSerializer<MessageEmbedResponse> {
+class _$MessageEmbedResponseSerializer
+    implements PrimitiveSerializer<MessageEmbedResponse> {
   @override
-  final Iterable<Type> types = const [MessageEmbedResponse, _$MessageEmbedResponse];
+  final Iterable<Type> types = const [
+    MessageEmbedResponse,
+    _$MessageEmbedResponse
+  ];
 
   @override
   final String wireName = r'MessageEmbedResponse';
@@ -179,7 +186,8 @@ class _$MessageEmbedResponseSerializer implements PrimitiveSerializer<MessageEmb
       yield r'fields';
       yield serializers.serialize(
         object.fields,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(EmbedFieldResponse)]),
+        specifiedType:
+            const FullType.nullable(BuiltList, [FullType(EmbedFieldResponse)]),
       );
     }
     if (object.provider != null) {
@@ -214,7 +222,8 @@ class _$MessageEmbedResponseSerializer implements PrimitiveSerializer<MessageEmb
       yield r'children';
       yield serializers.serialize(
         object.children,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(MessageEmbedChildResponse)]),
+        specifiedType: const FullType.nullable(
+            BuiltList, [FullType(MessageEmbedChildResponse)]),
       );
     }
   }
@@ -225,7 +234,9 @@ class _$MessageEmbedResponseSerializer implements PrimitiveSerializer<MessageEmb
     MessageEmbedResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -321,7 +332,8 @@ class _$MessageEmbedResponseSerializer implements PrimitiveSerializer<MessageEmb
         case r'fields':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(EmbedFieldResponse)]),
+            specifiedType: const FullType.nullable(
+                BuiltList, [FullType(EmbedFieldResponse)]),
           ) as BuiltList<EmbedFieldResponse>?;
           if (valueDes == null) continue;
           result.fields.replace(valueDes);
@@ -361,7 +373,8 @@ class _$MessageEmbedResponseSerializer implements PrimitiveSerializer<MessageEmb
         case r'children':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(MessageEmbedChildResponse)]),
+            specifiedType: const FullType.nullable(
+                BuiltList, [FullType(MessageEmbedChildResponse)]),
           ) as BuiltList<MessageEmbedChildResponse>?;
           if (valueDes == null) continue;
           result.children.replace(valueDes);
@@ -394,4 +407,3 @@ class _$MessageEmbedResponseSerializer implements PrimitiveSerializer<MessageEmb
     return result.build();
   }
 }
-

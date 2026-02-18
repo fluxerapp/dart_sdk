@@ -17,9 +17,11 @@ part 'saved_message_entry_response.g.dart';
 /// * [channelId] - ID of the channel containing the message
 /// * [messageId] - ID of the saved message
 /// * [status] - Availability status of the saved message
-/// * [message] 
+/// * [message]
 @BuiltValue()
-abstract class SavedMessageEntryResponse implements Built<SavedMessageEntryResponse, SavedMessageEntryResponseBuilder> {
+abstract class SavedMessageEntryResponse
+    implements
+        Built<SavedMessageEntryResponse, SavedMessageEntryResponseBuilder> {
   /// Unique identifier for the saved message entry
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -42,18 +44,25 @@ abstract class SavedMessageEntryResponse implements Built<SavedMessageEntryRespo
 
   SavedMessageEntryResponse._();
 
-  factory SavedMessageEntryResponse([void updates(SavedMessageEntryResponseBuilder b)]) = _$SavedMessageEntryResponse;
+  factory SavedMessageEntryResponse(
+          [void updates(SavedMessageEntryResponseBuilder b)]) =
+      _$SavedMessageEntryResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SavedMessageEntryResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SavedMessageEntryResponse> get serializer => _$SavedMessageEntryResponseSerializer();
+  static Serializer<SavedMessageEntryResponse> get serializer =>
+      _$SavedMessageEntryResponseSerializer();
 }
 
-class _$SavedMessageEntryResponseSerializer implements PrimitiveSerializer<SavedMessageEntryResponse> {
+class _$SavedMessageEntryResponseSerializer
+    implements PrimitiveSerializer<SavedMessageEntryResponse> {
   @override
-  final Iterable<Type> types = const [SavedMessageEntryResponse, _$SavedMessageEntryResponse];
+  final Iterable<Type> types = const [
+    SavedMessageEntryResponse,
+    _$SavedMessageEntryResponse
+  ];
 
   @override
   final String wireName = r'SavedMessageEntryResponse';
@@ -84,10 +93,12 @@ class _$SavedMessageEntryResponseSerializer implements PrimitiveSerializer<Saved
       specifiedType: const FullType(SavedMessageEntryResponseStatusEnum),
     );
     yield r'message';
-    yield object.message == null ? null : serializers.serialize(
-      object.message,
-      specifiedType: const FullType.nullable(MessageResponseSchema),
-    );
+    yield object.message == null
+        ? null
+        : serializers.serialize(
+            object.message,
+            specifiedType: const FullType.nullable(MessageResponseSchema),
+          );
   }
 
   @override
@@ -96,7 +107,9 @@ class _$SavedMessageEntryResponseSerializer implements PrimitiveSerializer<Saved
     SavedMessageEntryResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -177,19 +190,23 @@ class _$SavedMessageEntryResponseSerializer implements PrimitiveSerializer<Saved
 }
 
 class SavedMessageEntryResponseStatusEnum extends EnumClass {
-
   /// Availability status of the saved message
   @BuiltValueEnumConst(wireName: r'available')
-  static const SavedMessageEntryResponseStatusEnum available = _$savedMessageEntryResponseStatusEnum_available;
+  static const SavedMessageEntryResponseStatusEnum available =
+      _$savedMessageEntryResponseStatusEnum_available;
+
   /// Availability status of the saved message
   @BuiltValueEnumConst(wireName: r'missing_permissions')
-  static const SavedMessageEntryResponseStatusEnum missingPermissions = _$savedMessageEntryResponseStatusEnum_missingPermissions;
+  static const SavedMessageEntryResponseStatusEnum missingPermissions =
+      _$savedMessageEntryResponseStatusEnum_missingPermissions;
 
-  static Serializer<SavedMessageEntryResponseStatusEnum> get serializer => _$savedMessageEntryResponseStatusEnumSerializer;
+  static Serializer<SavedMessageEntryResponseStatusEnum> get serializer =>
+      _$savedMessageEntryResponseStatusEnumSerializer;
 
-  const SavedMessageEntryResponseStatusEnum._(String name): super(name);
+  const SavedMessageEntryResponseStatusEnum._(String name) : super(name);
 
-  static BuiltSet<SavedMessageEntryResponseStatusEnum> get values => _$savedMessageEntryResponseStatusEnumValues;
-  static SavedMessageEntryResponseStatusEnum valueOf(String name) => _$savedMessageEntryResponseStatusEnumValueOf(name);
+  static BuiltSet<SavedMessageEntryResponseStatusEnum> get values =>
+      _$savedMessageEntryResponseStatusEnumValues;
+  static SavedMessageEntryResponseStatusEnum valueOf(String name) =>
+      _$savedMessageEntryResponseStatusEnumValueOf(name);
 }
-

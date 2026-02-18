@@ -14,7 +14,8 @@ part 'call_eligibility_response.g.dart';
 /// * [ringable] - Whether the current user can ring this call
 /// * [silent] - Whether the call should be joined silently
 @BuiltValue()
-abstract class CallEligibilityResponse implements Built<CallEligibilityResponse, CallEligibilityResponseBuilder> {
+abstract class CallEligibilityResponse
+    implements Built<CallEligibilityResponse, CallEligibilityResponseBuilder> {
   /// Whether the current user can ring this call
   @BuiltValueField(wireName: r'ringable')
   bool get ringable;
@@ -25,18 +26,25 @@ abstract class CallEligibilityResponse implements Built<CallEligibilityResponse,
 
   CallEligibilityResponse._();
 
-  factory CallEligibilityResponse([void updates(CallEligibilityResponseBuilder b)]) = _$CallEligibilityResponse;
+  factory CallEligibilityResponse(
+          [void updates(CallEligibilityResponseBuilder b)]) =
+      _$CallEligibilityResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CallEligibilityResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CallEligibilityResponse> get serializer => _$CallEligibilityResponseSerializer();
+  static Serializer<CallEligibilityResponse> get serializer =>
+      _$CallEligibilityResponseSerializer();
 }
 
-class _$CallEligibilityResponseSerializer implements PrimitiveSerializer<CallEligibilityResponse> {
+class _$CallEligibilityResponseSerializer
+    implements PrimitiveSerializer<CallEligibilityResponse> {
   @override
-  final Iterable<Type> types = const [CallEligibilityResponse, _$CallEligibilityResponse];
+  final Iterable<Type> types = const [
+    CallEligibilityResponse,
+    _$CallEligibilityResponse
+  ];
 
   @override
   final String wireName = r'CallEligibilityResponse';
@@ -64,7 +72,9 @@ class _$CallEligibilityResponseSerializer implements PrimitiveSerializer<CallEli
     CallEligibilityResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +131,3 @@ class _$CallEligibilityResponseSerializer implements PrimitiveSerializer<CallEli
     return result.build();
   }
 }
-

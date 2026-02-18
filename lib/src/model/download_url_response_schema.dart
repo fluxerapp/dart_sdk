@@ -11,10 +11,12 @@ part 'download_url_response_schema.g.dart';
 /// DownloadUrlResponseSchema
 ///
 /// Properties:
-/// * [downloadUrl] 
-/// * [expiresAt] 
+/// * [downloadUrl]
+/// * [expiresAt]
 @BuiltValue()
-abstract class DownloadUrlResponseSchema implements Built<DownloadUrlResponseSchema, DownloadUrlResponseSchemaBuilder> {
+abstract class DownloadUrlResponseSchema
+    implements
+        Built<DownloadUrlResponseSchema, DownloadUrlResponseSchemaBuilder> {
   @BuiltValueField(wireName: r'downloadUrl')
   String get downloadUrl;
 
@@ -23,18 +25,25 @@ abstract class DownloadUrlResponseSchema implements Built<DownloadUrlResponseSch
 
   DownloadUrlResponseSchema._();
 
-  factory DownloadUrlResponseSchema([void updates(DownloadUrlResponseSchemaBuilder b)]) = _$DownloadUrlResponseSchema;
+  factory DownloadUrlResponseSchema(
+          [void updates(DownloadUrlResponseSchemaBuilder b)]) =
+      _$DownloadUrlResponseSchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(DownloadUrlResponseSchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<DownloadUrlResponseSchema> get serializer => _$DownloadUrlResponseSchemaSerializer();
+  static Serializer<DownloadUrlResponseSchema> get serializer =>
+      _$DownloadUrlResponseSchemaSerializer();
 }
 
-class _$DownloadUrlResponseSchemaSerializer implements PrimitiveSerializer<DownloadUrlResponseSchema> {
+class _$DownloadUrlResponseSchemaSerializer
+    implements PrimitiveSerializer<DownloadUrlResponseSchema> {
   @override
-  final Iterable<Type> types = const [DownloadUrlResponseSchema, _$DownloadUrlResponseSchema];
+  final Iterable<Type> types = const [
+    DownloadUrlResponseSchema,
+    _$DownloadUrlResponseSchema
+  ];
 
   @override
   final String wireName = r'DownloadUrlResponseSchema';
@@ -62,7 +71,9 @@ class _$DownloadUrlResponseSchemaSerializer implements PrimitiveSerializer<Downl
     DownloadUrlResponseSchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -119,4 +130,3 @@ class _$DownloadUrlResponseSchemaSerializer implements PrimitiveSerializer<Downl
     return result.build();
   }
 }
-

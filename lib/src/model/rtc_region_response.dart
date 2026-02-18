@@ -15,7 +15,8 @@ part 'rtc_region_response.g.dart';
 /// * [name] - The display name of the RTC region
 /// * [emoji] - The emoji associated with this RTC region
 @BuiltValue()
-abstract class RtcRegionResponse implements Built<RtcRegionResponse, RtcRegionResponseBuilder> {
+abstract class RtcRegionResponse
+    implements Built<RtcRegionResponse, RtcRegionResponseBuilder> {
   /// The unique identifier for this RTC region
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -30,16 +31,19 @@ abstract class RtcRegionResponse implements Built<RtcRegionResponse, RtcRegionRe
 
   RtcRegionResponse._();
 
-  factory RtcRegionResponse([void updates(RtcRegionResponseBuilder b)]) = _$RtcRegionResponse;
+  factory RtcRegionResponse([void updates(RtcRegionResponseBuilder b)]) =
+      _$RtcRegionResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(RtcRegionResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<RtcRegionResponse> get serializer => _$RtcRegionResponseSerializer();
+  static Serializer<RtcRegionResponse> get serializer =>
+      _$RtcRegionResponseSerializer();
 }
 
-class _$RtcRegionResponseSerializer implements PrimitiveSerializer<RtcRegionResponse> {
+class _$RtcRegionResponseSerializer
+    implements PrimitiveSerializer<RtcRegionResponse> {
   @override
   final Iterable<Type> types = const [RtcRegionResponse, _$RtcRegionResponse];
 
@@ -74,7 +78,9 @@ class _$RtcRegionResponseSerializer implements PrimitiveSerializer<RtcRegionResp
     RtcRegionResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -138,4 +144,3 @@ class _$RtcRegionResponseSerializer implements PrimitiveSerializer<RtcRegionResp
     return result.build();
   }
 }
-

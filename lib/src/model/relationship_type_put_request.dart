@@ -14,7 +14,9 @@ part 'relationship_type_put_request.g.dart';
 /// Properties:
 /// * [type] - Type of relationship to create
 @BuiltValue()
-abstract class RelationshipTypePutRequest implements Built<RelationshipTypePutRequest, RelationshipTypePutRequestBuilder> {
+abstract class RelationshipTypePutRequest
+    implements
+        Built<RelationshipTypePutRequest, RelationshipTypePutRequestBuilder> {
   /// Type of relationship to create
   @BuiltValueField(wireName: r'type')
   RelationshipTypes? get type;
@@ -22,18 +24,25 @@ abstract class RelationshipTypePutRequest implements Built<RelationshipTypePutRe
 
   RelationshipTypePutRequest._();
 
-  factory RelationshipTypePutRequest([void updates(RelationshipTypePutRequestBuilder b)]) = _$RelationshipTypePutRequest;
+  factory RelationshipTypePutRequest(
+          [void updates(RelationshipTypePutRequestBuilder b)]) =
+      _$RelationshipTypePutRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(RelationshipTypePutRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<RelationshipTypePutRequest> get serializer => _$RelationshipTypePutRequestSerializer();
+  static Serializer<RelationshipTypePutRequest> get serializer =>
+      _$RelationshipTypePutRequestSerializer();
 }
 
-class _$RelationshipTypePutRequestSerializer implements PrimitiveSerializer<RelationshipTypePutRequest> {
+class _$RelationshipTypePutRequestSerializer
+    implements PrimitiveSerializer<RelationshipTypePutRequest> {
   @override
-  final Iterable<Type> types = const [RelationshipTypePutRequest, _$RelationshipTypePutRequest];
+  final Iterable<Type> types = const [
+    RelationshipTypePutRequest,
+    _$RelationshipTypePutRequest
+  ];
 
   @override
   final String wireName = r'RelationshipTypePutRequest';
@@ -58,7 +67,9 @@ class _$RelationshipTypePutRequestSerializer implements PrimitiveSerializer<Rela
     RelationshipTypePutRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -108,4 +119,3 @@ class _$RelationshipTypePutRequestSerializer implements PrimitiveSerializer<Rela
     return result.build();
   }
 }
-

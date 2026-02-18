@@ -13,25 +13,33 @@ part 'guild_emoji_update_request.g.dart';
 /// Properties:
 /// * [name] - The name of the emoji (2-32 characters, alphanumeric and underscores only)
 @BuiltValue()
-abstract class GuildEmojiUpdateRequest implements Built<GuildEmojiUpdateRequest, GuildEmojiUpdateRequestBuilder> {
+abstract class GuildEmojiUpdateRequest
+    implements Built<GuildEmojiUpdateRequest, GuildEmojiUpdateRequestBuilder> {
   /// The name of the emoji (2-32 characters, alphanumeric and underscores only)
   @BuiltValueField(wireName: r'name')
   String get name;
 
   GuildEmojiUpdateRequest._();
 
-  factory GuildEmojiUpdateRequest([void updates(GuildEmojiUpdateRequestBuilder b)]) = _$GuildEmojiUpdateRequest;
+  factory GuildEmojiUpdateRequest(
+          [void updates(GuildEmojiUpdateRequestBuilder b)]) =
+      _$GuildEmojiUpdateRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildEmojiUpdateRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildEmojiUpdateRequest> get serializer => _$GuildEmojiUpdateRequestSerializer();
+  static Serializer<GuildEmojiUpdateRequest> get serializer =>
+      _$GuildEmojiUpdateRequestSerializer();
 }
 
-class _$GuildEmojiUpdateRequestSerializer implements PrimitiveSerializer<GuildEmojiUpdateRequest> {
+class _$GuildEmojiUpdateRequestSerializer
+    implements PrimitiveSerializer<GuildEmojiUpdateRequest> {
   @override
-  final Iterable<Type> types = const [GuildEmojiUpdateRequest, _$GuildEmojiUpdateRequest];
+  final Iterable<Type> types = const [
+    GuildEmojiUpdateRequest,
+    _$GuildEmojiUpdateRequest
+  ];
 
   @override
   final String wireName = r'GuildEmojiUpdateRequest';
@@ -54,7 +62,9 @@ class _$GuildEmojiUpdateRequestSerializer implements PrimitiveSerializer<GuildEm
     GuildEmojiUpdateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +114,3 @@ class _$GuildEmojiUpdateRequestSerializer implements PrimitiveSerializer<GuildEm
     return result.build();
   }
 }
-

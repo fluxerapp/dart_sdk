@@ -9,7 +9,6 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:built_collection/built_collection.dart';
-import 'package:built_value/json_object.dart';
 import 'package:fluxer_dart/src/api_util.dart';
 import 'package:fluxer_dart/src/model/channel_response.dart';
 import 'package:fluxer_dart/src/model/create_private_channel_request.dart';
@@ -25,9 +24,7 @@ import 'package:fluxer_dart/src/model/email_change_verify_original_request.dart'
 import 'package:fluxer_dart/src/model/email_change_verify_original_response.dart';
 import 'package:fluxer_dart/src/model/email_token_response.dart';
 import 'package:fluxer_dart/src/model/enable_mfa_totp_request.dart';
-import 'package:fluxer_dart/src/model/error.dart';
 import 'package:fluxer_dart/src/model/friend_request_by_tag_request.dart';
-import 'package:fluxer_dart/src/model/get_well_known_fluxer429_response.dart';
 import 'package:fluxer_dart/src/model/gift_code_metadata_response.dart';
 import 'package:fluxer_dart/src/model/harvest_creation_response_schema.dart';
 import 'package:fluxer_dart/src/model/harvest_download_url_response.dart';
@@ -75,7 +72,6 @@ import 'package:fluxer_dart/src/model/web_authn_credential_update_request.dart';
 import 'package:fluxer_dart/src/model/web_authn_register_request.dart';
 
 class UsersApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -87,7 +83,7 @@ class UsersApi {
   ///
   /// Parameters:
   /// * [userId] - The ID of the user
-  /// * [relationshipTypePutRequest] 
+  /// * [relationshipTypePutRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -97,7 +93,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [RelationshipResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<RelationshipResponse>> acceptOrUpdateFriendRequest({ 
+  Future<Response<RelationshipResponse>> acceptOrUpdateFriendRequest({
     required String userId,
     required RelationshipTypePutRequest relationshipTypePutRequest,
     CancelToken? cancelToken,
@@ -107,7 +103,10 @@ class UsersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/users/@me/relationships/{user_id}'.replaceAll('{' r'user_id' '}', encodeQueryParameter(_serializers, userId, const FullType(String)).toString());
+    final _path = r'/users/@me/relationships/{user_id}'.replaceAll(
+        '{' r'user_id' '}',
+        encodeQueryParameter(_serializers, userId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
@@ -120,7 +119,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -137,11 +137,11 @@ class UsersApi {
 
     try {
       const _type = FullType(RelationshipTypePutRequest);
-      _bodyData = _serializers.serialize(relationshipTypePutRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(relationshipTypePutRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -164,11 +164,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(RelationshipResponse),
-      ) as RelationshipResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(RelationshipResponse),
+            ) as RelationshipResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -195,7 +196,7 @@ class UsersApi {
   /// Add or update the phone number associated with the current account. Requires sudo mode verification. Phone must be verified before use.
   ///
   /// Parameters:
-  /// * [phoneAddRequest] 
+  /// * [phoneAddRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -205,7 +206,7 @@ class UsersApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> addPhoneToAccount({ 
+  Future<Response<void>> addPhoneToAccount({
     required PhoneAddRequest phoneAddRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -227,7 +228,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -245,10 +247,9 @@ class UsersApi {
     try {
       const _type = FullType(PhoneAddRequest);
       _bodyData = _serializers.serialize(phoneAddRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -283,7 +284,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [SuccessResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<SuccessResponse>> cancelBulkMessageDeletion2({ 
+  Future<Response<SuccessResponse>> cancelBulkMessageDeletion2({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -304,7 +305,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -328,11 +330,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(SuccessResponse),
-      ) as SuccessResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(SuccessResponse),
+            ) as SuccessResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -369,7 +372,7 @@ class UsersApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> cancelScheduledMessage({ 
+  Future<Response<void>> cancelScheduledMessage({
     required String scheduledMessageId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -378,7 +381,12 @@ class UsersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/users/@me/scheduled-messages/{scheduled_message_id}'.replaceAll('{' r'scheduled_message_id' '}', encodeQueryParameter(_serializers, scheduledMessageId, const FullType(String)).toString());
+    final _path = r'/users/@me/scheduled-messages/{scheduled_message_id}'
+        .replaceAll(
+            '{' r'scheduled_message_id' '}',
+            encodeQueryParameter(
+                    _serializers, scheduledMessageId, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -391,7 +399,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -418,8 +427,8 @@ class UsersApi {
   /// Checks if a username and discriminator combination is available for registration. Returns whether the tag is taken by another user.
   ///
   /// Parameters:
-  /// * [username] 
-  /// * [discriminator] 
+  /// * [username]
+  /// * [discriminator]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -429,7 +438,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [UserTagCheckResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UserTagCheckResponse>> checkUsernameTagAvailability({ 
+  Future<Response<UserTagCheckResponse>> checkUsernameTagAvailability({
     required String username,
     required String discriminator,
     CancelToken? cancelToken,
@@ -452,7 +461,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -465,8 +475,10 @@ class UsersApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'username': encodeQueryParameter(_serializers, username, const FullType(String)),
-      r'discriminator': encodeQueryParameter(_serializers, discriminator, const FullType(String)),
+      r'username':
+          encodeQueryParameter(_serializers, username, const FullType(String)),
+      r'discriminator': encodeQueryParameter(
+          _serializers, discriminator, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -482,11 +494,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(UserTagCheckResponse),
-      ) as UserTagCheckResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(UserTagCheckResponse),
+            ) as UserTagCheckResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -513,7 +526,7 @@ class UsersApi {
   /// Completes the password change after email verification. Requires the verification proof and new password. Invalidates all existing sessions.
   ///
   /// Parameters:
-  /// * [passwordChangeCompleteRequest] 
+  /// * [passwordChangeCompleteRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -523,7 +536,7 @@ class UsersApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> completePasswordChange({ 
+  Future<Response<void>> completePasswordChange({
     required PasswordChangeCompleteRequest passwordChangeCompleteRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -545,7 +558,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -562,11 +576,11 @@ class UsersApi {
 
     try {
       const _type = FullType(PasswordChangeCompleteRequest);
-      _bodyData = _serializers.serialize(passwordChangeCompleteRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(passwordChangeCompleteRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -592,7 +606,7 @@ class UsersApi {
   /// Creates a new private channel (direct message) between the current user and one or more recipients. Returns the newly created channel object.
   ///
   /// Parameters:
-  /// * [createPrivateChannelRequest] 
+  /// * [createPrivateChannelRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -602,7 +616,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [ChannelResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ChannelResponse>> createPrivateChannel({ 
+  Future<Response<ChannelResponse>> createPrivateChannel({
     required CreatePrivateChannelRequest createPrivateChannelRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -624,7 +638,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -641,11 +656,11 @@ class UsersApi {
 
     try {
       const _type = FullType(CreatePrivateChannelRequest);
-      _bodyData = _serializers.serialize(createPrivateChannelRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(createPrivateChannelRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -668,11 +683,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ChannelResponse),
-      ) as ChannelResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(ChannelResponse),
+            ) as ChannelResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -699,7 +715,7 @@ class UsersApi {
   /// Permanently deletes the current user&#39;s account and all associated data. Requires sudo mode verification. This action is irreversible and will remove all user data, messages, and connections.
   ///
   /// Parameters:
-  /// * [sudoVerificationSchema] 
+  /// * [sudoVerificationSchema]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -709,7 +725,7 @@ class UsersApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> deleteCurrentUserAccount({ 
+  Future<Response<void>> deleteCurrentUserAccount({
     required SudoVerificationSchema sudoVerificationSchema,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -731,7 +747,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -748,11 +765,11 @@ class UsersApi {
 
     try {
       const _type = FullType(SudoVerificationSchema);
-      _bodyData = _serializers.serialize(sudoVerificationSchema, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(sudoVerificationSchema, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -788,7 +805,7 @@ class UsersApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> deleteMention({ 
+  Future<Response<void>> deleteMention({
     required String messageId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -797,7 +814,10 @@ class UsersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/users/@me/mentions/{message_id}'.replaceAll('{' r'message_id' '}', encodeQueryParameter(_serializers, messageId, const FullType(String)).toString());
+    final _path = r'/users/@me/mentions/{message_id}'.replaceAll(
+        '{' r'message_id' '}',
+        encodeQueryParameter(_serializers, messageId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -810,7 +830,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -838,7 +859,7 @@ class UsersApi {
   ///
   /// Parameters:
   /// * [credentialId] - The credential id
-  /// * [sudoVerificationSchema] 
+  /// * [sudoVerificationSchema]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -848,7 +869,7 @@ class UsersApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> deleteWebauthnCredential({ 
+  Future<Response<void>> deleteWebauthnCredential({
     required String credentialId,
     required SudoVerificationSchema sudoVerificationSchema,
     CancelToken? cancelToken,
@@ -858,7 +879,12 @@ class UsersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/users/@me/mfa/webauthn/credentials/{credential_id}'.replaceAll('{' r'credential_id' '}', encodeQueryParameter(_serializers, credentialId, const FullType(String)).toString());
+    final _path = r'/users/@me/mfa/webauthn/credentials/{credential_id}'
+        .replaceAll(
+            '{' r'credential_id' '}',
+            encodeQueryParameter(
+                    _serializers, credentialId, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -871,7 +897,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -888,11 +915,11 @@ class UsersApi {
 
     try {
       const _type = FullType(SudoVerificationSchema);
-      _bodyData = _serializers.serialize(sudoVerificationSchema, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(sudoVerificationSchema, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -918,7 +945,7 @@ class UsersApi {
   /// Temporarily disables the current user&#39;s account. Requires sudo mode verification. The account can be re-enabled by logging in again. User data is preserved but the account will be inaccessible during the disabled period.
   ///
   /// Parameters:
-  /// * [sudoVerificationSchema] 
+  /// * [sudoVerificationSchema]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -928,7 +955,7 @@ class UsersApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> disableCurrentUserAccount({ 
+  Future<Response<void>> disableCurrentUserAccount({
     required SudoVerificationSchema sudoVerificationSchema,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -950,7 +977,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -967,11 +995,11 @@ class UsersApi {
 
     try {
       const _type = FullType(SudoVerificationSchema);
-      _bodyData = _serializers.serialize(sudoVerificationSchema, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(sudoVerificationSchema, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -997,7 +1025,7 @@ class UsersApi {
   /// Disable SMS-based multi-factor authentication on the current account. Requires sudo mode verification for security.
   ///
   /// Parameters:
-  /// * [sudoVerificationSchema] 
+  /// * [sudoVerificationSchema]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1007,7 +1035,7 @@ class UsersApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> disableSmsMfa({ 
+  Future<Response<void>> disableSmsMfa({
     required SudoVerificationSchema sudoVerificationSchema,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -1029,7 +1057,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1046,11 +1075,11 @@ class UsersApi {
 
     try {
       const _type = FullType(SudoVerificationSchema);
-      _bodyData = _serializers.serialize(sudoVerificationSchema, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(sudoVerificationSchema, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -1076,7 +1105,7 @@ class UsersApi {
   /// Disable TOTP multi-factor authentication on the current account. Requires sudo mode verification for security.
   ///
   /// Parameters:
-  /// * [disableTotpRequest] 
+  /// * [disableTotpRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1086,7 +1115,7 @@ class UsersApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> disableTotpMfa({ 
+  Future<Response<void>> disableTotpMfa({
     required DisableTotpRequest disableTotpRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -1108,7 +1137,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1125,11 +1155,11 @@ class UsersApi {
 
     try {
       const _type = FullType(DisableTotpRequest);
-      _bodyData = _serializers.serialize(disableTotpRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(disableTotpRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -1155,7 +1185,7 @@ class UsersApi {
   /// Enable SMS-based multi-factor authentication on the current account. Requires sudo mode verification and a verified phone number.
   ///
   /// Parameters:
-  /// * [sudoVerificationSchema] 
+  /// * [sudoVerificationSchema]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1165,7 +1195,7 @@ class UsersApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> enableSmsMfa({ 
+  Future<Response<void>> enableSmsMfa({
     required SudoVerificationSchema sudoVerificationSchema,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -1187,7 +1217,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1204,11 +1235,11 @@ class UsersApi {
 
     try {
       const _type = FullType(SudoVerificationSchema);
-      _bodyData = _serializers.serialize(sudoVerificationSchema, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(sudoVerificationSchema, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -1234,7 +1265,7 @@ class UsersApi {
   /// Enable time-based one-time password (TOTP) MFA on the current account. Returns backup codes for account recovery. Requires sudo mode verification.
   ///
   /// Parameters:
-  /// * [enableMfaTotpRequest] 
+  /// * [enableMfaTotpRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1244,7 +1275,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [MfaBackupCodesResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<MfaBackupCodesResponse>> enableTotpMfa({ 
+  Future<Response<MfaBackupCodesResponse>> enableTotpMfa({
     required EnableMfaTotpRequest enableMfaTotpRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -1266,7 +1297,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1283,11 +1315,11 @@ class UsersApi {
 
     try {
       const _type = FullType(EnableMfaTotpRequest);
-      _bodyData = _serializers.serialize(enableMfaTotpRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(enableMfaTotpRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -1310,11 +1342,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(MfaBackupCodesResponse),
-      ) as MfaBackupCodesResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(MfaBackupCodesResponse),
+            ) as MfaBackupCodesResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1341,7 +1374,7 @@ class UsersApi {
   /// Clears all authorized IP addresses for the current user. After calling this endpoint, the user will be required to re-authorize any new IP addresses they log in from. Requires sudo mode verification.
   ///
   /// Parameters:
-  /// * [sudoVerificationSchema] 
+  /// * [sudoVerificationSchema]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1351,7 +1384,7 @@ class UsersApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> forgetAuthorizedIps({ 
+  Future<Response<void>> forgetAuthorizedIps({
     required SudoVerificationSchema sudoVerificationSchema,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -1373,7 +1406,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1390,11 +1424,11 @@ class UsersApi {
 
     try {
       const _type = FullType(SudoVerificationSchema);
-      _bodyData = _serializers.serialize(sudoVerificationSchema, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(sudoVerificationSchema, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -1420,7 +1454,7 @@ class UsersApi {
   /// Generate and retrieve new backup codes for account recovery. Requires sudo mode verification. Old codes are invalidated.
   ///
   /// Parameters:
-  /// * [mfaBackupCodesRequest] 
+  /// * [mfaBackupCodesRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1430,7 +1464,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [MfaBackupCodesResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<MfaBackupCodesResponse>> getBackupCodesMfa({ 
+  Future<Response<MfaBackupCodesResponse>> getBackupCodesMfa({
     required MfaBackupCodesRequest mfaBackupCodesRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -1452,7 +1486,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1469,11 +1504,11 @@ class UsersApi {
 
     try {
       const _type = FullType(MfaBackupCodesRequest);
-      _bodyData = _serializers.serialize(mfaBackupCodesRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(mfaBackupCodesRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -1496,11 +1531,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(MfaBackupCodesResponse),
-      ) as MfaBackupCodesResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(MfaBackupCodesResponse),
+            ) as MfaBackupCodesResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1536,7 +1572,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [UserPrivateResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UserPrivateResponse>> getCurrentUser({ 
+  Future<Response<UserPrivateResponse>> getCurrentUser({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -1555,12 +1591,14 @@ class UsersApi {
           {
             'type': 'oauth2',
             'name': 'oauth2Token',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1584,11 +1622,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(UserPrivateResponse),
-      ) as UserPrivateResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(UserPrivateResponse),
+            ) as UserPrivateResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1624,7 +1663,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [UserSettingsResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UserSettingsResponse>> getCurrentUserSettings({ 
+  Future<Response<UserSettingsResponse>> getCurrentUserSettings({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -1645,7 +1684,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1669,11 +1709,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(UserSettingsResponse),
-      ) as UserSettingsResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(UserSettingsResponse),
+            ) as UserSettingsResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1710,7 +1751,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [HarvestDownloadUrlResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<HarvestDownloadUrlResponse>> getDataHarvestDownloadUrl({ 
+  Future<Response<HarvestDownloadUrlResponse>> getDataHarvestDownloadUrl({
     required String harvestId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -1719,7 +1760,10 @@ class UsersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/users/@me/harvest/{harvestId}/download'.replaceAll('{' r'harvestId' '}', encodeQueryParameter(_serializers, harvestId, const FullType(String)).toString());
+    final _path = r'/users/@me/harvest/{harvestId}/download'.replaceAll(
+        '{' r'harvestId' '}',
+        encodeQueryParameter(_serializers, harvestId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -1732,7 +1776,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1756,11 +1801,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(HarvestDownloadUrlResponse),
-      ) as HarvestDownloadUrlResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(HarvestDownloadUrlResponse),
+            ) as HarvestDownloadUrlResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1797,7 +1843,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [HarvestStatusResponseSchema] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<HarvestStatusResponseSchema>> getDataHarvestStatus({ 
+  Future<Response<HarvestStatusResponseSchema>> getDataHarvestStatus({
     required String harvestId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -1806,7 +1852,10 @@ class UsersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/users/@me/harvest/{harvestId}'.replaceAll('{' r'harvestId' '}', encodeQueryParameter(_serializers, harvestId, const FullType(String)).toString());
+    final _path = r'/users/@me/harvest/{harvestId}'.replaceAll(
+        '{' r'harvestId' '}',
+        encodeQueryParameter(_serializers, harvestId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -1819,7 +1868,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1843,11 +1893,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(HarvestStatusResponseSchema),
-      ) as HarvestStatusResponseSchema;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(HarvestStatusResponseSchema),
+            ) as HarvestStatusResponseSchema;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1883,7 +1934,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [HarvestStatusResponseSchema] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<HarvestStatusResponseSchema>> getLatestDataHarvest({ 
+  Future<Response<HarvestStatusResponseSchema>> getLatestDataHarvest({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -1904,7 +1955,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1928,11 +1980,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(HarvestStatusResponseSchema),
-      ) as HarvestStatusResponseSchema;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(HarvestStatusResponseSchema),
+            ) as HarvestStatusResponseSchema;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1969,7 +2022,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [UserNoteResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UserNoteResponse>> getNoteOnUser({ 
+  Future<Response<UserNoteResponse>> getNoteOnUser({
     required String targetId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -1978,7 +2031,10 @@ class UsersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/users/@me/notes/{target_id}'.replaceAll('{' r'target_id' '}', encodeQueryParameter(_serializers, targetId, const FullType(String)).toString());
+    final _path = r'/users/@me/notes/{target_id}'.replaceAll(
+        '{' r'target_id' '}',
+        encodeQueryParameter(_serializers, targetId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -1991,7 +2047,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -2015,11 +2072,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(UserNoteResponse),
-      ) as UserNoteResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(UserNoteResponse),
+            ) as UserNoteResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -2056,7 +2114,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [ScheduledMessageResponseSchema] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ScheduledMessageResponseSchema>> getScheduledMessage({ 
+  Future<Response<ScheduledMessageResponseSchema>> getScheduledMessage({
     required String scheduledMessageId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -2065,7 +2123,12 @@ class UsersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/users/@me/scheduled-messages/{scheduled_message_id}'.replaceAll('{' r'scheduled_message_id' '}', encodeQueryParameter(_serializers, scheduledMessageId, const FullType(String)).toString());
+    final _path = r'/users/@me/scheduled-messages/{scheduled_message_id}'
+        .replaceAll(
+            '{' r'scheduled_message_id' '}',
+            encodeQueryParameter(
+                    _serializers, scheduledMessageId, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -2078,7 +2141,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -2102,11 +2166,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ScheduledMessageResponseSchema),
-      ) as ScheduledMessageResponseSchema;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(ScheduledMessageResponseSchema),
+            ) as ScheduledMessageResponseSchema;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -2142,7 +2207,8 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [WebAuthnChallengeResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<WebAuthnChallengeResponse>> getSudoWebauthnAuthenticationOptions({ 
+  Future<Response<WebAuthnChallengeResponse>>
+      getSudoWebauthnAuthenticationOptions({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -2163,7 +2229,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -2187,11 +2254,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(WebAuthnChallengeResponse),
-      ) as WebAuthnChallengeResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(WebAuthnChallengeResponse),
+            ) as WebAuthnChallengeResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -2228,7 +2296,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [UserPartialResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UserPartialResponse>> getUserById({ 
+  Future<Response<UserPartialResponse>> getUserById({
     required String userId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -2237,7 +2305,10 @@ class UsersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/users/{user_id}'.replaceAll('{' r'user_id' '}', encodeQueryParameter(_serializers, userId, const FullType(String)).toString());
+    final _path = r'/users/{user_id}'.replaceAll(
+        '{' r'user_id' '}',
+        encodeQueryParameter(_serializers, userId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -2250,7 +2321,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -2274,11 +2346,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(UserPartialResponse),
-      ) as UserPartialResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(UserPartialResponse),
+            ) as UserPartialResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -2306,9 +2379,9 @@ class UsersApi {
   ///
   /// Parameters:
   /// * [targetId] - The target id
-  /// * [guildId] 
-  /// * [withMutualFriends] 
-  /// * [withMutualGuilds] 
+  /// * [guildId]
+  /// * [withMutualFriends]
+  /// * [withMutualGuilds]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -2318,7 +2391,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [UserProfileFullResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UserProfileFullResponse>> getUserProfile({ 
+  Future<Response<UserProfileFullResponse>> getUserProfile({
     required String targetId,
     String? guildId,
     String? withMutualFriends,
@@ -2330,7 +2403,10 @@ class UsersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/users/{target_id}/profile'.replaceAll('{' r'target_id' '}', encodeQueryParameter(_serializers, targetId, const FullType(String)).toString());
+    final _path = r'/users/{target_id}/profile'.replaceAll(
+        '{' r'target_id' '}',
+        encodeQueryParameter(_serializers, targetId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -2343,7 +2419,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -2356,9 +2433,15 @@ class UsersApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (guildId != null) r'guild_id': encodeQueryParameter(_serializers, guildId, const FullType(String)),
-      if (withMutualFriends != null) r'with_mutual_friends': encodeQueryParameter(_serializers, withMutualFriends, const FullType(String)),
-      if (withMutualGuilds != null) r'with_mutual_guilds': encodeQueryParameter(_serializers, withMutualGuilds, const FullType(String)),
+      if (guildId != null)
+        r'guild_id':
+            encodeQueryParameter(_serializers, guildId, const FullType(String)),
+      if (withMutualFriends != null)
+        r'with_mutual_friends': encodeQueryParameter(
+            _serializers, withMutualFriends, const FullType(String)),
+      if (withMutualGuilds != null)
+        r'with_mutual_guilds': encodeQueryParameter(
+            _serializers, withMutualGuilds, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -2374,11 +2457,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(UserProfileFullResponse),
-      ) as UserProfileFullResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(UserProfileFullResponse),
+            ) as UserProfileFullResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -2405,7 +2489,7 @@ class UsersApi {
   /// Generate challenge and options to register a new WebAuthn credential. Requires sudo mode verification.
   ///
   /// Parameters:
-  /// * [sudoVerificationSchema] 
+  /// * [sudoVerificationSchema]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -2415,7 +2499,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [WebAuthnChallengeResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<WebAuthnChallengeResponse>> getWebauthnRegistrationOptions({ 
+  Future<Response<WebAuthnChallengeResponse>> getWebauthnRegistrationOptions({
     required SudoVerificationSchema sudoVerificationSchema,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -2437,7 +2521,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -2454,11 +2539,11 @@ class UsersApi {
 
     try {
       const _type = FullType(SudoVerificationSchema);
-      _bodyData = _serializers.serialize(sudoVerificationSchema, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(sudoVerificationSchema, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -2481,11 +2566,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(WebAuthnChallengeResponse),
-      ) as WebAuthnChallengeResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(WebAuthnChallengeResponse),
+            ) as WebAuthnChallengeResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -2521,7 +2607,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltMap<String, String>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltMap<String, String>>> listCurrentUserNotes({ 
+  Future<Response<BuiltMap<String, String>>> listCurrentUserNotes({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -2542,7 +2628,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -2566,11 +2653,13 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltMap, [FullType(String), FullType(String)]),
-      ) as BuiltMap<String, String>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(
+                  BuiltMap, [FullType(String), FullType(String)]),
+            ) as BuiltMap<String, String>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -2597,11 +2686,11 @@ class UsersApi {
   /// Retrieves messages where the current user was mentioned. Supports filtering by role mentions, everyone mentions, and specific guilds. Returns paginated list of messages.
   ///
   /// Parameters:
-  /// * [limit] 
-  /// * [roles] 
-  /// * [everyone] 
-  /// * [guilds] 
-  /// * [before] 
+  /// * [limit]
+  /// * [roles]
+  /// * [everyone]
+  /// * [guilds]
+  /// * [before]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -2611,7 +2700,8 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<MessageResponseSchema>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<MessageResponseSchema>>> listMentionsForCurrentUser({ 
+  Future<Response<BuiltList<MessageResponseSchema>>>
+      listMentionsForCurrentUser({
     String? limit,
     String? roles,
     String? everyone,
@@ -2637,7 +2727,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -2650,11 +2741,21 @@ class UsersApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (limit != null) r'limit': encodeQueryParameter(_serializers, limit, const FullType(String)),
-      if (roles != null) r'roles': encodeQueryParameter(_serializers, roles, const FullType(String)),
-      if (everyone != null) r'everyone': encodeQueryParameter(_serializers, everyone, const FullType(String)),
-      if (guilds != null) r'guilds': encodeQueryParameter(_serializers, guilds, const FullType(String)),
-      if (before != null) r'before': encodeQueryParameter(_serializers, before, const FullType(String)),
+      if (limit != null)
+        r'limit':
+            encodeQueryParameter(_serializers, limit, const FullType(String)),
+      if (roles != null)
+        r'roles':
+            encodeQueryParameter(_serializers, roles, const FullType(String)),
+      if (everyone != null)
+        r'everyone': encodeQueryParameter(
+            _serializers, everyone, const FullType(String)),
+      if (guilds != null)
+        r'guilds':
+            encodeQueryParameter(_serializers, guilds, const FullType(String)),
+      if (before != null)
+        r'before':
+            encodeQueryParameter(_serializers, before, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -2670,11 +2771,13 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(MessageResponseSchema)]),
-      ) as BuiltList<MessageResponseSchema>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType:
+                  const FullType(BuiltList, [FullType(MessageResponseSchema)]),
+            ) as BuiltList<MessageResponseSchema>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -2710,7 +2813,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<ChannelResponse>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<ChannelResponse>>> listPrivateChannels({ 
+  Future<Response<BuiltList<ChannelResponse>>> listPrivateChannels({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -2731,7 +2834,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -2755,11 +2859,13 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(ChannelResponse)]),
-      ) as BuiltList<ChannelResponse>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType:
+                  const FullType(BuiltList, [FullType(ChannelResponse)]),
+            ) as BuiltList<ChannelResponse>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -2795,7 +2901,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [PushSubscriptionsListResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<PushSubscriptionsListResponse>> listPushSubscriptions({ 
+  Future<Response<PushSubscriptionsListResponse>> listPushSubscriptions({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -2816,7 +2922,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -2840,11 +2947,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PushSubscriptionsListResponse),
-      ) as PushSubscriptionsListResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(PushSubscriptionsListResponse),
+            ) as PushSubscriptionsListResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -2871,7 +2979,7 @@ class UsersApi {
   /// Retrieves all messages saved by the current user. Messages are saved privately for easy reference. Returns paginated list of saved messages with metadata.
   ///
   /// Parameters:
-  /// * [limit] 
+  /// * [limit]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -2881,7 +2989,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<SavedMessageEntryResponse>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<SavedMessageEntryResponse>>> listSavedMessages({ 
+  Future<Response<BuiltList<SavedMessageEntryResponse>>> listSavedMessages({
     String? limit,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -2903,7 +3011,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -2916,7 +3025,9 @@ class UsersApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (limit != null) r'limit': encodeQueryParameter(_serializers, limit, const FullType(String)),
+      if (limit != null)
+        r'limit':
+            encodeQueryParameter(_serializers, limit, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -2932,11 +3043,13 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(SavedMessageEntryResponse)]),
-      ) as BuiltList<SavedMessageEntryResponse>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(
+                  BuiltList, [FullType(SavedMessageEntryResponse)]),
+            ) as BuiltList<SavedMessageEntryResponse>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -2972,7 +3085,8 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<ScheduledMessageResponseSchema>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<ScheduledMessageResponseSchema>>> listScheduledMessages({ 
+  Future<Response<BuiltList<ScheduledMessageResponseSchema>>>
+      listScheduledMessages({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -2993,7 +3107,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -3017,11 +3132,13 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(ScheduledMessageResponseSchema)]),
-      ) as BuiltList<ScheduledMessageResponseSchema>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(
+                  BuiltList, [FullType(ScheduledMessageResponseSchema)]),
+            ) as BuiltList<ScheduledMessageResponseSchema>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -3057,7 +3174,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [SudoMfaMethodsResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<SudoMfaMethodsResponse>> listSudoMfaMethods({ 
+  Future<Response<SudoMfaMethodsResponse>> listSudoMfaMethods({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -3078,7 +3195,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -3102,11 +3220,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(SudoMfaMethodsResponse),
-      ) as SudoMfaMethodsResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(SudoMfaMethodsResponse),
+            ) as SudoMfaMethodsResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -3142,7 +3261,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<GiftCodeMetadataResponse>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<GiftCodeMetadataResponse>>> listUserGifts({ 
+  Future<Response<BuiltList<GiftCodeMetadataResponse>>> listUserGifts({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -3163,7 +3282,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -3187,11 +3307,13 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(GiftCodeMetadataResponse)]),
-      ) as BuiltList<GiftCodeMetadataResponse>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(
+                  BuiltList, [FullType(GiftCodeMetadataResponse)]),
+            ) as BuiltList<GiftCodeMetadataResponse>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -3227,7 +3349,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<RelationshipResponse>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<RelationshipResponse>>> listUserRelationships({ 
+  Future<Response<BuiltList<RelationshipResponse>>> listUserRelationships({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -3248,7 +3370,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -3272,11 +3395,13 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(RelationshipResponse)]),
-      ) as BuiltList<RelationshipResponse>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType:
+                  const FullType(BuiltList, [FullType(RelationshipResponse)]),
+            ) as BuiltList<RelationshipResponse>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -3312,7 +3437,8 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<WebAuthnCredentialResponse>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<WebAuthnCredentialResponse>>> listWebauthnCredentials({ 
+  Future<Response<BuiltList<WebAuthnCredentialResponse>>>
+      listWebauthnCredentials({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -3333,7 +3459,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -3357,11 +3484,13 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(WebAuthnCredentialResponse)]),
-      ) as BuiltList<WebAuthnCredentialResponse>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(
+                  BuiltList, [FullType(WebAuthnCredentialResponse)]),
+            ) as BuiltList<WebAuthnCredentialResponse>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -3398,7 +3527,7 @@ class UsersApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> pinDirectMessageChannel({ 
+  Future<Response<void>> pinDirectMessageChannel({
     required String channelId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -3407,7 +3536,10 @@ class UsersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/users/@me/channels/{channel_id}/pin'.replaceAll('{' r'channel_id' '}', encodeQueryParameter(_serializers, channelId, const FullType(String)).toString());
+    final _path = r'/users/@me/channels/{channel_id}/pin'.replaceAll(
+        '{' r'channel_id' '}',
+        encodeQueryParameter(_serializers, channelId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
@@ -3420,7 +3552,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -3447,7 +3580,7 @@ class UsersApi {
   /// Preloads and caches messages for multiple channels to improve performance when opening those channels. Returns preloaded message data for the specified channels.
   ///
   /// Parameters:
-  /// * [preloadMessagesRequest] 
+  /// * [preloadMessagesRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -3457,7 +3590,8 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltMap<String, PreloadMessagesResponseValue>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltMap<String, PreloadMessagesResponseValue>>> preloadMessagesForChannels({ 
+  Future<Response<BuiltMap<String, PreloadMessagesResponseValue>>>
+      preloadMessagesForChannels({
     required PreloadMessagesRequest preloadMessagesRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -3479,7 +3613,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -3496,11 +3631,11 @@ class UsersApi {
 
     try {
       const _type = FullType(PreloadMessagesRequest);
-      _bodyData = _serializers.serialize(preloadMessagesRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(preloadMessagesRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -3523,11 +3658,13 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltMap, [FullType(String), FullType(PreloadMessagesResponseValue)]),
-      ) as BuiltMap<String, PreloadMessagesResponseValue>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(BuiltMap,
+                  [FullType(String), FullType(PreloadMessagesResponseValue)]),
+            ) as BuiltMap<String, PreloadMessagesResponseValue>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -3554,7 +3691,7 @@ class UsersApi {
   /// Alternative endpoint to preload and cache messages for multiple channels to improve performance when opening those channels. Returns preloaded message data for the specified channels.
   ///
   /// Parameters:
-  /// * [preloadMessagesRequest] 
+  /// * [preloadMessagesRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -3564,7 +3701,8 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltMap<String, PreloadMessagesResponseValue>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltMap<String, PreloadMessagesResponseValue>>> preloadMessagesForChannelsAlt({ 
+  Future<Response<BuiltMap<String, PreloadMessagesResponseValue>>>
+      preloadMessagesForChannelsAlt({
     required PreloadMessagesRequest preloadMessagesRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -3586,7 +3724,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -3603,11 +3742,11 @@ class UsersApi {
 
     try {
       const _type = FullType(PreloadMessagesRequest);
-      _bodyData = _serializers.serialize(preloadMessagesRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(preloadMessagesRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -3630,11 +3769,13 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltMap, [FullType(String), FullType(PreloadMessagesResponseValue)]),
-      ) as BuiltMap<String, PreloadMessagesResponseValue>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(BuiltMap,
+                  [FullType(String), FullType(PreloadMessagesResponseValue)]),
+            ) as BuiltMap<String, PreloadMessagesResponseValue>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -3661,7 +3802,7 @@ class UsersApi {
   /// Complete registration of a new WebAuthn credential (security key or biometric device). Requires sudo mode verification.
   ///
   /// Parameters:
-  /// * [webAuthnRegisterRequest] 
+  /// * [webAuthnRegisterRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -3671,7 +3812,7 @@ class UsersApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> registerWebauthnCredential({ 
+  Future<Response<void>> registerWebauthnCredential({
     required WebAuthnRegisterRequest webAuthnRegisterRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -3693,7 +3834,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -3710,11 +3852,11 @@ class UsersApi {
 
     try {
       const _type = FullType(WebAuthnRegisterRequest);
-      _bodyData = _serializers.serialize(webAuthnRegisterRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(webAuthnRegisterRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -3740,7 +3882,7 @@ class UsersApi {
   /// Remove the phone number from the current account. Requires sudo mode verification. SMS MFA will be disabled if enabled.
   ///
   /// Parameters:
-  /// * [sudoVerificationSchema] 
+  /// * [sudoVerificationSchema]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -3750,7 +3892,7 @@ class UsersApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> removePhoneFromAccount({ 
+  Future<Response<void>> removePhoneFromAccount({
     required SudoVerificationSchema sudoVerificationSchema,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -3772,7 +3914,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -3789,11 +3932,11 @@ class UsersApi {
 
     try {
       const _type = FullType(SudoVerificationSchema);
-      _bodyData = _serializers.serialize(sudoVerificationSchema, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(sudoVerificationSchema, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -3829,7 +3972,7 @@ class UsersApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> removeRelationship({ 
+  Future<Response<void>> removeRelationship({
     required String userId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -3838,7 +3981,10 @@ class UsersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/users/@me/relationships/{user_id}'.replaceAll('{' r'user_id' '}', encodeQueryParameter(_serializers, userId, const FullType(String)).toString());
+    final _path = r'/users/@me/relationships/{user_id}'.replaceAll(
+        '{' r'user_id' '}',
+        encodeQueryParameter(_serializers, userId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -3851,7 +3997,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -3878,7 +4025,7 @@ class UsersApi {
   /// Starts a dedicated bounced-email recovery flow. Sends a verification code to the replacement email without requiring verification of the old bounced email address.
   ///
   /// Parameters:
-  /// * [emailChangeBouncedRequestNewRequest] 
+  /// * [emailChangeBouncedRequestNewRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -3888,8 +4035,10 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [EmailChangeRequestNewResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<EmailChangeRequestNewResponse>> requestBouncedEmailReplacement({ 
-    required EmailChangeBouncedRequestNewRequest emailChangeBouncedRequestNewRequest,
+  Future<Response<EmailChangeRequestNewResponse>>
+      requestBouncedEmailReplacement({
+    required EmailChangeBouncedRequestNewRequest
+        emailChangeBouncedRequestNewRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -3910,7 +4059,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -3927,11 +4077,11 @@ class UsersApi {
 
     try {
       const _type = FullType(EmailChangeBouncedRequestNewRequest);
-      _bodyData = _serializers.serialize(emailChangeBouncedRequestNewRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(emailChangeBouncedRequestNewRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -3954,11 +4104,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(EmailChangeRequestNewResponse),
-      ) as EmailChangeRequestNewResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(EmailChangeRequestNewResponse),
+            ) as EmailChangeRequestNewResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -3985,7 +4136,7 @@ class UsersApi {
   /// Initiates bulk deletion of all messages sent by the current user. Requires sudo mode verification. The deletion process is asynchronous and may take time to complete. User data remains intact.
   ///
   /// Parameters:
-  /// * [sudoVerificationSchema] 
+  /// * [sudoVerificationSchema]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -3995,7 +4146,7 @@ class UsersApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> requestBulkMessageDeletion({ 
+  Future<Response<void>> requestBulkMessageDeletion({
     required SudoVerificationSchema sudoVerificationSchema,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -4017,7 +4168,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -4034,11 +4186,11 @@ class UsersApi {
 
     try {
       const _type = FullType(SudoVerificationSchema);
-      _bodyData = _serializers.serialize(sudoVerificationSchema, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(sudoVerificationSchema, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -4073,7 +4225,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [HarvestCreationResponseSchema] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<HarvestCreationResponseSchema>> requestDataHarvest({ 
+  Future<Response<HarvestCreationResponseSchema>> requestDataHarvest({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -4094,7 +4246,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -4118,11 +4271,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(HarvestCreationResponseSchema),
-      ) as HarvestCreationResponseSchema;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(HarvestCreationResponseSchema),
+            ) as HarvestCreationResponseSchema;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -4149,7 +4303,7 @@ class UsersApi {
   /// Requests to change email to a new address. Requires proof of original email verification. Sends confirmation code to new email address for verification.
   ///
   /// Parameters:
-  /// * [emailChangeRequestNewRequest] 
+  /// * [emailChangeRequestNewRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -4159,7 +4313,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [EmailChangeRequestNewResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<EmailChangeRequestNewResponse>> requestNewEmailAddress({ 
+  Future<Response<EmailChangeRequestNewResponse>> requestNewEmailAddress({
     required EmailChangeRequestNewRequest emailChangeRequestNewRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -4181,7 +4335,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -4198,11 +4353,11 @@ class UsersApi {
 
     try {
       const _type = FullType(EmailChangeRequestNewRequest);
-      _bodyData = _serializers.serialize(emailChangeRequestNewRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(emailChangeRequestNewRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -4225,11 +4380,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(EmailChangeRequestNewResponse),
-      ) as EmailChangeRequestNewResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(EmailChangeRequestNewResponse),
+            ) as EmailChangeRequestNewResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -4256,7 +4412,7 @@ class UsersApi {
   /// Resends the verification code for the bounced-email recovery flow to the replacement email address.
   ///
   /// Parameters:
-  /// * [emailChangeTicketRequest] 
+  /// * [emailChangeTicketRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -4266,7 +4422,7 @@ class UsersApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> resendBouncedEmailReplacementCode({ 
+  Future<Response<void>> resendBouncedEmailReplacementCode({
     required EmailChangeTicketRequest emailChangeTicketRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -4288,7 +4444,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -4305,11 +4462,11 @@ class UsersApi {
 
     try {
       const _type = FullType(EmailChangeTicketRequest);
-      _bodyData = _serializers.serialize(emailChangeTicketRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(emailChangeTicketRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -4335,7 +4492,7 @@ class UsersApi {
   /// Resends a confirmation code to the new email address during the email change process. Use this if the new email confirmation was not received. Requires valid email change ticket.
   ///
   /// Parameters:
-  /// * [emailChangeTicketRequest] 
+  /// * [emailChangeTicketRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -4345,7 +4502,7 @@ class UsersApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> resendNewEmailConfirmation({ 
+  Future<Response<void>> resendNewEmailConfirmation({
     required EmailChangeTicketRequest emailChangeTicketRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -4367,7 +4524,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -4384,11 +4542,11 @@ class UsersApi {
 
     try {
       const _type = FullType(EmailChangeTicketRequest);
-      _bodyData = _serializers.serialize(emailChangeTicketRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(emailChangeTicketRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -4414,7 +4572,7 @@ class UsersApi {
   /// Resends a confirmation code to the user&#39;s original email address during the email change process. Use this if the original confirmation email was not received. Requires valid email change ticket.
   ///
   /// Parameters:
-  /// * [emailChangeTicketRequest] 
+  /// * [emailChangeTicketRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -4424,7 +4582,7 @@ class UsersApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> resendOriginalEmailConfirmation({ 
+  Future<Response<void>> resendOriginalEmailConfirmation({
     required EmailChangeTicketRequest emailChangeTicketRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -4446,7 +4604,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -4463,11 +4622,11 @@ class UsersApi {
 
     try {
       const _type = FullType(EmailChangeTicketRequest);
-      _bodyData = _serializers.serialize(emailChangeTicketRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(emailChangeTicketRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -4493,7 +4652,7 @@ class UsersApi {
   /// Resends the verification code for a password change. Use if the original code was not received. Requires a valid password change ticket.
   ///
   /// Parameters:
-  /// * [passwordChangeTicketRequest] 
+  /// * [passwordChangeTicketRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -4503,7 +4662,7 @@ class UsersApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> resendPasswordChangeCode({ 
+  Future<Response<void>> resendPasswordChangeCode({
     required PasswordChangeTicketRequest passwordChangeTicketRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -4525,7 +4684,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -4542,11 +4702,11 @@ class UsersApi {
 
     try {
       const _type = FullType(PasswordChangeTicketRequest);
-      _bodyData = _serializers.serialize(passwordChangeTicketRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(passwordChangeTicketRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -4581,7 +4741,7 @@ class UsersApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> resetCurrentUserPremiumState({ 
+  Future<Response<void>> resetCurrentUserPremiumState({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -4602,7 +4762,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -4629,7 +4790,7 @@ class UsersApi {
   /// Saves a message for the current user. Saved messages can be accessed later from the saved messages list. Messages are saved privately.
   ///
   /// Parameters:
-  /// * [saveMessageRequest] 
+  /// * [saveMessageRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -4639,7 +4800,7 @@ class UsersApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> saveMessage({ 
+  Future<Response<void>> saveMessage({
     required SaveMessageRequest saveMessageRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -4661,7 +4822,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -4678,11 +4840,11 @@ class UsersApi {
 
     try {
       const _type = FullType(SaveMessageRequest);
-      _bodyData = _serializers.serialize(saveMessageRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(saveMessageRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -4718,7 +4880,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [RelationshipResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<RelationshipResponse>> sendFriendRequest({ 
+  Future<Response<RelationshipResponse>> sendFriendRequest({
     required String userId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -4727,7 +4889,10 @@ class UsersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/users/@me/relationships/{user_id}'.replaceAll('{' r'user_id' '}', encodeQueryParameter(_serializers, userId, const FullType(String)).toString());
+    final _path = r'/users/@me/relationships/{user_id}'.replaceAll(
+        '{' r'user_id' '}',
+        encodeQueryParameter(_serializers, userId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -4740,7 +4905,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -4764,11 +4930,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(RelationshipResponse),
-      ) as RelationshipResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(RelationshipResponse),
+            ) as RelationshipResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -4795,7 +4962,7 @@ class UsersApi {
   /// Sends a friend request to a user identified by username tag (username#discriminator). Returns the new relationship object. Can fail if user not found or request already sent.
   ///
   /// Parameters:
-  /// * [friendRequestByTagRequest] 
+  /// * [friendRequestByTagRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -4805,7 +4972,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [RelationshipResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<RelationshipResponse>> sendFriendRequestByTag({ 
+  Future<Response<RelationshipResponse>> sendFriendRequestByTag({
     required FriendRequestByTagRequest friendRequestByTagRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -4827,7 +4994,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -4844,11 +5012,11 @@ class UsersApi {
 
     try {
       const _type = FullType(FriendRequestByTagRequest);
-      _bodyData = _serializers.serialize(friendRequestByTagRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(friendRequestByTagRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -4871,11 +5039,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(RelationshipResponse),
-      ) as RelationshipResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(RelationshipResponse),
+            ) as RelationshipResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -4902,7 +5071,7 @@ class UsersApi {
   /// Request a verification code to be sent via SMS to the provided phone number. Requires authentication.
   ///
   /// Parameters:
-  /// * [phoneSendVerificationRequest] 
+  /// * [phoneSendVerificationRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -4912,7 +5081,7 @@ class UsersApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> sendPhoneVerificationCode({ 
+  Future<Response<void>> sendPhoneVerificationCode({
     required PhoneSendVerificationRequest phoneSendVerificationRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -4934,7 +5103,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -4951,11 +5121,11 @@ class UsersApi {
 
     try {
       const _type = FullType(PhoneSendVerificationRequest);
-      _bodyData = _serializers.serialize(phoneSendVerificationRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(phoneSendVerificationRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -4990,7 +5160,7 @@ class UsersApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> sendSudoSmsCode({ 
+  Future<Response<void>> sendSudoSmsCode({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -5011,7 +5181,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -5039,7 +5210,7 @@ class UsersApi {
   ///
   /// Parameters:
   /// * [targetId] - The target id
-  /// * [userNoteUpdateRequest] 
+  /// * [userNoteUpdateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -5049,7 +5220,7 @@ class UsersApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> setNoteOnUser({ 
+  Future<Response<void>> setNoteOnUser({
     required String targetId,
     required UserNoteUpdateRequest userNoteUpdateRequest,
     CancelToken? cancelToken,
@@ -5059,7 +5230,10 @@ class UsersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/users/@me/notes/{target_id}'.replaceAll('{' r'target_id' '}', encodeQueryParameter(_serializers, targetId, const FullType(String)).toString());
+    final _path = r'/users/@me/notes/{target_id}'.replaceAll(
+        '{' r'target_id' '}',
+        encodeQueryParameter(_serializers, targetId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
@@ -5072,7 +5246,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -5089,11 +5264,11 @@ class UsersApi {
 
     try {
       const _type = FullType(UserNoteUpdateRequest);
-      _bodyData = _serializers.serialize(userNoteUpdateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(userNoteUpdateRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -5119,7 +5294,7 @@ class UsersApi {
   /// Initiates an email change process. Generates a ticket for verifying the original email address before requesting a new email. Returns ticket for use in subsequent email change steps.
   ///
   /// Parameters:
-  /// * [body] 
+  /// * [body]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -5129,7 +5304,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [EmailChangeStartResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<EmailChangeStartResponse>> startEmailChange({ 
+  Future<Response<EmailChangeStartResponse>> startEmailChange({
     required JsonObject body,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -5151,7 +5326,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -5168,10 +5344,9 @@ class UsersApi {
 
     try {
       _bodyData = body;
-
-    } catch(error, stackTrace) {
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -5194,11 +5369,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(EmailChangeStartResponse),
-      ) as EmailChangeStartResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(EmailChangeStartResponse),
+            ) as EmailChangeStartResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -5225,7 +5401,7 @@ class UsersApi {
   /// Initiates a password change process. Sends a verification code to the user&#39;s email address. Returns a ticket for use in subsequent password change steps.
   ///
   /// Parameters:
-  /// * [body] 
+  /// * [body]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -5235,7 +5411,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [PasswordChangeStartResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<PasswordChangeStartResponse>> startPasswordChange({ 
+  Future<Response<PasswordChangeStartResponse>> startPasswordChange({
     required JsonObject body,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -5257,7 +5433,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -5274,10 +5451,9 @@ class UsersApi {
 
     try {
       _bodyData = body;
-
-    } catch(error, stackTrace) {
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -5300,11 +5476,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PasswordChangeStartResponse),
-      ) as PasswordChangeStartResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(PasswordChangeStartResponse),
+            ) as PasswordChangeStartResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -5331,7 +5508,7 @@ class UsersApi {
   /// Registers a new push notification subscription for the current user. Takes push endpoint and encryption keys from a Web Push API subscription. Returns subscription ID for future reference.
   ///
   /// Parameters:
-  /// * [pushSubscribeRequest] 
+  /// * [pushSubscribeRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -5341,7 +5518,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [PushSubscribeResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<PushSubscribeResponse>> subscribeToPushNotifications({ 
+  Future<Response<PushSubscribeResponse>> subscribeToPushNotifications({
     required PushSubscribeRequest pushSubscribeRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -5363,7 +5540,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -5380,11 +5558,11 @@ class UsersApi {
 
     try {
       const _type = FullType(PushSubscribeRequest);
-      _bodyData = _serializers.serialize(pushSubscribeRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(pushSubscribeRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -5407,11 +5585,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PushSubscribeResponse),
-      ) as PushSubscribeResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(PushSubscribeResponse),
+            ) as PushSubscribeResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -5447,7 +5626,7 @@ class UsersApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> testBulkMessageDeletion({ 
+  Future<Response<void>> testBulkMessageDeletion({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -5468,7 +5647,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -5505,7 +5685,7 @@ class UsersApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> unpinDirectMessageChannel({ 
+  Future<Response<void>> unpinDirectMessageChannel({
     required String channelId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -5514,7 +5694,10 @@ class UsersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/users/@me/channels/{channel_id}/pin'.replaceAll('{' r'channel_id' '}', encodeQueryParameter(_serializers, channelId, const FullType(String)).toString());
+    final _path = r'/users/@me/channels/{channel_id}/pin'.replaceAll(
+        '{' r'channel_id' '}',
+        encodeQueryParameter(_serializers, channelId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -5527,7 +5710,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -5564,7 +5748,7 @@ class UsersApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> unsaveMessage({ 
+  Future<Response<void>> unsaveMessage({
     required String messageId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -5573,7 +5757,10 @@ class UsersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/users/@me/saved-messages/{message_id}'.replaceAll('{' r'message_id' '}', encodeQueryParameter(_serializers, messageId, const FullType(String)).toString());
+    final _path = r'/users/@me/saved-messages/{message_id}'.replaceAll(
+        '{' r'message_id' '}',
+        encodeQueryParameter(_serializers, messageId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -5586,7 +5773,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -5623,7 +5811,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [SuccessResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<SuccessResponse>> unsubscribeFromPushNotifications({ 
+  Future<Response<SuccessResponse>> unsubscribeFromPushNotifications({
     required String subscriptionId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -5632,7 +5820,11 @@ class UsersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/users/@me/push/subscriptions/{subscription_id}'.replaceAll('{' r'subscription_id' '}', encodeQueryParameter(_serializers, subscriptionId, const FullType(String)).toString());
+    final _path = r'/users/@me/push/subscriptions/{subscription_id}'.replaceAll(
+        '{' r'subscription_id' '}',
+        encodeQueryParameter(
+                _serializers, subscriptionId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -5645,7 +5837,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -5669,11 +5862,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(SuccessResponse),
-      ) as SuccessResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(SuccessResponse),
+            ) as SuccessResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -5700,7 +5894,7 @@ class UsersApi {
   /// Updates the authenticated user&#39;s profile information such as username, avatar, and bio. Requires sudo mode verification for security-sensitive changes. Only default users can modify their own profile.
   ///
   /// Parameters:
-  /// * [userUpdateWithVerificationRequest] 
+  /// * [userUpdateWithVerificationRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -5710,8 +5904,9 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [UserPrivateResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UserPrivateResponse>> updateCurrentUser({ 
-    required UserUpdateWithVerificationRequest userUpdateWithVerificationRequest,
+  Future<Response<UserPrivateResponse>> updateCurrentUser({
+    required UserUpdateWithVerificationRequest
+        userUpdateWithVerificationRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -5732,7 +5927,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -5749,11 +5945,11 @@ class UsersApi {
 
     try {
       const _type = FullType(UserUpdateWithVerificationRequest);
-      _bodyData = _serializers.serialize(userUpdateWithVerificationRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(userUpdateWithVerificationRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -5776,11 +5972,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(UserPrivateResponse),
-      ) as UserPrivateResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(UserPrivateResponse),
+            ) as UserPrivateResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -5807,7 +6004,7 @@ class UsersApi {
   /// Updates the current user&#39;s settings and preferences. Allows modification of notification settings, privacy options, display preferences, and other user-configurable options. Returns updated settings.
   ///
   /// Parameters:
-  /// * [userSettingsUpdateRequest] 
+  /// * [userSettingsUpdateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -5817,7 +6014,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [UserSettingsResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UserSettingsResponse>> updateCurrentUserSettings({ 
+  Future<Response<UserSettingsResponse>> updateCurrentUserSettings({
     required UserSettingsUpdateRequest userSettingsUpdateRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -5839,7 +6036,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -5856,11 +6054,11 @@ class UsersApi {
 
     try {
       const _type = FullType(UserSettingsUpdateRequest);
-      _bodyData = _serializers.serialize(userSettingsUpdateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(userSettingsUpdateRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -5883,11 +6081,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(UserSettingsResponse),
-      ) as UserSettingsResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(UserSettingsResponse),
+            ) as UserSettingsResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -5914,7 +6113,7 @@ class UsersApi {
   /// Updates the user&#39;s notification settings for direct messages and group DMs. Controls how DM notifications are handled.
   ///
   /// Parameters:
-  /// * [userGuildSettingsUpdateRequest] 
+  /// * [userGuildSettingsUpdateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -5924,7 +6123,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [UserGuildSettingsResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UserGuildSettingsResponse>> updateDmNotificationSettings({ 
+  Future<Response<UserGuildSettingsResponse>> updateDmNotificationSettings({
     required UserGuildSettingsUpdateRequest userGuildSettingsUpdateRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -5946,7 +6145,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -5963,11 +6163,11 @@ class UsersApi {
 
     try {
       const _type = FullType(UserGuildSettingsUpdateRequest);
-      _bodyData = _serializers.serialize(userGuildSettingsUpdateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(userGuildSettingsUpdateRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -5990,11 +6190,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(UserGuildSettingsResponse),
-      ) as UserGuildSettingsResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(UserGuildSettingsResponse),
+            ) as UserGuildSettingsResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -6022,7 +6223,7 @@ class UsersApi {
   ///
   /// Parameters:
   /// * [guildId] - The ID of the guild
-  /// * [userGuildSettingsUpdateRequest] 
+  /// * [userGuildSettingsUpdateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -6032,7 +6233,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [UserGuildSettingsResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UserGuildSettingsResponse>> updateGuildSettingsForUser({ 
+  Future<Response<UserGuildSettingsResponse>> updateGuildSettingsForUser({
     required String guildId,
     required UserGuildSettingsUpdateRequest userGuildSettingsUpdateRequest,
     CancelToken? cancelToken,
@@ -6042,7 +6243,10 @@ class UsersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/users/@me/guilds/{guild_id}/settings'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/users/@me/guilds/{guild_id}/settings'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -6055,7 +6259,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -6072,11 +6277,11 @@ class UsersApi {
 
     try {
       const _type = FullType(UserGuildSettingsUpdateRequest);
-      _bodyData = _serializers.serialize(userGuildSettingsUpdateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(userGuildSettingsUpdateRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -6099,11 +6304,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(UserGuildSettingsResponse),
-      ) as UserGuildSettingsResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(UserGuildSettingsResponse),
+            ) as UserGuildSettingsResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -6131,7 +6337,7 @@ class UsersApi {
   ///
   /// Parameters:
   /// * [userId] - The ID of the user
-  /// * [relationshipNicknameUpdateRequest] 
+  /// * [relationshipNicknameUpdateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -6141,9 +6347,10 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [RelationshipResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<RelationshipResponse>> updateRelationshipNickname({ 
+  Future<Response<RelationshipResponse>> updateRelationshipNickname({
     required String userId,
-    required RelationshipNicknameUpdateRequest relationshipNicknameUpdateRequest,
+    required RelationshipNicknameUpdateRequest
+        relationshipNicknameUpdateRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -6151,7 +6358,10 @@ class UsersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/users/@me/relationships/{user_id}'.replaceAll('{' r'user_id' '}', encodeQueryParameter(_serializers, userId, const FullType(String)).toString());
+    final _path = r'/users/@me/relationships/{user_id}'.replaceAll(
+        '{' r'user_id' '}',
+        encodeQueryParameter(_serializers, userId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -6164,7 +6374,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -6181,11 +6392,11 @@ class UsersApi {
 
     try {
       const _type = FullType(RelationshipNicknameUpdateRequest);
-      _bodyData = _serializers.serialize(relationshipNicknameUpdateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(relationshipNicknameUpdateRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -6208,11 +6419,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(RelationshipResponse),
-      ) as RelationshipResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(RelationshipResponse),
+            ) as RelationshipResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -6249,7 +6461,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [ScheduledMessageResponseSchema] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ScheduledMessageResponseSchema>> updateScheduledMessage({ 
+  Future<Response<ScheduledMessageResponseSchema>> updateScheduledMessage({
     required String scheduledMessageId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -6258,7 +6470,12 @@ class UsersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/users/@me/scheduled-messages/{scheduled_message_id}'.replaceAll('{' r'scheduled_message_id' '}', encodeQueryParameter(_serializers, scheduledMessageId, const FullType(String)).toString());
+    final _path = r'/users/@me/scheduled-messages/{scheduled_message_id}'
+        .replaceAll(
+            '{' r'scheduled_message_id' '}',
+            encodeQueryParameter(
+                    _serializers, scheduledMessageId, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -6271,7 +6488,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -6295,11 +6513,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ScheduledMessageResponseSchema),
-      ) as ScheduledMessageResponseSchema;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(ScheduledMessageResponseSchema),
+            ) as ScheduledMessageResponseSchema;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -6327,7 +6546,7 @@ class UsersApi {
   ///
   /// Parameters:
   /// * [credentialId] - The credential id
-  /// * [webAuthnCredentialUpdateRequest] 
+  /// * [webAuthnCredentialUpdateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -6337,7 +6556,7 @@ class UsersApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> updateWebauthnCredential({ 
+  Future<Response<void>> updateWebauthnCredential({
     required String credentialId,
     required WebAuthnCredentialUpdateRequest webAuthnCredentialUpdateRequest,
     CancelToken? cancelToken,
@@ -6347,7 +6566,12 @@ class UsersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/users/@me/mfa/webauthn/credentials/{credential_id}'.replaceAll('{' r'credential_id' '}', encodeQueryParameter(_serializers, credentialId, const FullType(String)).toString());
+    final _path = r'/users/@me/mfa/webauthn/credentials/{credential_id}'
+        .replaceAll(
+            '{' r'credential_id' '}',
+            encodeQueryParameter(
+                    _serializers, credentialId, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -6360,7 +6584,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -6377,11 +6602,11 @@ class UsersApi {
 
     try {
       const _type = FullType(WebAuthnCredentialUpdateRequest);
-      _bodyData = _serializers.serialize(webAuthnCredentialUpdateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(webAuthnCredentialUpdateRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -6407,7 +6632,7 @@ class UsersApi {
   /// Completes bounced-email recovery by verifying the replacement email code, updating the account email, and clearing email-related suspicious-activity requirements.
   ///
   /// Parameters:
-  /// * [emailChangeBouncedVerifyNewRequest] 
+  /// * [emailChangeBouncedVerifyNewRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -6417,8 +6642,9 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [UserPrivateResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UserPrivateResponse>> verifyBouncedEmailReplacement({ 
-    required EmailChangeBouncedVerifyNewRequest emailChangeBouncedVerifyNewRequest,
+  Future<Response<UserPrivateResponse>> verifyBouncedEmailReplacement({
+    required EmailChangeBouncedVerifyNewRequest
+        emailChangeBouncedVerifyNewRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -6439,7 +6665,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -6456,11 +6683,11 @@ class UsersApi {
 
     try {
       const _type = FullType(EmailChangeBouncedVerifyNewRequest);
-      _bodyData = _serializers.serialize(emailChangeBouncedVerifyNewRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(emailChangeBouncedVerifyNewRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -6483,11 +6710,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(UserPrivateResponse),
-      ) as UserPrivateResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(UserPrivateResponse),
+            ) as UserPrivateResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -6514,7 +6742,7 @@ class UsersApi {
   /// Completes the email change process by verifying the new email address with a confirmation code. Returns an email token that confirms the email change. After this step, the user may need to re-authenticate.
   ///
   /// Parameters:
-  /// * [emailChangeVerifyNewRequest] 
+  /// * [emailChangeVerifyNewRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -6524,7 +6752,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [EmailTokenResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<EmailTokenResponse>> verifyNewEmailAddress({ 
+  Future<Response<EmailTokenResponse>> verifyNewEmailAddress({
     required EmailChangeVerifyNewRequest emailChangeVerifyNewRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -6546,7 +6774,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -6563,11 +6792,11 @@ class UsersApi {
 
     try {
       const _type = FullType(EmailChangeVerifyNewRequest);
-      _bodyData = _serializers.serialize(emailChangeVerifyNewRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(emailChangeVerifyNewRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -6590,11 +6819,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(EmailTokenResponse),
-      ) as EmailTokenResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(EmailTokenResponse),
+            ) as EmailTokenResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -6621,7 +6851,7 @@ class UsersApi {
   /// Verifies ownership of the original email address by validating a confirmation code sent to that address. Must be completed before requesting a new email address. Returns proof token for use in new email request.
   ///
   /// Parameters:
-  /// * [emailChangeVerifyOriginalRequest] 
+  /// * [emailChangeVerifyOriginalRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -6631,7 +6861,8 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [EmailChangeVerifyOriginalResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<EmailChangeVerifyOriginalResponse>> verifyOriginalEmailAddress({ 
+  Future<Response<EmailChangeVerifyOriginalResponse>>
+      verifyOriginalEmailAddress({
     required EmailChangeVerifyOriginalRequest emailChangeVerifyOriginalRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -6653,7 +6884,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -6670,11 +6902,11 @@ class UsersApi {
 
     try {
       const _type = FullType(EmailChangeVerifyOriginalRequest);
-      _bodyData = _serializers.serialize(emailChangeVerifyOriginalRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(emailChangeVerifyOriginalRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -6697,11 +6929,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(EmailChangeVerifyOriginalResponse),
-      ) as EmailChangeVerifyOriginalResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(EmailChangeVerifyOriginalResponse),
+            ) as EmailChangeVerifyOriginalResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -6728,7 +6961,7 @@ class UsersApi {
   /// Verifies the email code sent during password change. Returns a proof token needed to complete the password change.
   ///
   /// Parameters:
-  /// * [passwordChangeVerifyRequest] 
+  /// * [passwordChangeVerifyRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -6738,7 +6971,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [PasswordChangeVerifyResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<PasswordChangeVerifyResponse>> verifyPasswordChangeCode({ 
+  Future<Response<PasswordChangeVerifyResponse>> verifyPasswordChangeCode({
     required PasswordChangeVerifyRequest passwordChangeVerifyRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -6760,7 +6993,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -6777,11 +7011,11 @@ class UsersApi {
 
     try {
       const _type = FullType(PasswordChangeVerifyRequest);
-      _bodyData = _serializers.serialize(passwordChangeVerifyRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(passwordChangeVerifyRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -6804,11 +7038,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PasswordChangeVerifyResponse),
-      ) as PasswordChangeVerifyResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(PasswordChangeVerifyResponse),
+            ) as PasswordChangeVerifyResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -6835,7 +7070,7 @@ class UsersApi {
   /// Verify a phone number by confirming the SMS verification code. Returns phone verification status.
   ///
   /// Parameters:
-  /// * [phoneVerifyRequest] 
+  /// * [phoneVerifyRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -6845,7 +7080,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [PhoneVerifyResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<PhoneVerifyResponse>> verifyPhoneCode({ 
+  Future<Response<PhoneVerifyResponse>> verifyPhoneCode({
     required PhoneVerifyRequest phoneVerifyRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -6867,7 +7102,8 @@ class UsersApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -6884,11 +7120,11 @@ class UsersApi {
 
     try {
       const _type = FullType(PhoneVerifyRequest);
-      _bodyData = _serializers.serialize(phoneVerifyRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(phoneVerifyRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -6911,11 +7147,12 @@ class UsersApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PhoneVerifyResponse),
-      ) as PhoneVerifyResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(PhoneVerifyResponse),
+            ) as PhoneVerifyResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -6937,5 +7174,4 @@ class UsersApi {
       extra: _response.extra,
     );
   }
-
 }

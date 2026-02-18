@@ -10,20 +10,22 @@ import 'package:built_value/serializer.dart';
 part 'message_author_type.g.dart';
 
 class MessageAuthorType extends EnumClass {
-
   /// The type of author who sent the message
   @BuiltValueEnumConst(wireName: r'user')
   static const MessageAuthorType user = _$user;
+
   /// The type of author who sent the message
   @BuiltValueEnumConst(wireName: r'bot')
   static const MessageAuthorType bot = _$bot;
+
   /// The type of author who sent the message
   @BuiltValueEnumConst(wireName: r'webhook')
   static const MessageAuthorType webhook = _$webhook;
 
-  static Serializer<MessageAuthorType> get serializer => _$messageAuthorTypeSerializer;
+  static Serializer<MessageAuthorType> get serializer =>
+      _$messageAuthorTypeSerializer;
 
-  const MessageAuthorType._(String name): super(name);
+  const MessageAuthorType._(String name) : super(name);
 
   static BuiltSet<MessageAuthorType> get values => _$values;
   static MessageAuthorType valueOf(String name) => _$valueOf(name);
@@ -36,4 +38,3 @@ class MessageAuthorType extends EnumClass {
 ///
 /// Trigger mixin generation by writing a line like this one next to your enum.
 abstract class MessageAuthorTypeMixin = Object with _$MessageAuthorTypeMixin;
-

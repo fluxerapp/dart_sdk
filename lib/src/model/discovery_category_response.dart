@@ -14,7 +14,9 @@ part 'discovery_category_response.g.dart';
 /// * [id] - Category ID
 /// * [name] - Category display name
 @BuiltValue()
-abstract class DiscoveryCategoryResponse implements Built<DiscoveryCategoryResponse, DiscoveryCategoryResponseBuilder> {
+abstract class DiscoveryCategoryResponse
+    implements
+        Built<DiscoveryCategoryResponse, DiscoveryCategoryResponseBuilder> {
   /// Category ID
   @BuiltValueField(wireName: r'id')
   num get id;
@@ -25,18 +27,25 @@ abstract class DiscoveryCategoryResponse implements Built<DiscoveryCategoryRespo
 
   DiscoveryCategoryResponse._();
 
-  factory DiscoveryCategoryResponse([void updates(DiscoveryCategoryResponseBuilder b)]) = _$DiscoveryCategoryResponse;
+  factory DiscoveryCategoryResponse(
+          [void updates(DiscoveryCategoryResponseBuilder b)]) =
+      _$DiscoveryCategoryResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(DiscoveryCategoryResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<DiscoveryCategoryResponse> get serializer => _$DiscoveryCategoryResponseSerializer();
+  static Serializer<DiscoveryCategoryResponse> get serializer =>
+      _$DiscoveryCategoryResponseSerializer();
 }
 
-class _$DiscoveryCategoryResponseSerializer implements PrimitiveSerializer<DiscoveryCategoryResponse> {
+class _$DiscoveryCategoryResponseSerializer
+    implements PrimitiveSerializer<DiscoveryCategoryResponse> {
   @override
-  final Iterable<Type> types = const [DiscoveryCategoryResponse, _$DiscoveryCategoryResponse];
+  final Iterable<Type> types = const [
+    DiscoveryCategoryResponse,
+    _$DiscoveryCategoryResponse
+  ];
 
   @override
   final String wireName = r'DiscoveryCategoryResponse';
@@ -64,7 +73,9 @@ class _$DiscoveryCategoryResponseSerializer implements PrimitiveSerializer<Disco
     DiscoveryCategoryResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +132,3 @@ class _$DiscoveryCategoryResponseSerializer implements PrimitiveSerializer<Disco
     return result.build();
   }
 }
-

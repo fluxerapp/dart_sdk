@@ -14,14 +14,15 @@ part 'user_partial_response.g.dart';
 /// * [id] - The unique identifier (snowflake) for this user
 /// * [username] - The username of the user, not unique across the platform
 /// * [discriminator] - The four-digit discriminator tag of the user
-/// * [globalName] 
-/// * [avatar] 
-/// * [avatarColor] 
+/// * [globalName]
+/// * [avatar]
+/// * [avatarColor]
 /// * [flags] - The public flags on the user account
 /// * [bot] - Whether the user is a bot account
 /// * [system] - Whether the user is an official system user
 @BuiltValue()
-abstract class UserPartialResponse implements Built<UserPartialResponse, UserPartialResponseBuilder> {
+abstract class UserPartialResponse
+    implements Built<UserPartialResponse, UserPartialResponseBuilder> {
   /// The unique identifier (snowflake) for this user
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -57,18 +58,24 @@ abstract class UserPartialResponse implements Built<UserPartialResponse, UserPar
 
   UserPartialResponse._();
 
-  factory UserPartialResponse([void updates(UserPartialResponseBuilder b)]) = _$UserPartialResponse;
+  factory UserPartialResponse([void updates(UserPartialResponseBuilder b)]) =
+      _$UserPartialResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UserPartialResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UserPartialResponse> get serializer => _$UserPartialResponseSerializer();
+  static Serializer<UserPartialResponse> get serializer =>
+      _$UserPartialResponseSerializer();
 }
 
-class _$UserPartialResponseSerializer implements PrimitiveSerializer<UserPartialResponse> {
+class _$UserPartialResponseSerializer
+    implements PrimitiveSerializer<UserPartialResponse> {
   @override
-  final Iterable<Type> types = const [UserPartialResponse, _$UserPartialResponse];
+  final Iterable<Type> types = const [
+    UserPartialResponse,
+    _$UserPartialResponse
+  ];
 
   @override
   final String wireName = r'UserPartialResponse';
@@ -94,15 +101,19 @@ class _$UserPartialResponseSerializer implements PrimitiveSerializer<UserPartial
       specifiedType: const FullType(String),
     );
     yield r'global_name';
-    yield object.globalName == null ? null : serializers.serialize(
-      object.globalName,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.globalName == null
+        ? null
+        : serializers.serialize(
+            object.globalName,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'avatar';
-    yield object.avatar == null ? null : serializers.serialize(
-      object.avatar,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.avatar == null
+        ? null
+        : serializers.serialize(
+            object.avatar,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'avatar_color';
     yield serializers.serialize(
       object.avatarColor,
@@ -135,7 +146,9 @@ class _$UserPartialResponseSerializer implements PrimitiveSerializer<UserPartial
     UserPartialResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -243,4 +256,3 @@ class _$UserPartialResponseSerializer implements PrimitiveSerializer<UserPartial
     return result.build();
   }
 }
-

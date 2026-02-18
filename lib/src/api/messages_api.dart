@@ -4,20 +4,16 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:built_collection/built_collection.dart';
 import 'package:fluxer_dart/src/api_util.dart';
 import 'package:fluxer_dart/src/model/bulk_delete_messages_request.dart';
-import 'package:fluxer_dart/src/model/error.dart';
-import 'package:fluxer_dart/src/model/get_well_known_fluxer429_response.dart';
 import 'package:fluxer_dart/src/model/message_ack_request.dart';
 import 'package:fluxer_dart/src/model/message_response_schema.dart';
 
 class MessagesApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -30,7 +26,7 @@ class MessagesApi {
   /// Parameters:
   /// * [channelId] - The ID of the channel
   /// * [messageId] - The ID of the message
-  /// * [messageAckRequest] 
+  /// * [messageAckRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -40,7 +36,7 @@ class MessagesApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> acknowledgeMessage({ 
+  Future<Response<void>> acknowledgeMessage({
     required String channelId,
     required String messageId,
     required MessageAckRequest messageAckRequest,
@@ -51,7 +47,17 @@ class MessagesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/channels/{channel_id}/messages/{message_id}/ack'.replaceAll('{' r'channel_id' '}', encodeQueryParameter(_serializers, channelId, const FullType(String)).toString()).replaceAll('{' r'message_id' '}', encodeQueryParameter(_serializers, messageId, const FullType(String)).toString());
+    final _path = r'/channels/{channel_id}/messages/{message_id}/ack'
+        .replaceAll(
+            '{' r'channel_id' '}',
+            encodeQueryParameter(
+                    _serializers, channelId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'message_id' '}',
+            encodeQueryParameter(
+                    _serializers, messageId, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -64,7 +70,8 @@ class MessagesApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -81,11 +88,11 @@ class MessagesApi {
 
     try {
       const _type = FullType(MessageAckRequest);
-      _bodyData = _serializers.serialize(messageAckRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(messageAckRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -112,7 +119,7 @@ class MessagesApi {
   ///
   /// Parameters:
   /// * [channelId] - The ID of the channel
-  /// * [bulkDeleteMessagesRequest] 
+  /// * [bulkDeleteMessagesRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -122,7 +129,7 @@ class MessagesApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> bulkDeleteMessages({ 
+  Future<Response<void>> bulkDeleteMessages({
     required String channelId,
     required BulkDeleteMessagesRequest bulkDeleteMessagesRequest,
     CancelToken? cancelToken,
@@ -132,7 +139,10 @@ class MessagesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/channels/{channel_id}/messages/bulk-delete'.replaceAll('{' r'channel_id' '}', encodeQueryParameter(_serializers, channelId, const FullType(String)).toString());
+    final _path = r'/channels/{channel_id}/messages/bulk-delete'.replaceAll(
+        '{' r'channel_id' '}',
+        encodeQueryParameter(_serializers, channelId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -145,7 +155,8 @@ class MessagesApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -162,11 +173,11 @@ class MessagesApi {
 
     try {
       const _type = FullType(BulkDeleteMessagesRequest);
-      _bodyData = _serializers.serialize(bulkDeleteMessagesRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(bulkDeleteMessagesRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -202,7 +213,7 @@ class MessagesApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> clearChannelReadState({ 
+  Future<Response<void>> clearChannelReadState({
     required String channelId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -211,7 +222,10 @@ class MessagesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/channels/{channel_id}/messages/ack'.replaceAll('{' r'channel_id' '}', encodeQueryParameter(_serializers, channelId, const FullType(String)).toString());
+    final _path = r'/channels/{channel_id}/messages/ack'.replaceAll(
+        '{' r'channel_id' '}',
+        encodeQueryParameter(_serializers, channelId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -224,7 +238,8 @@ class MessagesApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -262,7 +277,7 @@ class MessagesApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> deleteMessage2({ 
+  Future<Response<void>> deleteMessage2({
     required String channelId,
     required String messageId,
     CancelToken? cancelToken,
@@ -272,7 +287,17 @@ class MessagesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/channels/{channel_id}/messages/{message_id}'.replaceAll('{' r'channel_id' '}', encodeQueryParameter(_serializers, channelId, const FullType(String)).toString()).replaceAll('{' r'message_id' '}', encodeQueryParameter(_serializers, messageId, const FullType(String)).toString());
+    final _path = r'/channels/{channel_id}/messages/{message_id}'
+        .replaceAll(
+            '{' r'channel_id' '}',
+            encodeQueryParameter(
+                    _serializers, channelId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'message_id' '}',
+            encodeQueryParameter(
+                    _serializers, messageId, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -285,7 +310,8 @@ class MessagesApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -324,7 +350,7 @@ class MessagesApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> deleteMessageAttachment({ 
+  Future<Response<void>> deleteMessageAttachment({
     required String channelId,
     required String messageId,
     required String attachmentId,
@@ -335,7 +361,23 @@ class MessagesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/channels/{channel_id}/messages/{message_id}/attachments/{attachment_id}'.replaceAll('{' r'channel_id' '}', encodeQueryParameter(_serializers, channelId, const FullType(String)).toString()).replaceAll('{' r'message_id' '}', encodeQueryParameter(_serializers, messageId, const FullType(String)).toString()).replaceAll('{' r'attachment_id' '}', encodeQueryParameter(_serializers, attachmentId, const FullType(String)).toString());
+    final _path =
+        r'/channels/{channel_id}/messages/{message_id}/attachments/{attachment_id}'
+            .replaceAll(
+                '{' r'channel_id' '}',
+                encodeQueryParameter(
+                        _serializers, channelId, const FullType(String))
+                    .toString())
+            .replaceAll(
+                '{' r'message_id' '}',
+                encodeQueryParameter(
+                        _serializers, messageId, const FullType(String))
+                    .toString())
+            .replaceAll(
+                '{' r'attachment_id' '}',
+                encodeQueryParameter(
+                        _serializers, attachmentId, const FullType(String))
+                    .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -348,7 +390,8 @@ class MessagesApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -386,7 +429,7 @@ class MessagesApi {
   ///
   /// Returns a [Future] containing a [Response] with a [MessageResponseSchema] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<MessageResponseSchema>> editMessage({ 
+  Future<Response<MessageResponseSchema>> editMessage({
     required String channelId,
     required String messageId,
     CancelToken? cancelToken,
@@ -396,7 +439,17 @@ class MessagesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/channels/{channel_id}/messages/{message_id}'.replaceAll('{' r'channel_id' '}', encodeQueryParameter(_serializers, channelId, const FullType(String)).toString()).replaceAll('{' r'message_id' '}', encodeQueryParameter(_serializers, messageId, const FullType(String)).toString());
+    final _path = r'/channels/{channel_id}/messages/{message_id}'
+        .replaceAll(
+            '{' r'channel_id' '}',
+            encodeQueryParameter(
+                    _serializers, channelId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'message_id' '}',
+            encodeQueryParameter(
+                    _serializers, messageId, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -409,7 +462,8 @@ class MessagesApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -433,11 +487,12 @@ class MessagesApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(MessageResponseSchema),
-      ) as MessageResponseSchema;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(MessageResponseSchema),
+            ) as MessageResponseSchema;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -475,7 +530,7 @@ class MessagesApi {
   ///
   /// Returns a [Future] containing a [Response] with a [MessageResponseSchema] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<MessageResponseSchema>> getMessage({ 
+  Future<Response<MessageResponseSchema>> getMessage({
     required String channelId,
     required String messageId,
     CancelToken? cancelToken,
@@ -485,7 +540,17 @@ class MessagesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/channels/{channel_id}/messages/{message_id}'.replaceAll('{' r'channel_id' '}', encodeQueryParameter(_serializers, channelId, const FullType(String)).toString()).replaceAll('{' r'message_id' '}', encodeQueryParameter(_serializers, messageId, const FullType(String)).toString());
+    final _path = r'/channels/{channel_id}/messages/{message_id}'
+        .replaceAll(
+            '{' r'channel_id' '}',
+            encodeQueryParameter(
+                    _serializers, channelId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'message_id' '}',
+            encodeQueryParameter(
+                    _serializers, messageId, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -498,7 +563,8 @@ class MessagesApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -522,11 +588,12 @@ class MessagesApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(MessageResponseSchema),
-      ) as MessageResponseSchema;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(MessageResponseSchema),
+            ) as MessageResponseSchema;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -563,7 +630,7 @@ class MessagesApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> indicateTyping({ 
+  Future<Response<void>> indicateTyping({
     required String channelId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -572,7 +639,10 @@ class MessagesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/channels/{channel_id}/typing'.replaceAll('{' r'channel_id' '}', encodeQueryParameter(_serializers, channelId, const FullType(String)).toString());
+    final _path = r'/channels/{channel_id}/typing'.replaceAll(
+        '{' r'channel_id' '}',
+        encodeQueryParameter(_serializers, channelId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -585,7 +655,8 @@ class MessagesApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -613,10 +684,10 @@ class MessagesApi {
   ///
   /// Parameters:
   /// * [channelId] - The ID of the channel
-  /// * [limit] 
-  /// * [before] 
-  /// * [after] 
-  /// * [around] 
+  /// * [limit]
+  /// * [before]
+  /// * [after]
+  /// * [around]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -626,7 +697,7 @@ class MessagesApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<MessageResponseSchema>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<MessageResponseSchema>>> listMessages({ 
+  Future<Response<BuiltList<MessageResponseSchema>>> listMessages({
     required String channelId,
     String? limit,
     String? before,
@@ -639,7 +710,10 @@ class MessagesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/channels/{channel_id}/messages'.replaceAll('{' r'channel_id' '}', encodeQueryParameter(_serializers, channelId, const FullType(String)).toString());
+    final _path = r'/channels/{channel_id}/messages'.replaceAll(
+        '{' r'channel_id' '}',
+        encodeQueryParameter(_serializers, channelId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -652,7 +726,8 @@ class MessagesApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -665,10 +740,18 @@ class MessagesApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (limit != null) r'limit': encodeQueryParameter(_serializers, limit, const FullType(String)),
-      if (before != null) r'before': encodeQueryParameter(_serializers, before, const FullType(String)),
-      if (after != null) r'after': encodeQueryParameter(_serializers, after, const FullType(String)),
-      if (around != null) r'around': encodeQueryParameter(_serializers, around, const FullType(String)),
+      if (limit != null)
+        r'limit':
+            encodeQueryParameter(_serializers, limit, const FullType(String)),
+      if (before != null)
+        r'before':
+            encodeQueryParameter(_serializers, before, const FullType(String)),
+      if (after != null)
+        r'after':
+            encodeQueryParameter(_serializers, after, const FullType(String)),
+      if (around != null)
+        r'around':
+            encodeQueryParameter(_serializers, around, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -684,11 +767,13 @@ class MessagesApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(MessageResponseSchema)]),
-      ) as BuiltList<MessageResponseSchema>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType:
+                  const FullType(BuiltList, [FullType(MessageResponseSchema)]),
+            ) as BuiltList<MessageResponseSchema>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -725,7 +810,7 @@ class MessagesApi {
   ///
   /// Returns a [Future] containing a [Response] with a [MessageResponseSchema] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<MessageResponseSchema>> sendMessage({ 
+  Future<Response<MessageResponseSchema>> sendMessage({
     required String channelId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -734,7 +819,10 @@ class MessagesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/channels/{channel_id}/messages'.replaceAll('{' r'channel_id' '}', encodeQueryParameter(_serializers, channelId, const FullType(String)).toString());
+    final _path = r'/channels/{channel_id}/messages'.replaceAll(
+        '{' r'channel_id' '}',
+        encodeQueryParameter(_serializers, channelId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -747,7 +835,8 @@ class MessagesApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -771,11 +860,12 @@ class MessagesApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(MessageResponseSchema),
-      ) as MessageResponseSchema;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(MessageResponseSchema),
+            ) as MessageResponseSchema;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -797,5 +887,4 @@ class MessagesApi {
       extra: _response.extra,
     );
   }
-
 }

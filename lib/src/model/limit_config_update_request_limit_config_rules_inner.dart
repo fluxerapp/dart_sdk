@@ -15,9 +15,12 @@ part 'limit_config_update_request_limit_config_rules_inner.g.dart';
 /// Properties:
 /// * [id] - Unique rule identifier
 /// * [limits] - Per-limit key values
-/// * [filters] 
+/// * [filters]
 @BuiltValue()
-abstract class LimitConfigUpdateRequestLimitConfigRulesInner implements Built<LimitConfigUpdateRequestLimitConfigRulesInner, LimitConfigUpdateRequestLimitConfigRulesInnerBuilder> {
+abstract class LimitConfigUpdateRequestLimitConfigRulesInner
+    implements
+        Built<LimitConfigUpdateRequestLimitConfigRulesInner,
+            LimitConfigUpdateRequestLimitConfigRulesInnerBuilder> {
   /// Unique rule identifier
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -31,18 +34,30 @@ abstract class LimitConfigUpdateRequestLimitConfigRulesInner implements Built<Li
 
   LimitConfigUpdateRequestLimitConfigRulesInner._();
 
-  factory LimitConfigUpdateRequestLimitConfigRulesInner([void updates(LimitConfigUpdateRequestLimitConfigRulesInnerBuilder b)]) = _$LimitConfigUpdateRequestLimitConfigRulesInner;
+  factory LimitConfigUpdateRequestLimitConfigRulesInner(
+          [void updates(
+              LimitConfigUpdateRequestLimitConfigRulesInnerBuilder b)]) =
+      _$LimitConfigUpdateRequestLimitConfigRulesInner;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(LimitConfigUpdateRequestLimitConfigRulesInnerBuilder b) => b;
+  static void _defaults(
+          LimitConfigUpdateRequestLimitConfigRulesInnerBuilder b) =>
+      b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<LimitConfigUpdateRequestLimitConfigRulesInner> get serializer => _$LimitConfigUpdateRequestLimitConfigRulesInnerSerializer();
+  static Serializer<LimitConfigUpdateRequestLimitConfigRulesInner>
+      get serializer =>
+          _$LimitConfigUpdateRequestLimitConfigRulesInnerSerializer();
 }
 
-class _$LimitConfigUpdateRequestLimitConfigRulesInnerSerializer implements PrimitiveSerializer<LimitConfigUpdateRequestLimitConfigRulesInner> {
+class _$LimitConfigUpdateRequestLimitConfigRulesInnerSerializer
+    implements
+        PrimitiveSerializer<LimitConfigUpdateRequestLimitConfigRulesInner> {
   @override
-  final Iterable<Type> types = const [LimitConfigUpdateRequestLimitConfigRulesInner, _$LimitConfigUpdateRequestLimitConfigRulesInner];
+  final Iterable<Type> types = const [
+    LimitConfigUpdateRequestLimitConfigRulesInner,
+    _$LimitConfigUpdateRequestLimitConfigRulesInner
+  ];
 
   @override
   final String wireName = r'LimitConfigUpdateRequestLimitConfigRulesInner';
@@ -60,13 +75,15 @@ class _$LimitConfigUpdateRequestLimitConfigRulesInnerSerializer implements Primi
     yield r'limits';
     yield serializers.serialize(
       object.limits,
-      specifiedType: const FullType(BuiltMap, [FullType(String), FullType(num)]),
+      specifiedType:
+          const FullType(BuiltMap, [FullType(String), FullType(num)]),
     );
     if (object.filters != null) {
       yield r'filters';
       yield serializers.serialize(
         object.filters,
-        specifiedType: const FullType(LimitConfigGetResponseLimitConfigRulesInnerFilters),
+        specifiedType:
+            const FullType(LimitConfigGetResponseLimitConfigRulesInnerFilters),
       );
     }
   }
@@ -77,7 +94,9 @@ class _$LimitConfigUpdateRequestLimitConfigRulesInnerSerializer implements Primi
     LimitConfigUpdateRequestLimitConfigRulesInner object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -102,14 +121,16 @@ class _$LimitConfigUpdateRequestLimitConfigRulesInnerSerializer implements Primi
         case r'limits':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(num)]),
+            specifiedType:
+                const FullType(BuiltMap, [FullType(String), FullType(num)]),
           ) as BuiltMap<String, num>;
           result.limits.replace(valueDes);
           break;
         case r'filters':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(LimitConfigGetResponseLimitConfigRulesInnerFilters),
+            specifiedType: const FullType(
+                LimitConfigGetResponseLimitConfigRulesInnerFilters),
           ) as LimitConfigGetResponseLimitConfigRulesInnerFilters;
           result.filters.replace(valueDes);
           break;
@@ -141,4 +162,3 @@ class _$LimitConfigUpdateRequestLimitConfigRulesInnerSerializer implements Primi
     return result.build();
   }
 }
-

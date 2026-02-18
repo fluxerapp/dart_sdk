@@ -19,10 +19,11 @@ part 'discovery_guild_response.g.dart';
 /// * [onlineCount] - Approximate online member count
 /// * [features] - Guild feature flags
 /// * [verificationLevel] - Verification level
-/// * [icon] 
-/// * [description] 
+/// * [icon]
+/// * [description]
 @BuiltValue()
-abstract class DiscoveryGuildResponse implements Built<DiscoveryGuildResponse, DiscoveryGuildResponseBuilder> {
+abstract class DiscoveryGuildResponse
+    implements Built<DiscoveryGuildResponse, DiscoveryGuildResponseBuilder> {
   /// Guild ID
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -59,18 +60,25 @@ abstract class DiscoveryGuildResponse implements Built<DiscoveryGuildResponse, D
 
   DiscoveryGuildResponse._();
 
-  factory DiscoveryGuildResponse([void updates(DiscoveryGuildResponseBuilder b)]) = _$DiscoveryGuildResponse;
+  factory DiscoveryGuildResponse(
+          [void updates(DiscoveryGuildResponseBuilder b)]) =
+      _$DiscoveryGuildResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(DiscoveryGuildResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<DiscoveryGuildResponse> get serializer => _$DiscoveryGuildResponseSerializer();
+  static Serializer<DiscoveryGuildResponse> get serializer =>
+      _$DiscoveryGuildResponseSerializer();
 }
 
-class _$DiscoveryGuildResponseSerializer implements PrimitiveSerializer<DiscoveryGuildResponse> {
+class _$DiscoveryGuildResponseSerializer
+    implements PrimitiveSerializer<DiscoveryGuildResponse> {
   @override
-  final Iterable<Type> types = const [DiscoveryGuildResponse, _$DiscoveryGuildResponse];
+  final Iterable<Type> types = const [
+    DiscoveryGuildResponse,
+    _$DiscoveryGuildResponse
+  ];
 
   @override
   final String wireName = r'DiscoveryGuildResponse';
@@ -137,7 +145,9 @@ class _$DiscoveryGuildResponseSerializer implements PrimitiveSerializer<Discover
     DiscoveryGuildResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -245,4 +255,3 @@ class _$DiscoveryGuildResponseSerializer implements PrimitiveSerializer<Discover
     return result.build();
   }
 }
-

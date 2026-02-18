@@ -22,10 +22,13 @@ part 'update_voice_region_response_region.g.dart';
 /// * [requiredGuildFeatures] - Guild features required to use this region
 /// * [allowedGuildIds] - Guild IDs explicitly allowed to use this region
 /// * [allowedUserIds] - User IDs explicitly allowed to use this region
-/// * [createdAt] 
-/// * [updatedAt] 
+/// * [createdAt]
+/// * [updatedAt]
 @BuiltValue()
-abstract class UpdateVoiceRegionResponseRegion implements Built<UpdateVoiceRegionResponseRegion, UpdateVoiceRegionResponseRegionBuilder> {
+abstract class UpdateVoiceRegionResponseRegion
+    implements
+        Built<UpdateVoiceRegionResponseRegion,
+            UpdateVoiceRegionResponseRegionBuilder> {
   /// Unique identifier for the voice region
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -74,18 +77,25 @@ abstract class UpdateVoiceRegionResponseRegion implements Built<UpdateVoiceRegio
 
   UpdateVoiceRegionResponseRegion._();
 
-  factory UpdateVoiceRegionResponseRegion([void updates(UpdateVoiceRegionResponseRegionBuilder b)]) = _$UpdateVoiceRegionResponseRegion;
+  factory UpdateVoiceRegionResponseRegion(
+          [void updates(UpdateVoiceRegionResponseRegionBuilder b)]) =
+      _$UpdateVoiceRegionResponseRegion;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UpdateVoiceRegionResponseRegionBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UpdateVoiceRegionResponseRegion> get serializer => _$UpdateVoiceRegionResponseRegionSerializer();
+  static Serializer<UpdateVoiceRegionResponseRegion> get serializer =>
+      _$UpdateVoiceRegionResponseRegionSerializer();
 }
 
-class _$UpdateVoiceRegionResponseRegionSerializer implements PrimitiveSerializer<UpdateVoiceRegionResponseRegion> {
+class _$UpdateVoiceRegionResponseRegionSerializer
+    implements PrimitiveSerializer<UpdateVoiceRegionResponseRegion> {
   @override
-  final Iterable<Type> types = const [UpdateVoiceRegionResponseRegion, _$UpdateVoiceRegionResponseRegion];
+  final Iterable<Type> types = const [
+    UpdateVoiceRegionResponseRegion,
+    _$UpdateVoiceRegionResponseRegion
+  ];
 
   @override
   final String wireName = r'UpdateVoiceRegionResponseRegion';
@@ -146,15 +156,19 @@ class _$UpdateVoiceRegionResponseRegionSerializer implements PrimitiveSerializer
       specifiedType: const FullType(BuiltList, [FullType(String)]),
     );
     yield r'created_at';
-    yield object.createdAt == null ? null : serializers.serialize(
-      object.createdAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.createdAt == null
+        ? null
+        : serializers.serialize(
+            object.createdAt,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'updated_at';
-    yield object.updatedAt == null ? null : serializers.serialize(
-      object.updatedAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.updatedAt == null
+        ? null
+        : serializers.serialize(
+            object.updatedAt,
+            specifiedType: const FullType.nullable(String),
+          );
   }
 
   @override
@@ -163,7 +177,9 @@ class _$UpdateVoiceRegionResponseRegionSerializer implements PrimitiveSerializer
     UpdateVoiceRegionResponseRegion object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -292,4 +308,3 @@ class _$UpdateVoiceRegionResponseRegionSerializer implements PrimitiveSerializer
     return result.build();
   }
 }
-

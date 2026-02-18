@@ -19,7 +19,9 @@ part 'guild_member_search_response.g.dart';
 /// * [totalResultCount] - Total number of matching results
 /// * [indexing] - Whether the guild members are currently being indexed
 @BuiltValue()
-abstract class GuildMemberSearchResponse implements Built<GuildMemberSearchResponse, GuildMemberSearchResponseBuilder> {
+abstract class GuildMemberSearchResponse
+    implements
+        Built<GuildMemberSearchResponse, GuildMemberSearchResponseBuilder> {
   /// Guild ID
   @BuiltValueField(wireName: r'guild_id')
   String get guildId;
@@ -42,18 +44,25 @@ abstract class GuildMemberSearchResponse implements Built<GuildMemberSearchRespo
 
   GuildMemberSearchResponse._();
 
-  factory GuildMemberSearchResponse([void updates(GuildMemberSearchResponseBuilder b)]) = _$GuildMemberSearchResponse;
+  factory GuildMemberSearchResponse(
+          [void updates(GuildMemberSearchResponseBuilder b)]) =
+      _$GuildMemberSearchResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildMemberSearchResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildMemberSearchResponse> get serializer => _$GuildMemberSearchResponseSerializer();
+  static Serializer<GuildMemberSearchResponse> get serializer =>
+      _$GuildMemberSearchResponseSerializer();
 }
 
-class _$GuildMemberSearchResponseSerializer implements PrimitiveSerializer<GuildMemberSearchResponse> {
+class _$GuildMemberSearchResponseSerializer
+    implements PrimitiveSerializer<GuildMemberSearchResponse> {
   @override
-  final Iterable<Type> types = const [GuildMemberSearchResponse, _$GuildMemberSearchResponse];
+  final Iterable<Type> types = const [
+    GuildMemberSearchResponse,
+    _$GuildMemberSearchResponse
+  ];
 
   @override
   final String wireName = r'GuildMemberSearchResponse';
@@ -71,7 +80,8 @@ class _$GuildMemberSearchResponseSerializer implements PrimitiveSerializer<Guild
     yield r'members';
     yield serializers.serialize(
       object.members,
-      specifiedType: const FullType(BuiltList, [FullType(GuildMemberSearchResult)]),
+      specifiedType:
+          const FullType(BuiltList, [FullType(GuildMemberSearchResult)]),
     );
     yield r'page_result_count';
     yield serializers.serialize(
@@ -96,7 +106,9 @@ class _$GuildMemberSearchResponseSerializer implements PrimitiveSerializer<Guild
     GuildMemberSearchResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,7 +133,8 @@ class _$GuildMemberSearchResponseSerializer implements PrimitiveSerializer<Guild
         case r'members':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(GuildMemberSearchResult)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(GuildMemberSearchResult)]),
           ) as BuiltList<GuildMemberSearchResult>;
           result.members.replace(valueDes);
           break;
@@ -174,4 +187,3 @@ class _$GuildMemberSearchResponseSerializer implements PrimitiveSerializer<Guild
     return result.build();
   }
 }
-

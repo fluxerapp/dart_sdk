@@ -12,13 +12,14 @@ part 'guild_ban_response.g.dart';
 /// GuildBanResponse
 ///
 /// Properties:
-/// * [user] 
+/// * [user]
 /// * [moderatorId] - The ID of the moderator who issued the ban
 /// * [bannedAt] - ISO8601 timestamp of when the ban was issued
-/// * [reason] 
-/// * [expiresAt] 
+/// * [reason]
+/// * [expiresAt]
 @BuiltValue()
-abstract class GuildBanResponse implements Built<GuildBanResponse, GuildBanResponseBuilder> {
+abstract class GuildBanResponse
+    implements Built<GuildBanResponse, GuildBanResponseBuilder> {
   @BuiltValueField(wireName: r'user')
   UserPartialResponse get user;
 
@@ -38,16 +39,19 @@ abstract class GuildBanResponse implements Built<GuildBanResponse, GuildBanRespo
 
   GuildBanResponse._();
 
-  factory GuildBanResponse([void updates(GuildBanResponseBuilder b)]) = _$GuildBanResponse;
+  factory GuildBanResponse([void updates(GuildBanResponseBuilder b)]) =
+      _$GuildBanResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildBanResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildBanResponse> get serializer => _$GuildBanResponseSerializer();
+  static Serializer<GuildBanResponse> get serializer =>
+      _$GuildBanResponseSerializer();
 }
 
-class _$GuildBanResponseSerializer implements PrimitiveSerializer<GuildBanResponse> {
+class _$GuildBanResponseSerializer
+    implements PrimitiveSerializer<GuildBanResponse> {
   @override
   final Iterable<Type> types = const [GuildBanResponse, _$GuildBanResponse];
 
@@ -96,7 +100,9 @@ class _$GuildBanResponseSerializer implements PrimitiveSerializer<GuildBanRespon
     GuildBanResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -176,4 +182,3 @@ class _$GuildBanResponseSerializer implements PrimitiveSerializer<GuildBanRespon
     return result.build();
   }
 }
-

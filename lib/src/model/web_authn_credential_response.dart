@@ -14,9 +14,11 @@ part 'web_authn_credential_response.g.dart';
 /// * [id] - The credential ID
 /// * [name] - User-assigned name for the credential
 /// * [createdAt] - When the credential was registered
-/// * [lastUsedAt] 
+/// * [lastUsedAt]
 @BuiltValue()
-abstract class WebAuthnCredentialResponse implements Built<WebAuthnCredentialResponse, WebAuthnCredentialResponseBuilder> {
+abstract class WebAuthnCredentialResponse
+    implements
+        Built<WebAuthnCredentialResponse, WebAuthnCredentialResponseBuilder> {
   /// The credential ID
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -34,18 +36,25 @@ abstract class WebAuthnCredentialResponse implements Built<WebAuthnCredentialRes
 
   WebAuthnCredentialResponse._();
 
-  factory WebAuthnCredentialResponse([void updates(WebAuthnCredentialResponseBuilder b)]) = _$WebAuthnCredentialResponse;
+  factory WebAuthnCredentialResponse(
+          [void updates(WebAuthnCredentialResponseBuilder b)]) =
+      _$WebAuthnCredentialResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(WebAuthnCredentialResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<WebAuthnCredentialResponse> get serializer => _$WebAuthnCredentialResponseSerializer();
+  static Serializer<WebAuthnCredentialResponse> get serializer =>
+      _$WebAuthnCredentialResponseSerializer();
 }
 
-class _$WebAuthnCredentialResponseSerializer implements PrimitiveSerializer<WebAuthnCredentialResponse> {
+class _$WebAuthnCredentialResponseSerializer
+    implements PrimitiveSerializer<WebAuthnCredentialResponse> {
   @override
-  final Iterable<Type> types = const [WebAuthnCredentialResponse, _$WebAuthnCredentialResponse];
+  final Iterable<Type> types = const [
+    WebAuthnCredentialResponse,
+    _$WebAuthnCredentialResponse
+  ];
 
   @override
   final String wireName = r'WebAuthnCredentialResponse';
@@ -71,10 +80,12 @@ class _$WebAuthnCredentialResponseSerializer implements PrimitiveSerializer<WebA
       specifiedType: const FullType(String),
     );
     yield r'last_used_at';
-    yield object.lastUsedAt == null ? null : serializers.serialize(
-      object.lastUsedAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.lastUsedAt == null
+        ? null
+        : serializers.serialize(
+            object.lastUsedAt,
+            specifiedType: const FullType.nullable(String),
+          );
   }
 
   @override
@@ -83,7 +94,9 @@ class _$WebAuthnCredentialResponseSerializer implements PrimitiveSerializer<WebA
     WebAuthnCredentialResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -155,4 +168,3 @@ class _$WebAuthnCredentialResponseSerializer implements PrimitiveSerializer<WebA
     return result.build();
   }
 }
-

@@ -12,21 +12,22 @@ part 'sso_config_response.g.dart';
 /// SsoConfigResponse
 ///
 /// Properties:
-/// * [enabled] 
-/// * [displayName] 
-/// * [issuer] 
-/// * [authorizationUrl] 
-/// * [tokenUrl] 
-/// * [userinfoUrl] 
-/// * [jwksUrl] 
-/// * [clientId] 
-/// * [clientSecretSet] 
-/// * [scope] 
-/// * [allowedDomains] 
-/// * [autoProvision] 
-/// * [redirectUri] 
+/// * [enabled]
+/// * [displayName]
+/// * [issuer]
+/// * [authorizationUrl]
+/// * [tokenUrl]
+/// * [userinfoUrl]
+/// * [jwksUrl]
+/// * [clientId]
+/// * [clientSecretSet]
+/// * [scope]
+/// * [allowedDomains]
+/// * [autoProvision]
+/// * [redirectUri]
 @BuiltValue()
-abstract class SsoConfigResponse implements Built<SsoConfigResponse, SsoConfigResponseBuilder> {
+abstract class SsoConfigResponse
+    implements Built<SsoConfigResponse, SsoConfigResponseBuilder> {
   @BuiltValueField(wireName: r'enabled')
   bool get enabled;
 
@@ -68,16 +69,19 @@ abstract class SsoConfigResponse implements Built<SsoConfigResponse, SsoConfigRe
 
   SsoConfigResponse._();
 
-  factory SsoConfigResponse([void updates(SsoConfigResponseBuilder b)]) = _$SsoConfigResponse;
+  factory SsoConfigResponse([void updates(SsoConfigResponseBuilder b)]) =
+      _$SsoConfigResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SsoConfigResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SsoConfigResponse> get serializer => _$SsoConfigResponseSerializer();
+  static Serializer<SsoConfigResponse> get serializer =>
+      _$SsoConfigResponseSerializer();
 }
 
-class _$SsoConfigResponseSerializer implements PrimitiveSerializer<SsoConfigResponse> {
+class _$SsoConfigResponseSerializer
+    implements PrimitiveSerializer<SsoConfigResponse> {
   @override
   final Iterable<Type> types = const [SsoConfigResponse, _$SsoConfigResponse];
 
@@ -95,50 +99,66 @@ class _$SsoConfigResponseSerializer implements PrimitiveSerializer<SsoConfigResp
       specifiedType: const FullType(bool),
     );
     yield r'display_name';
-    yield object.displayName == null ? null : serializers.serialize(
-      object.displayName,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.displayName == null
+        ? null
+        : serializers.serialize(
+            object.displayName,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'issuer';
-    yield object.issuer == null ? null : serializers.serialize(
-      object.issuer,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.issuer == null
+        ? null
+        : serializers.serialize(
+            object.issuer,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'authorization_url';
-    yield object.authorizationUrl == null ? null : serializers.serialize(
-      object.authorizationUrl,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.authorizationUrl == null
+        ? null
+        : serializers.serialize(
+            object.authorizationUrl,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'token_url';
-    yield object.tokenUrl == null ? null : serializers.serialize(
-      object.tokenUrl,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.tokenUrl == null
+        ? null
+        : serializers.serialize(
+            object.tokenUrl,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'userinfo_url';
-    yield object.userinfoUrl == null ? null : serializers.serialize(
-      object.userinfoUrl,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.userinfoUrl == null
+        ? null
+        : serializers.serialize(
+            object.userinfoUrl,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'jwks_url';
-    yield object.jwksUrl == null ? null : serializers.serialize(
-      object.jwksUrl,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.jwksUrl == null
+        ? null
+        : serializers.serialize(
+            object.jwksUrl,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'client_id';
-    yield object.clientId == null ? null : serializers.serialize(
-      object.clientId,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.clientId == null
+        ? null
+        : serializers.serialize(
+            object.clientId,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'client_secret_set';
     yield serializers.serialize(
       object.clientSecretSet,
       specifiedType: const FullType(bool),
     );
     yield r'scope';
-    yield object.scope == null ? null : serializers.serialize(
-      object.scope,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.scope == null
+        ? null
+        : serializers.serialize(
+            object.scope,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'allowed_domains';
     yield serializers.serialize(
       object.allowedDomains,
@@ -150,10 +170,12 @@ class _$SsoConfigResponseSerializer implements PrimitiveSerializer<SsoConfigResp
       specifiedType: const FullType(bool),
     );
     yield r'redirect_uri';
-    yield object.redirectUri == null ? null : serializers.serialize(
-      object.redirectUri,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.redirectUri == null
+        ? null
+        : serializers.serialize(
+            object.redirectUri,
+            specifiedType: const FullType.nullable(String),
+          );
   }
 
   @override
@@ -162,7 +184,9 @@ class _$SsoConfigResponseSerializer implements PrimitiveSerializer<SsoConfigResp
     SsoConfigResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -305,4 +329,3 @@ class _$SsoConfigResponseSerializer implements PrimitiveSerializer<SsoConfigResp
     return result.build();
   }
 }
-

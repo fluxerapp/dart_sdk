@@ -13,25 +13,34 @@ part 'bluesky_authorize_response.g.dart';
 /// Properties:
 /// * [authorizeUrl] - The URL to redirect the user to for Bluesky authorisation
 @BuiltValue()
-abstract class BlueskyAuthorizeResponse implements Built<BlueskyAuthorizeResponse, BlueskyAuthorizeResponseBuilder> {
+abstract class BlueskyAuthorizeResponse
+    implements
+        Built<BlueskyAuthorizeResponse, BlueskyAuthorizeResponseBuilder> {
   /// The URL to redirect the user to for Bluesky authorisation
   @BuiltValueField(wireName: r'authorize_url')
   String get authorizeUrl;
 
   BlueskyAuthorizeResponse._();
 
-  factory BlueskyAuthorizeResponse([void updates(BlueskyAuthorizeResponseBuilder b)]) = _$BlueskyAuthorizeResponse;
+  factory BlueskyAuthorizeResponse(
+          [void updates(BlueskyAuthorizeResponseBuilder b)]) =
+      _$BlueskyAuthorizeResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(BlueskyAuthorizeResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<BlueskyAuthorizeResponse> get serializer => _$BlueskyAuthorizeResponseSerializer();
+  static Serializer<BlueskyAuthorizeResponse> get serializer =>
+      _$BlueskyAuthorizeResponseSerializer();
 }
 
-class _$BlueskyAuthorizeResponseSerializer implements PrimitiveSerializer<BlueskyAuthorizeResponse> {
+class _$BlueskyAuthorizeResponseSerializer
+    implements PrimitiveSerializer<BlueskyAuthorizeResponse> {
   @override
-  final Iterable<Type> types = const [BlueskyAuthorizeResponse, _$BlueskyAuthorizeResponse];
+  final Iterable<Type> types = const [
+    BlueskyAuthorizeResponse,
+    _$BlueskyAuthorizeResponse
+  ];
 
   @override
   final String wireName = r'BlueskyAuthorizeResponse';
@@ -54,7 +63,9 @@ class _$BlueskyAuthorizeResponseSerializer implements PrimitiveSerializer<Bluesk
     BlueskyAuthorizeResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +115,3 @@ class _$BlueskyAuthorizeResponseSerializer implements PrimitiveSerializer<Bluesk
     return result.build();
   }
 }
-

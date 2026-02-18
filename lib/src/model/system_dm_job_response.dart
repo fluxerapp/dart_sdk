@@ -20,12 +20,13 @@ part 'system_dm_job_response.g.dart';
 /// * [failedCount] - Number of messages that failed to send
 /// * [createdAt] - ISO 8601 timestamp when the job was created
 /// * [excludedGuildIds] - List of excluded guild IDs
-/// * [approvedAt] 
-/// * [registrationStart] 
-/// * [registrationEnd] 
-/// * [lastError] 
+/// * [approvedAt]
+/// * [registrationStart]
+/// * [registrationEnd]
+/// * [lastError]
 @BuiltValue()
-abstract class SystemDmJobResponse implements Built<SystemDmJobResponse, SystemDmJobResponseBuilder> {
+abstract class SystemDmJobResponse
+    implements Built<SystemDmJobResponse, SystemDmJobResponseBuilder> {
   /// Unique identifier for the job
   @BuiltValueField(wireName: r'job_id')
   String get jobId;
@@ -73,18 +74,24 @@ abstract class SystemDmJobResponse implements Built<SystemDmJobResponse, SystemD
 
   SystemDmJobResponse._();
 
-  factory SystemDmJobResponse([void updates(SystemDmJobResponseBuilder b)]) = _$SystemDmJobResponse;
+  factory SystemDmJobResponse([void updates(SystemDmJobResponseBuilder b)]) =
+      _$SystemDmJobResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SystemDmJobResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SystemDmJobResponse> get serializer => _$SystemDmJobResponseSerializer();
+  static Serializer<SystemDmJobResponse> get serializer =>
+      _$SystemDmJobResponseSerializer();
 }
 
-class _$SystemDmJobResponseSerializer implements PrimitiveSerializer<SystemDmJobResponse> {
+class _$SystemDmJobResponseSerializer
+    implements PrimitiveSerializer<SystemDmJobResponse> {
   @override
-  final Iterable<Type> types = const [SystemDmJobResponse, _$SystemDmJobResponse];
+  final Iterable<Type> types = const [
+    SystemDmJobResponse,
+    _$SystemDmJobResponse
+  ];
 
   @override
   final String wireName = r'SystemDmJobResponse';
@@ -170,7 +177,9 @@ class _$SystemDmJobResponseSerializer implements PrimitiveSerializer<SystemDmJob
     SystemDmJobResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -303,28 +312,38 @@ class _$SystemDmJobResponseSerializer implements PrimitiveSerializer<SystemDmJob
 }
 
 class SystemDmJobResponseStatusEnum extends EnumClass {
-
   /// Current status of the system DM job
   @BuiltValueEnumConst(wireName: r'pending')
-  static const SystemDmJobResponseStatusEnum pending = _$systemDmJobResponseStatusEnum_pending;
+  static const SystemDmJobResponseStatusEnum pending =
+      _$systemDmJobResponseStatusEnum_pending;
+
   /// Current status of the system DM job
   @BuiltValueEnumConst(wireName: r'approved')
-  static const SystemDmJobResponseStatusEnum approved = _$systemDmJobResponseStatusEnum_approved;
+  static const SystemDmJobResponseStatusEnum approved =
+      _$systemDmJobResponseStatusEnum_approved;
+
   /// Current status of the system DM job
   @BuiltValueEnumConst(wireName: r'running')
-  static const SystemDmJobResponseStatusEnum running = _$systemDmJobResponseStatusEnum_running;
+  static const SystemDmJobResponseStatusEnum running =
+      _$systemDmJobResponseStatusEnum_running;
+
   /// Current status of the system DM job
   @BuiltValueEnumConst(wireName: r'completed')
-  static const SystemDmJobResponseStatusEnum completed = _$systemDmJobResponseStatusEnum_completed;
+  static const SystemDmJobResponseStatusEnum completed =
+      _$systemDmJobResponseStatusEnum_completed;
+
   /// Current status of the system DM job
   @BuiltValueEnumConst(wireName: r'failed')
-  static const SystemDmJobResponseStatusEnum failed = _$systemDmJobResponseStatusEnum_failed;
+  static const SystemDmJobResponseStatusEnum failed =
+      _$systemDmJobResponseStatusEnum_failed;
 
-  static Serializer<SystemDmJobResponseStatusEnum> get serializer => _$systemDmJobResponseStatusEnumSerializer;
+  static Serializer<SystemDmJobResponseStatusEnum> get serializer =>
+      _$systemDmJobResponseStatusEnumSerializer;
 
-  const SystemDmJobResponseStatusEnum._(String name): super(name);
+  const SystemDmJobResponseStatusEnum._(String name) : super(name);
 
-  static BuiltSet<SystemDmJobResponseStatusEnum> get values => _$systemDmJobResponseStatusEnumValues;
-  static SystemDmJobResponseStatusEnum valueOf(String name) => _$systemDmJobResponseStatusEnumValueOf(name);
+  static BuiltSet<SystemDmJobResponseStatusEnum> get values =>
+      _$systemDmJobResponseStatusEnumValues;
+  static SystemDmJobResponseStatusEnum valueOf(String name) =>
+      _$systemDmJobResponseStatusEnumValueOf(name);
 }
-

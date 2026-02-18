@@ -13,9 +13,11 @@ part 'logout_auth_sessions_request.g.dart';
 ///
 /// Properties:
 /// * [sessionIdHashes] - Array of session ID hashes to log out (max 100)
-/// * [password] 
+/// * [password]
 @BuiltValue()
-abstract class LogoutAuthSessionsRequest implements Built<LogoutAuthSessionsRequest, LogoutAuthSessionsRequestBuilder> {
+abstract class LogoutAuthSessionsRequest
+    implements
+        Built<LogoutAuthSessionsRequest, LogoutAuthSessionsRequestBuilder> {
   /// Array of session ID hashes to log out (max 100)
   @BuiltValueField(wireName: r'session_id_hashes')
   BuiltList<String> get sessionIdHashes;
@@ -25,18 +27,25 @@ abstract class LogoutAuthSessionsRequest implements Built<LogoutAuthSessionsRequ
 
   LogoutAuthSessionsRequest._();
 
-  factory LogoutAuthSessionsRequest([void updates(LogoutAuthSessionsRequestBuilder b)]) = _$LogoutAuthSessionsRequest;
+  factory LogoutAuthSessionsRequest(
+          [void updates(LogoutAuthSessionsRequestBuilder b)]) =
+      _$LogoutAuthSessionsRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(LogoutAuthSessionsRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<LogoutAuthSessionsRequest> get serializer => _$LogoutAuthSessionsRequestSerializer();
+  static Serializer<LogoutAuthSessionsRequest> get serializer =>
+      _$LogoutAuthSessionsRequestSerializer();
 }
 
-class _$LogoutAuthSessionsRequestSerializer implements PrimitiveSerializer<LogoutAuthSessionsRequest> {
+class _$LogoutAuthSessionsRequestSerializer
+    implements PrimitiveSerializer<LogoutAuthSessionsRequest> {
   @override
-  final Iterable<Type> types = const [LogoutAuthSessionsRequest, _$LogoutAuthSessionsRequest];
+  final Iterable<Type> types = const [
+    LogoutAuthSessionsRequest,
+    _$LogoutAuthSessionsRequest
+  ];
 
   @override
   final String wireName = r'LogoutAuthSessionsRequest';
@@ -66,7 +75,9 @@ class _$LogoutAuthSessionsRequestSerializer implements PrimitiveSerializer<Logou
     LogoutAuthSessionsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -123,4 +134,3 @@ class _$LogoutAuthSessionsRequestSerializer implements PrimitiveSerializer<Logou
     return result.build();
   }
 }
-

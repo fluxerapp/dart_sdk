@@ -10,20 +10,22 @@ import 'package:built_value/serializer.dart';
 part 'user_premium_types.g.dart';
 
 class UserPremiumTypes extends EnumClass {
-
   /// Premium subscription type
   @BuiltValueEnumConst(wireNumber: 0)
   static const UserPremiumTypes number0 = _$number0;
+
   /// Premium subscription type
   @BuiltValueEnumConst(wireNumber: 1)
   static const UserPremiumTypes number1 = _$number1;
+
   /// Premium subscription type
   @BuiltValueEnumConst(wireNumber: 2)
   static const UserPremiumTypes number2 = _$number2;
 
-  static Serializer<UserPremiumTypes> get serializer => _$userPremiumTypesSerializer;
+  static Serializer<UserPremiumTypes> get serializer =>
+      _$userPremiumTypesSerializer;
 
-  const UserPremiumTypes._(String name): super(name);
+  const UserPremiumTypes._(String name) : super(name);
 
   static BuiltSet<UserPremiumTypes> get values => _$values;
   static UserPremiumTypes valueOf(String name) => _$valueOf(name);
@@ -36,4 +38,3 @@ class UserPremiumTypes extends EnumClass {
 ///
 /// Trigger mixin generation by writing a line like this one next to your enum.
 abstract class UserPremiumTypesMixin = Object with _$UserPremiumTypesMixin;
-

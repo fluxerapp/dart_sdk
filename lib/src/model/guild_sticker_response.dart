@@ -18,7 +18,8 @@ part 'guild_sticker_response.g.dart';
 /// * [tags] - Autocomplete/suggestion tags for the sticker
 /// * [animated] - Whether this sticker is animated
 @BuiltValue()
-abstract class GuildStickerResponse implements Built<GuildStickerResponse, GuildStickerResponseBuilder> {
+abstract class GuildStickerResponse
+    implements Built<GuildStickerResponse, GuildStickerResponseBuilder> {
   /// The unique identifier for this sticker
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -41,18 +42,24 @@ abstract class GuildStickerResponse implements Built<GuildStickerResponse, Guild
 
   GuildStickerResponse._();
 
-  factory GuildStickerResponse([void updates(GuildStickerResponseBuilder b)]) = _$GuildStickerResponse;
+  factory GuildStickerResponse([void updates(GuildStickerResponseBuilder b)]) =
+      _$GuildStickerResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildStickerResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildStickerResponse> get serializer => _$GuildStickerResponseSerializer();
+  static Serializer<GuildStickerResponse> get serializer =>
+      _$GuildStickerResponseSerializer();
 }
 
-class _$GuildStickerResponseSerializer implements PrimitiveSerializer<GuildStickerResponse> {
+class _$GuildStickerResponseSerializer
+    implements PrimitiveSerializer<GuildStickerResponse> {
   @override
-  final Iterable<Type> types = const [GuildStickerResponse, _$GuildStickerResponse];
+  final Iterable<Type> types = const [
+    GuildStickerResponse,
+    _$GuildStickerResponse
+  ];
 
   @override
   final String wireName = r'GuildStickerResponse';
@@ -95,7 +102,9 @@ class _$GuildStickerResponseSerializer implements PrimitiveSerializer<GuildStick
     GuildStickerResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -173,4 +182,3 @@ class _$GuildStickerResponseSerializer implements PrimitiveSerializer<GuildStick
     return result.build();
   }
 }
-

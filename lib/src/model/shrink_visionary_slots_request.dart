@@ -13,25 +13,34 @@ part 'shrink_visionary_slots_request.g.dart';
 /// Properties:
 /// * [targetCount] - Target total number of slots (removes from highest indices, minimum 0 slots)
 @BuiltValue()
-abstract class ShrinkVisionarySlotsRequest implements Built<ShrinkVisionarySlotsRequest, ShrinkVisionarySlotsRequestBuilder> {
+abstract class ShrinkVisionarySlotsRequest
+    implements
+        Built<ShrinkVisionarySlotsRequest, ShrinkVisionarySlotsRequestBuilder> {
   /// Target total number of slots (removes from highest indices, minimum 0 slots)
   @BuiltValueField(wireName: r'target_count')
   int get targetCount;
 
   ShrinkVisionarySlotsRequest._();
 
-  factory ShrinkVisionarySlotsRequest([void updates(ShrinkVisionarySlotsRequestBuilder b)]) = _$ShrinkVisionarySlotsRequest;
+  factory ShrinkVisionarySlotsRequest(
+          [void updates(ShrinkVisionarySlotsRequestBuilder b)]) =
+      _$ShrinkVisionarySlotsRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ShrinkVisionarySlotsRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ShrinkVisionarySlotsRequest> get serializer => _$ShrinkVisionarySlotsRequestSerializer();
+  static Serializer<ShrinkVisionarySlotsRequest> get serializer =>
+      _$ShrinkVisionarySlotsRequestSerializer();
 }
 
-class _$ShrinkVisionarySlotsRequestSerializer implements PrimitiveSerializer<ShrinkVisionarySlotsRequest> {
+class _$ShrinkVisionarySlotsRequestSerializer
+    implements PrimitiveSerializer<ShrinkVisionarySlotsRequest> {
   @override
-  final Iterable<Type> types = const [ShrinkVisionarySlotsRequest, _$ShrinkVisionarySlotsRequest];
+  final Iterable<Type> types = const [
+    ShrinkVisionarySlotsRequest,
+    _$ShrinkVisionarySlotsRequest
+  ];
 
   @override
   final String wireName = r'ShrinkVisionarySlotsRequest';
@@ -54,7 +63,9 @@ class _$ShrinkVisionarySlotsRequestSerializer implements PrimitiveSerializer<Shr
     ShrinkVisionarySlotsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +115,3 @@ class _$ShrinkVisionarySlotsRequestSerializer implements PrimitiveSerializer<Shr
     return result.build();
   }
 }
-

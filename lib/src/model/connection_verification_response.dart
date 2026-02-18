@@ -18,7 +18,10 @@ part 'connection_verification_response.g.dart';
 /// * [instructions] - Human-readable instructions for completing verification
 /// * [initiationToken] - Signed token the client sends back at verify time
 @BuiltValue()
-abstract class ConnectionVerificationResponse implements Built<ConnectionVerificationResponse, ConnectionVerificationResponseBuilder> {
+abstract class ConnectionVerificationResponse
+    implements
+        Built<ConnectionVerificationResponse,
+            ConnectionVerificationResponseBuilder> {
   /// The verification token to place in DNS or profile
   @BuiltValueField(wireName: r'token')
   String get token;
@@ -42,18 +45,25 @@ abstract class ConnectionVerificationResponse implements Built<ConnectionVerific
 
   ConnectionVerificationResponse._();
 
-  factory ConnectionVerificationResponse([void updates(ConnectionVerificationResponseBuilder b)]) = _$ConnectionVerificationResponse;
+  factory ConnectionVerificationResponse(
+          [void updates(ConnectionVerificationResponseBuilder b)]) =
+      _$ConnectionVerificationResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ConnectionVerificationResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ConnectionVerificationResponse> get serializer => _$ConnectionVerificationResponseSerializer();
+  static Serializer<ConnectionVerificationResponse> get serializer =>
+      _$ConnectionVerificationResponseSerializer();
 }
 
-class _$ConnectionVerificationResponseSerializer implements PrimitiveSerializer<ConnectionVerificationResponse> {
+class _$ConnectionVerificationResponseSerializer
+    implements PrimitiveSerializer<ConnectionVerificationResponse> {
   @override
-  final Iterable<Type> types = const [ConnectionVerificationResponse, _$ConnectionVerificationResponse];
+  final Iterable<Type> types = const [
+    ConnectionVerificationResponse,
+    _$ConnectionVerificationResponse
+  ];
 
   @override
   final String wireName = r'ConnectionVerificationResponse';
@@ -96,7 +106,9 @@ class _$ConnectionVerificationResponseSerializer implements PrimitiveSerializer<
     ConnectionVerificationResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,7 +133,8 @@ class _$ConnectionVerificationResponseSerializer implements PrimitiveSerializer<
         case r'type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ConnectionVerificationResponseTypeEnum),
+            specifiedType:
+                const FullType(ConnectionVerificationResponseTypeEnum),
           ) as ConnectionVerificationResponseTypeEnum;
           result.type = valueDes;
           break;
@@ -176,19 +189,23 @@ class _$ConnectionVerificationResponseSerializer implements PrimitiveSerializer<
 }
 
 class ConnectionVerificationResponseTypeEnum extends EnumClass {
-
   /// The type of connection being verified
   @BuiltValueEnumConst(wireName: r'bsky')
-  static const ConnectionVerificationResponseTypeEnum bsky = _$connectionVerificationResponseTypeEnum_bsky;
+  static const ConnectionVerificationResponseTypeEnum bsky =
+      _$connectionVerificationResponseTypeEnum_bsky;
+
   /// The type of connection being verified
   @BuiltValueEnumConst(wireName: r'domain')
-  static const ConnectionVerificationResponseTypeEnum domain = _$connectionVerificationResponseTypeEnum_domain;
+  static const ConnectionVerificationResponseTypeEnum domain =
+      _$connectionVerificationResponseTypeEnum_domain;
 
-  static Serializer<ConnectionVerificationResponseTypeEnum> get serializer => _$connectionVerificationResponseTypeEnumSerializer;
+  static Serializer<ConnectionVerificationResponseTypeEnum> get serializer =>
+      _$connectionVerificationResponseTypeEnumSerializer;
 
-  const ConnectionVerificationResponseTypeEnum._(String name): super(name);
+  const ConnectionVerificationResponseTypeEnum._(String name) : super(name);
 
-  static BuiltSet<ConnectionVerificationResponseTypeEnum> get values => _$connectionVerificationResponseTypeEnumValues;
-  static ConnectionVerificationResponseTypeEnum valueOf(String name) => _$connectionVerificationResponseTypeEnumValueOf(name);
+  static BuiltSet<ConnectionVerificationResponseTypeEnum> get values =>
+      _$connectionVerificationResponseTypeEnumValues;
+  static ConnectionVerificationResponseTypeEnum valueOf(String name) =>
+      _$connectionVerificationResponseTypeEnumValueOf(name);
 }
-

@@ -13,12 +13,13 @@ part 'list_archives_request.g.dart';
 ///
 /// Properties:
 /// * [subjectType] - Type of archives to list
-/// * [subjectId] 
-/// * [requestedBy] 
+/// * [subjectId]
+/// * [requestedBy]
 /// * [limit] - Maximum number of archives to return
 /// * [includeExpired] - Whether to include expired archives
 @BuiltValue()
-abstract class ListArchivesRequest implements Built<ListArchivesRequest, ListArchivesRequestBuilder> {
+abstract class ListArchivesRequest
+    implements Built<ListArchivesRequest, ListArchivesRequestBuilder> {
   /// Type of archives to list
   @BuiltValueField(wireName: r'subject_type')
   ListArchivesRequestSubjectTypeEnum? get subjectType;
@@ -40,18 +41,24 @@ abstract class ListArchivesRequest implements Built<ListArchivesRequest, ListArc
 
   ListArchivesRequest._();
 
-  factory ListArchivesRequest([void updates(ListArchivesRequestBuilder b)]) = _$ListArchivesRequest;
+  factory ListArchivesRequest([void updates(ListArchivesRequestBuilder b)]) =
+      _$ListArchivesRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ListArchivesRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListArchivesRequest> get serializer => _$ListArchivesRequestSerializer();
+  static Serializer<ListArchivesRequest> get serializer =>
+      _$ListArchivesRequestSerializer();
 }
 
-class _$ListArchivesRequestSerializer implements PrimitiveSerializer<ListArchivesRequest> {
+class _$ListArchivesRequestSerializer
+    implements PrimitiveSerializer<ListArchivesRequest> {
   @override
-  final Iterable<Type> types = const [ListArchivesRequest, _$ListArchivesRequest];
+  final Iterable<Type> types = const [
+    ListArchivesRequest,
+    _$ListArchivesRequest
+  ];
 
   @override
   final String wireName = r'ListArchivesRequest';
@@ -104,7 +111,9 @@ class _$ListArchivesRequestSerializer implements PrimitiveSerializer<ListArchive
     ListArchivesRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -184,22 +193,28 @@ class _$ListArchivesRequestSerializer implements PrimitiveSerializer<ListArchive
 }
 
 class ListArchivesRequestSubjectTypeEnum extends EnumClass {
-
   /// Type of archives to list
   @BuiltValueEnumConst(wireName: r'user')
-  static const ListArchivesRequestSubjectTypeEnum user = _$listArchivesRequestSubjectTypeEnum_user;
+  static const ListArchivesRequestSubjectTypeEnum user =
+      _$listArchivesRequestSubjectTypeEnum_user;
+
   /// Type of archives to list
   @BuiltValueEnumConst(wireName: r'guild')
-  static const ListArchivesRequestSubjectTypeEnum guild = _$listArchivesRequestSubjectTypeEnum_guild;
+  static const ListArchivesRequestSubjectTypeEnum guild =
+      _$listArchivesRequestSubjectTypeEnum_guild;
+
   /// Type of archives to list
   @BuiltValueEnumConst(wireName: r'all')
-  static const ListArchivesRequestSubjectTypeEnum all = _$listArchivesRequestSubjectTypeEnum_all;
+  static const ListArchivesRequestSubjectTypeEnum all =
+      _$listArchivesRequestSubjectTypeEnum_all;
 
-  static Serializer<ListArchivesRequestSubjectTypeEnum> get serializer => _$listArchivesRequestSubjectTypeEnumSerializer;
+  static Serializer<ListArchivesRequestSubjectTypeEnum> get serializer =>
+      _$listArchivesRequestSubjectTypeEnumSerializer;
 
-  const ListArchivesRequestSubjectTypeEnum._(String name): super(name);
+  const ListArchivesRequestSubjectTypeEnum._(String name) : super(name);
 
-  static BuiltSet<ListArchivesRequestSubjectTypeEnum> get values => _$listArchivesRequestSubjectTypeEnumValues;
-  static ListArchivesRequestSubjectTypeEnum valueOf(String name) => _$listArchivesRequestSubjectTypeEnumValueOf(name);
+  static BuiltSet<ListArchivesRequestSubjectTypeEnum> get values =>
+      _$listArchivesRequestSubjectTypeEnumValues;
+  static ListArchivesRequestSubjectTypeEnum valueOf(String name) =>
+      _$listArchivesRequestSubjectTypeEnumValueOf(name);
 }
-

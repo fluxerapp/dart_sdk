@@ -16,13 +16,14 @@ part 'web_authn_register_request.g.dart';
 /// * [response] - WebAuthn registration response
 /// * [challenge] - The challenge from registration options
 /// * [name] - User-assigned name for the credential
-/// * [password] 
+/// * [password]
 /// * [mfaMethod] - MFA method to use for verification
 /// * [mfaCode] - MFA verification code from authenticator app or SMS
 /// * [webauthnResponse] - WebAuthn authentication response
 /// * [webauthnChallenge] - WebAuthn challenge string
 @BuiltValue()
-abstract class WebAuthnRegisterRequest implements Built<WebAuthnRegisterRequest, WebAuthnRegisterRequestBuilder> {
+abstract class WebAuthnRegisterRequest
+    implements Built<WebAuthnRegisterRequest, WebAuthnRegisterRequestBuilder> {
   /// WebAuthn registration response
   @BuiltValueField(wireName: r'response')
   JsonObject get response;
@@ -57,18 +58,25 @@ abstract class WebAuthnRegisterRequest implements Built<WebAuthnRegisterRequest,
 
   WebAuthnRegisterRequest._();
 
-  factory WebAuthnRegisterRequest([void updates(WebAuthnRegisterRequestBuilder b)]) = _$WebAuthnRegisterRequest;
+  factory WebAuthnRegisterRequest(
+          [void updates(WebAuthnRegisterRequestBuilder b)]) =
+      _$WebAuthnRegisterRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(WebAuthnRegisterRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<WebAuthnRegisterRequest> get serializer => _$WebAuthnRegisterRequestSerializer();
+  static Serializer<WebAuthnRegisterRequest> get serializer =>
+      _$WebAuthnRegisterRequestSerializer();
 }
 
-class _$WebAuthnRegisterRequestSerializer implements PrimitiveSerializer<WebAuthnRegisterRequest> {
+class _$WebAuthnRegisterRequestSerializer
+    implements PrimitiveSerializer<WebAuthnRegisterRequest> {
   @override
-  final Iterable<Type> types = const [WebAuthnRegisterRequest, _$WebAuthnRegisterRequest];
+  final Iterable<Type> types = const [
+    WebAuthnRegisterRequest,
+    _$WebAuthnRegisterRequest
+  ];
 
   @override
   final String wireName = r'WebAuthnRegisterRequest';
@@ -136,7 +144,9 @@ class _$WebAuthnRegisterRequestSerializer implements PrimitiveSerializer<WebAuth
     WebAuthnRegisterRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -237,22 +247,28 @@ class _$WebAuthnRegisterRequestSerializer implements PrimitiveSerializer<WebAuth
 }
 
 class WebAuthnRegisterRequestMfaMethodEnum extends EnumClass {
-
   /// MFA method to use for verification
   @BuiltValueEnumConst(wireName: r'totp')
-  static const WebAuthnRegisterRequestMfaMethodEnum totp = _$webAuthnRegisterRequestMfaMethodEnum_totp;
+  static const WebAuthnRegisterRequestMfaMethodEnum totp =
+      _$webAuthnRegisterRequestMfaMethodEnum_totp;
+
   /// MFA method to use for verification
   @BuiltValueEnumConst(wireName: r'sms')
-  static const WebAuthnRegisterRequestMfaMethodEnum sms = _$webAuthnRegisterRequestMfaMethodEnum_sms;
+  static const WebAuthnRegisterRequestMfaMethodEnum sms =
+      _$webAuthnRegisterRequestMfaMethodEnum_sms;
+
   /// MFA method to use for verification
   @BuiltValueEnumConst(wireName: r'webauthn')
-  static const WebAuthnRegisterRequestMfaMethodEnum webauthn = _$webAuthnRegisterRequestMfaMethodEnum_webauthn;
+  static const WebAuthnRegisterRequestMfaMethodEnum webauthn =
+      _$webAuthnRegisterRequestMfaMethodEnum_webauthn;
 
-  static Serializer<WebAuthnRegisterRequestMfaMethodEnum> get serializer => _$webAuthnRegisterRequestMfaMethodEnumSerializer;
+  static Serializer<WebAuthnRegisterRequestMfaMethodEnum> get serializer =>
+      _$webAuthnRegisterRequestMfaMethodEnumSerializer;
 
-  const WebAuthnRegisterRequestMfaMethodEnum._(String name): super(name);
+  const WebAuthnRegisterRequestMfaMethodEnum._(String name) : super(name);
 
-  static BuiltSet<WebAuthnRegisterRequestMfaMethodEnum> get values => _$webAuthnRegisterRequestMfaMethodEnumValues;
-  static WebAuthnRegisterRequestMfaMethodEnum valueOf(String name) => _$webAuthnRegisterRequestMfaMethodEnumValueOf(name);
+  static BuiltSet<WebAuthnRegisterRequestMfaMethodEnum> get values =>
+      _$webAuthnRegisterRequestMfaMethodEnumValues;
+  static WebAuthnRegisterRequestMfaMethodEnum valueOf(String name) =>
+      _$webAuthnRegisterRequestMfaMethodEnumValueOf(name);
 }
-

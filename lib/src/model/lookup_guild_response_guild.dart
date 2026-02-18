@@ -19,31 +19,33 @@ part 'lookup_guild_response_guild.g.dart';
 /// LookupGuildResponseGuild
 ///
 /// Properties:
-/// * [id] 
-/// * [ownerId] 
-/// * [name] 
-/// * [vanityUrlCode] 
-/// * [icon] 
-/// * [banner] 
-/// * [splash] 
-/// * [embedSplash] 
-/// * [features] 
-/// * [verificationLevel] 
-/// * [mfaLevel] 
-/// * [nsfwLevel] 
-/// * [explicitContentFilter] 
-/// * [defaultMessageNotifications] 
-/// * [afkChannelId] 
-/// * [afkTimeout] 
-/// * [systemChannelId] 
+/// * [id]
+/// * [ownerId]
+/// * [name]
+/// * [vanityUrlCode]
+/// * [icon]
+/// * [banner]
+/// * [splash]
+/// * [embedSplash]
+/// * [features]
+/// * [verificationLevel]
+/// * [mfaLevel]
+/// * [nsfwLevel]
+/// * [explicitContentFilter]
+/// * [defaultMessageNotifications]
+/// * [afkChannelId]
+/// * [afkTimeout]
+/// * [systemChannelId]
 /// * [systemChannelFlags] - System channel message flags
-/// * [rulesChannelId] 
-/// * [disabledOperations] 
-/// * [memberCount] 
-/// * [channels] 
-/// * [roles] 
+/// * [rulesChannelId]
+/// * [disabledOperations]
+/// * [memberCount]
+/// * [channels]
+/// * [roles]
 @BuiltValue()
-abstract class LookupGuildResponseGuild implements Built<LookupGuildResponseGuild, LookupGuildResponseGuildBuilder> {
+abstract class LookupGuildResponseGuild
+    implements
+        Built<LookupGuildResponseGuild, LookupGuildResponseGuildBuilder> {
   @BuiltValueField(wireName: r'id')
   String get id;
 
@@ -121,18 +123,25 @@ abstract class LookupGuildResponseGuild implements Built<LookupGuildResponseGuil
 
   LookupGuildResponseGuild._();
 
-  factory LookupGuildResponseGuild([void updates(LookupGuildResponseGuildBuilder b)]) = _$LookupGuildResponseGuild;
+  factory LookupGuildResponseGuild(
+          [void updates(LookupGuildResponseGuildBuilder b)]) =
+      _$LookupGuildResponseGuild;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(LookupGuildResponseGuildBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<LookupGuildResponseGuild> get serializer => _$LookupGuildResponseGuildSerializer();
+  static Serializer<LookupGuildResponseGuild> get serializer =>
+      _$LookupGuildResponseGuildSerializer();
 }
 
-class _$LookupGuildResponseGuildSerializer implements PrimitiveSerializer<LookupGuildResponseGuild> {
+class _$LookupGuildResponseGuildSerializer
+    implements PrimitiveSerializer<LookupGuildResponseGuild> {
   @override
-  final Iterable<Type> types = const [LookupGuildResponseGuild, _$LookupGuildResponseGuild];
+  final Iterable<Type> types = const [
+    LookupGuildResponseGuild,
+    _$LookupGuildResponseGuild
+  ];
 
   @override
   final String wireName = r'LookupGuildResponseGuild';
@@ -158,30 +167,40 @@ class _$LookupGuildResponseGuildSerializer implements PrimitiveSerializer<Lookup
       specifiedType: const FullType(String),
     );
     yield r'vanity_url_code';
-    yield object.vanityUrlCode == null ? null : serializers.serialize(
-      object.vanityUrlCode,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.vanityUrlCode == null
+        ? null
+        : serializers.serialize(
+            object.vanityUrlCode,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'icon';
-    yield object.icon == null ? null : serializers.serialize(
-      object.icon,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.icon == null
+        ? null
+        : serializers.serialize(
+            object.icon,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'banner';
-    yield object.banner == null ? null : serializers.serialize(
-      object.banner,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.banner == null
+        ? null
+        : serializers.serialize(
+            object.banner,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'splash';
-    yield object.splash == null ? null : serializers.serialize(
-      object.splash,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.splash == null
+        ? null
+        : serializers.serialize(
+            object.splash,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'embed_splash';
-    yield object.embedSplash == null ? null : serializers.serialize(
-      object.embedSplash,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.embedSplash == null
+        ? null
+        : serializers.serialize(
+            object.embedSplash,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'features';
     yield serializers.serialize(
       object.features,
@@ -250,12 +269,14 @@ class _$LookupGuildResponseGuildSerializer implements PrimitiveSerializer<Lookup
     yield r'channels';
     yield serializers.serialize(
       object.channels,
-      specifiedType: const FullType(BuiltList, [FullType(LookupGuildResponseGuildChannelsInner)]),
+      specifiedType: const FullType(
+          BuiltList, [FullType(LookupGuildResponseGuildChannelsInner)]),
     );
     yield r'roles';
     yield serializers.serialize(
       object.roles,
-      specifiedType: const FullType(BuiltList, [FullType(LookupGuildResponseGuildRolesInner)]),
+      specifiedType: const FullType(
+          BuiltList, [FullType(LookupGuildResponseGuildRolesInner)]),
     );
   }
 
@@ -265,7 +286,9 @@ class _$LookupGuildResponseGuildSerializer implements PrimitiveSerializer<Lookup
     LookupGuildResponseGuild object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -435,14 +458,16 @@ class _$LookupGuildResponseGuildSerializer implements PrimitiveSerializer<Lookup
         case r'channels':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(LookupGuildResponseGuildChannelsInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(LookupGuildResponseGuildChannelsInner)]),
           ) as BuiltList<LookupGuildResponseGuildChannelsInner>;
           result.channels.replace(valueDes);
           break;
         case r'roles':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(LookupGuildResponseGuildRolesInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(LookupGuildResponseGuildRolesInner)]),
           ) as BuiltList<LookupGuildResponseGuildRolesInner>;
           result.roles.replace(valueDes);
           break;
@@ -474,4 +499,3 @@ class _$LookupGuildResponseGuildSerializer implements PrimitiveSerializer<Lookup
     return result.build();
   }
 }
-

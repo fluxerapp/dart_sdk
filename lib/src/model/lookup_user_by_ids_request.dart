@@ -12,26 +12,34 @@ part 'lookup_user_by_ids_request.g.dart';
 /// LookupUserByIdsRequest
 ///
 /// Properties:
-/// * [userIds] 
+/// * [userIds]
 @BuiltValue()
-abstract class LookupUserByIdsRequest implements Built<LookupUserByIdsRequest, LookupUserByIdsRequestBuilder> {
+abstract class LookupUserByIdsRequest
+    implements Built<LookupUserByIdsRequest, LookupUserByIdsRequestBuilder> {
   @BuiltValueField(wireName: r'user_ids')
   BuiltList<String> get userIds;
 
   LookupUserByIdsRequest._();
 
-  factory LookupUserByIdsRequest([void updates(LookupUserByIdsRequestBuilder b)]) = _$LookupUserByIdsRequest;
+  factory LookupUserByIdsRequest(
+          [void updates(LookupUserByIdsRequestBuilder b)]) =
+      _$LookupUserByIdsRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(LookupUserByIdsRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<LookupUserByIdsRequest> get serializer => _$LookupUserByIdsRequestSerializer();
+  static Serializer<LookupUserByIdsRequest> get serializer =>
+      _$LookupUserByIdsRequestSerializer();
 }
 
-class _$LookupUserByIdsRequestSerializer implements PrimitiveSerializer<LookupUserByIdsRequest> {
+class _$LookupUserByIdsRequestSerializer
+    implements PrimitiveSerializer<LookupUserByIdsRequest> {
   @override
-  final Iterable<Type> types = const [LookupUserByIdsRequest, _$LookupUserByIdsRequest];
+  final Iterable<Type> types = const [
+    LookupUserByIdsRequest,
+    _$LookupUserByIdsRequest
+  ];
 
   @override
   final String wireName = r'LookupUserByIdsRequest';
@@ -54,7 +62,9 @@ class _$LookupUserByIdsRequestSerializer implements PrimitiveSerializer<LookupUs
     LookupUserByIdsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +114,3 @@ class _$LookupUserByIdsRequestSerializer implements PrimitiveSerializer<LookupUs
     return result.build();
   }
 }
-

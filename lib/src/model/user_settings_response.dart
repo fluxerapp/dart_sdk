@@ -20,7 +20,7 @@ part 'user_settings_response.g.dart';
 /// Properties:
 /// * [status] - The current online status of the user
 /// * [theme] - The UI theme preference
-/// * [locale] 
+/// * [locale]
 /// * [restrictedGuilds] - Guild IDs where direct messages are restricted
 /// * [botRestrictedGuilds] - Guild IDs where bot direct messages are restricted
 /// * [defaultGuildsRestricted] - Whether new guilds have DM restrictions by default
@@ -38,16 +38,17 @@ part 'user_settings_response.g.dart';
 /// * [incomingCallFlags] - Incoming call settings
 /// * [groupDmAddPermissionFlags] - Group DM add permissions
 /// * [guildFolders] - The folder structure for organizing guilds in the sidebar
-/// * [customStatus] 
+/// * [customStatus]
 /// * [afkTimeout] - The idle timeout in seconds before going AFK
 /// * [timeFormat] - The preferred time format setting
 /// * [developerMode] - Whether developer mode is enabled
 /// * [trustedDomains] - List of trusted external link domains
 /// * [defaultHideMutedChannels] - Whether muted channels are hidden by default in new guilds
-/// * [statusResetsAt] 
-/// * [statusResetsTo] 
+/// * [statusResetsAt]
+/// * [statusResetsTo]
 @BuiltValue()
-abstract class UserSettingsResponse implements Built<UserSettingsResponse, UserSettingsResponseBuilder> {
+abstract class UserSettingsResponse
+    implements Built<UserSettingsResponse, UserSettingsResponseBuilder> {
   /// The current online status of the user
   @BuiltValueField(wireName: r'status')
   String get status;
@@ -162,18 +163,24 @@ abstract class UserSettingsResponse implements Built<UserSettingsResponse, UserS
 
   UserSettingsResponse._();
 
-  factory UserSettingsResponse([void updates(UserSettingsResponseBuilder b)]) = _$UserSettingsResponse;
+  factory UserSettingsResponse([void updates(UserSettingsResponseBuilder b)]) =
+      _$UserSettingsResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UserSettingsResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UserSettingsResponse> get serializer => _$UserSettingsResponseSerializer();
+  static Serializer<UserSettingsResponse> get serializer =>
+      _$UserSettingsResponseSerializer();
 }
 
-class _$UserSettingsResponseSerializer implements PrimitiveSerializer<UserSettingsResponse> {
+class _$UserSettingsResponseSerializer
+    implements PrimitiveSerializer<UserSettingsResponse> {
   @override
-  final Iterable<Type> types = const [UserSettingsResponse, _$UserSettingsResponse];
+  final Iterable<Type> types = const [
+    UserSettingsResponse,
+    _$UserSettingsResponse
+  ];
 
   @override
   final String wireName = r'UserSettingsResponse';
@@ -281,13 +288,16 @@ class _$UserSettingsResponseSerializer implements PrimitiveSerializer<UserSettin
     yield r'guild_folders';
     yield serializers.serialize(
       object.guildFolders,
-      specifiedType: const FullType(BuiltList, [FullType(UserSettingsResponseGuildFoldersInner)]),
+      specifiedType: const FullType(
+          BuiltList, [FullType(UserSettingsResponseGuildFoldersInner)]),
     );
     yield r'custom_status';
-    yield object.customStatus == null ? null : serializers.serialize(
-      object.customStatus,
-      specifiedType: const FullType.nullable(CustomStatusResponse),
-    );
+    yield object.customStatus == null
+        ? null
+        : serializers.serialize(
+            object.customStatus,
+            specifiedType: const FullType.nullable(CustomStatusResponse),
+          );
     yield r'afk_timeout';
     yield serializers.serialize(
       object.afkTimeout,
@@ -335,7 +345,9 @@ class _$UserSettingsResponseSerializer implements PrimitiveSerializer<UserSettin
     UserSettingsResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -486,7 +498,8 @@ class _$UserSettingsResponseSerializer implements PrimitiveSerializer<UserSettin
         case r'guild_folders':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(UserSettingsResponseGuildFoldersInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(UserSettingsResponseGuildFoldersInner)]),
           ) as BuiltList<UserSettingsResponseGuildFoldersInner>;
           result.guildFolders.replace(valueDes);
           break;
@@ -577,4 +590,3 @@ class _$UserSettingsResponseSerializer implements PrimitiveSerializer<UserSettin
     return result.build();
   }
 }
-

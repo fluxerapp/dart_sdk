@@ -12,10 +12,13 @@ part 'well_known_fluxer_response_captcha.g.dart';
 ///
 /// Properties:
 /// * [provider] - Captcha provider name (hcaptcha, turnstile, none)
-/// * [hcaptchaSiteKey] 
-/// * [turnstileSiteKey] 
+/// * [hcaptchaSiteKey]
+/// * [turnstileSiteKey]
 @BuiltValue()
-abstract class WellKnownFluxerResponseCaptcha implements Built<WellKnownFluxerResponseCaptcha, WellKnownFluxerResponseCaptchaBuilder> {
+abstract class WellKnownFluxerResponseCaptcha
+    implements
+        Built<WellKnownFluxerResponseCaptcha,
+            WellKnownFluxerResponseCaptchaBuilder> {
   /// Captcha provider name (hcaptcha, turnstile, none)
   @BuiltValueField(wireName: r'provider')
   String get provider;
@@ -28,18 +31,25 @@ abstract class WellKnownFluxerResponseCaptcha implements Built<WellKnownFluxerRe
 
   WellKnownFluxerResponseCaptcha._();
 
-  factory WellKnownFluxerResponseCaptcha([void updates(WellKnownFluxerResponseCaptchaBuilder b)]) = _$WellKnownFluxerResponseCaptcha;
+  factory WellKnownFluxerResponseCaptcha(
+          [void updates(WellKnownFluxerResponseCaptchaBuilder b)]) =
+      _$WellKnownFluxerResponseCaptcha;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(WellKnownFluxerResponseCaptchaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<WellKnownFluxerResponseCaptcha> get serializer => _$WellKnownFluxerResponseCaptchaSerializer();
+  static Serializer<WellKnownFluxerResponseCaptcha> get serializer =>
+      _$WellKnownFluxerResponseCaptchaSerializer();
 }
 
-class _$WellKnownFluxerResponseCaptchaSerializer implements PrimitiveSerializer<WellKnownFluxerResponseCaptcha> {
+class _$WellKnownFluxerResponseCaptchaSerializer
+    implements PrimitiveSerializer<WellKnownFluxerResponseCaptcha> {
   @override
-  final Iterable<Type> types = const [WellKnownFluxerResponseCaptcha, _$WellKnownFluxerResponseCaptcha];
+  final Iterable<Type> types = const [
+    WellKnownFluxerResponseCaptcha,
+    _$WellKnownFluxerResponseCaptcha
+  ];
 
   @override
   final String wireName = r'WellKnownFluxerResponseCaptcha';
@@ -55,15 +65,19 @@ class _$WellKnownFluxerResponseCaptchaSerializer implements PrimitiveSerializer<
       specifiedType: const FullType(String),
     );
     yield r'hcaptcha_site_key';
-    yield object.hcaptchaSiteKey == null ? null : serializers.serialize(
-      object.hcaptchaSiteKey,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.hcaptchaSiteKey == null
+        ? null
+        : serializers.serialize(
+            object.hcaptchaSiteKey,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'turnstile_site_key';
-    yield object.turnstileSiteKey == null ? null : serializers.serialize(
-      object.turnstileSiteKey,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.turnstileSiteKey == null
+        ? null
+        : serializers.serialize(
+            object.turnstileSiteKey,
+            specifiedType: const FullType.nullable(String),
+          );
   }
 
   @override
@@ -72,7 +86,9 @@ class _$WellKnownFluxerResponseCaptchaSerializer implements PrimitiveSerializer<
     WellKnownFluxerResponseCaptcha object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -138,4 +154,3 @@ class _$WellKnownFluxerResponseCaptchaSerializer implements PrimitiveSerializer<
     return result.build();
   }
 }
-

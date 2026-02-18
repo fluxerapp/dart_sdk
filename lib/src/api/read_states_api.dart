@@ -4,16 +4,12 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:fluxer_dart/src/model/error.dart';
-import 'package:fluxer_dart/src/model/get_well_known_fluxer429_response.dart';
 import 'package:fluxer_dart/src/model/read_state_ack_bulk_request.dart';
 
 class ReadStatesApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -24,7 +20,7 @@ class ReadStatesApi {
   /// Marks multiple channels as read for the authenticated user in bulk.
   ///
   /// Parameters:
-  /// * [readStateAckBulkRequest] 
+  /// * [readStateAckBulkRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -34,7 +30,7 @@ class ReadStatesApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> ackBulkMessages({ 
+  Future<Response<void>> ackBulkMessages({
     required ReadStateAckBulkRequest readStateAckBulkRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -56,7 +52,8 @@ class ReadStatesApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -73,11 +70,11 @@ class ReadStatesApi {
 
     try {
       const _type = FullType(ReadStateAckBulkRequest);
-      _bodyData = _serializers.serialize(readStateAckBulkRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(readStateAckBulkRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -98,5 +95,4 @@ class ReadStatesApi {
 
     return _response;
   }
-
 }

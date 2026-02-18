@@ -14,10 +14,13 @@ part 'purge_guild_assets_response_schema.g.dart';
 /// PurgeGuildAssetsResponseSchema
 ///
 /// Properties:
-/// * [processed] 
-/// * [errors] 
+/// * [processed]
+/// * [errors]
 @BuiltValue()
-abstract class PurgeGuildAssetsResponseSchema implements Built<PurgeGuildAssetsResponseSchema, PurgeGuildAssetsResponseSchemaBuilder> {
+abstract class PurgeGuildAssetsResponseSchema
+    implements
+        Built<PurgeGuildAssetsResponseSchema,
+            PurgeGuildAssetsResponseSchemaBuilder> {
   @BuiltValueField(wireName: r'processed')
   BuiltList<PurgeGuildAssetResultSchema> get processed;
 
@@ -26,18 +29,25 @@ abstract class PurgeGuildAssetsResponseSchema implements Built<PurgeGuildAssetsR
 
   PurgeGuildAssetsResponseSchema._();
 
-  factory PurgeGuildAssetsResponseSchema([void updates(PurgeGuildAssetsResponseSchemaBuilder b)]) = _$PurgeGuildAssetsResponseSchema;
+  factory PurgeGuildAssetsResponseSchema(
+          [void updates(PurgeGuildAssetsResponseSchemaBuilder b)]) =
+      _$PurgeGuildAssetsResponseSchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PurgeGuildAssetsResponseSchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PurgeGuildAssetsResponseSchema> get serializer => _$PurgeGuildAssetsResponseSchemaSerializer();
+  static Serializer<PurgeGuildAssetsResponseSchema> get serializer =>
+      _$PurgeGuildAssetsResponseSchemaSerializer();
 }
 
-class _$PurgeGuildAssetsResponseSchemaSerializer implements PrimitiveSerializer<PurgeGuildAssetsResponseSchema> {
+class _$PurgeGuildAssetsResponseSchemaSerializer
+    implements PrimitiveSerializer<PurgeGuildAssetsResponseSchema> {
   @override
-  final Iterable<Type> types = const [PurgeGuildAssetsResponseSchema, _$PurgeGuildAssetsResponseSchema];
+  final Iterable<Type> types = const [
+    PurgeGuildAssetsResponseSchema,
+    _$PurgeGuildAssetsResponseSchema
+  ];
 
   @override
   final String wireName = r'PurgeGuildAssetsResponseSchema';
@@ -50,12 +60,14 @@ class _$PurgeGuildAssetsResponseSchemaSerializer implements PrimitiveSerializer<
     yield r'processed';
     yield serializers.serialize(
       object.processed,
-      specifiedType: const FullType(BuiltList, [FullType(PurgeGuildAssetResultSchema)]),
+      specifiedType:
+          const FullType(BuiltList, [FullType(PurgeGuildAssetResultSchema)]),
     );
     yield r'errors';
     yield serializers.serialize(
       object.errors,
-      specifiedType: const FullType(BuiltList, [FullType(PurgeGuildAssetErrorSchema)]),
+      specifiedType:
+          const FullType(BuiltList, [FullType(PurgeGuildAssetErrorSchema)]),
     );
   }
 
@@ -65,7 +77,9 @@ class _$PurgeGuildAssetsResponseSchemaSerializer implements PrimitiveSerializer<
     PurgeGuildAssetsResponseSchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -83,14 +97,16 @@ class _$PurgeGuildAssetsResponseSchemaSerializer implements PrimitiveSerializer<
         case r'processed':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(PurgeGuildAssetResultSchema)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(PurgeGuildAssetResultSchema)]),
           ) as BuiltList<PurgeGuildAssetResultSchema>;
           result.processed.replace(valueDes);
           break;
         case r'errors':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(PurgeGuildAssetErrorSchema)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(PurgeGuildAssetErrorSchema)]),
           ) as BuiltList<PurgeGuildAssetErrorSchema>;
           result.errors.replace(valueDes);
           break;
@@ -122,4 +138,3 @@ class _$PurgeGuildAssetsResponseSchemaSerializer implements PrimitiveSerializer<
     return result.build();
   }
 }
-

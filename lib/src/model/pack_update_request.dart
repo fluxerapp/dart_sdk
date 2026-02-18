@@ -12,9 +12,10 @@ part 'pack_update_request.g.dart';
 ///
 /// Properties:
 /// * [name] - The new name of the pack
-/// * [description] 
+/// * [description]
 @BuiltValue()
-abstract class PackUpdateRequest implements Built<PackUpdateRequest, PackUpdateRequestBuilder> {
+abstract class PackUpdateRequest
+    implements Built<PackUpdateRequest, PackUpdateRequestBuilder> {
   /// The new name of the pack
   @BuiltValueField(wireName: r'name')
   String? get name;
@@ -24,16 +25,19 @@ abstract class PackUpdateRequest implements Built<PackUpdateRequest, PackUpdateR
 
   PackUpdateRequest._();
 
-  factory PackUpdateRequest([void updates(PackUpdateRequestBuilder b)]) = _$PackUpdateRequest;
+  factory PackUpdateRequest([void updates(PackUpdateRequestBuilder b)]) =
+      _$PackUpdateRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PackUpdateRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PackUpdateRequest> get serializer => _$PackUpdateRequestSerializer();
+  static Serializer<PackUpdateRequest> get serializer =>
+      _$PackUpdateRequestSerializer();
 }
 
-class _$PackUpdateRequestSerializer implements PrimitiveSerializer<PackUpdateRequest> {
+class _$PackUpdateRequestSerializer
+    implements PrimitiveSerializer<PackUpdateRequest> {
   @override
   final Iterable<Type> types = const [PackUpdateRequest, _$PackUpdateRequest];
 
@@ -67,7 +71,9 @@ class _$PackUpdateRequestSerializer implements PrimitiveSerializer<PackUpdateReq
     PackUpdateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -125,4 +131,3 @@ class _$PackUpdateRequestSerializer implements PrimitiveSerializer<PackUpdateReq
     return result.build();
   }
 }
-

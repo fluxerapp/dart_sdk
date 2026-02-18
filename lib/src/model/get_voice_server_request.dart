@@ -14,7 +14,8 @@ part 'get_voice_server_request.g.dart';
 /// * [regionId] - ID of the region the server belongs to
 /// * [serverId] - ID of the voice server to retrieve
 @BuiltValue()
-abstract class GetVoiceServerRequest implements Built<GetVoiceServerRequest, GetVoiceServerRequestBuilder> {
+abstract class GetVoiceServerRequest
+    implements Built<GetVoiceServerRequest, GetVoiceServerRequestBuilder> {
   /// ID of the region the server belongs to
   @BuiltValueField(wireName: r'region_id')
   String get regionId;
@@ -25,18 +26,24 @@ abstract class GetVoiceServerRequest implements Built<GetVoiceServerRequest, Get
 
   GetVoiceServerRequest._();
 
-  factory GetVoiceServerRequest([void updates(GetVoiceServerRequestBuilder b)]) = _$GetVoiceServerRequest;
+  factory GetVoiceServerRequest(
+      [void updates(GetVoiceServerRequestBuilder b)]) = _$GetVoiceServerRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GetVoiceServerRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GetVoiceServerRequest> get serializer => _$GetVoiceServerRequestSerializer();
+  static Serializer<GetVoiceServerRequest> get serializer =>
+      _$GetVoiceServerRequestSerializer();
 }
 
-class _$GetVoiceServerRequestSerializer implements PrimitiveSerializer<GetVoiceServerRequest> {
+class _$GetVoiceServerRequestSerializer
+    implements PrimitiveSerializer<GetVoiceServerRequest> {
   @override
-  final Iterable<Type> types = const [GetVoiceServerRequest, _$GetVoiceServerRequest];
+  final Iterable<Type> types = const [
+    GetVoiceServerRequest,
+    _$GetVoiceServerRequest
+  ];
 
   @override
   final String wireName = r'GetVoiceServerRequest';
@@ -64,7 +71,9 @@ class _$GetVoiceServerRequestSerializer implements PrimitiveSerializer<GetVoiceS
     GetVoiceServerRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +130,3 @@ class _$GetVoiceServerRequestSerializer implements PrimitiveSerializer<GetVoiceS
     return result.build();
   }
 }
-

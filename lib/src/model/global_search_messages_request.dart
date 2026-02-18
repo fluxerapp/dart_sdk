@@ -20,8 +20,8 @@ part 'global_search_messages_request.g.dart';
 /// Properties:
 /// * [hitsPerPage] - Number of results per page (1-25)
 /// * [page] - Page number for pagination
-/// * [maxId] 
-/// * [minId] 
+/// * [maxId]
+/// * [minId]
 /// * [content] - Text content to search for
 /// * [contents] - Multiple content queries to search for
 /// * [exactPhrases] - Exact phrases that must appear contiguously in message content
@@ -47,15 +47,17 @@ part 'global_search_messages_request.g.dart';
 /// * [excludeAttachmentFilename] - Attachment filenames to exclude
 /// * [attachmentExtension] - File extensions to filter by
 /// * [excludeAttachmentExtension] - File extensions to exclude
-/// * [sortBy] 
-/// * [sortOrder] 
+/// * [sortBy]
+/// * [sortOrder]
 /// * [includeNsfw] - Whether to include NSFW channel results
-/// * [scope] 
-/// * [contextChannelId] 
-/// * [contextGuildId] 
+/// * [scope]
+/// * [contextChannelId]
+/// * [contextGuildId]
 /// * [channelIds] - Specific channel IDs to search in
 @BuiltValue()
-abstract class GlobalSearchMessagesRequest implements Built<GlobalSearchMessagesRequest, GlobalSearchMessagesRequestBuilder> {
+abstract class GlobalSearchMessagesRequest
+    implements
+        Built<GlobalSearchMessagesRequest, GlobalSearchMessagesRequestBuilder> {
   /// Number of results per page (1-25)
   @BuiltValueField(wireName: r'hits_per_page')
   int? get hitsPerPage;
@@ -198,18 +200,25 @@ abstract class GlobalSearchMessagesRequest implements Built<GlobalSearchMessages
 
   GlobalSearchMessagesRequest._();
 
-  factory GlobalSearchMessagesRequest([void updates(GlobalSearchMessagesRequestBuilder b)]) = _$GlobalSearchMessagesRequest;
+  factory GlobalSearchMessagesRequest(
+          [void updates(GlobalSearchMessagesRequestBuilder b)]) =
+      _$GlobalSearchMessagesRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GlobalSearchMessagesRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GlobalSearchMessagesRequest> get serializer => _$GlobalSearchMessagesRequestSerializer();
+  static Serializer<GlobalSearchMessagesRequest> get serializer =>
+      _$GlobalSearchMessagesRequestSerializer();
 }
 
-class _$GlobalSearchMessagesRequestSerializer implements PrimitiveSerializer<GlobalSearchMessagesRequest> {
+class _$GlobalSearchMessagesRequestSerializer
+    implements PrimitiveSerializer<GlobalSearchMessagesRequest> {
   @override
-  final Iterable<Type> types = const [GlobalSearchMessagesRequest, _$GlobalSearchMessagesRequest];
+  final Iterable<Type> types = const [
+    GlobalSearchMessagesRequest,
+    _$GlobalSearchMessagesRequest
+  ];
 
   @override
   final String wireName = r'GlobalSearchMessagesRequest';
@@ -342,14 +351,16 @@ class _$GlobalSearchMessagesRequestSerializer implements PrimitiveSerializer<Glo
       yield r'has';
       yield serializers.serialize(
         object.has,
-        specifiedType: const FullType(BuiltList, [FullType(MessageContentType)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(MessageContentType)]),
       );
     }
     if (object.excludeHas != null) {
       yield r'exclude_has';
       yield serializers.serialize(
         object.excludeHas,
-        specifiedType: const FullType(BuiltList, [FullType(MessageContentType)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(MessageContentType)]),
       );
     }
     if (object.embedType != null) {
@@ -479,7 +490,9 @@ class _$GlobalSearchMessagesRequestSerializer implements PrimitiveSerializer<Glo
     GlobalSearchMessagesRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -560,14 +573,16 @@ class _$GlobalSearchMessagesRequestSerializer implements PrimitiveSerializer<Glo
         case r'author_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(MessageAuthorType)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(MessageAuthorType)]),
           ) as BuiltList<MessageAuthorType>;
           result.authorType.replace(valueDes);
           break;
         case r'exclude_author_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(MessageAuthorType)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(MessageAuthorType)]),
           ) as BuiltList<MessageAuthorType>;
           result.excludeAuthorType.replace(valueDes);
           break;
@@ -616,28 +631,32 @@ class _$GlobalSearchMessagesRequestSerializer implements PrimitiveSerializer<Glo
         case r'has':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(MessageContentType)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(MessageContentType)]),
           ) as BuiltList<MessageContentType>;
           result.has.replace(valueDes);
           break;
         case r'exclude_has':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(MessageContentType)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(MessageContentType)]),
           ) as BuiltList<MessageContentType>;
           result.excludeHas.replace(valueDes);
           break;
         case r'embed_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(MessageEmbedType)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(MessageEmbedType)]),
           ) as BuiltList<MessageEmbedType>;
           result.embedType.replace(valueDes);
           break;
         case r'exclude_embed_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(MessageEmbedType)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(MessageEmbedType)]),
           ) as BuiltList<MessageEmbedType>;
           result.excludeEmbedType.replace(valueDes);
           break;
@@ -774,4 +793,3 @@ class _$GlobalSearchMessagesRequestSerializer implements PrimitiveSerializer<Glo
     return result.build();
   }
 }
-

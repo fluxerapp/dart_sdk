@@ -23,24 +23,28 @@ part 'auth_login_response.g.dart';
 /// * [sms] - Whether SMS MFA is available
 /// * [totp] - Whether TOTP authenticator MFA is available
 /// * [webauthn] - Whether WebAuthn security key MFA is available
-/// * [smsPhoneHint] 
+/// * [smsPhoneHint]
 @BuiltValue()
-abstract class AuthLoginResponse implements Built<AuthLoginResponse, AuthLoginResponseBuilder> {
+abstract class AuthLoginResponse
+    implements Built<AuthLoginResponse, AuthLoginResponseBuilder> {
   /// One Of [AuthMfaRequiredResponse], [AuthTokenWithUserIdResponse]
   OneOf get oneOf;
 
   AuthLoginResponse._();
 
-  factory AuthLoginResponse([void updates(AuthLoginResponseBuilder b)]) = _$AuthLoginResponse;
+  factory AuthLoginResponse([void updates(AuthLoginResponseBuilder b)]) =
+      _$AuthLoginResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(AuthLoginResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<AuthLoginResponse> get serializer => _$AuthLoginResponseSerializer();
+  static Serializer<AuthLoginResponse> get serializer =>
+      _$AuthLoginResponseSerializer();
 }
 
-class _$AuthLoginResponseSerializer implements PrimitiveSerializer<AuthLoginResponse> {
+class _$AuthLoginResponseSerializer
+    implements PrimitiveSerializer<AuthLoginResponse> {
   @override
   final Iterable<Type> types = const [AuthLoginResponse, _$AuthLoginResponse];
 
@@ -48,11 +52,7 @@ class _$AuthLoginResponseSerializer implements PrimitiveSerializer<AuthLoginResp
   final String wireName = r'AuthLoginResponse';
 
   Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    AuthLoginResponse object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-  }
+      Serializers serializers, AuthLoginResponse object) sync* {}
 
   @override
   Object serialize(
@@ -61,7 +61,8 @@ class _$AuthLoginResponseSerializer implements PrimitiveSerializer<AuthLoginResp
     FullType specifiedType = FullType.unspecified,
   }) {
     final oneOf = object.oneOf;
-    return serializers.serialize(oneOf.value, specifiedType: FullType(oneOf.valueType))!;
+    return serializers.serialize(oneOf.value,
+        specifiedType: FullType(oneOf.valueType))!;
   }
 
   @override
@@ -72,24 +73,30 @@ class _$AuthLoginResponseSerializer implements PrimitiveSerializer<AuthLoginResp
   }) {
     final result = AuthLoginResponseBuilder();
     Object? oneOfDataSrc;
-    final targetType = const FullType(OneOf, [FullType(AuthTokenWithUserIdResponse), FullType(AuthMfaRequiredResponse), ]);
+    final targetType = const FullType(OneOf, [
+      FullType(AuthTokenWithUserIdResponse),
+      FullType(AuthMfaRequiredResponse),
+    ]);
     oneOfDataSrc = serialized;
-    result.oneOf = serializers.deserialize(oneOfDataSrc, specifiedType: targetType) as OneOf;
+    result.oneOf = serializers.deserialize(oneOfDataSrc,
+        specifiedType: targetType) as OneOf;
     return result.build();
   }
 }
 
 class AuthLoginResponseMfaEnum extends EnumClass {
-
   /// Indicates MFA is required to complete authentication
   @BuiltValueEnumConst(wireName: r'true')
-  static const AuthLoginResponseMfaEnum true_ = _$authLoginResponseMfaEnum_true_;
+  static const AuthLoginResponseMfaEnum true_ =
+      _$authLoginResponseMfaEnum_true_;
 
-  static Serializer<AuthLoginResponseMfaEnum> get serializer => _$authLoginResponseMfaEnumSerializer;
+  static Serializer<AuthLoginResponseMfaEnum> get serializer =>
+      _$authLoginResponseMfaEnumSerializer;
 
-  const AuthLoginResponseMfaEnum._(String name): super(name);
+  const AuthLoginResponseMfaEnum._(String name) : super(name);
 
-  static BuiltSet<AuthLoginResponseMfaEnum> get values => _$authLoginResponseMfaEnumValues;
-  static AuthLoginResponseMfaEnum valueOf(String name) => _$authLoginResponseMfaEnumValueOf(name);
+  static BuiltSet<AuthLoginResponseMfaEnum> get values =>
+      _$authLoginResponseMfaEnumValues;
+  static AuthLoginResponseMfaEnum valueOf(String name) =>
+      _$authLoginResponseMfaEnumValueOf(name);
 }
-

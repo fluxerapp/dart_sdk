@@ -13,25 +13,32 @@ part 'delete_voice_response.g.dart';
 /// Properties:
 /// * [success] - Whether the deletion was successful
 @BuiltValue()
-abstract class DeleteVoiceResponse implements Built<DeleteVoiceResponse, DeleteVoiceResponseBuilder> {
+abstract class DeleteVoiceResponse
+    implements Built<DeleteVoiceResponse, DeleteVoiceResponseBuilder> {
   /// Whether the deletion was successful
   @BuiltValueField(wireName: r'success')
   bool get success;
 
   DeleteVoiceResponse._();
 
-  factory DeleteVoiceResponse([void updates(DeleteVoiceResponseBuilder b)]) = _$DeleteVoiceResponse;
+  factory DeleteVoiceResponse([void updates(DeleteVoiceResponseBuilder b)]) =
+      _$DeleteVoiceResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(DeleteVoiceResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<DeleteVoiceResponse> get serializer => _$DeleteVoiceResponseSerializer();
+  static Serializer<DeleteVoiceResponse> get serializer =>
+      _$DeleteVoiceResponseSerializer();
 }
 
-class _$DeleteVoiceResponseSerializer implements PrimitiveSerializer<DeleteVoiceResponse> {
+class _$DeleteVoiceResponseSerializer
+    implements PrimitiveSerializer<DeleteVoiceResponse> {
   @override
-  final Iterable<Type> types = const [DeleteVoiceResponse, _$DeleteVoiceResponse];
+  final Iterable<Type> types = const [
+    DeleteVoiceResponse,
+    _$DeleteVoiceResponse
+  ];
 
   @override
   final String wireName = r'DeleteVoiceResponse';
@@ -54,7 +61,9 @@ class _$DeleteVoiceResponseSerializer implements PrimitiveSerializer<DeleteVoice
     DeleteVoiceResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +113,3 @@ class _$DeleteVoiceResponseSerializer implements PrimitiveSerializer<DeleteVoice
     return result.build();
   }
 }
-

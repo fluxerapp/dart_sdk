@@ -17,7 +17,10 @@ part 'guild_sticker_bulk_create_response.g.dart';
 /// * [success] - Successfully created stickers
 /// * [failed] - Stickers that failed to create
 @BuiltValue()
-abstract class GuildStickerBulkCreateResponse implements Built<GuildStickerBulkCreateResponse, GuildStickerBulkCreateResponseBuilder> {
+abstract class GuildStickerBulkCreateResponse
+    implements
+        Built<GuildStickerBulkCreateResponse,
+            GuildStickerBulkCreateResponseBuilder> {
   /// Successfully created stickers
   @BuiltValueField(wireName: r'success')
   BuiltList<GuildStickerResponse> get success;
@@ -28,18 +31,25 @@ abstract class GuildStickerBulkCreateResponse implements Built<GuildStickerBulkC
 
   GuildStickerBulkCreateResponse._();
 
-  factory GuildStickerBulkCreateResponse([void updates(GuildStickerBulkCreateResponseBuilder b)]) = _$GuildStickerBulkCreateResponse;
+  factory GuildStickerBulkCreateResponse(
+          [void updates(GuildStickerBulkCreateResponseBuilder b)]) =
+      _$GuildStickerBulkCreateResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildStickerBulkCreateResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildStickerBulkCreateResponse> get serializer => _$GuildStickerBulkCreateResponseSerializer();
+  static Serializer<GuildStickerBulkCreateResponse> get serializer =>
+      _$GuildStickerBulkCreateResponseSerializer();
 }
 
-class _$GuildStickerBulkCreateResponseSerializer implements PrimitiveSerializer<GuildStickerBulkCreateResponse> {
+class _$GuildStickerBulkCreateResponseSerializer
+    implements PrimitiveSerializer<GuildStickerBulkCreateResponse> {
   @override
-  final Iterable<Type> types = const [GuildStickerBulkCreateResponse, _$GuildStickerBulkCreateResponse];
+  final Iterable<Type> types = const [
+    GuildStickerBulkCreateResponse,
+    _$GuildStickerBulkCreateResponse
+  ];
 
   @override
   final String wireName = r'GuildStickerBulkCreateResponse';
@@ -52,12 +62,14 @@ class _$GuildStickerBulkCreateResponseSerializer implements PrimitiveSerializer<
     yield r'success';
     yield serializers.serialize(
       object.success,
-      specifiedType: const FullType(BuiltList, [FullType(GuildStickerResponse)]),
+      specifiedType:
+          const FullType(BuiltList, [FullType(GuildStickerResponse)]),
     );
     yield r'failed';
     yield serializers.serialize(
       object.failed,
-      specifiedType: const FullType(BuiltList, [FullType(GuildStickerBulkCreateResponseFailedInner)]),
+      specifiedType: const FullType(
+          BuiltList, [FullType(GuildStickerBulkCreateResponseFailedInner)]),
     );
   }
 
@@ -67,7 +79,9 @@ class _$GuildStickerBulkCreateResponseSerializer implements PrimitiveSerializer<
     GuildStickerBulkCreateResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -85,14 +99,16 @@ class _$GuildStickerBulkCreateResponseSerializer implements PrimitiveSerializer<
         case r'success':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(GuildStickerResponse)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(GuildStickerResponse)]),
           ) as BuiltList<GuildStickerResponse>;
           result.success.replace(valueDes);
           break;
         case r'failed':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(GuildStickerBulkCreateResponseFailedInner)]),
+            specifiedType: const FullType(BuiltList,
+                [FullType(GuildStickerBulkCreateResponseFailedInner)]),
           ) as BuiltList<GuildStickerBulkCreateResponseFailedInner>;
           result.failed.replace(valueDes);
           break;
@@ -124,4 +140,3 @@ class _$GuildStickerBulkCreateResponseSerializer implements PrimitiveSerializer<
     return result.build();
   }
 }
-

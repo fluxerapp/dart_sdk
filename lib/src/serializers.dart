@@ -1277,7 +1277,8 @@ Serializers serializers = (_$serializers.toBuilder()
         () => ListBuilder<DiscoveryCategoryResponse>(),
       )
       ..addBuilderFactory(
-        const FullType(BuiltMap, [FullType(String), FullType(PreloadMessagesResponseValue)]),
+        const FullType(BuiltMap,
+            [FullType(String), FullType(PreloadMessagesResponseValue)]),
         () => MapBuilder<String, PreloadMessagesResponseValue>(),
       )
       ..addBuilderFactory(
@@ -1285,7 +1286,8 @@ Serializers serializers = (_$serializers.toBuilder()
         () => ListBuilder<DiscoveryApplicationResponse>(),
       )
       ..addBuilderFactory(
-        const FullType(BuiltList, [FullType(ChannelPositionUpdateRequestInner)]),
+        const FullType(
+            BuiltList, [FullType(ChannelPositionUpdateRequestInner)]),
         () => ListBuilder<ChannelPositionUpdateRequestInner>(),
       )
       ..addBuilderFactory(
@@ -1315,8 +1317,8 @@ Serializers serializers = (_$serializers.toBuilder()
       ..add(const OneOfSerializer())
       ..add(const AnyOfSerializer())
       ..add(const DateSerializer())
-      ..add(Iso8601DateTimeSerializer())
-    ).build();
+      ..add(Iso8601DateTimeSerializer()))
+    .build();
 
 Serializers standardSerializers =
     (serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

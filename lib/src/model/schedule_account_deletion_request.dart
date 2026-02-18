@@ -11,12 +11,15 @@ part 'schedule_account_deletion_request.g.dart';
 /// ScheduleAccountDeletionRequest
 ///
 /// Properties:
-/// * [userId] 
+/// * [userId]
 /// * [reasonCode] - Code indicating the reason for deletion
 /// * [publicReason] - Public-facing reason for the deletion
 /// * [daysUntilDeletion] - Number of days until the account is deleted
 @BuiltValue()
-abstract class ScheduleAccountDeletionRequest implements Built<ScheduleAccountDeletionRequest, ScheduleAccountDeletionRequestBuilder> {
+abstract class ScheduleAccountDeletionRequest
+    implements
+        Built<ScheduleAccountDeletionRequest,
+            ScheduleAccountDeletionRequestBuilder> {
   @BuiltValueField(wireName: r'user_id')
   String get userId;
 
@@ -34,18 +37,25 @@ abstract class ScheduleAccountDeletionRequest implements Built<ScheduleAccountDe
 
   ScheduleAccountDeletionRequest._();
 
-  factory ScheduleAccountDeletionRequest([void updates(ScheduleAccountDeletionRequestBuilder b)]) = _$ScheduleAccountDeletionRequest;
+  factory ScheduleAccountDeletionRequest(
+          [void updates(ScheduleAccountDeletionRequestBuilder b)]) =
+      _$ScheduleAccountDeletionRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ScheduleAccountDeletionRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ScheduleAccountDeletionRequest> get serializer => _$ScheduleAccountDeletionRequestSerializer();
+  static Serializer<ScheduleAccountDeletionRequest> get serializer =>
+      _$ScheduleAccountDeletionRequestSerializer();
 }
 
-class _$ScheduleAccountDeletionRequestSerializer implements PrimitiveSerializer<ScheduleAccountDeletionRequest> {
+class _$ScheduleAccountDeletionRequestSerializer
+    implements PrimitiveSerializer<ScheduleAccountDeletionRequest> {
   @override
-  final Iterable<Type> types = const [ScheduleAccountDeletionRequest, _$ScheduleAccountDeletionRequest];
+  final Iterable<Type> types = const [
+    ScheduleAccountDeletionRequest,
+    _$ScheduleAccountDeletionRequest
+  ];
 
   @override
   final String wireName = r'ScheduleAccountDeletionRequest';
@@ -87,7 +97,9 @@ class _$ScheduleAccountDeletionRequestSerializer implements PrimitiveSerializer<
     ScheduleAccountDeletionRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -158,4 +170,3 @@ class _$ScheduleAccountDeletionRequestSerializer implements PrimitiveSerializer<
     return result.build();
   }
 }
-

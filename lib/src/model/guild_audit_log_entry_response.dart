@@ -16,14 +16,16 @@ part 'guild_audit_log_entry_response.g.dart';
 ///
 /// Properties:
 /// * [id] - The unique identifier for this audit log entry
-/// * [actionType] 
-/// * [userId] 
-/// * [targetId] 
+/// * [actionType]
+/// * [userId]
+/// * [targetId]
 /// * [reason] - The reason provided for the action
-/// * [options] 
+/// * [options]
 /// * [changes] - Changes made to the target
 @BuiltValue()
-abstract class GuildAuditLogEntryResponse implements Built<GuildAuditLogEntryResponse, GuildAuditLogEntryResponseBuilder> {
+abstract class GuildAuditLogEntryResponse
+    implements
+        Built<GuildAuditLogEntryResponse, GuildAuditLogEntryResponseBuilder> {
   /// The unique identifier for this audit log entry
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -51,18 +53,25 @@ abstract class GuildAuditLogEntryResponse implements Built<GuildAuditLogEntryRes
 
   GuildAuditLogEntryResponse._();
 
-  factory GuildAuditLogEntryResponse([void updates(GuildAuditLogEntryResponseBuilder b)]) = _$GuildAuditLogEntryResponse;
+  factory GuildAuditLogEntryResponse(
+          [void updates(GuildAuditLogEntryResponseBuilder b)]) =
+      _$GuildAuditLogEntryResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildAuditLogEntryResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildAuditLogEntryResponse> get serializer => _$GuildAuditLogEntryResponseSerializer();
+  static Serializer<GuildAuditLogEntryResponse> get serializer =>
+      _$GuildAuditLogEntryResponseSerializer();
 }
 
-class _$GuildAuditLogEntryResponseSerializer implements PrimitiveSerializer<GuildAuditLogEntryResponse> {
+class _$GuildAuditLogEntryResponseSerializer
+    implements PrimitiveSerializer<GuildAuditLogEntryResponse> {
   @override
-  final Iterable<Type> types = const [GuildAuditLogEntryResponse, _$GuildAuditLogEntryResponse];
+  final Iterable<Type> types = const [
+    GuildAuditLogEntryResponse,
+    _$GuildAuditLogEntryResponse
+  ];
 
   @override
   final String wireName = r'GuildAuditLogEntryResponse';
@@ -114,7 +123,8 @@ class _$GuildAuditLogEntryResponseSerializer implements PrimitiveSerializer<Guil
       yield r'changes';
       yield serializers.serialize(
         object.changes,
-        specifiedType: const FullType(BuiltList, [FullType(AuditLogChangeSchema)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(AuditLogChangeSchema)]),
       );
     }
   }
@@ -125,7 +135,9 @@ class _$GuildAuditLogEntryResponseSerializer implements PrimitiveSerializer<Guil
     GuildAuditLogEntryResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -186,7 +198,8 @@ class _$GuildAuditLogEntryResponseSerializer implements PrimitiveSerializer<Guil
         case r'changes':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(AuditLogChangeSchema)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(AuditLogChangeSchema)]),
           ) as BuiltList<AuditLogChangeSchema>;
           result.changes.replace(valueDes);
           break;
@@ -218,4 +231,3 @@ class _$GuildAuditLogEntryResponseSerializer implements PrimitiveSerializer<Guil
     return result.build();
   }
 }
-

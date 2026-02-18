@@ -12,12 +12,14 @@ part 'git_hub_webhook_commits_inner.g.dart';
 /// GitHubWebhookCommitsInner
 ///
 /// Properties:
-/// * [id] 
-/// * [url] 
-/// * [message] 
-/// * [author] 
+/// * [id]
+/// * [url]
+/// * [message]
+/// * [author]
 @BuiltValue()
-abstract class GitHubWebhookCommitsInner implements Built<GitHubWebhookCommitsInner, GitHubWebhookCommitsInnerBuilder> {
+abstract class GitHubWebhookCommitsInner
+    implements
+        Built<GitHubWebhookCommitsInner, GitHubWebhookCommitsInnerBuilder> {
   @BuiltValueField(wireName: r'id')
   String get id;
 
@@ -32,18 +34,25 @@ abstract class GitHubWebhookCommitsInner implements Built<GitHubWebhookCommitsIn
 
   GitHubWebhookCommitsInner._();
 
-  factory GitHubWebhookCommitsInner([void updates(GitHubWebhookCommitsInnerBuilder b)]) = _$GitHubWebhookCommitsInner;
+  factory GitHubWebhookCommitsInner(
+          [void updates(GitHubWebhookCommitsInnerBuilder b)]) =
+      _$GitHubWebhookCommitsInner;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GitHubWebhookCommitsInnerBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GitHubWebhookCommitsInner> get serializer => _$GitHubWebhookCommitsInnerSerializer();
+  static Serializer<GitHubWebhookCommitsInner> get serializer =>
+      _$GitHubWebhookCommitsInnerSerializer();
 }
 
-class _$GitHubWebhookCommitsInnerSerializer implements PrimitiveSerializer<GitHubWebhookCommitsInner> {
+class _$GitHubWebhookCommitsInnerSerializer
+    implements PrimitiveSerializer<GitHubWebhookCommitsInner> {
   @override
-  final Iterable<Type> types = const [GitHubWebhookCommitsInner, _$GitHubWebhookCommitsInner];
+  final Iterable<Type> types = const [
+    GitHubWebhookCommitsInner,
+    _$GitHubWebhookCommitsInner
+  ];
 
   @override
   final String wireName = r'GitHubWebhookCommitsInner';
@@ -81,7 +90,9 @@ class _$GitHubWebhookCommitsInnerSerializer implements PrimitiveSerializer<GitHu
     GitHubWebhookCommitsInner object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -152,4 +163,3 @@ class _$GitHubWebhookCommitsInnerSerializer implements PrimitiveSerializer<GitHu
     return result.build();
   }
 }
-

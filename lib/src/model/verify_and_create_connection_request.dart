@@ -12,9 +12,12 @@ part 'verify_and_create_connection_request.g.dart';
 ///
 /// Properties:
 /// * [initiationToken] - The signed initiation token returned from the create endpoint
-/// * [visibilityFlags] 
+/// * [visibilityFlags]
 @BuiltValue()
-abstract class VerifyAndCreateConnectionRequest implements Built<VerifyAndCreateConnectionRequest, VerifyAndCreateConnectionRequestBuilder> {
+abstract class VerifyAndCreateConnectionRequest
+    implements
+        Built<VerifyAndCreateConnectionRequest,
+            VerifyAndCreateConnectionRequestBuilder> {
   /// The signed initiation token returned from the create endpoint
   @BuiltValueField(wireName: r'initiation_token')
   String get initiationToken;
@@ -24,18 +27,25 @@ abstract class VerifyAndCreateConnectionRequest implements Built<VerifyAndCreate
 
   VerifyAndCreateConnectionRequest._();
 
-  factory VerifyAndCreateConnectionRequest([void updates(VerifyAndCreateConnectionRequestBuilder b)]) = _$VerifyAndCreateConnectionRequest;
+  factory VerifyAndCreateConnectionRequest(
+          [void updates(VerifyAndCreateConnectionRequestBuilder b)]) =
+      _$VerifyAndCreateConnectionRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(VerifyAndCreateConnectionRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<VerifyAndCreateConnectionRequest> get serializer => _$VerifyAndCreateConnectionRequestSerializer();
+  static Serializer<VerifyAndCreateConnectionRequest> get serializer =>
+      _$VerifyAndCreateConnectionRequestSerializer();
 }
 
-class _$VerifyAndCreateConnectionRequestSerializer implements PrimitiveSerializer<VerifyAndCreateConnectionRequest> {
+class _$VerifyAndCreateConnectionRequestSerializer
+    implements PrimitiveSerializer<VerifyAndCreateConnectionRequest> {
   @override
-  final Iterable<Type> types = const [VerifyAndCreateConnectionRequest, _$VerifyAndCreateConnectionRequest];
+  final Iterable<Type> types = const [
+    VerifyAndCreateConnectionRequest,
+    _$VerifyAndCreateConnectionRequest
+  ];
 
   @override
   final String wireName = r'VerifyAndCreateConnectionRequest';
@@ -65,7 +75,9 @@ class _$VerifyAndCreateConnectionRequestSerializer implements PrimitiveSerialize
     VerifyAndCreateConnectionRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -122,4 +134,3 @@ class _$VerifyAndCreateConnectionRequestSerializer implements PrimitiveSerialize
     return result.build();
   }
 }
-

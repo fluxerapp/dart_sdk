@@ -15,7 +15,8 @@ part 'guild_create_request.g.dart';
 /// * [icon] - Base64-encoded image data
 /// * [emptyFeatures] - Whether to create the guild without default features
 @BuiltValue()
-abstract class GuildCreateRequest implements Built<GuildCreateRequest, GuildCreateRequestBuilder> {
+abstract class GuildCreateRequest
+    implements Built<GuildCreateRequest, GuildCreateRequestBuilder> {
   /// The name of the guild (1-100 characters)
   @BuiltValueField(wireName: r'name')
   String get name;
@@ -30,16 +31,19 @@ abstract class GuildCreateRequest implements Built<GuildCreateRequest, GuildCrea
 
   GuildCreateRequest._();
 
-  factory GuildCreateRequest([void updates(GuildCreateRequestBuilder b)]) = _$GuildCreateRequest;
+  factory GuildCreateRequest([void updates(GuildCreateRequestBuilder b)]) =
+      _$GuildCreateRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildCreateRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildCreateRequest> get serializer => _$GuildCreateRequestSerializer();
+  static Serializer<GuildCreateRequest> get serializer =>
+      _$GuildCreateRequestSerializer();
 }
 
-class _$GuildCreateRequestSerializer implements PrimitiveSerializer<GuildCreateRequest> {
+class _$GuildCreateRequestSerializer
+    implements PrimitiveSerializer<GuildCreateRequest> {
   @override
   final Iterable<Type> types = const [GuildCreateRequest, _$GuildCreateRequest];
 
@@ -78,7 +82,9 @@ class _$GuildCreateRequestSerializer implements PrimitiveSerializer<GuildCreateR
     GuildCreateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -142,4 +148,3 @@ class _$GuildCreateRequestSerializer implements PrimitiveSerializer<GuildCreateR
     return result.build();
   }
 }
-

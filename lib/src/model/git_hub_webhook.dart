@@ -24,28 +24,29 @@ part 'git_hub_webhook.g.dart';
 /// GitHubWebhook
 ///
 /// Properties:
-/// * [sender] 
-/// * [action] 
-/// * [answer] 
-/// * [checkRun] 
-/// * [checkSuite] 
-/// * [comment] 
-/// * [commits] 
-/// * [compare] 
-/// * [discussion] 
-/// * [forced] 
-/// * [forkee] 
-/// * [headCommit] 
-/// * [issue] 
-/// * [member] 
-/// * [pullRequest] 
-/// * [refType] 
-/// * [ref] 
-/// * [release] 
-/// * [repository] 
-/// * [review] 
+/// * [sender]
+/// * [action]
+/// * [answer]
+/// * [checkRun]
+/// * [checkSuite]
+/// * [comment]
+/// * [commits]
+/// * [compare]
+/// * [discussion]
+/// * [forced]
+/// * [forkee]
+/// * [headCommit]
+/// * [issue]
+/// * [member]
+/// * [pullRequest]
+/// * [refType]
+/// * [ref]
+/// * [release]
+/// * [repository]
+/// * [review]
 @BuiltValue()
-abstract class GitHubWebhook implements Built<GitHubWebhook, GitHubWebhookBuilder> {
+abstract class GitHubWebhook
+    implements Built<GitHubWebhook, GitHubWebhookBuilder> {
   @BuiltValueField(wireName: r'sender')
   GitHubWebhookAnswerUser get sender;
 
@@ -108,13 +109,15 @@ abstract class GitHubWebhook implements Built<GitHubWebhook, GitHubWebhookBuilde
 
   GitHubWebhook._();
 
-  factory GitHubWebhook([void updates(GitHubWebhookBuilder b)]) = _$GitHubWebhook;
+  factory GitHubWebhook([void updates(GitHubWebhookBuilder b)]) =
+      _$GitHubWebhook;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GitHubWebhookBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GitHubWebhook> get serializer => _$GitHubWebhookSerializer();
+  static Serializer<GitHubWebhook> get serializer =>
+      _$GitHubWebhookSerializer();
 }
 
 class _$GitHubWebhookSerializer implements PrimitiveSerializer<GitHubWebhook> {
@@ -173,7 +176,8 @@ class _$GitHubWebhookSerializer implements PrimitiveSerializer<GitHubWebhook> {
       yield r'commits';
       yield serializers.serialize(
         object.commits,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(GitHubWebhookCommitsInner)]),
+        specifiedType: const FullType.nullable(
+            BuiltList, [FullType(GitHubWebhookCommitsInner)]),
       );
     }
     if (object.compare != null) {
@@ -275,7 +279,9 @@ class _$GitHubWebhookSerializer implements PrimitiveSerializer<GitHubWebhook> {
     GitHubWebhook object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -340,7 +346,8 @@ class _$GitHubWebhookSerializer implements PrimitiveSerializer<GitHubWebhook> {
         case r'commits':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(GitHubWebhookCommitsInner)]),
+            specifiedType: const FullType.nullable(
+                BuiltList, [FullType(GitHubWebhookCommitsInner)]),
           ) as BuiltList<GitHubWebhookCommitsInner>?;
           if (valueDes == null) continue;
           result.commits.replace(valueDes);
@@ -477,4 +484,3 @@ class _$GitHubWebhookSerializer implements PrimitiveSerializer<GitHubWebhook> {
     return result.build();
   }
 }
-

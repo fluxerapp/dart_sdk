@@ -11,11 +11,12 @@ part 'auth_session_location.g.dart';
 /// AuthSessionLocation
 ///
 /// Properties:
-/// * [city] 
-/// * [region] 
-/// * [country] 
+/// * [city]
+/// * [region]
+/// * [country]
 @BuiltValue()
-abstract class AuthSessionLocation implements Built<AuthSessionLocation, AuthSessionLocationBuilder> {
+abstract class AuthSessionLocation
+    implements Built<AuthSessionLocation, AuthSessionLocationBuilder> {
   @BuiltValueField(wireName: r'city')
   String? get city;
 
@@ -27,18 +28,24 @@ abstract class AuthSessionLocation implements Built<AuthSessionLocation, AuthSes
 
   AuthSessionLocation._();
 
-  factory AuthSessionLocation([void updates(AuthSessionLocationBuilder b)]) = _$AuthSessionLocation;
+  factory AuthSessionLocation([void updates(AuthSessionLocationBuilder b)]) =
+      _$AuthSessionLocation;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(AuthSessionLocationBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<AuthSessionLocation> get serializer => _$AuthSessionLocationSerializer();
+  static Serializer<AuthSessionLocation> get serializer =>
+      _$AuthSessionLocationSerializer();
 }
 
-class _$AuthSessionLocationSerializer implements PrimitiveSerializer<AuthSessionLocation> {
+class _$AuthSessionLocationSerializer
+    implements PrimitiveSerializer<AuthSessionLocation> {
   @override
-  final Iterable<Type> types = const [AuthSessionLocation, _$AuthSessionLocation];
+  final Iterable<Type> types = const [
+    AuthSessionLocation,
+    _$AuthSessionLocation
+  ];
 
   @override
   final String wireName = r'AuthSessionLocation';
@@ -77,7 +84,9 @@ class _$AuthSessionLocationSerializer implements PrimitiveSerializer<AuthSession
     AuthSessionLocation object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -144,4 +153,3 @@ class _$AuthSessionLocationSerializer implements PrimitiveSerializer<AuthSession
     return result.build();
   }
 }
-

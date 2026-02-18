@@ -10,23 +10,26 @@ import 'package:built_value/serializer.dart';
 part 'message_embed_type.g.dart';
 
 class MessageEmbedType extends EnumClass {
-
   /// The type of embed content
   @BuiltValueEnumConst(wireName: r'image')
   static const MessageEmbedType image = _$image;
+
   /// The type of embed content
   @BuiltValueEnumConst(wireName: r'video')
   static const MessageEmbedType video = _$video;
+
   /// The type of embed content
   @BuiltValueEnumConst(wireName: r'sound')
   static const MessageEmbedType sound = _$sound;
+
   /// The type of embed content
   @BuiltValueEnumConst(wireName: r'article')
   static const MessageEmbedType article = _$article;
 
-  static Serializer<MessageEmbedType> get serializer => _$messageEmbedTypeSerializer;
+  static Serializer<MessageEmbedType> get serializer =>
+      _$messageEmbedTypeSerializer;
 
-  const MessageEmbedType._(String name): super(name);
+  const MessageEmbedType._(String name) : super(name);
 
   static BuiltSet<MessageEmbedType> get values => _$values;
   static MessageEmbedType valueOf(String name) => _$valueOf(name);
@@ -39,4 +42,3 @@ class MessageEmbedType extends EnumClass {
 ///
 /// Trigger mixin generation by writing a line like this one next to your enum.
 abstract class MessageEmbedTypeMixin = Object with _$MessageEmbedTypeMixin;
-

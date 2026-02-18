@@ -13,14 +13,16 @@ part 'o_auth2_introspect_response.g.dart';
 /// Properties:
 /// * [active] - Whether the token is currently active
 /// * [scope] - The space-separated list of scopes
-/// * [clientId] 
+/// * [clientId]
 /// * [username] - The username of the token owner
 /// * [tokenType] - The type of token
-/// * [exp] 
-/// * [iat] 
-/// * [sub] 
+/// * [exp]
+/// * [iat]
+/// * [sub]
 @BuiltValue()
-abstract class OAuth2IntrospectResponse implements Built<OAuth2IntrospectResponse, OAuth2IntrospectResponseBuilder> {
+abstract class OAuth2IntrospectResponse
+    implements
+        Built<OAuth2IntrospectResponse, OAuth2IntrospectResponseBuilder> {
   /// Whether the token is currently active
   @BuiltValueField(wireName: r'active')
   bool get active;
@@ -51,18 +53,25 @@ abstract class OAuth2IntrospectResponse implements Built<OAuth2IntrospectRespons
 
   OAuth2IntrospectResponse._();
 
-  factory OAuth2IntrospectResponse([void updates(OAuth2IntrospectResponseBuilder b)]) = _$OAuth2IntrospectResponse;
+  factory OAuth2IntrospectResponse(
+          [void updates(OAuth2IntrospectResponseBuilder b)]) =
+      _$OAuth2IntrospectResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(OAuth2IntrospectResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<OAuth2IntrospectResponse> get serializer => _$OAuth2IntrospectResponseSerializer();
+  static Serializer<OAuth2IntrospectResponse> get serializer =>
+      _$OAuth2IntrospectResponseSerializer();
 }
 
-class _$OAuth2IntrospectResponseSerializer implements PrimitiveSerializer<OAuth2IntrospectResponse> {
+class _$OAuth2IntrospectResponseSerializer
+    implements PrimitiveSerializer<OAuth2IntrospectResponse> {
   @override
-  final Iterable<Type> types = const [OAuth2IntrospectResponse, _$OAuth2IntrospectResponse];
+  final Iterable<Type> types = const [
+    OAuth2IntrospectResponse,
+    _$OAuth2IntrospectResponse
+  ];
 
   @override
   final String wireName = r'OAuth2IntrospectResponse';
@@ -134,7 +143,9 @@ class _$OAuth2IntrospectResponseSerializer implements PrimitiveSerializer<OAuth2
     OAuth2IntrospectResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -233,4 +244,3 @@ class _$OAuth2IntrospectResponseSerializer implements PrimitiveSerializer<OAuth2
     return result.build();
   }
 }
-

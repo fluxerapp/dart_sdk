@@ -19,12 +19,15 @@ part 'scheduled_message_response_schema.g.dart';
 /// * [scheduledLocalAt] - The ISO 8601 timestamp in the user local timezone
 /// * [timezone] - The IANA timezone identifier used for scheduling
 /// * [status] - The current status of the scheduled message
-/// * [statusReason] 
-/// * [payload] 
+/// * [statusReason]
+/// * [payload]
 /// * [createdAt] - The ISO 8601 timestamp when this scheduled message was created
-/// * [invalidatedAt] 
+/// * [invalidatedAt]
 @BuiltValue()
-abstract class ScheduledMessageResponseSchema implements Built<ScheduledMessageResponseSchema, ScheduledMessageResponseSchemaBuilder> {
+abstract class ScheduledMessageResponseSchema
+    implements
+        Built<ScheduledMessageResponseSchema,
+            ScheduledMessageResponseSchemaBuilder> {
   /// The unique identifier for this scheduled message
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -65,18 +68,25 @@ abstract class ScheduledMessageResponseSchema implements Built<ScheduledMessageR
 
   ScheduledMessageResponseSchema._();
 
-  factory ScheduledMessageResponseSchema([void updates(ScheduledMessageResponseSchemaBuilder b)]) = _$ScheduledMessageResponseSchema;
+  factory ScheduledMessageResponseSchema(
+          [void updates(ScheduledMessageResponseSchemaBuilder b)]) =
+      _$ScheduledMessageResponseSchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ScheduledMessageResponseSchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ScheduledMessageResponseSchema> get serializer => _$ScheduledMessageResponseSchemaSerializer();
+  static Serializer<ScheduledMessageResponseSchema> get serializer =>
+      _$ScheduledMessageResponseSchemaSerializer();
 }
 
-class _$ScheduledMessageResponseSchemaSerializer implements PrimitiveSerializer<ScheduledMessageResponseSchema> {
+class _$ScheduledMessageResponseSchemaSerializer
+    implements PrimitiveSerializer<ScheduledMessageResponseSchema> {
   @override
-  final Iterable<Type> types = const [ScheduledMessageResponseSchema, _$ScheduledMessageResponseSchema];
+  final Iterable<Type> types = const [
+    ScheduledMessageResponseSchema,
+    _$ScheduledMessageResponseSchema
+  ];
 
   @override
   final String wireName = r'ScheduledMessageResponseSchema';
@@ -117,10 +127,12 @@ class _$ScheduledMessageResponseSchemaSerializer implements PrimitiveSerializer<
       specifiedType: const FullType(ScheduledMessageResponseSchemaStatusEnum),
     );
     yield r'status_reason';
-    yield object.statusReason == null ? null : serializers.serialize(
-      object.statusReason,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.statusReason == null
+        ? null
+        : serializers.serialize(
+            object.statusReason,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'payload';
     yield serializers.serialize(
       object.payload,
@@ -132,10 +144,12 @@ class _$ScheduledMessageResponseSchemaSerializer implements PrimitiveSerializer<
       specifiedType: const FullType(String),
     );
     yield r'invalidated_at';
-    yield object.invalidatedAt == null ? null : serializers.serialize(
-      object.invalidatedAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.invalidatedAt == null
+        ? null
+        : serializers.serialize(
+            object.invalidatedAt,
+            specifiedType: const FullType.nullable(String),
+          );
   }
 
   @override
@@ -144,7 +158,9 @@ class _$ScheduledMessageResponseSchemaSerializer implements PrimitiveSerializer<
     ScheduledMessageResponseSchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -197,7 +213,8 @@ class _$ScheduledMessageResponseSchemaSerializer implements PrimitiveSerializer<
         case r'status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ScheduledMessageResponseSchemaStatusEnum),
+            specifiedType:
+                const FullType(ScheduledMessageResponseSchemaStatusEnum),
           ) as ScheduledMessageResponseSchemaStatusEnum;
           result.status = valueDes;
           break;
@@ -212,7 +229,8 @@ class _$ScheduledMessageResponseSchemaSerializer implements PrimitiveSerializer<
         case r'payload':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ScheduledMessageResponseSchemaPayload),
+            specifiedType:
+                const FullType(ScheduledMessageResponseSchemaPayload),
           ) as ScheduledMessageResponseSchemaPayload;
           result.payload.replace(valueDes);
           break;
@@ -261,31 +279,43 @@ class _$ScheduledMessageResponseSchemaSerializer implements PrimitiveSerializer<
 }
 
 class ScheduledMessageResponseSchemaStatusEnum extends EnumClass {
-
   /// The current status of the scheduled message
   @BuiltValueEnumConst(wireName: r'pending')
-  static const ScheduledMessageResponseSchemaStatusEnum pending = _$scheduledMessageResponseSchemaStatusEnum_pending;
+  static const ScheduledMessageResponseSchemaStatusEnum pending =
+      _$scheduledMessageResponseSchemaStatusEnum_pending;
+
   /// The current status of the scheduled message
   @BuiltValueEnumConst(wireName: r'invalid')
-  static const ScheduledMessageResponseSchemaStatusEnum invalid = _$scheduledMessageResponseSchemaStatusEnum_invalid;
+  static const ScheduledMessageResponseSchemaStatusEnum invalid =
+      _$scheduledMessageResponseSchemaStatusEnum_invalid;
+
   /// The current status of the scheduled message
   @BuiltValueEnumConst(wireName: r'scheduled')
-  static const ScheduledMessageResponseSchemaStatusEnum scheduled = _$scheduledMessageResponseSchemaStatusEnum_scheduled;
+  static const ScheduledMessageResponseSchemaStatusEnum scheduled =
+      _$scheduledMessageResponseSchemaStatusEnum_scheduled;
+
   /// The current status of the scheduled message
   @BuiltValueEnumConst(wireName: r'sent')
-  static const ScheduledMessageResponseSchemaStatusEnum sent = _$scheduledMessageResponseSchemaStatusEnum_sent;
+  static const ScheduledMessageResponseSchemaStatusEnum sent =
+      _$scheduledMessageResponseSchemaStatusEnum_sent;
+
   /// The current status of the scheduled message
   @BuiltValueEnumConst(wireName: r'failed')
-  static const ScheduledMessageResponseSchemaStatusEnum failed = _$scheduledMessageResponseSchemaStatusEnum_failed;
+  static const ScheduledMessageResponseSchemaStatusEnum failed =
+      _$scheduledMessageResponseSchemaStatusEnum_failed;
+
   /// The current status of the scheduled message
   @BuiltValueEnumConst(wireName: r'cancelled')
-  static const ScheduledMessageResponseSchemaStatusEnum cancelled = _$scheduledMessageResponseSchemaStatusEnum_cancelled;
+  static const ScheduledMessageResponseSchemaStatusEnum cancelled =
+      _$scheduledMessageResponseSchemaStatusEnum_cancelled;
 
-  static Serializer<ScheduledMessageResponseSchemaStatusEnum> get serializer => _$scheduledMessageResponseSchemaStatusEnumSerializer;
+  static Serializer<ScheduledMessageResponseSchemaStatusEnum> get serializer =>
+      _$scheduledMessageResponseSchemaStatusEnumSerializer;
 
-  const ScheduledMessageResponseSchemaStatusEnum._(String name): super(name);
+  const ScheduledMessageResponseSchemaStatusEnum._(String name) : super(name);
 
-  static BuiltSet<ScheduledMessageResponseSchemaStatusEnum> get values => _$scheduledMessageResponseSchemaStatusEnumValues;
-  static ScheduledMessageResponseSchemaStatusEnum valueOf(String name) => _$scheduledMessageResponseSchemaStatusEnumValueOf(name);
+  static BuiltSet<ScheduledMessageResponseSchemaStatusEnum> get values =>
+      _$scheduledMessageResponseSchemaStatusEnumValues;
+  static ScheduledMessageResponseSchemaStatusEnum valueOf(String name) =>
+      _$scheduledMessageResponseSchemaStatusEnumValueOf(name);
 }
-

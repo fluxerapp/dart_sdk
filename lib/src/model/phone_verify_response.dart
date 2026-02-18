@@ -13,25 +13,32 @@ part 'phone_verify_response.g.dart';
 /// Properties:
 /// * [phoneToken] - Token to use when adding phone to account
 @BuiltValue()
-abstract class PhoneVerifyResponse implements Built<PhoneVerifyResponse, PhoneVerifyResponseBuilder> {
+abstract class PhoneVerifyResponse
+    implements Built<PhoneVerifyResponse, PhoneVerifyResponseBuilder> {
   /// Token to use when adding phone to account
   @BuiltValueField(wireName: r'phone_token')
   String get phoneToken;
 
   PhoneVerifyResponse._();
 
-  factory PhoneVerifyResponse([void updates(PhoneVerifyResponseBuilder b)]) = _$PhoneVerifyResponse;
+  factory PhoneVerifyResponse([void updates(PhoneVerifyResponseBuilder b)]) =
+      _$PhoneVerifyResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PhoneVerifyResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PhoneVerifyResponse> get serializer => _$PhoneVerifyResponseSerializer();
+  static Serializer<PhoneVerifyResponse> get serializer =>
+      _$PhoneVerifyResponseSerializer();
 }
 
-class _$PhoneVerifyResponseSerializer implements PrimitiveSerializer<PhoneVerifyResponse> {
+class _$PhoneVerifyResponseSerializer
+    implements PrimitiveSerializer<PhoneVerifyResponse> {
   @override
-  final Iterable<Type> types = const [PhoneVerifyResponse, _$PhoneVerifyResponse];
+  final Iterable<Type> types = const [
+    PhoneVerifyResponse,
+    _$PhoneVerifyResponse
+  ];
 
   @override
   final String wireName = r'PhoneVerifyResponse';
@@ -54,7 +61,9 @@ class _$PhoneVerifyResponseSerializer implements PrimitiveSerializer<PhoneVerify
     PhoneVerifyResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +113,3 @@ class _$PhoneVerifyResponseSerializer implements PrimitiveSerializer<PhoneVerify
     return result.build();
   }
 }
-

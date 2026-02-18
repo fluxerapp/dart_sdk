@@ -11,10 +11,11 @@ part 'save_message_request.g.dart';
 /// SaveMessageRequest
 ///
 /// Properties:
-/// * [channelId] 
-/// * [messageId] 
+/// * [channelId]
+/// * [messageId]
 @BuiltValue()
-abstract class SaveMessageRequest implements Built<SaveMessageRequest, SaveMessageRequestBuilder> {
+abstract class SaveMessageRequest
+    implements Built<SaveMessageRequest, SaveMessageRequestBuilder> {
   @BuiltValueField(wireName: r'channel_id')
   String get channelId;
 
@@ -23,16 +24,19 @@ abstract class SaveMessageRequest implements Built<SaveMessageRequest, SaveMessa
 
   SaveMessageRequest._();
 
-  factory SaveMessageRequest([void updates(SaveMessageRequestBuilder b)]) = _$SaveMessageRequest;
+  factory SaveMessageRequest([void updates(SaveMessageRequestBuilder b)]) =
+      _$SaveMessageRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SaveMessageRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SaveMessageRequest> get serializer => _$SaveMessageRequestSerializer();
+  static Serializer<SaveMessageRequest> get serializer =>
+      _$SaveMessageRequestSerializer();
 }
 
-class _$SaveMessageRequestSerializer implements PrimitiveSerializer<SaveMessageRequest> {
+class _$SaveMessageRequestSerializer
+    implements PrimitiveSerializer<SaveMessageRequest> {
   @override
   final Iterable<Type> types = const [SaveMessageRequest, _$SaveMessageRequest];
 
@@ -62,7 +66,9 @@ class _$SaveMessageRequestSerializer implements PrimitiveSerializer<SaveMessageR
     SaveMessageRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -119,4 +125,3 @@ class _$SaveMessageRequestSerializer implements PrimitiveSerializer<SaveMessageR
     return result.build();
   }
 }
-

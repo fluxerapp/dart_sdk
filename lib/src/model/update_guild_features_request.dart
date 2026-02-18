@@ -12,11 +12,13 @@ part 'update_guild_features_request.g.dart';
 /// UpdateGuildFeaturesRequest
 ///
 /// Properties:
-/// * [guildId] 
+/// * [guildId]
 /// * [addFeatures] - Guild features to add
 /// * [removeFeatures] - Guild features to remove
 @BuiltValue()
-abstract class UpdateGuildFeaturesRequest implements Built<UpdateGuildFeaturesRequest, UpdateGuildFeaturesRequestBuilder> {
+abstract class UpdateGuildFeaturesRequest
+    implements
+        Built<UpdateGuildFeaturesRequest, UpdateGuildFeaturesRequestBuilder> {
   @BuiltValueField(wireName: r'guild_id')
   String get guildId;
 
@@ -30,18 +32,25 @@ abstract class UpdateGuildFeaturesRequest implements Built<UpdateGuildFeaturesRe
 
   UpdateGuildFeaturesRequest._();
 
-  factory UpdateGuildFeaturesRequest([void updates(UpdateGuildFeaturesRequestBuilder b)]) = _$UpdateGuildFeaturesRequest;
+  factory UpdateGuildFeaturesRequest(
+          [void updates(UpdateGuildFeaturesRequestBuilder b)]) =
+      _$UpdateGuildFeaturesRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UpdateGuildFeaturesRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UpdateGuildFeaturesRequest> get serializer => _$UpdateGuildFeaturesRequestSerializer();
+  static Serializer<UpdateGuildFeaturesRequest> get serializer =>
+      _$UpdateGuildFeaturesRequestSerializer();
 }
 
-class _$UpdateGuildFeaturesRequestSerializer implements PrimitiveSerializer<UpdateGuildFeaturesRequest> {
+class _$UpdateGuildFeaturesRequestSerializer
+    implements PrimitiveSerializer<UpdateGuildFeaturesRequest> {
   @override
-  final Iterable<Type> types = const [UpdateGuildFeaturesRequest, _$UpdateGuildFeaturesRequest];
+  final Iterable<Type> types = const [
+    UpdateGuildFeaturesRequest,
+    _$UpdateGuildFeaturesRequest
+  ];
 
   @override
   final String wireName = r'UpdateGuildFeaturesRequest';
@@ -78,7 +87,9 @@ class _$UpdateGuildFeaturesRequestSerializer implements PrimitiveSerializer<Upda
     UpdateGuildFeaturesRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -142,4 +153,3 @@ class _$UpdateGuildFeaturesRequestSerializer implements PrimitiveSerializer<Upda
     return result.build();
   }
 }
-

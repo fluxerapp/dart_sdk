@@ -13,13 +13,16 @@ part 'create_favorite_meme_from_url_body_schema.g.dart';
 ///
 /// Properties:
 /// * [url] - URL of the image or video to save as a favorite meme
-/// * [altText] 
-/// * [tags] 
-/// * [klipySlug] 
-/// * [tenorSlugId] 
-/// * [name] 
+/// * [altText]
+/// * [tags]
+/// * [klipySlug]
+/// * [tenorSlugId]
+/// * [name]
 @BuiltValue()
-abstract class CreateFavoriteMemeFromUrlBodySchema implements Built<CreateFavoriteMemeFromUrlBodySchema, CreateFavoriteMemeFromUrlBodySchemaBuilder> {
+abstract class CreateFavoriteMemeFromUrlBodySchema
+    implements
+        Built<CreateFavoriteMemeFromUrlBodySchema,
+            CreateFavoriteMemeFromUrlBodySchemaBuilder> {
   /// URL of the image or video to save as a favorite meme
   @BuiltValueField(wireName: r'url')
   String get url;
@@ -41,18 +44,25 @@ abstract class CreateFavoriteMemeFromUrlBodySchema implements Built<CreateFavori
 
   CreateFavoriteMemeFromUrlBodySchema._();
 
-  factory CreateFavoriteMemeFromUrlBodySchema([void updates(CreateFavoriteMemeFromUrlBodySchemaBuilder b)]) = _$CreateFavoriteMemeFromUrlBodySchema;
+  factory CreateFavoriteMemeFromUrlBodySchema(
+          [void updates(CreateFavoriteMemeFromUrlBodySchemaBuilder b)]) =
+      _$CreateFavoriteMemeFromUrlBodySchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CreateFavoriteMemeFromUrlBodySchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CreateFavoriteMemeFromUrlBodySchema> get serializer => _$CreateFavoriteMemeFromUrlBodySchemaSerializer();
+  static Serializer<CreateFavoriteMemeFromUrlBodySchema> get serializer =>
+      _$CreateFavoriteMemeFromUrlBodySchemaSerializer();
 }
 
-class _$CreateFavoriteMemeFromUrlBodySchemaSerializer implements PrimitiveSerializer<CreateFavoriteMemeFromUrlBodySchema> {
+class _$CreateFavoriteMemeFromUrlBodySchemaSerializer
+    implements PrimitiveSerializer<CreateFavoriteMemeFromUrlBodySchema> {
   @override
-  final Iterable<Type> types = const [CreateFavoriteMemeFromUrlBodySchema, _$CreateFavoriteMemeFromUrlBodySchema];
+  final Iterable<Type> types = const [
+    CreateFavoriteMemeFromUrlBodySchema,
+    _$CreateFavoriteMemeFromUrlBodySchema
+  ];
 
   @override
   final String wireName = r'CreateFavoriteMemeFromUrlBodySchema';
@@ -110,7 +120,9 @@ class _$CreateFavoriteMemeFromUrlBodySchemaSerializer implements PrimitiveSerial
     CreateFavoriteMemeFromUrlBodySchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -143,7 +155,8 @@ class _$CreateFavoriteMemeFromUrlBodySchemaSerializer implements PrimitiveSerial
         case r'tags':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+            specifiedType:
+                const FullType.nullable(BuiltList, [FullType(String)]),
           ) as BuiltList<String>?;
           if (valueDes == null) continue;
           result.tags.replace(valueDes);
@@ -200,4 +213,3 @@ class _$CreateFavoriteMemeFromUrlBodySchemaSerializer implements PrimitiveSerial
     return result.build();
   }
 }
-

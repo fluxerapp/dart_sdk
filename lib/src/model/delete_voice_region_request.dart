@@ -13,25 +13,34 @@ part 'delete_voice_region_request.g.dart';
 /// Properties:
 /// * [id] - ID of the voice region to delete
 @BuiltValue()
-abstract class DeleteVoiceRegionRequest implements Built<DeleteVoiceRegionRequest, DeleteVoiceRegionRequestBuilder> {
+abstract class DeleteVoiceRegionRequest
+    implements
+        Built<DeleteVoiceRegionRequest, DeleteVoiceRegionRequestBuilder> {
   /// ID of the voice region to delete
   @BuiltValueField(wireName: r'id')
   String get id;
 
   DeleteVoiceRegionRequest._();
 
-  factory DeleteVoiceRegionRequest([void updates(DeleteVoiceRegionRequestBuilder b)]) = _$DeleteVoiceRegionRequest;
+  factory DeleteVoiceRegionRequest(
+          [void updates(DeleteVoiceRegionRequestBuilder b)]) =
+      _$DeleteVoiceRegionRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(DeleteVoiceRegionRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<DeleteVoiceRegionRequest> get serializer => _$DeleteVoiceRegionRequestSerializer();
+  static Serializer<DeleteVoiceRegionRequest> get serializer =>
+      _$DeleteVoiceRegionRequestSerializer();
 }
 
-class _$DeleteVoiceRegionRequestSerializer implements PrimitiveSerializer<DeleteVoiceRegionRequest> {
+class _$DeleteVoiceRegionRequestSerializer
+    implements PrimitiveSerializer<DeleteVoiceRegionRequest> {
   @override
-  final Iterable<Type> types = const [DeleteVoiceRegionRequest, _$DeleteVoiceRegionRequest];
+  final Iterable<Type> types = const [
+    DeleteVoiceRegionRequest,
+    _$DeleteVoiceRegionRequest
+  ];
 
   @override
   final String wireName = r'DeleteVoiceRegionRequest';
@@ -54,7 +63,9 @@ class _$DeleteVoiceRegionRequestSerializer implements PrimitiveSerializer<Delete
     DeleteVoiceRegionRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +115,3 @@ class _$DeleteVoiceRegionRequestSerializer implements PrimitiveSerializer<Delete
     return result.build();
   }
 }
-

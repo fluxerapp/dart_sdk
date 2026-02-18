@@ -18,9 +18,10 @@ part 'auth_mfa_required_response.g.dart';
 /// * [sms] - Whether SMS MFA is available
 /// * [totp] - Whether TOTP authenticator MFA is available
 /// * [webauthn] - Whether WebAuthn security key MFA is available
-/// * [smsPhoneHint] 
+/// * [smsPhoneHint]
 @BuiltValue()
-abstract class AuthMfaRequiredResponse implements Built<AuthMfaRequiredResponse, AuthMfaRequiredResponseBuilder> {
+abstract class AuthMfaRequiredResponse
+    implements Built<AuthMfaRequiredResponse, AuthMfaRequiredResponseBuilder> {
   /// Indicates MFA is required to complete authentication
   @BuiltValueField(wireName: r'mfa')
   AuthMfaRequiredResponseMfaEnum get mfa;
@@ -51,18 +52,25 @@ abstract class AuthMfaRequiredResponse implements Built<AuthMfaRequiredResponse,
 
   AuthMfaRequiredResponse._();
 
-  factory AuthMfaRequiredResponse([void updates(AuthMfaRequiredResponseBuilder b)]) = _$AuthMfaRequiredResponse;
+  factory AuthMfaRequiredResponse(
+          [void updates(AuthMfaRequiredResponseBuilder b)]) =
+      _$AuthMfaRequiredResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(AuthMfaRequiredResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<AuthMfaRequiredResponse> get serializer => _$AuthMfaRequiredResponseSerializer();
+  static Serializer<AuthMfaRequiredResponse> get serializer =>
+      _$AuthMfaRequiredResponseSerializer();
 }
 
-class _$AuthMfaRequiredResponseSerializer implements PrimitiveSerializer<AuthMfaRequiredResponse> {
+class _$AuthMfaRequiredResponseSerializer
+    implements PrimitiveSerializer<AuthMfaRequiredResponse> {
   @override
-  final Iterable<Type> types = const [AuthMfaRequiredResponse, _$AuthMfaRequiredResponse];
+  final Iterable<Type> types = const [
+    AuthMfaRequiredResponse,
+    _$AuthMfaRequiredResponse
+  ];
 
   @override
   final String wireName = r'AuthMfaRequiredResponse';
@@ -117,7 +125,9 @@ class _$AuthMfaRequiredResponseSerializer implements PrimitiveSerializer<AuthMfa
     AuthMfaRequiredResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -212,16 +222,18 @@ class _$AuthMfaRequiredResponseSerializer implements PrimitiveSerializer<AuthMfa
 }
 
 class AuthMfaRequiredResponseMfaEnum extends EnumClass {
-
   /// Indicates MFA is required to complete authentication
   @BuiltValueEnumConst(wireName: r'true')
-  static const AuthMfaRequiredResponseMfaEnum true_ = _$authMfaRequiredResponseMfaEnum_true_;
+  static const AuthMfaRequiredResponseMfaEnum true_ =
+      _$authMfaRequiredResponseMfaEnum_true_;
 
-  static Serializer<AuthMfaRequiredResponseMfaEnum> get serializer => _$authMfaRequiredResponseMfaEnumSerializer;
+  static Serializer<AuthMfaRequiredResponseMfaEnum> get serializer =>
+      _$authMfaRequiredResponseMfaEnumSerializer;
 
-  const AuthMfaRequiredResponseMfaEnum._(String name): super(name);
+  const AuthMfaRequiredResponseMfaEnum._(String name) : super(name);
 
-  static BuiltSet<AuthMfaRequiredResponseMfaEnum> get values => _$authMfaRequiredResponseMfaEnumValues;
-  static AuthMfaRequiredResponseMfaEnum valueOf(String name) => _$authMfaRequiredResponseMfaEnumValueOf(name);
+  static BuiltSet<AuthMfaRequiredResponseMfaEnum> get values =>
+      _$authMfaRequiredResponseMfaEnumValues;
+  static AuthMfaRequiredResponseMfaEnum valueOf(String name) =>
+      _$authMfaRequiredResponseMfaEnumValueOf(name);
 }
-

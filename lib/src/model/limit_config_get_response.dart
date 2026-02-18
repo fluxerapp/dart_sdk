@@ -15,16 +15,17 @@ part 'limit_config_get_response.g.dart';
 /// LimitConfigGetResponse
 ///
 /// Properties:
-/// * [limitConfig] 
-/// * [limitConfigJson] 
-/// * [selfHosted] 
-/// * [defaults] 
-/// * [metadata] 
-/// * [categories] 
-/// * [limitKeys] 
-/// * [bounds] 
+/// * [limitConfig]
+/// * [limitConfigJson]
+/// * [selfHosted]
+/// * [defaults]
+/// * [metadata]
+/// * [categories]
+/// * [limitKeys]
+/// * [bounds]
 @BuiltValue()
-abstract class LimitConfigGetResponse implements Built<LimitConfigGetResponse, LimitConfigGetResponseBuilder> {
+abstract class LimitConfigGetResponse
+    implements Built<LimitConfigGetResponse, LimitConfigGetResponseBuilder> {
   @BuiltValueField(wireName: r'limit_config')
   LimitConfigGetResponseLimitConfig get limitConfig;
 
@@ -51,18 +52,25 @@ abstract class LimitConfigGetResponse implements Built<LimitConfigGetResponse, L
 
   LimitConfigGetResponse._();
 
-  factory LimitConfigGetResponse([void updates(LimitConfigGetResponseBuilder b)]) = _$LimitConfigGetResponse;
+  factory LimitConfigGetResponse(
+          [void updates(LimitConfigGetResponseBuilder b)]) =
+      _$LimitConfigGetResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(LimitConfigGetResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<LimitConfigGetResponse> get serializer => _$LimitConfigGetResponseSerializer();
+  static Serializer<LimitConfigGetResponse> get serializer =>
+      _$LimitConfigGetResponseSerializer();
 }
 
-class _$LimitConfigGetResponseSerializer implements PrimitiveSerializer<LimitConfigGetResponse> {
+class _$LimitConfigGetResponseSerializer
+    implements PrimitiveSerializer<LimitConfigGetResponse> {
   @override
-  final Iterable<Type> types = const [LimitConfigGetResponse, _$LimitConfigGetResponse];
+  final Iterable<Type> types = const [
+    LimitConfigGetResponse,
+    _$LimitConfigGetResponse
+  ];
 
   @override
   final String wireName = r'LimitConfigGetResponse';
@@ -90,17 +98,22 @@ class _$LimitConfigGetResponseSerializer implements PrimitiveSerializer<LimitCon
     yield r'defaults';
     yield serializers.serialize(
       object.defaults,
-      specifiedType: const FullType(BuiltMap, [FullType(String), FullType(BuiltMap, [FullType(String), FullType(num)])]),
+      specifiedType: const FullType(BuiltMap, [
+        FullType(String),
+        FullType(BuiltMap, [FullType(String), FullType(num)])
+      ]),
     );
     yield r'metadata';
     yield serializers.serialize(
       object.metadata,
-      specifiedType: const FullType(BuiltMap, [FullType(String), FullType(LimitConfigGetResponseMetadataValue)]),
+      specifiedType: const FullType(BuiltMap,
+          [FullType(String), FullType(LimitConfigGetResponseMetadataValue)]),
     );
     yield r'categories';
     yield serializers.serialize(
       object.categories,
-      specifiedType: const FullType(BuiltMap, [FullType(String), FullType(String)]),
+      specifiedType:
+          const FullType(BuiltMap, [FullType(String), FullType(String)]),
     );
     yield r'limit_keys';
     yield serializers.serialize(
@@ -111,7 +124,8 @@ class _$LimitConfigGetResponseSerializer implements PrimitiveSerializer<LimitCon
       yield r'bounds';
       yield serializers.serialize(
         object.bounds,
-        specifiedType: const FullType(BuiltMap, [FullType(String), FullType(LimitConfigGetResponseBoundsValue)]),
+        specifiedType: const FullType(BuiltMap,
+            [FullType(String), FullType(LimitConfigGetResponseBoundsValue)]),
       );
     }
   }
@@ -122,7 +136,9 @@ class _$LimitConfigGetResponseSerializer implements PrimitiveSerializer<LimitCon
     LimitConfigGetResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -161,21 +177,28 @@ class _$LimitConfigGetResponseSerializer implements PrimitiveSerializer<LimitCon
         case r'defaults':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(BuiltMap, [FullType(String), FullType(num)])]),
+            specifiedType: const FullType(BuiltMap, [
+              FullType(String),
+              FullType(BuiltMap, [FullType(String), FullType(num)])
+            ]),
           ) as BuiltMap<String, BuiltMap<String, num>>;
           result.defaults.replace(valueDes);
           break;
         case r'metadata':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(LimitConfigGetResponseMetadataValue)]),
+            specifiedType: const FullType(BuiltMap, [
+              FullType(String),
+              FullType(LimitConfigGetResponseMetadataValue)
+            ]),
           ) as BuiltMap<String, LimitConfigGetResponseMetadataValue>;
           result.metadata.replace(valueDes);
           break;
         case r'categories':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(String)]),
+            specifiedType:
+                const FullType(BuiltMap, [FullType(String), FullType(String)]),
           ) as BuiltMap<String, String>;
           result.categories.replace(valueDes);
           break;
@@ -189,7 +212,10 @@ class _$LimitConfigGetResponseSerializer implements PrimitiveSerializer<LimitCon
         case r'bounds':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(LimitConfigGetResponseBoundsValue)]),
+            specifiedType: const FullType(BuiltMap, [
+              FullType(String),
+              FullType(LimitConfigGetResponseBoundsValue)
+            ]),
           ) as BuiltMap<String, LimitConfigGetResponseBoundsValue>;
           result.bounds.replace(valueDes);
           break;
@@ -221,4 +247,3 @@ class _$LimitConfigGetResponseSerializer implements PrimitiveSerializer<LimitCon
     return result.build();
   }
 }
-

@@ -14,14 +14,15 @@ part 'applications_me_response.g.dart';
 /// Properties:
 /// * [id] - The unique identifier of the application
 /// * [name] - The name of the application
-/// * [icon] 
-/// * [description] 
+/// * [icon]
+/// * [description]
 /// * [botPublic] - Whether the bot can be invited by anyone
 /// * [botRequireCodeGrant] - Whether the bot requires OAuth2 code grant
 /// * [flags] - The application flags
-/// * [bot] 
+/// * [bot]
 @BuiltValue()
-abstract class ApplicationsMeResponse implements Built<ApplicationsMeResponse, ApplicationsMeResponseBuilder> {
+abstract class ApplicationsMeResponse
+    implements Built<ApplicationsMeResponse, ApplicationsMeResponseBuilder> {
   /// The unique identifier of the application
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -53,18 +54,25 @@ abstract class ApplicationsMeResponse implements Built<ApplicationsMeResponse, A
 
   ApplicationsMeResponse._();
 
-  factory ApplicationsMeResponse([void updates(ApplicationsMeResponseBuilder b)]) = _$ApplicationsMeResponse;
+  factory ApplicationsMeResponse(
+          [void updates(ApplicationsMeResponseBuilder b)]) =
+      _$ApplicationsMeResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ApplicationsMeResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ApplicationsMeResponse> get serializer => _$ApplicationsMeResponseSerializer();
+  static Serializer<ApplicationsMeResponse> get serializer =>
+      _$ApplicationsMeResponseSerializer();
 }
 
-class _$ApplicationsMeResponseSerializer implements PrimitiveSerializer<ApplicationsMeResponse> {
+class _$ApplicationsMeResponseSerializer
+    implements PrimitiveSerializer<ApplicationsMeResponse> {
   @override
-  final Iterable<Type> types = const [ApplicationsMeResponse, _$ApplicationsMeResponse];
+  final Iterable<Type> types = const [
+    ApplicationsMeResponse,
+    _$ApplicationsMeResponse
+  ];
 
   @override
   final String wireName = r'ApplicationsMeResponse';
@@ -85,15 +93,19 @@ class _$ApplicationsMeResponseSerializer implements PrimitiveSerializer<Applicat
       specifiedType: const FullType(String),
     );
     yield r'icon';
-    yield object.icon == null ? null : serializers.serialize(
-      object.icon,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.icon == null
+        ? null
+        : serializers.serialize(
+            object.icon,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'description';
-    yield object.description == null ? null : serializers.serialize(
-      object.description,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.description == null
+        ? null
+        : serializers.serialize(
+            object.description,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'bot_public';
     yield serializers.serialize(
       object.botPublic,
@@ -124,7 +136,9 @@ class _$ApplicationsMeResponseSerializer implements PrimitiveSerializer<Applicat
     ApplicationsMeResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -225,4 +239,3 @@ class _$ApplicationsMeResponseSerializer implements PrimitiveSerializer<Applicat
     return result.build();
   }
 }
-

@@ -15,7 +15,8 @@ part 'message_sticker_response.g.dart';
 /// * [name] - The name of the sticker
 /// * [animated] - Whether the sticker is animated
 @BuiltValue()
-abstract class MessageStickerResponse implements Built<MessageStickerResponse, MessageStickerResponseBuilder> {
+abstract class MessageStickerResponse
+    implements Built<MessageStickerResponse, MessageStickerResponseBuilder> {
   /// The unique identifier of the sticker
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -30,18 +31,25 @@ abstract class MessageStickerResponse implements Built<MessageStickerResponse, M
 
   MessageStickerResponse._();
 
-  factory MessageStickerResponse([void updates(MessageStickerResponseBuilder b)]) = _$MessageStickerResponse;
+  factory MessageStickerResponse(
+          [void updates(MessageStickerResponseBuilder b)]) =
+      _$MessageStickerResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(MessageStickerResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<MessageStickerResponse> get serializer => _$MessageStickerResponseSerializer();
+  static Serializer<MessageStickerResponse> get serializer =>
+      _$MessageStickerResponseSerializer();
 }
 
-class _$MessageStickerResponseSerializer implements PrimitiveSerializer<MessageStickerResponse> {
+class _$MessageStickerResponseSerializer
+    implements PrimitiveSerializer<MessageStickerResponse> {
   @override
-  final Iterable<Type> types = const [MessageStickerResponse, _$MessageStickerResponse];
+  final Iterable<Type> types = const [
+    MessageStickerResponse,
+    _$MessageStickerResponse
+  ];
 
   @override
   final String wireName = r'MessageStickerResponse';
@@ -74,7 +82,9 @@ class _$MessageStickerResponseSerializer implements PrimitiveSerializer<MessageS
     MessageStickerResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -138,4 +148,3 @@ class _$MessageStickerResponseSerializer implements PrimitiveSerializer<MessageS
     return result.build();
   }
 }
-

@@ -15,25 +15,34 @@ part 'list_voice_regions_response.g.dart';
 /// Properties:
 /// * [regions] - List of voice regions
 @BuiltValue()
-abstract class ListVoiceRegionsResponse implements Built<ListVoiceRegionsResponse, ListVoiceRegionsResponseBuilder> {
+abstract class ListVoiceRegionsResponse
+    implements
+        Built<ListVoiceRegionsResponse, ListVoiceRegionsResponseBuilder> {
   /// List of voice regions
   @BuiltValueField(wireName: r'regions')
   BuiltList<VoiceRegionAdminResponse> get regions;
 
   ListVoiceRegionsResponse._();
 
-  factory ListVoiceRegionsResponse([void updates(ListVoiceRegionsResponseBuilder b)]) = _$ListVoiceRegionsResponse;
+  factory ListVoiceRegionsResponse(
+          [void updates(ListVoiceRegionsResponseBuilder b)]) =
+      _$ListVoiceRegionsResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ListVoiceRegionsResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListVoiceRegionsResponse> get serializer => _$ListVoiceRegionsResponseSerializer();
+  static Serializer<ListVoiceRegionsResponse> get serializer =>
+      _$ListVoiceRegionsResponseSerializer();
 }
 
-class _$ListVoiceRegionsResponseSerializer implements PrimitiveSerializer<ListVoiceRegionsResponse> {
+class _$ListVoiceRegionsResponseSerializer
+    implements PrimitiveSerializer<ListVoiceRegionsResponse> {
   @override
-  final Iterable<Type> types = const [ListVoiceRegionsResponse, _$ListVoiceRegionsResponse];
+  final Iterable<Type> types = const [
+    ListVoiceRegionsResponse,
+    _$ListVoiceRegionsResponse
+  ];
 
   @override
   final String wireName = r'ListVoiceRegionsResponse';
@@ -46,7 +55,8 @@ class _$ListVoiceRegionsResponseSerializer implements PrimitiveSerializer<ListVo
     yield r'regions';
     yield serializers.serialize(
       object.regions,
-      specifiedType: const FullType(BuiltList, [FullType(VoiceRegionAdminResponse)]),
+      specifiedType:
+          const FullType(BuiltList, [FullType(VoiceRegionAdminResponse)]),
     );
   }
 
@@ -56,7 +66,9 @@ class _$ListVoiceRegionsResponseSerializer implements PrimitiveSerializer<ListVo
     ListVoiceRegionsResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -74,7 +86,8 @@ class _$ListVoiceRegionsResponseSerializer implements PrimitiveSerializer<ListVo
         case r'regions':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(VoiceRegionAdminResponse)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(VoiceRegionAdminResponse)]),
           ) as BuiltList<VoiceRegionAdminResponse>;
           result.regions.replace(valueDes);
           break;
@@ -106,4 +119,3 @@ class _$ListVoiceRegionsResponseSerializer implements PrimitiveSerializer<ListVo
     return result.build();
   }
 }
-

@@ -20,9 +20,9 @@ part 'guild_update_request.g.dart';
 /// Properties:
 /// * [name] - The name of the guild (1-100 characters)
 /// * [icon] - Base64-encoded image data
-/// * [systemChannelId] 
+/// * [systemChannelId]
 /// * [systemChannelFlags] - System channel message flags
-/// * [afkChannelId] 
+/// * [afkChannelId]
 /// * [afkTimeout] - AFK timeout in seconds (60-3600) before moving users to the AFK channel
 /// * [defaultMessageNotifications] - Default notification level for new members
 /// * [verificationLevel] - Required verification level for members to participate
@@ -34,14 +34,15 @@ part 'guild_update_request.g.dart';
 /// * [embedSplash] - Base64-encoded image data
 /// * [splashCardAlignment] - Alignment of the splash card (center, left, or right)
 /// * [features] - Array of guild feature strings
-/// * [messageHistoryCutoff] 
-/// * [password] 
+/// * [messageHistoryCutoff]
+/// * [password]
 /// * [mfaMethod] - MFA method to use for verification
 /// * [mfaCode] - MFA verification code from authenticator app or SMS
 /// * [webauthnResponse] - WebAuthn authentication response
 /// * [webauthnChallenge] - WebAuthn challenge string
 @BuiltValue()
-abstract class GuildUpdateRequest implements Built<GuildUpdateRequest, GuildUpdateRequestBuilder> {
+abstract class GuildUpdateRequest
+    implements Built<GuildUpdateRequest, GuildUpdateRequestBuilder> {
   /// The name of the guild (1-100 characters)
   @BuiltValueField(wireName: r'name')
   String? get name;
@@ -135,16 +136,19 @@ abstract class GuildUpdateRequest implements Built<GuildUpdateRequest, GuildUpda
 
   GuildUpdateRequest._();
 
-  factory GuildUpdateRequest([void updates(GuildUpdateRequestBuilder b)]) = _$GuildUpdateRequest;
+  factory GuildUpdateRequest([void updates(GuildUpdateRequestBuilder b)]) =
+      _$GuildUpdateRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildUpdateRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildUpdateRequest> get serializer => _$GuildUpdateRequestSerializer();
+  static Serializer<GuildUpdateRequest> get serializer =>
+      _$GuildUpdateRequestSerializer();
 }
 
-class _$GuildUpdateRequestSerializer implements PrimitiveSerializer<GuildUpdateRequest> {
+class _$GuildUpdateRequestSerializer
+    implements PrimitiveSerializer<GuildUpdateRequest> {
   @override
   final Iterable<Type> types = const [GuildUpdateRequest, _$GuildUpdateRequest];
 
@@ -258,7 +262,8 @@ class _$GuildUpdateRequestSerializer implements PrimitiveSerializer<GuildUpdateR
       yield r'splash_card_alignment';
       yield serializers.serialize(
         object.splashCardAlignment,
-        specifiedType: const FullType(GuildUpdateRequestSplashCardAlignmentEnum),
+        specifiedType:
+            const FullType(GuildUpdateRequestSplashCardAlignmentEnum),
       );
     }
     if (object.features != null) {
@@ -318,7 +323,9 @@ class _$GuildUpdateRequestSerializer implements PrimitiveSerializer<GuildUpdateR
     GuildUpdateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -434,7 +441,8 @@ class _$GuildUpdateRequestSerializer implements PrimitiveSerializer<GuildUpdateR
         case r'splash_card_alignment':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(GuildUpdateRequestSplashCardAlignmentEnum),
+            specifiedType:
+                const FullType(GuildUpdateRequestSplashCardAlignmentEnum),
           ) as GuildUpdateRequestSplashCardAlignmentEnum;
           result.splashCardAlignment = valueDes;
           break;
@@ -518,42 +526,55 @@ class _$GuildUpdateRequestSerializer implements PrimitiveSerializer<GuildUpdateR
 }
 
 class GuildUpdateRequestSplashCardAlignmentEnum extends EnumClass {
-
   /// Alignment of the splash card (center, left, or right)
   @BuiltValueEnumConst(wireNumber: 0)
-  static const GuildUpdateRequestSplashCardAlignmentEnum number0 = _$guildUpdateRequestSplashCardAlignmentEnum_number0;
+  static const GuildUpdateRequestSplashCardAlignmentEnum number0 =
+      _$guildUpdateRequestSplashCardAlignmentEnum_number0;
+
   /// Alignment of the splash card (center, left, or right)
   @BuiltValueEnumConst(wireNumber: 1)
-  static const GuildUpdateRequestSplashCardAlignmentEnum number1 = _$guildUpdateRequestSplashCardAlignmentEnum_number1;
+  static const GuildUpdateRequestSplashCardAlignmentEnum number1 =
+      _$guildUpdateRequestSplashCardAlignmentEnum_number1;
+
   /// Alignment of the splash card (center, left, or right)
   @BuiltValueEnumConst(wireNumber: 2)
-  static const GuildUpdateRequestSplashCardAlignmentEnum number2 = _$guildUpdateRequestSplashCardAlignmentEnum_number2;
+  static const GuildUpdateRequestSplashCardAlignmentEnum number2 =
+      _$guildUpdateRequestSplashCardAlignmentEnum_number2;
 
-  static Serializer<GuildUpdateRequestSplashCardAlignmentEnum> get serializer => _$guildUpdateRequestSplashCardAlignmentEnumSerializer;
+  static Serializer<GuildUpdateRequestSplashCardAlignmentEnum> get serializer =>
+      _$guildUpdateRequestSplashCardAlignmentEnumSerializer;
 
-  const GuildUpdateRequestSplashCardAlignmentEnum._(String name): super(name);
+  const GuildUpdateRequestSplashCardAlignmentEnum._(String name) : super(name);
 
-  static BuiltSet<GuildUpdateRequestSplashCardAlignmentEnum> get values => _$guildUpdateRequestSplashCardAlignmentEnumValues;
-  static GuildUpdateRequestSplashCardAlignmentEnum valueOf(String name) => _$guildUpdateRequestSplashCardAlignmentEnumValueOf(name);
+  static BuiltSet<GuildUpdateRequestSplashCardAlignmentEnum> get values =>
+      _$guildUpdateRequestSplashCardAlignmentEnumValues;
+  static GuildUpdateRequestSplashCardAlignmentEnum valueOf(String name) =>
+      _$guildUpdateRequestSplashCardAlignmentEnumValueOf(name);
 }
 
 class GuildUpdateRequestMfaMethodEnum extends EnumClass {
-
   /// MFA method to use for verification
   @BuiltValueEnumConst(wireName: r'totp')
-  static const GuildUpdateRequestMfaMethodEnum totp = _$guildUpdateRequestMfaMethodEnum_totp;
+  static const GuildUpdateRequestMfaMethodEnum totp =
+      _$guildUpdateRequestMfaMethodEnum_totp;
+
   /// MFA method to use for verification
   @BuiltValueEnumConst(wireName: r'sms')
-  static const GuildUpdateRequestMfaMethodEnum sms = _$guildUpdateRequestMfaMethodEnum_sms;
+  static const GuildUpdateRequestMfaMethodEnum sms =
+      _$guildUpdateRequestMfaMethodEnum_sms;
+
   /// MFA method to use for verification
   @BuiltValueEnumConst(wireName: r'webauthn')
-  static const GuildUpdateRequestMfaMethodEnum webauthn = _$guildUpdateRequestMfaMethodEnum_webauthn;
+  static const GuildUpdateRequestMfaMethodEnum webauthn =
+      _$guildUpdateRequestMfaMethodEnum_webauthn;
 
-  static Serializer<GuildUpdateRequestMfaMethodEnum> get serializer => _$guildUpdateRequestMfaMethodEnumSerializer;
+  static Serializer<GuildUpdateRequestMfaMethodEnum> get serializer =>
+      _$guildUpdateRequestMfaMethodEnumSerializer;
 
-  const GuildUpdateRequestMfaMethodEnum._(String name): super(name);
+  const GuildUpdateRequestMfaMethodEnum._(String name) : super(name);
 
-  static BuiltSet<GuildUpdateRequestMfaMethodEnum> get values => _$guildUpdateRequestMfaMethodEnumValues;
-  static GuildUpdateRequestMfaMethodEnum valueOf(String name) => _$guildUpdateRequestMfaMethodEnumValueOf(name);
+  static BuiltSet<GuildUpdateRequestMfaMethodEnum> get values =>
+      _$guildUpdateRequestMfaMethodEnumValues;
+  static GuildUpdateRequestMfaMethodEnum valueOf(String name) =>
+      _$guildUpdateRequestMfaMethodEnumValueOf(name);
 }
-

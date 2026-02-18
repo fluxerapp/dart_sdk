@@ -11,12 +11,13 @@ part 'git_hub_webhook_release.g.dart';
 /// GitHubWebhookRelease
 ///
 /// Properties:
-/// * [id] 
-/// * [tagName] 
-/// * [htmlUrl] 
-/// * [body] 
+/// * [id]
+/// * [tagName]
+/// * [htmlUrl]
+/// * [body]
 @BuiltValue()
-abstract class GitHubWebhookRelease implements Built<GitHubWebhookRelease, GitHubWebhookReleaseBuilder> {
+abstract class GitHubWebhookRelease
+    implements Built<GitHubWebhookRelease, GitHubWebhookReleaseBuilder> {
   @BuiltValueField(wireName: r'id')
   int get id;
 
@@ -31,18 +32,24 @@ abstract class GitHubWebhookRelease implements Built<GitHubWebhookRelease, GitHu
 
   GitHubWebhookRelease._();
 
-  factory GitHubWebhookRelease([void updates(GitHubWebhookReleaseBuilder b)]) = _$GitHubWebhookRelease;
+  factory GitHubWebhookRelease([void updates(GitHubWebhookReleaseBuilder b)]) =
+      _$GitHubWebhookRelease;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GitHubWebhookReleaseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GitHubWebhookRelease> get serializer => _$GitHubWebhookReleaseSerializer();
+  static Serializer<GitHubWebhookRelease> get serializer =>
+      _$GitHubWebhookReleaseSerializer();
 }
 
-class _$GitHubWebhookReleaseSerializer implements PrimitiveSerializer<GitHubWebhookRelease> {
+class _$GitHubWebhookReleaseSerializer
+    implements PrimitiveSerializer<GitHubWebhookRelease> {
   @override
-  final Iterable<Type> types = const [GitHubWebhookRelease, _$GitHubWebhookRelease];
+  final Iterable<Type> types = const [
+    GitHubWebhookRelease,
+    _$GitHubWebhookRelease
+  ];
 
   @override
   final String wireName = r'GitHubWebhookRelease';
@@ -82,7 +89,9 @@ class _$GitHubWebhookReleaseSerializer implements PrimitiveSerializer<GitHubWebh
     GitHubWebhookRelease object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -154,4 +163,3 @@ class _$GitHubWebhookReleaseSerializer implements PrimitiveSerializer<GitHubWebh
     return result.build();
   }
 }
-

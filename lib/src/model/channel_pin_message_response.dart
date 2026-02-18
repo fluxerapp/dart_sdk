@@ -21,27 +21,29 @@ part 'channel_pin_message_response.g.dart';
 /// Properties:
 /// * [id] - The unique identifier (snowflake) for this message
 /// * [channelId] - The ID of the channel this message was sent in
-/// * [author] 
+/// * [author]
 /// * [type] - The type of message
 /// * [flags] - Message flags bitfield
 /// * [content] - The text content of the message
 /// * [timestamp] - The ISO 8601 timestamp of when the message was created
 /// * [pinned] - Whether the message is pinned
 /// * [mentionEveryone] - Whether the message mentions @everyone
-/// * [webhookId] 
-/// * [editedTimestamp] 
+/// * [webhookId]
+/// * [editedTimestamp]
 /// * [tts] - Whether the message was sent as text-to-speech
-/// * [mentions] 
-/// * [mentionRoles] 
-/// * [embeds] 
-/// * [attachments] 
-/// * [stickers] 
-/// * [messageReference] 
-/// * [messageSnapshots] 
-/// * [nonce] 
-/// * [call] 
+/// * [mentions]
+/// * [mentionRoles]
+/// * [embeds]
+/// * [attachments]
+/// * [stickers]
+/// * [messageReference]
+/// * [messageSnapshots]
+/// * [nonce]
+/// * [call]
 @BuiltValue()
-abstract class ChannelPinMessageResponse implements Built<ChannelPinMessageResponse, ChannelPinMessageResponseBuilder> {
+abstract class ChannelPinMessageResponse
+    implements
+        Built<ChannelPinMessageResponse, ChannelPinMessageResponseBuilder> {
   /// The unique identifier (snowflake) for this message
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -117,18 +119,25 @@ abstract class ChannelPinMessageResponse implements Built<ChannelPinMessageRespo
 
   ChannelPinMessageResponse._();
 
-  factory ChannelPinMessageResponse([void updates(ChannelPinMessageResponseBuilder b)]) = _$ChannelPinMessageResponse;
+  factory ChannelPinMessageResponse(
+          [void updates(ChannelPinMessageResponseBuilder b)]) =
+      _$ChannelPinMessageResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ChannelPinMessageResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ChannelPinMessageResponse> get serializer => _$ChannelPinMessageResponseSerializer();
+  static Serializer<ChannelPinMessageResponse> get serializer =>
+      _$ChannelPinMessageResponseSerializer();
 }
 
-class _$ChannelPinMessageResponseSerializer implements PrimitiveSerializer<ChannelPinMessageResponse> {
+class _$ChannelPinMessageResponseSerializer
+    implements PrimitiveSerializer<ChannelPinMessageResponse> {
   @override
-  final Iterable<Type> types = const [ChannelPinMessageResponse, _$ChannelPinMessageResponse];
+  final Iterable<Type> types = const [
+    ChannelPinMessageResponse,
+    _$ChannelPinMessageResponse
+  ];
 
   @override
   final String wireName = r'ChannelPinMessageResponse';
@@ -208,7 +217,8 @@ class _$ChannelPinMessageResponseSerializer implements PrimitiveSerializer<Chann
       yield r'mentions';
       yield serializers.serialize(
         object.mentions,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(UserPartialResponse)]),
+        specifiedType:
+            const FullType.nullable(BuiltList, [FullType(UserPartialResponse)]),
       );
     }
     if (object.mentionRoles != null) {
@@ -222,21 +232,24 @@ class _$ChannelPinMessageResponseSerializer implements PrimitiveSerializer<Chann
       yield r'embeds';
       yield serializers.serialize(
         object.embeds,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(MessageEmbedResponse)]),
+        specifiedType: const FullType.nullable(
+            BuiltList, [FullType(MessageEmbedResponse)]),
       );
     }
     if (object.attachments != null) {
       yield r'attachments';
       yield serializers.serialize(
         object.attachments,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(MessageAttachmentResponse)]),
+        specifiedType: const FullType.nullable(
+            BuiltList, [FullType(MessageAttachmentResponse)]),
       );
     }
     if (object.stickers != null) {
       yield r'stickers';
       yield serializers.serialize(
         object.stickers,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(MessageStickerResponse)]),
+        specifiedType: const FullType.nullable(
+            BuiltList, [FullType(MessageStickerResponse)]),
       );
     }
     if (object.messageReference != null) {
@@ -250,7 +263,8 @@ class _$ChannelPinMessageResponseSerializer implements PrimitiveSerializer<Chann
       yield r'message_snapshots';
       yield serializers.serialize(
         object.messageSnapshots,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(MessageSnapshotResponse)]),
+        specifiedType: const FullType.nullable(
+            BuiltList, [FullType(MessageSnapshotResponse)]),
       );
     }
     if (object.nonce != null) {
@@ -275,7 +289,9 @@ class _$ChannelPinMessageResponseSerializer implements PrimitiveSerializer<Chann
     ChannelPinMessageResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -378,7 +394,8 @@ class _$ChannelPinMessageResponseSerializer implements PrimitiveSerializer<Chann
         case r'mentions':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(UserPartialResponse)]),
+            specifiedType: const FullType.nullable(
+                BuiltList, [FullType(UserPartialResponse)]),
           ) as BuiltList<UserPartialResponse>?;
           if (valueDes == null) continue;
           result.mentions.replace(valueDes);
@@ -386,7 +403,8 @@ class _$ChannelPinMessageResponseSerializer implements PrimitiveSerializer<Chann
         case r'mention_roles':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+            specifiedType:
+                const FullType.nullable(BuiltList, [FullType(String)]),
           ) as BuiltList<String>?;
           if (valueDes == null) continue;
           result.mentionRoles.replace(valueDes);
@@ -394,7 +412,8 @@ class _$ChannelPinMessageResponseSerializer implements PrimitiveSerializer<Chann
         case r'embeds':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(MessageEmbedResponse)]),
+            specifiedType: const FullType.nullable(
+                BuiltList, [FullType(MessageEmbedResponse)]),
           ) as BuiltList<MessageEmbedResponse>?;
           if (valueDes == null) continue;
           result.embeds.replace(valueDes);
@@ -402,7 +421,8 @@ class _$ChannelPinMessageResponseSerializer implements PrimitiveSerializer<Chann
         case r'attachments':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(MessageAttachmentResponse)]),
+            specifiedType: const FullType.nullable(
+                BuiltList, [FullType(MessageAttachmentResponse)]),
           ) as BuiltList<MessageAttachmentResponse>?;
           if (valueDes == null) continue;
           result.attachments.replace(valueDes);
@@ -410,7 +430,8 @@ class _$ChannelPinMessageResponseSerializer implements PrimitiveSerializer<Chann
         case r'stickers':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(MessageStickerResponse)]),
+            specifiedType: const FullType.nullable(
+                BuiltList, [FullType(MessageStickerResponse)]),
           ) as BuiltList<MessageStickerResponse>?;
           if (valueDes == null) continue;
           result.stickers.replace(valueDes);
@@ -426,7 +447,8 @@ class _$ChannelPinMessageResponseSerializer implements PrimitiveSerializer<Chann
         case r'message_snapshots':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(MessageSnapshotResponse)]),
+            specifiedType: const FullType.nullable(
+                BuiltList, [FullType(MessageSnapshotResponse)]),
           ) as BuiltList<MessageSnapshotResponse>?;
           if (valueDes == null) continue;
           result.messageSnapshots.replace(valueDes);
@@ -477,40 +499,58 @@ class _$ChannelPinMessageResponseSerializer implements PrimitiveSerializer<Chann
 }
 
 class ChannelPinMessageResponseTypeEnum extends EnumClass {
-
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 0)
-  static const ChannelPinMessageResponseTypeEnum number0 = _$channelPinMessageResponseTypeEnum_number0;
+  static const ChannelPinMessageResponseTypeEnum number0 =
+      _$channelPinMessageResponseTypeEnum_number0;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 1)
-  static const ChannelPinMessageResponseTypeEnum number1 = _$channelPinMessageResponseTypeEnum_number1;
+  static const ChannelPinMessageResponseTypeEnum number1 =
+      _$channelPinMessageResponseTypeEnum_number1;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 2)
-  static const ChannelPinMessageResponseTypeEnum number2 = _$channelPinMessageResponseTypeEnum_number2;
+  static const ChannelPinMessageResponseTypeEnum number2 =
+      _$channelPinMessageResponseTypeEnum_number2;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 3)
-  static const ChannelPinMessageResponseTypeEnum number3 = _$channelPinMessageResponseTypeEnum_number3;
+  static const ChannelPinMessageResponseTypeEnum number3 =
+      _$channelPinMessageResponseTypeEnum_number3;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 4)
-  static const ChannelPinMessageResponseTypeEnum number4 = _$channelPinMessageResponseTypeEnum_number4;
+  static const ChannelPinMessageResponseTypeEnum number4 =
+      _$channelPinMessageResponseTypeEnum_number4;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 5)
-  static const ChannelPinMessageResponseTypeEnum number5 = _$channelPinMessageResponseTypeEnum_number5;
+  static const ChannelPinMessageResponseTypeEnum number5 =
+      _$channelPinMessageResponseTypeEnum_number5;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 6)
-  static const ChannelPinMessageResponseTypeEnum number6 = _$channelPinMessageResponseTypeEnum_number6;
+  static const ChannelPinMessageResponseTypeEnum number6 =
+      _$channelPinMessageResponseTypeEnum_number6;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 7)
-  static const ChannelPinMessageResponseTypeEnum number7 = _$channelPinMessageResponseTypeEnum_number7;
+  static const ChannelPinMessageResponseTypeEnum number7 =
+      _$channelPinMessageResponseTypeEnum_number7;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 19)
-  static const ChannelPinMessageResponseTypeEnum number19 = _$channelPinMessageResponseTypeEnum_number19;
+  static const ChannelPinMessageResponseTypeEnum number19 =
+      _$channelPinMessageResponseTypeEnum_number19;
 
-  static Serializer<ChannelPinMessageResponseTypeEnum> get serializer => _$channelPinMessageResponseTypeEnumSerializer;
+  static Serializer<ChannelPinMessageResponseTypeEnum> get serializer =>
+      _$channelPinMessageResponseTypeEnumSerializer;
 
-  const ChannelPinMessageResponseTypeEnum._(String name): super(name);
+  const ChannelPinMessageResponseTypeEnum._(String name) : super(name);
 
-  static BuiltSet<ChannelPinMessageResponseTypeEnum> get values => _$channelPinMessageResponseTypeEnumValues;
-  static ChannelPinMessageResponseTypeEnum valueOf(String name) => _$channelPinMessageResponseTypeEnumValueOf(name);
+  static BuiltSet<ChannelPinMessageResponseTypeEnum> get values =>
+      _$channelPinMessageResponseTypeEnumValues;
+  static ChannelPinMessageResponseTypeEnum valueOf(String name) =>
+      _$channelPinMessageResponseTypeEnumValueOf(name);
 }
-

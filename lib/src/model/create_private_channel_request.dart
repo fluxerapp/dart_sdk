@@ -12,10 +12,12 @@ part 'create_private_channel_request.g.dart';
 /// CreatePrivateChannelRequest
 ///
 /// Properties:
-/// * [recipientId] 
+/// * [recipientId]
 /// * [recipients] - Array of user IDs for creating a group DM (max 9)
 @BuiltValue()
-abstract class CreatePrivateChannelRequest implements Built<CreatePrivateChannelRequest, CreatePrivateChannelRequestBuilder> {
+abstract class CreatePrivateChannelRequest
+    implements
+        Built<CreatePrivateChannelRequest, CreatePrivateChannelRequestBuilder> {
   @BuiltValueField(wireName: r'recipient_id')
   String? get recipientId;
 
@@ -25,18 +27,25 @@ abstract class CreatePrivateChannelRequest implements Built<CreatePrivateChannel
 
   CreatePrivateChannelRequest._();
 
-  factory CreatePrivateChannelRequest([void updates(CreatePrivateChannelRequestBuilder b)]) = _$CreatePrivateChannelRequest;
+  factory CreatePrivateChannelRequest(
+          [void updates(CreatePrivateChannelRequestBuilder b)]) =
+      _$CreatePrivateChannelRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CreatePrivateChannelRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CreatePrivateChannelRequest> get serializer => _$CreatePrivateChannelRequestSerializer();
+  static Serializer<CreatePrivateChannelRequest> get serializer =>
+      _$CreatePrivateChannelRequestSerializer();
 }
 
-class _$CreatePrivateChannelRequestSerializer implements PrimitiveSerializer<CreatePrivateChannelRequest> {
+class _$CreatePrivateChannelRequestSerializer
+    implements PrimitiveSerializer<CreatePrivateChannelRequest> {
   @override
-  final Iterable<Type> types = const [CreatePrivateChannelRequest, _$CreatePrivateChannelRequest];
+  final Iterable<Type> types = const [
+    CreatePrivateChannelRequest,
+    _$CreatePrivateChannelRequest
+  ];
 
   @override
   final String wireName = r'CreatePrivateChannelRequest';
@@ -68,7 +77,9 @@ class _$CreatePrivateChannelRequestSerializer implements PrimitiveSerializer<Cre
     CreatePrivateChannelRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -125,4 +136,3 @@ class _$CreatePrivateChannelRequestSerializer implements PrimitiveSerializer<Cre
     return result.build();
   }
 }
-

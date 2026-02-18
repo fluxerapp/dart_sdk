@@ -11,15 +11,18 @@ part 'guild_memory_stats_response_guilds_inner.g.dart';
 /// GuildMemoryStatsResponseGuildsInner
 ///
 /// Properties:
-/// * [guildId] 
-/// * [guildName] 
-/// * [guildIcon] 
-/// * [memory] 
-/// * [memberCount] 
-/// * [sessionCount] 
-/// * [presenceCount] 
+/// * [guildId]
+/// * [guildName]
+/// * [guildIcon]
+/// * [memory]
+/// * [memberCount]
+/// * [sessionCount]
+/// * [presenceCount]
 @BuiltValue()
-abstract class GuildMemoryStatsResponseGuildsInner implements Built<GuildMemoryStatsResponseGuildsInner, GuildMemoryStatsResponseGuildsInnerBuilder> {
+abstract class GuildMemoryStatsResponseGuildsInner
+    implements
+        Built<GuildMemoryStatsResponseGuildsInner,
+            GuildMemoryStatsResponseGuildsInnerBuilder> {
   @BuiltValueField(wireName: r'guild_id')
   String get guildId;
 
@@ -43,18 +46,25 @@ abstract class GuildMemoryStatsResponseGuildsInner implements Built<GuildMemoryS
 
   GuildMemoryStatsResponseGuildsInner._();
 
-  factory GuildMemoryStatsResponseGuildsInner([void updates(GuildMemoryStatsResponseGuildsInnerBuilder b)]) = _$GuildMemoryStatsResponseGuildsInner;
+  factory GuildMemoryStatsResponseGuildsInner(
+          [void updates(GuildMemoryStatsResponseGuildsInnerBuilder b)]) =
+      _$GuildMemoryStatsResponseGuildsInner;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildMemoryStatsResponseGuildsInnerBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildMemoryStatsResponseGuildsInner> get serializer => _$GuildMemoryStatsResponseGuildsInnerSerializer();
+  static Serializer<GuildMemoryStatsResponseGuildsInner> get serializer =>
+      _$GuildMemoryStatsResponseGuildsInnerSerializer();
 }
 
-class _$GuildMemoryStatsResponseGuildsInnerSerializer implements PrimitiveSerializer<GuildMemoryStatsResponseGuildsInner> {
+class _$GuildMemoryStatsResponseGuildsInnerSerializer
+    implements PrimitiveSerializer<GuildMemoryStatsResponseGuildsInner> {
   @override
-  final Iterable<Type> types = const [GuildMemoryStatsResponseGuildsInner, _$GuildMemoryStatsResponseGuildsInner];
+  final Iterable<Type> types = const [
+    GuildMemoryStatsResponseGuildsInner,
+    _$GuildMemoryStatsResponseGuildsInner
+  ];
 
   @override
   final String wireName = r'GuildMemoryStatsResponseGuildsInner';
@@ -75,10 +85,12 @@ class _$GuildMemoryStatsResponseGuildsInnerSerializer implements PrimitiveSerial
       specifiedType: const FullType(String),
     );
     yield r'guild_icon';
-    yield object.guildIcon == null ? null : serializers.serialize(
-      object.guildIcon,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.guildIcon == null
+        ? null
+        : serializers.serialize(
+            object.guildIcon,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'memory';
     yield serializers.serialize(
       object.memory,
@@ -107,7 +119,9 @@ class _$GuildMemoryStatsResponseGuildsInnerSerializer implements PrimitiveSerial
     GuildMemoryStatsResponseGuildsInner object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -200,4 +214,3 @@ class _$GuildMemoryStatsResponseGuildsInnerSerializer implements PrimitiveSerial
     return result.build();
   }
 }
-

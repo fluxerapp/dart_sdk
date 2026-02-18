@@ -11,10 +11,12 @@ part 'dsa_report_email_verify_request.g.dart';
 /// DsaReportEmailVerifyRequest
 ///
 /// Properties:
-/// * [email] 
+/// * [email]
 /// * [code] - Verification code received via email
 @BuiltValue()
-abstract class DsaReportEmailVerifyRequest implements Built<DsaReportEmailVerifyRequest, DsaReportEmailVerifyRequestBuilder> {
+abstract class DsaReportEmailVerifyRequest
+    implements
+        Built<DsaReportEmailVerifyRequest, DsaReportEmailVerifyRequestBuilder> {
   @BuiltValueField(wireName: r'email')
   String get email;
 
@@ -24,18 +26,25 @@ abstract class DsaReportEmailVerifyRequest implements Built<DsaReportEmailVerify
 
   DsaReportEmailVerifyRequest._();
 
-  factory DsaReportEmailVerifyRequest([void updates(DsaReportEmailVerifyRequestBuilder b)]) = _$DsaReportEmailVerifyRequest;
+  factory DsaReportEmailVerifyRequest(
+          [void updates(DsaReportEmailVerifyRequestBuilder b)]) =
+      _$DsaReportEmailVerifyRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(DsaReportEmailVerifyRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<DsaReportEmailVerifyRequest> get serializer => _$DsaReportEmailVerifyRequestSerializer();
+  static Serializer<DsaReportEmailVerifyRequest> get serializer =>
+      _$DsaReportEmailVerifyRequestSerializer();
 }
 
-class _$DsaReportEmailVerifyRequestSerializer implements PrimitiveSerializer<DsaReportEmailVerifyRequest> {
+class _$DsaReportEmailVerifyRequestSerializer
+    implements PrimitiveSerializer<DsaReportEmailVerifyRequest> {
   @override
-  final Iterable<Type> types = const [DsaReportEmailVerifyRequest, _$DsaReportEmailVerifyRequest];
+  final Iterable<Type> types = const [
+    DsaReportEmailVerifyRequest,
+    _$DsaReportEmailVerifyRequest
+  ];
 
   @override
   final String wireName = r'DsaReportEmailVerifyRequest';
@@ -63,7 +72,9 @@ class _$DsaReportEmailVerifyRequestSerializer implements PrimitiveSerializer<Dsa
     DsaReportEmailVerifyRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -120,4 +131,3 @@ class _$DsaReportEmailVerifyRequestSerializer implements PrimitiveSerializer<Dsa
     return result.build();
   }
 }
-

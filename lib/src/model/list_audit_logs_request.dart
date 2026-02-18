@@ -11,13 +11,14 @@ part 'list_audit_logs_request.g.dart';
 /// ListAuditLogsRequest
 ///
 /// Properties:
-/// * [adminUserId] 
+/// * [adminUserId]
 /// * [targetType] - Filter by target entity type
 /// * [targetId] - Filter by target entity ID (user, channel, role, invite code, etc.)
 /// * [limit] - Maximum number of entries to return
 /// * [offset] - Number of entries to skip
 @BuiltValue()
-abstract class ListAuditLogsRequest implements Built<ListAuditLogsRequest, ListAuditLogsRequestBuilder> {
+abstract class ListAuditLogsRequest
+    implements Built<ListAuditLogsRequest, ListAuditLogsRequestBuilder> {
   @BuiltValueField(wireName: r'admin_user_id')
   String? get adminUserId;
 
@@ -39,18 +40,24 @@ abstract class ListAuditLogsRequest implements Built<ListAuditLogsRequest, ListA
 
   ListAuditLogsRequest._();
 
-  factory ListAuditLogsRequest([void updates(ListAuditLogsRequestBuilder b)]) = _$ListAuditLogsRequest;
+  factory ListAuditLogsRequest([void updates(ListAuditLogsRequestBuilder b)]) =
+      _$ListAuditLogsRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ListAuditLogsRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListAuditLogsRequest> get serializer => _$ListAuditLogsRequestSerializer();
+  static Serializer<ListAuditLogsRequest> get serializer =>
+      _$ListAuditLogsRequestSerializer();
 }
 
-class _$ListAuditLogsRequestSerializer implements PrimitiveSerializer<ListAuditLogsRequest> {
+class _$ListAuditLogsRequestSerializer
+    implements PrimitiveSerializer<ListAuditLogsRequest> {
   @override
-  final Iterable<Type> types = const [ListAuditLogsRequest, _$ListAuditLogsRequest];
+  final Iterable<Type> types = const [
+    ListAuditLogsRequest,
+    _$ListAuditLogsRequest
+  ];
 
   @override
   final String wireName = r'ListAuditLogsRequest';
@@ -103,7 +110,9 @@ class _$ListAuditLogsRequestSerializer implements PrimitiveSerializer<ListAuditL
     ListAuditLogsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -181,4 +190,3 @@ class _$ListAuditLogsRequestSerializer implements PrimitiveSerializer<ListAuditL
     return result.build();
   }
 }
-

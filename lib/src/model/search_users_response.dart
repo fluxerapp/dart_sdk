@@ -13,10 +13,11 @@ part 'search_users_response.g.dart';
 /// SearchUsersResponse
 ///
 /// Properties:
-/// * [users] 
-/// * [total] 
+/// * [users]
+/// * [total]
 @BuiltValue()
-abstract class SearchUsersResponse implements Built<SearchUsersResponse, SearchUsersResponseBuilder> {
+abstract class SearchUsersResponse
+    implements Built<SearchUsersResponse, SearchUsersResponseBuilder> {
   @BuiltValueField(wireName: r'users')
   BuiltList<UserAdminResponseSchema> get users;
 
@@ -25,18 +26,24 @@ abstract class SearchUsersResponse implements Built<SearchUsersResponse, SearchU
 
   SearchUsersResponse._();
 
-  factory SearchUsersResponse([void updates(SearchUsersResponseBuilder b)]) = _$SearchUsersResponse;
+  factory SearchUsersResponse([void updates(SearchUsersResponseBuilder b)]) =
+      _$SearchUsersResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SearchUsersResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SearchUsersResponse> get serializer => _$SearchUsersResponseSerializer();
+  static Serializer<SearchUsersResponse> get serializer =>
+      _$SearchUsersResponseSerializer();
 }
 
-class _$SearchUsersResponseSerializer implements PrimitiveSerializer<SearchUsersResponse> {
+class _$SearchUsersResponseSerializer
+    implements PrimitiveSerializer<SearchUsersResponse> {
   @override
-  final Iterable<Type> types = const [SearchUsersResponse, _$SearchUsersResponse];
+  final Iterable<Type> types = const [
+    SearchUsersResponse,
+    _$SearchUsersResponse
+  ];
 
   @override
   final String wireName = r'SearchUsersResponse';
@@ -49,7 +56,8 @@ class _$SearchUsersResponseSerializer implements PrimitiveSerializer<SearchUsers
     yield r'users';
     yield serializers.serialize(
       object.users,
-      specifiedType: const FullType(BuiltList, [FullType(UserAdminResponseSchema)]),
+      specifiedType:
+          const FullType(BuiltList, [FullType(UserAdminResponseSchema)]),
     );
     yield r'total';
     yield serializers.serialize(
@@ -64,7 +72,9 @@ class _$SearchUsersResponseSerializer implements PrimitiveSerializer<SearchUsers
     SearchUsersResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -82,7 +92,8 @@ class _$SearchUsersResponseSerializer implements PrimitiveSerializer<SearchUsers
         case r'users':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(UserAdminResponseSchema)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(UserAdminResponseSchema)]),
           ) as BuiltList<UserAdminResponseSchema>;
           result.users.replace(valueDes);
           break;
@@ -121,4 +132,3 @@ class _$SearchUsersResponseSerializer implements PrimitiveSerializer<SearchUsers
     return result.build();
   }
 }
-

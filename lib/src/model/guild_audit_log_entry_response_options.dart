@@ -26,7 +26,10 @@ part 'guild_audit_log_entry_response_options.g.dart';
 /// * [temporary] - Whether the invite grants temporary membership
 /// * [uses] - Number of times the invite has been used
 @BuiltValue()
-abstract class GuildAuditLogEntryResponseOptions implements Built<GuildAuditLogEntryResponseOptions, GuildAuditLogEntryResponseOptionsBuilder> {
+abstract class GuildAuditLogEntryResponseOptions
+    implements
+        Built<GuildAuditLogEntryResponseOptions,
+            GuildAuditLogEntryResponseOptionsBuilder> {
   /// Channel ID for relevant actions
   @BuiltValueField(wireName: r'channel_id')
   String? get channelId;
@@ -85,18 +88,25 @@ abstract class GuildAuditLogEntryResponseOptions implements Built<GuildAuditLogE
 
   GuildAuditLogEntryResponseOptions._();
 
-  factory GuildAuditLogEntryResponseOptions([void updates(GuildAuditLogEntryResponseOptionsBuilder b)]) = _$GuildAuditLogEntryResponseOptions;
+  factory GuildAuditLogEntryResponseOptions(
+          [void updates(GuildAuditLogEntryResponseOptionsBuilder b)]) =
+      _$GuildAuditLogEntryResponseOptions;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildAuditLogEntryResponseOptionsBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildAuditLogEntryResponseOptions> get serializer => _$GuildAuditLogEntryResponseOptionsSerializer();
+  static Serializer<GuildAuditLogEntryResponseOptions> get serializer =>
+      _$GuildAuditLogEntryResponseOptionsSerializer();
 }
 
-class _$GuildAuditLogEntryResponseOptionsSerializer implements PrimitiveSerializer<GuildAuditLogEntryResponseOptions> {
+class _$GuildAuditLogEntryResponseOptionsSerializer
+    implements PrimitiveSerializer<GuildAuditLogEntryResponseOptions> {
   @override
-  final Iterable<Type> types = const [GuildAuditLogEntryResponseOptions, _$GuildAuditLogEntryResponseOptions];
+  final Iterable<Type> types = const [
+    GuildAuditLogEntryResponseOptions,
+    _$GuildAuditLogEntryResponseOptions
+  ];
 
   @override
   final String wireName = r'GuildAuditLogEntryResponseOptions';
@@ -212,7 +222,9 @@ class _$GuildAuditLogEntryResponseOptionsSerializer implements PrimitiveSerializ
     GuildAuditLogEntryResponseOptions object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -353,4 +365,3 @@ class _$GuildAuditLogEntryResponseOptionsSerializer implements PrimitiveSerializ
     return result.build();
   }
 }
-

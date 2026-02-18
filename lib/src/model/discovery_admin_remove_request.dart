@@ -13,25 +13,34 @@ part 'discovery_admin_remove_request.g.dart';
 /// Properties:
 /// * [reason] - Removal reason
 @BuiltValue()
-abstract class DiscoveryAdminRemoveRequest implements Built<DiscoveryAdminRemoveRequest, DiscoveryAdminRemoveRequestBuilder> {
+abstract class DiscoveryAdminRemoveRequest
+    implements
+        Built<DiscoveryAdminRemoveRequest, DiscoveryAdminRemoveRequestBuilder> {
   /// Removal reason
   @BuiltValueField(wireName: r'reason')
   String get reason;
 
   DiscoveryAdminRemoveRequest._();
 
-  factory DiscoveryAdminRemoveRequest([void updates(DiscoveryAdminRemoveRequestBuilder b)]) = _$DiscoveryAdminRemoveRequest;
+  factory DiscoveryAdminRemoveRequest(
+          [void updates(DiscoveryAdminRemoveRequestBuilder b)]) =
+      _$DiscoveryAdminRemoveRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(DiscoveryAdminRemoveRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<DiscoveryAdminRemoveRequest> get serializer => _$DiscoveryAdminRemoveRequestSerializer();
+  static Serializer<DiscoveryAdminRemoveRequest> get serializer =>
+      _$DiscoveryAdminRemoveRequestSerializer();
 }
 
-class _$DiscoveryAdminRemoveRequestSerializer implements PrimitiveSerializer<DiscoveryAdminRemoveRequest> {
+class _$DiscoveryAdminRemoveRequestSerializer
+    implements PrimitiveSerializer<DiscoveryAdminRemoveRequest> {
   @override
-  final Iterable<Type> types = const [DiscoveryAdminRemoveRequest, _$DiscoveryAdminRemoveRequest];
+  final Iterable<Type> types = const [
+    DiscoveryAdminRemoveRequest,
+    _$DiscoveryAdminRemoveRequest
+  ];
 
   @override
   final String wireName = r'DiscoveryAdminRemoveRequest';
@@ -54,7 +63,9 @@ class _$DiscoveryAdminRemoveRequestSerializer implements PrimitiveSerializer<Dis
     DiscoveryAdminRemoveRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +115,3 @@ class _$DiscoveryAdminRemoveRequestSerializer implements PrimitiveSerializer<Dis
     return result.build();
   }
 }
-

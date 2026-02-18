@@ -13,23 +13,27 @@ part 'ticket_response.g.dart';
 /// Properties:
 /// * [ticket] - A temporary ticket token for subsequent operations
 @BuiltValue()
-abstract class TicketResponse implements Built<TicketResponse, TicketResponseBuilder> {
+abstract class TicketResponse
+    implements Built<TicketResponse, TicketResponseBuilder> {
   /// A temporary ticket token for subsequent operations
   @BuiltValueField(wireName: r'ticket')
   String get ticket;
 
   TicketResponse._();
 
-  factory TicketResponse([void updates(TicketResponseBuilder b)]) = _$TicketResponse;
+  factory TicketResponse([void updates(TicketResponseBuilder b)]) =
+      _$TicketResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(TicketResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<TicketResponse> get serializer => _$TicketResponseSerializer();
+  static Serializer<TicketResponse> get serializer =>
+      _$TicketResponseSerializer();
 }
 
-class _$TicketResponseSerializer implements PrimitiveSerializer<TicketResponse> {
+class _$TicketResponseSerializer
+    implements PrimitiveSerializer<TicketResponse> {
   @override
   final Iterable<Type> types = const [TicketResponse, _$TicketResponse];
 
@@ -54,7 +58,9 @@ class _$TicketResponseSerializer implements PrimitiveSerializer<TicketResponse> 
     TicketResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +110,3 @@ class _$TicketResponseSerializer implements PrimitiveSerializer<TicketResponse> 
     return result.build();
   }
 }
-

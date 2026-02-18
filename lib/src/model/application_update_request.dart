@@ -13,11 +13,13 @@ part 'application_update_request.g.dart';
 ///
 /// Properties:
 /// * [name] - The name of the application
-/// * [redirectUris] 
+/// * [redirectUris]
 /// * [botPublic] - Whether the bot can be invited by anyone
 /// * [botRequireCodeGrant] - Whether the bot requires OAuth2 code grant
 @BuiltValue()
-abstract class ApplicationUpdateRequest implements Built<ApplicationUpdateRequest, ApplicationUpdateRequestBuilder> {
+abstract class ApplicationUpdateRequest
+    implements
+        Built<ApplicationUpdateRequest, ApplicationUpdateRequestBuilder> {
   /// The name of the application
   @BuiltValueField(wireName: r'name')
   String? get name;
@@ -35,18 +37,25 @@ abstract class ApplicationUpdateRequest implements Built<ApplicationUpdateReques
 
   ApplicationUpdateRequest._();
 
-  factory ApplicationUpdateRequest([void updates(ApplicationUpdateRequestBuilder b)]) = _$ApplicationUpdateRequest;
+  factory ApplicationUpdateRequest(
+          [void updates(ApplicationUpdateRequestBuilder b)]) =
+      _$ApplicationUpdateRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ApplicationUpdateRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ApplicationUpdateRequest> get serializer => _$ApplicationUpdateRequestSerializer();
+  static Serializer<ApplicationUpdateRequest> get serializer =>
+      _$ApplicationUpdateRequestSerializer();
 }
 
-class _$ApplicationUpdateRequestSerializer implements PrimitiveSerializer<ApplicationUpdateRequest> {
+class _$ApplicationUpdateRequestSerializer
+    implements PrimitiveSerializer<ApplicationUpdateRequest> {
   @override
-  final Iterable<Type> types = const [ApplicationUpdateRequest, _$ApplicationUpdateRequest];
+  final Iterable<Type> types = const [
+    ApplicationUpdateRequest,
+    _$ApplicationUpdateRequest
+  ];
 
   @override
   final String wireName = r'ApplicationUpdateRequest';
@@ -92,7 +101,9 @@ class _$ApplicationUpdateRequestSerializer implements PrimitiveSerializer<Applic
     ApplicationUpdateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -117,7 +128,8 @@ class _$ApplicationUpdateRequestSerializer implements PrimitiveSerializer<Applic
         case r'redirect_uris':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+            specifiedType:
+                const FullType.nullable(BuiltList, [FullType(String)]),
           ) as BuiltList<String>?;
           if (valueDes == null) continue;
           result.redirectUris.replace(valueDes);
@@ -164,4 +176,3 @@ class _$ApplicationUpdateRequestSerializer implements PrimitiveSerializer<Applic
     return result.build();
   }
 }
-

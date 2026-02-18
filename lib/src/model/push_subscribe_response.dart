@@ -13,25 +13,32 @@ part 'push_subscribe_response.g.dart';
 /// Properties:
 /// * [subscriptionId] - The unique identifier for the push subscription
 @BuiltValue()
-abstract class PushSubscribeResponse implements Built<PushSubscribeResponse, PushSubscribeResponseBuilder> {
+abstract class PushSubscribeResponse
+    implements Built<PushSubscribeResponse, PushSubscribeResponseBuilder> {
   /// The unique identifier for the push subscription
   @BuiltValueField(wireName: r'subscription_id')
   String get subscriptionId;
 
   PushSubscribeResponse._();
 
-  factory PushSubscribeResponse([void updates(PushSubscribeResponseBuilder b)]) = _$PushSubscribeResponse;
+  factory PushSubscribeResponse(
+      [void updates(PushSubscribeResponseBuilder b)]) = _$PushSubscribeResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PushSubscribeResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PushSubscribeResponse> get serializer => _$PushSubscribeResponseSerializer();
+  static Serializer<PushSubscribeResponse> get serializer =>
+      _$PushSubscribeResponseSerializer();
 }
 
-class _$PushSubscribeResponseSerializer implements PrimitiveSerializer<PushSubscribeResponse> {
+class _$PushSubscribeResponseSerializer
+    implements PrimitiveSerializer<PushSubscribeResponse> {
   @override
-  final Iterable<Type> types = const [PushSubscribeResponse, _$PushSubscribeResponse];
+  final Iterable<Type> types = const [
+    PushSubscribeResponse,
+    _$PushSubscribeResponse
+  ];
 
   @override
   final String wireName = r'PushSubscribeResponse';
@@ -54,7 +61,9 @@ class _$PushSubscribeResponseSerializer implements PrimitiveSerializer<PushSubsc
     PushSubscribeResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +113,3 @@ class _$PushSubscribeResponseSerializer implements PrimitiveSerializer<PushSubsc
     return result.build();
   }
 }
-

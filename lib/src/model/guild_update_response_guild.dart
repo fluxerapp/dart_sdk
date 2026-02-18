@@ -12,15 +12,17 @@ part 'guild_update_response_guild.g.dart';
 /// GuildUpdateResponseGuild
 ///
 /// Properties:
-/// * [id] 
-/// * [name] 
-/// * [features] 
-/// * [ownerId] 
-/// * [icon] 
-/// * [banner] 
-/// * [memberCount] 
+/// * [id]
+/// * [name]
+/// * [features]
+/// * [ownerId]
+/// * [icon]
+/// * [banner]
+/// * [memberCount]
 @BuiltValue()
-abstract class GuildUpdateResponseGuild implements Built<GuildUpdateResponseGuild, GuildUpdateResponseGuildBuilder> {
+abstract class GuildUpdateResponseGuild
+    implements
+        Built<GuildUpdateResponseGuild, GuildUpdateResponseGuildBuilder> {
   @BuiltValueField(wireName: r'id')
   String get id;
 
@@ -44,18 +46,25 @@ abstract class GuildUpdateResponseGuild implements Built<GuildUpdateResponseGuil
 
   GuildUpdateResponseGuild._();
 
-  factory GuildUpdateResponseGuild([void updates(GuildUpdateResponseGuildBuilder b)]) = _$GuildUpdateResponseGuild;
+  factory GuildUpdateResponseGuild(
+          [void updates(GuildUpdateResponseGuildBuilder b)]) =
+      _$GuildUpdateResponseGuild;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildUpdateResponseGuildBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildUpdateResponseGuild> get serializer => _$GuildUpdateResponseGuildSerializer();
+  static Serializer<GuildUpdateResponseGuild> get serializer =>
+      _$GuildUpdateResponseGuildSerializer();
 }
 
-class _$GuildUpdateResponseGuildSerializer implements PrimitiveSerializer<GuildUpdateResponseGuild> {
+class _$GuildUpdateResponseGuildSerializer
+    implements PrimitiveSerializer<GuildUpdateResponseGuild> {
   @override
-  final Iterable<Type> types = const [GuildUpdateResponseGuild, _$GuildUpdateResponseGuild];
+  final Iterable<Type> types = const [
+    GuildUpdateResponseGuild,
+    _$GuildUpdateResponseGuild
+  ];
 
   @override
   final String wireName = r'GuildUpdateResponseGuild';
@@ -86,15 +95,19 @@ class _$GuildUpdateResponseGuildSerializer implements PrimitiveSerializer<GuildU
       specifiedType: const FullType(String),
     );
     yield r'icon';
-    yield object.icon == null ? null : serializers.serialize(
-      object.icon,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.icon == null
+        ? null
+        : serializers.serialize(
+            object.icon,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'banner';
-    yield object.banner == null ? null : serializers.serialize(
-      object.banner,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.banner == null
+        ? null
+        : serializers.serialize(
+            object.banner,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'member_count';
     yield serializers.serialize(
       object.memberCount,
@@ -108,7 +121,9 @@ class _$GuildUpdateResponseGuildSerializer implements PrimitiveSerializer<GuildU
     GuildUpdateResponseGuild object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -202,4 +217,3 @@ class _$GuildUpdateResponseGuildSerializer implements PrimitiveSerializer<GuildU
     return result.build();
   }
 }
-

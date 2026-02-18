@@ -12,34 +12,40 @@ part 'channel_nickname_overrides_value.g.dart';
 
 /// Nickname or null to clear
 @BuiltValue()
-abstract class ChannelNicknameOverridesValue implements Built<ChannelNicknameOverridesValue, ChannelNicknameOverridesValueBuilder> {
+abstract class ChannelNicknameOverridesValue
+    implements
+        Built<ChannelNicknameOverridesValue,
+            ChannelNicknameOverridesValueBuilder> {
   /// One Of [String]
   OneOf get oneOf;
 
   ChannelNicknameOverridesValue._();
 
-  factory ChannelNicknameOverridesValue([void updates(ChannelNicknameOverridesValueBuilder b)]) = _$ChannelNicknameOverridesValue;
+  factory ChannelNicknameOverridesValue(
+          [void updates(ChannelNicknameOverridesValueBuilder b)]) =
+      _$ChannelNicknameOverridesValue;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ChannelNicknameOverridesValueBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ChannelNicknameOverridesValue> get serializer => _$ChannelNicknameOverridesValueSerializer();
+  static Serializer<ChannelNicknameOverridesValue> get serializer =>
+      _$ChannelNicknameOverridesValueSerializer();
 }
 
-class _$ChannelNicknameOverridesValueSerializer implements PrimitiveSerializer<ChannelNicknameOverridesValue> {
+class _$ChannelNicknameOverridesValueSerializer
+    implements PrimitiveSerializer<ChannelNicknameOverridesValue> {
   @override
-  final Iterable<Type> types = const [ChannelNicknameOverridesValue, _$ChannelNicknameOverridesValue];
+  final Iterable<Type> types = const [
+    ChannelNicknameOverridesValue,
+    _$ChannelNicknameOverridesValue
+  ];
 
   @override
   final String wireName = r'ChannelNicknameOverridesValue';
 
   Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    ChannelNicknameOverridesValue object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-  }
+      Serializers serializers, ChannelNicknameOverridesValue object) sync* {}
 
   @override
   Object serialize(
@@ -48,7 +54,8 @@ class _$ChannelNicknameOverridesValueSerializer implements PrimitiveSerializer<C
     FullType specifiedType = FullType.unspecified,
   }) {
     final oneOf = object.oneOf;
-    return serializers.serialize(oneOf.value, specifiedType: FullType(oneOf.valueType))!;
+    return serializers.serialize(oneOf.value,
+        specifiedType: FullType(oneOf.valueType))!;
   }
 
   @override
@@ -59,10 +66,12 @@ class _$ChannelNicknameOverridesValueSerializer implements PrimitiveSerializer<C
   }) {
     final result = ChannelNicknameOverridesValueBuilder();
     Object? oneOfDataSrc;
-    final targetType = const FullType(OneOf, [FullType.nullable(String), ]);
+    final targetType = const FullType(OneOf, [
+      FullType.nullable(String),
+    ]);
     oneOfDataSrc = serialized;
-    result.oneOf = serializers.deserialize(oneOfDataSrc, specifiedType: targetType) as OneOf;
+    result.oneOf = serializers.deserialize(oneOfDataSrc,
+        specifiedType: targetType) as OneOf;
     return result.build();
   }
 }
-

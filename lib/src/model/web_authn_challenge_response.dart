@@ -13,25 +13,34 @@ part 'web_authn_challenge_response.g.dart';
 /// Properties:
 /// * [challenge] - The WebAuthn challenge
 @BuiltValue()
-abstract class WebAuthnChallengeResponse implements Built<WebAuthnChallengeResponse, WebAuthnChallengeResponseBuilder> {
+abstract class WebAuthnChallengeResponse
+    implements
+        Built<WebAuthnChallengeResponse, WebAuthnChallengeResponseBuilder> {
   /// The WebAuthn challenge
   @BuiltValueField(wireName: r'challenge')
   String get challenge;
 
   WebAuthnChallengeResponse._();
 
-  factory WebAuthnChallengeResponse([void updates(WebAuthnChallengeResponseBuilder b)]) = _$WebAuthnChallengeResponse;
+  factory WebAuthnChallengeResponse(
+          [void updates(WebAuthnChallengeResponseBuilder b)]) =
+      _$WebAuthnChallengeResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(WebAuthnChallengeResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<WebAuthnChallengeResponse> get serializer => _$WebAuthnChallengeResponseSerializer();
+  static Serializer<WebAuthnChallengeResponse> get serializer =>
+      _$WebAuthnChallengeResponseSerializer();
 }
 
-class _$WebAuthnChallengeResponseSerializer implements PrimitiveSerializer<WebAuthnChallengeResponse> {
+class _$WebAuthnChallengeResponseSerializer
+    implements PrimitiveSerializer<WebAuthnChallengeResponse> {
   @override
-  final Iterable<Type> types = const [WebAuthnChallengeResponse, _$WebAuthnChallengeResponse];
+  final Iterable<Type> types = const [
+    WebAuthnChallengeResponse,
+    _$WebAuthnChallengeResponse
+  ];
 
   @override
   final String wireName = r'WebAuthnChallengeResponse';
@@ -54,7 +63,9 @@ class _$WebAuthnChallengeResponseSerializer implements PrimitiveSerializer<WebAu
     WebAuthnChallengeResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +115,3 @@ class _$WebAuthnChallengeResponseSerializer implements PrimitiveSerializer<WebAu
     return result.build();
   }
 }
-

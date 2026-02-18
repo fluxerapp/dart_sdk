@@ -13,26 +13,35 @@ part 'list_user_sessions_response.g.dart';
 /// ListUserSessionsResponse
 ///
 /// Properties:
-/// * [sessions] 
+/// * [sessions]
 @BuiltValue()
-abstract class ListUserSessionsResponse implements Built<ListUserSessionsResponse, ListUserSessionsResponseBuilder> {
+abstract class ListUserSessionsResponse
+    implements
+        Built<ListUserSessionsResponse, ListUserSessionsResponseBuilder> {
   @BuiltValueField(wireName: r'sessions')
   BuiltList<UserSessionResponse> get sessions;
 
   ListUserSessionsResponse._();
 
-  factory ListUserSessionsResponse([void updates(ListUserSessionsResponseBuilder b)]) = _$ListUserSessionsResponse;
+  factory ListUserSessionsResponse(
+          [void updates(ListUserSessionsResponseBuilder b)]) =
+      _$ListUserSessionsResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ListUserSessionsResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListUserSessionsResponse> get serializer => _$ListUserSessionsResponseSerializer();
+  static Serializer<ListUserSessionsResponse> get serializer =>
+      _$ListUserSessionsResponseSerializer();
 }
 
-class _$ListUserSessionsResponseSerializer implements PrimitiveSerializer<ListUserSessionsResponse> {
+class _$ListUserSessionsResponseSerializer
+    implements PrimitiveSerializer<ListUserSessionsResponse> {
   @override
-  final Iterable<Type> types = const [ListUserSessionsResponse, _$ListUserSessionsResponse];
+  final Iterable<Type> types = const [
+    ListUserSessionsResponse,
+    _$ListUserSessionsResponse
+  ];
 
   @override
   final String wireName = r'ListUserSessionsResponse';
@@ -55,7 +64,9 @@ class _$ListUserSessionsResponseSerializer implements PrimitiveSerializer<ListUs
     ListUserSessionsResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -73,7 +84,8 @@ class _$ListUserSessionsResponseSerializer implements PrimitiveSerializer<ListUs
         case r'sessions':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(UserSessionResponse)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(UserSessionResponse)]),
           ) as BuiltList<UserSessionResponse>;
           result.sessions.replace(valueDes);
           break;
@@ -105,4 +117,3 @@ class _$ListUserSessionsResponseSerializer implements PrimitiveSerializer<ListUs
     return result.build();
   }
 }
-

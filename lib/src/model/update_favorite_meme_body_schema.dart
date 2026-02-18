@@ -13,10 +13,13 @@ part 'update_favorite_meme_body_schema.g.dart';
 ///
 /// Properties:
 /// * [name] - Display name for the meme
-/// * [altText] 
-/// * [tags] 
+/// * [altText]
+/// * [tags]
 @BuiltValue()
-abstract class UpdateFavoriteMemeBodySchema implements Built<UpdateFavoriteMemeBodySchema, UpdateFavoriteMemeBodySchemaBuilder> {
+abstract class UpdateFavoriteMemeBodySchema
+    implements
+        Built<UpdateFavoriteMemeBodySchema,
+            UpdateFavoriteMemeBodySchemaBuilder> {
   /// Display name for the meme
   @BuiltValueField(wireName: r'name')
   String? get name;
@@ -29,18 +32,25 @@ abstract class UpdateFavoriteMemeBodySchema implements Built<UpdateFavoriteMemeB
 
   UpdateFavoriteMemeBodySchema._();
 
-  factory UpdateFavoriteMemeBodySchema([void updates(UpdateFavoriteMemeBodySchemaBuilder b)]) = _$UpdateFavoriteMemeBodySchema;
+  factory UpdateFavoriteMemeBodySchema(
+          [void updates(UpdateFavoriteMemeBodySchemaBuilder b)]) =
+      _$UpdateFavoriteMemeBodySchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UpdateFavoriteMemeBodySchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UpdateFavoriteMemeBodySchema> get serializer => _$UpdateFavoriteMemeBodySchemaSerializer();
+  static Serializer<UpdateFavoriteMemeBodySchema> get serializer =>
+      _$UpdateFavoriteMemeBodySchemaSerializer();
 }
 
-class _$UpdateFavoriteMemeBodySchemaSerializer implements PrimitiveSerializer<UpdateFavoriteMemeBodySchema> {
+class _$UpdateFavoriteMemeBodySchemaSerializer
+    implements PrimitiveSerializer<UpdateFavoriteMemeBodySchema> {
   @override
-  final Iterable<Type> types = const [UpdateFavoriteMemeBodySchema, _$UpdateFavoriteMemeBodySchema];
+  final Iterable<Type> types = const [
+    UpdateFavoriteMemeBodySchema,
+    _$UpdateFavoriteMemeBodySchema
+  ];
 
   @override
   final String wireName = r'UpdateFavoriteMemeBodySchema';
@@ -79,7 +89,9 @@ class _$UpdateFavoriteMemeBodySchemaSerializer implements PrimitiveSerializer<Up
     UpdateFavoriteMemeBodySchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -112,7 +124,8 @@ class _$UpdateFavoriteMemeBodySchemaSerializer implements PrimitiveSerializer<Up
         case r'tags':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+            specifiedType:
+                const FullType.nullable(BuiltList, [FullType(String)]),
           ) as BuiltList<String>?;
           if (valueDes == null) continue;
           result.tags.replace(valueDes);
@@ -145,4 +158,3 @@ class _$UpdateFavoriteMemeBodySchemaSerializer implements PrimitiveSerializer<Up
     return result.build();
   }
 }
-

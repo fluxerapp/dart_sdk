@@ -11,10 +11,12 @@ part 'set_user_system_status_request.g.dart';
 /// SetUserSystemStatusRequest
 ///
 /// Properties:
-/// * [userId] 
+/// * [userId]
 /// * [system] - Whether the user should be marked as a system user
 @BuiltValue()
-abstract class SetUserSystemStatusRequest implements Built<SetUserSystemStatusRequest, SetUserSystemStatusRequestBuilder> {
+abstract class SetUserSystemStatusRequest
+    implements
+        Built<SetUserSystemStatusRequest, SetUserSystemStatusRequestBuilder> {
   @BuiltValueField(wireName: r'user_id')
   String get userId;
 
@@ -24,18 +26,25 @@ abstract class SetUserSystemStatusRequest implements Built<SetUserSystemStatusRe
 
   SetUserSystemStatusRequest._();
 
-  factory SetUserSystemStatusRequest([void updates(SetUserSystemStatusRequestBuilder b)]) = _$SetUserSystemStatusRequest;
+  factory SetUserSystemStatusRequest(
+          [void updates(SetUserSystemStatusRequestBuilder b)]) =
+      _$SetUserSystemStatusRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SetUserSystemStatusRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SetUserSystemStatusRequest> get serializer => _$SetUserSystemStatusRequestSerializer();
+  static Serializer<SetUserSystemStatusRequest> get serializer =>
+      _$SetUserSystemStatusRequestSerializer();
 }
 
-class _$SetUserSystemStatusRequestSerializer implements PrimitiveSerializer<SetUserSystemStatusRequest> {
+class _$SetUserSystemStatusRequestSerializer
+    implements PrimitiveSerializer<SetUserSystemStatusRequest> {
   @override
-  final Iterable<Type> types = const [SetUserSystemStatusRequest, _$SetUserSystemStatusRequest];
+  final Iterable<Type> types = const [
+    SetUserSystemStatusRequest,
+    _$SetUserSystemStatusRequest
+  ];
 
   @override
   final String wireName = r'SetUserSystemStatusRequest';
@@ -63,7 +72,9 @@ class _$SetUserSystemStatusRequestSerializer implements PrimitiveSerializer<SetU
     SetUserSystemStatusRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -120,4 +131,3 @@ class _$SetUserSystemStatusRequestSerializer implements PrimitiveSerializer<SetU
     return result.build();
   }
 }
-

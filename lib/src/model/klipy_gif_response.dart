@@ -19,7 +19,8 @@ part 'klipy_gif_response.g.dart';
 /// * [width] - Width of the clip in pixels
 /// * [height] - Height of the clip in pixels
 @BuiltValue()
-abstract class KlipyGifResponse implements Built<KlipyGifResponse, KlipyGifResponseBuilder> {
+abstract class KlipyGifResponse
+    implements Built<KlipyGifResponse, KlipyGifResponseBuilder> {
   /// The unique Klipy clip slug
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -50,16 +51,19 @@ abstract class KlipyGifResponse implements Built<KlipyGifResponse, KlipyGifRespo
 
   KlipyGifResponse._();
 
-  factory KlipyGifResponse([void updates(KlipyGifResponseBuilder b)]) = _$KlipyGifResponse;
+  factory KlipyGifResponse([void updates(KlipyGifResponseBuilder b)]) =
+      _$KlipyGifResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(KlipyGifResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<KlipyGifResponse> get serializer => _$KlipyGifResponseSerializer();
+  static Serializer<KlipyGifResponse> get serializer =>
+      _$KlipyGifResponseSerializer();
 }
 
-class _$KlipyGifResponseSerializer implements PrimitiveSerializer<KlipyGifResponse> {
+class _$KlipyGifResponseSerializer
+    implements PrimitiveSerializer<KlipyGifResponse> {
   @override
   final Iterable<Type> types = const [KlipyGifResponse, _$KlipyGifResponse];
 
@@ -114,7 +118,9 @@ class _$KlipyGifResponseSerializer implements PrimitiveSerializer<KlipyGifRespon
     KlipyGifResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -206,4 +212,3 @@ class _$KlipyGifResponseSerializer implements PrimitiveSerializer<KlipyGifRespon
     return result.build();
   }
 }
-

@@ -10,23 +10,26 @@ import 'package:built_value/serializer.dart';
 part 'harvest_status_enum.g.dart';
 
 class HarvestStatusEnum extends EnumClass {
-
   /// Current status of the harvest request
   @BuiltValueEnumConst(wireName: r'pending')
   static const HarvestStatusEnum pending = _$pending;
+
   /// Current status of the harvest request
   @BuiltValueEnumConst(wireName: r'processing')
   static const HarvestStatusEnum processing = _$processing;
+
   /// Current status of the harvest request
   @BuiltValueEnumConst(wireName: r'completed')
   static const HarvestStatusEnum completed = _$completed;
+
   /// Current status of the harvest request
   @BuiltValueEnumConst(wireName: r'failed')
   static const HarvestStatusEnum failed = _$failed;
 
-  static Serializer<HarvestStatusEnum> get serializer => _$harvestStatusEnumSerializer;
+  static Serializer<HarvestStatusEnum> get serializer =>
+      _$harvestStatusEnumSerializer;
 
-  const HarvestStatusEnum._(String name): super(name);
+  const HarvestStatusEnum._(String name) : super(name);
 
   static BuiltSet<HarvestStatusEnum> get values => _$values;
   static HarvestStatusEnum valueOf(String name) => _$valueOf(name);
@@ -39,4 +42,3 @@ class HarvestStatusEnum extends EnumClass {
 ///
 /// Trigger mixin generation by writing a line like this one next to your enum.
 abstract class HarvestStatusEnumMixin = Object with _$HarvestStatusEnumMixin;
-

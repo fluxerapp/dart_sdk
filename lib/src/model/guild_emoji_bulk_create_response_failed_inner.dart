@@ -14,7 +14,10 @@ part 'guild_emoji_bulk_create_response_failed_inner.g.dart';
 /// * [name] - The name of the emoji that failed to create
 /// * [error] - The error message explaining why the emoji failed to create
 @BuiltValue()
-abstract class GuildEmojiBulkCreateResponseFailedInner implements Built<GuildEmojiBulkCreateResponseFailedInner, GuildEmojiBulkCreateResponseFailedInnerBuilder> {
+abstract class GuildEmojiBulkCreateResponseFailedInner
+    implements
+        Built<GuildEmojiBulkCreateResponseFailedInner,
+            GuildEmojiBulkCreateResponseFailedInnerBuilder> {
   /// The name of the emoji that failed to create
   @BuiltValueField(wireName: r'name')
   String get name;
@@ -25,18 +28,25 @@ abstract class GuildEmojiBulkCreateResponseFailedInner implements Built<GuildEmo
 
   GuildEmojiBulkCreateResponseFailedInner._();
 
-  factory GuildEmojiBulkCreateResponseFailedInner([void updates(GuildEmojiBulkCreateResponseFailedInnerBuilder b)]) = _$GuildEmojiBulkCreateResponseFailedInner;
+  factory GuildEmojiBulkCreateResponseFailedInner(
+          [void updates(GuildEmojiBulkCreateResponseFailedInnerBuilder b)]) =
+      _$GuildEmojiBulkCreateResponseFailedInner;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildEmojiBulkCreateResponseFailedInnerBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildEmojiBulkCreateResponseFailedInner> get serializer => _$GuildEmojiBulkCreateResponseFailedInnerSerializer();
+  static Serializer<GuildEmojiBulkCreateResponseFailedInner> get serializer =>
+      _$GuildEmojiBulkCreateResponseFailedInnerSerializer();
 }
 
-class _$GuildEmojiBulkCreateResponseFailedInnerSerializer implements PrimitiveSerializer<GuildEmojiBulkCreateResponseFailedInner> {
+class _$GuildEmojiBulkCreateResponseFailedInnerSerializer
+    implements PrimitiveSerializer<GuildEmojiBulkCreateResponseFailedInner> {
   @override
-  final Iterable<Type> types = const [GuildEmojiBulkCreateResponseFailedInner, _$GuildEmojiBulkCreateResponseFailedInner];
+  final Iterable<Type> types = const [
+    GuildEmojiBulkCreateResponseFailedInner,
+    _$GuildEmojiBulkCreateResponseFailedInner
+  ];
 
   @override
   final String wireName = r'GuildEmojiBulkCreateResponseFailedInner';
@@ -64,7 +74,9 @@ class _$GuildEmojiBulkCreateResponseFailedInnerSerializer implements PrimitiveSe
     GuildEmojiBulkCreateResponseFailedInner object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +133,3 @@ class _$GuildEmojiBulkCreateResponseFailedInnerSerializer implements PrimitiveSe
     return result.build();
   }
 }
-

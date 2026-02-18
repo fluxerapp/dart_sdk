@@ -13,9 +13,10 @@ part 'guild_role_create_request.g.dart';
 /// Properties:
 /// * [name] - The name of the role (1-100 characters)
 /// * [color] - The color of the role as an integer (default: 0)
-/// * [permissions] 
+/// * [permissions]
 @BuiltValue()
-abstract class GuildRoleCreateRequest implements Built<GuildRoleCreateRequest, GuildRoleCreateRequestBuilder> {
+abstract class GuildRoleCreateRequest
+    implements Built<GuildRoleCreateRequest, GuildRoleCreateRequestBuilder> {
   /// The name of the role (1-100 characters)
   @BuiltValueField(wireName: r'name')
   String get name;
@@ -29,18 +30,25 @@ abstract class GuildRoleCreateRequest implements Built<GuildRoleCreateRequest, G
 
   GuildRoleCreateRequest._();
 
-  factory GuildRoleCreateRequest([void updates(GuildRoleCreateRequestBuilder b)]) = _$GuildRoleCreateRequest;
+  factory GuildRoleCreateRequest(
+          [void updates(GuildRoleCreateRequestBuilder b)]) =
+      _$GuildRoleCreateRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildRoleCreateRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildRoleCreateRequest> get serializer => _$GuildRoleCreateRequestSerializer();
+  static Serializer<GuildRoleCreateRequest> get serializer =>
+      _$GuildRoleCreateRequestSerializer();
 }
 
-class _$GuildRoleCreateRequestSerializer implements PrimitiveSerializer<GuildRoleCreateRequest> {
+class _$GuildRoleCreateRequestSerializer
+    implements PrimitiveSerializer<GuildRoleCreateRequest> {
   @override
-  final Iterable<Type> types = const [GuildRoleCreateRequest, _$GuildRoleCreateRequest];
+  final Iterable<Type> types = const [
+    GuildRoleCreateRequest,
+    _$GuildRoleCreateRequest
+  ];
 
   @override
   final String wireName = r'GuildRoleCreateRequest';
@@ -77,7 +85,9 @@ class _$GuildRoleCreateRequestSerializer implements PrimitiveSerializer<GuildRol
     GuildRoleCreateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -141,4 +151,3 @@ class _$GuildRoleCreateRequestSerializer implements PrimitiveSerializer<GuildRol
     return result.build();
   }
 }
-

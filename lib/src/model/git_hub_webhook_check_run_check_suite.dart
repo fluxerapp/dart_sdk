@@ -14,13 +14,16 @@ part 'git_hub_webhook_check_run_check_suite.g.dart';
 /// GitHubWebhookCheckRunCheckSuite
 ///
 /// Properties:
-/// * [headSha] 
-/// * [app] 
-/// * [conclusion] 
-/// * [headBranch] 
-/// * [pullRequests] 
+/// * [headSha]
+/// * [app]
+/// * [conclusion]
+/// * [headBranch]
+/// * [pullRequests]
 @BuiltValue()
-abstract class GitHubWebhookCheckRunCheckSuite implements Built<GitHubWebhookCheckRunCheckSuite, GitHubWebhookCheckRunCheckSuiteBuilder> {
+abstract class GitHubWebhookCheckRunCheckSuite
+    implements
+        Built<GitHubWebhookCheckRunCheckSuite,
+            GitHubWebhookCheckRunCheckSuiteBuilder> {
   @BuiltValueField(wireName: r'head_sha')
   String get headSha;
 
@@ -38,18 +41,25 @@ abstract class GitHubWebhookCheckRunCheckSuite implements Built<GitHubWebhookChe
 
   GitHubWebhookCheckRunCheckSuite._();
 
-  factory GitHubWebhookCheckRunCheckSuite([void updates(GitHubWebhookCheckRunCheckSuiteBuilder b)]) = _$GitHubWebhookCheckRunCheckSuite;
+  factory GitHubWebhookCheckRunCheckSuite(
+          [void updates(GitHubWebhookCheckRunCheckSuiteBuilder b)]) =
+      _$GitHubWebhookCheckRunCheckSuite;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GitHubWebhookCheckRunCheckSuiteBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GitHubWebhookCheckRunCheckSuite> get serializer => _$GitHubWebhookCheckRunCheckSuiteSerializer();
+  static Serializer<GitHubWebhookCheckRunCheckSuite> get serializer =>
+      _$GitHubWebhookCheckRunCheckSuiteSerializer();
 }
 
-class _$GitHubWebhookCheckRunCheckSuiteSerializer implements PrimitiveSerializer<GitHubWebhookCheckRunCheckSuite> {
+class _$GitHubWebhookCheckRunCheckSuiteSerializer
+    implements PrimitiveSerializer<GitHubWebhookCheckRunCheckSuite> {
   @override
-  final Iterable<Type> types = const [GitHubWebhookCheckRunCheckSuite, _$GitHubWebhookCheckRunCheckSuite];
+  final Iterable<Type> types = const [
+    GitHubWebhookCheckRunCheckSuite,
+    _$GitHubWebhookCheckRunCheckSuite
+  ];
 
   @override
   final String wireName = r'GitHubWebhookCheckRunCheckSuite';
@@ -87,7 +97,8 @@ class _$GitHubWebhookCheckRunCheckSuiteSerializer implements PrimitiveSerializer
       yield r'pull_requests';
       yield serializers.serialize(
         object.pullRequests,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(GitHubWebhookCheckRunCheckSuitePullRequestsInner)]),
+        specifiedType: const FullType.nullable(BuiltList,
+            [FullType(GitHubWebhookCheckRunCheckSuitePullRequestsInner)]),
       );
     }
   }
@@ -98,7 +109,9 @@ class _$GitHubWebhookCheckRunCheckSuiteSerializer implements PrimitiveSerializer
     GitHubWebhookCheckRunCheckSuite object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -146,7 +159,8 @@ class _$GitHubWebhookCheckRunCheckSuiteSerializer implements PrimitiveSerializer
         case r'pull_requests':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(GitHubWebhookCheckRunCheckSuitePullRequestsInner)]),
+            specifiedType: const FullType.nullable(BuiltList,
+                [FullType(GitHubWebhookCheckRunCheckSuitePullRequestsInner)]),
           ) as BuiltList<GitHubWebhookCheckRunCheckSuitePullRequestsInner>?;
           if (valueDes == null) continue;
           result.pullRequests.replace(valueDes);
@@ -179,4 +193,3 @@ class _$GitHubWebhookCheckRunCheckSuiteSerializer implements PrimitiveSerializer
     return result.build();
   }
 }
-

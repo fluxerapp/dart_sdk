@@ -15,7 +15,10 @@ part 'user_private_response_pending_bulk_message_deletion.g.dart';
 /// * [channelCount] - The number of channels with messages to delete
 /// * [messageCount] - The total number of messages to delete
 @BuiltValue()
-abstract class UserPrivateResponsePendingBulkMessageDeletion implements Built<UserPrivateResponsePendingBulkMessageDeletion, UserPrivateResponsePendingBulkMessageDeletionBuilder> {
+abstract class UserPrivateResponsePendingBulkMessageDeletion
+    implements
+        Built<UserPrivateResponsePendingBulkMessageDeletion,
+            UserPrivateResponsePendingBulkMessageDeletionBuilder> {
   /// ISO8601 timestamp of when the deletion was scheduled
   @BuiltValueField(wireName: r'scheduled_at')
   String get scheduledAt;
@@ -30,18 +33,30 @@ abstract class UserPrivateResponsePendingBulkMessageDeletion implements Built<Us
 
   UserPrivateResponsePendingBulkMessageDeletion._();
 
-  factory UserPrivateResponsePendingBulkMessageDeletion([void updates(UserPrivateResponsePendingBulkMessageDeletionBuilder b)]) = _$UserPrivateResponsePendingBulkMessageDeletion;
+  factory UserPrivateResponsePendingBulkMessageDeletion(
+          [void updates(
+              UserPrivateResponsePendingBulkMessageDeletionBuilder b)]) =
+      _$UserPrivateResponsePendingBulkMessageDeletion;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(UserPrivateResponsePendingBulkMessageDeletionBuilder b) => b;
+  static void _defaults(
+          UserPrivateResponsePendingBulkMessageDeletionBuilder b) =>
+      b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UserPrivateResponsePendingBulkMessageDeletion> get serializer => _$UserPrivateResponsePendingBulkMessageDeletionSerializer();
+  static Serializer<UserPrivateResponsePendingBulkMessageDeletion>
+      get serializer =>
+          _$UserPrivateResponsePendingBulkMessageDeletionSerializer();
 }
 
-class _$UserPrivateResponsePendingBulkMessageDeletionSerializer implements PrimitiveSerializer<UserPrivateResponsePendingBulkMessageDeletion> {
+class _$UserPrivateResponsePendingBulkMessageDeletionSerializer
+    implements
+        PrimitiveSerializer<UserPrivateResponsePendingBulkMessageDeletion> {
   @override
-  final Iterable<Type> types = const [UserPrivateResponsePendingBulkMessageDeletion, _$UserPrivateResponsePendingBulkMessageDeletion];
+  final Iterable<Type> types = const [
+    UserPrivateResponsePendingBulkMessageDeletion,
+    _$UserPrivateResponsePendingBulkMessageDeletion
+  ];
 
   @override
   final String wireName = r'UserPrivateResponsePendingBulkMessageDeletion';
@@ -74,7 +89,9 @@ class _$UserPrivateResponsePendingBulkMessageDeletionSerializer implements Primi
     UserPrivateResponsePendingBulkMessageDeletion object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -138,4 +155,3 @@ class _$UserPrivateResponsePendingBulkMessageDeletionSerializer implements Primi
     return result.build();
   }
 }
-

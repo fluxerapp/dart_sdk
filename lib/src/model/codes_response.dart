@@ -12,21 +12,24 @@ part 'codes_response.g.dart';
 /// CodesResponse
 ///
 /// Properties:
-/// * [codes] 
+/// * [codes]
 @BuiltValue()
-abstract class CodesResponse implements Built<CodesResponse, CodesResponseBuilder> {
+abstract class CodesResponse
+    implements Built<CodesResponse, CodesResponseBuilder> {
   @BuiltValueField(wireName: r'codes')
   BuiltList<String> get codes;
 
   CodesResponse._();
 
-  factory CodesResponse([void updates(CodesResponseBuilder b)]) = _$CodesResponse;
+  factory CodesResponse([void updates(CodesResponseBuilder b)]) =
+      _$CodesResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CodesResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CodesResponse> get serializer => _$CodesResponseSerializer();
+  static Serializer<CodesResponse> get serializer =>
+      _$CodesResponseSerializer();
 }
 
 class _$CodesResponseSerializer implements PrimitiveSerializer<CodesResponse> {
@@ -54,7 +57,9 @@ class _$CodesResponseSerializer implements PrimitiveSerializer<CodesResponse> {
     CodesResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +109,3 @@ class _$CodesResponseSerializer implements PrimitiveSerializer<CodesResponse> {
     return result.build();
   }
 }
-

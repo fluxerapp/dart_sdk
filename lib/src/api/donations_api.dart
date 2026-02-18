@@ -4,7 +4,6 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
@@ -12,11 +11,8 @@ import 'package:fluxer_dart/src/api_util.dart';
 import 'package:fluxer_dart/src/model/donation_checkout_request.dart';
 import 'package:fluxer_dart/src/model/donation_checkout_response.dart';
 import 'package:fluxer_dart/src/model/donation_request_link_request.dart';
-import 'package:fluxer_dart/src/model/error.dart';
-import 'package:fluxer_dart/src/model/get_well_known_fluxer429_response.dart';
 
 class DonationsApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -27,7 +23,7 @@ class DonationsApi {
   /// Creates a Stripe checkout session for a recurring donation.
   ///
   /// Parameters:
-  /// * [donationCheckoutRequest] 
+  /// * [donationCheckoutRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -37,7 +33,7 @@ class DonationsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [DonationCheckoutResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<DonationCheckoutResponse>> createDonationCheckout({ 
+  Future<Response<DonationCheckoutResponse>> createDonationCheckout({
     required DonationCheckoutRequest donationCheckoutRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -64,11 +60,11 @@ class DonationsApi {
 
     try {
       const _type = FullType(DonationCheckoutRequest);
-      _bodyData = _serializers.serialize(donationCheckoutRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(donationCheckoutRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -91,11 +87,12 @@ class DonationsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(DonationCheckoutResponse),
-      ) as DonationCheckoutResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(DonationCheckoutResponse),
+            ) as DonationCheckoutResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -122,7 +119,7 @@ class DonationsApi {
   /// Validates the magic link token and redirects to Stripe billing portal.
   ///
   /// Parameters:
-  /// * [token] 
+  /// * [token]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -132,7 +129,7 @@ class DonationsApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> manageDonation({ 
+  Future<Response<void>> manageDonation({
     required String token,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -155,7 +152,8 @@ class DonationsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'token': encodeQueryParameter(_serializers, token, const FullType(String)),
+      r'token':
+          encodeQueryParameter(_serializers, token, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -174,7 +172,7 @@ class DonationsApi {
   /// Sends a magic link email to the provided address for managing recurring donations.
   ///
   /// Parameters:
-  /// * [donationRequestLinkRequest] 
+  /// * [donationRequestLinkRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -184,7 +182,7 @@ class DonationsApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> requestDonationMagicLink({ 
+  Future<Response<void>> requestDonationMagicLink({
     required DonationRequestLinkRequest donationRequestLinkRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -211,11 +209,11 @@ class DonationsApi {
 
     try {
       const _type = FullType(DonationRequestLinkRequest);
-      _bodyData = _serializers.serialize(donationRequestLinkRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(donationRequestLinkRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -236,5 +234,4 @@ class DonationsApi {
 
     return _response;
   }
-
 }

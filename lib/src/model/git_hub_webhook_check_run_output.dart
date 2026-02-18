@@ -11,10 +11,12 @@ part 'git_hub_webhook_check_run_output.g.dart';
 /// GitHubWebhookCheckRunOutput
 ///
 /// Properties:
-/// * [title] 
-/// * [summary] 
+/// * [title]
+/// * [summary]
 @BuiltValue()
-abstract class GitHubWebhookCheckRunOutput implements Built<GitHubWebhookCheckRunOutput, GitHubWebhookCheckRunOutputBuilder> {
+abstract class GitHubWebhookCheckRunOutput
+    implements
+        Built<GitHubWebhookCheckRunOutput, GitHubWebhookCheckRunOutputBuilder> {
   @BuiltValueField(wireName: r'title')
   String? get title;
 
@@ -23,18 +25,25 @@ abstract class GitHubWebhookCheckRunOutput implements Built<GitHubWebhookCheckRu
 
   GitHubWebhookCheckRunOutput._();
 
-  factory GitHubWebhookCheckRunOutput([void updates(GitHubWebhookCheckRunOutputBuilder b)]) = _$GitHubWebhookCheckRunOutput;
+  factory GitHubWebhookCheckRunOutput(
+          [void updates(GitHubWebhookCheckRunOutputBuilder b)]) =
+      _$GitHubWebhookCheckRunOutput;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GitHubWebhookCheckRunOutputBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GitHubWebhookCheckRunOutput> get serializer => _$GitHubWebhookCheckRunOutputSerializer();
+  static Serializer<GitHubWebhookCheckRunOutput> get serializer =>
+      _$GitHubWebhookCheckRunOutputSerializer();
 }
 
-class _$GitHubWebhookCheckRunOutputSerializer implements PrimitiveSerializer<GitHubWebhookCheckRunOutput> {
+class _$GitHubWebhookCheckRunOutputSerializer
+    implements PrimitiveSerializer<GitHubWebhookCheckRunOutput> {
   @override
-  final Iterable<Type> types = const [GitHubWebhookCheckRunOutput, _$GitHubWebhookCheckRunOutput];
+  final Iterable<Type> types = const [
+    GitHubWebhookCheckRunOutput,
+    _$GitHubWebhookCheckRunOutput
+  ];
 
   @override
   final String wireName = r'GitHubWebhookCheckRunOutput';
@@ -66,7 +75,9 @@ class _$GitHubWebhookCheckRunOutputSerializer implements PrimitiveSerializer<Git
     GitHubWebhookCheckRunOutput object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -125,4 +136,3 @@ class _$GitHubWebhookCheckRunOutputSerializer implements PrimitiveSerializer<Git
     return result.build();
   }
 }
-

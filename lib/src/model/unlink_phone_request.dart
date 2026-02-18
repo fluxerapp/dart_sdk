@@ -11,24 +11,28 @@ part 'unlink_phone_request.g.dart';
 /// UnlinkPhoneRequest
 ///
 /// Properties:
-/// * [userId] 
+/// * [userId]
 @BuiltValue()
-abstract class UnlinkPhoneRequest implements Built<UnlinkPhoneRequest, UnlinkPhoneRequestBuilder> {
+abstract class UnlinkPhoneRequest
+    implements Built<UnlinkPhoneRequest, UnlinkPhoneRequestBuilder> {
   @BuiltValueField(wireName: r'user_id')
   String get userId;
 
   UnlinkPhoneRequest._();
 
-  factory UnlinkPhoneRequest([void updates(UnlinkPhoneRequestBuilder b)]) = _$UnlinkPhoneRequest;
+  factory UnlinkPhoneRequest([void updates(UnlinkPhoneRequestBuilder b)]) =
+      _$UnlinkPhoneRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UnlinkPhoneRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UnlinkPhoneRequest> get serializer => _$UnlinkPhoneRequestSerializer();
+  static Serializer<UnlinkPhoneRequest> get serializer =>
+      _$UnlinkPhoneRequestSerializer();
 }
 
-class _$UnlinkPhoneRequestSerializer implements PrimitiveSerializer<UnlinkPhoneRequest> {
+class _$UnlinkPhoneRequestSerializer
+    implements PrimitiveSerializer<UnlinkPhoneRequest> {
   @override
   final Iterable<Type> types = const [UnlinkPhoneRequest, _$UnlinkPhoneRequest];
 
@@ -53,7 +57,9 @@ class _$UnlinkPhoneRequestSerializer implements PrimitiveSerializer<UnlinkPhoneR
     UnlinkPhoneRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,4 +109,3 @@ class _$UnlinkPhoneRequestSerializer implements PrimitiveSerializer<UnlinkPhoneR
     return result.build();
   }
 }
-

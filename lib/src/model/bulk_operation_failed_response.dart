@@ -11,10 +11,12 @@ part 'bulk_operation_failed_response.g.dart';
 /// BulkOperationFailedResponse
 ///
 /// Properties:
-/// * [id] 
-/// * [error] 
+/// * [id]
+/// * [error]
 @BuiltValue()
-abstract class BulkOperationFailedResponse implements Built<BulkOperationFailedResponse, BulkOperationFailedResponseBuilder> {
+abstract class BulkOperationFailedResponse
+    implements
+        Built<BulkOperationFailedResponse, BulkOperationFailedResponseBuilder> {
   @BuiltValueField(wireName: r'id')
   String get id;
 
@@ -23,18 +25,25 @@ abstract class BulkOperationFailedResponse implements Built<BulkOperationFailedR
 
   BulkOperationFailedResponse._();
 
-  factory BulkOperationFailedResponse([void updates(BulkOperationFailedResponseBuilder b)]) = _$BulkOperationFailedResponse;
+  factory BulkOperationFailedResponse(
+          [void updates(BulkOperationFailedResponseBuilder b)]) =
+      _$BulkOperationFailedResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(BulkOperationFailedResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<BulkOperationFailedResponse> get serializer => _$BulkOperationFailedResponseSerializer();
+  static Serializer<BulkOperationFailedResponse> get serializer =>
+      _$BulkOperationFailedResponseSerializer();
 }
 
-class _$BulkOperationFailedResponseSerializer implements PrimitiveSerializer<BulkOperationFailedResponse> {
+class _$BulkOperationFailedResponseSerializer
+    implements PrimitiveSerializer<BulkOperationFailedResponse> {
   @override
-  final Iterable<Type> types = const [BulkOperationFailedResponse, _$BulkOperationFailedResponse];
+  final Iterable<Type> types = const [
+    BulkOperationFailedResponse,
+    _$BulkOperationFailedResponse
+  ];
 
   @override
   final String wireName = r'BulkOperationFailedResponse';
@@ -62,7 +71,9 @@ class _$BulkOperationFailedResponseSerializer implements PrimitiveSerializer<Bul
     BulkOperationFailedResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -119,4 +130,3 @@ class _$BulkOperationFailedResponseSerializer implements PrimitiveSerializer<Bul
     return result.build();
   }
 }
-

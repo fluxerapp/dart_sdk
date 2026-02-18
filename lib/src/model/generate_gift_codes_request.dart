@@ -15,7 +15,9 @@ part 'generate_gift_codes_request.g.dart';
 /// * [count] - Number of gift codes to generate
 /// * [productType] - Type of gift subscription
 @BuiltValue()
-abstract class GenerateGiftCodesRequest implements Built<GenerateGiftCodesRequest, GenerateGiftCodesRequestBuilder> {
+abstract class GenerateGiftCodesRequest
+    implements
+        Built<GenerateGiftCodesRequest, GenerateGiftCodesRequestBuilder> {
   /// Number of gift codes to generate
   @BuiltValueField(wireName: r'count')
   int get count;
@@ -27,18 +29,25 @@ abstract class GenerateGiftCodesRequest implements Built<GenerateGiftCodesReques
 
   GenerateGiftCodesRequest._();
 
-  factory GenerateGiftCodesRequest([void updates(GenerateGiftCodesRequestBuilder b)]) = _$GenerateGiftCodesRequest;
+  factory GenerateGiftCodesRequest(
+          [void updates(GenerateGiftCodesRequestBuilder b)]) =
+      _$GenerateGiftCodesRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GenerateGiftCodesRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GenerateGiftCodesRequest> get serializer => _$GenerateGiftCodesRequestSerializer();
+  static Serializer<GenerateGiftCodesRequest> get serializer =>
+      _$GenerateGiftCodesRequestSerializer();
 }
 
-class _$GenerateGiftCodesRequestSerializer implements PrimitiveSerializer<GenerateGiftCodesRequest> {
+class _$GenerateGiftCodesRequestSerializer
+    implements PrimitiveSerializer<GenerateGiftCodesRequest> {
   @override
-  final Iterable<Type> types = const [GenerateGiftCodesRequest, _$GenerateGiftCodesRequest];
+  final Iterable<Type> types = const [
+    GenerateGiftCodesRequest,
+    _$GenerateGiftCodesRequest
+  ];
 
   @override
   final String wireName = r'GenerateGiftCodesRequest';
@@ -66,7 +75,9 @@ class _$GenerateGiftCodesRequestSerializer implements PrimitiveSerializer<Genera
     GenerateGiftCodesRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -91,7 +102,8 @@ class _$GenerateGiftCodesRequestSerializer implements PrimitiveSerializer<Genera
         case r'product_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(GenerateGiftCodesRequestProductTypeEnum),
+            specifiedType:
+                const FullType(GenerateGiftCodesRequestProductTypeEnum),
           ) as GenerateGiftCodesRequestProductTypeEnum;
           result.productType = valueDes;
           break;
@@ -125,19 +137,23 @@ class _$GenerateGiftCodesRequestSerializer implements PrimitiveSerializer<Genera
 }
 
 class GenerateGiftCodesRequestProductTypeEnum extends EnumClass {
-
   /// Type of gift subscription
   @BuiltValueEnumConst(wireName: r'gift_1_month')
-  static const GenerateGiftCodesRequestProductTypeEnum gift1Month = _$generateGiftCodesRequestProductTypeEnum_gift1Month;
+  static const GenerateGiftCodesRequestProductTypeEnum gift1Month =
+      _$generateGiftCodesRequestProductTypeEnum_gift1Month;
+
   /// Type of gift subscription
   @BuiltValueEnumConst(wireName: r'gift_1_year')
-  static const GenerateGiftCodesRequestProductTypeEnum gift1Year = _$generateGiftCodesRequestProductTypeEnum_gift1Year;
+  static const GenerateGiftCodesRequestProductTypeEnum gift1Year =
+      _$generateGiftCodesRequestProductTypeEnum_gift1Year;
 
-  static Serializer<GenerateGiftCodesRequestProductTypeEnum> get serializer => _$generateGiftCodesRequestProductTypeEnumSerializer;
+  static Serializer<GenerateGiftCodesRequestProductTypeEnum> get serializer =>
+      _$generateGiftCodesRequestProductTypeEnumSerializer;
 
-  const GenerateGiftCodesRequestProductTypeEnum._(String name): super(name);
+  const GenerateGiftCodesRequestProductTypeEnum._(String name) : super(name);
 
-  static BuiltSet<GenerateGiftCodesRequestProductTypeEnum> get values => _$generateGiftCodesRequestProductTypeEnumValues;
-  static GenerateGiftCodesRequestProductTypeEnum valueOf(String name) => _$generateGiftCodesRequestProductTypeEnumValueOf(name);
+  static BuiltSet<GenerateGiftCodesRequestProductTypeEnum> get values =>
+      _$generateGiftCodesRequestProductTypeEnumValues;
+  static GenerateGiftCodesRequestProductTypeEnum valueOf(String name) =>
+      _$generateGiftCodesRequestProductTypeEnumValueOf(name);
 }
-

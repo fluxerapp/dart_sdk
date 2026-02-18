@@ -11,26 +11,33 @@ part 'forgot_password_request.g.dart';
 /// ForgotPasswordRequest
 ///
 /// Properties:
-/// * [email] 
+/// * [email]
 @BuiltValue()
-abstract class ForgotPasswordRequest implements Built<ForgotPasswordRequest, ForgotPasswordRequestBuilder> {
+abstract class ForgotPasswordRequest
+    implements Built<ForgotPasswordRequest, ForgotPasswordRequestBuilder> {
   @BuiltValueField(wireName: r'email')
   String get email;
 
   ForgotPasswordRequest._();
 
-  factory ForgotPasswordRequest([void updates(ForgotPasswordRequestBuilder b)]) = _$ForgotPasswordRequest;
+  factory ForgotPasswordRequest(
+      [void updates(ForgotPasswordRequestBuilder b)]) = _$ForgotPasswordRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ForgotPasswordRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ForgotPasswordRequest> get serializer => _$ForgotPasswordRequestSerializer();
+  static Serializer<ForgotPasswordRequest> get serializer =>
+      _$ForgotPasswordRequestSerializer();
 }
 
-class _$ForgotPasswordRequestSerializer implements PrimitiveSerializer<ForgotPasswordRequest> {
+class _$ForgotPasswordRequestSerializer
+    implements PrimitiveSerializer<ForgotPasswordRequest> {
   @override
-  final Iterable<Type> types = const [ForgotPasswordRequest, _$ForgotPasswordRequest];
+  final Iterable<Type> types = const [
+    ForgotPasswordRequest,
+    _$ForgotPasswordRequest
+  ];
 
   @override
   final String wireName = r'ForgotPasswordRequest';
@@ -53,7 +60,9 @@ class _$ForgotPasswordRequestSerializer implements PrimitiveSerializer<ForgotPas
     ForgotPasswordRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,4 +112,3 @@ class _$ForgotPasswordRequestSerializer implements PrimitiveSerializer<ForgotPas
     return result.build();
   }
 }
-

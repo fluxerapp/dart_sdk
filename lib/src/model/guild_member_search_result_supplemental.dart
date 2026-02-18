@@ -12,11 +12,14 @@ part 'guild_member_search_result_supplemental.g.dart';
 /// Supplemental members-search-only metadata that is not part of the base guild member payload
 ///
 /// Properties:
-/// * [sourceInviteCode] 
-/// * [inviterId] 
-/// * [joinSourceType] 
+/// * [sourceInviteCode]
+/// * [inviterId]
+/// * [joinSourceType]
 @BuiltValue()
-abstract class GuildMemberSearchResultSupplemental implements Built<GuildMemberSearchResultSupplemental, GuildMemberSearchResultSupplementalBuilder> {
+abstract class GuildMemberSearchResultSupplemental
+    implements
+        Built<GuildMemberSearchResultSupplemental,
+            GuildMemberSearchResultSupplementalBuilder> {
   @BuiltValueField(wireName: r'source_invite_code')
   String? get sourceInviteCode;
 
@@ -29,18 +32,25 @@ abstract class GuildMemberSearchResultSupplemental implements Built<GuildMemberS
 
   GuildMemberSearchResultSupplemental._();
 
-  factory GuildMemberSearchResultSupplemental([void updates(GuildMemberSearchResultSupplementalBuilder b)]) = _$GuildMemberSearchResultSupplemental;
+  factory GuildMemberSearchResultSupplemental(
+          [void updates(GuildMemberSearchResultSupplementalBuilder b)]) =
+      _$GuildMemberSearchResultSupplemental;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildMemberSearchResultSupplementalBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildMemberSearchResultSupplemental> get serializer => _$GuildMemberSearchResultSupplementalSerializer();
+  static Serializer<GuildMemberSearchResultSupplemental> get serializer =>
+      _$GuildMemberSearchResultSupplementalSerializer();
 }
 
-class _$GuildMemberSearchResultSupplementalSerializer implements PrimitiveSerializer<GuildMemberSearchResultSupplemental> {
+class _$GuildMemberSearchResultSupplementalSerializer
+    implements PrimitiveSerializer<GuildMemberSearchResultSupplemental> {
   @override
-  final Iterable<Type> types = const [GuildMemberSearchResultSupplemental, _$GuildMemberSearchResultSupplemental];
+  final Iterable<Type> types = const [
+    GuildMemberSearchResultSupplemental,
+    _$GuildMemberSearchResultSupplemental
+  ];
 
   @override
   final String wireName = r'GuildMemberSearchResultSupplemental';
@@ -51,15 +61,19 @@ class _$GuildMemberSearchResultSupplementalSerializer implements PrimitiveSerial
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     yield r'source_invite_code';
-    yield object.sourceInviteCode == null ? null : serializers.serialize(
-      object.sourceInviteCode,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.sourceInviteCode == null
+        ? null
+        : serializers.serialize(
+            object.sourceInviteCode,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'inviter_id';
-    yield object.inviterId == null ? null : serializers.serialize(
-      object.inviterId,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.inviterId == null
+        ? null
+        : serializers.serialize(
+            object.inviterId,
+            specifiedType: const FullType.nullable(String),
+          );
     if (object.joinSourceType != null) {
       yield r'join_source_type';
       yield serializers.serialize(
@@ -75,7 +89,9 @@ class _$GuildMemberSearchResultSupplementalSerializer implements PrimitiveSerial
     GuildMemberSearchResultSupplemental object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -142,4 +158,3 @@ class _$GuildMemberSearchResultSupplementalSerializer implements PrimitiveSerial
     return result.build();
   }
 }
-

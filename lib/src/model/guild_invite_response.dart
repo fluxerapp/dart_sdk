@@ -17,15 +17,16 @@ part 'guild_invite_response.g.dart';
 /// Properties:
 /// * [code] - The unique invite code
 /// * [type] - The type of invite (guild)
-/// * [guild] 
-/// * [channel] 
+/// * [guild]
+/// * [channel]
 /// * [memberCount] - The approximate total member count of the guild
 /// * [presenceCount] - The approximate online member count of the guild
 /// * [temporary] - Whether the invite grants temporary membership
-/// * [inviter] 
-/// * [expiresAt] 
+/// * [inviter]
+/// * [expiresAt]
 @BuiltValue()
-abstract class GuildInviteResponse implements Built<GuildInviteResponse, GuildInviteResponseBuilder> {
+abstract class GuildInviteResponse
+    implements Built<GuildInviteResponse, GuildInviteResponseBuilder> {
   /// The unique invite code
   @BuiltValueField(wireName: r'code')
   String get code;
@@ -61,18 +62,24 @@ abstract class GuildInviteResponse implements Built<GuildInviteResponse, GuildIn
 
   GuildInviteResponse._();
 
-  factory GuildInviteResponse([void updates(GuildInviteResponseBuilder b)]) = _$GuildInviteResponse;
+  factory GuildInviteResponse([void updates(GuildInviteResponseBuilder b)]) =
+      _$GuildInviteResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildInviteResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildInviteResponse> get serializer => _$GuildInviteResponseSerializer();
+  static Serializer<GuildInviteResponse> get serializer =>
+      _$GuildInviteResponseSerializer();
 }
 
-class _$GuildInviteResponseSerializer implements PrimitiveSerializer<GuildInviteResponse> {
+class _$GuildInviteResponseSerializer
+    implements PrimitiveSerializer<GuildInviteResponse> {
   @override
-  final Iterable<Type> types = const [GuildInviteResponse, _$GuildInviteResponse];
+  final Iterable<Type> types = const [
+    GuildInviteResponse,
+    _$GuildInviteResponse
+  ];
 
   @override
   final String wireName = r'GuildInviteResponse';
@@ -139,7 +146,9 @@ class _$GuildInviteResponseSerializer implements PrimitiveSerializer<GuildInvite
     GuildInviteResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -249,16 +258,18 @@ class _$GuildInviteResponseSerializer implements PrimitiveSerializer<GuildInvite
 }
 
 class GuildInviteResponseTypeEnum extends EnumClass {
-
   /// The type of invite (guild)
   @BuiltValueEnumConst(wireNumber: 0)
-  static const GuildInviteResponseTypeEnum number0 = _$guildInviteResponseTypeEnum_number0;
+  static const GuildInviteResponseTypeEnum number0 =
+      _$guildInviteResponseTypeEnum_number0;
 
-  static Serializer<GuildInviteResponseTypeEnum> get serializer => _$guildInviteResponseTypeEnumSerializer;
+  static Serializer<GuildInviteResponseTypeEnum> get serializer =>
+      _$guildInviteResponseTypeEnumSerializer;
 
-  const GuildInviteResponseTypeEnum._(String name): super(name);
+  const GuildInviteResponseTypeEnum._(String name) : super(name);
 
-  static BuiltSet<GuildInviteResponseTypeEnum> get values => _$guildInviteResponseTypeEnumValues;
-  static GuildInviteResponseTypeEnum valueOf(String name) => _$guildInviteResponseTypeEnumValueOf(name);
+  static BuiltSet<GuildInviteResponseTypeEnum> get values =>
+      _$guildInviteResponseTypeEnumValues;
+  static GuildInviteResponseTypeEnum valueOf(String name) =>
+      _$guildInviteResponseTypeEnumValueOf(name);
 }
-

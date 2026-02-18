@@ -10,20 +10,22 @@ import 'package:built_value/serializer.dart';
 part 'user_authenticator_types.g.dart';
 
 class UserAuthenticatorTypes extends EnumClass {
-
   /// Authenticator type
   @BuiltValueEnumConst(wireNumber: 0)
   static const UserAuthenticatorTypes number0 = _$number0;
+
   /// Authenticator type
   @BuiltValueEnumConst(wireNumber: 1)
   static const UserAuthenticatorTypes number1 = _$number1;
+
   /// Authenticator type
   @BuiltValueEnumConst(wireNumber: 2)
   static const UserAuthenticatorTypes number2 = _$number2;
 
-  static Serializer<UserAuthenticatorTypes> get serializer => _$userAuthenticatorTypesSerializer;
+  static Serializer<UserAuthenticatorTypes> get serializer =>
+      _$userAuthenticatorTypesSerializer;
 
-  const UserAuthenticatorTypes._(String name): super(name);
+  const UserAuthenticatorTypes._(String name) : super(name);
 
   static BuiltSet<UserAuthenticatorTypes> get values => _$values;
   static UserAuthenticatorTypes valueOf(String name) => _$valueOf(name);
@@ -35,5 +37,5 @@ class UserAuthenticatorTypes extends EnumClass {
 /// corresponding Angular template.
 ///
 /// Trigger mixin generation by writing a line like this one next to your enum.
-abstract class UserAuthenticatorTypesMixin = Object with _$UserAuthenticatorTypesMixin;
-
+abstract class UserAuthenticatorTypesMixin = Object
+    with _$UserAuthenticatorTypesMixin;

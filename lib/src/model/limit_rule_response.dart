@@ -15,9 +15,10 @@ part 'limit_rule_response.g.dart';
 /// Properties:
 /// * [id] - Unique identifier for this limit rule
 /// * [overrides] - Map of limit keys to their override values (differences from defaults)
-/// * [filters] 
+/// * [filters]
 @BuiltValue()
-abstract class LimitRuleResponse implements Built<LimitRuleResponse, LimitRuleResponseBuilder> {
+abstract class LimitRuleResponse
+    implements Built<LimitRuleResponse, LimitRuleResponseBuilder> {
   /// Unique identifier for this limit rule
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -31,16 +32,19 @@ abstract class LimitRuleResponse implements Built<LimitRuleResponse, LimitRuleRe
 
   LimitRuleResponse._();
 
-  factory LimitRuleResponse([void updates(LimitRuleResponseBuilder b)]) = _$LimitRuleResponse;
+  factory LimitRuleResponse([void updates(LimitRuleResponseBuilder b)]) =
+      _$LimitRuleResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(LimitRuleResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<LimitRuleResponse> get serializer => _$LimitRuleResponseSerializer();
+  static Serializer<LimitRuleResponse> get serializer =>
+      _$LimitRuleResponseSerializer();
 }
 
-class _$LimitRuleResponseSerializer implements PrimitiveSerializer<LimitRuleResponse> {
+class _$LimitRuleResponseSerializer
+    implements PrimitiveSerializer<LimitRuleResponse> {
   @override
   final Iterable<Type> types = const [LimitRuleResponse, _$LimitRuleResponse];
 
@@ -60,7 +64,8 @@ class _$LimitRuleResponseSerializer implements PrimitiveSerializer<LimitRuleResp
     yield r'overrides';
     yield serializers.serialize(
       object.overrides,
-      specifiedType: const FullType(BuiltMap, [FullType(String), FullType(num)]),
+      specifiedType:
+          const FullType(BuiltMap, [FullType(String), FullType(num)]),
     );
     if (object.filters != null) {
       yield r'filters';
@@ -77,7 +82,9 @@ class _$LimitRuleResponseSerializer implements PrimitiveSerializer<LimitRuleResp
     LimitRuleResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -102,7 +109,8 @@ class _$LimitRuleResponseSerializer implements PrimitiveSerializer<LimitRuleResp
         case r'overrides':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(num)]),
+            specifiedType:
+                const FullType(BuiltMap, [FullType(String), FullType(num)]),
           ) as BuiltMap<String, num>;
           result.overrides.replace(valueDes);
           break;
@@ -141,4 +149,3 @@ class _$LimitRuleResponseSerializer implements PrimitiveSerializer<LimitRuleResp
     return result.build();
   }
 }
-

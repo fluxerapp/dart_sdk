@@ -14,7 +14,9 @@ part 'discovery_application_request.g.dart';
 /// * [description] - Description for discovery listing
 /// * [categoryType] - Discovery category type
 @BuiltValue()
-abstract class DiscoveryApplicationRequest implements Built<DiscoveryApplicationRequest, DiscoveryApplicationRequestBuilder> {
+abstract class DiscoveryApplicationRequest
+    implements
+        Built<DiscoveryApplicationRequest, DiscoveryApplicationRequestBuilder> {
   /// Description for discovery listing
   @BuiltValueField(wireName: r'description')
   String get description;
@@ -25,18 +27,25 @@ abstract class DiscoveryApplicationRequest implements Built<DiscoveryApplication
 
   DiscoveryApplicationRequest._();
 
-  factory DiscoveryApplicationRequest([void updates(DiscoveryApplicationRequestBuilder b)]) = _$DiscoveryApplicationRequest;
+  factory DiscoveryApplicationRequest(
+          [void updates(DiscoveryApplicationRequestBuilder b)]) =
+      _$DiscoveryApplicationRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(DiscoveryApplicationRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<DiscoveryApplicationRequest> get serializer => _$DiscoveryApplicationRequestSerializer();
+  static Serializer<DiscoveryApplicationRequest> get serializer =>
+      _$DiscoveryApplicationRequestSerializer();
 }
 
-class _$DiscoveryApplicationRequestSerializer implements PrimitiveSerializer<DiscoveryApplicationRequest> {
+class _$DiscoveryApplicationRequestSerializer
+    implements PrimitiveSerializer<DiscoveryApplicationRequest> {
   @override
-  final Iterable<Type> types = const [DiscoveryApplicationRequest, _$DiscoveryApplicationRequest];
+  final Iterable<Type> types = const [
+    DiscoveryApplicationRequest,
+    _$DiscoveryApplicationRequest
+  ];
 
   @override
   final String wireName = r'DiscoveryApplicationRequest';
@@ -64,7 +73,9 @@ class _$DiscoveryApplicationRequestSerializer implements PrimitiveSerializer<Dis
     DiscoveryApplicationRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +132,3 @@ class _$DiscoveryApplicationRequestSerializer implements PrimitiveSerializer<Dis
     return result.build();
   }
 }
-

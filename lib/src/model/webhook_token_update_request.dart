@@ -14,7 +14,9 @@ part 'webhook_token_update_request.g.dart';
 /// * [name] - The new name of the webhook
 /// * [avatar] - Base64-encoded image data
 @BuiltValue()
-abstract class WebhookTokenUpdateRequest implements Built<WebhookTokenUpdateRequest, WebhookTokenUpdateRequestBuilder> {
+abstract class WebhookTokenUpdateRequest
+    implements
+        Built<WebhookTokenUpdateRequest, WebhookTokenUpdateRequestBuilder> {
   /// The new name of the webhook
   @BuiltValueField(wireName: r'name')
   String? get name;
@@ -25,18 +27,25 @@ abstract class WebhookTokenUpdateRequest implements Built<WebhookTokenUpdateRequ
 
   WebhookTokenUpdateRequest._();
 
-  factory WebhookTokenUpdateRequest([void updates(WebhookTokenUpdateRequestBuilder b)]) = _$WebhookTokenUpdateRequest;
+  factory WebhookTokenUpdateRequest(
+          [void updates(WebhookTokenUpdateRequestBuilder b)]) =
+      _$WebhookTokenUpdateRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(WebhookTokenUpdateRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<WebhookTokenUpdateRequest> get serializer => _$WebhookTokenUpdateRequestSerializer();
+  static Serializer<WebhookTokenUpdateRequest> get serializer =>
+      _$WebhookTokenUpdateRequestSerializer();
 }
 
-class _$WebhookTokenUpdateRequestSerializer implements PrimitiveSerializer<WebhookTokenUpdateRequest> {
+class _$WebhookTokenUpdateRequestSerializer
+    implements PrimitiveSerializer<WebhookTokenUpdateRequest> {
   @override
-  final Iterable<Type> types = const [WebhookTokenUpdateRequest, _$WebhookTokenUpdateRequest];
+  final Iterable<Type> types = const [
+    WebhookTokenUpdateRequest,
+    _$WebhookTokenUpdateRequest
+  ];
 
   @override
   final String wireName = r'WebhookTokenUpdateRequest';
@@ -68,7 +77,9 @@ class _$WebhookTokenUpdateRequestSerializer implements PrimitiveSerializer<Webho
     WebhookTokenUpdateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -125,4 +136,3 @@ class _$WebhookTokenUpdateRequestSerializer implements PrimitiveSerializer<Webho
     return result.build();
   }
 }
-

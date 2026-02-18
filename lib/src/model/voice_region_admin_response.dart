@@ -22,10 +22,12 @@ part 'voice_region_admin_response.g.dart';
 /// * [requiredGuildFeatures] - Guild features required to use this region
 /// * [allowedGuildIds] - Guild IDs explicitly allowed to use this region
 /// * [allowedUserIds] - User IDs explicitly allowed to use this region
-/// * [createdAt] 
-/// * [updatedAt] 
+/// * [createdAt]
+/// * [updatedAt]
 @BuiltValue()
-abstract class VoiceRegionAdminResponse implements Built<VoiceRegionAdminResponse, VoiceRegionAdminResponseBuilder> {
+abstract class VoiceRegionAdminResponse
+    implements
+        Built<VoiceRegionAdminResponse, VoiceRegionAdminResponseBuilder> {
   /// Unique identifier for the voice region
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -74,18 +76,25 @@ abstract class VoiceRegionAdminResponse implements Built<VoiceRegionAdminRespons
 
   VoiceRegionAdminResponse._();
 
-  factory VoiceRegionAdminResponse([void updates(VoiceRegionAdminResponseBuilder b)]) = _$VoiceRegionAdminResponse;
+  factory VoiceRegionAdminResponse(
+          [void updates(VoiceRegionAdminResponseBuilder b)]) =
+      _$VoiceRegionAdminResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(VoiceRegionAdminResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<VoiceRegionAdminResponse> get serializer => _$VoiceRegionAdminResponseSerializer();
+  static Serializer<VoiceRegionAdminResponse> get serializer =>
+      _$VoiceRegionAdminResponseSerializer();
 }
 
-class _$VoiceRegionAdminResponseSerializer implements PrimitiveSerializer<VoiceRegionAdminResponse> {
+class _$VoiceRegionAdminResponseSerializer
+    implements PrimitiveSerializer<VoiceRegionAdminResponse> {
   @override
-  final Iterable<Type> types = const [VoiceRegionAdminResponse, _$VoiceRegionAdminResponse];
+  final Iterable<Type> types = const [
+    VoiceRegionAdminResponse,
+    _$VoiceRegionAdminResponse
+  ];
 
   @override
   final String wireName = r'VoiceRegionAdminResponse';
@@ -146,15 +155,19 @@ class _$VoiceRegionAdminResponseSerializer implements PrimitiveSerializer<VoiceR
       specifiedType: const FullType(BuiltList, [FullType(String)]),
     );
     yield r'created_at';
-    yield object.createdAt == null ? null : serializers.serialize(
-      object.createdAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.createdAt == null
+        ? null
+        : serializers.serialize(
+            object.createdAt,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'updated_at';
-    yield object.updatedAt == null ? null : serializers.serialize(
-      object.updatedAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.updatedAt == null
+        ? null
+        : serializers.serialize(
+            object.updatedAt,
+            specifiedType: const FullType.nullable(String),
+          );
   }
 
   @override
@@ -163,7 +176,9 @@ class _$VoiceRegionAdminResponseSerializer implements PrimitiveSerializer<VoiceR
     VoiceRegionAdminResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -292,4 +307,3 @@ class _$VoiceRegionAdminResponseSerializer implements PrimitiveSerializer<VoiceR
     return result.build();
   }
 }
-

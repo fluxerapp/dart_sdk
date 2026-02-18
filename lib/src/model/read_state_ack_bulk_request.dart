@@ -15,25 +15,33 @@ part 'read_state_ack_bulk_request.g.dart';
 /// Properties:
 /// * [readStates] - Array of channel/message pairs to acknowledge
 @BuiltValue()
-abstract class ReadStateAckBulkRequest implements Built<ReadStateAckBulkRequest, ReadStateAckBulkRequestBuilder> {
+abstract class ReadStateAckBulkRequest
+    implements Built<ReadStateAckBulkRequest, ReadStateAckBulkRequestBuilder> {
   /// Array of channel/message pairs to acknowledge
   @BuiltValueField(wireName: r'read_states')
   BuiltList<MessageShredRequestEntriesInner> get readStates;
 
   ReadStateAckBulkRequest._();
 
-  factory ReadStateAckBulkRequest([void updates(ReadStateAckBulkRequestBuilder b)]) = _$ReadStateAckBulkRequest;
+  factory ReadStateAckBulkRequest(
+          [void updates(ReadStateAckBulkRequestBuilder b)]) =
+      _$ReadStateAckBulkRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ReadStateAckBulkRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ReadStateAckBulkRequest> get serializer => _$ReadStateAckBulkRequestSerializer();
+  static Serializer<ReadStateAckBulkRequest> get serializer =>
+      _$ReadStateAckBulkRequestSerializer();
 }
 
-class _$ReadStateAckBulkRequestSerializer implements PrimitiveSerializer<ReadStateAckBulkRequest> {
+class _$ReadStateAckBulkRequestSerializer
+    implements PrimitiveSerializer<ReadStateAckBulkRequest> {
   @override
-  final Iterable<Type> types = const [ReadStateAckBulkRequest, _$ReadStateAckBulkRequest];
+  final Iterable<Type> types = const [
+    ReadStateAckBulkRequest,
+    _$ReadStateAckBulkRequest
+  ];
 
   @override
   final String wireName = r'ReadStateAckBulkRequest';
@@ -46,7 +54,8 @@ class _$ReadStateAckBulkRequestSerializer implements PrimitiveSerializer<ReadSta
     yield r'read_states';
     yield serializers.serialize(
       object.readStates,
-      specifiedType: const FullType(BuiltList, [FullType(MessageShredRequestEntriesInner)]),
+      specifiedType: const FullType(
+          BuiltList, [FullType(MessageShredRequestEntriesInner)]),
     );
   }
 
@@ -56,7 +65,9 @@ class _$ReadStateAckBulkRequestSerializer implements PrimitiveSerializer<ReadSta
     ReadStateAckBulkRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -74,7 +85,8 @@ class _$ReadStateAckBulkRequestSerializer implements PrimitiveSerializer<ReadSta
         case r'read_states':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(MessageShredRequestEntriesInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(MessageShredRequestEntriesInner)]),
           ) as BuiltList<MessageShredRequestEntriesInner>;
           result.readStates.replace(valueDes);
           break;
@@ -106,4 +118,3 @@ class _$ReadStateAckBulkRequestSerializer implements PrimitiveSerializer<ReadSta
     return result.build();
   }
 }
-

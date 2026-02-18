@@ -15,25 +15,34 @@ part 'guild_emoji_bulk_create_request.g.dart';
 /// Properties:
 /// * [emojis] - Array of emoji objects to create (1-50 emojis per batch)
 @BuiltValue()
-abstract class GuildEmojiBulkCreateRequest implements Built<GuildEmojiBulkCreateRequest, GuildEmojiBulkCreateRequestBuilder> {
+abstract class GuildEmojiBulkCreateRequest
+    implements
+        Built<GuildEmojiBulkCreateRequest, GuildEmojiBulkCreateRequestBuilder> {
   /// Array of emoji objects to create (1-50 emojis per batch)
   @BuiltValueField(wireName: r'emojis')
   BuiltList<GuildEmojiCreateRequest> get emojis;
 
   GuildEmojiBulkCreateRequest._();
 
-  factory GuildEmojiBulkCreateRequest([void updates(GuildEmojiBulkCreateRequestBuilder b)]) = _$GuildEmojiBulkCreateRequest;
+  factory GuildEmojiBulkCreateRequest(
+          [void updates(GuildEmojiBulkCreateRequestBuilder b)]) =
+      _$GuildEmojiBulkCreateRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildEmojiBulkCreateRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildEmojiBulkCreateRequest> get serializer => _$GuildEmojiBulkCreateRequestSerializer();
+  static Serializer<GuildEmojiBulkCreateRequest> get serializer =>
+      _$GuildEmojiBulkCreateRequestSerializer();
 }
 
-class _$GuildEmojiBulkCreateRequestSerializer implements PrimitiveSerializer<GuildEmojiBulkCreateRequest> {
+class _$GuildEmojiBulkCreateRequestSerializer
+    implements PrimitiveSerializer<GuildEmojiBulkCreateRequest> {
   @override
-  final Iterable<Type> types = const [GuildEmojiBulkCreateRequest, _$GuildEmojiBulkCreateRequest];
+  final Iterable<Type> types = const [
+    GuildEmojiBulkCreateRequest,
+    _$GuildEmojiBulkCreateRequest
+  ];
 
   @override
   final String wireName = r'GuildEmojiBulkCreateRequest';
@@ -46,7 +55,8 @@ class _$GuildEmojiBulkCreateRequestSerializer implements PrimitiveSerializer<Gui
     yield r'emojis';
     yield serializers.serialize(
       object.emojis,
-      specifiedType: const FullType(BuiltList, [FullType(GuildEmojiCreateRequest)]),
+      specifiedType:
+          const FullType(BuiltList, [FullType(GuildEmojiCreateRequest)]),
     );
   }
 
@@ -56,7 +66,9 @@ class _$GuildEmojiBulkCreateRequestSerializer implements PrimitiveSerializer<Gui
     GuildEmojiBulkCreateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -74,7 +86,8 @@ class _$GuildEmojiBulkCreateRequestSerializer implements PrimitiveSerializer<Gui
         case r'emojis':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(GuildEmojiCreateRequest)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(GuildEmojiCreateRequest)]),
           ) as BuiltList<GuildEmojiCreateRequest>;
           result.emojis.replace(valueDes);
           break;
@@ -106,4 +119,3 @@ class _$GuildEmojiBulkCreateRequestSerializer implements PrimitiveSerializer<Gui
     return result.build();
   }
 }
-

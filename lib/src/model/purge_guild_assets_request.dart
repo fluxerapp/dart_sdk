@@ -14,25 +14,33 @@ part 'purge_guild_assets_request.g.dart';
 /// Properties:
 /// * [ids] - List of asset IDs to purge
 @BuiltValue()
-abstract class PurgeGuildAssetsRequest implements Built<PurgeGuildAssetsRequest, PurgeGuildAssetsRequestBuilder> {
+abstract class PurgeGuildAssetsRequest
+    implements Built<PurgeGuildAssetsRequest, PurgeGuildAssetsRequestBuilder> {
   /// List of asset IDs to purge
   @BuiltValueField(wireName: r'ids')
   BuiltList<String> get ids;
 
   PurgeGuildAssetsRequest._();
 
-  factory PurgeGuildAssetsRequest([void updates(PurgeGuildAssetsRequestBuilder b)]) = _$PurgeGuildAssetsRequest;
+  factory PurgeGuildAssetsRequest(
+          [void updates(PurgeGuildAssetsRequestBuilder b)]) =
+      _$PurgeGuildAssetsRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PurgeGuildAssetsRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PurgeGuildAssetsRequest> get serializer => _$PurgeGuildAssetsRequestSerializer();
+  static Serializer<PurgeGuildAssetsRequest> get serializer =>
+      _$PurgeGuildAssetsRequestSerializer();
 }
 
-class _$PurgeGuildAssetsRequestSerializer implements PrimitiveSerializer<PurgeGuildAssetsRequest> {
+class _$PurgeGuildAssetsRequestSerializer
+    implements PrimitiveSerializer<PurgeGuildAssetsRequest> {
   @override
-  final Iterable<Type> types = const [PurgeGuildAssetsRequest, _$PurgeGuildAssetsRequest];
+  final Iterable<Type> types = const [
+    PurgeGuildAssetsRequest,
+    _$PurgeGuildAssetsRequest
+  ];
 
   @override
   final String wireName = r'PurgeGuildAssetsRequest';
@@ -55,7 +63,9 @@ class _$PurgeGuildAssetsRequestSerializer implements PrimitiveSerializer<PurgeGu
     PurgeGuildAssetsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -105,4 +115,3 @@ class _$PurgeGuildAssetsRequestSerializer implements PrimitiveSerializer<PurgeGu
     return result.build();
   }
 }
-

@@ -11,24 +11,28 @@ part 'delete_guild_request.g.dart';
 /// DeleteGuildRequest
 ///
 /// Properties:
-/// * [guildId] 
+/// * [guildId]
 @BuiltValue()
-abstract class DeleteGuildRequest implements Built<DeleteGuildRequest, DeleteGuildRequestBuilder> {
+abstract class DeleteGuildRequest
+    implements Built<DeleteGuildRequest, DeleteGuildRequestBuilder> {
   @BuiltValueField(wireName: r'guild_id')
   String get guildId;
 
   DeleteGuildRequest._();
 
-  factory DeleteGuildRequest([void updates(DeleteGuildRequestBuilder b)]) = _$DeleteGuildRequest;
+  factory DeleteGuildRequest([void updates(DeleteGuildRequestBuilder b)]) =
+      _$DeleteGuildRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(DeleteGuildRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<DeleteGuildRequest> get serializer => _$DeleteGuildRequestSerializer();
+  static Serializer<DeleteGuildRequest> get serializer =>
+      _$DeleteGuildRequestSerializer();
 }
 
-class _$DeleteGuildRequestSerializer implements PrimitiveSerializer<DeleteGuildRequest> {
+class _$DeleteGuildRequestSerializer
+    implements PrimitiveSerializer<DeleteGuildRequest> {
   @override
   final Iterable<Type> types = const [DeleteGuildRequest, _$DeleteGuildRequest];
 
@@ -53,7 +57,9 @@ class _$DeleteGuildRequestSerializer implements PrimitiveSerializer<DeleteGuildR
     DeleteGuildRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,4 +109,3 @@ class _$DeleteGuildRequestSerializer implements PrimitiveSerializer<DeleteGuildR
     return result.build();
   }
 }
-

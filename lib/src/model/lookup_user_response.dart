@@ -13,24 +13,28 @@ part 'lookup_user_response.g.dart';
 /// LookupUserResponse
 ///
 /// Properties:
-/// * [users] 
+/// * [users]
 @BuiltValue()
-abstract class LookupUserResponse implements Built<LookupUserResponse, LookupUserResponseBuilder> {
+abstract class LookupUserResponse
+    implements Built<LookupUserResponse, LookupUserResponseBuilder> {
   @BuiltValueField(wireName: r'users')
   BuiltList<UserAdminResponseSchema> get users;
 
   LookupUserResponse._();
 
-  factory LookupUserResponse([void updates(LookupUserResponseBuilder b)]) = _$LookupUserResponse;
+  factory LookupUserResponse([void updates(LookupUserResponseBuilder b)]) =
+      _$LookupUserResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(LookupUserResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<LookupUserResponse> get serializer => _$LookupUserResponseSerializer();
+  static Serializer<LookupUserResponse> get serializer =>
+      _$LookupUserResponseSerializer();
 }
 
-class _$LookupUserResponseSerializer implements PrimitiveSerializer<LookupUserResponse> {
+class _$LookupUserResponseSerializer
+    implements PrimitiveSerializer<LookupUserResponse> {
   @override
   final Iterable<Type> types = const [LookupUserResponse, _$LookupUserResponse];
 
@@ -45,7 +49,8 @@ class _$LookupUserResponseSerializer implements PrimitiveSerializer<LookupUserRe
     yield r'users';
     yield serializers.serialize(
       object.users,
-      specifiedType: const FullType(BuiltList, [FullType(UserAdminResponseSchema)]),
+      specifiedType:
+          const FullType(BuiltList, [FullType(UserAdminResponseSchema)]),
     );
   }
 
@@ -55,7 +60,9 @@ class _$LookupUserResponseSerializer implements PrimitiveSerializer<LookupUserRe
     LookupUserResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -73,7 +80,8 @@ class _$LookupUserResponseSerializer implements PrimitiveSerializer<LookupUserRe
         case r'users':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(UserAdminResponseSchema)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(UserAdminResponseSchema)]),
           ) as BuiltList<UserAdminResponseSchema>;
           result.users.replace(valueDes);
           break;
@@ -105,4 +113,3 @@ class _$LookupUserResponseSerializer implements PrimitiveSerializer<LookupUserRe
     return result.build();
   }
 }
-

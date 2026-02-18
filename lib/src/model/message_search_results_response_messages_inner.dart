@@ -22,28 +22,31 @@ part 'message_search_results_response_messages_inner.g.dart';
 /// Properties:
 /// * [id] - The unique identifier (snowflake) for this message
 /// * [channelId] - The ID of the channel this message was sent in
-/// * [author] 
+/// * [author]
 /// * [type] - The type of message
 /// * [flags] - Message flags bitfield
 /// * [content] - The text content of the message
 /// * [timestamp] - The ISO 8601 timestamp of when the message was created
 /// * [pinned] - Whether the message is pinned
 /// * [mentionEveryone] - Whether the message mentions @everyone
-/// * [webhookId] 
-/// * [editedTimestamp] 
+/// * [webhookId]
+/// * [editedTimestamp]
 /// * [tts] - Whether the message was sent as text-to-speech
-/// * [mentions] 
-/// * [mentionRoles] 
-/// * [embeds] 
-/// * [attachments] 
-/// * [stickers] 
-/// * [reactions] 
-/// * [messageReference] 
-/// * [messageSnapshots] 
-/// * [nonce] 
-/// * [call] 
+/// * [mentions]
+/// * [mentionRoles]
+/// * [embeds]
+/// * [attachments]
+/// * [stickers]
+/// * [reactions]
+/// * [messageReference]
+/// * [messageSnapshots]
+/// * [nonce]
+/// * [call]
 @BuiltValue()
-abstract class MessageSearchResultsResponseMessagesInner implements Built<MessageSearchResultsResponseMessagesInner, MessageSearchResultsResponseMessagesInnerBuilder> {
+abstract class MessageSearchResultsResponseMessagesInner
+    implements
+        Built<MessageSearchResultsResponseMessagesInner,
+            MessageSearchResultsResponseMessagesInnerBuilder> {
   /// The unique identifier (snowflake) for this message
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -122,18 +125,26 @@ abstract class MessageSearchResultsResponseMessagesInner implements Built<Messag
 
   MessageSearchResultsResponseMessagesInner._();
 
-  factory MessageSearchResultsResponseMessagesInner([void updates(MessageSearchResultsResponseMessagesInnerBuilder b)]) = _$MessageSearchResultsResponseMessagesInner;
+  factory MessageSearchResultsResponseMessagesInner(
+          [void updates(MessageSearchResultsResponseMessagesInnerBuilder b)]) =
+      _$MessageSearchResultsResponseMessagesInner;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(MessageSearchResultsResponseMessagesInnerBuilder b) => b;
+  static void _defaults(MessageSearchResultsResponseMessagesInnerBuilder b) =>
+      b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<MessageSearchResultsResponseMessagesInner> get serializer => _$MessageSearchResultsResponseMessagesInnerSerializer();
+  static Serializer<MessageSearchResultsResponseMessagesInner> get serializer =>
+      _$MessageSearchResultsResponseMessagesInnerSerializer();
 }
 
-class _$MessageSearchResultsResponseMessagesInnerSerializer implements PrimitiveSerializer<MessageSearchResultsResponseMessagesInner> {
+class _$MessageSearchResultsResponseMessagesInnerSerializer
+    implements PrimitiveSerializer<MessageSearchResultsResponseMessagesInner> {
   @override
-  final Iterable<Type> types = const [MessageSearchResultsResponseMessagesInner, _$MessageSearchResultsResponseMessagesInner];
+  final Iterable<Type> types = const [
+    MessageSearchResultsResponseMessagesInner,
+    _$MessageSearchResultsResponseMessagesInner
+  ];
 
   @override
   final String wireName = r'MessageSearchResultsResponseMessagesInner';
@@ -161,7 +172,8 @@ class _$MessageSearchResultsResponseMessagesInnerSerializer implements Primitive
     yield r'type';
     yield serializers.serialize(
       object.type,
-      specifiedType: const FullType(MessageSearchResultsResponseMessagesInnerTypeEnum),
+      specifiedType:
+          const FullType(MessageSearchResultsResponseMessagesInnerTypeEnum),
     );
     yield r'flags';
     yield serializers.serialize(
@@ -213,7 +225,8 @@ class _$MessageSearchResultsResponseMessagesInnerSerializer implements Primitive
       yield r'mentions';
       yield serializers.serialize(
         object.mentions,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(UserPartialResponse)]),
+        specifiedType:
+            const FullType.nullable(BuiltList, [FullType(UserPartialResponse)]),
       );
     }
     if (object.mentionRoles != null) {
@@ -227,28 +240,32 @@ class _$MessageSearchResultsResponseMessagesInnerSerializer implements Primitive
       yield r'embeds';
       yield serializers.serialize(
         object.embeds,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(MessageEmbedResponse)]),
+        specifiedType: const FullType.nullable(
+            BuiltList, [FullType(MessageEmbedResponse)]),
       );
     }
     if (object.attachments != null) {
       yield r'attachments';
       yield serializers.serialize(
         object.attachments,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(MessageAttachmentResponse)]),
+        specifiedType: const FullType.nullable(
+            BuiltList, [FullType(MessageAttachmentResponse)]),
       );
     }
     if (object.stickers != null) {
       yield r'stickers';
       yield serializers.serialize(
         object.stickers,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(MessageStickerResponse)]),
+        specifiedType: const FullType.nullable(
+            BuiltList, [FullType(MessageStickerResponse)]),
       );
     }
     if (object.reactions != null) {
       yield r'reactions';
       yield serializers.serialize(
         object.reactions,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(MessageReactionResponse)]),
+        specifiedType: const FullType.nullable(
+            BuiltList, [FullType(MessageReactionResponse)]),
       );
     }
     if (object.messageReference != null) {
@@ -262,7 +279,8 @@ class _$MessageSearchResultsResponseMessagesInnerSerializer implements Primitive
       yield r'message_snapshots';
       yield serializers.serialize(
         object.messageSnapshots,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(MessageSnapshotResponse)]),
+        specifiedType: const FullType.nullable(
+            BuiltList, [FullType(MessageSnapshotResponse)]),
       );
     }
     if (object.nonce != null) {
@@ -287,7 +305,9 @@ class _$MessageSearchResultsResponseMessagesInnerSerializer implements Primitive
     MessageSearchResultsResponseMessagesInner object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -326,7 +346,8 @@ class _$MessageSearchResultsResponseMessagesInnerSerializer implements Primitive
         case r'type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(MessageSearchResultsResponseMessagesInnerTypeEnum),
+            specifiedType: const FullType(
+                MessageSearchResultsResponseMessagesInnerTypeEnum),
           ) as MessageSearchResultsResponseMessagesInnerTypeEnum;
           result.type = valueDes;
           break;
@@ -390,7 +411,8 @@ class _$MessageSearchResultsResponseMessagesInnerSerializer implements Primitive
         case r'mentions':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(UserPartialResponse)]),
+            specifiedType: const FullType.nullable(
+                BuiltList, [FullType(UserPartialResponse)]),
           ) as BuiltList<UserPartialResponse>?;
           if (valueDes == null) continue;
           result.mentions.replace(valueDes);
@@ -398,7 +420,8 @@ class _$MessageSearchResultsResponseMessagesInnerSerializer implements Primitive
         case r'mention_roles':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+            specifiedType:
+                const FullType.nullable(BuiltList, [FullType(String)]),
           ) as BuiltList<String>?;
           if (valueDes == null) continue;
           result.mentionRoles.replace(valueDes);
@@ -406,7 +429,8 @@ class _$MessageSearchResultsResponseMessagesInnerSerializer implements Primitive
         case r'embeds':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(MessageEmbedResponse)]),
+            specifiedType: const FullType.nullable(
+                BuiltList, [FullType(MessageEmbedResponse)]),
           ) as BuiltList<MessageEmbedResponse>?;
           if (valueDes == null) continue;
           result.embeds.replace(valueDes);
@@ -414,7 +438,8 @@ class _$MessageSearchResultsResponseMessagesInnerSerializer implements Primitive
         case r'attachments':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(MessageAttachmentResponse)]),
+            specifiedType: const FullType.nullable(
+                BuiltList, [FullType(MessageAttachmentResponse)]),
           ) as BuiltList<MessageAttachmentResponse>?;
           if (valueDes == null) continue;
           result.attachments.replace(valueDes);
@@ -422,7 +447,8 @@ class _$MessageSearchResultsResponseMessagesInnerSerializer implements Primitive
         case r'stickers':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(MessageStickerResponse)]),
+            specifiedType: const FullType.nullable(
+                BuiltList, [FullType(MessageStickerResponse)]),
           ) as BuiltList<MessageStickerResponse>?;
           if (valueDes == null) continue;
           result.stickers.replace(valueDes);
@@ -430,7 +456,8 @@ class _$MessageSearchResultsResponseMessagesInnerSerializer implements Primitive
         case r'reactions':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(MessageReactionResponse)]),
+            specifiedType: const FullType.nullable(
+                BuiltList, [FullType(MessageReactionResponse)]),
           ) as BuiltList<MessageReactionResponse>?;
           if (valueDes == null) continue;
           result.reactions.replace(valueDes);
@@ -446,7 +473,8 @@ class _$MessageSearchResultsResponseMessagesInnerSerializer implements Primitive
         case r'message_snapshots':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(MessageSnapshotResponse)]),
+            specifiedType: const FullType.nullable(
+                BuiltList, [FullType(MessageSnapshotResponse)]),
           ) as BuiltList<MessageSnapshotResponse>?;
           if (valueDes == null) continue;
           result.messageSnapshots.replace(valueDes);
@@ -497,40 +525,61 @@ class _$MessageSearchResultsResponseMessagesInnerSerializer implements Primitive
 }
 
 class MessageSearchResultsResponseMessagesInnerTypeEnum extends EnumClass {
-
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 0)
-  static const MessageSearchResultsResponseMessagesInnerTypeEnum number0 = _$messageSearchResultsResponseMessagesInnerTypeEnum_number0;
+  static const MessageSearchResultsResponseMessagesInnerTypeEnum number0 =
+      _$messageSearchResultsResponseMessagesInnerTypeEnum_number0;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 1)
-  static const MessageSearchResultsResponseMessagesInnerTypeEnum number1 = _$messageSearchResultsResponseMessagesInnerTypeEnum_number1;
+  static const MessageSearchResultsResponseMessagesInnerTypeEnum number1 =
+      _$messageSearchResultsResponseMessagesInnerTypeEnum_number1;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 2)
-  static const MessageSearchResultsResponseMessagesInnerTypeEnum number2 = _$messageSearchResultsResponseMessagesInnerTypeEnum_number2;
+  static const MessageSearchResultsResponseMessagesInnerTypeEnum number2 =
+      _$messageSearchResultsResponseMessagesInnerTypeEnum_number2;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 3)
-  static const MessageSearchResultsResponseMessagesInnerTypeEnum number3 = _$messageSearchResultsResponseMessagesInnerTypeEnum_number3;
+  static const MessageSearchResultsResponseMessagesInnerTypeEnum number3 =
+      _$messageSearchResultsResponseMessagesInnerTypeEnum_number3;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 4)
-  static const MessageSearchResultsResponseMessagesInnerTypeEnum number4 = _$messageSearchResultsResponseMessagesInnerTypeEnum_number4;
+  static const MessageSearchResultsResponseMessagesInnerTypeEnum number4 =
+      _$messageSearchResultsResponseMessagesInnerTypeEnum_number4;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 5)
-  static const MessageSearchResultsResponseMessagesInnerTypeEnum number5 = _$messageSearchResultsResponseMessagesInnerTypeEnum_number5;
+  static const MessageSearchResultsResponseMessagesInnerTypeEnum number5 =
+      _$messageSearchResultsResponseMessagesInnerTypeEnum_number5;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 6)
-  static const MessageSearchResultsResponseMessagesInnerTypeEnum number6 = _$messageSearchResultsResponseMessagesInnerTypeEnum_number6;
+  static const MessageSearchResultsResponseMessagesInnerTypeEnum number6 =
+      _$messageSearchResultsResponseMessagesInnerTypeEnum_number6;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 7)
-  static const MessageSearchResultsResponseMessagesInnerTypeEnum number7 = _$messageSearchResultsResponseMessagesInnerTypeEnum_number7;
+  static const MessageSearchResultsResponseMessagesInnerTypeEnum number7 =
+      _$messageSearchResultsResponseMessagesInnerTypeEnum_number7;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 19)
-  static const MessageSearchResultsResponseMessagesInnerTypeEnum number19 = _$messageSearchResultsResponseMessagesInnerTypeEnum_number19;
+  static const MessageSearchResultsResponseMessagesInnerTypeEnum number19 =
+      _$messageSearchResultsResponseMessagesInnerTypeEnum_number19;
 
-  static Serializer<MessageSearchResultsResponseMessagesInnerTypeEnum> get serializer => _$messageSearchResultsResponseMessagesInnerTypeEnumSerializer;
+  static Serializer<MessageSearchResultsResponseMessagesInnerTypeEnum>
+      get serializer =>
+          _$messageSearchResultsResponseMessagesInnerTypeEnumSerializer;
 
-  const MessageSearchResultsResponseMessagesInnerTypeEnum._(String name): super(name);
+  const MessageSearchResultsResponseMessagesInnerTypeEnum._(String name)
+      : super(name);
 
-  static BuiltSet<MessageSearchResultsResponseMessagesInnerTypeEnum> get values => _$messageSearchResultsResponseMessagesInnerTypeEnumValues;
-  static MessageSearchResultsResponseMessagesInnerTypeEnum valueOf(String name) => _$messageSearchResultsResponseMessagesInnerTypeEnumValueOf(name);
+  static BuiltSet<MessageSearchResultsResponseMessagesInnerTypeEnum>
+      get values => _$messageSearchResultsResponseMessagesInnerTypeEnumValues;
+  static MessageSearchResultsResponseMessagesInnerTypeEnum valueOf(
+          String name) =>
+      _$messageSearchResultsResponseMessagesInnerTypeEnumValueOf(name);
 }
-

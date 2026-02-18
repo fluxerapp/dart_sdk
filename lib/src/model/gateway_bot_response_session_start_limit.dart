@@ -16,7 +16,10 @@ part 'gateway_bot_response_session_start_limit.g.dart';
 /// * [resetAfter] - Milliseconds until the limit resets
 /// * [maxConcurrency] - Maximum number of concurrent IDENTIFY requests
 @BuiltValue()
-abstract class GatewayBotResponseSessionStartLimit implements Built<GatewayBotResponseSessionStartLimit, GatewayBotResponseSessionStartLimitBuilder> {
+abstract class GatewayBotResponseSessionStartLimit
+    implements
+        Built<GatewayBotResponseSessionStartLimit,
+            GatewayBotResponseSessionStartLimitBuilder> {
   /// Total number of session starts allowed
   @BuiltValueField(wireName: r'total')
   int get total;
@@ -35,18 +38,25 @@ abstract class GatewayBotResponseSessionStartLimit implements Built<GatewayBotRe
 
   GatewayBotResponseSessionStartLimit._();
 
-  factory GatewayBotResponseSessionStartLimit([void updates(GatewayBotResponseSessionStartLimitBuilder b)]) = _$GatewayBotResponseSessionStartLimit;
+  factory GatewayBotResponseSessionStartLimit(
+          [void updates(GatewayBotResponseSessionStartLimitBuilder b)]) =
+      _$GatewayBotResponseSessionStartLimit;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GatewayBotResponseSessionStartLimitBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GatewayBotResponseSessionStartLimit> get serializer => _$GatewayBotResponseSessionStartLimitSerializer();
+  static Serializer<GatewayBotResponseSessionStartLimit> get serializer =>
+      _$GatewayBotResponseSessionStartLimitSerializer();
 }
 
-class _$GatewayBotResponseSessionStartLimitSerializer implements PrimitiveSerializer<GatewayBotResponseSessionStartLimit> {
+class _$GatewayBotResponseSessionStartLimitSerializer
+    implements PrimitiveSerializer<GatewayBotResponseSessionStartLimit> {
   @override
-  final Iterable<Type> types = const [GatewayBotResponseSessionStartLimit, _$GatewayBotResponseSessionStartLimit];
+  final Iterable<Type> types = const [
+    GatewayBotResponseSessionStartLimit,
+    _$GatewayBotResponseSessionStartLimit
+  ];
 
   @override
   final String wireName = r'GatewayBotResponseSessionStartLimit';
@@ -84,7 +94,9 @@ class _$GatewayBotResponseSessionStartLimitSerializer implements PrimitiveSerial
     GatewayBotResponseSessionStartLimit object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -155,4 +167,3 @@ class _$GatewayBotResponseSessionStartLimitSerializer implements PrimitiveSerial
     return result.build();
   }
 }
-

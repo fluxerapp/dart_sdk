@@ -15,9 +15,11 @@ part 'guild_emoji_with_user_response.g.dart';
 /// * [id] - The unique identifier for this emoji
 /// * [name] - The name of the emoji
 /// * [animated] - Whether this emoji is animated
-/// * [user] 
+/// * [user]
 @BuiltValue()
-abstract class GuildEmojiWithUserResponse implements Built<GuildEmojiWithUserResponse, GuildEmojiWithUserResponseBuilder> {
+abstract class GuildEmojiWithUserResponse
+    implements
+        Built<GuildEmojiWithUserResponse, GuildEmojiWithUserResponseBuilder> {
   /// The unique identifier for this emoji
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -35,18 +37,25 @@ abstract class GuildEmojiWithUserResponse implements Built<GuildEmojiWithUserRes
 
   GuildEmojiWithUserResponse._();
 
-  factory GuildEmojiWithUserResponse([void updates(GuildEmojiWithUserResponseBuilder b)]) = _$GuildEmojiWithUserResponse;
+  factory GuildEmojiWithUserResponse(
+          [void updates(GuildEmojiWithUserResponseBuilder b)]) =
+      _$GuildEmojiWithUserResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildEmojiWithUserResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildEmojiWithUserResponse> get serializer => _$GuildEmojiWithUserResponseSerializer();
+  static Serializer<GuildEmojiWithUserResponse> get serializer =>
+      _$GuildEmojiWithUserResponseSerializer();
 }
 
-class _$GuildEmojiWithUserResponseSerializer implements PrimitiveSerializer<GuildEmojiWithUserResponse> {
+class _$GuildEmojiWithUserResponseSerializer
+    implements PrimitiveSerializer<GuildEmojiWithUserResponse> {
   @override
-  final Iterable<Type> types = const [GuildEmojiWithUserResponse, _$GuildEmojiWithUserResponse];
+  final Iterable<Type> types = const [
+    GuildEmojiWithUserResponse,
+    _$GuildEmojiWithUserResponse
+  ];
 
   @override
   final String wireName = r'GuildEmojiWithUserResponse';
@@ -84,7 +93,9 @@ class _$GuildEmojiWithUserResponseSerializer implements PrimitiveSerializer<Guil
     GuildEmojiWithUserResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -155,4 +166,3 @@ class _$GuildEmojiWithUserResponseSerializer implements PrimitiveSerializer<Guil
     return result.build();
   }
 }
-

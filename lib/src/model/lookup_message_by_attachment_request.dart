@@ -11,12 +11,15 @@ part 'lookup_message_by_attachment_request.g.dart';
 /// LookupMessageByAttachmentRequest
 ///
 /// Properties:
-/// * [channelId] 
-/// * [attachmentId] 
-/// * [filename] 
-/// * [contextLimit] 
+/// * [channelId]
+/// * [attachmentId]
+/// * [filename]
+/// * [contextLimit]
 @BuiltValue()
-abstract class LookupMessageByAttachmentRequest implements Built<LookupMessageByAttachmentRequest, LookupMessageByAttachmentRequestBuilder> {
+abstract class LookupMessageByAttachmentRequest
+    implements
+        Built<LookupMessageByAttachmentRequest,
+            LookupMessageByAttachmentRequestBuilder> {
   @BuiltValueField(wireName: r'channel_id')
   String get channelId;
 
@@ -31,18 +34,25 @@ abstract class LookupMessageByAttachmentRequest implements Built<LookupMessageBy
 
   LookupMessageByAttachmentRequest._();
 
-  factory LookupMessageByAttachmentRequest([void updates(LookupMessageByAttachmentRequestBuilder b)]) = _$LookupMessageByAttachmentRequest;
+  factory LookupMessageByAttachmentRequest(
+          [void updates(LookupMessageByAttachmentRequestBuilder b)]) =
+      _$LookupMessageByAttachmentRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(LookupMessageByAttachmentRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<LookupMessageByAttachmentRequest> get serializer => _$LookupMessageByAttachmentRequestSerializer();
+  static Serializer<LookupMessageByAttachmentRequest> get serializer =>
+      _$LookupMessageByAttachmentRequestSerializer();
 }
 
-class _$LookupMessageByAttachmentRequestSerializer implements PrimitiveSerializer<LookupMessageByAttachmentRequest> {
+class _$LookupMessageByAttachmentRequestSerializer
+    implements PrimitiveSerializer<LookupMessageByAttachmentRequest> {
   @override
-  final Iterable<Type> types = const [LookupMessageByAttachmentRequest, _$LookupMessageByAttachmentRequest];
+  final Iterable<Type> types = const [
+    LookupMessageByAttachmentRequest,
+    _$LookupMessageByAttachmentRequest
+  ];
 
   @override
   final String wireName = r'LookupMessageByAttachmentRequest';
@@ -82,7 +92,9 @@ class _$LookupMessageByAttachmentRequestSerializer implements PrimitiveSerialize
     LookupMessageByAttachmentRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -153,4 +165,3 @@ class _$LookupMessageByAttachmentRequestSerializer implements PrimitiveSerialize
     return result.build();
   }
 }
-

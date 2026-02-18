@@ -13,23 +13,27 @@ part 'theme_create_request.g.dart';
 /// Properties:
 /// * [css] - CSS text to store and share
 @BuiltValue()
-abstract class ThemeCreateRequest implements Built<ThemeCreateRequest, ThemeCreateRequestBuilder> {
+abstract class ThemeCreateRequest
+    implements Built<ThemeCreateRequest, ThemeCreateRequestBuilder> {
   /// CSS text to store and share
   @BuiltValueField(wireName: r'css')
   String get css;
 
   ThemeCreateRequest._();
 
-  factory ThemeCreateRequest([void updates(ThemeCreateRequestBuilder b)]) = _$ThemeCreateRequest;
+  factory ThemeCreateRequest([void updates(ThemeCreateRequestBuilder b)]) =
+      _$ThemeCreateRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ThemeCreateRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ThemeCreateRequest> get serializer => _$ThemeCreateRequestSerializer();
+  static Serializer<ThemeCreateRequest> get serializer =>
+      _$ThemeCreateRequestSerializer();
 }
 
-class _$ThemeCreateRequestSerializer implements PrimitiveSerializer<ThemeCreateRequest> {
+class _$ThemeCreateRequestSerializer
+    implements PrimitiveSerializer<ThemeCreateRequest> {
   @override
   final Iterable<Type> types = const [ThemeCreateRequest, _$ThemeCreateRequest];
 
@@ -54,7 +58,9 @@ class _$ThemeCreateRequestSerializer implements PrimitiveSerializer<ThemeCreateR
     ThemeCreateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +110,3 @@ class _$ThemeCreateRequestSerializer implements PrimitiveSerializer<ThemeCreateR
     return result.build();
   }
 }
-

@@ -11,24 +11,28 @@ part 'sso_start_request.g.dart';
 /// SsoStartRequest
 ///
 /// Properties:
-/// * [redirectTo] 
+/// * [redirectTo]
 @BuiltValue()
-abstract class SsoStartRequest implements Built<SsoStartRequest, SsoStartRequestBuilder> {
+abstract class SsoStartRequest
+    implements Built<SsoStartRequest, SsoStartRequestBuilder> {
   @BuiltValueField(wireName: r'redirect_to')
   String? get redirectTo;
 
   SsoStartRequest._();
 
-  factory SsoStartRequest([void updates(SsoStartRequestBuilder b)]) = _$SsoStartRequest;
+  factory SsoStartRequest([void updates(SsoStartRequestBuilder b)]) =
+      _$SsoStartRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SsoStartRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SsoStartRequest> get serializer => _$SsoStartRequestSerializer();
+  static Serializer<SsoStartRequest> get serializer =>
+      _$SsoStartRequestSerializer();
 }
 
-class _$SsoStartRequestSerializer implements PrimitiveSerializer<SsoStartRequest> {
+class _$SsoStartRequestSerializer
+    implements PrimitiveSerializer<SsoStartRequest> {
   @override
   final Iterable<Type> types = const [SsoStartRequest, _$SsoStartRequest];
 
@@ -55,7 +59,9 @@ class _$SsoStartRequestSerializer implements PrimitiveSerializer<SsoStartRequest
     SsoStartRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -106,4 +112,3 @@ class _$SsoStartRequestSerializer implements PrimitiveSerializer<SsoStartRequest
     return result.build();
   }
 }
-

@@ -11,11 +11,13 @@ part 'ncmec_submit_result_response.g.dart';
 /// NcmecSubmitResultResponse
 ///
 /// Properties:
-/// * [success] 
-/// * [ncmecReportId] 
-/// * [error] 
+/// * [success]
+/// * [ncmecReportId]
+/// * [error]
 @BuiltValue()
-abstract class NcmecSubmitResultResponse implements Built<NcmecSubmitResultResponse, NcmecSubmitResultResponseBuilder> {
+abstract class NcmecSubmitResultResponse
+    implements
+        Built<NcmecSubmitResultResponse, NcmecSubmitResultResponseBuilder> {
   @BuiltValueField(wireName: r'success')
   bool get success;
 
@@ -27,18 +29,25 @@ abstract class NcmecSubmitResultResponse implements Built<NcmecSubmitResultRespo
 
   NcmecSubmitResultResponse._();
 
-  factory NcmecSubmitResultResponse([void updates(NcmecSubmitResultResponseBuilder b)]) = _$NcmecSubmitResultResponse;
+  factory NcmecSubmitResultResponse(
+          [void updates(NcmecSubmitResultResponseBuilder b)]) =
+      _$NcmecSubmitResultResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(NcmecSubmitResultResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<NcmecSubmitResultResponse> get serializer => _$NcmecSubmitResultResponseSerializer();
+  static Serializer<NcmecSubmitResultResponse> get serializer =>
+      _$NcmecSubmitResultResponseSerializer();
 }
 
-class _$NcmecSubmitResultResponseSerializer implements PrimitiveSerializer<NcmecSubmitResultResponse> {
+class _$NcmecSubmitResultResponseSerializer
+    implements PrimitiveSerializer<NcmecSubmitResultResponse> {
   @override
-  final Iterable<Type> types = const [NcmecSubmitResultResponse, _$NcmecSubmitResultResponse];
+  final Iterable<Type> types = const [
+    NcmecSubmitResultResponse,
+    _$NcmecSubmitResultResponse
+  ];
 
   @override
   final String wireName = r'NcmecSubmitResultResponse';
@@ -54,15 +63,19 @@ class _$NcmecSubmitResultResponseSerializer implements PrimitiveSerializer<Ncmec
       specifiedType: const FullType(bool),
     );
     yield r'ncmec_report_id';
-    yield object.ncmecReportId == null ? null : serializers.serialize(
-      object.ncmecReportId,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.ncmecReportId == null
+        ? null
+        : serializers.serialize(
+            object.ncmecReportId,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'error';
-    yield object.error == null ? null : serializers.serialize(
-      object.error,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.error == null
+        ? null
+        : serializers.serialize(
+            object.error,
+            specifiedType: const FullType.nullable(String),
+          );
   }
 
   @override
@@ -71,7 +84,9 @@ class _$NcmecSubmitResultResponseSerializer implements PrimitiveSerializer<Ncmec
     NcmecSubmitResultResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -137,4 +152,3 @@ class _$NcmecSubmitResultResponseSerializer implements PrimitiveSerializer<Ncmec
     return result.build();
   }
 }
-

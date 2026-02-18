@@ -14,22 +14,24 @@ part 'channel_update_voice_request.g.dart';
 /// ChannelUpdateVoiceRequest
 ///
 /// Properties:
-/// * [type] 
-/// * [topic] 
-/// * [url] 
-/// * [parentId] 
-/// * [bitrate] 
-/// * [userLimit] 
+/// * [type]
+/// * [topic]
+/// * [url]
+/// * [parentId]
+/// * [bitrate]
+/// * [userLimit]
 /// * [permissionOverwrites] - Permission overwrites for roles and members
-/// * [nsfw] 
-/// * [rateLimitPerUser] 
+/// * [nsfw]
+/// * [rateLimitPerUser]
 /// * [icon] - Base64-encoded image data
-/// * [ownerId] 
+/// * [ownerId]
 /// * [nicks] - User nickname overrides (user ID to nickname mapping)
-/// * [rtcRegion] 
-/// * [name] 
+/// * [rtcRegion]
+/// * [name]
 @BuiltValue()
-abstract class ChannelUpdateVoiceRequest implements Built<ChannelUpdateVoiceRequest, ChannelUpdateVoiceRequestBuilder> {
+abstract class ChannelUpdateVoiceRequest
+    implements
+        Built<ChannelUpdateVoiceRequest, ChannelUpdateVoiceRequestBuilder> {
   @BuiltValueField(wireName: r'type')
   ChannelUpdateVoiceRequestTypeEnum get type;
   // enum typeEnum {  2,  };
@@ -78,18 +80,25 @@ abstract class ChannelUpdateVoiceRequest implements Built<ChannelUpdateVoiceRequ
 
   ChannelUpdateVoiceRequest._();
 
-  factory ChannelUpdateVoiceRequest([void updates(ChannelUpdateVoiceRequestBuilder b)]) = _$ChannelUpdateVoiceRequest;
+  factory ChannelUpdateVoiceRequest(
+          [void updates(ChannelUpdateVoiceRequestBuilder b)]) =
+      _$ChannelUpdateVoiceRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ChannelUpdateVoiceRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ChannelUpdateVoiceRequest> get serializer => _$ChannelUpdateVoiceRequestSerializer();
+  static Serializer<ChannelUpdateVoiceRequest> get serializer =>
+      _$ChannelUpdateVoiceRequestSerializer();
 }
 
-class _$ChannelUpdateVoiceRequestSerializer implements PrimitiveSerializer<ChannelUpdateVoiceRequest> {
+class _$ChannelUpdateVoiceRequestSerializer
+    implements PrimitiveSerializer<ChannelUpdateVoiceRequest> {
   @override
-  final Iterable<Type> types = const [ChannelUpdateVoiceRequest, _$ChannelUpdateVoiceRequest];
+  final Iterable<Type> types = const [
+    ChannelUpdateVoiceRequest,
+    _$ChannelUpdateVoiceRequest
+  ];
 
   @override
   final String wireName = r'ChannelUpdateVoiceRequest';
@@ -143,7 +152,8 @@ class _$ChannelUpdateVoiceRequestSerializer implements PrimitiveSerializer<Chann
       yield r'permission_overwrites';
       yield serializers.serialize(
         object.permissionOverwrites,
-        specifiedType: const FullType(BuiltList, [FullType(ChannelOverwriteRequest)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(ChannelOverwriteRequest)]),
       );
     }
     if (object.nsfw != null) {
@@ -178,7 +188,10 @@ class _$ChannelUpdateVoiceRequestSerializer implements PrimitiveSerializer<Chann
       yield r'nicks';
       yield serializers.serialize(
         object.nicks,
-        specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(ChannelNicknameOverridesValue)]),
+        specifiedType: const FullType(BuiltMap, [
+          FullType(String),
+          FullType.nullable(ChannelNicknameOverridesValue)
+        ]),
       );
     }
     if (object.rtcRegion != null) {
@@ -203,7 +216,9 @@ class _$ChannelUpdateVoiceRequestSerializer implements PrimitiveSerializer<Chann
     ChannelUpdateVoiceRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -267,7 +282,8 @@ class _$ChannelUpdateVoiceRequestSerializer implements PrimitiveSerializer<Chann
         case r'permission_overwrites':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ChannelOverwriteRequest)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(ChannelOverwriteRequest)]),
           ) as BuiltList<ChannelOverwriteRequest>;
           result.permissionOverwrites.replace(valueDes);
           break;
@@ -304,7 +320,10 @@ class _$ChannelUpdateVoiceRequestSerializer implements PrimitiveSerializer<Chann
         case r'nicks':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(ChannelNicknameOverridesValue)]),
+            specifiedType: const FullType(BuiltMap, [
+              FullType(String),
+              FullType.nullable(ChannelNicknameOverridesValue)
+            ]),
           ) as BuiltMap<String, ChannelNicknameOverridesValue?>;
           result.nicks.replace(valueDes);
           break;
@@ -354,15 +373,17 @@ class _$ChannelUpdateVoiceRequestSerializer implements PrimitiveSerializer<Chann
 }
 
 class ChannelUpdateVoiceRequestTypeEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireNumber: 2)
-  static const ChannelUpdateVoiceRequestTypeEnum number2 = _$channelUpdateVoiceRequestTypeEnum_number2;
+  static const ChannelUpdateVoiceRequestTypeEnum number2 =
+      _$channelUpdateVoiceRequestTypeEnum_number2;
 
-  static Serializer<ChannelUpdateVoiceRequestTypeEnum> get serializer => _$channelUpdateVoiceRequestTypeEnumSerializer;
+  static Serializer<ChannelUpdateVoiceRequestTypeEnum> get serializer =>
+      _$channelUpdateVoiceRequestTypeEnumSerializer;
 
-  const ChannelUpdateVoiceRequestTypeEnum._(String name): super(name);
+  const ChannelUpdateVoiceRequestTypeEnum._(String name) : super(name);
 
-  static BuiltSet<ChannelUpdateVoiceRequestTypeEnum> get values => _$channelUpdateVoiceRequestTypeEnumValues;
-  static ChannelUpdateVoiceRequestTypeEnum valueOf(String name) => _$channelUpdateVoiceRequestTypeEnumValueOf(name);
+  static BuiltSet<ChannelUpdateVoiceRequestTypeEnum> get values =>
+      _$channelUpdateVoiceRequestTypeEnumValues;
+  static ChannelUpdateVoiceRequestTypeEnum valueOf(String name) =>
+      _$channelUpdateVoiceRequestTypeEnumValueOf(name);
 }
-

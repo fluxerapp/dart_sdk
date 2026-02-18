@@ -11,10 +11,11 @@ part 'update_connection_request.g.dart';
 /// UpdateConnectionRequest
 ///
 /// Properties:
-/// * [visibilityFlags] 
-/// * [sortOrder] 
+/// * [visibilityFlags]
+/// * [sortOrder]
 @BuiltValue()
-abstract class UpdateConnectionRequest implements Built<UpdateConnectionRequest, UpdateConnectionRequestBuilder> {
+abstract class UpdateConnectionRequest
+    implements Built<UpdateConnectionRequest, UpdateConnectionRequestBuilder> {
   @BuiltValueField(wireName: r'visibility_flags')
   int? get visibilityFlags;
 
@@ -23,18 +24,25 @@ abstract class UpdateConnectionRequest implements Built<UpdateConnectionRequest,
 
   UpdateConnectionRequest._();
 
-  factory UpdateConnectionRequest([void updates(UpdateConnectionRequestBuilder b)]) = _$UpdateConnectionRequest;
+  factory UpdateConnectionRequest(
+          [void updates(UpdateConnectionRequestBuilder b)]) =
+      _$UpdateConnectionRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UpdateConnectionRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UpdateConnectionRequest> get serializer => _$UpdateConnectionRequestSerializer();
+  static Serializer<UpdateConnectionRequest> get serializer =>
+      _$UpdateConnectionRequestSerializer();
 }
 
-class _$UpdateConnectionRequestSerializer implements PrimitiveSerializer<UpdateConnectionRequest> {
+class _$UpdateConnectionRequestSerializer
+    implements PrimitiveSerializer<UpdateConnectionRequest> {
   @override
-  final Iterable<Type> types = const [UpdateConnectionRequest, _$UpdateConnectionRequest];
+  final Iterable<Type> types = const [
+    UpdateConnectionRequest,
+    _$UpdateConnectionRequest
+  ];
 
   @override
   final String wireName = r'UpdateConnectionRequest';
@@ -66,7 +74,9 @@ class _$UpdateConnectionRequestSerializer implements PrimitiveSerializer<UpdateC
     UpdateConnectionRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -123,4 +133,3 @@ class _$UpdateConnectionRequestSerializer implements PrimitiveSerializer<UpdateC
     return result.build();
   }
 }
-

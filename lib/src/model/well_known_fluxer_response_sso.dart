@@ -13,10 +13,12 @@ part 'well_known_fluxer_response_sso.g.dart';
 /// Properties:
 /// * [enabled] - Whether SSO is enabled for this instance
 /// * [enforced] - Whether SSO is required for all users
-/// * [displayName] 
+/// * [displayName]
 /// * [redirectUri] - OAuth redirect URI for SSO
 @BuiltValue()
-abstract class WellKnownFluxerResponseSso implements Built<WellKnownFluxerResponseSso, WellKnownFluxerResponseSsoBuilder> {
+abstract class WellKnownFluxerResponseSso
+    implements
+        Built<WellKnownFluxerResponseSso, WellKnownFluxerResponseSsoBuilder> {
   /// Whether SSO is enabled for this instance
   @BuiltValueField(wireName: r'enabled')
   bool get enabled;
@@ -34,18 +36,25 @@ abstract class WellKnownFluxerResponseSso implements Built<WellKnownFluxerRespon
 
   WellKnownFluxerResponseSso._();
 
-  factory WellKnownFluxerResponseSso([void updates(WellKnownFluxerResponseSsoBuilder b)]) = _$WellKnownFluxerResponseSso;
+  factory WellKnownFluxerResponseSso(
+          [void updates(WellKnownFluxerResponseSsoBuilder b)]) =
+      _$WellKnownFluxerResponseSso;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(WellKnownFluxerResponseSsoBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<WellKnownFluxerResponseSso> get serializer => _$WellKnownFluxerResponseSsoSerializer();
+  static Serializer<WellKnownFluxerResponseSso> get serializer =>
+      _$WellKnownFluxerResponseSsoSerializer();
 }
 
-class _$WellKnownFluxerResponseSsoSerializer implements PrimitiveSerializer<WellKnownFluxerResponseSso> {
+class _$WellKnownFluxerResponseSsoSerializer
+    implements PrimitiveSerializer<WellKnownFluxerResponseSso> {
   @override
-  final Iterable<Type> types = const [WellKnownFluxerResponseSso, _$WellKnownFluxerResponseSso];
+  final Iterable<Type> types = const [
+    WellKnownFluxerResponseSso,
+    _$WellKnownFluxerResponseSso
+  ];
 
   @override
   final String wireName = r'WellKnownFluxerResponseSso';
@@ -66,10 +75,12 @@ class _$WellKnownFluxerResponseSsoSerializer implements PrimitiveSerializer<Well
       specifiedType: const FullType(bool),
     );
     yield r'display_name';
-    yield object.displayName == null ? null : serializers.serialize(
-      object.displayName,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.displayName == null
+        ? null
+        : serializers.serialize(
+            object.displayName,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'redirect_uri';
     yield serializers.serialize(
       object.redirectUri,
@@ -83,7 +94,9 @@ class _$WellKnownFluxerResponseSsoSerializer implements PrimitiveSerializer<Well
     WellKnownFluxerResponseSso object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -155,4 +168,3 @@ class _$WellKnownFluxerResponseSsoSerializer implements PrimitiveSerializer<Well
     return result.build();
   }
 }
-

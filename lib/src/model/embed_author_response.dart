@@ -12,11 +12,12 @@ part 'embed_author_response.g.dart';
 ///
 /// Properties:
 /// * [name] - The name of the author
-/// * [url] 
-/// * [iconUrl] 
-/// * [proxyIconUrl] 
+/// * [url]
+/// * [iconUrl]
+/// * [proxyIconUrl]
 @BuiltValue()
-abstract class EmbedAuthorResponse implements Built<EmbedAuthorResponse, EmbedAuthorResponseBuilder> {
+abstract class EmbedAuthorResponse
+    implements Built<EmbedAuthorResponse, EmbedAuthorResponseBuilder> {
   /// The name of the author
   @BuiltValueField(wireName: r'name')
   String get name;
@@ -32,18 +33,24 @@ abstract class EmbedAuthorResponse implements Built<EmbedAuthorResponse, EmbedAu
 
   EmbedAuthorResponse._();
 
-  factory EmbedAuthorResponse([void updates(EmbedAuthorResponseBuilder b)]) = _$EmbedAuthorResponse;
+  factory EmbedAuthorResponse([void updates(EmbedAuthorResponseBuilder b)]) =
+      _$EmbedAuthorResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(EmbedAuthorResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<EmbedAuthorResponse> get serializer => _$EmbedAuthorResponseSerializer();
+  static Serializer<EmbedAuthorResponse> get serializer =>
+      _$EmbedAuthorResponseSerializer();
 }
 
-class _$EmbedAuthorResponseSerializer implements PrimitiveSerializer<EmbedAuthorResponse> {
+class _$EmbedAuthorResponseSerializer
+    implements PrimitiveSerializer<EmbedAuthorResponse> {
   @override
-  final Iterable<Type> types = const [EmbedAuthorResponse, _$EmbedAuthorResponse];
+  final Iterable<Type> types = const [
+    EmbedAuthorResponse,
+    _$EmbedAuthorResponse
+  ];
 
   @override
   final String wireName = r'EmbedAuthorResponse';
@@ -87,7 +94,9 @@ class _$EmbedAuthorResponseSerializer implements PrimitiveSerializer<EmbedAuthor
     EmbedAuthorResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -161,4 +170,3 @@ class _$EmbedAuthorResponseSerializer implements PrimitiveSerializer<EmbedAuthor
     return result.build();
   }
 }
-

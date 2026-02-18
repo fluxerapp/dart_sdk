@@ -10,20 +10,22 @@ import 'package:built_value/serializer.dart';
 part 'time_format_types.g.dart';
 
 class TimeFormatTypes extends EnumClass {
-
   /// Time format preference
   @BuiltValueEnumConst(wireNumber: 0)
   static const TimeFormatTypes number0 = _$number0;
+
   /// Time format preference
   @BuiltValueEnumConst(wireNumber: 1)
   static const TimeFormatTypes number1 = _$number1;
+
   /// Time format preference
   @BuiltValueEnumConst(wireNumber: 2)
   static const TimeFormatTypes number2 = _$number2;
 
-  static Serializer<TimeFormatTypes> get serializer => _$timeFormatTypesSerializer;
+  static Serializer<TimeFormatTypes> get serializer =>
+      _$timeFormatTypesSerializer;
 
-  const TimeFormatTypes._(String name): super(name);
+  const TimeFormatTypes._(String name) : super(name);
 
   static BuiltSet<TimeFormatTypes> get values => _$values;
   static TimeFormatTypes valueOf(String name) => _$valueOf(name);
@@ -36,4 +38,3 @@ class TimeFormatTypes extends EnumClass {
 ///
 /// Trigger mixin generation by writing a line like this one next to your enum.
 abstract class TimeFormatTypesMixin = Object with _$TimeFormatTypesMixin;
-

@@ -12,12 +12,13 @@ part 'channel_overwrite_request.g.dart';
 /// ChannelOverwriteRequest
 ///
 /// Properties:
-/// * [id] 
+/// * [id]
 /// * [type] - The type of overwrite (0 = role, 1 = member)
-/// * [allow] 
-/// * [deny] 
+/// * [allow]
+/// * [deny]
 @BuiltValue()
-abstract class ChannelOverwriteRequest implements Built<ChannelOverwriteRequest, ChannelOverwriteRequestBuilder> {
+abstract class ChannelOverwriteRequest
+    implements Built<ChannelOverwriteRequest, ChannelOverwriteRequestBuilder> {
   @BuiltValueField(wireName: r'id')
   String get id;
 
@@ -34,18 +35,25 @@ abstract class ChannelOverwriteRequest implements Built<ChannelOverwriteRequest,
 
   ChannelOverwriteRequest._();
 
-  factory ChannelOverwriteRequest([void updates(ChannelOverwriteRequestBuilder b)]) = _$ChannelOverwriteRequest;
+  factory ChannelOverwriteRequest(
+          [void updates(ChannelOverwriteRequestBuilder b)]) =
+      _$ChannelOverwriteRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ChannelOverwriteRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ChannelOverwriteRequest> get serializer => _$ChannelOverwriteRequestSerializer();
+  static Serializer<ChannelOverwriteRequest> get serializer =>
+      _$ChannelOverwriteRequestSerializer();
 }
 
-class _$ChannelOverwriteRequestSerializer implements PrimitiveSerializer<ChannelOverwriteRequest> {
+class _$ChannelOverwriteRequestSerializer
+    implements PrimitiveSerializer<ChannelOverwriteRequest> {
   @override
-  final Iterable<Type> types = const [ChannelOverwriteRequest, _$ChannelOverwriteRequest];
+  final Iterable<Type> types = const [
+    ChannelOverwriteRequest,
+    _$ChannelOverwriteRequest
+  ];
 
   @override
   final String wireName = r'ChannelOverwriteRequest';
@@ -87,7 +95,9 @@ class _$ChannelOverwriteRequestSerializer implements PrimitiveSerializer<Channel
     ChannelOverwriteRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -160,19 +170,23 @@ class _$ChannelOverwriteRequestSerializer implements PrimitiveSerializer<Channel
 }
 
 class ChannelOverwriteRequestTypeEnum extends EnumClass {
-
   /// The type of overwrite (0 = role, 1 = member)
   @BuiltValueEnumConst(wireNumber: 0)
-  static const ChannelOverwriteRequestTypeEnum number0 = _$channelOverwriteRequestTypeEnum_number0;
+  static const ChannelOverwriteRequestTypeEnum number0 =
+      _$channelOverwriteRequestTypeEnum_number0;
+
   /// The type of overwrite (0 = role, 1 = member)
   @BuiltValueEnumConst(wireNumber: 1)
-  static const ChannelOverwriteRequestTypeEnum number1 = _$channelOverwriteRequestTypeEnum_number1;
+  static const ChannelOverwriteRequestTypeEnum number1 =
+      _$channelOverwriteRequestTypeEnum_number1;
 
-  static Serializer<ChannelOverwriteRequestTypeEnum> get serializer => _$channelOverwriteRequestTypeEnumSerializer;
+  static Serializer<ChannelOverwriteRequestTypeEnum> get serializer =>
+      _$channelOverwriteRequestTypeEnumSerializer;
 
-  const ChannelOverwriteRequestTypeEnum._(String name): super(name);
+  const ChannelOverwriteRequestTypeEnum._(String name) : super(name);
 
-  static BuiltSet<ChannelOverwriteRequestTypeEnum> get values => _$channelOverwriteRequestTypeEnumValues;
-  static ChannelOverwriteRequestTypeEnum valueOf(String name) => _$channelOverwriteRequestTypeEnumValueOf(name);
+  static BuiltSet<ChannelOverwriteRequestTypeEnum> get values =>
+      _$channelOverwriteRequestTypeEnumValues;
+  static ChannelOverwriteRequestTypeEnum valueOf(String name) =>
+      _$channelOverwriteRequestTypeEnumValueOf(name);
 }
-

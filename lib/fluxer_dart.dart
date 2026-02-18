@@ -614,4 +614,3 @@ export 'package:fluxer_dart/src/model/well_known_fluxer_response_oauth2.dart';
 export 'package:fluxer_dart/src/model/well_known_fluxer_response_public_key.dart';
 export 'package:fluxer_dart/src/model/well_known_fluxer_response_push.dart';
 export 'package:fluxer_dart/src/model/well_known_fluxer_response_sso.dart';
-

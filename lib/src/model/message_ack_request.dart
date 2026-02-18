@@ -11,10 +11,11 @@ part 'message_ack_request.g.dart';
 /// MessageAckRequest
 ///
 /// Properties:
-/// * [mentionCount] 
+/// * [mentionCount]
 /// * [manual] - Whether this is a manual acknowledgement
 @BuiltValue()
-abstract class MessageAckRequest implements Built<MessageAckRequest, MessageAckRequestBuilder> {
+abstract class MessageAckRequest
+    implements Built<MessageAckRequest, MessageAckRequestBuilder> {
   @BuiltValueField(wireName: r'mention_count')
   int? get mentionCount;
 
@@ -24,16 +25,19 @@ abstract class MessageAckRequest implements Built<MessageAckRequest, MessageAckR
 
   MessageAckRequest._();
 
-  factory MessageAckRequest([void updates(MessageAckRequestBuilder b)]) = _$MessageAckRequest;
+  factory MessageAckRequest([void updates(MessageAckRequestBuilder b)]) =
+      _$MessageAckRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(MessageAckRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<MessageAckRequest> get serializer => _$MessageAckRequestSerializer();
+  static Serializer<MessageAckRequest> get serializer =>
+      _$MessageAckRequestSerializer();
 }
 
-class _$MessageAckRequestSerializer implements PrimitiveSerializer<MessageAckRequest> {
+class _$MessageAckRequestSerializer
+    implements PrimitiveSerializer<MessageAckRequest> {
   @override
   final Iterable<Type> types = const [MessageAckRequest, _$MessageAckRequest];
 
@@ -67,7 +71,9 @@ class _$MessageAckRequestSerializer implements PrimitiveSerializer<MessageAckReq
     MessageAckRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -124,4 +130,3 @@ class _$MessageAckRequestSerializer implements PrimitiveSerializer<MessageAckReq
     return result.build();
   }
 }
-

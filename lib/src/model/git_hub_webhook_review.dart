@@ -12,12 +12,13 @@ part 'git_hub_webhook_review.g.dart';
 /// GitHubWebhookReview
 ///
 /// Properties:
-/// * [user] 
-/// * [htmlUrl] 
-/// * [state] 
-/// * [body] 
+/// * [user]
+/// * [htmlUrl]
+/// * [state]
+/// * [body]
 @BuiltValue()
-abstract class GitHubWebhookReview implements Built<GitHubWebhookReview, GitHubWebhookReviewBuilder> {
+abstract class GitHubWebhookReview
+    implements Built<GitHubWebhookReview, GitHubWebhookReviewBuilder> {
   @BuiltValueField(wireName: r'user')
   GitHubWebhookAnswerUser get user;
 
@@ -32,18 +33,24 @@ abstract class GitHubWebhookReview implements Built<GitHubWebhookReview, GitHubW
 
   GitHubWebhookReview._();
 
-  factory GitHubWebhookReview([void updates(GitHubWebhookReviewBuilder b)]) = _$GitHubWebhookReview;
+  factory GitHubWebhookReview([void updates(GitHubWebhookReviewBuilder b)]) =
+      _$GitHubWebhookReview;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GitHubWebhookReviewBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GitHubWebhookReview> get serializer => _$GitHubWebhookReviewSerializer();
+  static Serializer<GitHubWebhookReview> get serializer =>
+      _$GitHubWebhookReviewSerializer();
 }
 
-class _$GitHubWebhookReviewSerializer implements PrimitiveSerializer<GitHubWebhookReview> {
+class _$GitHubWebhookReviewSerializer
+    implements PrimitiveSerializer<GitHubWebhookReview> {
   @override
-  final Iterable<Type> types = const [GitHubWebhookReview, _$GitHubWebhookReview];
+  final Iterable<Type> types = const [
+    GitHubWebhookReview,
+    _$GitHubWebhookReview
+  ];
 
   @override
   final String wireName = r'GitHubWebhookReview';
@@ -83,7 +90,9 @@ class _$GitHubWebhookReviewSerializer implements PrimitiveSerializer<GitHubWebho
     GitHubWebhookReview object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -155,4 +164,3 @@ class _$GitHubWebhookReviewSerializer implements PrimitiveSerializer<GitHubWebho
     return result.build();
   }
 }
-

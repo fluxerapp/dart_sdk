@@ -16,10 +16,12 @@ part 'create_admin_api_key_response.g.dart';
 /// * [key] - The generated API key secret (only shown once)
 /// * [name] - Display name for the API key
 /// * [createdAt] - ISO 8601 timestamp when the key was created
-/// * [expiresAt] 
+/// * [expiresAt]
 /// * [acls] - List of access control permissions for the key
 @BuiltValue()
-abstract class CreateAdminApiKeyResponse implements Built<CreateAdminApiKeyResponse, CreateAdminApiKeyResponseBuilder> {
+abstract class CreateAdminApiKeyResponse
+    implements
+        Built<CreateAdminApiKeyResponse, CreateAdminApiKeyResponseBuilder> {
   /// Unique identifier for the API key
   @BuiltValueField(wireName: r'key_id')
   String get keyId;
@@ -45,18 +47,25 @@ abstract class CreateAdminApiKeyResponse implements Built<CreateAdminApiKeyRespo
 
   CreateAdminApiKeyResponse._();
 
-  factory CreateAdminApiKeyResponse([void updates(CreateAdminApiKeyResponseBuilder b)]) = _$CreateAdminApiKeyResponse;
+  factory CreateAdminApiKeyResponse(
+          [void updates(CreateAdminApiKeyResponseBuilder b)]) =
+      _$CreateAdminApiKeyResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CreateAdminApiKeyResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CreateAdminApiKeyResponse> get serializer => _$CreateAdminApiKeyResponseSerializer();
+  static Serializer<CreateAdminApiKeyResponse> get serializer =>
+      _$CreateAdminApiKeyResponseSerializer();
 }
 
-class _$CreateAdminApiKeyResponseSerializer implements PrimitiveSerializer<CreateAdminApiKeyResponse> {
+class _$CreateAdminApiKeyResponseSerializer
+    implements PrimitiveSerializer<CreateAdminApiKeyResponse> {
   @override
-  final Iterable<Type> types = const [CreateAdminApiKeyResponse, _$CreateAdminApiKeyResponse];
+  final Iterable<Type> types = const [
+    CreateAdminApiKeyResponse,
+    _$CreateAdminApiKeyResponse
+  ];
 
   @override
   final String wireName = r'CreateAdminApiKeyResponse';
@@ -87,10 +96,12 @@ class _$CreateAdminApiKeyResponseSerializer implements PrimitiveSerializer<Creat
       specifiedType: const FullType(String),
     );
     yield r'expires_at';
-    yield object.expiresAt == null ? null : serializers.serialize(
-      object.expiresAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.expiresAt == null
+        ? null
+        : serializers.serialize(
+            object.expiresAt,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'acls';
     yield serializers.serialize(
       object.acls,
@@ -104,7 +115,9 @@ class _$CreateAdminApiKeyResponseSerializer implements PrimitiveSerializer<Creat
     CreateAdminApiKeyResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -190,4 +203,3 @@ class _$CreateAdminApiKeyResponseSerializer implements PrimitiveSerializer<Creat
     return result.build();
   }
 }
-

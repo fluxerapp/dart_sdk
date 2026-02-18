@@ -14,16 +14,17 @@ part 'o_auth2_me_response_user.g.dart';
 /// * [id] - The unique identifier of the user
 /// * [username] - The username of the user
 /// * [discriminator] - The discriminator of the user
-/// * [globalName] 
-/// * [avatar] 
-/// * [avatarColor] 
+/// * [globalName]
+/// * [avatar]
+/// * [avatarColor]
 /// * [flags] - The public flags on the user account
 /// * [bot] - Whether the user is a bot
 /// * [system] - Whether the user is a system user
-/// * [email] 
-/// * [verified] 
+/// * [email]
+/// * [verified]
 @BuiltValue()
-abstract class OAuth2MeResponseUser implements Built<OAuth2MeResponseUser, OAuth2MeResponseUserBuilder> {
+abstract class OAuth2MeResponseUser
+    implements Built<OAuth2MeResponseUser, OAuth2MeResponseUserBuilder> {
   /// The unique identifier of the user
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -65,18 +66,24 @@ abstract class OAuth2MeResponseUser implements Built<OAuth2MeResponseUser, OAuth
 
   OAuth2MeResponseUser._();
 
-  factory OAuth2MeResponseUser([void updates(OAuth2MeResponseUserBuilder b)]) = _$OAuth2MeResponseUser;
+  factory OAuth2MeResponseUser([void updates(OAuth2MeResponseUserBuilder b)]) =
+      _$OAuth2MeResponseUser;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(OAuth2MeResponseUserBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<OAuth2MeResponseUser> get serializer => _$OAuth2MeResponseUserSerializer();
+  static Serializer<OAuth2MeResponseUser> get serializer =>
+      _$OAuth2MeResponseUserSerializer();
 }
 
-class _$OAuth2MeResponseUserSerializer implements PrimitiveSerializer<OAuth2MeResponseUser> {
+class _$OAuth2MeResponseUserSerializer
+    implements PrimitiveSerializer<OAuth2MeResponseUser> {
   @override
-  final Iterable<Type> types = const [OAuth2MeResponseUser, _$OAuth2MeResponseUser];
+  final Iterable<Type> types = const [
+    OAuth2MeResponseUser,
+    _$OAuth2MeResponseUser
+  ];
 
   @override
   final String wireName = r'OAuth2MeResponseUser';
@@ -102,15 +109,19 @@ class _$OAuth2MeResponseUserSerializer implements PrimitiveSerializer<OAuth2MeRe
       specifiedType: const FullType(String),
     );
     yield r'global_name';
-    yield object.globalName == null ? null : serializers.serialize(
-      object.globalName,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.globalName == null
+        ? null
+        : serializers.serialize(
+            object.globalName,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'avatar';
-    yield object.avatar == null ? null : serializers.serialize(
-      object.avatar,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.avatar == null
+        ? null
+        : serializers.serialize(
+            object.avatar,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'avatar_color';
     yield serializers.serialize(
       object.avatarColor,
@@ -157,7 +168,9 @@ class _$OAuth2MeResponseUserSerializer implements PrimitiveSerializer<OAuth2MeRe
     OAuth2MeResponseUser object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -281,4 +294,3 @@ class _$OAuth2MeResponseUserSerializer implements PrimitiveSerializer<OAuth2MeRe
     return result.build();
   }
 }
-

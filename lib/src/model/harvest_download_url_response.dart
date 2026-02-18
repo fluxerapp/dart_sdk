@@ -14,7 +14,9 @@ part 'harvest_download_url_response.g.dart';
 /// * [downloadUrl] - The presigned URL to download the harvest archive
 /// * [expiresAt] - ISO 8601 timestamp when the harvest download expires
 @BuiltValue()
-abstract class HarvestDownloadUrlResponse implements Built<HarvestDownloadUrlResponse, HarvestDownloadUrlResponseBuilder> {
+abstract class HarvestDownloadUrlResponse
+    implements
+        Built<HarvestDownloadUrlResponse, HarvestDownloadUrlResponseBuilder> {
   /// The presigned URL to download the harvest archive
   @BuiltValueField(wireName: r'download_url')
   String get downloadUrl;
@@ -25,18 +27,25 @@ abstract class HarvestDownloadUrlResponse implements Built<HarvestDownloadUrlRes
 
   HarvestDownloadUrlResponse._();
 
-  factory HarvestDownloadUrlResponse([void updates(HarvestDownloadUrlResponseBuilder b)]) = _$HarvestDownloadUrlResponse;
+  factory HarvestDownloadUrlResponse(
+          [void updates(HarvestDownloadUrlResponseBuilder b)]) =
+      _$HarvestDownloadUrlResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(HarvestDownloadUrlResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<HarvestDownloadUrlResponse> get serializer => _$HarvestDownloadUrlResponseSerializer();
+  static Serializer<HarvestDownloadUrlResponse> get serializer =>
+      _$HarvestDownloadUrlResponseSerializer();
 }
 
-class _$HarvestDownloadUrlResponseSerializer implements PrimitiveSerializer<HarvestDownloadUrlResponse> {
+class _$HarvestDownloadUrlResponseSerializer
+    implements PrimitiveSerializer<HarvestDownloadUrlResponse> {
   @override
-  final Iterable<Type> types = const [HarvestDownloadUrlResponse, _$HarvestDownloadUrlResponse];
+  final Iterable<Type> types = const [
+    HarvestDownloadUrlResponse,
+    _$HarvestDownloadUrlResponse
+  ];
 
   @override
   final String wireName = r'HarvestDownloadUrlResponse';
@@ -64,7 +73,9 @@ class _$HarvestDownloadUrlResponseSerializer implements PrimitiveSerializer<Harv
     HarvestDownloadUrlResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +132,3 @@ class _$HarvestDownloadUrlResponseSerializer implements PrimitiveSerializer<Harv
     return result.build();
   }
 }
-

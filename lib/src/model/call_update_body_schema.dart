@@ -11,26 +11,33 @@ part 'call_update_body_schema.g.dart';
 /// CallUpdateBodySchema
 ///
 /// Properties:
-/// * [region] 
+/// * [region]
 @BuiltValue()
-abstract class CallUpdateBodySchema implements Built<CallUpdateBodySchema, CallUpdateBodySchemaBuilder> {
+abstract class CallUpdateBodySchema
+    implements Built<CallUpdateBodySchema, CallUpdateBodySchemaBuilder> {
   @BuiltValueField(wireName: r'region')
   String? get region;
 
   CallUpdateBodySchema._();
 
-  factory CallUpdateBodySchema([void updates(CallUpdateBodySchemaBuilder b)]) = _$CallUpdateBodySchema;
+  factory CallUpdateBodySchema([void updates(CallUpdateBodySchemaBuilder b)]) =
+      _$CallUpdateBodySchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CallUpdateBodySchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CallUpdateBodySchema> get serializer => _$CallUpdateBodySchemaSerializer();
+  static Serializer<CallUpdateBodySchema> get serializer =>
+      _$CallUpdateBodySchemaSerializer();
 }
 
-class _$CallUpdateBodySchemaSerializer implements PrimitiveSerializer<CallUpdateBodySchema> {
+class _$CallUpdateBodySchemaSerializer
+    implements PrimitiveSerializer<CallUpdateBodySchema> {
   @override
-  final Iterable<Type> types = const [CallUpdateBodySchema, _$CallUpdateBodySchema];
+  final Iterable<Type> types = const [
+    CallUpdateBodySchema,
+    _$CallUpdateBodySchema
+  ];
 
   @override
   final String wireName = r'CallUpdateBodySchema';
@@ -55,7 +62,9 @@ class _$CallUpdateBodySchemaSerializer implements PrimitiveSerializer<CallUpdate
     CallUpdateBodySchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -106,4 +115,3 @@ class _$CallUpdateBodySchemaSerializer implements PrimitiveSerializer<CallUpdate
     return result.build();
   }
 }
-

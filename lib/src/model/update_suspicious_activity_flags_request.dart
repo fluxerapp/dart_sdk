@@ -11,10 +11,13 @@ part 'update_suspicious_activity_flags_request.g.dart';
 /// UpdateSuspiciousActivityFlagsRequest
 ///
 /// Properties:
-/// * [userId] 
+/// * [userId]
 /// * [flags] - Bitmask of suspicious activity flags that triggered the disable
 @BuiltValue()
-abstract class UpdateSuspiciousActivityFlagsRequest implements Built<UpdateSuspiciousActivityFlagsRequest, UpdateSuspiciousActivityFlagsRequestBuilder> {
+abstract class UpdateSuspiciousActivityFlagsRequest
+    implements
+        Built<UpdateSuspiciousActivityFlagsRequest,
+            UpdateSuspiciousActivityFlagsRequestBuilder> {
   @BuiltValueField(wireName: r'user_id')
   String get userId;
 
@@ -24,18 +27,25 @@ abstract class UpdateSuspiciousActivityFlagsRequest implements Built<UpdateSuspi
 
   UpdateSuspiciousActivityFlagsRequest._();
 
-  factory UpdateSuspiciousActivityFlagsRequest([void updates(UpdateSuspiciousActivityFlagsRequestBuilder b)]) = _$UpdateSuspiciousActivityFlagsRequest;
+  factory UpdateSuspiciousActivityFlagsRequest(
+          [void updates(UpdateSuspiciousActivityFlagsRequestBuilder b)]) =
+      _$UpdateSuspiciousActivityFlagsRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UpdateSuspiciousActivityFlagsRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UpdateSuspiciousActivityFlagsRequest> get serializer => _$UpdateSuspiciousActivityFlagsRequestSerializer();
+  static Serializer<UpdateSuspiciousActivityFlagsRequest> get serializer =>
+      _$UpdateSuspiciousActivityFlagsRequestSerializer();
 }
 
-class _$UpdateSuspiciousActivityFlagsRequestSerializer implements PrimitiveSerializer<UpdateSuspiciousActivityFlagsRequest> {
+class _$UpdateSuspiciousActivityFlagsRequestSerializer
+    implements PrimitiveSerializer<UpdateSuspiciousActivityFlagsRequest> {
   @override
-  final Iterable<Type> types = const [UpdateSuspiciousActivityFlagsRequest, _$UpdateSuspiciousActivityFlagsRequest];
+  final Iterable<Type> types = const [
+    UpdateSuspiciousActivityFlagsRequest,
+    _$UpdateSuspiciousActivityFlagsRequest
+  ];
 
   @override
   final String wireName = r'UpdateSuspiciousActivityFlagsRequest';
@@ -63,7 +73,9 @@ class _$UpdateSuspiciousActivityFlagsRequestSerializer implements PrimitiveSeria
     UpdateSuspiciousActivityFlagsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -120,4 +132,3 @@ class _$UpdateSuspiciousActivityFlagsRequestSerializer implements PrimitiveSeria
     return result.build();
   }
 }
-

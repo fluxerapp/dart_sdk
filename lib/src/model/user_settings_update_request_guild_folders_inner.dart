@@ -14,12 +14,15 @@ part 'user_settings_update_request_guild_folders_inner.g.dart';
 /// Properties:
 /// * [id] - Unique identifier for the folder (-1 for uncategorized)
 /// * [guildIds] - Guild IDs in this folder
-/// * [name] 
-/// * [color] 
+/// * [name]
+/// * [color]
 /// * [flags] - Bitfield for guild folder display behaviour
 /// * [icon] - Selected icon for the guild folder
 @BuiltValue()
-abstract class UserSettingsUpdateRequestGuildFoldersInner implements Built<UserSettingsUpdateRequestGuildFoldersInner, UserSettingsUpdateRequestGuildFoldersInnerBuilder> {
+abstract class UserSettingsUpdateRequestGuildFoldersInner
+    implements
+        Built<UserSettingsUpdateRequestGuildFoldersInner,
+            UserSettingsUpdateRequestGuildFoldersInnerBuilder> {
   /// Unique identifier for the folder (-1 for uncategorized)
   @BuiltValueField(wireName: r'id')
   int get id;
@@ -45,18 +48,27 @@ abstract class UserSettingsUpdateRequestGuildFoldersInner implements Built<UserS
 
   UserSettingsUpdateRequestGuildFoldersInner._();
 
-  factory UserSettingsUpdateRequestGuildFoldersInner([void updates(UserSettingsUpdateRequestGuildFoldersInnerBuilder b)]) = _$UserSettingsUpdateRequestGuildFoldersInner;
+  factory UserSettingsUpdateRequestGuildFoldersInner(
+          [void updates(UserSettingsUpdateRequestGuildFoldersInnerBuilder b)]) =
+      _$UserSettingsUpdateRequestGuildFoldersInner;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(UserSettingsUpdateRequestGuildFoldersInnerBuilder b) => b;
+  static void _defaults(UserSettingsUpdateRequestGuildFoldersInnerBuilder b) =>
+      b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UserSettingsUpdateRequestGuildFoldersInner> get serializer => _$UserSettingsUpdateRequestGuildFoldersInnerSerializer();
+  static Serializer<UserSettingsUpdateRequestGuildFoldersInner>
+      get serializer =>
+          _$UserSettingsUpdateRequestGuildFoldersInnerSerializer();
 }
 
-class _$UserSettingsUpdateRequestGuildFoldersInnerSerializer implements PrimitiveSerializer<UserSettingsUpdateRequestGuildFoldersInner> {
+class _$UserSettingsUpdateRequestGuildFoldersInnerSerializer
+    implements PrimitiveSerializer<UserSettingsUpdateRequestGuildFoldersInner> {
   @override
-  final Iterable<Type> types = const [UserSettingsUpdateRequestGuildFoldersInner, _$UserSettingsUpdateRequestGuildFoldersInner];
+  final Iterable<Type> types = const [
+    UserSettingsUpdateRequestGuildFoldersInner,
+    _$UserSettingsUpdateRequestGuildFoldersInner
+  ];
 
   @override
   final String wireName = r'UserSettingsUpdateRequestGuildFoldersInner';
@@ -101,7 +113,8 @@ class _$UserSettingsUpdateRequestGuildFoldersInnerSerializer implements Primitiv
       yield r'icon';
       yield serializers.serialize(
         object.icon,
-        specifiedType: const FullType(UserSettingsUpdateRequestGuildFoldersInnerIconEnum),
+        specifiedType:
+            const FullType(UserSettingsUpdateRequestGuildFoldersInnerIconEnum),
       );
     }
   }
@@ -112,7 +125,9 @@ class _$UserSettingsUpdateRequestGuildFoldersInnerSerializer implements Primitiv
     UserSettingsUpdateRequestGuildFoldersInner object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -166,7 +181,8 @@ class _$UserSettingsUpdateRequestGuildFoldersInnerSerializer implements Primitiv
         case r'icon':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(UserSettingsUpdateRequestGuildFoldersInnerIconEnum),
+            specifiedType: const FullType(
+                UserSettingsUpdateRequestGuildFoldersInnerIconEnum),
           ) as UserSettingsUpdateRequestGuildFoldersInnerIconEnum;
           result.icon = valueDes;
           break;
@@ -200,34 +216,52 @@ class _$UserSettingsUpdateRequestGuildFoldersInnerSerializer implements Primitiv
 }
 
 class UserSettingsUpdateRequestGuildFoldersInnerIconEnum extends EnumClass {
-
   /// Selected icon for the guild folder
   @BuiltValueEnumConst(wireName: r'folder')
-  static const UserSettingsUpdateRequestGuildFoldersInnerIconEnum folder = _$userSettingsUpdateRequestGuildFoldersInnerIconEnum_folder;
+  static const UserSettingsUpdateRequestGuildFoldersInnerIconEnum folder =
+      _$userSettingsUpdateRequestGuildFoldersInnerIconEnum_folder;
+
   /// Selected icon for the guild folder
   @BuiltValueEnumConst(wireName: r'star')
-  static const UserSettingsUpdateRequestGuildFoldersInnerIconEnum star = _$userSettingsUpdateRequestGuildFoldersInnerIconEnum_star;
+  static const UserSettingsUpdateRequestGuildFoldersInnerIconEnum star =
+      _$userSettingsUpdateRequestGuildFoldersInnerIconEnum_star;
+
   /// Selected icon for the guild folder
   @BuiltValueEnumConst(wireName: r'heart')
-  static const UserSettingsUpdateRequestGuildFoldersInnerIconEnum heart = _$userSettingsUpdateRequestGuildFoldersInnerIconEnum_heart;
+  static const UserSettingsUpdateRequestGuildFoldersInnerIconEnum heart =
+      _$userSettingsUpdateRequestGuildFoldersInnerIconEnum_heart;
+
   /// Selected icon for the guild folder
   @BuiltValueEnumConst(wireName: r'bookmark')
-  static const UserSettingsUpdateRequestGuildFoldersInnerIconEnum bookmark = _$userSettingsUpdateRequestGuildFoldersInnerIconEnum_bookmark;
+  static const UserSettingsUpdateRequestGuildFoldersInnerIconEnum bookmark =
+      _$userSettingsUpdateRequestGuildFoldersInnerIconEnum_bookmark;
+
   /// Selected icon for the guild folder
   @BuiltValueEnumConst(wireName: r'game_controller')
-  static const UserSettingsUpdateRequestGuildFoldersInnerIconEnum gameController = _$userSettingsUpdateRequestGuildFoldersInnerIconEnum_gameController;
+  static const UserSettingsUpdateRequestGuildFoldersInnerIconEnum
+      gameController =
+      _$userSettingsUpdateRequestGuildFoldersInnerIconEnum_gameController;
+
   /// Selected icon for the guild folder
   @BuiltValueEnumConst(wireName: r'shield')
-  static const UserSettingsUpdateRequestGuildFoldersInnerIconEnum shield = _$userSettingsUpdateRequestGuildFoldersInnerIconEnum_shield;
+  static const UserSettingsUpdateRequestGuildFoldersInnerIconEnum shield =
+      _$userSettingsUpdateRequestGuildFoldersInnerIconEnum_shield;
+
   /// Selected icon for the guild folder
   @BuiltValueEnumConst(wireName: r'music_note')
-  static const UserSettingsUpdateRequestGuildFoldersInnerIconEnum musicNote = _$userSettingsUpdateRequestGuildFoldersInnerIconEnum_musicNote;
+  static const UserSettingsUpdateRequestGuildFoldersInnerIconEnum musicNote =
+      _$userSettingsUpdateRequestGuildFoldersInnerIconEnum_musicNote;
 
-  static Serializer<UserSettingsUpdateRequestGuildFoldersInnerIconEnum> get serializer => _$userSettingsUpdateRequestGuildFoldersInnerIconEnumSerializer;
+  static Serializer<UserSettingsUpdateRequestGuildFoldersInnerIconEnum>
+      get serializer =>
+          _$userSettingsUpdateRequestGuildFoldersInnerIconEnumSerializer;
 
-  const UserSettingsUpdateRequestGuildFoldersInnerIconEnum._(String name): super(name);
+  const UserSettingsUpdateRequestGuildFoldersInnerIconEnum._(String name)
+      : super(name);
 
-  static BuiltSet<UserSettingsUpdateRequestGuildFoldersInnerIconEnum> get values => _$userSettingsUpdateRequestGuildFoldersInnerIconEnumValues;
-  static UserSettingsUpdateRequestGuildFoldersInnerIconEnum valueOf(String name) => _$userSettingsUpdateRequestGuildFoldersInnerIconEnumValueOf(name);
+  static BuiltSet<UserSettingsUpdateRequestGuildFoldersInnerIconEnum>
+      get values => _$userSettingsUpdateRequestGuildFoldersInnerIconEnumValues;
+  static UserSettingsUpdateRequestGuildFoldersInnerIconEnum valueOf(
+          String name) =>
+      _$userSettingsUpdateRequestGuildFoldersInnerIconEnumValueOf(name);
 }
-

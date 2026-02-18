@@ -11,11 +11,12 @@ part 'sentry_webhook_actor.g.dart';
 /// SentryWebhookActor
 ///
 /// Properties:
-/// * [type] 
-/// * [id] 
-/// * [name] 
+/// * [type]
+/// * [id]
+/// * [name]
 @BuiltValue()
-abstract class SentryWebhookActor implements Built<SentryWebhookActor, SentryWebhookActorBuilder> {
+abstract class SentryWebhookActor
+    implements Built<SentryWebhookActor, SentryWebhookActorBuilder> {
   @BuiltValueField(wireName: r'type')
   String get type;
 
@@ -27,16 +28,19 @@ abstract class SentryWebhookActor implements Built<SentryWebhookActor, SentryWeb
 
   SentryWebhookActor._();
 
-  factory SentryWebhookActor([void updates(SentryWebhookActorBuilder b)]) = _$SentryWebhookActor;
+  factory SentryWebhookActor([void updates(SentryWebhookActorBuilder b)]) =
+      _$SentryWebhookActor;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SentryWebhookActorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SentryWebhookActor> get serializer => _$SentryWebhookActorSerializer();
+  static Serializer<SentryWebhookActor> get serializer =>
+      _$SentryWebhookActorSerializer();
 }
 
-class _$SentryWebhookActorSerializer implements PrimitiveSerializer<SentryWebhookActor> {
+class _$SentryWebhookActorSerializer
+    implements PrimitiveSerializer<SentryWebhookActor> {
   @override
   final Iterable<Type> types = const [SentryWebhookActor, _$SentryWebhookActor];
 
@@ -71,7 +75,9 @@ class _$SentryWebhookActorSerializer implements PrimitiveSerializer<SentryWebhoo
     SentryWebhookActor object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -135,4 +141,3 @@ class _$SentryWebhookActorSerializer implements PrimitiveSerializer<SentryWebhoo
     return result.build();
   }
 }
-

@@ -12,13 +12,16 @@ part 'delete_all_user_messages_response.g.dart';
 /// DeleteAllUserMessagesResponse
 ///
 /// Properties:
-/// * [success] 
-/// * [dryRun] 
-/// * [channelCount] 
-/// * [messageCount] 
-/// * [jobId] 
+/// * [success]
+/// * [dryRun]
+/// * [channelCount]
+/// * [messageCount]
+/// * [jobId]
 @BuiltValue()
-abstract class DeleteAllUserMessagesResponse implements Built<DeleteAllUserMessagesResponse, DeleteAllUserMessagesResponseBuilder> {
+abstract class DeleteAllUserMessagesResponse
+    implements
+        Built<DeleteAllUserMessagesResponse,
+            DeleteAllUserMessagesResponseBuilder> {
   @BuiltValueField(wireName: r'success')
   DeleteAllUserMessagesResponseSuccessEnum get success;
   // enum successEnum {  true,  };
@@ -37,18 +40,25 @@ abstract class DeleteAllUserMessagesResponse implements Built<DeleteAllUserMessa
 
   DeleteAllUserMessagesResponse._();
 
-  factory DeleteAllUserMessagesResponse([void updates(DeleteAllUserMessagesResponseBuilder b)]) = _$DeleteAllUserMessagesResponse;
+  factory DeleteAllUserMessagesResponse(
+          [void updates(DeleteAllUserMessagesResponseBuilder b)]) =
+      _$DeleteAllUserMessagesResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(DeleteAllUserMessagesResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<DeleteAllUserMessagesResponse> get serializer => _$DeleteAllUserMessagesResponseSerializer();
+  static Serializer<DeleteAllUserMessagesResponse> get serializer =>
+      _$DeleteAllUserMessagesResponseSerializer();
 }
 
-class _$DeleteAllUserMessagesResponseSerializer implements PrimitiveSerializer<DeleteAllUserMessagesResponse> {
+class _$DeleteAllUserMessagesResponseSerializer
+    implements PrimitiveSerializer<DeleteAllUserMessagesResponse> {
   @override
-  final Iterable<Type> types = const [DeleteAllUserMessagesResponse, _$DeleteAllUserMessagesResponse];
+  final Iterable<Type> types = const [
+    DeleteAllUserMessagesResponse,
+    _$DeleteAllUserMessagesResponse
+  ];
 
   @override
   final String wireName = r'DeleteAllUserMessagesResponse';
@@ -93,7 +103,9 @@ class _$DeleteAllUserMessagesResponseSerializer implements PrimitiveSerializer<D
     DeleteAllUserMessagesResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -111,7 +123,8 @@ class _$DeleteAllUserMessagesResponseSerializer implements PrimitiveSerializer<D
         case r'success':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(DeleteAllUserMessagesResponseSuccessEnum),
+            specifiedType:
+                const FullType(DeleteAllUserMessagesResponseSuccessEnum),
           ) as DeleteAllUserMessagesResponseSuccessEnum;
           result.success = valueDes;
           break;
@@ -173,15 +186,17 @@ class _$DeleteAllUserMessagesResponseSerializer implements PrimitiveSerializer<D
 }
 
 class DeleteAllUserMessagesResponseSuccessEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'true')
-  static const DeleteAllUserMessagesResponseSuccessEnum true_ = _$deleteAllUserMessagesResponseSuccessEnum_true_;
+  static const DeleteAllUserMessagesResponseSuccessEnum true_ =
+      _$deleteAllUserMessagesResponseSuccessEnum_true_;
 
-  static Serializer<DeleteAllUserMessagesResponseSuccessEnum> get serializer => _$deleteAllUserMessagesResponseSuccessEnumSerializer;
+  static Serializer<DeleteAllUserMessagesResponseSuccessEnum> get serializer =>
+      _$deleteAllUserMessagesResponseSuccessEnumSerializer;
 
-  const DeleteAllUserMessagesResponseSuccessEnum._(String name): super(name);
+  const DeleteAllUserMessagesResponseSuccessEnum._(String name) : super(name);
 
-  static BuiltSet<DeleteAllUserMessagesResponseSuccessEnum> get values => _$deleteAllUserMessagesResponseSuccessEnumValues;
-  static DeleteAllUserMessagesResponseSuccessEnum valueOf(String name) => _$deleteAllUserMessagesResponseSuccessEnumValueOf(name);
+  static BuiltSet<DeleteAllUserMessagesResponseSuccessEnum> get values =>
+      _$deleteAllUserMessagesResponseSuccessEnumValues;
+  static DeleteAllUserMessagesResponseSuccessEnum valueOf(String name) =>
+      _$deleteAllUserMessagesResponseSuccessEnumValueOf(name);
 }
-

@@ -12,10 +12,11 @@ part 'channel_pin_response.g.dart';
 /// ChannelPinResponse
 ///
 /// Properties:
-/// * [message] 
+/// * [message]
 /// * [pinnedAt] - The ISO 8601 timestamp of when the message was pinned
 @BuiltValue()
-abstract class ChannelPinResponse implements Built<ChannelPinResponse, ChannelPinResponseBuilder> {
+abstract class ChannelPinResponse
+    implements Built<ChannelPinResponse, ChannelPinResponseBuilder> {
   @BuiltValueField(wireName: r'message')
   ChannelPinMessageResponse get message;
 
@@ -25,16 +26,19 @@ abstract class ChannelPinResponse implements Built<ChannelPinResponse, ChannelPi
 
   ChannelPinResponse._();
 
-  factory ChannelPinResponse([void updates(ChannelPinResponseBuilder b)]) = _$ChannelPinResponse;
+  factory ChannelPinResponse([void updates(ChannelPinResponseBuilder b)]) =
+      _$ChannelPinResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ChannelPinResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ChannelPinResponse> get serializer => _$ChannelPinResponseSerializer();
+  static Serializer<ChannelPinResponse> get serializer =>
+      _$ChannelPinResponseSerializer();
 }
 
-class _$ChannelPinResponseSerializer implements PrimitiveSerializer<ChannelPinResponse> {
+class _$ChannelPinResponseSerializer
+    implements PrimitiveSerializer<ChannelPinResponse> {
   @override
   final Iterable<Type> types = const [ChannelPinResponse, _$ChannelPinResponse];
 
@@ -64,7 +68,9 @@ class _$ChannelPinResponseSerializer implements PrimitiveSerializer<ChannelPinRe
     ChannelPinResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +127,3 @@ class _$ChannelPinResponseSerializer implements PrimitiveSerializer<ChannelPinRe
     return result.build();
   }
 }
-

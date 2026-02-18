@@ -13,10 +13,11 @@ part 'pack_dashboard_response.g.dart';
 /// PackDashboardResponse
 ///
 /// Properties:
-/// * [emoji] 
-/// * [sticker] 
+/// * [emoji]
+/// * [sticker]
 @BuiltValue()
-abstract class PackDashboardResponse implements Built<PackDashboardResponse, PackDashboardResponseBuilder> {
+abstract class PackDashboardResponse
+    implements Built<PackDashboardResponse, PackDashboardResponseBuilder> {
   @BuiltValueField(wireName: r'emoji')
   PackDashboardResponseEmoji get emoji;
 
@@ -25,18 +26,24 @@ abstract class PackDashboardResponse implements Built<PackDashboardResponse, Pac
 
   PackDashboardResponse._();
 
-  factory PackDashboardResponse([void updates(PackDashboardResponseBuilder b)]) = _$PackDashboardResponse;
+  factory PackDashboardResponse(
+      [void updates(PackDashboardResponseBuilder b)]) = _$PackDashboardResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PackDashboardResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PackDashboardResponse> get serializer => _$PackDashboardResponseSerializer();
+  static Serializer<PackDashboardResponse> get serializer =>
+      _$PackDashboardResponseSerializer();
 }
 
-class _$PackDashboardResponseSerializer implements PrimitiveSerializer<PackDashboardResponse> {
+class _$PackDashboardResponseSerializer
+    implements PrimitiveSerializer<PackDashboardResponse> {
   @override
-  final Iterable<Type> types = const [PackDashboardResponse, _$PackDashboardResponse];
+  final Iterable<Type> types = const [
+    PackDashboardResponse,
+    _$PackDashboardResponse
+  ];
 
   @override
   final String wireName = r'PackDashboardResponse';
@@ -64,7 +71,9 @@ class _$PackDashboardResponseSerializer implements PrimitiveSerializer<PackDashb
     PackDashboardResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +130,3 @@ class _$PackDashboardResponseSerializer implements PrimitiveSerializer<PackDashb
     return result.build();
   }
 }
-

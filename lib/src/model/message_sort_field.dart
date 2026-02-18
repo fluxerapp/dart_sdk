@@ -10,17 +10,18 @@ import 'package:built_value/serializer.dart';
 part 'message_sort_field.g.dart';
 
 class MessageSortField extends EnumClass {
-
   /// The field to sort search results by
   @BuiltValueEnumConst(wireName: r'timestamp')
   static const MessageSortField timestamp = _$timestamp;
+
   /// The field to sort search results by
   @BuiltValueEnumConst(wireName: r'relevance')
   static const MessageSortField relevance = _$relevance;
 
-  static Serializer<MessageSortField> get serializer => _$messageSortFieldSerializer;
+  static Serializer<MessageSortField> get serializer =>
+      _$messageSortFieldSerializer;
 
-  const MessageSortField._(String name): super(name);
+  const MessageSortField._(String name) : super(name);
 
   static BuiltSet<MessageSortField> get values => _$values;
   static MessageSortField valueOf(String name) => _$valueOf(name);
@@ -33,4 +34,3 @@ class MessageSortField extends EnumClass {
 ///
 /// Trigger mixin generation by writing a line like this one next to your enum.
 abstract class MessageSortFieldMixin = Object with _$MessageSortFieldMixin;
-

@@ -16,9 +16,12 @@ part 'user_guild_settings_response_channel_overrides_value.g.dart';
 /// * [collapsed] - Whether the channel category is collapsed in the sidebar
 /// * [messageNotifications] - The notification level override for this channel
 /// * [muted] - Whether notifications are muted for this channel
-/// * [muteConfig] 
+/// * [muteConfig]
 @BuiltValue()
-abstract class UserGuildSettingsResponseChannelOverridesValue implements Built<UserGuildSettingsResponseChannelOverridesValue, UserGuildSettingsResponseChannelOverridesValueBuilder> {
+abstract class UserGuildSettingsResponseChannelOverridesValue
+    implements
+        Built<UserGuildSettingsResponseChannelOverridesValue,
+            UserGuildSettingsResponseChannelOverridesValueBuilder> {
   /// Whether the channel category is collapsed in the sidebar
   @BuiltValueField(wireName: r'collapsed')
   bool get collapsed;
@@ -37,18 +40,30 @@ abstract class UserGuildSettingsResponseChannelOverridesValue implements Built<U
 
   UserGuildSettingsResponseChannelOverridesValue._();
 
-  factory UserGuildSettingsResponseChannelOverridesValue([void updates(UserGuildSettingsResponseChannelOverridesValueBuilder b)]) = _$UserGuildSettingsResponseChannelOverridesValue;
+  factory UserGuildSettingsResponseChannelOverridesValue(
+          [void updates(
+              UserGuildSettingsResponseChannelOverridesValueBuilder b)]) =
+      _$UserGuildSettingsResponseChannelOverridesValue;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(UserGuildSettingsResponseChannelOverridesValueBuilder b) => b;
+  static void _defaults(
+          UserGuildSettingsResponseChannelOverridesValueBuilder b) =>
+      b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UserGuildSettingsResponseChannelOverridesValue> get serializer => _$UserGuildSettingsResponseChannelOverridesValueSerializer();
+  static Serializer<UserGuildSettingsResponseChannelOverridesValue>
+      get serializer =>
+          _$UserGuildSettingsResponseChannelOverridesValueSerializer();
 }
 
-class _$UserGuildSettingsResponseChannelOverridesValueSerializer implements PrimitiveSerializer<UserGuildSettingsResponseChannelOverridesValue> {
+class _$UserGuildSettingsResponseChannelOverridesValueSerializer
+    implements
+        PrimitiveSerializer<UserGuildSettingsResponseChannelOverridesValue> {
   @override
-  final Iterable<Type> types = const [UserGuildSettingsResponseChannelOverridesValue, _$UserGuildSettingsResponseChannelOverridesValue];
+  final Iterable<Type> types = const [
+    UserGuildSettingsResponseChannelOverridesValue,
+    _$UserGuildSettingsResponseChannelOverridesValue
+  ];
 
   @override
   final String wireName = r'UserGuildSettingsResponseChannelOverridesValue';
@@ -74,10 +89,13 @@ class _$UserGuildSettingsResponseChannelOverridesValueSerializer implements Prim
       specifiedType: const FullType(bool),
     );
     yield r'mute_config';
-    yield object.muteConfig == null ? null : serializers.serialize(
-      object.muteConfig,
-      specifiedType: const FullType.nullable(UserGuildSettingsResponseMuteConfig),
-    );
+    yield object.muteConfig == null
+        ? null
+        : serializers.serialize(
+            object.muteConfig,
+            specifiedType:
+                const FullType.nullable(UserGuildSettingsResponseMuteConfig),
+          );
   }
 
   @override
@@ -86,7 +104,9 @@ class _$UserGuildSettingsResponseChannelOverridesValueSerializer implements Prim
     UserGuildSettingsResponseChannelOverridesValue object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -125,7 +145,8 @@ class _$UserGuildSettingsResponseChannelOverridesValueSerializer implements Prim
         case r'mute_config':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(UserGuildSettingsResponseMuteConfig),
+            specifiedType:
+                const FullType.nullable(UserGuildSettingsResponseMuteConfig),
           ) as UserGuildSettingsResponseMuteConfig?;
           if (valueDes == null) continue;
           result.muteConfig.replace(valueDes);
@@ -158,4 +179,3 @@ class _$UserGuildSettingsResponseChannelOverridesValueSerializer implements Prim
     return result.build();
   }
 }
-

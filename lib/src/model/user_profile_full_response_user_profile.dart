@@ -11,13 +11,16 @@ part 'user_profile_full_response_user_profile.g.dart';
 /// The user profile data
 ///
 /// Properties:
-/// * [bio] 
-/// * [pronouns] 
-/// * [banner] 
-/// * [accentColor] 
-/// * [bannerColor] 
+/// * [bio]
+/// * [pronouns]
+/// * [banner]
+/// * [accentColor]
+/// * [bannerColor]
 @BuiltValue()
-abstract class UserProfileFullResponseUserProfile implements Built<UserProfileFullResponseUserProfile, UserProfileFullResponseUserProfileBuilder> {
+abstract class UserProfileFullResponseUserProfile
+    implements
+        Built<UserProfileFullResponseUserProfile,
+            UserProfileFullResponseUserProfileBuilder> {
   @BuiltValueField(wireName: r'bio')
   String? get bio;
 
@@ -35,18 +38,25 @@ abstract class UserProfileFullResponseUserProfile implements Built<UserProfileFu
 
   UserProfileFullResponseUserProfile._();
 
-  factory UserProfileFullResponseUserProfile([void updates(UserProfileFullResponseUserProfileBuilder b)]) = _$UserProfileFullResponseUserProfile;
+  factory UserProfileFullResponseUserProfile(
+          [void updates(UserProfileFullResponseUserProfileBuilder b)]) =
+      _$UserProfileFullResponseUserProfile;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UserProfileFullResponseUserProfileBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UserProfileFullResponseUserProfile> get serializer => _$UserProfileFullResponseUserProfileSerializer();
+  static Serializer<UserProfileFullResponseUserProfile> get serializer =>
+      _$UserProfileFullResponseUserProfileSerializer();
 }
 
-class _$UserProfileFullResponseUserProfileSerializer implements PrimitiveSerializer<UserProfileFullResponseUserProfile> {
+class _$UserProfileFullResponseUserProfileSerializer
+    implements PrimitiveSerializer<UserProfileFullResponseUserProfile> {
   @override
-  final Iterable<Type> types = const [UserProfileFullResponseUserProfile, _$UserProfileFullResponseUserProfile];
+  final Iterable<Type> types = const [
+    UserProfileFullResponseUserProfile,
+    _$UserProfileFullResponseUserProfile
+  ];
 
   @override
   final String wireName = r'UserProfileFullResponseUserProfile';
@@ -57,20 +67,26 @@ class _$UserProfileFullResponseUserProfileSerializer implements PrimitiveSeriali
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     yield r'bio';
-    yield object.bio == null ? null : serializers.serialize(
-      object.bio,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.bio == null
+        ? null
+        : serializers.serialize(
+            object.bio,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'pronouns';
-    yield object.pronouns == null ? null : serializers.serialize(
-      object.pronouns,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.pronouns == null
+        ? null
+        : serializers.serialize(
+            object.pronouns,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'banner';
-    yield object.banner == null ? null : serializers.serialize(
-      object.banner,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.banner == null
+        ? null
+        : serializers.serialize(
+            object.banner,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'accent_color';
     yield serializers.serialize(
       object.accentColor,
@@ -91,7 +107,9 @@ class _$UserProfileFullResponseUserProfileSerializer implements PrimitiveSeriali
     UserProfileFullResponseUserProfile object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -172,4 +190,3 @@ class _$UserProfileFullResponseUserProfileSerializer implements PrimitiveSeriali
     return result.build();
   }
 }
-

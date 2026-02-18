@@ -11,26 +11,35 @@ part 'well_known_fluxer_response_push.g.dart';
 /// Push notification configuration
 ///
 /// Properties:
-/// * [publicVapidKey] 
+/// * [publicVapidKey]
 @BuiltValue()
-abstract class WellKnownFluxerResponsePush implements Built<WellKnownFluxerResponsePush, WellKnownFluxerResponsePushBuilder> {
+abstract class WellKnownFluxerResponsePush
+    implements
+        Built<WellKnownFluxerResponsePush, WellKnownFluxerResponsePushBuilder> {
   @BuiltValueField(wireName: r'public_vapid_key')
   String? get publicVapidKey;
 
   WellKnownFluxerResponsePush._();
 
-  factory WellKnownFluxerResponsePush([void updates(WellKnownFluxerResponsePushBuilder b)]) = _$WellKnownFluxerResponsePush;
+  factory WellKnownFluxerResponsePush(
+          [void updates(WellKnownFluxerResponsePushBuilder b)]) =
+      _$WellKnownFluxerResponsePush;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(WellKnownFluxerResponsePushBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<WellKnownFluxerResponsePush> get serializer => _$WellKnownFluxerResponsePushSerializer();
+  static Serializer<WellKnownFluxerResponsePush> get serializer =>
+      _$WellKnownFluxerResponsePushSerializer();
 }
 
-class _$WellKnownFluxerResponsePushSerializer implements PrimitiveSerializer<WellKnownFluxerResponsePush> {
+class _$WellKnownFluxerResponsePushSerializer
+    implements PrimitiveSerializer<WellKnownFluxerResponsePush> {
   @override
-  final Iterable<Type> types = const [WellKnownFluxerResponsePush, _$WellKnownFluxerResponsePush];
+  final Iterable<Type> types = const [
+    WellKnownFluxerResponsePush,
+    _$WellKnownFluxerResponsePush
+  ];
 
   @override
   final String wireName = r'WellKnownFluxerResponsePush';
@@ -41,10 +50,12 @@ class _$WellKnownFluxerResponsePushSerializer implements PrimitiveSerializer<Wel
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     yield r'public_vapid_key';
-    yield object.publicVapidKey == null ? null : serializers.serialize(
-      object.publicVapidKey,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.publicVapidKey == null
+        ? null
+        : serializers.serialize(
+            object.publicVapidKey,
+            specifiedType: const FullType.nullable(String),
+          );
   }
 
   @override
@@ -53,7 +64,9 @@ class _$WellKnownFluxerResponsePushSerializer implements PrimitiveSerializer<Wel
     WellKnownFluxerResponsePush object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +117,3 @@ class _$WellKnownFluxerResponsePushSerializer implements PrimitiveSerializer<Wel
     return result.build();
   }
 }
-

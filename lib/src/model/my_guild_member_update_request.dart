@@ -11,21 +11,23 @@ part 'my_guild_member_update_request.g.dart';
 /// MyGuildMemberUpdateRequest
 ///
 /// Properties:
-/// * [nick] 
+/// * [nick]
 /// * [avatar] - Base64-encoded image data
 /// * [banner] - Base64-encoded image data
-/// * [bio] 
-/// * [pronouns] 
-/// * [accentColor] 
+/// * [bio]
+/// * [pronouns]
+/// * [accentColor]
 /// * [profileFlags] - Member profile flags
 /// * [mute] - Whether the member is muted in voice channels
 /// * [deaf] - Whether the member is deafened in voice channels
-/// * [communicationDisabledUntil] 
-/// * [timeoutReason] 
-/// * [channelId] 
-/// * [connectionId] 
+/// * [communicationDisabledUntil]
+/// * [timeoutReason]
+/// * [channelId]
+/// * [connectionId]
 @BuiltValue()
-abstract class MyGuildMemberUpdateRequest implements Built<MyGuildMemberUpdateRequest, MyGuildMemberUpdateRequestBuilder> {
+abstract class MyGuildMemberUpdateRequest
+    implements
+        Built<MyGuildMemberUpdateRequest, MyGuildMemberUpdateRequestBuilder> {
   @BuiltValueField(wireName: r'nick')
   String? get nick;
 
@@ -72,18 +74,25 @@ abstract class MyGuildMemberUpdateRequest implements Built<MyGuildMemberUpdateRe
 
   MyGuildMemberUpdateRequest._();
 
-  factory MyGuildMemberUpdateRequest([void updates(MyGuildMemberUpdateRequestBuilder b)]) = _$MyGuildMemberUpdateRequest;
+  factory MyGuildMemberUpdateRequest(
+          [void updates(MyGuildMemberUpdateRequestBuilder b)]) =
+      _$MyGuildMemberUpdateRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(MyGuildMemberUpdateRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<MyGuildMemberUpdateRequest> get serializer => _$MyGuildMemberUpdateRequestSerializer();
+  static Serializer<MyGuildMemberUpdateRequest> get serializer =>
+      _$MyGuildMemberUpdateRequestSerializer();
 }
 
-class _$MyGuildMemberUpdateRequestSerializer implements PrimitiveSerializer<MyGuildMemberUpdateRequest> {
+class _$MyGuildMemberUpdateRequestSerializer
+    implements PrimitiveSerializer<MyGuildMemberUpdateRequest> {
   @override
-  final Iterable<Type> types = const [MyGuildMemberUpdateRequest, _$MyGuildMemberUpdateRequest];
+  final Iterable<Type> types = const [
+    MyGuildMemberUpdateRequest,
+    _$MyGuildMemberUpdateRequest
+  ];
 
   @override
   final String wireName = r'MyGuildMemberUpdateRequest';
@@ -192,7 +201,9 @@ class _$MyGuildMemberUpdateRequestSerializer implements PrimitiveSerializer<MyGu
     MyGuildMemberUpdateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -333,4 +344,3 @@ class _$MyGuildMemberUpdateRequestSerializer implements PrimitiveSerializer<MyGu
     return result.build();
   }
 }
-

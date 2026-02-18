@@ -4,18 +4,14 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:fluxer_dart/src/model/create_checkout_session_request.dart';
-import 'package:fluxer_dart/src/model/error.dart';
-import 'package:fluxer_dart/src/model/get_well_known_fluxer429_response.dart';
 import 'package:fluxer_dart/src/model/url_response.dart';
 import 'package:fluxer_dart/src/model/webhook_received_response.dart';
 
 class BillingApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -26,7 +22,7 @@ class BillingApi {
   /// Initiates a Stripe checkout session for user subscription purchases.
   ///
   /// Parameters:
-  /// * [createCheckoutSessionRequest] 
+  /// * [createCheckoutSessionRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -36,7 +32,7 @@ class BillingApi {
   ///
   /// Returns a [Future] containing a [Response] with a [UrlResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UrlResponse>> createCheckoutSession({ 
+  Future<Response<UrlResponse>> createCheckoutSession({
     required CreateCheckoutSessionRequest createCheckoutSessionRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -58,7 +54,8 @@ class BillingApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -75,11 +72,11 @@ class BillingApi {
 
     try {
       const _type = FullType(CreateCheckoutSessionRequest);
-      _bodyData = _serializers.serialize(createCheckoutSessionRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(createCheckoutSessionRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -102,11 +99,12 @@ class BillingApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(UrlResponse),
-      ) as UrlResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(UrlResponse),
+            ) as UrlResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -133,7 +131,7 @@ class BillingApi {
   /// Creates a checkout session for purchasing premium gifts to send to other users.
   ///
   /// Parameters:
-  /// * [createCheckoutSessionRequest] 
+  /// * [createCheckoutSessionRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -143,7 +141,7 @@ class BillingApi {
   ///
   /// Returns a [Future] containing a [Response] with a [UrlResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UrlResponse>> createGiftCheckoutSession({ 
+  Future<Response<UrlResponse>> createGiftCheckoutSession({
     required CreateCheckoutSessionRequest createCheckoutSessionRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -165,7 +163,8 @@ class BillingApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -182,11 +181,11 @@ class BillingApi {
 
     try {
       const _type = FullType(CreateCheckoutSessionRequest);
-      _bodyData = _serializers.serialize(createCheckoutSessionRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(createCheckoutSessionRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -209,11 +208,12 @@ class BillingApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(UrlResponse),
-      ) as UrlResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(UrlResponse),
+            ) as UrlResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -249,7 +249,7 @@ class BillingApi {
   ///
   /// Returns a [Future] containing a [Response] with a [WebhookReceivedResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<WebhookReceivedResponse>> processStripeWebhook({ 
+  Future<Response<WebhookReceivedResponse>> processStripeWebhook({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -282,11 +282,12 @@ class BillingApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(WebhookReceivedResponse),
-      ) as WebhookReceivedResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(WebhookReceivedResponse),
+            ) as WebhookReceivedResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -308,5 +309,4 @@ class BillingApi {
       extra: _response.extra,
     );
   }
-
 }

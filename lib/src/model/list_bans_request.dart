@@ -13,23 +13,27 @@ part 'list_bans_request.g.dart';
 /// Properties:
 /// * [limit] - Maximum number of bans to return
 @BuiltValue()
-abstract class ListBansRequest implements Built<ListBansRequest, ListBansRequestBuilder> {
+abstract class ListBansRequest
+    implements Built<ListBansRequest, ListBansRequestBuilder> {
   /// Maximum number of bans to return
   @BuiltValueField(wireName: r'limit')
   int? get limit;
 
   ListBansRequest._();
 
-  factory ListBansRequest([void updates(ListBansRequestBuilder b)]) = _$ListBansRequest;
+  factory ListBansRequest([void updates(ListBansRequestBuilder b)]) =
+      _$ListBansRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ListBansRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListBansRequest> get serializer => _$ListBansRequestSerializer();
+  static Serializer<ListBansRequest> get serializer =>
+      _$ListBansRequestSerializer();
 }
 
-class _$ListBansRequestSerializer implements PrimitiveSerializer<ListBansRequest> {
+class _$ListBansRequestSerializer
+    implements PrimitiveSerializer<ListBansRequest> {
   @override
   final Iterable<Type> types = const [ListBansRequest, _$ListBansRequest];
 
@@ -56,7 +60,9 @@ class _$ListBansRequestSerializer implements PrimitiveSerializer<ListBansRequest
     ListBansRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -106,4 +112,3 @@ class _$ListBansRequestSerializer implements PrimitiveSerializer<ListBansRequest
     return result.build();
   }
 }
-

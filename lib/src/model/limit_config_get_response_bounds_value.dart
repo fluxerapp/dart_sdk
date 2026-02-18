@@ -11,10 +11,13 @@ part 'limit_config_get_response_bounds_value.g.dart';
 /// LimitConfigGetResponseBoundsValue
 ///
 /// Properties:
-/// * [min] 
-/// * [max] 
+/// * [min]
+/// * [max]
 @BuiltValue()
-abstract class LimitConfigGetResponseBoundsValue implements Built<LimitConfigGetResponseBoundsValue, LimitConfigGetResponseBoundsValueBuilder> {
+abstract class LimitConfigGetResponseBoundsValue
+    implements
+        Built<LimitConfigGetResponseBoundsValue,
+            LimitConfigGetResponseBoundsValueBuilder> {
   @BuiltValueField(wireName: r'min')
   num get min;
 
@@ -23,18 +26,25 @@ abstract class LimitConfigGetResponseBoundsValue implements Built<LimitConfigGet
 
   LimitConfigGetResponseBoundsValue._();
 
-  factory LimitConfigGetResponseBoundsValue([void updates(LimitConfigGetResponseBoundsValueBuilder b)]) = _$LimitConfigGetResponseBoundsValue;
+  factory LimitConfigGetResponseBoundsValue(
+          [void updates(LimitConfigGetResponseBoundsValueBuilder b)]) =
+      _$LimitConfigGetResponseBoundsValue;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(LimitConfigGetResponseBoundsValueBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<LimitConfigGetResponseBoundsValue> get serializer => _$LimitConfigGetResponseBoundsValueSerializer();
+  static Serializer<LimitConfigGetResponseBoundsValue> get serializer =>
+      _$LimitConfigGetResponseBoundsValueSerializer();
 }
 
-class _$LimitConfigGetResponseBoundsValueSerializer implements PrimitiveSerializer<LimitConfigGetResponseBoundsValue> {
+class _$LimitConfigGetResponseBoundsValueSerializer
+    implements PrimitiveSerializer<LimitConfigGetResponseBoundsValue> {
   @override
-  final Iterable<Type> types = const [LimitConfigGetResponseBoundsValue, _$LimitConfigGetResponseBoundsValue];
+  final Iterable<Type> types = const [
+    LimitConfigGetResponseBoundsValue,
+    _$LimitConfigGetResponseBoundsValue
+  ];
 
   @override
   final String wireName = r'LimitConfigGetResponseBoundsValue';
@@ -62,7 +72,9 @@ class _$LimitConfigGetResponseBoundsValueSerializer implements PrimitiveSerializ
     LimitConfigGetResponseBoundsValue object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -119,4 +131,3 @@ class _$LimitConfigGetResponseBoundsValueSerializer implements PrimitiveSerializ
     return result.build();
   }
 }
-

@@ -16,18 +16,21 @@ part 'guild_invite_metadata_response_guild.g.dart';
 /// * [name] - The name of the guild
 /// * [splashCardAlignment] - The alignment of the splash card
 /// * [features] - Array of guild feature flags
-/// * [icon] 
-/// * [banner] 
-/// * [bannerWidth] 
-/// * [bannerHeight] 
-/// * [splash] 
-/// * [splashWidth] 
-/// * [splashHeight] 
-/// * [embedSplash] 
-/// * [embedSplashWidth] 
-/// * [embedSplashHeight] 
+/// * [icon]
+/// * [banner]
+/// * [bannerWidth]
+/// * [bannerHeight]
+/// * [splash]
+/// * [splashWidth]
+/// * [splashHeight]
+/// * [embedSplash]
+/// * [embedSplashWidth]
+/// * [embedSplashHeight]
 @BuiltValue()
-abstract class GuildInviteMetadataResponseGuild implements Built<GuildInviteMetadataResponseGuild, GuildInviteMetadataResponseGuildBuilder> {
+abstract class GuildInviteMetadataResponseGuild
+    implements
+        Built<GuildInviteMetadataResponseGuild,
+            GuildInviteMetadataResponseGuildBuilder> {
   /// The unique identifier for this guild
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -38,7 +41,8 @@ abstract class GuildInviteMetadataResponseGuild implements Built<GuildInviteMeta
 
   /// The alignment of the splash card
   @BuiltValueField(wireName: r'splash_card_alignment')
-  GuildInviteMetadataResponseGuildSplashCardAlignmentEnum get splashCardAlignment;
+  GuildInviteMetadataResponseGuildSplashCardAlignmentEnum
+      get splashCardAlignment;
   // enum splashCardAlignmentEnum {  0,  1,  2,  };
 
   /// Array of guild feature flags
@@ -77,18 +81,25 @@ abstract class GuildInviteMetadataResponseGuild implements Built<GuildInviteMeta
 
   GuildInviteMetadataResponseGuild._();
 
-  factory GuildInviteMetadataResponseGuild([void updates(GuildInviteMetadataResponseGuildBuilder b)]) = _$GuildInviteMetadataResponseGuild;
+  factory GuildInviteMetadataResponseGuild(
+          [void updates(GuildInviteMetadataResponseGuildBuilder b)]) =
+      _$GuildInviteMetadataResponseGuild;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildInviteMetadataResponseGuildBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildInviteMetadataResponseGuild> get serializer => _$GuildInviteMetadataResponseGuildSerializer();
+  static Serializer<GuildInviteMetadataResponseGuild> get serializer =>
+      _$GuildInviteMetadataResponseGuildSerializer();
 }
 
-class _$GuildInviteMetadataResponseGuildSerializer implements PrimitiveSerializer<GuildInviteMetadataResponseGuild> {
+class _$GuildInviteMetadataResponseGuildSerializer
+    implements PrimitiveSerializer<GuildInviteMetadataResponseGuild> {
   @override
-  final Iterable<Type> types = const [GuildInviteMetadataResponseGuild, _$GuildInviteMetadataResponseGuild];
+  final Iterable<Type> types = const [
+    GuildInviteMetadataResponseGuild,
+    _$GuildInviteMetadataResponseGuild
+  ];
 
   @override
   final String wireName = r'GuildInviteMetadataResponseGuild';
@@ -111,7 +122,8 @@ class _$GuildInviteMetadataResponseGuildSerializer implements PrimitiveSerialize
     yield r'splash_card_alignment';
     yield serializers.serialize(
       object.splashCardAlignment,
-      specifiedType: const FullType(GuildInviteMetadataResponseGuildSplashCardAlignmentEnum),
+      specifiedType: const FullType(
+          GuildInviteMetadataResponseGuildSplashCardAlignmentEnum),
     );
     yield r'features';
     yield serializers.serialize(
@@ -196,7 +208,9 @@ class _$GuildInviteMetadataResponseGuildSerializer implements PrimitiveSerialize
     GuildInviteMetadataResponseGuild object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -228,7 +242,8 @@ class _$GuildInviteMetadataResponseGuildSerializer implements PrimitiveSerialize
         case r'splash_card_alignment':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(GuildInviteMetadataResponseGuildSplashCardAlignmentEnum),
+            specifiedType: const FullType(
+                GuildInviteMetadataResponseGuildSplashCardAlignmentEnum),
           ) as GuildInviteMetadataResponseGuildSplashCardAlignmentEnum;
           result.splashCardAlignment = valueDes;
           break;
@@ -342,23 +357,34 @@ class _$GuildInviteMetadataResponseGuildSerializer implements PrimitiveSerialize
   }
 }
 
-class GuildInviteMetadataResponseGuildSplashCardAlignmentEnum extends EnumClass {
-
+class GuildInviteMetadataResponseGuildSplashCardAlignmentEnum
+    extends EnumClass {
   /// The alignment of the splash card
   @BuiltValueEnumConst(wireNumber: 0)
-  static const GuildInviteMetadataResponseGuildSplashCardAlignmentEnum number0 = _$guildInviteMetadataResponseGuildSplashCardAlignmentEnum_number0;
+  static const GuildInviteMetadataResponseGuildSplashCardAlignmentEnum number0 =
+      _$guildInviteMetadataResponseGuildSplashCardAlignmentEnum_number0;
+
   /// The alignment of the splash card
   @BuiltValueEnumConst(wireNumber: 1)
-  static const GuildInviteMetadataResponseGuildSplashCardAlignmentEnum number1 = _$guildInviteMetadataResponseGuildSplashCardAlignmentEnum_number1;
+  static const GuildInviteMetadataResponseGuildSplashCardAlignmentEnum number1 =
+      _$guildInviteMetadataResponseGuildSplashCardAlignmentEnum_number1;
+
   /// The alignment of the splash card
   @BuiltValueEnumConst(wireNumber: 2)
-  static const GuildInviteMetadataResponseGuildSplashCardAlignmentEnum number2 = _$guildInviteMetadataResponseGuildSplashCardAlignmentEnum_number2;
+  static const GuildInviteMetadataResponseGuildSplashCardAlignmentEnum number2 =
+      _$guildInviteMetadataResponseGuildSplashCardAlignmentEnum_number2;
 
-  static Serializer<GuildInviteMetadataResponseGuildSplashCardAlignmentEnum> get serializer => _$guildInviteMetadataResponseGuildSplashCardAlignmentEnumSerializer;
+  static Serializer<GuildInviteMetadataResponseGuildSplashCardAlignmentEnum>
+      get serializer =>
+          _$guildInviteMetadataResponseGuildSplashCardAlignmentEnumSerializer;
 
-  const GuildInviteMetadataResponseGuildSplashCardAlignmentEnum._(String name): super(name);
+  const GuildInviteMetadataResponseGuildSplashCardAlignmentEnum._(String name)
+      : super(name);
 
-  static BuiltSet<GuildInviteMetadataResponseGuildSplashCardAlignmentEnum> get values => _$guildInviteMetadataResponseGuildSplashCardAlignmentEnumValues;
-  static GuildInviteMetadataResponseGuildSplashCardAlignmentEnum valueOf(String name) => _$guildInviteMetadataResponseGuildSplashCardAlignmentEnumValueOf(name);
+  static BuiltSet<GuildInviteMetadataResponseGuildSplashCardAlignmentEnum>
+      get values =>
+          _$guildInviteMetadataResponseGuildSplashCardAlignmentEnumValues;
+  static GuildInviteMetadataResponseGuildSplashCardAlignmentEnum valueOf(
+          String name) =>
+      _$guildInviteMetadataResponseGuildSplashCardAlignmentEnumValueOf(name);
 }
-

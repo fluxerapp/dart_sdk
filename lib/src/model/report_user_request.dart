@@ -12,12 +12,13 @@ part 'report_user_request.g.dart';
 /// ReportUserRequest
 ///
 /// Properties:
-/// * [userId] 
-/// * [category] 
+/// * [userId]
+/// * [category]
 /// * [additionalInfo] - Additional context or details about the report
-/// * [guildId] 
+/// * [guildId]
 @BuiltValue()
-abstract class ReportUserRequest implements Built<ReportUserRequest, ReportUserRequestBuilder> {
+abstract class ReportUserRequest
+    implements Built<ReportUserRequest, ReportUserRequestBuilder> {
   @BuiltValueField(wireName: r'user_id')
   String get userId;
 
@@ -34,16 +35,19 @@ abstract class ReportUserRequest implements Built<ReportUserRequest, ReportUserR
 
   ReportUserRequest._();
 
-  factory ReportUserRequest([void updates(ReportUserRequestBuilder b)]) = _$ReportUserRequest;
+  factory ReportUserRequest([void updates(ReportUserRequestBuilder b)]) =
+      _$ReportUserRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ReportUserRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ReportUserRequest> get serializer => _$ReportUserRequestSerializer();
+  static Serializer<ReportUserRequest> get serializer =>
+      _$ReportUserRequestSerializer();
 }
 
-class _$ReportUserRequestSerializer implements PrimitiveSerializer<ReportUserRequest> {
+class _$ReportUserRequestSerializer
+    implements PrimitiveSerializer<ReportUserRequest> {
   @override
   final Iterable<Type> types = const [ReportUserRequest, _$ReportUserRequest];
 
@@ -87,7 +91,9 @@ class _$ReportUserRequestSerializer implements PrimitiveSerializer<ReportUserReq
     ReportUserRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -158,4 +164,3 @@ class _$ReportUserRequestSerializer implements PrimitiveSerializer<ReportUserReq
     return result.build();
   }
 }
-

@@ -11,26 +11,35 @@ part 'trigger_user_archive_request.g.dart';
 /// TriggerUserArchiveRequest
 ///
 /// Properties:
-/// * [userId] 
+/// * [userId]
 @BuiltValue()
-abstract class TriggerUserArchiveRequest implements Built<TriggerUserArchiveRequest, TriggerUserArchiveRequestBuilder> {
+abstract class TriggerUserArchiveRequest
+    implements
+        Built<TriggerUserArchiveRequest, TriggerUserArchiveRequestBuilder> {
   @BuiltValueField(wireName: r'user_id')
   String get userId;
 
   TriggerUserArchiveRequest._();
 
-  factory TriggerUserArchiveRequest([void updates(TriggerUserArchiveRequestBuilder b)]) = _$TriggerUserArchiveRequest;
+  factory TriggerUserArchiveRequest(
+          [void updates(TriggerUserArchiveRequestBuilder b)]) =
+      _$TriggerUserArchiveRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(TriggerUserArchiveRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<TriggerUserArchiveRequest> get serializer => _$TriggerUserArchiveRequestSerializer();
+  static Serializer<TriggerUserArchiveRequest> get serializer =>
+      _$TriggerUserArchiveRequestSerializer();
 }
 
-class _$TriggerUserArchiveRequestSerializer implements PrimitiveSerializer<TriggerUserArchiveRequest> {
+class _$TriggerUserArchiveRequestSerializer
+    implements PrimitiveSerializer<TriggerUserArchiveRequest> {
   @override
-  final Iterable<Type> types = const [TriggerUserArchiveRequest, _$TriggerUserArchiveRequest];
+  final Iterable<Type> types = const [
+    TriggerUserArchiveRequest,
+    _$TriggerUserArchiveRequest
+  ];
 
   @override
   final String wireName = r'TriggerUserArchiveRequest';
@@ -53,7 +62,9 @@ class _$TriggerUserArchiveRequestSerializer implements PrimitiveSerializer<Trigg
     TriggerUserArchiveRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,4 +114,3 @@ class _$TriggerUserArchiveRequestSerializer implements PrimitiveSerializer<Trigg
     return result.build();
   }
 }
-

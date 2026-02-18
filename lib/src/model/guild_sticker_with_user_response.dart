@@ -18,9 +18,12 @@ part 'guild_sticker_with_user_response.g.dart';
 /// * [description] - The description of the sticker
 /// * [tags] - Autocomplete/suggestion tags for the sticker
 /// * [animated] - Whether this sticker is animated
-/// * [user] 
+/// * [user]
 @BuiltValue()
-abstract class GuildStickerWithUserResponse implements Built<GuildStickerWithUserResponse, GuildStickerWithUserResponseBuilder> {
+abstract class GuildStickerWithUserResponse
+    implements
+        Built<GuildStickerWithUserResponse,
+            GuildStickerWithUserResponseBuilder> {
   /// The unique identifier for this sticker
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -46,18 +49,25 @@ abstract class GuildStickerWithUserResponse implements Built<GuildStickerWithUse
 
   GuildStickerWithUserResponse._();
 
-  factory GuildStickerWithUserResponse([void updates(GuildStickerWithUserResponseBuilder b)]) = _$GuildStickerWithUserResponse;
+  factory GuildStickerWithUserResponse(
+          [void updates(GuildStickerWithUserResponseBuilder b)]) =
+      _$GuildStickerWithUserResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildStickerWithUserResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildStickerWithUserResponse> get serializer => _$GuildStickerWithUserResponseSerializer();
+  static Serializer<GuildStickerWithUserResponse> get serializer =>
+      _$GuildStickerWithUserResponseSerializer();
 }
 
-class _$GuildStickerWithUserResponseSerializer implements PrimitiveSerializer<GuildStickerWithUserResponse> {
+class _$GuildStickerWithUserResponseSerializer
+    implements PrimitiveSerializer<GuildStickerWithUserResponse> {
   @override
-  final Iterable<Type> types = const [GuildStickerWithUserResponse, _$GuildStickerWithUserResponse];
+  final Iterable<Type> types = const [
+    GuildStickerWithUserResponse,
+    _$GuildStickerWithUserResponse
+  ];
 
   @override
   final String wireName = r'GuildStickerWithUserResponse';
@@ -105,7 +115,9 @@ class _$GuildStickerWithUserResponseSerializer implements PrimitiveSerializer<Gu
     GuildStickerWithUserResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -190,4 +202,3 @@ class _$GuildStickerWithUserResponseSerializer implements PrimitiveSerializer<Gu
     return result.build();
   }
 }
-

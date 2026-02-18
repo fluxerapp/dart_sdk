@@ -12,11 +12,12 @@ part 'list_reports_request.g.dart';
 /// ListReportsRequest
 ///
 /// Properties:
-/// * [status] 
+/// * [status]
 /// * [limit] - Maximum number of reports to return
 /// * [offset] - Number of reports to skip
 @BuiltValue()
-abstract class ListReportsRequest implements Built<ListReportsRequest, ListReportsRequestBuilder> {
+abstract class ListReportsRequest
+    implements Built<ListReportsRequest, ListReportsRequestBuilder> {
   @BuiltValueField(wireName: r'status')
   ReportStatus? get status;
   // enum statusEnum {  0,  1,  };
@@ -31,16 +32,19 @@ abstract class ListReportsRequest implements Built<ListReportsRequest, ListRepor
 
   ListReportsRequest._();
 
-  factory ListReportsRequest([void updates(ListReportsRequestBuilder b)]) = _$ListReportsRequest;
+  factory ListReportsRequest([void updates(ListReportsRequestBuilder b)]) =
+      _$ListReportsRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ListReportsRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListReportsRequest> get serializer => _$ListReportsRequestSerializer();
+  static Serializer<ListReportsRequest> get serializer =>
+      _$ListReportsRequestSerializer();
 }
 
-class _$ListReportsRequestSerializer implements PrimitiveSerializer<ListReportsRequest> {
+class _$ListReportsRequestSerializer
+    implements PrimitiveSerializer<ListReportsRequest> {
   @override
   final Iterable<Type> types = const [ListReportsRequest, _$ListReportsRequest];
 
@@ -81,7 +85,9 @@ class _$ListReportsRequestSerializer implements PrimitiveSerializer<ListReportsR
     ListReportsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -145,4 +151,3 @@ class _$ListReportsRequestSerializer implements PrimitiveSerializer<ListReportsR
     return result.build();
   }
 }
-

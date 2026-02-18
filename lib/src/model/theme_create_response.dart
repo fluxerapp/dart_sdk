@@ -13,25 +13,32 @@ part 'theme_create_response.g.dart';
 /// Properties:
 /// * [id] - The unique identifier for the created theme
 @BuiltValue()
-abstract class ThemeCreateResponse implements Built<ThemeCreateResponse, ThemeCreateResponseBuilder> {
+abstract class ThemeCreateResponse
+    implements Built<ThemeCreateResponse, ThemeCreateResponseBuilder> {
   /// The unique identifier for the created theme
   @BuiltValueField(wireName: r'id')
   String get id;
 
   ThemeCreateResponse._();
 
-  factory ThemeCreateResponse([void updates(ThemeCreateResponseBuilder b)]) = _$ThemeCreateResponse;
+  factory ThemeCreateResponse([void updates(ThemeCreateResponseBuilder b)]) =
+      _$ThemeCreateResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ThemeCreateResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ThemeCreateResponse> get serializer => _$ThemeCreateResponseSerializer();
+  static Serializer<ThemeCreateResponse> get serializer =>
+      _$ThemeCreateResponseSerializer();
 }
 
-class _$ThemeCreateResponseSerializer implements PrimitiveSerializer<ThemeCreateResponse> {
+class _$ThemeCreateResponseSerializer
+    implements PrimitiveSerializer<ThemeCreateResponse> {
   @override
-  final Iterable<Type> types = const [ThemeCreateResponse, _$ThemeCreateResponse];
+  final Iterable<Type> types = const [
+    ThemeCreateResponse,
+    _$ThemeCreateResponse
+  ];
 
   @override
   final String wireName = r'ThemeCreateResponse';
@@ -54,7 +61,9 @@ class _$ThemeCreateResponseSerializer implements PrimitiveSerializer<ThemeCreate
     ThemeCreateResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +113,3 @@ class _$ThemeCreateResponseSerializer implements PrimitiveSerializer<ThemeCreate
     return result.build();
   }
 }
-

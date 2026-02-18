@@ -18,7 +18,10 @@ part 'well_known_fluxer_response_limits.g.dart';
 /// * [rules] - Array of limit rules to evaluate
 /// * [defaultsHash] - Hash of the default limit values for cache invalidation
 @BuiltValue()
-abstract class WellKnownFluxerResponseLimits implements Built<WellKnownFluxerResponseLimits, WellKnownFluxerResponseLimitsBuilder> {
+abstract class WellKnownFluxerResponseLimits
+    implements
+        Built<WellKnownFluxerResponseLimits,
+            WellKnownFluxerResponseLimitsBuilder> {
   /// Wire format version
   @BuiltValueField(wireName: r'version')
   WellKnownFluxerResponseLimitsVersionEnum get version;
@@ -38,18 +41,25 @@ abstract class WellKnownFluxerResponseLimits implements Built<WellKnownFluxerRes
 
   WellKnownFluxerResponseLimits._();
 
-  factory WellKnownFluxerResponseLimits([void updates(WellKnownFluxerResponseLimitsBuilder b)]) = _$WellKnownFluxerResponseLimits;
+  factory WellKnownFluxerResponseLimits(
+          [void updates(WellKnownFluxerResponseLimitsBuilder b)]) =
+      _$WellKnownFluxerResponseLimits;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(WellKnownFluxerResponseLimitsBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<WellKnownFluxerResponseLimits> get serializer => _$WellKnownFluxerResponseLimitsSerializer();
+  static Serializer<WellKnownFluxerResponseLimits> get serializer =>
+      _$WellKnownFluxerResponseLimitsSerializer();
 }
 
-class _$WellKnownFluxerResponseLimitsSerializer implements PrimitiveSerializer<WellKnownFluxerResponseLimits> {
+class _$WellKnownFluxerResponseLimitsSerializer
+    implements PrimitiveSerializer<WellKnownFluxerResponseLimits> {
   @override
-  final Iterable<Type> types = const [WellKnownFluxerResponseLimits, _$WellKnownFluxerResponseLimits];
+  final Iterable<Type> types = const [
+    WellKnownFluxerResponseLimits,
+    _$WellKnownFluxerResponseLimits
+  ];
 
   @override
   final String wireName = r'WellKnownFluxerResponseLimits';
@@ -87,7 +97,9 @@ class _$WellKnownFluxerResponseLimitsSerializer implements PrimitiveSerializer<W
     WellKnownFluxerResponseLimits object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -105,7 +117,8 @@ class _$WellKnownFluxerResponseLimitsSerializer implements PrimitiveSerializer<W
         case r'version':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(WellKnownFluxerResponseLimitsVersionEnum),
+            specifiedType:
+                const FullType(WellKnownFluxerResponseLimitsVersionEnum),
           ) as WellKnownFluxerResponseLimitsVersionEnum;
           result.version = valueDes;
           break;
@@ -119,7 +132,8 @@ class _$WellKnownFluxerResponseLimitsSerializer implements PrimitiveSerializer<W
         case r'rules':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(LimitRuleResponse)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(LimitRuleResponse)]),
           ) as BuiltList<LimitRuleResponse>;
           result.rules.replace(valueDes);
           break;
@@ -160,16 +174,18 @@ class _$WellKnownFluxerResponseLimitsSerializer implements PrimitiveSerializer<W
 }
 
 class WellKnownFluxerResponseLimitsVersionEnum extends EnumClass {
-
   /// Wire format version
   @BuiltValueEnumConst(wireNumber: 2)
-  static const WellKnownFluxerResponseLimitsVersionEnum number2 = _$wellKnownFluxerResponseLimitsVersionEnum_number2;
+  static const WellKnownFluxerResponseLimitsVersionEnum number2 =
+      _$wellKnownFluxerResponseLimitsVersionEnum_number2;
 
-  static Serializer<WellKnownFluxerResponseLimitsVersionEnum> get serializer => _$wellKnownFluxerResponseLimitsVersionEnumSerializer;
+  static Serializer<WellKnownFluxerResponseLimitsVersionEnum> get serializer =>
+      _$wellKnownFluxerResponseLimitsVersionEnumSerializer;
 
-  const WellKnownFluxerResponseLimitsVersionEnum._(String name): super(name);
+  const WellKnownFluxerResponseLimitsVersionEnum._(String name) : super(name);
 
-  static BuiltSet<WellKnownFluxerResponseLimitsVersionEnum> get values => _$wellKnownFluxerResponseLimitsVersionEnumValues;
-  static WellKnownFluxerResponseLimitsVersionEnum valueOf(String name) => _$wellKnownFluxerResponseLimitsVersionEnumValueOf(name);
+  static BuiltSet<WellKnownFluxerResponseLimitsVersionEnum> get values =>
+      _$wellKnownFluxerResponseLimitsVersionEnumValues;
+  static WellKnownFluxerResponseLimitsVersionEnum valueOf(String name) =>
+      _$wellKnownFluxerResponseLimitsVersionEnumValueOf(name);
 }
-

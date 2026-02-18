@@ -13,10 +13,12 @@ part 'klipy_register_share_request.g.dart';
 ///
 /// Properties:
 /// * [id] - The Klipy clip slug
-/// * [q] 
-/// * [locale] 
+/// * [q]
+/// * [locale]
 @BuiltValue()
-abstract class KlipyRegisterShareRequest implements Built<KlipyRegisterShareRequest, KlipyRegisterShareRequestBuilder> {
+abstract class KlipyRegisterShareRequest
+    implements
+        Built<KlipyRegisterShareRequest, KlipyRegisterShareRequestBuilder> {
   /// The Klipy clip slug
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -30,18 +32,25 @@ abstract class KlipyRegisterShareRequest implements Built<KlipyRegisterShareRequ
 
   KlipyRegisterShareRequest._();
 
-  factory KlipyRegisterShareRequest([void updates(KlipyRegisterShareRequestBuilder b)]) = _$KlipyRegisterShareRequest;
+  factory KlipyRegisterShareRequest(
+          [void updates(KlipyRegisterShareRequestBuilder b)]) =
+      _$KlipyRegisterShareRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(KlipyRegisterShareRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<KlipyRegisterShareRequest> get serializer => _$KlipyRegisterShareRequestSerializer();
+  static Serializer<KlipyRegisterShareRequest> get serializer =>
+      _$KlipyRegisterShareRequestSerializer();
 }
 
-class _$KlipyRegisterShareRequestSerializer implements PrimitiveSerializer<KlipyRegisterShareRequest> {
+class _$KlipyRegisterShareRequestSerializer
+    implements PrimitiveSerializer<KlipyRegisterShareRequest> {
   @override
-  final Iterable<Type> types = const [KlipyRegisterShareRequest, _$KlipyRegisterShareRequest];
+  final Iterable<Type> types = const [
+    KlipyRegisterShareRequest,
+    _$KlipyRegisterShareRequest
+  ];
 
   @override
   final String wireName = r'KlipyRegisterShareRequest';
@@ -78,7 +87,9 @@ class _$KlipyRegisterShareRequestSerializer implements PrimitiveSerializer<Klipy
     KlipyRegisterShareRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -143,4 +154,3 @@ class _$KlipyRegisterShareRequestSerializer implements PrimitiveSerializer<Klipy
     return result.build();
   }
 }
-

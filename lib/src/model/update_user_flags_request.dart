@@ -12,11 +12,12 @@ part 'update_user_flags_request.g.dart';
 /// UpdateUserFlagsRequest
 ///
 /// Properties:
-/// * [userId] 
+/// * [userId]
 /// * [addFlags] - User flags to add
 /// * [removeFlags] - User flags to remove
 @BuiltValue()
-abstract class UpdateUserFlagsRequest implements Built<UpdateUserFlagsRequest, UpdateUserFlagsRequestBuilder> {
+abstract class UpdateUserFlagsRequest
+    implements Built<UpdateUserFlagsRequest, UpdateUserFlagsRequestBuilder> {
   @BuiltValueField(wireName: r'user_id')
   String get userId;
 
@@ -30,18 +31,25 @@ abstract class UpdateUserFlagsRequest implements Built<UpdateUserFlagsRequest, U
 
   UpdateUserFlagsRequest._();
 
-  factory UpdateUserFlagsRequest([void updates(UpdateUserFlagsRequestBuilder b)]) = _$UpdateUserFlagsRequest;
+  factory UpdateUserFlagsRequest(
+          [void updates(UpdateUserFlagsRequestBuilder b)]) =
+      _$UpdateUserFlagsRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UpdateUserFlagsRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UpdateUserFlagsRequest> get serializer => _$UpdateUserFlagsRequestSerializer();
+  static Serializer<UpdateUserFlagsRequest> get serializer =>
+      _$UpdateUserFlagsRequestSerializer();
 }
 
-class _$UpdateUserFlagsRequestSerializer implements PrimitiveSerializer<UpdateUserFlagsRequest> {
+class _$UpdateUserFlagsRequestSerializer
+    implements PrimitiveSerializer<UpdateUserFlagsRequest> {
   @override
-  final Iterable<Type> types = const [UpdateUserFlagsRequest, _$UpdateUserFlagsRequest];
+  final Iterable<Type> types = const [
+    UpdateUserFlagsRequest,
+    _$UpdateUserFlagsRequest
+  ];
 
   @override
   final String wireName = r'UpdateUserFlagsRequest';
@@ -78,7 +86,9 @@ class _$UpdateUserFlagsRequestSerializer implements PrimitiveSerializer<UpdateUs
     UpdateUserFlagsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -142,4 +152,3 @@ class _$UpdateUserFlagsRequestSerializer implements PrimitiveSerializer<UpdateUs
     return result.build();
   }
 }
-

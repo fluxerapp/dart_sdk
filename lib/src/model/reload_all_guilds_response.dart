@@ -11,26 +11,34 @@ part 'reload_all_guilds_response.g.dart';
 /// ReloadAllGuildsResponse
 ///
 /// Properties:
-/// * [count] 
+/// * [count]
 @BuiltValue()
-abstract class ReloadAllGuildsResponse implements Built<ReloadAllGuildsResponse, ReloadAllGuildsResponseBuilder> {
+abstract class ReloadAllGuildsResponse
+    implements Built<ReloadAllGuildsResponse, ReloadAllGuildsResponseBuilder> {
   @BuiltValueField(wireName: r'count')
   int get count;
 
   ReloadAllGuildsResponse._();
 
-  factory ReloadAllGuildsResponse([void updates(ReloadAllGuildsResponseBuilder b)]) = _$ReloadAllGuildsResponse;
+  factory ReloadAllGuildsResponse(
+          [void updates(ReloadAllGuildsResponseBuilder b)]) =
+      _$ReloadAllGuildsResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ReloadAllGuildsResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ReloadAllGuildsResponse> get serializer => _$ReloadAllGuildsResponseSerializer();
+  static Serializer<ReloadAllGuildsResponse> get serializer =>
+      _$ReloadAllGuildsResponseSerializer();
 }
 
-class _$ReloadAllGuildsResponseSerializer implements PrimitiveSerializer<ReloadAllGuildsResponse> {
+class _$ReloadAllGuildsResponseSerializer
+    implements PrimitiveSerializer<ReloadAllGuildsResponse> {
   @override
-  final Iterable<Type> types = const [ReloadAllGuildsResponse, _$ReloadAllGuildsResponse];
+  final Iterable<Type> types = const [
+    ReloadAllGuildsResponse,
+    _$ReloadAllGuildsResponse
+  ];
 
   @override
   final String wireName = r'ReloadAllGuildsResponse';
@@ -53,7 +61,9 @@ class _$ReloadAllGuildsResponseSerializer implements PrimitiveSerializer<ReloadA
     ReloadAllGuildsResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,4 +113,3 @@ class _$ReloadAllGuildsResponseSerializer implements PrimitiveSerializer<ReloadA
     return result.build();
   }
 }
-

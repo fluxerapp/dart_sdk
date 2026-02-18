@@ -12,10 +12,11 @@ part 'guild_ban_create_request.g.dart';
 ///
 /// Properties:
 /// * [deleteMessageDays] - Number of days of messages to delete from the banned user (0-7)
-/// * [reason] 
+/// * [reason]
 /// * [banDurationSeconds] - Duration of the ban in seconds (0 for permanent, or a valid temporary duration)
 @BuiltValue()
-abstract class GuildBanCreateRequest implements Built<GuildBanCreateRequest, GuildBanCreateRequestBuilder> {
+abstract class GuildBanCreateRequest
+    implements Built<GuildBanCreateRequest, GuildBanCreateRequestBuilder> {
   /// Number of days of messages to delete from the banned user (0-7)
   @BuiltValueField(wireName: r'delete_message_days')
   int? get deleteMessageDays;
@@ -29,18 +30,24 @@ abstract class GuildBanCreateRequest implements Built<GuildBanCreateRequest, Gui
 
   GuildBanCreateRequest._();
 
-  factory GuildBanCreateRequest([void updates(GuildBanCreateRequestBuilder b)]) = _$GuildBanCreateRequest;
+  factory GuildBanCreateRequest(
+      [void updates(GuildBanCreateRequestBuilder b)]) = _$GuildBanCreateRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildBanCreateRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildBanCreateRequest> get serializer => _$GuildBanCreateRequestSerializer();
+  static Serializer<GuildBanCreateRequest> get serializer =>
+      _$GuildBanCreateRequestSerializer();
 }
 
-class _$GuildBanCreateRequestSerializer implements PrimitiveSerializer<GuildBanCreateRequest> {
+class _$GuildBanCreateRequestSerializer
+    implements PrimitiveSerializer<GuildBanCreateRequest> {
   @override
-  final Iterable<Type> types = const [GuildBanCreateRequest, _$GuildBanCreateRequest];
+  final Iterable<Type> types = const [
+    GuildBanCreateRequest,
+    _$GuildBanCreateRequest
+  ];
 
   @override
   final String wireName = r'GuildBanCreateRequest';
@@ -79,7 +86,9 @@ class _$GuildBanCreateRequestSerializer implements PrimitiveSerializer<GuildBanC
     GuildBanCreateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -144,4 +153,3 @@ class _$GuildBanCreateRequestSerializer implements PrimitiveSerializer<GuildBanC
     return result.build();
   }
 }
-

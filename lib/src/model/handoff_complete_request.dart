@@ -15,7 +15,8 @@ part 'handoff_complete_request.g.dart';
 /// * [token] - The authentication token to transfer
 /// * [userId] - The user ID associated with the token
 @BuiltValue()
-abstract class HandoffCompleteRequest implements Built<HandoffCompleteRequest, HandoffCompleteRequestBuilder> {
+abstract class HandoffCompleteRequest
+    implements Built<HandoffCompleteRequest, HandoffCompleteRequestBuilder> {
   /// The handoff code from the initiating session
   @BuiltValueField(wireName: r'code')
   String get code;
@@ -30,18 +31,25 @@ abstract class HandoffCompleteRequest implements Built<HandoffCompleteRequest, H
 
   HandoffCompleteRequest._();
 
-  factory HandoffCompleteRequest([void updates(HandoffCompleteRequestBuilder b)]) = _$HandoffCompleteRequest;
+  factory HandoffCompleteRequest(
+          [void updates(HandoffCompleteRequestBuilder b)]) =
+      _$HandoffCompleteRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(HandoffCompleteRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<HandoffCompleteRequest> get serializer => _$HandoffCompleteRequestSerializer();
+  static Serializer<HandoffCompleteRequest> get serializer =>
+      _$HandoffCompleteRequestSerializer();
 }
 
-class _$HandoffCompleteRequestSerializer implements PrimitiveSerializer<HandoffCompleteRequest> {
+class _$HandoffCompleteRequestSerializer
+    implements PrimitiveSerializer<HandoffCompleteRequest> {
   @override
-  final Iterable<Type> types = const [HandoffCompleteRequest, _$HandoffCompleteRequest];
+  final Iterable<Type> types = const [
+    HandoffCompleteRequest,
+    _$HandoffCompleteRequest
+  ];
 
   @override
   final String wireName = r'HandoffCompleteRequest';
@@ -74,7 +82,9 @@ class _$HandoffCompleteRequestSerializer implements PrimitiveSerializer<HandoffC
     HandoffCompleteRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -138,4 +148,3 @@ class _$HandoffCompleteRequestSerializer implements PrimitiveSerializer<HandoffC
     return result.build();
   }
 }
-

@@ -11,12 +11,14 @@ part 'list_user_dm_channels_request.g.dart';
 /// ListUserDmChannelsRequest
 ///
 /// Properties:
-/// * [userId] 
-/// * [before] 
-/// * [after] 
+/// * [userId]
+/// * [before]
+/// * [after]
 /// * [limit] - Maximum number of DM channels to return
 @BuiltValue()
-abstract class ListUserDmChannelsRequest implements Built<ListUserDmChannelsRequest, ListUserDmChannelsRequestBuilder> {
+abstract class ListUserDmChannelsRequest
+    implements
+        Built<ListUserDmChannelsRequest, ListUserDmChannelsRequestBuilder> {
   @BuiltValueField(wireName: r'user_id')
   String get userId;
 
@@ -32,18 +34,25 @@ abstract class ListUserDmChannelsRequest implements Built<ListUserDmChannelsRequ
 
   ListUserDmChannelsRequest._();
 
-  factory ListUserDmChannelsRequest([void updates(ListUserDmChannelsRequestBuilder b)]) = _$ListUserDmChannelsRequest;
+  factory ListUserDmChannelsRequest(
+          [void updates(ListUserDmChannelsRequestBuilder b)]) =
+      _$ListUserDmChannelsRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ListUserDmChannelsRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListUserDmChannelsRequest> get serializer => _$ListUserDmChannelsRequestSerializer();
+  static Serializer<ListUserDmChannelsRequest> get serializer =>
+      _$ListUserDmChannelsRequestSerializer();
 }
 
-class _$ListUserDmChannelsRequestSerializer implements PrimitiveSerializer<ListUserDmChannelsRequest> {
+class _$ListUserDmChannelsRequestSerializer
+    implements PrimitiveSerializer<ListUserDmChannelsRequest> {
   @override
-  final Iterable<Type> types = const [ListUserDmChannelsRequest, _$ListUserDmChannelsRequest];
+  final Iterable<Type> types = const [
+    ListUserDmChannelsRequest,
+    _$ListUserDmChannelsRequest
+  ];
 
   @override
   final String wireName = r'ListUserDmChannelsRequest';
@@ -87,7 +96,9 @@ class _$ListUserDmChannelsRequestSerializer implements PrimitiveSerializer<ListU
     ListUserDmChannelsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -158,4 +169,3 @@ class _$ListUserDmChannelsRequestSerializer implements PrimitiveSerializer<ListU
     return result.build();
   }
 }
-

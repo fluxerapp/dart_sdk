@@ -11,11 +11,12 @@ part 'change_username_request.g.dart';
 /// ChangeUsernameRequest
 ///
 /// Properties:
-/// * [userId] 
-/// * [username] 
-/// * [discriminator] 
+/// * [userId]
+/// * [username]
+/// * [discriminator]
 @BuiltValue()
-abstract class ChangeUsernameRequest implements Built<ChangeUsernameRequest, ChangeUsernameRequestBuilder> {
+abstract class ChangeUsernameRequest
+    implements Built<ChangeUsernameRequest, ChangeUsernameRequestBuilder> {
   @BuiltValueField(wireName: r'user_id')
   String get userId;
 
@@ -27,18 +28,24 @@ abstract class ChangeUsernameRequest implements Built<ChangeUsernameRequest, Cha
 
   ChangeUsernameRequest._();
 
-  factory ChangeUsernameRequest([void updates(ChangeUsernameRequestBuilder b)]) = _$ChangeUsernameRequest;
+  factory ChangeUsernameRequest(
+      [void updates(ChangeUsernameRequestBuilder b)]) = _$ChangeUsernameRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ChangeUsernameRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ChangeUsernameRequest> get serializer => _$ChangeUsernameRequestSerializer();
+  static Serializer<ChangeUsernameRequest> get serializer =>
+      _$ChangeUsernameRequestSerializer();
 }
 
-class _$ChangeUsernameRequestSerializer implements PrimitiveSerializer<ChangeUsernameRequest> {
+class _$ChangeUsernameRequestSerializer
+    implements PrimitiveSerializer<ChangeUsernameRequest> {
   @override
-  final Iterable<Type> types = const [ChangeUsernameRequest, _$ChangeUsernameRequest];
+  final Iterable<Type> types = const [
+    ChangeUsernameRequest,
+    _$ChangeUsernameRequest
+  ];
 
   @override
   final String wireName = r'ChangeUsernameRequest';
@@ -73,7 +80,9 @@ class _$ChangeUsernameRequestSerializer implements PrimitiveSerializer<ChangeUse
     ChangeUsernameRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -137,4 +146,3 @@ class _$ChangeUsernameRequestSerializer implements PrimitiveSerializer<ChangeUse
     return result.build();
   }
 }
-

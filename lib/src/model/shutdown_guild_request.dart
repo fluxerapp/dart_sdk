@@ -11,26 +11,33 @@ part 'shutdown_guild_request.g.dart';
 /// ShutdownGuildRequest
 ///
 /// Properties:
-/// * [guildId] 
+/// * [guildId]
 @BuiltValue()
-abstract class ShutdownGuildRequest implements Built<ShutdownGuildRequest, ShutdownGuildRequestBuilder> {
+abstract class ShutdownGuildRequest
+    implements Built<ShutdownGuildRequest, ShutdownGuildRequestBuilder> {
   @BuiltValueField(wireName: r'guild_id')
   String get guildId;
 
   ShutdownGuildRequest._();
 
-  factory ShutdownGuildRequest([void updates(ShutdownGuildRequestBuilder b)]) = _$ShutdownGuildRequest;
+  factory ShutdownGuildRequest([void updates(ShutdownGuildRequestBuilder b)]) =
+      _$ShutdownGuildRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ShutdownGuildRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ShutdownGuildRequest> get serializer => _$ShutdownGuildRequestSerializer();
+  static Serializer<ShutdownGuildRequest> get serializer =>
+      _$ShutdownGuildRequestSerializer();
 }
 
-class _$ShutdownGuildRequestSerializer implements PrimitiveSerializer<ShutdownGuildRequest> {
+class _$ShutdownGuildRequestSerializer
+    implements PrimitiveSerializer<ShutdownGuildRequest> {
   @override
-  final Iterable<Type> types = const [ShutdownGuildRequest, _$ShutdownGuildRequest];
+  final Iterable<Type> types = const [
+    ShutdownGuildRequest,
+    _$ShutdownGuildRequest
+  ];
 
   @override
   final String wireName = r'ShutdownGuildRequest';
@@ -53,7 +60,9 @@ class _$ShutdownGuildRequestSerializer implements PrimitiveSerializer<ShutdownGu
     ShutdownGuildRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,4 +112,3 @@ class _$ShutdownGuildRequestSerializer implements PrimitiveSerializer<ShutdownGu
     return result.build();
   }
 }
-

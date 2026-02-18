@@ -16,7 +16,9 @@ part 'create_admin_api_key_request.g.dart';
 /// * [acls] - List of access control permissions for the key
 /// * [expiresInDays] - Number of days until the key expires
 @BuiltValue()
-abstract class CreateAdminApiKeyRequest implements Built<CreateAdminApiKeyRequest, CreateAdminApiKeyRequestBuilder> {
+abstract class CreateAdminApiKeyRequest
+    implements
+        Built<CreateAdminApiKeyRequest, CreateAdminApiKeyRequestBuilder> {
   /// Display name for the API key
   @BuiltValueField(wireName: r'name')
   String get name;
@@ -31,18 +33,25 @@ abstract class CreateAdminApiKeyRequest implements Built<CreateAdminApiKeyReques
 
   CreateAdminApiKeyRequest._();
 
-  factory CreateAdminApiKeyRequest([void updates(CreateAdminApiKeyRequestBuilder b)]) = _$CreateAdminApiKeyRequest;
+  factory CreateAdminApiKeyRequest(
+          [void updates(CreateAdminApiKeyRequestBuilder b)]) =
+      _$CreateAdminApiKeyRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CreateAdminApiKeyRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CreateAdminApiKeyRequest> get serializer => _$CreateAdminApiKeyRequestSerializer();
+  static Serializer<CreateAdminApiKeyRequest> get serializer =>
+      _$CreateAdminApiKeyRequestSerializer();
 }
 
-class _$CreateAdminApiKeyRequestSerializer implements PrimitiveSerializer<CreateAdminApiKeyRequest> {
+class _$CreateAdminApiKeyRequestSerializer
+    implements PrimitiveSerializer<CreateAdminApiKeyRequest> {
   @override
-  final Iterable<Type> types = const [CreateAdminApiKeyRequest, _$CreateAdminApiKeyRequest];
+  final Iterable<Type> types = const [
+    CreateAdminApiKeyRequest,
+    _$CreateAdminApiKeyRequest
+  ];
 
   @override
   final String wireName = r'CreateAdminApiKeyRequest';
@@ -77,7 +86,9 @@ class _$CreateAdminApiKeyRequestSerializer implements PrimitiveSerializer<Create
     CreateAdminApiKeyRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -141,4 +152,3 @@ class _$CreateAdminApiKeyRequestSerializer implements PrimitiveSerializer<Create
     return result.build();
   }
 }
-

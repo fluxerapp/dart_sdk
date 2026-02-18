@@ -14,13 +14,14 @@ part 'disable_totp_request.g.dart';
 ///
 /// Properties:
 /// * [code] - The TOTP code to verify
-/// * [password] 
+/// * [password]
 /// * [mfaMethod] - MFA method to use for verification
 /// * [mfaCode] - MFA verification code from authenticator app or SMS
 /// * [webauthnResponse] - WebAuthn authentication response
 /// * [webauthnChallenge] - WebAuthn challenge string
 @BuiltValue()
-abstract class DisableTotpRequest implements Built<DisableTotpRequest, DisableTotpRequestBuilder> {
+abstract class DisableTotpRequest
+    implements Built<DisableTotpRequest, DisableTotpRequestBuilder> {
   /// The TOTP code to verify
   @BuiltValueField(wireName: r'code')
   String get code;
@@ -47,16 +48,19 @@ abstract class DisableTotpRequest implements Built<DisableTotpRequest, DisableTo
 
   DisableTotpRequest._();
 
-  factory DisableTotpRequest([void updates(DisableTotpRequestBuilder b)]) = _$DisableTotpRequest;
+  factory DisableTotpRequest([void updates(DisableTotpRequestBuilder b)]) =
+      _$DisableTotpRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(DisableTotpRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<DisableTotpRequest> get serializer => _$DisableTotpRequestSerializer();
+  static Serializer<DisableTotpRequest> get serializer =>
+      _$DisableTotpRequestSerializer();
 }
 
-class _$DisableTotpRequestSerializer implements PrimitiveSerializer<DisableTotpRequest> {
+class _$DisableTotpRequestSerializer
+    implements PrimitiveSerializer<DisableTotpRequest> {
   @override
   final Iterable<Type> types = const [DisableTotpRequest, _$DisableTotpRequest];
 
@@ -116,7 +120,9 @@ class _$DisableTotpRequestSerializer implements PrimitiveSerializer<DisableTotpR
     DisableTotpRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -203,22 +209,28 @@ class _$DisableTotpRequestSerializer implements PrimitiveSerializer<DisableTotpR
 }
 
 class DisableTotpRequestMfaMethodEnum extends EnumClass {
-
   /// MFA method to use for verification
   @BuiltValueEnumConst(wireName: r'totp')
-  static const DisableTotpRequestMfaMethodEnum totp = _$disableTotpRequestMfaMethodEnum_totp;
+  static const DisableTotpRequestMfaMethodEnum totp =
+      _$disableTotpRequestMfaMethodEnum_totp;
+
   /// MFA method to use for verification
   @BuiltValueEnumConst(wireName: r'sms')
-  static const DisableTotpRequestMfaMethodEnum sms = _$disableTotpRequestMfaMethodEnum_sms;
+  static const DisableTotpRequestMfaMethodEnum sms =
+      _$disableTotpRequestMfaMethodEnum_sms;
+
   /// MFA method to use for verification
   @BuiltValueEnumConst(wireName: r'webauthn')
-  static const DisableTotpRequestMfaMethodEnum webauthn = _$disableTotpRequestMfaMethodEnum_webauthn;
+  static const DisableTotpRequestMfaMethodEnum webauthn =
+      _$disableTotpRequestMfaMethodEnum_webauthn;
 
-  static Serializer<DisableTotpRequestMfaMethodEnum> get serializer => _$disableTotpRequestMfaMethodEnumSerializer;
+  static Serializer<DisableTotpRequestMfaMethodEnum> get serializer =>
+      _$disableTotpRequestMfaMethodEnumSerializer;
 
-  const DisableTotpRequestMfaMethodEnum._(String name): super(name);
+  const DisableTotpRequestMfaMethodEnum._(String name) : super(name);
 
-  static BuiltSet<DisableTotpRequestMfaMethodEnum> get values => _$disableTotpRequestMfaMethodEnumValues;
-  static DisableTotpRequestMfaMethodEnum valueOf(String name) => _$disableTotpRequestMfaMethodEnumValueOf(name);
+  static BuiltSet<DisableTotpRequestMfaMethodEnum> get values =>
+      _$disableTotpRequestMfaMethodEnumValues;
+  static DisableTotpRequestMfaMethodEnum valueOf(String name) =>
+      _$disableTotpRequestMfaMethodEnumValueOf(name);
 }
-

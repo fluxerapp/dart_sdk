@@ -12,17 +12,18 @@ part 'instance_config_response.g.dart';
 /// InstanceConfigResponse
 ///
 /// Properties:
-/// * [manualReviewEnabled] 
-/// * [manualReviewScheduleEnabled] 
-/// * [manualReviewScheduleStartHourUtc] 
-/// * [manualReviewScheduleEndHourUtc] 
-/// * [manualReviewActiveNow] 
-/// * [registrationAlertsWebhookUrl] 
-/// * [systemAlertsWebhookUrl] 
-/// * [sso] 
-/// * [selfHosted] 
+/// * [manualReviewEnabled]
+/// * [manualReviewScheduleEnabled]
+/// * [manualReviewScheduleStartHourUtc]
+/// * [manualReviewScheduleEndHourUtc]
+/// * [manualReviewActiveNow]
+/// * [registrationAlertsWebhookUrl]
+/// * [systemAlertsWebhookUrl]
+/// * [sso]
+/// * [selfHosted]
 @BuiltValue()
-abstract class InstanceConfigResponse implements Built<InstanceConfigResponse, InstanceConfigResponseBuilder> {
+abstract class InstanceConfigResponse
+    implements Built<InstanceConfigResponse, InstanceConfigResponseBuilder> {
   @BuiltValueField(wireName: r'manual_review_enabled')
   bool get manualReviewEnabled;
 
@@ -52,18 +53,25 @@ abstract class InstanceConfigResponse implements Built<InstanceConfigResponse, I
 
   InstanceConfigResponse._();
 
-  factory InstanceConfigResponse([void updates(InstanceConfigResponseBuilder b)]) = _$InstanceConfigResponse;
+  factory InstanceConfigResponse(
+          [void updates(InstanceConfigResponseBuilder b)]) =
+      _$InstanceConfigResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(InstanceConfigResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<InstanceConfigResponse> get serializer => _$InstanceConfigResponseSerializer();
+  static Serializer<InstanceConfigResponse> get serializer =>
+      _$InstanceConfigResponseSerializer();
 }
 
-class _$InstanceConfigResponseSerializer implements PrimitiveSerializer<InstanceConfigResponse> {
+class _$InstanceConfigResponseSerializer
+    implements PrimitiveSerializer<InstanceConfigResponse> {
   @override
-  final Iterable<Type> types = const [InstanceConfigResponse, _$InstanceConfigResponse];
+  final Iterable<Type> types = const [
+    InstanceConfigResponse,
+    _$InstanceConfigResponse
+  ];
 
   @override
   final String wireName = r'InstanceConfigResponse';
@@ -99,15 +107,19 @@ class _$InstanceConfigResponseSerializer implements PrimitiveSerializer<Instance
       specifiedType: const FullType(bool),
     );
     yield r'registration_alerts_webhook_url';
-    yield object.registrationAlertsWebhookUrl == null ? null : serializers.serialize(
-      object.registrationAlertsWebhookUrl,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.registrationAlertsWebhookUrl == null
+        ? null
+        : serializers.serialize(
+            object.registrationAlertsWebhookUrl,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'system_alerts_webhook_url';
-    yield object.systemAlertsWebhookUrl == null ? null : serializers.serialize(
-      object.systemAlertsWebhookUrl,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.systemAlertsWebhookUrl == null
+        ? null
+        : serializers.serialize(
+            object.systemAlertsWebhookUrl,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'sso';
     yield serializers.serialize(
       object.sso,
@@ -126,7 +138,9 @@ class _$InstanceConfigResponseSerializer implements PrimitiveSerializer<Instance
     InstanceConfigResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -234,4 +248,3 @@ class _$InstanceConfigResponseSerializer implements PrimitiveSerializer<Instance
     return result.build();
   }
 }
-

@@ -19,9 +19,10 @@ part 'application_response.g.dart';
 /// * [botPublic] - Whether the bot can be invited by anyone
 /// * [botRequireCodeGrant] - Whether the bot requires OAuth2 code grant
 /// * [clientSecret] - The client secret for OAuth2 authentication
-/// * [bot] 
+/// * [bot]
 @BuiltValue()
-abstract class ApplicationResponse implements Built<ApplicationResponse, ApplicationResponseBuilder> {
+abstract class ApplicationResponse
+    implements Built<ApplicationResponse, ApplicationResponseBuilder> {
   /// The unique identifier of the application
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -51,18 +52,24 @@ abstract class ApplicationResponse implements Built<ApplicationResponse, Applica
 
   ApplicationResponse._();
 
-  factory ApplicationResponse([void updates(ApplicationResponseBuilder b)]) = _$ApplicationResponse;
+  factory ApplicationResponse([void updates(ApplicationResponseBuilder b)]) =
+      _$ApplicationResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ApplicationResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ApplicationResponse> get serializer => _$ApplicationResponseSerializer();
+  static Serializer<ApplicationResponse> get serializer =>
+      _$ApplicationResponseSerializer();
 }
 
-class _$ApplicationResponseSerializer implements PrimitiveSerializer<ApplicationResponse> {
+class _$ApplicationResponseSerializer
+    implements PrimitiveSerializer<ApplicationResponse> {
   @override
-  final Iterable<Type> types = const [ApplicationResponse, _$ApplicationResponse];
+  final Iterable<Type> types = const [
+    ApplicationResponse,
+    _$ApplicationResponse
+  ];
 
   @override
   final String wireName = r'ApplicationResponse';
@@ -119,7 +126,9 @@ class _$ApplicationResponseSerializer implements PrimitiveSerializer<Application
     ApplicationResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -211,4 +220,3 @@ class _$ApplicationResponseSerializer implements PrimitiveSerializer<Application
     return result.build();
   }
 }
-

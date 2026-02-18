@@ -11,11 +11,12 @@ part 'search_users_request.g.dart';
 /// SearchUsersRequest
 ///
 /// Properties:
-/// * [query] 
-/// * [limit] 
-/// * [offset] 
+/// * [query]
+/// * [limit]
+/// * [offset]
 @BuiltValue()
-abstract class SearchUsersRequest implements Built<SearchUsersRequest, SearchUsersRequestBuilder> {
+abstract class SearchUsersRequest
+    implements Built<SearchUsersRequest, SearchUsersRequestBuilder> {
   @BuiltValueField(wireName: r'query')
   String? get query;
 
@@ -27,16 +28,19 @@ abstract class SearchUsersRequest implements Built<SearchUsersRequest, SearchUse
 
   SearchUsersRequest._();
 
-  factory SearchUsersRequest([void updates(SearchUsersRequestBuilder b)]) = _$SearchUsersRequest;
+  factory SearchUsersRequest([void updates(SearchUsersRequestBuilder b)]) =
+      _$SearchUsersRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SearchUsersRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SearchUsersRequest> get serializer => _$SearchUsersRequestSerializer();
+  static Serializer<SearchUsersRequest> get serializer =>
+      _$SearchUsersRequestSerializer();
 }
 
-class _$SearchUsersRequestSerializer implements PrimitiveSerializer<SearchUsersRequest> {
+class _$SearchUsersRequestSerializer
+    implements PrimitiveSerializer<SearchUsersRequest> {
   @override
   final Iterable<Type> types = const [SearchUsersRequest, _$SearchUsersRequest];
 
@@ -77,7 +81,9 @@ class _$SearchUsersRequestSerializer implements PrimitiveSerializer<SearchUsersR
     SearchUsersRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -141,4 +147,3 @@ class _$SearchUsersRequestSerializer implements PrimitiveSerializer<SearchUsersR
     return result.build();
   }
 }
-

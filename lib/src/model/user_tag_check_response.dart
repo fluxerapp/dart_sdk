@@ -13,25 +13,32 @@ part 'user_tag_check_response.g.dart';
 /// Properties:
 /// * [taken] - Whether the username/discriminator combination is already taken
 @BuiltValue()
-abstract class UserTagCheckResponse implements Built<UserTagCheckResponse, UserTagCheckResponseBuilder> {
+abstract class UserTagCheckResponse
+    implements Built<UserTagCheckResponse, UserTagCheckResponseBuilder> {
   /// Whether the username/discriminator combination is already taken
   @BuiltValueField(wireName: r'taken')
   bool get taken;
 
   UserTagCheckResponse._();
 
-  factory UserTagCheckResponse([void updates(UserTagCheckResponseBuilder b)]) = _$UserTagCheckResponse;
+  factory UserTagCheckResponse([void updates(UserTagCheckResponseBuilder b)]) =
+      _$UserTagCheckResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UserTagCheckResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UserTagCheckResponse> get serializer => _$UserTagCheckResponseSerializer();
+  static Serializer<UserTagCheckResponse> get serializer =>
+      _$UserTagCheckResponseSerializer();
 }
 
-class _$UserTagCheckResponseSerializer implements PrimitiveSerializer<UserTagCheckResponse> {
+class _$UserTagCheckResponseSerializer
+    implements PrimitiveSerializer<UserTagCheckResponse> {
   @override
-  final Iterable<Type> types = const [UserTagCheckResponse, _$UserTagCheckResponse];
+  final Iterable<Type> types = const [
+    UserTagCheckResponse,
+    _$UserTagCheckResponse
+  ];
 
   @override
   final String wireName = r'UserTagCheckResponse';
@@ -54,7 +61,9 @@ class _$UserTagCheckResponseSerializer implements PrimitiveSerializer<UserTagChe
     UserTagCheckResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +113,3 @@ class _$UserTagCheckResponseSerializer implements PrimitiveSerializer<UserTagChe
     return result.build();
   }
 }
-

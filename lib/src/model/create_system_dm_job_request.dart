@@ -13,11 +13,13 @@ part 'create_system_dm_job_request.g.dart';
 ///
 /// Properties:
 /// * [content] - Message content to send to users
-/// * [registrationStart] 
-/// * [registrationEnd] 
+/// * [registrationStart]
+/// * [registrationEnd]
 /// * [excludedGuildIds] - Guild IDs whose members should be excluded
 @BuiltValue()
-abstract class CreateSystemDmJobRequest implements Built<CreateSystemDmJobRequest, CreateSystemDmJobRequestBuilder> {
+abstract class CreateSystemDmJobRequest
+    implements
+        Built<CreateSystemDmJobRequest, CreateSystemDmJobRequestBuilder> {
   /// Message content to send to users
   @BuiltValueField(wireName: r'content')
   String get content;
@@ -34,18 +36,25 @@ abstract class CreateSystemDmJobRequest implements Built<CreateSystemDmJobReques
 
   CreateSystemDmJobRequest._();
 
-  factory CreateSystemDmJobRequest([void updates(CreateSystemDmJobRequestBuilder b)]) = _$CreateSystemDmJobRequest;
+  factory CreateSystemDmJobRequest(
+          [void updates(CreateSystemDmJobRequestBuilder b)]) =
+      _$CreateSystemDmJobRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CreateSystemDmJobRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CreateSystemDmJobRequest> get serializer => _$CreateSystemDmJobRequestSerializer();
+  static Serializer<CreateSystemDmJobRequest> get serializer =>
+      _$CreateSystemDmJobRequestSerializer();
 }
 
-class _$CreateSystemDmJobRequestSerializer implements PrimitiveSerializer<CreateSystemDmJobRequest> {
+class _$CreateSystemDmJobRequestSerializer
+    implements PrimitiveSerializer<CreateSystemDmJobRequest> {
   @override
-  final Iterable<Type> types = const [CreateSystemDmJobRequest, _$CreateSystemDmJobRequest];
+  final Iterable<Type> types = const [
+    CreateSystemDmJobRequest,
+    _$CreateSystemDmJobRequest
+  ];
 
   @override
   final String wireName = r'CreateSystemDmJobRequest';
@@ -89,7 +98,9 @@ class _$CreateSystemDmJobRequestSerializer implements PrimitiveSerializer<Create
     CreateSystemDmJobRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -162,4 +173,3 @@ class _$CreateSystemDmJobRequestSerializer implements PrimitiveSerializer<Create
     return result.build();
   }
 }
-

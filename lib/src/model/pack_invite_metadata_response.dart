@@ -16,15 +16,17 @@ part 'pack_invite_metadata_response.g.dart';
 /// Properties:
 /// * [code] - The unique invite code
 /// * [type] - The type of pack invite (emoji or sticker pack)
-/// * [pack] 
+/// * [pack]
 /// * [temporary] - Whether the invite grants temporary access
 /// * [createdAt] - ISO8601 timestamp of when the invite was created
 /// * [uses] - The number of times this invite has been used
 /// * [maxUses] - The maximum number of times this invite can be used
-/// * [inviter] 
-/// * [expiresAt] 
+/// * [inviter]
+/// * [expiresAt]
 @BuiltValue()
-abstract class PackInviteMetadataResponse implements Built<PackInviteMetadataResponse, PackInviteMetadataResponseBuilder> {
+abstract class PackInviteMetadataResponse
+    implements
+        Built<PackInviteMetadataResponse, PackInviteMetadataResponseBuilder> {
   /// The unique invite code
   @BuiltValueField(wireName: r'code')
   String get code;
@@ -61,18 +63,25 @@ abstract class PackInviteMetadataResponse implements Built<PackInviteMetadataRes
 
   PackInviteMetadataResponse._();
 
-  factory PackInviteMetadataResponse([void updates(PackInviteMetadataResponseBuilder b)]) = _$PackInviteMetadataResponse;
+  factory PackInviteMetadataResponse(
+          [void updates(PackInviteMetadataResponseBuilder b)]) =
+      _$PackInviteMetadataResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PackInviteMetadataResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PackInviteMetadataResponse> get serializer => _$PackInviteMetadataResponseSerializer();
+  static Serializer<PackInviteMetadataResponse> get serializer =>
+      _$PackInviteMetadataResponseSerializer();
 }
 
-class _$PackInviteMetadataResponseSerializer implements PrimitiveSerializer<PackInviteMetadataResponse> {
+class _$PackInviteMetadataResponseSerializer
+    implements PrimitiveSerializer<PackInviteMetadataResponse> {
   @override
-  final Iterable<Type> types = const [PackInviteMetadataResponse, _$PackInviteMetadataResponse];
+  final Iterable<Type> types = const [
+    PackInviteMetadataResponse,
+    _$PackInviteMetadataResponse
+  ];
 
   @override
   final String wireName = r'PackInviteMetadataResponse';
@@ -139,7 +148,9 @@ class _$PackInviteMetadataResponseSerializer implements PrimitiveSerializer<Pack
     PackInviteMetadataResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -249,19 +260,23 @@ class _$PackInviteMetadataResponseSerializer implements PrimitiveSerializer<Pack
 }
 
 class PackInviteMetadataResponseTypeEnum extends EnumClass {
-
   /// The type of pack invite (emoji or sticker pack)
   @BuiltValueEnumConst(wireNumber: 2)
-  static const PackInviteMetadataResponseTypeEnum number2 = _$packInviteMetadataResponseTypeEnum_number2;
+  static const PackInviteMetadataResponseTypeEnum number2 =
+      _$packInviteMetadataResponseTypeEnum_number2;
+
   /// The type of pack invite (emoji or sticker pack)
   @BuiltValueEnumConst(wireNumber: 3)
-  static const PackInviteMetadataResponseTypeEnum number3 = _$packInviteMetadataResponseTypeEnum_number3;
+  static const PackInviteMetadataResponseTypeEnum number3 =
+      _$packInviteMetadataResponseTypeEnum_number3;
 
-  static Serializer<PackInviteMetadataResponseTypeEnum> get serializer => _$packInviteMetadataResponseTypeEnumSerializer;
+  static Serializer<PackInviteMetadataResponseTypeEnum> get serializer =>
+      _$packInviteMetadataResponseTypeEnumSerializer;
 
-  const PackInviteMetadataResponseTypeEnum._(String name): super(name);
+  const PackInviteMetadataResponseTypeEnum._(String name) : super(name);
 
-  static BuiltSet<PackInviteMetadataResponseTypeEnum> get values => _$packInviteMetadataResponseTypeEnumValues;
-  static PackInviteMetadataResponseTypeEnum valueOf(String name) => _$packInviteMetadataResponseTypeEnumValueOf(name);
+  static BuiltSet<PackInviteMetadataResponseTypeEnum> get values =>
+      _$packInviteMetadataResponseTypeEnumValues;
+  static PackInviteMetadataResponseTypeEnum valueOf(String name) =>
+      _$packInviteMetadataResponseTypeEnumValueOf(name);
 }
-

@@ -12,26 +12,34 @@ part 'get_voice_region_response.g.dart';
 /// GetVoiceRegionResponse
 ///
 /// Properties:
-/// * [region] 
+/// * [region]
 @BuiltValue()
-abstract class GetVoiceRegionResponse implements Built<GetVoiceRegionResponse, GetVoiceRegionResponseBuilder> {
+abstract class GetVoiceRegionResponse
+    implements Built<GetVoiceRegionResponse, GetVoiceRegionResponseBuilder> {
   @BuiltValueField(wireName: r'region')
   VoiceRegionWithServersResponse? get region;
 
   GetVoiceRegionResponse._();
 
-  factory GetVoiceRegionResponse([void updates(GetVoiceRegionResponseBuilder b)]) = _$GetVoiceRegionResponse;
+  factory GetVoiceRegionResponse(
+          [void updates(GetVoiceRegionResponseBuilder b)]) =
+      _$GetVoiceRegionResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GetVoiceRegionResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GetVoiceRegionResponse> get serializer => _$GetVoiceRegionResponseSerializer();
+  static Serializer<GetVoiceRegionResponse> get serializer =>
+      _$GetVoiceRegionResponseSerializer();
 }
 
-class _$GetVoiceRegionResponseSerializer implements PrimitiveSerializer<GetVoiceRegionResponse> {
+class _$GetVoiceRegionResponseSerializer
+    implements PrimitiveSerializer<GetVoiceRegionResponse> {
   @override
-  final Iterable<Type> types = const [GetVoiceRegionResponse, _$GetVoiceRegionResponse];
+  final Iterable<Type> types = const [
+    GetVoiceRegionResponse,
+    _$GetVoiceRegionResponse
+  ];
 
   @override
   final String wireName = r'GetVoiceRegionResponse';
@@ -42,10 +50,13 @@ class _$GetVoiceRegionResponseSerializer implements PrimitiveSerializer<GetVoice
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     yield r'region';
-    yield object.region == null ? null : serializers.serialize(
-      object.region,
-      specifiedType: const FullType.nullable(VoiceRegionWithServersResponse),
-    );
+    yield object.region == null
+        ? null
+        : serializers.serialize(
+            object.region,
+            specifiedType:
+                const FullType.nullable(VoiceRegionWithServersResponse),
+          );
   }
 
   @override
@@ -54,7 +65,9 @@ class _$GetVoiceRegionResponseSerializer implements PrimitiveSerializer<GetVoice
     GetVoiceRegionResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -72,7 +85,8 @@ class _$GetVoiceRegionResponseSerializer implements PrimitiveSerializer<GetVoice
         case r'region':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(VoiceRegionWithServersResponse),
+            specifiedType:
+                const FullType.nullable(VoiceRegionWithServersResponse),
           ) as VoiceRegionWithServersResponse?;
           if (valueDes == null) continue;
           result.region.replace(valueDes);
@@ -105,4 +119,3 @@ class _$GetVoiceRegionResponseSerializer implements PrimitiveSerializer<GetVoice
     return result.build();
   }
 }
-

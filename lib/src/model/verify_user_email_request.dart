@@ -11,26 +11,34 @@ part 'verify_user_email_request.g.dart';
 /// VerifyUserEmailRequest
 ///
 /// Properties:
-/// * [userId] 
+/// * [userId]
 @BuiltValue()
-abstract class VerifyUserEmailRequest implements Built<VerifyUserEmailRequest, VerifyUserEmailRequestBuilder> {
+abstract class VerifyUserEmailRequest
+    implements Built<VerifyUserEmailRequest, VerifyUserEmailRequestBuilder> {
   @BuiltValueField(wireName: r'user_id')
   String get userId;
 
   VerifyUserEmailRequest._();
 
-  factory VerifyUserEmailRequest([void updates(VerifyUserEmailRequestBuilder b)]) = _$VerifyUserEmailRequest;
+  factory VerifyUserEmailRequest(
+          [void updates(VerifyUserEmailRequestBuilder b)]) =
+      _$VerifyUserEmailRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(VerifyUserEmailRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<VerifyUserEmailRequest> get serializer => _$VerifyUserEmailRequestSerializer();
+  static Serializer<VerifyUserEmailRequest> get serializer =>
+      _$VerifyUserEmailRequestSerializer();
 }
 
-class _$VerifyUserEmailRequestSerializer implements PrimitiveSerializer<VerifyUserEmailRequest> {
+class _$VerifyUserEmailRequestSerializer
+    implements PrimitiveSerializer<VerifyUserEmailRequest> {
   @override
-  final Iterable<Type> types = const [VerifyUserEmailRequest, _$VerifyUserEmailRequest];
+  final Iterable<Type> types = const [
+    VerifyUserEmailRequest,
+    _$VerifyUserEmailRequest
+  ];
 
   @override
   final String wireName = r'VerifyUserEmailRequest';
@@ -53,7 +61,9 @@ class _$VerifyUserEmailRequestSerializer implements PrimitiveSerializer<VerifyUs
     VerifyUserEmailRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,4 +113,3 @@ class _$VerifyUserEmailRequestSerializer implements PrimitiveSerializer<VerifyUs
     return result.build();
   }
 }
-

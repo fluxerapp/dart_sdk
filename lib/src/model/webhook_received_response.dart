@@ -13,25 +13,33 @@ part 'webhook_received_response.g.dart';
 /// Properties:
 /// * [received] - Whether the webhook was successfully received
 @BuiltValue()
-abstract class WebhookReceivedResponse implements Built<WebhookReceivedResponse, WebhookReceivedResponseBuilder> {
+abstract class WebhookReceivedResponse
+    implements Built<WebhookReceivedResponse, WebhookReceivedResponseBuilder> {
   /// Whether the webhook was successfully received
   @BuiltValueField(wireName: r'received')
   bool get received;
 
   WebhookReceivedResponse._();
 
-  factory WebhookReceivedResponse([void updates(WebhookReceivedResponseBuilder b)]) = _$WebhookReceivedResponse;
+  factory WebhookReceivedResponse(
+          [void updates(WebhookReceivedResponseBuilder b)]) =
+      _$WebhookReceivedResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(WebhookReceivedResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<WebhookReceivedResponse> get serializer => _$WebhookReceivedResponseSerializer();
+  static Serializer<WebhookReceivedResponse> get serializer =>
+      _$WebhookReceivedResponseSerializer();
 }
 
-class _$WebhookReceivedResponseSerializer implements PrimitiveSerializer<WebhookReceivedResponse> {
+class _$WebhookReceivedResponseSerializer
+    implements PrimitiveSerializer<WebhookReceivedResponse> {
   @override
-  final Iterable<Type> types = const [WebhookReceivedResponse, _$WebhookReceivedResponse];
+  final Iterable<Type> types = const [
+    WebhookReceivedResponse,
+    _$WebhookReceivedResponse
+  ];
 
   @override
   final String wireName = r'WebhookReceivedResponse';
@@ -54,7 +62,9 @@ class _$WebhookReceivedResponseSerializer implements PrimitiveSerializer<Webhook
     WebhookReceivedResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +114,3 @@ class _$WebhookReceivedResponseSerializer implements PrimitiveSerializer<Webhook
     return result.build();
   }
 }
-

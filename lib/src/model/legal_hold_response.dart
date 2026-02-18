@@ -11,24 +11,28 @@ part 'legal_hold_response.g.dart';
 /// LegalHoldResponse
 ///
 /// Properties:
-/// * [held] 
+/// * [held]
 @BuiltValue()
-abstract class LegalHoldResponse implements Built<LegalHoldResponse, LegalHoldResponseBuilder> {
+abstract class LegalHoldResponse
+    implements Built<LegalHoldResponse, LegalHoldResponseBuilder> {
   @BuiltValueField(wireName: r'held')
   bool get held;
 
   LegalHoldResponse._();
 
-  factory LegalHoldResponse([void updates(LegalHoldResponseBuilder b)]) = _$LegalHoldResponse;
+  factory LegalHoldResponse([void updates(LegalHoldResponseBuilder b)]) =
+      _$LegalHoldResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(LegalHoldResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<LegalHoldResponse> get serializer => _$LegalHoldResponseSerializer();
+  static Serializer<LegalHoldResponse> get serializer =>
+      _$LegalHoldResponseSerializer();
 }
 
-class _$LegalHoldResponseSerializer implements PrimitiveSerializer<LegalHoldResponse> {
+class _$LegalHoldResponseSerializer
+    implements PrimitiveSerializer<LegalHoldResponse> {
   @override
   final Iterable<Type> types = const [LegalHoldResponse, _$LegalHoldResponse];
 
@@ -53,7 +57,9 @@ class _$LegalHoldResponseSerializer implements PrimitiveSerializer<LegalHoldResp
     LegalHoldResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,4 +109,3 @@ class _$LegalHoldResponseSerializer implements PrimitiveSerializer<LegalHoldResp
     return result.build();
   }
 }
-

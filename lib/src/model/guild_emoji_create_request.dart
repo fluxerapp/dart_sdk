@@ -14,7 +14,8 @@ part 'guild_emoji_create_request.g.dart';
 /// * [name] - The name of the emoji (2-32 characters, alphanumeric and underscores only)
 /// * [image] - Base64-encoded image data
 @BuiltValue()
-abstract class GuildEmojiCreateRequest implements Built<GuildEmojiCreateRequest, GuildEmojiCreateRequestBuilder> {
+abstract class GuildEmojiCreateRequest
+    implements Built<GuildEmojiCreateRequest, GuildEmojiCreateRequestBuilder> {
   /// The name of the emoji (2-32 characters, alphanumeric and underscores only)
   @BuiltValueField(wireName: r'name')
   String get name;
@@ -25,18 +26,25 @@ abstract class GuildEmojiCreateRequest implements Built<GuildEmojiCreateRequest,
 
   GuildEmojiCreateRequest._();
 
-  factory GuildEmojiCreateRequest([void updates(GuildEmojiCreateRequestBuilder b)]) = _$GuildEmojiCreateRequest;
+  factory GuildEmojiCreateRequest(
+          [void updates(GuildEmojiCreateRequestBuilder b)]) =
+      _$GuildEmojiCreateRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildEmojiCreateRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildEmojiCreateRequest> get serializer => _$GuildEmojiCreateRequestSerializer();
+  static Serializer<GuildEmojiCreateRequest> get serializer =>
+      _$GuildEmojiCreateRequestSerializer();
 }
 
-class _$GuildEmojiCreateRequestSerializer implements PrimitiveSerializer<GuildEmojiCreateRequest> {
+class _$GuildEmojiCreateRequestSerializer
+    implements PrimitiveSerializer<GuildEmojiCreateRequest> {
   @override
-  final Iterable<Type> types = const [GuildEmojiCreateRequest, _$GuildEmojiCreateRequest];
+  final Iterable<Type> types = const [
+    GuildEmojiCreateRequest,
+    _$GuildEmojiCreateRequest
+  ];
 
   @override
   final String wireName = r'GuildEmojiCreateRequest';
@@ -64,7 +72,9 @@ class _$GuildEmojiCreateRequestSerializer implements PrimitiveSerializer<GuildEm
     GuildEmojiCreateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +131,3 @@ class _$GuildEmojiCreateRequestSerializer implements PrimitiveSerializer<GuildEm
     return result.build();
   }
 }
-

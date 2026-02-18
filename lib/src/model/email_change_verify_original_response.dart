@@ -13,25 +13,35 @@ part 'email_change_verify_original_response.g.dart';
 /// Properties:
 /// * [originalProof] - Proof token issued after verifying the original email
 @BuiltValue()
-abstract class EmailChangeVerifyOriginalResponse implements Built<EmailChangeVerifyOriginalResponse, EmailChangeVerifyOriginalResponseBuilder> {
+abstract class EmailChangeVerifyOriginalResponse
+    implements
+        Built<EmailChangeVerifyOriginalResponse,
+            EmailChangeVerifyOriginalResponseBuilder> {
   /// Proof token issued after verifying the original email
   @BuiltValueField(wireName: r'original_proof')
   String get originalProof;
 
   EmailChangeVerifyOriginalResponse._();
 
-  factory EmailChangeVerifyOriginalResponse([void updates(EmailChangeVerifyOriginalResponseBuilder b)]) = _$EmailChangeVerifyOriginalResponse;
+  factory EmailChangeVerifyOriginalResponse(
+          [void updates(EmailChangeVerifyOriginalResponseBuilder b)]) =
+      _$EmailChangeVerifyOriginalResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(EmailChangeVerifyOriginalResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<EmailChangeVerifyOriginalResponse> get serializer => _$EmailChangeVerifyOriginalResponseSerializer();
+  static Serializer<EmailChangeVerifyOriginalResponse> get serializer =>
+      _$EmailChangeVerifyOriginalResponseSerializer();
 }
 
-class _$EmailChangeVerifyOriginalResponseSerializer implements PrimitiveSerializer<EmailChangeVerifyOriginalResponse> {
+class _$EmailChangeVerifyOriginalResponseSerializer
+    implements PrimitiveSerializer<EmailChangeVerifyOriginalResponse> {
   @override
-  final Iterable<Type> types = const [EmailChangeVerifyOriginalResponse, _$EmailChangeVerifyOriginalResponse];
+  final Iterable<Type> types = const [
+    EmailChangeVerifyOriginalResponse,
+    _$EmailChangeVerifyOriginalResponse
+  ];
 
   @override
   final String wireName = r'EmailChangeVerifyOriginalResponse';
@@ -54,7 +64,9 @@ class _$EmailChangeVerifyOriginalResponseSerializer implements PrimitiveSerializ
     EmailChangeVerifyOriginalResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +116,3 @@ class _$EmailChangeVerifyOriginalResponseSerializer implements PrimitiveSerializ
     return result.build();
   }
 }
-

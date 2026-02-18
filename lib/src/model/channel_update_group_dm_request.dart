@@ -13,13 +13,15 @@ part 'channel_update_group_dm_request.g.dart';
 /// ChannelUpdateGroupDmRequest
 ///
 /// Properties:
-/// * [type] 
-/// * [name] 
+/// * [type]
+/// * [name]
 /// * [icon] - Base64-encoded image data
-/// * [ownerId] 
+/// * [ownerId]
 /// * [nicks] - User nickname overrides (user ID to nickname mapping)
 @BuiltValue()
-abstract class ChannelUpdateGroupDmRequest implements Built<ChannelUpdateGroupDmRequest, ChannelUpdateGroupDmRequestBuilder> {
+abstract class ChannelUpdateGroupDmRequest
+    implements
+        Built<ChannelUpdateGroupDmRequest, ChannelUpdateGroupDmRequestBuilder> {
   @BuiltValueField(wireName: r'type')
   ChannelUpdateGroupDmRequestTypeEnum get type;
   // enum typeEnum {  3,  };
@@ -40,18 +42,25 @@ abstract class ChannelUpdateGroupDmRequest implements Built<ChannelUpdateGroupDm
 
   ChannelUpdateGroupDmRequest._();
 
-  factory ChannelUpdateGroupDmRequest([void updates(ChannelUpdateGroupDmRequestBuilder b)]) = _$ChannelUpdateGroupDmRequest;
+  factory ChannelUpdateGroupDmRequest(
+          [void updates(ChannelUpdateGroupDmRequestBuilder b)]) =
+      _$ChannelUpdateGroupDmRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ChannelUpdateGroupDmRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ChannelUpdateGroupDmRequest> get serializer => _$ChannelUpdateGroupDmRequestSerializer();
+  static Serializer<ChannelUpdateGroupDmRequest> get serializer =>
+      _$ChannelUpdateGroupDmRequestSerializer();
 }
 
-class _$ChannelUpdateGroupDmRequestSerializer implements PrimitiveSerializer<ChannelUpdateGroupDmRequest> {
+class _$ChannelUpdateGroupDmRequestSerializer
+    implements PrimitiveSerializer<ChannelUpdateGroupDmRequest> {
   @override
-  final Iterable<Type> types = const [ChannelUpdateGroupDmRequest, _$ChannelUpdateGroupDmRequest];
+  final Iterable<Type> types = const [
+    ChannelUpdateGroupDmRequest,
+    _$ChannelUpdateGroupDmRequest
+  ];
 
   @override
   final String wireName = r'ChannelUpdateGroupDmRequest';
@@ -91,7 +100,10 @@ class _$ChannelUpdateGroupDmRequestSerializer implements PrimitiveSerializer<Cha
       yield r'nicks';
       yield serializers.serialize(
         object.nicks,
-        specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(ChannelNicknameOverridesValue)]),
+        specifiedType: const FullType(BuiltMap, [
+          FullType(String),
+          FullType.nullable(ChannelNicknameOverridesValue)
+        ]),
       );
     }
   }
@@ -102,7 +114,9 @@ class _$ChannelUpdateGroupDmRequestSerializer implements PrimitiveSerializer<Cha
     ChannelUpdateGroupDmRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -149,7 +163,10 @@ class _$ChannelUpdateGroupDmRequestSerializer implements PrimitiveSerializer<Cha
         case r'nicks':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(ChannelNicknameOverridesValue)]),
+            specifiedType: const FullType(BuiltMap, [
+              FullType(String),
+              FullType.nullable(ChannelNicknameOverridesValue)
+            ]),
           ) as BuiltMap<String, ChannelNicknameOverridesValue?>;
           result.nicks.replace(valueDes);
           break;
@@ -183,15 +200,17 @@ class _$ChannelUpdateGroupDmRequestSerializer implements PrimitiveSerializer<Cha
 }
 
 class ChannelUpdateGroupDmRequestTypeEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireNumber: 3)
-  static const ChannelUpdateGroupDmRequestTypeEnum number3 = _$channelUpdateGroupDmRequestTypeEnum_number3;
+  static const ChannelUpdateGroupDmRequestTypeEnum number3 =
+      _$channelUpdateGroupDmRequestTypeEnum_number3;
 
-  static Serializer<ChannelUpdateGroupDmRequestTypeEnum> get serializer => _$channelUpdateGroupDmRequestTypeEnumSerializer;
+  static Serializer<ChannelUpdateGroupDmRequestTypeEnum> get serializer =>
+      _$channelUpdateGroupDmRequestTypeEnumSerializer;
 
-  const ChannelUpdateGroupDmRequestTypeEnum._(String name): super(name);
+  const ChannelUpdateGroupDmRequestTypeEnum._(String name) : super(name);
 
-  static BuiltSet<ChannelUpdateGroupDmRequestTypeEnum> get values => _$channelUpdateGroupDmRequestTypeEnumValues;
-  static ChannelUpdateGroupDmRequestTypeEnum valueOf(String name) => _$channelUpdateGroupDmRequestTypeEnumValueOf(name);
+  static BuiltSet<ChannelUpdateGroupDmRequestTypeEnum> get values =>
+      _$channelUpdateGroupDmRequestTypeEnumValues;
+  static ChannelUpdateGroupDmRequestTypeEnum valueOf(String name) =>
+      _$channelUpdateGroupDmRequestTypeEnumValueOf(name);
 }
-

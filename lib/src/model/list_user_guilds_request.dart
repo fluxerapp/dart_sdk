@@ -11,13 +11,14 @@ part 'list_user_guilds_request.g.dart';
 /// ListUserGuildsRequest
 ///
 /// Properties:
-/// * [userId] 
-/// * [before] 
-/// * [after] 
-/// * [limit] 
-/// * [withCounts] 
+/// * [userId]
+/// * [before]
+/// * [after]
+/// * [limit]
+/// * [withCounts]
 @BuiltValue()
-abstract class ListUserGuildsRequest implements Built<ListUserGuildsRequest, ListUserGuildsRequestBuilder> {
+abstract class ListUserGuildsRequest
+    implements Built<ListUserGuildsRequest, ListUserGuildsRequestBuilder> {
   @BuiltValueField(wireName: r'user_id')
   String get userId;
 
@@ -35,18 +36,24 @@ abstract class ListUserGuildsRequest implements Built<ListUserGuildsRequest, Lis
 
   ListUserGuildsRequest._();
 
-  factory ListUserGuildsRequest([void updates(ListUserGuildsRequestBuilder b)]) = _$ListUserGuildsRequest;
+  factory ListUserGuildsRequest(
+      [void updates(ListUserGuildsRequestBuilder b)]) = _$ListUserGuildsRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ListUserGuildsRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListUserGuildsRequest> get serializer => _$ListUserGuildsRequestSerializer();
+  static Serializer<ListUserGuildsRequest> get serializer =>
+      _$ListUserGuildsRequestSerializer();
 }
 
-class _$ListUserGuildsRequestSerializer implements PrimitiveSerializer<ListUserGuildsRequest> {
+class _$ListUserGuildsRequestSerializer
+    implements PrimitiveSerializer<ListUserGuildsRequest> {
   @override
-  final Iterable<Type> types = const [ListUserGuildsRequest, _$ListUserGuildsRequest];
+  final Iterable<Type> types = const [
+    ListUserGuildsRequest,
+    _$ListUserGuildsRequest
+  ];
 
   @override
   final String wireName = r'ListUserGuildsRequest';
@@ -97,7 +104,9 @@ class _$ListUserGuildsRequestSerializer implements PrimitiveSerializer<ListUserG
     ListUserGuildsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -175,4 +184,3 @@ class _$ListUserGuildsRequestSerializer implements PrimitiveSerializer<ListUserG
     return result.build();
   }
 }
-

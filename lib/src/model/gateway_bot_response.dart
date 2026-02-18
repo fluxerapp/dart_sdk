@@ -14,9 +14,10 @@ part 'gateway_bot_response.g.dart';
 /// Properties:
 /// * [url] - WebSocket URL to connect to the gateway
 /// * [shards] - Recommended number of shards to use when connecting
-/// * [sessionStartLimit] 
+/// * [sessionStartLimit]
 @BuiltValue()
-abstract class GatewayBotResponse implements Built<GatewayBotResponse, GatewayBotResponseBuilder> {
+abstract class GatewayBotResponse
+    implements Built<GatewayBotResponse, GatewayBotResponseBuilder> {
   /// WebSocket URL to connect to the gateway
   @BuiltValueField(wireName: r'url')
   String get url;
@@ -30,16 +31,19 @@ abstract class GatewayBotResponse implements Built<GatewayBotResponse, GatewayBo
 
   GatewayBotResponse._();
 
-  factory GatewayBotResponse([void updates(GatewayBotResponseBuilder b)]) = _$GatewayBotResponse;
+  factory GatewayBotResponse([void updates(GatewayBotResponseBuilder b)]) =
+      _$GatewayBotResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GatewayBotResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GatewayBotResponse> get serializer => _$GatewayBotResponseSerializer();
+  static Serializer<GatewayBotResponse> get serializer =>
+      _$GatewayBotResponseSerializer();
 }
 
-class _$GatewayBotResponseSerializer implements PrimitiveSerializer<GatewayBotResponse> {
+class _$GatewayBotResponseSerializer
+    implements PrimitiveSerializer<GatewayBotResponse> {
   @override
   final Iterable<Type> types = const [GatewayBotResponse, _$GatewayBotResponse];
 
@@ -74,7 +78,9 @@ class _$GatewayBotResponseSerializer implements PrimitiveSerializer<GatewayBotRe
     GatewayBotResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -138,4 +144,3 @@ class _$GatewayBotResponseSerializer implements PrimitiveSerializer<GatewayBotRe
     return result.build();
   }
 }
-

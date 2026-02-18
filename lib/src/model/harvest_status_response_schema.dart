@@ -13,19 +13,21 @@ part 'harvest_status_response_schema.g.dart';
 ///
 /// Properties:
 /// * [harvestId] - Unique identifier for the harvest request
-/// * [status] 
+/// * [status]
 /// * [createdAt] - ISO 8601 timestamp when the harvest request was created
-/// * [startedAt] 
-/// * [completedAt] 
-/// * [failedAt] 
-/// * [fileSize] 
+/// * [startedAt]
+/// * [completedAt]
+/// * [failedAt]
+/// * [fileSize]
 /// * [progressPercent] - Harvest progress as a percentage value between 0 and 100
-/// * [progressStep] 
-/// * [errorMessage] 
-/// * [downloadUrlExpiresAt] 
-/// * [expiresAt] 
+/// * [progressStep]
+/// * [errorMessage]
+/// * [downloadUrlExpiresAt]
+/// * [expiresAt]
 @BuiltValue()
-abstract class HarvestStatusResponseSchema implements Built<HarvestStatusResponseSchema, HarvestStatusResponseSchemaBuilder> {
+abstract class HarvestStatusResponseSchema
+    implements
+        Built<HarvestStatusResponseSchema, HarvestStatusResponseSchemaBuilder> {
   /// Unique identifier for the harvest request
   @BuiltValueField(wireName: r'harvest_id')
   String get harvestId;
@@ -68,18 +70,25 @@ abstract class HarvestStatusResponseSchema implements Built<HarvestStatusRespons
 
   HarvestStatusResponseSchema._();
 
-  factory HarvestStatusResponseSchema([void updates(HarvestStatusResponseSchemaBuilder b)]) = _$HarvestStatusResponseSchema;
+  factory HarvestStatusResponseSchema(
+          [void updates(HarvestStatusResponseSchemaBuilder b)]) =
+      _$HarvestStatusResponseSchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(HarvestStatusResponseSchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<HarvestStatusResponseSchema> get serializer => _$HarvestStatusResponseSchemaSerializer();
+  static Serializer<HarvestStatusResponseSchema> get serializer =>
+      _$HarvestStatusResponseSchemaSerializer();
 }
 
-class _$HarvestStatusResponseSchemaSerializer implements PrimitiveSerializer<HarvestStatusResponseSchema> {
+class _$HarvestStatusResponseSchemaSerializer
+    implements PrimitiveSerializer<HarvestStatusResponseSchema> {
   @override
-  final Iterable<Type> types = const [HarvestStatusResponseSchema, _$HarvestStatusResponseSchema];
+  final Iterable<Type> types = const [
+    HarvestStatusResponseSchema,
+    _$HarvestStatusResponseSchema
+  ];
 
   @override
   final String wireName = r'HarvestStatusResponseSchema';
@@ -105,50 +114,66 @@ class _$HarvestStatusResponseSchemaSerializer implements PrimitiveSerializer<Har
       specifiedType: const FullType(String),
     );
     yield r'started_at';
-    yield object.startedAt == null ? null : serializers.serialize(
-      object.startedAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.startedAt == null
+        ? null
+        : serializers.serialize(
+            object.startedAt,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'completed_at';
-    yield object.completedAt == null ? null : serializers.serialize(
-      object.completedAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.completedAt == null
+        ? null
+        : serializers.serialize(
+            object.completedAt,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'failed_at';
-    yield object.failedAt == null ? null : serializers.serialize(
-      object.failedAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.failedAt == null
+        ? null
+        : serializers.serialize(
+            object.failedAt,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'file_size';
-    yield object.fileSize == null ? null : serializers.serialize(
-      object.fileSize,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.fileSize == null
+        ? null
+        : serializers.serialize(
+            object.fileSize,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'progress_percent';
     yield serializers.serialize(
       object.progressPercent,
       specifiedType: const FullType(num),
     );
     yield r'progress_step';
-    yield object.progressStep == null ? null : serializers.serialize(
-      object.progressStep,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.progressStep == null
+        ? null
+        : serializers.serialize(
+            object.progressStep,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'error_message';
-    yield object.errorMessage == null ? null : serializers.serialize(
-      object.errorMessage,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.errorMessage == null
+        ? null
+        : serializers.serialize(
+            object.errorMessage,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'download_url_expires_at';
-    yield object.downloadUrlExpiresAt == null ? null : serializers.serialize(
-      object.downloadUrlExpiresAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.downloadUrlExpiresAt == null
+        ? null
+        : serializers.serialize(
+            object.downloadUrlExpiresAt,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'expires_at';
-    yield object.expiresAt == null ? null : serializers.serialize(
-      object.expiresAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.expiresAt == null
+        ? null
+        : serializers.serialize(
+            object.expiresAt,
+            specifiedType: const FullType.nullable(String),
+          );
   }
 
   @override
@@ -157,7 +182,9 @@ class _$HarvestStatusResponseSchemaSerializer implements PrimitiveSerializer<Har
     HarvestStatusResponseSchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -292,4 +319,3 @@ class _$HarvestStatusResponseSchemaSerializer implements PrimitiveSerializer<Har
     return result.build();
   }
 }
-

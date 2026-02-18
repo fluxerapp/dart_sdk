@@ -16,7 +16,10 @@ part 'limit_config_update_request_limit_config.g.dart';
 /// * [rules] - Limit rules
 /// * [traitDefinitions] - Trait definitions used by rules
 @BuiltValue()
-abstract class LimitConfigUpdateRequestLimitConfig implements Built<LimitConfigUpdateRequestLimitConfig, LimitConfigUpdateRequestLimitConfigBuilder> {
+abstract class LimitConfigUpdateRequestLimitConfig
+    implements
+        Built<LimitConfigUpdateRequestLimitConfig,
+            LimitConfigUpdateRequestLimitConfigBuilder> {
   /// Limit rules
   @BuiltValueField(wireName: r'rules')
   BuiltList<LimitConfigUpdateRequestLimitConfigRulesInner> get rules;
@@ -27,18 +30,25 @@ abstract class LimitConfigUpdateRequestLimitConfig implements Built<LimitConfigU
 
   LimitConfigUpdateRequestLimitConfig._();
 
-  factory LimitConfigUpdateRequestLimitConfig([void updates(LimitConfigUpdateRequestLimitConfigBuilder b)]) = _$LimitConfigUpdateRequestLimitConfig;
+  factory LimitConfigUpdateRequestLimitConfig(
+          [void updates(LimitConfigUpdateRequestLimitConfigBuilder b)]) =
+      _$LimitConfigUpdateRequestLimitConfig;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(LimitConfigUpdateRequestLimitConfigBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<LimitConfigUpdateRequestLimitConfig> get serializer => _$LimitConfigUpdateRequestLimitConfigSerializer();
+  static Serializer<LimitConfigUpdateRequestLimitConfig> get serializer =>
+      _$LimitConfigUpdateRequestLimitConfigSerializer();
 }
 
-class _$LimitConfigUpdateRequestLimitConfigSerializer implements PrimitiveSerializer<LimitConfigUpdateRequestLimitConfig> {
+class _$LimitConfigUpdateRequestLimitConfigSerializer
+    implements PrimitiveSerializer<LimitConfigUpdateRequestLimitConfig> {
   @override
-  final Iterable<Type> types = const [LimitConfigUpdateRequestLimitConfig, _$LimitConfigUpdateRequestLimitConfig];
+  final Iterable<Type> types = const [
+    LimitConfigUpdateRequestLimitConfig,
+    _$LimitConfigUpdateRequestLimitConfig
+  ];
 
   @override
   final String wireName = r'LimitConfigUpdateRequestLimitConfig';
@@ -51,7 +61,8 @@ class _$LimitConfigUpdateRequestLimitConfigSerializer implements PrimitiveSerial
     yield r'rules';
     yield serializers.serialize(
       object.rules,
-      specifiedType: const FullType(BuiltList, [FullType(LimitConfigUpdateRequestLimitConfigRulesInner)]),
+      specifiedType: const FullType(
+          BuiltList, [FullType(LimitConfigUpdateRequestLimitConfigRulesInner)]),
     );
     if (object.traitDefinitions != null) {
       yield r'traitDefinitions';
@@ -68,7 +79,9 @@ class _$LimitConfigUpdateRequestLimitConfigSerializer implements PrimitiveSerial
     LimitConfigUpdateRequestLimitConfig object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -86,7 +99,8 @@ class _$LimitConfigUpdateRequestLimitConfigSerializer implements PrimitiveSerial
         case r'rules':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(LimitConfigUpdateRequestLimitConfigRulesInner)]),
+            specifiedType: const FullType(BuiltList,
+                [FullType(LimitConfigUpdateRequestLimitConfigRulesInner)]),
           ) as BuiltList<LimitConfigUpdateRequestLimitConfigRulesInner>;
           result.rules.replace(valueDes);
           break;
@@ -125,4 +139,3 @@ class _$LimitConfigUpdateRequestLimitConfigSerializer implements PrimitiveSerial
     return result.build();
   }
 }
-

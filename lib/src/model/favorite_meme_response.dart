@@ -21,16 +21,17 @@ part 'favorite_meme_response.g.dart';
 /// * [contentType] - MIME type of the meme file
 /// * [size] - File size in bytes
 /// * [url] - CDN URL to access the meme
-/// * [altText] 
-/// * [contentHash] 
-/// * [width] 
-/// * [height] 
-/// * [duration] 
+/// * [altText]
+/// * [contentHash]
+/// * [width]
+/// * [height]
+/// * [duration]
 /// * [isGifv] - Whether the meme is a video converted from GIF
-/// * [klipySlug] 
-/// * [tenorSlugId] 
+/// * [klipySlug]
+/// * [tenorSlugId]
 @BuiltValue()
-abstract class FavoriteMemeResponse implements Built<FavoriteMemeResponse, FavoriteMemeResponseBuilder> {
+abstract class FavoriteMemeResponse
+    implements Built<FavoriteMemeResponse, FavoriteMemeResponseBuilder> {
   /// Unique identifier for the favorite meme
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -94,18 +95,24 @@ abstract class FavoriteMemeResponse implements Built<FavoriteMemeResponse, Favor
 
   FavoriteMemeResponse._();
 
-  factory FavoriteMemeResponse([void updates(FavoriteMemeResponseBuilder b)]) = _$FavoriteMemeResponse;
+  factory FavoriteMemeResponse([void updates(FavoriteMemeResponseBuilder b)]) =
+      _$FavoriteMemeResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(FavoriteMemeResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<FavoriteMemeResponse> get serializer => _$FavoriteMemeResponseSerializer();
+  static Serializer<FavoriteMemeResponse> get serializer =>
+      _$FavoriteMemeResponseSerializer();
 }
 
-class _$FavoriteMemeResponseSerializer implements PrimitiveSerializer<FavoriteMemeResponse> {
+class _$FavoriteMemeResponseSerializer
+    implements PrimitiveSerializer<FavoriteMemeResponse> {
   @override
-  final Iterable<Type> types = const [FavoriteMemeResponse, _$FavoriteMemeResponse];
+  final Iterable<Type> types = const [
+    FavoriteMemeResponse,
+    _$FavoriteMemeResponse
+  ];
 
   @override
   final String wireName = r'FavoriteMemeResponse';
@@ -224,7 +231,9 @@ class _$FavoriteMemeResponseSerializer implements PrimitiveSerializer<FavoriteMe
     FavoriteMemeResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -393,4 +402,3 @@ class _$FavoriteMemeResponseSerializer implements PrimitiveSerializer<FavoriteMe
     return result.build();
   }
 }
-

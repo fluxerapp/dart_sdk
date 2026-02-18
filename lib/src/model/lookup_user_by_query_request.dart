@@ -11,26 +11,35 @@ part 'lookup_user_by_query_request.g.dart';
 /// LookupUserByQueryRequest
 ///
 /// Properties:
-/// * [query] 
+/// * [query]
 @BuiltValue()
-abstract class LookupUserByQueryRequest implements Built<LookupUserByQueryRequest, LookupUserByQueryRequestBuilder> {
+abstract class LookupUserByQueryRequest
+    implements
+        Built<LookupUserByQueryRequest, LookupUserByQueryRequestBuilder> {
   @BuiltValueField(wireName: r'query')
   String get query;
 
   LookupUserByQueryRequest._();
 
-  factory LookupUserByQueryRequest([void updates(LookupUserByQueryRequestBuilder b)]) = _$LookupUserByQueryRequest;
+  factory LookupUserByQueryRequest(
+          [void updates(LookupUserByQueryRequestBuilder b)]) =
+      _$LookupUserByQueryRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(LookupUserByQueryRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<LookupUserByQueryRequest> get serializer => _$LookupUserByQueryRequestSerializer();
+  static Serializer<LookupUserByQueryRequest> get serializer =>
+      _$LookupUserByQueryRequestSerializer();
 }
 
-class _$LookupUserByQueryRequestSerializer implements PrimitiveSerializer<LookupUserByQueryRequest> {
+class _$LookupUserByQueryRequestSerializer
+    implements PrimitiveSerializer<LookupUserByQueryRequest> {
   @override
-  final Iterable<Type> types = const [LookupUserByQueryRequest, _$LookupUserByQueryRequest];
+  final Iterable<Type> types = const [
+    LookupUserByQueryRequest,
+    _$LookupUserByQueryRequest
+  ];
 
   @override
   final String wireName = r'LookupUserByQueryRequest';
@@ -53,7 +62,9 @@ class _$LookupUserByQueryRequestSerializer implements PrimitiveSerializer<Lookup
     LookupUserByQueryRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,4 +114,3 @@ class _$LookupUserByQueryRequestSerializer implements PrimitiveSerializer<Lookup
     return result.build();
   }
 }
-

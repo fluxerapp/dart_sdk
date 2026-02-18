@@ -17,10 +17,11 @@ part 'webhook_response.g.dart';
 /// * [channelId] - The ID of the channel this webhook posts to
 /// * [name] - The display name of the webhook
 /// * [token] - The secure token used to execute the webhook
-/// * [user] 
-/// * [avatar] 
+/// * [user]
+/// * [avatar]
 @BuiltValue()
-abstract class WebhookResponse implements Built<WebhookResponse, WebhookResponseBuilder> {
+abstract class WebhookResponse
+    implements Built<WebhookResponse, WebhookResponseBuilder> {
   /// The unique identifier (snowflake) for the webhook
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -49,16 +50,19 @@ abstract class WebhookResponse implements Built<WebhookResponse, WebhookResponse
 
   WebhookResponse._();
 
-  factory WebhookResponse([void updates(WebhookResponseBuilder b)]) = _$WebhookResponse;
+  factory WebhookResponse([void updates(WebhookResponseBuilder b)]) =
+      _$WebhookResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(WebhookResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<WebhookResponse> get serializer => _$WebhookResponseSerializer();
+  static Serializer<WebhookResponse> get serializer =>
+      _$WebhookResponseSerializer();
 }
 
-class _$WebhookResponseSerializer implements PrimitiveSerializer<WebhookResponse> {
+class _$WebhookResponseSerializer
+    implements PrimitiveSerializer<WebhookResponse> {
   @override
   final Iterable<Type> types = const [WebhookResponse, _$WebhookResponse];
 
@@ -115,7 +119,9 @@ class _$WebhookResponseSerializer implements PrimitiveSerializer<WebhookResponse
     WebhookResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -208,4 +214,3 @@ class _$WebhookResponseSerializer implements PrimitiveSerializer<WebhookResponse
     return result.build();
   }
 }
-

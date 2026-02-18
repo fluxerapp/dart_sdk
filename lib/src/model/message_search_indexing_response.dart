@@ -14,7 +14,10 @@ part 'message_search_indexing_response.g.dart';
 /// Properties:
 /// * [indexing] - Indicates that one or more channels are being indexed
 @BuiltValue()
-abstract class MessageSearchIndexingResponse implements Built<MessageSearchIndexingResponse, MessageSearchIndexingResponseBuilder> {
+abstract class MessageSearchIndexingResponse
+    implements
+        Built<MessageSearchIndexingResponse,
+            MessageSearchIndexingResponseBuilder> {
   /// Indicates that one or more channels are being indexed
   @BuiltValueField(wireName: r'indexing')
   MessageSearchIndexingResponseIndexingEnum get indexing;
@@ -22,18 +25,25 @@ abstract class MessageSearchIndexingResponse implements Built<MessageSearchIndex
 
   MessageSearchIndexingResponse._();
 
-  factory MessageSearchIndexingResponse([void updates(MessageSearchIndexingResponseBuilder b)]) = _$MessageSearchIndexingResponse;
+  factory MessageSearchIndexingResponse(
+          [void updates(MessageSearchIndexingResponseBuilder b)]) =
+      _$MessageSearchIndexingResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(MessageSearchIndexingResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<MessageSearchIndexingResponse> get serializer => _$MessageSearchIndexingResponseSerializer();
+  static Serializer<MessageSearchIndexingResponse> get serializer =>
+      _$MessageSearchIndexingResponseSerializer();
 }
 
-class _$MessageSearchIndexingResponseSerializer implements PrimitiveSerializer<MessageSearchIndexingResponse> {
+class _$MessageSearchIndexingResponseSerializer
+    implements PrimitiveSerializer<MessageSearchIndexingResponse> {
   @override
-  final Iterable<Type> types = const [MessageSearchIndexingResponse, _$MessageSearchIndexingResponse];
+  final Iterable<Type> types = const [
+    MessageSearchIndexingResponse,
+    _$MessageSearchIndexingResponse
+  ];
 
   @override
   final String wireName = r'MessageSearchIndexingResponse';
@@ -56,7 +66,9 @@ class _$MessageSearchIndexingResponseSerializer implements PrimitiveSerializer<M
     MessageSearchIndexingResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -74,7 +86,8 @@ class _$MessageSearchIndexingResponseSerializer implements PrimitiveSerializer<M
         case r'indexing':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(MessageSearchIndexingResponseIndexingEnum),
+            specifiedType:
+                const FullType(MessageSearchIndexingResponseIndexingEnum),
           ) as MessageSearchIndexingResponseIndexingEnum;
           result.indexing = valueDes;
           break;
@@ -108,16 +121,18 @@ class _$MessageSearchIndexingResponseSerializer implements PrimitiveSerializer<M
 }
 
 class MessageSearchIndexingResponseIndexingEnum extends EnumClass {
-
   /// Indicates that one or more channels are being indexed
   @BuiltValueEnumConst(wireName: r'true')
-  static const MessageSearchIndexingResponseIndexingEnum true_ = _$messageSearchIndexingResponseIndexingEnum_true_;
+  static const MessageSearchIndexingResponseIndexingEnum true_ =
+      _$messageSearchIndexingResponseIndexingEnum_true_;
 
-  static Serializer<MessageSearchIndexingResponseIndexingEnum> get serializer => _$messageSearchIndexingResponseIndexingEnumSerializer;
+  static Serializer<MessageSearchIndexingResponseIndexingEnum> get serializer =>
+      _$messageSearchIndexingResponseIndexingEnumSerializer;
 
-  const MessageSearchIndexingResponseIndexingEnum._(String name): super(name);
+  const MessageSearchIndexingResponseIndexingEnum._(String name) : super(name);
 
-  static BuiltSet<MessageSearchIndexingResponseIndexingEnum> get values => _$messageSearchIndexingResponseIndexingEnumValues;
-  static MessageSearchIndexingResponseIndexingEnum valueOf(String name) => _$messageSearchIndexingResponseIndexingEnumValueOf(name);
+  static BuiltSet<MessageSearchIndexingResponseIndexingEnum> get values =>
+      _$messageSearchIndexingResponseIndexingEnumValues;
+  static MessageSearchIndexingResponseIndexingEnum valueOf(String name) =>
+      _$messageSearchIndexingResponseIndexingEnumValueOf(name);
 }
-

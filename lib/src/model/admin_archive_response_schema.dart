@@ -12,22 +12,24 @@ part 'admin_archive_response_schema.g.dart';
 /// AdminArchiveResponseSchema
 ///
 /// Properties:
-/// * [archiveId] 
+/// * [archiveId]
 /// * [subjectType] - Type of subject being archived
-/// * [subjectId] 
-/// * [requestedBy] 
-/// * [requestedAt] 
-/// * [startedAt] 
-/// * [completedAt] 
-/// * [failedAt] 
-/// * [fileSize] 
-/// * [progressPercent] 
-/// * [progressStep] 
-/// * [errorMessage] 
-/// * [downloadUrlExpiresAt] 
-/// * [expiresAt] 
+/// * [subjectId]
+/// * [requestedBy]
+/// * [requestedAt]
+/// * [startedAt]
+/// * [completedAt]
+/// * [failedAt]
+/// * [fileSize]
+/// * [progressPercent]
+/// * [progressStep]
+/// * [errorMessage]
+/// * [downloadUrlExpiresAt]
+/// * [expiresAt]
 @BuiltValue()
-abstract class AdminArchiveResponseSchema implements Built<AdminArchiveResponseSchema, AdminArchiveResponseSchemaBuilder> {
+abstract class AdminArchiveResponseSchema
+    implements
+        Built<AdminArchiveResponseSchema, AdminArchiveResponseSchemaBuilder> {
   @BuiltValueField(wireName: r'archive_id')
   String get archiveId;
 
@@ -74,18 +76,25 @@ abstract class AdminArchiveResponseSchema implements Built<AdminArchiveResponseS
 
   AdminArchiveResponseSchema._();
 
-  factory AdminArchiveResponseSchema([void updates(AdminArchiveResponseSchemaBuilder b)]) = _$AdminArchiveResponseSchema;
+  factory AdminArchiveResponseSchema(
+          [void updates(AdminArchiveResponseSchemaBuilder b)]) =
+      _$AdminArchiveResponseSchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(AdminArchiveResponseSchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<AdminArchiveResponseSchema> get serializer => _$AdminArchiveResponseSchemaSerializer();
+  static Serializer<AdminArchiveResponseSchema> get serializer =>
+      _$AdminArchiveResponseSchemaSerializer();
 }
 
-class _$AdminArchiveResponseSchemaSerializer implements PrimitiveSerializer<AdminArchiveResponseSchema> {
+class _$AdminArchiveResponseSchemaSerializer
+    implements PrimitiveSerializer<AdminArchiveResponseSchema> {
   @override
-  final Iterable<Type> types = const [AdminArchiveResponseSchema, _$AdminArchiveResponseSchema];
+  final Iterable<Type> types = const [
+    AdminArchiveResponseSchema,
+    _$AdminArchiveResponseSchema
+  ];
 
   @override
   final String wireName = r'AdminArchiveResponseSchema';
@@ -121,50 +130,66 @@ class _$AdminArchiveResponseSchemaSerializer implements PrimitiveSerializer<Admi
       specifiedType: const FullType(String),
     );
     yield r'started_at';
-    yield object.startedAt == null ? null : serializers.serialize(
-      object.startedAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.startedAt == null
+        ? null
+        : serializers.serialize(
+            object.startedAt,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'completed_at';
-    yield object.completedAt == null ? null : serializers.serialize(
-      object.completedAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.completedAt == null
+        ? null
+        : serializers.serialize(
+            object.completedAt,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'failed_at';
-    yield object.failedAt == null ? null : serializers.serialize(
-      object.failedAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.failedAt == null
+        ? null
+        : serializers.serialize(
+            object.failedAt,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'file_size';
-    yield object.fileSize == null ? null : serializers.serialize(
-      object.fileSize,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.fileSize == null
+        ? null
+        : serializers.serialize(
+            object.fileSize,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'progress_percent';
     yield serializers.serialize(
       object.progressPercent,
       specifiedType: const FullType(num),
     );
     yield r'progress_step';
-    yield object.progressStep == null ? null : serializers.serialize(
-      object.progressStep,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.progressStep == null
+        ? null
+        : serializers.serialize(
+            object.progressStep,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'error_message';
-    yield object.errorMessage == null ? null : serializers.serialize(
-      object.errorMessage,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.errorMessage == null
+        ? null
+        : serializers.serialize(
+            object.errorMessage,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'download_url_expires_at';
-    yield object.downloadUrlExpiresAt == null ? null : serializers.serialize(
-      object.downloadUrlExpiresAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.downloadUrlExpiresAt == null
+        ? null
+        : serializers.serialize(
+            object.downloadUrlExpiresAt,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'expires_at';
-    yield object.expiresAt == null ? null : serializers.serialize(
-      object.expiresAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.expiresAt == null
+        ? null
+        : serializers.serialize(
+            object.expiresAt,
+            specifiedType: const FullType.nullable(String),
+          );
   }
 
   @override
@@ -173,7 +198,9 @@ class _$AdminArchiveResponseSchemaSerializer implements PrimitiveSerializer<Admi
     AdminArchiveResponseSchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -198,7 +225,8 @@ class _$AdminArchiveResponseSchemaSerializer implements PrimitiveSerializer<Admi
         case r'subject_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(AdminArchiveResponseSchemaSubjectTypeEnum),
+            specifiedType:
+                const FullType(AdminArchiveResponseSchemaSubjectTypeEnum),
           ) as AdminArchiveResponseSchemaSubjectTypeEnum;
           result.subjectType = valueDes;
           break;
@@ -324,19 +352,23 @@ class _$AdminArchiveResponseSchemaSerializer implements PrimitiveSerializer<Admi
 }
 
 class AdminArchiveResponseSchemaSubjectTypeEnum extends EnumClass {
-
   /// Type of subject being archived
   @BuiltValueEnumConst(wireName: r'user')
-  static const AdminArchiveResponseSchemaSubjectTypeEnum user = _$adminArchiveResponseSchemaSubjectTypeEnum_user;
+  static const AdminArchiveResponseSchemaSubjectTypeEnum user =
+      _$adminArchiveResponseSchemaSubjectTypeEnum_user;
+
   /// Type of subject being archived
   @BuiltValueEnumConst(wireName: r'guild')
-  static const AdminArchiveResponseSchemaSubjectTypeEnum guild = _$adminArchiveResponseSchemaSubjectTypeEnum_guild;
+  static const AdminArchiveResponseSchemaSubjectTypeEnum guild =
+      _$adminArchiveResponseSchemaSubjectTypeEnum_guild;
 
-  static Serializer<AdminArchiveResponseSchemaSubjectTypeEnum> get serializer => _$adminArchiveResponseSchemaSubjectTypeEnumSerializer;
+  static Serializer<AdminArchiveResponseSchemaSubjectTypeEnum> get serializer =>
+      _$adminArchiveResponseSchemaSubjectTypeEnumSerializer;
 
-  const AdminArchiveResponseSchemaSubjectTypeEnum._(String name): super(name);
+  const AdminArchiveResponseSchemaSubjectTypeEnum._(String name) : super(name);
 
-  static BuiltSet<AdminArchiveResponseSchemaSubjectTypeEnum> get values => _$adminArchiveResponseSchemaSubjectTypeEnumValues;
-  static AdminArchiveResponseSchemaSubjectTypeEnum valueOf(String name) => _$adminArchiveResponseSchemaSubjectTypeEnumValueOf(name);
+  static BuiltSet<AdminArchiveResponseSchemaSubjectTypeEnum> get values =>
+      _$adminArchiveResponseSchemaSubjectTypeEnumValues;
+  static AdminArchiveResponseSchemaSubjectTypeEnum valueOf(String name) =>
+      _$adminArchiveResponseSchemaSubjectTypeEnumValueOf(name);
 }
-

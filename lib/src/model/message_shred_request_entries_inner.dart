@@ -11,10 +11,13 @@ part 'message_shred_request_entries_inner.g.dart';
 /// MessageShredRequestEntriesInner
 ///
 /// Properties:
-/// * [channelId] 
-/// * [messageId] 
+/// * [channelId]
+/// * [messageId]
 @BuiltValue()
-abstract class MessageShredRequestEntriesInner implements Built<MessageShredRequestEntriesInner, MessageShredRequestEntriesInnerBuilder> {
+abstract class MessageShredRequestEntriesInner
+    implements
+        Built<MessageShredRequestEntriesInner,
+            MessageShredRequestEntriesInnerBuilder> {
   @BuiltValueField(wireName: r'channel_id')
   String get channelId;
 
@@ -23,18 +26,25 @@ abstract class MessageShredRequestEntriesInner implements Built<MessageShredRequ
 
   MessageShredRequestEntriesInner._();
 
-  factory MessageShredRequestEntriesInner([void updates(MessageShredRequestEntriesInnerBuilder b)]) = _$MessageShredRequestEntriesInner;
+  factory MessageShredRequestEntriesInner(
+          [void updates(MessageShredRequestEntriesInnerBuilder b)]) =
+      _$MessageShredRequestEntriesInner;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(MessageShredRequestEntriesInnerBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<MessageShredRequestEntriesInner> get serializer => _$MessageShredRequestEntriesInnerSerializer();
+  static Serializer<MessageShredRequestEntriesInner> get serializer =>
+      _$MessageShredRequestEntriesInnerSerializer();
 }
 
-class _$MessageShredRequestEntriesInnerSerializer implements PrimitiveSerializer<MessageShredRequestEntriesInner> {
+class _$MessageShredRequestEntriesInnerSerializer
+    implements PrimitiveSerializer<MessageShredRequestEntriesInner> {
   @override
-  final Iterable<Type> types = const [MessageShredRequestEntriesInner, _$MessageShredRequestEntriesInner];
+  final Iterable<Type> types = const [
+    MessageShredRequestEntriesInner,
+    _$MessageShredRequestEntriesInner
+  ];
 
   @override
   final String wireName = r'MessageShredRequestEntriesInner';
@@ -62,7 +72,9 @@ class _$MessageShredRequestEntriesInnerSerializer implements PrimitiveSerializer
     MessageShredRequestEntriesInner object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -119,4 +131,3 @@ class _$MessageShredRequestEntriesInnerSerializer implements PrimitiveSerializer
     return result.build();
   }
 }
-

@@ -12,27 +12,37 @@ part 'visionary_slot_operation_response.g.dart';
 /// VisionarySlotOperationResponse
 ///
 /// Properties:
-/// * [success] 
+/// * [success]
 @BuiltValue()
-abstract class VisionarySlotOperationResponse implements Built<VisionarySlotOperationResponse, VisionarySlotOperationResponseBuilder> {
+abstract class VisionarySlotOperationResponse
+    implements
+        Built<VisionarySlotOperationResponse,
+            VisionarySlotOperationResponseBuilder> {
   @BuiltValueField(wireName: r'success')
   VisionarySlotOperationResponseSuccessEnum get success;
   // enum successEnum {  true,  };
 
   VisionarySlotOperationResponse._();
 
-  factory VisionarySlotOperationResponse([void updates(VisionarySlotOperationResponseBuilder b)]) = _$VisionarySlotOperationResponse;
+  factory VisionarySlotOperationResponse(
+          [void updates(VisionarySlotOperationResponseBuilder b)]) =
+      _$VisionarySlotOperationResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(VisionarySlotOperationResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<VisionarySlotOperationResponse> get serializer => _$VisionarySlotOperationResponseSerializer();
+  static Serializer<VisionarySlotOperationResponse> get serializer =>
+      _$VisionarySlotOperationResponseSerializer();
 }
 
-class _$VisionarySlotOperationResponseSerializer implements PrimitiveSerializer<VisionarySlotOperationResponse> {
+class _$VisionarySlotOperationResponseSerializer
+    implements PrimitiveSerializer<VisionarySlotOperationResponse> {
   @override
-  final Iterable<Type> types = const [VisionarySlotOperationResponse, _$VisionarySlotOperationResponse];
+  final Iterable<Type> types = const [
+    VisionarySlotOperationResponse,
+    _$VisionarySlotOperationResponse
+  ];
 
   @override
   final String wireName = r'VisionarySlotOperationResponse';
@@ -55,7 +65,9 @@ class _$VisionarySlotOperationResponseSerializer implements PrimitiveSerializer<
     VisionarySlotOperationResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -73,7 +85,8 @@ class _$VisionarySlotOperationResponseSerializer implements PrimitiveSerializer<
         case r'success':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(VisionarySlotOperationResponseSuccessEnum),
+            specifiedType:
+                const FullType(VisionarySlotOperationResponseSuccessEnum),
           ) as VisionarySlotOperationResponseSuccessEnum;
           result.success = valueDes;
           break;
@@ -107,15 +120,17 @@ class _$VisionarySlotOperationResponseSerializer implements PrimitiveSerializer<
 }
 
 class VisionarySlotOperationResponseSuccessEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'true')
-  static const VisionarySlotOperationResponseSuccessEnum true_ = _$visionarySlotOperationResponseSuccessEnum_true_;
+  static const VisionarySlotOperationResponseSuccessEnum true_ =
+      _$visionarySlotOperationResponseSuccessEnum_true_;
 
-  static Serializer<VisionarySlotOperationResponseSuccessEnum> get serializer => _$visionarySlotOperationResponseSuccessEnumSerializer;
+  static Serializer<VisionarySlotOperationResponseSuccessEnum> get serializer =>
+      _$visionarySlotOperationResponseSuccessEnumSerializer;
 
-  const VisionarySlotOperationResponseSuccessEnum._(String name): super(name);
+  const VisionarySlotOperationResponseSuccessEnum._(String name) : super(name);
 
-  static BuiltSet<VisionarySlotOperationResponseSuccessEnum> get values => _$visionarySlotOperationResponseSuccessEnumValues;
-  static VisionarySlotOperationResponseSuccessEnum valueOf(String name) => _$visionarySlotOperationResponseSuccessEnumValueOf(name);
+  static BuiltSet<VisionarySlotOperationResponseSuccessEnum> get values =>
+      _$visionarySlotOperationResponseSuccessEnumValues;
+  static VisionarySlotOperationResponseSuccessEnum valueOf(String name) =>
+      _$visionarySlotOperationResponseSuccessEnumValueOf(name);
 }
-

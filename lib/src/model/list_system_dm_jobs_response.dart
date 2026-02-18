@@ -14,9 +14,11 @@ part 'list_system_dm_jobs_response.g.dart';
 ///
 /// Properties:
 /// * [jobs] - List of system DM jobs
-/// * [nextCursor] 
+/// * [nextCursor]
 @BuiltValue()
-abstract class ListSystemDmJobsResponse implements Built<ListSystemDmJobsResponse, ListSystemDmJobsResponseBuilder> {
+abstract class ListSystemDmJobsResponse
+    implements
+        Built<ListSystemDmJobsResponse, ListSystemDmJobsResponseBuilder> {
   /// List of system DM jobs
   @BuiltValueField(wireName: r'jobs')
   BuiltList<SystemDmJobResponse> get jobs;
@@ -26,18 +28,25 @@ abstract class ListSystemDmJobsResponse implements Built<ListSystemDmJobsRespons
 
   ListSystemDmJobsResponse._();
 
-  factory ListSystemDmJobsResponse([void updates(ListSystemDmJobsResponseBuilder b)]) = _$ListSystemDmJobsResponse;
+  factory ListSystemDmJobsResponse(
+          [void updates(ListSystemDmJobsResponseBuilder b)]) =
+      _$ListSystemDmJobsResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ListSystemDmJobsResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListSystemDmJobsResponse> get serializer => _$ListSystemDmJobsResponseSerializer();
+  static Serializer<ListSystemDmJobsResponse> get serializer =>
+      _$ListSystemDmJobsResponseSerializer();
 }
 
-class _$ListSystemDmJobsResponseSerializer implements PrimitiveSerializer<ListSystemDmJobsResponse> {
+class _$ListSystemDmJobsResponseSerializer
+    implements PrimitiveSerializer<ListSystemDmJobsResponse> {
   @override
-  final Iterable<Type> types = const [ListSystemDmJobsResponse, _$ListSystemDmJobsResponse];
+  final Iterable<Type> types = const [
+    ListSystemDmJobsResponse,
+    _$ListSystemDmJobsResponse
+  ];
 
   @override
   final String wireName = r'ListSystemDmJobsResponse';
@@ -67,7 +76,9 @@ class _$ListSystemDmJobsResponseSerializer implements PrimitiveSerializer<ListSy
     ListSystemDmJobsResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -85,7 +96,8 @@ class _$ListSystemDmJobsResponseSerializer implements PrimitiveSerializer<ListSy
         case r'jobs':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(SystemDmJobResponse)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(SystemDmJobResponse)]),
           ) as BuiltList<SystemDmJobResponse>;
           result.jobs.replace(valueDes);
           break;
@@ -125,4 +137,3 @@ class _$ListSystemDmJobsResponseSerializer implements PrimitiveSerializer<ListSy
     return result.build();
   }
 }
-

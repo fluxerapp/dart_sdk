@@ -11,10 +11,11 @@ part 'kick_guild_member_request.g.dart';
 /// KickGuildMemberRequest
 ///
 /// Properties:
-/// * [userId] 
-/// * [guildId] 
+/// * [userId]
+/// * [guildId]
 @BuiltValue()
-abstract class KickGuildMemberRequest implements Built<KickGuildMemberRequest, KickGuildMemberRequestBuilder> {
+abstract class KickGuildMemberRequest
+    implements Built<KickGuildMemberRequest, KickGuildMemberRequestBuilder> {
   @BuiltValueField(wireName: r'user_id')
   String get userId;
 
@@ -23,18 +24,25 @@ abstract class KickGuildMemberRequest implements Built<KickGuildMemberRequest, K
 
   KickGuildMemberRequest._();
 
-  factory KickGuildMemberRequest([void updates(KickGuildMemberRequestBuilder b)]) = _$KickGuildMemberRequest;
+  factory KickGuildMemberRequest(
+          [void updates(KickGuildMemberRequestBuilder b)]) =
+      _$KickGuildMemberRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(KickGuildMemberRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<KickGuildMemberRequest> get serializer => _$KickGuildMemberRequestSerializer();
+  static Serializer<KickGuildMemberRequest> get serializer =>
+      _$KickGuildMemberRequestSerializer();
 }
 
-class _$KickGuildMemberRequestSerializer implements PrimitiveSerializer<KickGuildMemberRequest> {
+class _$KickGuildMemberRequestSerializer
+    implements PrimitiveSerializer<KickGuildMemberRequest> {
   @override
-  final Iterable<Type> types = const [KickGuildMemberRequest, _$KickGuildMemberRequest];
+  final Iterable<Type> types = const [
+    KickGuildMemberRequest,
+    _$KickGuildMemberRequest
+  ];
 
   @override
   final String wireName = r'KickGuildMemberRequest';
@@ -62,7 +70,9 @@ class _$KickGuildMemberRequestSerializer implements PrimitiveSerializer<KickGuil
     KickGuildMemberRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -119,4 +129,3 @@ class _$KickGuildMemberRequestSerializer implements PrimitiveSerializer<KickGuil
     return result.build();
   }
 }
-

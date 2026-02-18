@@ -10,20 +10,22 @@ import 'package:built_value/serializer.dart';
 part 'guild_explicit_content_filter.g.dart';
 
 class GuildExplicitContentFilter extends EnumClass {
-
   /// Level of content filtering for explicit media
   @BuiltValueEnumConst(wireNumber: 0)
   static const GuildExplicitContentFilter number0 = _$number0;
+
   /// Level of content filtering for explicit media
   @BuiltValueEnumConst(wireNumber: 1)
   static const GuildExplicitContentFilter number1 = _$number1;
+
   /// Level of content filtering for explicit media
   @BuiltValueEnumConst(wireNumber: 2)
   static const GuildExplicitContentFilter number2 = _$number2;
 
-  static Serializer<GuildExplicitContentFilter> get serializer => _$guildExplicitContentFilterSerializer;
+  static Serializer<GuildExplicitContentFilter> get serializer =>
+      _$guildExplicitContentFilterSerializer;
 
-  const GuildExplicitContentFilter._(String name): super(name);
+  const GuildExplicitContentFilter._(String name) : super(name);
 
   static BuiltSet<GuildExplicitContentFilter> get values => _$values;
   static GuildExplicitContentFilter valueOf(String name) => _$valueOf(name);
@@ -35,5 +37,5 @@ class GuildExplicitContentFilter extends EnumClass {
 /// corresponding Angular template.
 ///
 /// Trigger mixin generation by writing a line like this one next to your enum.
-abstract class GuildExplicitContentFilterMixin = Object with _$GuildExplicitContentFilterMixin;
-
+abstract class GuildExplicitContentFilterMixin = Object
+    with _$GuildExplicitContentFilterMixin;

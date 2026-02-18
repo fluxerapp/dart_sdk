@@ -15,9 +15,10 @@ part 'donation_checkout_request.g.dart';
 /// * [email] - Donor email address
 /// * [amountCents] - Donation amount in cents (500-100000)
 /// * [currency] - Currency for the donation
-/// * [interval] 
+/// * [interval]
 @BuiltValue()
-abstract class DonationCheckoutRequest implements Built<DonationCheckoutRequest, DonationCheckoutRequestBuilder> {
+abstract class DonationCheckoutRequest
+    implements Built<DonationCheckoutRequest, DonationCheckoutRequestBuilder> {
   /// Donor email address
   @BuiltValueField(wireName: r'email')
   String get email;
@@ -37,18 +38,25 @@ abstract class DonationCheckoutRequest implements Built<DonationCheckoutRequest,
 
   DonationCheckoutRequest._();
 
-  factory DonationCheckoutRequest([void updates(DonationCheckoutRequestBuilder b)]) = _$DonationCheckoutRequest;
+  factory DonationCheckoutRequest(
+          [void updates(DonationCheckoutRequestBuilder b)]) =
+      _$DonationCheckoutRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(DonationCheckoutRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<DonationCheckoutRequest> get serializer => _$DonationCheckoutRequestSerializer();
+  static Serializer<DonationCheckoutRequest> get serializer =>
+      _$DonationCheckoutRequestSerializer();
 }
 
-class _$DonationCheckoutRequestSerializer implements PrimitiveSerializer<DonationCheckoutRequest> {
+class _$DonationCheckoutRequestSerializer
+    implements PrimitiveSerializer<DonationCheckoutRequest> {
   @override
-  final Iterable<Type> types = const [DonationCheckoutRequest, _$DonationCheckoutRequest];
+  final Iterable<Type> types = const [
+    DonationCheckoutRequest,
+    _$DonationCheckoutRequest
+  ];
 
   @override
   final String wireName = r'DonationCheckoutRequest';
@@ -74,10 +82,13 @@ class _$DonationCheckoutRequestSerializer implements PrimitiveSerializer<Donatio
       specifiedType: const FullType(DonationCheckoutRequestCurrencyEnum),
     );
     yield r'interval';
-    yield object.interval == null ? null : serializers.serialize(
-      object.interval,
-      specifiedType: const FullType.nullable(DonationCheckoutRequestIntervalEnum),
-    );
+    yield object.interval == null
+        ? null
+        : serializers.serialize(
+            object.interval,
+            specifiedType:
+                const FullType.nullable(DonationCheckoutRequestIntervalEnum),
+          );
   }
 
   @override
@@ -86,7 +97,9 @@ class _$DonationCheckoutRequestSerializer implements PrimitiveSerializer<Donatio
     DonationCheckoutRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -125,7 +138,8 @@ class _$DonationCheckoutRequestSerializer implements PrimitiveSerializer<Donatio
         case r'interval':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(DonationCheckoutRequestIntervalEnum),
+            specifiedType:
+                const FullType.nullable(DonationCheckoutRequestIntervalEnum),
           ) as DonationCheckoutRequestIntervalEnum?;
           if (valueDes == null) continue;
           result.interval = valueDes;
@@ -160,34 +174,42 @@ class _$DonationCheckoutRequestSerializer implements PrimitiveSerializer<Donatio
 }
 
 class DonationCheckoutRequestCurrencyEnum extends EnumClass {
-
   /// Currency for the donation
   @BuiltValueEnumConst(wireName: r'usd')
-  static const DonationCheckoutRequestCurrencyEnum usd = _$donationCheckoutRequestCurrencyEnum_usd;
+  static const DonationCheckoutRequestCurrencyEnum usd =
+      _$donationCheckoutRequestCurrencyEnum_usd;
+
   /// Currency for the donation
   @BuiltValueEnumConst(wireName: r'eur')
-  static const DonationCheckoutRequestCurrencyEnum eur = _$donationCheckoutRequestCurrencyEnum_eur;
+  static const DonationCheckoutRequestCurrencyEnum eur =
+      _$donationCheckoutRequestCurrencyEnum_eur;
 
-  static Serializer<DonationCheckoutRequestCurrencyEnum> get serializer => _$donationCheckoutRequestCurrencyEnumSerializer;
+  static Serializer<DonationCheckoutRequestCurrencyEnum> get serializer =>
+      _$donationCheckoutRequestCurrencyEnumSerializer;
 
-  const DonationCheckoutRequestCurrencyEnum._(String name): super(name);
+  const DonationCheckoutRequestCurrencyEnum._(String name) : super(name);
 
-  static BuiltSet<DonationCheckoutRequestCurrencyEnum> get values => _$donationCheckoutRequestCurrencyEnumValues;
-  static DonationCheckoutRequestCurrencyEnum valueOf(String name) => _$donationCheckoutRequestCurrencyEnumValueOf(name);
+  static BuiltSet<DonationCheckoutRequestCurrencyEnum> get values =>
+      _$donationCheckoutRequestCurrencyEnumValues;
+  static DonationCheckoutRequestCurrencyEnum valueOf(String name) =>
+      _$donationCheckoutRequestCurrencyEnumValueOf(name);
 }
 
 class DonationCheckoutRequestIntervalEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'month')
-  static const DonationCheckoutRequestIntervalEnum month = _$donationCheckoutRequestIntervalEnum_month;
+  static const DonationCheckoutRequestIntervalEnum month =
+      _$donationCheckoutRequestIntervalEnum_month;
   @BuiltValueEnumConst(wireName: r'year')
-  static const DonationCheckoutRequestIntervalEnum year = _$donationCheckoutRequestIntervalEnum_year;
+  static const DonationCheckoutRequestIntervalEnum year =
+      _$donationCheckoutRequestIntervalEnum_year;
 
-  static Serializer<DonationCheckoutRequestIntervalEnum> get serializer => _$donationCheckoutRequestIntervalEnumSerializer;
+  static Serializer<DonationCheckoutRequestIntervalEnum> get serializer =>
+      _$donationCheckoutRequestIntervalEnumSerializer;
 
-  const DonationCheckoutRequestIntervalEnum._(String name): super(name);
+  const DonationCheckoutRequestIntervalEnum._(String name) : super(name);
 
-  static BuiltSet<DonationCheckoutRequestIntervalEnum> get values => _$donationCheckoutRequestIntervalEnumValues;
-  static DonationCheckoutRequestIntervalEnum valueOf(String name) => _$donationCheckoutRequestIntervalEnumValueOf(name);
+  static BuiltSet<DonationCheckoutRequestIntervalEnum> get values =>
+      _$donationCheckoutRequestIntervalEnumValues;
+  static DonationCheckoutRequestIntervalEnum valueOf(String name) =>
+      _$donationCheckoutRequestIntervalEnumValueOf(name);
 }
-

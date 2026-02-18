@@ -14,7 +14,8 @@ part 'webhook_create_request.g.dart';
 /// * [name] - The name of the webhook
 /// * [avatar] - Base64-encoded image data
 @BuiltValue()
-abstract class WebhookCreateRequest implements Built<WebhookCreateRequest, WebhookCreateRequestBuilder> {
+abstract class WebhookCreateRequest
+    implements Built<WebhookCreateRequest, WebhookCreateRequestBuilder> {
   /// The name of the webhook
   @BuiltValueField(wireName: r'name')
   String get name;
@@ -25,18 +26,24 @@ abstract class WebhookCreateRequest implements Built<WebhookCreateRequest, Webho
 
   WebhookCreateRequest._();
 
-  factory WebhookCreateRequest([void updates(WebhookCreateRequestBuilder b)]) = _$WebhookCreateRequest;
+  factory WebhookCreateRequest([void updates(WebhookCreateRequestBuilder b)]) =
+      _$WebhookCreateRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(WebhookCreateRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<WebhookCreateRequest> get serializer => _$WebhookCreateRequestSerializer();
+  static Serializer<WebhookCreateRequest> get serializer =>
+      _$WebhookCreateRequestSerializer();
 }
 
-class _$WebhookCreateRequestSerializer implements PrimitiveSerializer<WebhookCreateRequest> {
+class _$WebhookCreateRequestSerializer
+    implements PrimitiveSerializer<WebhookCreateRequest> {
   @override
-  final Iterable<Type> types = const [WebhookCreateRequest, _$WebhookCreateRequest];
+  final Iterable<Type> types = const [
+    WebhookCreateRequest,
+    _$WebhookCreateRequest
+  ];
 
   @override
   final String wireName = r'WebhookCreateRequest';
@@ -66,7 +73,9 @@ class _$WebhookCreateRequestSerializer implements PrimitiveSerializer<WebhookCre
     WebhookCreateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -123,4 +132,3 @@ class _$WebhookCreateRequestSerializer implements PrimitiveSerializer<WebhookCre
     return result.build();
   }
 }
-

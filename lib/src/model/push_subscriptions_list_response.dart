@@ -15,25 +15,35 @@ part 'push_subscriptions_list_response.g.dart';
 /// Properties:
 /// * [subscriptions] - Array of push subscriptions
 @BuiltValue()
-abstract class PushSubscriptionsListResponse implements Built<PushSubscriptionsListResponse, PushSubscriptionsListResponseBuilder> {
+abstract class PushSubscriptionsListResponse
+    implements
+        Built<PushSubscriptionsListResponse,
+            PushSubscriptionsListResponseBuilder> {
   /// Array of push subscriptions
   @BuiltValueField(wireName: r'subscriptions')
   BuiltList<PushSubscriptionItemResponse> get subscriptions;
 
   PushSubscriptionsListResponse._();
 
-  factory PushSubscriptionsListResponse([void updates(PushSubscriptionsListResponseBuilder b)]) = _$PushSubscriptionsListResponse;
+  factory PushSubscriptionsListResponse(
+          [void updates(PushSubscriptionsListResponseBuilder b)]) =
+      _$PushSubscriptionsListResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PushSubscriptionsListResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PushSubscriptionsListResponse> get serializer => _$PushSubscriptionsListResponseSerializer();
+  static Serializer<PushSubscriptionsListResponse> get serializer =>
+      _$PushSubscriptionsListResponseSerializer();
 }
 
-class _$PushSubscriptionsListResponseSerializer implements PrimitiveSerializer<PushSubscriptionsListResponse> {
+class _$PushSubscriptionsListResponseSerializer
+    implements PrimitiveSerializer<PushSubscriptionsListResponse> {
   @override
-  final Iterable<Type> types = const [PushSubscriptionsListResponse, _$PushSubscriptionsListResponse];
+  final Iterable<Type> types = const [
+    PushSubscriptionsListResponse,
+    _$PushSubscriptionsListResponse
+  ];
 
   @override
   final String wireName = r'PushSubscriptionsListResponse';
@@ -46,7 +56,8 @@ class _$PushSubscriptionsListResponseSerializer implements PrimitiveSerializer<P
     yield r'subscriptions';
     yield serializers.serialize(
       object.subscriptions,
-      specifiedType: const FullType(BuiltList, [FullType(PushSubscriptionItemResponse)]),
+      specifiedType:
+          const FullType(BuiltList, [FullType(PushSubscriptionItemResponse)]),
     );
   }
 
@@ -56,7 +67,9 @@ class _$PushSubscriptionsListResponseSerializer implements PrimitiveSerializer<P
     PushSubscriptionsListResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -74,7 +87,8 @@ class _$PushSubscriptionsListResponseSerializer implements PrimitiveSerializer<P
         case r'subscriptions':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(PushSubscriptionItemResponse)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(PushSubscriptionItemResponse)]),
           ) as BuiltList<PushSubscriptionItemResponse>;
           result.subscriptions.replace(valueDes);
           break;
@@ -106,4 +120,3 @@ class _$PushSubscriptionsListResponseSerializer implements PrimitiveSerializer<P
     return result.build();
   }
 }
-

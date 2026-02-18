@@ -15,25 +15,33 @@ part 'mfa_backup_codes_response.g.dart';
 /// Properties:
 /// * [backupCodes] - List of backup codes
 @BuiltValue()
-abstract class MfaBackupCodesResponse implements Built<MfaBackupCodesResponse, MfaBackupCodesResponseBuilder> {
+abstract class MfaBackupCodesResponse
+    implements Built<MfaBackupCodesResponse, MfaBackupCodesResponseBuilder> {
   /// List of backup codes
   @BuiltValueField(wireName: r'backup_codes')
   BuiltList<MfaBackupCodeResponse> get backupCodes;
 
   MfaBackupCodesResponse._();
 
-  factory MfaBackupCodesResponse([void updates(MfaBackupCodesResponseBuilder b)]) = _$MfaBackupCodesResponse;
+  factory MfaBackupCodesResponse(
+          [void updates(MfaBackupCodesResponseBuilder b)]) =
+      _$MfaBackupCodesResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(MfaBackupCodesResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<MfaBackupCodesResponse> get serializer => _$MfaBackupCodesResponseSerializer();
+  static Serializer<MfaBackupCodesResponse> get serializer =>
+      _$MfaBackupCodesResponseSerializer();
 }
 
-class _$MfaBackupCodesResponseSerializer implements PrimitiveSerializer<MfaBackupCodesResponse> {
+class _$MfaBackupCodesResponseSerializer
+    implements PrimitiveSerializer<MfaBackupCodesResponse> {
   @override
-  final Iterable<Type> types = const [MfaBackupCodesResponse, _$MfaBackupCodesResponse];
+  final Iterable<Type> types = const [
+    MfaBackupCodesResponse,
+    _$MfaBackupCodesResponse
+  ];
 
   @override
   final String wireName = r'MfaBackupCodesResponse';
@@ -46,7 +54,8 @@ class _$MfaBackupCodesResponseSerializer implements PrimitiveSerializer<MfaBacku
     yield r'backup_codes';
     yield serializers.serialize(
       object.backupCodes,
-      specifiedType: const FullType(BuiltList, [FullType(MfaBackupCodeResponse)]),
+      specifiedType:
+          const FullType(BuiltList, [FullType(MfaBackupCodeResponse)]),
     );
   }
 
@@ -56,7 +65,9 @@ class _$MfaBackupCodesResponseSerializer implements PrimitiveSerializer<MfaBacku
     MfaBackupCodesResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -74,7 +85,8 @@ class _$MfaBackupCodesResponseSerializer implements PrimitiveSerializer<MfaBacku
         case r'backup_codes':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(MfaBackupCodeResponse)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(MfaBackupCodeResponse)]),
           ) as BuiltList<MfaBackupCodeResponse>;
           result.backupCodes.replace(valueDes);
           break;
@@ -106,4 +118,3 @@ class _$MfaBackupCodesResponseSerializer implements PrimitiveSerializer<MfaBacku
     return result.build();
   }
 }
-

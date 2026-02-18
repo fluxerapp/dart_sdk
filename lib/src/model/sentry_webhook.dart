@@ -14,12 +14,13 @@ part 'sentry_webhook.g.dart';
 /// SentryWebhook
 ///
 /// Properties:
-/// * [action] 
-/// * [installation] 
-/// * [data] 
-/// * [actor] 
+/// * [action]
+/// * [installation]
+/// * [data]
+/// * [actor]
 @BuiltValue()
-abstract class SentryWebhook implements Built<SentryWebhook, SentryWebhookBuilder> {
+abstract class SentryWebhook
+    implements Built<SentryWebhook, SentryWebhookBuilder> {
   @BuiltValueField(wireName: r'action')
   String? get action;
 
@@ -34,13 +35,15 @@ abstract class SentryWebhook implements Built<SentryWebhook, SentryWebhookBuilde
 
   SentryWebhook._();
 
-  factory SentryWebhook([void updates(SentryWebhookBuilder b)]) = _$SentryWebhook;
+  factory SentryWebhook([void updates(SentryWebhookBuilder b)]) =
+      _$SentryWebhook;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SentryWebhookBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SentryWebhook> get serializer => _$SentryWebhookSerializer();
+  static Serializer<SentryWebhook> get serializer =>
+      _$SentryWebhookSerializer();
 }
 
 class _$SentryWebhookSerializer implements PrimitiveSerializer<SentryWebhook> {
@@ -91,7 +94,9 @@ class _$SentryWebhookSerializer implements PrimitiveSerializer<SentryWebhook> {
     SentryWebhook object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -166,4 +171,3 @@ class _$SentryWebhookSerializer implements PrimitiveSerializer<SentryWebhook> {
     return result.build();
   }
 }
-

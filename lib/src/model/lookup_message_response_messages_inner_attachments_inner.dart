@@ -11,10 +11,13 @@ part 'lookup_message_response_messages_inner_attachments_inner.g.dart';
 /// LookupMessageResponseMessagesInnerAttachmentsInner
 ///
 /// Properties:
-/// * [filename] 
-/// * [url] 
+/// * [filename]
+/// * [url]
 @BuiltValue()
-abstract class LookupMessageResponseMessagesInnerAttachmentsInner implements Built<LookupMessageResponseMessagesInnerAttachmentsInner, LookupMessageResponseMessagesInnerAttachmentsInnerBuilder> {
+abstract class LookupMessageResponseMessagesInnerAttachmentsInner
+    implements
+        Built<LookupMessageResponseMessagesInnerAttachmentsInner,
+            LookupMessageResponseMessagesInnerAttachmentsInnerBuilder> {
   @BuiltValueField(wireName: r'filename')
   String get filename;
 
@@ -23,18 +26,31 @@ abstract class LookupMessageResponseMessagesInnerAttachmentsInner implements Bui
 
   LookupMessageResponseMessagesInnerAttachmentsInner._();
 
-  factory LookupMessageResponseMessagesInnerAttachmentsInner([void updates(LookupMessageResponseMessagesInnerAttachmentsInnerBuilder b)]) = _$LookupMessageResponseMessagesInnerAttachmentsInner;
+  factory LookupMessageResponseMessagesInnerAttachmentsInner(
+          [void updates(
+              LookupMessageResponseMessagesInnerAttachmentsInnerBuilder b)]) =
+      _$LookupMessageResponseMessagesInnerAttachmentsInner;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(LookupMessageResponseMessagesInnerAttachmentsInnerBuilder b) => b;
+  static void _defaults(
+          LookupMessageResponseMessagesInnerAttachmentsInnerBuilder b) =>
+      b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<LookupMessageResponseMessagesInnerAttachmentsInner> get serializer => _$LookupMessageResponseMessagesInnerAttachmentsInnerSerializer();
+  static Serializer<LookupMessageResponseMessagesInnerAttachmentsInner>
+      get serializer =>
+          _$LookupMessageResponseMessagesInnerAttachmentsInnerSerializer();
 }
 
-class _$LookupMessageResponseMessagesInnerAttachmentsInnerSerializer implements PrimitiveSerializer<LookupMessageResponseMessagesInnerAttachmentsInner> {
+class _$LookupMessageResponseMessagesInnerAttachmentsInnerSerializer
+    implements
+        PrimitiveSerializer<
+            LookupMessageResponseMessagesInnerAttachmentsInner> {
   @override
-  final Iterable<Type> types = const [LookupMessageResponseMessagesInnerAttachmentsInner, _$LookupMessageResponseMessagesInnerAttachmentsInner];
+  final Iterable<Type> types = const [
+    LookupMessageResponseMessagesInnerAttachmentsInner,
+    _$LookupMessageResponseMessagesInnerAttachmentsInner
+  ];
 
   @override
   final String wireName = r'LookupMessageResponseMessagesInnerAttachmentsInner';
@@ -62,7 +78,9 @@ class _$LookupMessageResponseMessagesInnerAttachmentsInnerSerializer implements 
     LookupMessageResponseMessagesInnerAttachmentsInner object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -119,4 +137,3 @@ class _$LookupMessageResponseMessagesInnerAttachmentsInnerSerializer implements 
     return result.build();
   }
 }
-

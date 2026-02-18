@@ -12,26 +12,33 @@ part 'guild_update_response.g.dart';
 /// GuildUpdateResponse
 ///
 /// Properties:
-/// * [guild] 
+/// * [guild]
 @BuiltValue()
-abstract class GuildUpdateResponse implements Built<GuildUpdateResponse, GuildUpdateResponseBuilder> {
+abstract class GuildUpdateResponse
+    implements Built<GuildUpdateResponse, GuildUpdateResponseBuilder> {
   @BuiltValueField(wireName: r'guild')
   GuildUpdateResponseGuild get guild;
 
   GuildUpdateResponse._();
 
-  factory GuildUpdateResponse([void updates(GuildUpdateResponseBuilder b)]) = _$GuildUpdateResponse;
+  factory GuildUpdateResponse([void updates(GuildUpdateResponseBuilder b)]) =
+      _$GuildUpdateResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildUpdateResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildUpdateResponse> get serializer => _$GuildUpdateResponseSerializer();
+  static Serializer<GuildUpdateResponse> get serializer =>
+      _$GuildUpdateResponseSerializer();
 }
 
-class _$GuildUpdateResponseSerializer implements PrimitiveSerializer<GuildUpdateResponse> {
+class _$GuildUpdateResponseSerializer
+    implements PrimitiveSerializer<GuildUpdateResponse> {
   @override
-  final Iterable<Type> types = const [GuildUpdateResponse, _$GuildUpdateResponse];
+  final Iterable<Type> types = const [
+    GuildUpdateResponse,
+    _$GuildUpdateResponse
+  ];
 
   @override
   final String wireName = r'GuildUpdateResponse';
@@ -54,7 +61,9 @@ class _$GuildUpdateResponseSerializer implements PrimitiveSerializer<GuildUpdate
     GuildUpdateResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +113,3 @@ class _$GuildUpdateResponseSerializer implements PrimitiveSerializer<GuildUpdate
     return result.build();
   }
 }
-

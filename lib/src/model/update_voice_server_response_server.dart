@@ -20,10 +20,13 @@ part 'update_voice_server_response_server.g.dart';
 /// * [requiredGuildFeatures] - Guild features required to use this server
 /// * [allowedGuildIds] - Guild IDs explicitly allowed to use this server
 /// * [allowedUserIds] - User IDs explicitly allowed to use this server
-/// * [createdAt] 
-/// * [updatedAt] 
+/// * [createdAt]
+/// * [updatedAt]
 @BuiltValue()
-abstract class UpdateVoiceServerResponseServer implements Built<UpdateVoiceServerResponseServer, UpdateVoiceServerResponseServerBuilder> {
+abstract class UpdateVoiceServerResponseServer
+    implements
+        Built<UpdateVoiceServerResponseServer,
+            UpdateVoiceServerResponseServerBuilder> {
   /// ID of the region this server belongs to
   @BuiltValueField(wireName: r'region_id')
   String get regionId;
@@ -64,18 +67,25 @@ abstract class UpdateVoiceServerResponseServer implements Built<UpdateVoiceServe
 
   UpdateVoiceServerResponseServer._();
 
-  factory UpdateVoiceServerResponseServer([void updates(UpdateVoiceServerResponseServerBuilder b)]) = _$UpdateVoiceServerResponseServer;
+  factory UpdateVoiceServerResponseServer(
+          [void updates(UpdateVoiceServerResponseServerBuilder b)]) =
+      _$UpdateVoiceServerResponseServer;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UpdateVoiceServerResponseServerBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UpdateVoiceServerResponseServer> get serializer => _$UpdateVoiceServerResponseServerSerializer();
+  static Serializer<UpdateVoiceServerResponseServer> get serializer =>
+      _$UpdateVoiceServerResponseServerSerializer();
 }
 
-class _$UpdateVoiceServerResponseServerSerializer implements PrimitiveSerializer<UpdateVoiceServerResponseServer> {
+class _$UpdateVoiceServerResponseServerSerializer
+    implements PrimitiveSerializer<UpdateVoiceServerResponseServer> {
   @override
-  final Iterable<Type> types = const [UpdateVoiceServerResponseServer, _$UpdateVoiceServerResponseServer];
+  final Iterable<Type> types = const [
+    UpdateVoiceServerResponseServer,
+    _$UpdateVoiceServerResponseServer
+  ];
 
   @override
   final String wireName = r'UpdateVoiceServerResponseServer';
@@ -126,15 +136,19 @@ class _$UpdateVoiceServerResponseServerSerializer implements PrimitiveSerializer
       specifiedType: const FullType(BuiltList, [FullType(String)]),
     );
     yield r'created_at';
-    yield object.createdAt == null ? null : serializers.serialize(
-      object.createdAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.createdAt == null
+        ? null
+        : serializers.serialize(
+            object.createdAt,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'updated_at';
-    yield object.updatedAt == null ? null : serializers.serialize(
-      object.updatedAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.updatedAt == null
+        ? null
+        : serializers.serialize(
+            object.updatedAt,
+            specifiedType: const FullType.nullable(String),
+          );
   }
 
   @override
@@ -143,7 +157,9 @@ class _$UpdateVoiceServerResponseServerSerializer implements PrimitiveSerializer
     UpdateVoiceServerResponseServer object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -258,4 +274,3 @@ class _$UpdateVoiceServerResponseServerSerializer implements PrimitiveSerializer
     return result.build();
   }
 }
-

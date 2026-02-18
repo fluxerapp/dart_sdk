@@ -12,43 +12,44 @@ part 'user_admin_response_schema.g.dart';
 /// UserAdminResponseSchema
 ///
 /// Properties:
-/// * [id] 
-/// * [username] 
-/// * [discriminator] 
-/// * [globalName] 
-/// * [bot] 
-/// * [system] 
+/// * [id]
+/// * [username]
+/// * [discriminator]
+/// * [globalName]
+/// * [bot]
+/// * [system]
 /// * [flags] - A single user flag value to add or remove
-/// * [avatar] 
-/// * [banner] 
-/// * [bio] 
-/// * [pronouns] 
-/// * [accentColor] 
-/// * [email] 
-/// * [emailVerified] 
-/// * [emailBounced] 
-/// * [phone] 
-/// * [dateOfBirth] 
-/// * [locale] 
-/// * [premiumType] 
-/// * [premiumSince] 
-/// * [premiumUntil] 
+/// * [avatar]
+/// * [banner]
+/// * [bio]
+/// * [pronouns]
+/// * [accentColor]
+/// * [email]
+/// * [emailVerified]
+/// * [emailBounced]
+/// * [phone]
+/// * [dateOfBirth]
+/// * [locale]
+/// * [premiumType]
+/// * [premiumSince]
+/// * [premiumUntil]
 /// * [suspiciousActivityFlags] - Bitmask of suspicious activity flags that triggered the disable
-/// * [tempBannedUntil] 
-/// * [pendingDeletionAt] 
-/// * [pendingBulkMessageDeletionAt] 
-/// * [deletionReasonCode] 
-/// * [deletionPublicReason] 
-/// * [acls] 
-/// * [traits] 
-/// * [hasTotp] 
-/// * [authenticatorTypes] 
-/// * [lastActiveAt] 
-/// * [lastActiveIp] 
-/// * [lastActiveIpReverse] 
-/// * [lastActiveLocation] 
+/// * [tempBannedUntil]
+/// * [pendingDeletionAt]
+/// * [pendingBulkMessageDeletionAt]
+/// * [deletionReasonCode]
+/// * [deletionPublicReason]
+/// * [acls]
+/// * [traits]
+/// * [hasTotp]
+/// * [authenticatorTypes]
+/// * [lastActiveAt]
+/// * [lastActiveIp]
+/// * [lastActiveIpReverse]
+/// * [lastActiveLocation]
 @BuiltValue()
-abstract class UserAdminResponseSchema implements Built<UserAdminResponseSchema, UserAdminResponseSchemaBuilder> {
+abstract class UserAdminResponseSchema
+    implements Built<UserAdminResponseSchema, UserAdminResponseSchemaBuilder> {
   @BuiltValueField(wireName: r'id')
   String get id;
 
@@ -158,18 +159,25 @@ abstract class UserAdminResponseSchema implements Built<UserAdminResponseSchema,
 
   UserAdminResponseSchema._();
 
-  factory UserAdminResponseSchema([void updates(UserAdminResponseSchemaBuilder b)]) = _$UserAdminResponseSchema;
+  factory UserAdminResponseSchema(
+          [void updates(UserAdminResponseSchemaBuilder b)]) =
+      _$UserAdminResponseSchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UserAdminResponseSchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UserAdminResponseSchema> get serializer => _$UserAdminResponseSchemaSerializer();
+  static Serializer<UserAdminResponseSchema> get serializer =>
+      _$UserAdminResponseSchemaSerializer();
 }
 
-class _$UserAdminResponseSchemaSerializer implements PrimitiveSerializer<UserAdminResponseSchema> {
+class _$UserAdminResponseSchemaSerializer
+    implements PrimitiveSerializer<UserAdminResponseSchema> {
   @override
-  final Iterable<Type> types = const [UserAdminResponseSchema, _$UserAdminResponseSchema];
+  final Iterable<Type> types = const [
+    UserAdminResponseSchema,
+    _$UserAdminResponseSchema
+  ];
 
   @override
   final String wireName = r'UserAdminResponseSchema';
@@ -195,10 +203,12 @@ class _$UserAdminResponseSchemaSerializer implements PrimitiveSerializer<UserAdm
       specifiedType: const FullType(int),
     );
     yield r'global_name';
-    yield object.globalName == null ? null : serializers.serialize(
-      object.globalName,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.globalName == null
+        ? null
+        : serializers.serialize(
+            object.globalName,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'bot';
     yield serializers.serialize(
       object.bot,
@@ -215,35 +225,45 @@ class _$UserAdminResponseSchemaSerializer implements PrimitiveSerializer<UserAdm
       specifiedType: const FullType(String),
     );
     yield r'avatar';
-    yield object.avatar == null ? null : serializers.serialize(
-      object.avatar,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.avatar == null
+        ? null
+        : serializers.serialize(
+            object.avatar,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'banner';
-    yield object.banner == null ? null : serializers.serialize(
-      object.banner,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.banner == null
+        ? null
+        : serializers.serialize(
+            object.banner,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'bio';
-    yield object.bio == null ? null : serializers.serialize(
-      object.bio,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.bio == null
+        ? null
+        : serializers.serialize(
+            object.bio,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'pronouns';
-    yield object.pronouns == null ? null : serializers.serialize(
-      object.pronouns,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.pronouns == null
+        ? null
+        : serializers.serialize(
+            object.pronouns,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'accent_color';
     yield serializers.serialize(
       object.accentColor,
       specifiedType: const FullType(int),
     );
     yield r'email';
-    yield object.email == null ? null : serializers.serialize(
-      object.email,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.email == null
+        ? null
+        : serializers.serialize(
+            object.email,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'email_verified';
     yield serializers.serialize(
       object.emailVerified,
@@ -255,65 +275,83 @@ class _$UserAdminResponseSchemaSerializer implements PrimitiveSerializer<UserAdm
       specifiedType: const FullType(bool),
     );
     yield r'phone';
-    yield object.phone == null ? null : serializers.serialize(
-      object.phone,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.phone == null
+        ? null
+        : serializers.serialize(
+            object.phone,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'date_of_birth';
-    yield object.dateOfBirth == null ? null : serializers.serialize(
-      object.dateOfBirth,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.dateOfBirth == null
+        ? null
+        : serializers.serialize(
+            object.dateOfBirth,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'locale';
-    yield object.locale == null ? null : serializers.serialize(
-      object.locale,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.locale == null
+        ? null
+        : serializers.serialize(
+            object.locale,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'premium_type';
     yield serializers.serialize(
       object.premiumType,
       specifiedType: const FullType(int),
     );
     yield r'premium_since';
-    yield object.premiumSince == null ? null : serializers.serialize(
-      object.premiumSince,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.premiumSince == null
+        ? null
+        : serializers.serialize(
+            object.premiumSince,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'premium_until';
-    yield object.premiumUntil == null ? null : serializers.serialize(
-      object.premiumUntil,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.premiumUntil == null
+        ? null
+        : serializers.serialize(
+            object.premiumUntil,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'suspicious_activity_flags';
     yield serializers.serialize(
       object.suspiciousActivityFlags,
       specifiedType: const FullType(int),
     );
     yield r'temp_banned_until';
-    yield object.tempBannedUntil == null ? null : serializers.serialize(
-      object.tempBannedUntil,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.tempBannedUntil == null
+        ? null
+        : serializers.serialize(
+            object.tempBannedUntil,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'pending_deletion_at';
-    yield object.pendingDeletionAt == null ? null : serializers.serialize(
-      object.pendingDeletionAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.pendingDeletionAt == null
+        ? null
+        : serializers.serialize(
+            object.pendingDeletionAt,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'pending_bulk_message_deletion_at';
-    yield object.pendingBulkMessageDeletionAt == null ? null : serializers.serialize(
-      object.pendingBulkMessageDeletionAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.pendingBulkMessageDeletionAt == null
+        ? null
+        : serializers.serialize(
+            object.pendingBulkMessageDeletionAt,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'deletion_reason_code';
     yield serializers.serialize(
       object.deletionReasonCode,
       specifiedType: const FullType(int),
     );
     yield r'deletion_public_reason';
-    yield object.deletionPublicReason == null ? null : serializers.serialize(
-      object.deletionPublicReason,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.deletionPublicReason == null
+        ? null
+        : serializers.serialize(
+            object.deletionPublicReason,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'acls';
     yield serializers.serialize(
       object.acls,
@@ -335,25 +373,33 @@ class _$UserAdminResponseSchemaSerializer implements PrimitiveSerializer<UserAdm
       specifiedType: const FullType(BuiltList, [FullType(int)]),
     );
     yield r'last_active_at';
-    yield object.lastActiveAt == null ? null : serializers.serialize(
-      object.lastActiveAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.lastActiveAt == null
+        ? null
+        : serializers.serialize(
+            object.lastActiveAt,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'last_active_ip';
-    yield object.lastActiveIp == null ? null : serializers.serialize(
-      object.lastActiveIp,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.lastActiveIp == null
+        ? null
+        : serializers.serialize(
+            object.lastActiveIp,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'last_active_ip_reverse';
-    yield object.lastActiveIpReverse == null ? null : serializers.serialize(
-      object.lastActiveIpReverse,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.lastActiveIpReverse == null
+        ? null
+        : serializers.serialize(
+            object.lastActiveIpReverse,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'last_active_location';
-    yield object.lastActiveLocation == null ? null : serializers.serialize(
-      object.lastActiveLocation,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.lastActiveLocation == null
+        ? null
+        : serializers.serialize(
+            object.lastActiveLocation,
+            specifiedType: const FullType.nullable(String),
+          );
   }
 
   @override
@@ -362,7 +408,9 @@ class _$UserAdminResponseSchemaSerializer implements PrimitiveSerializer<UserAdm
     UserAdminResponseSchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -669,4 +717,3 @@ class _$UserAdminResponseSchemaSerializer implements PrimitiveSerializer<UserAdm
     return result.build();
   }
 }
-

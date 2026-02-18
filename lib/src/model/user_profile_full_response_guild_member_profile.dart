@@ -11,12 +11,15 @@ part 'user_profile_full_response_guild_member_profile.g.dart';
 /// UserProfileFullResponseGuildMemberProfile
 ///
 /// Properties:
-/// * [bio] 
-/// * [pronouns] 
-/// * [banner] 
-/// * [accentColor] 
+/// * [bio]
+/// * [pronouns]
+/// * [banner]
+/// * [accentColor]
 @BuiltValue()
-abstract class UserProfileFullResponseGuildMemberProfile implements Built<UserProfileFullResponseGuildMemberProfile, UserProfileFullResponseGuildMemberProfileBuilder> {
+abstract class UserProfileFullResponseGuildMemberProfile
+    implements
+        Built<UserProfileFullResponseGuildMemberProfile,
+            UserProfileFullResponseGuildMemberProfileBuilder> {
   @BuiltValueField(wireName: r'bio')
   String? get bio;
 
@@ -31,18 +34,26 @@ abstract class UserProfileFullResponseGuildMemberProfile implements Built<UserPr
 
   UserProfileFullResponseGuildMemberProfile._();
 
-  factory UserProfileFullResponseGuildMemberProfile([void updates(UserProfileFullResponseGuildMemberProfileBuilder b)]) = _$UserProfileFullResponseGuildMemberProfile;
+  factory UserProfileFullResponseGuildMemberProfile(
+          [void updates(UserProfileFullResponseGuildMemberProfileBuilder b)]) =
+      _$UserProfileFullResponseGuildMemberProfile;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(UserProfileFullResponseGuildMemberProfileBuilder b) => b;
+  static void _defaults(UserProfileFullResponseGuildMemberProfileBuilder b) =>
+      b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UserProfileFullResponseGuildMemberProfile> get serializer => _$UserProfileFullResponseGuildMemberProfileSerializer();
+  static Serializer<UserProfileFullResponseGuildMemberProfile> get serializer =>
+      _$UserProfileFullResponseGuildMemberProfileSerializer();
 }
 
-class _$UserProfileFullResponseGuildMemberProfileSerializer implements PrimitiveSerializer<UserProfileFullResponseGuildMemberProfile> {
+class _$UserProfileFullResponseGuildMemberProfileSerializer
+    implements PrimitiveSerializer<UserProfileFullResponseGuildMemberProfile> {
   @override
-  final Iterable<Type> types = const [UserProfileFullResponseGuildMemberProfile, _$UserProfileFullResponseGuildMemberProfile];
+  final Iterable<Type> types = const [
+    UserProfileFullResponseGuildMemberProfile,
+    _$UserProfileFullResponseGuildMemberProfile
+  ];
 
   @override
   final String wireName = r'UserProfileFullResponseGuildMemberProfile';
@@ -53,20 +64,26 @@ class _$UserProfileFullResponseGuildMemberProfileSerializer implements Primitive
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     yield r'bio';
-    yield object.bio == null ? null : serializers.serialize(
-      object.bio,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.bio == null
+        ? null
+        : serializers.serialize(
+            object.bio,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'pronouns';
-    yield object.pronouns == null ? null : serializers.serialize(
-      object.pronouns,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.pronouns == null
+        ? null
+        : serializers.serialize(
+            object.pronouns,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'banner';
-    yield object.banner == null ? null : serializers.serialize(
-      object.banner,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.banner == null
+        ? null
+        : serializers.serialize(
+            object.banner,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'accent_color';
     yield serializers.serialize(
       object.accentColor,
@@ -80,7 +97,9 @@ class _$UserProfileFullResponseGuildMemberProfileSerializer implements Primitive
     UserProfileFullResponseGuildMemberProfile object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -154,4 +173,3 @@ class _$UserProfileFullResponseGuildMemberProfileSerializer implements Primitive
     return result.build();
   }
 }
-

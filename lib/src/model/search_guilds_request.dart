@@ -11,11 +11,12 @@ part 'search_guilds_request.g.dart';
 /// SearchGuildsRequest
 ///
 /// Properties:
-/// * [query] 
-/// * [limit] 
-/// * [offset] 
+/// * [query]
+/// * [limit]
+/// * [offset]
 @BuiltValue()
-abstract class SearchGuildsRequest implements Built<SearchGuildsRequest, SearchGuildsRequestBuilder> {
+abstract class SearchGuildsRequest
+    implements Built<SearchGuildsRequest, SearchGuildsRequestBuilder> {
   @BuiltValueField(wireName: r'query')
   String? get query;
 
@@ -27,18 +28,24 @@ abstract class SearchGuildsRequest implements Built<SearchGuildsRequest, SearchG
 
   SearchGuildsRequest._();
 
-  factory SearchGuildsRequest([void updates(SearchGuildsRequestBuilder b)]) = _$SearchGuildsRequest;
+  factory SearchGuildsRequest([void updates(SearchGuildsRequestBuilder b)]) =
+      _$SearchGuildsRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SearchGuildsRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SearchGuildsRequest> get serializer => _$SearchGuildsRequestSerializer();
+  static Serializer<SearchGuildsRequest> get serializer =>
+      _$SearchGuildsRequestSerializer();
 }
 
-class _$SearchGuildsRequestSerializer implements PrimitiveSerializer<SearchGuildsRequest> {
+class _$SearchGuildsRequestSerializer
+    implements PrimitiveSerializer<SearchGuildsRequest> {
   @override
-  final Iterable<Type> types = const [SearchGuildsRequest, _$SearchGuildsRequest];
+  final Iterable<Type> types = const [
+    SearchGuildsRequest,
+    _$SearchGuildsRequest
+  ];
 
   @override
   final String wireName = r'SearchGuildsRequest';
@@ -77,7 +84,9 @@ class _$SearchGuildsRequestSerializer implements PrimitiveSerializer<SearchGuild
     SearchGuildsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -141,4 +150,3 @@ class _$SearchGuildsRequestSerializer implements PrimitiveSerializer<SearchGuild
     return result.build();
   }
 }
-

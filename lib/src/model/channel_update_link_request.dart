@@ -14,22 +14,24 @@ part 'channel_update_link_request.g.dart';
 /// ChannelUpdateLinkRequest
 ///
 /// Properties:
-/// * [type] 
-/// * [topic] 
-/// * [url] 
-/// * [parentId] 
-/// * [bitrate] 
-/// * [userLimit] 
+/// * [type]
+/// * [topic]
+/// * [url]
+/// * [parentId]
+/// * [bitrate]
+/// * [userLimit]
 /// * [permissionOverwrites] - Permission overwrites for roles and members
-/// * [nsfw] 
-/// * [rateLimitPerUser] 
+/// * [nsfw]
+/// * [rateLimitPerUser]
 /// * [icon] - Base64-encoded image data
-/// * [ownerId] 
+/// * [ownerId]
 /// * [nicks] - User nickname overrides (user ID to nickname mapping)
-/// * [rtcRegion] 
-/// * [name] 
+/// * [rtcRegion]
+/// * [name]
 @BuiltValue()
-abstract class ChannelUpdateLinkRequest implements Built<ChannelUpdateLinkRequest, ChannelUpdateLinkRequestBuilder> {
+abstract class ChannelUpdateLinkRequest
+    implements
+        Built<ChannelUpdateLinkRequest, ChannelUpdateLinkRequestBuilder> {
   @BuiltValueField(wireName: r'type')
   ChannelUpdateLinkRequestTypeEnum get type;
   // enum typeEnum {  998,  };
@@ -78,18 +80,25 @@ abstract class ChannelUpdateLinkRequest implements Built<ChannelUpdateLinkReques
 
   ChannelUpdateLinkRequest._();
 
-  factory ChannelUpdateLinkRequest([void updates(ChannelUpdateLinkRequestBuilder b)]) = _$ChannelUpdateLinkRequest;
+  factory ChannelUpdateLinkRequest(
+          [void updates(ChannelUpdateLinkRequestBuilder b)]) =
+      _$ChannelUpdateLinkRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ChannelUpdateLinkRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ChannelUpdateLinkRequest> get serializer => _$ChannelUpdateLinkRequestSerializer();
+  static Serializer<ChannelUpdateLinkRequest> get serializer =>
+      _$ChannelUpdateLinkRequestSerializer();
 }
 
-class _$ChannelUpdateLinkRequestSerializer implements PrimitiveSerializer<ChannelUpdateLinkRequest> {
+class _$ChannelUpdateLinkRequestSerializer
+    implements PrimitiveSerializer<ChannelUpdateLinkRequest> {
   @override
-  final Iterable<Type> types = const [ChannelUpdateLinkRequest, _$ChannelUpdateLinkRequest];
+  final Iterable<Type> types = const [
+    ChannelUpdateLinkRequest,
+    _$ChannelUpdateLinkRequest
+  ];
 
   @override
   final String wireName = r'ChannelUpdateLinkRequest';
@@ -143,7 +152,8 @@ class _$ChannelUpdateLinkRequestSerializer implements PrimitiveSerializer<Channe
       yield r'permission_overwrites';
       yield serializers.serialize(
         object.permissionOverwrites,
-        specifiedType: const FullType(BuiltList, [FullType(ChannelOverwriteRequest)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(ChannelOverwriteRequest)]),
       );
     }
     if (object.nsfw != null) {
@@ -178,7 +188,10 @@ class _$ChannelUpdateLinkRequestSerializer implements PrimitiveSerializer<Channe
       yield r'nicks';
       yield serializers.serialize(
         object.nicks,
-        specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(ChannelNicknameOverridesValue)]),
+        specifiedType: const FullType(BuiltMap, [
+          FullType(String),
+          FullType.nullable(ChannelNicknameOverridesValue)
+        ]),
       );
     }
     if (object.rtcRegion != null) {
@@ -203,7 +216,9 @@ class _$ChannelUpdateLinkRequestSerializer implements PrimitiveSerializer<Channe
     ChannelUpdateLinkRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -267,7 +282,8 @@ class _$ChannelUpdateLinkRequestSerializer implements PrimitiveSerializer<Channe
         case r'permission_overwrites':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ChannelOverwriteRequest)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(ChannelOverwriteRequest)]),
           ) as BuiltList<ChannelOverwriteRequest>;
           result.permissionOverwrites.replace(valueDes);
           break;
@@ -304,7 +320,10 @@ class _$ChannelUpdateLinkRequestSerializer implements PrimitiveSerializer<Channe
         case r'nicks':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(ChannelNicknameOverridesValue)]),
+            specifiedType: const FullType(BuiltMap, [
+              FullType(String),
+              FullType.nullable(ChannelNicknameOverridesValue)
+            ]),
           ) as BuiltMap<String, ChannelNicknameOverridesValue?>;
           result.nicks.replace(valueDes);
           break;
@@ -354,15 +373,17 @@ class _$ChannelUpdateLinkRequestSerializer implements PrimitiveSerializer<Channe
 }
 
 class ChannelUpdateLinkRequestTypeEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireNumber: 998)
-  static const ChannelUpdateLinkRequestTypeEnum number998 = _$channelUpdateLinkRequestTypeEnum_number998;
+  static const ChannelUpdateLinkRequestTypeEnum number998 =
+      _$channelUpdateLinkRequestTypeEnum_number998;
 
-  static Serializer<ChannelUpdateLinkRequestTypeEnum> get serializer => _$channelUpdateLinkRequestTypeEnumSerializer;
+  static Serializer<ChannelUpdateLinkRequestTypeEnum> get serializer =>
+      _$channelUpdateLinkRequestTypeEnumSerializer;
 
-  const ChannelUpdateLinkRequestTypeEnum._(String name): super(name);
+  const ChannelUpdateLinkRequestTypeEnum._(String name) : super(name);
 
-  static BuiltSet<ChannelUpdateLinkRequestTypeEnum> get values => _$channelUpdateLinkRequestTypeEnumValues;
-  static ChannelUpdateLinkRequestTypeEnum valueOf(String name) => _$channelUpdateLinkRequestTypeEnumValueOf(name);
+  static BuiltSet<ChannelUpdateLinkRequestTypeEnum> get values =>
+      _$channelUpdateLinkRequestTypeEnumValues;
+  static ChannelUpdateLinkRequestTypeEnum valueOf(String name) =>
+      _$channelUpdateLinkRequestTypeEnumValueOf(name);
 }
-

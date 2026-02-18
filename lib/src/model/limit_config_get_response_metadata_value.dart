@@ -12,17 +12,20 @@ part 'limit_config_get_response_metadata_value.g.dart';
 /// LimitConfigGetResponseMetadataValue
 ///
 /// Properties:
-/// * [key] 
-/// * [label] 
-/// * [description] 
-/// * [category] 
-/// * [scope] 
-/// * [isToggle] 
-/// * [unit] 
-/// * [min] 
-/// * [max] 
+/// * [key]
+/// * [label]
+/// * [description]
+/// * [category]
+/// * [scope]
+/// * [isToggle]
+/// * [unit]
+/// * [min]
+/// * [max]
 @BuiltValue()
-abstract class LimitConfigGetResponseMetadataValue implements Built<LimitConfigGetResponseMetadataValue, LimitConfigGetResponseMetadataValueBuilder> {
+abstract class LimitConfigGetResponseMetadataValue
+    implements
+        Built<LimitConfigGetResponseMetadataValue,
+            LimitConfigGetResponseMetadataValueBuilder> {
   @BuiltValueField(wireName: r'key')
   String get key;
 
@@ -53,18 +56,25 @@ abstract class LimitConfigGetResponseMetadataValue implements Built<LimitConfigG
 
   LimitConfigGetResponseMetadataValue._();
 
-  factory LimitConfigGetResponseMetadataValue([void updates(LimitConfigGetResponseMetadataValueBuilder b)]) = _$LimitConfigGetResponseMetadataValue;
+  factory LimitConfigGetResponseMetadataValue(
+          [void updates(LimitConfigGetResponseMetadataValueBuilder b)]) =
+      _$LimitConfigGetResponseMetadataValue;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(LimitConfigGetResponseMetadataValueBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<LimitConfigGetResponseMetadataValue> get serializer => _$LimitConfigGetResponseMetadataValueSerializer();
+  static Serializer<LimitConfigGetResponseMetadataValue> get serializer =>
+      _$LimitConfigGetResponseMetadataValueSerializer();
 }
 
-class _$LimitConfigGetResponseMetadataValueSerializer implements PrimitiveSerializer<LimitConfigGetResponseMetadataValue> {
+class _$LimitConfigGetResponseMetadataValueSerializer
+    implements PrimitiveSerializer<LimitConfigGetResponseMetadataValue> {
   @override
-  final Iterable<Type> types = const [LimitConfigGetResponseMetadataValue, _$LimitConfigGetResponseMetadataValue];
+  final Iterable<Type> types = const [
+    LimitConfigGetResponseMetadataValue,
+    _$LimitConfigGetResponseMetadataValue
+  ];
 
   @override
   final String wireName = r'LimitConfigGetResponseMetadataValue';
@@ -108,7 +118,8 @@ class _$LimitConfigGetResponseMetadataValueSerializer implements PrimitiveSerial
       yield r'unit';
       yield serializers.serialize(
         object.unit,
-        specifiedType: const FullType(LimitConfigGetResponseMetadataValueUnitEnum),
+        specifiedType:
+            const FullType(LimitConfigGetResponseMetadataValueUnitEnum),
       );
     }
     if (object.min != null) {
@@ -133,7 +144,9 @@ class _$LimitConfigGetResponseMetadataValueSerializer implements PrimitiveSerial
     LimitConfigGetResponseMetadataValue object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -193,7 +206,8 @@ class _$LimitConfigGetResponseMetadataValueSerializer implements PrimitiveSerial
         case r'unit':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(LimitConfigGetResponseMetadataValueUnitEnum),
+            specifiedType:
+                const FullType(LimitConfigGetResponseMetadataValueUnitEnum),
           ) as LimitConfigGetResponseMetadataValueUnitEnum;
           result.unit = valueDes;
           break;
@@ -241,17 +255,21 @@ class _$LimitConfigGetResponseMetadataValueSerializer implements PrimitiveSerial
 }
 
 class LimitConfigGetResponseMetadataValueUnitEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'bytes')
-  static const LimitConfigGetResponseMetadataValueUnitEnum bytes = _$limitConfigGetResponseMetadataValueUnitEnum_bytes;
+  static const LimitConfigGetResponseMetadataValueUnitEnum bytes =
+      _$limitConfigGetResponseMetadataValueUnitEnum_bytes;
   @BuiltValueEnumConst(wireName: r'count')
-  static const LimitConfigGetResponseMetadataValueUnitEnum count = _$limitConfigGetResponseMetadataValueUnitEnum_count;
+  static const LimitConfigGetResponseMetadataValueUnitEnum count =
+      _$limitConfigGetResponseMetadataValueUnitEnum_count;
 
-  static Serializer<LimitConfigGetResponseMetadataValueUnitEnum> get serializer => _$limitConfigGetResponseMetadataValueUnitEnumSerializer;
+  static Serializer<LimitConfigGetResponseMetadataValueUnitEnum>
+      get serializer => _$limitConfigGetResponseMetadataValueUnitEnumSerializer;
 
-  const LimitConfigGetResponseMetadataValueUnitEnum._(String name): super(name);
+  const LimitConfigGetResponseMetadataValueUnitEnum._(String name)
+      : super(name);
 
-  static BuiltSet<LimitConfigGetResponseMetadataValueUnitEnum> get values => _$limitConfigGetResponseMetadataValueUnitEnumValues;
-  static LimitConfigGetResponseMetadataValueUnitEnum valueOf(String name) => _$limitConfigGetResponseMetadataValueUnitEnumValueOf(name);
+  static BuiltSet<LimitConfigGetResponseMetadataValueUnitEnum> get values =>
+      _$limitConfigGetResponseMetadataValueUnitEnumValues;
+  static LimitConfigGetResponseMetadataValueUnitEnum valueOf(String name) =>
+      _$limitConfigGetResponseMetadataValueUnitEnumValueOf(name);
 }
-

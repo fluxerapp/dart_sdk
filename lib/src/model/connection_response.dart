@@ -19,7 +19,8 @@ part 'connection_response.g.dart';
 /// * [visibilityFlags] - Bitfield controlling who can see this connection
 /// * [sortOrder] - The display order of this connection
 @BuiltValue()
-abstract class ConnectionResponse implements Built<ConnectionResponse, ConnectionResponseBuilder> {
+abstract class ConnectionResponse
+    implements Built<ConnectionResponse, ConnectionResponseBuilder> {
   /// The unique identifier for this connection
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -47,16 +48,19 @@ abstract class ConnectionResponse implements Built<ConnectionResponse, Connectio
 
   ConnectionResponse._();
 
-  factory ConnectionResponse([void updates(ConnectionResponseBuilder b)]) = _$ConnectionResponse;
+  factory ConnectionResponse([void updates(ConnectionResponseBuilder b)]) =
+      _$ConnectionResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ConnectionResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ConnectionResponse> get serializer => _$ConnectionResponseSerializer();
+  static Serializer<ConnectionResponse> get serializer =>
+      _$ConnectionResponseSerializer();
 }
 
-class _$ConnectionResponseSerializer implements PrimitiveSerializer<ConnectionResponse> {
+class _$ConnectionResponseSerializer
+    implements PrimitiveSerializer<ConnectionResponse> {
   @override
   final Iterable<Type> types = const [ConnectionResponse, _$ConnectionResponse];
 
@@ -106,7 +110,9 @@ class _$ConnectionResponseSerializer implements PrimitiveSerializer<ConnectionRe
     ConnectionResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -193,19 +199,23 @@ class _$ConnectionResponseSerializer implements PrimitiveSerializer<ConnectionRe
 }
 
 class ConnectionResponseTypeEnum extends EnumClass {
-
   /// The type of connection
   @BuiltValueEnumConst(wireName: r'bsky')
-  static const ConnectionResponseTypeEnum bsky = _$connectionResponseTypeEnum_bsky;
+  static const ConnectionResponseTypeEnum bsky =
+      _$connectionResponseTypeEnum_bsky;
+
   /// The type of connection
   @BuiltValueEnumConst(wireName: r'domain')
-  static const ConnectionResponseTypeEnum domain = _$connectionResponseTypeEnum_domain;
+  static const ConnectionResponseTypeEnum domain =
+      _$connectionResponseTypeEnum_domain;
 
-  static Serializer<ConnectionResponseTypeEnum> get serializer => _$connectionResponseTypeEnumSerializer;
+  static Serializer<ConnectionResponseTypeEnum> get serializer =>
+      _$connectionResponseTypeEnumSerializer;
 
-  const ConnectionResponseTypeEnum._(String name): super(name);
+  const ConnectionResponseTypeEnum._(String name) : super(name);
 
-  static BuiltSet<ConnectionResponseTypeEnum> get values => _$connectionResponseTypeEnumValues;
-  static ConnectionResponseTypeEnum valueOf(String name) => _$connectionResponseTypeEnumValueOf(name);
+  static BuiltSet<ConnectionResponseTypeEnum> get values =>
+      _$connectionResponseTypeEnumValues;
+  static ConnectionResponseTypeEnum valueOf(String name) =>
+      _$connectionResponseTypeEnumValueOf(name);
 }
-

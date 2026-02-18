@@ -23,11 +23,14 @@ part 'voice_region_with_servers_response.g.dart';
 /// * [requiredGuildFeatures] - Guild features required to use this region
 /// * [allowedGuildIds] - Guild IDs explicitly allowed to use this region
 /// * [allowedUserIds] - User IDs explicitly allowed to use this region
-/// * [createdAt] 
-/// * [updatedAt] 
+/// * [createdAt]
+/// * [updatedAt]
 /// * [servers] - Voice servers in this region
 @BuiltValue()
-abstract class VoiceRegionWithServersResponse implements Built<VoiceRegionWithServersResponse, VoiceRegionWithServersResponseBuilder> {
+abstract class VoiceRegionWithServersResponse
+    implements
+        Built<VoiceRegionWithServersResponse,
+            VoiceRegionWithServersResponseBuilder> {
   /// Unique identifier for the voice region
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -80,18 +83,25 @@ abstract class VoiceRegionWithServersResponse implements Built<VoiceRegionWithSe
 
   VoiceRegionWithServersResponse._();
 
-  factory VoiceRegionWithServersResponse([void updates(VoiceRegionWithServersResponseBuilder b)]) = _$VoiceRegionWithServersResponse;
+  factory VoiceRegionWithServersResponse(
+          [void updates(VoiceRegionWithServersResponseBuilder b)]) =
+      _$VoiceRegionWithServersResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(VoiceRegionWithServersResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<VoiceRegionWithServersResponse> get serializer => _$VoiceRegionWithServersResponseSerializer();
+  static Serializer<VoiceRegionWithServersResponse> get serializer =>
+      _$VoiceRegionWithServersResponseSerializer();
 }
 
-class _$VoiceRegionWithServersResponseSerializer implements PrimitiveSerializer<VoiceRegionWithServersResponse> {
+class _$VoiceRegionWithServersResponseSerializer
+    implements PrimitiveSerializer<VoiceRegionWithServersResponse> {
   @override
-  final Iterable<Type> types = const [VoiceRegionWithServersResponse, _$VoiceRegionWithServersResponse];
+  final Iterable<Type> types = const [
+    VoiceRegionWithServersResponse,
+    _$VoiceRegionWithServersResponse
+  ];
 
   @override
   final String wireName = r'VoiceRegionWithServersResponse';
@@ -152,20 +162,25 @@ class _$VoiceRegionWithServersResponseSerializer implements PrimitiveSerializer<
       specifiedType: const FullType(BuiltList, [FullType(String)]),
     );
     yield r'created_at';
-    yield object.createdAt == null ? null : serializers.serialize(
-      object.createdAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.createdAt == null
+        ? null
+        : serializers.serialize(
+            object.createdAt,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'updated_at';
-    yield object.updatedAt == null ? null : serializers.serialize(
-      object.updatedAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.updatedAt == null
+        ? null
+        : serializers.serialize(
+            object.updatedAt,
+            specifiedType: const FullType.nullable(String),
+          );
     if (object.servers != null) {
       yield r'servers';
       yield serializers.serialize(
         object.servers,
-        specifiedType: const FullType(BuiltList, [FullType(VoiceServerAdminResponse)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(VoiceServerAdminResponse)]),
       );
     }
   }
@@ -176,7 +191,9 @@ class _$VoiceRegionWithServersResponseSerializer implements PrimitiveSerializer<
     VoiceRegionWithServersResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -280,7 +297,8 @@ class _$VoiceRegionWithServersResponseSerializer implements PrimitiveSerializer<
         case r'servers':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(VoiceServerAdminResponse)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(VoiceServerAdminResponse)]),
           ) as BuiltList<VoiceServerAdminResponse>;
           result.servers.replace(valueDes);
           break;
@@ -312,4 +330,3 @@ class _$VoiceRegionWithServersResponseSerializer implements PrimitiveSerializer<
     return result.build();
   }
 }
-

@@ -11,24 +11,28 @@ part 'lookup_guild_request.g.dart';
 /// LookupGuildRequest
 ///
 /// Properties:
-/// * [guildId] 
+/// * [guildId]
 @BuiltValue()
-abstract class LookupGuildRequest implements Built<LookupGuildRequest, LookupGuildRequestBuilder> {
+abstract class LookupGuildRequest
+    implements Built<LookupGuildRequest, LookupGuildRequestBuilder> {
   @BuiltValueField(wireName: r'guild_id')
   String get guildId;
 
   LookupGuildRequest._();
 
-  factory LookupGuildRequest([void updates(LookupGuildRequestBuilder b)]) = _$LookupGuildRequest;
+  factory LookupGuildRequest([void updates(LookupGuildRequestBuilder b)]) =
+      _$LookupGuildRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(LookupGuildRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<LookupGuildRequest> get serializer => _$LookupGuildRequestSerializer();
+  static Serializer<LookupGuildRequest> get serializer =>
+      _$LookupGuildRequestSerializer();
 }
 
-class _$LookupGuildRequestSerializer implements PrimitiveSerializer<LookupGuildRequest> {
+class _$LookupGuildRequestSerializer
+    implements PrimitiveSerializer<LookupGuildRequest> {
   @override
   final Iterable<Type> types = const [LookupGuildRequest, _$LookupGuildRequest];
 
@@ -53,7 +57,9 @@ class _$LookupGuildRequestSerializer implements PrimitiveSerializer<LookupGuildR
     LookupGuildRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,4 +109,3 @@ class _$LookupGuildRequestSerializer implements PrimitiveSerializer<LookupGuildR
     return result.build();
   }
 }
-

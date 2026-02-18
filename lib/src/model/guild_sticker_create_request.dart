@@ -14,10 +14,12 @@ part 'guild_sticker_create_request.g.dart';
 /// Properties:
 /// * [name] - The name of the sticker (2-30 characters)
 /// * [image] - Base64-encoded image data
-/// * [description] 
+/// * [description]
 /// * [tags] - Array of autocomplete/suggestion tags (max 10 tags, each 1-30 characters)
 @BuiltValue()
-abstract class GuildStickerCreateRequest implements Built<GuildStickerCreateRequest, GuildStickerCreateRequestBuilder> {
+abstract class GuildStickerCreateRequest
+    implements
+        Built<GuildStickerCreateRequest, GuildStickerCreateRequestBuilder> {
   /// The name of the sticker (2-30 characters)
   @BuiltValueField(wireName: r'name')
   String get name;
@@ -35,18 +37,25 @@ abstract class GuildStickerCreateRequest implements Built<GuildStickerCreateRequ
 
   GuildStickerCreateRequest._();
 
-  factory GuildStickerCreateRequest([void updates(GuildStickerCreateRequestBuilder b)]) = _$GuildStickerCreateRequest;
+  factory GuildStickerCreateRequest(
+          [void updates(GuildStickerCreateRequestBuilder b)]) =
+      _$GuildStickerCreateRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildStickerCreateRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildStickerCreateRequest> get serializer => _$GuildStickerCreateRequestSerializer();
+  static Serializer<GuildStickerCreateRequest> get serializer =>
+      _$GuildStickerCreateRequestSerializer();
 }
 
-class _$GuildStickerCreateRequestSerializer implements PrimitiveSerializer<GuildStickerCreateRequest> {
+class _$GuildStickerCreateRequestSerializer
+    implements PrimitiveSerializer<GuildStickerCreateRequest> {
   @override
-  final Iterable<Type> types = const [GuildStickerCreateRequest, _$GuildStickerCreateRequest];
+  final Iterable<Type> types = const [
+    GuildStickerCreateRequest,
+    _$GuildStickerCreateRequest
+  ];
 
   @override
   final String wireName = r'GuildStickerCreateRequest';
@@ -88,7 +97,9 @@ class _$GuildStickerCreateRequestSerializer implements PrimitiveSerializer<Guild
     GuildStickerCreateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -160,4 +171,3 @@ class _$GuildStickerCreateRequestSerializer implements PrimitiveSerializer<Guild
     return result.build();
   }
 }
-

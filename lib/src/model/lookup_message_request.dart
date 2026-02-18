@@ -11,11 +11,12 @@ part 'lookup_message_request.g.dart';
 /// LookupMessageRequest
 ///
 /// Properties:
-/// * [channelId] 
-/// * [messageId] 
-/// * [contextLimit] 
+/// * [channelId]
+/// * [messageId]
+/// * [contextLimit]
 @BuiltValue()
-abstract class LookupMessageRequest implements Built<LookupMessageRequest, LookupMessageRequestBuilder> {
+abstract class LookupMessageRequest
+    implements Built<LookupMessageRequest, LookupMessageRequestBuilder> {
   @BuiltValueField(wireName: r'channel_id')
   String get channelId;
 
@@ -27,18 +28,24 @@ abstract class LookupMessageRequest implements Built<LookupMessageRequest, Looku
 
   LookupMessageRequest._();
 
-  factory LookupMessageRequest([void updates(LookupMessageRequestBuilder b)]) = _$LookupMessageRequest;
+  factory LookupMessageRequest([void updates(LookupMessageRequestBuilder b)]) =
+      _$LookupMessageRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(LookupMessageRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<LookupMessageRequest> get serializer => _$LookupMessageRequestSerializer();
+  static Serializer<LookupMessageRequest> get serializer =>
+      _$LookupMessageRequestSerializer();
 }
 
-class _$LookupMessageRequestSerializer implements PrimitiveSerializer<LookupMessageRequest> {
+class _$LookupMessageRequestSerializer
+    implements PrimitiveSerializer<LookupMessageRequest> {
   @override
-  final Iterable<Type> types = const [LookupMessageRequest, _$LookupMessageRequest];
+  final Iterable<Type> types = const [
+    LookupMessageRequest,
+    _$LookupMessageRequest
+  ];
 
   @override
   final String wireName = r'LookupMessageRequest';
@@ -73,7 +80,9 @@ class _$LookupMessageRequestSerializer implements PrimitiveSerializer<LookupMess
     LookupMessageRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -137,4 +146,3 @@ class _$LookupMessageRequestSerializer implements PrimitiveSerializer<LookupMess
     return result.build();
   }
 }
-

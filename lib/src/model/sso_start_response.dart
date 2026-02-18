@@ -15,7 +15,8 @@ part 'sso_start_response.g.dart';
 /// * [state] - State parameter for CSRF protection
 /// * [redirectUri] - Redirect URI after SSO completion
 @BuiltValue()
-abstract class SsoStartResponse implements Built<SsoStartResponse, SsoStartResponseBuilder> {
+abstract class SsoStartResponse
+    implements Built<SsoStartResponse, SsoStartResponseBuilder> {
   /// URL to redirect user to for SSO authentication
   @BuiltValueField(wireName: r'authorization_url')
   String get authorizationUrl;
@@ -30,16 +31,19 @@ abstract class SsoStartResponse implements Built<SsoStartResponse, SsoStartRespo
 
   SsoStartResponse._();
 
-  factory SsoStartResponse([void updates(SsoStartResponseBuilder b)]) = _$SsoStartResponse;
+  factory SsoStartResponse([void updates(SsoStartResponseBuilder b)]) =
+      _$SsoStartResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SsoStartResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SsoStartResponse> get serializer => _$SsoStartResponseSerializer();
+  static Serializer<SsoStartResponse> get serializer =>
+      _$SsoStartResponseSerializer();
 }
 
-class _$SsoStartResponseSerializer implements PrimitiveSerializer<SsoStartResponse> {
+class _$SsoStartResponseSerializer
+    implements PrimitiveSerializer<SsoStartResponse> {
   @override
   final Iterable<Type> types = const [SsoStartResponse, _$SsoStartResponse];
 
@@ -74,7 +78,9 @@ class _$SsoStartResponseSerializer implements PrimitiveSerializer<SsoStartRespon
     SsoStartResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -138,4 +144,3 @@ class _$SsoStartResponseSerializer implements PrimitiveSerializer<SsoStartRespon
     return result.build();
   }
 }
-

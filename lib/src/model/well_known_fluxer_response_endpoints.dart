@@ -23,7 +23,10 @@ part 'well_known_fluxer_response_endpoints.g.dart';
 /// * [gift] - Base URL for gift links
 /// * [webapp] - Base URL for the web application
 @BuiltValue()
-abstract class WellKnownFluxerResponseEndpoints implements Built<WellKnownFluxerResponseEndpoints, WellKnownFluxerResponseEndpointsBuilder> {
+abstract class WellKnownFluxerResponseEndpoints
+    implements
+        Built<WellKnownFluxerResponseEndpoints,
+            WellKnownFluxerResponseEndpointsBuilder> {
   /// Base URL for authenticated API requests
   @BuiltValueField(wireName: r'api')
   String get api;
@@ -70,18 +73,25 @@ abstract class WellKnownFluxerResponseEndpoints implements Built<WellKnownFluxer
 
   WellKnownFluxerResponseEndpoints._();
 
-  factory WellKnownFluxerResponseEndpoints([void updates(WellKnownFluxerResponseEndpointsBuilder b)]) = _$WellKnownFluxerResponseEndpoints;
+  factory WellKnownFluxerResponseEndpoints(
+          [void updates(WellKnownFluxerResponseEndpointsBuilder b)]) =
+      _$WellKnownFluxerResponseEndpoints;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(WellKnownFluxerResponseEndpointsBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<WellKnownFluxerResponseEndpoints> get serializer => _$WellKnownFluxerResponseEndpointsSerializer();
+  static Serializer<WellKnownFluxerResponseEndpoints> get serializer =>
+      _$WellKnownFluxerResponseEndpointsSerializer();
 }
 
-class _$WellKnownFluxerResponseEndpointsSerializer implements PrimitiveSerializer<WellKnownFluxerResponseEndpoints> {
+class _$WellKnownFluxerResponseEndpointsSerializer
+    implements PrimitiveSerializer<WellKnownFluxerResponseEndpoints> {
   @override
-  final Iterable<Type> types = const [WellKnownFluxerResponseEndpoints, _$WellKnownFluxerResponseEndpoints];
+  final Iterable<Type> types = const [
+    WellKnownFluxerResponseEndpoints,
+    _$WellKnownFluxerResponseEndpoints
+  ];
 
   @override
   final String wireName = r'WellKnownFluxerResponseEndpoints';
@@ -154,7 +164,9 @@ class _$WellKnownFluxerResponseEndpointsSerializer implements PrimitiveSerialize
     WellKnownFluxerResponseEndpoints object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -274,4 +286,3 @@ class _$WellKnownFluxerResponseEndpointsSerializer implements PrimitiveSerialize
     return result.build();
   }
 }
-

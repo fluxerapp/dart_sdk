@@ -14,25 +14,34 @@ part 'reorder_connections_request.g.dart';
 /// Properties:
 /// * [connectionIds] - Ordered list of connection IDs defining the new display order
 @BuiltValue()
-abstract class ReorderConnectionsRequest implements Built<ReorderConnectionsRequest, ReorderConnectionsRequestBuilder> {
+abstract class ReorderConnectionsRequest
+    implements
+        Built<ReorderConnectionsRequest, ReorderConnectionsRequestBuilder> {
   /// Ordered list of connection IDs defining the new display order
   @BuiltValueField(wireName: r'connection_ids')
   BuiltList<String> get connectionIds;
 
   ReorderConnectionsRequest._();
 
-  factory ReorderConnectionsRequest([void updates(ReorderConnectionsRequestBuilder b)]) = _$ReorderConnectionsRequest;
+  factory ReorderConnectionsRequest(
+          [void updates(ReorderConnectionsRequestBuilder b)]) =
+      _$ReorderConnectionsRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ReorderConnectionsRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ReorderConnectionsRequest> get serializer => _$ReorderConnectionsRequestSerializer();
+  static Serializer<ReorderConnectionsRequest> get serializer =>
+      _$ReorderConnectionsRequestSerializer();
 }
 
-class _$ReorderConnectionsRequestSerializer implements PrimitiveSerializer<ReorderConnectionsRequest> {
+class _$ReorderConnectionsRequestSerializer
+    implements PrimitiveSerializer<ReorderConnectionsRequest> {
   @override
-  final Iterable<Type> types = const [ReorderConnectionsRequest, _$ReorderConnectionsRequest];
+  final Iterable<Type> types = const [
+    ReorderConnectionsRequest,
+    _$ReorderConnectionsRequest
+  ];
 
   @override
   final String wireName = r'ReorderConnectionsRequest';
@@ -55,7 +64,9 @@ class _$ReorderConnectionsRequestSerializer implements PrimitiveSerializer<Reord
     ReorderConnectionsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -105,4 +116,3 @@ class _$ReorderConnectionsRequestSerializer implements PrimitiveSerializer<Reord
     return result.build();
   }
 }
-

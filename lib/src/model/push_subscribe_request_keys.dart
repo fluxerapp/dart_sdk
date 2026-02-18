@@ -14,7 +14,9 @@ part 'push_subscribe_request_keys.g.dart';
 /// * [p256dh] - The P-256 ECDH public key
 /// * [auth] - The authentication secret
 @BuiltValue()
-abstract class PushSubscribeRequestKeys implements Built<PushSubscribeRequestKeys, PushSubscribeRequestKeysBuilder> {
+abstract class PushSubscribeRequestKeys
+    implements
+        Built<PushSubscribeRequestKeys, PushSubscribeRequestKeysBuilder> {
   /// The P-256 ECDH public key
   @BuiltValueField(wireName: r'p256dh')
   String get p256dh;
@@ -25,18 +27,25 @@ abstract class PushSubscribeRequestKeys implements Built<PushSubscribeRequestKey
 
   PushSubscribeRequestKeys._();
 
-  factory PushSubscribeRequestKeys([void updates(PushSubscribeRequestKeysBuilder b)]) = _$PushSubscribeRequestKeys;
+  factory PushSubscribeRequestKeys(
+          [void updates(PushSubscribeRequestKeysBuilder b)]) =
+      _$PushSubscribeRequestKeys;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PushSubscribeRequestKeysBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PushSubscribeRequestKeys> get serializer => _$PushSubscribeRequestKeysSerializer();
+  static Serializer<PushSubscribeRequestKeys> get serializer =>
+      _$PushSubscribeRequestKeysSerializer();
 }
 
-class _$PushSubscribeRequestKeysSerializer implements PrimitiveSerializer<PushSubscribeRequestKeys> {
+class _$PushSubscribeRequestKeysSerializer
+    implements PrimitiveSerializer<PushSubscribeRequestKeys> {
   @override
-  final Iterable<Type> types = const [PushSubscribeRequestKeys, _$PushSubscribeRequestKeys];
+  final Iterable<Type> types = const [
+    PushSubscribeRequestKeys,
+    _$PushSubscribeRequestKeys
+  ];
 
   @override
   final String wireName = r'PushSubscribeRequestKeys';
@@ -64,7 +73,9 @@ class _$PushSubscribeRequestKeysSerializer implements PrimitiveSerializer<PushSu
     PushSubscribeRequestKeys object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +132,3 @@ class _$PushSubscribeRequestKeysSerializer implements PrimitiveSerializer<PushSu
     return result.build();
   }
 }
-

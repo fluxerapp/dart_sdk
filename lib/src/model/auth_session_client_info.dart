@@ -12,12 +12,13 @@ part 'auth_session_client_info.g.dart';
 /// AuthSessionClientInfo
 ///
 /// Properties:
-/// * [platform] 
-/// * [os] 
-/// * [browser] 
-/// * [location] 
+/// * [platform]
+/// * [os]
+/// * [browser]
+/// * [location]
 @BuiltValue()
-abstract class AuthSessionClientInfo implements Built<AuthSessionClientInfo, AuthSessionClientInfoBuilder> {
+abstract class AuthSessionClientInfo
+    implements Built<AuthSessionClientInfo, AuthSessionClientInfoBuilder> {
   @BuiltValueField(wireName: r'platform')
   String? get platform;
 
@@ -32,18 +33,24 @@ abstract class AuthSessionClientInfo implements Built<AuthSessionClientInfo, Aut
 
   AuthSessionClientInfo._();
 
-  factory AuthSessionClientInfo([void updates(AuthSessionClientInfoBuilder b)]) = _$AuthSessionClientInfo;
+  factory AuthSessionClientInfo(
+      [void updates(AuthSessionClientInfoBuilder b)]) = _$AuthSessionClientInfo;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(AuthSessionClientInfoBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<AuthSessionClientInfo> get serializer => _$AuthSessionClientInfoSerializer();
+  static Serializer<AuthSessionClientInfo> get serializer =>
+      _$AuthSessionClientInfoSerializer();
 }
 
-class _$AuthSessionClientInfoSerializer implements PrimitiveSerializer<AuthSessionClientInfo> {
+class _$AuthSessionClientInfoSerializer
+    implements PrimitiveSerializer<AuthSessionClientInfo> {
   @override
-  final Iterable<Type> types = const [AuthSessionClientInfo, _$AuthSessionClientInfo];
+  final Iterable<Type> types = const [
+    AuthSessionClientInfo,
+    _$AuthSessionClientInfo
+  ];
 
   @override
   final String wireName = r'AuthSessionClientInfo';
@@ -89,7 +96,9 @@ class _$AuthSessionClientInfoSerializer implements PrimitiveSerializer<AuthSessi
     AuthSessionClientInfo object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -164,4 +173,3 @@ class _$AuthSessionClientInfoSerializer implements PrimitiveSerializer<AuthSessi
     return result.build();
   }
 }
-

@@ -14,11 +14,12 @@ part 'bot_profile_response.g.dart';
 /// * [id] - The unique identifier of the bot user
 /// * [username] - The username of the bot
 /// * [discriminator] - The discriminator of the bot
-/// * [avatar] 
-/// * [banner] 
-/// * [bio] 
+/// * [avatar]
+/// * [banner]
+/// * [bio]
 @BuiltValue()
-abstract class BotProfileResponse implements Built<BotProfileResponse, BotProfileResponseBuilder> {
+abstract class BotProfileResponse
+    implements Built<BotProfileResponse, BotProfileResponseBuilder> {
   /// The unique identifier of the bot user
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -42,16 +43,19 @@ abstract class BotProfileResponse implements Built<BotProfileResponse, BotProfil
 
   BotProfileResponse._();
 
-  factory BotProfileResponse([void updates(BotProfileResponseBuilder b)]) = _$BotProfileResponse;
+  factory BotProfileResponse([void updates(BotProfileResponseBuilder b)]) =
+      _$BotProfileResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(BotProfileResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<BotProfileResponse> get serializer => _$BotProfileResponseSerializer();
+  static Serializer<BotProfileResponse> get serializer =>
+      _$BotProfileResponseSerializer();
 }
 
-class _$BotProfileResponseSerializer implements PrimitiveSerializer<BotProfileResponse> {
+class _$BotProfileResponseSerializer
+    implements PrimitiveSerializer<BotProfileResponse> {
   @override
   final Iterable<Type> types = const [BotProfileResponse, _$BotProfileResponse];
 
@@ -79,20 +83,26 @@ class _$BotProfileResponseSerializer implements PrimitiveSerializer<BotProfileRe
       specifiedType: const FullType(String),
     );
     yield r'avatar';
-    yield object.avatar == null ? null : serializers.serialize(
-      object.avatar,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.avatar == null
+        ? null
+        : serializers.serialize(
+            object.avatar,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'banner';
-    yield object.banner == null ? null : serializers.serialize(
-      object.banner,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.banner == null
+        ? null
+        : serializers.serialize(
+            object.banner,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'bio';
-    yield object.bio == null ? null : serializers.serialize(
-      object.bio,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.bio == null
+        ? null
+        : serializers.serialize(
+            object.bio,
+            specifiedType: const FullType.nullable(String),
+          );
   }
 
   @override
@@ -101,7 +111,9 @@ class _$BotProfileResponseSerializer implements PrimitiveSerializer<BotProfileRe
     BotProfileResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -189,4 +201,3 @@ class _$BotProfileResponseSerializer implements PrimitiveSerializer<BotProfileRe
     return result.build();
   }
 }
-

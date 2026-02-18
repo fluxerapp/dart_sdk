@@ -12,10 +12,12 @@ part 'bulk_add_guild_members_request.g.dart';
 /// BulkAddGuildMembersRequest
 ///
 /// Properties:
-/// * [guildId] 
+/// * [guildId]
 /// * [userIds] - List of user IDs to add as members
 @BuiltValue()
-abstract class BulkAddGuildMembersRequest implements Built<BulkAddGuildMembersRequest, BulkAddGuildMembersRequestBuilder> {
+abstract class BulkAddGuildMembersRequest
+    implements
+        Built<BulkAddGuildMembersRequest, BulkAddGuildMembersRequestBuilder> {
   @BuiltValueField(wireName: r'guild_id')
   String get guildId;
 
@@ -25,18 +27,25 @@ abstract class BulkAddGuildMembersRequest implements Built<BulkAddGuildMembersRe
 
   BulkAddGuildMembersRequest._();
 
-  factory BulkAddGuildMembersRequest([void updates(BulkAddGuildMembersRequestBuilder b)]) = _$BulkAddGuildMembersRequest;
+  factory BulkAddGuildMembersRequest(
+          [void updates(BulkAddGuildMembersRequestBuilder b)]) =
+      _$BulkAddGuildMembersRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(BulkAddGuildMembersRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<BulkAddGuildMembersRequest> get serializer => _$BulkAddGuildMembersRequestSerializer();
+  static Serializer<BulkAddGuildMembersRequest> get serializer =>
+      _$BulkAddGuildMembersRequestSerializer();
 }
 
-class _$BulkAddGuildMembersRequestSerializer implements PrimitiveSerializer<BulkAddGuildMembersRequest> {
+class _$BulkAddGuildMembersRequestSerializer
+    implements PrimitiveSerializer<BulkAddGuildMembersRequest> {
   @override
-  final Iterable<Type> types = const [BulkAddGuildMembersRequest, _$BulkAddGuildMembersRequest];
+  final Iterable<Type> types = const [
+    BulkAddGuildMembersRequest,
+    _$BulkAddGuildMembersRequest
+  ];
 
   @override
   final String wireName = r'BulkAddGuildMembersRequest';
@@ -64,7 +73,9 @@ class _$BulkAddGuildMembersRequestSerializer implements PrimitiveSerializer<Bulk
     BulkAddGuildMembersRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +132,3 @@ class _$BulkAddGuildMembersRequestSerializer implements PrimitiveSerializer<Bulk
     return result.build();
   }
 }
-

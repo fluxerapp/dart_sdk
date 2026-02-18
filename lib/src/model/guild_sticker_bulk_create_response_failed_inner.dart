@@ -14,7 +14,10 @@ part 'guild_sticker_bulk_create_response_failed_inner.g.dart';
 /// * [name] - The name of the sticker that failed to create
 /// * [error] - The error message explaining why the sticker failed to create
 @BuiltValue()
-abstract class GuildStickerBulkCreateResponseFailedInner implements Built<GuildStickerBulkCreateResponseFailedInner, GuildStickerBulkCreateResponseFailedInnerBuilder> {
+abstract class GuildStickerBulkCreateResponseFailedInner
+    implements
+        Built<GuildStickerBulkCreateResponseFailedInner,
+            GuildStickerBulkCreateResponseFailedInnerBuilder> {
   /// The name of the sticker that failed to create
   @BuiltValueField(wireName: r'name')
   String get name;
@@ -25,18 +28,26 @@ abstract class GuildStickerBulkCreateResponseFailedInner implements Built<GuildS
 
   GuildStickerBulkCreateResponseFailedInner._();
 
-  factory GuildStickerBulkCreateResponseFailedInner([void updates(GuildStickerBulkCreateResponseFailedInnerBuilder b)]) = _$GuildStickerBulkCreateResponseFailedInner;
+  factory GuildStickerBulkCreateResponseFailedInner(
+          [void updates(GuildStickerBulkCreateResponseFailedInnerBuilder b)]) =
+      _$GuildStickerBulkCreateResponseFailedInner;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(GuildStickerBulkCreateResponseFailedInnerBuilder b) => b;
+  static void _defaults(GuildStickerBulkCreateResponseFailedInnerBuilder b) =>
+      b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildStickerBulkCreateResponseFailedInner> get serializer => _$GuildStickerBulkCreateResponseFailedInnerSerializer();
+  static Serializer<GuildStickerBulkCreateResponseFailedInner> get serializer =>
+      _$GuildStickerBulkCreateResponseFailedInnerSerializer();
 }
 
-class _$GuildStickerBulkCreateResponseFailedInnerSerializer implements PrimitiveSerializer<GuildStickerBulkCreateResponseFailedInner> {
+class _$GuildStickerBulkCreateResponseFailedInnerSerializer
+    implements PrimitiveSerializer<GuildStickerBulkCreateResponseFailedInner> {
   @override
-  final Iterable<Type> types = const [GuildStickerBulkCreateResponseFailedInner, _$GuildStickerBulkCreateResponseFailedInner];
+  final Iterable<Type> types = const [
+    GuildStickerBulkCreateResponseFailedInner,
+    _$GuildStickerBulkCreateResponseFailedInner
+  ];
 
   @override
   final String wireName = r'GuildStickerBulkCreateResponseFailedInner';
@@ -64,7 +75,9 @@ class _$GuildStickerBulkCreateResponseFailedInnerSerializer implements Primitive
     GuildStickerBulkCreateResponseFailedInner object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +134,3 @@ class _$GuildStickerBulkCreateResponseFailedInnerSerializer implements Primitive
     return result.build();
   }
 }
-

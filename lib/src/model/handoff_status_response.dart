@@ -12,10 +12,11 @@ part 'handoff_status_response.g.dart';
 ///
 /// Properties:
 /// * [status] - Current status of the handoff (pending, completed, expired)
-/// * [token] 
-/// * [userId] 
+/// * [token]
+/// * [userId]
 @BuiltValue()
-abstract class HandoffStatusResponse implements Built<HandoffStatusResponse, HandoffStatusResponseBuilder> {
+abstract class HandoffStatusResponse
+    implements Built<HandoffStatusResponse, HandoffStatusResponseBuilder> {
   /// Current status of the handoff (pending, completed, expired)
   @BuiltValueField(wireName: r'status')
   String get status;
@@ -28,18 +29,24 @@ abstract class HandoffStatusResponse implements Built<HandoffStatusResponse, Han
 
   HandoffStatusResponse._();
 
-  factory HandoffStatusResponse([void updates(HandoffStatusResponseBuilder b)]) = _$HandoffStatusResponse;
+  factory HandoffStatusResponse(
+      [void updates(HandoffStatusResponseBuilder b)]) = _$HandoffStatusResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(HandoffStatusResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<HandoffStatusResponse> get serializer => _$HandoffStatusResponseSerializer();
+  static Serializer<HandoffStatusResponse> get serializer =>
+      _$HandoffStatusResponseSerializer();
 }
 
-class _$HandoffStatusResponseSerializer implements PrimitiveSerializer<HandoffStatusResponse> {
+class _$HandoffStatusResponseSerializer
+    implements PrimitiveSerializer<HandoffStatusResponse> {
   @override
-  final Iterable<Type> types = const [HandoffStatusResponse, _$HandoffStatusResponse];
+  final Iterable<Type> types = const [
+    HandoffStatusResponse,
+    _$HandoffStatusResponse
+  ];
 
   @override
   final String wireName = r'HandoffStatusResponse';
@@ -76,7 +83,9 @@ class _$HandoffStatusResponseSerializer implements PrimitiveSerializer<HandoffSt
     HandoffStatusResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -141,4 +150,3 @@ class _$HandoffStatusResponseSerializer implements PrimitiveSerializer<HandoffSt
     return result.build();
   }
 }
-

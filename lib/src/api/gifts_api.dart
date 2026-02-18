@@ -4,17 +4,13 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:fluxer_dart/src/api_util.dart';
-import 'package:fluxer_dart/src/model/error.dart';
-import 'package:fluxer_dart/src/model/get_well_known_fluxer429_response.dart';
 import 'package:fluxer_dart/src/model/gift_code_response.dart';
 
 class GiftsApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -35,7 +31,7 @@ class GiftsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GiftCodeResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GiftCodeResponse>> getGiftCode({ 
+  Future<Response<GiftCodeResponse>> getGiftCode({
     required String code,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -44,7 +40,10 @@ class GiftsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/gifts/{code}'.replaceAll('{' r'code' '}', encodeQueryParameter(_serializers, code, const FullType(String)).toString());
+    final _path = r'/gifts/{code}'.replaceAll(
+        '{' r'code' '}',
+        encodeQueryParameter(_serializers, code, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -69,11 +68,12 @@ class GiftsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GiftCodeResponse),
-      ) as GiftCodeResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GiftCodeResponse),
+            ) as GiftCodeResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -110,7 +110,7 @@ class GiftsApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> redeemGiftCode({ 
+  Future<Response<void>> redeemGiftCode({
     required String code,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -119,7 +119,10 @@ class GiftsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/gifts/{code}/redeem'.replaceAll('{' r'code' '}', encodeQueryParameter(_serializers, code, const FullType(String)).toString());
+    final _path = r'/gifts/{code}/redeem'.replaceAll(
+        '{' r'code' '}',
+        encodeQueryParameter(_serializers, code, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -132,7 +135,8 @@ class GiftsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -154,5 +158,4 @@ class GiftsApi {
 
     return _response;
   }
-
 }

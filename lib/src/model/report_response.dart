@@ -15,7 +15,8 @@ part 'report_response.g.dart';
 /// * [status] - Current status of the report (pending, reviewed, resolved)
 /// * [reportedAt] - ISO 8601 timestamp when the report was submitted
 @BuiltValue()
-abstract class ReportResponse implements Built<ReportResponse, ReportResponseBuilder> {
+abstract class ReportResponse
+    implements Built<ReportResponse, ReportResponseBuilder> {
   /// The unique identifier for this report
   @BuiltValueField(wireName: r'report_id')
   String get reportId;
@@ -30,16 +31,19 @@ abstract class ReportResponse implements Built<ReportResponse, ReportResponseBui
 
   ReportResponse._();
 
-  factory ReportResponse([void updates(ReportResponseBuilder b)]) = _$ReportResponse;
+  factory ReportResponse([void updates(ReportResponseBuilder b)]) =
+      _$ReportResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ReportResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ReportResponse> get serializer => _$ReportResponseSerializer();
+  static Serializer<ReportResponse> get serializer =>
+      _$ReportResponseSerializer();
 }
 
-class _$ReportResponseSerializer implements PrimitiveSerializer<ReportResponse> {
+class _$ReportResponseSerializer
+    implements PrimitiveSerializer<ReportResponse> {
   @override
   final Iterable<Type> types = const [ReportResponse, _$ReportResponse];
 
@@ -74,7 +78,9 @@ class _$ReportResponseSerializer implements PrimitiveSerializer<ReportResponse> 
     ReportResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -138,4 +144,3 @@ class _$ReportResponseSerializer implements PrimitiveSerializer<ReportResponse> 
     return result.build();
   }
 }
-

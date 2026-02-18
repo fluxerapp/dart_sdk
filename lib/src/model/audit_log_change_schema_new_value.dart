@@ -15,37 +15,43 @@ part 'audit_log_change_schema_new_value.g.dart';
 /// Value after the change
 ///
 /// Properties:
-/// * [added] 
-/// * [removed] 
+/// * [added]
+/// * [removed]
 @BuiltValue()
-abstract class AuditLogChangeSchemaNewValue implements Built<AuditLogChangeSchemaNewValue, AuditLogChangeSchemaNewValueBuilder> {
+abstract class AuditLogChangeSchemaNewValue
+    implements
+        Built<AuditLogChangeSchemaNewValue,
+            AuditLogChangeSchemaNewValueBuilder> {
   /// One Of [AuditLogChangeSchemaOldValueOneOf], [BuiltList<String>], [BuiltList<num>], [String], [bool], [num]
   OneOf get oneOf;
 
   AuditLogChangeSchemaNewValue._();
 
-  factory AuditLogChangeSchemaNewValue([void updates(AuditLogChangeSchemaNewValueBuilder b)]) = _$AuditLogChangeSchemaNewValue;
+  factory AuditLogChangeSchemaNewValue(
+          [void updates(AuditLogChangeSchemaNewValueBuilder b)]) =
+      _$AuditLogChangeSchemaNewValue;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(AuditLogChangeSchemaNewValueBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<AuditLogChangeSchemaNewValue> get serializer => _$AuditLogChangeSchemaNewValueSerializer();
+  static Serializer<AuditLogChangeSchemaNewValue> get serializer =>
+      _$AuditLogChangeSchemaNewValueSerializer();
 }
 
-class _$AuditLogChangeSchemaNewValueSerializer implements PrimitiveSerializer<AuditLogChangeSchemaNewValue> {
+class _$AuditLogChangeSchemaNewValueSerializer
+    implements PrimitiveSerializer<AuditLogChangeSchemaNewValue> {
   @override
-  final Iterable<Type> types = const [AuditLogChangeSchemaNewValue, _$AuditLogChangeSchemaNewValue];
+  final Iterable<Type> types = const [
+    AuditLogChangeSchemaNewValue,
+    _$AuditLogChangeSchemaNewValue
+  ];
 
   @override
   final String wireName = r'AuditLogChangeSchemaNewValue';
 
   Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    AuditLogChangeSchemaNewValue object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-  }
+      Serializers serializers, AuditLogChangeSchemaNewValue object) sync* {}
 
   @override
   Object serialize(
@@ -54,7 +60,8 @@ class _$AuditLogChangeSchemaNewValueSerializer implements PrimitiveSerializer<Au
     FullType specifiedType = FullType.unspecified,
   }) {
     final oneOf = object.oneOf;
-    return serializers.serialize(oneOf.value, specifiedType: FullType(oneOf.valueType))!;
+    return serializers.serialize(oneOf.value,
+        specifiedType: FullType(oneOf.valueType))!;
   }
 
   @override
@@ -65,10 +72,17 @@ class _$AuditLogChangeSchemaNewValueSerializer implements PrimitiveSerializer<Au
   }) {
     final result = AuditLogChangeSchemaNewValueBuilder();
     Object? oneOfDataSrc;
-    final targetType = const FullType(OneOf, [FullType(String), FullType(num), FullType(bool), FullType(BuiltList, [FullType(String)]), FullType(BuiltList, [FullType(num)]), FullType(AuditLogChangeSchemaOldValueOneOf), ]);
+    final targetType = const FullType(OneOf, [
+      FullType(String),
+      FullType(num),
+      FullType(bool),
+      FullType(BuiltList, [FullType(String)]),
+      FullType(BuiltList, [FullType(num)]),
+      FullType(AuditLogChangeSchemaOldValueOneOf),
+    ]);
     oneOfDataSrc = serialized;
-    result.oneOf = serializers.deserialize(oneOfDataSrc, specifiedType: targetType) as OneOf;
+    result.oneOf = serializers.deserialize(oneOfDataSrc,
+        specifiedType: targetType) as OneOf;
     return result.build();
   }
 }
-

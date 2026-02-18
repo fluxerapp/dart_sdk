@@ -14,7 +14,8 @@ part 'mfa_sms_request.g.dart';
 /// * [code] - The SMS verification code
 /// * [ticket] - The MFA ticket from the login response
 @BuiltValue()
-abstract class MfaSmsRequest implements Built<MfaSmsRequest, MfaSmsRequestBuilder> {
+abstract class MfaSmsRequest
+    implements Built<MfaSmsRequest, MfaSmsRequestBuilder> {
   /// The SMS verification code
   @BuiltValueField(wireName: r'code')
   String get code;
@@ -25,13 +26,15 @@ abstract class MfaSmsRequest implements Built<MfaSmsRequest, MfaSmsRequestBuilde
 
   MfaSmsRequest._();
 
-  factory MfaSmsRequest([void updates(MfaSmsRequestBuilder b)]) = _$MfaSmsRequest;
+  factory MfaSmsRequest([void updates(MfaSmsRequestBuilder b)]) =
+      _$MfaSmsRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(MfaSmsRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<MfaSmsRequest> get serializer => _$MfaSmsRequestSerializer();
+  static Serializer<MfaSmsRequest> get serializer =>
+      _$MfaSmsRequestSerializer();
 }
 
 class _$MfaSmsRequestSerializer implements PrimitiveSerializer<MfaSmsRequest> {
@@ -64,7 +67,9 @@ class _$MfaSmsRequestSerializer implements PrimitiveSerializer<MfaSmsRequest> {
     MfaSmsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +126,3 @@ class _$MfaSmsRequestSerializer implements PrimitiveSerializer<MfaSmsRequest> {
     return result.build();
   }
 }
-

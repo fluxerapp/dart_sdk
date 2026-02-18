@@ -13,17 +13,19 @@ part 'channel_create_link_request.g.dart';
 /// ChannelCreateLinkRequest
 ///
 /// Properties:
-/// * [type] 
+/// * [type]
 /// * [name] - The name of the channel
-/// * [topic] 
-/// * [url] 
-/// * [parentId] 
-/// * [bitrate] 
-/// * [userLimit] 
+/// * [topic]
+/// * [url]
+/// * [parentId]
+/// * [bitrate]
+/// * [userLimit]
 /// * [permissionOverwrites] - Permission overwrites for roles and members
 /// * [nsfw] - Whether the channel is marked as NSFW
 @BuiltValue()
-abstract class ChannelCreateLinkRequest implements Built<ChannelCreateLinkRequest, ChannelCreateLinkRequestBuilder> {
+abstract class ChannelCreateLinkRequest
+    implements
+        Built<ChannelCreateLinkRequest, ChannelCreateLinkRequestBuilder> {
   @BuiltValueField(wireName: r'type')
   ChannelCreateLinkRequestTypeEnum get type;
   // enum typeEnum {  998,  };
@@ -57,18 +59,25 @@ abstract class ChannelCreateLinkRequest implements Built<ChannelCreateLinkReques
 
   ChannelCreateLinkRequest._();
 
-  factory ChannelCreateLinkRequest([void updates(ChannelCreateLinkRequestBuilder b)]) = _$ChannelCreateLinkRequest;
+  factory ChannelCreateLinkRequest(
+          [void updates(ChannelCreateLinkRequestBuilder b)]) =
+      _$ChannelCreateLinkRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ChannelCreateLinkRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ChannelCreateLinkRequest> get serializer => _$ChannelCreateLinkRequestSerializer();
+  static Serializer<ChannelCreateLinkRequest> get serializer =>
+      _$ChannelCreateLinkRequestSerializer();
 }
 
-class _$ChannelCreateLinkRequestSerializer implements PrimitiveSerializer<ChannelCreateLinkRequest> {
+class _$ChannelCreateLinkRequestSerializer
+    implements PrimitiveSerializer<ChannelCreateLinkRequest> {
   @override
-  final Iterable<Type> types = const [ChannelCreateLinkRequest, _$ChannelCreateLinkRequest];
+  final Iterable<Type> types = const [
+    ChannelCreateLinkRequest,
+    _$ChannelCreateLinkRequest
+  ];
 
   @override
   final String wireName = r'ChannelCreateLinkRequest';
@@ -127,7 +136,8 @@ class _$ChannelCreateLinkRequestSerializer implements PrimitiveSerializer<Channe
       yield r'permission_overwrites';
       yield serializers.serialize(
         object.permissionOverwrites,
-        specifiedType: const FullType(BuiltList, [FullType(ChannelOverwriteRequest)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(ChannelOverwriteRequest)]),
       );
     }
     if (object.nsfw != null) {
@@ -145,7 +155,9 @@ class _$ChannelCreateLinkRequestSerializer implements PrimitiveSerializer<Channe
     ChannelCreateLinkRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -216,7 +228,8 @@ class _$ChannelCreateLinkRequestSerializer implements PrimitiveSerializer<Channe
         case r'permission_overwrites':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ChannelOverwriteRequest)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(ChannelOverwriteRequest)]),
           ) as BuiltList<ChannelOverwriteRequest>;
           result.permissionOverwrites.replace(valueDes);
           break;
@@ -257,15 +270,17 @@ class _$ChannelCreateLinkRequestSerializer implements PrimitiveSerializer<Channe
 }
 
 class ChannelCreateLinkRequestTypeEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireNumber: 998)
-  static const ChannelCreateLinkRequestTypeEnum number998 = _$channelCreateLinkRequestTypeEnum_number998;
+  static const ChannelCreateLinkRequestTypeEnum number998 =
+      _$channelCreateLinkRequestTypeEnum_number998;
 
-  static Serializer<ChannelCreateLinkRequestTypeEnum> get serializer => _$channelCreateLinkRequestTypeEnumSerializer;
+  static Serializer<ChannelCreateLinkRequestTypeEnum> get serializer =>
+      _$channelCreateLinkRequestTypeEnumSerializer;
 
-  const ChannelCreateLinkRequestTypeEnum._(String name): super(name);
+  const ChannelCreateLinkRequestTypeEnum._(String name) : super(name);
 
-  static BuiltSet<ChannelCreateLinkRequestTypeEnum> get values => _$channelCreateLinkRequestTypeEnumValues;
-  static ChannelCreateLinkRequestTypeEnum valueOf(String name) => _$channelCreateLinkRequestTypeEnumValueOf(name);
+  static BuiltSet<ChannelCreateLinkRequestTypeEnum> get values =>
+      _$channelCreateLinkRequestTypeEnumValues;
+  static ChannelCreateLinkRequestTypeEnum valueOf(String name) =>
+      _$channelCreateLinkRequestTypeEnumValueOf(name);
 }
-

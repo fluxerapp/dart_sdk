@@ -13,23 +13,27 @@ part 'verify_email_request.g.dart';
 /// Properties:
 /// * [token] - Email verification token from email
 @BuiltValue()
-abstract class VerifyEmailRequest implements Built<VerifyEmailRequest, VerifyEmailRequestBuilder> {
+abstract class VerifyEmailRequest
+    implements Built<VerifyEmailRequest, VerifyEmailRequestBuilder> {
   /// Email verification token from email
   @BuiltValueField(wireName: r'token')
   String get token;
 
   VerifyEmailRequest._();
 
-  factory VerifyEmailRequest([void updates(VerifyEmailRequestBuilder b)]) = _$VerifyEmailRequest;
+  factory VerifyEmailRequest([void updates(VerifyEmailRequestBuilder b)]) =
+      _$VerifyEmailRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(VerifyEmailRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<VerifyEmailRequest> get serializer => _$VerifyEmailRequestSerializer();
+  static Serializer<VerifyEmailRequest> get serializer =>
+      _$VerifyEmailRequestSerializer();
 }
 
-class _$VerifyEmailRequestSerializer implements PrimitiveSerializer<VerifyEmailRequest> {
+class _$VerifyEmailRequestSerializer
+    implements PrimitiveSerializer<VerifyEmailRequest> {
   @override
   final Iterable<Type> types = const [VerifyEmailRequest, _$VerifyEmailRequest];
 
@@ -54,7 +58,9 @@ class _$VerifyEmailRequestSerializer implements PrimitiveSerializer<VerifyEmailR
     VerifyEmailRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +110,3 @@ class _$VerifyEmailRequestSerializer implements PrimitiveSerializer<VerifyEmailR
     return result.build();
   }
 }
-

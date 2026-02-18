@@ -17,7 +17,8 @@ part 'klipy_featured_response.g.dart';
 /// * [gifs] - Array of featured/trending clips
 /// * [categories] - Array of clip categories
 @BuiltValue()
-abstract class KlipyFeaturedResponse implements Built<KlipyFeaturedResponse, KlipyFeaturedResponseBuilder> {
+abstract class KlipyFeaturedResponse
+    implements Built<KlipyFeaturedResponse, KlipyFeaturedResponseBuilder> {
   /// Array of featured/trending clips
   @BuiltValueField(wireName: r'gifs')
   BuiltList<KlipyGifResponse> get gifs;
@@ -28,18 +29,24 @@ abstract class KlipyFeaturedResponse implements Built<KlipyFeaturedResponse, Kli
 
   KlipyFeaturedResponse._();
 
-  factory KlipyFeaturedResponse([void updates(KlipyFeaturedResponseBuilder b)]) = _$KlipyFeaturedResponse;
+  factory KlipyFeaturedResponse(
+      [void updates(KlipyFeaturedResponseBuilder b)]) = _$KlipyFeaturedResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(KlipyFeaturedResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<KlipyFeaturedResponse> get serializer => _$KlipyFeaturedResponseSerializer();
+  static Serializer<KlipyFeaturedResponse> get serializer =>
+      _$KlipyFeaturedResponseSerializer();
 }
 
-class _$KlipyFeaturedResponseSerializer implements PrimitiveSerializer<KlipyFeaturedResponse> {
+class _$KlipyFeaturedResponseSerializer
+    implements PrimitiveSerializer<KlipyFeaturedResponse> {
   @override
-  final Iterable<Type> types = const [KlipyFeaturedResponse, _$KlipyFeaturedResponse];
+  final Iterable<Type> types = const [
+    KlipyFeaturedResponse,
+    _$KlipyFeaturedResponse
+  ];
 
   @override
   final String wireName = r'KlipyFeaturedResponse';
@@ -57,7 +64,8 @@ class _$KlipyFeaturedResponseSerializer implements PrimitiveSerializer<KlipyFeat
     yield r'categories';
     yield serializers.serialize(
       object.categories,
-      specifiedType: const FullType(BuiltList, [FullType(KlipyCategoryTagResponse)]),
+      specifiedType:
+          const FullType(BuiltList, [FullType(KlipyCategoryTagResponse)]),
     );
   }
 
@@ -67,7 +75,9 @@ class _$KlipyFeaturedResponseSerializer implements PrimitiveSerializer<KlipyFeat
     KlipyFeaturedResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -85,14 +95,16 @@ class _$KlipyFeaturedResponseSerializer implements PrimitiveSerializer<KlipyFeat
         case r'gifs':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(KlipyGifResponse)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(KlipyGifResponse)]),
           ) as BuiltList<KlipyGifResponse>;
           result.gifs.replace(valueDes);
           break;
         case r'categories':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(KlipyCategoryTagResponse)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(KlipyCategoryTagResponse)]),
           ) as BuiltList<KlipyCategoryTagResponse>;
           result.categories.replace(valueDes);
           break;
@@ -124,4 +136,3 @@ class _$KlipyFeaturedResponseSerializer implements PrimitiveSerializer<KlipyFeat
     return result.build();
   }
 }
-

@@ -13,10 +13,11 @@ part 'list_guild_emojis_response.g.dart';
 /// ListGuildEmojisResponse
 ///
 /// Properties:
-/// * [guildId] 
-/// * [emojis] 
+/// * [guildId]
+/// * [emojis]
 @BuiltValue()
-abstract class ListGuildEmojisResponse implements Built<ListGuildEmojisResponse, ListGuildEmojisResponseBuilder> {
+abstract class ListGuildEmojisResponse
+    implements Built<ListGuildEmojisResponse, ListGuildEmojisResponseBuilder> {
   @BuiltValueField(wireName: r'guild_id')
   String get guildId;
 
@@ -25,18 +26,25 @@ abstract class ListGuildEmojisResponse implements Built<ListGuildEmojisResponse,
 
   ListGuildEmojisResponse._();
 
-  factory ListGuildEmojisResponse([void updates(ListGuildEmojisResponseBuilder b)]) = _$ListGuildEmojisResponse;
+  factory ListGuildEmojisResponse(
+          [void updates(ListGuildEmojisResponseBuilder b)]) =
+      _$ListGuildEmojisResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ListGuildEmojisResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListGuildEmojisResponse> get serializer => _$ListGuildEmojisResponseSerializer();
+  static Serializer<ListGuildEmojisResponse> get serializer =>
+      _$ListGuildEmojisResponseSerializer();
 }
 
-class _$ListGuildEmojisResponseSerializer implements PrimitiveSerializer<ListGuildEmojisResponse> {
+class _$ListGuildEmojisResponseSerializer
+    implements PrimitiveSerializer<ListGuildEmojisResponse> {
   @override
-  final Iterable<Type> types = const [ListGuildEmojisResponse, _$ListGuildEmojisResponse];
+  final Iterable<Type> types = const [
+    ListGuildEmojisResponse,
+    _$ListGuildEmojisResponse
+  ];
 
   @override
   final String wireName = r'ListGuildEmojisResponse';
@@ -54,7 +62,8 @@ class _$ListGuildEmojisResponseSerializer implements PrimitiveSerializer<ListGui
     yield r'emojis';
     yield serializers.serialize(
       object.emojis,
-      specifiedType: const FullType(BuiltList, [FullType(GuildAssetItemSchema)]),
+      specifiedType:
+          const FullType(BuiltList, [FullType(GuildAssetItemSchema)]),
     );
   }
 
@@ -64,7 +73,9 @@ class _$ListGuildEmojisResponseSerializer implements PrimitiveSerializer<ListGui
     ListGuildEmojisResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -89,7 +100,8 @@ class _$ListGuildEmojisResponseSerializer implements PrimitiveSerializer<ListGui
         case r'emojis':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(GuildAssetItemSchema)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(GuildAssetItemSchema)]),
           ) as BuiltList<GuildAssetItemSchema>;
           result.emojis.replace(valueDes);
           break;
@@ -121,4 +133,3 @@ class _$ListGuildEmojisResponseSerializer implements PrimitiveSerializer<ListGui
     return result.build();
   }
 }
-

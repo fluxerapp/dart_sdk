@@ -11,26 +11,36 @@ part 'git_hub_webhook_check_run_check_suite_app.g.dart';
 /// GitHubWebhookCheckRunCheckSuiteApp
 ///
 /// Properties:
-/// * [name] 
+/// * [name]
 @BuiltValue()
-abstract class GitHubWebhookCheckRunCheckSuiteApp implements Built<GitHubWebhookCheckRunCheckSuiteApp, GitHubWebhookCheckRunCheckSuiteAppBuilder> {
+abstract class GitHubWebhookCheckRunCheckSuiteApp
+    implements
+        Built<GitHubWebhookCheckRunCheckSuiteApp,
+            GitHubWebhookCheckRunCheckSuiteAppBuilder> {
   @BuiltValueField(wireName: r'name')
   String get name;
 
   GitHubWebhookCheckRunCheckSuiteApp._();
 
-  factory GitHubWebhookCheckRunCheckSuiteApp([void updates(GitHubWebhookCheckRunCheckSuiteAppBuilder b)]) = _$GitHubWebhookCheckRunCheckSuiteApp;
+  factory GitHubWebhookCheckRunCheckSuiteApp(
+          [void updates(GitHubWebhookCheckRunCheckSuiteAppBuilder b)]) =
+      _$GitHubWebhookCheckRunCheckSuiteApp;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GitHubWebhookCheckRunCheckSuiteAppBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GitHubWebhookCheckRunCheckSuiteApp> get serializer => _$GitHubWebhookCheckRunCheckSuiteAppSerializer();
+  static Serializer<GitHubWebhookCheckRunCheckSuiteApp> get serializer =>
+      _$GitHubWebhookCheckRunCheckSuiteAppSerializer();
 }
 
-class _$GitHubWebhookCheckRunCheckSuiteAppSerializer implements PrimitiveSerializer<GitHubWebhookCheckRunCheckSuiteApp> {
+class _$GitHubWebhookCheckRunCheckSuiteAppSerializer
+    implements PrimitiveSerializer<GitHubWebhookCheckRunCheckSuiteApp> {
   @override
-  final Iterable<Type> types = const [GitHubWebhookCheckRunCheckSuiteApp, _$GitHubWebhookCheckRunCheckSuiteApp];
+  final Iterable<Type> types = const [
+    GitHubWebhookCheckRunCheckSuiteApp,
+    _$GitHubWebhookCheckRunCheckSuiteApp
+  ];
 
   @override
   final String wireName = r'GitHubWebhookCheckRunCheckSuiteApp';
@@ -53,7 +63,9 @@ class _$GitHubWebhookCheckRunCheckSuiteAppSerializer implements PrimitiveSeriali
     GitHubWebhookCheckRunCheckSuiteApp object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,4 +115,3 @@ class _$GitHubWebhookCheckRunCheckSuiteAppSerializer implements PrimitiveSeriali
     return result.build();
   }
 }
-

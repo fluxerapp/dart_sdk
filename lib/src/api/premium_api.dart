@@ -4,18 +4,14 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:fluxer_dart/src/api_util.dart';
-import 'package:fluxer_dart/src/model/error.dart';
-import 'package:fluxer_dart/src/model/get_well_known_fluxer429_response.dart';
 import 'package:fluxer_dart/src/model/price_ids_response.dart';
 import 'package:fluxer_dart/src/model/url_response.dart';
 
 class PremiumApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -35,7 +31,7 @@ class PremiumApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> cancelSubscription({ 
+  Future<Response<void>> cancelSubscription({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -56,7 +52,8 @@ class PremiumApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -92,7 +89,7 @@ class PremiumApi {
   ///
   /// Returns a [Future] containing a [Response] with a [UrlResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UrlResponse>> createCustomerPortal({ 
+  Future<Response<UrlResponse>> createCustomerPortal({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -113,7 +110,8 @@ class PremiumApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -137,11 +135,12 @@ class PremiumApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(UrlResponse),
-      ) as UrlResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(UrlResponse),
+            ) as UrlResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -168,7 +167,7 @@ class PremiumApi {
   /// Retrieves Stripe price IDs for premium subscriptions based on geographic location.
   ///
   /// Parameters:
-  /// * [countryCode] 
+  /// * [countryCode]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -178,7 +177,7 @@ class PremiumApi {
   ///
   /// Returns a [Future] containing a [Response] with a [PriceIdsResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<PriceIdsResponse>> getPriceIds({ 
+  Future<Response<PriceIdsResponse>> getPriceIds({
     String? countryCode,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -201,7 +200,9 @@ class PremiumApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (countryCode != null) r'country_code': encodeQueryParameter(_serializers, countryCode, const FullType(String)),
+      if (countryCode != null)
+        r'country_code': encodeQueryParameter(
+            _serializers, countryCode, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -217,11 +218,12 @@ class PremiumApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PriceIdsResponse),
-      ) as PriceIdsResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(PriceIdsResponse),
+            ) as PriceIdsResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -257,7 +259,7 @@ class PremiumApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> reactivateSubscription({ 
+  Future<Response<void>> reactivateSubscription({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -278,7 +280,8 @@ class PremiumApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -314,7 +317,7 @@ class PremiumApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> rejoinOperatorGuild({ 
+  Future<Response<void>> rejoinOperatorGuild({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -335,7 +338,8 @@ class PremiumApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -371,7 +375,7 @@ class PremiumApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> rejoinVisionaryGuild({ 
+  Future<Response<void>> rejoinVisionaryGuild({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -392,7 +396,8 @@ class PremiumApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -414,5 +419,4 @@ class PremiumApi {
 
     return _response;
   }
-
 }

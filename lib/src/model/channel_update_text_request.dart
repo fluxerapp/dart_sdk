@@ -14,22 +14,24 @@ part 'channel_update_text_request.g.dart';
 /// ChannelUpdateTextRequest
 ///
 /// Properties:
-/// * [type] 
-/// * [topic] 
-/// * [url] 
-/// * [parentId] 
-/// * [bitrate] 
-/// * [userLimit] 
+/// * [type]
+/// * [topic]
+/// * [url]
+/// * [parentId]
+/// * [bitrate]
+/// * [userLimit]
 /// * [permissionOverwrites] - Permission overwrites for roles and members
-/// * [nsfw] 
-/// * [rateLimitPerUser] 
+/// * [nsfw]
+/// * [rateLimitPerUser]
 /// * [icon] - Base64-encoded image data
-/// * [ownerId] 
+/// * [ownerId]
 /// * [nicks] - User nickname overrides (user ID to nickname mapping)
-/// * [rtcRegion] 
-/// * [name] 
+/// * [rtcRegion]
+/// * [name]
 @BuiltValue()
-abstract class ChannelUpdateTextRequest implements Built<ChannelUpdateTextRequest, ChannelUpdateTextRequestBuilder> {
+abstract class ChannelUpdateTextRequest
+    implements
+        Built<ChannelUpdateTextRequest, ChannelUpdateTextRequestBuilder> {
   @BuiltValueField(wireName: r'type')
   ChannelUpdateTextRequestTypeEnum get type;
   // enum typeEnum {  0,  };
@@ -78,18 +80,25 @@ abstract class ChannelUpdateTextRequest implements Built<ChannelUpdateTextReques
 
   ChannelUpdateTextRequest._();
 
-  factory ChannelUpdateTextRequest([void updates(ChannelUpdateTextRequestBuilder b)]) = _$ChannelUpdateTextRequest;
+  factory ChannelUpdateTextRequest(
+          [void updates(ChannelUpdateTextRequestBuilder b)]) =
+      _$ChannelUpdateTextRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ChannelUpdateTextRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ChannelUpdateTextRequest> get serializer => _$ChannelUpdateTextRequestSerializer();
+  static Serializer<ChannelUpdateTextRequest> get serializer =>
+      _$ChannelUpdateTextRequestSerializer();
 }
 
-class _$ChannelUpdateTextRequestSerializer implements PrimitiveSerializer<ChannelUpdateTextRequest> {
+class _$ChannelUpdateTextRequestSerializer
+    implements PrimitiveSerializer<ChannelUpdateTextRequest> {
   @override
-  final Iterable<Type> types = const [ChannelUpdateTextRequest, _$ChannelUpdateTextRequest];
+  final Iterable<Type> types = const [
+    ChannelUpdateTextRequest,
+    _$ChannelUpdateTextRequest
+  ];
 
   @override
   final String wireName = r'ChannelUpdateTextRequest';
@@ -143,7 +152,8 @@ class _$ChannelUpdateTextRequestSerializer implements PrimitiveSerializer<Channe
       yield r'permission_overwrites';
       yield serializers.serialize(
         object.permissionOverwrites,
-        specifiedType: const FullType(BuiltList, [FullType(ChannelOverwriteRequest)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(ChannelOverwriteRequest)]),
       );
     }
     if (object.nsfw != null) {
@@ -178,7 +188,10 @@ class _$ChannelUpdateTextRequestSerializer implements PrimitiveSerializer<Channe
       yield r'nicks';
       yield serializers.serialize(
         object.nicks,
-        specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(ChannelNicknameOverridesValue)]),
+        specifiedType: const FullType(BuiltMap, [
+          FullType(String),
+          FullType.nullable(ChannelNicknameOverridesValue)
+        ]),
       );
     }
     if (object.rtcRegion != null) {
@@ -203,7 +216,9 @@ class _$ChannelUpdateTextRequestSerializer implements PrimitiveSerializer<Channe
     ChannelUpdateTextRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -267,7 +282,8 @@ class _$ChannelUpdateTextRequestSerializer implements PrimitiveSerializer<Channe
         case r'permission_overwrites':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ChannelOverwriteRequest)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(ChannelOverwriteRequest)]),
           ) as BuiltList<ChannelOverwriteRequest>;
           result.permissionOverwrites.replace(valueDes);
           break;
@@ -304,7 +320,10 @@ class _$ChannelUpdateTextRequestSerializer implements PrimitiveSerializer<Channe
         case r'nicks':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(ChannelNicknameOverridesValue)]),
+            specifiedType: const FullType(BuiltMap, [
+              FullType(String),
+              FullType.nullable(ChannelNicknameOverridesValue)
+            ]),
           ) as BuiltMap<String, ChannelNicknameOverridesValue?>;
           result.nicks.replace(valueDes);
           break;
@@ -354,15 +373,17 @@ class _$ChannelUpdateTextRequestSerializer implements PrimitiveSerializer<Channe
 }
 
 class ChannelUpdateTextRequestTypeEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireNumber: 0)
-  static const ChannelUpdateTextRequestTypeEnum number0 = _$channelUpdateTextRequestTypeEnum_number0;
+  static const ChannelUpdateTextRequestTypeEnum number0 =
+      _$channelUpdateTextRequestTypeEnum_number0;
 
-  static Serializer<ChannelUpdateTextRequestTypeEnum> get serializer => _$channelUpdateTextRequestTypeEnumSerializer;
+  static Serializer<ChannelUpdateTextRequestTypeEnum> get serializer =>
+      _$channelUpdateTextRequestTypeEnumSerializer;
 
-  const ChannelUpdateTextRequestTypeEnum._(String name): super(name);
+  const ChannelUpdateTextRequestTypeEnum._(String name) : super(name);
 
-  static BuiltSet<ChannelUpdateTextRequestTypeEnum> get values => _$channelUpdateTextRequestTypeEnumValues;
-  static ChannelUpdateTextRequestTypeEnum valueOf(String name) => _$channelUpdateTextRequestTypeEnumValueOf(name);
+  static BuiltSet<ChannelUpdateTextRequestTypeEnum> get values =>
+      _$channelUpdateTextRequestTypeEnumValues;
+  static ChannelUpdateTextRequestTypeEnum valueOf(String name) =>
+      _$channelUpdateTextRequestTypeEnumValueOf(name);
 }
-

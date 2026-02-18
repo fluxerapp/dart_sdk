@@ -14,7 +14,10 @@ part 'index_refresh_status_response_one_of.g.dart';
 /// Properties:
 /// * [status] - Job was not found
 @BuiltValue()
-abstract class IndexRefreshStatusResponseOneOf implements Built<IndexRefreshStatusResponseOneOf, IndexRefreshStatusResponseOneOfBuilder> {
+abstract class IndexRefreshStatusResponseOneOf
+    implements
+        Built<IndexRefreshStatusResponseOneOf,
+            IndexRefreshStatusResponseOneOfBuilder> {
   /// Job was not found
   @BuiltValueField(wireName: r'status')
   IndexRefreshStatusResponseOneOfStatusEnum get status;
@@ -22,18 +25,25 @@ abstract class IndexRefreshStatusResponseOneOf implements Built<IndexRefreshStat
 
   IndexRefreshStatusResponseOneOf._();
 
-  factory IndexRefreshStatusResponseOneOf([void updates(IndexRefreshStatusResponseOneOfBuilder b)]) = _$IndexRefreshStatusResponseOneOf;
+  factory IndexRefreshStatusResponseOneOf(
+          [void updates(IndexRefreshStatusResponseOneOfBuilder b)]) =
+      _$IndexRefreshStatusResponseOneOf;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(IndexRefreshStatusResponseOneOfBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<IndexRefreshStatusResponseOneOf> get serializer => _$IndexRefreshStatusResponseOneOfSerializer();
+  static Serializer<IndexRefreshStatusResponseOneOf> get serializer =>
+      _$IndexRefreshStatusResponseOneOfSerializer();
 }
 
-class _$IndexRefreshStatusResponseOneOfSerializer implements PrimitiveSerializer<IndexRefreshStatusResponseOneOf> {
+class _$IndexRefreshStatusResponseOneOfSerializer
+    implements PrimitiveSerializer<IndexRefreshStatusResponseOneOf> {
   @override
-  final Iterable<Type> types = const [IndexRefreshStatusResponseOneOf, _$IndexRefreshStatusResponseOneOf];
+  final Iterable<Type> types = const [
+    IndexRefreshStatusResponseOneOf,
+    _$IndexRefreshStatusResponseOneOf
+  ];
 
   @override
   final String wireName = r'IndexRefreshStatusResponseOneOf';
@@ -56,7 +66,9 @@ class _$IndexRefreshStatusResponseOneOfSerializer implements PrimitiveSerializer
     IndexRefreshStatusResponseOneOf object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -74,7 +86,8 @@ class _$IndexRefreshStatusResponseOneOfSerializer implements PrimitiveSerializer
         case r'status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(IndexRefreshStatusResponseOneOfStatusEnum),
+            specifiedType:
+                const FullType(IndexRefreshStatusResponseOneOfStatusEnum),
           ) as IndexRefreshStatusResponseOneOfStatusEnum;
           result.status = valueDes;
           break;
@@ -108,16 +121,18 @@ class _$IndexRefreshStatusResponseOneOfSerializer implements PrimitiveSerializer
 }
 
 class IndexRefreshStatusResponseOneOfStatusEnum extends EnumClass {
-
   /// Job was not found
   @BuiltValueEnumConst(wireName: r'not_found')
-  static const IndexRefreshStatusResponseOneOfStatusEnum notFound = _$indexRefreshStatusResponseOneOfStatusEnum_notFound;
+  static const IndexRefreshStatusResponseOneOfStatusEnum notFound =
+      _$indexRefreshStatusResponseOneOfStatusEnum_notFound;
 
-  static Serializer<IndexRefreshStatusResponseOneOfStatusEnum> get serializer => _$indexRefreshStatusResponseOneOfStatusEnumSerializer;
+  static Serializer<IndexRefreshStatusResponseOneOfStatusEnum> get serializer =>
+      _$indexRefreshStatusResponseOneOfStatusEnumSerializer;
 
-  const IndexRefreshStatusResponseOneOfStatusEnum._(String name): super(name);
+  const IndexRefreshStatusResponseOneOfStatusEnum._(String name) : super(name);
 
-  static BuiltSet<IndexRefreshStatusResponseOneOfStatusEnum> get values => _$indexRefreshStatusResponseOneOfStatusEnumValues;
-  static IndexRefreshStatusResponseOneOfStatusEnum valueOf(String name) => _$indexRefreshStatusResponseOneOfStatusEnumValueOf(name);
+  static BuiltSet<IndexRefreshStatusResponseOneOfStatusEnum> get values =>
+      _$indexRefreshStatusResponseOneOfStatusEnumValues;
+  static IndexRefreshStatusResponseOneOfStatusEnum valueOf(String name) =>
+      _$indexRefreshStatusResponseOneOfStatusEnumValueOf(name);
 }
-

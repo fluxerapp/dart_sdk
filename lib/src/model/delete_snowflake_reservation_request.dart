@@ -11,26 +11,36 @@ part 'delete_snowflake_reservation_request.g.dart';
 /// DeleteSnowflakeReservationRequest
 ///
 /// Properties:
-/// * [email] 
+/// * [email]
 @BuiltValue()
-abstract class DeleteSnowflakeReservationRequest implements Built<DeleteSnowflakeReservationRequest, DeleteSnowflakeReservationRequestBuilder> {
+abstract class DeleteSnowflakeReservationRequest
+    implements
+        Built<DeleteSnowflakeReservationRequest,
+            DeleteSnowflakeReservationRequestBuilder> {
   @BuiltValueField(wireName: r'email')
   String get email;
 
   DeleteSnowflakeReservationRequest._();
 
-  factory DeleteSnowflakeReservationRequest([void updates(DeleteSnowflakeReservationRequestBuilder b)]) = _$DeleteSnowflakeReservationRequest;
+  factory DeleteSnowflakeReservationRequest(
+          [void updates(DeleteSnowflakeReservationRequestBuilder b)]) =
+      _$DeleteSnowflakeReservationRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(DeleteSnowflakeReservationRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<DeleteSnowflakeReservationRequest> get serializer => _$DeleteSnowflakeReservationRequestSerializer();
+  static Serializer<DeleteSnowflakeReservationRequest> get serializer =>
+      _$DeleteSnowflakeReservationRequestSerializer();
 }
 
-class _$DeleteSnowflakeReservationRequestSerializer implements PrimitiveSerializer<DeleteSnowflakeReservationRequest> {
+class _$DeleteSnowflakeReservationRequestSerializer
+    implements PrimitiveSerializer<DeleteSnowflakeReservationRequest> {
   @override
-  final Iterable<Type> types = const [DeleteSnowflakeReservationRequest, _$DeleteSnowflakeReservationRequest];
+  final Iterable<Type> types = const [
+    DeleteSnowflakeReservationRequest,
+    _$DeleteSnowflakeReservationRequest
+  ];
 
   @override
   final String wireName = r'DeleteSnowflakeReservationRequest';
@@ -53,7 +63,9 @@ class _$DeleteSnowflakeReservationRequestSerializer implements PrimitiveSerializ
     DeleteSnowflakeReservationRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,4 +115,3 @@ class _$DeleteSnowflakeReservationRequestSerializer implements PrimitiveSerializ
     return result.build();
   }
 }
-

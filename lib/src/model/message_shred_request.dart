@@ -13,10 +13,11 @@ part 'message_shred_request.g.dart';
 /// MessageShredRequest
 ///
 /// Properties:
-/// * [userId] 
-/// * [entries] 
+/// * [userId]
+/// * [entries]
 @BuiltValue()
-abstract class MessageShredRequest implements Built<MessageShredRequest, MessageShredRequestBuilder> {
+abstract class MessageShredRequest
+    implements Built<MessageShredRequest, MessageShredRequestBuilder> {
   @BuiltValueField(wireName: r'user_id')
   String get userId;
 
@@ -25,18 +26,24 @@ abstract class MessageShredRequest implements Built<MessageShredRequest, Message
 
   MessageShredRequest._();
 
-  factory MessageShredRequest([void updates(MessageShredRequestBuilder b)]) = _$MessageShredRequest;
+  factory MessageShredRequest([void updates(MessageShredRequestBuilder b)]) =
+      _$MessageShredRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(MessageShredRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<MessageShredRequest> get serializer => _$MessageShredRequestSerializer();
+  static Serializer<MessageShredRequest> get serializer =>
+      _$MessageShredRequestSerializer();
 }
 
-class _$MessageShredRequestSerializer implements PrimitiveSerializer<MessageShredRequest> {
+class _$MessageShredRequestSerializer
+    implements PrimitiveSerializer<MessageShredRequest> {
   @override
-  final Iterable<Type> types = const [MessageShredRequest, _$MessageShredRequest];
+  final Iterable<Type> types = const [
+    MessageShredRequest,
+    _$MessageShredRequest
+  ];
 
   @override
   final String wireName = r'MessageShredRequest';
@@ -54,7 +61,8 @@ class _$MessageShredRequestSerializer implements PrimitiveSerializer<MessageShre
     yield r'entries';
     yield serializers.serialize(
       object.entries,
-      specifiedType: const FullType(BuiltList, [FullType(MessageShredRequestEntriesInner)]),
+      specifiedType: const FullType(
+          BuiltList, [FullType(MessageShredRequestEntriesInner)]),
     );
   }
 
@@ -64,7 +72,9 @@ class _$MessageShredRequestSerializer implements PrimitiveSerializer<MessageShre
     MessageShredRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -89,7 +99,8 @@ class _$MessageShredRequestSerializer implements PrimitiveSerializer<MessageShre
         case r'entries':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(MessageShredRequestEntriesInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(MessageShredRequestEntriesInner)]),
           ) as BuiltList<MessageShredRequestEntriesInner>;
           result.entries.replace(valueDes);
           break;
@@ -121,4 +132,3 @@ class _$MessageShredRequestSerializer implements PrimitiveSerializer<MessageShre
     return result.build();
   }
 }
-

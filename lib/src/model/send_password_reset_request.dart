@@ -11,26 +11,35 @@ part 'send_password_reset_request.g.dart';
 /// SendPasswordResetRequest
 ///
 /// Properties:
-/// * [userId] 
+/// * [userId]
 @BuiltValue()
-abstract class SendPasswordResetRequest implements Built<SendPasswordResetRequest, SendPasswordResetRequestBuilder> {
+abstract class SendPasswordResetRequest
+    implements
+        Built<SendPasswordResetRequest, SendPasswordResetRequestBuilder> {
   @BuiltValueField(wireName: r'user_id')
   String get userId;
 
   SendPasswordResetRequest._();
 
-  factory SendPasswordResetRequest([void updates(SendPasswordResetRequestBuilder b)]) = _$SendPasswordResetRequest;
+  factory SendPasswordResetRequest(
+          [void updates(SendPasswordResetRequestBuilder b)]) =
+      _$SendPasswordResetRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SendPasswordResetRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SendPasswordResetRequest> get serializer => _$SendPasswordResetRequestSerializer();
+  static Serializer<SendPasswordResetRequest> get serializer =>
+      _$SendPasswordResetRequestSerializer();
 }
 
-class _$SendPasswordResetRequestSerializer implements PrimitiveSerializer<SendPasswordResetRequest> {
+class _$SendPasswordResetRequestSerializer
+    implements PrimitiveSerializer<SendPasswordResetRequest> {
   @override
-  final Iterable<Type> types = const [SendPasswordResetRequest, _$SendPasswordResetRequest];
+  final Iterable<Type> types = const [
+    SendPasswordResetRequest,
+    _$SendPasswordResetRequest
+  ];
 
   @override
   final String wireName = r'SendPasswordResetRequest';
@@ -53,7 +62,9 @@ class _$SendPasswordResetRequestSerializer implements PrimitiveSerializer<SendPa
     SendPasswordResetRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,4 +114,3 @@ class _$SendPasswordResetRequestSerializer implements PrimitiveSerializer<SendPa
     return result.build();
   }
 }
-

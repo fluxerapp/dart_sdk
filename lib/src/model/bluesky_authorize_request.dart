@@ -13,25 +13,33 @@ part 'bluesky_authorize_request.g.dart';
 /// Properties:
 /// * [handle] - The Bluesky handle to connect (e.g. alice.bsky.social)
 @BuiltValue()
-abstract class BlueskyAuthorizeRequest implements Built<BlueskyAuthorizeRequest, BlueskyAuthorizeRequestBuilder> {
+abstract class BlueskyAuthorizeRequest
+    implements Built<BlueskyAuthorizeRequest, BlueskyAuthorizeRequestBuilder> {
   /// The Bluesky handle to connect (e.g. alice.bsky.social)
   @BuiltValueField(wireName: r'handle')
   String get handle;
 
   BlueskyAuthorizeRequest._();
 
-  factory BlueskyAuthorizeRequest([void updates(BlueskyAuthorizeRequestBuilder b)]) = _$BlueskyAuthorizeRequest;
+  factory BlueskyAuthorizeRequest(
+          [void updates(BlueskyAuthorizeRequestBuilder b)]) =
+      _$BlueskyAuthorizeRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(BlueskyAuthorizeRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<BlueskyAuthorizeRequest> get serializer => _$BlueskyAuthorizeRequestSerializer();
+  static Serializer<BlueskyAuthorizeRequest> get serializer =>
+      _$BlueskyAuthorizeRequestSerializer();
 }
 
-class _$BlueskyAuthorizeRequestSerializer implements PrimitiveSerializer<BlueskyAuthorizeRequest> {
+class _$BlueskyAuthorizeRequestSerializer
+    implements PrimitiveSerializer<BlueskyAuthorizeRequest> {
   @override
-  final Iterable<Type> types = const [BlueskyAuthorizeRequest, _$BlueskyAuthorizeRequest];
+  final Iterable<Type> types = const [
+    BlueskyAuthorizeRequest,
+    _$BlueskyAuthorizeRequest
+  ];
 
   @override
   final String wireName = r'BlueskyAuthorizeRequest';
@@ -54,7 +62,9 @@ class _$BlueskyAuthorizeRequestSerializer implements PrimitiveSerializer<Bluesky
     BlueskyAuthorizeRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +114,3 @@ class _$BlueskyAuthorizeRequestSerializer implements PrimitiveSerializer<Bluesky
     return result.build();
   }
 }
-

@@ -14,12 +14,13 @@ part 'o_auth2_me_response.g.dart';
 /// OAuth2MeResponse
 ///
 /// Properties:
-/// * [application] 
+/// * [application]
 /// * [scopes] - The list of granted OAuth2 scopes
 /// * [expires] - The expiration timestamp of the token
-/// * [user] 
+/// * [user]
 @BuiltValue()
-abstract class OAuth2MeResponse implements Built<OAuth2MeResponse, OAuth2MeResponseBuilder> {
+abstract class OAuth2MeResponse
+    implements Built<OAuth2MeResponse, OAuth2MeResponseBuilder> {
   @BuiltValueField(wireName: r'application')
   OAuth2MeResponseApplication get application;
 
@@ -36,16 +37,19 @@ abstract class OAuth2MeResponse implements Built<OAuth2MeResponse, OAuth2MeRespo
 
   OAuth2MeResponse._();
 
-  factory OAuth2MeResponse([void updates(OAuth2MeResponseBuilder b)]) = _$OAuth2MeResponse;
+  factory OAuth2MeResponse([void updates(OAuth2MeResponseBuilder b)]) =
+      _$OAuth2MeResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(OAuth2MeResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<OAuth2MeResponse> get serializer => _$OAuth2MeResponseSerializer();
+  static Serializer<OAuth2MeResponse> get serializer =>
+      _$OAuth2MeResponseSerializer();
 }
 
-class _$OAuth2MeResponseSerializer implements PrimitiveSerializer<OAuth2MeResponse> {
+class _$OAuth2MeResponseSerializer
+    implements PrimitiveSerializer<OAuth2MeResponse> {
   @override
   final Iterable<Type> types = const [OAuth2MeResponse, _$OAuth2MeResponse];
 
@@ -87,7 +91,9 @@ class _$OAuth2MeResponseSerializer implements PrimitiveSerializer<OAuth2MeRespon
     OAuth2MeResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -158,4 +164,3 @@ class _$OAuth2MeResponseSerializer implements PrimitiveSerializer<OAuth2MeRespon
     return result.build();
   }
 }
-

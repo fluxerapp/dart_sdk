@@ -13,10 +13,13 @@ part 'limit_config_get_response_limit_config.g.dart';
 /// LimitConfigGetResponseLimitConfig
 ///
 /// Properties:
-/// * [traitDefinitions] 
-/// * [rules] 
+/// * [traitDefinitions]
+/// * [rules]
 @BuiltValue()
-abstract class LimitConfigGetResponseLimitConfig implements Built<LimitConfigGetResponseLimitConfig, LimitConfigGetResponseLimitConfigBuilder> {
+abstract class LimitConfigGetResponseLimitConfig
+    implements
+        Built<LimitConfigGetResponseLimitConfig,
+            LimitConfigGetResponseLimitConfigBuilder> {
   @BuiltValueField(wireName: r'traitDefinitions')
   BuiltList<String> get traitDefinitions;
 
@@ -25,18 +28,25 @@ abstract class LimitConfigGetResponseLimitConfig implements Built<LimitConfigGet
 
   LimitConfigGetResponseLimitConfig._();
 
-  factory LimitConfigGetResponseLimitConfig([void updates(LimitConfigGetResponseLimitConfigBuilder b)]) = _$LimitConfigGetResponseLimitConfig;
+  factory LimitConfigGetResponseLimitConfig(
+          [void updates(LimitConfigGetResponseLimitConfigBuilder b)]) =
+      _$LimitConfigGetResponseLimitConfig;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(LimitConfigGetResponseLimitConfigBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<LimitConfigGetResponseLimitConfig> get serializer => _$LimitConfigGetResponseLimitConfigSerializer();
+  static Serializer<LimitConfigGetResponseLimitConfig> get serializer =>
+      _$LimitConfigGetResponseLimitConfigSerializer();
 }
 
-class _$LimitConfigGetResponseLimitConfigSerializer implements PrimitiveSerializer<LimitConfigGetResponseLimitConfig> {
+class _$LimitConfigGetResponseLimitConfigSerializer
+    implements PrimitiveSerializer<LimitConfigGetResponseLimitConfig> {
   @override
-  final Iterable<Type> types = const [LimitConfigGetResponseLimitConfig, _$LimitConfigGetResponseLimitConfig];
+  final Iterable<Type> types = const [
+    LimitConfigGetResponseLimitConfig,
+    _$LimitConfigGetResponseLimitConfig
+  ];
 
   @override
   final String wireName = r'LimitConfigGetResponseLimitConfig';
@@ -54,7 +64,8 @@ class _$LimitConfigGetResponseLimitConfigSerializer implements PrimitiveSerializ
     yield r'rules';
     yield serializers.serialize(
       object.rules,
-      specifiedType: const FullType(BuiltList, [FullType(LimitConfigGetResponseLimitConfigRulesInner)]),
+      specifiedType: const FullType(
+          BuiltList, [FullType(LimitConfigGetResponseLimitConfigRulesInner)]),
     );
   }
 
@@ -64,7 +75,9 @@ class _$LimitConfigGetResponseLimitConfigSerializer implements PrimitiveSerializ
     LimitConfigGetResponseLimitConfig object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -89,7 +102,8 @@ class _$LimitConfigGetResponseLimitConfigSerializer implements PrimitiveSerializ
         case r'rules':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(LimitConfigGetResponseLimitConfigRulesInner)]),
+            specifiedType: const FullType(BuiltList,
+                [FullType(LimitConfigGetResponseLimitConfigRulesInner)]),
           ) as BuiltList<LimitConfigGetResponseLimitConfigRulesInner>;
           result.rules.replace(valueDes);
           break;
@@ -121,4 +135,3 @@ class _$LimitConfigGetResponseLimitConfigSerializer implements PrimitiveSerializ
     return result.build();
   }
 }
-

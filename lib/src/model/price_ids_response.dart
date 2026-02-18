@@ -13,12 +13,13 @@ part 'price_ids_response.g.dart';
 ///
 /// Properties:
 /// * [currency] - Currency for the prices
-/// * [monthly] 
-/// * [yearly] 
-/// * [gift1Month] 
-/// * [gift1Year] 
+/// * [monthly]
+/// * [yearly]
+/// * [gift1Month]
+/// * [gift1Year]
 @BuiltValue()
-abstract class PriceIdsResponse implements Built<PriceIdsResponse, PriceIdsResponseBuilder> {
+abstract class PriceIdsResponse
+    implements Built<PriceIdsResponse, PriceIdsResponseBuilder> {
   /// Currency for the prices
   @BuiltValueField(wireName: r'currency')
   PriceIdsResponseCurrencyEnum get currency;
@@ -38,16 +39,19 @@ abstract class PriceIdsResponse implements Built<PriceIdsResponse, PriceIdsRespo
 
   PriceIdsResponse._();
 
-  factory PriceIdsResponse([void updates(PriceIdsResponseBuilder b)]) = _$PriceIdsResponse;
+  factory PriceIdsResponse([void updates(PriceIdsResponseBuilder b)]) =
+      _$PriceIdsResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PriceIdsResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PriceIdsResponse> get serializer => _$PriceIdsResponseSerializer();
+  static Serializer<PriceIdsResponse> get serializer =>
+      _$PriceIdsResponseSerializer();
 }
 
-class _$PriceIdsResponseSerializer implements PrimitiveSerializer<PriceIdsResponse> {
+class _$PriceIdsResponseSerializer
+    implements PrimitiveSerializer<PriceIdsResponse> {
   @override
   final Iterable<Type> types = const [PriceIdsResponse, _$PriceIdsResponse];
 
@@ -100,7 +104,9 @@ class _$PriceIdsResponseSerializer implements PrimitiveSerializer<PriceIdsRespon
     PriceIdsResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -184,19 +190,23 @@ class _$PriceIdsResponseSerializer implements PrimitiveSerializer<PriceIdsRespon
 }
 
 class PriceIdsResponseCurrencyEnum extends EnumClass {
-
   /// Currency for the prices
   @BuiltValueEnumConst(wireName: r'USD')
-  static const PriceIdsResponseCurrencyEnum USD = _$priceIdsResponseCurrencyEnum_USD;
+  static const PriceIdsResponseCurrencyEnum USD =
+      _$priceIdsResponseCurrencyEnum_USD;
+
   /// Currency for the prices
   @BuiltValueEnumConst(wireName: r'EUR')
-  static const PriceIdsResponseCurrencyEnum EUR = _$priceIdsResponseCurrencyEnum_EUR;
+  static const PriceIdsResponseCurrencyEnum EUR =
+      _$priceIdsResponseCurrencyEnum_EUR;
 
-  static Serializer<PriceIdsResponseCurrencyEnum> get serializer => _$priceIdsResponseCurrencyEnumSerializer;
+  static Serializer<PriceIdsResponseCurrencyEnum> get serializer =>
+      _$priceIdsResponseCurrencyEnumSerializer;
 
-  const PriceIdsResponseCurrencyEnum._(String name): super(name);
+  const PriceIdsResponseCurrencyEnum._(String name) : super(name);
 
-  static BuiltSet<PriceIdsResponseCurrencyEnum> get values => _$priceIdsResponseCurrencyEnumValues;
-  static PriceIdsResponseCurrencyEnum valueOf(String name) => _$priceIdsResponseCurrencyEnumValueOf(name);
+  static BuiltSet<PriceIdsResponseCurrencyEnum> get values =>
+      _$priceIdsResponseCurrencyEnumValues;
+  static PriceIdsResponseCurrencyEnum valueOf(String name) =>
+      _$priceIdsResponseCurrencyEnumValueOf(name);
 }
-

@@ -4,14 +4,11 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:built_collection/built_collection.dart';
 import 'package:fluxer_dart/src/api_util.dart';
-import 'package:fluxer_dart/src/model/error.dart';
-import 'package:fluxer_dart/src/model/get_well_known_fluxer429_response.dart';
 import 'package:fluxer_dart/src/model/git_hub_webhook.dart';
 import 'package:fluxer_dart/src/model/message_response_schema.dart';
 import 'package:fluxer_dart/src/model/sentry_webhook.dart';
@@ -23,7 +20,6 @@ import 'package:fluxer_dart/src/model/webhook_token_update_request.dart';
 import 'package:fluxer_dart/src/model/webhook_update_request.dart';
 
 class WebhooksApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -35,7 +31,7 @@ class WebhooksApi {
   ///
   /// Parameters:
   /// * [channelId] - The ID of the channel
-  /// * [webhookCreateRequest] 
+  /// * [webhookCreateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -45,7 +41,7 @@ class WebhooksApi {
   ///
   /// Returns a [Future] containing a [Response] with a [WebhookResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<WebhookResponse>> createWebhook({ 
+  Future<Response<WebhookResponse>> createWebhook({
     required String channelId,
     required WebhookCreateRequest webhookCreateRequest,
     CancelToken? cancelToken,
@@ -55,7 +51,10 @@ class WebhooksApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/channels/{channel_id}/webhooks'.replaceAll('{' r'channel_id' '}', encodeQueryParameter(_serializers, channelId, const FullType(String)).toString());
+    final _path = r'/channels/{channel_id}/webhooks'.replaceAll(
+        '{' r'channel_id' '}',
+        encodeQueryParameter(_serializers, channelId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -68,7 +67,8 @@ class WebhooksApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -85,11 +85,11 @@ class WebhooksApi {
 
     try {
       const _type = FullType(WebhookCreateRequest);
-      _bodyData = _serializers.serialize(webhookCreateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(webhookCreateRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -112,11 +112,12 @@ class WebhooksApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(WebhookResponse),
-      ) as WebhookResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(WebhookResponse),
+            ) as WebhookResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -153,7 +154,7 @@ class WebhooksApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> deleteWebhook({ 
+  Future<Response<void>> deleteWebhook({
     required String webhookId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -162,7 +163,10 @@ class WebhooksApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/webhooks/{webhook_id}'.replaceAll('{' r'webhook_id' '}', encodeQueryParameter(_serializers, webhookId, const FullType(String)).toString());
+    final _path = r'/webhooks/{webhook_id}'.replaceAll(
+        '{' r'webhook_id' '}',
+        encodeQueryParameter(_serializers, webhookId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -175,7 +179,8 @@ class WebhooksApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -213,7 +218,7 @@ class WebhooksApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> deleteWebhookWithToken({ 
+  Future<Response<void>> deleteWebhookWithToken({
     required String webhookId,
     required String token,
     CancelToken? cancelToken,
@@ -223,7 +228,16 @@ class WebhooksApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/webhooks/{webhook_id}/{token}'.replaceAll('{' r'webhook_id' '}', encodeQueryParameter(_serializers, webhookId, const FullType(String)).toString()).replaceAll('{' r'token' '}', encodeQueryParameter(_serializers, token, const FullType(String)).toString());
+    final _path = r'/webhooks/{webhook_id}/{token}'
+        .replaceAll(
+            '{' r'webhook_id' '}',
+            encodeQueryParameter(
+                    _serializers, webhookId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'token' '}',
+            encodeQueryParameter(_serializers, token, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -253,7 +267,7 @@ class WebhooksApi {
   /// Parameters:
   /// * [webhookId] - The ID of the webhook
   /// * [token] - The token
-  /// * [gitHubWebhook] 
+  /// * [gitHubWebhook]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -263,7 +277,7 @@ class WebhooksApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> executeGithubWebhook({ 
+  Future<Response<void>> executeGithubWebhook({
     required String webhookId,
     required String token,
     required GitHubWebhook gitHubWebhook,
@@ -274,7 +288,16 @@ class WebhooksApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/webhooks/{webhook_id}/{token}/github'.replaceAll('{' r'webhook_id' '}', encodeQueryParameter(_serializers, webhookId, const FullType(String)).toString()).replaceAll('{' r'token' '}', encodeQueryParameter(_serializers, token, const FullType(String)).toString());
+    final _path = r'/webhooks/{webhook_id}/{token}/github'
+        .replaceAll(
+            '{' r'webhook_id' '}',
+            encodeQueryParameter(
+                    _serializers, webhookId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'token' '}',
+            encodeQueryParameter(_serializers, token, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -293,10 +316,9 @@ class WebhooksApi {
     try {
       const _type = FullType(GitHubWebhook);
       _bodyData = _serializers.serialize(gitHubWebhook, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -324,7 +346,7 @@ class WebhooksApi {
   /// Parameters:
   /// * [webhookId] - The ID of the webhook
   /// * [token] - The token
-  /// * [sentryWebhook] 
+  /// * [sentryWebhook]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -334,7 +356,7 @@ class WebhooksApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> executeSentryWebhook({ 
+  Future<Response<void>> executeSentryWebhook({
     required String webhookId,
     required String token,
     required SentryWebhook sentryWebhook,
@@ -345,7 +367,16 @@ class WebhooksApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/webhooks/{webhook_id}/{token}/sentry'.replaceAll('{' r'webhook_id' '}', encodeQueryParameter(_serializers, webhookId, const FullType(String)).toString()).replaceAll('{' r'token' '}', encodeQueryParameter(_serializers, token, const FullType(String)).toString());
+    final _path = r'/webhooks/{webhook_id}/{token}/sentry'
+        .replaceAll(
+            '{' r'webhook_id' '}',
+            encodeQueryParameter(
+                    _serializers, webhookId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'token' '}',
+            encodeQueryParameter(_serializers, token, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -364,10 +395,9 @@ class WebhooksApi {
     try {
       const _type = FullType(SentryWebhook);
       _bodyData = _serializers.serialize(sentryWebhook, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -395,7 +425,7 @@ class WebhooksApi {
   /// Parameters:
   /// * [webhookId] - The ID of the webhook
   /// * [token] - The token
-  /// * [slackWebhookRequest] 
+  /// * [slackWebhookRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -405,7 +435,7 @@ class WebhooksApi {
   ///
   /// Returns a [Future] containing a [Response] with a [String] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<String>> executeSlackWebhook({ 
+  Future<Response<String>> executeSlackWebhook({
     required String webhookId,
     required String token,
     required SlackWebhookRequest slackWebhookRequest,
@@ -416,7 +446,16 @@ class WebhooksApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/webhooks/{webhook_id}/{token}/slack'.replaceAll('{' r'webhook_id' '}', encodeQueryParameter(_serializers, webhookId, const FullType(String)).toString()).replaceAll('{' r'token' '}', encodeQueryParameter(_serializers, token, const FullType(String)).toString());
+    final _path = r'/webhooks/{webhook_id}/{token}/slack'
+        .replaceAll(
+            '{' r'webhook_id' '}',
+            encodeQueryParameter(
+                    _serializers, webhookId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'token' '}',
+            encodeQueryParameter(_serializers, token, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -434,11 +473,11 @@ class WebhooksApi {
 
     try {
       const _type = FullType(SlackWebhookRequest);
-      _bodyData = _serializers.serialize(slackWebhookRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(slackWebhookRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -462,7 +501,6 @@ class WebhooksApi {
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : rawResponse as String;
-
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -491,7 +529,7 @@ class WebhooksApi {
   /// Parameters:
   /// * [webhookId] - The ID of the webhook
   /// * [token] - The token
-  /// * [wait] 
+  /// * [wait]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -501,7 +539,7 @@ class WebhooksApi {
   ///
   /// Returns a [Future] containing a [Response] with a [MessageResponseSchema] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<MessageResponseSchema>> executeWebhook({ 
+  Future<Response<MessageResponseSchema>> executeWebhook({
     required String webhookId,
     required String token,
     String? wait,
@@ -512,7 +550,16 @@ class WebhooksApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/webhooks/{webhook_id}/{token}'.replaceAll('{' r'webhook_id' '}', encodeQueryParameter(_serializers, webhookId, const FullType(String)).toString()).replaceAll('{' r'token' '}', encodeQueryParameter(_serializers, token, const FullType(String)).toString());
+    final _path = r'/webhooks/{webhook_id}/{token}'
+        .replaceAll(
+            '{' r'webhook_id' '}',
+            encodeQueryParameter(
+                    _serializers, webhookId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'token' '}',
+            encodeQueryParameter(_serializers, token, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -526,7 +573,9 @@ class WebhooksApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (wait != null) r'wait': encodeQueryParameter(_serializers, wait, const FullType(String)),
+      if (wait != null)
+        r'wait':
+            encodeQueryParameter(_serializers, wait, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -542,11 +591,12 @@ class WebhooksApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(MessageResponseSchema),
-      ) as MessageResponseSchema;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(MessageResponseSchema),
+            ) as MessageResponseSchema;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -583,7 +633,7 @@ class WebhooksApi {
   ///
   /// Returns a [Future] containing a [Response] with a [WebhookResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<WebhookResponse>> getWebhook({ 
+  Future<Response<WebhookResponse>> getWebhook({
     required String webhookId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -592,7 +642,10 @@ class WebhooksApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/webhooks/{webhook_id}'.replaceAll('{' r'webhook_id' '}', encodeQueryParameter(_serializers, webhookId, const FullType(String)).toString());
+    final _path = r'/webhooks/{webhook_id}'.replaceAll(
+        '{' r'webhook_id' '}',
+        encodeQueryParameter(_serializers, webhookId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -605,7 +658,8 @@ class WebhooksApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -629,11 +683,12 @@ class WebhooksApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(WebhookResponse),
-      ) as WebhookResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(WebhookResponse),
+            ) as WebhookResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -671,7 +726,7 @@ class WebhooksApi {
   ///
   /// Returns a [Future] containing a [Response] with a [WebhookTokenResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<WebhookTokenResponse>> getWebhookWithToken({ 
+  Future<Response<WebhookTokenResponse>> getWebhookWithToken({
     required String webhookId,
     required String token,
     CancelToken? cancelToken,
@@ -681,7 +736,16 @@ class WebhooksApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/webhooks/{webhook_id}/{token}'.replaceAll('{' r'webhook_id' '}', encodeQueryParameter(_serializers, webhookId, const FullType(String)).toString()).replaceAll('{' r'token' '}', encodeQueryParameter(_serializers, token, const FullType(String)).toString());
+    final _path = r'/webhooks/{webhook_id}/{token}'
+        .replaceAll(
+            '{' r'webhook_id' '}',
+            encodeQueryParameter(
+                    _serializers, webhookId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'token' '}',
+            encodeQueryParameter(_serializers, token, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -706,11 +770,12 @@ class WebhooksApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(WebhookTokenResponse),
-      ) as WebhookTokenResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(WebhookTokenResponse),
+            ) as WebhookTokenResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -747,7 +812,7 @@ class WebhooksApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<WebhookResponse>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<WebhookResponse>>> listChannelWebhooks({ 
+  Future<Response<BuiltList<WebhookResponse>>> listChannelWebhooks({
     required String channelId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -756,7 +821,10 @@ class WebhooksApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/channels/{channel_id}/webhooks'.replaceAll('{' r'channel_id' '}', encodeQueryParameter(_serializers, channelId, const FullType(String)).toString());
+    final _path = r'/channels/{channel_id}/webhooks'.replaceAll(
+        '{' r'channel_id' '}',
+        encodeQueryParameter(_serializers, channelId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -769,7 +837,8 @@ class WebhooksApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -793,11 +862,13 @@ class WebhooksApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(WebhookResponse)]),
-      ) as BuiltList<WebhookResponse>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType:
+                  const FullType(BuiltList, [FullType(WebhookResponse)]),
+            ) as BuiltList<WebhookResponse>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -834,7 +905,7 @@ class WebhooksApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<WebhookResponse>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<WebhookResponse>>> listGuildWebhooks({ 
+  Future<Response<BuiltList<WebhookResponse>>> listGuildWebhooks({
     required String guildId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -843,7 +914,10 @@ class WebhooksApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/webhooks'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/webhooks'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -856,7 +930,8 @@ class WebhooksApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -880,11 +955,13 @@ class WebhooksApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(WebhookResponse)]),
-      ) as BuiltList<WebhookResponse>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType:
+                  const FullType(BuiltList, [FullType(WebhookResponse)]),
+            ) as BuiltList<WebhookResponse>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -912,7 +989,7 @@ class WebhooksApi {
   ///
   /// Parameters:
   /// * [webhookId] - The ID of the webhook
-  /// * [webhookUpdateRequest] 
+  /// * [webhookUpdateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -922,7 +999,7 @@ class WebhooksApi {
   ///
   /// Returns a [Future] containing a [Response] with a [WebhookResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<WebhookResponse>> updateWebhook({ 
+  Future<Response<WebhookResponse>> updateWebhook({
     required String webhookId,
     required WebhookUpdateRequest webhookUpdateRequest,
     CancelToken? cancelToken,
@@ -932,7 +1009,10 @@ class WebhooksApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/webhooks/{webhook_id}'.replaceAll('{' r'webhook_id' '}', encodeQueryParameter(_serializers, webhookId, const FullType(String)).toString());
+    final _path = r'/webhooks/{webhook_id}'.replaceAll(
+        '{' r'webhook_id' '}',
+        encodeQueryParameter(_serializers, webhookId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -945,7 +1025,8 @@ class WebhooksApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -962,11 +1043,11 @@ class WebhooksApi {
 
     try {
       const _type = FullType(WebhookUpdateRequest);
-      _bodyData = _serializers.serialize(webhookUpdateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(webhookUpdateRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -989,11 +1070,12 @@ class WebhooksApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(WebhookResponse),
-      ) as WebhookResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(WebhookResponse),
+            ) as WebhookResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1022,7 +1104,7 @@ class WebhooksApi {
   /// Parameters:
   /// * [webhookId] - The ID of the webhook
   /// * [token] - The token
-  /// * [webhookTokenUpdateRequest] 
+  /// * [webhookTokenUpdateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1032,7 +1114,7 @@ class WebhooksApi {
   ///
   /// Returns a [Future] containing a [Response] with a [WebhookTokenResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<WebhookTokenResponse>> updateWebhookWithToken({ 
+  Future<Response<WebhookTokenResponse>> updateWebhookWithToken({
     required String webhookId,
     required String token,
     required WebhookTokenUpdateRequest webhookTokenUpdateRequest,
@@ -1043,7 +1125,16 @@ class WebhooksApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/webhooks/{webhook_id}/{token}'.replaceAll('{' r'webhook_id' '}', encodeQueryParameter(_serializers, webhookId, const FullType(String)).toString()).replaceAll('{' r'token' '}', encodeQueryParameter(_serializers, token, const FullType(String)).toString());
+    final _path = r'/webhooks/{webhook_id}/{token}'
+        .replaceAll(
+            '{' r'webhook_id' '}',
+            encodeQueryParameter(
+                    _serializers, webhookId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'token' '}',
+            encodeQueryParameter(_serializers, token, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -1061,11 +1152,11 @@ class WebhooksApi {
 
     try {
       const _type = FullType(WebhookTokenUpdateRequest);
-      _bodyData = _serializers.serialize(webhookTokenUpdateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(webhookTokenUpdateRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -1088,11 +1179,12 @@ class WebhooksApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(WebhookTokenResponse),
-      ) as WebhookTokenResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(WebhookTokenResponse),
+            ) as WebhookTokenResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1114,5 +1206,4 @@ class WebhooksApi {
       extra: _response.extra,
     );
   }
-
 }

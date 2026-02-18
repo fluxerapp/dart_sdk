@@ -17,7 +17,9 @@ part 'list_visionary_slots_response.g.dart';
 /// * [totalCount] - Total number of slots
 /// * [reservedCount] - Number of reserved slots
 @BuiltValue()
-abstract class ListVisionarySlotsResponse implements Built<ListVisionarySlotsResponse, ListVisionarySlotsResponseBuilder> {
+abstract class ListVisionarySlotsResponse
+    implements
+        Built<ListVisionarySlotsResponse, ListVisionarySlotsResponseBuilder> {
   /// List of all visionary slots
   @BuiltValueField(wireName: r'slots')
   BuiltList<VisionarySlotSchema> get slots;
@@ -32,18 +34,25 @@ abstract class ListVisionarySlotsResponse implements Built<ListVisionarySlotsRes
 
   ListVisionarySlotsResponse._();
 
-  factory ListVisionarySlotsResponse([void updates(ListVisionarySlotsResponseBuilder b)]) = _$ListVisionarySlotsResponse;
+  factory ListVisionarySlotsResponse(
+          [void updates(ListVisionarySlotsResponseBuilder b)]) =
+      _$ListVisionarySlotsResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ListVisionarySlotsResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListVisionarySlotsResponse> get serializer => _$ListVisionarySlotsResponseSerializer();
+  static Serializer<ListVisionarySlotsResponse> get serializer =>
+      _$ListVisionarySlotsResponseSerializer();
 }
 
-class _$ListVisionarySlotsResponseSerializer implements PrimitiveSerializer<ListVisionarySlotsResponse> {
+class _$ListVisionarySlotsResponseSerializer
+    implements PrimitiveSerializer<ListVisionarySlotsResponse> {
   @override
-  final Iterable<Type> types = const [ListVisionarySlotsResponse, _$ListVisionarySlotsResponse];
+  final Iterable<Type> types = const [
+    ListVisionarySlotsResponse,
+    _$ListVisionarySlotsResponse
+  ];
 
   @override
   final String wireName = r'ListVisionarySlotsResponse';
@@ -76,7 +85,9 @@ class _$ListVisionarySlotsResponseSerializer implements PrimitiveSerializer<List
     ListVisionarySlotsResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -94,7 +105,8 @@ class _$ListVisionarySlotsResponseSerializer implements PrimitiveSerializer<List
         case r'slots':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(VisionarySlotSchema)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(VisionarySlotSchema)]),
           ) as BuiltList<VisionarySlotSchema>;
           result.slots.replace(valueDes);
           break;
@@ -140,4 +152,3 @@ class _$ListVisionarySlotsResponseSerializer implements PrimitiveSerializer<List
     return result.build();
   }
 }
-

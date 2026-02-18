@@ -13,9 +13,11 @@ part 'snowflake_reservation_entry.g.dart';
 /// Properties:
 /// * [email] - Email address the snowflake is reserved for
 /// * [snowflake] - Reserved snowflake ID
-/// * [updatedAt] 
+/// * [updatedAt]
 @BuiltValue()
-abstract class SnowflakeReservationEntry implements Built<SnowflakeReservationEntry, SnowflakeReservationEntryBuilder> {
+abstract class SnowflakeReservationEntry
+    implements
+        Built<SnowflakeReservationEntry, SnowflakeReservationEntryBuilder> {
   /// Email address the snowflake is reserved for
   @BuiltValueField(wireName: r'email')
   String get email;
@@ -29,18 +31,25 @@ abstract class SnowflakeReservationEntry implements Built<SnowflakeReservationEn
 
   SnowflakeReservationEntry._();
 
-  factory SnowflakeReservationEntry([void updates(SnowflakeReservationEntryBuilder b)]) = _$SnowflakeReservationEntry;
+  factory SnowflakeReservationEntry(
+          [void updates(SnowflakeReservationEntryBuilder b)]) =
+      _$SnowflakeReservationEntry;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SnowflakeReservationEntryBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SnowflakeReservationEntry> get serializer => _$SnowflakeReservationEntrySerializer();
+  static Serializer<SnowflakeReservationEntry> get serializer =>
+      _$SnowflakeReservationEntrySerializer();
 }
 
-class _$SnowflakeReservationEntrySerializer implements PrimitiveSerializer<SnowflakeReservationEntry> {
+class _$SnowflakeReservationEntrySerializer
+    implements PrimitiveSerializer<SnowflakeReservationEntry> {
   @override
-  final Iterable<Type> types = const [SnowflakeReservationEntry, _$SnowflakeReservationEntry];
+  final Iterable<Type> types = const [
+    SnowflakeReservationEntry,
+    _$SnowflakeReservationEntry
+  ];
 
   @override
   final String wireName = r'SnowflakeReservationEntry';
@@ -61,10 +70,12 @@ class _$SnowflakeReservationEntrySerializer implements PrimitiveSerializer<Snowf
       specifiedType: const FullType(String),
     );
     yield r'updated_at';
-    yield object.updatedAt == null ? null : serializers.serialize(
-      object.updatedAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.updatedAt == null
+        ? null
+        : serializers.serialize(
+            object.updatedAt,
+            specifiedType: const FullType.nullable(String),
+          );
   }
 
   @override
@@ -73,7 +84,9 @@ class _$SnowflakeReservationEntrySerializer implements PrimitiveSerializer<Snowf
     SnowflakeReservationEntry object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -138,4 +151,3 @@ class _$SnowflakeReservationEntrySerializer implements PrimitiveSerializer<Snowf
     return result.build();
   }
 }
-

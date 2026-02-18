@@ -12,26 +12,34 @@ part 'get_voice_server_response.g.dart';
 /// GetVoiceServerResponse
 ///
 /// Properties:
-/// * [server] 
+/// * [server]
 @BuiltValue()
-abstract class GetVoiceServerResponse implements Built<GetVoiceServerResponse, GetVoiceServerResponseBuilder> {
+abstract class GetVoiceServerResponse
+    implements Built<GetVoiceServerResponse, GetVoiceServerResponseBuilder> {
   @BuiltValueField(wireName: r'server')
   VoiceServerAdminResponse? get server;
 
   GetVoiceServerResponse._();
 
-  factory GetVoiceServerResponse([void updates(GetVoiceServerResponseBuilder b)]) = _$GetVoiceServerResponse;
+  factory GetVoiceServerResponse(
+          [void updates(GetVoiceServerResponseBuilder b)]) =
+      _$GetVoiceServerResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GetVoiceServerResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GetVoiceServerResponse> get serializer => _$GetVoiceServerResponseSerializer();
+  static Serializer<GetVoiceServerResponse> get serializer =>
+      _$GetVoiceServerResponseSerializer();
 }
 
-class _$GetVoiceServerResponseSerializer implements PrimitiveSerializer<GetVoiceServerResponse> {
+class _$GetVoiceServerResponseSerializer
+    implements PrimitiveSerializer<GetVoiceServerResponse> {
   @override
-  final Iterable<Type> types = const [GetVoiceServerResponse, _$GetVoiceServerResponse];
+  final Iterable<Type> types = const [
+    GetVoiceServerResponse,
+    _$GetVoiceServerResponse
+  ];
 
   @override
   final String wireName = r'GetVoiceServerResponse';
@@ -42,10 +50,12 @@ class _$GetVoiceServerResponseSerializer implements PrimitiveSerializer<GetVoice
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     yield r'server';
-    yield object.server == null ? null : serializers.serialize(
-      object.server,
-      specifiedType: const FullType.nullable(VoiceServerAdminResponse),
-    );
+    yield object.server == null
+        ? null
+        : serializers.serialize(
+            object.server,
+            specifiedType: const FullType.nullable(VoiceServerAdminResponse),
+          );
   }
 
   @override
@@ -54,7 +64,9 @@ class _$GetVoiceServerResponseSerializer implements PrimitiveSerializer<GetVoice
     GetVoiceServerResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -105,4 +117,3 @@ class _$GetVoiceServerResponseSerializer implements PrimitiveSerializer<GetVoice
     return result.build();
   }
 }
-

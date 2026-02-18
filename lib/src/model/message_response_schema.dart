@@ -23,29 +23,30 @@ part 'message_response_schema.g.dart';
 /// Properties:
 /// * [id] - The unique identifier (snowflake) for this message
 /// * [channelId] - The ID of the channel this message was sent in
-/// * [author] 
+/// * [author]
 /// * [type] - The type of message
 /// * [flags] - Message flags bitfield
 /// * [content] - The text content of the message
 /// * [timestamp] - The ISO 8601 timestamp of when the message was created
 /// * [pinned] - Whether the message is pinned
 /// * [mentionEveryone] - Whether the message mentions @everyone
-/// * [webhookId] 
-/// * [editedTimestamp] 
+/// * [webhookId]
+/// * [editedTimestamp]
 /// * [tts] - Whether the message was sent as text-to-speech
-/// * [mentions] 
-/// * [mentionRoles] 
-/// * [embeds] 
-/// * [attachments] 
-/// * [stickers] 
-/// * [reactions] 
-/// * [messageReference] 
-/// * [messageSnapshots] 
-/// * [nonce] 
-/// * [call] 
-/// * [referencedMessage] 
+/// * [mentions]
+/// * [mentionRoles]
+/// * [embeds]
+/// * [attachments]
+/// * [stickers]
+/// * [reactions]
+/// * [messageReference]
+/// * [messageSnapshots]
+/// * [nonce]
+/// * [call]
+/// * [referencedMessage]
 @BuiltValue()
-abstract class MessageResponseSchema implements Built<MessageResponseSchema, MessageResponseSchemaBuilder> {
+abstract class MessageResponseSchema
+    implements Built<MessageResponseSchema, MessageResponseSchemaBuilder> {
   /// The unique identifier (snowflake) for this message
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -127,18 +128,24 @@ abstract class MessageResponseSchema implements Built<MessageResponseSchema, Mes
 
   MessageResponseSchema._();
 
-  factory MessageResponseSchema([void updates(MessageResponseSchemaBuilder b)]) = _$MessageResponseSchema;
+  factory MessageResponseSchema(
+      [void updates(MessageResponseSchemaBuilder b)]) = _$MessageResponseSchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(MessageResponseSchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<MessageResponseSchema> get serializer => _$MessageResponseSchemaSerializer();
+  static Serializer<MessageResponseSchema> get serializer =>
+      _$MessageResponseSchemaSerializer();
 }
 
-class _$MessageResponseSchemaSerializer implements PrimitiveSerializer<MessageResponseSchema> {
+class _$MessageResponseSchemaSerializer
+    implements PrimitiveSerializer<MessageResponseSchema> {
   @override
-  final Iterable<Type> types = const [MessageResponseSchema, _$MessageResponseSchema];
+  final Iterable<Type> types = const [
+    MessageResponseSchema,
+    _$MessageResponseSchema
+  ];
 
   @override
   final String wireName = r'MessageResponseSchema';
@@ -218,7 +225,8 @@ class _$MessageResponseSchemaSerializer implements PrimitiveSerializer<MessageRe
       yield r'mentions';
       yield serializers.serialize(
         object.mentions,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(UserPartialResponse)]),
+        specifiedType:
+            const FullType.nullable(BuiltList, [FullType(UserPartialResponse)]),
       );
     }
     if (object.mentionRoles != null) {
@@ -232,28 +240,32 @@ class _$MessageResponseSchemaSerializer implements PrimitiveSerializer<MessageRe
       yield r'embeds';
       yield serializers.serialize(
         object.embeds,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(MessageEmbedResponse)]),
+        specifiedType: const FullType.nullable(
+            BuiltList, [FullType(MessageEmbedResponse)]),
       );
     }
     if (object.attachments != null) {
       yield r'attachments';
       yield serializers.serialize(
         object.attachments,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(MessageAttachmentResponse)]),
+        specifiedType: const FullType.nullable(
+            BuiltList, [FullType(MessageAttachmentResponse)]),
       );
     }
     if (object.stickers != null) {
       yield r'stickers';
       yield serializers.serialize(
         object.stickers,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(MessageStickerResponse)]),
+        specifiedType: const FullType.nullable(
+            BuiltList, [FullType(MessageStickerResponse)]),
       );
     }
     if (object.reactions != null) {
       yield r'reactions';
       yield serializers.serialize(
         object.reactions,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(MessageReactionResponse)]),
+        specifiedType: const FullType.nullable(
+            BuiltList, [FullType(MessageReactionResponse)]),
       );
     }
     if (object.messageReference != null) {
@@ -267,7 +279,8 @@ class _$MessageResponseSchemaSerializer implements PrimitiveSerializer<MessageRe
       yield r'message_snapshots';
       yield serializers.serialize(
         object.messageSnapshots,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(MessageSnapshotResponse)]),
+        specifiedType: const FullType.nullable(
+            BuiltList, [FullType(MessageSnapshotResponse)]),
       );
     }
     if (object.nonce != null) {
@@ -299,7 +312,9 @@ class _$MessageResponseSchemaSerializer implements PrimitiveSerializer<MessageRe
     MessageResponseSchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -402,7 +417,8 @@ class _$MessageResponseSchemaSerializer implements PrimitiveSerializer<MessageRe
         case r'mentions':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(UserPartialResponse)]),
+            specifiedType: const FullType.nullable(
+                BuiltList, [FullType(UserPartialResponse)]),
           ) as BuiltList<UserPartialResponse>?;
           if (valueDes == null) continue;
           result.mentions.replace(valueDes);
@@ -410,7 +426,8 @@ class _$MessageResponseSchemaSerializer implements PrimitiveSerializer<MessageRe
         case r'mention_roles':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+            specifiedType:
+                const FullType.nullable(BuiltList, [FullType(String)]),
           ) as BuiltList<String>?;
           if (valueDes == null) continue;
           result.mentionRoles.replace(valueDes);
@@ -418,7 +435,8 @@ class _$MessageResponseSchemaSerializer implements PrimitiveSerializer<MessageRe
         case r'embeds':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(MessageEmbedResponse)]),
+            specifiedType: const FullType.nullable(
+                BuiltList, [FullType(MessageEmbedResponse)]),
           ) as BuiltList<MessageEmbedResponse>?;
           if (valueDes == null) continue;
           result.embeds.replace(valueDes);
@@ -426,7 +444,8 @@ class _$MessageResponseSchemaSerializer implements PrimitiveSerializer<MessageRe
         case r'attachments':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(MessageAttachmentResponse)]),
+            specifiedType: const FullType.nullable(
+                BuiltList, [FullType(MessageAttachmentResponse)]),
           ) as BuiltList<MessageAttachmentResponse>?;
           if (valueDes == null) continue;
           result.attachments.replace(valueDes);
@@ -434,7 +453,8 @@ class _$MessageResponseSchemaSerializer implements PrimitiveSerializer<MessageRe
         case r'stickers':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(MessageStickerResponse)]),
+            specifiedType: const FullType.nullable(
+                BuiltList, [FullType(MessageStickerResponse)]),
           ) as BuiltList<MessageStickerResponse>?;
           if (valueDes == null) continue;
           result.stickers.replace(valueDes);
@@ -442,7 +462,8 @@ class _$MessageResponseSchemaSerializer implements PrimitiveSerializer<MessageRe
         case r'reactions':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(MessageReactionResponse)]),
+            specifiedType: const FullType.nullable(
+                BuiltList, [FullType(MessageReactionResponse)]),
           ) as BuiltList<MessageReactionResponse>?;
           if (valueDes == null) continue;
           result.reactions.replace(valueDes);
@@ -458,7 +479,8 @@ class _$MessageResponseSchemaSerializer implements PrimitiveSerializer<MessageRe
         case r'message_snapshots':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(MessageSnapshotResponse)]),
+            specifiedType: const FullType.nullable(
+                BuiltList, [FullType(MessageSnapshotResponse)]),
           ) as BuiltList<MessageSnapshotResponse>?;
           if (valueDes == null) continue;
           result.messageSnapshots.replace(valueDes);
@@ -517,40 +539,58 @@ class _$MessageResponseSchemaSerializer implements PrimitiveSerializer<MessageRe
 }
 
 class MessageResponseSchemaTypeEnum extends EnumClass {
-
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 0)
-  static const MessageResponseSchemaTypeEnum number0 = _$messageResponseSchemaTypeEnum_number0;
+  static const MessageResponseSchemaTypeEnum number0 =
+      _$messageResponseSchemaTypeEnum_number0;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 1)
-  static const MessageResponseSchemaTypeEnum number1 = _$messageResponseSchemaTypeEnum_number1;
+  static const MessageResponseSchemaTypeEnum number1 =
+      _$messageResponseSchemaTypeEnum_number1;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 2)
-  static const MessageResponseSchemaTypeEnum number2 = _$messageResponseSchemaTypeEnum_number2;
+  static const MessageResponseSchemaTypeEnum number2 =
+      _$messageResponseSchemaTypeEnum_number2;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 3)
-  static const MessageResponseSchemaTypeEnum number3 = _$messageResponseSchemaTypeEnum_number3;
+  static const MessageResponseSchemaTypeEnum number3 =
+      _$messageResponseSchemaTypeEnum_number3;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 4)
-  static const MessageResponseSchemaTypeEnum number4 = _$messageResponseSchemaTypeEnum_number4;
+  static const MessageResponseSchemaTypeEnum number4 =
+      _$messageResponseSchemaTypeEnum_number4;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 5)
-  static const MessageResponseSchemaTypeEnum number5 = _$messageResponseSchemaTypeEnum_number5;
+  static const MessageResponseSchemaTypeEnum number5 =
+      _$messageResponseSchemaTypeEnum_number5;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 6)
-  static const MessageResponseSchemaTypeEnum number6 = _$messageResponseSchemaTypeEnum_number6;
+  static const MessageResponseSchemaTypeEnum number6 =
+      _$messageResponseSchemaTypeEnum_number6;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 7)
-  static const MessageResponseSchemaTypeEnum number7 = _$messageResponseSchemaTypeEnum_number7;
+  static const MessageResponseSchemaTypeEnum number7 =
+      _$messageResponseSchemaTypeEnum_number7;
+
   /// The type of message
   @BuiltValueEnumConst(wireNumber: 19)
-  static const MessageResponseSchemaTypeEnum number19 = _$messageResponseSchemaTypeEnum_number19;
+  static const MessageResponseSchemaTypeEnum number19 =
+      _$messageResponseSchemaTypeEnum_number19;
 
-  static Serializer<MessageResponseSchemaTypeEnum> get serializer => _$messageResponseSchemaTypeEnumSerializer;
+  static Serializer<MessageResponseSchemaTypeEnum> get serializer =>
+      _$messageResponseSchemaTypeEnumSerializer;
 
-  const MessageResponseSchemaTypeEnum._(String name): super(name);
+  const MessageResponseSchemaTypeEnum._(String name) : super(name);
 
-  static BuiltSet<MessageResponseSchemaTypeEnum> get values => _$messageResponseSchemaTypeEnumValues;
-  static MessageResponseSchemaTypeEnum valueOf(String name) => _$messageResponseSchemaTypeEnumValueOf(name);
+  static BuiltSet<MessageResponseSchemaTypeEnum> get values =>
+      _$messageResponseSchemaTypeEnumValues;
+  static MessageResponseSchemaTypeEnum valueOf(String name) =>
+      _$messageResponseSchemaTypeEnumValueOf(name);
 }
-

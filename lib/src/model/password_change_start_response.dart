@@ -13,9 +13,11 @@ part 'password_change_start_response.g.dart';
 /// Properties:
 /// * [ticket] - Ticket for password change actions
 /// * [codeExpiresAt] - ISO8601 timestamp when the verification code expires
-/// * [resendAvailableAt] 
+/// * [resendAvailableAt]
 @BuiltValue()
-abstract class PasswordChangeStartResponse implements Built<PasswordChangeStartResponse, PasswordChangeStartResponseBuilder> {
+abstract class PasswordChangeStartResponse
+    implements
+        Built<PasswordChangeStartResponse, PasswordChangeStartResponseBuilder> {
   /// Ticket for password change actions
   @BuiltValueField(wireName: r'ticket')
   String get ticket;
@@ -29,18 +31,25 @@ abstract class PasswordChangeStartResponse implements Built<PasswordChangeStartR
 
   PasswordChangeStartResponse._();
 
-  factory PasswordChangeStartResponse([void updates(PasswordChangeStartResponseBuilder b)]) = _$PasswordChangeStartResponse;
+  factory PasswordChangeStartResponse(
+          [void updates(PasswordChangeStartResponseBuilder b)]) =
+      _$PasswordChangeStartResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PasswordChangeStartResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PasswordChangeStartResponse> get serializer => _$PasswordChangeStartResponseSerializer();
+  static Serializer<PasswordChangeStartResponse> get serializer =>
+      _$PasswordChangeStartResponseSerializer();
 }
 
-class _$PasswordChangeStartResponseSerializer implements PrimitiveSerializer<PasswordChangeStartResponse> {
+class _$PasswordChangeStartResponseSerializer
+    implements PrimitiveSerializer<PasswordChangeStartResponse> {
   @override
-  final Iterable<Type> types = const [PasswordChangeStartResponse, _$PasswordChangeStartResponse];
+  final Iterable<Type> types = const [
+    PasswordChangeStartResponse,
+    _$PasswordChangeStartResponse
+  ];
 
   @override
   final String wireName = r'PasswordChangeStartResponse';
@@ -61,10 +70,12 @@ class _$PasswordChangeStartResponseSerializer implements PrimitiveSerializer<Pas
       specifiedType: const FullType(String),
     );
     yield r'resend_available_at';
-    yield object.resendAvailableAt == null ? null : serializers.serialize(
-      object.resendAvailableAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.resendAvailableAt == null
+        ? null
+        : serializers.serialize(
+            object.resendAvailableAt,
+            specifiedType: const FullType.nullable(String),
+          );
   }
 
   @override
@@ -73,7 +84,9 @@ class _$PasswordChangeStartResponseSerializer implements PrimitiveSerializer<Pas
     PasswordChangeStartResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -138,4 +151,3 @@ class _$PasswordChangeStartResponseSerializer implements PrimitiveSerializer<Pas
     return result.build();
   }
 }
-

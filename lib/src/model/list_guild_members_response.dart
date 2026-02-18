@@ -13,12 +13,14 @@ part 'list_guild_members_response.g.dart';
 /// ListGuildMembersResponse
 ///
 /// Properties:
-/// * [members] 
-/// * [total] 
-/// * [limit] 
-/// * [offset] 
+/// * [members]
+/// * [total]
+/// * [limit]
+/// * [offset]
 @BuiltValue()
-abstract class ListGuildMembersResponse implements Built<ListGuildMembersResponse, ListGuildMembersResponseBuilder> {
+abstract class ListGuildMembersResponse
+    implements
+        Built<ListGuildMembersResponse, ListGuildMembersResponseBuilder> {
   @BuiltValueField(wireName: r'members')
   BuiltList<GuildMemberResponse> get members;
 
@@ -33,18 +35,25 @@ abstract class ListGuildMembersResponse implements Built<ListGuildMembersRespons
 
   ListGuildMembersResponse._();
 
-  factory ListGuildMembersResponse([void updates(ListGuildMembersResponseBuilder b)]) = _$ListGuildMembersResponse;
+  factory ListGuildMembersResponse(
+          [void updates(ListGuildMembersResponseBuilder b)]) =
+      _$ListGuildMembersResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ListGuildMembersResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListGuildMembersResponse> get serializer => _$ListGuildMembersResponseSerializer();
+  static Serializer<ListGuildMembersResponse> get serializer =>
+      _$ListGuildMembersResponseSerializer();
 }
 
-class _$ListGuildMembersResponseSerializer implements PrimitiveSerializer<ListGuildMembersResponse> {
+class _$ListGuildMembersResponseSerializer
+    implements PrimitiveSerializer<ListGuildMembersResponse> {
   @override
-  final Iterable<Type> types = const [ListGuildMembersResponse, _$ListGuildMembersResponse];
+  final Iterable<Type> types = const [
+    ListGuildMembersResponse,
+    _$ListGuildMembersResponse
+  ];
 
   @override
   final String wireName = r'ListGuildMembersResponse';
@@ -82,7 +91,9 @@ class _$ListGuildMembersResponseSerializer implements PrimitiveSerializer<ListGu
     ListGuildMembersResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -100,7 +111,8 @@ class _$ListGuildMembersResponseSerializer implements PrimitiveSerializer<ListGu
         case r'members':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(GuildMemberResponse)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(GuildMemberResponse)]),
           ) as BuiltList<GuildMemberResponse>;
           result.members.replace(valueDes);
           break;
@@ -153,4 +165,3 @@ class _$ListGuildMembersResponseSerializer implements PrimitiveSerializer<ListGu
     return result.build();
   }
 }
-

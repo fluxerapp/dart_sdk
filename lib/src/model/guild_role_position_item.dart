@@ -11,10 +11,11 @@ part 'guild_role_position_item.g.dart';
 /// GuildRolePositionItem
 ///
 /// Properties:
-/// * [id] 
+/// * [id]
 /// * [position] - The new position for the role
 @BuiltValue()
-abstract class GuildRolePositionItem implements Built<GuildRolePositionItem, GuildRolePositionItemBuilder> {
+abstract class GuildRolePositionItem
+    implements Built<GuildRolePositionItem, GuildRolePositionItemBuilder> {
   @BuiltValueField(wireName: r'id')
   String get id;
 
@@ -24,18 +25,24 @@ abstract class GuildRolePositionItem implements Built<GuildRolePositionItem, Gui
 
   GuildRolePositionItem._();
 
-  factory GuildRolePositionItem([void updates(GuildRolePositionItemBuilder b)]) = _$GuildRolePositionItem;
+  factory GuildRolePositionItem(
+      [void updates(GuildRolePositionItemBuilder b)]) = _$GuildRolePositionItem;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildRolePositionItemBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildRolePositionItem> get serializer => _$GuildRolePositionItemSerializer();
+  static Serializer<GuildRolePositionItem> get serializer =>
+      _$GuildRolePositionItemSerializer();
 }
 
-class _$GuildRolePositionItemSerializer implements PrimitiveSerializer<GuildRolePositionItem> {
+class _$GuildRolePositionItemSerializer
+    implements PrimitiveSerializer<GuildRolePositionItem> {
   @override
-  final Iterable<Type> types = const [GuildRolePositionItem, _$GuildRolePositionItem];
+  final Iterable<Type> types = const [
+    GuildRolePositionItem,
+    _$GuildRolePositionItem
+  ];
 
   @override
   final String wireName = r'GuildRolePositionItem';
@@ -65,7 +72,9 @@ class _$GuildRolePositionItemSerializer implements PrimitiveSerializer<GuildRole
     GuildRolePositionItem object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -122,4 +131,3 @@ class _$GuildRolePositionItemSerializer implements PrimitiveSerializer<GuildRole
     return result.build();
   }
 }
-

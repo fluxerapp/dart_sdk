@@ -12,12 +12,13 @@ part 'custom_status_payload.g.dart';
 /// CustomStatusPayload
 ///
 /// Properties:
-/// * [text] 
-/// * [expiresAt] 
-/// * [emojiId] 
-/// * [emojiName] 
+/// * [text]
+/// * [expiresAt]
+/// * [emojiId]
+/// * [emojiName]
 @BuiltValue()
-abstract class CustomStatusPayload implements Built<CustomStatusPayload, CustomStatusPayloadBuilder> {
+abstract class CustomStatusPayload
+    implements Built<CustomStatusPayload, CustomStatusPayloadBuilder> {
   @BuiltValueField(wireName: r'text')
   String? get text;
 
@@ -32,18 +33,24 @@ abstract class CustomStatusPayload implements Built<CustomStatusPayload, CustomS
 
   CustomStatusPayload._();
 
-  factory CustomStatusPayload([void updates(CustomStatusPayloadBuilder b)]) = _$CustomStatusPayload;
+  factory CustomStatusPayload([void updates(CustomStatusPayloadBuilder b)]) =
+      _$CustomStatusPayload;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CustomStatusPayloadBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CustomStatusPayload> get serializer => _$CustomStatusPayloadSerializer();
+  static Serializer<CustomStatusPayload> get serializer =>
+      _$CustomStatusPayloadSerializer();
 }
 
-class _$CustomStatusPayloadSerializer implements PrimitiveSerializer<CustomStatusPayload> {
+class _$CustomStatusPayloadSerializer
+    implements PrimitiveSerializer<CustomStatusPayload> {
   @override
-  final Iterable<Type> types = const [CustomStatusPayload, _$CustomStatusPayload];
+  final Iterable<Type> types = const [
+    CustomStatusPayload,
+    _$CustomStatusPayload
+  ];
 
   @override
   final String wireName = r'CustomStatusPayload';
@@ -89,7 +96,9 @@ class _$CustomStatusPayloadSerializer implements PrimitiveSerializer<CustomStatu
     CustomStatusPayload object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -115,7 +124,8 @@ class _$CustomStatusPayloadSerializer implements PrimitiveSerializer<CustomStatu
         case r'expires_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(CustomStatusPayloadExpiresAt),
+            specifiedType:
+                const FullType.nullable(CustomStatusPayloadExpiresAt),
           ) as CustomStatusPayloadExpiresAt?;
           if (valueDes == null) continue;
           result.expiresAt.replace(valueDes);
@@ -163,4 +173,3 @@ class _$CustomStatusPayloadSerializer implements PrimitiveSerializer<CustomStatu
     return result.build();
   }
 }
-

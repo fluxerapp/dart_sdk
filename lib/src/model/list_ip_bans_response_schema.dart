@@ -13,26 +13,35 @@ part 'list_ip_bans_response_schema.g.dart';
 /// ListIpBansResponseSchema
 ///
 /// Properties:
-/// * [bans] 
+/// * [bans]
 @BuiltValue()
-abstract class ListIpBansResponseSchema implements Built<ListIpBansResponseSchema, ListIpBansResponseSchemaBuilder> {
+abstract class ListIpBansResponseSchema
+    implements
+        Built<ListIpBansResponseSchema, ListIpBansResponseSchemaBuilder> {
   @BuiltValueField(wireName: r'bans')
   BuiltList<IpBanListEntrySchema> get bans;
 
   ListIpBansResponseSchema._();
 
-  factory ListIpBansResponseSchema([void updates(ListIpBansResponseSchemaBuilder b)]) = _$ListIpBansResponseSchema;
+  factory ListIpBansResponseSchema(
+          [void updates(ListIpBansResponseSchemaBuilder b)]) =
+      _$ListIpBansResponseSchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ListIpBansResponseSchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListIpBansResponseSchema> get serializer => _$ListIpBansResponseSchemaSerializer();
+  static Serializer<ListIpBansResponseSchema> get serializer =>
+      _$ListIpBansResponseSchemaSerializer();
 }
 
-class _$ListIpBansResponseSchemaSerializer implements PrimitiveSerializer<ListIpBansResponseSchema> {
+class _$ListIpBansResponseSchemaSerializer
+    implements PrimitiveSerializer<ListIpBansResponseSchema> {
   @override
-  final Iterable<Type> types = const [ListIpBansResponseSchema, _$ListIpBansResponseSchema];
+  final Iterable<Type> types = const [
+    ListIpBansResponseSchema,
+    _$ListIpBansResponseSchema
+  ];
 
   @override
   final String wireName = r'ListIpBansResponseSchema';
@@ -45,7 +54,8 @@ class _$ListIpBansResponseSchemaSerializer implements PrimitiveSerializer<ListIp
     yield r'bans';
     yield serializers.serialize(
       object.bans,
-      specifiedType: const FullType(BuiltList, [FullType(IpBanListEntrySchema)]),
+      specifiedType:
+          const FullType(BuiltList, [FullType(IpBanListEntrySchema)]),
     );
   }
 
@@ -55,7 +65,9 @@ class _$ListIpBansResponseSchemaSerializer implements PrimitiveSerializer<ListIp
     ListIpBansResponseSchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -73,7 +85,8 @@ class _$ListIpBansResponseSchemaSerializer implements PrimitiveSerializer<ListIp
         case r'bans':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(IpBanListEntrySchema)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(IpBanListEntrySchema)]),
           ) as BuiltList<IpBanListEntrySchema>;
           result.bans.replace(valueDes);
           break;
@@ -105,4 +118,3 @@ class _$ListIpBansResponseSchemaSerializer implements PrimitiveSerializer<ListIp
     return result.build();
   }
 }
-

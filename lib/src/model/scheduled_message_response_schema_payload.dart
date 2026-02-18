@@ -17,19 +17,22 @@ part 'scheduled_message_response_schema_payload.g.dart';
 /// The message content and metadata to be sent
 ///
 /// Properties:
-/// * [content] 
+/// * [content]
 /// * [tts] - Whether this is a text-to-speech message
 /// * [embeds] - Array of embed objects attached to the message
 /// * [attachments] - Array of attachment objects for the message
 /// * [stickers] - Array of sticker objects attached to the message
 /// * [stickerIds] - Array of sticker IDs to include in the message
-/// * [allowedMentions] 
-/// * [messageReference] 
+/// * [allowedMentions]
+/// * [messageReference]
 /// * [flags] - Message flags bitfield
 /// * [nonce] - Client-generated identifier for the message
-/// * [favoriteMemeId] 
+/// * [favoriteMemeId]
 @BuiltValue()
-abstract class ScheduledMessageResponseSchemaPayload implements Built<ScheduledMessageResponseSchemaPayload, ScheduledMessageResponseSchemaPayloadBuilder> {
+abstract class ScheduledMessageResponseSchemaPayload
+    implements
+        Built<ScheduledMessageResponseSchemaPayload,
+            ScheduledMessageResponseSchemaPayloadBuilder> {
   @BuiltValueField(wireName: r'content')
   String? get content;
 
@@ -72,18 +75,25 @@ abstract class ScheduledMessageResponseSchemaPayload implements Built<ScheduledM
 
   ScheduledMessageResponseSchemaPayload._();
 
-  factory ScheduledMessageResponseSchemaPayload([void updates(ScheduledMessageResponseSchemaPayloadBuilder b)]) = _$ScheduledMessageResponseSchemaPayload;
+  factory ScheduledMessageResponseSchemaPayload(
+          [void updates(ScheduledMessageResponseSchemaPayloadBuilder b)]) =
+      _$ScheduledMessageResponseSchemaPayload;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ScheduledMessageResponseSchemaPayloadBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ScheduledMessageResponseSchemaPayload> get serializer => _$ScheduledMessageResponseSchemaPayloadSerializer();
+  static Serializer<ScheduledMessageResponseSchemaPayload> get serializer =>
+      _$ScheduledMessageResponseSchemaPayloadSerializer();
 }
 
-class _$ScheduledMessageResponseSchemaPayloadSerializer implements PrimitiveSerializer<ScheduledMessageResponseSchemaPayload> {
+class _$ScheduledMessageResponseSchemaPayloadSerializer
+    implements PrimitiveSerializer<ScheduledMessageResponseSchemaPayload> {
   @override
-  final Iterable<Type> types = const [ScheduledMessageResponseSchemaPayload, _$ScheduledMessageResponseSchemaPayload];
+  final Iterable<Type> types = const [
+    ScheduledMessageResponseSchemaPayload,
+    _$ScheduledMessageResponseSchemaPayload
+  ];
 
   @override
   final String wireName = r'ScheduledMessageResponseSchemaPayload';
@@ -111,21 +121,24 @@ class _$ScheduledMessageResponseSchemaPayloadSerializer implements PrimitiveSeri
       yield r'embeds';
       yield serializers.serialize(
         object.embeds,
-        specifiedType: const FullType(BuiltList, [FullType(MessageEmbedResponse)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(MessageEmbedResponse)]),
       );
     }
     if (object.attachments != null) {
       yield r'attachments';
       yield serializers.serialize(
         object.attachments,
-        specifiedType: const FullType(BuiltList, [FullType(MessageAttachmentResponse)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(MessageAttachmentResponse)]),
       );
     }
     if (object.stickers != null) {
       yield r'stickers';
       yield serializers.serialize(
         object.stickers,
-        specifiedType: const FullType(BuiltList, [FullType(MessageStickerResponse)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(MessageStickerResponse)]),
       );
     }
     if (object.stickerIds != null) {
@@ -178,7 +191,9 @@ class _$ScheduledMessageResponseSchemaPayloadSerializer implements PrimitiveSeri
     ScheduledMessageResponseSchemaPayload object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -211,21 +226,24 @@ class _$ScheduledMessageResponseSchemaPayloadSerializer implements PrimitiveSeri
         case r'embeds':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(MessageEmbedResponse)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(MessageEmbedResponse)]),
           ) as BuiltList<MessageEmbedResponse>;
           result.embeds.replace(valueDes);
           break;
         case r'attachments':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(MessageAttachmentResponse)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(MessageAttachmentResponse)]),
           ) as BuiltList<MessageAttachmentResponse>;
           result.attachments.replace(valueDes);
           break;
         case r'stickers':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(MessageStickerResponse)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(MessageStickerResponse)]),
           ) as BuiltList<MessageStickerResponse>;
           result.stickers.replace(valueDes);
           break;
@@ -239,7 +257,8 @@ class _$ScheduledMessageResponseSchemaPayloadSerializer implements PrimitiveSeri
         case r'allowed_mentions':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ScheduledMessageAllowedMentionsSchema),
+            specifiedType:
+                const FullType(ScheduledMessageAllowedMentionsSchema),
           ) as ScheduledMessageAllowedMentionsSchema;
           result.allowedMentions.replace(valueDes);
           break;
@@ -299,4 +318,3 @@ class _$ScheduledMessageResponseSchemaPayloadSerializer implements PrimitiveSeri
     return result.build();
   }
 }
-

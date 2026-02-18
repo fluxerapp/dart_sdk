@@ -13,9 +13,12 @@ part 'user_guild_settings_update_request_mute_config.g.dart';
 ///
 /// Properties:
 /// * [selectedTimeWindow] - Selected mute duration
-/// * [endTime] 
+/// * [endTime]
 @BuiltValue()
-abstract class UserGuildSettingsUpdateRequestMuteConfig implements Built<UserGuildSettingsUpdateRequestMuteConfig, UserGuildSettingsUpdateRequestMuteConfigBuilder> {
+abstract class UserGuildSettingsUpdateRequestMuteConfig
+    implements
+        Built<UserGuildSettingsUpdateRequestMuteConfig,
+            UserGuildSettingsUpdateRequestMuteConfigBuilder> {
   /// Selected mute duration
   @BuiltValueField(wireName: r'selected_time_window')
   int get selectedTimeWindow;
@@ -25,18 +28,25 @@ abstract class UserGuildSettingsUpdateRequestMuteConfig implements Built<UserGui
 
   UserGuildSettingsUpdateRequestMuteConfig._();
 
-  factory UserGuildSettingsUpdateRequestMuteConfig([void updates(UserGuildSettingsUpdateRequestMuteConfigBuilder b)]) = _$UserGuildSettingsUpdateRequestMuteConfig;
+  factory UserGuildSettingsUpdateRequestMuteConfig(
+          [void updates(UserGuildSettingsUpdateRequestMuteConfigBuilder b)]) =
+      _$UserGuildSettingsUpdateRequestMuteConfig;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UserGuildSettingsUpdateRequestMuteConfigBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UserGuildSettingsUpdateRequestMuteConfig> get serializer => _$UserGuildSettingsUpdateRequestMuteConfigSerializer();
+  static Serializer<UserGuildSettingsUpdateRequestMuteConfig> get serializer =>
+      _$UserGuildSettingsUpdateRequestMuteConfigSerializer();
 }
 
-class _$UserGuildSettingsUpdateRequestMuteConfigSerializer implements PrimitiveSerializer<UserGuildSettingsUpdateRequestMuteConfig> {
+class _$UserGuildSettingsUpdateRequestMuteConfigSerializer
+    implements PrimitiveSerializer<UserGuildSettingsUpdateRequestMuteConfig> {
   @override
-  final Iterable<Type> types = const [UserGuildSettingsUpdateRequestMuteConfig, _$UserGuildSettingsUpdateRequestMuteConfig];
+  final Iterable<Type> types = const [
+    UserGuildSettingsUpdateRequestMuteConfig,
+    _$UserGuildSettingsUpdateRequestMuteConfig
+  ];
 
   @override
   final String wireName = r'UserGuildSettingsUpdateRequestMuteConfig';
@@ -55,7 +65,8 @@ class _$UserGuildSettingsUpdateRequestMuteConfigSerializer implements PrimitiveS
       yield r'end_time';
       yield serializers.serialize(
         object.endTime,
-        specifiedType: const FullType.nullable(UserGuildSettingsUpdateRequestMuteConfigEndTime),
+        specifiedType: const FullType.nullable(
+            UserGuildSettingsUpdateRequestMuteConfigEndTime),
       );
     }
   }
@@ -66,7 +77,9 @@ class _$UserGuildSettingsUpdateRequestMuteConfigSerializer implements PrimitiveS
     UserGuildSettingsUpdateRequestMuteConfig object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -91,7 +104,8 @@ class _$UserGuildSettingsUpdateRequestMuteConfigSerializer implements PrimitiveS
         case r'end_time':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(UserGuildSettingsUpdateRequestMuteConfigEndTime),
+            specifiedType: const FullType.nullable(
+                UserGuildSettingsUpdateRequestMuteConfigEndTime),
           ) as UserGuildSettingsUpdateRequestMuteConfigEndTime?;
           if (valueDes == null) continue;
           result.endTime.replace(valueDes);
@@ -124,4 +138,3 @@ class _$UserGuildSettingsUpdateRequestMuteConfigSerializer implements PrimitiveS
     return result.build();
   }
 }
-

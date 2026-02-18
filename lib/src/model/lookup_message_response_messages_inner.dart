@@ -13,16 +13,19 @@ part 'lookup_message_response_messages_inner.g.dart';
 /// LookupMessageResponseMessagesInner
 ///
 /// Properties:
-/// * [id] 
-/// * [channelId] 
-/// * [authorId] 
-/// * [authorUsername] 
-/// * [authorDiscriminator] 
-/// * [content] 
-/// * [timestamp] 
-/// * [attachments] 
+/// * [id]
+/// * [channelId]
+/// * [authorId]
+/// * [authorUsername]
+/// * [authorDiscriminator]
+/// * [content]
+/// * [timestamp]
+/// * [attachments]
 @BuiltValue()
-abstract class LookupMessageResponseMessagesInner implements Built<LookupMessageResponseMessagesInner, LookupMessageResponseMessagesInnerBuilder> {
+abstract class LookupMessageResponseMessagesInner
+    implements
+        Built<LookupMessageResponseMessagesInner,
+            LookupMessageResponseMessagesInnerBuilder> {
   @BuiltValueField(wireName: r'id')
   String get id;
 
@@ -49,18 +52,25 @@ abstract class LookupMessageResponseMessagesInner implements Built<LookupMessage
 
   LookupMessageResponseMessagesInner._();
 
-  factory LookupMessageResponseMessagesInner([void updates(LookupMessageResponseMessagesInnerBuilder b)]) = _$LookupMessageResponseMessagesInner;
+  factory LookupMessageResponseMessagesInner(
+          [void updates(LookupMessageResponseMessagesInnerBuilder b)]) =
+      _$LookupMessageResponseMessagesInner;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(LookupMessageResponseMessagesInnerBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<LookupMessageResponseMessagesInner> get serializer => _$LookupMessageResponseMessagesInnerSerializer();
+  static Serializer<LookupMessageResponseMessagesInner> get serializer =>
+      _$LookupMessageResponseMessagesInnerSerializer();
 }
 
-class _$LookupMessageResponseMessagesInnerSerializer implements PrimitiveSerializer<LookupMessageResponseMessagesInner> {
+class _$LookupMessageResponseMessagesInnerSerializer
+    implements PrimitiveSerializer<LookupMessageResponseMessagesInner> {
   @override
-  final Iterable<Type> types = const [LookupMessageResponseMessagesInner, _$LookupMessageResponseMessagesInner];
+  final Iterable<Type> types = const [
+    LookupMessageResponseMessagesInner,
+    _$LookupMessageResponseMessagesInner
+  ];
 
   @override
   final String wireName = r'LookupMessageResponseMessagesInner';
@@ -108,7 +118,8 @@ class _$LookupMessageResponseMessagesInnerSerializer implements PrimitiveSeriali
     yield r'attachments';
     yield serializers.serialize(
       object.attachments,
-      specifiedType: const FullType(BuiltList, [FullType(LookupMessageResponseMessagesInnerAttachmentsInner)]),
+      specifiedType: const FullType(BuiltList,
+          [FullType(LookupMessageResponseMessagesInnerAttachmentsInner)]),
     );
   }
 
@@ -118,7 +129,9 @@ class _$LookupMessageResponseMessagesInnerSerializer implements PrimitiveSeriali
     LookupMessageResponseMessagesInner object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -185,7 +198,8 @@ class _$LookupMessageResponseMessagesInnerSerializer implements PrimitiveSeriali
         case r'attachments':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(LookupMessageResponseMessagesInnerAttachmentsInner)]),
+            specifiedType: const FullType(BuiltList,
+                [FullType(LookupMessageResponseMessagesInnerAttachmentsInner)]),
           ) as BuiltList<LookupMessageResponseMessagesInnerAttachmentsInner>;
           result.attachments.replace(valueDes);
           break;
@@ -217,4 +231,3 @@ class _$LookupMessageResponseMessagesInnerSerializer implements PrimitiveSeriali
     return result.build();
   }
 }
-

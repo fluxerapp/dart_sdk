@@ -12,9 +12,10 @@ part 'ip_ban_list_entry_schema.g.dart';
 ///
 /// Properties:
 /// * [ip] - Banned IPv4/IPv6 address or CIDR range
-/// * [reverseDns] 
+/// * [reverseDns]
 @BuiltValue()
-abstract class IpBanListEntrySchema implements Built<IpBanListEntrySchema, IpBanListEntrySchemaBuilder> {
+abstract class IpBanListEntrySchema
+    implements Built<IpBanListEntrySchema, IpBanListEntrySchemaBuilder> {
   /// Banned IPv4/IPv6 address or CIDR range
   @BuiltValueField(wireName: r'ip')
   String get ip;
@@ -24,18 +25,24 @@ abstract class IpBanListEntrySchema implements Built<IpBanListEntrySchema, IpBan
 
   IpBanListEntrySchema._();
 
-  factory IpBanListEntrySchema([void updates(IpBanListEntrySchemaBuilder b)]) = _$IpBanListEntrySchema;
+  factory IpBanListEntrySchema([void updates(IpBanListEntrySchemaBuilder b)]) =
+      _$IpBanListEntrySchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(IpBanListEntrySchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<IpBanListEntrySchema> get serializer => _$IpBanListEntrySchemaSerializer();
+  static Serializer<IpBanListEntrySchema> get serializer =>
+      _$IpBanListEntrySchemaSerializer();
 }
 
-class _$IpBanListEntrySchemaSerializer implements PrimitiveSerializer<IpBanListEntrySchema> {
+class _$IpBanListEntrySchemaSerializer
+    implements PrimitiveSerializer<IpBanListEntrySchema> {
   @override
-  final Iterable<Type> types = const [IpBanListEntrySchema, _$IpBanListEntrySchema];
+  final Iterable<Type> types = const [
+    IpBanListEntrySchema,
+    _$IpBanListEntrySchema
+  ];
 
   @override
   final String wireName = r'IpBanListEntrySchema';
@@ -51,10 +58,12 @@ class _$IpBanListEntrySchemaSerializer implements PrimitiveSerializer<IpBanListE
       specifiedType: const FullType(String),
     );
     yield r'reverse_dns';
-    yield object.reverseDns == null ? null : serializers.serialize(
-      object.reverseDns,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.reverseDns == null
+        ? null
+        : serializers.serialize(
+            object.reverseDns,
+            specifiedType: const FullType.nullable(String),
+          );
   }
 
   @override
@@ -63,7 +72,9 @@ class _$IpBanListEntrySchemaSerializer implements PrimitiveSerializer<IpBanListE
     IpBanListEntrySchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +132,3 @@ class _$IpBanListEntrySchemaSerializer implements PrimitiveSerializer<IpBanListE
     return result.build();
   }
 }
-

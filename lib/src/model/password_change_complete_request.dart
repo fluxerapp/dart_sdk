@@ -13,9 +13,12 @@ part 'password_change_complete_request.g.dart';
 /// Properties:
 /// * [ticket] - Password change ticket identifier
 /// * [verificationProof] - Proof token obtained from verifying the email code
-/// * [newPassword] 
+/// * [newPassword]
 @BuiltValue()
-abstract class PasswordChangeCompleteRequest implements Built<PasswordChangeCompleteRequest, PasswordChangeCompleteRequestBuilder> {
+abstract class PasswordChangeCompleteRequest
+    implements
+        Built<PasswordChangeCompleteRequest,
+            PasswordChangeCompleteRequestBuilder> {
   /// Password change ticket identifier
   @BuiltValueField(wireName: r'ticket')
   String get ticket;
@@ -29,18 +32,25 @@ abstract class PasswordChangeCompleteRequest implements Built<PasswordChangeComp
 
   PasswordChangeCompleteRequest._();
 
-  factory PasswordChangeCompleteRequest([void updates(PasswordChangeCompleteRequestBuilder b)]) = _$PasswordChangeCompleteRequest;
+  factory PasswordChangeCompleteRequest(
+          [void updates(PasswordChangeCompleteRequestBuilder b)]) =
+      _$PasswordChangeCompleteRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PasswordChangeCompleteRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PasswordChangeCompleteRequest> get serializer => _$PasswordChangeCompleteRequestSerializer();
+  static Serializer<PasswordChangeCompleteRequest> get serializer =>
+      _$PasswordChangeCompleteRequestSerializer();
 }
 
-class _$PasswordChangeCompleteRequestSerializer implements PrimitiveSerializer<PasswordChangeCompleteRequest> {
+class _$PasswordChangeCompleteRequestSerializer
+    implements PrimitiveSerializer<PasswordChangeCompleteRequest> {
   @override
-  final Iterable<Type> types = const [PasswordChangeCompleteRequest, _$PasswordChangeCompleteRequest];
+  final Iterable<Type> types = const [
+    PasswordChangeCompleteRequest,
+    _$PasswordChangeCompleteRequest
+  ];
 
   @override
   final String wireName = r'PasswordChangeCompleteRequest';
@@ -73,7 +83,9 @@ class _$PasswordChangeCompleteRequestSerializer implements PrimitiveSerializer<P
     PasswordChangeCompleteRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -137,4 +149,3 @@ class _$PasswordChangeCompleteRequestSerializer implements PrimitiveSerializer<P
     return result.build();
   }
 }
-

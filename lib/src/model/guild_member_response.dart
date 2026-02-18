@@ -13,19 +13,20 @@ part 'guild_member_response.g.dart';
 /// GuildMemberResponse
 ///
 /// Properties:
-/// * [user] 
+/// * [user]
 /// * [roles] - Array of role IDs the member has
 /// * [joinedAt] - ISO8601 timestamp of when the user joined the guild
 /// * [mute] - Whether the member is muted in voice channels
 /// * [deaf] - Whether the member is deafened in voice channels
-/// * [nick] 
-/// * [avatar] 
-/// * [banner] 
-/// * [accentColor] 
-/// * [communicationDisabledUntil] 
+/// * [nick]
+/// * [avatar]
+/// * [banner]
+/// * [accentColor]
+/// * [communicationDisabledUntil]
 /// * [profileFlags] - Member profile flags
 @BuiltValue()
-abstract class GuildMemberResponse implements Built<GuildMemberResponse, GuildMemberResponseBuilder> {
+abstract class GuildMemberResponse
+    implements Built<GuildMemberResponse, GuildMemberResponseBuilder> {
   @BuiltValueField(wireName: r'user')
   UserPartialResponse get user;
 
@@ -66,18 +67,24 @@ abstract class GuildMemberResponse implements Built<GuildMemberResponse, GuildMe
 
   GuildMemberResponse._();
 
-  factory GuildMemberResponse([void updates(GuildMemberResponseBuilder b)]) = _$GuildMemberResponse;
+  factory GuildMemberResponse([void updates(GuildMemberResponseBuilder b)]) =
+      _$GuildMemberResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildMemberResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildMemberResponse> get serializer => _$GuildMemberResponseSerializer();
+  static Serializer<GuildMemberResponse> get serializer =>
+      _$GuildMemberResponseSerializer();
 }
 
-class _$GuildMemberResponseSerializer implements PrimitiveSerializer<GuildMemberResponse> {
+class _$GuildMemberResponseSerializer
+    implements PrimitiveSerializer<GuildMemberResponse> {
   @override
-  final Iterable<Type> types = const [GuildMemberResponse, _$GuildMemberResponse];
+  final Iterable<Type> types = const [
+    GuildMemberResponse,
+    _$GuildMemberResponse
+  ];
 
   @override
   final String wireName = r'GuildMemberResponse';
@@ -162,7 +169,9 @@ class _$GuildMemberResponseSerializer implements PrimitiveSerializer<GuildMember
     GuildMemberResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -286,4 +295,3 @@ class _$GuildMemberResponseSerializer implements PrimitiveSerializer<GuildMember
     return result.build();
   }
 }
-

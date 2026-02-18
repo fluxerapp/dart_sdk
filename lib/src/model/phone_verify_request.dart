@@ -11,10 +11,11 @@ part 'phone_verify_request.g.dart';
 /// PhoneVerifyRequest
 ///
 /// Properties:
-/// * [phone] 
+/// * [phone]
 /// * [code] - The verification code
 @BuiltValue()
-abstract class PhoneVerifyRequest implements Built<PhoneVerifyRequest, PhoneVerifyRequestBuilder> {
+abstract class PhoneVerifyRequest
+    implements Built<PhoneVerifyRequest, PhoneVerifyRequestBuilder> {
   @BuiltValueField(wireName: r'phone')
   String get phone;
 
@@ -24,16 +25,19 @@ abstract class PhoneVerifyRequest implements Built<PhoneVerifyRequest, PhoneVeri
 
   PhoneVerifyRequest._();
 
-  factory PhoneVerifyRequest([void updates(PhoneVerifyRequestBuilder b)]) = _$PhoneVerifyRequest;
+  factory PhoneVerifyRequest([void updates(PhoneVerifyRequestBuilder b)]) =
+      _$PhoneVerifyRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PhoneVerifyRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PhoneVerifyRequest> get serializer => _$PhoneVerifyRequestSerializer();
+  static Serializer<PhoneVerifyRequest> get serializer =>
+      _$PhoneVerifyRequestSerializer();
 }
 
-class _$PhoneVerifyRequestSerializer implements PrimitiveSerializer<PhoneVerifyRequest> {
+class _$PhoneVerifyRequestSerializer
+    implements PrimitiveSerializer<PhoneVerifyRequest> {
   @override
   final Iterable<Type> types = const [PhoneVerifyRequest, _$PhoneVerifyRequest];
 
@@ -63,7 +67,9 @@ class _$PhoneVerifyRequestSerializer implements PrimitiveSerializer<PhoneVerifyR
     PhoneVerifyRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -120,4 +126,3 @@ class _$PhoneVerifyRequestSerializer implements PrimitiveSerializer<PhoneVerifyR
     return result.build();
   }
 }
-

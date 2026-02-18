@@ -14,9 +14,10 @@ part 'discovery_status_response.g.dart';
 /// Properties:
 /// * [eligible] - Whether the guild meets the requirements to apply for discovery
 /// * [minMemberCount] - Minimum member count required for discovery eligibility
-/// * [application] 
+/// * [application]
 @BuiltValue()
-abstract class DiscoveryStatusResponse implements Built<DiscoveryStatusResponse, DiscoveryStatusResponseBuilder> {
+abstract class DiscoveryStatusResponse
+    implements Built<DiscoveryStatusResponse, DiscoveryStatusResponseBuilder> {
   /// Whether the guild meets the requirements to apply for discovery
   @BuiltValueField(wireName: r'eligible')
   bool get eligible;
@@ -30,18 +31,25 @@ abstract class DiscoveryStatusResponse implements Built<DiscoveryStatusResponse,
 
   DiscoveryStatusResponse._();
 
-  factory DiscoveryStatusResponse([void updates(DiscoveryStatusResponseBuilder b)]) = _$DiscoveryStatusResponse;
+  factory DiscoveryStatusResponse(
+          [void updates(DiscoveryStatusResponseBuilder b)]) =
+      _$DiscoveryStatusResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(DiscoveryStatusResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<DiscoveryStatusResponse> get serializer => _$DiscoveryStatusResponseSerializer();
+  static Serializer<DiscoveryStatusResponse> get serializer =>
+      _$DiscoveryStatusResponseSerializer();
 }
 
-class _$DiscoveryStatusResponseSerializer implements PrimitiveSerializer<DiscoveryStatusResponse> {
+class _$DiscoveryStatusResponseSerializer
+    implements PrimitiveSerializer<DiscoveryStatusResponse> {
   @override
-  final Iterable<Type> types = const [DiscoveryStatusResponse, _$DiscoveryStatusResponse];
+  final Iterable<Type> types = const [
+    DiscoveryStatusResponse,
+    _$DiscoveryStatusResponse
+  ];
 
   @override
   final String wireName = r'DiscoveryStatusResponse';
@@ -76,7 +84,9 @@ class _$DiscoveryStatusResponseSerializer implements PrimitiveSerializer<Discove
     DiscoveryStatusResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -108,7 +118,8 @@ class _$DiscoveryStatusResponseSerializer implements PrimitiveSerializer<Discove
         case r'application':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(DiscoveryApplicationResponse),
+            specifiedType:
+                const FullType.nullable(DiscoveryApplicationResponse),
           ) as DiscoveryApplicationResponse?;
           if (valueDes == null) continue;
           result.application.replace(valueDes);
@@ -141,4 +152,3 @@ class _$DiscoveryStatusResponseSerializer implements PrimitiveSerializer<Discove
     return result.build();
   }
 }
-

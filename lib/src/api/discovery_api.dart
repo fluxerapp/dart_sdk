@@ -4,7 +4,6 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
@@ -16,11 +15,8 @@ import 'package:fluxer_dart/src/model/discovery_application_response.dart';
 import 'package:fluxer_dart/src/model/discovery_category_response.dart';
 import 'package:fluxer_dart/src/model/discovery_guild_list_response.dart';
 import 'package:fluxer_dart/src/model/discovery_status_response.dart';
-import 'package:fluxer_dart/src/model/error.dart';
-import 'package:fluxer_dart/src/model/get_well_known_fluxer429_response.dart';
 
 class DiscoveryApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -32,7 +28,7 @@ class DiscoveryApi {
   ///
   /// Parameters:
   /// * [guildId] - The ID of the guild
-  /// * [discoveryApplicationRequest] 
+  /// * [discoveryApplicationRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -42,7 +38,7 @@ class DiscoveryApi {
   ///
   /// Returns a [Future] containing a [Response] with a [DiscoveryApplicationResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<DiscoveryApplicationResponse>> applyForDiscovery({ 
+  Future<Response<DiscoveryApplicationResponse>> applyForDiscovery({
     required String guildId,
     required DiscoveryApplicationRequest discoveryApplicationRequest,
     CancelToken? cancelToken,
@@ -52,7 +48,10 @@ class DiscoveryApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/discovery'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/discovery'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -65,7 +64,8 @@ class DiscoveryApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -82,11 +82,11 @@ class DiscoveryApi {
 
     try {
       const _type = FullType(DiscoveryApplicationRequest);
-      _bodyData = _serializers.serialize(discoveryApplicationRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(discoveryApplicationRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -109,11 +109,12 @@ class DiscoveryApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(DiscoveryApplicationResponse),
-      ) as DiscoveryApplicationResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(DiscoveryApplicationResponse),
+            ) as DiscoveryApplicationResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -141,7 +142,7 @@ class DiscoveryApi {
   ///
   /// Parameters:
   /// * [guildId] - The ID of the guild
-  /// * [discoveryApplicationPatchRequest] 
+  /// * [discoveryApplicationPatchRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -151,7 +152,7 @@ class DiscoveryApi {
   ///
   /// Returns a [Future] containing a [Response] with a [DiscoveryApplicationResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<DiscoveryApplicationResponse>> editDiscoveryApplication({ 
+  Future<Response<DiscoveryApplicationResponse>> editDiscoveryApplication({
     required String guildId,
     required DiscoveryApplicationPatchRequest discoveryApplicationPatchRequest,
     CancelToken? cancelToken,
@@ -161,7 +162,10 @@ class DiscoveryApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/discovery'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/discovery'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -174,7 +178,8 @@ class DiscoveryApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -191,11 +196,11 @@ class DiscoveryApi {
 
     try {
       const _type = FullType(DiscoveryApplicationPatchRequest);
-      _bodyData = _serializers.serialize(discoveryApplicationPatchRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(discoveryApplicationPatchRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -218,11 +223,12 @@ class DiscoveryApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(DiscoveryApplicationResponse),
-      ) as DiscoveryApplicationResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(DiscoveryApplicationResponse),
+            ) as DiscoveryApplicationResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -259,7 +265,7 @@ class DiscoveryApi {
   ///
   /// Returns a [Future] containing a [Response] with a [DiscoveryStatusResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<DiscoveryStatusResponse>> getDiscoveryStatus({ 
+  Future<Response<DiscoveryStatusResponse>> getDiscoveryStatus({
     required String guildId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -268,7 +274,10 @@ class DiscoveryApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/discovery'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/discovery'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -281,7 +290,8 @@ class DiscoveryApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -305,11 +315,12 @@ class DiscoveryApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(DiscoveryStatusResponse),
-      ) as DiscoveryStatusResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(DiscoveryStatusResponse),
+            ) as DiscoveryStatusResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -346,7 +357,7 @@ class DiscoveryApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> joinDiscoveryGuild({ 
+  Future<Response<void>> joinDiscoveryGuild({
     required String guildId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -355,7 +366,10 @@ class DiscoveryApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/discovery/guilds/{guild_id}/join'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/discovery/guilds/{guild_id}/join'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -399,7 +413,8 @@ class DiscoveryApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<DiscoveryCategoryResponse>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<DiscoveryCategoryResponse>>> listDiscoveryCategories({ 
+  Future<Response<BuiltList<DiscoveryCategoryResponse>>>
+      listDiscoveryCategories({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -439,11 +454,13 @@ class DiscoveryApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(DiscoveryCategoryResponse)]),
-      ) as BuiltList<DiscoveryCategoryResponse>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(
+                  BuiltList, [FullType(DiscoveryCategoryResponse)]),
+            ) as BuiltList<DiscoveryCategoryResponse>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -470,11 +487,11 @@ class DiscoveryApi {
   /// Search for guilds listed in the discovery directory.
   ///
   /// Parameters:
-  /// * [query] 
-  /// * [category] 
-  /// * [sortBy] 
-  /// * [limit] 
-  /// * [offset] 
+  /// * [query]
+  /// * [category]
+  /// * [sortBy]
+  /// * [limit]
+  /// * [offset]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -484,7 +501,7 @@ class DiscoveryApi {
   ///
   /// Returns a [Future] containing a [Response] with a [DiscoveryGuildListResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<DiscoveryGuildListResponse>> searchDiscoveryGuilds({ 
+  Future<Response<DiscoveryGuildListResponse>> searchDiscoveryGuilds({
     String? query,
     int? category,
     String? sortBy,
@@ -518,11 +535,21 @@ class DiscoveryApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (query != null) r'query': encodeQueryParameter(_serializers, query, const FullType(String)),
-      if (category != null) r'category': encodeQueryParameter(_serializers, category, const FullType(int)),
-      if (sortBy != null) r'sort_by': encodeQueryParameter(_serializers, sortBy, const FullType(String)),
-      if (limit != null) r'limit': encodeQueryParameter(_serializers, limit, const FullType(int)),
-      if (offset != null) r'offset': encodeQueryParameter(_serializers, offset, const FullType(int)),
+      if (query != null)
+        r'query':
+            encodeQueryParameter(_serializers, query, const FullType(String)),
+      if (category != null)
+        r'category':
+            encodeQueryParameter(_serializers, category, const FullType(int)),
+      if (sortBy != null)
+        r'sort_by':
+            encodeQueryParameter(_serializers, sortBy, const FullType(String)),
+      if (limit != null)
+        r'limit':
+            encodeQueryParameter(_serializers, limit, const FullType(int)),
+      if (offset != null)
+        r'offset':
+            encodeQueryParameter(_serializers, offset, const FullType(int)),
     };
 
     final _response = await _dio.request<Object>(
@@ -538,11 +565,12 @@ class DiscoveryApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(DiscoveryGuildListResponse),
-      ) as DiscoveryGuildListResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(DiscoveryGuildListResponse),
+            ) as DiscoveryGuildListResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -579,7 +607,7 @@ class DiscoveryApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> withdrawDiscoveryApplication({ 
+  Future<Response<void>> withdrawDiscoveryApplication({
     required String guildId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -588,7 +616,10 @@ class DiscoveryApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/discovery'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/discovery'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -601,7 +632,8 @@ class DiscoveryApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -623,5 +655,4 @@ class DiscoveryApi {
 
     return _response;
   }
-
 }

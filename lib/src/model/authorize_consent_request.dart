@@ -11,15 +11,16 @@ part 'authorize_consent_request.g.dart';
 /// AuthorizeConsentRequest
 ///
 /// Properties:
-/// * [clientId] 
+/// * [clientId]
 /// * [scope] - The space-separated list of requested scopes
 /// * [responseType] - The OAuth2 response type
 /// * [redirectUri] - The URI to redirect to after authorization
 /// * [state] - A random string for CSRF protection
 /// * [permissions] - The bot permissions to request
-/// * [guildId] 
+/// * [guildId]
 @BuiltValue()
-abstract class AuthorizeConsentRequest implements Built<AuthorizeConsentRequest, AuthorizeConsentRequestBuilder> {
+abstract class AuthorizeConsentRequest
+    implements Built<AuthorizeConsentRequest, AuthorizeConsentRequestBuilder> {
   @BuiltValueField(wireName: r'client_id')
   String get clientId;
 
@@ -48,18 +49,25 @@ abstract class AuthorizeConsentRequest implements Built<AuthorizeConsentRequest,
 
   AuthorizeConsentRequest._();
 
-  factory AuthorizeConsentRequest([void updates(AuthorizeConsentRequestBuilder b)]) = _$AuthorizeConsentRequest;
+  factory AuthorizeConsentRequest(
+          [void updates(AuthorizeConsentRequestBuilder b)]) =
+      _$AuthorizeConsentRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(AuthorizeConsentRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<AuthorizeConsentRequest> get serializer => _$AuthorizeConsentRequestSerializer();
+  static Serializer<AuthorizeConsentRequest> get serializer =>
+      _$AuthorizeConsentRequestSerializer();
 }
 
-class _$AuthorizeConsentRequestSerializer implements PrimitiveSerializer<AuthorizeConsentRequest> {
+class _$AuthorizeConsentRequestSerializer
+    implements PrimitiveSerializer<AuthorizeConsentRequest> {
   @override
-  final Iterable<Type> types = const [AuthorizeConsentRequest, _$AuthorizeConsentRequest];
+  final Iterable<Type> types = const [
+    AuthorizeConsentRequest,
+    _$AuthorizeConsentRequest
+  ];
 
   @override
   final String wireName = r'AuthorizeConsentRequest';
@@ -122,7 +130,9 @@ class _$AuthorizeConsentRequestSerializer implements PrimitiveSerializer<Authori
     AuthorizeConsentRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -214,4 +224,3 @@ class _$AuthorizeConsentRequestSerializer implements PrimitiveSerializer<Authori
     return result.build();
   }
 }
-

@@ -14,9 +14,10 @@ part 'create_connection_request.g.dart';
 /// Properties:
 /// * [type] - The type of connection to create
 /// * [identifier] - The connection identifier (handle or domain)
-/// * [visibilityFlags] 
+/// * [visibilityFlags]
 @BuiltValue()
-abstract class CreateConnectionRequest implements Built<CreateConnectionRequest, CreateConnectionRequestBuilder> {
+abstract class CreateConnectionRequest
+    implements Built<CreateConnectionRequest, CreateConnectionRequestBuilder> {
   /// The type of connection to create
   @BuiltValueField(wireName: r'type')
   CreateConnectionRequestTypeEnum get type;
@@ -31,18 +32,25 @@ abstract class CreateConnectionRequest implements Built<CreateConnectionRequest,
 
   CreateConnectionRequest._();
 
-  factory CreateConnectionRequest([void updates(CreateConnectionRequestBuilder b)]) = _$CreateConnectionRequest;
+  factory CreateConnectionRequest(
+          [void updates(CreateConnectionRequestBuilder b)]) =
+      _$CreateConnectionRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CreateConnectionRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CreateConnectionRequest> get serializer => _$CreateConnectionRequestSerializer();
+  static Serializer<CreateConnectionRequest> get serializer =>
+      _$CreateConnectionRequestSerializer();
 }
 
-class _$CreateConnectionRequestSerializer implements PrimitiveSerializer<CreateConnectionRequest> {
+class _$CreateConnectionRequestSerializer
+    implements PrimitiveSerializer<CreateConnectionRequest> {
   @override
-  final Iterable<Type> types = const [CreateConnectionRequest, _$CreateConnectionRequest];
+  final Iterable<Type> types = const [
+    CreateConnectionRequest,
+    _$CreateConnectionRequest
+  ];
 
   @override
   final String wireName = r'CreateConnectionRequest';
@@ -77,7 +85,9 @@ class _$CreateConnectionRequestSerializer implements PrimitiveSerializer<CreateC
     CreateConnectionRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -143,19 +153,23 @@ class _$CreateConnectionRequestSerializer implements PrimitiveSerializer<CreateC
 }
 
 class CreateConnectionRequestTypeEnum extends EnumClass {
-
   /// The type of connection to create
   @BuiltValueEnumConst(wireName: r'bsky')
-  static const CreateConnectionRequestTypeEnum bsky = _$createConnectionRequestTypeEnum_bsky;
+  static const CreateConnectionRequestTypeEnum bsky =
+      _$createConnectionRequestTypeEnum_bsky;
+
   /// The type of connection to create
   @BuiltValueEnumConst(wireName: r'domain')
-  static const CreateConnectionRequestTypeEnum domain = _$createConnectionRequestTypeEnum_domain;
+  static const CreateConnectionRequestTypeEnum domain =
+      _$createConnectionRequestTypeEnum_domain;
 
-  static Serializer<CreateConnectionRequestTypeEnum> get serializer => _$createConnectionRequestTypeEnumSerializer;
+  static Serializer<CreateConnectionRequestTypeEnum> get serializer =>
+      _$createConnectionRequestTypeEnumSerializer;
 
-  const CreateConnectionRequestTypeEnum._(String name): super(name);
+  const CreateConnectionRequestTypeEnum._(String name) : super(name);
 
-  static BuiltSet<CreateConnectionRequestTypeEnum> get values => _$createConnectionRequestTypeEnumValues;
-  static CreateConnectionRequestTypeEnum valueOf(String name) => _$createConnectionRequestTypeEnumValueOf(name);
+  static BuiltSet<CreateConnectionRequestTypeEnum> get values =>
+      _$createConnectionRequestTypeEnumValues;
+  static CreateConnectionRequestTypeEnum valueOf(String name) =>
+      _$createConnectionRequestTypeEnumValueOf(name);
 }
-

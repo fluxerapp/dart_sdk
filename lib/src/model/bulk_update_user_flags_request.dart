@@ -16,7 +16,9 @@ part 'bulk_update_user_flags_request.g.dart';
 /// * [addFlags] - User flags to add to all specified users
 /// * [removeFlags] - User flags to remove from all specified users
 @BuiltValue()
-abstract class BulkUpdateUserFlagsRequest implements Built<BulkUpdateUserFlagsRequest, BulkUpdateUserFlagsRequestBuilder> {
+abstract class BulkUpdateUserFlagsRequest
+    implements
+        Built<BulkUpdateUserFlagsRequest, BulkUpdateUserFlagsRequestBuilder> {
   /// List of user IDs to update
   @BuiltValueField(wireName: r'user_ids')
   BuiltList<String> get userIds;
@@ -31,18 +33,25 @@ abstract class BulkUpdateUserFlagsRequest implements Built<BulkUpdateUserFlagsRe
 
   BulkUpdateUserFlagsRequest._();
 
-  factory BulkUpdateUserFlagsRequest([void updates(BulkUpdateUserFlagsRequestBuilder b)]) = _$BulkUpdateUserFlagsRequest;
+  factory BulkUpdateUserFlagsRequest(
+          [void updates(BulkUpdateUserFlagsRequestBuilder b)]) =
+      _$BulkUpdateUserFlagsRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(BulkUpdateUserFlagsRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<BulkUpdateUserFlagsRequest> get serializer => _$BulkUpdateUserFlagsRequestSerializer();
+  static Serializer<BulkUpdateUserFlagsRequest> get serializer =>
+      _$BulkUpdateUserFlagsRequestSerializer();
 }
 
-class _$BulkUpdateUserFlagsRequestSerializer implements PrimitiveSerializer<BulkUpdateUserFlagsRequest> {
+class _$BulkUpdateUserFlagsRequestSerializer
+    implements PrimitiveSerializer<BulkUpdateUserFlagsRequest> {
   @override
-  final Iterable<Type> types = const [BulkUpdateUserFlagsRequest, _$BulkUpdateUserFlagsRequest];
+  final Iterable<Type> types = const [
+    BulkUpdateUserFlagsRequest,
+    _$BulkUpdateUserFlagsRequest
+  ];
 
   @override
   final String wireName = r'BulkUpdateUserFlagsRequest';
@@ -79,7 +88,9 @@ class _$BulkUpdateUserFlagsRequestSerializer implements PrimitiveSerializer<Bulk
     BulkUpdateUserFlagsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -143,4 +154,3 @@ class _$BulkUpdateUserFlagsRequestSerializer implements PrimitiveSerializer<Bulk
     return result.build();
   }
 }
-

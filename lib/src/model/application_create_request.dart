@@ -13,11 +13,13 @@ part 'application_create_request.g.dart';
 ///
 /// Properties:
 /// * [name] - The name of the application
-/// * [redirectUris] 
+/// * [redirectUris]
 /// * [botPublic] - Whether the bot can be invited by anyone
 /// * [botRequireCodeGrant] - Whether the bot requires OAuth2 code grant
 @BuiltValue()
-abstract class ApplicationCreateRequest implements Built<ApplicationCreateRequest, ApplicationCreateRequestBuilder> {
+abstract class ApplicationCreateRequest
+    implements
+        Built<ApplicationCreateRequest, ApplicationCreateRequestBuilder> {
   /// The name of the application
   @BuiltValueField(wireName: r'name')
   String get name;
@@ -35,18 +37,25 @@ abstract class ApplicationCreateRequest implements Built<ApplicationCreateReques
 
   ApplicationCreateRequest._();
 
-  factory ApplicationCreateRequest([void updates(ApplicationCreateRequestBuilder b)]) = _$ApplicationCreateRequest;
+  factory ApplicationCreateRequest(
+          [void updates(ApplicationCreateRequestBuilder b)]) =
+      _$ApplicationCreateRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ApplicationCreateRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ApplicationCreateRequest> get serializer => _$ApplicationCreateRequestSerializer();
+  static Serializer<ApplicationCreateRequest> get serializer =>
+      _$ApplicationCreateRequestSerializer();
 }
 
-class _$ApplicationCreateRequestSerializer implements PrimitiveSerializer<ApplicationCreateRequest> {
+class _$ApplicationCreateRequestSerializer
+    implements PrimitiveSerializer<ApplicationCreateRequest> {
   @override
-  final Iterable<Type> types = const [ApplicationCreateRequest, _$ApplicationCreateRequest];
+  final Iterable<Type> types = const [
+    ApplicationCreateRequest,
+    _$ApplicationCreateRequest
+  ];
 
   @override
   final String wireName = r'ApplicationCreateRequest';
@@ -90,7 +99,9 @@ class _$ApplicationCreateRequestSerializer implements PrimitiveSerializer<Applic
     ApplicationCreateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -115,7 +126,8 @@ class _$ApplicationCreateRequestSerializer implements PrimitiveSerializer<Applic
         case r'redirect_uris':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+            specifiedType:
+                const FullType.nullable(BuiltList, [FullType(String)]),
           ) as BuiltList<String>?;
           if (valueDes == null) continue;
           result.redirectUris.replace(valueDes);
@@ -162,4 +174,3 @@ class _$ApplicationCreateRequestSerializer implements PrimitiveSerializer<Applic
     return result.build();
   }
 }
-

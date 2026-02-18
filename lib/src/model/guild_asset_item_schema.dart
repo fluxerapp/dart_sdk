@@ -11,13 +11,14 @@ part 'guild_asset_item_schema.g.dart';
 /// GuildAssetItemSchema
 ///
 /// Properties:
-/// * [id] 
-/// * [name] 
-/// * [animated] 
-/// * [creatorId] 
-/// * [mediaUrl] 
+/// * [id]
+/// * [name]
+/// * [animated]
+/// * [creatorId]
+/// * [mediaUrl]
 @BuiltValue()
-abstract class GuildAssetItemSchema implements Built<GuildAssetItemSchema, GuildAssetItemSchemaBuilder> {
+abstract class GuildAssetItemSchema
+    implements Built<GuildAssetItemSchema, GuildAssetItemSchemaBuilder> {
   @BuiltValueField(wireName: r'id')
   String get id;
 
@@ -35,18 +36,24 @@ abstract class GuildAssetItemSchema implements Built<GuildAssetItemSchema, Guild
 
   GuildAssetItemSchema._();
 
-  factory GuildAssetItemSchema([void updates(GuildAssetItemSchemaBuilder b)]) = _$GuildAssetItemSchema;
+  factory GuildAssetItemSchema([void updates(GuildAssetItemSchemaBuilder b)]) =
+      _$GuildAssetItemSchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildAssetItemSchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildAssetItemSchema> get serializer => _$GuildAssetItemSchemaSerializer();
+  static Serializer<GuildAssetItemSchema> get serializer =>
+      _$GuildAssetItemSchemaSerializer();
 }
 
-class _$GuildAssetItemSchemaSerializer implements PrimitiveSerializer<GuildAssetItemSchema> {
+class _$GuildAssetItemSchemaSerializer
+    implements PrimitiveSerializer<GuildAssetItemSchema> {
   @override
-  final Iterable<Type> types = const [GuildAssetItemSchema, _$GuildAssetItemSchema];
+  final Iterable<Type> types = const [
+    GuildAssetItemSchema,
+    _$GuildAssetItemSchema
+  ];
 
   @override
   final String wireName = r'GuildAssetItemSchema';
@@ -89,7 +96,9 @@ class _$GuildAssetItemSchemaSerializer implements PrimitiveSerializer<GuildAsset
     GuildAssetItemSchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -167,4 +176,3 @@ class _$GuildAssetItemSchemaSerializer implements PrimitiveSerializer<GuildAsset
     return result.build();
   }
 }
-

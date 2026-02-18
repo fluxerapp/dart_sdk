@@ -13,12 +13,13 @@ part 'guild_role_update_request.g.dart';
 /// Properties:
 /// * [name] - The name of the role (1-100 characters)
 /// * [color] - The color of the role as an integer
-/// * [permissions] 
+/// * [permissions]
 /// * [hoist] - Whether the role should be displayed separately in the member list
-/// * [hoistPosition] 
+/// * [hoistPosition]
 /// * [mentionable] - Whether the role can be mentioned by anyone
 @BuiltValue()
-abstract class GuildRoleUpdateRequest implements Built<GuildRoleUpdateRequest, GuildRoleUpdateRequestBuilder> {
+abstract class GuildRoleUpdateRequest
+    implements Built<GuildRoleUpdateRequest, GuildRoleUpdateRequestBuilder> {
   /// The name of the role (1-100 characters)
   @BuiltValueField(wireName: r'name')
   String? get name;
@@ -43,18 +44,25 @@ abstract class GuildRoleUpdateRequest implements Built<GuildRoleUpdateRequest, G
 
   GuildRoleUpdateRequest._();
 
-  factory GuildRoleUpdateRequest([void updates(GuildRoleUpdateRequestBuilder b)]) = _$GuildRoleUpdateRequest;
+  factory GuildRoleUpdateRequest(
+          [void updates(GuildRoleUpdateRequestBuilder b)]) =
+      _$GuildRoleUpdateRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildRoleUpdateRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildRoleUpdateRequest> get serializer => _$GuildRoleUpdateRequestSerializer();
+  static Serializer<GuildRoleUpdateRequest> get serializer =>
+      _$GuildRoleUpdateRequestSerializer();
 }
 
-class _$GuildRoleUpdateRequestSerializer implements PrimitiveSerializer<GuildRoleUpdateRequest> {
+class _$GuildRoleUpdateRequestSerializer
+    implements PrimitiveSerializer<GuildRoleUpdateRequest> {
   @override
-  final Iterable<Type> types = const [GuildRoleUpdateRequest, _$GuildRoleUpdateRequest];
+  final Iterable<Type> types = const [
+    GuildRoleUpdateRequest,
+    _$GuildRoleUpdateRequest
+  ];
 
   @override
   final String wireName = r'GuildRoleUpdateRequest';
@@ -114,7 +122,9 @@ class _$GuildRoleUpdateRequestSerializer implements PrimitiveSerializer<GuildRol
     GuildRoleUpdateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -200,4 +210,3 @@ class _$GuildRoleUpdateRequestSerializer implements PrimitiveSerializer<GuildRol
     return result.build();
   }
 }
-

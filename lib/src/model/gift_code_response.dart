@@ -15,9 +15,10 @@ part 'gift_code_response.g.dart';
 /// * [code] - The unique gift code string
 /// * [durationMonths] - Duration of the subscription gift in months
 /// * [redeemed] - Whether the gift code has been redeemed
-/// * [createdBy] 
+/// * [createdBy]
 @BuiltValue()
-abstract class GiftCodeResponse implements Built<GiftCodeResponse, GiftCodeResponseBuilder> {
+abstract class GiftCodeResponse
+    implements Built<GiftCodeResponse, GiftCodeResponseBuilder> {
   /// The unique gift code string
   @BuiltValueField(wireName: r'code')
   String get code;
@@ -35,16 +36,19 @@ abstract class GiftCodeResponse implements Built<GiftCodeResponse, GiftCodeRespo
 
   GiftCodeResponse._();
 
-  factory GiftCodeResponse([void updates(GiftCodeResponseBuilder b)]) = _$GiftCodeResponse;
+  factory GiftCodeResponse([void updates(GiftCodeResponseBuilder b)]) =
+      _$GiftCodeResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GiftCodeResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GiftCodeResponse> get serializer => _$GiftCodeResponseSerializer();
+  static Serializer<GiftCodeResponse> get serializer =>
+      _$GiftCodeResponseSerializer();
 }
 
-class _$GiftCodeResponseSerializer implements PrimitiveSerializer<GiftCodeResponse> {
+class _$GiftCodeResponseSerializer
+    implements PrimitiveSerializer<GiftCodeResponse> {
   @override
   final Iterable<Type> types = const [GiftCodeResponse, _$GiftCodeResponse];
 
@@ -86,7 +90,9 @@ class _$GiftCodeResponseSerializer implements PrimitiveSerializer<GiftCodeRespon
     GiftCodeResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -158,4 +164,3 @@ class _$GiftCodeResponseSerializer implements PrimitiveSerializer<GiftCodeRespon
     return result.build();
   }
 }
-

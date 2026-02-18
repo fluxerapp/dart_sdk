@@ -13,13 +13,14 @@ part 'sudo_verification_schema.g.dart';
 /// SudoVerificationSchema
 ///
 /// Properties:
-/// * [password] 
+/// * [password]
 /// * [mfaMethod] - MFA method to use for verification
 /// * [mfaCode] - MFA verification code from authenticator app or SMS
 /// * [webauthnResponse] - WebAuthn authentication response
 /// * [webauthnChallenge] - WebAuthn challenge string
 @BuiltValue()
-abstract class SudoVerificationSchema implements Built<SudoVerificationSchema, SudoVerificationSchemaBuilder> {
+abstract class SudoVerificationSchema
+    implements Built<SudoVerificationSchema, SudoVerificationSchemaBuilder> {
   @BuiltValueField(wireName: r'password')
   String? get password;
 
@@ -42,18 +43,25 @@ abstract class SudoVerificationSchema implements Built<SudoVerificationSchema, S
 
   SudoVerificationSchema._();
 
-  factory SudoVerificationSchema([void updates(SudoVerificationSchemaBuilder b)]) = _$SudoVerificationSchema;
+  factory SudoVerificationSchema(
+          [void updates(SudoVerificationSchemaBuilder b)]) =
+      _$SudoVerificationSchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SudoVerificationSchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SudoVerificationSchema> get serializer => _$SudoVerificationSchemaSerializer();
+  static Serializer<SudoVerificationSchema> get serializer =>
+      _$SudoVerificationSchemaSerializer();
 }
 
-class _$SudoVerificationSchemaSerializer implements PrimitiveSerializer<SudoVerificationSchema> {
+class _$SudoVerificationSchemaSerializer
+    implements PrimitiveSerializer<SudoVerificationSchema> {
   @override
-  final Iterable<Type> types = const [SudoVerificationSchema, _$SudoVerificationSchema];
+  final Iterable<Type> types = const [
+    SudoVerificationSchema,
+    _$SudoVerificationSchema
+  ];
 
   @override
   final String wireName = r'SudoVerificationSchema';
@@ -106,7 +114,9 @@ class _$SudoVerificationSchemaSerializer implements PrimitiveSerializer<SudoVeri
     SudoVerificationSchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -186,22 +196,28 @@ class _$SudoVerificationSchemaSerializer implements PrimitiveSerializer<SudoVeri
 }
 
 class SudoVerificationSchemaMfaMethodEnum extends EnumClass {
-
   /// MFA method to use for verification
   @BuiltValueEnumConst(wireName: r'totp')
-  static const SudoVerificationSchemaMfaMethodEnum totp = _$sudoVerificationSchemaMfaMethodEnum_totp;
+  static const SudoVerificationSchemaMfaMethodEnum totp =
+      _$sudoVerificationSchemaMfaMethodEnum_totp;
+
   /// MFA method to use for verification
   @BuiltValueEnumConst(wireName: r'sms')
-  static const SudoVerificationSchemaMfaMethodEnum sms = _$sudoVerificationSchemaMfaMethodEnum_sms;
+  static const SudoVerificationSchemaMfaMethodEnum sms =
+      _$sudoVerificationSchemaMfaMethodEnum_sms;
+
   /// MFA method to use for verification
   @BuiltValueEnumConst(wireName: r'webauthn')
-  static const SudoVerificationSchemaMfaMethodEnum webauthn = _$sudoVerificationSchemaMfaMethodEnum_webauthn;
+  static const SudoVerificationSchemaMfaMethodEnum webauthn =
+      _$sudoVerificationSchemaMfaMethodEnum_webauthn;
 
-  static Serializer<SudoVerificationSchemaMfaMethodEnum> get serializer => _$sudoVerificationSchemaMfaMethodEnumSerializer;
+  static Serializer<SudoVerificationSchemaMfaMethodEnum> get serializer =>
+      _$sudoVerificationSchemaMfaMethodEnumSerializer;
 
-  const SudoVerificationSchemaMfaMethodEnum._(String name): super(name);
+  const SudoVerificationSchemaMfaMethodEnum._(String name) : super(name);
 
-  static BuiltSet<SudoVerificationSchemaMfaMethodEnum> get values => _$sudoVerificationSchemaMfaMethodEnumValues;
-  static SudoVerificationSchemaMfaMethodEnum valueOf(String name) => _$sudoVerificationSchemaMfaMethodEnumValueOf(name);
+  static BuiltSet<SudoVerificationSchemaMfaMethodEnum> get values =>
+      _$sudoVerificationSchemaMfaMethodEnumValues;
+  static SudoVerificationSchemaMfaMethodEnum valueOf(String name) =>
+      _$sudoVerificationSchemaMfaMethodEnumValueOf(name);
 }
-

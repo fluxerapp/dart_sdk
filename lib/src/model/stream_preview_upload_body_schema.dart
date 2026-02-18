@@ -11,11 +11,14 @@ part 'stream_preview_upload_body_schema.g.dart';
 /// StreamPreviewUploadBodySchema
 ///
 /// Properties:
-/// * [channelId] 
+/// * [channelId]
 /// * [thumbnail] - Base64-encoded thumbnail image data
 /// * [contentType] - MIME type of the thumbnail image
 @BuiltValue()
-abstract class StreamPreviewUploadBodySchema implements Built<StreamPreviewUploadBodySchema, StreamPreviewUploadBodySchemaBuilder> {
+abstract class StreamPreviewUploadBodySchema
+    implements
+        Built<StreamPreviewUploadBodySchema,
+            StreamPreviewUploadBodySchemaBuilder> {
   @BuiltValueField(wireName: r'channel_id')
   String get channelId;
 
@@ -29,18 +32,25 @@ abstract class StreamPreviewUploadBodySchema implements Built<StreamPreviewUploa
 
   StreamPreviewUploadBodySchema._();
 
-  factory StreamPreviewUploadBodySchema([void updates(StreamPreviewUploadBodySchemaBuilder b)]) = _$StreamPreviewUploadBodySchema;
+  factory StreamPreviewUploadBodySchema(
+          [void updates(StreamPreviewUploadBodySchemaBuilder b)]) =
+      _$StreamPreviewUploadBodySchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(StreamPreviewUploadBodySchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<StreamPreviewUploadBodySchema> get serializer => _$StreamPreviewUploadBodySchemaSerializer();
+  static Serializer<StreamPreviewUploadBodySchema> get serializer =>
+      _$StreamPreviewUploadBodySchemaSerializer();
 }
 
-class _$StreamPreviewUploadBodySchemaSerializer implements PrimitiveSerializer<StreamPreviewUploadBodySchema> {
+class _$StreamPreviewUploadBodySchemaSerializer
+    implements PrimitiveSerializer<StreamPreviewUploadBodySchema> {
   @override
-  final Iterable<Type> types = const [StreamPreviewUploadBodySchema, _$StreamPreviewUploadBodySchema];
+  final Iterable<Type> types = const [
+    StreamPreviewUploadBodySchema,
+    _$StreamPreviewUploadBodySchema
+  ];
 
   @override
   final String wireName = r'StreamPreviewUploadBodySchema';
@@ -75,7 +85,9 @@ class _$StreamPreviewUploadBodySchemaSerializer implements PrimitiveSerializer<S
     StreamPreviewUploadBodySchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -139,4 +151,3 @@ class _$StreamPreviewUploadBodySchemaSerializer implements PrimitiveSerializer<S
     return result.build();
   }
 }
-

@@ -14,7 +14,8 @@ part 'mfa_totp_request.g.dart';
 /// * [code] - The TOTP code from the authenticator app
 /// * [ticket] - The MFA ticket from the login response
 @BuiltValue()
-abstract class MfaTotpRequest implements Built<MfaTotpRequest, MfaTotpRequestBuilder> {
+abstract class MfaTotpRequest
+    implements Built<MfaTotpRequest, MfaTotpRequestBuilder> {
   /// The TOTP code from the authenticator app
   @BuiltValueField(wireName: r'code')
   String get code;
@@ -25,16 +26,19 @@ abstract class MfaTotpRequest implements Built<MfaTotpRequest, MfaTotpRequestBui
 
   MfaTotpRequest._();
 
-  factory MfaTotpRequest([void updates(MfaTotpRequestBuilder b)]) = _$MfaTotpRequest;
+  factory MfaTotpRequest([void updates(MfaTotpRequestBuilder b)]) =
+      _$MfaTotpRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(MfaTotpRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<MfaTotpRequest> get serializer => _$MfaTotpRequestSerializer();
+  static Serializer<MfaTotpRequest> get serializer =>
+      _$MfaTotpRequestSerializer();
 }
 
-class _$MfaTotpRequestSerializer implements PrimitiveSerializer<MfaTotpRequest> {
+class _$MfaTotpRequestSerializer
+    implements PrimitiveSerializer<MfaTotpRequest> {
   @override
   final Iterable<Type> types = const [MfaTotpRequest, _$MfaTotpRequest];
 
@@ -64,7 +68,9 @@ class _$MfaTotpRequestSerializer implements PrimitiveSerializer<MfaTotpRequest> 
     MfaTotpRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +127,3 @@ class _$MfaTotpRequestSerializer implements PrimitiveSerializer<MfaTotpRequest> 
     return result.build();
   }
 }
-

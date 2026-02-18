@@ -13,25 +13,35 @@ part 'get_index_refresh_status_request.g.dart';
 /// Properties:
 /// * [jobId] - ID of the index refresh job to check
 @BuiltValue()
-abstract class GetIndexRefreshStatusRequest implements Built<GetIndexRefreshStatusRequest, GetIndexRefreshStatusRequestBuilder> {
+abstract class GetIndexRefreshStatusRequest
+    implements
+        Built<GetIndexRefreshStatusRequest,
+            GetIndexRefreshStatusRequestBuilder> {
   /// ID of the index refresh job to check
   @BuiltValueField(wireName: r'job_id')
   String get jobId;
 
   GetIndexRefreshStatusRequest._();
 
-  factory GetIndexRefreshStatusRequest([void updates(GetIndexRefreshStatusRequestBuilder b)]) = _$GetIndexRefreshStatusRequest;
+  factory GetIndexRefreshStatusRequest(
+          [void updates(GetIndexRefreshStatusRequestBuilder b)]) =
+      _$GetIndexRefreshStatusRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GetIndexRefreshStatusRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GetIndexRefreshStatusRequest> get serializer => _$GetIndexRefreshStatusRequestSerializer();
+  static Serializer<GetIndexRefreshStatusRequest> get serializer =>
+      _$GetIndexRefreshStatusRequestSerializer();
 }
 
-class _$GetIndexRefreshStatusRequestSerializer implements PrimitiveSerializer<GetIndexRefreshStatusRequest> {
+class _$GetIndexRefreshStatusRequestSerializer
+    implements PrimitiveSerializer<GetIndexRefreshStatusRequest> {
   @override
-  final Iterable<Type> types = const [GetIndexRefreshStatusRequest, _$GetIndexRefreshStatusRequest];
+  final Iterable<Type> types = const [
+    GetIndexRefreshStatusRequest,
+    _$GetIndexRefreshStatusRequest
+  ];
 
   @override
   final String wireName = r'GetIndexRefreshStatusRequest';
@@ -54,7 +64,9 @@ class _$GetIndexRefreshStatusRequestSerializer implements PrimitiveSerializer<Ge
     GetIndexRefreshStatusRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +116,3 @@ class _$GetIndexRefreshStatusRequestSerializer implements PrimitiveSerializer<Ge
     return result.build();
   }
 }
-

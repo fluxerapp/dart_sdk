@@ -4,7 +4,6 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
@@ -15,8 +14,6 @@ import 'package:fluxer_dart/src/model/channel_create_request.dart';
 import 'package:fluxer_dart/src/model/channel_position_update_request_inner.dart';
 import 'package:fluxer_dart/src/model/channel_response.dart';
 import 'package:fluxer_dart/src/model/enabled_toggle_request.dart';
-import 'package:fluxer_dart/src/model/error.dart';
-import 'package:fluxer_dart/src/model/get_well_known_fluxer429_response.dart';
 import 'package:fluxer_dart/src/model/guild_audit_log_list_response.dart';
 import 'package:fluxer_dart/src/model/guild_ban_create_request.dart';
 import 'package:fluxer_dart/src/model/guild_ban_response.dart';
@@ -52,7 +49,6 @@ import 'package:fluxer_dart/src/model/guild_vanity_url_update_response.dart';
 import 'package:fluxer_dart/src/model/my_guild_member_update_request.dart';
 
 class GuildsApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -75,7 +71,7 @@ class GuildsApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> addGuildMemberRole({ 
+  Future<Response<void>> addGuildMemberRole({
     required String guildId,
     required String userId,
     required String roleId,
@@ -86,7 +82,19 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/members/{user_id}/roles/{role_id}'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString()).replaceAll('{' r'user_id' '}', encodeQueryParameter(_serializers, userId, const FullType(String)).toString()).replaceAll('{' r'role_id' '}', encodeQueryParameter(_serializers, roleId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/members/{user_id}/roles/{role_id}'
+        .replaceAll(
+            '{' r'guild_id' '}',
+            encodeQueryParameter(_serializers, guildId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'user_id' '}',
+            encodeQueryParameter(_serializers, userId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'role_id' '}',
+            encodeQueryParameter(_serializers, roleId, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
@@ -99,7 +107,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -128,7 +137,7 @@ class GuildsApi {
   /// Parameters:
   /// * [guildId] - The ID of the guild
   /// * [userId] - The ID of the user
-  /// * [guildBanCreateRequest] 
+  /// * [guildBanCreateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -138,7 +147,7 @@ class GuildsApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> banGuildMember2({ 
+  Future<Response<void>> banGuildMember2({
     required String guildId,
     required String userId,
     required GuildBanCreateRequest guildBanCreateRequest,
@@ -149,7 +158,15 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/bans/{user_id}'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString()).replaceAll('{' r'user_id' '}', encodeQueryParameter(_serializers, userId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/bans/{user_id}'
+        .replaceAll(
+            '{' r'guild_id' '}',
+            encodeQueryParameter(_serializers, guildId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'user_id' '}',
+            encodeQueryParameter(_serializers, userId, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
@@ -162,7 +179,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -179,11 +197,11 @@ class GuildsApi {
 
     try {
       const _type = FullType(GuildBanCreateRequest);
-      _bodyData = _serializers.serialize(guildBanCreateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(guildBanCreateRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -210,7 +228,7 @@ class GuildsApi {
   ///
   /// Parameters:
   /// * [guildId] - The ID of the guild
-  /// * [guildEmojiBulkCreateRequest] 
+  /// * [guildEmojiBulkCreateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -220,7 +238,7 @@ class GuildsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GuildEmojiBulkCreateResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GuildEmojiBulkCreateResponse>> bulkCreateGuildEmojis({ 
+  Future<Response<GuildEmojiBulkCreateResponse>> bulkCreateGuildEmojis({
     required String guildId,
     required GuildEmojiBulkCreateRequest guildEmojiBulkCreateRequest,
     CancelToken? cancelToken,
@@ -230,7 +248,10 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/emojis/bulk'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/emojis/bulk'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -243,7 +264,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -260,11 +282,11 @@ class GuildsApi {
 
     try {
       const _type = FullType(GuildEmojiBulkCreateRequest);
-      _bodyData = _serializers.serialize(guildEmojiBulkCreateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(guildEmojiBulkCreateRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -287,11 +309,12 @@ class GuildsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GuildEmojiBulkCreateResponse),
-      ) as GuildEmojiBulkCreateResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GuildEmojiBulkCreateResponse),
+            ) as GuildEmojiBulkCreateResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -319,7 +342,7 @@ class GuildsApi {
   ///
   /// Parameters:
   /// * [guildId] - The ID of the guild
-  /// * [guildStickerBulkCreateRequest] 
+  /// * [guildStickerBulkCreateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -329,7 +352,7 @@ class GuildsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GuildStickerBulkCreateResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GuildStickerBulkCreateResponse>> bulkCreateGuildStickers({ 
+  Future<Response<GuildStickerBulkCreateResponse>> bulkCreateGuildStickers({
     required String guildId,
     required GuildStickerBulkCreateRequest guildStickerBulkCreateRequest,
     CancelToken? cancelToken,
@@ -339,7 +362,10 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/stickers/bulk'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/stickers/bulk'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -352,7 +378,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -369,11 +396,11 @@ class GuildsApi {
 
     try {
       const _type = FullType(GuildStickerBulkCreateRequest);
-      _bodyData = _serializers.serialize(guildStickerBulkCreateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(guildStickerBulkCreateRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -396,11 +423,12 @@ class GuildsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GuildStickerBulkCreateResponse),
-      ) as GuildStickerBulkCreateResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GuildStickerBulkCreateResponse),
+            ) as GuildStickerBulkCreateResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -427,7 +455,7 @@ class GuildsApi {
   /// Only authenticated users can create guilds.
   ///
   /// Parameters:
-  /// * [guildCreateRequest] 
+  /// * [guildCreateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -437,7 +465,7 @@ class GuildsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GuildResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GuildResponse>> createGuild({ 
+  Future<Response<GuildResponse>> createGuild({
     required GuildCreateRequest guildCreateRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -459,7 +487,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -476,11 +505,11 @@ class GuildsApi {
 
     try {
       const _type = FullType(GuildCreateRequest);
-      _bodyData = _serializers.serialize(guildCreateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(guildCreateRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -503,11 +532,12 @@ class GuildsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GuildResponse),
-      ) as GuildResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GuildResponse),
+            ) as GuildResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -535,7 +565,7 @@ class GuildsApi {
   ///
   /// Parameters:
   /// * [guildId] - The ID of the guild
-  /// * [channelCreateRequest] 
+  /// * [channelCreateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -545,7 +575,7 @@ class GuildsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [ChannelResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ChannelResponse>> createGuildChannel({ 
+  Future<Response<ChannelResponse>> createGuildChannel({
     required String guildId,
     required ChannelCreateRequest channelCreateRequest,
     CancelToken? cancelToken,
@@ -555,7 +585,10 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/channels'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/channels'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -568,7 +601,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -585,11 +619,11 @@ class GuildsApi {
 
     try {
       const _type = FullType(ChannelCreateRequest);
-      _bodyData = _serializers.serialize(channelCreateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(channelCreateRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -612,11 +646,12 @@ class GuildsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ChannelResponse),
-      ) as ChannelResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(ChannelResponse),
+            ) as ChannelResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -644,7 +679,7 @@ class GuildsApi {
   ///
   /// Parameters:
   /// * [guildId] - The ID of the guild
-  /// * [guildEmojiCreateRequest] 
+  /// * [guildEmojiCreateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -654,7 +689,7 @@ class GuildsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GuildEmojiResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GuildEmojiResponse>> createGuildEmoji({ 
+  Future<Response<GuildEmojiResponse>> createGuildEmoji({
     required String guildId,
     required GuildEmojiCreateRequest guildEmojiCreateRequest,
     CancelToken? cancelToken,
@@ -664,7 +699,10 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/emojis'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/emojis'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -677,7 +715,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -694,11 +733,11 @@ class GuildsApi {
 
     try {
       const _type = FullType(GuildEmojiCreateRequest);
-      _bodyData = _serializers.serialize(guildEmojiCreateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(guildEmojiCreateRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -721,11 +760,12 @@ class GuildsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GuildEmojiResponse),
-      ) as GuildEmojiResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GuildEmojiResponse),
+            ) as GuildEmojiResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -753,7 +793,7 @@ class GuildsApi {
   ///
   /// Parameters:
   /// * [guildId] - The ID of the guild
-  /// * [guildRoleCreateRequest] 
+  /// * [guildRoleCreateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -763,7 +803,7 @@ class GuildsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GuildRoleResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GuildRoleResponse>> createGuildRole({ 
+  Future<Response<GuildRoleResponse>> createGuildRole({
     required String guildId,
     required GuildRoleCreateRequest guildRoleCreateRequest,
     CancelToken? cancelToken,
@@ -773,7 +813,10 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/roles'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/roles'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -786,7 +829,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -803,11 +847,11 @@ class GuildsApi {
 
     try {
       const _type = FullType(GuildRoleCreateRequest);
-      _bodyData = _serializers.serialize(guildRoleCreateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(guildRoleCreateRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -830,11 +874,12 @@ class GuildsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GuildRoleResponse),
-      ) as GuildRoleResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GuildRoleResponse),
+            ) as GuildRoleResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -862,7 +907,7 @@ class GuildsApi {
   ///
   /// Parameters:
   /// * [guildId] - The ID of the guild
-  /// * [guildStickerCreateRequest] 
+  /// * [guildStickerCreateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -872,7 +917,7 @@ class GuildsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GuildStickerResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GuildStickerResponse>> createGuildSticker({ 
+  Future<Response<GuildStickerResponse>> createGuildSticker({
     required String guildId,
     required GuildStickerCreateRequest guildStickerCreateRequest,
     CancelToken? cancelToken,
@@ -882,7 +927,10 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/stickers'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/stickers'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -895,7 +943,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -912,11 +961,11 @@ class GuildsApi {
 
     try {
       const _type = FullType(GuildStickerCreateRequest);
-      _bodyData = _serializers.serialize(guildStickerCreateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(guildStickerCreateRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -939,11 +988,12 @@ class GuildsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GuildStickerResponse),
-      ) as GuildStickerResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GuildStickerResponse),
+            ) as GuildStickerResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -971,7 +1021,7 @@ class GuildsApi {
   ///
   /// Parameters:
   /// * [guildId] - The ID of the guild
-  /// * [guildDeleteRequest] 
+  /// * [guildDeleteRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -981,7 +1031,7 @@ class GuildsApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> deleteGuild2({ 
+  Future<Response<void>> deleteGuild2({
     required String guildId,
     required GuildDeleteRequest guildDeleteRequest,
     CancelToken? cancelToken,
@@ -991,7 +1041,10 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/delete'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/delete'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -1004,7 +1057,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1021,11 +1075,11 @@ class GuildsApi {
 
     try {
       const _type = FullType(GuildDeleteRequest);
-      _bodyData = _serializers.serialize(guildDeleteRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(guildDeleteRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -1053,7 +1107,7 @@ class GuildsApi {
   /// Parameters:
   /// * [guildId] - The ID of the guild
   /// * [emojiId] - The ID of the emoji
-  /// * [purge] 
+  /// * [purge]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1063,7 +1117,7 @@ class GuildsApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> deleteGuildEmoji({ 
+  Future<Response<void>> deleteGuildEmoji({
     required String guildId,
     required String emojiId,
     String? purge,
@@ -1074,7 +1128,15 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/emojis/{emoji_id}'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString()).replaceAll('{' r'emoji_id' '}', encodeQueryParameter(_serializers, emojiId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/emojis/{emoji_id}'
+        .replaceAll(
+            '{' r'guild_id' '}',
+            encodeQueryParameter(_serializers, guildId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'emoji_id' '}',
+            encodeQueryParameter(_serializers, emojiId, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -1087,7 +1149,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1100,7 +1163,9 @@ class GuildsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (purge != null) r'purge': encodeQueryParameter(_serializers, purge, const FullType(String)),
+      if (purge != null)
+        r'purge':
+            encodeQueryParameter(_serializers, purge, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -1130,7 +1195,7 @@ class GuildsApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> deleteGuildRole({ 
+  Future<Response<void>> deleteGuildRole({
     required String guildId,
     required String roleId,
     CancelToken? cancelToken,
@@ -1140,7 +1205,15 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/roles/{role_id}'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString()).replaceAll('{' r'role_id' '}', encodeQueryParameter(_serializers, roleId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/roles/{role_id}'
+        .replaceAll(
+            '{' r'guild_id' '}',
+            encodeQueryParameter(_serializers, guildId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'role_id' '}',
+            encodeQueryParameter(_serializers, roleId, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -1153,7 +1226,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1182,7 +1256,7 @@ class GuildsApi {
   /// Parameters:
   /// * [guildId] - The ID of the guild
   /// * [stickerId] - The ID of the sticker
-  /// * [purge] 
+  /// * [purge]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1192,7 +1266,7 @@ class GuildsApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> deleteGuildSticker({ 
+  Future<Response<void>> deleteGuildSticker({
     required String guildId,
     required String stickerId,
     String? purge,
@@ -1203,7 +1277,16 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/stickers/{sticker_id}'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString()).replaceAll('{' r'sticker_id' '}', encodeQueryParameter(_serializers, stickerId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/stickers/{sticker_id}'
+        .replaceAll(
+            '{' r'guild_id' '}',
+            encodeQueryParameter(_serializers, guildId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'sticker_id' '}',
+            encodeQueryParameter(
+                    _serializers, stickerId, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -1216,7 +1299,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1229,7 +1313,9 @@ class GuildsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (purge != null) r'purge': encodeQueryParameter(_serializers, purge, const FullType(String)),
+      if (purge != null)
+        r'purge':
+            encodeQueryParameter(_serializers, purge, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -1258,7 +1344,7 @@ class GuildsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GuildMemberResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GuildMemberResponse>> getCurrentGuildMember({ 
+  Future<Response<GuildMemberResponse>> getCurrentGuildMember({
     required String guildId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -1267,7 +1353,10 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/members/@me'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/members/@me'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -1280,7 +1369,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1304,11 +1394,12 @@ class GuildsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GuildMemberResponse),
-      ) as GuildMemberResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GuildMemberResponse),
+            ) as GuildMemberResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1345,7 +1436,7 @@ class GuildsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GuildResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GuildResponse>> getGuild({ 
+  Future<Response<GuildResponse>> getGuild({
     required String guildId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -1354,7 +1445,10 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -1367,7 +1461,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1391,11 +1486,12 @@ class GuildsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GuildResponse),
-      ) as GuildResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GuildResponse),
+            ) as GuildResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1433,7 +1529,7 @@ class GuildsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GuildMemberResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GuildMemberResponse>> getGuildMember({ 
+  Future<Response<GuildMemberResponse>> getGuildMember({
     required String guildId,
     required String userId,
     CancelToken? cancelToken,
@@ -1443,7 +1539,15 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/members/{user_id}'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString()).replaceAll('{' r'user_id' '}', encodeQueryParameter(_serializers, userId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/members/{user_id}'
+        .replaceAll(
+            '{' r'guild_id' '}',
+            encodeQueryParameter(_serializers, guildId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'user_id' '}',
+            encodeQueryParameter(_serializers, userId, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -1456,7 +1560,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1480,11 +1585,12 @@ class GuildsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GuildMemberResponse),
-      ) as GuildMemberResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GuildMemberResponse),
+            ) as GuildMemberResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1521,7 +1627,7 @@ class GuildsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GuildVanityURLResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GuildVanityURLResponse>> getGuildVanityUrl({ 
+  Future<Response<GuildVanityURLResponse>> getGuildVanityUrl({
     required String guildId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -1530,7 +1636,10 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/vanity-url'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/vanity-url'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -1543,7 +1652,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1567,11 +1677,12 @@ class GuildsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GuildVanityURLResponse),
-      ) as GuildVanityURLResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GuildVanityURLResponse),
+            ) as GuildVanityURLResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1608,7 +1719,7 @@ class GuildsApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> leaveGuild({ 
+  Future<Response<void>> leaveGuild({
     required String guildId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -1617,7 +1728,10 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/users/@me/guilds/{guild_id}'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/users/@me/guilds/{guild_id}'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -1630,7 +1744,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1658,11 +1773,11 @@ class GuildsApi {
   ///
   /// Parameters:
   /// * [guildId] - The ID of the guild
-  /// * [limit] 
-  /// * [before] 
-  /// * [after] 
-  /// * [userId] 
-  /// * [actionType] 
+  /// * [limit]
+  /// * [before]
+  /// * [after]
+  /// * [userId]
+  /// * [actionType]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1672,7 +1787,7 @@ class GuildsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GuildAuditLogListResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GuildAuditLogListResponse>> listGuildAuditLogs({ 
+  Future<Response<GuildAuditLogListResponse>> listGuildAuditLogs({
     required String guildId,
     int? limit,
     String? before,
@@ -1686,7 +1801,10 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/audit-logs'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/audit-logs'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -1699,7 +1817,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1712,11 +1831,21 @@ class GuildsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (limit != null) r'limit': encodeQueryParameter(_serializers, limit, const FullType(int)),
-      if (before != null) r'before': encodeQueryParameter(_serializers, before, const FullType(String)),
-      if (after != null) r'after': encodeQueryParameter(_serializers, after, const FullType(String)),
-      if (userId != null) r'user_id': encodeQueryParameter(_serializers, userId, const FullType(String)),
-      if (actionType != null) r'action_type': encodeQueryParameter(_serializers, actionType, const FullType(AuditLogActionType)),
+      if (limit != null)
+        r'limit':
+            encodeQueryParameter(_serializers, limit, const FullType(int)),
+      if (before != null)
+        r'before':
+            encodeQueryParameter(_serializers, before, const FullType(String)),
+      if (after != null)
+        r'after':
+            encodeQueryParameter(_serializers, after, const FullType(String)),
+      if (userId != null)
+        r'user_id':
+            encodeQueryParameter(_serializers, userId, const FullType(String)),
+      if (actionType != null)
+        r'action_type': encodeQueryParameter(
+            _serializers, actionType, const FullType(AuditLogActionType)),
     };
 
     final _response = await _dio.request<Object>(
@@ -1732,11 +1861,12 @@ class GuildsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GuildAuditLogListResponse),
-      ) as GuildAuditLogListResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GuildAuditLogListResponse),
+            ) as GuildAuditLogListResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1773,7 +1903,7 @@ class GuildsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<GuildBanResponse>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<GuildBanResponse>>> listGuildBans({ 
+  Future<Response<BuiltList<GuildBanResponse>>> listGuildBans({
     required String guildId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -1782,7 +1912,10 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/bans'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/bans'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -1795,7 +1928,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1819,11 +1953,13 @@ class GuildsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(GuildBanResponse)]),
-      ) as BuiltList<GuildBanResponse>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType:
+                  const FullType(BuiltList, [FullType(GuildBanResponse)]),
+            ) as BuiltList<GuildBanResponse>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1860,7 +1996,7 @@ class GuildsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<ChannelResponse>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<ChannelResponse>>> listGuildChannels({ 
+  Future<Response<BuiltList<ChannelResponse>>> listGuildChannels({
     required String guildId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -1869,7 +2005,10 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/channels'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/channels'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -1882,7 +2021,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1906,11 +2046,13 @@ class GuildsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(ChannelResponse)]),
-      ) as BuiltList<ChannelResponse>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType:
+                  const FullType(BuiltList, [FullType(ChannelResponse)]),
+            ) as BuiltList<ChannelResponse>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1947,7 +2089,7 @@ class GuildsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<GuildEmojiWithUserResponse>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<GuildEmojiWithUserResponse>>> listGuildEmojis2({ 
+  Future<Response<BuiltList<GuildEmojiWithUserResponse>>> listGuildEmojis2({
     required String guildId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -1956,7 +2098,10 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/emojis'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/emojis'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -1969,7 +2114,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1993,11 +2139,13 @@ class GuildsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(GuildEmojiWithUserResponse)]),
-      ) as BuiltList<GuildEmojiWithUserResponse>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(
+                  BuiltList, [FullType(GuildEmojiWithUserResponse)]),
+            ) as BuiltList<GuildEmojiWithUserResponse>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -2025,8 +2173,8 @@ class GuildsApi {
   ///
   /// Parameters:
   /// * [guildId] - The ID of the guild
-  /// * [limit] 
-  /// * [after] 
+  /// * [limit]
+  /// * [after]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -2036,7 +2184,7 @@ class GuildsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<GuildMemberResponse>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<GuildMemberResponse>>> listGuildMembers2({ 
+  Future<Response<BuiltList<GuildMemberResponse>>> listGuildMembers2({
     required String guildId,
     int? limit,
     String? after,
@@ -2047,7 +2195,10 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/members'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/members'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -2060,7 +2211,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -2073,8 +2225,12 @@ class GuildsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (limit != null) r'limit': encodeQueryParameter(_serializers, limit, const FullType(int)),
-      if (after != null) r'after': encodeQueryParameter(_serializers, after, const FullType(String)),
+      if (limit != null)
+        r'limit':
+            encodeQueryParameter(_serializers, limit, const FullType(int)),
+      if (after != null)
+        r'after':
+            encodeQueryParameter(_serializers, after, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -2090,11 +2246,13 @@ class GuildsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(GuildMemberResponse)]),
-      ) as BuiltList<GuildMemberResponse>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType:
+                  const FullType(BuiltList, [FullType(GuildMemberResponse)]),
+            ) as BuiltList<GuildMemberResponse>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -2131,7 +2289,7 @@ class GuildsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<GuildRoleResponse>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<GuildRoleResponse>>> listGuildRoles({ 
+  Future<Response<BuiltList<GuildRoleResponse>>> listGuildRoles({
     required String guildId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -2140,7 +2298,10 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/roles'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/roles'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -2153,7 +2314,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -2177,11 +2339,13 @@ class GuildsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(GuildRoleResponse)]),
-      ) as BuiltList<GuildRoleResponse>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType:
+                  const FullType(BuiltList, [FullType(GuildRoleResponse)]),
+            ) as BuiltList<GuildRoleResponse>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -2218,7 +2382,7 @@ class GuildsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<GuildStickerWithUserResponse>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<GuildStickerWithUserResponse>>> listGuildStickers2({ 
+  Future<Response<BuiltList<GuildStickerWithUserResponse>>> listGuildStickers2({
     required String guildId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -2227,7 +2391,10 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/stickers'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/stickers'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -2240,7 +2407,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -2264,11 +2432,13 @@ class GuildsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(GuildStickerWithUserResponse)]),
-      ) as BuiltList<GuildStickerWithUserResponse>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(
+                  BuiltList, [FullType(GuildStickerWithUserResponse)]),
+            ) as BuiltList<GuildStickerWithUserResponse>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -2295,10 +2465,10 @@ class GuildsApi {
   /// Requires guilds OAuth scope if using bearer token. Returns all guilds the user is a member of.
   ///
   /// Parameters:
-  /// * [before] 
-  /// * [after] 
-  /// * [limit] 
-  /// * [withCounts] 
+  /// * [before]
+  /// * [after]
+  /// * [limit]
+  /// * [withCounts]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -2308,7 +2478,7 @@ class GuildsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<GuildResponse>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<GuildResponse>>> listGuilds({ 
+  Future<Response<BuiltList<GuildResponse>>> listGuilds({
     String? before,
     String? after,
     int? limit,
@@ -2331,12 +2501,14 @@ class GuildsApi {
           {
             'type': 'oauth2',
             'name': 'oauth2Token',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -2349,10 +2521,18 @@ class GuildsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (before != null) r'before': encodeQueryParameter(_serializers, before, const FullType(String)),
-      if (after != null) r'after': encodeQueryParameter(_serializers, after, const FullType(String)),
-      if (limit != null) r'limit': encodeQueryParameter(_serializers, limit, const FullType(int)),
-      if (withCounts != null) r'with_counts': encodeQueryParameter(_serializers, withCounts, const FullType(String)),
+      if (before != null)
+        r'before':
+            encodeQueryParameter(_serializers, before, const FullType(String)),
+      if (after != null)
+        r'after':
+            encodeQueryParameter(_serializers, after, const FullType(String)),
+      if (limit != null)
+        r'limit':
+            encodeQueryParameter(_serializers, limit, const FullType(int)),
+      if (withCounts != null)
+        r'with_counts': encodeQueryParameter(
+            _serializers, withCounts, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -2368,11 +2548,13 @@ class GuildsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(GuildResponse)]),
-      ) as BuiltList<GuildResponse>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType:
+                  const FullType(BuiltList, [FullType(GuildResponse)]),
+            ) as BuiltList<GuildResponse>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -2410,7 +2592,7 @@ class GuildsApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> removeGuildMember({ 
+  Future<Response<void>> removeGuildMember({
     required String guildId,
     required String userId,
     CancelToken? cancelToken,
@@ -2420,7 +2602,15 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/members/{user_id}'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString()).replaceAll('{' r'user_id' '}', encodeQueryParameter(_serializers, userId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/members/{user_id}'
+        .replaceAll(
+            '{' r'guild_id' '}',
+            encodeQueryParameter(_serializers, guildId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'user_id' '}',
+            encodeQueryParameter(_serializers, userId, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -2433,7 +2623,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -2472,7 +2663,7 @@ class GuildsApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> removeGuildMemberRole({ 
+  Future<Response<void>> removeGuildMemberRole({
     required String guildId,
     required String userId,
     required String roleId,
@@ -2483,7 +2674,19 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/members/{user_id}/roles/{role_id}'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString()).replaceAll('{' r'user_id' '}', encodeQueryParameter(_serializers, userId, const FullType(String)).toString()).replaceAll('{' r'role_id' '}', encodeQueryParameter(_serializers, roleId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/members/{user_id}/roles/{role_id}'
+        .replaceAll(
+            '{' r'guild_id' '}',
+            encodeQueryParameter(_serializers, guildId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'user_id' '}',
+            encodeQueryParameter(_serializers, userId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'role_id' '}',
+            encodeQueryParameter(_serializers, roleId, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -2496,7 +2699,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -2533,7 +2737,7 @@ class GuildsApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> resetRoleHoistPositions({ 
+  Future<Response<void>> resetRoleHoistPositions({
     required String guildId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -2542,7 +2746,10 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/roles/hoist-positions'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/roles/hoist-positions'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -2555,7 +2762,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -2583,7 +2791,7 @@ class GuildsApi {
   ///
   /// Parameters:
   /// * [guildId] - The ID of the guild
-  /// * [guildMemberSearchRequest] 
+  /// * [guildMemberSearchRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -2593,7 +2801,7 @@ class GuildsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GuildMemberSearchResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GuildMemberSearchResponse>> searchGuildMembers({ 
+  Future<Response<GuildMemberSearchResponse>> searchGuildMembers({
     required String guildId,
     required GuildMemberSearchRequest guildMemberSearchRequest,
     CancelToken? cancelToken,
@@ -2603,7 +2811,10 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/members-search'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/members-search'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -2616,7 +2827,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -2633,11 +2845,11 @@ class GuildsApi {
 
     try {
       const _type = FullType(GuildMemberSearchRequest);
-      _bodyData = _serializers.serialize(guildMemberSearchRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(guildMemberSearchRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -2660,11 +2872,12 @@ class GuildsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GuildMemberSearchResponse),
-      ) as GuildMemberSearchResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GuildMemberSearchResponse),
+            ) as GuildMemberSearchResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -2692,7 +2905,7 @@ class GuildsApi {
   ///
   /// Parameters:
   /// * [guildId] - The ID of the guild
-  /// * [enabledToggleRequest] 
+  /// * [enabledToggleRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -2702,7 +2915,7 @@ class GuildsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GuildResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GuildResponse>> toggleDetachedBanner({ 
+  Future<Response<GuildResponse>> toggleDetachedBanner({
     required String guildId,
     required EnabledToggleRequest enabledToggleRequest,
     CancelToken? cancelToken,
@@ -2712,7 +2925,10 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/detached-banner'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/detached-banner'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -2725,7 +2941,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -2742,11 +2959,11 @@ class GuildsApi {
 
     try {
       const _type = FullType(EnabledToggleRequest);
-      _bodyData = _serializers.serialize(enabledToggleRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(enabledToggleRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -2769,11 +2986,12 @@ class GuildsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GuildResponse),
-      ) as GuildResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GuildResponse),
+            ) as GuildResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -2801,7 +3019,7 @@ class GuildsApi {
   ///
   /// Parameters:
   /// * [guildId] - The ID of the guild
-  /// * [enabledToggleRequest] 
+  /// * [enabledToggleRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -2811,7 +3029,7 @@ class GuildsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GuildResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GuildResponse>> toggleTextChannelFlexibleNames({ 
+  Future<Response<GuildResponse>> toggleTextChannelFlexibleNames({
     required String guildId,
     required EnabledToggleRequest enabledToggleRequest,
     CancelToken? cancelToken,
@@ -2821,7 +3039,10 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/text-channel-flexible-names'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/text-channel-flexible-names'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -2834,7 +3055,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -2851,11 +3073,11 @@ class GuildsApi {
 
     try {
       const _type = FullType(EnabledToggleRequest);
-      _bodyData = _serializers.serialize(enabledToggleRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(enabledToggleRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -2878,11 +3100,12 @@ class GuildsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GuildResponse),
-      ) as GuildResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GuildResponse),
+            ) as GuildResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -2910,7 +3133,7 @@ class GuildsApi {
   ///
   /// Parameters:
   /// * [guildId] - The ID of the guild
-  /// * [guildTransferOwnershipRequest] 
+  /// * [guildTransferOwnershipRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -2920,7 +3143,7 @@ class GuildsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GuildResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GuildResponse>> transferGuildOwnership2({ 
+  Future<Response<GuildResponse>> transferGuildOwnership2({
     required String guildId,
     required GuildTransferOwnershipRequest guildTransferOwnershipRequest,
     CancelToken? cancelToken,
@@ -2930,7 +3153,10 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/transfer-ownership'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/transfer-ownership'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -2943,7 +3169,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -2960,11 +3187,11 @@ class GuildsApi {
 
     try {
       const _type = FullType(GuildTransferOwnershipRequest);
-      _bodyData = _serializers.serialize(guildTransferOwnershipRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(guildTransferOwnershipRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -2987,11 +3214,12 @@ class GuildsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GuildResponse),
-      ) as GuildResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GuildResponse),
+            ) as GuildResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -3029,7 +3257,7 @@ class GuildsApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> unbanGuildMember({ 
+  Future<Response<void>> unbanGuildMember({
     required String guildId,
     required String userId,
     CancelToken? cancelToken,
@@ -3039,7 +3267,15 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/bans/{user_id}'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString()).replaceAll('{' r'user_id' '}', encodeQueryParameter(_serializers, userId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/bans/{user_id}'
+        .replaceAll(
+            '{' r'guild_id' '}',
+            encodeQueryParameter(_serializers, guildId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'user_id' '}',
+            encodeQueryParameter(_serializers, userId, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -3052,7 +3288,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -3080,7 +3317,7 @@ class GuildsApi {
   ///
   /// Parameters:
   /// * [guildId] - The ID of the guild
-  /// * [myGuildMemberUpdateRequest] 
+  /// * [myGuildMemberUpdateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -3090,7 +3327,7 @@ class GuildsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GuildMemberResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GuildMemberResponse>> updateCurrentGuildMember({ 
+  Future<Response<GuildMemberResponse>> updateCurrentGuildMember({
     required String guildId,
     required MyGuildMemberUpdateRequest myGuildMemberUpdateRequest,
     CancelToken? cancelToken,
@@ -3100,7 +3337,10 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/members/@me'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/members/@me'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -3113,7 +3353,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -3130,11 +3371,11 @@ class GuildsApi {
 
     try {
       const _type = FullType(MyGuildMemberUpdateRequest);
-      _bodyData = _serializers.serialize(myGuildMemberUpdateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(myGuildMemberUpdateRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -3157,11 +3398,12 @@ class GuildsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GuildMemberResponse),
-      ) as GuildMemberResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GuildMemberResponse),
+            ) as GuildMemberResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -3189,7 +3431,7 @@ class GuildsApi {
   ///
   /// Parameters:
   /// * [guildId] - The ID of the guild
-  /// * [guildUpdateRequest] 
+  /// * [guildUpdateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -3199,7 +3441,7 @@ class GuildsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GuildResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GuildResponse>> updateGuild({ 
+  Future<Response<GuildResponse>> updateGuild({
     required String guildId,
     required GuildUpdateRequest guildUpdateRequest,
     CancelToken? cancelToken,
@@ -3209,7 +3451,10 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -3222,7 +3467,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -3239,11 +3485,11 @@ class GuildsApi {
 
     try {
       const _type = FullType(GuildUpdateRequest);
-      _bodyData = _serializers.serialize(guildUpdateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(guildUpdateRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -3266,11 +3512,12 @@ class GuildsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GuildResponse),
-      ) as GuildResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GuildResponse),
+            ) as GuildResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -3298,7 +3545,7 @@ class GuildsApi {
   ///
   /// Parameters:
   /// * [guildId] - The ID of the guild
-  /// * [channelPositionUpdateRequestInner] 
+  /// * [channelPositionUpdateRequestInner]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -3308,9 +3555,10 @@ class GuildsApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> updateGuildChannelPositions({ 
+  Future<Response<void>> updateGuildChannelPositions({
     required String guildId,
-    required BuiltList<ChannelPositionUpdateRequestInner> channelPositionUpdateRequestInner,
+    required BuiltList<ChannelPositionUpdateRequestInner>
+        channelPositionUpdateRequestInner,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -3318,7 +3566,10 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/channels'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/channels'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -3331,7 +3582,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -3347,12 +3599,13 @@ class GuildsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(BuiltList, [FullType(ChannelPositionUpdateRequestInner)]);
-      _bodyData = _serializers.serialize(channelPositionUpdateRequestInner, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      const _type =
+          FullType(BuiltList, [FullType(ChannelPositionUpdateRequestInner)]);
+      _bodyData = _serializers.serialize(channelPositionUpdateRequestInner,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -3380,7 +3633,7 @@ class GuildsApi {
   /// Parameters:
   /// * [guildId] - The ID of the guild
   /// * [emojiId] - The ID of the emoji
-  /// * [guildEmojiUpdateRequest] 
+  /// * [guildEmojiUpdateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -3390,7 +3643,7 @@ class GuildsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GuildEmojiResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GuildEmojiResponse>> updateGuildEmoji({ 
+  Future<Response<GuildEmojiResponse>> updateGuildEmoji({
     required String guildId,
     required String emojiId,
     required GuildEmojiUpdateRequest guildEmojiUpdateRequest,
@@ -3401,7 +3654,15 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/emojis/{emoji_id}'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString()).replaceAll('{' r'emoji_id' '}', encodeQueryParameter(_serializers, emojiId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/emojis/{emoji_id}'
+        .replaceAll(
+            '{' r'guild_id' '}',
+            encodeQueryParameter(_serializers, guildId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'emoji_id' '}',
+            encodeQueryParameter(_serializers, emojiId, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -3414,7 +3675,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -3431,11 +3693,11 @@ class GuildsApi {
 
     try {
       const _type = FullType(GuildEmojiUpdateRequest);
-      _bodyData = _serializers.serialize(guildEmojiUpdateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(guildEmojiUpdateRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -3458,11 +3720,12 @@ class GuildsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GuildEmojiResponse),
-      ) as GuildEmojiResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GuildEmojiResponse),
+            ) as GuildEmojiResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -3491,7 +3754,7 @@ class GuildsApi {
   /// Parameters:
   /// * [guildId] - The ID of the guild
   /// * [userId] - The ID of the user
-  /// * [guildMemberUpdateRequest] 
+  /// * [guildMemberUpdateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -3501,7 +3764,7 @@ class GuildsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GuildMemberResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GuildMemberResponse>> updateGuildMember({ 
+  Future<Response<GuildMemberResponse>> updateGuildMember({
     required String guildId,
     required String userId,
     required GuildMemberUpdateRequest guildMemberUpdateRequest,
@@ -3512,7 +3775,15 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/members/{user_id}'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString()).replaceAll('{' r'user_id' '}', encodeQueryParameter(_serializers, userId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/members/{user_id}'
+        .replaceAll(
+            '{' r'guild_id' '}',
+            encodeQueryParameter(_serializers, guildId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'user_id' '}',
+            encodeQueryParameter(_serializers, userId, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -3525,7 +3796,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -3542,11 +3814,11 @@ class GuildsApi {
 
     try {
       const _type = FullType(GuildMemberUpdateRequest);
-      _bodyData = _serializers.serialize(guildMemberUpdateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(guildMemberUpdateRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -3569,11 +3841,12 @@ class GuildsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GuildMemberResponse),
-      ) as GuildMemberResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GuildMemberResponse),
+            ) as GuildMemberResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -3602,7 +3875,7 @@ class GuildsApi {
   /// Parameters:
   /// * [guildId] - The ID of the guild
   /// * [roleId] - The ID of the role
-  /// * [guildRoleUpdateRequest] 
+  /// * [guildRoleUpdateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -3612,7 +3885,7 @@ class GuildsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GuildRoleResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GuildRoleResponse>> updateGuildRole({ 
+  Future<Response<GuildRoleResponse>> updateGuildRole({
     required String guildId,
     required String roleId,
     required GuildRoleUpdateRequest guildRoleUpdateRequest,
@@ -3623,7 +3896,15 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/roles/{role_id}'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString()).replaceAll('{' r'role_id' '}', encodeQueryParameter(_serializers, roleId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/roles/{role_id}'
+        .replaceAll(
+            '{' r'guild_id' '}',
+            encodeQueryParameter(_serializers, guildId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'role_id' '}',
+            encodeQueryParameter(_serializers, roleId, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -3636,7 +3917,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -3653,11 +3935,11 @@ class GuildsApi {
 
     try {
       const _type = FullType(GuildRoleUpdateRequest);
-      _bodyData = _serializers.serialize(guildRoleUpdateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(guildRoleUpdateRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -3680,11 +3962,12 @@ class GuildsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GuildRoleResponse),
-      ) as GuildRoleResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GuildRoleResponse),
+            ) as GuildRoleResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -3712,7 +3995,7 @@ class GuildsApi {
   ///
   /// Parameters:
   /// * [guildId] - The ID of the guild
-  /// * [guildRolePositionItem] 
+  /// * [guildRolePositionItem]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -3722,7 +4005,7 @@ class GuildsApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> updateGuildRolePositions({ 
+  Future<Response<void>> updateGuildRolePositions({
     required String guildId,
     required BuiltList<GuildRolePositionItem> guildRolePositionItem,
     CancelToken? cancelToken,
@@ -3732,7 +4015,10 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/roles'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/roles'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -3745,7 +4031,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -3762,11 +4049,11 @@ class GuildsApi {
 
     try {
       const _type = FullType(BuiltList, [FullType(GuildRolePositionItem)]);
-      _bodyData = _serializers.serialize(guildRolePositionItem, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(guildRolePositionItem, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -3794,7 +4081,7 @@ class GuildsApi {
   /// Parameters:
   /// * [guildId] - The ID of the guild
   /// * [stickerId] - The ID of the sticker
-  /// * [guildStickerUpdateRequest] 
+  /// * [guildStickerUpdateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -3804,7 +4091,7 @@ class GuildsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GuildStickerResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GuildStickerResponse>> updateGuildSticker({ 
+  Future<Response<GuildStickerResponse>> updateGuildSticker({
     required String guildId,
     required String stickerId,
     required GuildStickerUpdateRequest guildStickerUpdateRequest,
@@ -3815,7 +4102,16 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/stickers/{sticker_id}'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString()).replaceAll('{' r'sticker_id' '}', encodeQueryParameter(_serializers, stickerId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/stickers/{sticker_id}'
+        .replaceAll(
+            '{' r'guild_id' '}',
+            encodeQueryParameter(_serializers, guildId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'sticker_id' '}',
+            encodeQueryParameter(
+                    _serializers, stickerId, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -3828,7 +4124,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -3845,11 +4142,11 @@ class GuildsApi {
 
     try {
       const _type = FullType(GuildStickerUpdateRequest);
-      _bodyData = _serializers.serialize(guildStickerUpdateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(guildStickerUpdateRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -3872,11 +4169,12 @@ class GuildsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GuildStickerResponse),
-      ) as GuildStickerResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GuildStickerResponse),
+            ) as GuildStickerResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -3904,7 +4202,7 @@ class GuildsApi {
   ///
   /// Parameters:
   /// * [guildId] - The ID of the guild
-  /// * [guildVanityURLUpdateRequest] 
+  /// * [guildVanityURLUpdateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -3914,7 +4212,7 @@ class GuildsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GuildVanityURLUpdateResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GuildVanityURLUpdateResponse>> updateGuildVanityUrl({ 
+  Future<Response<GuildVanityURLUpdateResponse>> updateGuildVanityUrl({
     required String guildId,
     required GuildVanityURLUpdateRequest guildVanityURLUpdateRequest,
     CancelToken? cancelToken,
@@ -3924,7 +4222,10 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/vanity-url'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/vanity-url'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -3937,7 +4238,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -3954,11 +4256,11 @@ class GuildsApi {
 
     try {
       const _type = FullType(GuildVanityURLUpdateRequest);
-      _bodyData = _serializers.serialize(guildVanityURLUpdateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(guildVanityURLUpdateRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -3981,11 +4283,12 @@ class GuildsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GuildVanityURLUpdateResponse),
-      ) as GuildVanityURLUpdateResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GuildVanityURLUpdateResponse),
+            ) as GuildVanityURLUpdateResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -4013,7 +4316,7 @@ class GuildsApi {
   ///
   /// Parameters:
   /// * [guildId] - The ID of the guild
-  /// * [guildRoleHoistPositionItem] 
+  /// * [guildRoleHoistPositionItem]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -4023,7 +4326,7 @@ class GuildsApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> updateRoleHoistPositions({ 
+  Future<Response<void>> updateRoleHoistPositions({
     required String guildId,
     required BuiltList<GuildRoleHoistPositionItem> guildRoleHoistPositionItem,
     CancelToken? cancelToken,
@@ -4033,7 +4336,10 @@ class GuildsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/guilds/{guild_id}/roles/hoist-positions'.replaceAll('{' r'guild_id' '}', encodeQueryParameter(_serializers, guildId, const FullType(String)).toString());
+    final _path = r'/guilds/{guild_id}/roles/hoist-positions'.replaceAll(
+        '{' r'guild_id' '}',
+        encodeQueryParameter(_serializers, guildId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -4046,7 +4352,8 @@ class GuildsApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -4063,11 +4370,11 @@ class GuildsApi {
 
     try {
       const _type = FullType(BuiltList, [FullType(GuildRoleHoistPositionItem)]);
-      _bodyData = _serializers.serialize(guildRoleHoistPositionItem, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(guildRoleHoistPositionItem,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -4088,5 +4395,4 @@ class GuildsApi {
 
     return _response;
   }
-
 }

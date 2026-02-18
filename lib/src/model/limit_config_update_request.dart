@@ -12,26 +12,35 @@ part 'limit_config_update_request.g.dart';
 /// LimitConfigUpdateRequest
 ///
 /// Properties:
-/// * [limitConfig] 
+/// * [limitConfig]
 @BuiltValue()
-abstract class LimitConfigUpdateRequest implements Built<LimitConfigUpdateRequest, LimitConfigUpdateRequestBuilder> {
+abstract class LimitConfigUpdateRequest
+    implements
+        Built<LimitConfigUpdateRequest, LimitConfigUpdateRequestBuilder> {
   @BuiltValueField(wireName: r'limit_config')
   LimitConfigUpdateRequestLimitConfig get limitConfig;
 
   LimitConfigUpdateRequest._();
 
-  factory LimitConfigUpdateRequest([void updates(LimitConfigUpdateRequestBuilder b)]) = _$LimitConfigUpdateRequest;
+  factory LimitConfigUpdateRequest(
+          [void updates(LimitConfigUpdateRequestBuilder b)]) =
+      _$LimitConfigUpdateRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(LimitConfigUpdateRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<LimitConfigUpdateRequest> get serializer => _$LimitConfigUpdateRequestSerializer();
+  static Serializer<LimitConfigUpdateRequest> get serializer =>
+      _$LimitConfigUpdateRequestSerializer();
 }
 
-class _$LimitConfigUpdateRequestSerializer implements PrimitiveSerializer<LimitConfigUpdateRequest> {
+class _$LimitConfigUpdateRequestSerializer
+    implements PrimitiveSerializer<LimitConfigUpdateRequest> {
   @override
-  final Iterable<Type> types = const [LimitConfigUpdateRequest, _$LimitConfigUpdateRequest];
+  final Iterable<Type> types = const [
+    LimitConfigUpdateRequest,
+    _$LimitConfigUpdateRequest
+  ];
 
   @override
   final String wireName = r'LimitConfigUpdateRequest';
@@ -54,7 +63,9 @@ class _$LimitConfigUpdateRequestSerializer implements PrimitiveSerializer<LimitC
     LimitConfigUpdateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +115,3 @@ class _$LimitConfigUpdateRequestSerializer implements PrimitiveSerializer<LimitC
     return result.build();
   }
 }
-

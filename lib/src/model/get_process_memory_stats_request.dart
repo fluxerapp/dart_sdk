@@ -11,26 +11,36 @@ part 'get_process_memory_stats_request.g.dart';
 /// GetProcessMemoryStatsRequest
 ///
 /// Properties:
-/// * [limit] 
+/// * [limit]
 @BuiltValue()
-abstract class GetProcessMemoryStatsRequest implements Built<GetProcessMemoryStatsRequest, GetProcessMemoryStatsRequestBuilder> {
+abstract class GetProcessMemoryStatsRequest
+    implements
+        Built<GetProcessMemoryStatsRequest,
+            GetProcessMemoryStatsRequestBuilder> {
   @BuiltValueField(wireName: r'limit')
   int? get limit;
 
   GetProcessMemoryStatsRequest._();
 
-  factory GetProcessMemoryStatsRequest([void updates(GetProcessMemoryStatsRequestBuilder b)]) = _$GetProcessMemoryStatsRequest;
+  factory GetProcessMemoryStatsRequest(
+          [void updates(GetProcessMemoryStatsRequestBuilder b)]) =
+      _$GetProcessMemoryStatsRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GetProcessMemoryStatsRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GetProcessMemoryStatsRequest> get serializer => _$GetProcessMemoryStatsRequestSerializer();
+  static Serializer<GetProcessMemoryStatsRequest> get serializer =>
+      _$GetProcessMemoryStatsRequestSerializer();
 }
 
-class _$GetProcessMemoryStatsRequestSerializer implements PrimitiveSerializer<GetProcessMemoryStatsRequest> {
+class _$GetProcessMemoryStatsRequestSerializer
+    implements PrimitiveSerializer<GetProcessMemoryStatsRequest> {
   @override
-  final Iterable<Type> types = const [GetProcessMemoryStatsRequest, _$GetProcessMemoryStatsRequest];
+  final Iterable<Type> types = const [
+    GetProcessMemoryStatsRequest,
+    _$GetProcessMemoryStatsRequest
+  ];
 
   @override
   final String wireName = r'GetProcessMemoryStatsRequest';
@@ -55,7 +65,9 @@ class _$GetProcessMemoryStatsRequestSerializer implements PrimitiveSerializer<Ge
     GetProcessMemoryStatsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -105,4 +117,3 @@ class _$GetProcessMemoryStatsRequestSerializer implements PrimitiveSerializer<Ge
     return result.build();
   }
 }
-

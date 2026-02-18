@@ -10,17 +10,17 @@ import 'package:built_value/serializer.dart';
 part 'guild_mfa_level.g.dart';
 
 class GuildMFALevel extends EnumClass {
-
   /// Required MFA level for moderation actions
   @BuiltValueEnumConst(wireNumber: 0)
   static const GuildMFALevel number0 = _$number0;
+
   /// Required MFA level for moderation actions
   @BuiltValueEnumConst(wireNumber: 1)
   static const GuildMFALevel number1 = _$number1;
 
   static Serializer<GuildMFALevel> get serializer => _$guildMFALevelSerializer;
 
-  const GuildMFALevel._(String name): super(name);
+  const GuildMFALevel._(String name) : super(name);
 
   static BuiltSet<GuildMFALevel> get values => _$values;
   static GuildMFALevel valueOf(String name) => _$valueOf(name);
@@ -33,4 +33,3 @@ class GuildMFALevel extends EnumClass {
 ///
 /// Trigger mixin generation by writing a line like this one next to your enum.
 abstract class GuildMFALevelMixin = Object with _$GuildMFALevelMixin;
-

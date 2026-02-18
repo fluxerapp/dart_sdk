@@ -14,23 +14,27 @@ part 'call_ring_body_schema.g.dart';
 /// Properties:
 /// * [recipients] - User IDs to ring for the call
 @BuiltValue()
-abstract class CallRingBodySchema implements Built<CallRingBodySchema, CallRingBodySchemaBuilder> {
+abstract class CallRingBodySchema
+    implements Built<CallRingBodySchema, CallRingBodySchemaBuilder> {
   /// User IDs to ring for the call
   @BuiltValueField(wireName: r'recipients')
   BuiltList<String>? get recipients;
 
   CallRingBodySchema._();
 
-  factory CallRingBodySchema([void updates(CallRingBodySchemaBuilder b)]) = _$CallRingBodySchema;
+  factory CallRingBodySchema([void updates(CallRingBodySchemaBuilder b)]) =
+      _$CallRingBodySchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CallRingBodySchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CallRingBodySchema> get serializer => _$CallRingBodySchemaSerializer();
+  static Serializer<CallRingBodySchema> get serializer =>
+      _$CallRingBodySchemaSerializer();
 }
 
-class _$CallRingBodySchemaSerializer implements PrimitiveSerializer<CallRingBodySchema> {
+class _$CallRingBodySchemaSerializer
+    implements PrimitiveSerializer<CallRingBodySchema> {
   @override
   final Iterable<Type> types = const [CallRingBodySchema, _$CallRingBodySchema];
 
@@ -57,7 +61,9 @@ class _$CallRingBodySchemaSerializer implements PrimitiveSerializer<CallRingBody
     CallRingBodySchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -107,4 +113,3 @@ class _$CallRingBodySchemaSerializer implements PrimitiveSerializer<CallRingBody
     return result.build();
   }
 }
-

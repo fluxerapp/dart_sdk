@@ -12,14 +12,15 @@ part 'git_hub_webhook_issue.g.dart';
 /// GitHubWebhookIssue
 ///
 /// Properties:
-/// * [id] 
-/// * [number] 
-/// * [htmlUrl] 
-/// * [user] 
-/// * [title] 
-/// * [body] 
+/// * [id]
+/// * [number]
+/// * [htmlUrl]
+/// * [user]
+/// * [title]
+/// * [body]
 @BuiltValue()
-abstract class GitHubWebhookIssue implements Built<GitHubWebhookIssue, GitHubWebhookIssueBuilder> {
+abstract class GitHubWebhookIssue
+    implements Built<GitHubWebhookIssue, GitHubWebhookIssueBuilder> {
   @BuiltValueField(wireName: r'id')
   String get id;
 
@@ -40,16 +41,19 @@ abstract class GitHubWebhookIssue implements Built<GitHubWebhookIssue, GitHubWeb
 
   GitHubWebhookIssue._();
 
-  factory GitHubWebhookIssue([void updates(GitHubWebhookIssueBuilder b)]) = _$GitHubWebhookIssue;
+  factory GitHubWebhookIssue([void updates(GitHubWebhookIssueBuilder b)]) =
+      _$GitHubWebhookIssue;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GitHubWebhookIssueBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GitHubWebhookIssue> get serializer => _$GitHubWebhookIssueSerializer();
+  static Serializer<GitHubWebhookIssue> get serializer =>
+      _$GitHubWebhookIssueSerializer();
 }
 
-class _$GitHubWebhookIssueSerializer implements PrimitiveSerializer<GitHubWebhookIssue> {
+class _$GitHubWebhookIssueSerializer
+    implements PrimitiveSerializer<GitHubWebhookIssue> {
   @override
   final Iterable<Type> types = const [GitHubWebhookIssue, _$GitHubWebhookIssue];
 
@@ -101,7 +105,9 @@ class _$GitHubWebhookIssueSerializer implements PrimitiveSerializer<GitHubWebhoo
     GitHubWebhookIssue object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -187,4 +193,3 @@ class _$GitHubWebhookIssueSerializer implements PrimitiveSerializer<GitHubWebhoo
     return result.build();
   }
 }
-

@@ -30,24 +30,25 @@ part 'guild_response.g.dart';
 /// * [explicitContentFilter] - Level of content filtering for explicit media
 /// * [defaultMessageNotifications] - Default notification level for new members
 /// * [disabledOperations] - Bitmask of disabled guild operations
-/// * [icon] 
-/// * [banner] 
-/// * [bannerWidth] 
-/// * [bannerHeight] 
-/// * [splash] 
-/// * [splashWidth] 
-/// * [splashHeight] 
-/// * [embedSplash] 
-/// * [embedSplashWidth] 
-/// * [embedSplashHeight] 
-/// * [vanityUrlCode] 
-/// * [systemChannelId] 
-/// * [rulesChannelId] 
-/// * [afkChannelId] 
-/// * [messageHistoryCutoff] 
+/// * [icon]
+/// * [banner]
+/// * [bannerWidth]
+/// * [bannerHeight]
+/// * [splash]
+/// * [splashWidth]
+/// * [splashHeight]
+/// * [embedSplash]
+/// * [embedSplashWidth]
+/// * [embedSplashHeight]
+/// * [vanityUrlCode]
+/// * [systemChannelId]
+/// * [rulesChannelId]
+/// * [afkChannelId]
+/// * [messageHistoryCutoff]
 /// * [permissions] - The current user permissions in this guild
 @BuiltValue()
-abstract class GuildResponse implements Built<GuildResponse, GuildResponseBuilder> {
+abstract class GuildResponse
+    implements Built<GuildResponse, GuildResponseBuilder> {
   /// The unique identifier for this guild
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -157,13 +158,15 @@ abstract class GuildResponse implements Built<GuildResponse, GuildResponseBuilde
 
   GuildResponse._();
 
-  factory GuildResponse([void updates(GuildResponseBuilder b)]) = _$GuildResponse;
+  factory GuildResponse([void updates(GuildResponseBuilder b)]) =
+      _$GuildResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildResponse> get serializer => _$GuildResponseSerializer();
+  static Serializer<GuildResponse> get serializer =>
+      _$GuildResponseSerializer();
 }
 
 class _$GuildResponseSerializer implements PrimitiveSerializer<GuildResponse> {
@@ -363,7 +366,9 @@ class _$GuildResponseSerializer implements PrimitiveSerializer<GuildResponse> {
     GuildResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -618,22 +623,28 @@ class _$GuildResponseSerializer implements PrimitiveSerializer<GuildResponse> {
 }
 
 class GuildResponseSplashCardAlignmentEnum extends EnumClass {
-
   /// The alignment of the splash card
   @BuiltValueEnumConst(wireNumber: 0)
-  static const GuildResponseSplashCardAlignmentEnum number0 = _$guildResponseSplashCardAlignmentEnum_number0;
+  static const GuildResponseSplashCardAlignmentEnum number0 =
+      _$guildResponseSplashCardAlignmentEnum_number0;
+
   /// The alignment of the splash card
   @BuiltValueEnumConst(wireNumber: 1)
-  static const GuildResponseSplashCardAlignmentEnum number1 = _$guildResponseSplashCardAlignmentEnum_number1;
+  static const GuildResponseSplashCardAlignmentEnum number1 =
+      _$guildResponseSplashCardAlignmentEnum_number1;
+
   /// The alignment of the splash card
   @BuiltValueEnumConst(wireNumber: 2)
-  static const GuildResponseSplashCardAlignmentEnum number2 = _$guildResponseSplashCardAlignmentEnum_number2;
+  static const GuildResponseSplashCardAlignmentEnum number2 =
+      _$guildResponseSplashCardAlignmentEnum_number2;
 
-  static Serializer<GuildResponseSplashCardAlignmentEnum> get serializer => _$guildResponseSplashCardAlignmentEnumSerializer;
+  static Serializer<GuildResponseSplashCardAlignmentEnum> get serializer =>
+      _$guildResponseSplashCardAlignmentEnumSerializer;
 
-  const GuildResponseSplashCardAlignmentEnum._(String name): super(name);
+  const GuildResponseSplashCardAlignmentEnum._(String name) : super(name);
 
-  static BuiltSet<GuildResponseSplashCardAlignmentEnum> get values => _$guildResponseSplashCardAlignmentEnumValues;
-  static GuildResponseSplashCardAlignmentEnum valueOf(String name) => _$guildResponseSplashCardAlignmentEnumValueOf(name);
+  static BuiltSet<GuildResponseSplashCardAlignmentEnum> get values =>
+      _$guildResponseSplashCardAlignmentEnumValues;
+  static GuildResponseSplashCardAlignmentEnum valueOf(String name) =>
+      _$guildResponseSplashCardAlignmentEnumValueOf(name);
 }
-

@@ -10,23 +10,25 @@ import 'package:built_value/serializer.dart';
 part 'user_theme_type.g.dart';
 
 class UserThemeType extends EnumClass {
-
   /// UI theme preference
   @BuiltValueEnumConst(wireName: r'dark')
   static const UserThemeType dark = _$dark;
+
   /// UI theme preference
   @BuiltValueEnumConst(wireName: r'coal')
   static const UserThemeType coal = _$coal;
+
   /// UI theme preference
   @BuiltValueEnumConst(wireName: r'light')
   static const UserThemeType light = _$light;
+
   /// UI theme preference
   @BuiltValueEnumConst(wireName: r'system')
   static const UserThemeType system = _$system;
 
   static Serializer<UserThemeType> get serializer => _$userThemeTypeSerializer;
 
-  const UserThemeType._(String name): super(name);
+  const UserThemeType._(String name) : super(name);
 
   static BuiltSet<UserThemeType> get values => _$values;
   static UserThemeType valueOf(String name) => _$valueOf(name);
@@ -39,4 +41,3 @@ class UserThemeType extends EnumClass {
 ///
 /// Trigger mixin generation by writing a line like this one next to your enum.
 abstract class UserThemeTypeMixin = Object with _$UserThemeTypeMixin;
-

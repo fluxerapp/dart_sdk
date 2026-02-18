@@ -12,10 +12,11 @@ part 'embed_footer_response.g.dart';
 ///
 /// Properties:
 /// * [text] - The footer text
-/// * [iconUrl] 
-/// * [proxyIconUrl] 
+/// * [iconUrl]
+/// * [proxyIconUrl]
 @BuiltValue()
-abstract class EmbedFooterResponse implements Built<EmbedFooterResponse, EmbedFooterResponseBuilder> {
+abstract class EmbedFooterResponse
+    implements Built<EmbedFooterResponse, EmbedFooterResponseBuilder> {
   /// The footer text
   @BuiltValueField(wireName: r'text')
   String get text;
@@ -28,18 +29,24 @@ abstract class EmbedFooterResponse implements Built<EmbedFooterResponse, EmbedFo
 
   EmbedFooterResponse._();
 
-  factory EmbedFooterResponse([void updates(EmbedFooterResponseBuilder b)]) = _$EmbedFooterResponse;
+  factory EmbedFooterResponse([void updates(EmbedFooterResponseBuilder b)]) =
+      _$EmbedFooterResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(EmbedFooterResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<EmbedFooterResponse> get serializer => _$EmbedFooterResponseSerializer();
+  static Serializer<EmbedFooterResponse> get serializer =>
+      _$EmbedFooterResponseSerializer();
 }
 
-class _$EmbedFooterResponseSerializer implements PrimitiveSerializer<EmbedFooterResponse> {
+class _$EmbedFooterResponseSerializer
+    implements PrimitiveSerializer<EmbedFooterResponse> {
   @override
-  final Iterable<Type> types = const [EmbedFooterResponse, _$EmbedFooterResponse];
+  final Iterable<Type> types = const [
+    EmbedFooterResponse,
+    _$EmbedFooterResponse
+  ];
 
   @override
   final String wireName = r'EmbedFooterResponse';
@@ -76,7 +83,9 @@ class _$EmbedFooterResponseSerializer implements PrimitiveSerializer<EmbedFooter
     EmbedFooterResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -142,4 +151,3 @@ class _$EmbedFooterResponseSerializer implements PrimitiveSerializer<EmbedFooter
     return result.build();
   }
 }
-

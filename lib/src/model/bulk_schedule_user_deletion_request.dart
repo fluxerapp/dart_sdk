@@ -17,7 +17,10 @@ part 'bulk_schedule_user_deletion_request.g.dart';
 /// * [publicReason] - Public-facing reason for the deletion
 /// * [daysUntilDeletion] - Number of days until the accounts are deleted
 @BuiltValue()
-abstract class BulkScheduleUserDeletionRequest implements Built<BulkScheduleUserDeletionRequest, BulkScheduleUserDeletionRequestBuilder> {
+abstract class BulkScheduleUserDeletionRequest
+    implements
+        Built<BulkScheduleUserDeletionRequest,
+            BulkScheduleUserDeletionRequestBuilder> {
   /// List of user IDs to schedule deletion for
   @BuiltValueField(wireName: r'user_ids')
   BuiltList<String> get userIds;
@@ -36,18 +39,25 @@ abstract class BulkScheduleUserDeletionRequest implements Built<BulkScheduleUser
 
   BulkScheduleUserDeletionRequest._();
 
-  factory BulkScheduleUserDeletionRequest([void updates(BulkScheduleUserDeletionRequestBuilder b)]) = _$BulkScheduleUserDeletionRequest;
+  factory BulkScheduleUserDeletionRequest(
+          [void updates(BulkScheduleUserDeletionRequestBuilder b)]) =
+      _$BulkScheduleUserDeletionRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(BulkScheduleUserDeletionRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<BulkScheduleUserDeletionRequest> get serializer => _$BulkScheduleUserDeletionRequestSerializer();
+  static Serializer<BulkScheduleUserDeletionRequest> get serializer =>
+      _$BulkScheduleUserDeletionRequestSerializer();
 }
 
-class _$BulkScheduleUserDeletionRequestSerializer implements PrimitiveSerializer<BulkScheduleUserDeletionRequest> {
+class _$BulkScheduleUserDeletionRequestSerializer
+    implements PrimitiveSerializer<BulkScheduleUserDeletionRequest> {
   @override
-  final Iterable<Type> types = const [BulkScheduleUserDeletionRequest, _$BulkScheduleUserDeletionRequest];
+  final Iterable<Type> types = const [
+    BulkScheduleUserDeletionRequest,
+    _$BulkScheduleUserDeletionRequest
+  ];
 
   @override
   final String wireName = r'BulkScheduleUserDeletionRequest';
@@ -89,7 +99,9 @@ class _$BulkScheduleUserDeletionRequestSerializer implements PrimitiveSerializer
     BulkScheduleUserDeletionRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -160,4 +172,3 @@ class _$BulkScheduleUserDeletionRequestSerializer implements PrimitiveSerializer
     return result.build();
   }
 }
-

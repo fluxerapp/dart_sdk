@@ -13,25 +13,35 @@ part 'guild_vanity_url_update_response.g.dart';
 /// Properties:
 /// * [code] - The new vanity URL code
 @BuiltValue()
-abstract class GuildVanityURLUpdateResponse implements Built<GuildVanityURLUpdateResponse, GuildVanityURLUpdateResponseBuilder> {
+abstract class GuildVanityURLUpdateResponse
+    implements
+        Built<GuildVanityURLUpdateResponse,
+            GuildVanityURLUpdateResponseBuilder> {
   /// The new vanity URL code
   @BuiltValueField(wireName: r'code')
   String get code;
 
   GuildVanityURLUpdateResponse._();
 
-  factory GuildVanityURLUpdateResponse([void updates(GuildVanityURLUpdateResponseBuilder b)]) = _$GuildVanityURLUpdateResponse;
+  factory GuildVanityURLUpdateResponse(
+          [void updates(GuildVanityURLUpdateResponseBuilder b)]) =
+      _$GuildVanityURLUpdateResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildVanityURLUpdateResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildVanityURLUpdateResponse> get serializer => _$GuildVanityURLUpdateResponseSerializer();
+  static Serializer<GuildVanityURLUpdateResponse> get serializer =>
+      _$GuildVanityURLUpdateResponseSerializer();
 }
 
-class _$GuildVanityURLUpdateResponseSerializer implements PrimitiveSerializer<GuildVanityURLUpdateResponse> {
+class _$GuildVanityURLUpdateResponseSerializer
+    implements PrimitiveSerializer<GuildVanityURLUpdateResponse> {
   @override
-  final Iterable<Type> types = const [GuildVanityURLUpdateResponse, _$GuildVanityURLUpdateResponse];
+  final Iterable<Type> types = const [
+    GuildVanityURLUpdateResponse,
+    _$GuildVanityURLUpdateResponse
+  ];
 
   @override
   final String wireName = r'GuildVanityURLUpdateResponse';
@@ -54,7 +64,9 @@ class _$GuildVanityURLUpdateResponseSerializer implements PrimitiveSerializer<Gu
     GuildVanityURLUpdateResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +116,3 @@ class _$GuildVanityURLUpdateResponseSerializer implements PrimitiveSerializer<Gu
     return result.build();
   }
 }
-

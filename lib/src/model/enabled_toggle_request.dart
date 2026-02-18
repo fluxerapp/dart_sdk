@@ -13,25 +13,32 @@ part 'enabled_toggle_request.g.dart';
 /// Properties:
 /// * [enabled] - Whether to enable or disable the feature
 @BuiltValue()
-abstract class EnabledToggleRequest implements Built<EnabledToggleRequest, EnabledToggleRequestBuilder> {
+abstract class EnabledToggleRequest
+    implements Built<EnabledToggleRequest, EnabledToggleRequestBuilder> {
   /// Whether to enable or disable the feature
   @BuiltValueField(wireName: r'enabled')
   bool get enabled;
 
   EnabledToggleRequest._();
 
-  factory EnabledToggleRequest([void updates(EnabledToggleRequestBuilder b)]) = _$EnabledToggleRequest;
+  factory EnabledToggleRequest([void updates(EnabledToggleRequestBuilder b)]) =
+      _$EnabledToggleRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(EnabledToggleRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<EnabledToggleRequest> get serializer => _$EnabledToggleRequestSerializer();
+  static Serializer<EnabledToggleRequest> get serializer =>
+      _$EnabledToggleRequestSerializer();
 }
 
-class _$EnabledToggleRequestSerializer implements PrimitiveSerializer<EnabledToggleRequest> {
+class _$EnabledToggleRequestSerializer
+    implements PrimitiveSerializer<EnabledToggleRequest> {
   @override
-  final Iterable<Type> types = const [EnabledToggleRequest, _$EnabledToggleRequest];
+  final Iterable<Type> types = const [
+    EnabledToggleRequest,
+    _$EnabledToggleRequest
+  ];
 
   @override
   final String wireName = r'EnabledToggleRequest';
@@ -54,7 +61,9 @@ class _$EnabledToggleRequestSerializer implements PrimitiveSerializer<EnabledTog
     EnabledToggleRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +113,3 @@ class _$EnabledToggleRequestSerializer implements PrimitiveSerializer<EnabledTog
     return result.build();
   }
 }
-

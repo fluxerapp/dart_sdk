@@ -13,13 +13,16 @@ part 'user_settings_response_guild_folders_inner.g.dart';
 ///
 /// Properties:
 /// * [guildIds] - The IDs of guilds contained in this folder
-/// * [id] 
-/// * [name] 
-/// * [color] 
+/// * [id]
+/// * [name]
+/// * [color]
 /// * [flags] - Bitfield for guild folder display behaviour
 /// * [icon] - Selected icon for the guild folder
 @BuiltValue()
-abstract class UserSettingsResponseGuildFoldersInner implements Built<UserSettingsResponseGuildFoldersInner, UserSettingsResponseGuildFoldersInnerBuilder> {
+abstract class UserSettingsResponseGuildFoldersInner
+    implements
+        Built<UserSettingsResponseGuildFoldersInner,
+            UserSettingsResponseGuildFoldersInnerBuilder> {
   /// The IDs of guilds contained in this folder
   @BuiltValueField(wireName: r'guild_ids')
   BuiltList<String> get guildIds;
@@ -44,18 +47,25 @@ abstract class UserSettingsResponseGuildFoldersInner implements Built<UserSettin
 
   UserSettingsResponseGuildFoldersInner._();
 
-  factory UserSettingsResponseGuildFoldersInner([void updates(UserSettingsResponseGuildFoldersInnerBuilder b)]) = _$UserSettingsResponseGuildFoldersInner;
+  factory UserSettingsResponseGuildFoldersInner(
+          [void updates(UserSettingsResponseGuildFoldersInnerBuilder b)]) =
+      _$UserSettingsResponseGuildFoldersInner;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UserSettingsResponseGuildFoldersInnerBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UserSettingsResponseGuildFoldersInner> get serializer => _$UserSettingsResponseGuildFoldersInnerSerializer();
+  static Serializer<UserSettingsResponseGuildFoldersInner> get serializer =>
+      _$UserSettingsResponseGuildFoldersInnerSerializer();
 }
 
-class _$UserSettingsResponseGuildFoldersInnerSerializer implements PrimitiveSerializer<UserSettingsResponseGuildFoldersInner> {
+class _$UserSettingsResponseGuildFoldersInnerSerializer
+    implements PrimitiveSerializer<UserSettingsResponseGuildFoldersInner> {
   @override
-  final Iterable<Type> types = const [UserSettingsResponseGuildFoldersInner, _$UserSettingsResponseGuildFoldersInner];
+  final Iterable<Type> types = const [
+    UserSettingsResponseGuildFoldersInner,
+    _$UserSettingsResponseGuildFoldersInner
+  ];
 
   @override
   final String wireName = r'UserSettingsResponseGuildFoldersInner';
@@ -102,7 +112,8 @@ class _$UserSettingsResponseGuildFoldersInnerSerializer implements PrimitiveSeri
       yield r'icon';
       yield serializers.serialize(
         object.icon,
-        specifiedType: const FullType(UserSettingsResponseGuildFoldersInnerIconEnum),
+        specifiedType:
+            const FullType(UserSettingsResponseGuildFoldersInnerIconEnum),
       );
     }
   }
@@ -113,7 +124,9 @@ class _$UserSettingsResponseGuildFoldersInnerSerializer implements PrimitiveSeri
     UserSettingsResponseGuildFoldersInner object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -168,7 +181,8 @@ class _$UserSettingsResponseGuildFoldersInnerSerializer implements PrimitiveSeri
         case r'icon':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(UserSettingsResponseGuildFoldersInnerIconEnum),
+            specifiedType:
+                const FullType(UserSettingsResponseGuildFoldersInnerIconEnum),
           ) as UserSettingsResponseGuildFoldersInnerIconEnum;
           result.icon = valueDes;
           break;
@@ -202,34 +216,50 @@ class _$UserSettingsResponseGuildFoldersInnerSerializer implements PrimitiveSeri
 }
 
 class UserSettingsResponseGuildFoldersInnerIconEnum extends EnumClass {
-
   /// Selected icon for the guild folder
   @BuiltValueEnumConst(wireName: r'folder')
-  static const UserSettingsResponseGuildFoldersInnerIconEnum folder = _$userSettingsResponseGuildFoldersInnerIconEnum_folder;
+  static const UserSettingsResponseGuildFoldersInnerIconEnum folder =
+      _$userSettingsResponseGuildFoldersInnerIconEnum_folder;
+
   /// Selected icon for the guild folder
   @BuiltValueEnumConst(wireName: r'star')
-  static const UserSettingsResponseGuildFoldersInnerIconEnum star = _$userSettingsResponseGuildFoldersInnerIconEnum_star;
+  static const UserSettingsResponseGuildFoldersInnerIconEnum star =
+      _$userSettingsResponseGuildFoldersInnerIconEnum_star;
+
   /// Selected icon for the guild folder
   @BuiltValueEnumConst(wireName: r'heart')
-  static const UserSettingsResponseGuildFoldersInnerIconEnum heart = _$userSettingsResponseGuildFoldersInnerIconEnum_heart;
+  static const UserSettingsResponseGuildFoldersInnerIconEnum heart =
+      _$userSettingsResponseGuildFoldersInnerIconEnum_heart;
+
   /// Selected icon for the guild folder
   @BuiltValueEnumConst(wireName: r'bookmark')
-  static const UserSettingsResponseGuildFoldersInnerIconEnum bookmark = _$userSettingsResponseGuildFoldersInnerIconEnum_bookmark;
+  static const UserSettingsResponseGuildFoldersInnerIconEnum bookmark =
+      _$userSettingsResponseGuildFoldersInnerIconEnum_bookmark;
+
   /// Selected icon for the guild folder
   @BuiltValueEnumConst(wireName: r'game_controller')
-  static const UserSettingsResponseGuildFoldersInnerIconEnum gameController = _$userSettingsResponseGuildFoldersInnerIconEnum_gameController;
+  static const UserSettingsResponseGuildFoldersInnerIconEnum gameController =
+      _$userSettingsResponseGuildFoldersInnerIconEnum_gameController;
+
   /// Selected icon for the guild folder
   @BuiltValueEnumConst(wireName: r'shield')
-  static const UserSettingsResponseGuildFoldersInnerIconEnum shield = _$userSettingsResponseGuildFoldersInnerIconEnum_shield;
+  static const UserSettingsResponseGuildFoldersInnerIconEnum shield =
+      _$userSettingsResponseGuildFoldersInnerIconEnum_shield;
+
   /// Selected icon for the guild folder
   @BuiltValueEnumConst(wireName: r'music_note')
-  static const UserSettingsResponseGuildFoldersInnerIconEnum musicNote = _$userSettingsResponseGuildFoldersInnerIconEnum_musicNote;
+  static const UserSettingsResponseGuildFoldersInnerIconEnum musicNote =
+      _$userSettingsResponseGuildFoldersInnerIconEnum_musicNote;
 
-  static Serializer<UserSettingsResponseGuildFoldersInnerIconEnum> get serializer => _$userSettingsResponseGuildFoldersInnerIconEnumSerializer;
+  static Serializer<UserSettingsResponseGuildFoldersInnerIconEnum>
+      get serializer =>
+          _$userSettingsResponseGuildFoldersInnerIconEnumSerializer;
 
-  const UserSettingsResponseGuildFoldersInnerIconEnum._(String name): super(name);
+  const UserSettingsResponseGuildFoldersInnerIconEnum._(String name)
+      : super(name);
 
-  static BuiltSet<UserSettingsResponseGuildFoldersInnerIconEnum> get values => _$userSettingsResponseGuildFoldersInnerIconEnumValues;
-  static UserSettingsResponseGuildFoldersInnerIconEnum valueOf(String name) => _$userSettingsResponseGuildFoldersInnerIconEnumValueOf(name);
+  static BuiltSet<UserSettingsResponseGuildFoldersInnerIconEnum> get values =>
+      _$userSettingsResponseGuildFoldersInnerIconEnumValues;
+  static UserSettingsResponseGuildFoldersInnerIconEnum valueOf(String name) =>
+      _$userSettingsResponseGuildFoldersInnerIconEnumValueOf(name);
 }
-

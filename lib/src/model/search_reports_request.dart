@@ -17,19 +17,20 @@ part 'search_reports_request.g.dart';
 /// * [query] - Search query string
 /// * [limit] - Maximum number of entries to return
 /// * [offset] - Number of entries to skip
-/// * [reporterId] 
-/// * [status] 
-/// * [reportType] 
+/// * [reporterId]
+/// * [status]
+/// * [reportType]
 /// * [category] - Filter by report category
-/// * [reportedUserId] 
-/// * [reportedGuildId] 
-/// * [reportedChannelId] 
-/// * [guildContextId] 
-/// * [resolvedByAdminId] 
+/// * [reportedUserId]
+/// * [reportedGuildId]
+/// * [reportedChannelId]
+/// * [guildContextId]
+/// * [resolvedByAdminId]
 /// * [sortBy] - Field to sort reports by
 /// * [sortOrder] - Sort order direction
 @BuiltValue()
-abstract class SearchReportsRequest implements Built<SearchReportsRequest, SearchReportsRequestBuilder> {
+abstract class SearchReportsRequest
+    implements Built<SearchReportsRequest, SearchReportsRequestBuilder> {
   /// Search query string
   @BuiltValueField(wireName: r'query')
   String? get query;
@@ -84,18 +85,24 @@ abstract class SearchReportsRequest implements Built<SearchReportsRequest, Searc
 
   SearchReportsRequest._();
 
-  factory SearchReportsRequest([void updates(SearchReportsRequestBuilder b)]) = _$SearchReportsRequest;
+  factory SearchReportsRequest([void updates(SearchReportsRequestBuilder b)]) =
+      _$SearchReportsRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SearchReportsRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SearchReportsRequest> get serializer => _$SearchReportsRequestSerializer();
+  static Serializer<SearchReportsRequest> get serializer =>
+      _$SearchReportsRequestSerializer();
 }
 
-class _$SearchReportsRequestSerializer implements PrimitiveSerializer<SearchReportsRequest> {
+class _$SearchReportsRequestSerializer
+    implements PrimitiveSerializer<SearchReportsRequest> {
   @override
-  final Iterable<Type> types = const [SearchReportsRequest, _$SearchReportsRequest];
+  final Iterable<Type> types = const [
+    SearchReportsRequest,
+    _$SearchReportsRequest
+  ];
 
   @override
   final String wireName = r'SearchReportsRequest';
@@ -211,7 +218,9 @@ class _$SearchReportsRequestSerializer implements PrimitiveSerializer<SearchRepo
     SearchReportsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -354,39 +363,50 @@ class _$SearchReportsRequestSerializer implements PrimitiveSerializer<SearchRepo
 }
 
 class SearchReportsRequestSortByEnum extends EnumClass {
-
   /// Field to sort reports by
   @BuiltValueEnumConst(wireName: r'createdAt')
-  static const SearchReportsRequestSortByEnum createdAt = _$searchReportsRequestSortByEnum_createdAt;
+  static const SearchReportsRequestSortByEnum createdAt =
+      _$searchReportsRequestSortByEnum_createdAt;
+
   /// Field to sort reports by
   @BuiltValueEnumConst(wireName: r'reportedAt')
-  static const SearchReportsRequestSortByEnum reportedAt = _$searchReportsRequestSortByEnum_reportedAt;
+  static const SearchReportsRequestSortByEnum reportedAt =
+      _$searchReportsRequestSortByEnum_reportedAt;
+
   /// Field to sort reports by
   @BuiltValueEnumConst(wireName: r'resolvedAt')
-  static const SearchReportsRequestSortByEnum resolvedAt = _$searchReportsRequestSortByEnum_resolvedAt;
+  static const SearchReportsRequestSortByEnum resolvedAt =
+      _$searchReportsRequestSortByEnum_resolvedAt;
 
-  static Serializer<SearchReportsRequestSortByEnum> get serializer => _$searchReportsRequestSortByEnumSerializer;
+  static Serializer<SearchReportsRequestSortByEnum> get serializer =>
+      _$searchReportsRequestSortByEnumSerializer;
 
-  const SearchReportsRequestSortByEnum._(String name): super(name);
+  const SearchReportsRequestSortByEnum._(String name) : super(name);
 
-  static BuiltSet<SearchReportsRequestSortByEnum> get values => _$searchReportsRequestSortByEnumValues;
-  static SearchReportsRequestSortByEnum valueOf(String name) => _$searchReportsRequestSortByEnumValueOf(name);
+  static BuiltSet<SearchReportsRequestSortByEnum> get values =>
+      _$searchReportsRequestSortByEnumValues;
+  static SearchReportsRequestSortByEnum valueOf(String name) =>
+      _$searchReportsRequestSortByEnumValueOf(name);
 }
 
 class SearchReportsRequestSortOrderEnum extends EnumClass {
-
   /// Sort order direction
   @BuiltValueEnumConst(wireName: r'asc')
-  static const SearchReportsRequestSortOrderEnum asc = _$searchReportsRequestSortOrderEnum_asc;
+  static const SearchReportsRequestSortOrderEnum asc =
+      _$searchReportsRequestSortOrderEnum_asc;
+
   /// Sort order direction
   @BuiltValueEnumConst(wireName: r'desc')
-  static const SearchReportsRequestSortOrderEnum desc = _$searchReportsRequestSortOrderEnum_desc;
+  static const SearchReportsRequestSortOrderEnum desc =
+      _$searchReportsRequestSortOrderEnum_desc;
 
-  static Serializer<SearchReportsRequestSortOrderEnum> get serializer => _$searchReportsRequestSortOrderEnumSerializer;
+  static Serializer<SearchReportsRequestSortOrderEnum> get serializer =>
+      _$searchReportsRequestSortOrderEnumSerializer;
 
-  const SearchReportsRequestSortOrderEnum._(String name): super(name);
+  const SearchReportsRequestSortOrderEnum._(String name) : super(name);
 
-  static BuiltSet<SearchReportsRequestSortOrderEnum> get values => _$searchReportsRequestSortOrderEnumValues;
-  static SearchReportsRequestSortOrderEnum valueOf(String name) => _$searchReportsRequestSortOrderEnumValueOf(name);
+  static BuiltSet<SearchReportsRequestSortOrderEnum> get values =>
+      _$searchReportsRequestSortOrderEnumValues;
+  static SearchReportsRequestSortOrderEnum valueOf(String name) =>
+      _$searchReportsRequestSortOrderEnumValueOf(name);
 }
-

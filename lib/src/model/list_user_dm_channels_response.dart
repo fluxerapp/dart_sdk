@@ -13,26 +13,35 @@ part 'list_user_dm_channels_response.g.dart';
 /// ListUserDmChannelsResponse
 ///
 /// Properties:
-/// * [channels] 
+/// * [channels]
 @BuiltValue()
-abstract class ListUserDmChannelsResponse implements Built<ListUserDmChannelsResponse, ListUserDmChannelsResponseBuilder> {
+abstract class ListUserDmChannelsResponse
+    implements
+        Built<ListUserDmChannelsResponse, ListUserDmChannelsResponseBuilder> {
   @BuiltValueField(wireName: r'channels')
   BuiltList<AdminUserDmChannelSchema> get channels;
 
   ListUserDmChannelsResponse._();
 
-  factory ListUserDmChannelsResponse([void updates(ListUserDmChannelsResponseBuilder b)]) = _$ListUserDmChannelsResponse;
+  factory ListUserDmChannelsResponse(
+          [void updates(ListUserDmChannelsResponseBuilder b)]) =
+      _$ListUserDmChannelsResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ListUserDmChannelsResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListUserDmChannelsResponse> get serializer => _$ListUserDmChannelsResponseSerializer();
+  static Serializer<ListUserDmChannelsResponse> get serializer =>
+      _$ListUserDmChannelsResponseSerializer();
 }
 
-class _$ListUserDmChannelsResponseSerializer implements PrimitiveSerializer<ListUserDmChannelsResponse> {
+class _$ListUserDmChannelsResponseSerializer
+    implements PrimitiveSerializer<ListUserDmChannelsResponse> {
   @override
-  final Iterable<Type> types = const [ListUserDmChannelsResponse, _$ListUserDmChannelsResponse];
+  final Iterable<Type> types = const [
+    ListUserDmChannelsResponse,
+    _$ListUserDmChannelsResponse
+  ];
 
   @override
   final String wireName = r'ListUserDmChannelsResponse';
@@ -45,7 +54,8 @@ class _$ListUserDmChannelsResponseSerializer implements PrimitiveSerializer<List
     yield r'channels';
     yield serializers.serialize(
       object.channels,
-      specifiedType: const FullType(BuiltList, [FullType(AdminUserDmChannelSchema)]),
+      specifiedType:
+          const FullType(BuiltList, [FullType(AdminUserDmChannelSchema)]),
     );
   }
 
@@ -55,7 +65,9 @@ class _$ListUserDmChannelsResponseSerializer implements PrimitiveSerializer<List
     ListUserDmChannelsResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -73,7 +85,8 @@ class _$ListUserDmChannelsResponseSerializer implements PrimitiveSerializer<List
         case r'channels':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(AdminUserDmChannelSchema)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(AdminUserDmChannelSchema)]),
           ) as BuiltList<AdminUserDmChannelSchema>;
           result.channels.replace(valueDes);
           break;
@@ -105,4 +118,3 @@ class _$ListUserDmChannelsResponseSerializer implements PrimitiveSerializer<List
     return result.build();
   }
 }
-

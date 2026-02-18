@@ -13,25 +13,35 @@ part 'channel_partial_recipient_response.g.dart';
 /// Properties:
 /// * [username] - The username of the recipient
 @BuiltValue()
-abstract class ChannelPartialRecipientResponse implements Built<ChannelPartialRecipientResponse, ChannelPartialRecipientResponseBuilder> {
+abstract class ChannelPartialRecipientResponse
+    implements
+        Built<ChannelPartialRecipientResponse,
+            ChannelPartialRecipientResponseBuilder> {
   /// The username of the recipient
   @BuiltValueField(wireName: r'username')
   String get username;
 
   ChannelPartialRecipientResponse._();
 
-  factory ChannelPartialRecipientResponse([void updates(ChannelPartialRecipientResponseBuilder b)]) = _$ChannelPartialRecipientResponse;
+  factory ChannelPartialRecipientResponse(
+          [void updates(ChannelPartialRecipientResponseBuilder b)]) =
+      _$ChannelPartialRecipientResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ChannelPartialRecipientResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ChannelPartialRecipientResponse> get serializer => _$ChannelPartialRecipientResponseSerializer();
+  static Serializer<ChannelPartialRecipientResponse> get serializer =>
+      _$ChannelPartialRecipientResponseSerializer();
 }
 
-class _$ChannelPartialRecipientResponseSerializer implements PrimitiveSerializer<ChannelPartialRecipientResponse> {
+class _$ChannelPartialRecipientResponseSerializer
+    implements PrimitiveSerializer<ChannelPartialRecipientResponse> {
   @override
-  final Iterable<Type> types = const [ChannelPartialRecipientResponse, _$ChannelPartialRecipientResponse];
+  final Iterable<Type> types = const [
+    ChannelPartialRecipientResponse,
+    _$ChannelPartialRecipientResponse
+  ];
 
   @override
   final String wireName = r'ChannelPartialRecipientResponse';
@@ -54,7 +64,9 @@ class _$ChannelPartialRecipientResponseSerializer implements PrimitiveSerializer
     ChannelPartialRecipientResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +116,3 @@ class _$ChannelPartialRecipientResponseSerializer implements PrimitiveSerializer
     return result.build();
   }
 }
-

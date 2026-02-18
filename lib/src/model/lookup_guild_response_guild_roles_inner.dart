@@ -11,15 +11,18 @@ part 'lookup_guild_response_guild_roles_inner.g.dart';
 /// LookupGuildResponseGuildRolesInner
 ///
 /// Properties:
-/// * [id] 
-/// * [name] 
-/// * [color] 
-/// * [position] 
+/// * [id]
+/// * [name]
+/// * [color]
+/// * [position]
 /// * [permissions] - The role permissions bitfield
-/// * [hoist] 
-/// * [mentionable] 
+/// * [hoist]
+/// * [mentionable]
 @BuiltValue()
-abstract class LookupGuildResponseGuildRolesInner implements Built<LookupGuildResponseGuildRolesInner, LookupGuildResponseGuildRolesInnerBuilder> {
+abstract class LookupGuildResponseGuildRolesInner
+    implements
+        Built<LookupGuildResponseGuildRolesInner,
+            LookupGuildResponseGuildRolesInnerBuilder> {
   @BuiltValueField(wireName: r'id')
   String get id;
 
@@ -44,18 +47,25 @@ abstract class LookupGuildResponseGuildRolesInner implements Built<LookupGuildRe
 
   LookupGuildResponseGuildRolesInner._();
 
-  factory LookupGuildResponseGuildRolesInner([void updates(LookupGuildResponseGuildRolesInnerBuilder b)]) = _$LookupGuildResponseGuildRolesInner;
+  factory LookupGuildResponseGuildRolesInner(
+          [void updates(LookupGuildResponseGuildRolesInnerBuilder b)]) =
+      _$LookupGuildResponseGuildRolesInner;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(LookupGuildResponseGuildRolesInnerBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<LookupGuildResponseGuildRolesInner> get serializer => _$LookupGuildResponseGuildRolesInnerSerializer();
+  static Serializer<LookupGuildResponseGuildRolesInner> get serializer =>
+      _$LookupGuildResponseGuildRolesInnerSerializer();
 }
 
-class _$LookupGuildResponseGuildRolesInnerSerializer implements PrimitiveSerializer<LookupGuildResponseGuildRolesInner> {
+class _$LookupGuildResponseGuildRolesInnerSerializer
+    implements PrimitiveSerializer<LookupGuildResponseGuildRolesInner> {
   @override
-  final Iterable<Type> types = const [LookupGuildResponseGuildRolesInner, _$LookupGuildResponseGuildRolesInner];
+  final Iterable<Type> types = const [
+    LookupGuildResponseGuildRolesInner,
+    _$LookupGuildResponseGuildRolesInner
+  ];
 
   @override
   final String wireName = r'LookupGuildResponseGuildRolesInner';
@@ -108,7 +118,9 @@ class _$LookupGuildResponseGuildRolesInnerSerializer implements PrimitiveSeriali
     LookupGuildResponseGuildRolesInner object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -200,4 +212,3 @@ class _$LookupGuildResponseGuildRolesInnerSerializer implements PrimitiveSeriali
     return result.build();
   }
 }
-

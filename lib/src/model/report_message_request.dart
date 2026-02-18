@@ -12,12 +12,13 @@ part 'report_message_request.g.dart';
 /// ReportMessageRequest
 ///
 /// Properties:
-/// * [channelId] 
-/// * [messageId] 
-/// * [category] 
+/// * [channelId]
+/// * [messageId]
+/// * [category]
 /// * [additionalInfo] - Additional context or details about the report
 @BuiltValue()
-abstract class ReportMessageRequest implements Built<ReportMessageRequest, ReportMessageRequestBuilder> {
+abstract class ReportMessageRequest
+    implements Built<ReportMessageRequest, ReportMessageRequestBuilder> {
   @BuiltValueField(wireName: r'channel_id')
   String get channelId;
 
@@ -34,18 +35,24 @@ abstract class ReportMessageRequest implements Built<ReportMessageRequest, Repor
 
   ReportMessageRequest._();
 
-  factory ReportMessageRequest([void updates(ReportMessageRequestBuilder b)]) = _$ReportMessageRequest;
+  factory ReportMessageRequest([void updates(ReportMessageRequestBuilder b)]) =
+      _$ReportMessageRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ReportMessageRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ReportMessageRequest> get serializer => _$ReportMessageRequestSerializer();
+  static Serializer<ReportMessageRequest> get serializer =>
+      _$ReportMessageRequestSerializer();
 }
 
-class _$ReportMessageRequestSerializer implements PrimitiveSerializer<ReportMessageRequest> {
+class _$ReportMessageRequestSerializer
+    implements PrimitiveSerializer<ReportMessageRequest> {
   @override
-  final Iterable<Type> types = const [ReportMessageRequest, _$ReportMessageRequest];
+  final Iterable<Type> types = const [
+    ReportMessageRequest,
+    _$ReportMessageRequest
+  ];
 
   @override
   final String wireName = r'ReportMessageRequest';
@@ -85,7 +92,9 @@ class _$ReportMessageRequestSerializer implements PrimitiveSerializer<ReportMess
     ReportMessageRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -156,4 +165,3 @@ class _$ReportMessageRequestSerializer implements PrimitiveSerializer<ReportMess
     return result.build();
   }
 }
-

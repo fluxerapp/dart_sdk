@@ -15,22 +15,24 @@ part 'message_attachment_response.g.dart';
 /// * [filename] - The name of the attached file
 /// * [size] - The size of the attachment in bytes
 /// * [flags] - Attachment flags
-/// * [title] 
-/// * [description] 
-/// * [contentType] 
-/// * [contentHash] 
-/// * [url] 
-/// * [proxyUrl] 
-/// * [width] 
-/// * [height] 
-/// * [placeholder] 
-/// * [nsfw] 
-/// * [duration] 
-/// * [waveform] 
-/// * [expiresAt] 
-/// * [expired] 
+/// * [title]
+/// * [description]
+/// * [contentType]
+/// * [contentHash]
+/// * [url]
+/// * [proxyUrl]
+/// * [width]
+/// * [height]
+/// * [placeholder]
+/// * [nsfw]
+/// * [duration]
+/// * [waveform]
+/// * [expiresAt]
+/// * [expired]
 @BuiltValue()
-abstract class MessageAttachmentResponse implements Built<MessageAttachmentResponse, MessageAttachmentResponseBuilder> {
+abstract class MessageAttachmentResponse
+    implements
+        Built<MessageAttachmentResponse, MessageAttachmentResponseBuilder> {
   /// The unique identifier for this attachment
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -91,18 +93,25 @@ abstract class MessageAttachmentResponse implements Built<MessageAttachmentRespo
 
   MessageAttachmentResponse._();
 
-  factory MessageAttachmentResponse([void updates(MessageAttachmentResponseBuilder b)]) = _$MessageAttachmentResponse;
+  factory MessageAttachmentResponse(
+          [void updates(MessageAttachmentResponseBuilder b)]) =
+      _$MessageAttachmentResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(MessageAttachmentResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<MessageAttachmentResponse> get serializer => _$MessageAttachmentResponseSerializer();
+  static Serializer<MessageAttachmentResponse> get serializer =>
+      _$MessageAttachmentResponseSerializer();
 }
 
-class _$MessageAttachmentResponseSerializer implements PrimitiveSerializer<MessageAttachmentResponse> {
+class _$MessageAttachmentResponseSerializer
+    implements PrimitiveSerializer<MessageAttachmentResponse> {
   @override
-  final Iterable<Type> types = const [MessageAttachmentResponse, _$MessageAttachmentResponse];
+  final Iterable<Type> types = const [
+    MessageAttachmentResponse,
+    _$MessageAttachmentResponse
+  ];
 
   @override
   final String wireName = r'MessageAttachmentResponse';
@@ -238,7 +247,9 @@ class _$MessageAttachmentResponseSerializer implements PrimitiveSerializer<Messa
     MessageAttachmentResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -418,4 +429,3 @@ class _$MessageAttachmentResponseSerializer implements PrimitiveSerializer<Messa
     return result.build();
   }
 }
-

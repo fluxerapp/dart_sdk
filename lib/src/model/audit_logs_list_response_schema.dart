@@ -13,10 +13,12 @@ part 'audit_logs_list_response_schema.g.dart';
 /// AuditLogsListResponseSchema
 ///
 /// Properties:
-/// * [logs] 
-/// * [total] 
+/// * [logs]
+/// * [total]
 @BuiltValue()
-abstract class AuditLogsListResponseSchema implements Built<AuditLogsListResponseSchema, AuditLogsListResponseSchemaBuilder> {
+abstract class AuditLogsListResponseSchema
+    implements
+        Built<AuditLogsListResponseSchema, AuditLogsListResponseSchemaBuilder> {
   @BuiltValueField(wireName: r'logs')
   BuiltList<AdminAuditLogResponseSchema> get logs;
 
@@ -25,18 +27,25 @@ abstract class AuditLogsListResponseSchema implements Built<AuditLogsListRespons
 
   AuditLogsListResponseSchema._();
 
-  factory AuditLogsListResponseSchema([void updates(AuditLogsListResponseSchemaBuilder b)]) = _$AuditLogsListResponseSchema;
+  factory AuditLogsListResponseSchema(
+          [void updates(AuditLogsListResponseSchemaBuilder b)]) =
+      _$AuditLogsListResponseSchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(AuditLogsListResponseSchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<AuditLogsListResponseSchema> get serializer => _$AuditLogsListResponseSchemaSerializer();
+  static Serializer<AuditLogsListResponseSchema> get serializer =>
+      _$AuditLogsListResponseSchemaSerializer();
 }
 
-class _$AuditLogsListResponseSchemaSerializer implements PrimitiveSerializer<AuditLogsListResponseSchema> {
+class _$AuditLogsListResponseSchemaSerializer
+    implements PrimitiveSerializer<AuditLogsListResponseSchema> {
   @override
-  final Iterable<Type> types = const [AuditLogsListResponseSchema, _$AuditLogsListResponseSchema];
+  final Iterable<Type> types = const [
+    AuditLogsListResponseSchema,
+    _$AuditLogsListResponseSchema
+  ];
 
   @override
   final String wireName = r'AuditLogsListResponseSchema';
@@ -49,7 +58,8 @@ class _$AuditLogsListResponseSchemaSerializer implements PrimitiveSerializer<Aud
     yield r'logs';
     yield serializers.serialize(
       object.logs,
-      specifiedType: const FullType(BuiltList, [FullType(AdminAuditLogResponseSchema)]),
+      specifiedType:
+          const FullType(BuiltList, [FullType(AdminAuditLogResponseSchema)]),
     );
     yield r'total';
     yield serializers.serialize(
@@ -64,7 +74,9 @@ class _$AuditLogsListResponseSchemaSerializer implements PrimitiveSerializer<Aud
     AuditLogsListResponseSchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -82,7 +94,8 @@ class _$AuditLogsListResponseSchemaSerializer implements PrimitiveSerializer<Aud
         case r'logs':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(AdminAuditLogResponseSchema)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(AdminAuditLogResponseSchema)]),
           ) as BuiltList<AdminAuditLogResponseSchema>;
           result.logs.replace(valueDes);
           break;
@@ -121,4 +134,3 @@ class _$AuditLogsListResponseSchemaSerializer implements PrimitiveSerializer<Aud
     return result.build();
   }
 }
-

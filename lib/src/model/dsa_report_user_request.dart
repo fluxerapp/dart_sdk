@@ -17,13 +17,14 @@ part 'dsa_report_user_request.g.dart';
 /// * [reporterFullLegalName] - Full legal name of the person filing the report
 /// * [reporterCountryOfResidence] - EU country code of the reporter residence
 /// * [reportType] - Type of report
-/// * [category] 
+/// * [category]
 /// * [additionalInfo] - Additional context or details about the report
 /// * [reporterFluxerTag] - Fluxer tag of the reporter if they have an account
-/// * [userId] 
+/// * [userId]
 /// * [userTag] - Fluxer tag of the user being reported
 @BuiltValue()
-abstract class DsaReportUserRequest implements Built<DsaReportUserRequest, DsaReportUserRequestBuilder> {
+abstract class DsaReportUserRequest
+    implements Built<DsaReportUserRequest, DsaReportUserRequestBuilder> {
   /// Verification ticket obtained from email verification
   @BuiltValueField(wireName: r'ticket')
   String get ticket;
@@ -34,7 +35,8 @@ abstract class DsaReportUserRequest implements Built<DsaReportUserRequest, DsaRe
 
   /// EU country code of the reporter residence
   @BuiltValueField(wireName: r'reporter_country_of_residence')
-  DsaReportUserRequestReporterCountryOfResidenceEnum get reporterCountryOfResidence;
+  DsaReportUserRequestReporterCountryOfResidenceEnum
+      get reporterCountryOfResidence;
   // enum reporterCountryOfResidenceEnum {  AT,  BE,  BG,  HR,  CY,  CZ,  DK,  EE,  FI,  FR,  DE,  GR,  HU,  IE,  IT,  LV,  LT,  LU,  MT,  NL,  PL,  PT,  RO,  SK,  SI,  ES,  SE,  };
 
   /// Type of report
@@ -63,18 +65,24 @@ abstract class DsaReportUserRequest implements Built<DsaReportUserRequest, DsaRe
 
   DsaReportUserRequest._();
 
-  factory DsaReportUserRequest([void updates(DsaReportUserRequestBuilder b)]) = _$DsaReportUserRequest;
+  factory DsaReportUserRequest([void updates(DsaReportUserRequestBuilder b)]) =
+      _$DsaReportUserRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(DsaReportUserRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<DsaReportUserRequest> get serializer => _$DsaReportUserRequestSerializer();
+  static Serializer<DsaReportUserRequest> get serializer =>
+      _$DsaReportUserRequestSerializer();
 }
 
-class _$DsaReportUserRequestSerializer implements PrimitiveSerializer<DsaReportUserRequest> {
+class _$DsaReportUserRequestSerializer
+    implements PrimitiveSerializer<DsaReportUserRequest> {
   @override
-  final Iterable<Type> types = const [DsaReportUserRequest, _$DsaReportUserRequest];
+  final Iterable<Type> types = const [
+    DsaReportUserRequest,
+    _$DsaReportUserRequest
+  ];
 
   @override
   final String wireName = r'DsaReportUserRequest';
@@ -97,7 +105,8 @@ class _$DsaReportUserRequestSerializer implements PrimitiveSerializer<DsaReportU
     yield r'reporter_country_of_residence';
     yield serializers.serialize(
       object.reporterCountryOfResidence,
-      specifiedType: const FullType(DsaReportUserRequestReporterCountryOfResidenceEnum),
+      specifiedType:
+          const FullType(DsaReportUserRequestReporterCountryOfResidenceEnum),
     );
     yield r'report_type';
     yield serializers.serialize(
@@ -145,7 +154,9 @@ class _$DsaReportUserRequestSerializer implements PrimitiveSerializer<DsaReportU
     DsaReportUserRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -177,7 +188,8 @@ class _$DsaReportUserRequestSerializer implements PrimitiveSerializer<DsaReportU
         case r'reporter_country_of_residence':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(DsaReportUserRequestReporterCountryOfResidenceEnum),
+            specifiedType: const FullType(
+                DsaReportUserRequestReporterCountryOfResidenceEnum),
           ) as DsaReportUserRequestReporterCountryOfResidenceEnum;
           result.reporterCountryOfResidence = valueDes;
           break;
@@ -253,108 +265,168 @@ class _$DsaReportUserRequestSerializer implements PrimitiveSerializer<DsaReportU
 }
 
 class DsaReportUserRequestReporterCountryOfResidenceEnum extends EnumClass {
-
   /// EU country code of the reporter residence
   @BuiltValueEnumConst(wireName: r'AT')
-  static const DsaReportUserRequestReporterCountryOfResidenceEnum AT = _$dsaReportUserRequestReporterCountryOfResidenceEnum_AT;
+  static const DsaReportUserRequestReporterCountryOfResidenceEnum AT =
+      _$dsaReportUserRequestReporterCountryOfResidenceEnum_AT;
+
   /// EU country code of the reporter residence
   @BuiltValueEnumConst(wireName: r'BE')
-  static const DsaReportUserRequestReporterCountryOfResidenceEnum BE = _$dsaReportUserRequestReporterCountryOfResidenceEnum_BE;
+  static const DsaReportUserRequestReporterCountryOfResidenceEnum BE =
+      _$dsaReportUserRequestReporterCountryOfResidenceEnum_BE;
+
   /// EU country code of the reporter residence
   @BuiltValueEnumConst(wireName: r'BG')
-  static const DsaReportUserRequestReporterCountryOfResidenceEnum BG = _$dsaReportUserRequestReporterCountryOfResidenceEnum_BG;
+  static const DsaReportUserRequestReporterCountryOfResidenceEnum BG =
+      _$dsaReportUserRequestReporterCountryOfResidenceEnum_BG;
+
   /// EU country code of the reporter residence
   @BuiltValueEnumConst(wireName: r'HR')
-  static const DsaReportUserRequestReporterCountryOfResidenceEnum HR = _$dsaReportUserRequestReporterCountryOfResidenceEnum_HR;
+  static const DsaReportUserRequestReporterCountryOfResidenceEnum HR =
+      _$dsaReportUserRequestReporterCountryOfResidenceEnum_HR;
+
   /// EU country code of the reporter residence
   @BuiltValueEnumConst(wireName: r'CY')
-  static const DsaReportUserRequestReporterCountryOfResidenceEnum CY = _$dsaReportUserRequestReporterCountryOfResidenceEnum_CY;
+  static const DsaReportUserRequestReporterCountryOfResidenceEnum CY =
+      _$dsaReportUserRequestReporterCountryOfResidenceEnum_CY;
+
   /// EU country code of the reporter residence
   @BuiltValueEnumConst(wireName: r'CZ')
-  static const DsaReportUserRequestReporterCountryOfResidenceEnum CZ = _$dsaReportUserRequestReporterCountryOfResidenceEnum_CZ;
+  static const DsaReportUserRequestReporterCountryOfResidenceEnum CZ =
+      _$dsaReportUserRequestReporterCountryOfResidenceEnum_CZ;
+
   /// EU country code of the reporter residence
   @BuiltValueEnumConst(wireName: r'DK')
-  static const DsaReportUserRequestReporterCountryOfResidenceEnum DK = _$dsaReportUserRequestReporterCountryOfResidenceEnum_DK;
+  static const DsaReportUserRequestReporterCountryOfResidenceEnum DK =
+      _$dsaReportUserRequestReporterCountryOfResidenceEnum_DK;
+
   /// EU country code of the reporter residence
   @BuiltValueEnumConst(wireName: r'EE')
-  static const DsaReportUserRequestReporterCountryOfResidenceEnum EE = _$dsaReportUserRequestReporterCountryOfResidenceEnum_EE;
+  static const DsaReportUserRequestReporterCountryOfResidenceEnum EE =
+      _$dsaReportUserRequestReporterCountryOfResidenceEnum_EE;
+
   /// EU country code of the reporter residence
   @BuiltValueEnumConst(wireName: r'FI')
-  static const DsaReportUserRequestReporterCountryOfResidenceEnum FI = _$dsaReportUserRequestReporterCountryOfResidenceEnum_FI;
+  static const DsaReportUserRequestReporterCountryOfResidenceEnum FI =
+      _$dsaReportUserRequestReporterCountryOfResidenceEnum_FI;
+
   /// EU country code of the reporter residence
   @BuiltValueEnumConst(wireName: r'FR')
-  static const DsaReportUserRequestReporterCountryOfResidenceEnum FR = _$dsaReportUserRequestReporterCountryOfResidenceEnum_FR;
+  static const DsaReportUserRequestReporterCountryOfResidenceEnum FR =
+      _$dsaReportUserRequestReporterCountryOfResidenceEnum_FR;
+
   /// EU country code of the reporter residence
   @BuiltValueEnumConst(wireName: r'DE')
-  static const DsaReportUserRequestReporterCountryOfResidenceEnum DE = _$dsaReportUserRequestReporterCountryOfResidenceEnum_DE;
+  static const DsaReportUserRequestReporterCountryOfResidenceEnum DE =
+      _$dsaReportUserRequestReporterCountryOfResidenceEnum_DE;
+
   /// EU country code of the reporter residence
   @BuiltValueEnumConst(wireName: r'GR')
-  static const DsaReportUserRequestReporterCountryOfResidenceEnum GR = _$dsaReportUserRequestReporterCountryOfResidenceEnum_GR;
+  static const DsaReportUserRequestReporterCountryOfResidenceEnum GR =
+      _$dsaReportUserRequestReporterCountryOfResidenceEnum_GR;
+
   /// EU country code of the reporter residence
   @BuiltValueEnumConst(wireName: r'HU')
-  static const DsaReportUserRequestReporterCountryOfResidenceEnum HU = _$dsaReportUserRequestReporterCountryOfResidenceEnum_HU;
+  static const DsaReportUserRequestReporterCountryOfResidenceEnum HU =
+      _$dsaReportUserRequestReporterCountryOfResidenceEnum_HU;
+
   /// EU country code of the reporter residence
   @BuiltValueEnumConst(wireName: r'IE')
-  static const DsaReportUserRequestReporterCountryOfResidenceEnum IE = _$dsaReportUserRequestReporterCountryOfResidenceEnum_IE;
+  static const DsaReportUserRequestReporterCountryOfResidenceEnum IE =
+      _$dsaReportUserRequestReporterCountryOfResidenceEnum_IE;
+
   /// EU country code of the reporter residence
   @BuiltValueEnumConst(wireName: r'IT')
-  static const DsaReportUserRequestReporterCountryOfResidenceEnum IT = _$dsaReportUserRequestReporterCountryOfResidenceEnum_IT;
+  static const DsaReportUserRequestReporterCountryOfResidenceEnum IT =
+      _$dsaReportUserRequestReporterCountryOfResidenceEnum_IT;
+
   /// EU country code of the reporter residence
   @BuiltValueEnumConst(wireName: r'LV')
-  static const DsaReportUserRequestReporterCountryOfResidenceEnum LV = _$dsaReportUserRequestReporterCountryOfResidenceEnum_LV;
+  static const DsaReportUserRequestReporterCountryOfResidenceEnum LV =
+      _$dsaReportUserRequestReporterCountryOfResidenceEnum_LV;
+
   /// EU country code of the reporter residence
   @BuiltValueEnumConst(wireName: r'LT')
-  static const DsaReportUserRequestReporterCountryOfResidenceEnum LT = _$dsaReportUserRequestReporterCountryOfResidenceEnum_LT;
+  static const DsaReportUserRequestReporterCountryOfResidenceEnum LT =
+      _$dsaReportUserRequestReporterCountryOfResidenceEnum_LT;
+
   /// EU country code of the reporter residence
   @BuiltValueEnumConst(wireName: r'LU')
-  static const DsaReportUserRequestReporterCountryOfResidenceEnum LU = _$dsaReportUserRequestReporterCountryOfResidenceEnum_LU;
+  static const DsaReportUserRequestReporterCountryOfResidenceEnum LU =
+      _$dsaReportUserRequestReporterCountryOfResidenceEnum_LU;
+
   /// EU country code of the reporter residence
   @BuiltValueEnumConst(wireName: r'MT')
-  static const DsaReportUserRequestReporterCountryOfResidenceEnum MT = _$dsaReportUserRequestReporterCountryOfResidenceEnum_MT;
+  static const DsaReportUserRequestReporterCountryOfResidenceEnum MT =
+      _$dsaReportUserRequestReporterCountryOfResidenceEnum_MT;
+
   /// EU country code of the reporter residence
   @BuiltValueEnumConst(wireName: r'NL')
-  static const DsaReportUserRequestReporterCountryOfResidenceEnum NL = _$dsaReportUserRequestReporterCountryOfResidenceEnum_NL;
+  static const DsaReportUserRequestReporterCountryOfResidenceEnum NL =
+      _$dsaReportUserRequestReporterCountryOfResidenceEnum_NL;
+
   /// EU country code of the reporter residence
   @BuiltValueEnumConst(wireName: r'PL')
-  static const DsaReportUserRequestReporterCountryOfResidenceEnum PL = _$dsaReportUserRequestReporterCountryOfResidenceEnum_PL;
+  static const DsaReportUserRequestReporterCountryOfResidenceEnum PL =
+      _$dsaReportUserRequestReporterCountryOfResidenceEnum_PL;
+
   /// EU country code of the reporter residence
   @BuiltValueEnumConst(wireName: r'PT')
-  static const DsaReportUserRequestReporterCountryOfResidenceEnum PT = _$dsaReportUserRequestReporterCountryOfResidenceEnum_PT;
+  static const DsaReportUserRequestReporterCountryOfResidenceEnum PT =
+      _$dsaReportUserRequestReporterCountryOfResidenceEnum_PT;
+
   /// EU country code of the reporter residence
   @BuiltValueEnumConst(wireName: r'RO')
-  static const DsaReportUserRequestReporterCountryOfResidenceEnum RO = _$dsaReportUserRequestReporterCountryOfResidenceEnum_RO;
+  static const DsaReportUserRequestReporterCountryOfResidenceEnum RO =
+      _$dsaReportUserRequestReporterCountryOfResidenceEnum_RO;
+
   /// EU country code of the reporter residence
   @BuiltValueEnumConst(wireName: r'SK')
-  static const DsaReportUserRequestReporterCountryOfResidenceEnum SK = _$dsaReportUserRequestReporterCountryOfResidenceEnum_SK;
+  static const DsaReportUserRequestReporterCountryOfResidenceEnum SK =
+      _$dsaReportUserRequestReporterCountryOfResidenceEnum_SK;
+
   /// EU country code of the reporter residence
   @BuiltValueEnumConst(wireName: r'SI')
-  static const DsaReportUserRequestReporterCountryOfResidenceEnum SI = _$dsaReportUserRequestReporterCountryOfResidenceEnum_SI;
+  static const DsaReportUserRequestReporterCountryOfResidenceEnum SI =
+      _$dsaReportUserRequestReporterCountryOfResidenceEnum_SI;
+
   /// EU country code of the reporter residence
   @BuiltValueEnumConst(wireName: r'ES')
-  static const DsaReportUserRequestReporterCountryOfResidenceEnum ES = _$dsaReportUserRequestReporterCountryOfResidenceEnum_ES;
+  static const DsaReportUserRequestReporterCountryOfResidenceEnum ES =
+      _$dsaReportUserRequestReporterCountryOfResidenceEnum_ES;
+
   /// EU country code of the reporter residence
   @BuiltValueEnumConst(wireName: r'SE')
-  static const DsaReportUserRequestReporterCountryOfResidenceEnum SE = _$dsaReportUserRequestReporterCountryOfResidenceEnum_SE;
+  static const DsaReportUserRequestReporterCountryOfResidenceEnum SE =
+      _$dsaReportUserRequestReporterCountryOfResidenceEnum_SE;
 
-  static Serializer<DsaReportUserRequestReporterCountryOfResidenceEnum> get serializer => _$dsaReportUserRequestReporterCountryOfResidenceEnumSerializer;
+  static Serializer<DsaReportUserRequestReporterCountryOfResidenceEnum>
+      get serializer =>
+          _$dsaReportUserRequestReporterCountryOfResidenceEnumSerializer;
 
-  const DsaReportUserRequestReporterCountryOfResidenceEnum._(String name): super(name);
+  const DsaReportUserRequestReporterCountryOfResidenceEnum._(String name)
+      : super(name);
 
-  static BuiltSet<DsaReportUserRequestReporterCountryOfResidenceEnum> get values => _$dsaReportUserRequestReporterCountryOfResidenceEnumValues;
-  static DsaReportUserRequestReporterCountryOfResidenceEnum valueOf(String name) => _$dsaReportUserRequestReporterCountryOfResidenceEnumValueOf(name);
+  static BuiltSet<DsaReportUserRequestReporterCountryOfResidenceEnum>
+      get values => _$dsaReportUserRequestReporterCountryOfResidenceEnumValues;
+  static DsaReportUserRequestReporterCountryOfResidenceEnum valueOf(
+          String name) =>
+      _$dsaReportUserRequestReporterCountryOfResidenceEnumValueOf(name);
 }
 
 class DsaReportUserRequestReportTypeEnum extends EnumClass {
-
   /// Type of report
   @BuiltValueEnumConst(wireName: r'user')
-  static const DsaReportUserRequestReportTypeEnum user = _$dsaReportUserRequestReportTypeEnum_user;
+  static const DsaReportUserRequestReportTypeEnum user =
+      _$dsaReportUserRequestReportTypeEnum_user;
 
-  static Serializer<DsaReportUserRequestReportTypeEnum> get serializer => _$dsaReportUserRequestReportTypeEnumSerializer;
+  static Serializer<DsaReportUserRequestReportTypeEnum> get serializer =>
+      _$dsaReportUserRequestReportTypeEnumSerializer;
 
-  const DsaReportUserRequestReportTypeEnum._(String name): super(name);
+  const DsaReportUserRequestReportTypeEnum._(String name) : super(name);
 
-  static BuiltSet<DsaReportUserRequestReportTypeEnum> get values => _$dsaReportUserRequestReportTypeEnumValues;
-  static DsaReportUserRequestReportTypeEnum valueOf(String name) => _$dsaReportUserRequestReportTypeEnumValueOf(name);
+  static BuiltSet<DsaReportUserRequestReportTypeEnum> get values =>
+      _$dsaReportUserRequestReportTypeEnumValues;
+  static DsaReportUserRequestReportTypeEnum valueOf(String name) =>
+      _$dsaReportUserRequestReportTypeEnumValueOf(name);
 }
-

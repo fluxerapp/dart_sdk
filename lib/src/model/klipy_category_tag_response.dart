@@ -15,7 +15,9 @@ part 'klipy_category_tag_response.g.dart';
 /// * [src] - URL to the category preview image
 /// * [proxySrc] - Proxied URL to the category preview image
 @BuiltValue()
-abstract class KlipyCategoryTagResponse implements Built<KlipyCategoryTagResponse, KlipyCategoryTagResponseBuilder> {
+abstract class KlipyCategoryTagResponse
+    implements
+        Built<KlipyCategoryTagResponse, KlipyCategoryTagResponseBuilder> {
   /// The category/tag name
   @BuiltValueField(wireName: r'name')
   String get name;
@@ -30,18 +32,25 @@ abstract class KlipyCategoryTagResponse implements Built<KlipyCategoryTagRespons
 
   KlipyCategoryTagResponse._();
 
-  factory KlipyCategoryTagResponse([void updates(KlipyCategoryTagResponseBuilder b)]) = _$KlipyCategoryTagResponse;
+  factory KlipyCategoryTagResponse(
+          [void updates(KlipyCategoryTagResponseBuilder b)]) =
+      _$KlipyCategoryTagResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(KlipyCategoryTagResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<KlipyCategoryTagResponse> get serializer => _$KlipyCategoryTagResponseSerializer();
+  static Serializer<KlipyCategoryTagResponse> get serializer =>
+      _$KlipyCategoryTagResponseSerializer();
 }
 
-class _$KlipyCategoryTagResponseSerializer implements PrimitiveSerializer<KlipyCategoryTagResponse> {
+class _$KlipyCategoryTagResponseSerializer
+    implements PrimitiveSerializer<KlipyCategoryTagResponse> {
   @override
-  final Iterable<Type> types = const [KlipyCategoryTagResponse, _$KlipyCategoryTagResponse];
+  final Iterable<Type> types = const [
+    KlipyCategoryTagResponse,
+    _$KlipyCategoryTagResponse
+  ];
 
   @override
   final String wireName = r'KlipyCategoryTagResponse';
@@ -74,7 +83,9 @@ class _$KlipyCategoryTagResponseSerializer implements PrimitiveSerializer<KlipyC
     KlipyCategoryTagResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -138,4 +149,3 @@ class _$KlipyCategoryTagResponseSerializer implements PrimitiveSerializer<KlipyC
     return result.build();
   }
 }
-

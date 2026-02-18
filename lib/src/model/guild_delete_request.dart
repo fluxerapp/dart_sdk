@@ -13,13 +13,14 @@ part 'guild_delete_request.g.dart';
 /// GuildDeleteRequest
 ///
 /// Properties:
-/// * [password] 
+/// * [password]
 /// * [mfaMethod] - MFA method to use for verification
 /// * [mfaCode] - MFA verification code from authenticator app or SMS
 /// * [webauthnResponse] - WebAuthn authentication response
 /// * [webauthnChallenge] - WebAuthn challenge string
 @BuiltValue()
-abstract class GuildDeleteRequest implements Built<GuildDeleteRequest, GuildDeleteRequestBuilder> {
+abstract class GuildDeleteRequest
+    implements Built<GuildDeleteRequest, GuildDeleteRequestBuilder> {
   @BuiltValueField(wireName: r'password')
   String? get password;
 
@@ -42,16 +43,19 @@ abstract class GuildDeleteRequest implements Built<GuildDeleteRequest, GuildDele
 
   GuildDeleteRequest._();
 
-  factory GuildDeleteRequest([void updates(GuildDeleteRequestBuilder b)]) = _$GuildDeleteRequest;
+  factory GuildDeleteRequest([void updates(GuildDeleteRequestBuilder b)]) =
+      _$GuildDeleteRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildDeleteRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildDeleteRequest> get serializer => _$GuildDeleteRequestSerializer();
+  static Serializer<GuildDeleteRequest> get serializer =>
+      _$GuildDeleteRequestSerializer();
 }
 
-class _$GuildDeleteRequestSerializer implements PrimitiveSerializer<GuildDeleteRequest> {
+class _$GuildDeleteRequestSerializer
+    implements PrimitiveSerializer<GuildDeleteRequest> {
   @override
   final Iterable<Type> types = const [GuildDeleteRequest, _$GuildDeleteRequest];
 
@@ -106,7 +110,9 @@ class _$GuildDeleteRequestSerializer implements PrimitiveSerializer<GuildDeleteR
     GuildDeleteRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -186,22 +192,28 @@ class _$GuildDeleteRequestSerializer implements PrimitiveSerializer<GuildDeleteR
 }
 
 class GuildDeleteRequestMfaMethodEnum extends EnumClass {
-
   /// MFA method to use for verification
   @BuiltValueEnumConst(wireName: r'totp')
-  static const GuildDeleteRequestMfaMethodEnum totp = _$guildDeleteRequestMfaMethodEnum_totp;
+  static const GuildDeleteRequestMfaMethodEnum totp =
+      _$guildDeleteRequestMfaMethodEnum_totp;
+
   /// MFA method to use for verification
   @BuiltValueEnumConst(wireName: r'sms')
-  static const GuildDeleteRequestMfaMethodEnum sms = _$guildDeleteRequestMfaMethodEnum_sms;
+  static const GuildDeleteRequestMfaMethodEnum sms =
+      _$guildDeleteRequestMfaMethodEnum_sms;
+
   /// MFA method to use for verification
   @BuiltValueEnumConst(wireName: r'webauthn')
-  static const GuildDeleteRequestMfaMethodEnum webauthn = _$guildDeleteRequestMfaMethodEnum_webauthn;
+  static const GuildDeleteRequestMfaMethodEnum webauthn =
+      _$guildDeleteRequestMfaMethodEnum_webauthn;
 
-  static Serializer<GuildDeleteRequestMfaMethodEnum> get serializer => _$guildDeleteRequestMfaMethodEnumSerializer;
+  static Serializer<GuildDeleteRequestMfaMethodEnum> get serializer =>
+      _$guildDeleteRequestMfaMethodEnumSerializer;
 
-  const GuildDeleteRequestMfaMethodEnum._(String name): super(name);
+  const GuildDeleteRequestMfaMethodEnum._(String name) : super(name);
 
-  static BuiltSet<GuildDeleteRequestMfaMethodEnum> get values => _$guildDeleteRequestMfaMethodEnumValues;
-  static GuildDeleteRequestMfaMethodEnum valueOf(String name) => _$guildDeleteRequestMfaMethodEnumValueOf(name);
+  static BuiltSet<GuildDeleteRequestMfaMethodEnum> get values =>
+      _$guildDeleteRequestMfaMethodEnumValues;
+  static GuildDeleteRequestMfaMethodEnum valueOf(String name) =>
+      _$guildDeleteRequestMfaMethodEnumValueOf(name);
 }
-

@@ -26,7 +26,9 @@ part 'guild_member_search_request.g.dart';
 /// * [sortBy] - Sort results by field
 /// * [sortOrder] - Sort order
 @BuiltValue()
-abstract class GuildMemberSearchRequest implements Built<GuildMemberSearchRequest, GuildMemberSearchRequestBuilder> {
+abstract class GuildMemberSearchRequest
+    implements
+        Built<GuildMemberSearchRequest, GuildMemberSearchRequestBuilder> {
   /// Text to search for in usernames, global names, and nicknames
   @BuiltValueField(wireName: r'query')
   String? get query;
@@ -83,18 +85,25 @@ abstract class GuildMemberSearchRequest implements Built<GuildMemberSearchReques
 
   GuildMemberSearchRequest._();
 
-  factory GuildMemberSearchRequest([void updates(GuildMemberSearchRequestBuilder b)]) = _$GuildMemberSearchRequest;
+  factory GuildMemberSearchRequest(
+          [void updates(GuildMemberSearchRequestBuilder b)]) =
+      _$GuildMemberSearchRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildMemberSearchRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildMemberSearchRequest> get serializer => _$GuildMemberSearchRequestSerializer();
+  static Serializer<GuildMemberSearchRequest> get serializer =>
+      _$GuildMemberSearchRequestSerializer();
 }
 
-class _$GuildMemberSearchRequestSerializer implements PrimitiveSerializer<GuildMemberSearchRequest> {
+class _$GuildMemberSearchRequestSerializer
+    implements PrimitiveSerializer<GuildMemberSearchRequest> {
   @override
-  final Iterable<Type> types = const [GuildMemberSearchRequest, _$GuildMemberSearchRequest];
+  final Iterable<Type> types = const [
+    GuildMemberSearchRequest,
+    _$GuildMemberSearchRequest
+  ];
 
   @override
   final String wireName = r'GuildMemberSearchRequest';
@@ -203,7 +212,9 @@ class _$GuildMemberSearchRequestSerializer implements PrimitiveSerializer<GuildM
     GuildMemberSearchRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -305,7 +316,8 @@ class _$GuildMemberSearchRequestSerializer implements PrimitiveSerializer<GuildM
         case r'sort_order':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(GuildMemberSearchRequestSortOrderEnum),
+            specifiedType:
+                const FullType(GuildMemberSearchRequestSortOrderEnum),
           ) as GuildMemberSearchRequestSortOrderEnum;
           result.sortOrder = valueDes;
           break;
@@ -339,36 +351,45 @@ class _$GuildMemberSearchRequestSerializer implements PrimitiveSerializer<GuildM
 }
 
 class GuildMemberSearchRequestSortByEnum extends EnumClass {
-
   /// Sort results by field
   @BuiltValueEnumConst(wireName: r'joinedAt')
-  static const GuildMemberSearchRequestSortByEnum joinedAt = _$guildMemberSearchRequestSortByEnum_joinedAt;
+  static const GuildMemberSearchRequestSortByEnum joinedAt =
+      _$guildMemberSearchRequestSortByEnum_joinedAt;
+
   /// Sort results by field
   @BuiltValueEnumConst(wireName: r'relevance')
-  static const GuildMemberSearchRequestSortByEnum relevance = _$guildMemberSearchRequestSortByEnum_relevance;
+  static const GuildMemberSearchRequestSortByEnum relevance =
+      _$guildMemberSearchRequestSortByEnum_relevance;
 
-  static Serializer<GuildMemberSearchRequestSortByEnum> get serializer => _$guildMemberSearchRequestSortByEnumSerializer;
+  static Serializer<GuildMemberSearchRequestSortByEnum> get serializer =>
+      _$guildMemberSearchRequestSortByEnumSerializer;
 
-  const GuildMemberSearchRequestSortByEnum._(String name): super(name);
+  const GuildMemberSearchRequestSortByEnum._(String name) : super(name);
 
-  static BuiltSet<GuildMemberSearchRequestSortByEnum> get values => _$guildMemberSearchRequestSortByEnumValues;
-  static GuildMemberSearchRequestSortByEnum valueOf(String name) => _$guildMemberSearchRequestSortByEnumValueOf(name);
+  static BuiltSet<GuildMemberSearchRequestSortByEnum> get values =>
+      _$guildMemberSearchRequestSortByEnumValues;
+  static GuildMemberSearchRequestSortByEnum valueOf(String name) =>
+      _$guildMemberSearchRequestSortByEnumValueOf(name);
 }
 
 class GuildMemberSearchRequestSortOrderEnum extends EnumClass {
-
   /// Sort order
   @BuiltValueEnumConst(wireName: r'asc')
-  static const GuildMemberSearchRequestSortOrderEnum asc = _$guildMemberSearchRequestSortOrderEnum_asc;
+  static const GuildMemberSearchRequestSortOrderEnum asc =
+      _$guildMemberSearchRequestSortOrderEnum_asc;
+
   /// Sort order
   @BuiltValueEnumConst(wireName: r'desc')
-  static const GuildMemberSearchRequestSortOrderEnum desc = _$guildMemberSearchRequestSortOrderEnum_desc;
+  static const GuildMemberSearchRequestSortOrderEnum desc =
+      _$guildMemberSearchRequestSortOrderEnum_desc;
 
-  static Serializer<GuildMemberSearchRequestSortOrderEnum> get serializer => _$guildMemberSearchRequestSortOrderEnumSerializer;
+  static Serializer<GuildMemberSearchRequestSortOrderEnum> get serializer =>
+      _$guildMemberSearchRequestSortOrderEnumSerializer;
 
-  const GuildMemberSearchRequestSortOrderEnum._(String name): super(name);
+  const GuildMemberSearchRequestSortOrderEnum._(String name) : super(name);
 
-  static BuiltSet<GuildMemberSearchRequestSortOrderEnum> get values => _$guildMemberSearchRequestSortOrderEnumValues;
-  static GuildMemberSearchRequestSortOrderEnum valueOf(String name) => _$guildMemberSearchRequestSortOrderEnumValueOf(name);
+  static BuiltSet<GuildMemberSearchRequestSortOrderEnum> get values =>
+      _$guildMemberSearchRequestSortOrderEnumValues;
+  static GuildMemberSearchRequestSortOrderEnum valueOf(String name) =>
+      _$guildMemberSearchRequestSortOrderEnumValueOf(name);
 }
-

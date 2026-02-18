@@ -11,10 +11,11 @@ part 'change_dob_request.g.dart';
 /// ChangeDobRequest
 ///
 /// Properties:
-/// * [userId] 
+/// * [userId]
 /// * [dateOfBirth] - New date of birth in YYYY-MM-DD format
 @BuiltValue()
-abstract class ChangeDobRequest implements Built<ChangeDobRequest, ChangeDobRequestBuilder> {
+abstract class ChangeDobRequest
+    implements Built<ChangeDobRequest, ChangeDobRequestBuilder> {
   @BuiltValueField(wireName: r'user_id')
   String get userId;
 
@@ -24,16 +25,19 @@ abstract class ChangeDobRequest implements Built<ChangeDobRequest, ChangeDobRequ
 
   ChangeDobRequest._();
 
-  factory ChangeDobRequest([void updates(ChangeDobRequestBuilder b)]) = _$ChangeDobRequest;
+  factory ChangeDobRequest([void updates(ChangeDobRequestBuilder b)]) =
+      _$ChangeDobRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ChangeDobRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ChangeDobRequest> get serializer => _$ChangeDobRequestSerializer();
+  static Serializer<ChangeDobRequest> get serializer =>
+      _$ChangeDobRequestSerializer();
 }
 
-class _$ChangeDobRequestSerializer implements PrimitiveSerializer<ChangeDobRequest> {
+class _$ChangeDobRequestSerializer
+    implements PrimitiveSerializer<ChangeDobRequest> {
   @override
   final Iterable<Type> types = const [ChangeDobRequest, _$ChangeDobRequest];
 
@@ -63,7 +67,9 @@ class _$ChangeDobRequestSerializer implements PrimitiveSerializer<ChangeDobReque
     ChangeDobRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -120,4 +126,3 @@ class _$ChangeDobRequestSerializer implements PrimitiveSerializer<ChangeDobReque
     return result.build();
   }
 }
-

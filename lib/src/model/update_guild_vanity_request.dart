@@ -11,10 +11,12 @@ part 'update_guild_vanity_request.g.dart';
 /// UpdateGuildVanityRequest
 ///
 /// Properties:
-/// * [guildId] 
-/// * [vanityUrlCode] 
+/// * [guildId]
+/// * [vanityUrlCode]
 @BuiltValue()
-abstract class UpdateGuildVanityRequest implements Built<UpdateGuildVanityRequest, UpdateGuildVanityRequestBuilder> {
+abstract class UpdateGuildVanityRequest
+    implements
+        Built<UpdateGuildVanityRequest, UpdateGuildVanityRequestBuilder> {
   @BuiltValueField(wireName: r'guild_id')
   String get guildId;
 
@@ -23,18 +25,25 @@ abstract class UpdateGuildVanityRequest implements Built<UpdateGuildVanityReques
 
   UpdateGuildVanityRequest._();
 
-  factory UpdateGuildVanityRequest([void updates(UpdateGuildVanityRequestBuilder b)]) = _$UpdateGuildVanityRequest;
+  factory UpdateGuildVanityRequest(
+          [void updates(UpdateGuildVanityRequestBuilder b)]) =
+      _$UpdateGuildVanityRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UpdateGuildVanityRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UpdateGuildVanityRequest> get serializer => _$UpdateGuildVanityRequestSerializer();
+  static Serializer<UpdateGuildVanityRequest> get serializer =>
+      _$UpdateGuildVanityRequestSerializer();
 }
 
-class _$UpdateGuildVanityRequestSerializer implements PrimitiveSerializer<UpdateGuildVanityRequest> {
+class _$UpdateGuildVanityRequestSerializer
+    implements PrimitiveSerializer<UpdateGuildVanityRequest> {
   @override
-  final Iterable<Type> types = const [UpdateGuildVanityRequest, _$UpdateGuildVanityRequest];
+  final Iterable<Type> types = const [
+    UpdateGuildVanityRequest,
+    _$UpdateGuildVanityRequest
+  ];
 
   @override
   final String wireName = r'UpdateGuildVanityRequest';
@@ -50,10 +59,12 @@ class _$UpdateGuildVanityRequestSerializer implements PrimitiveSerializer<Update
       specifiedType: const FullType(String),
     );
     yield r'vanity_url_code';
-    yield object.vanityUrlCode == null ? null : serializers.serialize(
-      object.vanityUrlCode,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.vanityUrlCode == null
+        ? null
+        : serializers.serialize(
+            object.vanityUrlCode,
+            specifiedType: const FullType.nullable(String),
+          );
   }
 
   @override
@@ -62,7 +73,9 @@ class _$UpdateGuildVanityRequestSerializer implements PrimitiveSerializer<Update
     UpdateGuildVanityRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -120,4 +133,3 @@ class _$UpdateGuildVanityRequestSerializer implements PrimitiveSerializer<Update
     return result.build();
   }
 }
-

@@ -16,7 +16,8 @@ part 'channel_pins_response.g.dart';
 /// * [items] - Pinned messages in this channel
 /// * [hasMore] - Whether more pins can be fetched with pagination
 @BuiltValue()
-abstract class ChannelPinsResponse implements Built<ChannelPinsResponse, ChannelPinsResponseBuilder> {
+abstract class ChannelPinsResponse
+    implements Built<ChannelPinsResponse, ChannelPinsResponseBuilder> {
   /// Pinned messages in this channel
   @BuiltValueField(wireName: r'items')
   BuiltList<ChannelPinResponse> get items;
@@ -27,18 +28,24 @@ abstract class ChannelPinsResponse implements Built<ChannelPinsResponse, Channel
 
   ChannelPinsResponse._();
 
-  factory ChannelPinsResponse([void updates(ChannelPinsResponseBuilder b)]) = _$ChannelPinsResponse;
+  factory ChannelPinsResponse([void updates(ChannelPinsResponseBuilder b)]) =
+      _$ChannelPinsResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ChannelPinsResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ChannelPinsResponse> get serializer => _$ChannelPinsResponseSerializer();
+  static Serializer<ChannelPinsResponse> get serializer =>
+      _$ChannelPinsResponseSerializer();
 }
 
-class _$ChannelPinsResponseSerializer implements PrimitiveSerializer<ChannelPinsResponse> {
+class _$ChannelPinsResponseSerializer
+    implements PrimitiveSerializer<ChannelPinsResponse> {
   @override
-  final Iterable<Type> types = const [ChannelPinsResponse, _$ChannelPinsResponse];
+  final Iterable<Type> types = const [
+    ChannelPinsResponse,
+    _$ChannelPinsResponse
+  ];
 
   @override
   final String wireName = r'ChannelPinsResponse';
@@ -66,7 +73,9 @@ class _$ChannelPinsResponseSerializer implements PrimitiveSerializer<ChannelPins
     ChannelPinsResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -84,7 +93,8 @@ class _$ChannelPinsResponseSerializer implements PrimitiveSerializer<ChannelPins
         case r'items':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ChannelPinResponse)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(ChannelPinResponse)]),
           ) as BuiltList<ChannelPinResponse>;
           result.items.replace(valueDes);
           break;
@@ -123,4 +133,3 @@ class _$ChannelPinsResponseSerializer implements PrimitiveSerializer<ChannelPins
     return result.build();
   }
 }
-

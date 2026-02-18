@@ -13,25 +13,35 @@ part 'password_change_verify_response.g.dart';
 /// Properties:
 /// * [verificationProof] - Proof token issued after verifying the email code
 @BuiltValue()
-abstract class PasswordChangeVerifyResponse implements Built<PasswordChangeVerifyResponse, PasswordChangeVerifyResponseBuilder> {
+abstract class PasswordChangeVerifyResponse
+    implements
+        Built<PasswordChangeVerifyResponse,
+            PasswordChangeVerifyResponseBuilder> {
   /// Proof token issued after verifying the email code
   @BuiltValueField(wireName: r'verification_proof')
   String get verificationProof;
 
   PasswordChangeVerifyResponse._();
 
-  factory PasswordChangeVerifyResponse([void updates(PasswordChangeVerifyResponseBuilder b)]) = _$PasswordChangeVerifyResponse;
+  factory PasswordChangeVerifyResponse(
+          [void updates(PasswordChangeVerifyResponseBuilder b)]) =
+      _$PasswordChangeVerifyResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PasswordChangeVerifyResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PasswordChangeVerifyResponse> get serializer => _$PasswordChangeVerifyResponseSerializer();
+  static Serializer<PasswordChangeVerifyResponse> get serializer =>
+      _$PasswordChangeVerifyResponseSerializer();
 }
 
-class _$PasswordChangeVerifyResponseSerializer implements PrimitiveSerializer<PasswordChangeVerifyResponse> {
+class _$PasswordChangeVerifyResponseSerializer
+    implements PrimitiveSerializer<PasswordChangeVerifyResponse> {
   @override
-  final Iterable<Type> types = const [PasswordChangeVerifyResponse, _$PasswordChangeVerifyResponse];
+  final Iterable<Type> types = const [
+    PasswordChangeVerifyResponse,
+    _$PasswordChangeVerifyResponse
+  ];
 
   @override
   final String wireName = r'PasswordChangeVerifyResponse';
@@ -54,7 +64,9 @@ class _$PasswordChangeVerifyResponseSerializer implements PrimitiveSerializer<Pa
     PasswordChangeVerifyResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +116,3 @@ class _$PasswordChangeVerifyResponseSerializer implements PrimitiveSerializer<Pa
     return result.build();
   }
 }
-

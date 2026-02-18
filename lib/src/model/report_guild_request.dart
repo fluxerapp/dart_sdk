@@ -12,11 +12,12 @@ part 'report_guild_request.g.dart';
 /// ReportGuildRequest
 ///
 /// Properties:
-/// * [guildId] 
-/// * [category] 
+/// * [guildId]
+/// * [category]
 /// * [additionalInfo] - Additional context or details about the report
 @BuiltValue()
-abstract class ReportGuildRequest implements Built<ReportGuildRequest, ReportGuildRequestBuilder> {
+abstract class ReportGuildRequest
+    implements Built<ReportGuildRequest, ReportGuildRequestBuilder> {
   @BuiltValueField(wireName: r'guild_id')
   String get guildId;
 
@@ -30,16 +31,19 @@ abstract class ReportGuildRequest implements Built<ReportGuildRequest, ReportGui
 
   ReportGuildRequest._();
 
-  factory ReportGuildRequest([void updates(ReportGuildRequestBuilder b)]) = _$ReportGuildRequest;
+  factory ReportGuildRequest([void updates(ReportGuildRequestBuilder b)]) =
+      _$ReportGuildRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ReportGuildRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ReportGuildRequest> get serializer => _$ReportGuildRequestSerializer();
+  static Serializer<ReportGuildRequest> get serializer =>
+      _$ReportGuildRequestSerializer();
 }
 
-class _$ReportGuildRequestSerializer implements PrimitiveSerializer<ReportGuildRequest> {
+class _$ReportGuildRequestSerializer
+    implements PrimitiveSerializer<ReportGuildRequest> {
   @override
   final Iterable<Type> types = const [ReportGuildRequest, _$ReportGuildRequest];
 
@@ -76,7 +80,9 @@ class _$ReportGuildRequestSerializer implements PrimitiveSerializer<ReportGuildR
     ReportGuildRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -140,4 +146,3 @@ class _$ReportGuildRequestSerializer implements PrimitiveSerializer<ReportGuildR
     return result.build();
   }
 }
-

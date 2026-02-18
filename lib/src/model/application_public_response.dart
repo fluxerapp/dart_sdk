@@ -15,14 +15,16 @@ part 'application_public_response.g.dart';
 /// Properties:
 /// * [id] - The unique identifier of the application
 /// * [name] - The name of the application
-/// * [icon] 
-/// * [description] 
+/// * [icon]
+/// * [description]
 /// * [redirectUris] - The registered redirect URIs for OAuth2
 /// * [scopes] - The available OAuth2 scopes
 /// * [botPublic] - Whether the bot can be invited by anyone
-/// * [bot] 
+/// * [bot]
 @BuiltValue()
-abstract class ApplicationPublicResponse implements Built<ApplicationPublicResponse, ApplicationPublicResponseBuilder> {
+abstract class ApplicationPublicResponse
+    implements
+        Built<ApplicationPublicResponse, ApplicationPublicResponseBuilder> {
   /// The unique identifier of the application
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -54,18 +56,25 @@ abstract class ApplicationPublicResponse implements Built<ApplicationPublicRespo
 
   ApplicationPublicResponse._();
 
-  factory ApplicationPublicResponse([void updates(ApplicationPublicResponseBuilder b)]) = _$ApplicationPublicResponse;
+  factory ApplicationPublicResponse(
+          [void updates(ApplicationPublicResponseBuilder b)]) =
+      _$ApplicationPublicResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ApplicationPublicResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ApplicationPublicResponse> get serializer => _$ApplicationPublicResponseSerializer();
+  static Serializer<ApplicationPublicResponse> get serializer =>
+      _$ApplicationPublicResponseSerializer();
 }
 
-class _$ApplicationPublicResponseSerializer implements PrimitiveSerializer<ApplicationPublicResponse> {
+class _$ApplicationPublicResponseSerializer
+    implements PrimitiveSerializer<ApplicationPublicResponse> {
   @override
-  final Iterable<Type> types = const [ApplicationPublicResponse, _$ApplicationPublicResponse];
+  final Iterable<Type> types = const [
+    ApplicationPublicResponse,
+    _$ApplicationPublicResponse
+  ];
 
   @override
   final String wireName = r'ApplicationPublicResponse';
@@ -86,15 +95,19 @@ class _$ApplicationPublicResponseSerializer implements PrimitiveSerializer<Appli
       specifiedType: const FullType(String),
     );
     yield r'icon';
-    yield object.icon == null ? null : serializers.serialize(
-      object.icon,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.icon == null
+        ? null
+        : serializers.serialize(
+            object.icon,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'description';
-    yield object.description == null ? null : serializers.serialize(
-      object.description,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.description == null
+        ? null
+        : serializers.serialize(
+            object.description,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'redirect_uris';
     yield serializers.serialize(
       object.redirectUris,
@@ -111,10 +124,12 @@ class _$ApplicationPublicResponseSerializer implements PrimitiveSerializer<Appli
       specifiedType: const FullType(bool),
     );
     yield r'bot';
-    yield object.bot == null ? null : serializers.serialize(
-      object.bot,
-      specifiedType: const FullType.nullable(ApplicationBotResponse),
-    );
+    yield object.bot == null
+        ? null
+        : serializers.serialize(
+            object.bot,
+            specifiedType: const FullType.nullable(ApplicationBotResponse),
+          );
   }
 
   @override
@@ -123,7 +138,9 @@ class _$ApplicationPublicResponseSerializer implements PrimitiveSerializer<Appli
     ApplicationPublicResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -225,4 +242,3 @@ class _$ApplicationPublicResponseSerializer implements PrimitiveSerializer<Appli
     return result.build();
   }
 }
-

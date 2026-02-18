@@ -13,10 +13,12 @@ part 'refresh_search_index_request.g.dart';
 ///
 /// Properties:
 /// * [indexType] - Type of search index to refresh
-/// * [guildId] 
-/// * [userId] 
+/// * [guildId]
+/// * [userId]
 @BuiltValue()
-abstract class RefreshSearchIndexRequest implements Built<RefreshSearchIndexRequest, RefreshSearchIndexRequestBuilder> {
+abstract class RefreshSearchIndexRequest
+    implements
+        Built<RefreshSearchIndexRequest, RefreshSearchIndexRequestBuilder> {
   /// Type of search index to refresh
   @BuiltValueField(wireName: r'index_type')
   RefreshSearchIndexRequestIndexTypeEnum get indexType;
@@ -30,18 +32,25 @@ abstract class RefreshSearchIndexRequest implements Built<RefreshSearchIndexRequ
 
   RefreshSearchIndexRequest._();
 
-  factory RefreshSearchIndexRequest([void updates(RefreshSearchIndexRequestBuilder b)]) = _$RefreshSearchIndexRequest;
+  factory RefreshSearchIndexRequest(
+          [void updates(RefreshSearchIndexRequestBuilder b)]) =
+      _$RefreshSearchIndexRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(RefreshSearchIndexRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<RefreshSearchIndexRequest> get serializer => _$RefreshSearchIndexRequestSerializer();
+  static Serializer<RefreshSearchIndexRequest> get serializer =>
+      _$RefreshSearchIndexRequestSerializer();
 }
 
-class _$RefreshSearchIndexRequestSerializer implements PrimitiveSerializer<RefreshSearchIndexRequest> {
+class _$RefreshSearchIndexRequestSerializer
+    implements PrimitiveSerializer<RefreshSearchIndexRequest> {
   @override
-  final Iterable<Type> types = const [RefreshSearchIndexRequest, _$RefreshSearchIndexRequest];
+  final Iterable<Type> types = const [
+    RefreshSearchIndexRequest,
+    _$RefreshSearchIndexRequest
+  ];
 
   @override
   final String wireName = r'RefreshSearchIndexRequest';
@@ -78,7 +87,9 @@ class _$RefreshSearchIndexRequestSerializer implements PrimitiveSerializer<Refre
     RefreshSearchIndexRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -96,7 +107,8 @@ class _$RefreshSearchIndexRequestSerializer implements PrimitiveSerializer<Refre
         case r'index_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(RefreshSearchIndexRequestIndexTypeEnum),
+            specifiedType:
+                const FullType(RefreshSearchIndexRequestIndexTypeEnum),
           ) as RefreshSearchIndexRequestIndexTypeEnum;
           result.indexType = valueDes;
           break;
@@ -144,34 +156,48 @@ class _$RefreshSearchIndexRequestSerializer implements PrimitiveSerializer<Refre
 }
 
 class RefreshSearchIndexRequestIndexTypeEnum extends EnumClass {
-
   /// Type of search index to refresh
   @BuiltValueEnumConst(wireName: r'guilds')
-  static const RefreshSearchIndexRequestIndexTypeEnum guilds = _$refreshSearchIndexRequestIndexTypeEnum_guilds;
+  static const RefreshSearchIndexRequestIndexTypeEnum guilds =
+      _$refreshSearchIndexRequestIndexTypeEnum_guilds;
+
   /// Type of search index to refresh
   @BuiltValueEnumConst(wireName: r'users')
-  static const RefreshSearchIndexRequestIndexTypeEnum users = _$refreshSearchIndexRequestIndexTypeEnum_users;
+  static const RefreshSearchIndexRequestIndexTypeEnum users =
+      _$refreshSearchIndexRequestIndexTypeEnum_users;
+
   /// Type of search index to refresh
   @BuiltValueEnumConst(wireName: r'reports')
-  static const RefreshSearchIndexRequestIndexTypeEnum reports = _$refreshSearchIndexRequestIndexTypeEnum_reports;
+  static const RefreshSearchIndexRequestIndexTypeEnum reports =
+      _$refreshSearchIndexRequestIndexTypeEnum_reports;
+
   /// Type of search index to refresh
   @BuiltValueEnumConst(wireName: r'audit_logs')
-  static const RefreshSearchIndexRequestIndexTypeEnum auditLogs = _$refreshSearchIndexRequestIndexTypeEnum_auditLogs;
+  static const RefreshSearchIndexRequestIndexTypeEnum auditLogs =
+      _$refreshSearchIndexRequestIndexTypeEnum_auditLogs;
+
   /// Type of search index to refresh
   @BuiltValueEnumConst(wireName: r'channel_messages')
-  static const RefreshSearchIndexRequestIndexTypeEnum channelMessages = _$refreshSearchIndexRequestIndexTypeEnum_channelMessages;
+  static const RefreshSearchIndexRequestIndexTypeEnum channelMessages =
+      _$refreshSearchIndexRequestIndexTypeEnum_channelMessages;
+
   /// Type of search index to refresh
   @BuiltValueEnumConst(wireName: r'guild_members')
-  static const RefreshSearchIndexRequestIndexTypeEnum guildMembers = _$refreshSearchIndexRequestIndexTypeEnum_guildMembers;
+  static const RefreshSearchIndexRequestIndexTypeEnum guildMembers =
+      _$refreshSearchIndexRequestIndexTypeEnum_guildMembers;
+
   /// Type of search index to refresh
   @BuiltValueEnumConst(wireName: r'favorite_memes')
-  static const RefreshSearchIndexRequestIndexTypeEnum favoriteMemes = _$refreshSearchIndexRequestIndexTypeEnum_favoriteMemes;
+  static const RefreshSearchIndexRequestIndexTypeEnum favoriteMemes =
+      _$refreshSearchIndexRequestIndexTypeEnum_favoriteMemes;
 
-  static Serializer<RefreshSearchIndexRequestIndexTypeEnum> get serializer => _$refreshSearchIndexRequestIndexTypeEnumSerializer;
+  static Serializer<RefreshSearchIndexRequestIndexTypeEnum> get serializer =>
+      _$refreshSearchIndexRequestIndexTypeEnumSerializer;
 
-  const RefreshSearchIndexRequestIndexTypeEnum._(String name): super(name);
+  const RefreshSearchIndexRequestIndexTypeEnum._(String name) : super(name);
 
-  static BuiltSet<RefreshSearchIndexRequestIndexTypeEnum> get values => _$refreshSearchIndexRequestIndexTypeEnumValues;
-  static RefreshSearchIndexRequestIndexTypeEnum valueOf(String name) => _$refreshSearchIndexRequestIndexTypeEnumValueOf(name);
+  static BuiltSet<RefreshSearchIndexRequestIndexTypeEnum> get values =>
+      _$refreshSearchIndexRequestIndexTypeEnumValues;
+  static RefreshSearchIndexRequestIndexTypeEnum valueOf(String name) =>
+      _$refreshSearchIndexRequestIndexTypeEnumValueOf(name);
 }
-

@@ -23,7 +23,9 @@ part 'create_voice_server_request.g.dart';
 /// * [allowedGuildIds] - Guild IDs explicitly allowed to use this server
 /// * [allowedUserIds] - User IDs explicitly allowed to use this server
 @BuiltValue()
-abstract class CreateVoiceServerRequest implements Built<CreateVoiceServerRequest, CreateVoiceServerRequestBuilder> {
+abstract class CreateVoiceServerRequest
+    implements
+        Built<CreateVoiceServerRequest, CreateVoiceServerRequestBuilder> {
   /// ID of the region this server belongs to
   @BuiltValueField(wireName: r'region_id')
   String get regionId;
@@ -66,18 +68,25 @@ abstract class CreateVoiceServerRequest implements Built<CreateVoiceServerReques
 
   CreateVoiceServerRequest._();
 
-  factory CreateVoiceServerRequest([void updates(CreateVoiceServerRequestBuilder b)]) = _$CreateVoiceServerRequest;
+  factory CreateVoiceServerRequest(
+          [void updates(CreateVoiceServerRequestBuilder b)]) =
+      _$CreateVoiceServerRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CreateVoiceServerRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CreateVoiceServerRequest> get serializer => _$CreateVoiceServerRequestSerializer();
+  static Serializer<CreateVoiceServerRequest> get serializer =>
+      _$CreateVoiceServerRequestSerializer();
 }
 
-class _$CreateVoiceServerRequestSerializer implements PrimitiveSerializer<CreateVoiceServerRequest> {
+class _$CreateVoiceServerRequestSerializer
+    implements PrimitiveSerializer<CreateVoiceServerRequest> {
   @override
-  final Iterable<Type> types = const [CreateVoiceServerRequest, _$CreateVoiceServerRequest];
+  final Iterable<Type> types = const [
+    CreateVoiceServerRequest,
+    _$CreateVoiceServerRequest
+  ];
 
   @override
   final String wireName = r'CreateVoiceServerRequest';
@@ -155,7 +164,9 @@ class _$CreateVoiceServerRequestSerializer implements PrimitiveSerializer<Create
     CreateVoiceServerRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -268,4 +279,3 @@ class _$CreateVoiceServerRequestSerializer implements PrimitiveSerializer<Create
     return result.build();
   }
 }
-

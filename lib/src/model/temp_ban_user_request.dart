@@ -11,11 +11,12 @@ part 'temp_ban_user_request.g.dart';
 /// TempBanUserRequest
 ///
 /// Properties:
-/// * [userId] 
+/// * [userId]
 /// * [durationHours] - Duration of the ban in hours. Use 0 for a permanent ban (until manually unbanned).
 /// * [reason] - Reason for the temporary ban
 @BuiltValue()
-abstract class TempBanUserRequest implements Built<TempBanUserRequest, TempBanUserRequestBuilder> {
+abstract class TempBanUserRequest
+    implements Built<TempBanUserRequest, TempBanUserRequestBuilder> {
   @BuiltValueField(wireName: r'user_id')
   String get userId;
 
@@ -29,16 +30,19 @@ abstract class TempBanUserRequest implements Built<TempBanUserRequest, TempBanUs
 
   TempBanUserRequest._();
 
-  factory TempBanUserRequest([void updates(TempBanUserRequestBuilder b)]) = _$TempBanUserRequest;
+  factory TempBanUserRequest([void updates(TempBanUserRequestBuilder b)]) =
+      _$TempBanUserRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(TempBanUserRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<TempBanUserRequest> get serializer => _$TempBanUserRequestSerializer();
+  static Serializer<TempBanUserRequest> get serializer =>
+      _$TempBanUserRequestSerializer();
 }
 
-class _$TempBanUserRequestSerializer implements PrimitiveSerializer<TempBanUserRequest> {
+class _$TempBanUserRequestSerializer
+    implements PrimitiveSerializer<TempBanUserRequest> {
   @override
   final Iterable<Type> types = const [TempBanUserRequest, _$TempBanUserRequest];
 
@@ -75,7 +79,9 @@ class _$TempBanUserRequestSerializer implements PrimitiveSerializer<TempBanUserR
     TempBanUserRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -139,4 +145,3 @@ class _$TempBanUserRequestSerializer implements PrimitiveSerializer<TempBanUserR
     return result.build();
   }
 }
-

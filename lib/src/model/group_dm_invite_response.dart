@@ -16,13 +16,14 @@ part 'group_dm_invite_response.g.dart';
 /// Properties:
 /// * [code] - The unique invite code
 /// * [type] - The type of invite (group DM)
-/// * [channel] 
+/// * [channel]
 /// * [memberCount] - The current member count of the group DM
 /// * [temporary] - Whether the invite grants temporary membership
-/// * [inviter] 
-/// * [expiresAt] 
+/// * [inviter]
+/// * [expiresAt]
 @BuiltValue()
-abstract class GroupDmInviteResponse implements Built<GroupDmInviteResponse, GroupDmInviteResponseBuilder> {
+abstract class GroupDmInviteResponse
+    implements Built<GroupDmInviteResponse, GroupDmInviteResponseBuilder> {
   /// The unique invite code
   @BuiltValueField(wireName: r'code')
   String get code;
@@ -51,18 +52,24 @@ abstract class GroupDmInviteResponse implements Built<GroupDmInviteResponse, Gro
 
   GroupDmInviteResponse._();
 
-  factory GroupDmInviteResponse([void updates(GroupDmInviteResponseBuilder b)]) = _$GroupDmInviteResponse;
+  factory GroupDmInviteResponse(
+      [void updates(GroupDmInviteResponseBuilder b)]) = _$GroupDmInviteResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GroupDmInviteResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GroupDmInviteResponse> get serializer => _$GroupDmInviteResponseSerializer();
+  static Serializer<GroupDmInviteResponse> get serializer =>
+      _$GroupDmInviteResponseSerializer();
 }
 
-class _$GroupDmInviteResponseSerializer implements PrimitiveSerializer<GroupDmInviteResponse> {
+class _$GroupDmInviteResponseSerializer
+    implements PrimitiveSerializer<GroupDmInviteResponse> {
   @override
-  final Iterable<Type> types = const [GroupDmInviteResponse, _$GroupDmInviteResponse];
+  final Iterable<Type> types = const [
+    GroupDmInviteResponse,
+    _$GroupDmInviteResponse
+  ];
 
   @override
   final String wireName = r'GroupDmInviteResponse';
@@ -119,7 +126,9 @@ class _$GroupDmInviteResponseSerializer implements PrimitiveSerializer<GroupDmIn
     GroupDmInviteResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -215,16 +224,18 @@ class _$GroupDmInviteResponseSerializer implements PrimitiveSerializer<GroupDmIn
 }
 
 class GroupDmInviteResponseTypeEnum extends EnumClass {
-
   /// The type of invite (group DM)
   @BuiltValueEnumConst(wireNumber: 1)
-  static const GroupDmInviteResponseTypeEnum number1 = _$groupDmInviteResponseTypeEnum_number1;
+  static const GroupDmInviteResponseTypeEnum number1 =
+      _$groupDmInviteResponseTypeEnum_number1;
 
-  static Serializer<GroupDmInviteResponseTypeEnum> get serializer => _$groupDmInviteResponseTypeEnumSerializer;
+  static Serializer<GroupDmInviteResponseTypeEnum> get serializer =>
+      _$groupDmInviteResponseTypeEnumSerializer;
 
-  const GroupDmInviteResponseTypeEnum._(String name): super(name);
+  const GroupDmInviteResponseTypeEnum._(String name) : super(name);
 
-  static BuiltSet<GroupDmInviteResponseTypeEnum> get values => _$groupDmInviteResponseTypeEnumValues;
-  static GroupDmInviteResponseTypeEnum valueOf(String name) => _$groupDmInviteResponseTypeEnumValueOf(name);
+  static BuiltSet<GroupDmInviteResponseTypeEnum> get values =>
+      _$groupDmInviteResponseTypeEnumValues;
+  static GroupDmInviteResponseTypeEnum valueOf(String name) =>
+      _$groupDmInviteResponseTypeEnumValueOf(name);
 }
-

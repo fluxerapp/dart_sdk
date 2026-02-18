@@ -12,9 +12,10 @@ part 'mutual_guild_response.g.dart';
 ///
 /// Properties:
 /// * [id] - The ID of the mutual guild
-/// * [nick] 
+/// * [nick]
 @BuiltValue()
-abstract class MutualGuildResponse implements Built<MutualGuildResponse, MutualGuildResponseBuilder> {
+abstract class MutualGuildResponse
+    implements Built<MutualGuildResponse, MutualGuildResponseBuilder> {
   /// The ID of the mutual guild
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -24,18 +25,24 @@ abstract class MutualGuildResponse implements Built<MutualGuildResponse, MutualG
 
   MutualGuildResponse._();
 
-  factory MutualGuildResponse([void updates(MutualGuildResponseBuilder b)]) = _$MutualGuildResponse;
+  factory MutualGuildResponse([void updates(MutualGuildResponseBuilder b)]) =
+      _$MutualGuildResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(MutualGuildResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<MutualGuildResponse> get serializer => _$MutualGuildResponseSerializer();
+  static Serializer<MutualGuildResponse> get serializer =>
+      _$MutualGuildResponseSerializer();
 }
 
-class _$MutualGuildResponseSerializer implements PrimitiveSerializer<MutualGuildResponse> {
+class _$MutualGuildResponseSerializer
+    implements PrimitiveSerializer<MutualGuildResponse> {
   @override
-  final Iterable<Type> types = const [MutualGuildResponse, _$MutualGuildResponse];
+  final Iterable<Type> types = const [
+    MutualGuildResponse,
+    _$MutualGuildResponse
+  ];
 
   @override
   final String wireName = r'MutualGuildResponse';
@@ -51,10 +58,12 @@ class _$MutualGuildResponseSerializer implements PrimitiveSerializer<MutualGuild
       specifiedType: const FullType(String),
     );
     yield r'nick';
-    yield object.nick == null ? null : serializers.serialize(
-      object.nick,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.nick == null
+        ? null
+        : serializers.serialize(
+            object.nick,
+            specifiedType: const FullType.nullable(String),
+          );
   }
 
   @override
@@ -63,7 +72,9 @@ class _$MutualGuildResponseSerializer implements PrimitiveSerializer<MutualGuild
     MutualGuildResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +132,3 @@ class _$MutualGuildResponseSerializer implements PrimitiveSerializer<MutualGuild
     return result.build();
   }
 }
-

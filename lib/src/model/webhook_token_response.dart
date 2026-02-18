@@ -16,9 +16,10 @@ part 'webhook_token_response.g.dart';
 /// * [channelId] - The ID of the channel this webhook posts to
 /// * [name] - The display name of the webhook
 /// * [token] - The secure token used to execute the webhook
-/// * [avatar] 
+/// * [avatar]
 @BuiltValue()
-abstract class WebhookTokenResponse implements Built<WebhookTokenResponse, WebhookTokenResponseBuilder> {
+abstract class WebhookTokenResponse
+    implements Built<WebhookTokenResponse, WebhookTokenResponseBuilder> {
   /// The unique identifier (snowflake) for the webhook
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -44,18 +45,24 @@ abstract class WebhookTokenResponse implements Built<WebhookTokenResponse, Webho
 
   WebhookTokenResponse._();
 
-  factory WebhookTokenResponse([void updates(WebhookTokenResponseBuilder b)]) = _$WebhookTokenResponse;
+  factory WebhookTokenResponse([void updates(WebhookTokenResponseBuilder b)]) =
+      _$WebhookTokenResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(WebhookTokenResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<WebhookTokenResponse> get serializer => _$WebhookTokenResponseSerializer();
+  static Serializer<WebhookTokenResponse> get serializer =>
+      _$WebhookTokenResponseSerializer();
 }
 
-class _$WebhookTokenResponseSerializer implements PrimitiveSerializer<WebhookTokenResponse> {
+class _$WebhookTokenResponseSerializer
+    implements PrimitiveSerializer<WebhookTokenResponse> {
   @override
-  final Iterable<Type> types = const [WebhookTokenResponse, _$WebhookTokenResponse];
+  final Iterable<Type> types = const [
+    WebhookTokenResponse,
+    _$WebhookTokenResponse
+  ];
 
   @override
   final String wireName = r'WebhookTokenResponse';
@@ -105,7 +112,9 @@ class _$WebhookTokenResponseSerializer implements PrimitiveSerializer<WebhookTok
     WebhookTokenResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -191,4 +200,3 @@ class _$WebhookTokenResponseSerializer implements PrimitiveSerializer<WebhookTok
     return result.build();
   }
 }
-

@@ -15,7 +15,8 @@ part 'limit_filter_response.g.dart';
 /// * [traits] - Trait filters for this limit rule
 /// * [guildFeatures] - Guild feature filters for this limit rule
 @BuiltValue()
-abstract class LimitFilterResponse implements Built<LimitFilterResponse, LimitFilterResponseBuilder> {
+abstract class LimitFilterResponse
+    implements Built<LimitFilterResponse, LimitFilterResponseBuilder> {
   /// Trait filters for this limit rule
   @BuiltValueField(wireName: r'traits')
   BuiltList<String>? get traits;
@@ -26,18 +27,24 @@ abstract class LimitFilterResponse implements Built<LimitFilterResponse, LimitFi
 
   LimitFilterResponse._();
 
-  factory LimitFilterResponse([void updates(LimitFilterResponseBuilder b)]) = _$LimitFilterResponse;
+  factory LimitFilterResponse([void updates(LimitFilterResponseBuilder b)]) =
+      _$LimitFilterResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(LimitFilterResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<LimitFilterResponse> get serializer => _$LimitFilterResponseSerializer();
+  static Serializer<LimitFilterResponse> get serializer =>
+      _$LimitFilterResponseSerializer();
 }
 
-class _$LimitFilterResponseSerializer implements PrimitiveSerializer<LimitFilterResponse> {
+class _$LimitFilterResponseSerializer
+    implements PrimitiveSerializer<LimitFilterResponse> {
   @override
-  final Iterable<Type> types = const [LimitFilterResponse, _$LimitFilterResponse];
+  final Iterable<Type> types = const [
+    LimitFilterResponse,
+    _$LimitFilterResponse
+  ];
 
   @override
   final String wireName = r'LimitFilterResponse';
@@ -69,7 +76,9 @@ class _$LimitFilterResponseSerializer implements PrimitiveSerializer<LimitFilter
     LimitFilterResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -126,4 +135,3 @@ class _$LimitFilterResponseSerializer implements PrimitiveSerializer<LimitFilter
     return result.build();
   }
 }
-

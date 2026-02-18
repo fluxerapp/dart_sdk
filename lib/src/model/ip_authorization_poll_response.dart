@@ -12,10 +12,12 @@ part 'ip_authorization_poll_response.g.dart';
 ///
 /// Properties:
 /// * [completed] - Whether the IP authorization has been completed
-/// * [token] 
-/// * [userId] 
+/// * [token]
+/// * [userId]
 @BuiltValue()
-abstract class IpAuthorizationPollResponse implements Built<IpAuthorizationPollResponse, IpAuthorizationPollResponseBuilder> {
+abstract class IpAuthorizationPollResponse
+    implements
+        Built<IpAuthorizationPollResponse, IpAuthorizationPollResponseBuilder> {
   /// Whether the IP authorization has been completed
   @BuiltValueField(wireName: r'completed')
   bool get completed;
@@ -28,18 +30,25 @@ abstract class IpAuthorizationPollResponse implements Built<IpAuthorizationPollR
 
   IpAuthorizationPollResponse._();
 
-  factory IpAuthorizationPollResponse([void updates(IpAuthorizationPollResponseBuilder b)]) = _$IpAuthorizationPollResponse;
+  factory IpAuthorizationPollResponse(
+          [void updates(IpAuthorizationPollResponseBuilder b)]) =
+      _$IpAuthorizationPollResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(IpAuthorizationPollResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<IpAuthorizationPollResponse> get serializer => _$IpAuthorizationPollResponseSerializer();
+  static Serializer<IpAuthorizationPollResponse> get serializer =>
+      _$IpAuthorizationPollResponseSerializer();
 }
 
-class _$IpAuthorizationPollResponseSerializer implements PrimitiveSerializer<IpAuthorizationPollResponse> {
+class _$IpAuthorizationPollResponseSerializer
+    implements PrimitiveSerializer<IpAuthorizationPollResponse> {
   @override
-  final Iterable<Type> types = const [IpAuthorizationPollResponse, _$IpAuthorizationPollResponse];
+  final Iterable<Type> types = const [
+    IpAuthorizationPollResponse,
+    _$IpAuthorizationPollResponse
+  ];
 
   @override
   final String wireName = r'IpAuthorizationPollResponse';
@@ -76,7 +85,9 @@ class _$IpAuthorizationPollResponseSerializer implements PrimitiveSerializer<IpA
     IpAuthorizationPollResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -141,4 +152,3 @@ class _$IpAuthorizationPollResponseSerializer implements PrimitiveSerializer<IpA
     return result.build();
   }
 }
-

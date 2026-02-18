@@ -11,26 +11,34 @@ part 'ban_check_response_schema.g.dart';
 /// BanCheckResponseSchema
 ///
 /// Properties:
-/// * [banned] 
+/// * [banned]
 @BuiltValue()
-abstract class BanCheckResponseSchema implements Built<BanCheckResponseSchema, BanCheckResponseSchemaBuilder> {
+abstract class BanCheckResponseSchema
+    implements Built<BanCheckResponseSchema, BanCheckResponseSchemaBuilder> {
   @BuiltValueField(wireName: r'banned')
   bool get banned;
 
   BanCheckResponseSchema._();
 
-  factory BanCheckResponseSchema([void updates(BanCheckResponseSchemaBuilder b)]) = _$BanCheckResponseSchema;
+  factory BanCheckResponseSchema(
+          [void updates(BanCheckResponseSchemaBuilder b)]) =
+      _$BanCheckResponseSchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(BanCheckResponseSchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<BanCheckResponseSchema> get serializer => _$BanCheckResponseSchemaSerializer();
+  static Serializer<BanCheckResponseSchema> get serializer =>
+      _$BanCheckResponseSchemaSerializer();
 }
 
-class _$BanCheckResponseSchemaSerializer implements PrimitiveSerializer<BanCheckResponseSchema> {
+class _$BanCheckResponseSchemaSerializer
+    implements PrimitiveSerializer<BanCheckResponseSchema> {
   @override
-  final Iterable<Type> types = const [BanCheckResponseSchema, _$BanCheckResponseSchema];
+  final Iterable<Type> types = const [
+    BanCheckResponseSchema,
+    _$BanCheckResponseSchema
+  ];
 
   @override
   final String wireName = r'BanCheckResponseSchema';
@@ -53,7 +61,9 @@ class _$BanCheckResponseSchemaSerializer implements PrimitiveSerializer<BanCheck
     BanCheckResponseSchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,4 +113,3 @@ class _$BanCheckResponseSchemaSerializer implements PrimitiveSerializer<BanCheck
     return result.build();
   }
 }
-

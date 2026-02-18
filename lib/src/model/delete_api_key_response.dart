@@ -12,27 +12,34 @@ part 'delete_api_key_response.g.dart';
 /// DeleteApiKeyResponse
 ///
 /// Properties:
-/// * [success] 
+/// * [success]
 @BuiltValue()
-abstract class DeleteApiKeyResponse implements Built<DeleteApiKeyResponse, DeleteApiKeyResponseBuilder> {
+abstract class DeleteApiKeyResponse
+    implements Built<DeleteApiKeyResponse, DeleteApiKeyResponseBuilder> {
   @BuiltValueField(wireName: r'success')
   DeleteApiKeyResponseSuccessEnum get success;
   // enum successEnum {  true,  };
 
   DeleteApiKeyResponse._();
 
-  factory DeleteApiKeyResponse([void updates(DeleteApiKeyResponseBuilder b)]) = _$DeleteApiKeyResponse;
+  factory DeleteApiKeyResponse([void updates(DeleteApiKeyResponseBuilder b)]) =
+      _$DeleteApiKeyResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(DeleteApiKeyResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<DeleteApiKeyResponse> get serializer => _$DeleteApiKeyResponseSerializer();
+  static Serializer<DeleteApiKeyResponse> get serializer =>
+      _$DeleteApiKeyResponseSerializer();
 }
 
-class _$DeleteApiKeyResponseSerializer implements PrimitiveSerializer<DeleteApiKeyResponse> {
+class _$DeleteApiKeyResponseSerializer
+    implements PrimitiveSerializer<DeleteApiKeyResponse> {
   @override
-  final Iterable<Type> types = const [DeleteApiKeyResponse, _$DeleteApiKeyResponse];
+  final Iterable<Type> types = const [
+    DeleteApiKeyResponse,
+    _$DeleteApiKeyResponse
+  ];
 
   @override
   final String wireName = r'DeleteApiKeyResponse';
@@ -55,7 +62,9 @@ class _$DeleteApiKeyResponseSerializer implements PrimitiveSerializer<DeleteApiK
     DeleteApiKeyResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -107,15 +116,17 @@ class _$DeleteApiKeyResponseSerializer implements PrimitiveSerializer<DeleteApiK
 }
 
 class DeleteApiKeyResponseSuccessEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'true')
-  static const DeleteApiKeyResponseSuccessEnum true_ = _$deleteApiKeyResponseSuccessEnum_true_;
+  static const DeleteApiKeyResponseSuccessEnum true_ =
+      _$deleteApiKeyResponseSuccessEnum_true_;
 
-  static Serializer<DeleteApiKeyResponseSuccessEnum> get serializer => _$deleteApiKeyResponseSuccessEnumSerializer;
+  static Serializer<DeleteApiKeyResponseSuccessEnum> get serializer =>
+      _$deleteApiKeyResponseSuccessEnumSerializer;
 
-  const DeleteApiKeyResponseSuccessEnum._(String name): super(name);
+  const DeleteApiKeyResponseSuccessEnum._(String name) : super(name);
 
-  static BuiltSet<DeleteApiKeyResponseSuccessEnum> get values => _$deleteApiKeyResponseSuccessEnumValues;
-  static DeleteApiKeyResponseSuccessEnum valueOf(String name) => _$deleteApiKeyResponseSuccessEnumValueOf(name);
+  static BuiltSet<DeleteApiKeyResponseSuccessEnum> get values =>
+      _$deleteApiKeyResponseSuccessEnumValues;
+  static DeleteApiKeyResponseSuccessEnum valueOf(String name) =>
+      _$deleteApiKeyResponseSuccessEnumValueOf(name);
 }
-

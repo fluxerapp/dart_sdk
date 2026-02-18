@@ -14,7 +14,10 @@ part 'well_known_fluxer_response_federation.g.dart';
 /// * [enabled] - Whether federation is enabled on this instance
 /// * [version] - Federation protocol version
 @BuiltValue()
-abstract class WellKnownFluxerResponseFederation implements Built<WellKnownFluxerResponseFederation, WellKnownFluxerResponseFederationBuilder> {
+abstract class WellKnownFluxerResponseFederation
+    implements
+        Built<WellKnownFluxerResponseFederation,
+            WellKnownFluxerResponseFederationBuilder> {
   /// Whether federation is enabled on this instance
   @BuiltValueField(wireName: r'enabled')
   bool get enabled;
@@ -25,18 +28,25 @@ abstract class WellKnownFluxerResponseFederation implements Built<WellKnownFluxe
 
   WellKnownFluxerResponseFederation._();
 
-  factory WellKnownFluxerResponseFederation([void updates(WellKnownFluxerResponseFederationBuilder b)]) = _$WellKnownFluxerResponseFederation;
+  factory WellKnownFluxerResponseFederation(
+          [void updates(WellKnownFluxerResponseFederationBuilder b)]) =
+      _$WellKnownFluxerResponseFederation;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(WellKnownFluxerResponseFederationBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<WellKnownFluxerResponseFederation> get serializer => _$WellKnownFluxerResponseFederationSerializer();
+  static Serializer<WellKnownFluxerResponseFederation> get serializer =>
+      _$WellKnownFluxerResponseFederationSerializer();
 }
 
-class _$WellKnownFluxerResponseFederationSerializer implements PrimitiveSerializer<WellKnownFluxerResponseFederation> {
+class _$WellKnownFluxerResponseFederationSerializer
+    implements PrimitiveSerializer<WellKnownFluxerResponseFederation> {
   @override
-  final Iterable<Type> types = const [WellKnownFluxerResponseFederation, _$WellKnownFluxerResponseFederation];
+  final Iterable<Type> types = const [
+    WellKnownFluxerResponseFederation,
+    _$WellKnownFluxerResponseFederation
+  ];
 
   @override
   final String wireName = r'WellKnownFluxerResponseFederation';
@@ -64,7 +74,9 @@ class _$WellKnownFluxerResponseFederationSerializer implements PrimitiveSerializ
     WellKnownFluxerResponseFederation object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +133,3 @@ class _$WellKnownFluxerResponseFederationSerializer implements PrimitiveSerializ
     return result.build();
   }
 }
-

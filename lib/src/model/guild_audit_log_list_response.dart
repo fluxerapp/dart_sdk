@@ -19,7 +19,9 @@ part 'guild_audit_log_list_response.g.dart';
 /// * [users] - Users referenced in the audit log entries
 /// * [webhooks] - Webhooks referenced in the audit log entries
 @BuiltValue()
-abstract class GuildAuditLogListResponse implements Built<GuildAuditLogListResponse, GuildAuditLogListResponseBuilder> {
+abstract class GuildAuditLogListResponse
+    implements
+        Built<GuildAuditLogListResponse, GuildAuditLogListResponseBuilder> {
   /// Array of audit log entries
   @BuiltValueField(wireName: r'audit_log_entries')
   BuiltList<GuildAuditLogEntryResponse> get auditLogEntries;
@@ -34,18 +36,25 @@ abstract class GuildAuditLogListResponse implements Built<GuildAuditLogListRespo
 
   GuildAuditLogListResponse._();
 
-  factory GuildAuditLogListResponse([void updates(GuildAuditLogListResponseBuilder b)]) = _$GuildAuditLogListResponse;
+  factory GuildAuditLogListResponse(
+          [void updates(GuildAuditLogListResponseBuilder b)]) =
+      _$GuildAuditLogListResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildAuditLogListResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildAuditLogListResponse> get serializer => _$GuildAuditLogListResponseSerializer();
+  static Serializer<GuildAuditLogListResponse> get serializer =>
+      _$GuildAuditLogListResponseSerializer();
 }
 
-class _$GuildAuditLogListResponseSerializer implements PrimitiveSerializer<GuildAuditLogListResponse> {
+class _$GuildAuditLogListResponseSerializer
+    implements PrimitiveSerializer<GuildAuditLogListResponse> {
   @override
-  final Iterable<Type> types = const [GuildAuditLogListResponse, _$GuildAuditLogListResponse];
+  final Iterable<Type> types = const [
+    GuildAuditLogListResponse,
+    _$GuildAuditLogListResponse
+  ];
 
   @override
   final String wireName = r'GuildAuditLogListResponse';
@@ -58,7 +67,8 @@ class _$GuildAuditLogListResponseSerializer implements PrimitiveSerializer<Guild
     yield r'audit_log_entries';
     yield serializers.serialize(
       object.auditLogEntries,
-      specifiedType: const FullType(BuiltList, [FullType(GuildAuditLogEntryResponse)]),
+      specifiedType:
+          const FullType(BuiltList, [FullType(GuildAuditLogEntryResponse)]),
     );
     yield r'users';
     yield serializers.serialize(
@@ -68,7 +78,8 @@ class _$GuildAuditLogListResponseSerializer implements PrimitiveSerializer<Guild
     yield r'webhooks';
     yield serializers.serialize(
       object.webhooks,
-      specifiedType: const FullType(BuiltList, [FullType(AuditLogWebhookResponse)]),
+      specifiedType:
+          const FullType(BuiltList, [FullType(AuditLogWebhookResponse)]),
     );
   }
 
@@ -78,7 +89,9 @@ class _$GuildAuditLogListResponseSerializer implements PrimitiveSerializer<Guild
     GuildAuditLogListResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -96,21 +109,24 @@ class _$GuildAuditLogListResponseSerializer implements PrimitiveSerializer<Guild
         case r'audit_log_entries':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(GuildAuditLogEntryResponse)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(GuildAuditLogEntryResponse)]),
           ) as BuiltList<GuildAuditLogEntryResponse>;
           result.auditLogEntries.replace(valueDes);
           break;
         case r'users':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(UserPartialResponse)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(UserPartialResponse)]),
           ) as BuiltList<UserPartialResponse>;
           result.users.replace(valueDes);
           break;
         case r'webhooks':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(AuditLogWebhookResponse)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(AuditLogWebhookResponse)]),
           ) as BuiltList<AuditLogWebhookResponse>;
           result.webhooks.replace(valueDes);
           break;
@@ -142,4 +158,3 @@ class _$GuildAuditLogListResponseSerializer implements PrimitiveSerializer<Guild
     return result.build();
   }
 }
-

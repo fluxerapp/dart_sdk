@@ -13,10 +13,12 @@ part 'tenor_register_share_request.g.dart';
 ///
 /// Properties:
 /// * [id] - The Tenor result id
-/// * [q] 
-/// * [locale] 
+/// * [q]
+/// * [locale]
 @BuiltValue()
-abstract class TenorRegisterShareRequest implements Built<TenorRegisterShareRequest, TenorRegisterShareRequestBuilder> {
+abstract class TenorRegisterShareRequest
+    implements
+        Built<TenorRegisterShareRequest, TenorRegisterShareRequestBuilder> {
   /// The Tenor result id
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -30,18 +32,25 @@ abstract class TenorRegisterShareRequest implements Built<TenorRegisterShareRequ
 
   TenorRegisterShareRequest._();
 
-  factory TenorRegisterShareRequest([void updates(TenorRegisterShareRequestBuilder b)]) = _$TenorRegisterShareRequest;
+  factory TenorRegisterShareRequest(
+          [void updates(TenorRegisterShareRequestBuilder b)]) =
+      _$TenorRegisterShareRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(TenorRegisterShareRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<TenorRegisterShareRequest> get serializer => _$TenorRegisterShareRequestSerializer();
+  static Serializer<TenorRegisterShareRequest> get serializer =>
+      _$TenorRegisterShareRequestSerializer();
 }
 
-class _$TenorRegisterShareRequestSerializer implements PrimitiveSerializer<TenorRegisterShareRequest> {
+class _$TenorRegisterShareRequestSerializer
+    implements PrimitiveSerializer<TenorRegisterShareRequest> {
   @override
-  final Iterable<Type> types = const [TenorRegisterShareRequest, _$TenorRegisterShareRequest];
+  final Iterable<Type> types = const [
+    TenorRegisterShareRequest,
+    _$TenorRegisterShareRequest
+  ];
 
   @override
   final String wireName = r'TenorRegisterShareRequest';
@@ -78,7 +87,9 @@ class _$TenorRegisterShareRequestSerializer implements PrimitiveSerializer<Tenor
     TenorRegisterShareRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -143,4 +154,3 @@ class _$TenorRegisterShareRequestSerializer implements PrimitiveSerializer<Tenor
     return result.build();
   }
 }
-

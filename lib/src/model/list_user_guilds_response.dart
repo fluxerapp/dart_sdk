@@ -13,26 +13,34 @@ part 'list_user_guilds_response.g.dart';
 /// ListUserGuildsResponse
 ///
 /// Properties:
-/// * [guilds] 
+/// * [guilds]
 @BuiltValue()
-abstract class ListUserGuildsResponse implements Built<ListUserGuildsResponse, ListUserGuildsResponseBuilder> {
+abstract class ListUserGuildsResponse
+    implements Built<ListUserGuildsResponse, ListUserGuildsResponseBuilder> {
   @BuiltValueField(wireName: r'guilds')
   BuiltList<GuildAdminResponse> get guilds;
 
   ListUserGuildsResponse._();
 
-  factory ListUserGuildsResponse([void updates(ListUserGuildsResponseBuilder b)]) = _$ListUserGuildsResponse;
+  factory ListUserGuildsResponse(
+          [void updates(ListUserGuildsResponseBuilder b)]) =
+      _$ListUserGuildsResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ListUserGuildsResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListUserGuildsResponse> get serializer => _$ListUserGuildsResponseSerializer();
+  static Serializer<ListUserGuildsResponse> get serializer =>
+      _$ListUserGuildsResponseSerializer();
 }
 
-class _$ListUserGuildsResponseSerializer implements PrimitiveSerializer<ListUserGuildsResponse> {
+class _$ListUserGuildsResponseSerializer
+    implements PrimitiveSerializer<ListUserGuildsResponse> {
   @override
-  final Iterable<Type> types = const [ListUserGuildsResponse, _$ListUserGuildsResponse];
+  final Iterable<Type> types = const [
+    ListUserGuildsResponse,
+    _$ListUserGuildsResponse
+  ];
 
   @override
   final String wireName = r'ListUserGuildsResponse';
@@ -55,7 +63,9 @@ class _$ListUserGuildsResponseSerializer implements PrimitiveSerializer<ListUser
     ListUserGuildsResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -73,7 +83,8 @@ class _$ListUserGuildsResponseSerializer implements PrimitiveSerializer<ListUser
         case r'guilds':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(GuildAdminResponse)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(GuildAdminResponse)]),
           ) as BuiltList<GuildAdminResponse>;
           result.guilds.replace(valueDes);
           break;
@@ -105,4 +116,3 @@ class _$ListUserGuildsResponseSerializer implements PrimitiveSerializer<ListUser
     return result.build();
   }
 }
-

@@ -13,23 +13,27 @@ part 'user_note_response.g.dart';
 /// Properties:
 /// * [note] - The note text for this user
 @BuiltValue()
-abstract class UserNoteResponse implements Built<UserNoteResponse, UserNoteResponseBuilder> {
+abstract class UserNoteResponse
+    implements Built<UserNoteResponse, UserNoteResponseBuilder> {
   /// The note text for this user
   @BuiltValueField(wireName: r'note')
   String get note;
 
   UserNoteResponse._();
 
-  factory UserNoteResponse([void updates(UserNoteResponseBuilder b)]) = _$UserNoteResponse;
+  factory UserNoteResponse([void updates(UserNoteResponseBuilder b)]) =
+      _$UserNoteResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UserNoteResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UserNoteResponse> get serializer => _$UserNoteResponseSerializer();
+  static Serializer<UserNoteResponse> get serializer =>
+      _$UserNoteResponseSerializer();
 }
 
-class _$UserNoteResponseSerializer implements PrimitiveSerializer<UserNoteResponse> {
+class _$UserNoteResponseSerializer
+    implements PrimitiveSerializer<UserNoteResponse> {
   @override
   final Iterable<Type> types = const [UserNoteResponse, _$UserNoteResponse];
 
@@ -54,7 +58,9 @@ class _$UserNoteResponseSerializer implements PrimitiveSerializer<UserNoteRespon
     UserNoteResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +110,3 @@ class _$UserNoteResponseSerializer implements PrimitiveSerializer<UserNoteRespon
     return result.build();
   }
 }
-

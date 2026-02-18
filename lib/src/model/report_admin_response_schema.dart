@@ -15,37 +15,39 @@ part 'report_admin_response_schema.g.dart';
 /// ReportAdminResponseSchema
 ///
 /// Properties:
-/// * [reportId] 
-/// * [reporterId] 
-/// * [reporterTag] 
-/// * [reporterUsername] 
-/// * [reporterDiscriminator] 
-/// * [reporterEmail] 
-/// * [reporterFullLegalName] 
-/// * [reporterCountryOfResidence] 
-/// * [reportedAt] 
-/// * [status] 
-/// * [reportType] 
-/// * [category] 
-/// * [additionalInfo] 
-/// * [reportedUserId] 
-/// * [reportedUserTag] 
-/// * [reportedUserUsername] 
-/// * [reportedUserDiscriminator] 
-/// * [reportedUserAvatarHash] 
-/// * [reportedGuildId] 
-/// * [reportedGuildName] 
-/// * [reportedMessageId] 
-/// * [reportedChannelId] 
-/// * [reportedChannelName] 
-/// * [reportedGuildInviteCode] 
-/// * [resolvedAt] 
-/// * [resolvedByAdminId] 
-/// * [publicComment] 
-/// * [mutualDmChannelId] 
-/// * [messageContext] 
+/// * [reportId]
+/// * [reporterId]
+/// * [reporterTag]
+/// * [reporterUsername]
+/// * [reporterDiscriminator]
+/// * [reporterEmail]
+/// * [reporterFullLegalName]
+/// * [reporterCountryOfResidence]
+/// * [reportedAt]
+/// * [status]
+/// * [reportType]
+/// * [category]
+/// * [additionalInfo]
+/// * [reportedUserId]
+/// * [reportedUserTag]
+/// * [reportedUserUsername]
+/// * [reportedUserDiscriminator]
+/// * [reportedUserAvatarHash]
+/// * [reportedGuildId]
+/// * [reportedGuildName]
+/// * [reportedMessageId]
+/// * [reportedChannelId]
+/// * [reportedChannelName]
+/// * [reportedGuildInviteCode]
+/// * [resolvedAt]
+/// * [resolvedByAdminId]
+/// * [publicComment]
+/// * [mutualDmChannelId]
+/// * [messageContext]
 @BuiltValue()
-abstract class ReportAdminResponseSchema implements Built<ReportAdminResponseSchema, ReportAdminResponseSchemaBuilder> {
+abstract class ReportAdminResponseSchema
+    implements
+        Built<ReportAdminResponseSchema, ReportAdminResponseSchemaBuilder> {
   @BuiltValueField(wireName: r'report_id')
   String get reportId;
 
@@ -137,18 +139,25 @@ abstract class ReportAdminResponseSchema implements Built<ReportAdminResponseSch
 
   ReportAdminResponseSchema._();
 
-  factory ReportAdminResponseSchema([void updates(ReportAdminResponseSchemaBuilder b)]) = _$ReportAdminResponseSchema;
+  factory ReportAdminResponseSchema(
+          [void updates(ReportAdminResponseSchemaBuilder b)]) =
+      _$ReportAdminResponseSchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ReportAdminResponseSchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ReportAdminResponseSchema> get serializer => _$ReportAdminResponseSchemaSerializer();
+  static Serializer<ReportAdminResponseSchema> get serializer =>
+      _$ReportAdminResponseSchemaSerializer();
 }
 
-class _$ReportAdminResponseSchemaSerializer implements PrimitiveSerializer<ReportAdminResponseSchema> {
+class _$ReportAdminResponseSchemaSerializer
+    implements PrimitiveSerializer<ReportAdminResponseSchema> {
   @override
-  final Iterable<Type> types = const [ReportAdminResponseSchema, _$ReportAdminResponseSchema];
+  final Iterable<Type> types = const [
+    ReportAdminResponseSchema,
+    _$ReportAdminResponseSchema
+  ];
 
   @override
   final String wireName = r'ReportAdminResponseSchema';
@@ -169,35 +178,47 @@ class _$ReportAdminResponseSchemaSerializer implements PrimitiveSerializer<Repor
       specifiedType: const FullType(String),
     );
     yield r'reporter_tag';
-    yield object.reporterTag == null ? null : serializers.serialize(
-      object.reporterTag,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.reporterTag == null
+        ? null
+        : serializers.serialize(
+            object.reporterTag,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'reporter_username';
-    yield object.reporterUsername == null ? null : serializers.serialize(
-      object.reporterUsername,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.reporterUsername == null
+        ? null
+        : serializers.serialize(
+            object.reporterUsername,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'reporter_discriminator';
-    yield object.reporterDiscriminator == null ? null : serializers.serialize(
-      object.reporterDiscriminator,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.reporterDiscriminator == null
+        ? null
+        : serializers.serialize(
+            object.reporterDiscriminator,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'reporter_email';
-    yield object.reporterEmail == null ? null : serializers.serialize(
-      object.reporterEmail,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.reporterEmail == null
+        ? null
+        : serializers.serialize(
+            object.reporterEmail,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'reporter_full_legal_name';
-    yield object.reporterFullLegalName == null ? null : serializers.serialize(
-      object.reporterFullLegalName,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.reporterFullLegalName == null
+        ? null
+        : serializers.serialize(
+            object.reporterFullLegalName,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'reporter_country_of_residence';
-    yield object.reporterCountryOfResidence == null ? null : serializers.serialize(
-      object.reporterCountryOfResidence,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.reporterCountryOfResidence == null
+        ? null
+        : serializers.serialize(
+            object.reporterCountryOfResidence,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'reported_at';
     yield serializers.serialize(
       object.reportedAt,
@@ -214,50 +235,64 @@ class _$ReportAdminResponseSchemaSerializer implements PrimitiveSerializer<Repor
       specifiedType: const FullType(ReportType),
     );
     yield r'category';
-    yield object.category == null ? null : serializers.serialize(
-      object.category,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.category == null
+        ? null
+        : serializers.serialize(
+            object.category,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'additional_info';
-    yield object.additionalInfo == null ? null : serializers.serialize(
-      object.additionalInfo,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.additionalInfo == null
+        ? null
+        : serializers.serialize(
+            object.additionalInfo,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'reported_user_id';
     yield serializers.serialize(
       object.reportedUserId,
       specifiedType: const FullType(String),
     );
     yield r'reported_user_tag';
-    yield object.reportedUserTag == null ? null : serializers.serialize(
-      object.reportedUserTag,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.reportedUserTag == null
+        ? null
+        : serializers.serialize(
+            object.reportedUserTag,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'reported_user_username';
-    yield object.reportedUserUsername == null ? null : serializers.serialize(
-      object.reportedUserUsername,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.reportedUserUsername == null
+        ? null
+        : serializers.serialize(
+            object.reportedUserUsername,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'reported_user_discriminator';
-    yield object.reportedUserDiscriminator == null ? null : serializers.serialize(
-      object.reportedUserDiscriminator,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.reportedUserDiscriminator == null
+        ? null
+        : serializers.serialize(
+            object.reportedUserDiscriminator,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'reported_user_avatar_hash';
-    yield object.reportedUserAvatarHash == null ? null : serializers.serialize(
-      object.reportedUserAvatarHash,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.reportedUserAvatarHash == null
+        ? null
+        : serializers.serialize(
+            object.reportedUserAvatarHash,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'reported_guild_id';
     yield serializers.serialize(
       object.reportedGuildId,
       specifiedType: const FullType(String),
     );
     yield r'reported_guild_name';
-    yield object.reportedGuildName == null ? null : serializers.serialize(
-      object.reportedGuildName,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.reportedGuildName == null
+        ? null
+        : serializers.serialize(
+            object.reportedGuildName,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'reported_message_id';
     yield serializers.serialize(
       object.reportedMessageId,
@@ -269,30 +304,38 @@ class _$ReportAdminResponseSchemaSerializer implements PrimitiveSerializer<Repor
       specifiedType: const FullType(String),
     );
     yield r'reported_channel_name';
-    yield object.reportedChannelName == null ? null : serializers.serialize(
-      object.reportedChannelName,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.reportedChannelName == null
+        ? null
+        : serializers.serialize(
+            object.reportedChannelName,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'reported_guild_invite_code';
-    yield object.reportedGuildInviteCode == null ? null : serializers.serialize(
-      object.reportedGuildInviteCode,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.reportedGuildInviteCode == null
+        ? null
+        : serializers.serialize(
+            object.reportedGuildInviteCode,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'resolved_at';
-    yield object.resolvedAt == null ? null : serializers.serialize(
-      object.resolvedAt,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.resolvedAt == null
+        ? null
+        : serializers.serialize(
+            object.resolvedAt,
+            specifiedType: const FullType.nullable(String),
+          );
     yield r'resolved_by_admin_id';
     yield serializers.serialize(
       object.resolvedByAdminId,
       specifiedType: const FullType(String),
     );
     yield r'public_comment';
-    yield object.publicComment == null ? null : serializers.serialize(
-      object.publicComment,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.publicComment == null
+        ? null
+        : serializers.serialize(
+            object.publicComment,
+            specifiedType: const FullType.nullable(String),
+          );
     if (object.mutualDmChannelId != null) {
       yield r'mutual_dm_channel_id';
       yield serializers.serialize(
@@ -304,7 +347,8 @@ class _$ReportAdminResponseSchemaSerializer implements PrimitiveSerializer<Repor
       yield r'message_context';
       yield serializers.serialize(
         object.messageContext,
-        specifiedType: const FullType(BuiltList, [FullType(ReportAdminResponseSchemaMessageContextInner)]),
+        specifiedType: const FullType(BuiltList,
+            [FullType(ReportAdminResponseSchemaMessageContextInner)]),
       );
     }
   }
@@ -315,7 +359,9 @@ class _$ReportAdminResponseSchemaSerializer implements PrimitiveSerializer<Repor
     ReportAdminResponseSchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -546,7 +592,8 @@ class _$ReportAdminResponseSchemaSerializer implements PrimitiveSerializer<Repor
         case r'message_context':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ReportAdminResponseSchemaMessageContextInner)]),
+            specifiedType: const FullType(BuiltList,
+                [FullType(ReportAdminResponseSchemaMessageContextInner)]),
           ) as BuiltList<ReportAdminResponseSchemaMessageContextInner>;
           result.messageContext.replace(valueDes);
           break;
@@ -578,4 +625,3 @@ class _$ReportAdminResponseSchemaSerializer implements PrimitiveSerializer<Repor
     return result.build();
   }
 }
-

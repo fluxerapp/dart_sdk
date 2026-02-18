@@ -13,7 +13,8 @@ part 'ban_ip_request.g.dart';
 /// Properties:
 /// * [ip] - IPv4/IPv6 address or CIDR range to ban
 @BuiltValue()
-abstract class BanIpRequest implements Built<BanIpRequest, BanIpRequestBuilder> {
+abstract class BanIpRequest
+    implements Built<BanIpRequest, BanIpRequestBuilder> {
   /// IPv4/IPv6 address or CIDR range to ban
   @BuiltValueField(wireName: r'ip')
   String get ip;
@@ -54,7 +55,9 @@ class _$BanIpRequestSerializer implements PrimitiveSerializer<BanIpRequest> {
     BanIpRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +107,3 @@ class _$BanIpRequestSerializer implements PrimitiveSerializer<BanIpRequest> {
     return result.build();
   }
 }
-

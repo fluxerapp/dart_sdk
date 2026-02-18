@@ -15,7 +15,8 @@ part 'embed_field_response.g.dart';
 /// * [value] - The value of the field
 /// * [inline] - Whether the field should be displayed inline
 @BuiltValue()
-abstract class EmbedFieldResponse implements Built<EmbedFieldResponse, EmbedFieldResponseBuilder> {
+abstract class EmbedFieldResponse
+    implements Built<EmbedFieldResponse, EmbedFieldResponseBuilder> {
   /// The name of the field
   @BuiltValueField(wireName: r'name')
   String get name;
@@ -30,16 +31,19 @@ abstract class EmbedFieldResponse implements Built<EmbedFieldResponse, EmbedFiel
 
   EmbedFieldResponse._();
 
-  factory EmbedFieldResponse([void updates(EmbedFieldResponseBuilder b)]) = _$EmbedFieldResponse;
+  factory EmbedFieldResponse([void updates(EmbedFieldResponseBuilder b)]) =
+      _$EmbedFieldResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(EmbedFieldResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<EmbedFieldResponse> get serializer => _$EmbedFieldResponseSerializer();
+  static Serializer<EmbedFieldResponse> get serializer =>
+      _$EmbedFieldResponseSerializer();
 }
 
-class _$EmbedFieldResponseSerializer implements PrimitiveSerializer<EmbedFieldResponse> {
+class _$EmbedFieldResponseSerializer
+    implements PrimitiveSerializer<EmbedFieldResponse> {
   @override
   final Iterable<Type> types = const [EmbedFieldResponse, _$EmbedFieldResponse];
 
@@ -74,7 +78,9 @@ class _$EmbedFieldResponseSerializer implements PrimitiveSerializer<EmbedFieldRe
     EmbedFieldResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -138,4 +144,3 @@ class _$EmbedFieldResponseSerializer implements PrimitiveSerializer<EmbedFieldRe
     return result.build();
   }
 }
-

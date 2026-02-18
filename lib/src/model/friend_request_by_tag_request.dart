@@ -11,10 +11,12 @@ part 'friend_request_by_tag_request.g.dart';
 /// FriendRequestByTagRequest
 ///
 /// Properties:
-/// * [username] 
+/// * [username]
 /// * [discriminator] - Discriminator tag of the user
 @BuiltValue()
-abstract class FriendRequestByTagRequest implements Built<FriendRequestByTagRequest, FriendRequestByTagRequestBuilder> {
+abstract class FriendRequestByTagRequest
+    implements
+        Built<FriendRequestByTagRequest, FriendRequestByTagRequestBuilder> {
   @BuiltValueField(wireName: r'username')
   String get username;
 
@@ -24,18 +26,25 @@ abstract class FriendRequestByTagRequest implements Built<FriendRequestByTagRequ
 
   FriendRequestByTagRequest._();
 
-  factory FriendRequestByTagRequest([void updates(FriendRequestByTagRequestBuilder b)]) = _$FriendRequestByTagRequest;
+  factory FriendRequestByTagRequest(
+          [void updates(FriendRequestByTagRequestBuilder b)]) =
+      _$FriendRequestByTagRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(FriendRequestByTagRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<FriendRequestByTagRequest> get serializer => _$FriendRequestByTagRequestSerializer();
+  static Serializer<FriendRequestByTagRequest> get serializer =>
+      _$FriendRequestByTagRequestSerializer();
 }
 
-class _$FriendRequestByTagRequestSerializer implements PrimitiveSerializer<FriendRequestByTagRequest> {
+class _$FriendRequestByTagRequestSerializer
+    implements PrimitiveSerializer<FriendRequestByTagRequest> {
   @override
-  final Iterable<Type> types = const [FriendRequestByTagRequest, _$FriendRequestByTagRequest];
+  final Iterable<Type> types = const [
+    FriendRequestByTagRequest,
+    _$FriendRequestByTagRequest
+  ];
 
   @override
   final String wireName = r'FriendRequestByTagRequest';
@@ -63,7 +72,9 @@ class _$FriendRequestByTagRequestSerializer implements PrimitiveSerializer<Frien
     FriendRequestByTagRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -120,4 +131,3 @@ class _$FriendRequestByTagRequestSerializer implements PrimitiveSerializer<Frien
     return result.build();
   }
 }
-

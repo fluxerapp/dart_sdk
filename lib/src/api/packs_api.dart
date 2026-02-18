@@ -4,14 +4,11 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:built_collection/built_collection.dart';
 import 'package:fluxer_dart/src/api_util.dart';
-import 'package:fluxer_dart/src/model/error.dart';
-import 'package:fluxer_dart/src/model/get_well_known_fluxer429_response.dart';
 import 'package:fluxer_dart/src/model/guild_emoji_bulk_create_request.dart';
 import 'package:fluxer_dart/src/model/guild_emoji_bulk_create_response.dart';
 import 'package:fluxer_dart/src/model/guild_emoji_create_request.dart';
@@ -30,7 +27,6 @@ import 'package:fluxer_dart/src/model/pack_summary_response.dart';
 import 'package:fluxer_dart/src/model/pack_update_request.dart';
 
 class PacksApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -42,7 +38,7 @@ class PacksApi {
   ///
   /// Parameters:
   /// * [packId] - The ID of the pack
-  /// * [guildEmojiBulkCreateRequest] 
+  /// * [guildEmojiBulkCreateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -52,7 +48,7 @@ class PacksApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GuildEmojiBulkCreateResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GuildEmojiBulkCreateResponse>> bulkCreatePackEmojis({ 
+  Future<Response<GuildEmojiBulkCreateResponse>> bulkCreatePackEmojis({
     required String packId,
     required GuildEmojiBulkCreateRequest guildEmojiBulkCreateRequest,
     CancelToken? cancelToken,
@@ -62,7 +58,10 @@ class PacksApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/packs/emojis/{pack_id}/bulk'.replaceAll('{' r'pack_id' '}', encodeQueryParameter(_serializers, packId, const FullType(String)).toString());
+    final _path = r'/packs/emojis/{pack_id}/bulk'.replaceAll(
+        '{' r'pack_id' '}',
+        encodeQueryParameter(_serializers, packId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -75,7 +74,8 @@ class PacksApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -92,11 +92,11 @@ class PacksApi {
 
     try {
       const _type = FullType(GuildEmojiBulkCreateRequest);
-      _bodyData = _serializers.serialize(guildEmojiBulkCreateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(guildEmojiBulkCreateRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -119,11 +119,12 @@ class PacksApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GuildEmojiBulkCreateResponse),
-      ) as GuildEmojiBulkCreateResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GuildEmojiBulkCreateResponse),
+            ) as GuildEmojiBulkCreateResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -151,7 +152,7 @@ class PacksApi {
   ///
   /// Parameters:
   /// * [packId] - The ID of the pack
-  /// * [guildStickerBulkCreateRequest] 
+  /// * [guildStickerBulkCreateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -161,7 +162,7 @@ class PacksApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GuildStickerBulkCreateResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GuildStickerBulkCreateResponse>> bulkCreatePackStickers({ 
+  Future<Response<GuildStickerBulkCreateResponse>> bulkCreatePackStickers({
     required String packId,
     required GuildStickerBulkCreateRequest guildStickerBulkCreateRequest,
     CancelToken? cancelToken,
@@ -171,7 +172,10 @@ class PacksApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/packs/stickers/{pack_id}/bulk'.replaceAll('{' r'pack_id' '}', encodeQueryParameter(_serializers, packId, const FullType(String)).toString());
+    final _path = r'/packs/stickers/{pack_id}/bulk'.replaceAll(
+        '{' r'pack_id' '}',
+        encodeQueryParameter(_serializers, packId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -184,7 +188,8 @@ class PacksApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -201,11 +206,11 @@ class PacksApi {
 
     try {
       const _type = FullType(GuildStickerBulkCreateRequest);
-      _bodyData = _serializers.serialize(guildStickerBulkCreateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(guildStickerBulkCreateRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -228,11 +233,12 @@ class PacksApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GuildStickerBulkCreateResponse),
-      ) as GuildStickerBulkCreateResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GuildStickerBulkCreateResponse),
+            ) as GuildStickerBulkCreateResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -260,7 +266,7 @@ class PacksApi {
   ///
   /// Parameters:
   /// * [packType] - The pack type
-  /// * [packCreateRequest] 
+  /// * [packCreateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -270,7 +276,7 @@ class PacksApi {
   ///
   /// Returns a [Future] containing a [Response] with a [PackSummaryResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<PackSummaryResponse>> createPack({ 
+  Future<Response<PackSummaryResponse>> createPack({
     required String packType,
     required PackCreateRequest packCreateRequest,
     CancelToken? cancelToken,
@@ -280,7 +286,10 @@ class PacksApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/packs/{pack_type}'.replaceAll('{' r'pack_type' '}', encodeQueryParameter(_serializers, packType, const FullType(String)).toString());
+    final _path = r'/packs/{pack_type}'.replaceAll(
+        '{' r'pack_type' '}',
+        encodeQueryParameter(_serializers, packType, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -293,7 +302,8 @@ class PacksApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -310,11 +320,11 @@ class PacksApi {
 
     try {
       const _type = FullType(PackCreateRequest);
-      _bodyData = _serializers.serialize(packCreateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(packCreateRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -337,11 +347,12 @@ class PacksApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PackSummaryResponse),
-      ) as PackSummaryResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(PackSummaryResponse),
+            ) as PackSummaryResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -369,7 +380,7 @@ class PacksApi {
   ///
   /// Parameters:
   /// * [packId] - The ID of the pack
-  /// * [guildEmojiCreateRequest] 
+  /// * [guildEmojiCreateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -379,7 +390,7 @@ class PacksApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GuildEmojiResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GuildEmojiResponse>> createPackEmoji({ 
+  Future<Response<GuildEmojiResponse>> createPackEmoji({
     required String packId,
     required GuildEmojiCreateRequest guildEmojiCreateRequest,
     CancelToken? cancelToken,
@@ -389,7 +400,10 @@ class PacksApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/packs/emojis/{pack_id}'.replaceAll('{' r'pack_id' '}', encodeQueryParameter(_serializers, packId, const FullType(String)).toString());
+    final _path = r'/packs/emojis/{pack_id}'.replaceAll(
+        '{' r'pack_id' '}',
+        encodeQueryParameter(_serializers, packId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -402,7 +416,8 @@ class PacksApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -419,11 +434,11 @@ class PacksApi {
 
     try {
       const _type = FullType(GuildEmojiCreateRequest);
-      _bodyData = _serializers.serialize(guildEmojiCreateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(guildEmojiCreateRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -446,11 +461,12 @@ class PacksApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GuildEmojiResponse),
-      ) as GuildEmojiResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GuildEmojiResponse),
+            ) as GuildEmojiResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -478,7 +494,7 @@ class PacksApi {
   ///
   /// Parameters:
   /// * [packId] - The ID of the pack
-  /// * [guildStickerCreateRequest] 
+  /// * [guildStickerCreateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -488,7 +504,7 @@ class PacksApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GuildStickerResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GuildStickerResponse>> createPackSticker({ 
+  Future<Response<GuildStickerResponse>> createPackSticker({
     required String packId,
     required GuildStickerCreateRequest guildStickerCreateRequest,
     CancelToken? cancelToken,
@@ -498,7 +514,10 @@ class PacksApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/packs/stickers/{pack_id}'.replaceAll('{' r'pack_id' '}', encodeQueryParameter(_serializers, packId, const FullType(String)).toString());
+    final _path = r'/packs/stickers/{pack_id}'.replaceAll(
+        '{' r'pack_id' '}',
+        encodeQueryParameter(_serializers, packId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -511,7 +530,8 @@ class PacksApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -528,11 +548,11 @@ class PacksApi {
 
     try {
       const _type = FullType(GuildStickerCreateRequest);
-      _bodyData = _serializers.serialize(guildStickerCreateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(guildStickerCreateRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -555,11 +575,12 @@ class PacksApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GuildStickerResponse),
-      ) as GuildStickerResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GuildStickerResponse),
+            ) as GuildStickerResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -596,7 +617,7 @@ class PacksApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> deletePack({ 
+  Future<Response<void>> deletePack({
     required String packId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -605,7 +626,10 @@ class PacksApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/packs/{pack_id}'.replaceAll('{' r'pack_id' '}', encodeQueryParameter(_serializers, packId, const FullType(String)).toString());
+    final _path = r'/packs/{pack_id}'.replaceAll(
+        '{' r'pack_id' '}',
+        encodeQueryParameter(_serializers, packId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -618,7 +642,8 @@ class PacksApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -647,7 +672,7 @@ class PacksApi {
   /// Parameters:
   /// * [packId] - The ID of the pack
   /// * [emojiId] - The ID of the emoji
-  /// * [purge] 
+  /// * [purge]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -657,7 +682,7 @@ class PacksApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> deletePackEmoji({ 
+  Future<Response<void>> deletePackEmoji({
     required String packId,
     required String emojiId,
     String? purge,
@@ -668,7 +693,15 @@ class PacksApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/packs/emojis/{pack_id}/{emoji_id}'.replaceAll('{' r'pack_id' '}', encodeQueryParameter(_serializers, packId, const FullType(String)).toString()).replaceAll('{' r'emoji_id' '}', encodeQueryParameter(_serializers, emojiId, const FullType(String)).toString());
+    final _path = r'/packs/emojis/{pack_id}/{emoji_id}'
+        .replaceAll(
+            '{' r'pack_id' '}',
+            encodeQueryParameter(_serializers, packId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'emoji_id' '}',
+            encodeQueryParameter(_serializers, emojiId, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -681,7 +714,8 @@ class PacksApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -694,7 +728,9 @@ class PacksApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (purge != null) r'purge': encodeQueryParameter(_serializers, purge, const FullType(String)),
+      if (purge != null)
+        r'purge':
+            encodeQueryParameter(_serializers, purge, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -715,7 +751,7 @@ class PacksApi {
   /// Parameters:
   /// * [packId] - The ID of the pack
   /// * [stickerId] - The ID of the sticker
-  /// * [purge] 
+  /// * [purge]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -725,7 +761,7 @@ class PacksApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> deletePackSticker({ 
+  Future<Response<void>> deletePackSticker({
     required String packId,
     required String stickerId,
     String? purge,
@@ -736,7 +772,16 @@ class PacksApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/packs/stickers/{pack_id}/{sticker_id}'.replaceAll('{' r'pack_id' '}', encodeQueryParameter(_serializers, packId, const FullType(String)).toString()).replaceAll('{' r'sticker_id' '}', encodeQueryParameter(_serializers, stickerId, const FullType(String)).toString());
+    final _path = r'/packs/stickers/{pack_id}/{sticker_id}'
+        .replaceAll(
+            '{' r'pack_id' '}',
+            encodeQueryParameter(_serializers, packId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'sticker_id' '}',
+            encodeQueryParameter(
+                    _serializers, stickerId, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -749,7 +794,8 @@ class PacksApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -762,7 +808,9 @@ class PacksApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (purge != null) r'purge': encodeQueryParameter(_serializers, purge, const FullType(String)),
+      if (purge != null)
+        r'purge':
+            encodeQueryParameter(_serializers, purge, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -791,7 +839,7 @@ class PacksApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> installPack({ 
+  Future<Response<void>> installPack({
     required String packId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -800,7 +848,10 @@ class PacksApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/packs/{pack_id}/install'.replaceAll('{' r'pack_id' '}', encodeQueryParameter(_serializers, packId, const FullType(String)).toString());
+    final _path = r'/packs/{pack_id}/install'.replaceAll(
+        '{' r'pack_id' '}',
+        encodeQueryParameter(_serializers, packId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -813,7 +864,8 @@ class PacksApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -850,7 +902,7 @@ class PacksApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<GuildEmojiWithUserResponse>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<GuildEmojiWithUserResponse>>> listPackEmojis({ 
+  Future<Response<BuiltList<GuildEmojiWithUserResponse>>> listPackEmojis({
     required String packId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -859,7 +911,10 @@ class PacksApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/packs/emojis/{pack_id}'.replaceAll('{' r'pack_id' '}', encodeQueryParameter(_serializers, packId, const FullType(String)).toString());
+    final _path = r'/packs/emojis/{pack_id}'.replaceAll(
+        '{' r'pack_id' '}',
+        encodeQueryParameter(_serializers, packId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -872,7 +927,8 @@ class PacksApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -896,11 +952,13 @@ class PacksApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(GuildEmojiWithUserResponse)]),
-      ) as BuiltList<GuildEmojiWithUserResponse>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(
+                  BuiltList, [FullType(GuildEmojiWithUserResponse)]),
+            ) as BuiltList<GuildEmojiWithUserResponse>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -937,7 +995,7 @@ class PacksApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<GuildStickerWithUserResponse>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<GuildStickerWithUserResponse>>> listPackStickers({ 
+  Future<Response<BuiltList<GuildStickerWithUserResponse>>> listPackStickers({
     required String packId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -946,7 +1004,10 @@ class PacksApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/packs/stickers/{pack_id}'.replaceAll('{' r'pack_id' '}', encodeQueryParameter(_serializers, packId, const FullType(String)).toString());
+    final _path = r'/packs/stickers/{pack_id}'.replaceAll(
+        '{' r'pack_id' '}',
+        encodeQueryParameter(_serializers, packId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -959,7 +1020,8 @@ class PacksApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -983,11 +1045,13 @@ class PacksApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(GuildStickerWithUserResponse)]),
-      ) as BuiltList<GuildStickerWithUserResponse>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(
+                  BuiltList, [FullType(GuildStickerWithUserResponse)]),
+            ) as BuiltList<GuildStickerWithUserResponse>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1023,7 +1087,7 @@ class PacksApi {
   ///
   /// Returns a [Future] containing a [Response] with a [PackDashboardResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<PackDashboardResponse>> listUserPacks({ 
+  Future<Response<PackDashboardResponse>> listUserPacks({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -1044,7 +1108,8 @@ class PacksApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1068,11 +1133,12 @@ class PacksApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PackDashboardResponse),
-      ) as PackDashboardResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(PackDashboardResponse),
+            ) as PackDashboardResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1109,7 +1175,7 @@ class PacksApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> uninstallPack({ 
+  Future<Response<void>> uninstallPack({
     required String packId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -1118,7 +1184,10 @@ class PacksApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/packs/{pack_id}/install'.replaceAll('{' r'pack_id' '}', encodeQueryParameter(_serializers, packId, const FullType(String)).toString());
+    final _path = r'/packs/{pack_id}/install'.replaceAll(
+        '{' r'pack_id' '}',
+        encodeQueryParameter(_serializers, packId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -1131,7 +1200,8 @@ class PacksApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1159,7 +1229,7 @@ class PacksApi {
   ///
   /// Parameters:
   /// * [packId] - The ID of the pack
-  /// * [packUpdateRequest] 
+  /// * [packUpdateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1169,7 +1239,7 @@ class PacksApi {
   ///
   /// Returns a [Future] containing a [Response] with a [PackSummaryResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<PackSummaryResponse>> updatePack({ 
+  Future<Response<PackSummaryResponse>> updatePack({
     required String packId,
     required PackUpdateRequest packUpdateRequest,
     CancelToken? cancelToken,
@@ -1179,7 +1249,10 @@ class PacksApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/packs/{pack_id}'.replaceAll('{' r'pack_id' '}', encodeQueryParameter(_serializers, packId, const FullType(String)).toString());
+    final _path = r'/packs/{pack_id}'.replaceAll(
+        '{' r'pack_id' '}',
+        encodeQueryParameter(_serializers, packId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -1192,7 +1265,8 @@ class PacksApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1209,11 +1283,11 @@ class PacksApi {
 
     try {
       const _type = FullType(PackUpdateRequest);
-      _bodyData = _serializers.serialize(packUpdateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(packUpdateRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -1236,11 +1310,12 @@ class PacksApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PackSummaryResponse),
-      ) as PackSummaryResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(PackSummaryResponse),
+            ) as PackSummaryResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1269,7 +1344,7 @@ class PacksApi {
   /// Parameters:
   /// * [packId] - The ID of the pack
   /// * [emojiId] - The ID of the emoji
-  /// * [guildEmojiUpdateRequest] 
+  /// * [guildEmojiUpdateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1279,7 +1354,7 @@ class PacksApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GuildEmojiResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GuildEmojiResponse>> updatePackEmoji({ 
+  Future<Response<GuildEmojiResponse>> updatePackEmoji({
     required String packId,
     required String emojiId,
     required GuildEmojiUpdateRequest guildEmojiUpdateRequest,
@@ -1290,7 +1365,15 @@ class PacksApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/packs/emojis/{pack_id}/{emoji_id}'.replaceAll('{' r'pack_id' '}', encodeQueryParameter(_serializers, packId, const FullType(String)).toString()).replaceAll('{' r'emoji_id' '}', encodeQueryParameter(_serializers, emojiId, const FullType(String)).toString());
+    final _path = r'/packs/emojis/{pack_id}/{emoji_id}'
+        .replaceAll(
+            '{' r'pack_id' '}',
+            encodeQueryParameter(_serializers, packId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'emoji_id' '}',
+            encodeQueryParameter(_serializers, emojiId, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -1303,7 +1386,8 @@ class PacksApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1320,11 +1404,11 @@ class PacksApi {
 
     try {
       const _type = FullType(GuildEmojiUpdateRequest);
-      _bodyData = _serializers.serialize(guildEmojiUpdateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(guildEmojiUpdateRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -1347,11 +1431,12 @@ class PacksApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GuildEmojiResponse),
-      ) as GuildEmojiResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GuildEmojiResponse),
+            ) as GuildEmojiResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1380,7 +1465,7 @@ class PacksApi {
   /// Parameters:
   /// * [packId] - The ID of the pack
   /// * [stickerId] - The ID of the sticker
-  /// * [guildStickerUpdateRequest] 
+  /// * [guildStickerUpdateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1390,7 +1475,7 @@ class PacksApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GuildStickerResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GuildStickerResponse>> updatePackSticker({ 
+  Future<Response<GuildStickerResponse>> updatePackSticker({
     required String packId,
     required String stickerId,
     required GuildStickerUpdateRequest guildStickerUpdateRequest,
@@ -1401,7 +1486,16 @@ class PacksApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/packs/stickers/{pack_id}/{sticker_id}'.replaceAll('{' r'pack_id' '}', encodeQueryParameter(_serializers, packId, const FullType(String)).toString()).replaceAll('{' r'sticker_id' '}', encodeQueryParameter(_serializers, stickerId, const FullType(String)).toString());
+    final _path = r'/packs/stickers/{pack_id}/{sticker_id}'
+        .replaceAll(
+            '{' r'pack_id' '}',
+            encodeQueryParameter(_serializers, packId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'sticker_id' '}',
+            encodeQueryParameter(
+                    _serializers, stickerId, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -1414,7 +1508,8 @@ class PacksApi {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1431,11 +1526,11 @@ class PacksApi {
 
     try {
       const _type = FullType(GuildStickerUpdateRequest);
-      _bodyData = _serializers.serialize(guildStickerUpdateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(guildStickerUpdateRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -1458,11 +1553,12 @@ class PacksApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GuildStickerResponse),
-      ) as GuildStickerResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GuildStickerResponse),
+            ) as GuildStickerResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1484,5 +1580,4 @@ class PacksApi {
       extra: _response.extra,
     );
   }
-
 }

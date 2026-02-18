@@ -13,25 +13,34 @@ part 'email_change_ticket_request.g.dart';
 /// Properties:
 /// * [ticket] - Email change ticket identifier
 @BuiltValue()
-abstract class EmailChangeTicketRequest implements Built<EmailChangeTicketRequest, EmailChangeTicketRequestBuilder> {
+abstract class EmailChangeTicketRequest
+    implements
+        Built<EmailChangeTicketRequest, EmailChangeTicketRequestBuilder> {
   /// Email change ticket identifier
   @BuiltValueField(wireName: r'ticket')
   String get ticket;
 
   EmailChangeTicketRequest._();
 
-  factory EmailChangeTicketRequest([void updates(EmailChangeTicketRequestBuilder b)]) = _$EmailChangeTicketRequest;
+  factory EmailChangeTicketRequest(
+          [void updates(EmailChangeTicketRequestBuilder b)]) =
+      _$EmailChangeTicketRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(EmailChangeTicketRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<EmailChangeTicketRequest> get serializer => _$EmailChangeTicketRequestSerializer();
+  static Serializer<EmailChangeTicketRequest> get serializer =>
+      _$EmailChangeTicketRequestSerializer();
 }
 
-class _$EmailChangeTicketRequestSerializer implements PrimitiveSerializer<EmailChangeTicketRequest> {
+class _$EmailChangeTicketRequestSerializer
+    implements PrimitiveSerializer<EmailChangeTicketRequest> {
   @override
-  final Iterable<Type> types = const [EmailChangeTicketRequest, _$EmailChangeTicketRequest];
+  final Iterable<Type> types = const [
+    EmailChangeTicketRequest,
+    _$EmailChangeTicketRequest
+  ];
 
   @override
   final String wireName = r'EmailChangeTicketRequest';
@@ -54,7 +63,9 @@ class _$EmailChangeTicketRequestSerializer implements PrimitiveSerializer<EmailC
     EmailChangeTicketRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +115,3 @@ class _$EmailChangeTicketRequestSerializer implements PrimitiveSerializer<EmailC
     return result.build();
   }
 }
-

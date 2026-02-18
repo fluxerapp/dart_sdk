@@ -14,25 +14,34 @@ part 'bulk_delete_messages_request.g.dart';
 /// Properties:
 /// * [messageIds] - Array of message IDs to delete
 @BuiltValue()
-abstract class BulkDeleteMessagesRequest implements Built<BulkDeleteMessagesRequest, BulkDeleteMessagesRequestBuilder> {
+abstract class BulkDeleteMessagesRequest
+    implements
+        Built<BulkDeleteMessagesRequest, BulkDeleteMessagesRequestBuilder> {
   /// Array of message IDs to delete
   @BuiltValueField(wireName: r'message_ids')
   BuiltList<String> get messageIds;
 
   BulkDeleteMessagesRequest._();
 
-  factory BulkDeleteMessagesRequest([void updates(BulkDeleteMessagesRequestBuilder b)]) = _$BulkDeleteMessagesRequest;
+  factory BulkDeleteMessagesRequest(
+          [void updates(BulkDeleteMessagesRequestBuilder b)]) =
+      _$BulkDeleteMessagesRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(BulkDeleteMessagesRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<BulkDeleteMessagesRequest> get serializer => _$BulkDeleteMessagesRequestSerializer();
+  static Serializer<BulkDeleteMessagesRequest> get serializer =>
+      _$BulkDeleteMessagesRequestSerializer();
 }
 
-class _$BulkDeleteMessagesRequestSerializer implements PrimitiveSerializer<BulkDeleteMessagesRequest> {
+class _$BulkDeleteMessagesRequestSerializer
+    implements PrimitiveSerializer<BulkDeleteMessagesRequest> {
   @override
-  final Iterable<Type> types = const [BulkDeleteMessagesRequest, _$BulkDeleteMessagesRequest];
+  final Iterable<Type> types = const [
+    BulkDeleteMessagesRequest,
+    _$BulkDeleteMessagesRequest
+  ];
 
   @override
   final String wireName = r'BulkDeleteMessagesRequest';
@@ -55,7 +64,9 @@ class _$BulkDeleteMessagesRequestSerializer implements PrimitiveSerializer<BulkD
     BulkDeleteMessagesRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -105,4 +116,3 @@ class _$BulkDeleteMessagesRequestSerializer implements PrimitiveSerializer<BulkD
     return result.build();
   }
 }
-

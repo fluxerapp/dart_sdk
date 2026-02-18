@@ -13,23 +13,27 @@ part 'authorize_ip_request.g.dart';
 /// Properties:
 /// * [token] - The IP authorization token from email
 @BuiltValue()
-abstract class AuthorizeIpRequest implements Built<AuthorizeIpRequest, AuthorizeIpRequestBuilder> {
+abstract class AuthorizeIpRequest
+    implements Built<AuthorizeIpRequest, AuthorizeIpRequestBuilder> {
   /// The IP authorization token from email
   @BuiltValueField(wireName: r'token')
   String get token;
 
   AuthorizeIpRequest._();
 
-  factory AuthorizeIpRequest([void updates(AuthorizeIpRequestBuilder b)]) = _$AuthorizeIpRequest;
+  factory AuthorizeIpRequest([void updates(AuthorizeIpRequestBuilder b)]) =
+      _$AuthorizeIpRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(AuthorizeIpRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<AuthorizeIpRequest> get serializer => _$AuthorizeIpRequestSerializer();
+  static Serializer<AuthorizeIpRequest> get serializer =>
+      _$AuthorizeIpRequestSerializer();
 }
 
-class _$AuthorizeIpRequestSerializer implements PrimitiveSerializer<AuthorizeIpRequest> {
+class _$AuthorizeIpRequestSerializer
+    implements PrimitiveSerializer<AuthorizeIpRequest> {
   @override
   final Iterable<Type> types = const [AuthorizeIpRequest, _$AuthorizeIpRequest];
 
@@ -54,7 +58,9 @@ class _$AuthorizeIpRequestSerializer implements PrimitiveSerializer<AuthorizeIpR
     AuthorizeIpRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +110,3 @@ class _$AuthorizeIpRequestSerializer implements PrimitiveSerializer<AuthorizeIpR
     return result.build();
   }
 }
-

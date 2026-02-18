@@ -11,26 +11,35 @@ part 'terminate_sessions_response.g.dart';
 /// TerminateSessionsResponse
 ///
 /// Properties:
-/// * [terminatedCount] 
+/// * [terminatedCount]
 @BuiltValue()
-abstract class TerminateSessionsResponse implements Built<TerminateSessionsResponse, TerminateSessionsResponseBuilder> {
+abstract class TerminateSessionsResponse
+    implements
+        Built<TerminateSessionsResponse, TerminateSessionsResponseBuilder> {
   @BuiltValueField(wireName: r'terminated_count')
   int get terminatedCount;
 
   TerminateSessionsResponse._();
 
-  factory TerminateSessionsResponse([void updates(TerminateSessionsResponseBuilder b)]) = _$TerminateSessionsResponse;
+  factory TerminateSessionsResponse(
+          [void updates(TerminateSessionsResponseBuilder b)]) =
+      _$TerminateSessionsResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(TerminateSessionsResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<TerminateSessionsResponse> get serializer => _$TerminateSessionsResponseSerializer();
+  static Serializer<TerminateSessionsResponse> get serializer =>
+      _$TerminateSessionsResponseSerializer();
 }
 
-class _$TerminateSessionsResponseSerializer implements PrimitiveSerializer<TerminateSessionsResponse> {
+class _$TerminateSessionsResponseSerializer
+    implements PrimitiveSerializer<TerminateSessionsResponse> {
   @override
-  final Iterable<Type> types = const [TerminateSessionsResponse, _$TerminateSessionsResponse];
+  final Iterable<Type> types = const [
+    TerminateSessionsResponse,
+    _$TerminateSessionsResponse
+  ];
 
   @override
   final String wireName = r'TerminateSessionsResponse';
@@ -53,7 +62,9 @@ class _$TerminateSessionsResponseSerializer implements PrimitiveSerializer<Termi
     TerminateSessionsResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,4 +114,3 @@ class _$TerminateSessionsResponseSerializer implements PrimitiveSerializer<Termi
     return result.build();
   }
 }
-

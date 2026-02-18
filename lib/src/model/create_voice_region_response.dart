@@ -12,26 +12,35 @@ part 'create_voice_region_response.g.dart';
 /// CreateVoiceRegionResponse
 ///
 /// Properties:
-/// * [region] 
+/// * [region]
 @BuiltValue()
-abstract class CreateVoiceRegionResponse implements Built<CreateVoiceRegionResponse, CreateVoiceRegionResponseBuilder> {
+abstract class CreateVoiceRegionResponse
+    implements
+        Built<CreateVoiceRegionResponse, CreateVoiceRegionResponseBuilder> {
   @BuiltValueField(wireName: r'region')
   CreateVoiceRegionResponseRegion get region;
 
   CreateVoiceRegionResponse._();
 
-  factory CreateVoiceRegionResponse([void updates(CreateVoiceRegionResponseBuilder b)]) = _$CreateVoiceRegionResponse;
+  factory CreateVoiceRegionResponse(
+          [void updates(CreateVoiceRegionResponseBuilder b)]) =
+      _$CreateVoiceRegionResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CreateVoiceRegionResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CreateVoiceRegionResponse> get serializer => _$CreateVoiceRegionResponseSerializer();
+  static Serializer<CreateVoiceRegionResponse> get serializer =>
+      _$CreateVoiceRegionResponseSerializer();
 }
 
-class _$CreateVoiceRegionResponseSerializer implements PrimitiveSerializer<CreateVoiceRegionResponse> {
+class _$CreateVoiceRegionResponseSerializer
+    implements PrimitiveSerializer<CreateVoiceRegionResponse> {
   @override
-  final Iterable<Type> types = const [CreateVoiceRegionResponse, _$CreateVoiceRegionResponse];
+  final Iterable<Type> types = const [
+    CreateVoiceRegionResponse,
+    _$CreateVoiceRegionResponse
+  ];
 
   @override
   final String wireName = r'CreateVoiceRegionResponse';
@@ -54,7 +63,9 @@ class _$CreateVoiceRegionResponseSerializer implements PrimitiveSerializer<Creat
     CreateVoiceRegionResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +115,3 @@ class _$CreateVoiceRegionResponseSerializer implements PrimitiveSerializer<Creat
     return result.build();
   }
 }
-

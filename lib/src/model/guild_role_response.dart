@@ -18,10 +18,11 @@ part 'guild_role_response.g.dart';
 /// * [permissions] - The permissions bitfield for the role
 /// * [hoist] - Whether this role is displayed separately in the member list
 /// * [mentionable] - Whether this role can be mentioned by anyone
-/// * [hoistPosition] 
-/// * [unicodeEmoji] 
+/// * [hoistPosition]
+/// * [unicodeEmoji]
 @BuiltValue()
-abstract class GuildRoleResponse implements Built<GuildRoleResponse, GuildRoleResponseBuilder> {
+abstract class GuildRoleResponse
+    implements Built<GuildRoleResponse, GuildRoleResponseBuilder> {
   /// The unique identifier for this role
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -58,16 +59,19 @@ abstract class GuildRoleResponse implements Built<GuildRoleResponse, GuildRoleRe
 
   GuildRoleResponse._();
 
-  factory GuildRoleResponse([void updates(GuildRoleResponseBuilder b)]) = _$GuildRoleResponse;
+  factory GuildRoleResponse([void updates(GuildRoleResponseBuilder b)]) =
+      _$GuildRoleResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildRoleResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildRoleResponse> get serializer => _$GuildRoleResponseSerializer();
+  static Serializer<GuildRoleResponse> get serializer =>
+      _$GuildRoleResponseSerializer();
 }
 
-class _$GuildRoleResponseSerializer implements PrimitiveSerializer<GuildRoleResponse> {
+class _$GuildRoleResponseSerializer
+    implements PrimitiveSerializer<GuildRoleResponse> {
   @override
   final Iterable<Type> types = const [GuildRoleResponse, _$GuildRoleResponse];
 
@@ -136,7 +140,9 @@ class _$GuildRoleResponseSerializer implements PrimitiveSerializer<GuildRoleResp
     GuildRoleResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -243,4 +249,3 @@ class _$GuildRoleResponseSerializer implements PrimitiveSerializer<GuildRoleResp
     return result.build();
   }
 }
-

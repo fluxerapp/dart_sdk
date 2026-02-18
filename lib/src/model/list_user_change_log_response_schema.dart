@@ -13,10 +13,13 @@ part 'list_user_change_log_response_schema.g.dart';
 /// ListUserChangeLogResponseSchema
 ///
 /// Properties:
-/// * [entries] 
-/// * [nextPageToken] 
+/// * [entries]
+/// * [nextPageToken]
 @BuiltValue()
-abstract class ListUserChangeLogResponseSchema implements Built<ListUserChangeLogResponseSchema, ListUserChangeLogResponseSchemaBuilder> {
+abstract class ListUserChangeLogResponseSchema
+    implements
+        Built<ListUserChangeLogResponseSchema,
+            ListUserChangeLogResponseSchemaBuilder> {
   @BuiltValueField(wireName: r'entries')
   BuiltList<UserContactChangeLogEntrySchema> get entries;
 
@@ -25,18 +28,25 @@ abstract class ListUserChangeLogResponseSchema implements Built<ListUserChangeLo
 
   ListUserChangeLogResponseSchema._();
 
-  factory ListUserChangeLogResponseSchema([void updates(ListUserChangeLogResponseSchemaBuilder b)]) = _$ListUserChangeLogResponseSchema;
+  factory ListUserChangeLogResponseSchema(
+          [void updates(ListUserChangeLogResponseSchemaBuilder b)]) =
+      _$ListUserChangeLogResponseSchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ListUserChangeLogResponseSchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListUserChangeLogResponseSchema> get serializer => _$ListUserChangeLogResponseSchemaSerializer();
+  static Serializer<ListUserChangeLogResponseSchema> get serializer =>
+      _$ListUserChangeLogResponseSchemaSerializer();
 }
 
-class _$ListUserChangeLogResponseSchemaSerializer implements PrimitiveSerializer<ListUserChangeLogResponseSchema> {
+class _$ListUserChangeLogResponseSchemaSerializer
+    implements PrimitiveSerializer<ListUserChangeLogResponseSchema> {
   @override
-  final Iterable<Type> types = const [ListUserChangeLogResponseSchema, _$ListUserChangeLogResponseSchema];
+  final Iterable<Type> types = const [
+    ListUserChangeLogResponseSchema,
+    _$ListUserChangeLogResponseSchema
+  ];
 
   @override
   final String wireName = r'ListUserChangeLogResponseSchema';
@@ -49,13 +59,16 @@ class _$ListUserChangeLogResponseSchemaSerializer implements PrimitiveSerializer
     yield r'entries';
     yield serializers.serialize(
       object.entries,
-      specifiedType: const FullType(BuiltList, [FullType(UserContactChangeLogEntrySchema)]),
+      specifiedType: const FullType(
+          BuiltList, [FullType(UserContactChangeLogEntrySchema)]),
     );
     yield r'next_page_token';
-    yield object.nextPageToken == null ? null : serializers.serialize(
-      object.nextPageToken,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.nextPageToken == null
+        ? null
+        : serializers.serialize(
+            object.nextPageToken,
+            specifiedType: const FullType.nullable(String),
+          );
   }
 
   @override
@@ -64,7 +77,9 @@ class _$ListUserChangeLogResponseSchemaSerializer implements PrimitiveSerializer
     ListUserChangeLogResponseSchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -82,7 +97,8 @@ class _$ListUserChangeLogResponseSchemaSerializer implements PrimitiveSerializer
         case r'entries':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(UserContactChangeLogEntrySchema)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(UserContactChangeLogEntrySchema)]),
           ) as BuiltList<UserContactChangeLogEntrySchema>;
           result.entries.replace(valueDes);
           break;
@@ -122,4 +138,3 @@ class _$ListUserChangeLogResponseSchemaSerializer implements PrimitiveSerializer
     return result.build();
   }
 }
-

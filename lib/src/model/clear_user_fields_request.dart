@@ -12,10 +12,11 @@ part 'clear_user_fields_request.g.dart';
 /// ClearUserFieldsRequest
 ///
 /// Properties:
-/// * [userId] 
+/// * [userId]
 /// * [fields] - List of profile fields to clear
 @BuiltValue()
-abstract class ClearUserFieldsRequest implements Built<ClearUserFieldsRequest, ClearUserFieldsRequestBuilder> {
+abstract class ClearUserFieldsRequest
+    implements Built<ClearUserFieldsRequest, ClearUserFieldsRequestBuilder> {
   @BuiltValueField(wireName: r'user_id')
   String get userId;
 
@@ -26,18 +27,25 @@ abstract class ClearUserFieldsRequest implements Built<ClearUserFieldsRequest, C
 
   ClearUserFieldsRequest._();
 
-  factory ClearUserFieldsRequest([void updates(ClearUserFieldsRequestBuilder b)]) = _$ClearUserFieldsRequest;
+  factory ClearUserFieldsRequest(
+          [void updates(ClearUserFieldsRequestBuilder b)]) =
+      _$ClearUserFieldsRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ClearUserFieldsRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ClearUserFieldsRequest> get serializer => _$ClearUserFieldsRequestSerializer();
+  static Serializer<ClearUserFieldsRequest> get serializer =>
+      _$ClearUserFieldsRequestSerializer();
 }
 
-class _$ClearUserFieldsRequestSerializer implements PrimitiveSerializer<ClearUserFieldsRequest> {
+class _$ClearUserFieldsRequestSerializer
+    implements PrimitiveSerializer<ClearUserFieldsRequest> {
   @override
-  final Iterable<Type> types = const [ClearUserFieldsRequest, _$ClearUserFieldsRequest];
+  final Iterable<Type> types = const [
+    ClearUserFieldsRequest,
+    _$ClearUserFieldsRequest
+  ];
 
   @override
   final String wireName = r'ClearUserFieldsRequest';
@@ -55,7 +63,8 @@ class _$ClearUserFieldsRequestSerializer implements PrimitiveSerializer<ClearUse
     yield r'fields';
     yield serializers.serialize(
       object.fields,
-      specifiedType: const FullType(BuiltList, [FullType(ClearUserFieldsRequestFieldsEnum)]),
+      specifiedType: const FullType(
+          BuiltList, [FullType(ClearUserFieldsRequestFieldsEnum)]),
     );
   }
 
@@ -65,7 +74,9 @@ class _$ClearUserFieldsRequestSerializer implements PrimitiveSerializer<ClearUse
     ClearUserFieldsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -90,7 +101,8 @@ class _$ClearUserFieldsRequestSerializer implements PrimitiveSerializer<ClearUse
         case r'fields':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ClearUserFieldsRequestFieldsEnum)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(ClearUserFieldsRequestFieldsEnum)]),
           ) as BuiltList<ClearUserFieldsRequestFieldsEnum>;
           result.fields.replace(valueDes);
           break;
@@ -124,28 +136,38 @@ class _$ClearUserFieldsRequestSerializer implements PrimitiveSerializer<ClearUse
 }
 
 class ClearUserFieldsRequestFieldsEnum extends EnumClass {
-
   /// User profile field that can be cleared
   @BuiltValueEnumConst(wireName: r'avatar')
-  static const ClearUserFieldsRequestFieldsEnum avatar = _$clearUserFieldsRequestFieldsEnum_avatar;
+  static const ClearUserFieldsRequestFieldsEnum avatar =
+      _$clearUserFieldsRequestFieldsEnum_avatar;
+
   /// User profile field that can be cleared
   @BuiltValueEnumConst(wireName: r'banner')
-  static const ClearUserFieldsRequestFieldsEnum banner = _$clearUserFieldsRequestFieldsEnum_banner;
+  static const ClearUserFieldsRequestFieldsEnum banner =
+      _$clearUserFieldsRequestFieldsEnum_banner;
+
   /// User profile field that can be cleared
   @BuiltValueEnumConst(wireName: r'bio')
-  static const ClearUserFieldsRequestFieldsEnum bio = _$clearUserFieldsRequestFieldsEnum_bio;
+  static const ClearUserFieldsRequestFieldsEnum bio =
+      _$clearUserFieldsRequestFieldsEnum_bio;
+
   /// User profile field that can be cleared
   @BuiltValueEnumConst(wireName: r'pronouns')
-  static const ClearUserFieldsRequestFieldsEnum pronouns = _$clearUserFieldsRequestFieldsEnum_pronouns;
+  static const ClearUserFieldsRequestFieldsEnum pronouns =
+      _$clearUserFieldsRequestFieldsEnum_pronouns;
+
   /// User profile field that can be cleared
   @BuiltValueEnumConst(wireName: r'global_name')
-  static const ClearUserFieldsRequestFieldsEnum globalName = _$clearUserFieldsRequestFieldsEnum_globalName;
+  static const ClearUserFieldsRequestFieldsEnum globalName =
+      _$clearUserFieldsRequestFieldsEnum_globalName;
 
-  static Serializer<ClearUserFieldsRequestFieldsEnum> get serializer => _$clearUserFieldsRequestFieldsEnumSerializer;
+  static Serializer<ClearUserFieldsRequestFieldsEnum> get serializer =>
+      _$clearUserFieldsRequestFieldsEnumSerializer;
 
-  const ClearUserFieldsRequestFieldsEnum._(String name): super(name);
+  const ClearUserFieldsRequestFieldsEnum._(String name) : super(name);
 
-  static BuiltSet<ClearUserFieldsRequestFieldsEnum> get values => _$clearUserFieldsRequestFieldsEnumValues;
-  static ClearUserFieldsRequestFieldsEnum valueOf(String name) => _$clearUserFieldsRequestFieldsEnumValueOf(name);
+  static BuiltSet<ClearUserFieldsRequestFieldsEnum> get values =>
+      _$clearUserFieldsRequestFieldsEnumValues;
+  static ClearUserFieldsRequestFieldsEnum valueOf(String name) =>
+      _$clearUserFieldsRequestFieldsEnumValueOf(name);
 }
-

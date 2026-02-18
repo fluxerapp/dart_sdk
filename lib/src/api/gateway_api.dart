@@ -4,16 +4,12 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:fluxer_dart/src/model/error.dart';
 import 'package:fluxer_dart/src/model/gateway_bot_response.dart';
-import 'package:fluxer_dart/src/model/get_well_known_fluxer429_response.dart';
 
 class GatewayApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -33,7 +29,7 @@ class GatewayApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GatewayBotResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GatewayBotResponse>> getGatewayBot({ 
+  Future<Response<GatewayBotResponse>> getGatewayBot({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -66,11 +62,12 @@ class GatewayApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GatewayBotResponse),
-      ) as GatewayBotResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GatewayBotResponse),
+            ) as GatewayBotResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -92,5 +89,4 @@ class GatewayApi {
       extra: _response.extra,
     );
   }
-
 }

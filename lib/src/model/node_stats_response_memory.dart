@@ -11,11 +11,12 @@ part 'node_stats_response_memory.g.dart';
 /// NodeStatsResponseMemory
 ///
 /// Properties:
-/// * [total] 
-/// * [processes] 
-/// * [system] 
+/// * [total]
+/// * [processes]
+/// * [system]
 @BuiltValue()
-abstract class NodeStatsResponseMemory implements Built<NodeStatsResponseMemory, NodeStatsResponseMemoryBuilder> {
+abstract class NodeStatsResponseMemory
+    implements Built<NodeStatsResponseMemory, NodeStatsResponseMemoryBuilder> {
   @BuiltValueField(wireName: r'total')
   String get total;
 
@@ -27,18 +28,25 @@ abstract class NodeStatsResponseMemory implements Built<NodeStatsResponseMemory,
 
   NodeStatsResponseMemory._();
 
-  factory NodeStatsResponseMemory([void updates(NodeStatsResponseMemoryBuilder b)]) = _$NodeStatsResponseMemory;
+  factory NodeStatsResponseMemory(
+          [void updates(NodeStatsResponseMemoryBuilder b)]) =
+      _$NodeStatsResponseMemory;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(NodeStatsResponseMemoryBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<NodeStatsResponseMemory> get serializer => _$NodeStatsResponseMemorySerializer();
+  static Serializer<NodeStatsResponseMemory> get serializer =>
+      _$NodeStatsResponseMemorySerializer();
 }
 
-class _$NodeStatsResponseMemorySerializer implements PrimitiveSerializer<NodeStatsResponseMemory> {
+class _$NodeStatsResponseMemorySerializer
+    implements PrimitiveSerializer<NodeStatsResponseMemory> {
   @override
-  final Iterable<Type> types = const [NodeStatsResponseMemory, _$NodeStatsResponseMemory];
+  final Iterable<Type> types = const [
+    NodeStatsResponseMemory,
+    _$NodeStatsResponseMemory
+  ];
 
   @override
   final String wireName = r'NodeStatsResponseMemory';
@@ -71,7 +79,9 @@ class _$NodeStatsResponseMemorySerializer implements PrimitiveSerializer<NodeSta
     NodeStatsResponseMemory object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -135,4 +145,3 @@ class _$NodeStatsResponseMemorySerializer implements PrimitiveSerializer<NodeSta
     return result.build();
   }
 }
-

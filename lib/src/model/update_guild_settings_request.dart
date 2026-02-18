@@ -16,7 +16,7 @@ part 'update_guild_settings_request.g.dart';
 /// UpdateGuildSettingsRequest
 ///
 /// Properties:
-/// * [guildId] 
+/// * [guildId]
 /// * [verificationLevel] - Required verification level for guild members
 /// * [mfaLevel] - Required MFA level for moderators
 /// * [nsfwLevel] - NSFW content level for the guild
@@ -24,7 +24,9 @@ part 'update_guild_settings_request.g.dart';
 /// * [defaultMessageNotifications] - Default notification setting for new members
 /// * [disabledOperations] - Bitmask of disabled guild operations
 @BuiltValue()
-abstract class UpdateGuildSettingsRequest implements Built<UpdateGuildSettingsRequest, UpdateGuildSettingsRequestBuilder> {
+abstract class UpdateGuildSettingsRequest
+    implements
+        Built<UpdateGuildSettingsRequest, UpdateGuildSettingsRequestBuilder> {
   @BuiltValueField(wireName: r'guild_id')
   String get guildId;
 
@@ -59,18 +61,25 @@ abstract class UpdateGuildSettingsRequest implements Built<UpdateGuildSettingsRe
 
   UpdateGuildSettingsRequest._();
 
-  factory UpdateGuildSettingsRequest([void updates(UpdateGuildSettingsRequestBuilder b)]) = _$UpdateGuildSettingsRequest;
+  factory UpdateGuildSettingsRequest(
+          [void updates(UpdateGuildSettingsRequestBuilder b)]) =
+      _$UpdateGuildSettingsRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UpdateGuildSettingsRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UpdateGuildSettingsRequest> get serializer => _$UpdateGuildSettingsRequestSerializer();
+  static Serializer<UpdateGuildSettingsRequest> get serializer =>
+      _$UpdateGuildSettingsRequestSerializer();
 }
 
-class _$UpdateGuildSettingsRequestSerializer implements PrimitiveSerializer<UpdateGuildSettingsRequest> {
+class _$UpdateGuildSettingsRequestSerializer
+    implements PrimitiveSerializer<UpdateGuildSettingsRequest> {
   @override
-  final Iterable<Type> types = const [UpdateGuildSettingsRequest, _$UpdateGuildSettingsRequest];
+  final Iterable<Type> types = const [
+    UpdateGuildSettingsRequest,
+    _$UpdateGuildSettingsRequest
+  ];
 
   @override
   final String wireName = r'UpdateGuildSettingsRequest';
@@ -135,7 +144,9 @@ class _$UpdateGuildSettingsRequestSerializer implements PrimitiveSerializer<Upda
     UpdateGuildSettingsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -227,4 +238,3 @@ class _$UpdateGuildSettingsRequestSerializer implements PrimitiveSerializer<Upda
     return result.build();
   }
 }
-

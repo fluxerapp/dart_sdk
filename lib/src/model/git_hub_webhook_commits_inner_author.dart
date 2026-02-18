@@ -11,10 +11,13 @@ part 'git_hub_webhook_commits_inner_author.g.dart';
 /// GitHubWebhookCommitsInnerAuthor
 ///
 /// Properties:
-/// * [name] 
-/// * [username] 
+/// * [name]
+/// * [username]
 @BuiltValue()
-abstract class GitHubWebhookCommitsInnerAuthor implements Built<GitHubWebhookCommitsInnerAuthor, GitHubWebhookCommitsInnerAuthorBuilder> {
+abstract class GitHubWebhookCommitsInnerAuthor
+    implements
+        Built<GitHubWebhookCommitsInnerAuthor,
+            GitHubWebhookCommitsInnerAuthorBuilder> {
   @BuiltValueField(wireName: r'name')
   String get name;
 
@@ -23,18 +26,25 @@ abstract class GitHubWebhookCommitsInnerAuthor implements Built<GitHubWebhookCom
 
   GitHubWebhookCommitsInnerAuthor._();
 
-  factory GitHubWebhookCommitsInnerAuthor([void updates(GitHubWebhookCommitsInnerAuthorBuilder b)]) = _$GitHubWebhookCommitsInnerAuthor;
+  factory GitHubWebhookCommitsInnerAuthor(
+          [void updates(GitHubWebhookCommitsInnerAuthorBuilder b)]) =
+      _$GitHubWebhookCommitsInnerAuthor;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GitHubWebhookCommitsInnerAuthorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GitHubWebhookCommitsInnerAuthor> get serializer => _$GitHubWebhookCommitsInnerAuthorSerializer();
+  static Serializer<GitHubWebhookCommitsInnerAuthor> get serializer =>
+      _$GitHubWebhookCommitsInnerAuthorSerializer();
 }
 
-class _$GitHubWebhookCommitsInnerAuthorSerializer implements PrimitiveSerializer<GitHubWebhookCommitsInnerAuthor> {
+class _$GitHubWebhookCommitsInnerAuthorSerializer
+    implements PrimitiveSerializer<GitHubWebhookCommitsInnerAuthor> {
   @override
-  final Iterable<Type> types = const [GitHubWebhookCommitsInnerAuthor, _$GitHubWebhookCommitsInnerAuthor];
+  final Iterable<Type> types = const [
+    GitHubWebhookCommitsInnerAuthor,
+    _$GitHubWebhookCommitsInnerAuthor
+  ];
 
   @override
   final String wireName = r'GitHubWebhookCommitsInnerAuthor';
@@ -64,7 +74,9 @@ class _$GitHubWebhookCommitsInnerAuthorSerializer implements PrimitiveSerializer
     GitHubWebhookCommitsInnerAuthor object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -122,4 +134,3 @@ class _$GitHubWebhookCommitsInnerAuthorSerializer implements PrimitiveSerializer
     return result.build();
   }
 }
-

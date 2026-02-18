@@ -11,24 +11,28 @@ part 'disable_mfa_request.g.dart';
 /// DisableMfaRequest
 ///
 /// Properties:
-/// * [userId] 
+/// * [userId]
 @BuiltValue()
-abstract class DisableMfaRequest implements Built<DisableMfaRequest, DisableMfaRequestBuilder> {
+abstract class DisableMfaRequest
+    implements Built<DisableMfaRequest, DisableMfaRequestBuilder> {
   @BuiltValueField(wireName: r'user_id')
   String get userId;
 
   DisableMfaRequest._();
 
-  factory DisableMfaRequest([void updates(DisableMfaRequestBuilder b)]) = _$DisableMfaRequest;
+  factory DisableMfaRequest([void updates(DisableMfaRequestBuilder b)]) =
+      _$DisableMfaRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(DisableMfaRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<DisableMfaRequest> get serializer => _$DisableMfaRequestSerializer();
+  static Serializer<DisableMfaRequest> get serializer =>
+      _$DisableMfaRequestSerializer();
 }
 
-class _$DisableMfaRequestSerializer implements PrimitiveSerializer<DisableMfaRequest> {
+class _$DisableMfaRequestSerializer
+    implements PrimitiveSerializer<DisableMfaRequest> {
   @override
   final Iterable<Type> types = const [DisableMfaRequest, _$DisableMfaRequest];
 
@@ -53,7 +57,9 @@ class _$DisableMfaRequestSerializer implements PrimitiveSerializer<DisableMfaReq
     DisableMfaRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,4 +109,3 @@ class _$DisableMfaRequestSerializer implements PrimitiveSerializer<DisableMfaReq
     return result.build();
   }
 }
-

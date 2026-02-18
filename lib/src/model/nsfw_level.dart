@@ -10,23 +10,25 @@ import 'package:built_value/serializer.dart';
 part 'nsfw_level.g.dart';
 
 class NSFWLevel extends EnumClass {
-
   /// The NSFW level of the guild
   @BuiltValueEnumConst(wireNumber: 0)
   static const NSFWLevel number0 = _$number0;
+
   /// The NSFW level of the guild
   @BuiltValueEnumConst(wireNumber: 1)
   static const NSFWLevel number1 = _$number1;
+
   /// The NSFW level of the guild
   @BuiltValueEnumConst(wireNumber: 2)
   static const NSFWLevel number2 = _$number2;
+
   /// The NSFW level of the guild
   @BuiltValueEnumConst(wireNumber: 3)
   static const NSFWLevel number3 = _$number3;
 
   static Serializer<NSFWLevel> get serializer => _$nSFWLevelSerializer;
 
-  const NSFWLevel._(String name): super(name);
+  const NSFWLevel._(String name) : super(name);
 
   static BuiltSet<NSFWLevel> get values => _$values;
   static NSFWLevel valueOf(String name) => _$valueOf(name);
@@ -39,4 +41,3 @@ class NSFWLevel extends EnumClass {
 ///
 /// Trigger mixin generation by writing a line like this one next to your enum.
 abstract class NSFWLevelMixin = Object with _$NSFWLevelMixin;
-

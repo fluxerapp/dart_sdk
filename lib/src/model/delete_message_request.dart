@@ -11,10 +11,11 @@ part 'delete_message_request.g.dart';
 /// DeleteMessageRequest
 ///
 /// Properties:
-/// * [channelId] 
-/// * [messageId] 
+/// * [channelId]
+/// * [messageId]
 @BuiltValue()
-abstract class DeleteMessageRequest implements Built<DeleteMessageRequest, DeleteMessageRequestBuilder> {
+abstract class DeleteMessageRequest
+    implements Built<DeleteMessageRequest, DeleteMessageRequestBuilder> {
   @BuiltValueField(wireName: r'channel_id')
   String get channelId;
 
@@ -23,18 +24,24 @@ abstract class DeleteMessageRequest implements Built<DeleteMessageRequest, Delet
 
   DeleteMessageRequest._();
 
-  factory DeleteMessageRequest([void updates(DeleteMessageRequestBuilder b)]) = _$DeleteMessageRequest;
+  factory DeleteMessageRequest([void updates(DeleteMessageRequestBuilder b)]) =
+      _$DeleteMessageRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(DeleteMessageRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<DeleteMessageRequest> get serializer => _$DeleteMessageRequestSerializer();
+  static Serializer<DeleteMessageRequest> get serializer =>
+      _$DeleteMessageRequestSerializer();
 }
 
-class _$DeleteMessageRequestSerializer implements PrimitiveSerializer<DeleteMessageRequest> {
+class _$DeleteMessageRequestSerializer
+    implements PrimitiveSerializer<DeleteMessageRequest> {
   @override
-  final Iterable<Type> types = const [DeleteMessageRequest, _$DeleteMessageRequest];
+  final Iterable<Type> types = const [
+    DeleteMessageRequest,
+    _$DeleteMessageRequest
+  ];
 
   @override
   final String wireName = r'DeleteMessageRequest';
@@ -62,7 +69,9 @@ class _$DeleteMessageRequestSerializer implements PrimitiveSerializer<DeleteMess
     DeleteMessageRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -119,4 +128,3 @@ class _$DeleteMessageRequestSerializer implements PrimitiveSerializer<DeleteMess
     return result.build();
   }
 }
-

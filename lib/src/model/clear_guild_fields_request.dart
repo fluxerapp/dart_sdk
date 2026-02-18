@@ -12,10 +12,11 @@ part 'clear_guild_fields_request.g.dart';
 /// ClearGuildFieldsRequest
 ///
 /// Properties:
-/// * [guildId] 
+/// * [guildId]
 /// * [fields] - List of guild image fields to clear
 @BuiltValue()
-abstract class ClearGuildFieldsRequest implements Built<ClearGuildFieldsRequest, ClearGuildFieldsRequestBuilder> {
+abstract class ClearGuildFieldsRequest
+    implements Built<ClearGuildFieldsRequest, ClearGuildFieldsRequestBuilder> {
   @BuiltValueField(wireName: r'guild_id')
   String get guildId;
 
@@ -26,18 +27,25 @@ abstract class ClearGuildFieldsRequest implements Built<ClearGuildFieldsRequest,
 
   ClearGuildFieldsRequest._();
 
-  factory ClearGuildFieldsRequest([void updates(ClearGuildFieldsRequestBuilder b)]) = _$ClearGuildFieldsRequest;
+  factory ClearGuildFieldsRequest(
+          [void updates(ClearGuildFieldsRequestBuilder b)]) =
+      _$ClearGuildFieldsRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ClearGuildFieldsRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ClearGuildFieldsRequest> get serializer => _$ClearGuildFieldsRequestSerializer();
+  static Serializer<ClearGuildFieldsRequest> get serializer =>
+      _$ClearGuildFieldsRequestSerializer();
 }
 
-class _$ClearGuildFieldsRequestSerializer implements PrimitiveSerializer<ClearGuildFieldsRequest> {
+class _$ClearGuildFieldsRequestSerializer
+    implements PrimitiveSerializer<ClearGuildFieldsRequest> {
   @override
-  final Iterable<Type> types = const [ClearGuildFieldsRequest, _$ClearGuildFieldsRequest];
+  final Iterable<Type> types = const [
+    ClearGuildFieldsRequest,
+    _$ClearGuildFieldsRequest
+  ];
 
   @override
   final String wireName = r'ClearGuildFieldsRequest';
@@ -55,7 +63,8 @@ class _$ClearGuildFieldsRequestSerializer implements PrimitiveSerializer<ClearGu
     yield r'fields';
     yield serializers.serialize(
       object.fields,
-      specifiedType: const FullType(BuiltList, [FullType(ClearGuildFieldsRequestFieldsEnum)]),
+      specifiedType: const FullType(
+          BuiltList, [FullType(ClearGuildFieldsRequestFieldsEnum)]),
     );
   }
 
@@ -65,7 +74,9 @@ class _$ClearGuildFieldsRequestSerializer implements PrimitiveSerializer<ClearGu
     ClearGuildFieldsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -90,7 +101,8 @@ class _$ClearGuildFieldsRequestSerializer implements PrimitiveSerializer<ClearGu
         case r'fields':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ClearGuildFieldsRequestFieldsEnum)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(ClearGuildFieldsRequestFieldsEnum)]),
           ) as BuiltList<ClearGuildFieldsRequestFieldsEnum>;
           result.fields.replace(valueDes);
           break;
@@ -124,25 +136,33 @@ class _$ClearGuildFieldsRequestSerializer implements PrimitiveSerializer<ClearGu
 }
 
 class ClearGuildFieldsRequestFieldsEnum extends EnumClass {
-
   /// Guild image field that can be cleared
   @BuiltValueEnumConst(wireName: r'icon')
-  static const ClearGuildFieldsRequestFieldsEnum icon = _$clearGuildFieldsRequestFieldsEnum_icon;
+  static const ClearGuildFieldsRequestFieldsEnum icon =
+      _$clearGuildFieldsRequestFieldsEnum_icon;
+
   /// Guild image field that can be cleared
   @BuiltValueEnumConst(wireName: r'banner')
-  static const ClearGuildFieldsRequestFieldsEnum banner = _$clearGuildFieldsRequestFieldsEnum_banner;
+  static const ClearGuildFieldsRequestFieldsEnum banner =
+      _$clearGuildFieldsRequestFieldsEnum_banner;
+
   /// Guild image field that can be cleared
   @BuiltValueEnumConst(wireName: r'splash')
-  static const ClearGuildFieldsRequestFieldsEnum splash = _$clearGuildFieldsRequestFieldsEnum_splash;
+  static const ClearGuildFieldsRequestFieldsEnum splash =
+      _$clearGuildFieldsRequestFieldsEnum_splash;
+
   /// Guild image field that can be cleared
   @BuiltValueEnumConst(wireName: r'embed_splash')
-  static const ClearGuildFieldsRequestFieldsEnum embedSplash = _$clearGuildFieldsRequestFieldsEnum_embedSplash;
+  static const ClearGuildFieldsRequestFieldsEnum embedSplash =
+      _$clearGuildFieldsRequestFieldsEnum_embedSplash;
 
-  static Serializer<ClearGuildFieldsRequestFieldsEnum> get serializer => _$clearGuildFieldsRequestFieldsEnumSerializer;
+  static Serializer<ClearGuildFieldsRequestFieldsEnum> get serializer =>
+      _$clearGuildFieldsRequestFieldsEnumSerializer;
 
-  const ClearGuildFieldsRequestFieldsEnum._(String name): super(name);
+  const ClearGuildFieldsRequestFieldsEnum._(String name) : super(name);
 
-  static BuiltSet<ClearGuildFieldsRequestFieldsEnum> get values => _$clearGuildFieldsRequestFieldsEnumValues;
-  static ClearGuildFieldsRequestFieldsEnum valueOf(String name) => _$clearGuildFieldsRequestFieldsEnumValueOf(name);
+  static BuiltSet<ClearGuildFieldsRequestFieldsEnum> get values =>
+      _$clearGuildFieldsRequestFieldsEnumValues;
+  static ClearGuildFieldsRequestFieldsEnum valueOf(String name) =>
+      _$clearGuildFieldsRequestFieldsEnumValueOf(name);
 }
-

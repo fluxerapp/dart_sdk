@@ -14,7 +14,8 @@ part 'sso_complete_request.g.dart';
 /// * [code] - Authorization code from the SSO provider
 /// * [state] - State parameter for CSRF protection
 @BuiltValue()
-abstract class SsoCompleteRequest implements Built<SsoCompleteRequest, SsoCompleteRequestBuilder> {
+abstract class SsoCompleteRequest
+    implements Built<SsoCompleteRequest, SsoCompleteRequestBuilder> {
   /// Authorization code from the SSO provider
   @BuiltValueField(wireName: r'code')
   String get code;
@@ -25,16 +26,19 @@ abstract class SsoCompleteRequest implements Built<SsoCompleteRequest, SsoComple
 
   SsoCompleteRequest._();
 
-  factory SsoCompleteRequest([void updates(SsoCompleteRequestBuilder b)]) = _$SsoCompleteRequest;
+  factory SsoCompleteRequest([void updates(SsoCompleteRequestBuilder b)]) =
+      _$SsoCompleteRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SsoCompleteRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SsoCompleteRequest> get serializer => _$SsoCompleteRequestSerializer();
+  static Serializer<SsoCompleteRequest> get serializer =>
+      _$SsoCompleteRequestSerializer();
 }
 
-class _$SsoCompleteRequestSerializer implements PrimitiveSerializer<SsoCompleteRequest> {
+class _$SsoCompleteRequestSerializer
+    implements PrimitiveSerializer<SsoCompleteRequest> {
   @override
   final Iterable<Type> types = const [SsoCompleteRequest, _$SsoCompleteRequest];
 
@@ -64,7 +68,9 @@ class _$SsoCompleteRequestSerializer implements PrimitiveSerializer<SsoCompleteR
     SsoCompleteRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +127,3 @@ class _$SsoCompleteRequestSerializer implements PrimitiveSerializer<SsoCompleteR
     return result.build();
   }
 }
-

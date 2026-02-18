@@ -17,7 +17,10 @@ part 'guild_emoji_bulk_create_response.g.dart';
 /// * [success] - Successfully created emojis
 /// * [failed] - Emojis that failed to create
 @BuiltValue()
-abstract class GuildEmojiBulkCreateResponse implements Built<GuildEmojiBulkCreateResponse, GuildEmojiBulkCreateResponseBuilder> {
+abstract class GuildEmojiBulkCreateResponse
+    implements
+        Built<GuildEmojiBulkCreateResponse,
+            GuildEmojiBulkCreateResponseBuilder> {
   /// Successfully created emojis
   @BuiltValueField(wireName: r'success')
   BuiltList<GuildEmojiResponse> get success;
@@ -28,18 +31,25 @@ abstract class GuildEmojiBulkCreateResponse implements Built<GuildEmojiBulkCreat
 
   GuildEmojiBulkCreateResponse._();
 
-  factory GuildEmojiBulkCreateResponse([void updates(GuildEmojiBulkCreateResponseBuilder b)]) = _$GuildEmojiBulkCreateResponse;
+  factory GuildEmojiBulkCreateResponse(
+          [void updates(GuildEmojiBulkCreateResponseBuilder b)]) =
+      _$GuildEmojiBulkCreateResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GuildEmojiBulkCreateResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GuildEmojiBulkCreateResponse> get serializer => _$GuildEmojiBulkCreateResponseSerializer();
+  static Serializer<GuildEmojiBulkCreateResponse> get serializer =>
+      _$GuildEmojiBulkCreateResponseSerializer();
 }
 
-class _$GuildEmojiBulkCreateResponseSerializer implements PrimitiveSerializer<GuildEmojiBulkCreateResponse> {
+class _$GuildEmojiBulkCreateResponseSerializer
+    implements PrimitiveSerializer<GuildEmojiBulkCreateResponse> {
   @override
-  final Iterable<Type> types = const [GuildEmojiBulkCreateResponse, _$GuildEmojiBulkCreateResponse];
+  final Iterable<Type> types = const [
+    GuildEmojiBulkCreateResponse,
+    _$GuildEmojiBulkCreateResponse
+  ];
 
   @override
   final String wireName = r'GuildEmojiBulkCreateResponse';
@@ -57,7 +67,8 @@ class _$GuildEmojiBulkCreateResponseSerializer implements PrimitiveSerializer<Gu
     yield r'failed';
     yield serializers.serialize(
       object.failed,
-      specifiedType: const FullType(BuiltList, [FullType(GuildEmojiBulkCreateResponseFailedInner)]),
+      specifiedType: const FullType(
+          BuiltList, [FullType(GuildEmojiBulkCreateResponseFailedInner)]),
     );
   }
 
@@ -67,7 +78,9 @@ class _$GuildEmojiBulkCreateResponseSerializer implements PrimitiveSerializer<Gu
     GuildEmojiBulkCreateResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -85,14 +98,16 @@ class _$GuildEmojiBulkCreateResponseSerializer implements PrimitiveSerializer<Gu
         case r'success':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(GuildEmojiResponse)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(GuildEmojiResponse)]),
           ) as BuiltList<GuildEmojiResponse>;
           result.success.replace(valueDes);
           break;
         case r'failed':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(GuildEmojiBulkCreateResponseFailedInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(GuildEmojiBulkCreateResponseFailedInner)]),
           ) as BuiltList<GuildEmojiBulkCreateResponseFailedInner>;
           result.failed.replace(valueDes);
           break;
@@ -124,4 +139,3 @@ class _$GuildEmojiBulkCreateResponseSerializer implements PrimitiveSerializer<Gu
     return result.build();
   }
 }
-

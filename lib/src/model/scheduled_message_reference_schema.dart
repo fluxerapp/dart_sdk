@@ -13,11 +13,14 @@ part 'scheduled_message_reference_schema.g.dart';
 ///
 /// Properties:
 /// * [messageId] - ID of the message being referenced
-/// * [channelId] 
-/// * [guildId] 
+/// * [channelId]
+/// * [guildId]
 /// * [type] - The type of message reference
 @BuiltValue()
-abstract class ScheduledMessageReferenceSchema implements Built<ScheduledMessageReferenceSchema, ScheduledMessageReferenceSchemaBuilder> {
+abstract class ScheduledMessageReferenceSchema
+    implements
+        Built<ScheduledMessageReferenceSchema,
+            ScheduledMessageReferenceSchemaBuilder> {
   /// ID of the message being referenced
   @BuiltValueField(wireName: r'message_id')
   String get messageId;
@@ -35,18 +38,25 @@ abstract class ScheduledMessageReferenceSchema implements Built<ScheduledMessage
 
   ScheduledMessageReferenceSchema._();
 
-  factory ScheduledMessageReferenceSchema([void updates(ScheduledMessageReferenceSchemaBuilder b)]) = _$ScheduledMessageReferenceSchema;
+  factory ScheduledMessageReferenceSchema(
+          [void updates(ScheduledMessageReferenceSchemaBuilder b)]) =
+      _$ScheduledMessageReferenceSchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ScheduledMessageReferenceSchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ScheduledMessageReferenceSchema> get serializer => _$ScheduledMessageReferenceSchemaSerializer();
+  static Serializer<ScheduledMessageReferenceSchema> get serializer =>
+      _$ScheduledMessageReferenceSchemaSerializer();
 }
 
-class _$ScheduledMessageReferenceSchemaSerializer implements PrimitiveSerializer<ScheduledMessageReferenceSchema> {
+class _$ScheduledMessageReferenceSchemaSerializer
+    implements PrimitiveSerializer<ScheduledMessageReferenceSchema> {
   @override
-  final Iterable<Type> types = const [ScheduledMessageReferenceSchema, _$ScheduledMessageReferenceSchema];
+  final Iterable<Type> types = const [
+    ScheduledMessageReferenceSchema,
+    _$ScheduledMessageReferenceSchema
+  ];
 
   @override
   final String wireName = r'ScheduledMessageReferenceSchema';
@@ -90,7 +100,9 @@ class _$ScheduledMessageReferenceSchemaSerializer implements PrimitiveSerializer
     ScheduledMessageReferenceSchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -161,4 +173,3 @@ class _$ScheduledMessageReferenceSchemaSerializer implements PrimitiveSerializer
     return result.build();
   }
 }
-

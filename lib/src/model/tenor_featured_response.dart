@@ -17,7 +17,8 @@ part 'tenor_featured_response.g.dart';
 /// * [gifs] - Array of featured GIFs
 /// * [categories] - Array of GIF categories
 @BuiltValue()
-abstract class TenorFeaturedResponse implements Built<TenorFeaturedResponse, TenorFeaturedResponseBuilder> {
+abstract class TenorFeaturedResponse
+    implements Built<TenorFeaturedResponse, TenorFeaturedResponseBuilder> {
   /// Array of featured GIFs
   @BuiltValueField(wireName: r'gifs')
   BuiltList<TenorGifResponse> get gifs;
@@ -28,18 +29,24 @@ abstract class TenorFeaturedResponse implements Built<TenorFeaturedResponse, Ten
 
   TenorFeaturedResponse._();
 
-  factory TenorFeaturedResponse([void updates(TenorFeaturedResponseBuilder b)]) = _$TenorFeaturedResponse;
+  factory TenorFeaturedResponse(
+      [void updates(TenorFeaturedResponseBuilder b)]) = _$TenorFeaturedResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(TenorFeaturedResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<TenorFeaturedResponse> get serializer => _$TenorFeaturedResponseSerializer();
+  static Serializer<TenorFeaturedResponse> get serializer =>
+      _$TenorFeaturedResponseSerializer();
 }
 
-class _$TenorFeaturedResponseSerializer implements PrimitiveSerializer<TenorFeaturedResponse> {
+class _$TenorFeaturedResponseSerializer
+    implements PrimitiveSerializer<TenorFeaturedResponse> {
   @override
-  final Iterable<Type> types = const [TenorFeaturedResponse, _$TenorFeaturedResponse];
+  final Iterable<Type> types = const [
+    TenorFeaturedResponse,
+    _$TenorFeaturedResponse
+  ];
 
   @override
   final String wireName = r'TenorFeaturedResponse';
@@ -57,7 +64,8 @@ class _$TenorFeaturedResponseSerializer implements PrimitiveSerializer<TenorFeat
     yield r'categories';
     yield serializers.serialize(
       object.categories,
-      specifiedType: const FullType(BuiltList, [FullType(TenorCategoryTagResponse)]),
+      specifiedType:
+          const FullType(BuiltList, [FullType(TenorCategoryTagResponse)]),
     );
   }
 
@@ -67,7 +75,9 @@ class _$TenorFeaturedResponseSerializer implements PrimitiveSerializer<TenorFeat
     TenorFeaturedResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -85,14 +95,16 @@ class _$TenorFeaturedResponseSerializer implements PrimitiveSerializer<TenorFeat
         case r'gifs':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(TenorGifResponse)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(TenorGifResponse)]),
           ) as BuiltList<TenorGifResponse>;
           result.gifs.replace(valueDes);
           break;
         case r'categories':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(TenorCategoryTagResponse)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(TenorCategoryTagResponse)]),
           ) as BuiltList<TenorCategoryTagResponse>;
           result.categories.replace(valueDes);
           break;
@@ -124,4 +136,3 @@ class _$TenorFeaturedResponseSerializer implements PrimitiveSerializer<TenorFeat
     return result.build();
   }
 }
-

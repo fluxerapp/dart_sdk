@@ -4,7 +4,6 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
@@ -19,8 +18,6 @@ import 'package:fluxer_dart/src/model/authorize_consent_request.dart';
 import 'package:fluxer_dart/src/model/bot_profile_response.dart';
 import 'package:fluxer_dart/src/model/bot_profile_update_request.dart';
 import 'package:fluxer_dart/src/model/bot_token_reset_response.dart';
-import 'package:fluxer_dart/src/model/error.dart';
-import 'package:fluxer_dart/src/model/get_well_known_fluxer429_response.dart';
 import 'package:fluxer_dart/src/model/o_auth2_authorization_response.dart';
 import 'package:fluxer_dart/src/model/o_auth2_consent_response.dart';
 import 'package:fluxer_dart/src/model/o_auth2_introspect_response.dart';
@@ -30,7 +27,6 @@ import 'package:fluxer_dart/src/model/o_auth2_user_info_response.dart';
 import 'package:fluxer_dart/src/model/sudo_verification_schema.dart';
 
 class OAuth2Api {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -41,7 +37,7 @@ class OAuth2Api {
   /// Creates a new OAuth2 application (client). Returns client credentials including ID and secret. Application can be used for authorization flows and API access.
   ///
   /// Parameters:
-  /// * [applicationCreateRequest] 
+  /// * [applicationCreateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -51,7 +47,7 @@ class OAuth2Api {
   ///
   /// Returns a [Future] containing a [Response] with a [ApplicationResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ApplicationResponse>> createOauthApplication({ 
+  Future<Response<ApplicationResponse>> createOauthApplication({
     required ApplicationCreateRequest applicationCreateRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -73,7 +69,8 @@ class OAuth2Api {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -90,11 +87,11 @@ class OAuth2Api {
 
     try {
       const _type = FullType(ApplicationCreateRequest);
-      _bodyData = _serializers.serialize(applicationCreateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(applicationCreateRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -117,11 +114,12 @@ class OAuth2Api {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ApplicationResponse),
-      ) as ApplicationResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(ApplicationResponse),
+            ) as ApplicationResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -149,7 +147,7 @@ class OAuth2Api {
   ///
   /// Parameters:
   /// * [id] - The id
-  /// * [sudoVerificationSchema] 
+  /// * [sudoVerificationSchema]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -159,7 +157,7 @@ class OAuth2Api {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> deleteOauthApplication({ 
+  Future<Response<void>> deleteOauthApplication({
     required String id,
     required SudoVerificationSchema sudoVerificationSchema,
     CancelToken? cancelToken,
@@ -169,7 +167,10 @@ class OAuth2Api {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/oauth2/applications/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
+    final _path = r'/oauth2/applications/{id}'.replaceAll(
+        '{' r'id' '}',
+        encodeQueryParameter(_serializers, id, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -182,7 +183,8 @@ class OAuth2Api {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -199,11 +201,11 @@ class OAuth2Api {
 
     try {
       const _type = FullType(SudoVerificationSchema);
-      _bodyData = _serializers.serialize(sudoVerificationSchema, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(sudoVerificationSchema, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -239,7 +241,7 @@ class OAuth2Api {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> deleteUserOauth2Authorization({ 
+  Future<Response<void>> deleteUserOauth2Authorization({
     required String applicationId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -248,7 +250,11 @@ class OAuth2Api {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/oauth2/@me/authorizations/{applicationId}'.replaceAll('{' r'applicationId' '}', encodeQueryParameter(_serializers, applicationId, const FullType(String)).toString());
+    final _path = r'/oauth2/@me/authorizations/{applicationId}'.replaceAll(
+        '{' r'applicationId' '}',
+        encodeQueryParameter(
+                _serializers, applicationId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -261,7 +267,8 @@ class OAuth2Api {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -291,7 +298,7 @@ class OAuth2Api {
   /// * [grantType] - The grant type for refreshing an access token
   /// * [code] - The authorization code received from the authorize endpoint
   /// * [redirectUri] - The redirect URI used in the authorization request
-  /// * [clientId] 
+  /// * [clientId]
   /// * [clientSecret] - The application client secret
   /// * [refreshToken] - The refresh token to exchange for a new access token
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -303,7 +310,7 @@ class OAuth2Api {
   ///
   /// Returns a [Future] containing a [Response] with a [OAuth2TokenResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<OAuth2TokenResponse>> exchangeOauth2Token({ 
+  Future<Response<OAuth2TokenResponse>> exchangeOauth2Token({
     String? grantType,
     String? code,
     String? redirectUri,
@@ -335,17 +342,28 @@ class OAuth2Api {
 
     try {
       _bodyData = FormData.fromMap(<String, dynamic>{
-        if (grantType != null) r'grant_type': encodeFormParameter(_serializers, grantType, const FullType(String)),
-        if (code != null) r'code': encodeFormParameter(_serializers, code, const FullType(String)),
-        if (redirectUri != null) r'redirect_uri': encodeFormParameter(_serializers, redirectUri, const FullType(String)),
-        if (clientId != null) r'client_id': encodeFormParameter(_serializers, clientId, const FullType(String)),
-        if (clientSecret != null) r'client_secret': encodeFormParameter(_serializers, clientSecret, const FullType(String)),
-        if (refreshToken != null) r'refresh_token': encodeFormParameter(_serializers, refreshToken, const FullType(String)),
+        if (grantType != null)
+          r'grant_type': encodeFormParameter(
+              _serializers, grantType, const FullType(String)),
+        if (code != null)
+          r'code':
+              encodeFormParameter(_serializers, code, const FullType(String)),
+        if (redirectUri != null)
+          r'redirect_uri': encodeFormParameter(
+              _serializers, redirectUri, const FullType(String)),
+        if (clientId != null)
+          r'client_id': encodeFormParameter(
+              _serializers, clientId, const FullType(String)),
+        if (clientSecret != null)
+          r'client_secret': encodeFormParameter(
+              _serializers, clientSecret, const FullType(String)),
+        if (refreshToken != null)
+          r'refresh_token': encodeFormParameter(
+              _serializers, refreshToken, const FullType(String)),
       });
-
-    } catch(error, stackTrace) {
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -368,11 +386,12 @@ class OAuth2Api {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(OAuth2TokenResponse),
-      ) as OAuth2TokenResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(OAuth2TokenResponse),
+            ) as OAuth2TokenResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -408,7 +427,7 @@ class OAuth2Api {
   ///
   /// Returns a [Future] containing a [Response] with a [ApplicationsMeResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ApplicationsMeResponse>> getCurrentUserApplications({ 
+  Future<Response<ApplicationsMeResponse>> getCurrentUserApplications({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -448,11 +467,12 @@ class OAuth2Api {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ApplicationsMeResponse),
-      ) as ApplicationsMeResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(ApplicationsMeResponse),
+            ) as ApplicationsMeResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -488,7 +508,7 @@ class OAuth2Api {
   ///
   /// Returns a [Future] containing a [Response] with a [OAuth2MeResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<OAuth2MeResponse>> getCurrentUserOauth2({ 
+  Future<Response<OAuth2MeResponse>> getCurrentUserOauth2({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -526,11 +546,12 @@ class OAuth2Api {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(OAuth2MeResponse),
-      ) as OAuth2MeResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(OAuth2MeResponse),
+            ) as OAuth2MeResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -566,7 +587,7 @@ class OAuth2Api {
   ///
   /// Returns a [Future] containing a [Response] with a [OAuth2UserInfoResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<OAuth2UserInfoResponse>> getOauth2Userinfo({ 
+  Future<Response<OAuth2UserInfoResponse>> getOauth2Userinfo({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -604,11 +625,12 @@ class OAuth2Api {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(OAuth2UserInfoResponse),
-      ) as OAuth2UserInfoResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(OAuth2UserInfoResponse),
+            ) as OAuth2UserInfoResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -645,7 +667,7 @@ class OAuth2Api {
   ///
   /// Returns a [Future] containing a [Response] with a [ApplicationResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ApplicationResponse>> getOauthApplication({ 
+  Future<Response<ApplicationResponse>> getOauthApplication({
     required String id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -654,7 +676,10 @@ class OAuth2Api {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/oauth2/applications/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
+    final _path = r'/oauth2/applications/{id}'.replaceAll(
+        '{' r'id' '}',
+        encodeQueryParameter(_serializers, id, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -667,7 +692,8 @@ class OAuth2Api {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -691,11 +717,12 @@ class OAuth2Api {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ApplicationResponse),
-      ) as ApplicationResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(ApplicationResponse),
+            ) as ApplicationResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -732,7 +759,7 @@ class OAuth2Api {
   ///
   /// Returns a [Future] containing a [Response] with a [ApplicationPublicResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ApplicationPublicResponse>> getPublicApplication({ 
+  Future<Response<ApplicationPublicResponse>> getPublicApplication({
     required String id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -741,7 +768,10 @@ class OAuth2Api {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/oauth2/applications/{id}/public'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
+    final _path = r'/oauth2/applications/{id}/public'.replaceAll(
+        '{' r'id' '}',
+        encodeQueryParameter(_serializers, id, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -766,11 +796,12 @@ class OAuth2Api {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ApplicationPublicResponse),
-      ) as ApplicationPublicResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(ApplicationPublicResponse),
+            ) as ApplicationPublicResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -798,7 +829,7 @@ class OAuth2Api {
   ///
   /// Parameters:
   /// * [token] - The token to introspect
-  /// * [clientId] 
+  /// * [clientId]
   /// * [clientSecret] - The application client secret
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -809,7 +840,7 @@ class OAuth2Api {
   ///
   /// Returns a [Future] containing a [Response] with a [OAuth2IntrospectResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<OAuth2IntrospectResponse>> introspectOauth2Token({ 
+  Future<Response<OAuth2IntrospectResponse>> introspectOauth2Token({
     required String token,
     String? clientId,
     String? clientSecret,
@@ -838,14 +869,18 @@ class OAuth2Api {
 
     try {
       _bodyData = FormData.fromMap(<String, dynamic>{
-        r'token': encodeFormParameter(_serializers, token, const FullType(String)),
-        if (clientId != null) r'client_id': encodeFormParameter(_serializers, clientId, const FullType(String)),
-        if (clientSecret != null) r'client_secret': encodeFormParameter(_serializers, clientSecret, const FullType(String)),
+        r'token':
+            encodeFormParameter(_serializers, token, const FullType(String)),
+        if (clientId != null)
+          r'client_id': encodeFormParameter(
+              _serializers, clientId, const FullType(String)),
+        if (clientSecret != null)
+          r'client_secret': encodeFormParameter(
+              _serializers, clientSecret, const FullType(String)),
       });
-
-    } catch(error, stackTrace) {
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -868,11 +903,12 @@ class OAuth2Api {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(OAuth2IntrospectResponse),
-      ) as OAuth2IntrospectResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(OAuth2IntrospectResponse),
+            ) as OAuth2IntrospectResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -908,7 +944,7 @@ class OAuth2Api {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<ApplicationResponse>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<ApplicationResponse>>> listUserApplications({ 
+  Future<Response<BuiltList<ApplicationResponse>>> listUserApplications({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -929,7 +965,8 @@ class OAuth2Api {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -953,11 +990,13 @@ class OAuth2Api {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(ApplicationResponse)]),
-      ) as BuiltList<ApplicationResponse>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType:
+                  const FullType(BuiltList, [FullType(ApplicationResponse)]),
+            ) as BuiltList<ApplicationResponse>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -993,7 +1032,7 @@ class OAuth2Api {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<ApplicationResponse>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<ApplicationResponse>>> listUserApplications2({ 
+  Future<Response<BuiltList<ApplicationResponse>>> listUserApplications2({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -1014,7 +1053,8 @@ class OAuth2Api {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1038,11 +1078,13 @@ class OAuth2Api {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(ApplicationResponse)]),
-      ) as BuiltList<ApplicationResponse>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType:
+                  const FullType(BuiltList, [FullType(ApplicationResponse)]),
+            ) as BuiltList<ApplicationResponse>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1078,7 +1120,8 @@ class OAuth2Api {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<OAuth2AuthorizationResponse>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<OAuth2AuthorizationResponse>>> listUserOauth2Authorizations({ 
+  Future<Response<BuiltList<OAuth2AuthorizationResponse>>>
+      listUserOauth2Authorizations({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -1099,7 +1142,8 @@ class OAuth2Api {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1123,11 +1167,13 @@ class OAuth2Api {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(OAuth2AuthorizationResponse)]),
-      ) as BuiltList<OAuth2AuthorizationResponse>;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(
+                  BuiltList, [FullType(OAuth2AuthorizationResponse)]),
+            ) as BuiltList<OAuth2AuthorizationResponse>;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1154,7 +1200,7 @@ class OAuth2Api {
   /// User grants permission for an OAuth2 application to access authorized scopes. Used in authorization code flow to complete the authorization process after user review.
   ///
   /// Parameters:
-  /// * [authorizeConsentRequest] 
+  /// * [authorizeConsentRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1164,7 +1210,7 @@ class OAuth2Api {
   ///
   /// Returns a [Future] containing a [Response] with a [OAuth2ConsentResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<OAuth2ConsentResponse>> provideOauth2Consent({ 
+  Future<Response<OAuth2ConsentResponse>> provideOauth2Consent({
     required AuthorizeConsentRequest authorizeConsentRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -1186,7 +1232,8 @@ class OAuth2Api {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1203,11 +1250,11 @@ class OAuth2Api {
 
     try {
       const _type = FullType(AuthorizeConsentRequest);
-      _bodyData = _serializers.serialize(authorizeConsentRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(authorizeConsentRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -1230,11 +1277,12 @@ class OAuth2Api {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(OAuth2ConsentResponse),
-      ) as OAuth2ConsentResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(OAuth2ConsentResponse),
+            ) as OAuth2ConsentResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1262,7 +1310,7 @@ class OAuth2Api {
   ///
   /// Parameters:
   /// * [id] - The id
-  /// * [sudoVerificationSchema] 
+  /// * [sudoVerificationSchema]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1272,7 +1320,7 @@ class OAuth2Api {
   ///
   /// Returns a [Future] containing a [Response] with a [BotTokenResetResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BotTokenResetResponse>> resetBotToken2({ 
+  Future<Response<BotTokenResetResponse>> resetBotToken2({
     required String id,
     required SudoVerificationSchema sudoVerificationSchema,
     CancelToken? cancelToken,
@@ -1282,7 +1330,10 @@ class OAuth2Api {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/oauth2/applications/{id}/bot/reset-token'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
+    final _path = r'/oauth2/applications/{id}/bot/reset-token'.replaceAll(
+        '{' r'id' '}',
+        encodeQueryParameter(_serializers, id, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -1295,7 +1346,8 @@ class OAuth2Api {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1312,11 +1364,11 @@ class OAuth2Api {
 
     try {
       const _type = FullType(SudoVerificationSchema);
-      _bodyData = _serializers.serialize(sudoVerificationSchema, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(sudoVerificationSchema, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -1339,11 +1391,12 @@ class OAuth2Api {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BotTokenResetResponse),
-      ) as BotTokenResetResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(BotTokenResetResponse),
+            ) as BotTokenResetResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1371,7 +1424,7 @@ class OAuth2Api {
   ///
   /// Parameters:
   /// * [id] - The id
-  /// * [sudoVerificationSchema] 
+  /// * [sudoVerificationSchema]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1381,7 +1434,7 @@ class OAuth2Api {
   ///
   /// Returns a [Future] containing a [Response] with a [ApplicationResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ApplicationResponse>> resetClientSecret2({ 
+  Future<Response<ApplicationResponse>> resetClientSecret2({
     required String id,
     required SudoVerificationSchema sudoVerificationSchema,
     CancelToken? cancelToken,
@@ -1391,7 +1444,10 @@ class OAuth2Api {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/oauth2/applications/{id}/client-secret/reset'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
+    final _path = r'/oauth2/applications/{id}/client-secret/reset'.replaceAll(
+        '{' r'id' '}',
+        encodeQueryParameter(_serializers, id, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -1404,7 +1460,8 @@ class OAuth2Api {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1421,11 +1478,11 @@ class OAuth2Api {
 
     try {
       const _type = FullType(SudoVerificationSchema);
-      _bodyData = _serializers.serialize(sudoVerificationSchema, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(sudoVerificationSchema, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -1448,11 +1505,12 @@ class OAuth2Api {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ApplicationResponse),
-      ) as ApplicationResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(ApplicationResponse),
+            ) as ApplicationResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1481,7 +1539,7 @@ class OAuth2Api {
   /// Parameters:
   /// * [token] - The token to revoke
   /// * [tokenTypeHint] - A hint about the type of token being revoked
-  /// * [clientId] 
+  /// * [clientId]
   /// * [clientSecret] - The application client secret
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -1492,7 +1550,7 @@ class OAuth2Api {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> revokeOauth2Token({ 
+  Future<Response<void>> revokeOauth2Token({
     required String token,
     String? tokenTypeHint,
     String? clientId,
@@ -1522,15 +1580,21 @@ class OAuth2Api {
 
     try {
       _bodyData = FormData.fromMap(<String, dynamic>{
-        r'token': encodeFormParameter(_serializers, token, const FullType(String)),
-        if (tokenTypeHint != null) r'token_type_hint': encodeFormParameter(_serializers, tokenTypeHint, const FullType(String)),
-        if (clientId != null) r'client_id': encodeFormParameter(_serializers, clientId, const FullType(String)),
-        if (clientSecret != null) r'client_secret': encodeFormParameter(_serializers, clientSecret, const FullType(String)),
+        r'token':
+            encodeFormParameter(_serializers, token, const FullType(String)),
+        if (tokenTypeHint != null)
+          r'token_type_hint': encodeFormParameter(
+              _serializers, tokenTypeHint, const FullType(String)),
+        if (clientId != null)
+          r'client_id': encodeFormParameter(
+              _serializers, clientId, const FullType(String)),
+        if (clientSecret != null)
+          r'client_secret': encodeFormParameter(
+              _serializers, clientSecret, const FullType(String)),
       });
-
-    } catch(error, stackTrace) {
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -1557,7 +1621,7 @@ class OAuth2Api {
   ///
   /// Parameters:
   /// * [id] - The id
-  /// * [botProfileUpdateRequest] 
+  /// * [botProfileUpdateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1567,7 +1631,7 @@ class OAuth2Api {
   ///
   /// Returns a [Future] containing a [Response] with a [BotProfileResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BotProfileResponse>> updateBotProfile({ 
+  Future<Response<BotProfileResponse>> updateBotProfile({
     required String id,
     required BotProfileUpdateRequest botProfileUpdateRequest,
     CancelToken? cancelToken,
@@ -1577,7 +1641,10 @@ class OAuth2Api {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/oauth2/applications/{id}/bot'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
+    final _path = r'/oauth2/applications/{id}/bot'.replaceAll(
+        '{' r'id' '}',
+        encodeQueryParameter(_serializers, id, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -1590,7 +1657,8 @@ class OAuth2Api {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1607,11 +1675,11 @@ class OAuth2Api {
 
     try {
       const _type = FullType(BotProfileUpdateRequest);
-      _bodyData = _serializers.serialize(botProfileUpdateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(botProfileUpdateRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -1634,11 +1702,12 @@ class OAuth2Api {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BotProfileResponse),
-      ) as BotProfileResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(BotProfileResponse),
+            ) as BotProfileResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1666,7 +1735,7 @@ class OAuth2Api {
   ///
   /// Parameters:
   /// * [id] - The id
-  /// * [applicationUpdateRequest] 
+  /// * [applicationUpdateRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1676,7 +1745,7 @@ class OAuth2Api {
   ///
   /// Returns a [Future] containing a [Response] with a [ApplicationResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ApplicationResponse>> updateOauthApplication({ 
+  Future<Response<ApplicationResponse>> updateOauthApplication({
     required String id,
     required ApplicationUpdateRequest applicationUpdateRequest,
     CancelToken? cancelToken,
@@ -1686,7 +1755,10 @@ class OAuth2Api {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/oauth2/applications/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
+    final _path = r'/oauth2/applications/{id}'.replaceAll(
+        '{' r'id' '}',
+        encodeQueryParameter(_serializers, id, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -1699,7 +1771,8 @@ class OAuth2Api {
             'name': 'sessionToken',
             'keyName': 'Authorization',
             'where': 'header',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'botToken',
             'keyName': 'Authorization',
@@ -1716,11 +1789,11 @@ class OAuth2Api {
 
     try {
       const _type = FullType(ApplicationUpdateRequest);
-      _bodyData = _serializers.serialize(applicationUpdateRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(applicationUpdateRequest,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -1743,11 +1816,12 @@ class OAuth2Api {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ApplicationResponse),
-      ) as ApplicationResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(ApplicationResponse),
+            ) as ApplicationResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1769,5 +1843,4 @@ class OAuth2Api {
       extra: _response.extra,
     );
   }
-
 }

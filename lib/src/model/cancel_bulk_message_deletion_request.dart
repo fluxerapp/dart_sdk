@@ -11,26 +11,36 @@ part 'cancel_bulk_message_deletion_request.g.dart';
 /// CancelBulkMessageDeletionRequest
 ///
 /// Properties:
-/// * [userId] 
+/// * [userId]
 @BuiltValue()
-abstract class CancelBulkMessageDeletionRequest implements Built<CancelBulkMessageDeletionRequest, CancelBulkMessageDeletionRequestBuilder> {
+abstract class CancelBulkMessageDeletionRequest
+    implements
+        Built<CancelBulkMessageDeletionRequest,
+            CancelBulkMessageDeletionRequestBuilder> {
   @BuiltValueField(wireName: r'user_id')
   String get userId;
 
   CancelBulkMessageDeletionRequest._();
 
-  factory CancelBulkMessageDeletionRequest([void updates(CancelBulkMessageDeletionRequestBuilder b)]) = _$CancelBulkMessageDeletionRequest;
+  factory CancelBulkMessageDeletionRequest(
+          [void updates(CancelBulkMessageDeletionRequestBuilder b)]) =
+      _$CancelBulkMessageDeletionRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CancelBulkMessageDeletionRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CancelBulkMessageDeletionRequest> get serializer => _$CancelBulkMessageDeletionRequestSerializer();
+  static Serializer<CancelBulkMessageDeletionRequest> get serializer =>
+      _$CancelBulkMessageDeletionRequestSerializer();
 }
 
-class _$CancelBulkMessageDeletionRequestSerializer implements PrimitiveSerializer<CancelBulkMessageDeletionRequest> {
+class _$CancelBulkMessageDeletionRequestSerializer
+    implements PrimitiveSerializer<CancelBulkMessageDeletionRequest> {
   @override
-  final Iterable<Type> types = const [CancelBulkMessageDeletionRequest, _$CancelBulkMessageDeletionRequest];
+  final Iterable<Type> types = const [
+    CancelBulkMessageDeletionRequest,
+    _$CancelBulkMessageDeletionRequest
+  ];
 
   @override
   final String wireName = r'CancelBulkMessageDeletionRequest';
@@ -53,7 +63,9 @@ class _$CancelBulkMessageDeletionRequestSerializer implements PrimitiveSerialize
     CancelBulkMessageDeletionRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,4 +115,3 @@ class _$CancelBulkMessageDeletionRequestSerializer implements PrimitiveSerialize
     return result.build();
   }
 }
-

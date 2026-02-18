@@ -11,10 +11,12 @@ part 'purge_guild_asset_error_schema.g.dart';
 /// PurgeGuildAssetErrorSchema
 ///
 /// Properties:
-/// * [id] 
-/// * [error] 
+/// * [id]
+/// * [error]
 @BuiltValue()
-abstract class PurgeGuildAssetErrorSchema implements Built<PurgeGuildAssetErrorSchema, PurgeGuildAssetErrorSchemaBuilder> {
+abstract class PurgeGuildAssetErrorSchema
+    implements
+        Built<PurgeGuildAssetErrorSchema, PurgeGuildAssetErrorSchemaBuilder> {
   @BuiltValueField(wireName: r'id')
   String get id;
 
@@ -23,18 +25,25 @@ abstract class PurgeGuildAssetErrorSchema implements Built<PurgeGuildAssetErrorS
 
   PurgeGuildAssetErrorSchema._();
 
-  factory PurgeGuildAssetErrorSchema([void updates(PurgeGuildAssetErrorSchemaBuilder b)]) = _$PurgeGuildAssetErrorSchema;
+  factory PurgeGuildAssetErrorSchema(
+          [void updates(PurgeGuildAssetErrorSchemaBuilder b)]) =
+      _$PurgeGuildAssetErrorSchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PurgeGuildAssetErrorSchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PurgeGuildAssetErrorSchema> get serializer => _$PurgeGuildAssetErrorSchemaSerializer();
+  static Serializer<PurgeGuildAssetErrorSchema> get serializer =>
+      _$PurgeGuildAssetErrorSchemaSerializer();
 }
 
-class _$PurgeGuildAssetErrorSchemaSerializer implements PrimitiveSerializer<PurgeGuildAssetErrorSchema> {
+class _$PurgeGuildAssetErrorSchemaSerializer
+    implements PrimitiveSerializer<PurgeGuildAssetErrorSchema> {
   @override
-  final Iterable<Type> types = const [PurgeGuildAssetErrorSchema, _$PurgeGuildAssetErrorSchema];
+  final Iterable<Type> types = const [
+    PurgeGuildAssetErrorSchema,
+    _$PurgeGuildAssetErrorSchema
+  ];
 
   @override
   final String wireName = r'PurgeGuildAssetErrorSchema';
@@ -62,7 +71,9 @@ class _$PurgeGuildAssetErrorSchemaSerializer implements PrimitiveSerializer<Purg
     PurgeGuildAssetErrorSchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -119,4 +130,3 @@ class _$PurgeGuildAssetErrorSchemaSerializer implements PrimitiveSerializer<Purg
     return result.build();
   }
 }
-

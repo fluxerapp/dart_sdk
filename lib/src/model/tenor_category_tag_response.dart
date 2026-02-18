@@ -15,7 +15,9 @@ part 'tenor_category_tag_response.g.dart';
 /// * [src] - URL to the category preview image
 /// * [proxySrc] - Proxied URL to the category preview image
 @BuiltValue()
-abstract class TenorCategoryTagResponse implements Built<TenorCategoryTagResponse, TenorCategoryTagResponseBuilder> {
+abstract class TenorCategoryTagResponse
+    implements
+        Built<TenorCategoryTagResponse, TenorCategoryTagResponseBuilder> {
   /// The category search term
   @BuiltValueField(wireName: r'name')
   String get name;
@@ -30,18 +32,25 @@ abstract class TenorCategoryTagResponse implements Built<TenorCategoryTagRespons
 
   TenorCategoryTagResponse._();
 
-  factory TenorCategoryTagResponse([void updates(TenorCategoryTagResponseBuilder b)]) = _$TenorCategoryTagResponse;
+  factory TenorCategoryTagResponse(
+          [void updates(TenorCategoryTagResponseBuilder b)]) =
+      _$TenorCategoryTagResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(TenorCategoryTagResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<TenorCategoryTagResponse> get serializer => _$TenorCategoryTagResponseSerializer();
+  static Serializer<TenorCategoryTagResponse> get serializer =>
+      _$TenorCategoryTagResponseSerializer();
 }
 
-class _$TenorCategoryTagResponseSerializer implements PrimitiveSerializer<TenorCategoryTagResponse> {
+class _$TenorCategoryTagResponseSerializer
+    implements PrimitiveSerializer<TenorCategoryTagResponse> {
   @override
-  final Iterable<Type> types = const [TenorCategoryTagResponse, _$TenorCategoryTagResponse];
+  final Iterable<Type> types = const [
+    TenorCategoryTagResponse,
+    _$TenorCategoryTagResponse
+  ];
 
   @override
   final String wireName = r'TenorCategoryTagResponse';
@@ -74,7 +83,9 @@ class _$TenorCategoryTagResponseSerializer implements PrimitiveSerializer<TenorC
     TenorCategoryTagResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -138,4 +149,3 @@ class _$TenorCategoryTagResponseSerializer implements PrimitiveSerializer<TenorC
     return result.build();
   }
 }
-

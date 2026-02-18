@@ -13,25 +13,34 @@ part 'expand_visionary_slots_request.g.dart';
 /// Properties:
 /// * [count] - Number of new slots to create
 @BuiltValue()
-abstract class ExpandVisionarySlotsRequest implements Built<ExpandVisionarySlotsRequest, ExpandVisionarySlotsRequestBuilder> {
+abstract class ExpandVisionarySlotsRequest
+    implements
+        Built<ExpandVisionarySlotsRequest, ExpandVisionarySlotsRequestBuilder> {
   /// Number of new slots to create
   @BuiltValueField(wireName: r'count')
   int get count;
 
   ExpandVisionarySlotsRequest._();
 
-  factory ExpandVisionarySlotsRequest([void updates(ExpandVisionarySlotsRequestBuilder b)]) = _$ExpandVisionarySlotsRequest;
+  factory ExpandVisionarySlotsRequest(
+          [void updates(ExpandVisionarySlotsRequestBuilder b)]) =
+      _$ExpandVisionarySlotsRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ExpandVisionarySlotsRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ExpandVisionarySlotsRequest> get serializer => _$ExpandVisionarySlotsRequestSerializer();
+  static Serializer<ExpandVisionarySlotsRequest> get serializer =>
+      _$ExpandVisionarySlotsRequestSerializer();
 }
 
-class _$ExpandVisionarySlotsRequestSerializer implements PrimitiveSerializer<ExpandVisionarySlotsRequest> {
+class _$ExpandVisionarySlotsRequestSerializer
+    implements PrimitiveSerializer<ExpandVisionarySlotsRequest> {
   @override
-  final Iterable<Type> types = const [ExpandVisionarySlotsRequest, _$ExpandVisionarySlotsRequest];
+  final Iterable<Type> types = const [
+    ExpandVisionarySlotsRequest,
+    _$ExpandVisionarySlotsRequest
+  ];
 
   @override
   final String wireName = r'ExpandVisionarySlotsRequest';
@@ -54,7 +63,9 @@ class _$ExpandVisionarySlotsRequestSerializer implements PrimitiveSerializer<Exp
     ExpandVisionarySlotsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +115,3 @@ class _$ExpandVisionarySlotsRequestSerializer implements PrimitiveSerializer<Exp
     return result.build();
   }
 }
-

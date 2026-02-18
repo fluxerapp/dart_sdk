@@ -12,26 +12,33 @@ part 'admin_users_me_response.g.dart';
 /// AdminUsersMeResponse
 ///
 /// Properties:
-/// * [user] 
+/// * [user]
 @BuiltValue()
-abstract class AdminUsersMeResponse implements Built<AdminUsersMeResponse, AdminUsersMeResponseBuilder> {
+abstract class AdminUsersMeResponse
+    implements Built<AdminUsersMeResponse, AdminUsersMeResponseBuilder> {
   @BuiltValueField(wireName: r'user')
   UserAdminResponseSchema get user;
 
   AdminUsersMeResponse._();
 
-  factory AdminUsersMeResponse([void updates(AdminUsersMeResponseBuilder b)]) = _$AdminUsersMeResponse;
+  factory AdminUsersMeResponse([void updates(AdminUsersMeResponseBuilder b)]) =
+      _$AdminUsersMeResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(AdminUsersMeResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<AdminUsersMeResponse> get serializer => _$AdminUsersMeResponseSerializer();
+  static Serializer<AdminUsersMeResponse> get serializer =>
+      _$AdminUsersMeResponseSerializer();
 }
 
-class _$AdminUsersMeResponseSerializer implements PrimitiveSerializer<AdminUsersMeResponse> {
+class _$AdminUsersMeResponseSerializer
+    implements PrimitiveSerializer<AdminUsersMeResponse> {
   @override
-  final Iterable<Type> types = const [AdminUsersMeResponse, _$AdminUsersMeResponse];
+  final Iterable<Type> types = const [
+    AdminUsersMeResponse,
+    _$AdminUsersMeResponse
+  ];
 
   @override
   final String wireName = r'AdminUsersMeResponse';
@@ -54,7 +61,9 @@ class _$AdminUsersMeResponseSerializer implements PrimitiveSerializer<AdminUsers
     AdminUsersMeResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +113,3 @@ class _$AdminUsersMeResponseSerializer implements PrimitiveSerializer<AdminUsers
     return result.build();
   }
 }
-

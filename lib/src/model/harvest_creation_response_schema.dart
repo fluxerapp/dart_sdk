@@ -13,10 +13,13 @@ part 'harvest_creation_response_schema.g.dart';
 ///
 /// Properties:
 /// * [harvestId] - Unique identifier for the harvest request
-/// * [status] 
+/// * [status]
 /// * [createdAt] - ISO 8601 timestamp when the harvest request was created
 @BuiltValue()
-abstract class HarvestCreationResponseSchema implements Built<HarvestCreationResponseSchema, HarvestCreationResponseSchemaBuilder> {
+abstract class HarvestCreationResponseSchema
+    implements
+        Built<HarvestCreationResponseSchema,
+            HarvestCreationResponseSchemaBuilder> {
   /// Unique identifier for the harvest request
   @BuiltValueField(wireName: r'harvest_id')
   String get harvestId;
@@ -31,18 +34,25 @@ abstract class HarvestCreationResponseSchema implements Built<HarvestCreationRes
 
   HarvestCreationResponseSchema._();
 
-  factory HarvestCreationResponseSchema([void updates(HarvestCreationResponseSchemaBuilder b)]) = _$HarvestCreationResponseSchema;
+  factory HarvestCreationResponseSchema(
+          [void updates(HarvestCreationResponseSchemaBuilder b)]) =
+      _$HarvestCreationResponseSchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(HarvestCreationResponseSchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<HarvestCreationResponseSchema> get serializer => _$HarvestCreationResponseSchemaSerializer();
+  static Serializer<HarvestCreationResponseSchema> get serializer =>
+      _$HarvestCreationResponseSchemaSerializer();
 }
 
-class _$HarvestCreationResponseSchemaSerializer implements PrimitiveSerializer<HarvestCreationResponseSchema> {
+class _$HarvestCreationResponseSchemaSerializer
+    implements PrimitiveSerializer<HarvestCreationResponseSchema> {
   @override
-  final Iterable<Type> types = const [HarvestCreationResponseSchema, _$HarvestCreationResponseSchema];
+  final Iterable<Type> types = const [
+    HarvestCreationResponseSchema,
+    _$HarvestCreationResponseSchema
+  ];
 
   @override
   final String wireName = r'HarvestCreationResponseSchema';
@@ -75,7 +85,9 @@ class _$HarvestCreationResponseSchemaSerializer implements PrimitiveSerializer<H
     HarvestCreationResponseSchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -139,4 +151,3 @@ class _$HarvestCreationResponseSchemaSerializer implements PrimitiveSerializer<H
     return result.build();
   }
 }
-

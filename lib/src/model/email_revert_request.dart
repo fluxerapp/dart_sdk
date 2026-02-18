@@ -12,9 +12,10 @@ part 'email_revert_request.g.dart';
 ///
 /// Properties:
 /// * [token] - Email revert token from email
-/// * [password] 
+/// * [password]
 @BuiltValue()
-abstract class EmailRevertRequest implements Built<EmailRevertRequest, EmailRevertRequestBuilder> {
+abstract class EmailRevertRequest
+    implements Built<EmailRevertRequest, EmailRevertRequestBuilder> {
   /// Email revert token from email
   @BuiltValueField(wireName: r'token')
   String get token;
@@ -24,16 +25,19 @@ abstract class EmailRevertRequest implements Built<EmailRevertRequest, EmailReve
 
   EmailRevertRequest._();
 
-  factory EmailRevertRequest([void updates(EmailRevertRequestBuilder b)]) = _$EmailRevertRequest;
+  factory EmailRevertRequest([void updates(EmailRevertRequestBuilder b)]) =
+      _$EmailRevertRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(EmailRevertRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<EmailRevertRequest> get serializer => _$EmailRevertRequestSerializer();
+  static Serializer<EmailRevertRequest> get serializer =>
+      _$EmailRevertRequestSerializer();
 }
 
-class _$EmailRevertRequestSerializer implements PrimitiveSerializer<EmailRevertRequest> {
+class _$EmailRevertRequestSerializer
+    implements PrimitiveSerializer<EmailRevertRequest> {
   @override
   final Iterable<Type> types = const [EmailRevertRequest, _$EmailRevertRequest];
 
@@ -63,7 +67,9 @@ class _$EmailRevertRequestSerializer implements PrimitiveSerializer<EmailRevertR
     EmailRevertRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -120,4 +126,3 @@ class _$EmailRevertRequestSerializer implements PrimitiveSerializer<EmailRevertR
     return result.build();
   }
 }
-

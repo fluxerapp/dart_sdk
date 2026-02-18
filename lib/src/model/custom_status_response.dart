@@ -12,12 +12,13 @@ part 'custom_status_response.g.dart';
 ///
 /// Properties:
 /// * [emojiAnimated] - Whether the status emoji is animated
-/// * [text] 
-/// * [expiresAt] 
-/// * [emojiId] 
-/// * [emojiName] 
+/// * [text]
+/// * [expiresAt]
+/// * [emojiId]
+/// * [emojiName]
 @BuiltValue()
-abstract class CustomStatusResponse implements Built<CustomStatusResponse, CustomStatusResponseBuilder> {
+abstract class CustomStatusResponse
+    implements Built<CustomStatusResponse, CustomStatusResponseBuilder> {
   /// Whether the status emoji is animated
   @BuiltValueField(wireName: r'emoji_animated')
   bool get emojiAnimated;
@@ -36,18 +37,24 @@ abstract class CustomStatusResponse implements Built<CustomStatusResponse, Custo
 
   CustomStatusResponse._();
 
-  factory CustomStatusResponse([void updates(CustomStatusResponseBuilder b)]) = _$CustomStatusResponse;
+  factory CustomStatusResponse([void updates(CustomStatusResponseBuilder b)]) =
+      _$CustomStatusResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CustomStatusResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CustomStatusResponse> get serializer => _$CustomStatusResponseSerializer();
+  static Serializer<CustomStatusResponse> get serializer =>
+      _$CustomStatusResponseSerializer();
 }
 
-class _$CustomStatusResponseSerializer implements PrimitiveSerializer<CustomStatusResponse> {
+class _$CustomStatusResponseSerializer
+    implements PrimitiveSerializer<CustomStatusResponse> {
   @override
-  final Iterable<Type> types = const [CustomStatusResponse, _$CustomStatusResponse];
+  final Iterable<Type> types = const [
+    CustomStatusResponse,
+    _$CustomStatusResponse
+  ];
 
   @override
   final String wireName = r'CustomStatusResponse';
@@ -98,7 +105,9 @@ class _$CustomStatusResponseSerializer implements PrimitiveSerializer<CustomStat
     CustomStatusResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -179,4 +188,3 @@ class _$CustomStatusResponseSerializer implements PrimitiveSerializer<CustomStat
     return result.build();
   }
 }
-

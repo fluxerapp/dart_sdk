@@ -10,20 +10,21 @@ import 'package:built_value/serializer.dart';
 part 'report_type.g.dart';
 
 class ReportType extends EnumClass {
-
   /// The type of entity being reported
   @BuiltValueEnumConst(wireNumber: 0)
   static const ReportType number0 = _$number0;
+
   /// The type of entity being reported
   @BuiltValueEnumConst(wireNumber: 1)
   static const ReportType number1 = _$number1;
+
   /// The type of entity being reported
   @BuiltValueEnumConst(wireNumber: 2)
   static const ReportType number2 = _$number2;
 
   static Serializer<ReportType> get serializer => _$reportTypeSerializer;
 
-  const ReportType._(String name): super(name);
+  const ReportType._(String name) : super(name);
 
   static BuiltSet<ReportType> get values => _$values;
   static ReportType valueOf(String name) => _$valueOf(name);
@@ -36,4 +37,3 @@ class ReportType extends EnumClass {
 ///
 /// Trigger mixin generation by writing a line like this one next to your enum.
 abstract class ReportTypeMixin = Object with _$ReportTypeMixin;
-

@@ -13,25 +13,34 @@ part 'donation_request_link_request.g.dart';
 /// Properties:
 /// * [email] - Email address to send the magic link to
 @BuiltValue()
-abstract class DonationRequestLinkRequest implements Built<DonationRequestLinkRequest, DonationRequestLinkRequestBuilder> {
+abstract class DonationRequestLinkRequest
+    implements
+        Built<DonationRequestLinkRequest, DonationRequestLinkRequestBuilder> {
   /// Email address to send the magic link to
   @BuiltValueField(wireName: r'email')
   String get email;
 
   DonationRequestLinkRequest._();
 
-  factory DonationRequestLinkRequest([void updates(DonationRequestLinkRequestBuilder b)]) = _$DonationRequestLinkRequest;
+  factory DonationRequestLinkRequest(
+          [void updates(DonationRequestLinkRequestBuilder b)]) =
+      _$DonationRequestLinkRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(DonationRequestLinkRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<DonationRequestLinkRequest> get serializer => _$DonationRequestLinkRequestSerializer();
+  static Serializer<DonationRequestLinkRequest> get serializer =>
+      _$DonationRequestLinkRequestSerializer();
 }
 
-class _$DonationRequestLinkRequestSerializer implements PrimitiveSerializer<DonationRequestLinkRequest> {
+class _$DonationRequestLinkRequestSerializer
+    implements PrimitiveSerializer<DonationRequestLinkRequest> {
   @override
-  final Iterable<Type> types = const [DonationRequestLinkRequest, _$DonationRequestLinkRequest];
+  final Iterable<Type> types = const [
+    DonationRequestLinkRequest,
+    _$DonationRequestLinkRequest
+  ];
 
   @override
   final String wireName = r'DonationRequestLinkRequest';
@@ -54,7 +63,9 @@ class _$DonationRequestLinkRequestSerializer implements PrimitiveSerializer<Dona
     DonationRequestLinkRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +115,3 @@ class _$DonationRequestLinkRequestSerializer implements PrimitiveSerializer<Dona
     return result.build();
   }
 }
-

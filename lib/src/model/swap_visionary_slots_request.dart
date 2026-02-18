@@ -14,7 +14,9 @@ part 'swap_visionary_slots_request.g.dart';
 /// * [slotIndexA] - First slot index to swap (must be >= 1)
 /// * [slotIndexB] - Second slot index to swap (must be >= 1)
 @BuiltValue()
-abstract class SwapVisionarySlotsRequest implements Built<SwapVisionarySlotsRequest, SwapVisionarySlotsRequestBuilder> {
+abstract class SwapVisionarySlotsRequest
+    implements
+        Built<SwapVisionarySlotsRequest, SwapVisionarySlotsRequestBuilder> {
   /// First slot index to swap (must be >= 1)
   @BuiltValueField(wireName: r'slot_index_a')
   int get slotIndexA;
@@ -25,18 +27,25 @@ abstract class SwapVisionarySlotsRequest implements Built<SwapVisionarySlotsRequ
 
   SwapVisionarySlotsRequest._();
 
-  factory SwapVisionarySlotsRequest([void updates(SwapVisionarySlotsRequestBuilder b)]) = _$SwapVisionarySlotsRequest;
+  factory SwapVisionarySlotsRequest(
+          [void updates(SwapVisionarySlotsRequestBuilder b)]) =
+      _$SwapVisionarySlotsRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SwapVisionarySlotsRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SwapVisionarySlotsRequest> get serializer => _$SwapVisionarySlotsRequestSerializer();
+  static Serializer<SwapVisionarySlotsRequest> get serializer =>
+      _$SwapVisionarySlotsRequestSerializer();
 }
 
-class _$SwapVisionarySlotsRequestSerializer implements PrimitiveSerializer<SwapVisionarySlotsRequest> {
+class _$SwapVisionarySlotsRequestSerializer
+    implements PrimitiveSerializer<SwapVisionarySlotsRequest> {
   @override
-  final Iterable<Type> types = const [SwapVisionarySlotsRequest, _$SwapVisionarySlotsRequest];
+  final Iterable<Type> types = const [
+    SwapVisionarySlotsRequest,
+    _$SwapVisionarySlotsRequest
+  ];
 
   @override
   final String wireName = r'SwapVisionarySlotsRequest';
@@ -64,7 +73,9 @@ class _$SwapVisionarySlotsRequestSerializer implements PrimitiveSerializer<SwapV
     SwapVisionarySlotsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +132,3 @@ class _$SwapVisionarySlotsRequestSerializer implements PrimitiveSerializer<SwapV
     return result.build();
   }
 }
-

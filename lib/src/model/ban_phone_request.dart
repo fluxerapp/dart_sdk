@@ -11,24 +11,28 @@ part 'ban_phone_request.g.dart';
 /// BanPhoneRequest
 ///
 /// Properties:
-/// * [phone] 
+/// * [phone]
 @BuiltValue()
-abstract class BanPhoneRequest implements Built<BanPhoneRequest, BanPhoneRequestBuilder> {
+abstract class BanPhoneRequest
+    implements Built<BanPhoneRequest, BanPhoneRequestBuilder> {
   @BuiltValueField(wireName: r'phone')
   String get phone;
 
   BanPhoneRequest._();
 
-  factory BanPhoneRequest([void updates(BanPhoneRequestBuilder b)]) = _$BanPhoneRequest;
+  factory BanPhoneRequest([void updates(BanPhoneRequestBuilder b)]) =
+      _$BanPhoneRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(BanPhoneRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<BanPhoneRequest> get serializer => _$BanPhoneRequestSerializer();
+  static Serializer<BanPhoneRequest> get serializer =>
+      _$BanPhoneRequestSerializer();
 }
 
-class _$BanPhoneRequestSerializer implements PrimitiveSerializer<BanPhoneRequest> {
+class _$BanPhoneRequestSerializer
+    implements PrimitiveSerializer<BanPhoneRequest> {
   @override
   final Iterable<Type> types = const [BanPhoneRequest, _$BanPhoneRequest];
 
@@ -53,7 +57,9 @@ class _$BanPhoneRequestSerializer implements PrimitiveSerializer<BanPhoneRequest
     BanPhoneRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,4 +109,3 @@ class _$BanPhoneRequestSerializer implements PrimitiveSerializer<BanPhoneRequest
     return result.build();
   }
 }
-

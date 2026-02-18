@@ -15,25 +15,35 @@ part 'list_snowflake_reservations_response.g.dart';
 /// Properties:
 /// * [reservations] - List of snowflake reservations
 @BuiltValue()
-abstract class ListSnowflakeReservationsResponse implements Built<ListSnowflakeReservationsResponse, ListSnowflakeReservationsResponseBuilder> {
+abstract class ListSnowflakeReservationsResponse
+    implements
+        Built<ListSnowflakeReservationsResponse,
+            ListSnowflakeReservationsResponseBuilder> {
   /// List of snowflake reservations
   @BuiltValueField(wireName: r'reservations')
   BuiltList<SnowflakeReservationEntry> get reservations;
 
   ListSnowflakeReservationsResponse._();
 
-  factory ListSnowflakeReservationsResponse([void updates(ListSnowflakeReservationsResponseBuilder b)]) = _$ListSnowflakeReservationsResponse;
+  factory ListSnowflakeReservationsResponse(
+          [void updates(ListSnowflakeReservationsResponseBuilder b)]) =
+      _$ListSnowflakeReservationsResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ListSnowflakeReservationsResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListSnowflakeReservationsResponse> get serializer => _$ListSnowflakeReservationsResponseSerializer();
+  static Serializer<ListSnowflakeReservationsResponse> get serializer =>
+      _$ListSnowflakeReservationsResponseSerializer();
 }
 
-class _$ListSnowflakeReservationsResponseSerializer implements PrimitiveSerializer<ListSnowflakeReservationsResponse> {
+class _$ListSnowflakeReservationsResponseSerializer
+    implements PrimitiveSerializer<ListSnowflakeReservationsResponse> {
   @override
-  final Iterable<Type> types = const [ListSnowflakeReservationsResponse, _$ListSnowflakeReservationsResponse];
+  final Iterable<Type> types = const [
+    ListSnowflakeReservationsResponse,
+    _$ListSnowflakeReservationsResponse
+  ];
 
   @override
   final String wireName = r'ListSnowflakeReservationsResponse';
@@ -46,7 +56,8 @@ class _$ListSnowflakeReservationsResponseSerializer implements PrimitiveSerializ
     yield r'reservations';
     yield serializers.serialize(
       object.reservations,
-      specifiedType: const FullType(BuiltList, [FullType(SnowflakeReservationEntry)]),
+      specifiedType:
+          const FullType(BuiltList, [FullType(SnowflakeReservationEntry)]),
     );
   }
 
@@ -56,7 +67,9 @@ class _$ListSnowflakeReservationsResponseSerializer implements PrimitiveSerializ
     ListSnowflakeReservationsResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -74,7 +87,8 @@ class _$ListSnowflakeReservationsResponseSerializer implements PrimitiveSerializ
         case r'reservations':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(SnowflakeReservationEntry)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(SnowflakeReservationEntry)]),
           ) as BuiltList<SnowflakeReservationEntry>;
           result.reservations.replace(valueDes);
           break;
@@ -106,4 +120,3 @@ class _$ListSnowflakeReservationsResponseSerializer implements PrimitiveSerializ
     return result.build();
   }
 }
-

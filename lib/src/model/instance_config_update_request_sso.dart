@@ -12,21 +12,24 @@ part 'instance_config_update_request_sso.g.dart';
 /// InstanceConfigUpdateRequestSso
 ///
 /// Properties:
-/// * [enabled] 
-/// * [displayName] 
-/// * [issuer] 
-/// * [authorizationUrl] 
-/// * [tokenUrl] 
-/// * [userinfoUrl] 
-/// * [jwksUrl] 
-/// * [clientId] 
-/// * [clientSecret] 
-/// * [scope] 
-/// * [allowedDomains] 
-/// * [autoProvision] 
-/// * [redirectUri] 
+/// * [enabled]
+/// * [displayName]
+/// * [issuer]
+/// * [authorizationUrl]
+/// * [tokenUrl]
+/// * [userinfoUrl]
+/// * [jwksUrl]
+/// * [clientId]
+/// * [clientSecret]
+/// * [scope]
+/// * [allowedDomains]
+/// * [autoProvision]
+/// * [redirectUri]
 @BuiltValue()
-abstract class InstanceConfigUpdateRequestSso implements Built<InstanceConfigUpdateRequestSso, InstanceConfigUpdateRequestSsoBuilder> {
+abstract class InstanceConfigUpdateRequestSso
+    implements
+        Built<InstanceConfigUpdateRequestSso,
+            InstanceConfigUpdateRequestSsoBuilder> {
   @BuiltValueField(wireName: r'enabled')
   bool? get enabled;
 
@@ -68,18 +71,25 @@ abstract class InstanceConfigUpdateRequestSso implements Built<InstanceConfigUpd
 
   InstanceConfigUpdateRequestSso._();
 
-  factory InstanceConfigUpdateRequestSso([void updates(InstanceConfigUpdateRequestSsoBuilder b)]) = _$InstanceConfigUpdateRequestSso;
+  factory InstanceConfigUpdateRequestSso(
+          [void updates(InstanceConfigUpdateRequestSsoBuilder b)]) =
+      _$InstanceConfigUpdateRequestSso;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(InstanceConfigUpdateRequestSsoBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<InstanceConfigUpdateRequestSso> get serializer => _$InstanceConfigUpdateRequestSsoSerializer();
+  static Serializer<InstanceConfigUpdateRequestSso> get serializer =>
+      _$InstanceConfigUpdateRequestSsoSerializer();
 }
 
-class _$InstanceConfigUpdateRequestSsoSerializer implements PrimitiveSerializer<InstanceConfigUpdateRequestSso> {
+class _$InstanceConfigUpdateRequestSsoSerializer
+    implements PrimitiveSerializer<InstanceConfigUpdateRequestSso> {
   @override
-  final Iterable<Type> types = const [InstanceConfigUpdateRequestSso, _$InstanceConfigUpdateRequestSso];
+  final Iterable<Type> types = const [
+    InstanceConfigUpdateRequestSso,
+    _$InstanceConfigUpdateRequestSso
+  ];
 
   @override
   final String wireName = r'InstanceConfigUpdateRequestSso';
@@ -188,7 +198,9 @@ class _$InstanceConfigUpdateRequestSsoSerializer implements PrimitiveSerializer<
     InstanceConfigUpdateRequestSso object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -332,4 +344,3 @@ class _$InstanceConfigUpdateRequestSsoSerializer implements PrimitiveSerializer<
     return result.build();
   }
 }
-

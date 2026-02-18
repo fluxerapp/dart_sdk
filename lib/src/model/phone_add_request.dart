@@ -14,13 +14,14 @@ part 'phone_add_request.g.dart';
 ///
 /// Properties:
 /// * [phoneToken] - Token from phone verification
-/// * [password] 
+/// * [password]
 /// * [mfaMethod] - MFA method to use for verification
 /// * [mfaCode] - MFA verification code from authenticator app or SMS
 /// * [webauthnResponse] - WebAuthn authentication response
 /// * [webauthnChallenge] - WebAuthn challenge string
 @BuiltValue()
-abstract class PhoneAddRequest implements Built<PhoneAddRequest, PhoneAddRequestBuilder> {
+abstract class PhoneAddRequest
+    implements Built<PhoneAddRequest, PhoneAddRequestBuilder> {
   /// Token from phone verification
   @BuiltValueField(wireName: r'phone_token')
   String get phoneToken;
@@ -47,16 +48,19 @@ abstract class PhoneAddRequest implements Built<PhoneAddRequest, PhoneAddRequest
 
   PhoneAddRequest._();
 
-  factory PhoneAddRequest([void updates(PhoneAddRequestBuilder b)]) = _$PhoneAddRequest;
+  factory PhoneAddRequest([void updates(PhoneAddRequestBuilder b)]) =
+      _$PhoneAddRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PhoneAddRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PhoneAddRequest> get serializer => _$PhoneAddRequestSerializer();
+  static Serializer<PhoneAddRequest> get serializer =>
+      _$PhoneAddRequestSerializer();
 }
 
-class _$PhoneAddRequestSerializer implements PrimitiveSerializer<PhoneAddRequest> {
+class _$PhoneAddRequestSerializer
+    implements PrimitiveSerializer<PhoneAddRequest> {
   @override
   final Iterable<Type> types = const [PhoneAddRequest, _$PhoneAddRequest];
 
@@ -116,7 +120,9 @@ class _$PhoneAddRequestSerializer implements PrimitiveSerializer<PhoneAddRequest
     PhoneAddRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -203,22 +209,28 @@ class _$PhoneAddRequestSerializer implements PrimitiveSerializer<PhoneAddRequest
 }
 
 class PhoneAddRequestMfaMethodEnum extends EnumClass {
-
   /// MFA method to use for verification
   @BuiltValueEnumConst(wireName: r'totp')
-  static const PhoneAddRequestMfaMethodEnum totp = _$phoneAddRequestMfaMethodEnum_totp;
+  static const PhoneAddRequestMfaMethodEnum totp =
+      _$phoneAddRequestMfaMethodEnum_totp;
+
   /// MFA method to use for verification
   @BuiltValueEnumConst(wireName: r'sms')
-  static const PhoneAddRequestMfaMethodEnum sms = _$phoneAddRequestMfaMethodEnum_sms;
+  static const PhoneAddRequestMfaMethodEnum sms =
+      _$phoneAddRequestMfaMethodEnum_sms;
+
   /// MFA method to use for verification
   @BuiltValueEnumConst(wireName: r'webauthn')
-  static const PhoneAddRequestMfaMethodEnum webauthn = _$phoneAddRequestMfaMethodEnum_webauthn;
+  static const PhoneAddRequestMfaMethodEnum webauthn =
+      _$phoneAddRequestMfaMethodEnum_webauthn;
 
-  static Serializer<PhoneAddRequestMfaMethodEnum> get serializer => _$phoneAddRequestMfaMethodEnumSerializer;
+  static Serializer<PhoneAddRequestMfaMethodEnum> get serializer =>
+      _$phoneAddRequestMfaMethodEnumSerializer;
 
-  const PhoneAddRequestMfaMethodEnum._(String name): super(name);
+  const PhoneAddRequestMfaMethodEnum._(String name) : super(name);
 
-  static BuiltSet<PhoneAddRequestMfaMethodEnum> get values => _$phoneAddRequestMfaMethodEnumValues;
-  static PhoneAddRequestMfaMethodEnum valueOf(String name) => _$phoneAddRequestMfaMethodEnumValueOf(name);
+  static BuiltSet<PhoneAddRequestMfaMethodEnum> get values =>
+      _$phoneAddRequestMfaMethodEnumValues;
+  static PhoneAddRequestMfaMethodEnum valueOf(String name) =>
+      _$phoneAddRequestMfaMethodEnumValueOf(name);
 }
-

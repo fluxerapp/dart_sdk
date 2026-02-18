@@ -12,12 +12,15 @@ part 'get_well_known_fluxer429_response.g.dart';
 /// GetWellKnownFluxer429Response
 ///
 /// Properties:
-/// * [code] 
-/// * [message] 
+/// * [code]
+/// * [message]
 /// * [retryAfter] - Seconds to wait before retrying
 /// * [global] - Whether this is a global rate limit
 @BuiltValue()
-abstract class GetWellKnownFluxer429Response implements Built<GetWellKnownFluxer429Response, GetWellKnownFluxer429ResponseBuilder> {
+abstract class GetWellKnownFluxer429Response
+    implements
+        Built<GetWellKnownFluxer429Response,
+            GetWellKnownFluxer429ResponseBuilder> {
   @BuiltValueField(wireName: r'code')
   GetWellKnownFluxer429ResponseCodeEnum get code;
   // enum codeEnum {  RATE_LIMITED,  };
@@ -35,18 +38,25 @@ abstract class GetWellKnownFluxer429Response implements Built<GetWellKnownFluxer
 
   GetWellKnownFluxer429Response._();
 
-  factory GetWellKnownFluxer429Response([void updates(GetWellKnownFluxer429ResponseBuilder b)]) = _$GetWellKnownFluxer429Response;
+  factory GetWellKnownFluxer429Response(
+          [void updates(GetWellKnownFluxer429ResponseBuilder b)]) =
+      _$GetWellKnownFluxer429Response;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GetWellKnownFluxer429ResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GetWellKnownFluxer429Response> get serializer => _$GetWellKnownFluxer429ResponseSerializer();
+  static Serializer<GetWellKnownFluxer429Response> get serializer =>
+      _$GetWellKnownFluxer429ResponseSerializer();
 }
 
-class _$GetWellKnownFluxer429ResponseSerializer implements PrimitiveSerializer<GetWellKnownFluxer429Response> {
+class _$GetWellKnownFluxer429ResponseSerializer
+    implements PrimitiveSerializer<GetWellKnownFluxer429Response> {
   @override
-  final Iterable<Type> types = const [GetWellKnownFluxer429Response, _$GetWellKnownFluxer429Response];
+  final Iterable<Type> types = const [
+    GetWellKnownFluxer429Response,
+    _$GetWellKnownFluxer429Response
+  ];
 
   @override
   final String wireName = r'GetWellKnownFluxer429Response';
@@ -86,7 +96,9 @@ class _$GetWellKnownFluxer429ResponseSerializer implements PrimitiveSerializer<G
     GetWellKnownFluxer429Response object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,7 +116,8 @@ class _$GetWellKnownFluxer429ResponseSerializer implements PrimitiveSerializer<G
         case r'code':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(GetWellKnownFluxer429ResponseCodeEnum),
+            specifiedType:
+                const FullType(GetWellKnownFluxer429ResponseCodeEnum),
           ) as GetWellKnownFluxer429ResponseCodeEnum;
           result.code = valueDes;
           break;
@@ -159,15 +172,17 @@ class _$GetWellKnownFluxer429ResponseSerializer implements PrimitiveSerializer<G
 }
 
 class GetWellKnownFluxer429ResponseCodeEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'RATE_LIMITED')
-  static const GetWellKnownFluxer429ResponseCodeEnum RATE_LIMITED = _$getWellKnownFluxer429ResponseCodeEnum_RATE_LIMITED;
+  static const GetWellKnownFluxer429ResponseCodeEnum RATE_LIMITED =
+      _$getWellKnownFluxer429ResponseCodeEnum_RATE_LIMITED;
 
-  static Serializer<GetWellKnownFluxer429ResponseCodeEnum> get serializer => _$getWellKnownFluxer429ResponseCodeEnumSerializer;
+  static Serializer<GetWellKnownFluxer429ResponseCodeEnum> get serializer =>
+      _$getWellKnownFluxer429ResponseCodeEnumSerializer;
 
-  const GetWellKnownFluxer429ResponseCodeEnum._(String name): super(name);
+  const GetWellKnownFluxer429ResponseCodeEnum._(String name) : super(name);
 
-  static BuiltSet<GetWellKnownFluxer429ResponseCodeEnum> get values => _$getWellKnownFluxer429ResponseCodeEnumValues;
-  static GetWellKnownFluxer429ResponseCodeEnum valueOf(String name) => _$getWellKnownFluxer429ResponseCodeEnumValueOf(name);
+  static BuiltSet<GetWellKnownFluxer429ResponseCodeEnum> get values =>
+      _$getWellKnownFluxer429ResponseCodeEnumValues;
+  static GetWellKnownFluxer429ResponseCodeEnum valueOf(String name) =>
+      _$getWellKnownFluxer429ResponseCodeEnumValueOf(name);
 }
-

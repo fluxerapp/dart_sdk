@@ -12,10 +12,12 @@ part 'refresh_search_index_response.g.dart';
 /// RefreshSearchIndexResponse
 ///
 /// Properties:
-/// * [success] 
-/// * [jobId] 
+/// * [success]
+/// * [jobId]
 @BuiltValue()
-abstract class RefreshSearchIndexResponse implements Built<RefreshSearchIndexResponse, RefreshSearchIndexResponseBuilder> {
+abstract class RefreshSearchIndexResponse
+    implements
+        Built<RefreshSearchIndexResponse, RefreshSearchIndexResponseBuilder> {
   @BuiltValueField(wireName: r'success')
   RefreshSearchIndexResponseSuccessEnum get success;
   // enum successEnum {  true,  };
@@ -25,18 +27,25 @@ abstract class RefreshSearchIndexResponse implements Built<RefreshSearchIndexRes
 
   RefreshSearchIndexResponse._();
 
-  factory RefreshSearchIndexResponse([void updates(RefreshSearchIndexResponseBuilder b)]) = _$RefreshSearchIndexResponse;
+  factory RefreshSearchIndexResponse(
+          [void updates(RefreshSearchIndexResponseBuilder b)]) =
+      _$RefreshSearchIndexResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(RefreshSearchIndexResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<RefreshSearchIndexResponse> get serializer => _$RefreshSearchIndexResponseSerializer();
+  static Serializer<RefreshSearchIndexResponse> get serializer =>
+      _$RefreshSearchIndexResponseSerializer();
 }
 
-class _$RefreshSearchIndexResponseSerializer implements PrimitiveSerializer<RefreshSearchIndexResponse> {
+class _$RefreshSearchIndexResponseSerializer
+    implements PrimitiveSerializer<RefreshSearchIndexResponse> {
   @override
-  final Iterable<Type> types = const [RefreshSearchIndexResponse, _$RefreshSearchIndexResponse];
+  final Iterable<Type> types = const [
+    RefreshSearchIndexResponse,
+    _$RefreshSearchIndexResponse
+  ];
 
   @override
   final String wireName = r'RefreshSearchIndexResponse';
@@ -64,7 +73,9 @@ class _$RefreshSearchIndexResponseSerializer implements PrimitiveSerializer<Refr
     RefreshSearchIndexResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -82,7 +93,8 @@ class _$RefreshSearchIndexResponseSerializer implements PrimitiveSerializer<Refr
         case r'success':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(RefreshSearchIndexResponseSuccessEnum),
+            specifiedType:
+                const FullType(RefreshSearchIndexResponseSuccessEnum),
           ) as RefreshSearchIndexResponseSuccessEnum;
           result.success = valueDes;
           break;
@@ -123,15 +135,17 @@ class _$RefreshSearchIndexResponseSerializer implements PrimitiveSerializer<Refr
 }
 
 class RefreshSearchIndexResponseSuccessEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'true')
-  static const RefreshSearchIndexResponseSuccessEnum true_ = _$refreshSearchIndexResponseSuccessEnum_true_;
+  static const RefreshSearchIndexResponseSuccessEnum true_ =
+      _$refreshSearchIndexResponseSuccessEnum_true_;
 
-  static Serializer<RefreshSearchIndexResponseSuccessEnum> get serializer => _$refreshSearchIndexResponseSuccessEnumSerializer;
+  static Serializer<RefreshSearchIndexResponseSuccessEnum> get serializer =>
+      _$refreshSearchIndexResponseSuccessEnumSerializer;
 
-  const RefreshSearchIndexResponseSuccessEnum._(String name): super(name);
+  const RefreshSearchIndexResponseSuccessEnum._(String name) : super(name);
 
-  static BuiltSet<RefreshSearchIndexResponseSuccessEnum> get values => _$refreshSearchIndexResponseSuccessEnumValues;
-  static RefreshSearchIndexResponseSuccessEnum valueOf(String name) => _$refreshSearchIndexResponseSuccessEnumValueOf(name);
+  static BuiltSet<RefreshSearchIndexResponseSuccessEnum> get values =>
+      _$refreshSearchIndexResponseSuccessEnumValues;
+  static RefreshSearchIndexResponseSuccessEnum valueOf(String name) =>
+      _$refreshSearchIndexResponseSuccessEnumValueOf(name);
 }
-

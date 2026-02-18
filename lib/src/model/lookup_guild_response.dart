@@ -12,26 +12,33 @@ part 'lookup_guild_response.g.dart';
 /// LookupGuildResponse
 ///
 /// Properties:
-/// * [guild] 
+/// * [guild]
 @BuiltValue()
-abstract class LookupGuildResponse implements Built<LookupGuildResponse, LookupGuildResponseBuilder> {
+abstract class LookupGuildResponse
+    implements Built<LookupGuildResponse, LookupGuildResponseBuilder> {
   @BuiltValueField(wireName: r'guild')
   LookupGuildResponseGuild? get guild;
 
   LookupGuildResponse._();
 
-  factory LookupGuildResponse([void updates(LookupGuildResponseBuilder b)]) = _$LookupGuildResponse;
+  factory LookupGuildResponse([void updates(LookupGuildResponseBuilder b)]) =
+      _$LookupGuildResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(LookupGuildResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<LookupGuildResponse> get serializer => _$LookupGuildResponseSerializer();
+  static Serializer<LookupGuildResponse> get serializer =>
+      _$LookupGuildResponseSerializer();
 }
 
-class _$LookupGuildResponseSerializer implements PrimitiveSerializer<LookupGuildResponse> {
+class _$LookupGuildResponseSerializer
+    implements PrimitiveSerializer<LookupGuildResponse> {
   @override
-  final Iterable<Type> types = const [LookupGuildResponse, _$LookupGuildResponse];
+  final Iterable<Type> types = const [
+    LookupGuildResponse,
+    _$LookupGuildResponse
+  ];
 
   @override
   final String wireName = r'LookupGuildResponse';
@@ -42,10 +49,12 @@ class _$LookupGuildResponseSerializer implements PrimitiveSerializer<LookupGuild
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     yield r'guild';
-    yield object.guild == null ? null : serializers.serialize(
-      object.guild,
-      specifiedType: const FullType.nullable(LookupGuildResponseGuild),
-    );
+    yield object.guild == null
+        ? null
+        : serializers.serialize(
+            object.guild,
+            specifiedType: const FullType.nullable(LookupGuildResponseGuild),
+          );
   }
 
   @override
@@ -54,7 +63,9 @@ class _$LookupGuildResponseSerializer implements PrimitiveSerializer<LookupGuild
     LookupGuildResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -105,4 +116,3 @@ class _$LookupGuildResponseSerializer implements PrimitiveSerializer<LookupGuild
     return result.build();
   }
 }
-

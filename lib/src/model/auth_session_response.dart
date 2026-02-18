@@ -14,10 +14,11 @@ part 'auth_session_response.g.dart';
 /// Properties:
 /// * [idHash] - The base64url-encoded session id hash
 /// * [current] - Whether this is the current session making the request
-/// * [clientInfo] 
-/// * [approxLastUsedAt] 
+/// * [clientInfo]
+/// * [approxLastUsedAt]
 @BuiltValue()
-abstract class AuthSessionResponse implements Built<AuthSessionResponse, AuthSessionResponseBuilder> {
+abstract class AuthSessionResponse
+    implements Built<AuthSessionResponse, AuthSessionResponseBuilder> {
   /// The base64url-encoded session id hash
   @BuiltValueField(wireName: r'id_hash')
   String get idHash;
@@ -34,18 +35,24 @@ abstract class AuthSessionResponse implements Built<AuthSessionResponse, AuthSes
 
   AuthSessionResponse._();
 
-  factory AuthSessionResponse([void updates(AuthSessionResponseBuilder b)]) = _$AuthSessionResponse;
+  factory AuthSessionResponse([void updates(AuthSessionResponseBuilder b)]) =
+      _$AuthSessionResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(AuthSessionResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<AuthSessionResponse> get serializer => _$AuthSessionResponseSerializer();
+  static Serializer<AuthSessionResponse> get serializer =>
+      _$AuthSessionResponseSerializer();
 }
 
-class _$AuthSessionResponseSerializer implements PrimitiveSerializer<AuthSessionResponse> {
+class _$AuthSessionResponseSerializer
+    implements PrimitiveSerializer<AuthSessionResponse> {
   @override
-  final Iterable<Type> types = const [AuthSessionResponse, _$AuthSessionResponse];
+  final Iterable<Type> types = const [
+    AuthSessionResponse,
+    _$AuthSessionResponse
+  ];
 
   @override
   final String wireName = r'AuthSessionResponse';
@@ -87,7 +94,9 @@ class _$AuthSessionResponseSerializer implements PrimitiveSerializer<AuthSession
     AuthSessionResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -160,4 +169,3 @@ class _$AuthSessionResponseSerializer implements PrimitiveSerializer<AuthSession
     return result.build();
   }
 }
-

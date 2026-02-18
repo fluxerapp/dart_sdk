@@ -14,7 +14,10 @@ part 'email_change_bounced_verify_new_request.g.dart';
 /// * [ticket] - Email change ticket identifier
 /// * [code] - Verification code sent to the replacement email address
 @BuiltValue()
-abstract class EmailChangeBouncedVerifyNewRequest implements Built<EmailChangeBouncedVerifyNewRequest, EmailChangeBouncedVerifyNewRequestBuilder> {
+abstract class EmailChangeBouncedVerifyNewRequest
+    implements
+        Built<EmailChangeBouncedVerifyNewRequest,
+            EmailChangeBouncedVerifyNewRequestBuilder> {
   /// Email change ticket identifier
   @BuiltValueField(wireName: r'ticket')
   String get ticket;
@@ -25,18 +28,25 @@ abstract class EmailChangeBouncedVerifyNewRequest implements Built<EmailChangeBo
 
   EmailChangeBouncedVerifyNewRequest._();
 
-  factory EmailChangeBouncedVerifyNewRequest([void updates(EmailChangeBouncedVerifyNewRequestBuilder b)]) = _$EmailChangeBouncedVerifyNewRequest;
+  factory EmailChangeBouncedVerifyNewRequest(
+          [void updates(EmailChangeBouncedVerifyNewRequestBuilder b)]) =
+      _$EmailChangeBouncedVerifyNewRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(EmailChangeBouncedVerifyNewRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<EmailChangeBouncedVerifyNewRequest> get serializer => _$EmailChangeBouncedVerifyNewRequestSerializer();
+  static Serializer<EmailChangeBouncedVerifyNewRequest> get serializer =>
+      _$EmailChangeBouncedVerifyNewRequestSerializer();
 }
 
-class _$EmailChangeBouncedVerifyNewRequestSerializer implements PrimitiveSerializer<EmailChangeBouncedVerifyNewRequest> {
+class _$EmailChangeBouncedVerifyNewRequestSerializer
+    implements PrimitiveSerializer<EmailChangeBouncedVerifyNewRequest> {
   @override
-  final Iterable<Type> types = const [EmailChangeBouncedVerifyNewRequest, _$EmailChangeBouncedVerifyNewRequest];
+  final Iterable<Type> types = const [
+    EmailChangeBouncedVerifyNewRequest,
+    _$EmailChangeBouncedVerifyNewRequest
+  ];
 
   @override
   final String wireName = r'EmailChangeBouncedVerifyNewRequest';
@@ -64,7 +74,9 @@ class _$EmailChangeBouncedVerifyNewRequestSerializer implements PrimitiveSeriali
     EmailChangeBouncedVerifyNewRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +133,3 @@ class _$EmailChangeBouncedVerifyNewRequestSerializer implements PrimitiveSeriali
     return result.build();
   }
 }
-

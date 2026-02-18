@@ -13,11 +13,12 @@ part 'message_reaction_response.g.dart';
 /// MessageReactionResponse
 ///
 /// Properties:
-/// * [emoji] 
+/// * [emoji]
 /// * [count] - The total number of times this reaction has been used
-/// * [me] 
+/// * [me]
 @BuiltValue()
-abstract class MessageReactionResponse implements Built<MessageReactionResponse, MessageReactionResponseBuilder> {
+abstract class MessageReactionResponse
+    implements Built<MessageReactionResponse, MessageReactionResponseBuilder> {
   @BuiltValueField(wireName: r'emoji')
   MessageReactionResponseEmoji get emoji;
 
@@ -31,18 +32,25 @@ abstract class MessageReactionResponse implements Built<MessageReactionResponse,
 
   MessageReactionResponse._();
 
-  factory MessageReactionResponse([void updates(MessageReactionResponseBuilder b)]) = _$MessageReactionResponse;
+  factory MessageReactionResponse(
+          [void updates(MessageReactionResponseBuilder b)]) =
+      _$MessageReactionResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(MessageReactionResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<MessageReactionResponse> get serializer => _$MessageReactionResponseSerializer();
+  static Serializer<MessageReactionResponse> get serializer =>
+      _$MessageReactionResponseSerializer();
 }
 
-class _$MessageReactionResponseSerializer implements PrimitiveSerializer<MessageReactionResponse> {
+class _$MessageReactionResponseSerializer
+    implements PrimitiveSerializer<MessageReactionResponse> {
   @override
-  final Iterable<Type> types = const [MessageReactionResponse, _$MessageReactionResponse];
+  final Iterable<Type> types = const [
+    MessageReactionResponse,
+    _$MessageReactionResponse
+  ];
 
   @override
   final String wireName = r'MessageReactionResponse';
@@ -77,7 +85,9 @@ class _$MessageReactionResponseSerializer implements PrimitiveSerializer<Message
     MessageReactionResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -109,7 +119,8 @@ class _$MessageReactionResponseSerializer implements PrimitiveSerializer<Message
         case r'me':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(MessageReactionResponseMeEnum),
+            specifiedType:
+                const FullType.nullable(MessageReactionResponseMeEnum),
           ) as MessageReactionResponseMeEnum?;
           if (valueDes == null) continue;
           result.me = valueDes;
@@ -144,15 +155,17 @@ class _$MessageReactionResponseSerializer implements PrimitiveSerializer<Message
 }
 
 class MessageReactionResponseMeEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'true')
-  static const MessageReactionResponseMeEnum true_ = _$messageReactionResponseMeEnum_true_;
+  static const MessageReactionResponseMeEnum true_ =
+      _$messageReactionResponseMeEnum_true_;
 
-  static Serializer<MessageReactionResponseMeEnum> get serializer => _$messageReactionResponseMeEnumSerializer;
+  static Serializer<MessageReactionResponseMeEnum> get serializer =>
+      _$messageReactionResponseMeEnumSerializer;
 
-  const MessageReactionResponseMeEnum._(String name): super(name);
+  const MessageReactionResponseMeEnum._(String name) : super(name);
 
-  static BuiltSet<MessageReactionResponseMeEnum> get values => _$messageReactionResponseMeEnumValues;
-  static MessageReactionResponseMeEnum valueOf(String name) => _$messageReactionResponseMeEnumValueOf(name);
+  static BuiltSet<MessageReactionResponseMeEnum> get values =>
+      _$messageReactionResponseMeEnumValues;
+  static MessageReactionResponseMeEnum valueOf(String name) =>
+      _$messageReactionResponseMeEnumValueOf(name);
 }
-

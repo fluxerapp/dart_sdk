@@ -14,25 +14,33 @@ part 'preload_messages_request.g.dart';
 /// Properties:
 /// * [channels] - Array of channel IDs to preload messages from (max 100)
 @BuiltValue()
-abstract class PreloadMessagesRequest implements Built<PreloadMessagesRequest, PreloadMessagesRequestBuilder> {
+abstract class PreloadMessagesRequest
+    implements Built<PreloadMessagesRequest, PreloadMessagesRequestBuilder> {
   /// Array of channel IDs to preload messages from (max 100)
   @BuiltValueField(wireName: r'channels')
   BuiltList<String> get channels;
 
   PreloadMessagesRequest._();
 
-  factory PreloadMessagesRequest([void updates(PreloadMessagesRequestBuilder b)]) = _$PreloadMessagesRequest;
+  factory PreloadMessagesRequest(
+          [void updates(PreloadMessagesRequestBuilder b)]) =
+      _$PreloadMessagesRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PreloadMessagesRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PreloadMessagesRequest> get serializer => _$PreloadMessagesRequestSerializer();
+  static Serializer<PreloadMessagesRequest> get serializer =>
+      _$PreloadMessagesRequestSerializer();
 }
 
-class _$PreloadMessagesRequestSerializer implements PrimitiveSerializer<PreloadMessagesRequest> {
+class _$PreloadMessagesRequestSerializer
+    implements PrimitiveSerializer<PreloadMessagesRequest> {
   @override
-  final Iterable<Type> types = const [PreloadMessagesRequest, _$PreloadMessagesRequest];
+  final Iterable<Type> types = const [
+    PreloadMessagesRequest,
+    _$PreloadMessagesRequest
+  ];
 
   @override
   final String wireName = r'PreloadMessagesRequest';
@@ -55,7 +63,9 @@ class _$PreloadMessagesRequestSerializer implements PrimitiveSerializer<PreloadM
     PreloadMessagesRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -105,4 +115,3 @@ class _$PreloadMessagesRequestSerializer implements PrimitiveSerializer<PreloadM
     return result.build();
   }
 }
-
