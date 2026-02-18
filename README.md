@@ -30,7 +30,7 @@ This is a package for Dart / Flutter that allows you access to the Fluxer API, a
 To use the package from [pub.dev](https://pub.dev), please include the following in pubspec.yaml
 ```yaml
 dependencies:
-  fluxer_dart: 1.0.0
+  fluxer_dart: 1.0.2
 ```
 
 ### Github
