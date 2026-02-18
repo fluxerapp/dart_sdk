@@ -1,8 +1,3 @@
-> [!NOTE]
-> Learn about the developer behind Fluxer, the goals of the project, the tech stack, and what's coming next.
->
-> [Read the launch blog post](https://blog.fluxer.app/how-i-built-fluxer-a-discord-like-chat-app/) · [View full roadmap](https://blog.fluxer.app/roadmap-2026/)
-
 <p align="center">
   <img src="./media/logo-graphic.png" alt="Fluxer graphic logo" width="400">
 </p>
@@ -20,11 +15,9 @@
 
 # Fluxer Dart SDK
 
-Fluxer is a **free and open source instant messaging and VoIP platform** for friends, groups, and communities. Self-host it and every feature is unlocked. This is a package for Dart / Flutter that allows you access to the Fluxer API, and it's also used in the offical Fluxer app!
+Fluxer is a **free and open source instant messaging and VoIP platform** for friends, groups, and communities. Self-host it and every feature is unlocked.
 
-> [!NOTE]
-> Improved README with more real examples coming soon.
->
+This is a package for Dart / Flutter that allows you access to the Fluxer API, and it's also used in the offical Fluxer app!
 
 ## Requirements
 
@@ -60,27 +53,26 @@ dependencies:
 
 ## Getting Started
 
-Please follow the [installation procedure](#installation--usage) and then run the following:
+> [!NOTE]
+> Improved README with more real examples coming soon.
+>
 
-```dart
-import 'package:fluxer_dart/fluxer_dart.dart';
+## Issues & Bug Reports
 
+Found a bug? Please file an issue on the main Fluxer repository:
 
-final api = FluxerDart().getAdminApi();
-final BanEmailRequest banEmailRequest = ; // BanEmailRequest | 
+**[Report an issue →](https://github.com/fluxerapp/fluxer/issues/new)**
 
-try {
-    api.addEmailBan(banEmailRequest);
-} catch on DioException (e) {
-    print("Exception when calling AdminApi->addEmailBan: $e\n");
-}
-
-```
+When reporting issues related to this Dart SDK, please:
+- Add `[dart_sdk]` tag at the start of the title
+- Include your Dart/Flutter version
+- Provide a minimal code example that reproduces the issue (if possible)
+- Include the SDK version you're using
 
 ## Documentation For Authorization
 
-
 Authentication schemes defined for the API:
+
 ### botToken
 
 - **Type**: API key
@@ -92,7 +84,7 @@ Authentication schemes defined for the API:
 - **Type**: OAuth
 - **Flow**: accessCode
 - **Authorization URL**: /oauth2/authorize
-- **Scopes**: 
+- **Scopes**:
  - **identify**: Read basic user identity information.
  - **email**: Read the user email address.
  - **guilds**: Read guild membership information for the current user.
