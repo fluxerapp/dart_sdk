@@ -1,3 +1,12 @@
+## V1.2.0
+
+- Removed Sentry-related fields from `WellKnownFluxerResponseAppPublic`:
+  - `sentryProxyPath`
+  - `sentryReportHost`
+  - `sentryProjectId`
+  - `sentryPublicKey`
+- Removed `CHUNKED_UPLOAD_CHUNK_INDEX_OUT_OF_RANGE`, `CHUNKED_UPLOAD_INCOMPLETE`, `CHUNKED_UPLOAD_NOT_FOUND`, and `CHUNKED_UPLOAD_NOT_OWNED` error codes from `ApiErrorCode`.
+
 ## V1.1.0
 
 - Added `AttachmentsApi` for managing file attachments.
