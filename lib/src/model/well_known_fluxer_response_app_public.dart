@@ -12,10 +12,6 @@ part 'well_known_fluxer_response_app_public.g.dart';
 ///
 /// Properties:
 /// * [sentryDsn] - Sentry DSN for client-side error reporting
-/// * [sentryProxyPath] - Proxy path for Sentry requests
-/// * [sentryReportHost] - Host for Sentry error reports
-/// * [sentryProjectId] - Sentry project ID
-/// * [sentryPublicKey] - Sentry public key
 @BuiltValue()
 abstract class WellKnownFluxerResponseAppPublic
     implements
@@ -24,22 +20,6 @@ abstract class WellKnownFluxerResponseAppPublic
   /// Sentry DSN for client-side error reporting
   @BuiltValueField(wireName: r'sentry_dsn')
   String get sentryDsn;
-
-  /// Proxy path for Sentry requests
-  @BuiltValueField(wireName: r'sentry_proxy_path')
-  String get sentryProxyPath;
-
-  /// Host for Sentry error reports
-  @BuiltValueField(wireName: r'sentry_report_host')
-  String get sentryReportHost;
-
-  /// Sentry project ID
-  @BuiltValueField(wireName: r'sentry_project_id')
-  String get sentryProjectId;
-
-  /// Sentry public key
-  @BuiltValueField(wireName: r'sentry_public_key')
-  String get sentryPublicKey;
 
   WellKnownFluxerResponseAppPublic._();
 
@@ -76,26 +56,6 @@ class _$WellKnownFluxerResponseAppPublicSerializer
       object.sentryDsn,
       specifiedType: const FullType(String),
     );
-    yield r'sentry_proxy_path';
-    yield serializers.serialize(
-      object.sentryProxyPath,
-      specifiedType: const FullType(String),
-    );
-    yield r'sentry_report_host';
-    yield serializers.serialize(
-      object.sentryReportHost,
-      specifiedType: const FullType(String),
-    );
-    yield r'sentry_project_id';
-    yield serializers.serialize(
-      object.sentryProjectId,
-      specifiedType: const FullType(String),
-    );
-    yield r'sentry_public_key';
-    yield serializers.serialize(
-      object.sentryPublicKey,
-      specifiedType: const FullType(String),
-    );
   }
 
   @override
@@ -127,34 +87,6 @@ class _$WellKnownFluxerResponseAppPublicSerializer
             specifiedType: const FullType(String),
           ) as String;
           result.sentryDsn = valueDes;
-          break;
-        case r'sentry_proxy_path':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.sentryProxyPath = valueDes;
-          break;
-        case r'sentry_report_host':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.sentryReportHost = valueDes;
-          break;
-        case r'sentry_project_id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.sentryProjectId = valueDes;
-          break;
-        case r'sentry_public_key':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.sentryPublicKey = valueDes;
           break;
         default:
           unhandled.add(key);

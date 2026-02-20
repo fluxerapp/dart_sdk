@@ -9,10 +9,6 @@ import 'package:fluxer_dart/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **sentryDsn** | **String** | Sentry DSN for client-side error reporting | 
-**sentryProxyPath** | **String** | Proxy path for Sentry requests | 
-**sentryReportHost** | **String** | Host for Sentry error reports | 
-**sentryProjectId** | **String** | Sentry project ID | 
-**sentryPublicKey** | **String** | Sentry public key | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
