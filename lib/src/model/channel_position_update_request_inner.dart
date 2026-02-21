@@ -14,6 +14,7 @@ part 'channel_position_update_request_inner.g.dart';
 /// * [id]
 /// * [position] - New position for the channel
 /// * [parentId]
+/// * [precedingSiblingId]
 /// * [lockPermissions] - Whether to sync permissions with the new parent
 @BuiltValue()
 abstract class ChannelPositionUpdateRequestInner
@@ -29,6 +30,9 @@ abstract class ChannelPositionUpdateRequestInner
 
   @BuiltValueField(wireName: r'parent_id')
   String? get parentId;
+
+  @BuiltValueField(wireName: r'preceding_sibling_id')
+  String? get precedingSiblingId;
 
   /// Whether to sync permissions with the new parent
   @BuiltValueField(wireName: r'lock_permissions')
@@ -80,6 +84,13 @@ class _$ChannelPositionUpdateRequestInnerSerializer
       yield r'parent_id';
       yield serializers.serialize(
         object.parentId,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.precedingSiblingId != null) {
+      yield r'preceding_sibling_id';
+      yield serializers.serialize(
+        object.precedingSiblingId,
         specifiedType: const FullType(String),
       );
     }
@@ -135,6 +146,13 @@ class _$ChannelPositionUpdateRequestInnerSerializer
             specifiedType: const FullType(String),
           ) as String;
           result.parentId = valueDes;
+          break;
+        case r'preceding_sibling_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.precedingSiblingId = valueDes;
           break;
         case r'lock_permissions':
           final valueDes = serializers.deserialize(

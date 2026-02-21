@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **id** | **String** |  | 
 **position** | **int** | New position for the channel | [optional] 
 **parentId** | **String** |  | [optional] 
+**precedingSiblingId** | **String** |  | [optional] 
 **lockPermissions** | **bool** | Whether to sync permissions with the new parent | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

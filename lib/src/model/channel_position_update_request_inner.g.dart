@@ -15,6 +15,8 @@ class _$ChannelPositionUpdateRequestInner
   @override
   final String? parentId;
   @override
+  final String? precedingSiblingId;
+  @override
   final bool? lockPermissions;
 
   factory _$ChannelPositionUpdateRequestInner(
@@ -22,7 +24,11 @@ class _$ChannelPositionUpdateRequestInner
       (ChannelPositionUpdateRequestInnerBuilder()..update(updates))._build();
 
   _$ChannelPositionUpdateRequestInner._(
-      {required this.id, this.position, this.parentId, this.lockPermissions})
+      {required this.id,
+      this.position,
+      this.parentId,
+      this.precedingSiblingId,
+      this.lockPermissions})
       : super._();
   @override
   ChannelPositionUpdateRequestInner rebuild(
@@ -40,6 +46,7 @@ class _$ChannelPositionUpdateRequestInner
         id == other.id &&
         position == other.position &&
         parentId == other.parentId &&
+        precedingSiblingId == other.precedingSiblingId &&
         lockPermissions == other.lockPermissions;
   }
 
@@ -49,6 +56,7 @@ class _$ChannelPositionUpdateRequestInner
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, position.hashCode);
     _$hash = $jc(_$hash, parentId.hashCode);
+    _$hash = $jc(_$hash, precedingSiblingId.hashCode);
     _$hash = $jc(_$hash, lockPermissions.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -60,6 +68,7 @@ class _$ChannelPositionUpdateRequestInner
           ..add('id', id)
           ..add('position', position)
           ..add('parentId', parentId)
+          ..add('precedingSiblingId', precedingSiblingId)
           ..add('lockPermissions', lockPermissions))
         .toString();
   }
@@ -83,6 +92,11 @@ class ChannelPositionUpdateRequestInnerBuilder
   String? get parentId => _$this._parentId;
   set parentId(String? parentId) => _$this._parentId = parentId;
 
+  String? _precedingSiblingId;
+  String? get precedingSiblingId => _$this._precedingSiblingId;
+  set precedingSiblingId(String? precedingSiblingId) =>
+      _$this._precedingSiblingId = precedingSiblingId;
+
   bool? _lockPermissions;
   bool? get lockPermissions => _$this._lockPermissions;
   set lockPermissions(bool? lockPermissions) =>
@@ -98,6 +112,7 @@ class ChannelPositionUpdateRequestInnerBuilder
       _id = $v.id;
       _position = $v.position;
       _parentId = $v.parentId;
+      _precedingSiblingId = $v.precedingSiblingId;
       _lockPermissions = $v.lockPermissions;
       _$v = null;
     }
@@ -125,6 +140,7 @@ class ChannelPositionUpdateRequestInnerBuilder
               id, r'ChannelPositionUpdateRequestInner', 'id'),
           position: position,
           parentId: parentId,
+          precedingSiblingId: precedingSiblingId,
           lockPermissions: lockPermissions,
         );
     replace(_$result);
