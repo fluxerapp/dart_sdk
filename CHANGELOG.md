@@ -1,3 +1,7 @@
+## V1.2.1
+
+- Added `precedingSiblingId` field to `ChannelPositionUpdateRequestInner` model.
+
 ## V1.2.0
 
 - Removed Sentry-related fields from `WellKnownFluxerResponseAppPublic`:
