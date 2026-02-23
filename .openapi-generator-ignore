@@ -3,3 +3,4 @@ LICENSE
 .gitignore
 .git/**
 test/
+pubspec.yaml
