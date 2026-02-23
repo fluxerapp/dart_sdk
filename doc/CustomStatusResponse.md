@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **emojiAnimated** | **bool** | Whether the status emoji is animated | 
 **text** | **String** |  | [optional] 
 **expiresAt** | [**DateTime**](DateTime.md) |  | [optional] 
-**emojiId** | **String** |  | [optional] 
+**emojiId** | **String** | The ID of the custom emoji used in the status | [optional] 
 **emojiName** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **id** | **String** | The credential ID | 
 **name** | **String** | User-assigned name for the credential | 
 **createdAt** | **String** | When the credential was registered | 
-**lastUsedAt** | **String** |  | 
+**lastUsedAt** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

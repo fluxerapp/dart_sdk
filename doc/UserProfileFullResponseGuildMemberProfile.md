@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **bio** | **String** |  | 
 **pronouns** | **String** |  | 
 **banner** | **String** |  | 
-**accentColor** | **int** |  | 
+**accentColor** | **int** | Guild-specific accent color | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

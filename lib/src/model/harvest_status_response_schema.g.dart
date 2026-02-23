@@ -14,6 +14,8 @@ class _$HarvestStatusResponseSchema extends HarvestStatusResponseSchema {
   @override
   final String createdAt;
   @override
+  final num progressPercent;
+  @override
   final String? startedAt;
   @override
   final String? completedAt;
@@ -21,8 +23,6 @@ class _$HarvestStatusResponseSchema extends HarvestStatusResponseSchema {
   final String? failedAt;
   @override
   final String? fileSize;
-  @override
-  final num progressPercent;
   @override
   final String? progressStep;
   @override
@@ -40,11 +40,11 @@ class _$HarvestStatusResponseSchema extends HarvestStatusResponseSchema {
       {required this.harvestId,
       required this.status,
       required this.createdAt,
+      required this.progressPercent,
       this.startedAt,
       this.completedAt,
       this.failedAt,
       this.fileSize,
-      required this.progressPercent,
       this.progressStep,
       this.errorMessage,
       this.downloadUrlExpiresAt,
@@ -66,11 +66,11 @@ class _$HarvestStatusResponseSchema extends HarvestStatusResponseSchema {
         harvestId == other.harvestId &&
         status == other.status &&
         createdAt == other.createdAt &&
+        progressPercent == other.progressPercent &&
         startedAt == other.startedAt &&
         completedAt == other.completedAt &&
         failedAt == other.failedAt &&
         fileSize == other.fileSize &&
-        progressPercent == other.progressPercent &&
         progressStep == other.progressStep &&
         errorMessage == other.errorMessage &&
         downloadUrlExpiresAt == other.downloadUrlExpiresAt &&
@@ -83,11 +83,11 @@ class _$HarvestStatusResponseSchema extends HarvestStatusResponseSchema {
     _$hash = $jc(_$hash, harvestId.hashCode);
     _$hash = $jc(_$hash, status.hashCode);
     _$hash = $jc(_$hash, createdAt.hashCode);
+    _$hash = $jc(_$hash, progressPercent.hashCode);
     _$hash = $jc(_$hash, startedAt.hashCode);
     _$hash = $jc(_$hash, completedAt.hashCode);
     _$hash = $jc(_$hash, failedAt.hashCode);
     _$hash = $jc(_$hash, fileSize.hashCode);
-    _$hash = $jc(_$hash, progressPercent.hashCode);
     _$hash = $jc(_$hash, progressStep.hashCode);
     _$hash = $jc(_$hash, errorMessage.hashCode);
     _$hash = $jc(_$hash, downloadUrlExpiresAt.hashCode);
@@ -102,11 +102,11 @@ class _$HarvestStatusResponseSchema extends HarvestStatusResponseSchema {
           ..add('harvestId', harvestId)
           ..add('status', status)
           ..add('createdAt', createdAt)
+          ..add('progressPercent', progressPercent)
           ..add('startedAt', startedAt)
           ..add('completedAt', completedAt)
           ..add('failedAt', failedAt)
           ..add('fileSize', fileSize)
-          ..add('progressPercent', progressPercent)
           ..add('progressStep', progressStep)
           ..add('errorMessage', errorMessage)
           ..add('downloadUrlExpiresAt', downloadUrlExpiresAt)
@@ -133,6 +133,11 @@ class HarvestStatusResponseSchemaBuilder
   String? get createdAt => _$this._createdAt;
   set createdAt(String? createdAt) => _$this._createdAt = createdAt;
 
+  num? _progressPercent;
+  num? get progressPercent => _$this._progressPercent;
+  set progressPercent(num? progressPercent) =>
+      _$this._progressPercent = progressPercent;
+
   String? _startedAt;
   String? get startedAt => _$this._startedAt;
   set startedAt(String? startedAt) => _$this._startedAt = startedAt;
@@ -148,11 +153,6 @@ class HarvestStatusResponseSchemaBuilder
   String? _fileSize;
   String? get fileSize => _$this._fileSize;
   set fileSize(String? fileSize) => _$this._fileSize = fileSize;
-
-  num? _progressPercent;
-  num? get progressPercent => _$this._progressPercent;
-  set progressPercent(num? progressPercent) =>
-      _$this._progressPercent = progressPercent;
 
   String? _progressStep;
   String? get progressStep => _$this._progressStep;
@@ -181,11 +181,11 @@ class HarvestStatusResponseSchemaBuilder
       _harvestId = $v.harvestId;
       _status = $v.status;
       _createdAt = $v.createdAt;
+      _progressPercent = $v.progressPercent;
       _startedAt = $v.startedAt;
       _completedAt = $v.completedAt;
       _failedAt = $v.failedAt;
       _fileSize = $v.fileSize;
-      _progressPercent = $v.progressPercent;
       _progressStep = $v.progressStep;
       _errorMessage = $v.errorMessage;
       _downloadUrlExpiresAt = $v.downloadUrlExpiresAt;
@@ -217,14 +217,14 @@ class HarvestStatusResponseSchemaBuilder
               status, r'HarvestStatusResponseSchema', 'status'),
           createdAt: BuiltValueNullFieldError.checkNotNull(
               createdAt, r'HarvestStatusResponseSchema', 'createdAt'),
-          startedAt: startedAt,
-          completedAt: completedAt,
-          failedAt: failedAt,
-          fileSize: fileSize,
           progressPercent: BuiltValueNullFieldError.checkNotNull(
               progressPercent,
               r'HarvestStatusResponseSchema',
               'progressPercent'),
+          startedAt: startedAt,
+          completedAt: completedAt,
+          failedAt: failedAt,
+          fileSize: fileSize,
           progressStep: progressStep,
           errorMessage: errorMessage,
           downloadUrlExpiresAt: downloadUrlExpiresAt,

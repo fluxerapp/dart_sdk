@@ -17,11 +17,11 @@ part 'admin_archive_response_schema.g.dart';
 /// * [subjectId]
 /// * [requestedBy]
 /// * [requestedAt]
+/// * [progressPercent]
 /// * [startedAt]
 /// * [completedAt]
 /// * [failedAt]
 /// * [fileSize]
-/// * [progressPercent]
 /// * [progressStep]
 /// * [errorMessage]
 /// * [downloadUrlExpiresAt]
@@ -47,6 +47,9 @@ abstract class AdminArchiveResponseSchema
   @BuiltValueField(wireName: r'requested_at')
   String get requestedAt;
 
+  @BuiltValueField(wireName: r'progress_percent')
+  num get progressPercent;
+
   @BuiltValueField(wireName: r'started_at')
   String? get startedAt;
 
@@ -58,9 +61,6 @@ abstract class AdminArchiveResponseSchema
 
   @BuiltValueField(wireName: r'file_size')
   String? get fileSize;
-
-  @BuiltValueField(wireName: r'progress_percent')
-  num get progressPercent;
 
   @BuiltValueField(wireName: r'progress_step')
   String? get progressStep;
@@ -129,67 +129,67 @@ class _$AdminArchiveResponseSchemaSerializer
       object.requestedAt,
       specifiedType: const FullType(String),
     );
-    yield r'started_at';
-    yield object.startedAt == null
-        ? null
-        : serializers.serialize(
-            object.startedAt,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'completed_at';
-    yield object.completedAt == null
-        ? null
-        : serializers.serialize(
-            object.completedAt,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'failed_at';
-    yield object.failedAt == null
-        ? null
-        : serializers.serialize(
-            object.failedAt,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'file_size';
-    yield object.fileSize == null
-        ? null
-        : serializers.serialize(
-            object.fileSize,
-            specifiedType: const FullType.nullable(String),
-          );
     yield r'progress_percent';
     yield serializers.serialize(
       object.progressPercent,
       specifiedType: const FullType(num),
     );
-    yield r'progress_step';
-    yield object.progressStep == null
-        ? null
-        : serializers.serialize(
-            object.progressStep,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'error_message';
-    yield object.errorMessage == null
-        ? null
-        : serializers.serialize(
-            object.errorMessage,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'download_url_expires_at';
-    yield object.downloadUrlExpiresAt == null
-        ? null
-        : serializers.serialize(
-            object.downloadUrlExpiresAt,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'expires_at';
-    yield object.expiresAt == null
-        ? null
-        : serializers.serialize(
-            object.expiresAt,
-            specifiedType: const FullType.nullable(String),
-          );
+    if (object.startedAt != null) {
+      yield r'started_at';
+      yield serializers.serialize(
+        object.startedAt,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.completedAt != null) {
+      yield r'completed_at';
+      yield serializers.serialize(
+        object.completedAt,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.failedAt != null) {
+      yield r'failed_at';
+      yield serializers.serialize(
+        object.failedAt,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.fileSize != null) {
+      yield r'file_size';
+      yield serializers.serialize(
+        object.fileSize,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.progressStep != null) {
+      yield r'progress_step';
+      yield serializers.serialize(
+        object.progressStep,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.errorMessage != null) {
+      yield r'error_message';
+      yield serializers.serialize(
+        object.errorMessage,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.downloadUrlExpiresAt != null) {
+      yield r'download_url_expires_at';
+      yield serializers.serialize(
+        object.downloadUrlExpiresAt,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.expiresAt != null) {
+      yield r'expires_at';
+      yield serializers.serialize(
+        object.expiresAt,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
   }
 
   @override
@@ -251,6 +251,13 @@ class _$AdminArchiveResponseSchemaSerializer
           ) as String;
           result.requestedAt = valueDes;
           break;
+        case r'progress_percent':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(num),
+          ) as num;
+          result.progressPercent = valueDes;
+          break;
         case r'started_at':
           final valueDes = serializers.deserialize(
             value,
@@ -282,13 +289,6 @@ class _$AdminArchiveResponseSchemaSerializer
           ) as String?;
           if (valueDes == null) continue;
           result.fileSize = valueDes;
-          break;
-        case r'progress_percent':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.progressPercent = valueDes;
           break;
         case r'progress_step':
           final valueDes = serializers.deserialize(

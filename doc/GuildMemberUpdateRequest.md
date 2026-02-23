@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **deaf** | **bool** | Whether the member is deafened in voice channels | [optional] 
 **communicationDisabledUntil** | [**DateTime**](DateTime.md) |  | [optional] 
 **timeoutReason** | **String** |  | [optional] 
-**channelId** | **String** |  | [optional] 
+**channelId** | **String** | The voice channel ID to move the member to | [optional] 
 **connectionId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

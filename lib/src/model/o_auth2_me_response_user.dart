@@ -16,7 +16,7 @@ part 'o_auth2_me_response_user.g.dart';
 /// * [discriminator] - The discriminator of the user
 /// * [globalName]
 /// * [avatar]
-/// * [avatarColor]
+/// * [avatarColor] - The default avatar color of the user
 /// * [flags] - The public flags on the user account
 /// * [bot] - Whether the user is a bot
 /// * [system] - Whether the user is a system user
@@ -43,6 +43,7 @@ abstract class OAuth2MeResponseUser
   @BuiltValueField(wireName: r'avatar')
   String? get avatar;
 
+  /// The default avatar color of the user
   @BuiltValueField(wireName: r'avatar_color')
   int get avatarColor;
 

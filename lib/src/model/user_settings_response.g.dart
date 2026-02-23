@@ -48,8 +48,6 @@ class _$UserSettingsResponse extends UserSettingsResponse {
   @override
   final BuiltList<UserSettingsResponseGuildFoldersInner> guildFolders;
   @override
-  final CustomStatusResponse? customStatus;
-  @override
   final int afkTimeout;
   @override
   final TimeFormatTypes timeFormat;
@@ -63,6 +61,8 @@ class _$UserSettingsResponse extends UserSettingsResponse {
   final DateTime? statusResetsAt;
   @override
   final String? statusResetsTo;
+  @override
+  final CustomStatusResponse? customStatus;
 
   factory _$UserSettingsResponse(
           [void Function(UserSettingsResponseBuilder)? updates]) =>
@@ -89,14 +89,14 @@ class _$UserSettingsResponse extends UserSettingsResponse {
       required this.incomingCallFlags,
       required this.groupDmAddPermissionFlags,
       required this.guildFolders,
-      this.customStatus,
       required this.afkTimeout,
       required this.timeFormat,
       required this.developerMode,
       required this.trustedDomains,
       required this.defaultHideMutedChannels,
       this.statusResetsAt,
-      this.statusResetsTo})
+      this.statusResetsTo,
+      this.customStatus})
       : super._();
   @override
   UserSettingsResponse rebuild(
@@ -131,14 +131,14 @@ class _$UserSettingsResponse extends UserSettingsResponse {
         incomingCallFlags == other.incomingCallFlags &&
         groupDmAddPermissionFlags == other.groupDmAddPermissionFlags &&
         guildFolders == other.guildFolders &&
-        customStatus == other.customStatus &&
         afkTimeout == other.afkTimeout &&
         timeFormat == other.timeFormat &&
         developerMode == other.developerMode &&
         trustedDomains == other.trustedDomains &&
         defaultHideMutedChannels == other.defaultHideMutedChannels &&
         statusResetsAt == other.statusResetsAt &&
-        statusResetsTo == other.statusResetsTo;
+        statusResetsTo == other.statusResetsTo &&
+        customStatus == other.customStatus;
   }
 
   @override
@@ -164,7 +164,6 @@ class _$UserSettingsResponse extends UserSettingsResponse {
     _$hash = $jc(_$hash, incomingCallFlags.hashCode);
     _$hash = $jc(_$hash, groupDmAddPermissionFlags.hashCode);
     _$hash = $jc(_$hash, guildFolders.hashCode);
-    _$hash = $jc(_$hash, customStatus.hashCode);
     _$hash = $jc(_$hash, afkTimeout.hashCode);
     _$hash = $jc(_$hash, timeFormat.hashCode);
     _$hash = $jc(_$hash, developerMode.hashCode);
@@ -172,6 +171,7 @@ class _$UserSettingsResponse extends UserSettingsResponse {
     _$hash = $jc(_$hash, defaultHideMutedChannels.hashCode);
     _$hash = $jc(_$hash, statusResetsAt.hashCode);
     _$hash = $jc(_$hash, statusResetsTo.hashCode);
+    _$hash = $jc(_$hash, customStatus.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -199,14 +199,14 @@ class _$UserSettingsResponse extends UserSettingsResponse {
           ..add('incomingCallFlags', incomingCallFlags)
           ..add('groupDmAddPermissionFlags', groupDmAddPermissionFlags)
           ..add('guildFolders', guildFolders)
-          ..add('customStatus', customStatus)
           ..add('afkTimeout', afkTimeout)
           ..add('timeFormat', timeFormat)
           ..add('developerMode', developerMode)
           ..add('trustedDomains', trustedDomains)
           ..add('defaultHideMutedChannels', defaultHideMutedChannels)
           ..add('statusResetsAt', statusResetsAt)
-          ..add('statusResetsTo', statusResetsTo))
+          ..add('statusResetsTo', statusResetsTo)
+          ..add('customStatus', customStatus))
         .toString();
   }
 }
@@ -314,12 +314,6 @@ class UserSettingsResponseBuilder
           ListBuilder<UserSettingsResponseGuildFoldersInner>? guildFolders) =>
       _$this._guildFolders = guildFolders;
 
-  CustomStatusResponseBuilder? _customStatus;
-  CustomStatusResponseBuilder get customStatus =>
-      _$this._customStatus ??= CustomStatusResponseBuilder();
-  set customStatus(CustomStatusResponseBuilder? customStatus) =>
-      _$this._customStatus = customStatus;
-
   int? _afkTimeout;
   int? get afkTimeout => _$this._afkTimeout;
   set afkTimeout(int? afkTimeout) => _$this._afkTimeout = afkTimeout;
@@ -355,6 +349,12 @@ class UserSettingsResponseBuilder
   set statusResetsTo(String? statusResetsTo) =>
       _$this._statusResetsTo = statusResetsTo;
 
+  CustomStatusResponseBuilder? _customStatus;
+  CustomStatusResponseBuilder get customStatus =>
+      _$this._customStatus ??= CustomStatusResponseBuilder();
+  set customStatus(CustomStatusResponseBuilder? customStatus) =>
+      _$this._customStatus = customStatus;
+
   UserSettingsResponseBuilder() {
     UserSettingsResponse._defaults(this);
   }
@@ -382,7 +382,6 @@ class UserSettingsResponseBuilder
       _incomingCallFlags = $v.incomingCallFlags;
       _groupDmAddPermissionFlags = $v.groupDmAddPermissionFlags;
       _guildFolders = $v.guildFolders.toBuilder();
-      _customStatus = $v.customStatus?.toBuilder();
       _afkTimeout = $v.afkTimeout;
       _timeFormat = $v.timeFormat;
       _developerMode = $v.developerMode;
@@ -390,6 +389,7 @@ class UserSettingsResponseBuilder
       _defaultHideMutedChannels = $v.defaultHideMutedChannels;
       _statusResetsAt = $v.statusResetsAt;
       _statusResetsTo = $v.statusResetsTo;
+      _customStatus = $v.customStatus?.toBuilder();
       _$v = null;
     }
     return this;
@@ -464,7 +464,6 @@ class UserSettingsResponseBuilder
                 r'UserSettingsResponse',
                 'groupDmAddPermissionFlags'),
             guildFolders: guildFolders.build(),
-            customStatus: _customStatus?.build(),
             afkTimeout: BuiltValueNullFieldError.checkNotNull(
                 afkTimeout, r'UserSettingsResponse', 'afkTimeout'),
             timeFormat: BuiltValueNullFieldError.checkNotNull(
@@ -478,6 +477,7 @@ class UserSettingsResponseBuilder
                 'defaultHideMutedChannels'),
             statusResetsAt: statusResetsAt,
             statusResetsTo: statusResetsTo,
+            customStatus: _customStatus?.build(),
           );
     } catch (_) {
       late String _$failedField;
@@ -489,11 +489,12 @@ class UserSettingsResponseBuilder
 
         _$failedField = 'guildFolders';
         guildFolders.build();
-        _$failedField = 'customStatus';
-        _customStatus?.build();
 
         _$failedField = 'trustedDomains';
         trustedDomains.build();
+
+        _$failedField = 'customStatus';
+        _customStatus?.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
             r'UserSettingsResponse', _$failedField, e.toString());

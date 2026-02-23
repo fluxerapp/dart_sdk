@@ -134,20 +134,20 @@ class _$VoiceServerAdminResponseSerializer
       object.allowedUserIds,
       specifiedType: const FullType(BuiltList, [FullType(String)]),
     );
-    yield r'created_at';
-    yield object.createdAt == null
-        ? null
-        : serializers.serialize(
-            object.createdAt,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'updated_at';
-    yield object.updatedAt == null
-        ? null
-        : serializers.serialize(
-            object.updatedAt,
-            specifiedType: const FullType.nullable(String),
-          );
+    if (object.createdAt != null) {
+      yield r'created_at';
+      yield serializers.serialize(
+        object.createdAt,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.updatedAt != null) {
+      yield r'updated_at';
+      yield serializers.serialize(
+        object.updatedAt,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
   }
 
   @override

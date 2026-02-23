@@ -15,8 +15,8 @@ part 'audit_log_webhook_response.g.dart';
 /// * [id] - The unique identifier for this webhook
 /// * [type]
 /// * [name] - The name of the webhook
-/// * [guildId]
-/// * [channelId]
+/// * [guildId] - The guild ID this webhook belongs to
+/// * [channelId] - The channel ID this webhook posts to
 /// * [avatarHash]
 @BuiltValue()
 abstract class AuditLogWebhookResponse
@@ -33,9 +33,11 @@ abstract class AuditLogWebhookResponse
   @BuiltValueField(wireName: r'name')
   String get name;
 
+  /// The guild ID this webhook belongs to
   @BuiltValueField(wireName: r'guild_id')
   String? get guildId;
 
+  /// The channel ID this webhook posts to
   @BuiltValueField(wireName: r'channel_id')
   String? get channelId;
 

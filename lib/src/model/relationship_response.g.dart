@@ -14,9 +14,9 @@ class _$RelationshipResponse extends RelationshipResponse {
   @override
   final UserPartialResponse user;
   @override
-  final String? nickname;
-  @override
   final DateTime? since;
+  @override
+  final String? nickname;
 
   factory _$RelationshipResponse(
           [void Function(RelationshipResponseBuilder)? updates]) =>
@@ -26,8 +26,8 @@ class _$RelationshipResponse extends RelationshipResponse {
       {required this.id,
       required this.type,
       required this.user,
-      this.nickname,
-      this.since})
+      this.since,
+      this.nickname})
       : super._();
   @override
   RelationshipResponse rebuild(
@@ -45,8 +45,8 @@ class _$RelationshipResponse extends RelationshipResponse {
         id == other.id &&
         type == other.type &&
         user == other.user &&
-        nickname == other.nickname &&
-        since == other.since;
+        since == other.since &&
+        nickname == other.nickname;
   }
 
   @override
@@ -55,8 +55,8 @@ class _$RelationshipResponse extends RelationshipResponse {
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, type.hashCode);
     _$hash = $jc(_$hash, user.hashCode);
-    _$hash = $jc(_$hash, nickname.hashCode);
     _$hash = $jc(_$hash, since.hashCode);
+    _$hash = $jc(_$hash, nickname.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -67,8 +67,8 @@ class _$RelationshipResponse extends RelationshipResponse {
           ..add('id', id)
           ..add('type', type)
           ..add('user', user)
-          ..add('nickname', nickname)
-          ..add('since', since))
+          ..add('since', since)
+          ..add('nickname', nickname))
         .toString();
   }
 }
@@ -90,13 +90,13 @@ class RelationshipResponseBuilder
       _$this._user ??= UserPartialResponseBuilder();
   set user(UserPartialResponseBuilder? user) => _$this._user = user;
 
-  String? _nickname;
-  String? get nickname => _$this._nickname;
-  set nickname(String? nickname) => _$this._nickname = nickname;
-
   DateTime? _since;
   DateTime? get since => _$this._since;
   set since(DateTime? since) => _$this._since = since;
+
+  String? _nickname;
+  String? get nickname => _$this._nickname;
+  set nickname(String? nickname) => _$this._nickname = nickname;
 
   RelationshipResponseBuilder() {
     RelationshipResponse._defaults(this);
@@ -108,8 +108,8 @@ class RelationshipResponseBuilder
       _id = $v.id;
       _type = $v.type;
       _user = $v.user.toBuilder();
-      _nickname = $v.nickname;
       _since = $v.since;
+      _nickname = $v.nickname;
       _$v = null;
     }
     return this;
@@ -138,8 +138,8 @@ class RelationshipResponseBuilder
             type: BuiltValueNullFieldError.checkNotNull(
                 type, r'RelationshipResponse', 'type'),
             user: user.build(),
-            nickname: nickname,
             since: since,
+            nickname: nickname,
           );
     } catch (_) {
       late String _$failedField;

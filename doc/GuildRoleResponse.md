@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **permissions** | **String** | The permissions bitfield for the role | 
 **hoist** | **bool** | Whether this role is displayed separately in the member list | 
 **mentionable** | **bool** | Whether this role can be mentioned by anyone | 
-**hoistPosition** | **int** |  | [optional] 
+**hoistPosition** | **int** | The position of the role in the hoisted member list | [optional] 
 **unicodeEmoji** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

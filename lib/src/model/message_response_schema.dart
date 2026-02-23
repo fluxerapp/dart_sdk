@@ -30,7 +30,7 @@ part 'message_response_schema.g.dart';
 /// * [timestamp] - The ISO 8601 timestamp of when the message was created
 /// * [pinned] - Whether the message is pinned
 /// * [mentionEveryone] - Whether the message mentions @everyone
-/// * [webhookId]
+/// * [webhookId] - The ID of the webhook that sent this message
 /// * [editedTimestamp]
 /// * [tts] - Whether the message was sent as text-to-speech
 /// * [mentions]
@@ -83,6 +83,7 @@ abstract class MessageResponseSchema
   @BuiltValueField(wireName: r'mention_everyone')
   bool get mentionEveryone;
 
+  /// The ID of the webhook that sent this message
   @BuiltValueField(wireName: r'webhook_id')
   String? get webhookId;
 

@@ -16,8 +16,8 @@ part 'relationship_response.g.dart';
 /// * [id] - The unique identifier for the relationship
 /// * [type] - The type of relationship (friend, blocked, pending, etc.)
 /// * [user]
-/// * [nickname]
 /// * [since] - ISO8601 timestamp of when the relationship was established
+/// * [nickname]
 @BuiltValue()
 abstract class RelationshipResponse
     implements Built<RelationshipResponse, RelationshipResponseBuilder> {
@@ -33,12 +33,12 @@ abstract class RelationshipResponse
   @BuiltValueField(wireName: r'user')
   UserPartialResponse get user;
 
-  @BuiltValueField(wireName: r'nickname')
-  String? get nickname;
-
   /// ISO8601 timestamp of when the relationship was established
   @BuiltValueField(wireName: r'since')
   DateTime? get since;
+
+  @BuiltValueField(wireName: r'nickname')
+  String? get nickname;
 
   RelationshipResponse._();
 
@@ -84,18 +84,18 @@ class _$RelationshipResponseSerializer
       object.user,
       specifiedType: const FullType(UserPartialResponse),
     );
-    yield r'nickname';
-    yield object.nickname == null
-        ? null
-        : serializers.serialize(
-            object.nickname,
-            specifiedType: const FullType.nullable(String),
-          );
     if (object.since != null) {
       yield r'since';
       yield serializers.serialize(
         object.since,
         specifiedType: const FullType(DateTime),
+      );
+    }
+    if (object.nickname != null) {
+      yield r'nickname';
+      yield serializers.serialize(
+        object.nickname,
+        specifiedType: const FullType.nullable(String),
       );
     }
   }
@@ -144,6 +144,13 @@ class _$RelationshipResponseSerializer
           ) as UserPartialResponse;
           result.user.replace(valueDes);
           break;
+        case r'since':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime;
+          result.since = valueDes;
+          break;
         case r'nickname':
           final valueDes = serializers.deserialize(
             value,
@@ -151,13 +158,6 @@ class _$RelationshipResponseSerializer
           ) as String?;
           if (valueDes == null) continue;
           result.nickname = valueDes;
-          break;
-        case r'since':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.since = valueDes;
           break;
         default:
           unhandled.add(key);

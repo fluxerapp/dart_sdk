@@ -114,11 +114,11 @@ class _$ScheduledMessageResponseSchema extends ScheduledMessageResponseSchema {
   @override
   final ScheduledMessageResponseSchemaStatusEnum status;
   @override
-  final String? statusReason;
-  @override
   final ScheduledMessageResponseSchemaPayload payload;
   @override
   final String createdAt;
+  @override
+  final String? statusReason;
   @override
   final String? invalidatedAt;
 
@@ -133,9 +133,9 @@ class _$ScheduledMessageResponseSchema extends ScheduledMessageResponseSchema {
       required this.scheduledLocalAt,
       required this.timezone,
       required this.status,
-      this.statusReason,
       required this.payload,
       required this.createdAt,
+      this.statusReason,
       this.invalidatedAt})
       : super._();
   @override
@@ -157,9 +157,9 @@ class _$ScheduledMessageResponseSchema extends ScheduledMessageResponseSchema {
         scheduledLocalAt == other.scheduledLocalAt &&
         timezone == other.timezone &&
         status == other.status &&
-        statusReason == other.statusReason &&
         payload == other.payload &&
         createdAt == other.createdAt &&
+        statusReason == other.statusReason &&
         invalidatedAt == other.invalidatedAt;
   }
 
@@ -172,9 +172,9 @@ class _$ScheduledMessageResponseSchema extends ScheduledMessageResponseSchema {
     _$hash = $jc(_$hash, scheduledLocalAt.hashCode);
     _$hash = $jc(_$hash, timezone.hashCode);
     _$hash = $jc(_$hash, status.hashCode);
-    _$hash = $jc(_$hash, statusReason.hashCode);
     _$hash = $jc(_$hash, payload.hashCode);
     _$hash = $jc(_$hash, createdAt.hashCode);
+    _$hash = $jc(_$hash, statusReason.hashCode);
     _$hash = $jc(_$hash, invalidatedAt.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -189,9 +189,9 @@ class _$ScheduledMessageResponseSchema extends ScheduledMessageResponseSchema {
           ..add('scheduledLocalAt', scheduledLocalAt)
           ..add('timezone', timezone)
           ..add('status', status)
-          ..add('statusReason', statusReason)
           ..add('payload', payload)
           ..add('createdAt', createdAt)
+          ..add('statusReason', statusReason)
           ..add('invalidatedAt', invalidatedAt))
         .toString();
   }
@@ -229,10 +229,6 @@ class ScheduledMessageResponseSchemaBuilder
   set status(ScheduledMessageResponseSchemaStatusEnum? status) =>
       _$this._status = status;
 
-  String? _statusReason;
-  String? get statusReason => _$this._statusReason;
-  set statusReason(String? statusReason) => _$this._statusReason = statusReason;
-
   ScheduledMessageResponseSchemaPayloadBuilder? _payload;
   ScheduledMessageResponseSchemaPayloadBuilder get payload =>
       _$this._payload ??= ScheduledMessageResponseSchemaPayloadBuilder();
@@ -242,6 +238,10 @@ class ScheduledMessageResponseSchemaBuilder
   String? _createdAt;
   String? get createdAt => _$this._createdAt;
   set createdAt(String? createdAt) => _$this._createdAt = createdAt;
+
+  String? _statusReason;
+  String? get statusReason => _$this._statusReason;
+  set statusReason(String? statusReason) => _$this._statusReason = statusReason;
 
   String? _invalidatedAt;
   String? get invalidatedAt => _$this._invalidatedAt;
@@ -261,9 +261,9 @@ class ScheduledMessageResponseSchemaBuilder
       _scheduledLocalAt = $v.scheduledLocalAt;
       _timezone = $v.timezone;
       _status = $v.status;
-      _statusReason = $v.statusReason;
       _payload = $v.payload.toBuilder();
       _createdAt = $v.createdAt;
+      _statusReason = $v.statusReason;
       _invalidatedAt = $v.invalidatedAt;
       _$v = null;
     }
@@ -302,10 +302,10 @@ class ScheduledMessageResponseSchemaBuilder
                 timezone, r'ScheduledMessageResponseSchema', 'timezone'),
             status: BuiltValueNullFieldError.checkNotNull(
                 status, r'ScheduledMessageResponseSchema', 'status'),
-            statusReason: statusReason,
             payload: payload.build(),
             createdAt: BuiltValueNullFieldError.checkNotNull(
                 createdAt, r'ScheduledMessageResponseSchema', 'createdAt'),
+            statusReason: statusReason,
             invalidatedAt: invalidatedAt,
           );
     } catch (_) {

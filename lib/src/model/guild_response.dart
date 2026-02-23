@@ -32,18 +32,18 @@ part 'guild_response.g.dart';
 /// * [disabledOperations] - Bitmask of disabled guild operations
 /// * [icon]
 /// * [banner]
-/// * [bannerWidth]
-/// * [bannerHeight]
+/// * [bannerWidth] - The width of the guild banner in pixels
+/// * [bannerHeight] - The height of the guild banner in pixels
 /// * [splash]
-/// * [splashWidth]
-/// * [splashHeight]
+/// * [splashWidth] - The width of the guild splash in pixels
+/// * [splashHeight] - The height of the guild splash in pixels
 /// * [embedSplash]
-/// * [embedSplashWidth]
-/// * [embedSplashHeight]
+/// * [embedSplashWidth] - The width of the embedded invite splash in pixels
+/// * [embedSplashHeight] - The height of the embedded invite splash in pixels
 /// * [vanityUrlCode]
-/// * [systemChannelId]
-/// * [rulesChannelId]
-/// * [afkChannelId]
+/// * [systemChannelId] - The ID of the channel where system messages are sent
+/// * [rulesChannelId] - The ID of the rules channel
+/// * [afkChannelId] - The ID of the AFK voice channel
 /// * [messageHistoryCutoff]
 /// * [permissions] - The current user permissions in this guild
 @BuiltValue()
@@ -113,39 +113,48 @@ abstract class GuildResponse
   @BuiltValueField(wireName: r'banner')
   String? get banner;
 
+  /// The width of the guild banner in pixels
   @BuiltValueField(wireName: r'banner_width')
   int? get bannerWidth;
 
+  /// The height of the guild banner in pixels
   @BuiltValueField(wireName: r'banner_height')
   int? get bannerHeight;
 
   @BuiltValueField(wireName: r'splash')
   String? get splash;
 
+  /// The width of the guild splash in pixels
   @BuiltValueField(wireName: r'splash_width')
   int? get splashWidth;
 
+  /// The height of the guild splash in pixels
   @BuiltValueField(wireName: r'splash_height')
   int? get splashHeight;
 
   @BuiltValueField(wireName: r'embed_splash')
   String? get embedSplash;
 
+  /// The width of the embedded invite splash in pixels
   @BuiltValueField(wireName: r'embed_splash_width')
   int? get embedSplashWidth;
 
+  /// The height of the embedded invite splash in pixels
   @BuiltValueField(wireName: r'embed_splash_height')
   int? get embedSplashHeight;
 
   @BuiltValueField(wireName: r'vanity_url_code')
   String? get vanityUrlCode;
 
+  /// The ID of the channel where system messages are sent
   @BuiltValueField(wireName: r'system_channel_id')
   String? get systemChannelId;
 
+  /// The ID of the rules channel
   @BuiltValueField(wireName: r'rules_channel_id')
   String? get rulesChannelId;
 
+  /// The ID of the AFK voice channel
   @BuiltValueField(wireName: r'afk_channel_id')
   String? get afkChannelId;
 

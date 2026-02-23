@@ -84,7 +84,7 @@ class _$PurgeGuildAssetResultSchema extends PurgeGuildAssetResultSchema {
   @override
   final bool foundInDb;
   @override
-  final String guildId;
+  final String? guildId;
 
   factory _$PurgeGuildAssetResultSchema(
           [void Function(PurgeGuildAssetResultSchemaBuilder)? updates]) =>
@@ -94,7 +94,7 @@ class _$PurgeGuildAssetResultSchema extends PurgeGuildAssetResultSchema {
       {required this.id,
       required this.assetType,
       required this.foundInDb,
-      required this.guildId})
+      this.guildId})
       : super._();
   @override
   PurgeGuildAssetResultSchema rebuild(
@@ -198,8 +198,7 @@ class PurgeGuildAssetResultSchemaBuilder
               assetType, r'PurgeGuildAssetResultSchema', 'assetType'),
           foundInDb: BuiltValueNullFieldError.checkNotNull(
               foundInDb, r'PurgeGuildAssetResultSchema', 'foundInDb'),
-          guildId: BuiltValueNullFieldError.checkNotNull(
-              guildId, r'PurgeGuildAssetResultSchema', 'guildId'),
+          guildId: guildId,
         );
     replace(_$result);
     return _$result;

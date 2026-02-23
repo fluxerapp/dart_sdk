@@ -12,7 +12,7 @@ part 'visionary_slot_schema.g.dart';
 ///
 /// Properties:
 /// * [slotIndex] - The slot index
-/// * [userId]
+/// * [userId] - User ID that reserved this slot, or null if unreserved (special value -1 is also valid)
 @BuiltValue()
 abstract class VisionarySlotSchema
     implements Built<VisionarySlotSchema, VisionarySlotSchemaBuilder> {
@@ -20,8 +20,9 @@ abstract class VisionarySlotSchema
   @BuiltValueField(wireName: r'slot_index')
   int get slotIndex;
 
+  /// User ID that reserved this slot, or null if unreserved (special value -1 is also valid)
   @BuiltValueField(wireName: r'user_id')
-  String get userId;
+  String? get userId;
 
   VisionarySlotSchema._();
 
@@ -57,11 +58,13 @@ class _$VisionarySlotSchemaSerializer
       object.slotIndex,
       specifiedType: const FullType(int),
     );
-    yield r'user_id';
-    yield serializers.serialize(
-      object.userId,
-      specifiedType: const FullType(String),
-    );
+    if (object.userId != null) {
+      yield r'user_id';
+      yield serializers.serialize(
+        object.userId,
+        specifiedType: const FullType(String),
+      );
+    }
   }
 
   @override

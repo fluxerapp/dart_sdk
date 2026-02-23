@@ -17,7 +17,7 @@ part 'channel_create_text_request.g.dart';
 /// * [name] - The name of the channel
 /// * [topic]
 /// * [url]
-/// * [parentId]
+/// * [parentId] - ID of the parent category for this channel
 /// * [bitrate]
 /// * [userLimit]
 /// * [permissionOverwrites] - Permission overwrites for roles and members
@@ -40,6 +40,7 @@ abstract class ChannelCreateTextRequest
   @BuiltValueField(wireName: r'url')
   String? get url;
 
+  /// ID of the parent category for this channel
   @BuiltValueField(wireName: r'parent_id')
   String? get parentId;
 

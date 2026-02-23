@@ -10,14 +10,13 @@ class _$VisionarySlotSchema extends VisionarySlotSchema {
   @override
   final int slotIndex;
   @override
-  final String userId;
+  final String? userId;
 
   factory _$VisionarySlotSchema(
           [void Function(VisionarySlotSchemaBuilder)? updates]) =>
       (VisionarySlotSchemaBuilder()..update(updates))._build();
 
-  _$VisionarySlotSchema._({required this.slotIndex, required this.userId})
-      : super._();
+  _$VisionarySlotSchema._({required this.slotIndex, this.userId}) : super._();
   @override
   VisionarySlotSchema rebuild(
           void Function(VisionarySlotSchemaBuilder) updates) =>
@@ -97,8 +96,7 @@ class VisionarySlotSchemaBuilder
         _$VisionarySlotSchema._(
           slotIndex: BuiltValueNullFieldError.checkNotNull(
               slotIndex, r'VisionarySlotSchema', 'slotIndex'),
-          userId: BuiltValueNullFieldError.checkNotNull(
-              userId, r'VisionarySlotSchema', 'userId'),
+          userId: userId,
         );
     replace(_$result);
     return _$result;

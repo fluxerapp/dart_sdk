@@ -12,7 +12,7 @@ part 'message_reaction_response_emoji.g.dart';
 ///
 /// Properties:
 /// * [name] - The name of the emoji (or Unicode character for standard emojis)
-/// * [id]
+/// * [id] - The ID of the custom emoji (null for Unicode emojis)
 /// * [animated]
 @BuiltValue()
 abstract class MessageReactionResponseEmoji
@@ -23,6 +23,7 @@ abstract class MessageReactionResponseEmoji
   @BuiltValueField(wireName: r'name')
   String get name;
 
+  /// The ID of the custom emoji (null for Unicode emojis)
   @BuiltValueField(wireName: r'id')
   String? get id;
 

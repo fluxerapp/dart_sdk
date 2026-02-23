@@ -18,14 +18,14 @@ part 'guild_invite_metadata_response_guild.g.dart';
 /// * [features] - Array of guild feature flags
 /// * [icon]
 /// * [banner]
-/// * [bannerWidth]
-/// * [bannerHeight]
+/// * [bannerWidth] - The width of the guild banner in pixels
+/// * [bannerHeight] - The height of the guild banner in pixels
 /// * [splash]
-/// * [splashWidth]
-/// * [splashHeight]
+/// * [splashWidth] - The width of the guild splash in pixels
+/// * [splashHeight] - The height of the guild splash in pixels
 /// * [embedSplash]
-/// * [embedSplashWidth]
-/// * [embedSplashHeight]
+/// * [embedSplashWidth] - The width of the embedded invite splash in pixels
+/// * [embedSplashHeight] - The height of the embedded invite splash in pixels
 @BuiltValue()
 abstract class GuildInviteMetadataResponseGuild
     implements
@@ -55,27 +55,33 @@ abstract class GuildInviteMetadataResponseGuild
   @BuiltValueField(wireName: r'banner')
   String? get banner;
 
+  /// The width of the guild banner in pixels
   @BuiltValueField(wireName: r'banner_width')
   int? get bannerWidth;
 
+  /// The height of the guild banner in pixels
   @BuiltValueField(wireName: r'banner_height')
   int? get bannerHeight;
 
   @BuiltValueField(wireName: r'splash')
   String? get splash;
 
+  /// The width of the guild splash in pixels
   @BuiltValueField(wireName: r'splash_width')
   int? get splashWidth;
 
+  /// The height of the guild splash in pixels
   @BuiltValueField(wireName: r'splash_height')
   int? get splashHeight;
 
   @BuiltValueField(wireName: r'embed_splash')
   String? get embedSplash;
 
+  /// The width of the embedded invite splash in pixels
   @BuiltValueField(wireName: r'embed_splash_width')
   int? get embedSplashWidth;
 
+  /// The height of the embedded invite splash in pixels
   @BuiltValueField(wireName: r'embed_splash_height')
   int? get embedSplashHeight;
 

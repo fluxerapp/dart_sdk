@@ -595,6 +595,12 @@ import 'package:fluxer_dart/src/model/well_known_fluxer_response_oauth2.dart';
 import 'package:fluxer_dart/src/model/well_known_fluxer_response_public_key.dart';
 import 'package:fluxer_dart/src/model/well_known_fluxer_response_push.dart';
 import 'package:fluxer_dart/src/model/well_known_fluxer_response_sso.dart';
+import 'package:fluxer_dart/src/model/complete_chunked_upload_request.dart';
+import 'package:fluxer_dart/src/model/complete_chunked_upload_request_etags_inner.dart';
+import 'package:fluxer_dart/src/model/complete_chunked_upload_response.dart';
+import 'package:fluxer_dart/src/model/create_chunked_upload_request.dart';
+import 'package:fluxer_dart/src/model/create_chunked_upload_response.dart';
+import 'package:fluxer_dart/src/model/upload_chunk_response.dart';
 
 part 'serializers.g.dart';
 
@@ -1180,6 +1186,12 @@ part 'serializers.g.dart';
   WellKnownFluxerResponsePublicKey,
   WellKnownFluxerResponsePush,
   WellKnownFluxerResponseSso,
+  CompleteChunkedUploadRequest,
+  CompleteChunkedUploadRequestEtagsInner,
+  CompleteChunkedUploadResponse,
+  CreateChunkedUploadRequest,
+  CreateChunkedUploadResponse,
+  UploadChunkResponse,
 ])
 Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(

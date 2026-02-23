@@ -16,6 +16,9 @@ part 'report_admin_response_schema.g.dart';
 ///
 /// Properties:
 /// * [reportId]
+/// * [reportedAt]
+/// * [status]
+/// * [reportType]
 /// * [reporterId]
 /// * [reporterTag]
 /// * [reporterUsername]
@@ -23,9 +26,6 @@ part 'report_admin_response_schema.g.dart';
 /// * [reporterEmail]
 /// * [reporterFullLegalName]
 /// * [reporterCountryOfResidence]
-/// * [reportedAt]
-/// * [status]
-/// * [reportType]
 /// * [category]
 /// * [additionalInfo]
 /// * [reportedUserId]
@@ -51,8 +51,19 @@ abstract class ReportAdminResponseSchema
   @BuiltValueField(wireName: r'report_id')
   String get reportId;
 
+  @BuiltValueField(wireName: r'reported_at')
+  String get reportedAt;
+
+  @BuiltValueField(wireName: r'status')
+  ReportStatus get status;
+  // enum statusEnum {  0,  1,  };
+
+  @BuiltValueField(wireName: r'report_type')
+  ReportType get reportType;
+  // enum reportTypeEnum {  0,  1,  2,  };
+
   @BuiltValueField(wireName: r'reporter_id')
-  String get reporterId;
+  String? get reporterId;
 
   @BuiltValueField(wireName: r'reporter_tag')
   String? get reporterTag;
@@ -72,17 +83,6 @@ abstract class ReportAdminResponseSchema
   @BuiltValueField(wireName: r'reporter_country_of_residence')
   String? get reporterCountryOfResidence;
 
-  @BuiltValueField(wireName: r'reported_at')
-  String get reportedAt;
-
-  @BuiltValueField(wireName: r'status')
-  ReportStatus get status;
-  // enum statusEnum {  0,  1,  };
-
-  @BuiltValueField(wireName: r'report_type')
-  ReportType get reportType;
-  // enum reportTypeEnum {  0,  1,  2,  };
-
   @BuiltValueField(wireName: r'category')
   String? get category;
 
@@ -90,7 +90,7 @@ abstract class ReportAdminResponseSchema
   String? get additionalInfo;
 
   @BuiltValueField(wireName: r'reported_user_id')
-  String get reportedUserId;
+  String? get reportedUserId;
 
   @BuiltValueField(wireName: r'reported_user_tag')
   String? get reportedUserTag;
@@ -105,16 +105,16 @@ abstract class ReportAdminResponseSchema
   String? get reportedUserAvatarHash;
 
   @BuiltValueField(wireName: r'reported_guild_id')
-  String get reportedGuildId;
+  String? get reportedGuildId;
 
   @BuiltValueField(wireName: r'reported_guild_name')
   String? get reportedGuildName;
 
   @BuiltValueField(wireName: r'reported_message_id')
-  String get reportedMessageId;
+  String? get reportedMessageId;
 
   @BuiltValueField(wireName: r'reported_channel_id')
-  String get reportedChannelId;
+  String? get reportedChannelId;
 
   @BuiltValueField(wireName: r'reported_channel_name')
   String? get reportedChannelName;
@@ -126,7 +126,7 @@ abstract class ReportAdminResponseSchema
   String? get resolvedAt;
 
   @BuiltValueField(wireName: r'resolved_by_admin_id')
-  String get resolvedByAdminId;
+  String? get resolvedByAdminId;
 
   @BuiltValueField(wireName: r'public_comment')
   String? get publicComment;
@@ -172,53 +172,6 @@ class _$ReportAdminResponseSchemaSerializer
       object.reportId,
       specifiedType: const FullType(String),
     );
-    yield r'reporter_id';
-    yield serializers.serialize(
-      object.reporterId,
-      specifiedType: const FullType(String),
-    );
-    yield r'reporter_tag';
-    yield object.reporterTag == null
-        ? null
-        : serializers.serialize(
-            object.reporterTag,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'reporter_username';
-    yield object.reporterUsername == null
-        ? null
-        : serializers.serialize(
-            object.reporterUsername,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'reporter_discriminator';
-    yield object.reporterDiscriminator == null
-        ? null
-        : serializers.serialize(
-            object.reporterDiscriminator,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'reporter_email';
-    yield object.reporterEmail == null
-        ? null
-        : serializers.serialize(
-            object.reporterEmail,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'reporter_full_legal_name';
-    yield object.reporterFullLegalName == null
-        ? null
-        : serializers.serialize(
-            object.reporterFullLegalName,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'reporter_country_of_residence';
-    yield object.reporterCountryOfResidence == null
-        ? null
-        : serializers.serialize(
-            object.reporterCountryOfResidence,
-            specifiedType: const FullType.nullable(String),
-          );
     yield r'reported_at';
     yield serializers.serialize(
       object.reportedAt,
@@ -234,108 +187,167 @@ class _$ReportAdminResponseSchemaSerializer
       object.reportType,
       specifiedType: const FullType(ReportType),
     );
-    yield r'category';
-    yield object.category == null
-        ? null
-        : serializers.serialize(
-            object.category,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'additional_info';
-    yield object.additionalInfo == null
-        ? null
-        : serializers.serialize(
-            object.additionalInfo,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'reported_user_id';
-    yield serializers.serialize(
-      object.reportedUserId,
-      specifiedType: const FullType(String),
-    );
-    yield r'reported_user_tag';
-    yield object.reportedUserTag == null
-        ? null
-        : serializers.serialize(
-            object.reportedUserTag,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'reported_user_username';
-    yield object.reportedUserUsername == null
-        ? null
-        : serializers.serialize(
-            object.reportedUserUsername,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'reported_user_discriminator';
-    yield object.reportedUserDiscriminator == null
-        ? null
-        : serializers.serialize(
-            object.reportedUserDiscriminator,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'reported_user_avatar_hash';
-    yield object.reportedUserAvatarHash == null
-        ? null
-        : serializers.serialize(
-            object.reportedUserAvatarHash,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'reported_guild_id';
-    yield serializers.serialize(
-      object.reportedGuildId,
-      specifiedType: const FullType(String),
-    );
-    yield r'reported_guild_name';
-    yield object.reportedGuildName == null
-        ? null
-        : serializers.serialize(
-            object.reportedGuildName,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'reported_message_id';
-    yield serializers.serialize(
-      object.reportedMessageId,
-      specifiedType: const FullType(String),
-    );
-    yield r'reported_channel_id';
-    yield serializers.serialize(
-      object.reportedChannelId,
-      specifiedType: const FullType(String),
-    );
-    yield r'reported_channel_name';
-    yield object.reportedChannelName == null
-        ? null
-        : serializers.serialize(
-            object.reportedChannelName,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'reported_guild_invite_code';
-    yield object.reportedGuildInviteCode == null
-        ? null
-        : serializers.serialize(
-            object.reportedGuildInviteCode,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'resolved_at';
-    yield object.resolvedAt == null
-        ? null
-        : serializers.serialize(
-            object.resolvedAt,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'resolved_by_admin_id';
-    yield serializers.serialize(
-      object.resolvedByAdminId,
-      specifiedType: const FullType(String),
-    );
-    yield r'public_comment';
-    yield object.publicComment == null
-        ? null
-        : serializers.serialize(
-            object.publicComment,
-            specifiedType: const FullType.nullable(String),
-          );
+    if (object.reporterId != null) {
+      yield r'reporter_id';
+      yield serializers.serialize(
+        object.reporterId,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.reporterTag != null) {
+      yield r'reporter_tag';
+      yield serializers.serialize(
+        object.reporterTag,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.reporterUsername != null) {
+      yield r'reporter_username';
+      yield serializers.serialize(
+        object.reporterUsername,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.reporterDiscriminator != null) {
+      yield r'reporter_discriminator';
+      yield serializers.serialize(
+        object.reporterDiscriminator,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.reporterEmail != null) {
+      yield r'reporter_email';
+      yield serializers.serialize(
+        object.reporterEmail,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.reporterFullLegalName != null) {
+      yield r'reporter_full_legal_name';
+      yield serializers.serialize(
+        object.reporterFullLegalName,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.reporterCountryOfResidence != null) {
+      yield r'reporter_country_of_residence';
+      yield serializers.serialize(
+        object.reporterCountryOfResidence,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.category != null) {
+      yield r'category';
+      yield serializers.serialize(
+        object.category,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.additionalInfo != null) {
+      yield r'additional_info';
+      yield serializers.serialize(
+        object.additionalInfo,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.reportedUserId != null) {
+      yield r'reported_user_id';
+      yield serializers.serialize(
+        object.reportedUserId,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.reportedUserTag != null) {
+      yield r'reported_user_tag';
+      yield serializers.serialize(
+        object.reportedUserTag,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.reportedUserUsername != null) {
+      yield r'reported_user_username';
+      yield serializers.serialize(
+        object.reportedUserUsername,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.reportedUserDiscriminator != null) {
+      yield r'reported_user_discriminator';
+      yield serializers.serialize(
+        object.reportedUserDiscriminator,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.reportedUserAvatarHash != null) {
+      yield r'reported_user_avatar_hash';
+      yield serializers.serialize(
+        object.reportedUserAvatarHash,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.reportedGuildId != null) {
+      yield r'reported_guild_id';
+      yield serializers.serialize(
+        object.reportedGuildId,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.reportedGuildName != null) {
+      yield r'reported_guild_name';
+      yield serializers.serialize(
+        object.reportedGuildName,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.reportedMessageId != null) {
+      yield r'reported_message_id';
+      yield serializers.serialize(
+        object.reportedMessageId,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.reportedChannelId != null) {
+      yield r'reported_channel_id';
+      yield serializers.serialize(
+        object.reportedChannelId,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.reportedChannelName != null) {
+      yield r'reported_channel_name';
+      yield serializers.serialize(
+        object.reportedChannelName,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.reportedGuildInviteCode != null) {
+      yield r'reported_guild_invite_code';
+      yield serializers.serialize(
+        object.reportedGuildInviteCode,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.resolvedAt != null) {
+      yield r'resolved_at';
+      yield serializers.serialize(
+        object.resolvedAt,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.resolvedByAdminId != null) {
+      yield r'resolved_by_admin_id';
+      yield serializers.serialize(
+        object.resolvedByAdminId,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.publicComment != null) {
+      yield r'public_comment';
+      yield serializers.serialize(
+        object.publicComment,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
     if (object.mutualDmChannelId != null) {
       yield r'mutual_dm_channel_id';
       yield serializers.serialize(
@@ -382,6 +394,27 @@ class _$ReportAdminResponseSchemaSerializer
             specifiedType: const FullType(String),
           ) as String;
           result.reportId = valueDes;
+          break;
+        case r'reported_at':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.reportedAt = valueDes;
+          break;
+        case r'status':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(ReportStatus),
+          ) as ReportStatus;
+          result.status = valueDes;
+          break;
+        case r'report_type':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(ReportType),
+          ) as ReportType;
+          result.reportType = valueDes;
           break;
         case r'reporter_id':
           final valueDes = serializers.deserialize(
@@ -437,27 +470,6 @@ class _$ReportAdminResponseSchemaSerializer
           ) as String?;
           if (valueDes == null) continue;
           result.reporterCountryOfResidence = valueDes;
-          break;
-        case r'reported_at':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.reportedAt = valueDes;
-          break;
-        case r'status':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(ReportStatus),
-          ) as ReportStatus;
-          result.status = valueDes;
-          break;
-        case r'report_type':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(ReportType),
-          ) as ReportType;
-          result.reportType = valueDes;
           break;
         case r'category':
           final valueDes = serializers.deserialize(

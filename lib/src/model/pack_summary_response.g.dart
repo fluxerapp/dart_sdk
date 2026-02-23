@@ -68,8 +68,6 @@ class _$PackSummaryResponse extends PackSummaryResponse {
   @override
   final String name;
   @override
-  final String? description;
-  @override
   final PackSummaryResponseTypeEnum type;
   @override
   final String creatorId;
@@ -77,6 +75,8 @@ class _$PackSummaryResponse extends PackSummaryResponse {
   final DateTime createdAt;
   @override
   final DateTime updatedAt;
+  @override
+  final String? description;
   @override
   final DateTime? installedAt;
 
@@ -87,11 +87,11 @@ class _$PackSummaryResponse extends PackSummaryResponse {
   _$PackSummaryResponse._(
       {required this.id,
       required this.name,
-      this.description,
       required this.type,
       required this.creatorId,
       required this.createdAt,
       required this.updatedAt,
+      this.description,
       this.installedAt})
       : super._();
   @override
@@ -109,11 +109,11 @@ class _$PackSummaryResponse extends PackSummaryResponse {
     return other is PackSummaryResponse &&
         id == other.id &&
         name == other.name &&
-        description == other.description &&
         type == other.type &&
         creatorId == other.creatorId &&
         createdAt == other.createdAt &&
         updatedAt == other.updatedAt &&
+        description == other.description &&
         installedAt == other.installedAt;
   }
 
@@ -122,11 +122,11 @@ class _$PackSummaryResponse extends PackSummaryResponse {
     var _$hash = 0;
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jc(_$hash, description.hashCode);
     _$hash = $jc(_$hash, type.hashCode);
     _$hash = $jc(_$hash, creatorId.hashCode);
     _$hash = $jc(_$hash, createdAt.hashCode);
     _$hash = $jc(_$hash, updatedAt.hashCode);
+    _$hash = $jc(_$hash, description.hashCode);
     _$hash = $jc(_$hash, installedAt.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -137,11 +137,11 @@ class _$PackSummaryResponse extends PackSummaryResponse {
     return (newBuiltValueToStringHelper(r'PackSummaryResponse')
           ..add('id', id)
           ..add('name', name)
-          ..add('description', description)
           ..add('type', type)
           ..add('creatorId', creatorId)
           ..add('createdAt', createdAt)
           ..add('updatedAt', updatedAt)
+          ..add('description', description)
           ..add('installedAt', installedAt))
         .toString();
   }
@@ -159,10 +159,6 @@ class PackSummaryResponseBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  String? _description;
-  String? get description => _$this._description;
-  set description(String? description) => _$this._description = description;
-
   PackSummaryResponseTypeEnum? _type;
   PackSummaryResponseTypeEnum? get type => _$this._type;
   set type(PackSummaryResponseTypeEnum? type) => _$this._type = type;
@@ -179,6 +175,10 @@ class PackSummaryResponseBuilder
   DateTime? get updatedAt => _$this._updatedAt;
   set updatedAt(DateTime? updatedAt) => _$this._updatedAt = updatedAt;
 
+  String? _description;
+  String? get description => _$this._description;
+  set description(String? description) => _$this._description = description;
+
   DateTime? _installedAt;
   DateTime? get installedAt => _$this._installedAt;
   set installedAt(DateTime? installedAt) => _$this._installedAt = installedAt;
@@ -192,11 +192,11 @@ class PackSummaryResponseBuilder
     if ($v != null) {
       _id = $v.id;
       _name = $v.name;
-      _description = $v.description;
       _type = $v.type;
       _creatorId = $v.creatorId;
       _createdAt = $v.createdAt;
       _updatedAt = $v.updatedAt;
+      _description = $v.description;
       _installedAt = $v.installedAt;
       _$v = null;
     }
@@ -223,7 +223,6 @@ class PackSummaryResponseBuilder
               id, r'PackSummaryResponse', 'id'),
           name: BuiltValueNullFieldError.checkNotNull(
               name, r'PackSummaryResponse', 'name'),
-          description: description,
           type: BuiltValueNullFieldError.checkNotNull(
               type, r'PackSummaryResponse', 'type'),
           creatorId: BuiltValueNullFieldError.checkNotNull(
@@ -232,6 +231,7 @@ class PackSummaryResponseBuilder
               createdAt, r'PackSummaryResponse', 'createdAt'),
           updatedAt: BuiltValueNullFieldError.checkNotNull(
               updatedAt, r'PackSummaryResponse', 'updatedAt'),
+          description: description,
           installedAt: installedAt,
         );
     replace(_$result);

@@ -49,13 +49,13 @@ class _$GetVoiceServerResponseSerializer
     GetVoiceServerResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'server';
-    yield object.server == null
-        ? null
-        : serializers.serialize(
-            object.server,
-            specifiedType: const FullType.nullable(VoiceServerAdminResponse),
-          );
+    if (object.server != null) {
+      yield r'server';
+      yield serializers.serialize(
+        object.server,
+        specifiedType: const FullType.nullable(VoiceServerAdminResponse),
+      );
+    }
   }
 
   @override

@@ -71,20 +71,20 @@ class _$ResolveReportResponseSerializer
       object.status,
       specifiedType: const FullType(ReportStatus),
     );
-    yield r'resolved_at';
-    yield object.resolvedAt == null
-        ? null
-        : serializers.serialize(
-            object.resolvedAt,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'public_comment';
-    yield object.publicComment == null
-        ? null
-        : serializers.serialize(
-            object.publicComment,
-            specifiedType: const FullType.nullable(String),
-          );
+    if (object.resolvedAt != null) {
+      yield r'resolved_at';
+      yield serializers.serialize(
+        object.resolvedAt,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.publicComment != null) {
+      yield r'public_comment';
+      yield serializers.serialize(
+        object.publicComment,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
   }
 
   @override

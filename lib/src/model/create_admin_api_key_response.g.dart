@@ -16,9 +16,9 @@ class _$CreateAdminApiKeyResponse extends CreateAdminApiKeyResponse {
   @override
   final String createdAt;
   @override
-  final String? expiresAt;
-  @override
   final BuiltList<String> acls;
+  @override
+  final String? expiresAt;
 
   factory _$CreateAdminApiKeyResponse(
           [void Function(CreateAdminApiKeyResponseBuilder)? updates]) =>
@@ -29,8 +29,8 @@ class _$CreateAdminApiKeyResponse extends CreateAdminApiKeyResponse {
       required this.key,
       required this.name,
       required this.createdAt,
-      this.expiresAt,
-      required this.acls})
+      required this.acls,
+      this.expiresAt})
       : super._();
   @override
   CreateAdminApiKeyResponse rebuild(
@@ -49,8 +49,8 @@ class _$CreateAdminApiKeyResponse extends CreateAdminApiKeyResponse {
         key == other.key &&
         name == other.name &&
         createdAt == other.createdAt &&
-        expiresAt == other.expiresAt &&
-        acls == other.acls;
+        acls == other.acls &&
+        expiresAt == other.expiresAt;
   }
 
   @override
@@ -60,8 +60,8 @@ class _$CreateAdminApiKeyResponse extends CreateAdminApiKeyResponse {
     _$hash = $jc(_$hash, key.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, createdAt.hashCode);
-    _$hash = $jc(_$hash, expiresAt.hashCode);
     _$hash = $jc(_$hash, acls.hashCode);
+    _$hash = $jc(_$hash, expiresAt.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -73,8 +73,8 @@ class _$CreateAdminApiKeyResponse extends CreateAdminApiKeyResponse {
           ..add('key', key)
           ..add('name', name)
           ..add('createdAt', createdAt)
-          ..add('expiresAt', expiresAt)
-          ..add('acls', acls))
+          ..add('acls', acls)
+          ..add('expiresAt', expiresAt))
         .toString();
   }
 }
@@ -100,13 +100,13 @@ class CreateAdminApiKeyResponseBuilder
   String? get createdAt => _$this._createdAt;
   set createdAt(String? createdAt) => _$this._createdAt = createdAt;
 
-  String? _expiresAt;
-  String? get expiresAt => _$this._expiresAt;
-  set expiresAt(String? expiresAt) => _$this._expiresAt = expiresAt;
-
   ListBuilder<String>? _acls;
   ListBuilder<String> get acls => _$this._acls ??= ListBuilder<String>();
   set acls(ListBuilder<String>? acls) => _$this._acls = acls;
+
+  String? _expiresAt;
+  String? get expiresAt => _$this._expiresAt;
+  set expiresAt(String? expiresAt) => _$this._expiresAt = expiresAt;
 
   CreateAdminApiKeyResponseBuilder() {
     CreateAdminApiKeyResponse._defaults(this);
@@ -119,8 +119,8 @@ class CreateAdminApiKeyResponseBuilder
       _key = $v.key;
       _name = $v.name;
       _createdAt = $v.createdAt;
-      _expiresAt = $v.expiresAt;
       _acls = $v.acls.toBuilder();
+      _expiresAt = $v.expiresAt;
       _$v = null;
     }
     return this;
@@ -152,8 +152,8 @@ class CreateAdminApiKeyResponseBuilder
                 name, r'CreateAdminApiKeyResponse', 'name'),
             createdAt: BuiltValueNullFieldError.checkNotNull(
                 createdAt, r'CreateAdminApiKeyResponse', 'createdAt'),
-            expiresAt: expiresAt,
             acls: acls.build(),
+            expiresAt: expiresAt,
           );
     } catch (_) {
       late String _$failedField;

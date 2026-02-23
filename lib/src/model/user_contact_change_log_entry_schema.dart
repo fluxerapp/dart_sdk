@@ -13,11 +13,11 @@ part 'user_contact_change_log_entry_schema.g.dart';
 /// Properties:
 /// * [eventId]
 /// * [field]
+/// * [eventAt]
 /// * [oldValue]
 /// * [newValue]
 /// * [reason]
 /// * [actorUserId]
-/// * [eventAt]
 @BuiltValue()
 abstract class UserContactChangeLogEntrySchema
     implements
@@ -28,6 +28,9 @@ abstract class UserContactChangeLogEntrySchema
 
   @BuiltValueField(wireName: r'field')
   String get field;
+
+  @BuiltValueField(wireName: r'event_at')
+  String get eventAt;
 
   @BuiltValueField(wireName: r'old_value')
   String? get oldValue;
@@ -40,9 +43,6 @@ abstract class UserContactChangeLogEntrySchema
 
   @BuiltValueField(wireName: r'actor_user_id')
   String? get actorUserId;
-
-  @BuiltValueField(wireName: r'event_at')
-  String get eventAt;
 
   UserContactChangeLogEntrySchema._();
 
@@ -84,39 +84,39 @@ class _$UserContactChangeLogEntrySchemaSerializer
       object.field,
       specifiedType: const FullType(String),
     );
-    yield r'old_value';
-    yield object.oldValue == null
-        ? null
-        : serializers.serialize(
-            object.oldValue,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'new_value';
-    yield object.newValue == null
-        ? null
-        : serializers.serialize(
-            object.newValue,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'reason';
-    yield object.reason == null
-        ? null
-        : serializers.serialize(
-            object.reason,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'actor_user_id';
-    yield object.actorUserId == null
-        ? null
-        : serializers.serialize(
-            object.actorUserId,
-            specifiedType: const FullType.nullable(String),
-          );
     yield r'event_at';
     yield serializers.serialize(
       object.eventAt,
       specifiedType: const FullType(String),
     );
+    if (object.oldValue != null) {
+      yield r'old_value';
+      yield serializers.serialize(
+        object.oldValue,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.newValue != null) {
+      yield r'new_value';
+      yield serializers.serialize(
+        object.newValue,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.reason != null) {
+      yield r'reason';
+      yield serializers.serialize(
+        object.reason,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.actorUserId != null) {
+      yield r'actor_user_id';
+      yield serializers.serialize(
+        object.actorUserId,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
   }
 
   @override
@@ -156,6 +156,13 @@ class _$UserContactChangeLogEntrySchemaSerializer
           ) as String;
           result.field = valueDes;
           break;
+        case r'event_at':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.eventAt = valueDes;
+          break;
         case r'old_value':
           final valueDes = serializers.deserialize(
             value,
@@ -187,13 +194,6 @@ class _$UserContactChangeLogEntrySchemaSerializer
           ) as String?;
           if (valueDes == null) continue;
           result.actorUserId = valueDes;
-          break;
-        case r'event_at':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.eventAt = valueDes;
           break;
         default:
           unhandled.add(key);

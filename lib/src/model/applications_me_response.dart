@@ -14,11 +14,11 @@ part 'applications_me_response.g.dart';
 /// Properties:
 /// * [id] - The unique identifier of the application
 /// * [name] - The name of the application
-/// * [icon]
-/// * [description]
 /// * [botPublic] - Whether the bot can be invited by anyone
 /// * [botRequireCodeGrant] - Whether the bot requires OAuth2 code grant
 /// * [flags] - The application flags
+/// * [icon]
+/// * [description]
 /// * [bot]
 @BuiltValue()
 abstract class ApplicationsMeResponse
@@ -31,12 +31,6 @@ abstract class ApplicationsMeResponse
   @BuiltValueField(wireName: r'name')
   String get name;
 
-  @BuiltValueField(wireName: r'icon')
-  String? get icon;
-
-  @BuiltValueField(wireName: r'description')
-  String? get description;
-
   /// Whether the bot can be invited by anyone
   @BuiltValueField(wireName: r'bot_public')
   bool get botPublic;
@@ -48,6 +42,12 @@ abstract class ApplicationsMeResponse
   /// The application flags
   @BuiltValueField(wireName: r'flags')
   int get flags;
+
+  @BuiltValueField(wireName: r'icon')
+  String? get icon;
+
+  @BuiltValueField(wireName: r'description')
+  String? get description;
 
   @BuiltValueField(wireName: r'bot')
   ApplicationBotResponse? get bot;
@@ -92,20 +92,6 @@ class _$ApplicationsMeResponseSerializer
       object.name,
       specifiedType: const FullType(String),
     );
-    yield r'icon';
-    yield object.icon == null
-        ? null
-        : serializers.serialize(
-            object.icon,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'description';
-    yield object.description == null
-        ? null
-        : serializers.serialize(
-            object.description,
-            specifiedType: const FullType.nullable(String),
-          );
     yield r'bot_public';
     yield serializers.serialize(
       object.botPublic,
@@ -121,6 +107,20 @@ class _$ApplicationsMeResponseSerializer
       object.flags,
       specifiedType: const FullType(int),
     );
+    if (object.icon != null) {
+      yield r'icon';
+      yield serializers.serialize(
+        object.icon,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.description != null) {
+      yield r'description';
+      yield serializers.serialize(
+        object.description,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
     if (object.bot != null) {
       yield r'bot';
       yield serializers.serialize(
@@ -167,22 +167,6 @@ class _$ApplicationsMeResponseSerializer
           ) as String;
           result.name = valueDes;
           break;
-        case r'icon':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.icon = valueDes;
-          break;
-        case r'description':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.description = valueDes;
-          break;
         case r'bot_public':
           final valueDes = serializers.deserialize(
             value,
@@ -203,6 +187,22 @@ class _$ApplicationsMeResponseSerializer
             specifiedType: const FullType(int),
           ) as int;
           result.flags = valueDes;
+          break;
+        case r'icon':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.icon = valueDes;
+          break;
+        case r'description':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.description = valueDes;
           break;
         case r'bot':
           final valueDes = serializers.deserialize(

@@ -19,9 +19,9 @@ part 'scheduled_message_response_schema.g.dart';
 /// * [scheduledLocalAt] - The ISO 8601 timestamp in the user local timezone
 /// * [timezone] - The IANA timezone identifier used for scheduling
 /// * [status] - The current status of the scheduled message
-/// * [statusReason]
 /// * [payload]
 /// * [createdAt] - The ISO 8601 timestamp when this scheduled message was created
+/// * [statusReason]
 /// * [invalidatedAt]
 @BuiltValue()
 abstract class ScheduledMessageResponseSchema
@@ -53,15 +53,15 @@ abstract class ScheduledMessageResponseSchema
   ScheduledMessageResponseSchemaStatusEnum get status;
   // enum statusEnum {  pending,  invalid,  scheduled,  sent,  failed,  cancelled,  };
 
-  @BuiltValueField(wireName: r'status_reason')
-  String? get statusReason;
-
   @BuiltValueField(wireName: r'payload')
   ScheduledMessageResponseSchemaPayload get payload;
 
   /// The ISO 8601 timestamp when this scheduled message was created
   @BuiltValueField(wireName: r'created_at')
   String get createdAt;
+
+  @BuiltValueField(wireName: r'status_reason')
+  String? get statusReason;
 
   @BuiltValueField(wireName: r'invalidated_at')
   String? get invalidatedAt;
@@ -126,13 +126,6 @@ class _$ScheduledMessageResponseSchemaSerializer
       object.status,
       specifiedType: const FullType(ScheduledMessageResponseSchemaStatusEnum),
     );
-    yield r'status_reason';
-    yield object.statusReason == null
-        ? null
-        : serializers.serialize(
-            object.statusReason,
-            specifiedType: const FullType.nullable(String),
-          );
     yield r'payload';
     yield serializers.serialize(
       object.payload,
@@ -143,13 +136,20 @@ class _$ScheduledMessageResponseSchemaSerializer
       object.createdAt,
       specifiedType: const FullType(String),
     );
-    yield r'invalidated_at';
-    yield object.invalidatedAt == null
-        ? null
-        : serializers.serialize(
-            object.invalidatedAt,
-            specifiedType: const FullType.nullable(String),
-          );
+    if (object.statusReason != null) {
+      yield r'status_reason';
+      yield serializers.serialize(
+        object.statusReason,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.invalidatedAt != null) {
+      yield r'invalidated_at';
+      yield serializers.serialize(
+        object.invalidatedAt,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
   }
 
   @override
@@ -218,14 +218,6 @@ class _$ScheduledMessageResponseSchemaSerializer
           ) as ScheduledMessageResponseSchemaStatusEnum;
           result.status = valueDes;
           break;
-        case r'status_reason':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.statusReason = valueDes;
-          break;
         case r'payload':
           final valueDes = serializers.deserialize(
             value,
@@ -240,6 +232,14 @@ class _$ScheduledMessageResponseSchemaSerializer
             specifiedType: const FullType(String),
           ) as String;
           result.createdAt = valueDes;
+          break;
+        case r'status_reason':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.statusReason = valueDes;
           break;
         case r'invalidated_at':
           final valueDes = serializers.deserialize(

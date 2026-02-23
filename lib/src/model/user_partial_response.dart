@@ -14,10 +14,10 @@ part 'user_partial_response.g.dart';
 /// * [id] - The unique identifier (snowflake) for this user
 /// * [username] - The username of the user, not unique across the platform
 /// * [discriminator] - The four-digit discriminator tag of the user
+/// * [flags] - The public flags on the user account
 /// * [globalName]
 /// * [avatar]
-/// * [avatarColor]
-/// * [flags] - The public flags on the user account
+/// * [avatarColor] - The dominant avatar color of the user as an integer
 /// * [bot] - Whether the user is a bot account
 /// * [system] - Whether the user is an official system user
 @BuiltValue()
@@ -35,18 +35,19 @@ abstract class UserPartialResponse
   @BuiltValueField(wireName: r'discriminator')
   String get discriminator;
 
+  /// The public flags on the user account
+  @BuiltValueField(wireName: r'flags')
+  int get flags;
+
   @BuiltValueField(wireName: r'global_name')
   String? get globalName;
 
   @BuiltValueField(wireName: r'avatar')
   String? get avatar;
 
+  /// The dominant avatar color of the user as an integer
   @BuiltValueField(wireName: r'avatar_color')
-  int get avatarColor;
-
-  /// The public flags on the user account
-  @BuiltValueField(wireName: r'flags')
-  int get flags;
+  int? get avatarColor;
 
   /// Whether the user is a bot account
   @BuiltValueField(wireName: r'bot')
@@ -100,30 +101,32 @@ class _$UserPartialResponseSerializer
       object.discriminator,
       specifiedType: const FullType(String),
     );
-    yield r'global_name';
-    yield object.globalName == null
-        ? null
-        : serializers.serialize(
-            object.globalName,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'avatar';
-    yield object.avatar == null
-        ? null
-        : serializers.serialize(
-            object.avatar,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'avatar_color';
-    yield serializers.serialize(
-      object.avatarColor,
-      specifiedType: const FullType(int),
-    );
     yield r'flags';
     yield serializers.serialize(
       object.flags,
       specifiedType: const FullType(int),
     );
+    if (object.globalName != null) {
+      yield r'global_name';
+      yield serializers.serialize(
+        object.globalName,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.avatar != null) {
+      yield r'avatar';
+      yield serializers.serialize(
+        object.avatar,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.avatarColor != null) {
+      yield r'avatar_color';
+      yield serializers.serialize(
+        object.avatarColor,
+        specifiedType: const FullType(int),
+      );
+    }
     if (object.bot != null) {
       yield r'bot';
       yield serializers.serialize(
@@ -184,6 +187,13 @@ class _$UserPartialResponseSerializer
           ) as String;
           result.discriminator = valueDes;
           break;
+        case r'flags':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.flags = valueDes;
+          break;
         case r'global_name':
           final valueDes = serializers.deserialize(
             value,
@@ -206,13 +216,6 @@ class _$UserPartialResponseSerializer
             specifiedType: const FullType(int),
           ) as int;
           result.avatarColor = valueDes;
-          break;
-        case r'flags':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.flags = valueDes;
           break;
         case r'bot':
           final valueDes = serializers.deserialize(

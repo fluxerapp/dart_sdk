@@ -49,14 +49,13 @@ class _$GetVoiceRegionResponseSerializer
     GetVoiceRegionResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'region';
-    yield object.region == null
-        ? null
-        : serializers.serialize(
-            object.region,
-            specifiedType:
-                const FullType.nullable(VoiceRegionWithServersResponse),
-          );
+    if (object.region != null) {
+      yield r'region';
+      yield serializers.serialize(
+        object.region,
+        specifiedType: const FullType.nullable(VoiceRegionWithServersResponse),
+      );
+    }
   }
 
   @override

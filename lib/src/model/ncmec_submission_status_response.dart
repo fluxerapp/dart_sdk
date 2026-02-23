@@ -15,7 +15,7 @@ part 'ncmec_submission_status_response.g.dart';
 /// * [status] - NCMEC submission status
 /// * [ncmecReportId]
 /// * [submittedAt]
-/// * [submittedByAdminId]
+/// * [submittedByAdminId] - ID of the admin who submitted the report
 /// * [failureReason]
 @BuiltValue()
 abstract class NcmecSubmissionStatusResponse
@@ -33,8 +33,9 @@ abstract class NcmecSubmissionStatusResponse
   @BuiltValueField(wireName: r'submitted_at')
   String? get submittedAt;
 
+  /// ID of the admin who submitted the report
   @BuiltValueField(wireName: r'submitted_by_admin_id')
-  String get submittedByAdminId;
+  String? get submittedByAdminId;
 
   @BuiltValueField(wireName: r'failure_reason')
   String? get failureReason;
@@ -74,32 +75,34 @@ class _$NcmecSubmissionStatusResponseSerializer
       object.status,
       specifiedType: const FullType(NcmecSubmissionStatusResponseStatusEnum),
     );
-    yield r'ncmec_report_id';
-    yield object.ncmecReportId == null
-        ? null
-        : serializers.serialize(
-            object.ncmecReportId,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'submitted_at';
-    yield object.submittedAt == null
-        ? null
-        : serializers.serialize(
-            object.submittedAt,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'submitted_by_admin_id';
-    yield serializers.serialize(
-      object.submittedByAdminId,
-      specifiedType: const FullType(String),
-    );
-    yield r'failure_reason';
-    yield object.failureReason == null
-        ? null
-        : serializers.serialize(
-            object.failureReason,
-            specifiedType: const FullType.nullable(String),
-          );
+    if (object.ncmecReportId != null) {
+      yield r'ncmec_report_id';
+      yield serializers.serialize(
+        object.ncmecReportId,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.submittedAt != null) {
+      yield r'submitted_at';
+      yield serializers.serialize(
+        object.submittedAt,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.submittedByAdminId != null) {
+      yield r'submitted_by_admin_id';
+      yield serializers.serialize(
+        object.submittedByAdminId,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.failureReason != null) {
+      yield r'failure_reason';
+      yield serializers.serialize(
+        object.failureReason,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
   }
 
   @override

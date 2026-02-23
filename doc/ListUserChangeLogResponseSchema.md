@@ -9,7 +9,7 @@ import 'package:fluxer_dart/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **entries** | [**BuiltList&lt;UserContactChangeLogEntrySchema&gt;**](UserContactChangeLogEntrySchema.md) |  | 
-**nextPageToken** | **String** |  | 
+**nextPageToken** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -21,14 +21,14 @@ part 'channel_update_request.g.dart';
 /// * [type]
 /// * [topic]
 /// * [url]
-/// * [parentId]
+/// * [parentId] - ID of the parent category for this channel
 /// * [bitrate]
 /// * [userLimit]
 /// * [permissionOverwrites] - Permission overwrites for roles and members
 /// * [nsfw]
 /// * [rateLimitPerUser]
 /// * [icon] - Base64-encoded image data
-/// * [ownerId]
+/// * [ownerId] - ID of the new owner of the group DM
 /// * [nicks] - User nickname overrides (user ID to nickname mapping)
 /// * [rtcRegion]
 /// * [name]

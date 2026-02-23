@@ -10,14 +10,13 @@ class _$ReserveVisionarySlotRequest extends ReserveVisionarySlotRequest {
   @override
   final int slotIndex;
   @override
-  final String userId;
+  final String? userId;
 
   factory _$ReserveVisionarySlotRequest(
           [void Function(ReserveVisionarySlotRequestBuilder)? updates]) =>
       (ReserveVisionarySlotRequestBuilder()..update(updates))._build();
 
-  _$ReserveVisionarySlotRequest._(
-      {required this.slotIndex, required this.userId})
+  _$ReserveVisionarySlotRequest._({required this.slotIndex, this.userId})
       : super._();
   @override
   ReserveVisionarySlotRequest rebuild(
@@ -100,8 +99,7 @@ class ReserveVisionarySlotRequestBuilder
         _$ReserveVisionarySlotRequest._(
           slotIndex: BuiltValueNullFieldError.checkNotNull(
               slotIndex, r'ReserveVisionarySlotRequest', 'slotIndex'),
-          userId: BuiltValueNullFieldError.checkNotNull(
-              userId, r'ReserveVisionarySlotRequest', 'userId'),
+          userId: userId,
         );
     replace(_$result);
     return _$result;

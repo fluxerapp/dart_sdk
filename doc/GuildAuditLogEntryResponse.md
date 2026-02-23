@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** | The unique identifier for this audit log entry | 
 **actionType** | [**AuditLogActionType**](AuditLogActionType.md) |  | 
-**userId** | **String** |  | [optional] 
+**userId** | **String** | The user ID of the user who performed the action | [optional] 
 **targetId** | **String** |  | [optional] 
 **reason** | **String** | The reason provided for the action | [optional] 
 **options** | [**GuildAuditLogEntryResponseOptions**](GuildAuditLogEntryResponseOptions.md) |  | [optional] 

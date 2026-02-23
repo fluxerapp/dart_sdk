@@ -14,7 +14,7 @@ part 'custom_status_response.g.dart';
 /// * [emojiAnimated] - Whether the status emoji is animated
 /// * [text]
 /// * [expiresAt]
-/// * [emojiId]
+/// * [emojiId] - The ID of the custom emoji used in the status
 /// * [emojiName]
 @BuiltValue()
 abstract class CustomStatusResponse
@@ -29,6 +29,7 @@ abstract class CustomStatusResponse
   @BuiltValueField(wireName: r'expires_at')
   DateTime? get expiresAt;
 
+  /// The ID of the custom emoji used in the status
   @BuiltValueField(wireName: r'emoji_id')
   String? get emojiId;
 

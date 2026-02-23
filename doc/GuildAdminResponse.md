@@ -12,9 +12,9 @@ Name | Type | Description | Notes
 **name** | **String** | The name of the guild | 
 **features** | **BuiltList&lt;String&gt;** | Array of guild feature flags | 
 **ownerId** | **String** | The ID of the guild owner | 
-**icon** | **String** |  | 
-**banner** | **String** |  | 
 **memberCount** | **int** | The number of members in the guild | 
+**icon** | **String** |  | [optional] 
+**banner** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

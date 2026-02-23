@@ -12,10 +12,10 @@ Name | Type | Description | Notes
 **createdAt** | **String** | ISO timestamp when the session was created | 
 **approxLastUsedAt** | **String** | ISO timestamp of the session last usage (approximate) | 
 **clientIp** | **String** | Client IP address | 
-**clientIpReverse** | **String** |  | 
-**clientOs** | **String** |  | 
-**clientPlatform** | **String** |  | 
-**clientLocation** | **String** |  | 
+**clientIpReverse** | **String** |  | [optional] 
+**clientOs** | **String** |  | [optional] 
+**clientPlatform** | **String** |  | [optional] 
+**clientLocation** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

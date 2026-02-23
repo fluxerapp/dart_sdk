@@ -14,14 +14,14 @@ Name | Type | Description | Notes
 **features** | **BuiltList&lt;String&gt;** | Array of guild feature flags | 
 **icon** | **String** |  | [optional] 
 **banner** | **String** |  | [optional] 
-**bannerWidth** | **int** |  | [optional] 
-**bannerHeight** | **int** |  | [optional] 
+**bannerWidth** | **int** | The width of the guild banner in pixels | [optional] 
+**bannerHeight** | **int** | The height of the guild banner in pixels | [optional] 
 **splash** | **String** |  | [optional] 
-**splashWidth** | **int** |  | [optional] 
-**splashHeight** | **int** |  | [optional] 
+**splashWidth** | **int** | The width of the guild splash in pixels | [optional] 
+**splashHeight** | **int** | The height of the guild splash in pixels | [optional] 
 **embedSplash** | **String** |  | [optional] 
-**embedSplashWidth** | **int** |  | [optional] 
-**embedSplashHeight** | **int** |  | [optional] 
+**embedSplashWidth** | **int** | The width of the embedded invite splash in pixels | [optional] 
+**embedSplashHeight** | **int** | The height of the embedded invite splash in pixels | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

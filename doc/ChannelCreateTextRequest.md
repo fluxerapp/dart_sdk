@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **name** | **String** | The name of the channel | 
 **topic** | **String** |  | [optional] 
 **url** | **String** |  | [optional] 
-**parentId** | **String** |  | [optional] 
+**parentId** | **String** | ID of the parent category for this channel | [optional] 
 **bitrate** | **int** |  | [optional] 
 **userLimit** | **int** |  | [optional] 
 **permissionOverwrites** | [**BuiltList&lt;ChannelOverwriteRequest&gt;**](ChannelOverwriteRequest.md) | Permission overwrites for roles and members | [optional] 

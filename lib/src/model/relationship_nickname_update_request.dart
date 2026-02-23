@@ -50,13 +50,13 @@ class _$RelationshipNicknameUpdateRequestSerializer
     RelationshipNicknameUpdateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'nickname';
-    yield object.nickname == null
-        ? null
-        : serializers.serialize(
-            object.nickname,
-            specifiedType: const FullType.nullable(String),
-          );
+    if (object.nickname != null) {
+      yield r'nickname';
+      yield serializers.serialize(
+        object.nickname,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
   }
 
   @override

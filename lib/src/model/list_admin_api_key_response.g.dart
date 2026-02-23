@@ -14,13 +14,13 @@ class _$ListAdminApiKeyResponse extends ListAdminApiKeyResponse {
   @override
   final String createdAt;
   @override
-  final String? lastUsedAt;
-  @override
-  final String? expiresAt;
-  @override
   final String createdByUserId;
   @override
   final BuiltList<String> acls;
+  @override
+  final String? lastUsedAt;
+  @override
+  final String? expiresAt;
 
   factory _$ListAdminApiKeyResponse(
           [void Function(ListAdminApiKeyResponseBuilder)? updates]) =>
@@ -30,10 +30,10 @@ class _$ListAdminApiKeyResponse extends ListAdminApiKeyResponse {
       {required this.keyId,
       required this.name,
       required this.createdAt,
-      this.lastUsedAt,
-      this.expiresAt,
       required this.createdByUserId,
-      required this.acls})
+      required this.acls,
+      this.lastUsedAt,
+      this.expiresAt})
       : super._();
   @override
   ListAdminApiKeyResponse rebuild(
@@ -51,10 +51,10 @@ class _$ListAdminApiKeyResponse extends ListAdminApiKeyResponse {
         keyId == other.keyId &&
         name == other.name &&
         createdAt == other.createdAt &&
-        lastUsedAt == other.lastUsedAt &&
-        expiresAt == other.expiresAt &&
         createdByUserId == other.createdByUserId &&
-        acls == other.acls;
+        acls == other.acls &&
+        lastUsedAt == other.lastUsedAt &&
+        expiresAt == other.expiresAt;
   }
 
   @override
@@ -63,10 +63,10 @@ class _$ListAdminApiKeyResponse extends ListAdminApiKeyResponse {
     _$hash = $jc(_$hash, keyId.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, createdAt.hashCode);
-    _$hash = $jc(_$hash, lastUsedAt.hashCode);
-    _$hash = $jc(_$hash, expiresAt.hashCode);
     _$hash = $jc(_$hash, createdByUserId.hashCode);
     _$hash = $jc(_$hash, acls.hashCode);
+    _$hash = $jc(_$hash, lastUsedAt.hashCode);
+    _$hash = $jc(_$hash, expiresAt.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -77,10 +77,10 @@ class _$ListAdminApiKeyResponse extends ListAdminApiKeyResponse {
           ..add('keyId', keyId)
           ..add('name', name)
           ..add('createdAt', createdAt)
-          ..add('lastUsedAt', lastUsedAt)
-          ..add('expiresAt', expiresAt)
           ..add('createdByUserId', createdByUserId)
-          ..add('acls', acls))
+          ..add('acls', acls)
+          ..add('lastUsedAt', lastUsedAt)
+          ..add('expiresAt', expiresAt))
         .toString();
   }
 }
@@ -102,14 +102,6 @@ class ListAdminApiKeyResponseBuilder
   String? get createdAt => _$this._createdAt;
   set createdAt(String? createdAt) => _$this._createdAt = createdAt;
 
-  String? _lastUsedAt;
-  String? get lastUsedAt => _$this._lastUsedAt;
-  set lastUsedAt(String? lastUsedAt) => _$this._lastUsedAt = lastUsedAt;
-
-  String? _expiresAt;
-  String? get expiresAt => _$this._expiresAt;
-  set expiresAt(String? expiresAt) => _$this._expiresAt = expiresAt;
-
   String? _createdByUserId;
   String? get createdByUserId => _$this._createdByUserId;
   set createdByUserId(String? createdByUserId) =>
@@ -118,6 +110,14 @@ class ListAdminApiKeyResponseBuilder
   ListBuilder<String>? _acls;
   ListBuilder<String> get acls => _$this._acls ??= ListBuilder<String>();
   set acls(ListBuilder<String>? acls) => _$this._acls = acls;
+
+  String? _lastUsedAt;
+  String? get lastUsedAt => _$this._lastUsedAt;
+  set lastUsedAt(String? lastUsedAt) => _$this._lastUsedAt = lastUsedAt;
+
+  String? _expiresAt;
+  String? get expiresAt => _$this._expiresAt;
+  set expiresAt(String? expiresAt) => _$this._expiresAt = expiresAt;
 
   ListAdminApiKeyResponseBuilder() {
     ListAdminApiKeyResponse._defaults(this);
@@ -129,10 +129,10 @@ class ListAdminApiKeyResponseBuilder
       _keyId = $v.keyId;
       _name = $v.name;
       _createdAt = $v.createdAt;
-      _lastUsedAt = $v.lastUsedAt;
-      _expiresAt = $v.expiresAt;
       _createdByUserId = $v.createdByUserId;
       _acls = $v.acls.toBuilder();
+      _lastUsedAt = $v.lastUsedAt;
+      _expiresAt = $v.expiresAt;
       _$v = null;
     }
     return this;
@@ -162,11 +162,11 @@ class ListAdminApiKeyResponseBuilder
                 name, r'ListAdminApiKeyResponse', 'name'),
             createdAt: BuiltValueNullFieldError.checkNotNull(
                 createdAt, r'ListAdminApiKeyResponse', 'createdAt'),
-            lastUsedAt: lastUsedAt,
-            expiresAt: expiresAt,
             createdByUserId: BuiltValueNullFieldError.checkNotNull(
                 createdByUserId, r'ListAdminApiKeyResponse', 'createdByUserId'),
             acls: acls.build(),
+            lastUsedAt: lastUsedAt,
+            expiresAt: expiresAt,
           );
     } catch (_) {
       late String _$failedField;

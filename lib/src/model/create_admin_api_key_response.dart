@@ -16,8 +16,8 @@ part 'create_admin_api_key_response.g.dart';
 /// * [key] - The generated API key secret (only shown once)
 /// * [name] - Display name for the API key
 /// * [createdAt] - ISO 8601 timestamp when the key was created
-/// * [expiresAt]
 /// * [acls] - List of access control permissions for the key
+/// * [expiresAt]
 @BuiltValue()
 abstract class CreateAdminApiKeyResponse
     implements
@@ -38,12 +38,12 @@ abstract class CreateAdminApiKeyResponse
   @BuiltValueField(wireName: r'created_at')
   String get createdAt;
 
-  @BuiltValueField(wireName: r'expires_at')
-  String? get expiresAt;
-
   /// List of access control permissions for the key
   @BuiltValueField(wireName: r'acls')
   BuiltList<String> get acls;
+
+  @BuiltValueField(wireName: r'expires_at')
+  String? get expiresAt;
 
   CreateAdminApiKeyResponse._();
 
@@ -95,18 +95,18 @@ class _$CreateAdminApiKeyResponseSerializer
       object.createdAt,
       specifiedType: const FullType(String),
     );
-    yield r'expires_at';
-    yield object.expiresAt == null
-        ? null
-        : serializers.serialize(
-            object.expiresAt,
-            specifiedType: const FullType.nullable(String),
-          );
     yield r'acls';
     yield serializers.serialize(
       object.acls,
       specifiedType: const FullType(BuiltList, [FullType(String)]),
     );
+    if (object.expiresAt != null) {
+      yield r'expires_at';
+      yield serializers.serialize(
+        object.expiresAt,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
   }
 
   @override
@@ -160,6 +160,13 @@ class _$CreateAdminApiKeyResponseSerializer
           ) as String;
           result.createdAt = valueDes;
           break;
+        case r'acls':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>;
+          result.acls.replace(valueDes);
+          break;
         case r'expires_at':
           final valueDes = serializers.deserialize(
             value,
@@ -167,13 +174,6 @@ class _$CreateAdminApiKeyResponseSerializer
           ) as String?;
           if (valueDes == null) continue;
           result.expiresAt = valueDes;
-          break;
-        case r'acls':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
-          result.acls.replace(valueDes);
           break;
         default:
           unhandled.add(key);

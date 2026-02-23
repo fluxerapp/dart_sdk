@@ -21,7 +21,7 @@ part 'guild_member_response.g.dart';
 /// * [nick]
 /// * [avatar]
 /// * [banner]
-/// * [accentColor]
+/// * [accentColor] - The accent colour of the member guild profile as an integer
 /// * [communicationDisabledUntil]
 /// * [profileFlags] - Member profile flags
 @BuiltValue()
@@ -55,6 +55,7 @@ abstract class GuildMemberResponse
   @BuiltValueField(wireName: r'banner')
   String? get banner;
 
+  /// The accent colour of the member guild profile as an integer
   @BuiltValueField(wireName: r'accent_color')
   int? get accentColor;
 

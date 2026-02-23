@@ -18,13 +18,13 @@ class _$InstanceConfigResponse extends InstanceConfigResponse {
   @override
   final bool manualReviewActiveNow;
   @override
-  final String? registrationAlertsWebhookUrl;
-  @override
-  final String? systemAlertsWebhookUrl;
-  @override
   final SsoConfigResponse sso;
   @override
   final bool selfHosted;
+  @override
+  final String? registrationAlertsWebhookUrl;
+  @override
+  final String? systemAlertsWebhookUrl;
 
   factory _$InstanceConfigResponse(
           [void Function(InstanceConfigResponseBuilder)? updates]) =>
@@ -36,10 +36,10 @@ class _$InstanceConfigResponse extends InstanceConfigResponse {
       required this.manualReviewScheduleStartHourUtc,
       required this.manualReviewScheduleEndHourUtc,
       required this.manualReviewActiveNow,
-      this.registrationAlertsWebhookUrl,
-      this.systemAlertsWebhookUrl,
       required this.sso,
-      required this.selfHosted})
+      required this.selfHosted,
+      this.registrationAlertsWebhookUrl,
+      this.systemAlertsWebhookUrl})
       : super._();
   @override
   InstanceConfigResponse rebuild(
@@ -61,10 +61,10 @@ class _$InstanceConfigResponse extends InstanceConfigResponse {
         manualReviewScheduleEndHourUtc ==
             other.manualReviewScheduleEndHourUtc &&
         manualReviewActiveNow == other.manualReviewActiveNow &&
-        registrationAlertsWebhookUrl == other.registrationAlertsWebhookUrl &&
-        systemAlertsWebhookUrl == other.systemAlertsWebhookUrl &&
         sso == other.sso &&
-        selfHosted == other.selfHosted;
+        selfHosted == other.selfHosted &&
+        registrationAlertsWebhookUrl == other.registrationAlertsWebhookUrl &&
+        systemAlertsWebhookUrl == other.systemAlertsWebhookUrl;
   }
 
   @override
@@ -75,10 +75,10 @@ class _$InstanceConfigResponse extends InstanceConfigResponse {
     _$hash = $jc(_$hash, manualReviewScheduleStartHourUtc.hashCode);
     _$hash = $jc(_$hash, manualReviewScheduleEndHourUtc.hashCode);
     _$hash = $jc(_$hash, manualReviewActiveNow.hashCode);
-    _$hash = $jc(_$hash, registrationAlertsWebhookUrl.hashCode);
-    _$hash = $jc(_$hash, systemAlertsWebhookUrl.hashCode);
     _$hash = $jc(_$hash, sso.hashCode);
     _$hash = $jc(_$hash, selfHosted.hashCode);
+    _$hash = $jc(_$hash, registrationAlertsWebhookUrl.hashCode);
+    _$hash = $jc(_$hash, systemAlertsWebhookUrl.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -93,10 +93,10 @@ class _$InstanceConfigResponse extends InstanceConfigResponse {
           ..add(
               'manualReviewScheduleEndHourUtc', manualReviewScheduleEndHourUtc)
           ..add('manualReviewActiveNow', manualReviewActiveNow)
-          ..add('registrationAlertsWebhookUrl', registrationAlertsWebhookUrl)
-          ..add('systemAlertsWebhookUrl', systemAlertsWebhookUrl)
           ..add('sso', sso)
-          ..add('selfHosted', selfHosted))
+          ..add('selfHosted', selfHosted)
+          ..add('registrationAlertsWebhookUrl', registrationAlertsWebhookUrl)
+          ..add('systemAlertsWebhookUrl', systemAlertsWebhookUrl))
         .toString();
   }
 }
@@ -133,6 +133,15 @@ class InstanceConfigResponseBuilder
   set manualReviewActiveNow(bool? manualReviewActiveNow) =>
       _$this._manualReviewActiveNow = manualReviewActiveNow;
 
+  SsoConfigResponseBuilder? _sso;
+  SsoConfigResponseBuilder get sso =>
+      _$this._sso ??= SsoConfigResponseBuilder();
+  set sso(SsoConfigResponseBuilder? sso) => _$this._sso = sso;
+
+  bool? _selfHosted;
+  bool? get selfHosted => _$this._selfHosted;
+  set selfHosted(bool? selfHosted) => _$this._selfHosted = selfHosted;
+
   String? _registrationAlertsWebhookUrl;
   String? get registrationAlertsWebhookUrl =>
       _$this._registrationAlertsWebhookUrl;
@@ -143,15 +152,6 @@ class InstanceConfigResponseBuilder
   String? get systemAlertsWebhookUrl => _$this._systemAlertsWebhookUrl;
   set systemAlertsWebhookUrl(String? systemAlertsWebhookUrl) =>
       _$this._systemAlertsWebhookUrl = systemAlertsWebhookUrl;
-
-  SsoConfigResponseBuilder? _sso;
-  SsoConfigResponseBuilder get sso =>
-      _$this._sso ??= SsoConfigResponseBuilder();
-  set sso(SsoConfigResponseBuilder? sso) => _$this._sso = sso;
-
-  bool? _selfHosted;
-  bool? get selfHosted => _$this._selfHosted;
-  set selfHosted(bool? selfHosted) => _$this._selfHosted = selfHosted;
 
   InstanceConfigResponseBuilder() {
     InstanceConfigResponse._defaults(this);
@@ -165,10 +165,10 @@ class InstanceConfigResponseBuilder
       _manualReviewScheduleStartHourUtc = $v.manualReviewScheduleStartHourUtc;
       _manualReviewScheduleEndHourUtc = $v.manualReviewScheduleEndHourUtc;
       _manualReviewActiveNow = $v.manualReviewActiveNow;
-      _registrationAlertsWebhookUrl = $v.registrationAlertsWebhookUrl;
-      _systemAlertsWebhookUrl = $v.systemAlertsWebhookUrl;
       _sso = $v.sso.toBuilder();
       _selfHosted = $v.selfHosted;
+      _registrationAlertsWebhookUrl = $v.registrationAlertsWebhookUrl;
+      _systemAlertsWebhookUrl = $v.systemAlertsWebhookUrl;
       _$v = null;
     }
     return this;
@@ -214,11 +214,11 @@ class InstanceConfigResponseBuilder
                 manualReviewActiveNow,
                 r'InstanceConfigResponse',
                 'manualReviewActiveNow'),
-            registrationAlertsWebhookUrl: registrationAlertsWebhookUrl,
-            systemAlertsWebhookUrl: systemAlertsWebhookUrl,
             sso: sso.build(),
             selfHosted: BuiltValueNullFieldError.checkNotNull(
                 selfHosted, r'InstanceConfigResponse', 'selfHosted'),
+            registrationAlertsWebhookUrl: registrationAlertsWebhookUrl,
+            systemAlertsWebhookUrl: systemAlertsWebhookUrl,
           );
     } catch (_) {
       late String _$failedField;

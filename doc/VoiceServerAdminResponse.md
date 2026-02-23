@@ -16,8 +16,8 @@ Name | Type | Description | Notes
 **requiredGuildFeatures** | **BuiltList&lt;String&gt;** | Guild features required to use this server | 
 **allowedGuildIds** | **BuiltList&lt;String&gt;** | Guild IDs explicitly allowed to use this server | 
 **allowedUserIds** | **BuiltList&lt;String&gt;** | User IDs explicitly allowed to use this server | 
-**createdAt** | **String** |  | 
-**updatedAt** | **String** |  | 
+**createdAt** | **String** |  | [optional] 
+**updatedAt** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

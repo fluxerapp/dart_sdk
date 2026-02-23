@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **nick** | **String** |  | [optional] 
 **avatar** | **String** |  | [optional] 
 **banner** | **String** |  | [optional] 
-**accentColor** | **int** |  | [optional] 
+**accentColor** | **int** | The accent colour of the member guild profile as an integer | [optional] 
 **communicationDisabledUntil** | [**DateTime**](DateTime.md) |  | [optional] 
 **profileFlags** | **int** | Member profile flags | [optional] 
 

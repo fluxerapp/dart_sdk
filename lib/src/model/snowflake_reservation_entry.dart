@@ -69,13 +69,13 @@ class _$SnowflakeReservationEntrySerializer
       object.snowflake,
       specifiedType: const FullType(String),
     );
-    yield r'updated_at';
-    yield object.updatedAt == null
-        ? null
-        : serializers.serialize(
-            object.updatedAt,
-            specifiedType: const FullType.nullable(String),
-          );
+    if (object.updatedAt != null) {
+      yield r'updated_at';
+      yield serializers.serialize(
+        object.updatedAt,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
   }
 
   @override

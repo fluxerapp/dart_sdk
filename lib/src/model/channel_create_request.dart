@@ -21,7 +21,7 @@ part 'channel_create_request.g.dart';
 /// * [name] - The name of the channel
 /// * [topic]
 /// * [url]
-/// * [parentId]
+/// * [parentId] - ID of the parent category for this channel
 /// * [bitrate]
 /// * [userLimit]
 /// * [permissionOverwrites] - Permission overwrites for roles and members

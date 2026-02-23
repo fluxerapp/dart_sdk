@@ -58,13 +58,13 @@ class _$UpdateGuildVanityRequestSerializer
       object.guildId,
       specifiedType: const FullType(String),
     );
-    yield r'vanity_url_code';
-    yield object.vanityUrlCode == null
-        ? null
-        : serializers.serialize(
-            object.vanityUrlCode,
-            specifiedType: const FullType.nullable(String),
-          );
+    if (object.vanityUrlCode != null) {
+      yield r'vanity_url_code';
+      yield serializers.serialize(
+        object.vanityUrlCode,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
   }
 
   @override

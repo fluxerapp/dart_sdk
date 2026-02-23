@@ -13,8 +13,8 @@ part 'sso_status_response.g.dart';
 /// Properties:
 /// * [enabled] - Whether SSO is enabled for this instance
 /// * [enforced] - Whether SSO is required for all users
-/// * [displayName]
 /// * [redirectUri] - OAuth redirect URI for SSO
+/// * [displayName]
 @BuiltValue()
 abstract class SsoStatusResponse
     implements Built<SsoStatusResponse, SsoStatusResponseBuilder> {
@@ -26,12 +26,12 @@ abstract class SsoStatusResponse
   @BuiltValueField(wireName: r'enforced')
   bool get enforced;
 
-  @BuiltValueField(wireName: r'display_name')
-  String? get displayName;
-
   /// OAuth redirect URI for SSO
   @BuiltValueField(wireName: r'redirect_uri')
   String get redirectUri;
+
+  @BuiltValueField(wireName: r'display_name')
+  String? get displayName;
 
   SsoStatusResponse._();
 
@@ -69,18 +69,18 @@ class _$SsoStatusResponseSerializer
       object.enforced,
       specifiedType: const FullType(bool),
     );
-    yield r'display_name';
-    yield object.displayName == null
-        ? null
-        : serializers.serialize(
-            object.displayName,
-            specifiedType: const FullType.nullable(String),
-          );
     yield r'redirect_uri';
     yield serializers.serialize(
       object.redirectUri,
       specifiedType: const FullType(String),
     );
+    if (object.displayName != null) {
+      yield r'display_name';
+      yield serializers.serialize(
+        object.displayName,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
   }
 
   @override
@@ -120,6 +120,13 @@ class _$SsoStatusResponseSerializer
           ) as bool;
           result.enforced = valueDes;
           break;
+        case r'redirect_uri':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.redirectUri = valueDes;
+          break;
         case r'display_name':
           final valueDes = serializers.deserialize(
             value,
@@ -127,13 +134,6 @@ class _$SsoStatusResponseSerializer
           ) as String?;
           if (valueDes == null) continue;
           result.displayName = valueDes;
-          break;
-        case r'redirect_uri':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.redirectUri = valueDes;
           break;
         default:
           unhandled.add(key);

@@ -15,7 +15,7 @@ part 'create_favorite_meme_body_schema.g.dart';
 /// * [name] - Display name for the meme
 /// * [altText]
 /// * [tags]
-/// * [attachmentId]
+/// * [attachmentId] - ID of the message attachment to save as a meme
 /// * [embedIndex]
 @BuiltValue()
 abstract class CreateFavoriteMemeBodySchema
@@ -32,6 +32,7 @@ abstract class CreateFavoriteMemeBodySchema
   @BuiltValueField(wireName: r'tags')
   BuiltList<String>? get tags;
 
+  /// ID of the message attachment to save as a meme
   @BuiltValueField(wireName: r'attachment_id')
   String? get attachmentId;
 

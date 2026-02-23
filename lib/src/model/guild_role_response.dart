@@ -18,7 +18,7 @@ part 'guild_role_response.g.dart';
 /// * [permissions] - The permissions bitfield for the role
 /// * [hoist] - Whether this role is displayed separately in the member list
 /// * [mentionable] - Whether this role can be mentioned by anyone
-/// * [hoistPosition]
+/// * [hoistPosition] - The position of the role in the hoisted member list
 /// * [unicodeEmoji]
 @BuiltValue()
 abstract class GuildRoleResponse
@@ -51,6 +51,7 @@ abstract class GuildRoleResponse
   @BuiltValueField(wireName: r'mentionable')
   bool get mentionable;
 
+  /// The position of the role in the hoisted member list
   @BuiltValueField(wireName: r'hoist_position')
   int? get hoistPosition;
 

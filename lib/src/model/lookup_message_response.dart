@@ -22,7 +22,7 @@ abstract class LookupMessageResponse
   BuiltList<LookupMessageResponseMessagesInner> get messages;
 
   @BuiltValueField(wireName: r'message_id')
-  String get messageId;
+  String? get messageId;
 
   LookupMessageResponse._();
 
@@ -59,11 +59,13 @@ class _$LookupMessageResponseSerializer
       specifiedType: const FullType(
           BuiltList, [FullType(LookupMessageResponseMessagesInner)]),
     );
-    yield r'message_id';
-    yield serializers.serialize(
-      object.messageId,
-      specifiedType: const FullType(String),
-    );
+    if (object.messageId != null) {
+      yield r'message_id';
+      yield serializers.serialize(
+        object.messageId,
+        specifiedType: const FullType(String),
+      );
+    }
   }
 
   @override

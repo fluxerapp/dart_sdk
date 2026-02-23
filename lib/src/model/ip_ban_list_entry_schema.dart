@@ -57,13 +57,13 @@ class _$IpBanListEntrySchemaSerializer
       object.ip,
       specifiedType: const FullType(String),
     );
-    yield r'reverse_dns';
-    yield object.reverseDns == null
-        ? null
-        : serializers.serialize(
-            object.reverseDns,
-            specifiedType: const FullType.nullable(String),
-          );
+    if (object.reverseDns != null) {
+      yield r'reverse_dns';
+      yield serializers.serialize(
+        object.reverseDns,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
   }
 
   @override

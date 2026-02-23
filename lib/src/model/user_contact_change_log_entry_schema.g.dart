@@ -13,6 +13,8 @@ class _$UserContactChangeLogEntrySchema
   @override
   final String field;
   @override
+  final String eventAt;
+  @override
   final String? oldValue;
   @override
   final String? newValue;
@@ -20,8 +22,6 @@ class _$UserContactChangeLogEntrySchema
   final String? reason;
   @override
   final String? actorUserId;
-  @override
-  final String eventAt;
 
   factory _$UserContactChangeLogEntrySchema(
           [void Function(UserContactChangeLogEntrySchemaBuilder)? updates]) =>
@@ -30,11 +30,11 @@ class _$UserContactChangeLogEntrySchema
   _$UserContactChangeLogEntrySchema._(
       {required this.eventId,
       required this.field,
+      required this.eventAt,
       this.oldValue,
       this.newValue,
       this.reason,
-      this.actorUserId,
-      required this.eventAt})
+      this.actorUserId})
       : super._();
   @override
   UserContactChangeLogEntrySchema rebuild(
@@ -51,11 +51,11 @@ class _$UserContactChangeLogEntrySchema
     return other is UserContactChangeLogEntrySchema &&
         eventId == other.eventId &&
         field == other.field &&
+        eventAt == other.eventAt &&
         oldValue == other.oldValue &&
         newValue == other.newValue &&
         reason == other.reason &&
-        actorUserId == other.actorUserId &&
-        eventAt == other.eventAt;
+        actorUserId == other.actorUserId;
   }
 
   @override
@@ -63,11 +63,11 @@ class _$UserContactChangeLogEntrySchema
     var _$hash = 0;
     _$hash = $jc(_$hash, eventId.hashCode);
     _$hash = $jc(_$hash, field.hashCode);
+    _$hash = $jc(_$hash, eventAt.hashCode);
     _$hash = $jc(_$hash, oldValue.hashCode);
     _$hash = $jc(_$hash, newValue.hashCode);
     _$hash = $jc(_$hash, reason.hashCode);
     _$hash = $jc(_$hash, actorUserId.hashCode);
-    _$hash = $jc(_$hash, eventAt.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -77,11 +77,11 @@ class _$UserContactChangeLogEntrySchema
     return (newBuiltValueToStringHelper(r'UserContactChangeLogEntrySchema')
           ..add('eventId', eventId)
           ..add('field', field)
+          ..add('eventAt', eventAt)
           ..add('oldValue', oldValue)
           ..add('newValue', newValue)
           ..add('reason', reason)
-          ..add('actorUserId', actorUserId)
-          ..add('eventAt', eventAt))
+          ..add('actorUserId', actorUserId))
         .toString();
   }
 }
@@ -100,6 +100,10 @@ class UserContactChangeLogEntrySchemaBuilder
   String? get field => _$this._field;
   set field(String? field) => _$this._field = field;
 
+  String? _eventAt;
+  String? get eventAt => _$this._eventAt;
+  set eventAt(String? eventAt) => _$this._eventAt = eventAt;
+
   String? _oldValue;
   String? get oldValue => _$this._oldValue;
   set oldValue(String? oldValue) => _$this._oldValue = oldValue;
@@ -116,10 +120,6 @@ class UserContactChangeLogEntrySchemaBuilder
   String? get actorUserId => _$this._actorUserId;
   set actorUserId(String? actorUserId) => _$this._actorUserId = actorUserId;
 
-  String? _eventAt;
-  String? get eventAt => _$this._eventAt;
-  set eventAt(String? eventAt) => _$this._eventAt = eventAt;
-
   UserContactChangeLogEntrySchemaBuilder() {
     UserContactChangeLogEntrySchema._defaults(this);
   }
@@ -129,11 +129,11 @@ class UserContactChangeLogEntrySchemaBuilder
     if ($v != null) {
       _eventId = $v.eventId;
       _field = $v.field;
+      _eventAt = $v.eventAt;
       _oldValue = $v.oldValue;
       _newValue = $v.newValue;
       _reason = $v.reason;
       _actorUserId = $v.actorUserId;
-      _eventAt = $v.eventAt;
       _$v = null;
     }
     return this;
@@ -159,12 +159,12 @@ class UserContactChangeLogEntrySchemaBuilder
               eventId, r'UserContactChangeLogEntrySchema', 'eventId'),
           field: BuiltValueNullFieldError.checkNotNull(
               field, r'UserContactChangeLogEntrySchema', 'field'),
+          eventAt: BuiltValueNullFieldError.checkNotNull(
+              eventAt, r'UserContactChangeLogEntrySchema', 'eventAt'),
           oldValue: oldValue,
           newValue: newValue,
           reason: reason,
           actorUserId: actorUserId,
-          eventAt: BuiltValueNullFieldError.checkNotNull(
-              eventAt, r'UserContactChangeLogEntrySchema', 'eventAt'),
         );
     replace(_$result);
     return _$result;

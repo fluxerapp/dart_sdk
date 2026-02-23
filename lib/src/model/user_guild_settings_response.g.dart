@@ -8,13 +8,9 @@ part of 'user_guild_settings_response.dart';
 
 class _$UserGuildSettingsResponse extends UserGuildSettingsResponse {
   @override
-  final String guildId;
-  @override
   final UserNotificationSettings messageNotifications;
   @override
   final bool muted;
-  @override
-  final UserGuildSettingsResponseMuteConfig? muteConfig;
   @override
   final bool mobilePush;
   @override
@@ -24,26 +20,30 @@ class _$UserGuildSettingsResponse extends UserGuildSettingsResponse {
   @override
   final bool hideMutedChannels;
   @override
+  final int version;
+  @override
+  final String? guildId;
+  @override
+  final UserGuildSettingsResponseMuteConfig? muteConfig;
+  @override
   final BuiltMap<String, UserGuildSettingsResponseChannelOverridesValue>?
       channelOverrides;
-  @override
-  final int version;
 
   factory _$UserGuildSettingsResponse(
           [void Function(UserGuildSettingsResponseBuilder)? updates]) =>
       (UserGuildSettingsResponseBuilder()..update(updates))._build();
 
   _$UserGuildSettingsResponse._(
-      {required this.guildId,
-      required this.messageNotifications,
+      {required this.messageNotifications,
       required this.muted,
-      this.muteConfig,
       required this.mobilePush,
       required this.suppressEveryone,
       required this.suppressRoles,
       required this.hideMutedChannels,
-      this.channelOverrides,
-      required this.version})
+      required this.version,
+      this.guildId,
+      this.muteConfig,
+      this.channelOverrides})
       : super._();
   @override
   UserGuildSettingsResponse rebuild(
@@ -58,31 +58,31 @@ class _$UserGuildSettingsResponse extends UserGuildSettingsResponse {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is UserGuildSettingsResponse &&
-        guildId == other.guildId &&
         messageNotifications == other.messageNotifications &&
         muted == other.muted &&
-        muteConfig == other.muteConfig &&
         mobilePush == other.mobilePush &&
         suppressEveryone == other.suppressEveryone &&
         suppressRoles == other.suppressRoles &&
         hideMutedChannels == other.hideMutedChannels &&
-        channelOverrides == other.channelOverrides &&
-        version == other.version;
+        version == other.version &&
+        guildId == other.guildId &&
+        muteConfig == other.muteConfig &&
+        channelOverrides == other.channelOverrides;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, guildId.hashCode);
     _$hash = $jc(_$hash, messageNotifications.hashCode);
     _$hash = $jc(_$hash, muted.hashCode);
-    _$hash = $jc(_$hash, muteConfig.hashCode);
     _$hash = $jc(_$hash, mobilePush.hashCode);
     _$hash = $jc(_$hash, suppressEveryone.hashCode);
     _$hash = $jc(_$hash, suppressRoles.hashCode);
     _$hash = $jc(_$hash, hideMutedChannels.hashCode);
-    _$hash = $jc(_$hash, channelOverrides.hashCode);
     _$hash = $jc(_$hash, version.hashCode);
+    _$hash = $jc(_$hash, guildId.hashCode);
+    _$hash = $jc(_$hash, muteConfig.hashCode);
+    _$hash = $jc(_$hash, channelOverrides.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -90,16 +90,16 @@ class _$UserGuildSettingsResponse extends UserGuildSettingsResponse {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'UserGuildSettingsResponse')
-          ..add('guildId', guildId)
           ..add('messageNotifications', messageNotifications)
           ..add('muted', muted)
-          ..add('muteConfig', muteConfig)
           ..add('mobilePush', mobilePush)
           ..add('suppressEveryone', suppressEveryone)
           ..add('suppressRoles', suppressRoles)
           ..add('hideMutedChannels', hideMutedChannels)
-          ..add('channelOverrides', channelOverrides)
-          ..add('version', version))
+          ..add('version', version)
+          ..add('guildId', guildId)
+          ..add('muteConfig', muteConfig)
+          ..add('channelOverrides', channelOverrides))
         .toString();
   }
 }
@@ -108,10 +108,6 @@ class UserGuildSettingsResponseBuilder
     implements
         Builder<UserGuildSettingsResponse, UserGuildSettingsResponseBuilder> {
   _$UserGuildSettingsResponse? _$v;
-
-  String? _guildId;
-  String? get guildId => _$this._guildId;
-  set guildId(String? guildId) => _$this._guildId = guildId;
 
   UserNotificationSettings? _messageNotifications;
   UserNotificationSettings? get messageNotifications =>
@@ -122,12 +118,6 @@ class UserGuildSettingsResponseBuilder
   bool? _muted;
   bool? get muted => _$this._muted;
   set muted(bool? muted) => _$this._muted = muted;
-
-  UserGuildSettingsResponseMuteConfigBuilder? _muteConfig;
-  UserGuildSettingsResponseMuteConfigBuilder get muteConfig =>
-      _$this._muteConfig ??= UserGuildSettingsResponseMuteConfigBuilder();
-  set muteConfig(UserGuildSettingsResponseMuteConfigBuilder? muteConfig) =>
-      _$this._muteConfig = muteConfig;
 
   bool? _mobilePush;
   bool? get mobilePush => _$this._mobilePush;
@@ -148,6 +138,20 @@ class UserGuildSettingsResponseBuilder
   set hideMutedChannels(bool? hideMutedChannels) =>
       _$this._hideMutedChannels = hideMutedChannels;
 
+  int? _version;
+  int? get version => _$this._version;
+  set version(int? version) => _$this._version = version;
+
+  String? _guildId;
+  String? get guildId => _$this._guildId;
+  set guildId(String? guildId) => _$this._guildId = guildId;
+
+  UserGuildSettingsResponseMuteConfigBuilder? _muteConfig;
+  UserGuildSettingsResponseMuteConfigBuilder get muteConfig =>
+      _$this._muteConfig ??= UserGuildSettingsResponseMuteConfigBuilder();
+  set muteConfig(UserGuildSettingsResponseMuteConfigBuilder? muteConfig) =>
+      _$this._muteConfig = muteConfig;
+
   MapBuilder<String, UserGuildSettingsResponseChannelOverridesValue>?
       _channelOverrides;
   MapBuilder<String, UserGuildSettingsResponseChannelOverridesValue>
@@ -158,10 +162,6 @@ class UserGuildSettingsResponseBuilder
               channelOverrides) =>
       _$this._channelOverrides = channelOverrides;
 
-  int? _version;
-  int? get version => _$this._version;
-  set version(int? version) => _$this._version = version;
-
   UserGuildSettingsResponseBuilder() {
     UserGuildSettingsResponse._defaults(this);
   }
@@ -169,16 +169,16 @@ class UserGuildSettingsResponseBuilder
   UserGuildSettingsResponseBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _guildId = $v.guildId;
       _messageNotifications = $v.messageNotifications;
       _muted = $v.muted;
-      _muteConfig = $v.muteConfig?.toBuilder();
       _mobilePush = $v.mobilePush;
       _suppressEveryone = $v.suppressEveryone;
       _suppressRoles = $v.suppressRoles;
       _hideMutedChannels = $v.hideMutedChannels;
-      _channelOverrides = $v.channelOverrides?.toBuilder();
       _version = $v.version;
+      _guildId = $v.guildId;
+      _muteConfig = $v.muteConfig?.toBuilder();
+      _channelOverrides = $v.channelOverrides?.toBuilder();
       _$v = null;
     }
     return this;
@@ -202,15 +202,12 @@ class UserGuildSettingsResponseBuilder
     try {
       _$result = _$v ??
           _$UserGuildSettingsResponse._(
-            guildId: BuiltValueNullFieldError.checkNotNull(
-                guildId, r'UserGuildSettingsResponse', 'guildId'),
             messageNotifications: BuiltValueNullFieldError.checkNotNull(
                 messageNotifications,
                 r'UserGuildSettingsResponse',
                 'messageNotifications'),
             muted: BuiltValueNullFieldError.checkNotNull(
                 muted, r'UserGuildSettingsResponse', 'muted'),
-            muteConfig: _muteConfig?.build(),
             mobilePush: BuiltValueNullFieldError.checkNotNull(
                 mobilePush, r'UserGuildSettingsResponse', 'mobilePush'),
             suppressEveryone: BuiltValueNullFieldError.checkNotNull(
@@ -223,16 +220,17 @@ class UserGuildSettingsResponseBuilder
                 hideMutedChannels,
                 r'UserGuildSettingsResponse',
                 'hideMutedChannels'),
-            channelOverrides: _channelOverrides?.build(),
             version: BuiltValueNullFieldError.checkNotNull(
                 version, r'UserGuildSettingsResponse', 'version'),
+            guildId: guildId,
+            muteConfig: _muteConfig?.build(),
+            channelOverrides: _channelOverrides?.build(),
           );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'muteConfig';
         _muteConfig?.build();
-
         _$failedField = 'channelOverrides';
         _channelOverrides?.build();
       } catch (e) {

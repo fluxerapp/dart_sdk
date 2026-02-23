@@ -84,7 +84,7 @@ class _$NcmecSubmissionStatusResponse extends NcmecSubmissionStatusResponse {
   @override
   final String? submittedAt;
   @override
-  final String submittedByAdminId;
+  final String? submittedByAdminId;
   @override
   final String? failureReason;
 
@@ -96,7 +96,7 @@ class _$NcmecSubmissionStatusResponse extends NcmecSubmissionStatusResponse {
       {required this.status,
       this.ncmecReportId,
       this.submittedAt,
-      required this.submittedByAdminId,
+      this.submittedByAdminId,
       this.failureReason})
       : super._();
   @override
@@ -210,10 +210,7 @@ class NcmecSubmissionStatusResponseBuilder
               status, r'NcmecSubmissionStatusResponse', 'status'),
           ncmecReportId: ncmecReportId,
           submittedAt: submittedAt,
-          submittedByAdminId: BuiltValueNullFieldError.checkNotNull(
-              submittedByAdminId,
-              r'NcmecSubmissionStatusResponse',
-              'submittedByAdminId'),
+          submittedByAdminId: submittedByAdminId,
           failureReason: failureReason,
         );
     replace(_$result);

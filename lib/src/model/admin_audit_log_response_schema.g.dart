@@ -18,11 +18,11 @@ class _$AdminAuditLogResponseSchema extends AdminAuditLogResponseSchema {
   @override
   final String action;
   @override
-  final String? auditLogReason;
-  @override
   final BuiltMap<String, String> metadata;
   @override
   final String createdAt;
+  @override
+  final String? auditLogReason;
 
   factory _$AdminAuditLogResponseSchema(
           [void Function(AdminAuditLogResponseSchemaBuilder)? updates]) =>
@@ -34,9 +34,9 @@ class _$AdminAuditLogResponseSchema extends AdminAuditLogResponseSchema {
       required this.targetType,
       required this.targetId,
       required this.action,
-      this.auditLogReason,
       required this.metadata,
-      required this.createdAt})
+      required this.createdAt,
+      this.auditLogReason})
       : super._();
   @override
   AdminAuditLogResponseSchema rebuild(
@@ -56,9 +56,9 @@ class _$AdminAuditLogResponseSchema extends AdminAuditLogResponseSchema {
         targetType == other.targetType &&
         targetId == other.targetId &&
         action == other.action &&
-        auditLogReason == other.auditLogReason &&
         metadata == other.metadata &&
-        createdAt == other.createdAt;
+        createdAt == other.createdAt &&
+        auditLogReason == other.auditLogReason;
   }
 
   @override
@@ -69,9 +69,9 @@ class _$AdminAuditLogResponseSchema extends AdminAuditLogResponseSchema {
     _$hash = $jc(_$hash, targetType.hashCode);
     _$hash = $jc(_$hash, targetId.hashCode);
     _$hash = $jc(_$hash, action.hashCode);
-    _$hash = $jc(_$hash, auditLogReason.hashCode);
     _$hash = $jc(_$hash, metadata.hashCode);
     _$hash = $jc(_$hash, createdAt.hashCode);
+    _$hash = $jc(_$hash, auditLogReason.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -84,9 +84,9 @@ class _$AdminAuditLogResponseSchema extends AdminAuditLogResponseSchema {
           ..add('targetType', targetType)
           ..add('targetId', targetId)
           ..add('action', action)
-          ..add('auditLogReason', auditLogReason)
           ..add('metadata', metadata)
-          ..add('createdAt', createdAt))
+          ..add('createdAt', createdAt)
+          ..add('auditLogReason', auditLogReason))
         .toString();
   }
 }
@@ -117,11 +117,6 @@ class AdminAuditLogResponseSchemaBuilder
   String? get action => _$this._action;
   set action(String? action) => _$this._action = action;
 
-  String? _auditLogReason;
-  String? get auditLogReason => _$this._auditLogReason;
-  set auditLogReason(String? auditLogReason) =>
-      _$this._auditLogReason = auditLogReason;
-
   MapBuilder<String, String>? _metadata;
   MapBuilder<String, String> get metadata =>
       _$this._metadata ??= MapBuilder<String, String>();
@@ -131,6 +126,11 @@ class AdminAuditLogResponseSchemaBuilder
   String? _createdAt;
   String? get createdAt => _$this._createdAt;
   set createdAt(String? createdAt) => _$this._createdAt = createdAt;
+
+  String? _auditLogReason;
+  String? get auditLogReason => _$this._auditLogReason;
+  set auditLogReason(String? auditLogReason) =>
+      _$this._auditLogReason = auditLogReason;
 
   AdminAuditLogResponseSchemaBuilder() {
     AdminAuditLogResponseSchema._defaults(this);
@@ -144,9 +144,9 @@ class AdminAuditLogResponseSchemaBuilder
       _targetType = $v.targetType;
       _targetId = $v.targetId;
       _action = $v.action;
-      _auditLogReason = $v.auditLogReason;
       _metadata = $v.metadata.toBuilder();
       _createdAt = $v.createdAt;
+      _auditLogReason = $v.auditLogReason;
       _$v = null;
     }
     return this;
@@ -180,10 +180,10 @@ class AdminAuditLogResponseSchemaBuilder
                 targetId, r'AdminAuditLogResponseSchema', 'targetId'),
             action: BuiltValueNullFieldError.checkNotNull(
                 action, r'AdminAuditLogResponseSchema', 'action'),
-            auditLogReason: auditLogReason,
             metadata: metadata.build(),
             createdAt: BuiltValueNullFieldError.checkNotNull(
                 createdAt, r'AdminAuditLogResponseSchema', 'createdAt'),
+            auditLogReason: auditLogReason,
           );
     } catch (_) {
       late String _$failedField;

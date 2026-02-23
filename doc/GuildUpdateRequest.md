@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** | The name of the guild (1-100 characters) | [optional] 
 **icon** | **String** | Base64-encoded image data | [optional] 
-**systemChannelId** | **String** |  | [optional] 
+**systemChannelId** | **String** | The ID of the channel where system messages are sent | [optional] 
 **systemChannelFlags** | **int** | System channel message flags | [optional] 
-**afkChannelId** | **String** |  | [optional] 
+**afkChannelId** | **String** | The ID of the AFK voice channel | [optional] 
 **afkTimeout** | **int** | AFK timeout in seconds (60-3600) before moving users to the AFK channel | [optional] 
 **defaultMessageNotifications** | [**DefaultMessageNotifications**](DefaultMessageNotifications.md) | Default notification level for new members | [optional] 
 **verificationLevel** | [**GuildVerificationLevel**](GuildVerificationLevel.md) | Required verification level for members to participate | [optional] 

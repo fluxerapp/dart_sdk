@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | **String** | Current status of the handoff (pending, completed, expired) | 
 **token** | **String** |  | [optional] 
-**userId** | **String** |  | [optional] 
+**userId** | **String** | User ID if handoff is complete | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

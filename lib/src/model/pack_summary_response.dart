@@ -14,11 +14,11 @@ part 'pack_summary_response.g.dart';
 /// Properties:
 /// * [id] - The unique identifier (snowflake) for the pack
 /// * [name] - The display name of the pack
-/// * [description]
 /// * [type] - The type of expression pack (emoji or sticker)
 /// * [creatorId] - The ID of the user who created the pack
 /// * [createdAt] - ISO8601 timestamp of when the pack was created
 /// * [updatedAt] - ISO8601 timestamp of when the pack was last updated
+/// * [description]
 /// * [installedAt] - ISO8601 timestamp of when the pack was installed by the user
 @BuiltValue()
 abstract class PackSummaryResponse
@@ -30,9 +30,6 @@ abstract class PackSummaryResponse
   /// The display name of the pack
   @BuiltValueField(wireName: r'name')
   String get name;
-
-  @BuiltValueField(wireName: r'description')
-  String? get description;
 
   /// The type of expression pack (emoji or sticker)
   @BuiltValueField(wireName: r'type')
@@ -50,6 +47,9 @@ abstract class PackSummaryResponse
   /// ISO8601 timestamp of when the pack was last updated
   @BuiltValueField(wireName: r'updated_at')
   DateTime get updatedAt;
+
+  @BuiltValueField(wireName: r'description')
+  String? get description;
 
   /// ISO8601 timestamp of when the pack was installed by the user
   @BuiltValueField(wireName: r'installed_at')
@@ -94,13 +94,6 @@ class _$PackSummaryResponseSerializer
       object.name,
       specifiedType: const FullType(String),
     );
-    yield r'description';
-    yield object.description == null
-        ? null
-        : serializers.serialize(
-            object.description,
-            specifiedType: const FullType.nullable(String),
-          );
     yield r'type';
     yield serializers.serialize(
       object.type,
@@ -121,6 +114,13 @@ class _$PackSummaryResponseSerializer
       object.updatedAt,
       specifiedType: const FullType(DateTime),
     );
+    if (object.description != null) {
+      yield r'description';
+      yield serializers.serialize(
+        object.description,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
     if (object.installedAt != null) {
       yield r'installed_at';
       yield serializers.serialize(
@@ -167,14 +167,6 @@ class _$PackSummaryResponseSerializer
           ) as String;
           result.name = valueDes;
           break;
-        case r'description':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.description = valueDes;
-          break;
         case r'type':
           final valueDes = serializers.deserialize(
             value,
@@ -202,6 +194,14 @@ class _$PackSummaryResponseSerializer
             specifiedType: const FullType(DateTime),
           ) as DateTime;
           result.updatedAt = valueDes;
+          break;
+        case r'description':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.description = valueDes;
           break;
         case r'installed_at':
           final valueDes = serializers.deserialize(

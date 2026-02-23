@@ -14,13 +14,13 @@ class _$UserPartialResponse extends UserPartialResponse {
   @override
   final String discriminator;
   @override
+  final int flags;
+  @override
   final String? globalName;
   @override
   final String? avatar;
   @override
-  final int avatarColor;
-  @override
-  final int flags;
+  final int? avatarColor;
   @override
   final bool? bot;
   @override
@@ -34,10 +34,10 @@ class _$UserPartialResponse extends UserPartialResponse {
       {required this.id,
       required this.username,
       required this.discriminator,
+      required this.flags,
       this.globalName,
       this.avatar,
-      required this.avatarColor,
-      required this.flags,
+      this.avatarColor,
       this.bot,
       this.system})
       : super._();
@@ -57,10 +57,10 @@ class _$UserPartialResponse extends UserPartialResponse {
         id == other.id &&
         username == other.username &&
         discriminator == other.discriminator &&
+        flags == other.flags &&
         globalName == other.globalName &&
         avatar == other.avatar &&
         avatarColor == other.avatarColor &&
-        flags == other.flags &&
         bot == other.bot &&
         system == other.system;
   }
@@ -71,10 +71,10 @@ class _$UserPartialResponse extends UserPartialResponse {
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, username.hashCode);
     _$hash = $jc(_$hash, discriminator.hashCode);
+    _$hash = $jc(_$hash, flags.hashCode);
     _$hash = $jc(_$hash, globalName.hashCode);
     _$hash = $jc(_$hash, avatar.hashCode);
     _$hash = $jc(_$hash, avatarColor.hashCode);
-    _$hash = $jc(_$hash, flags.hashCode);
     _$hash = $jc(_$hash, bot.hashCode);
     _$hash = $jc(_$hash, system.hashCode);
     _$hash = $jf(_$hash);
@@ -87,10 +87,10 @@ class _$UserPartialResponse extends UserPartialResponse {
           ..add('id', id)
           ..add('username', username)
           ..add('discriminator', discriminator)
+          ..add('flags', flags)
           ..add('globalName', globalName)
           ..add('avatar', avatar)
           ..add('avatarColor', avatarColor)
-          ..add('flags', flags)
           ..add('bot', bot)
           ..add('system', system))
         .toString();
@@ -114,6 +114,10 @@ class UserPartialResponseBuilder
   set discriminator(String? discriminator) =>
       _$this._discriminator = discriminator;
 
+  int? _flags;
+  int? get flags => _$this._flags;
+  set flags(int? flags) => _$this._flags = flags;
+
   String? _globalName;
   String? get globalName => _$this._globalName;
   set globalName(String? globalName) => _$this._globalName = globalName;
@@ -125,10 +129,6 @@ class UserPartialResponseBuilder
   int? _avatarColor;
   int? get avatarColor => _$this._avatarColor;
   set avatarColor(int? avatarColor) => _$this._avatarColor = avatarColor;
-
-  int? _flags;
-  int? get flags => _$this._flags;
-  set flags(int? flags) => _$this._flags = flags;
 
   bool? _bot;
   bool? get bot => _$this._bot;
@@ -148,10 +148,10 @@ class UserPartialResponseBuilder
       _id = $v.id;
       _username = $v.username;
       _discriminator = $v.discriminator;
+      _flags = $v.flags;
       _globalName = $v.globalName;
       _avatar = $v.avatar;
       _avatarColor = $v.avatarColor;
-      _flags = $v.flags;
       _bot = $v.bot;
       _system = $v.system;
       _$v = null;
@@ -181,12 +181,11 @@ class UserPartialResponseBuilder
               username, r'UserPartialResponse', 'username'),
           discriminator: BuiltValueNullFieldError.checkNotNull(
               discriminator, r'UserPartialResponse', 'discriminator'),
-          globalName: globalName,
-          avatar: avatar,
-          avatarColor: BuiltValueNullFieldError.checkNotNull(
-              avatarColor, r'UserPartialResponse', 'avatarColor'),
           flags: BuiltValueNullFieldError.checkNotNull(
               flags, r'UserPartialResponse', 'flags'),
+          globalName: globalName,
+          avatar: avatar,
+          avatarColor: avatarColor,
           bot: bot,
           system: system,
         );

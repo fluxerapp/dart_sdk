@@ -12,7 +12,7 @@ part 'reserve_visionary_slot_request.g.dart';
 ///
 /// Properties:
 /// * [slotIndex] - Slot index to reserve (must be >= 1)
-/// * [userId]
+/// * [userId] - User ID to reserve the slot for, or null to unreserve (special value -1 is also valid)
 @BuiltValue()
 abstract class ReserveVisionarySlotRequest
     implements
@@ -21,8 +21,9 @@ abstract class ReserveVisionarySlotRequest
   @BuiltValueField(wireName: r'slot_index')
   int get slotIndex;
 
+  /// User ID to reserve the slot for, or null to unreserve (special value -1 is also valid)
   @BuiltValueField(wireName: r'user_id')
-  String get userId;
+  String? get userId;
 
   ReserveVisionarySlotRequest._();
 
@@ -59,11 +60,13 @@ class _$ReserveVisionarySlotRequestSerializer
       object.slotIndex,
       specifiedType: const FullType(int),
     );
-    yield r'user_id';
-    yield serializers.serialize(
-      object.userId,
-      specifiedType: const FullType(String),
-    );
+    if (object.userId != null) {
+      yield r'user_id';
+      yield serializers.serialize(
+        object.userId,
+        specifiedType: const FullType(String),
+      );
+    }
   }
 
   @override

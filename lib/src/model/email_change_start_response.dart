@@ -81,34 +81,34 @@ class _$EmailChangeStartResponseSerializer
       object.requireOriginal,
       specifiedType: const FullType(bool),
     );
-    yield r'original_email';
-    yield object.originalEmail == null
-        ? null
-        : serializers.serialize(
-            object.originalEmail,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'original_proof';
-    yield object.originalProof == null
-        ? null
-        : serializers.serialize(
-            object.originalProof,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'original_code_expires_at';
-    yield object.originalCodeExpiresAt == null
-        ? null
-        : serializers.serialize(
-            object.originalCodeExpiresAt,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'resend_available_at';
-    yield object.resendAvailableAt == null
-        ? null
-        : serializers.serialize(
-            object.resendAvailableAt,
-            specifiedType: const FullType.nullable(String),
-          );
+    if (object.originalEmail != null) {
+      yield r'original_email';
+      yield serializers.serialize(
+        object.originalEmail,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.originalProof != null) {
+      yield r'original_proof';
+      yield serializers.serialize(
+        object.originalProof,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.originalCodeExpiresAt != null) {
+      yield r'original_code_expires_at';
+      yield serializers.serialize(
+        object.originalCodeExpiresAt,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.resendAvailableAt != null) {
+      yield r'resend_available_at';
+      yield serializers.serialize(
+        object.resendAvailableAt,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
   }
 
   @override

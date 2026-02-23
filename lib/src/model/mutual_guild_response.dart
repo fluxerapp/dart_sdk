@@ -57,13 +57,13 @@ class _$MutualGuildResponseSerializer
       object.id,
       specifiedType: const FullType(String),
     );
-    yield r'nick';
-    yield object.nick == null
-        ? null
-        : serializers.serialize(
-            object.nick,
-            specifiedType: const FullType.nullable(String),
-          );
+    if (object.nick != null) {
+      yield r'nick';
+      yield serializers.serialize(
+        object.nick,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
   }
 
   @override

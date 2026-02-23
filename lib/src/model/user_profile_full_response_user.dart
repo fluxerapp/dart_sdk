@@ -16,7 +16,7 @@ part 'user_profile_full_response_user.g.dart';
 /// * [discriminator] - The four-digit discriminator tag of the user
 /// * [globalName]
 /// * [avatar]
-/// * [avatarColor]
+/// * [avatarColor] - The dominant avatar color of the user as an integer
 /// * [flags] - The public flags on the user account
 /// * [bot] - Whether the user is a bot account
 /// * [system] - Whether the user is an official system user
@@ -42,6 +42,7 @@ abstract class UserProfileFullResponseUser
   @BuiltValueField(wireName: r'avatar')
   String? get avatar;
 
+  /// The dominant avatar color of the user as an integer
   @BuiltValueField(wireName: r'avatar_color')
   int get avatarColor;
 

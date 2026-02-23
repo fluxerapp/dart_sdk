@@ -81,14 +81,14 @@ class _$DonationCheckoutRequestSerializer
       object.currency,
       specifiedType: const FullType(DonationCheckoutRequestCurrencyEnum),
     );
-    yield r'interval';
-    yield object.interval == null
-        ? null
-        : serializers.serialize(
-            object.interval,
-            specifiedType:
-                const FullType.nullable(DonationCheckoutRequestIntervalEnum),
-          );
+    if (object.interval != null) {
+      yield r'interval';
+      yield serializers.serialize(
+        object.interval,
+        specifiedType:
+            const FullType.nullable(DonationCheckoutRequestIntervalEnum),
+      );
+    }
   }
 
   @override

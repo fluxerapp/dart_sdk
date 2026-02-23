@@ -62,20 +62,20 @@ class _$NcmecSubmitResultResponseSerializer
       object.success,
       specifiedType: const FullType(bool),
     );
-    yield r'ncmec_report_id';
-    yield object.ncmecReportId == null
-        ? null
-        : serializers.serialize(
-            object.ncmecReportId,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'error';
-    yield object.error == null
-        ? null
-        : serializers.serialize(
-            object.error,
-            specifiedType: const FullType.nullable(String),
-          );
+    if (object.ncmecReportId != null) {
+      yield r'ncmec_report_id';
+      yield serializers.serialize(
+        object.ncmecReportId,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.error != null) {
+      yield r'error';
+      yield serializers.serialize(
+        object.error,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
   }
 
   @override

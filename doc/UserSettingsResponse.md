@@ -28,7 +28,6 @@ Name | Type | Description | Notes
 **incomingCallFlags** | **int** | Incoming call settings | 
 **groupDmAddPermissionFlags** | **int** | Group DM add permissions | 
 **guildFolders** | [**BuiltList&lt;UserSettingsResponseGuildFoldersInner&gt;**](UserSettingsResponseGuildFoldersInner.md) | The folder structure for organizing guilds in the sidebar | 
-**customStatus** | [**CustomStatusResponse**](CustomStatusResponse.md) |  | 
 **afkTimeout** | **int** | The idle timeout in seconds before going AFK | 
 **timeFormat** | [**TimeFormatTypes**](TimeFormatTypes.md) | The preferred time format setting | 
 **developerMode** | **bool** | Whether developer mode is enabled | 
@@ -36,6 +35,7 @@ Name | Type | Description | Notes
 **defaultHideMutedChannels** | **bool** | Whether muted channels are hidden by default in new guilds | 
 **statusResetsAt** | [**DateTime**](DateTime.md) |  | [optional] 
 **statusResetsTo** | **String** |  | [optional] 
+**customStatus** | [**CustomStatusResponse**](CustomStatusResponse.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

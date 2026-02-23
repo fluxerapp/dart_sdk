@@ -105,20 +105,20 @@ class _$OAuth2UserInfoResponseSerializer
       object.discriminator,
       specifiedType: const FullType(String),
     );
-    yield r'global_name';
-    yield object.globalName == null
-        ? null
-        : serializers.serialize(
-            object.globalName,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'avatar';
-    yield object.avatar == null
-        ? null
-        : serializers.serialize(
-            object.avatar,
-            specifiedType: const FullType.nullable(String),
-          );
+    if (object.globalName != null) {
+      yield r'global_name';
+      yield serializers.serialize(
+        object.globalName,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.avatar != null) {
+      yield r'avatar';
+      yield serializers.serialize(
+        object.avatar,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
     if (object.email != null) {
       yield r'email';
       yield serializers.serialize(

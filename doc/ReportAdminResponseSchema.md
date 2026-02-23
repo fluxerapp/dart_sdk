@@ -9,32 +9,32 @@ import 'package:fluxer_dart/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reportId** | **String** |  | 
-**reporterId** | **String** |  | 
-**reporterTag** | **String** |  | 
-**reporterUsername** | **String** |  | 
-**reporterDiscriminator** | **String** |  | 
-**reporterEmail** | **String** |  | 
-**reporterFullLegalName** | **String** |  | 
-**reporterCountryOfResidence** | **String** |  | 
 **reportedAt** | **String** |  | 
 **status** | [**ReportStatus**](ReportStatus.md) |  | 
 **reportType** | [**ReportType**](ReportType.md) |  | 
-**category** | **String** |  | 
-**additionalInfo** | **String** |  | 
-**reportedUserId** | **String** |  | 
-**reportedUserTag** | **String** |  | 
-**reportedUserUsername** | **String** |  | 
-**reportedUserDiscriminator** | **String** |  | 
-**reportedUserAvatarHash** | **String** |  | 
-**reportedGuildId** | **String** |  | 
-**reportedGuildName** | **String** |  | 
-**reportedMessageId** | **String** |  | 
-**reportedChannelId** | **String** |  | 
-**reportedChannelName** | **String** |  | 
-**reportedGuildInviteCode** | **String** |  | 
-**resolvedAt** | **String** |  | 
-**resolvedByAdminId** | **String** |  | 
-**publicComment** | **String** |  | 
+**reporterId** | **String** |  | [optional] 
+**reporterTag** | **String** |  | [optional] 
+**reporterUsername** | **String** |  | [optional] 
+**reporterDiscriminator** | **String** |  | [optional] 
+**reporterEmail** | **String** |  | [optional] 
+**reporterFullLegalName** | **String** |  | [optional] 
+**reporterCountryOfResidence** | **String** |  | [optional] 
+**category** | **String** |  | [optional] 
+**additionalInfo** | **String** |  | [optional] 
+**reportedUserId** | **String** |  | [optional] 
+**reportedUserTag** | **String** |  | [optional] 
+**reportedUserUsername** | **String** |  | [optional] 
+**reportedUserDiscriminator** | **String** |  | [optional] 
+**reportedUserAvatarHash** | **String** |  | [optional] 
+**reportedGuildId** | **String** |  | [optional] 
+**reportedGuildName** | **String** |  | [optional] 
+**reportedMessageId** | **String** |  | [optional] 
+**reportedChannelId** | **String** |  | [optional] 
+**reportedChannelName** | **String** |  | [optional] 
+**reportedGuildInviteCode** | **String** |  | [optional] 
+**resolvedAt** | **String** |  | [optional] 
+**resolvedByAdminId** | **String** |  | [optional] 
+**publicComment** | **String** |  | [optional] 
 **mutualDmChannelId** | **String** |  | [optional] 
 **messageContext** | [**BuiltList&lt;ReportAdminResponseSchemaMessageContextInner&gt;**](ReportAdminResponseSchemaMessageContextInner.md) |  | [optional] 
 

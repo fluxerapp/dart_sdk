@@ -10,13 +10,13 @@ class _$LookupMessageResponse extends LookupMessageResponse {
   @override
   final BuiltList<LookupMessageResponseMessagesInner> messages;
   @override
-  final String messageId;
+  final String? messageId;
 
   factory _$LookupMessageResponse(
           [void Function(LookupMessageResponseBuilder)? updates]) =>
       (LookupMessageResponseBuilder()..update(updates))._build();
 
-  _$LookupMessageResponse._({required this.messages, required this.messageId})
+  _$LookupMessageResponse._({required this.messages, this.messageId})
       : super._();
   @override
   LookupMessageResponse rebuild(
@@ -100,8 +100,7 @@ class LookupMessageResponseBuilder
       _$result = _$v ??
           _$LookupMessageResponse._(
             messages: messages.build(),
-            messageId: BuiltValueNullFieldError.checkNotNull(
-                messageId, r'LookupMessageResponse', 'messageId'),
+            messageId: messageId,
           );
     } catch (_) {
       late String _$failedField;

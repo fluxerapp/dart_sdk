@@ -13,8 +13,8 @@ part 'channel_position_update_request_inner.g.dart';
 /// Properties:
 /// * [id]
 /// * [position] - New position for the channel
-/// * [parentId]
-/// * [precedingSiblingId]
+/// * [parentId] - New parent category ID
+/// * [precedingSiblingId] - ID of the sibling channel that should directly precede this channel after reordering
 /// * [lockPermissions] - Whether to sync permissions with the new parent
 @BuiltValue()
 abstract class ChannelPositionUpdateRequestInner
@@ -28,9 +28,11 @@ abstract class ChannelPositionUpdateRequestInner
   @BuiltValueField(wireName: r'position')
   int? get position;
 
+  /// New parent category ID
   @BuiltValueField(wireName: r'parent_id')
   String? get parentId;
 
+  /// ID of the sibling channel that should directly precede this channel after reordering
   @BuiltValueField(wireName: r'preceding_sibling_id')
   String? get precedingSiblingId;
 

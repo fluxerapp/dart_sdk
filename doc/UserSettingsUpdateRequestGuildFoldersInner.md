@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **id** | **int** | Unique identifier for the folder (-1 for uncategorized) | 
 **guildIds** | **BuiltList&lt;String&gt;** | Guild IDs in this folder | 
 **name** | **String** |  | [optional] 
-**color** | **int** |  | [optional] 
+**color** | **int** | Color of the folder as integer | [optional] 
 **flags** | **int** | Bitfield for guild folder display behaviour | [optional] 
 **icon** | **String** | Selected icon for the guild folder | [optional] 
 

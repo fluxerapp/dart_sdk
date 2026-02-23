@@ -15,7 +15,7 @@ part 'user_settings_update_request_guild_folders_inner.g.dart';
 /// * [id] - Unique identifier for the folder (-1 for uncategorized)
 /// * [guildIds] - Guild IDs in this folder
 /// * [name]
-/// * [color]
+/// * [color] - Color of the folder as integer
 /// * [flags] - Bitfield for guild folder display behaviour
 /// * [icon] - Selected icon for the guild folder
 @BuiltValue()
@@ -34,6 +34,7 @@ abstract class UserSettingsUpdateRequestGuildFoldersInner
   @BuiltValueField(wireName: r'name')
   String? get name;
 
+  /// Color of the folder as integer
   @BuiltValueField(wireName: r'color')
   int? get color;
 

@@ -10,13 +10,13 @@ class _$AdminUserDmChannelSchema extends AdminUserDmChannelSchema {
   @override
   final String channelId;
   @override
-  final int channelType;
-  @override
   final BuiltList<String> recipientIds;
   @override
-  final String lastMessageId;
-  @override
   final bool isOpen;
+  @override
+  final int? channelType;
+  @override
+  final String? lastMessageId;
 
   factory _$AdminUserDmChannelSchema(
           [void Function(AdminUserDmChannelSchemaBuilder)? updates]) =>
@@ -24,10 +24,10 @@ class _$AdminUserDmChannelSchema extends AdminUserDmChannelSchema {
 
   _$AdminUserDmChannelSchema._(
       {required this.channelId,
-      required this.channelType,
       required this.recipientIds,
-      required this.lastMessageId,
-      required this.isOpen})
+      required this.isOpen,
+      this.channelType,
+      this.lastMessageId})
       : super._();
   @override
   AdminUserDmChannelSchema rebuild(
@@ -43,20 +43,20 @@ class _$AdminUserDmChannelSchema extends AdminUserDmChannelSchema {
     if (identical(other, this)) return true;
     return other is AdminUserDmChannelSchema &&
         channelId == other.channelId &&
-        channelType == other.channelType &&
         recipientIds == other.recipientIds &&
-        lastMessageId == other.lastMessageId &&
-        isOpen == other.isOpen;
+        isOpen == other.isOpen &&
+        channelType == other.channelType &&
+        lastMessageId == other.lastMessageId;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, channelId.hashCode);
-    _$hash = $jc(_$hash, channelType.hashCode);
     _$hash = $jc(_$hash, recipientIds.hashCode);
-    _$hash = $jc(_$hash, lastMessageId.hashCode);
     _$hash = $jc(_$hash, isOpen.hashCode);
+    _$hash = $jc(_$hash, channelType.hashCode);
+    _$hash = $jc(_$hash, lastMessageId.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -65,10 +65,10 @@ class _$AdminUserDmChannelSchema extends AdminUserDmChannelSchema {
   String toString() {
     return (newBuiltValueToStringHelper(r'AdminUserDmChannelSchema')
           ..add('channelId', channelId)
-          ..add('channelType', channelType)
           ..add('recipientIds', recipientIds)
-          ..add('lastMessageId', lastMessageId)
-          ..add('isOpen', isOpen))
+          ..add('isOpen', isOpen)
+          ..add('channelType', channelType)
+          ..add('lastMessageId', lastMessageId))
         .toString();
   }
 }
@@ -82,24 +82,24 @@ class AdminUserDmChannelSchemaBuilder
   String? get channelId => _$this._channelId;
   set channelId(String? channelId) => _$this._channelId = channelId;
 
-  int? _channelType;
-  int? get channelType => _$this._channelType;
-  set channelType(int? channelType) => _$this._channelType = channelType;
-
   ListBuilder<String>? _recipientIds;
   ListBuilder<String> get recipientIds =>
       _$this._recipientIds ??= ListBuilder<String>();
   set recipientIds(ListBuilder<String>? recipientIds) =>
       _$this._recipientIds = recipientIds;
 
+  bool? _isOpen;
+  bool? get isOpen => _$this._isOpen;
+  set isOpen(bool? isOpen) => _$this._isOpen = isOpen;
+
+  int? _channelType;
+  int? get channelType => _$this._channelType;
+  set channelType(int? channelType) => _$this._channelType = channelType;
+
   String? _lastMessageId;
   String? get lastMessageId => _$this._lastMessageId;
   set lastMessageId(String? lastMessageId) =>
       _$this._lastMessageId = lastMessageId;
-
-  bool? _isOpen;
-  bool? get isOpen => _$this._isOpen;
-  set isOpen(bool? isOpen) => _$this._isOpen = isOpen;
 
   AdminUserDmChannelSchemaBuilder() {
     AdminUserDmChannelSchema._defaults(this);
@@ -109,10 +109,10 @@ class AdminUserDmChannelSchemaBuilder
     final $v = _$v;
     if ($v != null) {
       _channelId = $v.channelId;
-      _channelType = $v.channelType;
       _recipientIds = $v.recipientIds.toBuilder();
-      _lastMessageId = $v.lastMessageId;
       _isOpen = $v.isOpen;
+      _channelType = $v.channelType;
+      _lastMessageId = $v.lastMessageId;
       _$v = null;
     }
     return this;
@@ -138,13 +138,11 @@ class AdminUserDmChannelSchemaBuilder
           _$AdminUserDmChannelSchema._(
             channelId: BuiltValueNullFieldError.checkNotNull(
                 channelId, r'AdminUserDmChannelSchema', 'channelId'),
-            channelType: BuiltValueNullFieldError.checkNotNull(
-                channelType, r'AdminUserDmChannelSchema', 'channelType'),
             recipientIds: recipientIds.build(),
-            lastMessageId: BuiltValueNullFieldError.checkNotNull(
-                lastMessageId, r'AdminUserDmChannelSchema', 'lastMessageId'),
             isOpen: BuiltValueNullFieldError.checkNotNull(
                 isOpen, r'AdminUserDmChannelSchema', 'isOpen'),
+            channelType: channelType,
+            lastMessageId: lastMessageId,
           );
     } catch (_) {
       late String _$failedField;

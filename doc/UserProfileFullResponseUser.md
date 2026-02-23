@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **discriminator** | **String** | The four-digit discriminator tag of the user | 
 **globalName** | **String** |  | 
 **avatar** | **String** |  | 
-**avatarColor** | **int** |  | 
+**avatarColor** | **int** | The dominant avatar color of the user as an integer | 
 **flags** | **int** | The public flags on the user account | 
 **bot** | **bool** | Whether the user is a bot account | [optional] 
 **system** | **bool** | Whether the user is an official system user | [optional] 

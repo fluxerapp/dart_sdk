@@ -18,8 +18,8 @@ Name | Type | Description | Notes
 **requiredGuildFeatures** | **BuiltList&lt;String&gt;** | Guild features required to use this region | 
 **allowedGuildIds** | **BuiltList&lt;String&gt;** | Guild IDs explicitly allowed to use this region | 
 **allowedUserIds** | **BuiltList&lt;String&gt;** | User IDs explicitly allowed to use this region | 
-**createdAt** | **String** |  | 
-**updatedAt** | **String** |  | 
+**createdAt** | **String** |  | [optional] 
+**updatedAt** | **String** |  | [optional] 
 **servers** | [**BuiltList&lt;VoiceServerAdminResponse&gt;**](VoiceServerAdminResponse.md) | Voice servers in this region | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

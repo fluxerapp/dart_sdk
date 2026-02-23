@@ -16,11 +16,11 @@ part 'embed_media_response.g.dart';
 /// * [proxyUrl]
 /// * [contentType]
 /// * [contentHash]
-/// * [width]
-/// * [height]
+/// * [width] - The width of the media in pixels
+/// * [height] - The height of the media in pixels
 /// * [description]
 /// * [placeholder]
-/// * [duration]
+/// * [duration] - The duration of the media in seconds
 @BuiltValue()
 abstract class EmbedMediaResponse
     implements Built<EmbedMediaResponse, EmbedMediaResponseBuilder> {
@@ -41,9 +41,11 @@ abstract class EmbedMediaResponse
   @BuiltValueField(wireName: r'content_hash')
   String? get contentHash;
 
+  /// The width of the media in pixels
   @BuiltValueField(wireName: r'width')
   int? get width;
 
+  /// The height of the media in pixels
   @BuiltValueField(wireName: r'height')
   int? get height;
 
@@ -53,6 +55,7 @@ abstract class EmbedMediaResponse
   @BuiltValueField(wireName: r'placeholder')
   String? get placeholder;
 
+  /// The duration of the media in seconds
   @BuiltValueField(wireName: r'duration')
   int? get duration;
 

@@ -17,10 +17,10 @@ part 'instance_config_response.g.dart';
 /// * [manualReviewScheduleStartHourUtc]
 /// * [manualReviewScheduleEndHourUtc]
 /// * [manualReviewActiveNow]
-/// * [registrationAlertsWebhookUrl]
-/// * [systemAlertsWebhookUrl]
 /// * [sso]
 /// * [selfHosted]
+/// * [registrationAlertsWebhookUrl]
+/// * [systemAlertsWebhookUrl]
 @BuiltValue()
 abstract class InstanceConfigResponse
     implements Built<InstanceConfigResponse, InstanceConfigResponseBuilder> {
@@ -39,17 +39,17 @@ abstract class InstanceConfigResponse
   @BuiltValueField(wireName: r'manual_review_active_now')
   bool get manualReviewActiveNow;
 
-  @BuiltValueField(wireName: r'registration_alerts_webhook_url')
-  String? get registrationAlertsWebhookUrl;
-
-  @BuiltValueField(wireName: r'system_alerts_webhook_url')
-  String? get systemAlertsWebhookUrl;
-
   @BuiltValueField(wireName: r'sso')
   SsoConfigResponse get sso;
 
   @BuiltValueField(wireName: r'self_hosted')
   bool get selfHosted;
+
+  @BuiltValueField(wireName: r'registration_alerts_webhook_url')
+  String? get registrationAlertsWebhookUrl;
+
+  @BuiltValueField(wireName: r'system_alerts_webhook_url')
+  String? get systemAlertsWebhookUrl;
 
   InstanceConfigResponse._();
 
@@ -106,20 +106,6 @@ class _$InstanceConfigResponseSerializer
       object.manualReviewActiveNow,
       specifiedType: const FullType(bool),
     );
-    yield r'registration_alerts_webhook_url';
-    yield object.registrationAlertsWebhookUrl == null
-        ? null
-        : serializers.serialize(
-            object.registrationAlertsWebhookUrl,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'system_alerts_webhook_url';
-    yield object.systemAlertsWebhookUrl == null
-        ? null
-        : serializers.serialize(
-            object.systemAlertsWebhookUrl,
-            specifiedType: const FullType.nullable(String),
-          );
     yield r'sso';
     yield serializers.serialize(
       object.sso,
@@ -130,6 +116,20 @@ class _$InstanceConfigResponseSerializer
       object.selfHosted,
       specifiedType: const FullType(bool),
     );
+    if (object.registrationAlertsWebhookUrl != null) {
+      yield r'registration_alerts_webhook_url';
+      yield serializers.serialize(
+        object.registrationAlertsWebhookUrl,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.systemAlertsWebhookUrl != null) {
+      yield r'system_alerts_webhook_url';
+      yield serializers.serialize(
+        object.systemAlertsWebhookUrl,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
   }
 
   @override
@@ -190,6 +190,20 @@ class _$InstanceConfigResponseSerializer
           ) as bool;
           result.manualReviewActiveNow = valueDes;
           break;
+        case r'sso':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(SsoConfigResponse),
+          ) as SsoConfigResponse;
+          result.sso.replace(valueDes);
+          break;
+        case r'self_hosted':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.selfHosted = valueDes;
+          break;
         case r'registration_alerts_webhook_url':
           final valueDes = serializers.deserialize(
             value,
@@ -205,20 +219,6 @@ class _$InstanceConfigResponseSerializer
           ) as String?;
           if (valueDes == null) continue;
           result.systemAlertsWebhookUrl = valueDes;
-          break;
-        case r'sso':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(SsoConfigResponse),
-          ) as SsoConfigResponse;
-          result.sso.replace(valueDes);
-          break;
-        case r'self_hosted':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.selfHosted = valueDes;
           break;
         default:
           unhandled.add(key);

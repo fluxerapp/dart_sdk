@@ -20,7 +20,7 @@ part 'message_embed_response.g.dart';
 /// * [type] - The type of embed (e.g., rich, image, video, gifv, article, link)
 /// * [url]
 /// * [title]
-/// * [color]
+/// * [color] - The color code of the embed sidebar
 /// * [timestamp]
 /// * [description]
 /// * [author]
@@ -46,6 +46,7 @@ abstract class MessageEmbedResponse
   @BuiltValueField(wireName: r'title')
   String? get title;
 
+  /// The color code of the embed sidebar
   @BuiltValueField(wireName: r'color')
   int? get color;
 

@@ -14,12 +14,6 @@ class _$UserPrivateResponse extends UserPrivateResponse {
   @override
   final String discriminator;
   @override
-  final String? globalName;
-  @override
-  final String? avatar;
-  @override
-  final int avatarColor;
-  @override
   final int flags;
   @override
   final bool isStaff;
@@ -28,35 +22,11 @@ class _$UserPrivateResponse extends UserPrivateResponse {
   @override
   final BuiltList<String> traits;
   @override
-  final String? email;
-  @override
-  final String? phone;
-  @override
-  final String? bio;
-  @override
-  final String? pronouns;
-  @override
-  final int accentColor;
-  @override
-  final String? banner;
-  @override
-  final int bannerColor;
-  @override
   final bool mfaEnabled;
   @override
   final bool verified;
   @override
-  final UserPremiumTypes? premiumType;
-  @override
-  final String? premiumSince;
-  @override
-  final String? premiumUntil;
-  @override
   final bool premiumWillCancel;
-  @override
-  final String? premiumBillingCycle;
-  @override
-  final int premiumLifetimeSequence;
   @override
   final bool premiumBadgeHidden;
   @override
@@ -70,10 +40,6 @@ class _$UserPrivateResponse extends UserPrivateResponse {
   @override
   final bool premiumEnabledOverride;
   @override
-  final String? passwordLastChangedAt;
-  @override
-  final BuiltList<String>? requiredActions;
-  @override
   final bool nsfwAllowed;
   @override
   final bool hasDismissedPremiumOnboarding;
@@ -86,16 +52,50 @@ class _$UserPrivateResponse extends UserPrivateResponse {
   @override
   final bool usedMobileClient;
   @override
-  final UserPrivateResponsePendingBulkMessageDeletion?
-      pendingBulkMessageDeletion;
+  final String? globalName;
+  @override
+  final String? avatar;
+  @override
+  final int? avatarColor;
   @override
   final bool? bot;
   @override
   final bool? system;
   @override
+  final String? email;
+  @override
   final bool? emailBounced;
   @override
+  final String? phone;
+  @override
+  final String? bio;
+  @override
+  final String? pronouns;
+  @override
+  final int? accentColor;
+  @override
+  final String? banner;
+  @override
+  final int? bannerColor;
+  @override
   final BuiltList<UserAuthenticatorTypes>? authenticatorTypes;
+  @override
+  final UserPremiumTypes? premiumType;
+  @override
+  final String? premiumSince;
+  @override
+  final String? premiumUntil;
+  @override
+  final String? premiumBillingCycle;
+  @override
+  final int? premiumLifetimeSequence;
+  @override
+  final String? passwordLastChangedAt;
+  @override
+  final BuiltList<String>? requiredActions;
+  @override
+  final UserPrivateResponsePendingBulkMessageDeletion?
+      pendingBulkMessageDeletion;
 
   factory _$UserPrivateResponse(
           [void Function(UserPrivateResponseBuilder)? updates]) =>
@@ -105,47 +105,47 @@ class _$UserPrivateResponse extends UserPrivateResponse {
       {required this.id,
       required this.username,
       required this.discriminator,
-      this.globalName,
-      this.avatar,
-      required this.avatarColor,
       required this.flags,
       required this.isStaff,
       required this.acls,
       required this.traits,
-      this.email,
-      this.phone,
-      this.bio,
-      this.pronouns,
-      required this.accentColor,
-      this.banner,
-      required this.bannerColor,
       required this.mfaEnabled,
       required this.verified,
-      this.premiumType,
-      this.premiumSince,
-      this.premiumUntil,
       required this.premiumWillCancel,
-      this.premiumBillingCycle,
-      required this.premiumLifetimeSequence,
       required this.premiumBadgeHidden,
       required this.premiumBadgeMasked,
       required this.premiumBadgeTimestampHidden,
       required this.premiumBadgeSequenceHidden,
       required this.premiumPurchaseDisabled,
       required this.premiumEnabledOverride,
-      this.passwordLastChangedAt,
-      this.requiredActions,
       required this.nsfwAllowed,
       required this.hasDismissedPremiumOnboarding,
       required this.hasEverPurchased,
       required this.hasUnreadGiftInventory,
       required this.unreadGiftInventoryCount,
       required this.usedMobileClient,
-      this.pendingBulkMessageDeletion,
+      this.globalName,
+      this.avatar,
+      this.avatarColor,
       this.bot,
       this.system,
+      this.email,
       this.emailBounced,
-      this.authenticatorTypes})
+      this.phone,
+      this.bio,
+      this.pronouns,
+      this.accentColor,
+      this.banner,
+      this.bannerColor,
+      this.authenticatorTypes,
+      this.premiumType,
+      this.premiumSince,
+      this.premiumUntil,
+      this.premiumBillingCycle,
+      this.premiumLifetimeSequence,
+      this.passwordLastChangedAt,
+      this.requiredActions,
+      this.pendingBulkMessageDeletion})
       : super._();
   @override
   UserPrivateResponse rebuild(
@@ -163,47 +163,47 @@ class _$UserPrivateResponse extends UserPrivateResponse {
         id == other.id &&
         username == other.username &&
         discriminator == other.discriminator &&
-        globalName == other.globalName &&
-        avatar == other.avatar &&
-        avatarColor == other.avatarColor &&
         flags == other.flags &&
         isStaff == other.isStaff &&
         acls == other.acls &&
         traits == other.traits &&
-        email == other.email &&
-        phone == other.phone &&
-        bio == other.bio &&
-        pronouns == other.pronouns &&
-        accentColor == other.accentColor &&
-        banner == other.banner &&
-        bannerColor == other.bannerColor &&
         mfaEnabled == other.mfaEnabled &&
         verified == other.verified &&
-        premiumType == other.premiumType &&
-        premiumSince == other.premiumSince &&
-        premiumUntil == other.premiumUntil &&
         premiumWillCancel == other.premiumWillCancel &&
-        premiumBillingCycle == other.premiumBillingCycle &&
-        premiumLifetimeSequence == other.premiumLifetimeSequence &&
         premiumBadgeHidden == other.premiumBadgeHidden &&
         premiumBadgeMasked == other.premiumBadgeMasked &&
         premiumBadgeTimestampHidden == other.premiumBadgeTimestampHidden &&
         premiumBadgeSequenceHidden == other.premiumBadgeSequenceHidden &&
         premiumPurchaseDisabled == other.premiumPurchaseDisabled &&
         premiumEnabledOverride == other.premiumEnabledOverride &&
-        passwordLastChangedAt == other.passwordLastChangedAt &&
-        requiredActions == other.requiredActions &&
         nsfwAllowed == other.nsfwAllowed &&
         hasDismissedPremiumOnboarding == other.hasDismissedPremiumOnboarding &&
         hasEverPurchased == other.hasEverPurchased &&
         hasUnreadGiftInventory == other.hasUnreadGiftInventory &&
         unreadGiftInventoryCount == other.unreadGiftInventoryCount &&
         usedMobileClient == other.usedMobileClient &&
-        pendingBulkMessageDeletion == other.pendingBulkMessageDeletion &&
+        globalName == other.globalName &&
+        avatar == other.avatar &&
+        avatarColor == other.avatarColor &&
         bot == other.bot &&
         system == other.system &&
+        email == other.email &&
         emailBounced == other.emailBounced &&
-        authenticatorTypes == other.authenticatorTypes;
+        phone == other.phone &&
+        bio == other.bio &&
+        pronouns == other.pronouns &&
+        accentColor == other.accentColor &&
+        banner == other.banner &&
+        bannerColor == other.bannerColor &&
+        authenticatorTypes == other.authenticatorTypes &&
+        premiumType == other.premiumType &&
+        premiumSince == other.premiumSince &&
+        premiumUntil == other.premiumUntil &&
+        premiumBillingCycle == other.premiumBillingCycle &&
+        premiumLifetimeSequence == other.premiumLifetimeSequence &&
+        passwordLastChangedAt == other.passwordLastChangedAt &&
+        requiredActions == other.requiredActions &&
+        pendingBulkMessageDeletion == other.pendingBulkMessageDeletion;
   }
 
   @override
@@ -212,47 +212,47 @@ class _$UserPrivateResponse extends UserPrivateResponse {
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, username.hashCode);
     _$hash = $jc(_$hash, discriminator.hashCode);
-    _$hash = $jc(_$hash, globalName.hashCode);
-    _$hash = $jc(_$hash, avatar.hashCode);
-    _$hash = $jc(_$hash, avatarColor.hashCode);
     _$hash = $jc(_$hash, flags.hashCode);
     _$hash = $jc(_$hash, isStaff.hashCode);
     _$hash = $jc(_$hash, acls.hashCode);
     _$hash = $jc(_$hash, traits.hashCode);
-    _$hash = $jc(_$hash, email.hashCode);
-    _$hash = $jc(_$hash, phone.hashCode);
-    _$hash = $jc(_$hash, bio.hashCode);
-    _$hash = $jc(_$hash, pronouns.hashCode);
-    _$hash = $jc(_$hash, accentColor.hashCode);
-    _$hash = $jc(_$hash, banner.hashCode);
-    _$hash = $jc(_$hash, bannerColor.hashCode);
     _$hash = $jc(_$hash, mfaEnabled.hashCode);
     _$hash = $jc(_$hash, verified.hashCode);
-    _$hash = $jc(_$hash, premiumType.hashCode);
-    _$hash = $jc(_$hash, premiumSince.hashCode);
-    _$hash = $jc(_$hash, premiumUntil.hashCode);
     _$hash = $jc(_$hash, premiumWillCancel.hashCode);
-    _$hash = $jc(_$hash, premiumBillingCycle.hashCode);
-    _$hash = $jc(_$hash, premiumLifetimeSequence.hashCode);
     _$hash = $jc(_$hash, premiumBadgeHidden.hashCode);
     _$hash = $jc(_$hash, premiumBadgeMasked.hashCode);
     _$hash = $jc(_$hash, premiumBadgeTimestampHidden.hashCode);
     _$hash = $jc(_$hash, premiumBadgeSequenceHidden.hashCode);
     _$hash = $jc(_$hash, premiumPurchaseDisabled.hashCode);
     _$hash = $jc(_$hash, premiumEnabledOverride.hashCode);
-    _$hash = $jc(_$hash, passwordLastChangedAt.hashCode);
-    _$hash = $jc(_$hash, requiredActions.hashCode);
     _$hash = $jc(_$hash, nsfwAllowed.hashCode);
     _$hash = $jc(_$hash, hasDismissedPremiumOnboarding.hashCode);
     _$hash = $jc(_$hash, hasEverPurchased.hashCode);
     _$hash = $jc(_$hash, hasUnreadGiftInventory.hashCode);
     _$hash = $jc(_$hash, unreadGiftInventoryCount.hashCode);
     _$hash = $jc(_$hash, usedMobileClient.hashCode);
-    _$hash = $jc(_$hash, pendingBulkMessageDeletion.hashCode);
+    _$hash = $jc(_$hash, globalName.hashCode);
+    _$hash = $jc(_$hash, avatar.hashCode);
+    _$hash = $jc(_$hash, avatarColor.hashCode);
     _$hash = $jc(_$hash, bot.hashCode);
     _$hash = $jc(_$hash, system.hashCode);
+    _$hash = $jc(_$hash, email.hashCode);
     _$hash = $jc(_$hash, emailBounced.hashCode);
+    _$hash = $jc(_$hash, phone.hashCode);
+    _$hash = $jc(_$hash, bio.hashCode);
+    _$hash = $jc(_$hash, pronouns.hashCode);
+    _$hash = $jc(_$hash, accentColor.hashCode);
+    _$hash = $jc(_$hash, banner.hashCode);
+    _$hash = $jc(_$hash, bannerColor.hashCode);
     _$hash = $jc(_$hash, authenticatorTypes.hashCode);
+    _$hash = $jc(_$hash, premiumType.hashCode);
+    _$hash = $jc(_$hash, premiumSince.hashCode);
+    _$hash = $jc(_$hash, premiumUntil.hashCode);
+    _$hash = $jc(_$hash, premiumBillingCycle.hashCode);
+    _$hash = $jc(_$hash, premiumLifetimeSequence.hashCode);
+    _$hash = $jc(_$hash, passwordLastChangedAt.hashCode);
+    _$hash = $jc(_$hash, requiredActions.hashCode);
+    _$hash = $jc(_$hash, pendingBulkMessageDeletion.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -263,47 +263,47 @@ class _$UserPrivateResponse extends UserPrivateResponse {
           ..add('id', id)
           ..add('username', username)
           ..add('discriminator', discriminator)
-          ..add('globalName', globalName)
-          ..add('avatar', avatar)
-          ..add('avatarColor', avatarColor)
           ..add('flags', flags)
           ..add('isStaff', isStaff)
           ..add('acls', acls)
           ..add('traits', traits)
-          ..add('email', email)
-          ..add('phone', phone)
-          ..add('bio', bio)
-          ..add('pronouns', pronouns)
-          ..add('accentColor', accentColor)
-          ..add('banner', banner)
-          ..add('bannerColor', bannerColor)
           ..add('mfaEnabled', mfaEnabled)
           ..add('verified', verified)
-          ..add('premiumType', premiumType)
-          ..add('premiumSince', premiumSince)
-          ..add('premiumUntil', premiumUntil)
           ..add('premiumWillCancel', premiumWillCancel)
-          ..add('premiumBillingCycle', premiumBillingCycle)
-          ..add('premiumLifetimeSequence', premiumLifetimeSequence)
           ..add('premiumBadgeHidden', premiumBadgeHidden)
           ..add('premiumBadgeMasked', premiumBadgeMasked)
           ..add('premiumBadgeTimestampHidden', premiumBadgeTimestampHidden)
           ..add('premiumBadgeSequenceHidden', premiumBadgeSequenceHidden)
           ..add('premiumPurchaseDisabled', premiumPurchaseDisabled)
           ..add('premiumEnabledOverride', premiumEnabledOverride)
-          ..add('passwordLastChangedAt', passwordLastChangedAt)
-          ..add('requiredActions', requiredActions)
           ..add('nsfwAllowed', nsfwAllowed)
           ..add('hasDismissedPremiumOnboarding', hasDismissedPremiumOnboarding)
           ..add('hasEverPurchased', hasEverPurchased)
           ..add('hasUnreadGiftInventory', hasUnreadGiftInventory)
           ..add('unreadGiftInventoryCount', unreadGiftInventoryCount)
           ..add('usedMobileClient', usedMobileClient)
-          ..add('pendingBulkMessageDeletion', pendingBulkMessageDeletion)
+          ..add('globalName', globalName)
+          ..add('avatar', avatar)
+          ..add('avatarColor', avatarColor)
           ..add('bot', bot)
           ..add('system', system)
+          ..add('email', email)
           ..add('emailBounced', emailBounced)
-          ..add('authenticatorTypes', authenticatorTypes))
+          ..add('phone', phone)
+          ..add('bio', bio)
+          ..add('pronouns', pronouns)
+          ..add('accentColor', accentColor)
+          ..add('banner', banner)
+          ..add('bannerColor', bannerColor)
+          ..add('authenticatorTypes', authenticatorTypes)
+          ..add('premiumType', premiumType)
+          ..add('premiumSince', premiumSince)
+          ..add('premiumUntil', premiumUntil)
+          ..add('premiumBillingCycle', premiumBillingCycle)
+          ..add('premiumLifetimeSequence', premiumLifetimeSequence)
+          ..add('passwordLastChangedAt', passwordLastChangedAt)
+          ..add('requiredActions', requiredActions)
+          ..add('pendingBulkMessageDeletion', pendingBulkMessageDeletion))
         .toString();
   }
 }
@@ -325,18 +325,6 @@ class UserPrivateResponseBuilder
   set discriminator(String? discriminator) =>
       _$this._discriminator = discriminator;
 
-  String? _globalName;
-  String? get globalName => _$this._globalName;
-  set globalName(String? globalName) => _$this._globalName = globalName;
-
-  String? _avatar;
-  String? get avatar => _$this._avatar;
-  set avatar(String? avatar) => _$this._avatar = avatar;
-
-  int? _avatarColor;
-  int? get avatarColor => _$this._avatarColor;
-  set avatarColor(int? avatarColor) => _$this._avatarColor = avatarColor;
-
   int? _flags;
   int? get flags => _$this._flags;
   set flags(int? flags) => _$this._flags = flags;
@@ -353,34 +341,6 @@ class UserPrivateResponseBuilder
   ListBuilder<String> get traits => _$this._traits ??= ListBuilder<String>();
   set traits(ListBuilder<String>? traits) => _$this._traits = traits;
 
-  String? _email;
-  String? get email => _$this._email;
-  set email(String? email) => _$this._email = email;
-
-  String? _phone;
-  String? get phone => _$this._phone;
-  set phone(String? phone) => _$this._phone = phone;
-
-  String? _bio;
-  String? get bio => _$this._bio;
-  set bio(String? bio) => _$this._bio = bio;
-
-  String? _pronouns;
-  String? get pronouns => _$this._pronouns;
-  set pronouns(String? pronouns) => _$this._pronouns = pronouns;
-
-  int? _accentColor;
-  int? get accentColor => _$this._accentColor;
-  set accentColor(int? accentColor) => _$this._accentColor = accentColor;
-
-  String? _banner;
-  String? get banner => _$this._banner;
-  set banner(String? banner) => _$this._banner = banner;
-
-  int? _bannerColor;
-  int? get bannerColor => _$this._bannerColor;
-  set bannerColor(int? bannerColor) => _$this._bannerColor = bannerColor;
-
   bool? _mfaEnabled;
   bool? get mfaEnabled => _$this._mfaEnabled;
   set mfaEnabled(bool? mfaEnabled) => _$this._mfaEnabled = mfaEnabled;
@@ -389,33 +349,10 @@ class UserPrivateResponseBuilder
   bool? get verified => _$this._verified;
   set verified(bool? verified) => _$this._verified = verified;
 
-  UserPremiumTypes? _premiumType;
-  UserPremiumTypes? get premiumType => _$this._premiumType;
-  set premiumType(UserPremiumTypes? premiumType) =>
-      _$this._premiumType = premiumType;
-
-  String? _premiumSince;
-  String? get premiumSince => _$this._premiumSince;
-  set premiumSince(String? premiumSince) => _$this._premiumSince = premiumSince;
-
-  String? _premiumUntil;
-  String? get premiumUntil => _$this._premiumUntil;
-  set premiumUntil(String? premiumUntil) => _$this._premiumUntil = premiumUntil;
-
   bool? _premiumWillCancel;
   bool? get premiumWillCancel => _$this._premiumWillCancel;
   set premiumWillCancel(bool? premiumWillCancel) =>
       _$this._premiumWillCancel = premiumWillCancel;
-
-  String? _premiumBillingCycle;
-  String? get premiumBillingCycle => _$this._premiumBillingCycle;
-  set premiumBillingCycle(String? premiumBillingCycle) =>
-      _$this._premiumBillingCycle = premiumBillingCycle;
-
-  int? _premiumLifetimeSequence;
-  int? get premiumLifetimeSequence => _$this._premiumLifetimeSequence;
-  set premiumLifetimeSequence(int? premiumLifetimeSequence) =>
-      _$this._premiumLifetimeSequence = premiumLifetimeSequence;
 
   bool? _premiumBadgeHidden;
   bool? get premiumBadgeHidden => _$this._premiumBadgeHidden;
@@ -447,17 +384,6 @@ class UserPrivateResponseBuilder
   set premiumEnabledOverride(bool? premiumEnabledOverride) =>
       _$this._premiumEnabledOverride = premiumEnabledOverride;
 
-  String? _passwordLastChangedAt;
-  String? get passwordLastChangedAt => _$this._passwordLastChangedAt;
-  set passwordLastChangedAt(String? passwordLastChangedAt) =>
-      _$this._passwordLastChangedAt = passwordLastChangedAt;
-
-  ListBuilder<String>? _requiredActions;
-  ListBuilder<String> get requiredActions =>
-      _$this._requiredActions ??= ListBuilder<String>();
-  set requiredActions(ListBuilder<String>? requiredActions) =>
-      _$this._requiredActions = requiredActions;
-
   bool? _nsfwAllowed;
   bool? get nsfwAllowed => _$this._nsfwAllowed;
   set nsfwAllowed(bool? nsfwAllowed) => _$this._nsfwAllowed = nsfwAllowed;
@@ -488,15 +414,17 @@ class UserPrivateResponseBuilder
   set usedMobileClient(bool? usedMobileClient) =>
       _$this._usedMobileClient = usedMobileClient;
 
-  UserPrivateResponsePendingBulkMessageDeletionBuilder?
-      _pendingBulkMessageDeletion;
-  UserPrivateResponsePendingBulkMessageDeletionBuilder
-      get pendingBulkMessageDeletion => _$this._pendingBulkMessageDeletion ??=
-          UserPrivateResponsePendingBulkMessageDeletionBuilder();
-  set pendingBulkMessageDeletion(
-          UserPrivateResponsePendingBulkMessageDeletionBuilder?
-              pendingBulkMessageDeletion) =>
-      _$this._pendingBulkMessageDeletion = pendingBulkMessageDeletion;
+  String? _globalName;
+  String? get globalName => _$this._globalName;
+  set globalName(String? globalName) => _$this._globalName = globalName;
+
+  String? _avatar;
+  String? get avatar => _$this._avatar;
+  set avatar(String? avatar) => _$this._avatar = avatar;
+
+  int? _avatarColor;
+  int? get avatarColor => _$this._avatarColor;
+  set avatarColor(int? avatarColor) => _$this._avatarColor = avatarColor;
 
   bool? _bot;
   bool? get bot => _$this._bot;
@@ -506,9 +434,37 @@ class UserPrivateResponseBuilder
   bool? get system => _$this._system;
   set system(bool? system) => _$this._system = system;
 
+  String? _email;
+  String? get email => _$this._email;
+  set email(String? email) => _$this._email = email;
+
   bool? _emailBounced;
   bool? get emailBounced => _$this._emailBounced;
   set emailBounced(bool? emailBounced) => _$this._emailBounced = emailBounced;
+
+  String? _phone;
+  String? get phone => _$this._phone;
+  set phone(String? phone) => _$this._phone = phone;
+
+  String? _bio;
+  String? get bio => _$this._bio;
+  set bio(String? bio) => _$this._bio = bio;
+
+  String? _pronouns;
+  String? get pronouns => _$this._pronouns;
+  set pronouns(String? pronouns) => _$this._pronouns = pronouns;
+
+  int? _accentColor;
+  int? get accentColor => _$this._accentColor;
+  set accentColor(int? accentColor) => _$this._accentColor = accentColor;
+
+  String? _banner;
+  String? get banner => _$this._banner;
+  set banner(String? banner) => _$this._banner = banner;
+
+  int? _bannerColor;
+  int? get bannerColor => _$this._bannerColor;
+  set bannerColor(int? bannerColor) => _$this._bannerColor = bannerColor;
 
   ListBuilder<UserAuthenticatorTypes>? _authenticatorTypes;
   ListBuilder<UserAuthenticatorTypes> get authenticatorTypes =>
@@ -516,6 +472,50 @@ class UserPrivateResponseBuilder
   set authenticatorTypes(
           ListBuilder<UserAuthenticatorTypes>? authenticatorTypes) =>
       _$this._authenticatorTypes = authenticatorTypes;
+
+  UserPremiumTypes? _premiumType;
+  UserPremiumTypes? get premiumType => _$this._premiumType;
+  set premiumType(UserPremiumTypes? premiumType) =>
+      _$this._premiumType = premiumType;
+
+  String? _premiumSince;
+  String? get premiumSince => _$this._premiumSince;
+  set premiumSince(String? premiumSince) => _$this._premiumSince = premiumSince;
+
+  String? _premiumUntil;
+  String? get premiumUntil => _$this._premiumUntil;
+  set premiumUntil(String? premiumUntil) => _$this._premiumUntil = premiumUntil;
+
+  String? _premiumBillingCycle;
+  String? get premiumBillingCycle => _$this._premiumBillingCycle;
+  set premiumBillingCycle(String? premiumBillingCycle) =>
+      _$this._premiumBillingCycle = premiumBillingCycle;
+
+  int? _premiumLifetimeSequence;
+  int? get premiumLifetimeSequence => _$this._premiumLifetimeSequence;
+  set premiumLifetimeSequence(int? premiumLifetimeSequence) =>
+      _$this._premiumLifetimeSequence = premiumLifetimeSequence;
+
+  String? _passwordLastChangedAt;
+  String? get passwordLastChangedAt => _$this._passwordLastChangedAt;
+  set passwordLastChangedAt(String? passwordLastChangedAt) =>
+      _$this._passwordLastChangedAt = passwordLastChangedAt;
+
+  ListBuilder<String>? _requiredActions;
+  ListBuilder<String> get requiredActions =>
+      _$this._requiredActions ??= ListBuilder<String>();
+  set requiredActions(ListBuilder<String>? requiredActions) =>
+      _$this._requiredActions = requiredActions;
+
+  UserPrivateResponsePendingBulkMessageDeletionBuilder?
+      _pendingBulkMessageDeletion;
+  UserPrivateResponsePendingBulkMessageDeletionBuilder
+      get pendingBulkMessageDeletion => _$this._pendingBulkMessageDeletion ??=
+          UserPrivateResponsePendingBulkMessageDeletionBuilder();
+  set pendingBulkMessageDeletion(
+          UserPrivateResponsePendingBulkMessageDeletionBuilder?
+              pendingBulkMessageDeletion) =>
+      _$this._pendingBulkMessageDeletion = pendingBulkMessageDeletion;
 
   UserPrivateResponseBuilder() {
     UserPrivateResponse._defaults(this);
@@ -527,47 +527,47 @@ class UserPrivateResponseBuilder
       _id = $v.id;
       _username = $v.username;
       _discriminator = $v.discriminator;
-      _globalName = $v.globalName;
-      _avatar = $v.avatar;
-      _avatarColor = $v.avatarColor;
       _flags = $v.flags;
       _isStaff = $v.isStaff;
       _acls = $v.acls.toBuilder();
       _traits = $v.traits.toBuilder();
-      _email = $v.email;
-      _phone = $v.phone;
-      _bio = $v.bio;
-      _pronouns = $v.pronouns;
-      _accentColor = $v.accentColor;
-      _banner = $v.banner;
-      _bannerColor = $v.bannerColor;
       _mfaEnabled = $v.mfaEnabled;
       _verified = $v.verified;
-      _premiumType = $v.premiumType;
-      _premiumSince = $v.premiumSince;
-      _premiumUntil = $v.premiumUntil;
       _premiumWillCancel = $v.premiumWillCancel;
-      _premiumBillingCycle = $v.premiumBillingCycle;
-      _premiumLifetimeSequence = $v.premiumLifetimeSequence;
       _premiumBadgeHidden = $v.premiumBadgeHidden;
       _premiumBadgeMasked = $v.premiumBadgeMasked;
       _premiumBadgeTimestampHidden = $v.premiumBadgeTimestampHidden;
       _premiumBadgeSequenceHidden = $v.premiumBadgeSequenceHidden;
       _premiumPurchaseDisabled = $v.premiumPurchaseDisabled;
       _premiumEnabledOverride = $v.premiumEnabledOverride;
-      _passwordLastChangedAt = $v.passwordLastChangedAt;
-      _requiredActions = $v.requiredActions?.toBuilder();
       _nsfwAllowed = $v.nsfwAllowed;
       _hasDismissedPremiumOnboarding = $v.hasDismissedPremiumOnboarding;
       _hasEverPurchased = $v.hasEverPurchased;
       _hasUnreadGiftInventory = $v.hasUnreadGiftInventory;
       _unreadGiftInventoryCount = $v.unreadGiftInventoryCount;
       _usedMobileClient = $v.usedMobileClient;
-      _pendingBulkMessageDeletion = $v.pendingBulkMessageDeletion?.toBuilder();
+      _globalName = $v.globalName;
+      _avatar = $v.avatar;
+      _avatarColor = $v.avatarColor;
       _bot = $v.bot;
       _system = $v.system;
+      _email = $v.email;
       _emailBounced = $v.emailBounced;
+      _phone = $v.phone;
+      _bio = $v.bio;
+      _pronouns = $v.pronouns;
+      _accentColor = $v.accentColor;
+      _banner = $v.banner;
+      _bannerColor = $v.bannerColor;
       _authenticatorTypes = $v.authenticatorTypes?.toBuilder();
+      _premiumType = $v.premiumType;
+      _premiumSince = $v.premiumSince;
+      _premiumUntil = $v.premiumUntil;
+      _premiumBillingCycle = $v.premiumBillingCycle;
+      _premiumLifetimeSequence = $v.premiumLifetimeSequence;
+      _passwordLastChangedAt = $v.passwordLastChangedAt;
+      _requiredActions = $v.requiredActions?.toBuilder();
+      _pendingBulkMessageDeletion = $v.pendingBulkMessageDeletion?.toBuilder();
       _$v = null;
     }
     return this;
@@ -597,39 +597,18 @@ class UserPrivateResponseBuilder
                 username, r'UserPrivateResponse', 'username'),
             discriminator: BuiltValueNullFieldError.checkNotNull(
                 discriminator, r'UserPrivateResponse', 'discriminator'),
-            globalName: globalName,
-            avatar: avatar,
-            avatarColor: BuiltValueNullFieldError.checkNotNull(
-                avatarColor, r'UserPrivateResponse', 'avatarColor'),
             flags: BuiltValueNullFieldError.checkNotNull(
                 flags, r'UserPrivateResponse', 'flags'),
             isStaff: BuiltValueNullFieldError.checkNotNull(
                 isStaff, r'UserPrivateResponse', 'isStaff'),
             acls: acls.build(),
             traits: traits.build(),
-            email: email,
-            phone: phone,
-            bio: bio,
-            pronouns: pronouns,
-            accentColor: BuiltValueNullFieldError.checkNotNull(
-                accentColor, r'UserPrivateResponse', 'accentColor'),
-            banner: banner,
-            bannerColor: BuiltValueNullFieldError.checkNotNull(
-                bannerColor, r'UserPrivateResponse', 'bannerColor'),
             mfaEnabled: BuiltValueNullFieldError.checkNotNull(
                 mfaEnabled, r'UserPrivateResponse', 'mfaEnabled'),
             verified: BuiltValueNullFieldError.checkNotNull(
                 verified, r'UserPrivateResponse', 'verified'),
-            premiumType: premiumType,
-            premiumSince: premiumSince,
-            premiumUntil: premiumUntil,
             premiumWillCancel: BuiltValueNullFieldError.checkNotNull(
                 premiumWillCancel, r'UserPrivateResponse', 'premiumWillCancel'),
-            premiumBillingCycle: premiumBillingCycle,
-            premiumLifetimeSequence: BuiltValueNullFieldError.checkNotNull(
-                premiumLifetimeSequence,
-                r'UserPrivateResponse',
-                'premiumLifetimeSequence'),
             premiumBadgeHidden: BuiltValueNullFieldError.checkNotNull(
                 premiumBadgeHidden,
                 r'UserPrivateResponse',
@@ -654,8 +633,6 @@ class UserPrivateResponseBuilder
                 premiumEnabledOverride,
                 r'UserPrivateResponse',
                 'premiumEnabledOverride'),
-            passwordLastChangedAt: passwordLastChangedAt,
-            requiredActions: _requiredActions?.build(),
             nsfwAllowed: BuiltValueNullFieldError.checkNotNull(
                 nsfwAllowed, r'UserPrivateResponse', 'nsfwAllowed'),
             hasDismissedPremiumOnboarding:
@@ -675,11 +652,28 @@ class UserPrivateResponseBuilder
                 'unreadGiftInventoryCount'),
             usedMobileClient: BuiltValueNullFieldError.checkNotNull(
                 usedMobileClient, r'UserPrivateResponse', 'usedMobileClient'),
-            pendingBulkMessageDeletion: _pendingBulkMessageDeletion?.build(),
+            globalName: globalName,
+            avatar: avatar,
+            avatarColor: avatarColor,
             bot: bot,
             system: system,
+            email: email,
             emailBounced: emailBounced,
+            phone: phone,
+            bio: bio,
+            pronouns: pronouns,
+            accentColor: accentColor,
+            banner: banner,
+            bannerColor: bannerColor,
             authenticatorTypes: _authenticatorTypes?.build(),
+            premiumType: premiumType,
+            premiumSince: premiumSince,
+            premiumUntil: premiumUntil,
+            premiumBillingCycle: premiumBillingCycle,
+            premiumLifetimeSequence: premiumLifetimeSequence,
+            passwordLastChangedAt: passwordLastChangedAt,
+            requiredActions: _requiredActions?.build(),
+            pendingBulkMessageDeletion: _pendingBulkMessageDeletion?.build(),
           );
     } catch (_) {
       late String _$failedField;
@@ -689,14 +683,13 @@ class UserPrivateResponseBuilder
         _$failedField = 'traits';
         traits.build();
 
-        _$failedField = 'requiredActions';
-        _requiredActions?.build();
-
-        _$failedField = 'pendingBulkMessageDeletion';
-        _pendingBulkMessageDeletion?.build();
-
         _$failedField = 'authenticatorTypes';
         _authenticatorTypes?.build();
+
+        _$failedField = 'requiredActions';
+        _requiredActions?.build();
+        _$failedField = 'pendingBulkMessageDeletion';
+        _pendingBulkMessageDeletion?.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
             r'UserPrivateResponse', _$failedField, e.toString());

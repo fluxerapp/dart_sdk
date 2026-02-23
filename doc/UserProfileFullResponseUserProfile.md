@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **bio** | **String** |  | 
 **pronouns** | **String** |  | 
 **banner** | **String** |  | 
-**accentColor** | **int** |  | 
-**bannerColor** | **int** |  | [optional] 
+**accentColor** | **int** | User-selected accent color | 
+**bannerColor** | **int** | Default banner color if no custom banner | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

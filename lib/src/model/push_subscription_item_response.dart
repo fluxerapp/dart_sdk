@@ -60,13 +60,13 @@ class _$PushSubscriptionItemResponseSerializer
       object.subscriptionId,
       specifiedType: const FullType(String),
     );
-    yield r'user_agent';
-    yield object.userAgent == null
-        ? null
-        : serializers.serialize(
-            object.userAgent,
-            specifiedType: const FullType.nullable(String),
-          );
+    if (object.userAgent != null) {
+      yield r'user_agent';
+      yield serializers.serialize(
+        object.userAgent,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
   }
 
   @override

@@ -15,10 +15,10 @@ part 'list_admin_api_key_response.g.dart';
 /// * [keyId] - Unique identifier for the API key
 /// * [name] - Display name for the API key
 /// * [createdAt] - ISO 8601 timestamp when the key was created
-/// * [lastUsedAt]
-/// * [expiresAt]
 /// * [createdByUserId] - User ID of the admin who created this key
 /// * [acls] - List of access control permissions for the key
+/// * [lastUsedAt]
+/// * [expiresAt]
 @BuiltValue()
 abstract class ListAdminApiKeyResponse
     implements Built<ListAdminApiKeyResponse, ListAdminApiKeyResponseBuilder> {
@@ -34,12 +34,6 @@ abstract class ListAdminApiKeyResponse
   @BuiltValueField(wireName: r'created_at')
   String get createdAt;
 
-  @BuiltValueField(wireName: r'last_used_at')
-  String? get lastUsedAt;
-
-  @BuiltValueField(wireName: r'expires_at')
-  String? get expiresAt;
-
   /// User ID of the admin who created this key
   @BuiltValueField(wireName: r'created_by_user_id')
   String get createdByUserId;
@@ -47,6 +41,12 @@ abstract class ListAdminApiKeyResponse
   /// List of access control permissions for the key
   @BuiltValueField(wireName: r'acls')
   BuiltList<String> get acls;
+
+  @BuiltValueField(wireName: r'last_used_at')
+  String? get lastUsedAt;
+
+  @BuiltValueField(wireName: r'expires_at')
+  String? get expiresAt;
 
   ListAdminApiKeyResponse._();
 
@@ -93,20 +93,6 @@ class _$ListAdminApiKeyResponseSerializer
       object.createdAt,
       specifiedType: const FullType(String),
     );
-    yield r'last_used_at';
-    yield object.lastUsedAt == null
-        ? null
-        : serializers.serialize(
-            object.lastUsedAt,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'expires_at';
-    yield object.expiresAt == null
-        ? null
-        : serializers.serialize(
-            object.expiresAt,
-            specifiedType: const FullType.nullable(String),
-          );
     yield r'created_by_user_id';
     yield serializers.serialize(
       object.createdByUserId,
@@ -117,6 +103,20 @@ class _$ListAdminApiKeyResponseSerializer
       object.acls,
       specifiedType: const FullType(BuiltList, [FullType(String)]),
     );
+    if (object.lastUsedAt != null) {
+      yield r'last_used_at';
+      yield serializers.serialize(
+        object.lastUsedAt,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.expiresAt != null) {
+      yield r'expires_at';
+      yield serializers.serialize(
+        object.expiresAt,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
   }
 
   @override
@@ -163,6 +163,20 @@ class _$ListAdminApiKeyResponseSerializer
           ) as String;
           result.createdAt = valueDes;
           break;
+        case r'created_by_user_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.createdByUserId = valueDes;
+          break;
+        case r'acls':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>;
+          result.acls.replace(valueDes);
+          break;
         case r'last_used_at':
           final valueDes = serializers.deserialize(
             value,
@@ -178,20 +192,6 @@ class _$ListAdminApiKeyResponseSerializer
           ) as String?;
           if (valueDes == null) continue;
           result.expiresAt = valueDes;
-          break;
-        case r'created_by_user_id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.createdByUserId = valueDes;
-          break;
-        case r'acls':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
-          result.acls.replace(valueDes);
           break;
         default:
           unhandled.add(key);

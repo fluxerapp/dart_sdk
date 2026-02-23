@@ -13,6 +13,9 @@ part 'sso_config_response.g.dart';
 ///
 /// Properties:
 /// * [enabled]
+/// * [clientSecretSet]
+/// * [allowedDomains]
+/// * [autoProvision]
 /// * [displayName]
 /// * [issuer]
 /// * [authorizationUrl]
@@ -20,16 +23,22 @@ part 'sso_config_response.g.dart';
 /// * [userinfoUrl]
 /// * [jwksUrl]
 /// * [clientId]
-/// * [clientSecretSet]
 /// * [scope]
-/// * [allowedDomains]
-/// * [autoProvision]
 /// * [redirectUri]
 @BuiltValue()
 abstract class SsoConfigResponse
     implements Built<SsoConfigResponse, SsoConfigResponseBuilder> {
   @BuiltValueField(wireName: r'enabled')
   bool get enabled;
+
+  @BuiltValueField(wireName: r'client_secret_set')
+  bool get clientSecretSet;
+
+  @BuiltValueField(wireName: r'allowed_domains')
+  BuiltList<String> get allowedDomains;
+
+  @BuiltValueField(wireName: r'auto_provision')
+  bool get autoProvision;
 
   @BuiltValueField(wireName: r'display_name')
   String? get displayName;
@@ -52,17 +61,8 @@ abstract class SsoConfigResponse
   @BuiltValueField(wireName: r'client_id')
   String? get clientId;
 
-  @BuiltValueField(wireName: r'client_secret_set')
-  bool get clientSecretSet;
-
   @BuiltValueField(wireName: r'scope')
   String? get scope;
-
-  @BuiltValueField(wireName: r'allowed_domains')
-  BuiltList<String> get allowedDomains;
-
-  @BuiltValueField(wireName: r'auto_provision')
-  bool get autoProvision;
 
   @BuiltValueField(wireName: r'redirect_uri')
   String? get redirectUri;
@@ -98,67 +98,11 @@ class _$SsoConfigResponseSerializer
       object.enabled,
       specifiedType: const FullType(bool),
     );
-    yield r'display_name';
-    yield object.displayName == null
-        ? null
-        : serializers.serialize(
-            object.displayName,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'issuer';
-    yield object.issuer == null
-        ? null
-        : serializers.serialize(
-            object.issuer,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'authorization_url';
-    yield object.authorizationUrl == null
-        ? null
-        : serializers.serialize(
-            object.authorizationUrl,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'token_url';
-    yield object.tokenUrl == null
-        ? null
-        : serializers.serialize(
-            object.tokenUrl,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'userinfo_url';
-    yield object.userinfoUrl == null
-        ? null
-        : serializers.serialize(
-            object.userinfoUrl,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'jwks_url';
-    yield object.jwksUrl == null
-        ? null
-        : serializers.serialize(
-            object.jwksUrl,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'client_id';
-    yield object.clientId == null
-        ? null
-        : serializers.serialize(
-            object.clientId,
-            specifiedType: const FullType.nullable(String),
-          );
     yield r'client_secret_set';
     yield serializers.serialize(
       object.clientSecretSet,
       specifiedType: const FullType(bool),
     );
-    yield r'scope';
-    yield object.scope == null
-        ? null
-        : serializers.serialize(
-            object.scope,
-            specifiedType: const FullType.nullable(String),
-          );
     yield r'allowed_domains';
     yield serializers.serialize(
       object.allowedDomains,
@@ -169,13 +113,69 @@ class _$SsoConfigResponseSerializer
       object.autoProvision,
       specifiedType: const FullType(bool),
     );
-    yield r'redirect_uri';
-    yield object.redirectUri == null
-        ? null
-        : serializers.serialize(
-            object.redirectUri,
-            specifiedType: const FullType.nullable(String),
-          );
+    if (object.displayName != null) {
+      yield r'display_name';
+      yield serializers.serialize(
+        object.displayName,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.issuer != null) {
+      yield r'issuer';
+      yield serializers.serialize(
+        object.issuer,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.authorizationUrl != null) {
+      yield r'authorization_url';
+      yield serializers.serialize(
+        object.authorizationUrl,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.tokenUrl != null) {
+      yield r'token_url';
+      yield serializers.serialize(
+        object.tokenUrl,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.userinfoUrl != null) {
+      yield r'userinfo_url';
+      yield serializers.serialize(
+        object.userinfoUrl,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.jwksUrl != null) {
+      yield r'jwks_url';
+      yield serializers.serialize(
+        object.jwksUrl,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.clientId != null) {
+      yield r'client_id';
+      yield serializers.serialize(
+        object.clientId,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.scope != null) {
+      yield r'scope';
+      yield serializers.serialize(
+        object.scope,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.redirectUri != null) {
+      yield r'redirect_uri';
+      yield serializers.serialize(
+        object.redirectUri,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
   }
 
   @override
@@ -207,6 +207,27 @@ class _$SsoConfigResponseSerializer
             specifiedType: const FullType(bool),
           ) as bool;
           result.enabled = valueDes;
+          break;
+        case r'client_secret_set':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.clientSecretSet = valueDes;
+          break;
+        case r'allowed_domains':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>;
+          result.allowedDomains.replace(valueDes);
+          break;
+        case r'auto_provision':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.autoProvision = valueDes;
           break;
         case r'display_name':
           final valueDes = serializers.deserialize(
@@ -264,13 +285,6 @@ class _$SsoConfigResponseSerializer
           if (valueDes == null) continue;
           result.clientId = valueDes;
           break;
-        case r'client_secret_set':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.clientSecretSet = valueDes;
-          break;
         case r'scope':
           final valueDes = serializers.deserialize(
             value,
@@ -278,20 +292,6 @@ class _$SsoConfigResponseSerializer
           ) as String?;
           if (valueDes == null) continue;
           result.scope = valueDes;
-          break;
-        case r'allowed_domains':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
-          result.allowedDomains.replace(valueDes);
-          break;
-        case r'auto_provision':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.autoProvision = valueDes;
           break;
         case r'redirect_uri':
           final valueDes = serializers.deserialize(

@@ -14,8 +14,8 @@ part 'user_profile_full_response_user_profile.g.dart';
 /// * [bio]
 /// * [pronouns]
 /// * [banner]
-/// * [accentColor]
-/// * [bannerColor]
+/// * [accentColor] - User-selected accent color
+/// * [bannerColor] - Default banner color if no custom banner
 @BuiltValue()
 abstract class UserProfileFullResponseUserProfile
     implements
@@ -30,9 +30,11 @@ abstract class UserProfileFullResponseUserProfile
   @BuiltValueField(wireName: r'banner')
   String? get banner;
 
+  /// User-selected accent color
   @BuiltValueField(wireName: r'accent_color')
   int get accentColor;
 
+  /// Default banner color if no custom banner
   @BuiltValueField(wireName: r'banner_color')
   int? get bannerColor;
 

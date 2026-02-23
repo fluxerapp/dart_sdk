@@ -21,13 +21,13 @@ part 'channel_response.g.dart';
 /// * [topic]
 /// * [url]
 /// * [icon]
-/// * [ownerId]
+/// * [ownerId] - The ID of the owner of the channel (for group DMs)
 /// * [position]
-/// * [parentId]
-/// * [bitrate]
-/// * [userLimit]
+/// * [parentId] - The ID of the parent category for this channel
+/// * [bitrate] - The bitrate of the voice channel in bits per second
+/// * [userLimit] - The maximum number of users allowed in the voice channel
 /// * [rtcRegion]
-/// * [lastMessageId]
+/// * [lastMessageId] - The ID of the last message sent in this channel
 /// * [lastPinTimestamp]
 /// * [permissionOverwrites] - The permission overwrites for this channel
 /// * [recipients] - The recipients of the DM channel
@@ -61,24 +61,29 @@ abstract class ChannelResponse
   @BuiltValueField(wireName: r'icon')
   String? get icon;
 
+  /// The ID of the owner of the channel (for group DMs)
   @BuiltValueField(wireName: r'owner_id')
   String? get ownerId;
 
   @BuiltValueField(wireName: r'position')
   int? get position;
 
+  /// The ID of the parent category for this channel
   @BuiltValueField(wireName: r'parent_id')
   String? get parentId;
 
+  /// The bitrate of the voice channel in bits per second
   @BuiltValueField(wireName: r'bitrate')
   int? get bitrate;
 
+  /// The maximum number of users allowed in the voice channel
   @BuiltValueField(wireName: r'user_limit')
   int? get userLimit;
 
   @BuiltValueField(wireName: r'rtc_region')
   String? get rtcRegion;
 
+  /// The ID of the last message sent in this channel
   @BuiltValueField(wireName: r'last_message_id')
   String? get lastMessageId;
 

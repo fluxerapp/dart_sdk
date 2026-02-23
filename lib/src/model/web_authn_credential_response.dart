@@ -79,13 +79,13 @@ class _$WebAuthnCredentialResponseSerializer
       object.createdAt,
       specifiedType: const FullType(String),
     );
-    yield r'last_used_at';
-    yield object.lastUsedAt == null
-        ? null
-        : serializers.serialize(
-            object.lastUsedAt,
-            specifiedType: const FullType.nullable(String),
-          );
+    if (object.lastUsedAt != null) {
+      yield r'last_used_at';
+      yield serializers.serialize(
+        object.lastUsedAt,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
   }
 
   @override

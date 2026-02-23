@@ -16,10 +16,10 @@ part 'application_bot_response.g.dart';
 /// * [id] - The unique identifier of the bot user
 /// * [username] - The username of the bot
 /// * [discriminator] - The discriminator of the bot
-/// * [bio]
 /// * [flags] - The bot user flags
 /// * [avatar]
 /// * [banner]
+/// * [bio]
 /// * [token] - The bot token for authentication
 /// * [mfaEnabled] - Whether the bot has MFA enabled
 /// * [authenticatorTypes] - The types of authenticators enabled
@@ -38,9 +38,6 @@ abstract class ApplicationBotResponse
   @BuiltValueField(wireName: r'discriminator')
   String get discriminator;
 
-  @BuiltValueField(wireName: r'bio')
-  String? get bio;
-
   /// The bot user flags
   @BuiltValueField(wireName: r'flags')
   int get flags;
@@ -50,6 +47,9 @@ abstract class ApplicationBotResponse
 
   @BuiltValueField(wireName: r'banner')
   String? get banner;
+
+  @BuiltValueField(wireName: r'bio')
+  String? get bio;
 
   /// The bot token for authentication
   @BuiltValueField(wireName: r'token')
@@ -108,13 +108,6 @@ class _$ApplicationBotResponseSerializer
       object.discriminator,
       specifiedType: const FullType(String),
     );
-    yield r'bio';
-    yield object.bio == null
-        ? null
-        : serializers.serialize(
-            object.bio,
-            specifiedType: const FullType.nullable(String),
-          );
     yield r'flags';
     yield serializers.serialize(
       object.flags,
@@ -131,6 +124,13 @@ class _$ApplicationBotResponseSerializer
       yield r'banner';
       yield serializers.serialize(
         object.banner,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.bio != null) {
+      yield r'bio';
+      yield serializers.serialize(
+        object.bio,
         specifiedType: const FullType.nullable(String),
       );
     }
@@ -201,14 +201,6 @@ class _$ApplicationBotResponseSerializer
           ) as String;
           result.discriminator = valueDes;
           break;
-        case r'bio':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.bio = valueDes;
-          break;
         case r'flags':
           final valueDes = serializers.deserialize(
             value,
@@ -231,6 +223,14 @@ class _$ApplicationBotResponseSerializer
           ) as String?;
           if (valueDes == null) continue;
           result.banner = valueDes;
+          break;
+        case r'bio':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.bio = valueDes;
           break;
         case r'token':
           final valueDes = serializers.deserialize(

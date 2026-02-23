@@ -16,9 +16,9 @@ part 'guild_admin_response.g.dart';
 /// * [name] - The name of the guild
 /// * [features] - Array of guild feature flags
 /// * [ownerId] - The ID of the guild owner
+/// * [memberCount] - The number of members in the guild
 /// * [icon]
 /// * [banner]
-/// * [memberCount] - The number of members in the guild
 @BuiltValue()
 abstract class GuildAdminResponse
     implements Built<GuildAdminResponse, GuildAdminResponseBuilder> {
@@ -38,15 +38,15 @@ abstract class GuildAdminResponse
   @BuiltValueField(wireName: r'owner_id')
   String get ownerId;
 
+  /// The number of members in the guild
+  @BuiltValueField(wireName: r'member_count')
+  int get memberCount;
+
   @BuiltValueField(wireName: r'icon')
   String? get icon;
 
   @BuiltValueField(wireName: r'banner')
   String? get banner;
-
-  /// The number of members in the guild
-  @BuiltValueField(wireName: r'member_count')
-  int get memberCount;
 
   GuildAdminResponse._();
 
@@ -94,25 +94,25 @@ class _$GuildAdminResponseSerializer
       object.ownerId,
       specifiedType: const FullType(String),
     );
-    yield r'icon';
-    yield object.icon == null
-        ? null
-        : serializers.serialize(
-            object.icon,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'banner';
-    yield object.banner == null
-        ? null
-        : serializers.serialize(
-            object.banner,
-            specifiedType: const FullType.nullable(String),
-          );
     yield r'member_count';
     yield serializers.serialize(
       object.memberCount,
       specifiedType: const FullType(int),
     );
+    if (object.icon != null) {
+      yield r'icon';
+      yield serializers.serialize(
+        object.icon,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.banner != null) {
+      yield r'banner';
+      yield serializers.serialize(
+        object.banner,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
   }
 
   @override
@@ -166,6 +166,13 @@ class _$GuildAdminResponseSerializer
           ) as String;
           result.ownerId = valueDes;
           break;
+        case r'member_count':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.memberCount = valueDes;
+          break;
         case r'icon':
           final valueDes = serializers.deserialize(
             value,
@@ -181,13 +188,6 @@ class _$GuildAdminResponseSerializer
           ) as String?;
           if (valueDes == null) continue;
           result.banner = valueDes;
-          break;
-        case r'member_count':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.memberCount = valueDes;
           break;
         default:
           unhandled.add(key);

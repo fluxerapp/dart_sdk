@@ -15,7 +15,7 @@ part 'purge_guild_asset_result_schema.g.dart';
 /// * [id] - Unique identifier of the asset
 /// * [assetType] - Type of guild asset
 /// * [foundInDb] - Whether the asset was found in the database
-/// * [guildId]
+/// * [guildId] - ID of the guild the asset belongs to
 @BuiltValue()
 abstract class PurgeGuildAssetResultSchema
     implements
@@ -33,8 +33,9 @@ abstract class PurgeGuildAssetResultSchema
   @BuiltValueField(wireName: r'found_in_db')
   bool get foundInDb;
 
+  /// ID of the guild the asset belongs to
   @BuiltValueField(wireName: r'guild_id')
-  String get guildId;
+  String? get guildId;
 
   PurgeGuildAssetResultSchema._();
 
@@ -81,11 +82,13 @@ class _$PurgeGuildAssetResultSchemaSerializer
       object.foundInDb,
       specifiedType: const FullType(bool),
     );
-    yield r'guild_id';
-    yield serializers.serialize(
-      object.guildId,
-      specifiedType: const FullType(String),
-    );
+    if (object.guildId != null) {
+      yield r'guild_id';
+      yield serializers.serialize(
+        object.guildId,
+        specifiedType: const FullType(String),
+      );
+    }
   }
 
   @override

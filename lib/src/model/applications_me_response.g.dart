@@ -12,15 +12,15 @@ class _$ApplicationsMeResponse extends ApplicationsMeResponse {
   @override
   final String name;
   @override
-  final String? icon;
-  @override
-  final String? description;
-  @override
   final bool botPublic;
   @override
   final bool botRequireCodeGrant;
   @override
   final int flags;
+  @override
+  final String? icon;
+  @override
+  final String? description;
   @override
   final ApplicationBotResponse? bot;
 
@@ -31,11 +31,11 @@ class _$ApplicationsMeResponse extends ApplicationsMeResponse {
   _$ApplicationsMeResponse._(
       {required this.id,
       required this.name,
-      this.icon,
-      this.description,
       required this.botPublic,
       required this.botRequireCodeGrant,
       required this.flags,
+      this.icon,
+      this.description,
       this.bot})
       : super._();
   @override
@@ -53,11 +53,11 @@ class _$ApplicationsMeResponse extends ApplicationsMeResponse {
     return other is ApplicationsMeResponse &&
         id == other.id &&
         name == other.name &&
-        icon == other.icon &&
-        description == other.description &&
         botPublic == other.botPublic &&
         botRequireCodeGrant == other.botRequireCodeGrant &&
         flags == other.flags &&
+        icon == other.icon &&
+        description == other.description &&
         bot == other.bot;
   }
 
@@ -66,11 +66,11 @@ class _$ApplicationsMeResponse extends ApplicationsMeResponse {
     var _$hash = 0;
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jc(_$hash, icon.hashCode);
-    _$hash = $jc(_$hash, description.hashCode);
     _$hash = $jc(_$hash, botPublic.hashCode);
     _$hash = $jc(_$hash, botRequireCodeGrant.hashCode);
     _$hash = $jc(_$hash, flags.hashCode);
+    _$hash = $jc(_$hash, icon.hashCode);
+    _$hash = $jc(_$hash, description.hashCode);
     _$hash = $jc(_$hash, bot.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -81,11 +81,11 @@ class _$ApplicationsMeResponse extends ApplicationsMeResponse {
     return (newBuiltValueToStringHelper(r'ApplicationsMeResponse')
           ..add('id', id)
           ..add('name', name)
-          ..add('icon', icon)
-          ..add('description', description)
           ..add('botPublic', botPublic)
           ..add('botRequireCodeGrant', botRequireCodeGrant)
           ..add('flags', flags)
+          ..add('icon', icon)
+          ..add('description', description)
           ..add('bot', bot))
         .toString();
   }
@@ -103,14 +103,6 @@ class ApplicationsMeResponseBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  String? _icon;
-  String? get icon => _$this._icon;
-  set icon(String? icon) => _$this._icon = icon;
-
-  String? _description;
-  String? get description => _$this._description;
-  set description(String? description) => _$this._description = description;
-
   bool? _botPublic;
   bool? get botPublic => _$this._botPublic;
   set botPublic(bool? botPublic) => _$this._botPublic = botPublic;
@@ -123,6 +115,14 @@ class ApplicationsMeResponseBuilder
   int? _flags;
   int? get flags => _$this._flags;
   set flags(int? flags) => _$this._flags = flags;
+
+  String? _icon;
+  String? get icon => _$this._icon;
+  set icon(String? icon) => _$this._icon = icon;
+
+  String? _description;
+  String? get description => _$this._description;
+  set description(String? description) => _$this._description = description;
 
   ApplicationBotResponseBuilder? _bot;
   ApplicationBotResponseBuilder get bot =>
@@ -138,11 +138,11 @@ class ApplicationsMeResponseBuilder
     if ($v != null) {
       _id = $v.id;
       _name = $v.name;
-      _icon = $v.icon;
-      _description = $v.description;
       _botPublic = $v.botPublic;
       _botRequireCodeGrant = $v.botRequireCodeGrant;
       _flags = $v.flags;
+      _icon = $v.icon;
+      _description = $v.description;
       _bot = $v.bot?.toBuilder();
       _$v = null;
     }
@@ -171,8 +171,6 @@ class ApplicationsMeResponseBuilder
                 id, r'ApplicationsMeResponse', 'id'),
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'ApplicationsMeResponse', 'name'),
-            icon: icon,
-            description: description,
             botPublic: BuiltValueNullFieldError.checkNotNull(
                 botPublic, r'ApplicationsMeResponse', 'botPublic'),
             botRequireCodeGrant: BuiltValueNullFieldError.checkNotNull(
@@ -181,6 +179,8 @@ class ApplicationsMeResponseBuilder
                 'botRequireCodeGrant'),
             flags: BuiltValueNullFieldError.checkNotNull(
                 flags, r'ApplicationsMeResponse', 'flags'),
+            icon: icon,
+            description: description,
             bot: _bot?.build(),
           );
     } catch (_) {

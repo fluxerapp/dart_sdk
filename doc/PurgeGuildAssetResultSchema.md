@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **id** | **String** | Unique identifier of the asset | 
 **assetType** | **String** | Type of guild asset | 
 **foundInDb** | **bool** | Whether the asset was found in the database | 
-**guildId** | **String** |  | 
+**guildId** | **String** | ID of the guild the asset belongs to | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

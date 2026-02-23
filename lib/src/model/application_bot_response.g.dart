@@ -14,13 +14,13 @@ class _$ApplicationBotResponse extends ApplicationBotResponse {
   @override
   final String discriminator;
   @override
-  final String? bio;
-  @override
   final int flags;
   @override
   final String? avatar;
   @override
   final String? banner;
+  @override
+  final String? bio;
   @override
   final String? token;
   @override
@@ -36,10 +36,10 @@ class _$ApplicationBotResponse extends ApplicationBotResponse {
       {required this.id,
       required this.username,
       required this.discriminator,
-      this.bio,
       required this.flags,
       this.avatar,
       this.banner,
+      this.bio,
       this.token,
       this.mfaEnabled,
       this.authenticatorTypes})
@@ -60,10 +60,10 @@ class _$ApplicationBotResponse extends ApplicationBotResponse {
         id == other.id &&
         username == other.username &&
         discriminator == other.discriminator &&
-        bio == other.bio &&
         flags == other.flags &&
         avatar == other.avatar &&
         banner == other.banner &&
+        bio == other.bio &&
         token == other.token &&
         mfaEnabled == other.mfaEnabled &&
         authenticatorTypes == other.authenticatorTypes;
@@ -75,10 +75,10 @@ class _$ApplicationBotResponse extends ApplicationBotResponse {
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, username.hashCode);
     _$hash = $jc(_$hash, discriminator.hashCode);
-    _$hash = $jc(_$hash, bio.hashCode);
     _$hash = $jc(_$hash, flags.hashCode);
     _$hash = $jc(_$hash, avatar.hashCode);
     _$hash = $jc(_$hash, banner.hashCode);
+    _$hash = $jc(_$hash, bio.hashCode);
     _$hash = $jc(_$hash, token.hashCode);
     _$hash = $jc(_$hash, mfaEnabled.hashCode);
     _$hash = $jc(_$hash, authenticatorTypes.hashCode);
@@ -92,10 +92,10 @@ class _$ApplicationBotResponse extends ApplicationBotResponse {
           ..add('id', id)
           ..add('username', username)
           ..add('discriminator', discriminator)
-          ..add('bio', bio)
           ..add('flags', flags)
           ..add('avatar', avatar)
           ..add('banner', banner)
+          ..add('bio', bio)
           ..add('token', token)
           ..add('mfaEnabled', mfaEnabled)
           ..add('authenticatorTypes', authenticatorTypes))
@@ -120,10 +120,6 @@ class ApplicationBotResponseBuilder
   set discriminator(String? discriminator) =>
       _$this._discriminator = discriminator;
 
-  String? _bio;
-  String? get bio => _$this._bio;
-  set bio(String? bio) => _$this._bio = bio;
-
   int? _flags;
   int? get flags => _$this._flags;
   set flags(int? flags) => _$this._flags = flags;
@@ -135,6 +131,10 @@ class ApplicationBotResponseBuilder
   String? _banner;
   String? get banner => _$this._banner;
   set banner(String? banner) => _$this._banner = banner;
+
+  String? _bio;
+  String? get bio => _$this._bio;
+  set bio(String? bio) => _$this._bio = bio;
 
   String? _token;
   String? get token => _$this._token;
@@ -160,10 +160,10 @@ class ApplicationBotResponseBuilder
       _id = $v.id;
       _username = $v.username;
       _discriminator = $v.discriminator;
-      _bio = $v.bio;
       _flags = $v.flags;
       _avatar = $v.avatar;
       _banner = $v.banner;
+      _bio = $v.bio;
       _token = $v.token;
       _mfaEnabled = $v.mfaEnabled;
       _authenticatorTypes = $v.authenticatorTypes?.toBuilder();
@@ -196,11 +196,11 @@ class ApplicationBotResponseBuilder
                 username, r'ApplicationBotResponse', 'username'),
             discriminator: BuiltValueNullFieldError.checkNotNull(
                 discriminator, r'ApplicationBotResponse', 'discriminator'),
-            bio: bio,
             flags: BuiltValueNullFieldError.checkNotNull(
                 flags, r'ApplicationBotResponse', 'flags'),
             avatar: avatar,
             banner: banner,
+            bio: bio,
             token: token,
             mfaEnabled: mfaEnabled,
             authenticatorTypes: _authenticatorTypes?.build(),

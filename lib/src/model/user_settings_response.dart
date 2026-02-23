@@ -38,7 +38,6 @@ part 'user_settings_response.g.dart';
 /// * [incomingCallFlags] - Incoming call settings
 /// * [groupDmAddPermissionFlags] - Group DM add permissions
 /// * [guildFolders] - The folder structure for organizing guilds in the sidebar
-/// * [customStatus]
 /// * [afkTimeout] - The idle timeout in seconds before going AFK
 /// * [timeFormat] - The preferred time format setting
 /// * [developerMode] - Whether developer mode is enabled
@@ -46,6 +45,7 @@ part 'user_settings_response.g.dart';
 /// * [defaultHideMutedChannels] - Whether muted channels are hidden by default in new guilds
 /// * [statusResetsAt]
 /// * [statusResetsTo]
+/// * [customStatus]
 @BuiltValue()
 abstract class UserSettingsResponse
     implements Built<UserSettingsResponse, UserSettingsResponseBuilder> {
@@ -131,9 +131,6 @@ abstract class UserSettingsResponse
   @BuiltValueField(wireName: r'guild_folders')
   BuiltList<UserSettingsResponseGuildFoldersInner> get guildFolders;
 
-  @BuiltValueField(wireName: r'custom_status')
-  CustomStatusResponse? get customStatus;
-
   /// The idle timeout in seconds before going AFK
   @BuiltValueField(wireName: r'afk_timeout')
   int get afkTimeout;
@@ -160,6 +157,9 @@ abstract class UserSettingsResponse
 
   @BuiltValueField(wireName: r'status_resets_to')
   String? get statusResetsTo;
+
+  @BuiltValueField(wireName: r'custom_status')
+  CustomStatusResponse? get customStatus;
 
   UserSettingsResponse._();
 
@@ -291,13 +291,6 @@ class _$UserSettingsResponseSerializer
       specifiedType: const FullType(
           BuiltList, [FullType(UserSettingsResponseGuildFoldersInner)]),
     );
-    yield r'custom_status';
-    yield object.customStatus == null
-        ? null
-        : serializers.serialize(
-            object.customStatus,
-            specifiedType: const FullType.nullable(CustomStatusResponse),
-          );
     yield r'afk_timeout';
     yield serializers.serialize(
       object.afkTimeout,
@@ -335,6 +328,13 @@ class _$UserSettingsResponseSerializer
       yield serializers.serialize(
         object.statusResetsTo,
         specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.customStatus != null) {
+      yield r'custom_status';
+      yield serializers.serialize(
+        object.customStatus,
+        specifiedType: const FullType.nullable(CustomStatusResponse),
       );
     }
   }
@@ -503,14 +503,6 @@ class _$UserSettingsResponseSerializer
           ) as BuiltList<UserSettingsResponseGuildFoldersInner>;
           result.guildFolders.replace(valueDes);
           break;
-        case r'custom_status':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(CustomStatusResponse),
-          ) as CustomStatusResponse?;
-          if (valueDes == null) continue;
-          result.customStatus.replace(valueDes);
-          break;
         case r'afk_timeout':
           final valueDes = serializers.deserialize(
             value,
@@ -561,6 +553,14 @@ class _$UserSettingsResponseSerializer
           ) as String?;
           if (valueDes == null) continue;
           result.statusResetsTo = valueDes;
+          break;
+        case r'custom_status':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(CustomStatusResponse),
+          ) as CustomStatusResponse?;
+          if (valueDes == null) continue;
+          result.customStatus.replace(valueDes);
           break;
         default:
           unhandled.add(key);

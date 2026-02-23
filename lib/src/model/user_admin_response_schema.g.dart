@@ -14,13 +14,27 @@ class _$UserAdminResponseSchema extends UserAdminResponseSchema {
   @override
   final int discriminator;
   @override
-  final String? globalName;
-  @override
   final bool bot;
   @override
   final bool system;
   @override
   final String flags;
+  @override
+  final bool emailVerified;
+  @override
+  final bool emailBounced;
+  @override
+  final int suspiciousActivityFlags;
+  @override
+  final BuiltList<String> acls;
+  @override
+  final BuiltList<String> traits;
+  @override
+  final bool hasTotp;
+  @override
+  final BuiltList<int> authenticatorTypes;
+  @override
+  final String? globalName;
   @override
   final String? avatar;
   @override
@@ -30,13 +44,9 @@ class _$UserAdminResponseSchema extends UserAdminResponseSchema {
   @override
   final String? pronouns;
   @override
-  final int accentColor;
+  final int? accentColor;
   @override
   final String? email;
-  @override
-  final bool emailVerified;
-  @override
-  final bool emailBounced;
   @override
   final String? phone;
   @override
@@ -44,13 +54,11 @@ class _$UserAdminResponseSchema extends UserAdminResponseSchema {
   @override
   final String? locale;
   @override
-  final int premiumType;
+  final int? premiumType;
   @override
   final String? premiumSince;
   @override
   final String? premiumUntil;
-  @override
-  final int suspiciousActivityFlags;
   @override
   final String? tempBannedUntil;
   @override
@@ -58,17 +66,9 @@ class _$UserAdminResponseSchema extends UserAdminResponseSchema {
   @override
   final String? pendingBulkMessageDeletionAt;
   @override
-  final int deletionReasonCode;
+  final int? deletionReasonCode;
   @override
   final String? deletionPublicReason;
-  @override
-  final BuiltList<String> acls;
-  @override
-  final BuiltList<String> traits;
-  @override
-  final bool hasTotp;
-  @override
-  final BuiltList<int> authenticatorTypes;
   @override
   final String? lastActiveAt;
   @override
@@ -86,34 +86,34 @@ class _$UserAdminResponseSchema extends UserAdminResponseSchema {
       {required this.id,
       required this.username,
       required this.discriminator,
-      this.globalName,
       required this.bot,
       required this.system,
       required this.flags,
-      this.avatar,
-      this.banner,
-      this.bio,
-      this.pronouns,
-      required this.accentColor,
-      this.email,
       required this.emailVerified,
       required this.emailBounced,
-      this.phone,
-      this.dateOfBirth,
-      this.locale,
-      required this.premiumType,
-      this.premiumSince,
-      this.premiumUntil,
       required this.suspiciousActivityFlags,
-      this.tempBannedUntil,
-      this.pendingDeletionAt,
-      this.pendingBulkMessageDeletionAt,
-      required this.deletionReasonCode,
-      this.deletionPublicReason,
       required this.acls,
       required this.traits,
       required this.hasTotp,
       required this.authenticatorTypes,
+      this.globalName,
+      this.avatar,
+      this.banner,
+      this.bio,
+      this.pronouns,
+      this.accentColor,
+      this.email,
+      this.phone,
+      this.dateOfBirth,
+      this.locale,
+      this.premiumType,
+      this.premiumSince,
+      this.premiumUntil,
+      this.tempBannedUntil,
+      this.pendingDeletionAt,
+      this.pendingBulkMessageDeletionAt,
+      this.deletionReasonCode,
+      this.deletionPublicReason,
       this.lastActiveAt,
       this.lastActiveIp,
       this.lastActiveIpReverse,
@@ -135,34 +135,34 @@ class _$UserAdminResponseSchema extends UserAdminResponseSchema {
         id == other.id &&
         username == other.username &&
         discriminator == other.discriminator &&
-        globalName == other.globalName &&
         bot == other.bot &&
         system == other.system &&
         flags == other.flags &&
+        emailVerified == other.emailVerified &&
+        emailBounced == other.emailBounced &&
+        suspiciousActivityFlags == other.suspiciousActivityFlags &&
+        acls == other.acls &&
+        traits == other.traits &&
+        hasTotp == other.hasTotp &&
+        authenticatorTypes == other.authenticatorTypes &&
+        globalName == other.globalName &&
         avatar == other.avatar &&
         banner == other.banner &&
         bio == other.bio &&
         pronouns == other.pronouns &&
         accentColor == other.accentColor &&
         email == other.email &&
-        emailVerified == other.emailVerified &&
-        emailBounced == other.emailBounced &&
         phone == other.phone &&
         dateOfBirth == other.dateOfBirth &&
         locale == other.locale &&
         premiumType == other.premiumType &&
         premiumSince == other.premiumSince &&
         premiumUntil == other.premiumUntil &&
-        suspiciousActivityFlags == other.suspiciousActivityFlags &&
         tempBannedUntil == other.tempBannedUntil &&
         pendingDeletionAt == other.pendingDeletionAt &&
         pendingBulkMessageDeletionAt == other.pendingBulkMessageDeletionAt &&
         deletionReasonCode == other.deletionReasonCode &&
         deletionPublicReason == other.deletionPublicReason &&
-        acls == other.acls &&
-        traits == other.traits &&
-        hasTotp == other.hasTotp &&
-        authenticatorTypes == other.authenticatorTypes &&
         lastActiveAt == other.lastActiveAt &&
         lastActiveIp == other.lastActiveIp &&
         lastActiveIpReverse == other.lastActiveIpReverse &&
@@ -175,34 +175,34 @@ class _$UserAdminResponseSchema extends UserAdminResponseSchema {
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, username.hashCode);
     _$hash = $jc(_$hash, discriminator.hashCode);
-    _$hash = $jc(_$hash, globalName.hashCode);
     _$hash = $jc(_$hash, bot.hashCode);
     _$hash = $jc(_$hash, system.hashCode);
     _$hash = $jc(_$hash, flags.hashCode);
+    _$hash = $jc(_$hash, emailVerified.hashCode);
+    _$hash = $jc(_$hash, emailBounced.hashCode);
+    _$hash = $jc(_$hash, suspiciousActivityFlags.hashCode);
+    _$hash = $jc(_$hash, acls.hashCode);
+    _$hash = $jc(_$hash, traits.hashCode);
+    _$hash = $jc(_$hash, hasTotp.hashCode);
+    _$hash = $jc(_$hash, authenticatorTypes.hashCode);
+    _$hash = $jc(_$hash, globalName.hashCode);
     _$hash = $jc(_$hash, avatar.hashCode);
     _$hash = $jc(_$hash, banner.hashCode);
     _$hash = $jc(_$hash, bio.hashCode);
     _$hash = $jc(_$hash, pronouns.hashCode);
     _$hash = $jc(_$hash, accentColor.hashCode);
     _$hash = $jc(_$hash, email.hashCode);
-    _$hash = $jc(_$hash, emailVerified.hashCode);
-    _$hash = $jc(_$hash, emailBounced.hashCode);
     _$hash = $jc(_$hash, phone.hashCode);
     _$hash = $jc(_$hash, dateOfBirth.hashCode);
     _$hash = $jc(_$hash, locale.hashCode);
     _$hash = $jc(_$hash, premiumType.hashCode);
     _$hash = $jc(_$hash, premiumSince.hashCode);
     _$hash = $jc(_$hash, premiumUntil.hashCode);
-    _$hash = $jc(_$hash, suspiciousActivityFlags.hashCode);
     _$hash = $jc(_$hash, tempBannedUntil.hashCode);
     _$hash = $jc(_$hash, pendingDeletionAt.hashCode);
     _$hash = $jc(_$hash, pendingBulkMessageDeletionAt.hashCode);
     _$hash = $jc(_$hash, deletionReasonCode.hashCode);
     _$hash = $jc(_$hash, deletionPublicReason.hashCode);
-    _$hash = $jc(_$hash, acls.hashCode);
-    _$hash = $jc(_$hash, traits.hashCode);
-    _$hash = $jc(_$hash, hasTotp.hashCode);
-    _$hash = $jc(_$hash, authenticatorTypes.hashCode);
     _$hash = $jc(_$hash, lastActiveAt.hashCode);
     _$hash = $jc(_$hash, lastActiveIp.hashCode);
     _$hash = $jc(_$hash, lastActiveIpReverse.hashCode);
@@ -217,34 +217,34 @@ class _$UserAdminResponseSchema extends UserAdminResponseSchema {
           ..add('id', id)
           ..add('username', username)
           ..add('discriminator', discriminator)
-          ..add('globalName', globalName)
           ..add('bot', bot)
           ..add('system', system)
           ..add('flags', flags)
+          ..add('emailVerified', emailVerified)
+          ..add('emailBounced', emailBounced)
+          ..add('suspiciousActivityFlags', suspiciousActivityFlags)
+          ..add('acls', acls)
+          ..add('traits', traits)
+          ..add('hasTotp', hasTotp)
+          ..add('authenticatorTypes', authenticatorTypes)
+          ..add('globalName', globalName)
           ..add('avatar', avatar)
           ..add('banner', banner)
           ..add('bio', bio)
           ..add('pronouns', pronouns)
           ..add('accentColor', accentColor)
           ..add('email', email)
-          ..add('emailVerified', emailVerified)
-          ..add('emailBounced', emailBounced)
           ..add('phone', phone)
           ..add('dateOfBirth', dateOfBirth)
           ..add('locale', locale)
           ..add('premiumType', premiumType)
           ..add('premiumSince', premiumSince)
           ..add('premiumUntil', premiumUntil)
-          ..add('suspiciousActivityFlags', suspiciousActivityFlags)
           ..add('tempBannedUntil', tempBannedUntil)
           ..add('pendingDeletionAt', pendingDeletionAt)
           ..add('pendingBulkMessageDeletionAt', pendingBulkMessageDeletionAt)
           ..add('deletionReasonCode', deletionReasonCode)
           ..add('deletionPublicReason', deletionPublicReason)
-          ..add('acls', acls)
-          ..add('traits', traits)
-          ..add('hasTotp', hasTotp)
-          ..add('authenticatorTypes', authenticatorTypes)
           ..add('lastActiveAt', lastActiveAt)
           ..add('lastActiveIp', lastActiveIp)
           ..add('lastActiveIpReverse', lastActiveIpReverse)
@@ -271,10 +271,6 @@ class UserAdminResponseSchemaBuilder
   set discriminator(int? discriminator) =>
       _$this._discriminator = discriminator;
 
-  String? _globalName;
-  String? get globalName => _$this._globalName;
-  set globalName(String? globalName) => _$this._globalName = globalName;
-
   bool? _bot;
   bool? get bot => _$this._bot;
   set bot(bool? bot) => _$this._bot = bot;
@@ -286,6 +282,42 @@ class UserAdminResponseSchemaBuilder
   String? _flags;
   String? get flags => _$this._flags;
   set flags(String? flags) => _$this._flags = flags;
+
+  bool? _emailVerified;
+  bool? get emailVerified => _$this._emailVerified;
+  set emailVerified(bool? emailVerified) =>
+      _$this._emailVerified = emailVerified;
+
+  bool? _emailBounced;
+  bool? get emailBounced => _$this._emailBounced;
+  set emailBounced(bool? emailBounced) => _$this._emailBounced = emailBounced;
+
+  int? _suspiciousActivityFlags;
+  int? get suspiciousActivityFlags => _$this._suspiciousActivityFlags;
+  set suspiciousActivityFlags(int? suspiciousActivityFlags) =>
+      _$this._suspiciousActivityFlags = suspiciousActivityFlags;
+
+  ListBuilder<String>? _acls;
+  ListBuilder<String> get acls => _$this._acls ??= ListBuilder<String>();
+  set acls(ListBuilder<String>? acls) => _$this._acls = acls;
+
+  ListBuilder<String>? _traits;
+  ListBuilder<String> get traits => _$this._traits ??= ListBuilder<String>();
+  set traits(ListBuilder<String>? traits) => _$this._traits = traits;
+
+  bool? _hasTotp;
+  bool? get hasTotp => _$this._hasTotp;
+  set hasTotp(bool? hasTotp) => _$this._hasTotp = hasTotp;
+
+  ListBuilder<int>? _authenticatorTypes;
+  ListBuilder<int> get authenticatorTypes =>
+      _$this._authenticatorTypes ??= ListBuilder<int>();
+  set authenticatorTypes(ListBuilder<int>? authenticatorTypes) =>
+      _$this._authenticatorTypes = authenticatorTypes;
+
+  String? _globalName;
+  String? get globalName => _$this._globalName;
+  set globalName(String? globalName) => _$this._globalName = globalName;
 
   String? _avatar;
   String? get avatar => _$this._avatar;
@@ -311,15 +343,6 @@ class UserAdminResponseSchemaBuilder
   String? get email => _$this._email;
   set email(String? email) => _$this._email = email;
 
-  bool? _emailVerified;
-  bool? get emailVerified => _$this._emailVerified;
-  set emailVerified(bool? emailVerified) =>
-      _$this._emailVerified = emailVerified;
-
-  bool? _emailBounced;
-  bool? get emailBounced => _$this._emailBounced;
-  set emailBounced(bool? emailBounced) => _$this._emailBounced = emailBounced;
-
   String? _phone;
   String? get phone => _$this._phone;
   set phone(String? phone) => _$this._phone = phone;
@@ -343,11 +366,6 @@ class UserAdminResponseSchemaBuilder
   String? _premiumUntil;
   String? get premiumUntil => _$this._premiumUntil;
   set premiumUntil(String? premiumUntil) => _$this._premiumUntil = premiumUntil;
-
-  int? _suspiciousActivityFlags;
-  int? get suspiciousActivityFlags => _$this._suspiciousActivityFlags;
-  set suspiciousActivityFlags(int? suspiciousActivityFlags) =>
-      _$this._suspiciousActivityFlags = suspiciousActivityFlags;
 
   String? _tempBannedUntil;
   String? get tempBannedUntil => _$this._tempBannedUntil;
@@ -374,24 +392,6 @@ class UserAdminResponseSchemaBuilder
   String? get deletionPublicReason => _$this._deletionPublicReason;
   set deletionPublicReason(String? deletionPublicReason) =>
       _$this._deletionPublicReason = deletionPublicReason;
-
-  ListBuilder<String>? _acls;
-  ListBuilder<String> get acls => _$this._acls ??= ListBuilder<String>();
-  set acls(ListBuilder<String>? acls) => _$this._acls = acls;
-
-  ListBuilder<String>? _traits;
-  ListBuilder<String> get traits => _$this._traits ??= ListBuilder<String>();
-  set traits(ListBuilder<String>? traits) => _$this._traits = traits;
-
-  bool? _hasTotp;
-  bool? get hasTotp => _$this._hasTotp;
-  set hasTotp(bool? hasTotp) => _$this._hasTotp = hasTotp;
-
-  ListBuilder<int>? _authenticatorTypes;
-  ListBuilder<int> get authenticatorTypes =>
-      _$this._authenticatorTypes ??= ListBuilder<int>();
-  set authenticatorTypes(ListBuilder<int>? authenticatorTypes) =>
-      _$this._authenticatorTypes = authenticatorTypes;
 
   String? _lastActiveAt;
   String? get lastActiveAt => _$this._lastActiveAt;
@@ -421,34 +421,34 @@ class UserAdminResponseSchemaBuilder
       _id = $v.id;
       _username = $v.username;
       _discriminator = $v.discriminator;
-      _globalName = $v.globalName;
       _bot = $v.bot;
       _system = $v.system;
       _flags = $v.flags;
+      _emailVerified = $v.emailVerified;
+      _emailBounced = $v.emailBounced;
+      _suspiciousActivityFlags = $v.suspiciousActivityFlags;
+      _acls = $v.acls.toBuilder();
+      _traits = $v.traits.toBuilder();
+      _hasTotp = $v.hasTotp;
+      _authenticatorTypes = $v.authenticatorTypes.toBuilder();
+      _globalName = $v.globalName;
       _avatar = $v.avatar;
       _banner = $v.banner;
       _bio = $v.bio;
       _pronouns = $v.pronouns;
       _accentColor = $v.accentColor;
       _email = $v.email;
-      _emailVerified = $v.emailVerified;
-      _emailBounced = $v.emailBounced;
       _phone = $v.phone;
       _dateOfBirth = $v.dateOfBirth;
       _locale = $v.locale;
       _premiumType = $v.premiumType;
       _premiumSince = $v.premiumSince;
       _premiumUntil = $v.premiumUntil;
-      _suspiciousActivityFlags = $v.suspiciousActivityFlags;
       _tempBannedUntil = $v.tempBannedUntil;
       _pendingDeletionAt = $v.pendingDeletionAt;
       _pendingBulkMessageDeletionAt = $v.pendingBulkMessageDeletionAt;
       _deletionReasonCode = $v.deletionReasonCode;
       _deletionPublicReason = $v.deletionPublicReason;
-      _acls = $v.acls.toBuilder();
-      _traits = $v.traits.toBuilder();
-      _hasTotp = $v.hasTotp;
-      _authenticatorTypes = $v.authenticatorTypes.toBuilder();
       _lastActiveAt = $v.lastActiveAt;
       _lastActiveIp = $v.lastActiveIp;
       _lastActiveIpReverse = $v.lastActiveIpReverse;
@@ -482,48 +482,43 @@ class UserAdminResponseSchemaBuilder
                 username, r'UserAdminResponseSchema', 'username'),
             discriminator: BuiltValueNullFieldError.checkNotNull(
                 discriminator, r'UserAdminResponseSchema', 'discriminator'),
-            globalName: globalName,
             bot: BuiltValueNullFieldError.checkNotNull(
                 bot, r'UserAdminResponseSchema', 'bot'),
             system: BuiltValueNullFieldError.checkNotNull(
                 system, r'UserAdminResponseSchema', 'system'),
             flags: BuiltValueNullFieldError.checkNotNull(
                 flags, r'UserAdminResponseSchema', 'flags'),
-            avatar: avatar,
-            banner: banner,
-            bio: bio,
-            pronouns: pronouns,
-            accentColor: BuiltValueNullFieldError.checkNotNull(
-                accentColor, r'UserAdminResponseSchema', 'accentColor'),
-            email: email,
             emailVerified: BuiltValueNullFieldError.checkNotNull(
                 emailVerified, r'UserAdminResponseSchema', 'emailVerified'),
             emailBounced: BuiltValueNullFieldError.checkNotNull(
                 emailBounced, r'UserAdminResponseSchema', 'emailBounced'),
-            phone: phone,
-            dateOfBirth: dateOfBirth,
-            locale: locale,
-            premiumType: BuiltValueNullFieldError.checkNotNull(
-                premiumType, r'UserAdminResponseSchema', 'premiumType'),
-            premiumSince: premiumSince,
-            premiumUntil: premiumUntil,
             suspiciousActivityFlags: BuiltValueNullFieldError.checkNotNull(
                 suspiciousActivityFlags,
                 r'UserAdminResponseSchema',
                 'suspiciousActivityFlags'),
-            tempBannedUntil: tempBannedUntil,
-            pendingDeletionAt: pendingDeletionAt,
-            pendingBulkMessageDeletionAt: pendingBulkMessageDeletionAt,
-            deletionReasonCode: BuiltValueNullFieldError.checkNotNull(
-                deletionReasonCode,
-                r'UserAdminResponseSchema',
-                'deletionReasonCode'),
-            deletionPublicReason: deletionPublicReason,
             acls: acls.build(),
             traits: traits.build(),
             hasTotp: BuiltValueNullFieldError.checkNotNull(
                 hasTotp, r'UserAdminResponseSchema', 'hasTotp'),
             authenticatorTypes: authenticatorTypes.build(),
+            globalName: globalName,
+            avatar: avatar,
+            banner: banner,
+            bio: bio,
+            pronouns: pronouns,
+            accentColor: accentColor,
+            email: email,
+            phone: phone,
+            dateOfBirth: dateOfBirth,
+            locale: locale,
+            premiumType: premiumType,
+            premiumSince: premiumSince,
+            premiumUntil: premiumUntil,
+            tempBannedUntil: tempBannedUntil,
+            pendingDeletionAt: pendingDeletionAt,
+            pendingBulkMessageDeletionAt: pendingBulkMessageDeletionAt,
+            deletionReasonCode: deletionReasonCode,
+            deletionPublicReason: deletionPublicReason,
             lastActiveAt: lastActiveAt,
             lastActiveIp: lastActiveIp,
             lastActiveIpReverse: lastActiveIpReverse,

@@ -15,7 +15,7 @@ part 'message_reference_response.g.dart';
 /// * [channelId] - The ID of the channel containing the referenced message
 /// * [messageId] - The ID of the referenced message
 /// * [type]
-/// * [guildId]
+/// * [guildId] - The ID of the guild containing the referenced message
 @BuiltValue()
 abstract class MessageReferenceResponse
     implements
@@ -32,6 +32,7 @@ abstract class MessageReferenceResponse
   MessageReferenceType get type;
   // enum typeEnum {  0,  1,  };
 
+  /// The ID of the guild containing the referenced message
   @BuiltValueField(wireName: r'guild_id')
   String? get guildId;
 

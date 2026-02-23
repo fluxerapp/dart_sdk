@@ -10,6 +10,12 @@ class _$SsoConfigResponse extends SsoConfigResponse {
   @override
   final bool enabled;
   @override
+  final bool clientSecretSet;
+  @override
+  final BuiltList<String> allowedDomains;
+  @override
+  final bool autoProvision;
+  @override
   final String? displayName;
   @override
   final String? issuer;
@@ -24,13 +30,7 @@ class _$SsoConfigResponse extends SsoConfigResponse {
   @override
   final String? clientId;
   @override
-  final bool clientSecretSet;
-  @override
   final String? scope;
-  @override
-  final BuiltList<String> allowedDomains;
-  @override
-  final bool autoProvision;
   @override
   final String? redirectUri;
 
@@ -40,6 +40,9 @@ class _$SsoConfigResponse extends SsoConfigResponse {
 
   _$SsoConfigResponse._(
       {required this.enabled,
+      required this.clientSecretSet,
+      required this.allowedDomains,
+      required this.autoProvision,
       this.displayName,
       this.issuer,
       this.authorizationUrl,
@@ -47,10 +50,7 @@ class _$SsoConfigResponse extends SsoConfigResponse {
       this.userinfoUrl,
       this.jwksUrl,
       this.clientId,
-      required this.clientSecretSet,
       this.scope,
-      required this.allowedDomains,
-      required this.autoProvision,
       this.redirectUri})
       : super._();
   @override
@@ -66,6 +66,9 @@ class _$SsoConfigResponse extends SsoConfigResponse {
     if (identical(other, this)) return true;
     return other is SsoConfigResponse &&
         enabled == other.enabled &&
+        clientSecretSet == other.clientSecretSet &&
+        allowedDomains == other.allowedDomains &&
+        autoProvision == other.autoProvision &&
         displayName == other.displayName &&
         issuer == other.issuer &&
         authorizationUrl == other.authorizationUrl &&
@@ -73,10 +76,7 @@ class _$SsoConfigResponse extends SsoConfigResponse {
         userinfoUrl == other.userinfoUrl &&
         jwksUrl == other.jwksUrl &&
         clientId == other.clientId &&
-        clientSecretSet == other.clientSecretSet &&
         scope == other.scope &&
-        allowedDomains == other.allowedDomains &&
-        autoProvision == other.autoProvision &&
         redirectUri == other.redirectUri;
   }
 
@@ -84,6 +84,9 @@ class _$SsoConfigResponse extends SsoConfigResponse {
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, enabled.hashCode);
+    _$hash = $jc(_$hash, clientSecretSet.hashCode);
+    _$hash = $jc(_$hash, allowedDomains.hashCode);
+    _$hash = $jc(_$hash, autoProvision.hashCode);
     _$hash = $jc(_$hash, displayName.hashCode);
     _$hash = $jc(_$hash, issuer.hashCode);
     _$hash = $jc(_$hash, authorizationUrl.hashCode);
@@ -91,10 +94,7 @@ class _$SsoConfigResponse extends SsoConfigResponse {
     _$hash = $jc(_$hash, userinfoUrl.hashCode);
     _$hash = $jc(_$hash, jwksUrl.hashCode);
     _$hash = $jc(_$hash, clientId.hashCode);
-    _$hash = $jc(_$hash, clientSecretSet.hashCode);
     _$hash = $jc(_$hash, scope.hashCode);
-    _$hash = $jc(_$hash, allowedDomains.hashCode);
-    _$hash = $jc(_$hash, autoProvision.hashCode);
     _$hash = $jc(_$hash, redirectUri.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -104,6 +104,9 @@ class _$SsoConfigResponse extends SsoConfigResponse {
   String toString() {
     return (newBuiltValueToStringHelper(r'SsoConfigResponse')
           ..add('enabled', enabled)
+          ..add('clientSecretSet', clientSecretSet)
+          ..add('allowedDomains', allowedDomains)
+          ..add('autoProvision', autoProvision)
           ..add('displayName', displayName)
           ..add('issuer', issuer)
           ..add('authorizationUrl', authorizationUrl)
@@ -111,10 +114,7 @@ class _$SsoConfigResponse extends SsoConfigResponse {
           ..add('userinfoUrl', userinfoUrl)
           ..add('jwksUrl', jwksUrl)
           ..add('clientId', clientId)
-          ..add('clientSecretSet', clientSecretSet)
           ..add('scope', scope)
-          ..add('allowedDomains', allowedDomains)
-          ..add('autoProvision', autoProvision)
           ..add('redirectUri', redirectUri))
         .toString();
   }
@@ -127,6 +127,22 @@ class SsoConfigResponseBuilder
   bool? _enabled;
   bool? get enabled => _$this._enabled;
   set enabled(bool? enabled) => _$this._enabled = enabled;
+
+  bool? _clientSecretSet;
+  bool? get clientSecretSet => _$this._clientSecretSet;
+  set clientSecretSet(bool? clientSecretSet) =>
+      _$this._clientSecretSet = clientSecretSet;
+
+  ListBuilder<String>? _allowedDomains;
+  ListBuilder<String> get allowedDomains =>
+      _$this._allowedDomains ??= ListBuilder<String>();
+  set allowedDomains(ListBuilder<String>? allowedDomains) =>
+      _$this._allowedDomains = allowedDomains;
+
+  bool? _autoProvision;
+  bool? get autoProvision => _$this._autoProvision;
+  set autoProvision(bool? autoProvision) =>
+      _$this._autoProvision = autoProvision;
 
   String? _displayName;
   String? get displayName => _$this._displayName;
@@ -157,25 +173,9 @@ class SsoConfigResponseBuilder
   String? get clientId => _$this._clientId;
   set clientId(String? clientId) => _$this._clientId = clientId;
 
-  bool? _clientSecretSet;
-  bool? get clientSecretSet => _$this._clientSecretSet;
-  set clientSecretSet(bool? clientSecretSet) =>
-      _$this._clientSecretSet = clientSecretSet;
-
   String? _scope;
   String? get scope => _$this._scope;
   set scope(String? scope) => _$this._scope = scope;
-
-  ListBuilder<String>? _allowedDomains;
-  ListBuilder<String> get allowedDomains =>
-      _$this._allowedDomains ??= ListBuilder<String>();
-  set allowedDomains(ListBuilder<String>? allowedDomains) =>
-      _$this._allowedDomains = allowedDomains;
-
-  bool? _autoProvision;
-  bool? get autoProvision => _$this._autoProvision;
-  set autoProvision(bool? autoProvision) =>
-      _$this._autoProvision = autoProvision;
 
   String? _redirectUri;
   String? get redirectUri => _$this._redirectUri;
@@ -189,6 +189,9 @@ class SsoConfigResponseBuilder
     final $v = _$v;
     if ($v != null) {
       _enabled = $v.enabled;
+      _clientSecretSet = $v.clientSecretSet;
+      _allowedDomains = $v.allowedDomains.toBuilder();
+      _autoProvision = $v.autoProvision;
       _displayName = $v.displayName;
       _issuer = $v.issuer;
       _authorizationUrl = $v.authorizationUrl;
@@ -196,10 +199,7 @@ class SsoConfigResponseBuilder
       _userinfoUrl = $v.userinfoUrl;
       _jwksUrl = $v.jwksUrl;
       _clientId = $v.clientId;
-      _clientSecretSet = $v.clientSecretSet;
       _scope = $v.scope;
-      _allowedDomains = $v.allowedDomains.toBuilder();
-      _autoProvision = $v.autoProvision;
       _redirectUri = $v.redirectUri;
       _$v = null;
     }
@@ -226,6 +226,11 @@ class SsoConfigResponseBuilder
           _$SsoConfigResponse._(
             enabled: BuiltValueNullFieldError.checkNotNull(
                 enabled, r'SsoConfigResponse', 'enabled'),
+            clientSecretSet: BuiltValueNullFieldError.checkNotNull(
+                clientSecretSet, r'SsoConfigResponse', 'clientSecretSet'),
+            allowedDomains: allowedDomains.build(),
+            autoProvision: BuiltValueNullFieldError.checkNotNull(
+                autoProvision, r'SsoConfigResponse', 'autoProvision'),
             displayName: displayName,
             issuer: issuer,
             authorizationUrl: authorizationUrl,
@@ -233,12 +238,7 @@ class SsoConfigResponseBuilder
             userinfoUrl: userinfoUrl,
             jwksUrl: jwksUrl,
             clientId: clientId,
-            clientSecretSet: BuiltValueNullFieldError.checkNotNull(
-                clientSecretSet, r'SsoConfigResponse', 'clientSecretSet'),
             scope: scope,
-            allowedDomains: allowedDomains.build(),
-            autoProvision: BuiltValueNullFieldError.checkNotNull(
-                autoProvision, r'SsoConfigResponse', 'autoProvision'),
             redirectUri: redirectUri,
           );
     } catch (_) {

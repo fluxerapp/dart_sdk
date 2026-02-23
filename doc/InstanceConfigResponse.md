@@ -13,10 +13,10 @@ Name | Type | Description | Notes
 **manualReviewScheduleStartHourUtc** | **int** |  | 
 **manualReviewScheduleEndHourUtc** | **int** |  | 
 **manualReviewActiveNow** | **bool** |  | 
-**registrationAlertsWebhookUrl** | **String** |  | 
-**systemAlertsWebhookUrl** | **String** |  | 
 **sso** | [**SsoConfigResponse**](SsoConfigResponse.md) |  | 
 **selfHosted** | **bool** |  | 
+**registrationAlertsWebhookUrl** | **String** |  | [optional] 
+**systemAlertsWebhookUrl** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

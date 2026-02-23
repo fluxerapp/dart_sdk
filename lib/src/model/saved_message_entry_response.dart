@@ -92,13 +92,13 @@ class _$SavedMessageEntryResponseSerializer
       object.status,
       specifiedType: const FullType(SavedMessageEntryResponseStatusEnum),
     );
-    yield r'message';
-    yield object.message == null
-        ? null
-        : serializers.serialize(
-            object.message,
-            specifiedType: const FullType.nullable(MessageResponseSchema),
-          );
+    if (object.message != null) {
+      yield r'message';
+      yield serializers.serialize(
+        object.message,
+        specifiedType: const FullType.nullable(MessageResponseSchema),
+      );
+    }
   }
 
   @override

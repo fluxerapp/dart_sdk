@@ -80,6 +80,8 @@ class _$AdminArchiveResponseSchema extends AdminArchiveResponseSchema {
   @override
   final String requestedAt;
   @override
+  final num progressPercent;
+  @override
   final String? startedAt;
   @override
   final String? completedAt;
@@ -87,8 +89,6 @@ class _$AdminArchiveResponseSchema extends AdminArchiveResponseSchema {
   final String? failedAt;
   @override
   final String? fileSize;
-  @override
-  final num progressPercent;
   @override
   final String? progressStep;
   @override
@@ -108,11 +108,11 @@ class _$AdminArchiveResponseSchema extends AdminArchiveResponseSchema {
       required this.subjectId,
       required this.requestedBy,
       required this.requestedAt,
+      required this.progressPercent,
       this.startedAt,
       this.completedAt,
       this.failedAt,
       this.fileSize,
-      required this.progressPercent,
       this.progressStep,
       this.errorMessage,
       this.downloadUrlExpiresAt,
@@ -136,11 +136,11 @@ class _$AdminArchiveResponseSchema extends AdminArchiveResponseSchema {
         subjectId == other.subjectId &&
         requestedBy == other.requestedBy &&
         requestedAt == other.requestedAt &&
+        progressPercent == other.progressPercent &&
         startedAt == other.startedAt &&
         completedAt == other.completedAt &&
         failedAt == other.failedAt &&
         fileSize == other.fileSize &&
-        progressPercent == other.progressPercent &&
         progressStep == other.progressStep &&
         errorMessage == other.errorMessage &&
         downloadUrlExpiresAt == other.downloadUrlExpiresAt &&
@@ -155,11 +155,11 @@ class _$AdminArchiveResponseSchema extends AdminArchiveResponseSchema {
     _$hash = $jc(_$hash, subjectId.hashCode);
     _$hash = $jc(_$hash, requestedBy.hashCode);
     _$hash = $jc(_$hash, requestedAt.hashCode);
+    _$hash = $jc(_$hash, progressPercent.hashCode);
     _$hash = $jc(_$hash, startedAt.hashCode);
     _$hash = $jc(_$hash, completedAt.hashCode);
     _$hash = $jc(_$hash, failedAt.hashCode);
     _$hash = $jc(_$hash, fileSize.hashCode);
-    _$hash = $jc(_$hash, progressPercent.hashCode);
     _$hash = $jc(_$hash, progressStep.hashCode);
     _$hash = $jc(_$hash, errorMessage.hashCode);
     _$hash = $jc(_$hash, downloadUrlExpiresAt.hashCode);
@@ -176,11 +176,11 @@ class _$AdminArchiveResponseSchema extends AdminArchiveResponseSchema {
           ..add('subjectId', subjectId)
           ..add('requestedBy', requestedBy)
           ..add('requestedAt', requestedAt)
+          ..add('progressPercent', progressPercent)
           ..add('startedAt', startedAt)
           ..add('completedAt', completedAt)
           ..add('failedAt', failedAt)
           ..add('fileSize', fileSize)
-          ..add('progressPercent', progressPercent)
           ..add('progressStep', progressStep)
           ..add('errorMessage', errorMessage)
           ..add('downloadUrlExpiresAt', downloadUrlExpiresAt)
@@ -216,6 +216,11 @@ class AdminArchiveResponseSchemaBuilder
   String? get requestedAt => _$this._requestedAt;
   set requestedAt(String? requestedAt) => _$this._requestedAt = requestedAt;
 
+  num? _progressPercent;
+  num? get progressPercent => _$this._progressPercent;
+  set progressPercent(num? progressPercent) =>
+      _$this._progressPercent = progressPercent;
+
   String? _startedAt;
   String? get startedAt => _$this._startedAt;
   set startedAt(String? startedAt) => _$this._startedAt = startedAt;
@@ -231,11 +236,6 @@ class AdminArchiveResponseSchemaBuilder
   String? _fileSize;
   String? get fileSize => _$this._fileSize;
   set fileSize(String? fileSize) => _$this._fileSize = fileSize;
-
-  num? _progressPercent;
-  num? get progressPercent => _$this._progressPercent;
-  set progressPercent(num? progressPercent) =>
-      _$this._progressPercent = progressPercent;
 
   String? _progressStep;
   String? get progressStep => _$this._progressStep;
@@ -266,11 +266,11 @@ class AdminArchiveResponseSchemaBuilder
       _subjectId = $v.subjectId;
       _requestedBy = $v.requestedBy;
       _requestedAt = $v.requestedAt;
+      _progressPercent = $v.progressPercent;
       _startedAt = $v.startedAt;
       _completedAt = $v.completedAt;
       _failedAt = $v.failedAt;
       _fileSize = $v.fileSize;
-      _progressPercent = $v.progressPercent;
       _progressStep = $v.progressStep;
       _errorMessage = $v.errorMessage;
       _downloadUrlExpiresAt = $v.downloadUrlExpiresAt;
@@ -306,14 +306,14 @@ class AdminArchiveResponseSchemaBuilder
               requestedBy, r'AdminArchiveResponseSchema', 'requestedBy'),
           requestedAt: BuiltValueNullFieldError.checkNotNull(
               requestedAt, r'AdminArchiveResponseSchema', 'requestedAt'),
-          startedAt: startedAt,
-          completedAt: completedAt,
-          failedAt: failedAt,
-          fileSize: fileSize,
           progressPercent: BuiltValueNullFieldError.checkNotNull(
               progressPercent,
               r'AdminArchiveResponseSchema',
               'progressPercent'),
+          startedAt: startedAt,
+          completedAt: completedAt,
+          failedAt: failedAt,
+          fileSize: fileSize,
           progressStep: progressStep,
           errorMessage: errorMessage,
           downloadUrlExpiresAt: downloadUrlExpiresAt,

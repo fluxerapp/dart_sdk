@@ -13,7 +13,7 @@ part 'ip_authorization_poll_response.g.dart';
 /// Properties:
 /// * [completed] - Whether the IP authorization has been completed
 /// * [token]
-/// * [userId]
+/// * [userId] - User ID if authorization is complete
 @BuiltValue()
 abstract class IpAuthorizationPollResponse
     implements
@@ -25,6 +25,7 @@ abstract class IpAuthorizationPollResponse
   @BuiltValueField(wireName: r'token')
   String? get token;
 
+  /// User ID if authorization is complete
   @BuiltValueField(wireName: r'user_id')
   String? get userId;
 

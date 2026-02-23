@@ -12,9 +12,9 @@ class _$SsoStatusResponse extends SsoStatusResponse {
   @override
   final bool enforced;
   @override
-  final String? displayName;
-  @override
   final String redirectUri;
+  @override
+  final String? displayName;
 
   factory _$SsoStatusResponse(
           [void Function(SsoStatusResponseBuilder)? updates]) =>
@@ -23,8 +23,8 @@ class _$SsoStatusResponse extends SsoStatusResponse {
   _$SsoStatusResponse._(
       {required this.enabled,
       required this.enforced,
-      this.displayName,
-      required this.redirectUri})
+      required this.redirectUri,
+      this.displayName})
       : super._();
   @override
   SsoStatusResponse rebuild(void Function(SsoStatusResponseBuilder) updates) =>
@@ -40,8 +40,8 @@ class _$SsoStatusResponse extends SsoStatusResponse {
     return other is SsoStatusResponse &&
         enabled == other.enabled &&
         enforced == other.enforced &&
-        displayName == other.displayName &&
-        redirectUri == other.redirectUri;
+        redirectUri == other.redirectUri &&
+        displayName == other.displayName;
   }
 
   @override
@@ -49,8 +49,8 @@ class _$SsoStatusResponse extends SsoStatusResponse {
     var _$hash = 0;
     _$hash = $jc(_$hash, enabled.hashCode);
     _$hash = $jc(_$hash, enforced.hashCode);
-    _$hash = $jc(_$hash, displayName.hashCode);
     _$hash = $jc(_$hash, redirectUri.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -60,8 +60,8 @@ class _$SsoStatusResponse extends SsoStatusResponse {
     return (newBuiltValueToStringHelper(r'SsoStatusResponse')
           ..add('enabled', enabled)
           ..add('enforced', enforced)
-          ..add('displayName', displayName)
-          ..add('redirectUri', redirectUri))
+          ..add('redirectUri', redirectUri)
+          ..add('displayName', displayName))
         .toString();
   }
 }
@@ -78,13 +78,13 @@ class SsoStatusResponseBuilder
   bool? get enforced => _$this._enforced;
   set enforced(bool? enforced) => _$this._enforced = enforced;
 
-  String? _displayName;
-  String? get displayName => _$this._displayName;
-  set displayName(String? displayName) => _$this._displayName = displayName;
-
   String? _redirectUri;
   String? get redirectUri => _$this._redirectUri;
   set redirectUri(String? redirectUri) => _$this._redirectUri = redirectUri;
+
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
 
   SsoStatusResponseBuilder() {
     SsoStatusResponse._defaults(this);
@@ -95,8 +95,8 @@ class SsoStatusResponseBuilder
     if ($v != null) {
       _enabled = $v.enabled;
       _enforced = $v.enforced;
-      _displayName = $v.displayName;
       _redirectUri = $v.redirectUri;
+      _displayName = $v.displayName;
       _$v = null;
     }
     return this;
@@ -122,9 +122,9 @@ class SsoStatusResponseBuilder
               enabled, r'SsoStatusResponse', 'enabled'),
           enforced: BuiltValueNullFieldError.checkNotNull(
               enforced, r'SsoStatusResponse', 'enforced'),
-          displayName: displayName,
           redirectUri: BuiltValueNullFieldError.checkNotNull(
               redirectUri, r'SsoStatusResponse', 'redirectUri'),
+          displayName: displayName,
         );
     replace(_$result);
     return _$result;

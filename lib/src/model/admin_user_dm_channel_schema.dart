@@ -13,10 +13,10 @@ part 'admin_user_dm_channel_schema.g.dart';
 ///
 /// Properties:
 /// * [channelId]
-/// * [channelType]
 /// * [recipientIds]
-/// * [lastMessageId]
 /// * [isOpen]
+/// * [channelType]
+/// * [lastMessageId]
 @BuiltValue()
 abstract class AdminUserDmChannelSchema
     implements
@@ -24,17 +24,17 @@ abstract class AdminUserDmChannelSchema
   @BuiltValueField(wireName: r'channel_id')
   String get channelId;
 
-  @BuiltValueField(wireName: r'channel_type')
-  int get channelType;
-
   @BuiltValueField(wireName: r'recipient_ids')
   BuiltList<String> get recipientIds;
 
-  @BuiltValueField(wireName: r'last_message_id')
-  String get lastMessageId;
-
   @BuiltValueField(wireName: r'is_open')
   bool get isOpen;
+
+  @BuiltValueField(wireName: r'channel_type')
+  int? get channelType;
+
+  @BuiltValueField(wireName: r'last_message_id')
+  String? get lastMessageId;
 
   AdminUserDmChannelSchema._();
 
@@ -71,26 +71,30 @@ class _$AdminUserDmChannelSchemaSerializer
       object.channelId,
       specifiedType: const FullType(String),
     );
-    yield r'channel_type';
-    yield serializers.serialize(
-      object.channelType,
-      specifiedType: const FullType(int),
-    );
     yield r'recipient_ids';
     yield serializers.serialize(
       object.recipientIds,
       specifiedType: const FullType(BuiltList, [FullType(String)]),
-    );
-    yield r'last_message_id';
-    yield serializers.serialize(
-      object.lastMessageId,
-      specifiedType: const FullType(String),
     );
     yield r'is_open';
     yield serializers.serialize(
       object.isOpen,
       specifiedType: const FullType(bool),
     );
+    if (object.channelType != null) {
+      yield r'channel_type';
+      yield serializers.serialize(
+        object.channelType,
+        specifiedType: const FullType(int),
+      );
+    }
+    if (object.lastMessageId != null) {
+      yield r'last_message_id';
+      yield serializers.serialize(
+        object.lastMessageId,
+        specifiedType: const FullType(String),
+      );
+    }
   }
 
   @override
@@ -123,13 +127,6 @@ class _$AdminUserDmChannelSchemaSerializer
           ) as String;
           result.channelId = valueDes;
           break;
-        case r'channel_type':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.channelType = valueDes;
-          break;
         case r'recipient_ids':
           final valueDes = serializers.deserialize(
             value,
@@ -137,19 +134,26 @@ class _$AdminUserDmChannelSchemaSerializer
           ) as BuiltList<String>;
           result.recipientIds.replace(valueDes);
           break;
-        case r'last_message_id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.lastMessageId = valueDes;
-          break;
         case r'is_open':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(bool),
           ) as bool;
           result.isOpen = valueDes;
+          break;
+        case r'channel_type':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.channelType = valueDes;
+          break;
+        case r'last_message_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.lastMessageId = valueDes;
           break;
         default:
           unhandled.add(key);

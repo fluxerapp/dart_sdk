@@ -18,47 +18,47 @@ part 'user_private_response.g.dart';
 /// * [id] - The unique identifier (snowflake) for this user
 /// * [username] - The username of the user, not unique across the platform
 /// * [discriminator] - The four-digit discriminator tag of the user
-/// * [globalName]
-/// * [avatar]
-/// * [avatarColor]
 /// * [flags] - The public flags on the user account
 /// * [isStaff] - Whether the user has staff permissions
 /// * [acls] - Access control list entries for the user
 /// * [traits] - Special traits assigned to the user account
-/// * [email]
-/// * [phone]
-/// * [bio]
-/// * [pronouns]
-/// * [accentColor]
-/// * [banner]
-/// * [bannerColor]
 /// * [mfaEnabled] - Whether multi-factor authentication is enabled
 /// * [verified] - Whether the email address has been verified
-/// * [premiumType] - The type of premium subscription
-/// * [premiumSince]
-/// * [premiumUntil]
 /// * [premiumWillCancel] - Whether premium is set to cancel at the end of the billing period
-/// * [premiumBillingCycle]
-/// * [premiumLifetimeSequence]
 /// * [premiumBadgeHidden] - Whether the premium badge is hidden on the profile
 /// * [premiumBadgeMasked] - Whether the premium badge shows a masked appearance
 /// * [premiumBadgeTimestampHidden] - Whether the premium start timestamp is hidden
 /// * [premiumBadgeSequenceHidden] - Whether the lifetime sequence number is hidden
 /// * [premiumPurchaseDisabled] - Whether premium purchases are disabled for this account
 /// * [premiumEnabledOverride] - Whether premium features are enabled via override
-/// * [passwordLastChangedAt]
-/// * [requiredActions]
 /// * [nsfwAllowed] - Whether the user is allowed to view NSFW content
 /// * [hasDismissedPremiumOnboarding] - Whether the user has dismissed the premium onboarding flow
 /// * [hasEverPurchased] - Whether the user has ever made a purchase
 /// * [hasUnreadGiftInventory] - Whether there are unread items in the gift inventory
 /// * [unreadGiftInventoryCount] - The number of unread gift inventory items
 /// * [usedMobileClient] - Whether the user has ever used the mobile client
-/// * [pendingBulkMessageDeletion]
+/// * [globalName]
+/// * [avatar]
+/// * [avatarColor] - The dominant avatar color of the user as an integer
 /// * [bot] - Whether the user is a bot account
 /// * [system] - Whether the user is an official system user
+/// * [email]
 /// * [emailBounced] - Whether the current email address is marked as bounced by the mail provider
+/// * [phone]
+/// * [bio]
+/// * [pronouns]
+/// * [accentColor] - The user-selected accent color as an integer
+/// * [banner]
+/// * [bannerColor] - The default banner color if no custom banner is set
 /// * [authenticatorTypes] - The types of authenticators configured for MFA
+/// * [premiumType] - The type of premium subscription
+/// * [premiumSince]
+/// * [premiumUntil]
+/// * [premiumBillingCycle]
+/// * [premiumLifetimeSequence] - The sequence number for lifetime premium subscribers
+/// * [passwordLastChangedAt]
+/// * [requiredActions]
+/// * [pendingBulkMessageDeletion]
 @BuiltValue()
 abstract class UserPrivateResponse
     implements Built<UserPrivateResponse, UserPrivateResponseBuilder> {
@@ -73,15 +73,6 @@ abstract class UserPrivateResponse
   /// The four-digit discriminator tag of the user
   @BuiltValueField(wireName: r'discriminator')
   String get discriminator;
-
-  @BuiltValueField(wireName: r'global_name')
-  String? get globalName;
-
-  @BuiltValueField(wireName: r'avatar')
-  String? get avatar;
-
-  @BuiltValueField(wireName: r'avatar_color')
-  int get avatarColor;
 
   /// The public flags on the user account
   @BuiltValueField(wireName: r'flags')
@@ -99,27 +90,6 @@ abstract class UserPrivateResponse
   @BuiltValueField(wireName: r'traits')
   BuiltList<String> get traits;
 
-  @BuiltValueField(wireName: r'email')
-  String? get email;
-
-  @BuiltValueField(wireName: r'phone')
-  String? get phone;
-
-  @BuiltValueField(wireName: r'bio')
-  String? get bio;
-
-  @BuiltValueField(wireName: r'pronouns')
-  String? get pronouns;
-
-  @BuiltValueField(wireName: r'accent_color')
-  int get accentColor;
-
-  @BuiltValueField(wireName: r'banner')
-  String? get banner;
-
-  @BuiltValueField(wireName: r'banner_color')
-  int get bannerColor;
-
   /// Whether multi-factor authentication is enabled
   @BuiltValueField(wireName: r'mfa_enabled')
   bool get mfaEnabled;
@@ -128,26 +98,9 @@ abstract class UserPrivateResponse
   @BuiltValueField(wireName: r'verified')
   bool get verified;
 
-  /// The type of premium subscription
-  @BuiltValueField(wireName: r'premium_type')
-  UserPremiumTypes? get premiumType;
-  // enum premiumTypeEnum {  0,  1,  2,  };
-
-  @BuiltValueField(wireName: r'premium_since')
-  String? get premiumSince;
-
-  @BuiltValueField(wireName: r'premium_until')
-  String? get premiumUntil;
-
   /// Whether premium is set to cancel at the end of the billing period
   @BuiltValueField(wireName: r'premium_will_cancel')
   bool get premiumWillCancel;
-
-  @BuiltValueField(wireName: r'premium_billing_cycle')
-  String? get premiumBillingCycle;
-
-  @BuiltValueField(wireName: r'premium_lifetime_sequence')
-  int get premiumLifetimeSequence;
 
   /// Whether the premium badge is hidden on the profile
   @BuiltValueField(wireName: r'premium_badge_hidden')
@@ -173,12 +126,6 @@ abstract class UserPrivateResponse
   @BuiltValueField(wireName: r'premium_enabled_override')
   bool get premiumEnabledOverride;
 
-  @BuiltValueField(wireName: r'password_last_changed_at')
-  String? get passwordLastChangedAt;
-
-  @BuiltValueField(wireName: r'required_actions')
-  BuiltList<String>? get requiredActions;
-
   /// Whether the user is allowed to view NSFW content
   @BuiltValueField(wireName: r'nsfw_allowed')
   bool get nsfwAllowed;
@@ -203,8 +150,15 @@ abstract class UserPrivateResponse
   @BuiltValueField(wireName: r'used_mobile_client')
   bool get usedMobileClient;
 
-  @BuiltValueField(wireName: r'pending_bulk_message_deletion')
-  UserPrivateResponsePendingBulkMessageDeletion? get pendingBulkMessageDeletion;
+  @BuiltValueField(wireName: r'global_name')
+  String? get globalName;
+
+  @BuiltValueField(wireName: r'avatar')
+  String? get avatar;
+
+  /// The dominant avatar color of the user as an integer
+  @BuiltValueField(wireName: r'avatar_color')
+  int? get avatarColor;
 
   /// Whether the user is a bot account
   @BuiltValueField(wireName: r'bot')
@@ -214,13 +168,63 @@ abstract class UserPrivateResponse
   @BuiltValueField(wireName: r'system')
   bool? get system;
 
+  @BuiltValueField(wireName: r'email')
+  String? get email;
+
   /// Whether the current email address is marked as bounced by the mail provider
   @BuiltValueField(wireName: r'email_bounced')
   bool? get emailBounced;
 
+  @BuiltValueField(wireName: r'phone')
+  String? get phone;
+
+  @BuiltValueField(wireName: r'bio')
+  String? get bio;
+
+  @BuiltValueField(wireName: r'pronouns')
+  String? get pronouns;
+
+  /// The user-selected accent color as an integer
+  @BuiltValueField(wireName: r'accent_color')
+  int? get accentColor;
+
+  @BuiltValueField(wireName: r'banner')
+  String? get banner;
+
+  /// The default banner color if no custom banner is set
+  @BuiltValueField(wireName: r'banner_color')
+  int? get bannerColor;
+
   /// The types of authenticators configured for MFA
   @BuiltValueField(wireName: r'authenticator_types')
   BuiltList<UserAuthenticatorTypes>? get authenticatorTypes;
+
+  /// The type of premium subscription
+  @BuiltValueField(wireName: r'premium_type')
+  UserPremiumTypes? get premiumType;
+  // enum premiumTypeEnum {  0,  1,  2,  };
+
+  @BuiltValueField(wireName: r'premium_since')
+  String? get premiumSince;
+
+  @BuiltValueField(wireName: r'premium_until')
+  String? get premiumUntil;
+
+  @BuiltValueField(wireName: r'premium_billing_cycle')
+  String? get premiumBillingCycle;
+
+  /// The sequence number for lifetime premium subscribers
+  @BuiltValueField(wireName: r'premium_lifetime_sequence')
+  int? get premiumLifetimeSequence;
+
+  @BuiltValueField(wireName: r'password_last_changed_at')
+  String? get passwordLastChangedAt;
+
+  @BuiltValueField(wireName: r'required_actions')
+  BuiltList<String>? get requiredActions;
+
+  @BuiltValueField(wireName: r'pending_bulk_message_deletion')
+  UserPrivateResponsePendingBulkMessageDeletion? get pendingBulkMessageDeletion;
 
   UserPrivateResponse._();
 
@@ -266,25 +270,6 @@ class _$UserPrivateResponseSerializer
       object.discriminator,
       specifiedType: const FullType(String),
     );
-    yield r'global_name';
-    yield object.globalName == null
-        ? null
-        : serializers.serialize(
-            object.globalName,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'avatar';
-    yield object.avatar == null
-        ? null
-        : serializers.serialize(
-            object.avatar,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'avatar_color';
-    yield serializers.serialize(
-      object.avatarColor,
-      specifiedType: const FullType(int),
-    );
     yield r'flags';
     yield serializers.serialize(
       object.flags,
@@ -305,51 +290,6 @@ class _$UserPrivateResponseSerializer
       object.traits,
       specifiedType: const FullType(BuiltList, [FullType(String)]),
     );
-    yield r'email';
-    yield object.email == null
-        ? null
-        : serializers.serialize(
-            object.email,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'phone';
-    yield object.phone == null
-        ? null
-        : serializers.serialize(
-            object.phone,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'bio';
-    yield object.bio == null
-        ? null
-        : serializers.serialize(
-            object.bio,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'pronouns';
-    yield object.pronouns == null
-        ? null
-        : serializers.serialize(
-            object.pronouns,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'accent_color';
-    yield serializers.serialize(
-      object.accentColor,
-      specifiedType: const FullType(int),
-    );
-    yield r'banner';
-    yield object.banner == null
-        ? null
-        : serializers.serialize(
-            object.banner,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'banner_color';
-    yield serializers.serialize(
-      object.bannerColor,
-      specifiedType: const FullType(int),
-    );
     yield r'mfa_enabled';
     yield serializers.serialize(
       object.mfaEnabled,
@@ -360,43 +300,10 @@ class _$UserPrivateResponseSerializer
       object.verified,
       specifiedType: const FullType(bool),
     );
-    yield r'premium_type';
-    yield object.premiumType == null
-        ? null
-        : serializers.serialize(
-            object.premiumType,
-            specifiedType: const FullType.nullable(UserPremiumTypes),
-          );
-    yield r'premium_since';
-    yield object.premiumSince == null
-        ? null
-        : serializers.serialize(
-            object.premiumSince,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'premium_until';
-    yield object.premiumUntil == null
-        ? null
-        : serializers.serialize(
-            object.premiumUntil,
-            specifiedType: const FullType.nullable(String),
-          );
     yield r'premium_will_cancel';
     yield serializers.serialize(
       object.premiumWillCancel,
       specifiedType: const FullType(bool),
-    );
-    yield r'premium_billing_cycle';
-    yield object.premiumBillingCycle == null
-        ? null
-        : serializers.serialize(
-            object.premiumBillingCycle,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'premium_lifetime_sequence';
-    yield serializers.serialize(
-      object.premiumLifetimeSequence,
-      specifiedType: const FullType(int),
     );
     yield r'premium_badge_hidden';
     yield serializers.serialize(
@@ -428,21 +335,6 @@ class _$UserPrivateResponseSerializer
       object.premiumEnabledOverride,
       specifiedType: const FullType(bool),
     );
-    yield r'password_last_changed_at';
-    yield object.passwordLastChangedAt == null
-        ? null
-        : serializers.serialize(
-            object.passwordLastChangedAt,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'required_actions';
-    yield object.requiredActions == null
-        ? null
-        : serializers.serialize(
-            object.requiredActions,
-            specifiedType:
-                const FullType.nullable(BuiltList, [FullType(String)]),
-          );
     yield r'nsfw_allowed';
     yield serializers.serialize(
       object.nsfwAllowed,
@@ -473,14 +365,27 @@ class _$UserPrivateResponseSerializer
       object.usedMobileClient,
       specifiedType: const FullType(bool),
     );
-    yield r'pending_bulk_message_deletion';
-    yield object.pendingBulkMessageDeletion == null
-        ? null
-        : serializers.serialize(
-            object.pendingBulkMessageDeletion,
-            specifiedType: const FullType.nullable(
-                UserPrivateResponsePendingBulkMessageDeletion),
-          );
+    if (object.globalName != null) {
+      yield r'global_name';
+      yield serializers.serialize(
+        object.globalName,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.avatar != null) {
+      yield r'avatar';
+      yield serializers.serialize(
+        object.avatar,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.avatarColor != null) {
+      yield r'avatar_color';
+      yield serializers.serialize(
+        object.avatarColor,
+        specifiedType: const FullType(int),
+      );
+    }
     if (object.bot != null) {
       yield r'bot';
       yield serializers.serialize(
@@ -495,11 +400,60 @@ class _$UserPrivateResponseSerializer
         specifiedType: const FullType(bool),
       );
     }
+    if (object.email != null) {
+      yield r'email';
+      yield serializers.serialize(
+        object.email,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
     if (object.emailBounced != null) {
       yield r'email_bounced';
       yield serializers.serialize(
         object.emailBounced,
         specifiedType: const FullType(bool),
+      );
+    }
+    if (object.phone != null) {
+      yield r'phone';
+      yield serializers.serialize(
+        object.phone,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.bio != null) {
+      yield r'bio';
+      yield serializers.serialize(
+        object.bio,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.pronouns != null) {
+      yield r'pronouns';
+      yield serializers.serialize(
+        object.pronouns,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.accentColor != null) {
+      yield r'accent_color';
+      yield serializers.serialize(
+        object.accentColor,
+        specifiedType: const FullType(int),
+      );
+    }
+    if (object.banner != null) {
+      yield r'banner';
+      yield serializers.serialize(
+        object.banner,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.bannerColor != null) {
+      yield r'banner_color';
+      yield serializers.serialize(
+        object.bannerColor,
+        specifiedType: const FullType(int),
       );
     }
     if (object.authenticatorTypes != null) {
@@ -508,6 +462,63 @@ class _$UserPrivateResponseSerializer
         object.authenticatorTypes,
         specifiedType:
             const FullType(BuiltList, [FullType(UserAuthenticatorTypes)]),
+      );
+    }
+    if (object.premiumType != null) {
+      yield r'premium_type';
+      yield serializers.serialize(
+        object.premiumType,
+        specifiedType: const FullType.nullable(UserPremiumTypes),
+      );
+    }
+    if (object.premiumSince != null) {
+      yield r'premium_since';
+      yield serializers.serialize(
+        object.premiumSince,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.premiumUntil != null) {
+      yield r'premium_until';
+      yield serializers.serialize(
+        object.premiumUntil,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.premiumBillingCycle != null) {
+      yield r'premium_billing_cycle';
+      yield serializers.serialize(
+        object.premiumBillingCycle,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.premiumLifetimeSequence != null) {
+      yield r'premium_lifetime_sequence';
+      yield serializers.serialize(
+        object.premiumLifetimeSequence,
+        specifiedType: const FullType(int),
+      );
+    }
+    if (object.passwordLastChangedAt != null) {
+      yield r'password_last_changed_at';
+      yield serializers.serialize(
+        object.passwordLastChangedAt,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.requiredActions != null) {
+      yield r'required_actions';
+      yield serializers.serialize(
+        object.requiredActions,
+        specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+      );
+    }
+    if (object.pendingBulkMessageDeletion != null) {
+      yield r'pending_bulk_message_deletion';
+      yield serializers.serialize(
+        object.pendingBulkMessageDeletion,
+        specifiedType: const FullType.nullable(
+            UserPrivateResponsePendingBulkMessageDeletion),
       );
     }
   }
@@ -556,29 +567,6 @@ class _$UserPrivateResponseSerializer
           ) as String;
           result.discriminator = valueDes;
           break;
-        case r'global_name':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.globalName = valueDes;
-          break;
-        case r'avatar':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.avatar = valueDes;
-          break;
-        case r'avatar_color':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.avatarColor = valueDes;
-          break;
         case r'flags':
           final valueDes = serializers.deserialize(
             value,
@@ -607,6 +595,148 @@ class _$UserPrivateResponseSerializer
           ) as BuiltList<String>;
           result.traits.replace(valueDes);
           break;
+        case r'mfa_enabled':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.mfaEnabled = valueDes;
+          break;
+        case r'verified':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.verified = valueDes;
+          break;
+        case r'premium_will_cancel':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.premiumWillCancel = valueDes;
+          break;
+        case r'premium_badge_hidden':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.premiumBadgeHidden = valueDes;
+          break;
+        case r'premium_badge_masked':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.premiumBadgeMasked = valueDes;
+          break;
+        case r'premium_badge_timestamp_hidden':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.premiumBadgeTimestampHidden = valueDes;
+          break;
+        case r'premium_badge_sequence_hidden':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.premiumBadgeSequenceHidden = valueDes;
+          break;
+        case r'premium_purchase_disabled':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.premiumPurchaseDisabled = valueDes;
+          break;
+        case r'premium_enabled_override':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.premiumEnabledOverride = valueDes;
+          break;
+        case r'nsfw_allowed':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.nsfwAllowed = valueDes;
+          break;
+        case r'has_dismissed_premium_onboarding':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.hasDismissedPremiumOnboarding = valueDes;
+          break;
+        case r'has_ever_purchased':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.hasEverPurchased = valueDes;
+          break;
+        case r'has_unread_gift_inventory':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.hasUnreadGiftInventory = valueDes;
+          break;
+        case r'unread_gift_inventory_count':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.unreadGiftInventoryCount = valueDes;
+          break;
+        case r'used_mobile_client':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.usedMobileClient = valueDes;
+          break;
+        case r'global_name':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.globalName = valueDes;
+          break;
+        case r'avatar':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.avatar = valueDes;
+          break;
+        case r'avatar_color':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.avatarColor = valueDes;
+          break;
+        case r'bot':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.bot = valueDes;
+          break;
+        case r'system':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.system = valueDes;
+          break;
         case r'email':
           final valueDes = serializers.deserialize(
             value,
@@ -614,6 +744,13 @@ class _$UserPrivateResponseSerializer
           ) as String?;
           if (valueDes == null) continue;
           result.email = valueDes;
+          break;
+        case r'email_bounced':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.emailBounced = valueDes;
           break;
         case r'phone':
           final valueDes = serializers.deserialize(
@@ -661,19 +798,13 @@ class _$UserPrivateResponseSerializer
           ) as int;
           result.bannerColor = valueDes;
           break;
-        case r'mfa_enabled':
+        case r'authenticator_types':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.mfaEnabled = valueDes;
-          break;
-        case r'verified':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.verified = valueDes;
+            specifiedType:
+                const FullType(BuiltList, [FullType(UserAuthenticatorTypes)]),
+          ) as BuiltList<UserAuthenticatorTypes>;
+          result.authenticatorTypes.replace(valueDes);
           break;
         case r'premium_type':
           final valueDes = serializers.deserialize(
@@ -699,13 +830,6 @@ class _$UserPrivateResponseSerializer
           if (valueDes == null) continue;
           result.premiumUntil = valueDes;
           break;
-        case r'premium_will_cancel':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.premiumWillCancel = valueDes;
-          break;
         case r'premium_billing_cycle':
           final valueDes = serializers.deserialize(
             value,
@@ -720,48 +844,6 @@ class _$UserPrivateResponseSerializer
             specifiedType: const FullType(int),
           ) as int;
           result.premiumLifetimeSequence = valueDes;
-          break;
-        case r'premium_badge_hidden':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.premiumBadgeHidden = valueDes;
-          break;
-        case r'premium_badge_masked':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.premiumBadgeMasked = valueDes;
-          break;
-        case r'premium_badge_timestamp_hidden':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.premiumBadgeTimestampHidden = valueDes;
-          break;
-        case r'premium_badge_sequence_hidden':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.premiumBadgeSequenceHidden = valueDes;
-          break;
-        case r'premium_purchase_disabled':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.premiumPurchaseDisabled = valueDes;
-          break;
-        case r'premium_enabled_override':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.premiumEnabledOverride = valueDes;
           break;
         case r'password_last_changed_at':
           final valueDes = serializers.deserialize(
@@ -780,48 +862,6 @@ class _$UserPrivateResponseSerializer
           if (valueDes == null) continue;
           result.requiredActions.replace(valueDes);
           break;
-        case r'nsfw_allowed':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.nsfwAllowed = valueDes;
-          break;
-        case r'has_dismissed_premium_onboarding':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.hasDismissedPremiumOnboarding = valueDes;
-          break;
-        case r'has_ever_purchased':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.hasEverPurchased = valueDes;
-          break;
-        case r'has_unread_gift_inventory':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.hasUnreadGiftInventory = valueDes;
-          break;
-        case r'unread_gift_inventory_count':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.unreadGiftInventoryCount = valueDes;
-          break;
-        case r'used_mobile_client':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.usedMobileClient = valueDes;
-          break;
         case r'pending_bulk_message_deletion':
           final valueDes = serializers.deserialize(
             value,
@@ -830,35 +870,6 @@ class _$UserPrivateResponseSerializer
           ) as UserPrivateResponsePendingBulkMessageDeletion?;
           if (valueDes == null) continue;
           result.pendingBulkMessageDeletion.replace(valueDes);
-          break;
-        case r'bot':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.bot = valueDes;
-          break;
-        case r'system':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.system = valueDes;
-          break;
-        case r'email_bounced':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.emailBounced = valueDes;
-          break;
-        case r'authenticator_types':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType:
-                const FullType(BuiltList, [FullType(UserAuthenticatorTypes)]),
-          ) as BuiltList<UserAuthenticatorTypes>;
-          result.authenticatorTypes.replace(valueDes);
           break;
         default:
           unhandled.add(key);

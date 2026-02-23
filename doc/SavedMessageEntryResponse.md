@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **channelId** | **String** | ID of the channel containing the message | 
 **messageId** | **String** | ID of the saved message | 
 **status** | **String** | Availability status of the saved message | 
-**message** | [**MessageResponseSchema**](MessageResponseSchema.md) |  | 
+**message** | [**MessageResponseSchema**](MessageResponseSchema.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

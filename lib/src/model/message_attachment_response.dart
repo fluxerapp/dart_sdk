@@ -21,11 +21,11 @@ part 'message_attachment_response.g.dart';
 /// * [contentHash]
 /// * [url]
 /// * [proxyUrl]
-/// * [width]
-/// * [height]
+/// * [width] - The width of the attachment in pixels (for images/videos)
+/// * [height] - The height of the attachment in pixels (for images/videos)
 /// * [placeholder]
 /// * [nsfw]
-/// * [duration]
+/// * [duration] - The duration of the media in seconds
 /// * [waveform]
 /// * [expiresAt]
 /// * [expired]
@@ -67,9 +67,11 @@ abstract class MessageAttachmentResponse
   @BuiltValueField(wireName: r'proxy_url')
   String? get proxyUrl;
 
+  /// The width of the attachment in pixels (for images/videos)
   @BuiltValueField(wireName: r'width')
   int? get width;
 
+  /// The height of the attachment in pixels (for images/videos)
   @BuiltValueField(wireName: r'height')
   int? get height;
 
@@ -79,6 +81,7 @@ abstract class MessageAttachmentResponse
   @BuiltValueField(wireName: r'nsfw')
   bool? get nsfw;
 
+  /// The duration of the media in seconds
   @BuiltValueField(wireName: r'duration')
   int? get duration;
 

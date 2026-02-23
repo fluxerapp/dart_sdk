@@ -16,11 +16,11 @@ class _$GuildAdminResponse extends GuildAdminResponse {
   @override
   final String ownerId;
   @override
+  final int memberCount;
+  @override
   final String? icon;
   @override
   final String? banner;
-  @override
-  final int memberCount;
 
   factory _$GuildAdminResponse(
           [void Function(GuildAdminResponseBuilder)? updates]) =>
@@ -31,9 +31,9 @@ class _$GuildAdminResponse extends GuildAdminResponse {
       required this.name,
       required this.features,
       required this.ownerId,
+      required this.memberCount,
       this.icon,
-      this.banner,
-      required this.memberCount})
+      this.banner})
       : super._();
   @override
   GuildAdminResponse rebuild(
@@ -52,9 +52,9 @@ class _$GuildAdminResponse extends GuildAdminResponse {
         name == other.name &&
         features == other.features &&
         ownerId == other.ownerId &&
+        memberCount == other.memberCount &&
         icon == other.icon &&
-        banner == other.banner &&
-        memberCount == other.memberCount;
+        banner == other.banner;
   }
 
   @override
@@ -64,9 +64,9 @@ class _$GuildAdminResponse extends GuildAdminResponse {
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, features.hashCode);
     _$hash = $jc(_$hash, ownerId.hashCode);
+    _$hash = $jc(_$hash, memberCount.hashCode);
     _$hash = $jc(_$hash, icon.hashCode);
     _$hash = $jc(_$hash, banner.hashCode);
-    _$hash = $jc(_$hash, memberCount.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -78,9 +78,9 @@ class _$GuildAdminResponse extends GuildAdminResponse {
           ..add('name', name)
           ..add('features', features)
           ..add('ownerId', ownerId)
+          ..add('memberCount', memberCount)
           ..add('icon', icon)
-          ..add('banner', banner)
-          ..add('memberCount', memberCount))
+          ..add('banner', banner))
         .toString();
   }
 }
@@ -106,6 +106,10 @@ class GuildAdminResponseBuilder
   String? get ownerId => _$this._ownerId;
   set ownerId(String? ownerId) => _$this._ownerId = ownerId;
 
+  int? _memberCount;
+  int? get memberCount => _$this._memberCount;
+  set memberCount(int? memberCount) => _$this._memberCount = memberCount;
+
   String? _icon;
   String? get icon => _$this._icon;
   set icon(String? icon) => _$this._icon = icon;
@@ -113,10 +117,6 @@ class GuildAdminResponseBuilder
   String? _banner;
   String? get banner => _$this._banner;
   set banner(String? banner) => _$this._banner = banner;
-
-  int? _memberCount;
-  int? get memberCount => _$this._memberCount;
-  set memberCount(int? memberCount) => _$this._memberCount = memberCount;
 
   GuildAdminResponseBuilder() {
     GuildAdminResponse._defaults(this);
@@ -129,9 +129,9 @@ class GuildAdminResponseBuilder
       _name = $v.name;
       _features = $v.features.toBuilder();
       _ownerId = $v.ownerId;
+      _memberCount = $v.memberCount;
       _icon = $v.icon;
       _banner = $v.banner;
-      _memberCount = $v.memberCount;
       _$v = null;
     }
     return this;
@@ -162,10 +162,10 @@ class GuildAdminResponseBuilder
             features: features.build(),
             ownerId: BuiltValueNullFieldError.checkNotNull(
                 ownerId, r'GuildAdminResponse', 'ownerId'),
-            icon: icon,
-            banner: banner,
             memberCount: BuiltValueNullFieldError.checkNotNull(
                 memberCount, r'GuildAdminResponse', 'memberCount'),
+            icon: icon,
+            banner: banner,
           );
     } catch (_) {
       late String _$failedField;

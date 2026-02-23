@@ -9,10 +9,10 @@ import 'package:fluxer_dart/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | **String** | NCMEC submission status | 
-**ncmecReportId** | **String** |  | 
-**submittedAt** | **String** |  | 
-**submittedByAdminId** | **String** |  | 
-**failureReason** | **String** |  | 
+**ncmecReportId** | **String** |  | [optional] 
+**submittedAt** | **String** |  | [optional] 
+**submittedByAdminId** | **String** | ID of the admin who submitted the report | [optional] 
+**failureReason** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

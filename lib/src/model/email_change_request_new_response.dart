@@ -80,13 +80,13 @@ class _$EmailChangeRequestNewResponseSerializer
       object.newCodeExpiresAt,
       specifiedType: const FullType(String),
     );
-    yield r'resend_available_at';
-    yield object.resendAvailableAt == null
-        ? null
-        : serializers.serialize(
-            object.resendAvailableAt,
-            specifiedType: const FullType.nullable(String),
-          );
+    if (object.resendAvailableAt != null) {
+      yield r'resend_available_at';
+      yield serializers.serialize(
+        object.resendAvailableAt,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
   }
 
   @override

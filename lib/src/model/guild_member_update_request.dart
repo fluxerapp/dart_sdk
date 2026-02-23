@@ -24,7 +24,7 @@ part 'guild_member_update_request.g.dart';
 /// * [deaf] - Whether the member is deafened in voice channels
 /// * [communicationDisabledUntil]
 /// * [timeoutReason]
-/// * [channelId]
+/// * [channelId] - The voice channel ID to move the member to
 /// * [connectionId]
 @BuiltValue()
 abstract class GuildMemberUpdateRequest
@@ -72,6 +72,7 @@ abstract class GuildMemberUpdateRequest
   @BuiltValueField(wireName: r'timeout_reason')
   String? get timeoutReason;
 
+  /// The voice channel ID to move the member to
   @BuiltValueField(wireName: r'channel_id')
   String? get channelId;
 

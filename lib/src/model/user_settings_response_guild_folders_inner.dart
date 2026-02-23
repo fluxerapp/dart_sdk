@@ -15,7 +15,7 @@ part 'user_settings_response_guild_folders_inner.g.dart';
 /// * [guildIds] - The IDs of guilds contained in this folder
 /// * [id]
 /// * [name]
-/// * [color]
+/// * [color] - The color of the folder as an integer
 /// * [flags] - Bitfield for guild folder display behaviour
 /// * [icon] - Selected icon for the guild folder
 @BuiltValue()
@@ -33,6 +33,7 @@ abstract class UserSettingsResponseGuildFoldersInner
   @BuiltValueField(wireName: r'name')
   String? get name;
 
+  /// The color of the folder as an integer
   @BuiltValueField(wireName: r'color')
   int? get color;
 

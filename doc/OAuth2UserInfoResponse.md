@@ -12,8 +12,8 @@ Name | Type | Description | Notes
 **id** | **String** | The unique identifier of the user | 
 **username** | **String** | The username of the user | 
 **discriminator** | **String** | The discriminator of the user | 
-**globalName** | **String** |  | 
-**avatar** | **String** |  | 
+**globalName** | **String** |  | [optional] 
+**avatar** | **String** |  | [optional] 
 **email** | **String** |  | [optional] 
 **verified** | **bool** |  | [optional] 
 **flags** | **int** | The public flags on the user account | [optional] 

@@ -48,13 +48,13 @@ class _$LookupGuildResponseSerializer
     LookupGuildResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'guild';
-    yield object.guild == null
-        ? null
-        : serializers.serialize(
-            object.guild,
-            specifiedType: const FullType.nullable(LookupGuildResponseGuild),
-          );
+    if (object.guild != null) {
+      yield r'guild';
+      yield serializers.serialize(
+        object.guild,
+        specifiedType: const FullType.nullable(LookupGuildResponseGuild),
+      );
+    }
   }
 
   @override

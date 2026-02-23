@@ -15,23 +15,20 @@ part 'user_guild_settings_response.g.dart';
 /// UserGuildSettingsResponse
 ///
 /// Properties:
-/// * [guildId]
 /// * [messageNotifications] - The default notification level for the guild
 /// * [muted] - Whether the guild is muted
-/// * [muteConfig]
 /// * [mobilePush] - Whether mobile push notifications are enabled
 /// * [suppressEveryone] - Whether @everyone mentions are suppressed
 /// * [suppressRoles] - Whether role mentions are suppressed
 /// * [hideMutedChannels] - Whether muted channels are hidden in the sidebar
-/// * [channelOverrides]
 /// * [version] - The version number of these settings for sync
+/// * [guildId] - The ID of the guild these settings apply to
+/// * [muteConfig]
+/// * [channelOverrides]
 @BuiltValue()
 abstract class UserGuildSettingsResponse
     implements
         Built<UserGuildSettingsResponse, UserGuildSettingsResponseBuilder> {
-  @BuiltValueField(wireName: r'guild_id')
-  String get guildId;
-
   /// The default notification level for the guild
   @BuiltValueField(wireName: r'message_notifications')
   UserNotificationSettings get messageNotifications;
@@ -40,9 +37,6 @@ abstract class UserGuildSettingsResponse
   /// Whether the guild is muted
   @BuiltValueField(wireName: r'muted')
   bool get muted;
-
-  @BuiltValueField(wireName: r'mute_config')
-  UserGuildSettingsResponseMuteConfig? get muteConfig;
 
   /// Whether mobile push notifications are enabled
   @BuiltValueField(wireName: r'mobile_push')
@@ -60,13 +54,20 @@ abstract class UserGuildSettingsResponse
   @BuiltValueField(wireName: r'hide_muted_channels')
   bool get hideMutedChannels;
 
-  @BuiltValueField(wireName: r'channel_overrides')
-  BuiltMap<String, UserGuildSettingsResponseChannelOverridesValue>?
-      get channelOverrides;
-
   /// The version number of these settings for sync
   @BuiltValueField(wireName: r'version')
   int get version;
+
+  /// The ID of the guild these settings apply to
+  @BuiltValueField(wireName: r'guild_id')
+  String? get guildId;
+
+  @BuiltValueField(wireName: r'mute_config')
+  UserGuildSettingsResponseMuteConfig? get muteConfig;
+
+  @BuiltValueField(wireName: r'channel_overrides')
+  BuiltMap<String, UserGuildSettingsResponseChannelOverridesValue>?
+      get channelOverrides;
 
   UserGuildSettingsResponse._();
 
@@ -98,11 +99,6 @@ class _$UserGuildSettingsResponseSerializer
     UserGuildSettingsResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'guild_id';
-    yield serializers.serialize(
-      object.guildId,
-      specifiedType: const FullType(String),
-    );
     yield r'message_notifications';
     yield serializers.serialize(
       object.messageNotifications,
@@ -113,14 +109,6 @@ class _$UserGuildSettingsResponseSerializer
       object.muted,
       specifiedType: const FullType(bool),
     );
-    yield r'mute_config';
-    yield object.muteConfig == null
-        ? null
-        : serializers.serialize(
-            object.muteConfig,
-            specifiedType:
-                const FullType.nullable(UserGuildSettingsResponseMuteConfig),
-          );
     yield r'mobile_push';
     yield serializers.serialize(
       object.mobilePush,
@@ -141,21 +129,36 @@ class _$UserGuildSettingsResponseSerializer
       object.hideMutedChannels,
       specifiedType: const FullType(bool),
     );
-    yield r'channel_overrides';
-    yield object.channelOverrides == null
-        ? null
-        : serializers.serialize(
-            object.channelOverrides,
-            specifiedType: const FullType.nullable(BuiltMap, [
-              FullType(String),
-              FullType(UserGuildSettingsResponseChannelOverridesValue)
-            ]),
-          );
     yield r'version';
     yield serializers.serialize(
       object.version,
       specifiedType: const FullType(int),
     );
+    if (object.guildId != null) {
+      yield r'guild_id';
+      yield serializers.serialize(
+        object.guildId,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.muteConfig != null) {
+      yield r'mute_config';
+      yield serializers.serialize(
+        object.muteConfig,
+        specifiedType:
+            const FullType.nullable(UserGuildSettingsResponseMuteConfig),
+      );
+    }
+    if (object.channelOverrides != null) {
+      yield r'channel_overrides';
+      yield serializers.serialize(
+        object.channelOverrides,
+        specifiedType: const FullType.nullable(BuiltMap, [
+          FullType(String),
+          FullType(UserGuildSettingsResponseChannelOverridesValue)
+        ]),
+      );
+    }
   }
 
   @override
@@ -181,13 +184,6 @@ class _$UserGuildSettingsResponseSerializer
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'guild_id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.guildId = valueDes;
-          break;
         case r'message_notifications':
           final valueDes = serializers.deserialize(
             value,
@@ -201,15 +197,6 @@ class _$UserGuildSettingsResponseSerializer
             specifiedType: const FullType(bool),
           ) as bool;
           result.muted = valueDes;
-          break;
-        case r'mute_config':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType:
-                const FullType.nullable(UserGuildSettingsResponseMuteConfig),
-          ) as UserGuildSettingsResponseMuteConfig?;
-          if (valueDes == null) continue;
-          result.muteConfig.replace(valueDes);
           break;
         case r'mobile_push':
           final valueDes = serializers.deserialize(
@@ -239,6 +226,29 @@ class _$UserGuildSettingsResponseSerializer
           ) as bool;
           result.hideMutedChannels = valueDes;
           break;
+        case r'version':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.version = valueDes;
+          break;
+        case r'guild_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.guildId = valueDes;
+          break;
+        case r'mute_config':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType.nullable(UserGuildSettingsResponseMuteConfig),
+          ) as UserGuildSettingsResponseMuteConfig?;
+          if (valueDes == null) continue;
+          result.muteConfig.replace(valueDes);
+          break;
         case r'channel_overrides':
           final valueDes = serializers.deserialize(
             value,
@@ -250,13 +260,6 @@ class _$UserGuildSettingsResponseSerializer
               UserGuildSettingsResponseChannelOverridesValue>?;
           if (valueDes == null) continue;
           result.channelOverrides.replace(valueDes);
-          break;
-        case r'version':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.version = valueDes;
           break;
         default:
           unhandled.add(key);

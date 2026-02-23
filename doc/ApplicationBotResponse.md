@@ -11,10 +11,10 @@ Name | Type | Description | Notes
 **id** | **String** | The unique identifier of the bot user | 
 **username** | **String** | The username of the bot | 
 **discriminator** | **String** | The discriminator of the bot | 
-**bio** | **String** |  | 
 **flags** | **int** | The bot user flags | 
 **avatar** | **String** |  | [optional] 
 **banner** | **String** |  | [optional] 
+**bio** | **String** |  | [optional] 
 **token** | **String** | The bot token for authentication | [optional] 
 **mfaEnabled** | **bool** | Whether the bot has MFA enabled | [optional] 
 **authenticatorTypes** | [**BuiltList&lt;AuthenticatorType&gt;**](AuthenticatorType.md) | The types of authenticators enabled | [optional] 

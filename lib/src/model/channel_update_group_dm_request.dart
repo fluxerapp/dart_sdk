@@ -16,7 +16,7 @@ part 'channel_update_group_dm_request.g.dart';
 /// * [type]
 /// * [name]
 /// * [icon] - Base64-encoded image data
-/// * [ownerId]
+/// * [ownerId] - ID of the new owner of the group DM
 /// * [nicks] - User nickname overrides (user ID to nickname mapping)
 @BuiltValue()
 abstract class ChannelUpdateGroupDmRequest
@@ -33,6 +33,7 @@ abstract class ChannelUpdateGroupDmRequest
   @BuiltValueField(wireName: r'icon')
   String? get icon;
 
+  /// ID of the new owner of the group DM
   @BuiltValueField(wireName: r'owner_id')
   String? get ownerId;
 

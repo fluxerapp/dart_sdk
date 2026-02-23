@@ -17,9 +17,9 @@ part 'admin_audit_log_response_schema.g.dart';
 /// * [targetType]
 /// * [targetId] - The ID of the affected entity (user, channel, role, invite code, etc.)
 /// * [action]
-/// * [auditLogReason]
 /// * [metadata]
 /// * [createdAt]
+/// * [auditLogReason]
 @BuiltValue()
 abstract class AdminAuditLogResponseSchema
     implements
@@ -40,14 +40,14 @@ abstract class AdminAuditLogResponseSchema
   @BuiltValueField(wireName: r'action')
   String get action;
 
-  @BuiltValueField(wireName: r'audit_log_reason')
-  String? get auditLogReason;
-
   @BuiltValueField(wireName: r'metadata')
   BuiltMap<String, String> get metadata;
 
   @BuiltValueField(wireName: r'created_at')
   String get createdAt;
+
+  @BuiltValueField(wireName: r'audit_log_reason')
+  String? get auditLogReason;
 
   AdminAuditLogResponseSchema._();
 
@@ -104,13 +104,6 @@ class _$AdminAuditLogResponseSchemaSerializer
       object.action,
       specifiedType: const FullType(String),
     );
-    yield r'audit_log_reason';
-    yield object.auditLogReason == null
-        ? null
-        : serializers.serialize(
-            object.auditLogReason,
-            specifiedType: const FullType.nullable(String),
-          );
     yield r'metadata';
     yield serializers.serialize(
       object.metadata,
@@ -122,6 +115,13 @@ class _$AdminAuditLogResponseSchemaSerializer
       object.createdAt,
       specifiedType: const FullType(String),
     );
+    if (object.auditLogReason != null) {
+      yield r'audit_log_reason';
+      yield serializers.serialize(
+        object.auditLogReason,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
   }
 
   @override
@@ -182,14 +182,6 @@ class _$AdminAuditLogResponseSchemaSerializer
           ) as String;
           result.action = valueDes;
           break;
-        case r'audit_log_reason':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.auditLogReason = valueDes;
-          break;
         case r'metadata':
           final valueDes = serializers.deserialize(
             value,
@@ -204,6 +196,14 @@ class _$AdminAuditLogResponseSchemaSerializer
             specifiedType: const FullType(String),
           ) as String;
           result.createdAt = valueDes;
+          break;
+        case r'audit_log_reason':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.auditLogReason = valueDes;
           break;
         default:
           unhandled.add(key);

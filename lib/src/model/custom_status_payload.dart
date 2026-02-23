@@ -14,7 +14,7 @@ part 'custom_status_payload.g.dart';
 /// Properties:
 /// * [text]
 /// * [expiresAt]
-/// * [emojiId]
+/// * [emojiId] - ID of custom emoji to display
 /// * [emojiName]
 @BuiltValue()
 abstract class CustomStatusPayload
@@ -25,6 +25,7 @@ abstract class CustomStatusPayload
   @BuiltValueField(wireName: r'expires_at')
   CustomStatusPayloadExpiresAt? get expiresAt;
 
+  /// ID of custom emoji to display
   @BuiltValueField(wireName: r'emoji_id')
   String? get emojiId;
 

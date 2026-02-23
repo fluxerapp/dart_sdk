@@ -14,7 +14,7 @@ part 'user_profile_full_response_guild_member_profile.g.dart';
 /// * [bio]
 /// * [pronouns]
 /// * [banner]
-/// * [accentColor]
+/// * [accentColor] - Guild-specific accent color
 @BuiltValue()
 abstract class UserProfileFullResponseGuildMemberProfile
     implements
@@ -29,6 +29,7 @@ abstract class UserProfileFullResponseGuildMemberProfile
   @BuiltValueField(wireName: r'banner')
   String? get banner;
 
+  /// Guild-specific accent color
   @BuiltValueField(wireName: r'accent_color')
   int get accentColor;
 

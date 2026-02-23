@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **email** | **String** | Donor email address | 
 **amountCents** | **int** | Donation amount in cents (500-100000) | 
 **currency** | **String** | Currency for the donation | 
-**interval** | **String** |  | 
+**interval** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

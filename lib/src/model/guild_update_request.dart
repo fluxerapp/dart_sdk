@@ -20,9 +20,9 @@ part 'guild_update_request.g.dart';
 /// Properties:
 /// * [name] - The name of the guild (1-100 characters)
 /// * [icon] - Base64-encoded image data
-/// * [systemChannelId]
+/// * [systemChannelId] - The ID of the channel where system messages are sent
 /// * [systemChannelFlags] - System channel message flags
-/// * [afkChannelId]
+/// * [afkChannelId] - The ID of the AFK voice channel
 /// * [afkTimeout] - AFK timeout in seconds (60-3600) before moving users to the AFK channel
 /// * [defaultMessageNotifications] - Default notification level for new members
 /// * [verificationLevel] - Required verification level for members to participate
@@ -51,6 +51,7 @@ abstract class GuildUpdateRequest
   @BuiltValueField(wireName: r'icon')
   String? get icon;
 
+  /// The ID of the channel where system messages are sent
   @BuiltValueField(wireName: r'system_channel_id')
   String? get systemChannelId;
 
@@ -58,6 +59,7 @@ abstract class GuildUpdateRequest
   @BuiltValueField(wireName: r'system_channel_flags')
   int? get systemChannelFlags;
 
+  /// The ID of the AFK voice channel
   @BuiltValueField(wireName: r'afk_channel_id')
   String? get afkChannelId;
 

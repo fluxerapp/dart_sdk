@@ -18,10 +18,6 @@ class _$GuildMemberSearchResult extends GuildMemberSearchResult {
   @override
   final String discriminator;
   @override
-  final String? globalName;
-  @override
-  final String? nickname;
-  @override
   final BuiltList<String> roleIds;
   @override
   final num joinedAt;
@@ -29,6 +25,10 @@ class _$GuildMemberSearchResult extends GuildMemberSearchResult {
   final GuildMemberSearchResultSupplemental supplemental;
   @override
   final bool isBot;
+  @override
+  final String? globalName;
+  @override
+  final String? nickname;
 
   factory _$GuildMemberSearchResult(
           [void Function(GuildMemberSearchResultBuilder)? updates]) =>
@@ -40,12 +40,12 @@ class _$GuildMemberSearchResult extends GuildMemberSearchResult {
       required this.userId,
       required this.username,
       required this.discriminator,
-      this.globalName,
-      this.nickname,
       required this.roleIds,
       required this.joinedAt,
       required this.supplemental,
-      required this.isBot})
+      required this.isBot,
+      this.globalName,
+      this.nickname})
       : super._();
   @override
   GuildMemberSearchResult rebuild(
@@ -65,12 +65,12 @@ class _$GuildMemberSearchResult extends GuildMemberSearchResult {
         userId == other.userId &&
         username == other.username &&
         discriminator == other.discriminator &&
-        globalName == other.globalName &&
-        nickname == other.nickname &&
         roleIds == other.roleIds &&
         joinedAt == other.joinedAt &&
         supplemental == other.supplemental &&
-        isBot == other.isBot;
+        isBot == other.isBot &&
+        globalName == other.globalName &&
+        nickname == other.nickname;
   }
 
   @override
@@ -81,12 +81,12 @@ class _$GuildMemberSearchResult extends GuildMemberSearchResult {
     _$hash = $jc(_$hash, userId.hashCode);
     _$hash = $jc(_$hash, username.hashCode);
     _$hash = $jc(_$hash, discriminator.hashCode);
-    _$hash = $jc(_$hash, globalName.hashCode);
-    _$hash = $jc(_$hash, nickname.hashCode);
     _$hash = $jc(_$hash, roleIds.hashCode);
     _$hash = $jc(_$hash, joinedAt.hashCode);
     _$hash = $jc(_$hash, supplemental.hashCode);
     _$hash = $jc(_$hash, isBot.hashCode);
+    _$hash = $jc(_$hash, globalName.hashCode);
+    _$hash = $jc(_$hash, nickname.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -99,12 +99,12 @@ class _$GuildMemberSearchResult extends GuildMemberSearchResult {
           ..add('userId', userId)
           ..add('username', username)
           ..add('discriminator', discriminator)
-          ..add('globalName', globalName)
-          ..add('nickname', nickname)
           ..add('roleIds', roleIds)
           ..add('joinedAt', joinedAt)
           ..add('supplemental', supplemental)
-          ..add('isBot', isBot))
+          ..add('isBot', isBot)
+          ..add('globalName', globalName)
+          ..add('nickname', nickname))
         .toString();
   }
 }
@@ -135,14 +135,6 @@ class GuildMemberSearchResultBuilder
   set discriminator(String? discriminator) =>
       _$this._discriminator = discriminator;
 
-  String? _globalName;
-  String? get globalName => _$this._globalName;
-  set globalName(String? globalName) => _$this._globalName = globalName;
-
-  String? _nickname;
-  String? get nickname => _$this._nickname;
-  set nickname(String? nickname) => _$this._nickname = nickname;
-
   ListBuilder<String>? _roleIds;
   ListBuilder<String> get roleIds => _$this._roleIds ??= ListBuilder<String>();
   set roleIds(ListBuilder<String>? roleIds) => _$this._roleIds = roleIds;
@@ -161,6 +153,14 @@ class GuildMemberSearchResultBuilder
   bool? get isBot => _$this._isBot;
   set isBot(bool? isBot) => _$this._isBot = isBot;
 
+  String? _globalName;
+  String? get globalName => _$this._globalName;
+  set globalName(String? globalName) => _$this._globalName = globalName;
+
+  String? _nickname;
+  String? get nickname => _$this._nickname;
+  set nickname(String? nickname) => _$this._nickname = nickname;
+
   GuildMemberSearchResultBuilder() {
     GuildMemberSearchResult._defaults(this);
   }
@@ -173,12 +173,12 @@ class GuildMemberSearchResultBuilder
       _userId = $v.userId;
       _username = $v.username;
       _discriminator = $v.discriminator;
-      _globalName = $v.globalName;
-      _nickname = $v.nickname;
       _roleIds = $v.roleIds.toBuilder();
       _joinedAt = $v.joinedAt;
       _supplemental = $v.supplemental.toBuilder();
       _isBot = $v.isBot;
+      _globalName = $v.globalName;
+      _nickname = $v.nickname;
       _$v = null;
     }
     return this;
@@ -212,14 +212,14 @@ class GuildMemberSearchResultBuilder
                 username, r'GuildMemberSearchResult', 'username'),
             discriminator: BuiltValueNullFieldError.checkNotNull(
                 discriminator, r'GuildMemberSearchResult', 'discriminator'),
-            globalName: globalName,
-            nickname: nickname,
             roleIds: roleIds.build(),
             joinedAt: BuiltValueNullFieldError.checkNotNull(
                 joinedAt, r'GuildMemberSearchResult', 'joinedAt'),
             supplemental: supplemental.build(),
             isBot: BuiltValueNullFieldError.checkNotNull(
                 isBot, r'GuildMemberSearchResult', 'isBot'),
+            globalName: globalName,
+            nickname: nickname,
           );
     } catch (_) {
       late String _$failedField;

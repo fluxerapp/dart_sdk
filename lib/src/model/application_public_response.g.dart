@@ -12,15 +12,15 @@ class _$ApplicationPublicResponse extends ApplicationPublicResponse {
   @override
   final String name;
   @override
-  final String? icon;
-  @override
-  final String? description;
-  @override
   final BuiltList<String> redirectUris;
   @override
   final BuiltList<String> scopes;
   @override
   final bool botPublic;
+  @override
+  final String? icon;
+  @override
+  final String? description;
   @override
   final ApplicationBotResponse? bot;
 
@@ -31,11 +31,11 @@ class _$ApplicationPublicResponse extends ApplicationPublicResponse {
   _$ApplicationPublicResponse._(
       {required this.id,
       required this.name,
-      this.icon,
-      this.description,
       required this.redirectUris,
       required this.scopes,
       required this.botPublic,
+      this.icon,
+      this.description,
       this.bot})
       : super._();
   @override
@@ -53,11 +53,11 @@ class _$ApplicationPublicResponse extends ApplicationPublicResponse {
     return other is ApplicationPublicResponse &&
         id == other.id &&
         name == other.name &&
-        icon == other.icon &&
-        description == other.description &&
         redirectUris == other.redirectUris &&
         scopes == other.scopes &&
         botPublic == other.botPublic &&
+        icon == other.icon &&
+        description == other.description &&
         bot == other.bot;
   }
 
@@ -66,11 +66,11 @@ class _$ApplicationPublicResponse extends ApplicationPublicResponse {
     var _$hash = 0;
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jc(_$hash, icon.hashCode);
-    _$hash = $jc(_$hash, description.hashCode);
     _$hash = $jc(_$hash, redirectUris.hashCode);
     _$hash = $jc(_$hash, scopes.hashCode);
     _$hash = $jc(_$hash, botPublic.hashCode);
+    _$hash = $jc(_$hash, icon.hashCode);
+    _$hash = $jc(_$hash, description.hashCode);
     _$hash = $jc(_$hash, bot.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -81,11 +81,11 @@ class _$ApplicationPublicResponse extends ApplicationPublicResponse {
     return (newBuiltValueToStringHelper(r'ApplicationPublicResponse')
           ..add('id', id)
           ..add('name', name)
-          ..add('icon', icon)
-          ..add('description', description)
           ..add('redirectUris', redirectUris)
           ..add('scopes', scopes)
           ..add('botPublic', botPublic)
+          ..add('icon', icon)
+          ..add('description', description)
           ..add('bot', bot))
         .toString();
   }
@@ -104,14 +104,6 @@ class ApplicationPublicResponseBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  String? _icon;
-  String? get icon => _$this._icon;
-  set icon(String? icon) => _$this._icon = icon;
-
-  String? _description;
-  String? get description => _$this._description;
-  set description(String? description) => _$this._description = description;
-
   ListBuilder<String>? _redirectUris;
   ListBuilder<String> get redirectUris =>
       _$this._redirectUris ??= ListBuilder<String>();
@@ -125,6 +117,14 @@ class ApplicationPublicResponseBuilder
   bool? _botPublic;
   bool? get botPublic => _$this._botPublic;
   set botPublic(bool? botPublic) => _$this._botPublic = botPublic;
+
+  String? _icon;
+  String? get icon => _$this._icon;
+  set icon(String? icon) => _$this._icon = icon;
+
+  String? _description;
+  String? get description => _$this._description;
+  set description(String? description) => _$this._description = description;
 
   ApplicationBotResponseBuilder? _bot;
   ApplicationBotResponseBuilder get bot =>
@@ -140,11 +140,11 @@ class ApplicationPublicResponseBuilder
     if ($v != null) {
       _id = $v.id;
       _name = $v.name;
-      _icon = $v.icon;
-      _description = $v.description;
       _redirectUris = $v.redirectUris.toBuilder();
       _scopes = $v.scopes.toBuilder();
       _botPublic = $v.botPublic;
+      _icon = $v.icon;
+      _description = $v.description;
       _bot = $v.bot?.toBuilder();
       _$v = null;
     }
@@ -173,12 +173,12 @@ class ApplicationPublicResponseBuilder
                 id, r'ApplicationPublicResponse', 'id'),
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'ApplicationPublicResponse', 'name'),
-            icon: icon,
-            description: description,
             redirectUris: redirectUris.build(),
             scopes: scopes.build(),
             botPublic: BuiltValueNullFieldError.checkNotNull(
                 botPublic, r'ApplicationPublicResponse', 'botPublic'),
+            icon: icon,
+            description: description,
             bot: _bot?.build(),
           );
     } catch (_) {

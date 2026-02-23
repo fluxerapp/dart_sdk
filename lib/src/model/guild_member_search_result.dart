@@ -18,12 +18,12 @@ part 'guild_member_search_result.g.dart';
 /// * [userId] - User ID
 /// * [username] - Username
 /// * [discriminator] - Zero-padded 4-digit discriminator
-/// * [globalName]
-/// * [nickname]
 /// * [roleIds] - Role IDs
 /// * [joinedAt] - Unix timestamp of when the member joined
 /// * [supplemental]
 /// * [isBot] - Whether the user is a bot
+/// * [globalName]
+/// * [nickname]
 @BuiltValue()
 abstract class GuildMemberSearchResult
     implements Built<GuildMemberSearchResult, GuildMemberSearchResultBuilder> {
@@ -47,12 +47,6 @@ abstract class GuildMemberSearchResult
   @BuiltValueField(wireName: r'discriminator')
   String get discriminator;
 
-  @BuiltValueField(wireName: r'global_name')
-  String? get globalName;
-
-  @BuiltValueField(wireName: r'nickname')
-  String? get nickname;
-
   /// Role IDs
   @BuiltValueField(wireName: r'role_ids')
   BuiltList<String> get roleIds;
@@ -67,6 +61,12 @@ abstract class GuildMemberSearchResult
   /// Whether the user is a bot
   @BuiltValueField(wireName: r'is_bot')
   bool get isBot;
+
+  @BuiltValueField(wireName: r'global_name')
+  String? get globalName;
+
+  @BuiltValueField(wireName: r'nickname')
+  String? get nickname;
 
   GuildMemberSearchResult._();
 
@@ -123,20 +123,6 @@ class _$GuildMemberSearchResultSerializer
       object.discriminator,
       specifiedType: const FullType(String),
     );
-    yield r'global_name';
-    yield object.globalName == null
-        ? null
-        : serializers.serialize(
-            object.globalName,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'nickname';
-    yield object.nickname == null
-        ? null
-        : serializers.serialize(
-            object.nickname,
-            specifiedType: const FullType.nullable(String),
-          );
     yield r'role_ids';
     yield serializers.serialize(
       object.roleIds,
@@ -157,6 +143,20 @@ class _$GuildMemberSearchResultSerializer
       object.isBot,
       specifiedType: const FullType(bool),
     );
+    if (object.globalName != null) {
+      yield r'global_name';
+      yield serializers.serialize(
+        object.globalName,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.nickname != null) {
+      yield r'nickname';
+      yield serializers.serialize(
+        object.nickname,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
   }
 
   @override
@@ -217,22 +217,6 @@ class _$GuildMemberSearchResultSerializer
           ) as String;
           result.discriminator = valueDes;
           break;
-        case r'global_name':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.globalName = valueDes;
-          break;
-        case r'nickname':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.nickname = valueDes;
-          break;
         case r'role_ids':
           final valueDes = serializers.deserialize(
             value,
@@ -260,6 +244,22 @@ class _$GuildMemberSearchResultSerializer
             specifiedType: const FullType(bool),
           ) as bool;
           result.isBot = valueDes;
+          break;
+        case r'global_name':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.globalName = valueDes;
+          break;
+        case r'nickname':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.nickname = valueDes;
           break;
         default:
           unhandled.add(key);

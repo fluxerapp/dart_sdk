@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **type** | **String** | The type of embed (e.g., rich, image, video, gifv, article, link) | 
 **url** | **String** |  | [optional] 
 **title** | **String** |  | [optional] 
-**color** | **int** |  | [optional] 
+**color** | **int** | The color code of the embed sidebar | [optional] 
 **timestamp** | [**DateTime**](DateTime.md) |  | [optional] 
 **description** | **String** |  | [optional] 
 **author** | [**EmbedAuthorResponse**](EmbedAuthorResponse.md) |  | [optional] 

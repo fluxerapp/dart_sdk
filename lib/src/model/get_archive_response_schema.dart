@@ -50,13 +50,13 @@ class _$GetArchiveResponseSchemaSerializer
     GetArchiveResponseSchema object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'archive';
-    yield object.archive == null
-        ? null
-        : serializers.serialize(
-            object.archive,
-            specifiedType: const FullType.nullable(AdminArchiveResponseSchema),
-          );
+    if (object.archive != null) {
+      yield r'archive';
+      yield serializers.serialize(
+        object.archive,
+        specifiedType: const FullType.nullable(AdminArchiveResponseSchema),
+      );
+    }
   }
 
   @override

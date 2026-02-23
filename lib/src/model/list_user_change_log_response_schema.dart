@@ -62,13 +62,13 @@ class _$ListUserChangeLogResponseSchemaSerializer
       specifiedType: const FullType(
           BuiltList, [FullType(UserContactChangeLogEntrySchema)]),
     );
-    yield r'next_page_token';
-    yield object.nextPageToken == null
-        ? null
-        : serializers.serialize(
-            object.nextPageToken,
-            specifiedType: const FullType.nullable(String),
-          );
+    if (object.nextPageToken != null) {
+      yield r'next_page_token';
+      yield serializers.serialize(
+        object.nextPageToken,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
   }
 
   @override

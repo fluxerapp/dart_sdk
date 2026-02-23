@@ -82,27 +82,27 @@ class _$BotProfileResponseSerializer
       object.discriminator,
       specifiedType: const FullType(String),
     );
-    yield r'avatar';
-    yield object.avatar == null
-        ? null
-        : serializers.serialize(
-            object.avatar,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'banner';
-    yield object.banner == null
-        ? null
-        : serializers.serialize(
-            object.banner,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'bio';
-    yield object.bio == null
-        ? null
-        : serializers.serialize(
-            object.bio,
-            specifiedType: const FullType.nullable(String),
-          );
+    if (object.avatar != null) {
+      yield r'avatar';
+      yield serializers.serialize(
+        object.avatar,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.banner != null) {
+      yield r'banner';
+      yield serializers.serialize(
+        object.banner,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.bio != null) {
+      yield r'bio';
+      yield serializers.serialize(
+        object.bio,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
   }
 
   @override

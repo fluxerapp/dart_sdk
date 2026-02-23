@@ -10,7 +10,13 @@ class _$ReportAdminResponseSchema extends ReportAdminResponseSchema {
   @override
   final String reportId;
   @override
-  final String reporterId;
+  final String reportedAt;
+  @override
+  final ReportStatus status;
+  @override
+  final ReportType reportType;
+  @override
+  final String? reporterId;
   @override
   final String? reporterTag;
   @override
@@ -24,17 +30,11 @@ class _$ReportAdminResponseSchema extends ReportAdminResponseSchema {
   @override
   final String? reporterCountryOfResidence;
   @override
-  final String reportedAt;
-  @override
-  final ReportStatus status;
-  @override
-  final ReportType reportType;
-  @override
   final String? category;
   @override
   final String? additionalInfo;
   @override
-  final String reportedUserId;
+  final String? reportedUserId;
   @override
   final String? reportedUserTag;
   @override
@@ -44,13 +44,13 @@ class _$ReportAdminResponseSchema extends ReportAdminResponseSchema {
   @override
   final String? reportedUserAvatarHash;
   @override
-  final String reportedGuildId;
+  final String? reportedGuildId;
   @override
   final String? reportedGuildName;
   @override
-  final String reportedMessageId;
+  final String? reportedMessageId;
   @override
-  final String reportedChannelId;
+  final String? reportedChannelId;
   @override
   final String? reportedChannelName;
   @override
@@ -58,7 +58,7 @@ class _$ReportAdminResponseSchema extends ReportAdminResponseSchema {
   @override
   final String? resolvedAt;
   @override
-  final String resolvedByAdminId;
+  final String? resolvedByAdminId;
   @override
   final String? publicComment;
   @override
@@ -72,31 +72,31 @@ class _$ReportAdminResponseSchema extends ReportAdminResponseSchema {
 
   _$ReportAdminResponseSchema._(
       {required this.reportId,
-      required this.reporterId,
+      required this.reportedAt,
+      required this.status,
+      required this.reportType,
+      this.reporterId,
       this.reporterTag,
       this.reporterUsername,
       this.reporterDiscriminator,
       this.reporterEmail,
       this.reporterFullLegalName,
       this.reporterCountryOfResidence,
-      required this.reportedAt,
-      required this.status,
-      required this.reportType,
       this.category,
       this.additionalInfo,
-      required this.reportedUserId,
+      this.reportedUserId,
       this.reportedUserTag,
       this.reportedUserUsername,
       this.reportedUserDiscriminator,
       this.reportedUserAvatarHash,
-      required this.reportedGuildId,
+      this.reportedGuildId,
       this.reportedGuildName,
-      required this.reportedMessageId,
-      required this.reportedChannelId,
+      this.reportedMessageId,
+      this.reportedChannelId,
       this.reportedChannelName,
       this.reportedGuildInviteCode,
       this.resolvedAt,
-      required this.resolvedByAdminId,
+      this.resolvedByAdminId,
       this.publicComment,
       this.mutualDmChannelId,
       this.messageContext})
@@ -115,6 +115,9 @@ class _$ReportAdminResponseSchema extends ReportAdminResponseSchema {
     if (identical(other, this)) return true;
     return other is ReportAdminResponseSchema &&
         reportId == other.reportId &&
+        reportedAt == other.reportedAt &&
+        status == other.status &&
+        reportType == other.reportType &&
         reporterId == other.reporterId &&
         reporterTag == other.reporterTag &&
         reporterUsername == other.reporterUsername &&
@@ -122,9 +125,6 @@ class _$ReportAdminResponseSchema extends ReportAdminResponseSchema {
         reporterEmail == other.reporterEmail &&
         reporterFullLegalName == other.reporterFullLegalName &&
         reporterCountryOfResidence == other.reporterCountryOfResidence &&
-        reportedAt == other.reportedAt &&
-        status == other.status &&
-        reportType == other.reportType &&
         category == other.category &&
         additionalInfo == other.additionalInfo &&
         reportedUserId == other.reportedUserId &&
@@ -149,6 +149,9 @@ class _$ReportAdminResponseSchema extends ReportAdminResponseSchema {
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, reportId.hashCode);
+    _$hash = $jc(_$hash, reportedAt.hashCode);
+    _$hash = $jc(_$hash, status.hashCode);
+    _$hash = $jc(_$hash, reportType.hashCode);
     _$hash = $jc(_$hash, reporterId.hashCode);
     _$hash = $jc(_$hash, reporterTag.hashCode);
     _$hash = $jc(_$hash, reporterUsername.hashCode);
@@ -156,9 +159,6 @@ class _$ReportAdminResponseSchema extends ReportAdminResponseSchema {
     _$hash = $jc(_$hash, reporterEmail.hashCode);
     _$hash = $jc(_$hash, reporterFullLegalName.hashCode);
     _$hash = $jc(_$hash, reporterCountryOfResidence.hashCode);
-    _$hash = $jc(_$hash, reportedAt.hashCode);
-    _$hash = $jc(_$hash, status.hashCode);
-    _$hash = $jc(_$hash, reportType.hashCode);
     _$hash = $jc(_$hash, category.hashCode);
     _$hash = $jc(_$hash, additionalInfo.hashCode);
     _$hash = $jc(_$hash, reportedUserId.hashCode);
@@ -185,6 +185,9 @@ class _$ReportAdminResponseSchema extends ReportAdminResponseSchema {
   String toString() {
     return (newBuiltValueToStringHelper(r'ReportAdminResponseSchema')
           ..add('reportId', reportId)
+          ..add('reportedAt', reportedAt)
+          ..add('status', status)
+          ..add('reportType', reportType)
           ..add('reporterId', reporterId)
           ..add('reporterTag', reporterTag)
           ..add('reporterUsername', reporterUsername)
@@ -192,9 +195,6 @@ class _$ReportAdminResponseSchema extends ReportAdminResponseSchema {
           ..add('reporterEmail', reporterEmail)
           ..add('reporterFullLegalName', reporterFullLegalName)
           ..add('reporterCountryOfResidence', reporterCountryOfResidence)
-          ..add('reportedAt', reportedAt)
-          ..add('status', status)
-          ..add('reportType', reportType)
           ..add('category', category)
           ..add('additionalInfo', additionalInfo)
           ..add('reportedUserId', reportedUserId)
@@ -225,6 +225,18 @@ class ReportAdminResponseSchemaBuilder
   String? _reportId;
   String? get reportId => _$this._reportId;
   set reportId(String? reportId) => _$this._reportId = reportId;
+
+  String? _reportedAt;
+  String? get reportedAt => _$this._reportedAt;
+  set reportedAt(String? reportedAt) => _$this._reportedAt = reportedAt;
+
+  ReportStatus? _status;
+  ReportStatus? get status => _$this._status;
+  set status(ReportStatus? status) => _$this._status = status;
+
+  ReportType? _reportType;
+  ReportType? get reportType => _$this._reportType;
+  set reportType(ReportType? reportType) => _$this._reportType = reportType;
 
   String? _reporterId;
   String? get reporterId => _$this._reporterId;
@@ -258,18 +270,6 @@ class ReportAdminResponseSchemaBuilder
   String? get reporterCountryOfResidence => _$this._reporterCountryOfResidence;
   set reporterCountryOfResidence(String? reporterCountryOfResidence) =>
       _$this._reporterCountryOfResidence = reporterCountryOfResidence;
-
-  String? _reportedAt;
-  String? get reportedAt => _$this._reportedAt;
-  set reportedAt(String? reportedAt) => _$this._reportedAt = reportedAt;
-
-  ReportStatus? _status;
-  ReportStatus? get status => _$this._status;
-  set status(ReportStatus? status) => _$this._status = status;
-
-  ReportType? _reportType;
-  ReportType? get reportType => _$this._reportType;
-  set reportType(ReportType? reportType) => _$this._reportType = reportType;
 
   String? _category;
   String? get category => _$this._category;
@@ -371,6 +371,9 @@ class ReportAdminResponseSchemaBuilder
     final $v = _$v;
     if ($v != null) {
       _reportId = $v.reportId;
+      _reportedAt = $v.reportedAt;
+      _status = $v.status;
+      _reportType = $v.reportType;
       _reporterId = $v.reporterId;
       _reporterTag = $v.reporterTag;
       _reporterUsername = $v.reporterUsername;
@@ -378,9 +381,6 @@ class ReportAdminResponseSchemaBuilder
       _reporterEmail = $v.reporterEmail;
       _reporterFullLegalName = $v.reporterFullLegalName;
       _reporterCountryOfResidence = $v.reporterCountryOfResidence;
-      _reportedAt = $v.reportedAt;
-      _status = $v.status;
-      _reportType = $v.reportType;
       _category = $v.category;
       _additionalInfo = $v.additionalInfo;
       _reportedUserId = $v.reportedUserId;
@@ -424,48 +424,34 @@ class ReportAdminResponseSchemaBuilder
           _$ReportAdminResponseSchema._(
             reportId: BuiltValueNullFieldError.checkNotNull(
                 reportId, r'ReportAdminResponseSchema', 'reportId'),
-            reporterId: BuiltValueNullFieldError.checkNotNull(
-                reporterId, r'ReportAdminResponseSchema', 'reporterId'),
-            reporterTag: reporterTag,
-            reporterUsername: reporterUsername,
-            reporterDiscriminator: reporterDiscriminator,
-            reporterEmail: reporterEmail,
-            reporterFullLegalName: reporterFullLegalName,
-            reporterCountryOfResidence: reporterCountryOfResidence,
             reportedAt: BuiltValueNullFieldError.checkNotNull(
                 reportedAt, r'ReportAdminResponseSchema', 'reportedAt'),
             status: BuiltValueNullFieldError.checkNotNull(
                 status, r'ReportAdminResponseSchema', 'status'),
             reportType: BuiltValueNullFieldError.checkNotNull(
                 reportType, r'ReportAdminResponseSchema', 'reportType'),
+            reporterId: reporterId,
+            reporterTag: reporterTag,
+            reporterUsername: reporterUsername,
+            reporterDiscriminator: reporterDiscriminator,
+            reporterEmail: reporterEmail,
+            reporterFullLegalName: reporterFullLegalName,
+            reporterCountryOfResidence: reporterCountryOfResidence,
             category: category,
             additionalInfo: additionalInfo,
-            reportedUserId: BuiltValueNullFieldError.checkNotNull(
-                reportedUserId, r'ReportAdminResponseSchema', 'reportedUserId'),
+            reportedUserId: reportedUserId,
             reportedUserTag: reportedUserTag,
             reportedUserUsername: reportedUserUsername,
             reportedUserDiscriminator: reportedUserDiscriminator,
             reportedUserAvatarHash: reportedUserAvatarHash,
-            reportedGuildId: BuiltValueNullFieldError.checkNotNull(
-                reportedGuildId,
-                r'ReportAdminResponseSchema',
-                'reportedGuildId'),
+            reportedGuildId: reportedGuildId,
             reportedGuildName: reportedGuildName,
-            reportedMessageId: BuiltValueNullFieldError.checkNotNull(
-                reportedMessageId,
-                r'ReportAdminResponseSchema',
-                'reportedMessageId'),
-            reportedChannelId: BuiltValueNullFieldError.checkNotNull(
-                reportedChannelId,
-                r'ReportAdminResponseSchema',
-                'reportedChannelId'),
+            reportedMessageId: reportedMessageId,
+            reportedChannelId: reportedChannelId,
             reportedChannelName: reportedChannelName,
             reportedGuildInviteCode: reportedGuildInviteCode,
             resolvedAt: resolvedAt,
-            resolvedByAdminId: BuiltValueNullFieldError.checkNotNull(
-                resolvedByAdminId,
-                r'ReportAdminResponseSchema',
-                'resolvedByAdminId'),
+            resolvedByAdminId: resolvedByAdminId,
             publicComment: publicComment,
             mutualDmChannelId: mutualDmChannelId,
             messageContext: _messageContext?.build(),

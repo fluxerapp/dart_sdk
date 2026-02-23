@@ -101,6 +101,9 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(ClearUserFieldsRequest.serializer)
       ..add(ClearUserFieldsRequestFieldsEnum.serializer)
       ..add(CodesResponse.serializer)
+      ..add(CompleteChunkedUploadRequest.serializer)
+      ..add(CompleteChunkedUploadRequestEtagsInner.serializer)
+      ..add(CompleteChunkedUploadResponse.serializer)
       ..add(ConnectionResponse.serializer)
       ..add(ConnectionResponseTypeEnum.serializer)
       ..add(ConnectionVerificationResponse.serializer)
@@ -108,6 +111,8 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(CreateAdminApiKeyRequest.serializer)
       ..add(CreateAdminApiKeyResponse.serializer)
       ..add(CreateCheckoutSessionRequest.serializer)
+      ..add(CreateChunkedUploadRequest.serializer)
+      ..add(CreateChunkedUploadResponse.serializer)
       ..add(CreateConnectionRequest.serializer)
       ..add(CreateConnectionRequestTypeEnum.serializer)
       ..add(CreateFavoriteMemeBodySchema.serializer)
@@ -599,6 +604,7 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(UpdateVoiceServerRequest.serializer)
       ..add(UpdateVoiceServerResponse.serializer)
       ..add(UpdateVoiceServerResponseServer.serializer)
+      ..add(UploadChunkResponse.serializer)
       ..add(UrlResponse.serializer)
       ..add(UserAdminResponseSchema.serializer)
       ..add(UserAuthenticatorTypes.serializer)
@@ -780,6 +786,10 @@ Serializers _$serializers = (Serializers().toBuilder()
           const FullType(BuiltList,
               const [const FullType(ClearUserFieldsRequestFieldsEnum)]),
           () => ListBuilder<ClearUserFieldsRequestFieldsEnum>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(CompleteChunkedUploadRequestEtagsInner)]),
+          () => ListBuilder<CompleteChunkedUploadRequestEtagsInner>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(DiscoveryGuildResponse)]),
@@ -1437,11 +1447,8 @@ Serializers _$serializers = (Serializers().toBuilder()
           () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(
-              BuiltList, const [const FullType(UserAuthenticatorTypes)]),
-          () => ListBuilder<UserAuthenticatorTypes>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => ListBuilder<String>())
+              BuiltList, const [const FullType(VoiceServerAdminResponse)]),
+          () => ListBuilder<VoiceServerAdminResponse>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => ListBuilder<String>())
@@ -1450,8 +1457,11 @@ Serializers _$serializers = (Serializers().toBuilder()
           () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(
-              BuiltList, const [const FullType(VoiceServerAdminResponse)]),
-          () => ListBuilder<VoiceServerAdminResponse>())
+              BuiltList, const [const FullType(UserAuthenticatorTypes)]),
+          () => ListBuilder<UserAuthenticatorTypes>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => ListBuilder<String>())

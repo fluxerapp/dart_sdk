@@ -99,34 +99,34 @@ class _$UserSessionResponseSerializer
       object.clientIp,
       specifiedType: const FullType(String),
     );
-    yield r'client_ip_reverse';
-    yield object.clientIpReverse == null
-        ? null
-        : serializers.serialize(
-            object.clientIpReverse,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'client_os';
-    yield object.clientOs == null
-        ? null
-        : serializers.serialize(
-            object.clientOs,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'client_platform';
-    yield object.clientPlatform == null
-        ? null
-        : serializers.serialize(
-            object.clientPlatform,
-            specifiedType: const FullType.nullable(String),
-          );
-    yield r'client_location';
-    yield object.clientLocation == null
-        ? null
-        : serializers.serialize(
-            object.clientLocation,
-            specifiedType: const FullType.nullable(String),
-          );
+    if (object.clientIpReverse != null) {
+      yield r'client_ip_reverse';
+      yield serializers.serialize(
+        object.clientIpReverse,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.clientOs != null) {
+      yield r'client_os';
+      yield serializers.serialize(
+        object.clientOs,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.clientPlatform != null) {
+      yield r'client_platform';
+      yield serializers.serialize(
+        object.clientPlatform,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.clientLocation != null) {
+      yield r'client_location';
+      yield serializers.serialize(
+        object.clientLocation,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
   }
 
   @override

@@ -17,14 +17,14 @@ part 'channel_update_category_request.g.dart';
 /// * [type]
 /// * [topic]
 /// * [url]
-/// * [parentId]
+/// * [parentId] - ID of the parent category for this channel
 /// * [bitrate]
 /// * [userLimit]
 /// * [permissionOverwrites] - Permission overwrites for roles and members
 /// * [nsfw]
 /// * [rateLimitPerUser]
 /// * [icon] - Base64-encoded image data
-/// * [ownerId]
+/// * [ownerId] - ID of the new owner for group DM channels
 /// * [nicks] - User nickname overrides (user ID to nickname mapping)
 /// * [rtcRegion]
 /// * [name]
@@ -43,6 +43,7 @@ abstract class ChannelUpdateCategoryRequest
   @BuiltValueField(wireName: r'url')
   String? get url;
 
+  /// ID of the parent category for this channel
   @BuiltValueField(wireName: r'parent_id')
   String? get parentId;
 
@@ -66,6 +67,7 @@ abstract class ChannelUpdateCategoryRequest
   @BuiltValueField(wireName: r'icon')
   String? get icon;
 
+  /// ID of the new owner for group DM channels
   @BuiltValueField(wireName: r'owner_id')
   String? get ownerId;
 

@@ -1,4 +1,4 @@
-# fluxer_dart.model.HarvestStatusResponseSchema
+# fluxer_dart.model.HarvestStatusResponseSchemaNullable
 
 ## Load the model package
 ```dart
@@ -11,15 +11,15 @@ Name | Type | Description | Notes
 **harvestId** | **String** | Unique identifier for the harvest request | 
 **status** | [**HarvestStatusEnum**](HarvestStatusEnum.md) |  | 
 **createdAt** | **String** | ISO 8601 timestamp when the harvest request was created | 
+**startedAt** | **String** |  | 
+**completedAt** | **String** |  | 
+**failedAt** | **String** |  | 
+**fileSize** | **String** |  | 
 **progressPercent** | **num** | Harvest progress as a percentage value between 0 and 100 | 
-**startedAt** | **String** |  | [optional] 
-**completedAt** | **String** |  | [optional] 
-**failedAt** | **String** |  | [optional] 
-**fileSize** | **String** |  | [optional] 
-**progressStep** | **String** |  | [optional] 
-**errorMessage** | **String** |  | [optional] 
-**downloadUrlExpiresAt** | **String** |  | [optional] 
-**expiresAt** | **String** |  | [optional] 
+**progressStep** | **String** |  | 
+**errorMessage** | **String** |  | 
+**downloadUrlExpiresAt** | **String** |  | 
+**expiresAt** | **String** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

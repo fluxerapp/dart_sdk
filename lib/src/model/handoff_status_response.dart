@@ -13,7 +13,7 @@ part 'handoff_status_response.g.dart';
 /// Properties:
 /// * [status] - Current status of the handoff (pending, completed, expired)
 /// * [token]
-/// * [userId]
+/// * [userId] - User ID if handoff is complete
 @BuiltValue()
 abstract class HandoffStatusResponse
     implements Built<HandoffStatusResponse, HandoffStatusResponseBuilder> {
@@ -24,6 +24,7 @@ abstract class HandoffStatusResponse
   @BuiltValueField(wireName: r'token')
   String? get token;
 
+  /// User ID if handoff is complete
   @BuiltValueField(wireName: r'user_id')
   String? get userId;
 

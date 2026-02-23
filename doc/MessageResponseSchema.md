@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **timestamp** | [**DateTime**](DateTime.md) | The ISO 8601 timestamp of when the message was created | 
 **pinned** | **bool** | Whether the message is pinned | 
 **mentionEveryone** | **bool** | Whether the message mentions @everyone | 
-**webhookId** | **String** |  | [optional] 
+**webhookId** | **String** | The ID of the webhook that sent this message | [optional] 
 **editedTimestamp** | [**DateTime**](DateTime.md) |  | [optional] 
 **tts** | **bool** | Whether the message was sent as text-to-speech | [optional] 
 **mentions** | [**BuiltList&lt;UserPartialResponse&gt;**](UserPartialResponse.md) |  | [optional] 

@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reportId** | **String** |  | 
 **status** | [**ReportStatus**](ReportStatus.md) |  | 
-**resolvedAt** | **String** |  | 
-**publicComment** | **String** |  | 
+**resolvedAt** | **String** |  | [optional] 
+**publicComment** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
