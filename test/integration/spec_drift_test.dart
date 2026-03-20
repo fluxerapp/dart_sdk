@@ -89,6 +89,57 @@ class SpecSchema {
     return (prop['type'] as String?) ?? 'unknown';
   }
 
+  /// Resolve the schema name for a property definition.
+  /// Returns the $ref schema name, or null if it's a primitive / unresolvable.
+  String? resolveRefName(Map<String, Object?> prop) {
+    if (prop.containsKey('\$ref')) {
+      return (prop['\$ref'] as String).split('/').last;
+    }
+    // anyOf: [SomeSchema, null] — common nullable pattern
+    if (prop.containsKey('anyOf')) {
+      final anyOf = (prop['anyOf'] as List).cast<Map<String, Object?>>();
+      final nonNull = anyOf.where((e) => e['type'] != 'null').toList();
+      if (nonNull.length == 1) return resolveRefName(nonNull.first);
+    }
+    // array with $ref items
+    if (prop['type'] == 'array') {
+      final items = prop['items'] as Map<String, Object?>?;
+      if (items != null) return resolveRefName(items);
+    }
+    // inline object with properties
+    if (prop['type'] == 'object' && prop.containsKey('properties')) {
+      return null; // handled separately via getInlineSchema
+    }
+    return null;
+  }
+
+  /// Get the raw property definition from a top-level schema.
+  Map<String, Object?>? getPropertyDef(String schemaName, String fieldName) {
+    final schemas =
+        (_spec['components'] as Map?)?['schemas'] as Map<String, Object?>?;
+    if (schemas == null) return null;
+    final schema = schemas[schemaName] as Map<String, Object?>?;
+    if (schema == null) return null;
+    final props = schema['properties'] as Map<String, Object?>?;
+    return props?[fieldName] as Map<String, Object?>?;
+  }
+
+  /// Check if a property is an array type.
+  bool isArray(Map<String, Object?> prop) {
+    if (prop['type'] == 'array') return true;
+    // anyOf with array
+    if (prop.containsKey('anyOf')) {
+      final anyOf = (prop['anyOf'] as List).cast<Map<String, Object?>>();
+      return anyOf.any((e) => e['type'] == 'array');
+    }
+    return false;
+  }
+
+  /// Check if a property is an inline object (has properties directly).
+  bool isInlineObject(Map<String, Object?> prop) {
+    return prop['type'] == 'object' && prop.containsKey('properties');
+  }
+
   bool _isNullable(Map<String, Object?> prop) {
     if (prop['nullable'] == true) return true;
     if (prop.containsKey('anyOf')) {
@@ -199,51 +250,119 @@ List<Discrepancy> compareResponseToSpec({
   return discrepancies;
 }
 
-/// Compare a nested inline object (for schemas defined inline in parent properties).
-List<Discrepancy> compareInlineObject({
+/// Recursively compare a JSON response against the spec, walking into nested
+/// objects and array items. [depth] prevents infinite recursion on circular refs.
+List<Discrepancy> compareDeep({
   required String endpoint,
-  required String parentSchema,
-  required String propertyName,
+  required String schemaName,
   required Map<String, Object?> actual,
   required SpecSchema spec,
+  int depth = 0,
+  Set<String>? visited,
 }) {
-  // Inline objects are extracted as ParentSchema_PropertyName by convention,
-  // but in the raw spec they're inside the parent. We'll use the generated name.
-  final inlineSchemaName =
-      '${parentSchema}${propertyName[0].toUpperCase()}${propertyName.substring(1)}';
+  if (depth > 4) return []; // prevent deep recursion
+  visited ??= {};
+  if (visited.contains(schemaName)) return []; // circular ref guard
+  visited = {...visited, schemaName};
 
-  // Try the inline name pattern the generator uses
-  // e.g. WellKnownFluxerResponse -> features -> WellKnownFluxerResponseFeatures
-  final schemaNames = [
-    inlineSchemaName,
-    // Also try with underscore separation
-    '${parentSchema}_$propertyName',
-  ];
+  // First do the flat comparison
+  final discrepancies = compareResponseToSpec(
+    endpoint: endpoint,
+    schemaName: schemaName,
+    actual: actual,
+    spec: spec,
+  );
 
-  for (final name in schemaNames) {
-    final result = compareResponseToSpec(
-      endpoint: endpoint,
-      schemaName: name,
-      actual: actual,
-      spec: spec,
-    );
-    if (result.length == 1 && result.first.kind == 'schema_not_found') {
+  final schemaInfo = spec.getSchema(schemaName);
+  if (schemaInfo == null) return discrepancies;
+
+  // Walk each field that exists in the response and has a resolvable schema
+  for (final entry in schemaInfo.fields.entries) {
+    final fieldName = entry.key;
+    final value = actual[fieldName];
+    if (value == null) continue;
+
+    final propDef = spec.getPropertyDef(schemaName, fieldName);
+    if (propDef == null) continue;
+
+    // Case 1: nested object with $ref schema
+    final refName = spec.resolveRefName(propDef);
+    if (refName != null && value is Map<String, Object?>) {
+      discrepancies.addAll(compareDeep(
+        endpoint: '$endpoint -> $fieldName',
+        schemaName: refName,
+        actual: value,
+        spec: spec,
+        depth: depth + 1,
+        visited: visited,
+      ));
       continue;
     }
-    return result;
+
+    // Case 2: array of $ref objects
+    if (spec.isArray(propDef) && value is List && value.isNotEmpty) {
+      final first = value.first;
+      if (first is Map<String, Object?> && refName != null) {
+        discrepancies.addAll(compareDeep(
+          endpoint: '$endpoint -> $fieldName[]',
+          schemaName: refName,
+          actual: first,
+          spec: spec,
+          depth: depth + 1,
+          visited: visited,
+        ));
+      }
+      continue;
+    }
+
+    // Case 3: inline object (properties defined directly on the property)
+    if (spec.isInlineObject(propDef) && value is Map<String, Object?>) {
+      final inlineSchema = spec.getInlineSchema(schemaName, fieldName);
+      if (inlineSchema != null) {
+        // Check extra fields
+        for (final key in value.keys) {
+          if (!inlineSchema.fields.containsKey(key)) {
+            discrepancies.add(Discrepancy(
+              endpoint: '$endpoint -> $fieldName',
+              schema: '$schemaName.$fieldName',
+              kind: 'extra_field',
+              field: key,
+              detail:
+                  'API returns "$key" (value: ${_truncate(value[key])}) not in spec',
+            ));
+          }
+        }
+        // Check missing required
+        for (final e in inlineSchema.fields.entries) {
+          if (e.value.required && !value.containsKey(e.key)) {
+            discrepancies.add(Discrepancy(
+              endpoint: '$endpoint -> $fieldName',
+              schema: '$schemaName.$fieldName',
+              kind: 'missing_required',
+              field: e.key,
+              detail:
+                  'Spec says "${e.key}" is required but API did not return it',
+            ));
+          }
+          if (e.value.required &&
+              !e.value.nullable &&
+              value.containsKey(e.key) &&
+              value[e.key] == null) {
+            discrepancies.add(Discrepancy(
+              endpoint: '$endpoint -> $fieldName',
+              schema: '$schemaName.$fieldName',
+              kind: 'unexpected_null',
+              field: e.key,
+              detail:
+                  'Spec says "${e.key}" is required+non-nullable but API returned null',
+            ));
+          }
+        }
+      }
+    }
   }
 
-  // If we can't find the inline schema, just report the keys
-  return [
-    Discrepancy(
-      endpoint: endpoint,
-      schema: '$parentSchema.$propertyName',
-      kind: 'inline_schema_not_resolved',
-      field: propertyName,
-      detail:
-          'Could not find inline schema. Actual keys: ${actual.keys.toList()}',
-    ),
-  ];
+  return discrepancies;
 }
 
 String _truncate(Object? value) {
@@ -276,11 +395,10 @@ void main() {
     test('GET /users/@me (UserPrivateResponse)', () async {
       if (skip()) return;
       final response = await dio.get<Map<String, Object?>>('/users/@me');
-      final data = response.data!;
-      allDiscrepancies.addAll(compareResponseToSpec(
+      allDiscrepancies.addAll(compareDeep(
         endpoint: 'GET /users/@me',
         schemaName: 'UserPrivateResponse',
-        actual: data,
+        actual: response.data!,
         spec: spec,
       ));
     });
@@ -289,11 +407,10 @@ void main() {
       if (skip()) return;
       final response =
           await dio.get<Map<String, Object?>>('/users/@me/settings');
-      final data = response.data!;
-      allDiscrepancies.addAll(compareResponseToSpec(
+      allDiscrepancies.addAll(compareDeep(
         endpoint: 'GET /users/@me/settings',
         schemaName: 'UserSettingsResponse',
-        actual: data,
+        actual: response.data!,
         spec: spec,
       ));
     });
@@ -306,16 +423,15 @@ void main() {
         markTestSkipped('No guilds');
         return;
       }
-      final guild = guilds.first as Map<String, Object?>;
-      allDiscrepancies.addAll(compareResponseToSpec(
+      allDiscrepancies.addAll(compareDeep(
         endpoint: 'GET /users/@me/guilds',
         schemaName: 'GuildResponse',
-        actual: guild,
+        actual: guilds.first as Map<String, Object?>,
         spec: spec,
       ));
     });
 
-    test('GET /guilds/{id} (GuildResponse)', () async {
+    test('GET /guilds/{id} (GuildResponse - deep)', () async {
       if (skip()) return;
       final guildsResp = await dio.get<List<Object?>>('/users/@me/guilds');
       final guilds = guildsResp.data!;
@@ -325,11 +441,10 @@ void main() {
       }
       final guildId = (guilds.first as Map<String, Object?>)['id'];
       final response = await dio.get<Map<String, Object?>>('/guilds/$guildId');
-      final data = response.data!;
-      allDiscrepancies.addAll(compareResponseToSpec(
+      allDiscrepancies.addAll(compareDeep(
         endpoint: 'GET /guilds/{id}',
         schemaName: 'GuildResponse',
-        actual: data,
+        actual: response.data!,
         spec: spec,
       ));
     });
@@ -350,16 +465,16 @@ void main() {
         markTestSkipped('No channels');
         return;
       }
-      final channel = channels.first as Map<String, Object?>;
-      allDiscrepancies.addAll(compareResponseToSpec(
+      allDiscrepancies.addAll(compareDeep(
         endpoint: 'GET /guilds/{id}/channels',
         schemaName: 'ChannelResponse',
-        actual: channel,
+        actual: channels.first as Map<String, Object?>,
         spec: spec,
       ));
     });
 
-    test('GET /channels/{id}/messages (MessageResponseSchema[])', () async {
+    test('GET /channels/{id}/messages (MessageResponseSchema[] - deep)',
+        () async {
       if (skip()) return;
       final guildsResp = await dio.get<List<Object?>>('/users/@me/guilds');
       final guilds = guildsResp.data!;
@@ -379,7 +494,6 @@ void main() {
         return;
       }
       final channelId = channels.first['id'];
-
       final response =
           await dio.get<List<Object?>>('/channels/$channelId/messages?limit=5');
       final messages = response.data!;
@@ -387,27 +501,16 @@ void main() {
         markTestSkipped('No messages');
         return;
       }
-      final message = messages.first as Map<String, Object?>;
-      allDiscrepancies.addAll(compareResponseToSpec(
+      // Deep check walks into author, embeds[], attachments[], mentions[], etc.
+      allDiscrepancies.addAll(compareDeep(
         endpoint: 'GET /channels/{id}/messages',
         schemaName: 'MessageResponseSchema',
-        actual: message,
+        actual: messages.first as Map<String, Object?>,
         spec: spec,
       ));
-
-      // Also check the nested author
-      final author = message['author'] as Map<String, Object?>?;
-      if (author != null) {
-        allDiscrepancies.addAll(compareResponseToSpec(
-          endpoint: 'GET /channels/{id}/messages -> author',
-          schemaName: 'UserPartialResponse',
-          actual: author,
-          spec: spec,
-        ));
-      }
     });
 
-    test('GET /users/@me/channels (ChannelResponse[] - DMs)', () async {
+    test('GET /users/@me/channels (ChannelResponse[] - DMs, deep)', () async {
       if (skip()) return;
       final response = await dio.get<List<Object?>>('/users/@me/channels');
       final channels = response.data!;
@@ -415,27 +518,17 @@ void main() {
         markTestSkipped('No DM channels');
         return;
       }
-      final channel = channels.first as Map<String, Object?>;
-      allDiscrepancies.addAll(compareResponseToSpec(
+      // Deep check walks into recipients[] -> UserPartialResponse
+      allDiscrepancies.addAll(compareDeep(
         endpoint: 'GET /users/@me/channels',
         schemaName: 'ChannelResponse',
-        actual: channel,
+        actual: channels.first as Map<String, Object?>,
         spec: spec,
       ));
-
-      // Check recipients
-      final recipients = channel['recipients'] as List?;
-      if (recipients != null && recipients.isNotEmpty) {
-        allDiscrepancies.addAll(compareResponseToSpec(
-          endpoint: 'GET /users/@me/channels -> recipients[]',
-          schemaName: 'UserPartialResponse',
-          actual: recipients.first as Map<String, Object?>,
-          spec: spec,
-        ));
-      }
     });
 
-    test('GET /users/@me/relationships (RelationshipResponse[])', () async {
+    test('GET /users/@me/relationships (RelationshipResponse[] - deep)',
+        () async {
       if (skip()) return;
       final response = await dio.get<List<Object?>>('/users/@me/relationships');
       final relationships = response.data!;
@@ -443,104 +536,30 @@ void main() {
         markTestSkipped('No relationships');
         return;
       }
-      final rel = relationships.first as Map<String, Object?>;
-      allDiscrepancies.addAll(compareResponseToSpec(
+      // Deep check walks into user -> UserPartialResponse
+      allDiscrepancies.addAll(compareDeep(
         endpoint: 'GET /users/@me/relationships',
         schemaName: 'RelationshipResponse',
-        actual: rel,
+        actual: relationships.first as Map<String, Object?>,
         spec: spec,
       ));
-
-      // Check nested user
-      final user = rel['user'] as Map<String, Object?>?;
-      if (user != null) {
-        allDiscrepancies.addAll(compareResponseToSpec(
-          endpoint: 'GET /users/@me/relationships -> user',
-          schemaName: 'UserPartialResponse',
-          actual: user,
-          spec: spec,
-        ));
-      }
     });
 
-    test('GET /.well-known/fluxer (WellKnownFluxerResponse)', () async {
+    test('GET /.well-known/fluxer (WellKnownFluxerResponse - deep)', () async {
       if (skip()) return;
-      // This endpoint doesn't need auth, but use authed dio anyway
       final response =
           await dio.get<Map<String, Object?>>('/.well-known/fluxer');
-      final data = response.data!;
-      allDiscrepancies.addAll(compareResponseToSpec(
+      // Deep check walks into endpoints, captcha, features, gif, sso, limits,
+      // push, app_public, gateway (all inline or $ref objects)
+      allDiscrepancies.addAll(compareDeep(
         endpoint: 'GET /.well-known/fluxer',
         schemaName: 'WellKnownFluxerResponse',
-        actual: data,
+        actual: response.data!,
         spec: spec,
       ));
-
-      // Check nested inline objects using inline schema resolution
-      for (final nested in [
-        'endpoints',
-        'captcha',
-        'features',
-        'gif',
-        'sso',
-        'limits',
-        'push',
-        'app_public'
-      ]) {
-        final obj = data[nested];
-        if (obj is Map<String, Object?>) {
-          final schemaInfo =
-              spec.getInlineSchema('WellKnownFluxerResponse', nested);
-          if (schemaInfo == null) continue;
-          final discrepancies = <Discrepancy>[];
-          // Check extra fields
-          for (final key in obj.keys) {
-            if (!schemaInfo.fields.containsKey(key)) {
-              discrepancies.add(Discrepancy(
-                endpoint: 'GET /.well-known/fluxer -> $nested',
-                schema: 'WellKnownFluxerResponse.$nested',
-                kind: 'extra_field',
-                field: key,
-                detail:
-                    'API returns "$key" (value: ${_truncate(obj[key])}) not in spec',
-              ));
-            }
-          }
-          // Check missing required
-          for (final entry in schemaInfo.fields.entries) {
-            if (entry.value.required && !obj.containsKey(entry.key)) {
-              discrepancies.add(Discrepancy(
-                endpoint: 'GET /.well-known/fluxer -> $nested',
-                schema: 'WellKnownFluxerResponse.$nested',
-                kind: 'missing_required',
-                field: entry.key,
-                detail:
-                    'Spec says "${entry.key}" is required but API did not return it',
-              ));
-            }
-          }
-          // Check unexpected nulls
-          for (final entry in schemaInfo.fields.entries) {
-            if (entry.value.required &&
-                !entry.value.nullable &&
-                obj.containsKey(entry.key) &&
-                obj[entry.key] == null) {
-              discrepancies.add(Discrepancy(
-                endpoint: 'GET /.well-known/fluxer -> $nested',
-                schema: 'WellKnownFluxerResponse.$nested',
-                kind: 'unexpected_null',
-                field: entry.key,
-                detail:
-                    'Spec says "${entry.key}" is required+non-nullable but API returned null',
-              ));
-            }
-          }
-          allDiscrepancies.addAll(discrepancies);
-        }
-      }
     });
 
-    test('GET /guilds/{id}/members (GuildMemberResponse[])', () async {
+    test('GET /guilds/{id}/members (GuildMemberResponse[] - deep)', () async {
       if (skip()) return;
       final guildsResp = await dio.get<List<Object?>>('/users/@me/guilds');
       final guilds = guildsResp.data!;
@@ -556,35 +575,23 @@ void main() {
         markTestSkipped('No members');
         return;
       }
-      final member = members.first as Map<String, Object?>;
-      allDiscrepancies.addAll(compareResponseToSpec(
+      // Deep check walks into user -> UserPartialResponse, roles[], etc.
+      allDiscrepancies.addAll(compareDeep(
         endpoint: 'GET /guilds/{id}/members',
         schemaName: 'GuildMemberResponse',
-        actual: member,
+        actual: members.first as Map<String, Object?>,
         spec: spec,
       ));
-
-      // Check nested user
-      final user = member['user'] as Map<String, Object?>?;
-      if (user != null) {
-        allDiscrepancies.addAll(compareResponseToSpec(
-          endpoint: 'GET /guilds/{id}/members -> user',
-          schemaName: 'UserPartialResponse',
-          actual: user,
-          spec: spec,
-        ));
-      }
     });
 
-    test('GET /gateway/bot (GatewayBotResponse)', () async {
+    test('GET /gateway/bot (GatewayBotResponse - deep)', () async {
       if (skip()) return;
       try {
         final response = await dio.get<Map<String, Object?>>('/gateway/bot');
-        final data = response.data!;
-        allDiscrepancies.addAll(compareResponseToSpec(
+        allDiscrepancies.addAll(compareDeep(
           endpoint: 'GET /gateway/bot',
           schemaName: 'GatewayBotResponse',
-          actual: data,
+          actual: response.data!,
           spec: spec,
         ));
       } on DioException catch (e) {
@@ -592,7 +599,7 @@ void main() {
       }
     });
 
-    test('GET /users/@me/connections (ConnectionResponse[])', () async {
+    test('GET /users/@me/connections (ConnectionResponse[] - deep)', () async {
       if (skip()) return;
       final response = await dio.get<List<Object?>>('/users/@me/connections');
       final connections = response.data!;
@@ -600,16 +607,15 @@ void main() {
         markTestSkipped('No connections');
         return;
       }
-      final conn = connections.first as Map<String, Object?>;
-      allDiscrepancies.addAll(compareResponseToSpec(
+      allDiscrepancies.addAll(compareDeep(
         endpoint: 'GET /users/@me/connections',
         schemaName: 'ConnectionResponse',
-        actual: conn,
+        actual: connections.first as Map<String, Object?>,
         spec: spec,
       ));
     });
 
-    test('GET /guilds/{id}/roles (RoleResponse[])', () async {
+    test('GET /guilds/{id}/roles (RoleResponse[] - deep)', () async {
       if (skip()) return;
       try {
         final guildsResp = await dio.get<List<Object?>>('/users/@me/guilds');
@@ -625,11 +631,10 @@ void main() {
           markTestSkipped('No roles');
           return;
         }
-        final role = roles.first as Map<String, Object?>;
-        allDiscrepancies.addAll(compareResponseToSpec(
+        allDiscrepancies.addAll(compareDeep(
           endpoint: 'GET /guilds/{id}/roles',
           schemaName: 'RoleResponse',
-          actual: role,
+          actual: roles.first as Map<String, Object?>,
           spec: spec,
         ));
       } on DioException catch (e) {
@@ -638,7 +643,7 @@ void main() {
       }
     });
 
-    test('GET /read-states (ReadStateResponse[])', () async {
+    test('GET /read-states (ReadStateResponse[] - deep)', () async {
       if (skip()) return;
       try {
         final response = await dio.get<List<Object?>>('/read-states');
@@ -647,11 +652,10 @@ void main() {
           markTestSkipped('No read states');
           return;
         }
-        final rs = readStates.first as Map<String, Object?>;
-        allDiscrepancies.addAll(compareResponseToSpec(
+        allDiscrepancies.addAll(compareDeep(
           endpoint: 'GET /read-states',
           schemaName: 'ReadStateResponse',
-          actual: rs,
+          actual: readStates.first as Map<String, Object?>,
           spec: spec,
         ));
       } on DioException catch (e) {
