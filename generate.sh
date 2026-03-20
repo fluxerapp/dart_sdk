@@ -14,8 +14,8 @@ echo "Downloaded $(wc -c < openapi.json) bytes"
 dart run openapi_retrofit_generator --file openapi_generator.yaml --dry-run 2>/dev/null || true
 
 echo "=== Step 3/5: Generating SDK ==="
-# Clean previous generated output
-rm -rf lib/api lib/models lib/clients
+# Clean previous generated output (preserve lib/ dir itself)
+find lib/ -mindepth 1 -maxdepth 1 ! -name '.*' -exec rm -rf {} + 2>/dev/null || true
 dart run openapi_retrofit_generator --file openapi_generator.yaml
 
 echo "=== Step 4/5: Running build_runner ==="
