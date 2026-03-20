@@ -1,0 +1,17 @@
+openapi_generator:
+  schema_path: openapi.json
+  output_directory: lib
+  json_serializer: json_serializable
+  root_client: true
+  root_client_name: FluxerClient
+  client_postfix: Api
+  export_file: true
+  put_in_folder: true
+  put_clients_in_folder: false
+  enums_to_json: true
+  unknown_enum_value: true
+  enums_parent_prefix: true
+  mark_files_as_generated: true
+  original_http_response: false
+  include_if_null: false
+  path_method_name: false
