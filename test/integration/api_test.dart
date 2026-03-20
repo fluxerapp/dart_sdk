@@ -3,10 +3,11 @@ import 'package:test/test.dart';
 
 import 'test_config.dart';
 
-/// Helper to skip tests when no token is configured. Returns true if skipped.
+/// Helper to skip tests when credentials are not configured. Returns true if skipped.
 bool skipIfNotConfigured() {
   if (!TestConfig.isConfigured) {
-    markTestSkipped('FLUXER_TEST_TOKEN not set — skipping live API tests');
+    markTestSkipped(
+        'FLUXER_TEST_EMAIL/PASSWORD not set — skipping live API tests');
     return true;
   }
   return false;
@@ -15,9 +16,10 @@ bool skipIfNotConfigured() {
 void main() {
   late FluxerClient client;
 
-  setUpAll(() {
+  setUpAll(() async {
     if (!TestConfig.isConfigured) return;
-    client = FluxerClient(TestConfig.createDio(), baseUrl: TestConfig.baseUrl);
+    final dio = await TestConfig.createDio();
+    client = FluxerClient(dio, baseUrl: TestConfig.baseUrl);
   });
 
   // ---------------------------------------------------------------------------
