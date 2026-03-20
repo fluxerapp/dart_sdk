@@ -302,15 +302,14 @@ void main() {
   group('InstanceApi', () {
     test('getWellKnownFluxer returns server info', () async {
       if (skipIfNotConfigured()) return;
-      try {
-        final info = await client.instance.getWellKnownFluxer();
-        expect(info, isNotNull);
-      } on TypeError catch (_) {
-        // Known issue: some nullable fields generated as required (e.g. bool)
-        // TODO: fix nullable field generation in fork
-        markTestSkipped(
-            'Nullable field deserialization issue — needs fork fix');
-      }
+      final info = await client.instance.getWellKnownFluxer();
+      expect(info, isNotNull);
+      expect(info.apiCodeVersion, isPositive);
+      expect(info.endpoints, isNotNull);
+      expect(info.features, isNotNull);
+      expect(info.features.smsMfaEnabled, isA<bool>());
+      expect(info.features.voiceEnabled, isA<bool>());
+      expect(info.features.selfHosted, isA<bool>());
     });
   });
 
