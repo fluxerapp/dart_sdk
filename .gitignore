@@ -41,3 +41,4 @@ pubspec.lock
 .DS_Store
 
 .openapi-generator/
+.env
