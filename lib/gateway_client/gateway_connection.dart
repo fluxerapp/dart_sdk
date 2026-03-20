@@ -5,7 +5,6 @@ import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
-import 'package:zstandard/zstandard.dart';
 
 import 'package:fluxer_dart/gateway/gateway_api.dart';
 import 'package:fluxer_dart/gateway_client/event_parser.dart';
@@ -16,10 +15,21 @@ import 'package:fluxer_dart/gateway_client/gateway_opcodes.dart';
 import 'package:fluxer_dart/gateway_client/heartbeat_manager.dart';
 import 'package:fluxer_dart/gateway_client/session_manager.dart';
 
+/// Callback for decompressing binary WebSocket frames.
+///
+/// Provide an implementation (e.g. using `zstandard`) when connecting
+/// with `compress: 'zstd-stream'`. Returns the decompressed bytes,
+/// or `null` to skip the frame.
+typedef GatewayDecompressor = Future<Uint8List?> Function(Uint8List data);
+
 /// Main gateway WebSocket client for the Fluxer platform.
 ///
 /// Manages the full lifecycle: connecting, identifying/resuming,
 /// heartbeating, event dispatching, and automatic reconnection.
+///
+/// By default uses `compress: 'none'` (no decompressor needed).
+/// To enable zstd compression, pass `compress: 'zstd-stream'` and
+/// provide a [decompressor] callback.
 class GatewayConnection {
   GatewayConnection({
     required String token,
@@ -27,9 +37,13 @@ class GatewayConnection {
     String? gatewayUrl,
     GatewayIdentifyProperties? properties,
     GatewayPresence? presence,
+    String compress = 'none',
+    GatewayDecompressor? decompressor,
   })  : _token = token,
         _dio = dio,
         _gatewayUrlOverride = gatewayUrl,
+        _compress = compress,
+        _decompressor = decompressor,
         _properties = properties ??
             const GatewayIdentifyProperties(
               os: 'linux',
@@ -41,14 +55,14 @@ class GatewayConnection {
   final String _token;
   final Dio _dio;
   final String? _gatewayUrlOverride;
+  final String _compress;
+  final GatewayDecompressor? _decompressor;
   final GatewayIdentifyProperties _properties;
   GatewayPresence? _presence;
 
   final EventParser _eventParser = const EventParser();
   final SessionManager _session = SessionManager();
   late HeartbeatManager _heartbeat;
-
-  final Zstandard _zstd = Zstandard();
 
   WebSocketChannel? _channel;
   StreamSubscription<dynamic>? _subscription;
@@ -130,14 +144,28 @@ class GatewayConnection {
   // Internal: connection
   // ---------------------------------------------------------------------------
 
+  /// Derives the gateway WebSocket URL from the Dio base URL.
+  ///
+  /// Replaces `api.` with `gateway.` and switches to `wss://`.
+  /// Falls back to `/gateway/bot` REST endpoint if derivation fails.
   Future<String> _fetchGatewayUrl() async {
+    final baseUrl = _dio.options.baseUrl;
+    if (baseUrl.isNotEmpty) {
+      final uri = Uri.parse(baseUrl);
+      if (uri.host.isNotEmpty) {
+        final gwHost = uri.host.replaceFirst('api.', 'gateway.');
+        return 'wss://$gwHost';
+      }
+    }
+
+    // Fallback: try the REST endpoint (requires bot token).
     final api = GatewayApi(_dio);
     final response = await api.getGatewayBot();
     return response.url;
   }
 
   Future<void> _openWebSocket(String url) async {
-    final wsUrl = Uri.parse('$url?v=1&encoding=json&compress=zstd-stream');
+    final wsUrl = Uri.parse('$url?v=1&encoding=json&compress=$_compress');
     _channel = WebSocketChannel.connect(wsUrl);
     await _channel!.ready;
 
@@ -156,7 +184,9 @@ class GatewayConnection {
     late final Map<String, dynamic> payload;
 
     if (raw is Uint8List) {
-      final decompressed = await _zstd.decompress(raw);
+      final decompress = _decompressor;
+      if (decompress == null) return;
+      final decompressed = await decompress(raw);
       if (decompressed == null) return;
       final jsonString = utf8.decode(decompressed);
       payload = json.decode(jsonString) as Map<String, dynamic>;
@@ -240,8 +270,14 @@ class GatewayConnection {
       _setState(GatewayState.connected);
     }
 
-    final event = _eventParser.parse(eventType, data);
-    _eventController.add(event);
+    try {
+      final event = _eventParser.parse(eventType, data);
+      _eventController.add(event);
+    } catch (e) {
+      _eventController.add(
+        UnknownGatewayEvent(eventType: eventType, data: data),
+      );
+    }
   }
 
   void _handleReconnect() {
@@ -266,7 +302,7 @@ class GatewayConnection {
     final payload = <String, Object?>{
       'token': _token,
       'properties': _properties.toJson(),
-      'compress': 'zstd-stream',
+      'compress': _compress,
     };
     if (_presence != null) {
       payload['presence'] = _presence!.toJson();

@@ -71,10 +71,10 @@ class EventParser {
             channel: ChannelResponse.fromJson(data),
           ),
         'GUILD_CREATE' => GuildCreateEvent(
-            guild: GuildResponse.fromJson(data),
+            guild: GuildResponse.fromJson(_guildData(data)),
           ),
         'GUILD_UPDATE' => GuildUpdateEvent(
-            guild: GuildResponse.fromJson(data),
+            guild: GuildResponse.fromJson(_guildData(data)),
           ),
         'GUILD_DELETE' => GuildDeleteEvent(
             guildId: data['id'] as String,
@@ -124,29 +124,74 @@ class EventParser {
       user: UserPrivateResponse.fromJson(
         data['user'] as Map<String, Object?>,
       ),
-      guilds: (data['guilds'] as List<dynamic>)
-          .map((e) => GuildResponse.fromJson(e as Map<String, Object?>))
-          .toList(),
-      privateChannels: (data['private_channels'] as List<dynamic>)
-          .map((e) => ChannelResponse.fromJson(e as Map<String, Object?>))
-          .toList(),
-      relationships: (data['relationships'] as List<dynamic>)
-          .map((e) => RelationshipResponse.fromJson(e as Map<String, Object?>))
-          .toList(),
-      userSettings: data['user_settings'] != null
-          ? UserSettingsResponse.fromJson(
-              data['user_settings'] as Map<String, Object?>,
-            )
-          : null,
-      readStates: (data['read_state'] as List<dynamic>?)
-              ?.map((e) => e as Map<String, dynamic>)
-              .toList() ??
+      guilds: _parseListSafe(
+        data['guilds'],
+        (e) => GuildResponse.fromJson(_guildData(e as Map<String, dynamic>)),
+      ),
+      privateChannels: _parseListSafe(
+        data['private_channels'],
+        (e) => ChannelResponse.fromJson(e as Map<String, Object?>),
+      ),
+      relationships: _parseListSafe(
+        data['relationships'],
+        (e) => RelationshipResponse.fromJson(e as Map<String, Object?>),
+      ),
+      userSettings: _tryParse(
+        () => data['user_settings'] != null
+            ? UserSettingsResponse.fromJson(
+                data['user_settings'] as Map<String, Object?>,
+              )
+            : null,
+      ),
+      readStates: (data['read_states'] as List<dynamic>?)
+              ?.cast<Map<String, dynamic>>() ??
           [],
-      presences: (data['presences'] as List<dynamic>?)
-              ?.map((e) => e as Map<String, dynamic>)
-              .toList() ??
-          [],
+      presences:
+          (data['presences'] as List<dynamic>?)?.cast<Map<String, dynamic>>() ??
+              [],
     );
+  }
+
+  /// Extracts guild data from a gateway guild object.
+  ///
+  /// Gateway guild events wrap metadata under `properties`, while REST
+  /// API responses have fields at the top level.
+  static Map<String, Object?> _guildData(Map<String, dynamic> raw) {
+    final properties = raw['properties'] as Map<String, dynamic>?;
+    if (properties != null) {
+      // Gateway format: merge top-level id with properties.
+      return <String, Object?>{
+        ...properties,
+        'id': raw['id'] ?? properties['id'],
+      };
+    }
+    return raw;
+  }
+
+  /// Safely parses a JSON list, skipping items that fail deserialization.
+  static List<T> _parseListSafe<T>(
+    dynamic rawList,
+    T Function(dynamic) parser,
+  ) {
+    if (rawList is! List) return [];
+    final result = <T>[];
+    for (final item in rawList) {
+      try {
+        result.add(parser(item));
+      } catch (_) {
+        // Skip items that fail to parse.
+      }
+    }
+    return result;
+  }
+
+  /// Runs [fn] and returns null on failure.
+  static T? _tryParse<T>(T? Function() fn) {
+    try {
+      return fn();
+    } catch (_) {
+      return null;
+    }
   }
 
   PresenceUpdateEvent _parsePresenceUpdate(Map<String, dynamic> data) {
