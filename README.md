@@ -21,20 +21,12 @@ This is a package for Dart / Flutter that allows you access to the Fluxer API, a
 
 ## Requirements
 
-* Dart 2.15.0+ or Flutter 2.8.0+
+* Dart 3.11.0+ or Flutter 3.29.0+
 * Dio 5.0.0+ (https://pub.dev/packages/dio)
 
 ## Installation & Usage
 
-### pub.dev
-To use the package from [pub.dev](https://pub.dev), please include the following in pubspec.yaml
-```yaml
-dependencies:
-  fluxer_dart: 1.2.1
-```
-
 ### Github
-If this Dart package is published to Github, please include the following in pubspec.yaml
 ```yaml
 dependencies:
   fluxer_dart:
@@ -44,7 +36,6 @@ dependencies:
 ```
 
 ### Local development
-To use the package from your local drive, please include the following in pubspec.yaml
 ```yaml
 dependencies:
   fluxer_dart:
@@ -56,61 +47,31 @@ dependencies:
 ### Basic Usage
 
 ```dart
-import 'package:fluxer_dart/fluxer_dart.dart';
+import 'package:dio/dio.dart';
+import 'package:fluxer_dart/export.dart';
 
-final fluxer = FluxerDart();
+final dio = Dio(BaseOptions(baseUrl: 'https://api.fluxer.app/v1'));
+dio.options.headers['Authorization'] = 'Bearer your_token_here';
 
-fluxer.setBearerAuth('bearerToken', 'your_token_here');
+final client = FluxerClient(dio);
 
-final usersApi = fluxer.getUsersApi();
-```
-
-### Bot Token Authentication
-
-For bot users, use `setApiKey` with the `botToken` auth name:
-
-```dart
-import 'package:fluxer_dart/fluxer_dart.dart';
-
-final fluxer = FluxerDart();
-
-fluxer.setApiKey('botToken', 'Bot your_bot_token_here');
-
-final channelsApi = fluxer.getChannelsApi();
-```
-
-### Admin API Key Authentication
-
-For admin endpoints, use `setApiKey` with the `adminApiKey` auth name:
-
-```dart
-import 'package:fluxer_dart/fluxer_dart.dart';
-
-final fluxer = FluxerDart();
-
-fluxer.setApiKey('adminApiKey', 'your_admin_key_here');
-
-final adminApi = fluxer.getAdminApi();
+final user = await client.users.getCurrentUser();
+final guilds = await client.guilds.listGuilds();
 ```
 
 ### Self-Hosted Instance
 
-If you are running a self-hosted Fluxer instance, pass `basePathOverride` to point the SDK at your own API endpoint:
+Point the Dio base URL at your own API endpoint:
 
 ```dart
-import 'package:fluxer_dart/fluxer_dart.dart';
+final dio = Dio(BaseOptions(baseUrl: 'https://api.your-domain.com/v1'));
+dio.options.headers['Authorization'] = 'Bearer your_token_here';
 
-final fluxer = FluxerDart(
-  basePathOverride: 'https://api.your-domain.com/v1',
-);
-
-fluxer.setBearerAuth('bearerToken', 'your_token_here');
-
-final usersApi = fluxer.getUsersApi();
+final client = FluxerClient(dio);
 ```
 
 > [!NOTE]
-> The default base path is `https://api.fluxer.app/v1`. When providing `basePathOverride`, include the full path with the version prefix (e.g. `/v1`).
+> The default base path is `https://api.fluxer.app/v1`. Include the full path with the version prefix (e.g. `/v1`).
 >
 
 ## Issues & Bug Reports
@@ -125,49 +86,52 @@ When reporting issues related to this Dart SDK, please:
 - Provide a minimal code example that reproduces the issue (if possible)
 - Include the SDK version you're using
 
-## Documentation For Authorization
+## API Groups
 
-Authentication schemes defined for the API:
+Access API groups via the `FluxerClient` instance:
 
-### botToken
+```dart
+client.auth        // Authentication (login, MFA, register)
+client.users       // Current user, settings, relationships
+client.guilds      // Guild CRUD, audit logs, bans
+client.channels    // Channels, messages, reactions, pins
+client.gateway     // WebSocket gateway info
+client.instance    // Server info (/.well-known/fluxer)
+client.admin       // Admin endpoints
+// ... and 17 more API groups
+```
 
-- **Type**: API key
-- **API key parameter name**: Authorization
-- **Location**: HTTP header
+## Authentication
 
-### oauth2Token
+Pass auth tokens via Dio headers. The SDK does not manage auth state — your app controls the Dio instance:
 
-- **Type**: OAuth
-- **Flow**: accessCode
-- **Authorization URL**: /oauth2/authorize
-- **Scopes**:
- - **identify**: Read basic user identity information.
- - **email**: Read the user email address.
- - **guilds**: Read guild membership information for the current user.
- - **connections**: Read linked third-party account connections for the current user.
- - **bot**: Add a bot user to a guild.
- - **admin**: Access admin endpoints when the user has admin ACLs.
+```dart
+// Session token (user login)
+dio.options.headers['Authorization'] = 'Bearer $sessionToken';
 
-### bearerToken
+// Bot token
+dio.options.headers['Authorization'] = 'Bot $botToken';
+```
 
-- **Type**: HTTP Bearer Token authentication
+## SDK Generation
 
-### sessionToken
+This SDK is generated from the [Fluxer OpenAPI spec](https://github.com/fluxerapp/fluxer) using [`openapi_retrofit_generator`](https://github.com/M0n7y5/openapi_retrofit_generator) (Retrofit + json_serializable).
 
-- **Type**: API key
-- **API key parameter name**: Authorization
-- **Location**: HTTP header
+```bash
+# Regenerate (requires: dart, python3, curl)
+./generate.sh
+```
 
-### adminApiKey
+The generation pipeline downloads the spec, applies [patches](./SPEC_PATCHES.md) for live API divergences, generates Dart code, runs `build_runner`, and formats.
 
-- **Type**: API key
-- **API key parameter name**: Authorization
-- **Location**: HTTP header
+## Testing
 
-## Package Gen
+```bash
+# Run all tests (serialization + integration)
+dart test
 
-This Dart package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
+# Run spec drift detection (checks live API vs spec)
+dart test test/integration/spec_drift_test.dart
+```
 
-- API version: 1.0.0
-- Generator version: 7.17.0
-- Build package: org.openapitools.codegen.languages.DartDioClientCodegen
+Integration tests require credentials in `.env` — see `.env.example`.
