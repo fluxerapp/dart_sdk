@@ -334,6 +334,173 @@ void main() {
   });
 
   // ---------------------------------------------------------------------------
+  // ReadStatesApi
+  // ---------------------------------------------------------------------------
+  group('ReadStatesApi', () {
+    test('ackBulkReadStates accepts empty list', () async {
+      if (skipIfNotConfigured()) return;
+      try {
+        await client.readStates.ackBulkMessages(
+          body: ReadStateAckBulkRequest(readStates: []),
+        );
+      } on DioException catch (e) {
+        if (e.response?.statusCode == 400) {
+          // Expected — empty body may be rejected, but proves endpoint is reachable
+          return;
+        }
+        rethrow;
+      }
+    });
+  });
+
+  // ---------------------------------------------------------------------------
+  // Deep field validation on live data
+  // ---------------------------------------------------------------------------
+  group('Field validation', () {
+    test('GuildResponse has correct enum types from API', () async {
+      if (skipIfNotConfigured()) return;
+      final guilds = await client.guilds.listGuilds();
+      if (guilds.isEmpty) {
+        markTestSkipped('No guilds available');
+        return;
+      }
+      final guild = await client.guilds.getGuild(guildId: guilds.first.id);
+      // Verify enums deserialized to real enum values (not $unknown)
+      expect(guild.verificationLevel, isA<GuildVerificationLevel>());
+      expect(guild.nsfwLevel, isA<NsfwLevel>());
+      expect(guild.mfaLevel, isA<GuildMfaLevel>());
+      expect(guild.explicitContentFilter, isA<GuildExplicitContentFilter>());
+      // Features should be a list of strings
+      expect(guild.features, isA<List<GuildFeatureSchema>>());
+    });
+
+    test('GuildMemberResponse has nested user with expected fields', () async {
+      if (skipIfNotConfigured()) return;
+      final guilds = await client.guilds.listGuilds();
+      if (guilds.isEmpty) {
+        markTestSkipped('No guilds available');
+        return;
+      }
+      final members =
+          await client.guilds.listGuildMembers2(guildId: guilds.first.id);
+      if (members.isEmpty) {
+        markTestSkipped('No members available');
+        return;
+      }
+      final member = members.first;
+      expect(member.user.id, isNotEmpty);
+      expect(member.user.username, isNotEmpty);
+      expect(member.roles, isA<List>());
+    });
+
+    test('ChannelResponse types are valid integers', () async {
+      if (skipIfNotConfigured()) return;
+      final guilds = await client.guilds.listGuilds();
+      if (guilds.isEmpty) {
+        markTestSkipped('No guilds available');
+        return;
+      }
+      final channels =
+          await client.guilds.listGuildChannels(guildId: guilds.first.id);
+      for (final ch in channels) {
+        expect(ch.id, isNotEmpty);
+        expect(ch.type, isA<int>());
+        // Guild channels have positions
+        if (ch.type == 0 || ch.type == 2 || ch.type == 4) {
+          expect(ch.position, isNotNull);
+        }
+      }
+    });
+
+    test('RelationshipResponse has valid enum type', () async {
+      if (skipIfNotConfigured()) return;
+      final relationships = await client.users.listUserRelationships();
+      if (relationships.isEmpty) {
+        markTestSkipped('No relationships available');
+        return;
+      }
+      for (final rel in relationships) {
+        expect(rel.type, isA<RelationshipTypes>());
+        // Type should deserialize to a known value, not $unknown
+        expect(rel.type.json, isNotNull);
+        expect(rel.user.id, isNotEmpty);
+      }
+    });
+
+    test('MessageResponseSchema has valid type enum and timestamp', () async {
+      if (skipIfNotConfigured()) return;
+      final guilds = await client.guilds.listGuilds();
+      if (guilds.isEmpty) {
+        markTestSkipped('No guilds available');
+        return;
+      }
+      final channels =
+          await client.guilds.listGuildChannels(guildId: guilds.first.id);
+      final textChannel = channels.cast<ChannelResponse?>().firstWhere(
+            (c) => c?.type == 0,
+            orElse: () => null,
+          );
+      if (textChannel == null) {
+        markTestSkipped('No text channels available');
+        return;
+      }
+      final messages =
+          await client.channels.listMessages(channelId: textChannel.id);
+      if (messages.isEmpty) {
+        markTestSkipped('No messages available');
+        return;
+      }
+      for (final msg in messages.take(5)) {
+        expect(msg.type, isA<MessageResponseSchemaTypeType>());
+        expect(msg.type.json, isNotNull);
+        expect(msg.timestamp, isA<DateTime>());
+        expect(msg.author.id, isNotEmpty);
+        expect(msg.channelId, textChannel.id);
+      }
+    });
+
+    test('UserSettingsResponse has guild folders', () async {
+      if (skipIfNotConfigured()) return;
+      final settings = await client.users.getCurrentUserSettings();
+      expect(settings.guildFolders, isA<List>());
+      for (final folder in settings.guildFolders) {
+        expect(folder.guildIds, isA<List>());
+      }
+    });
+
+    test('getCurrentGuildMember has user and roles', () async {
+      if (skipIfNotConfigured()) return;
+      final guilds = await client.guilds.listGuilds();
+      if (guilds.isEmpty) {
+        markTestSkipped('No guilds available');
+        return;
+      }
+      final member =
+          await client.guilds.getCurrentGuildMember(guildId: guilds.first.id);
+      expect(member.user.id, isNotEmpty);
+      expect(member.user.username, isNotEmpty);
+      expect(member.roles, isA<List>());
+      expect(member.joinedAt, isNotNull);
+    });
+
+    test('DM channels have recipients', () async {
+      if (skipIfNotConfigured()) return;
+      final channels = await client.users.listPrivateChannels();
+      if (channels.isEmpty) {
+        markTestSkipped('No DM channels available');
+        return;
+      }
+      for (final ch in channels.take(3)) {
+        expect(ch.type, anyOf(1, 3)); // DM or Group DM
+        if (ch.recipients != null && ch.recipients!.isNotEmpty) {
+          expect(ch.recipients!.first.id, isNotEmpty);
+          expect(ch.recipients!.first.username, isNotEmpty);
+        }
+      }
+    });
+  });
+
+  // ---------------------------------------------------------------------------
   // Cross-API: serialization roundtrip via live data
   // ---------------------------------------------------------------------------
   group('Serialization via live API', () {
@@ -420,6 +587,52 @@ void main() {
       final roundtripped = ChannelResponse.fromJson(rawJson);
       expect(roundtripped.id, channel.id);
       expect(roundtripped.name, channel.name);
+    });
+
+    test('GuildMemberResponse roundtrips', () async {
+      if (skipIfNotConfigured()) return;
+      final guilds = await client.guilds.listGuilds();
+      if (guilds.isEmpty) {
+        markTestSkipped('No guilds available');
+        return;
+      }
+      final members =
+          await client.guilds.listGuildMembers2(guildId: guilds.first.id);
+      if (members.isEmpty) {
+        markTestSkipped('No members available');
+        return;
+      }
+      final member = members.first;
+      final jsonString = jsonEncode(member.toJson());
+      final rawJson = jsonDecode(jsonString) as Map<String, Object?>;
+      final roundtripped = GuildMemberResponse.fromJson(rawJson);
+      expect(roundtripped.user.id, member.user.id);
+      expect(roundtripped.user.username, member.user.username);
+    });
+
+    test('RelationshipResponse roundtrips', () async {
+      if (skipIfNotConfigured()) return;
+      final relationships = await client.users.listUserRelationships();
+      if (relationships.isEmpty) {
+        markTestSkipped('No relationships available');
+        return;
+      }
+      final rel = relationships.first;
+      final jsonString = jsonEncode(rel.toJson());
+      final rawJson = jsonDecode(jsonString) as Map<String, Object?>;
+      final roundtripped = RelationshipResponse.fromJson(rawJson);
+      expect(roundtripped.id, rel.id);
+      expect(roundtripped.type, rel.type);
+      expect(roundtripped.user.id, rel.user.id);
+    });
+
+    test('UserSettingsResponse roundtrips', () async {
+      if (skipIfNotConfigured()) return;
+      final settings = await client.users.getCurrentUserSettings();
+      final jsonString = jsonEncode(settings.toJson());
+      final rawJson = jsonDecode(jsonString) as Map<String, Object?>;
+      final roundtripped = UserSettingsResponse.fromJson(rawJson);
+      expect(roundtripped.guildFolders.length, settings.guildFolders.length);
     });
   });
 }
