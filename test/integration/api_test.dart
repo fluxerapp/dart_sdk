@@ -3,47 +3,107 @@ import 'package:test/test.dart';
 
 import 'test_config.dart';
 
+/// Helper to skip tests when no token is configured. Returns true if skipped.
+bool skipIfNotConfigured() {
+  if (!TestConfig.isConfigured) {
+    markTestSkipped('FLUXER_TEST_TOKEN not set — skipping live API tests');
+    return true;
+  }
+  return false;
+}
+
 void main() {
   late FluxerClient client;
 
   setUpAll(() {
-    if (!TestConfig.isConfigured) {
-      return;
-    }
+    if (!TestConfig.isConfigured) return;
     client = FluxerClient(TestConfig.createDio(), baseUrl: TestConfig.baseUrl);
   });
 
+  // ---------------------------------------------------------------------------
+  // UsersApi
+  // ---------------------------------------------------------------------------
   group('UsersApi', () {
     test('getCurrentUser returns valid user', () async {
-      if (!TestConfig.isConfigured) {
-        markTestSkipped('FLUXER_TEST_TOKEN not set — skipping live API tests');
-        return;
-      }
+      if (skipIfNotConfigured()) return;
       final user = await client.users.getCurrentUser();
       expect(user.id, isNotEmpty);
       expect(user.username, isNotEmpty);
+      expect(user.discriminator, isNotNull);
+      expect(user.email, isNotNull);
+    });
+
+    test('getCurrentUserSettings returns settings', () async {
+      if (skipIfNotConfigured()) return;
+      final settings = await client.users.getCurrentUserSettings();
+      expect(settings, isNotNull);
+    });
+
+    test('listPrivateChannels returns DM channels', () async {
+      if (skipIfNotConfigured()) return;
+      final channels = await client.users.listPrivateChannels();
+      expect(channels, isA<List<ChannelResponse>>());
+    });
+
+    test('listUserRelationships returns relationships', () async {
+      if (skipIfNotConfigured()) return;
+      final relationships = await client.users.listUserRelationships();
+      expect(relationships, isA<List<RelationshipResponse>>());
+      if (relationships.isNotEmpty) {
+        final rel = relationships.first;
+        expect(rel.id, isNotEmpty);
+        expect(rel.type, isNotNull);
+        expect(rel.user, isNotNull);
+        expect(rel.user.id, isNotEmpty);
+        expect(rel.user.username, isNotEmpty);
+      }
+    });
+
+    test('getUserProfile returns profile for current user', () async {
+      if (skipIfNotConfigured()) return;
+      final me = await client.users.getCurrentUser();
+      final profile = await client.users.getUserProfile(targetId: me.id);
+      expect(profile, isNotNull);
+      expect(profile.user.id, me.id);
+      expect(profile.user.username, me.username);
+    });
+
+    test('listCurrentUserNotes returns notes', () async {
+      if (skipIfNotConfigured()) return;
+      final notes = await client.users.listCurrentUserNotes();
+      expect(notes, isNotNull);
+    });
+
+    test('listMentionsForCurrentUser returns mentions', () async {
+      if (skipIfNotConfigured()) return;
+      final mentions = await client.users.listMentionsForCurrentUser();
+      expect(mentions, isNotNull);
+    });
+
+    test('listScheduledMessages returns list', () async {
+      if (skipIfNotConfigured()) return;
+      final messages = await client.users.listScheduledMessages();
+      expect(messages, isA<List<ScheduledMessageResponseSchema>>());
     });
   });
 
+  // ---------------------------------------------------------------------------
+  // GuildsApi
+  // ---------------------------------------------------------------------------
   group('GuildsApi', () {
     test('listGuilds returns list', () async {
-      if (!TestConfig.isConfigured) {
-        markTestSkipped('FLUXER_TEST_TOKEN not set — skipping live API tests');
-        return;
-      }
+      if (skipIfNotConfigured()) return;
       final guilds = await client.guilds.listGuilds();
-      expect(guilds, isA<List>());
+      expect(guilds, isA<List<GuildResponse>>());
       if (guilds.isNotEmpty) {
         expect(guilds.first.id, isNotEmpty);
         expect(guilds.first.name, isNotEmpty);
+        expect(guilds.first.ownerId, isNotEmpty);
       }
     });
 
-    test('getGuild returns guild by id', () async {
-      if (!TestConfig.isConfigured) {
-        markTestSkipped('FLUXER_TEST_TOKEN not set — skipping live API tests');
-        return;
-      }
+    test('getGuild returns guild with full details', () async {
+      if (skipIfNotConfigured()) return;
       final guilds = await client.guilds.listGuilds();
       if (guilds.isEmpty) {
         markTestSkipped('No guilds available');
@@ -51,6 +111,283 @@ void main() {
       }
       final guild = await client.guilds.getGuild(guildId: guilds.first.id);
       expect(guild.id, guilds.first.id);
+      expect(guild.name, isNotEmpty);
+      expect(guild.ownerId, isNotEmpty);
+      expect(guild.verificationLevel, isNotNull);
+      expect(guild.nsfwLevel, isNotNull);
+    });
+
+    test('listGuildChannels returns channels for guild', () async {
+      if (skipIfNotConfigured()) return;
+      final guilds = await client.guilds.listGuilds();
+      if (guilds.isEmpty) {
+        markTestSkipped('No guilds available');
+        return;
+      }
+      final channels =
+          await client.guilds.listGuildChannels(guildId: guilds.first.id);
+      expect(channels, isA<List<ChannelResponse>>());
+      if (channels.isNotEmpty) {
+        expect(channels.first.id, isNotEmpty);
+      }
+    });
+
+    test('listGuildRoles returns roles for guild', () async {
+      if (skipIfNotConfigured()) return;
+      final guilds = await client.guilds.listGuilds();
+      if (guilds.isEmpty) {
+        markTestSkipped('No guilds available');
+        return;
+      }
+      final roles =
+          await client.guilds.listGuildRoles(guildId: guilds.first.id);
+      expect(roles, isA<List<GuildRoleResponse>>());
+      // Every guild has at least an @everyone role
+      expect(roles, isNotEmpty);
+      expect(roles.first.id, isNotEmpty);
+      expect(roles.first.name, isNotEmpty);
+    });
+
+    test('listGuildMembers returns members', () async {
+      if (skipIfNotConfigured()) return;
+      final guilds = await client.guilds.listGuilds();
+      if (guilds.isEmpty) {
+        markTestSkipped('No guilds available');
+        return;
+      }
+      final members =
+          await client.guilds.listGuildMembers2(guildId: guilds.first.id);
+      expect(members, isA<List<GuildMemberResponse>>());
+      expect(members, isNotEmpty);
+    });
+
+    test('getCurrentGuildMember returns own membership', () async {
+      if (skipIfNotConfigured()) return;
+      final guilds = await client.guilds.listGuilds();
+      if (guilds.isEmpty) {
+        markTestSkipped('No guilds available');
+        return;
+      }
+      final member =
+          await client.guilds.getCurrentGuildMember(guildId: guilds.first.id);
+      expect(member, isNotNull);
+      expect(member.user, isNotNull);
+    });
+
+    test('listGuildEmojis returns emojis', () async {
+      if (skipIfNotConfigured()) return;
+      final guilds = await client.guilds.listGuilds();
+      if (guilds.isEmpty) {
+        markTestSkipped('No guilds available');
+        return;
+      }
+      final emojis =
+          await client.guilds.listGuildEmojis2(guildId: guilds.first.id);
+      expect(emojis, isNotNull);
+    });
+
+    test('listGuildStickers returns stickers', () async {
+      if (skipIfNotConfigured()) return;
+      final guilds = await client.guilds.listGuilds();
+      if (guilds.isEmpty) {
+        markTestSkipped('No guilds available');
+        return;
+      }
+      final stickers =
+          await client.guilds.listGuildStickers2(guildId: guilds.first.id);
+      expect(stickers, isNotNull);
+    });
+  });
+
+  // ---------------------------------------------------------------------------
+  // ChannelsApi
+  // ---------------------------------------------------------------------------
+  group('ChannelsApi', () {
+    test('getChannel returns channel details', () async {
+      if (skipIfNotConfigured()) return;
+      final guilds = await client.guilds.listGuilds();
+      if (guilds.isEmpty) {
+        markTestSkipped('No guilds available');
+        return;
+      }
+      final channels =
+          await client.guilds.listGuildChannels(guildId: guilds.first.id);
+      if (channels.isEmpty) {
+        markTestSkipped('No channels available');
+        return;
+      }
+      final channel =
+          await client.channels.getChannel(channelId: channels.first.id);
+      expect(channel.id, channels.first.id);
+    });
+
+    test('listMessages returns messages from a channel', () async {
+      if (skipIfNotConfigured()) return;
+      final guilds = await client.guilds.listGuilds();
+      if (guilds.isEmpty) {
+        markTestSkipped('No guilds available');
+        return;
+      }
+      final channels =
+          await client.guilds.listGuildChannels(guildId: guilds.first.id);
+      // Find a text channel
+      final textChannel = channels.cast<ChannelResponse?>().firstWhere(
+            (c) => c?.type == 0,
+            orElse: () => null,
+          );
+      if (textChannel == null) {
+        markTestSkipped('No text channels available');
+        return;
+      }
+      final messages =
+          await client.channels.listMessages(channelId: textChannel.id);
+      expect(messages, isA<List<MessageResponseSchema>>());
+      if (messages.isNotEmpty) {
+        final msg = messages.first;
+        expect(msg.id, isNotEmpty);
+        expect(msg.author, isNotNull);
+        expect(msg.author.id, isNotEmpty);
+      }
+    });
+
+    test('listPinnedMessages returns pinned messages', () async {
+      if (skipIfNotConfigured()) return;
+      final guilds = await client.guilds.listGuilds();
+      if (guilds.isEmpty) {
+        markTestSkipped('No guilds available');
+        return;
+      }
+      final channels =
+          await client.guilds.listGuildChannels(guildId: guilds.first.id);
+      final textChannel = channels.cast<ChannelResponse?>().firstWhere(
+            (c) => c?.type == 0,
+            orElse: () => null,
+          );
+      if (textChannel == null) {
+        markTestSkipped('No text channels available');
+        return;
+      }
+      final pins =
+          await client.channels.listPinnedMessages(channelId: textChannel.id);
+      expect(pins, isNotNull);
+    });
+  });
+
+  // ---------------------------------------------------------------------------
+  // ConnectionsApi
+  // ---------------------------------------------------------------------------
+  group('ConnectionsApi', () {
+    test('listConnections returns connections', () async {
+      if (skipIfNotConfigured()) return;
+      final connections = await client.connections.listConnections();
+      expect(connections, isNotNull);
+    });
+  });
+
+  // ---------------------------------------------------------------------------
+  // InstanceApi
+  // ---------------------------------------------------------------------------
+  group('InstanceApi', () {
+    test('getWellKnownFluxer returns server info', () async {
+      if (skipIfNotConfigured()) return;
+      final info = await client.instance.getWellKnownFluxer();
+      expect(info, isNotNull);
+    });
+  });
+
+  // ---------------------------------------------------------------------------
+  // GatewayApi
+  // ---------------------------------------------------------------------------
+  group('GatewayApi', () {
+    test('getGatewayBot returns gateway info', () async {
+      if (skipIfNotConfigured()) return;
+      final gateway = await client.gateway.getGatewayBot();
+      expect(gateway, isNotNull);
+    });
+  });
+
+  // ---------------------------------------------------------------------------
+  // Cross-API: serialization roundtrip via live data
+  // ---------------------------------------------------------------------------
+  group('Serialization via live API', () {
+    test('GuildResponse serializes to JSON and back', () async {
+      if (skipIfNotConfigured()) return;
+      final guilds = await client.guilds.listGuilds();
+      if (guilds.isEmpty) {
+        markTestSkipped('No guilds available');
+        return;
+      }
+      final guild = await client.guilds.getGuild(guildId: guilds.first.id);
+      final json = guild.toJson();
+      final roundtripped = GuildResponse.fromJson(json);
+      expect(roundtripped.id, guild.id);
+      expect(roundtripped.name, guild.name);
+      expect(roundtripped.ownerId, guild.ownerId);
+    });
+
+    test('UserPartialResponse from relationship roundtrips', () async {
+      if (skipIfNotConfigured()) return;
+      final relationships = await client.users.listUserRelationships();
+      if (relationships.isEmpty) {
+        markTestSkipped('No relationships available');
+        return;
+      }
+      final user = relationships.first.user;
+      final json = user.toJson();
+      final roundtripped = UserPartialResponse.fromJson(json);
+      expect(roundtripped.id, user.id);
+      expect(roundtripped.username, user.username);
+    });
+
+    test('MessageResponseSchema from channel roundtrips', () async {
+      if (skipIfNotConfigured()) return;
+      final guilds = await client.guilds.listGuilds();
+      if (guilds.isEmpty) {
+        markTestSkipped('No guilds available');
+        return;
+      }
+      final channels =
+          await client.guilds.listGuildChannels(guildId: guilds.first.id);
+      final textChannel = channels.cast<ChannelResponse?>().firstWhere(
+            (c) => c?.type == 0,
+            orElse: () => null,
+          );
+      if (textChannel == null) {
+        markTestSkipped('No text channels available');
+        return;
+      }
+      final messages =
+          await client.channels.listMessages(channelId: textChannel.id);
+      if (messages.isEmpty) {
+        markTestSkipped('No messages available');
+        return;
+      }
+      final msg = messages.first;
+      final json = msg.toJson();
+      final roundtripped = MessageResponseSchema.fromJson(json);
+      expect(roundtripped.id, msg.id);
+      expect(roundtripped.content, msg.content);
+      expect(roundtripped.author.id, msg.author.id);
+    });
+
+    test('ChannelResponse from guild roundtrips', () async {
+      if (skipIfNotConfigured()) return;
+      final guilds = await client.guilds.listGuilds();
+      if (guilds.isEmpty) {
+        markTestSkipped('No guilds available');
+        return;
+      }
+      final channels =
+          await client.guilds.listGuildChannels(guildId: guilds.first.id);
+      if (channels.isEmpty) {
+        markTestSkipped('No channels available');
+        return;
+      }
+      final channel = channels.first;
+      final json = channel.toJson();
+      final roundtripped = ChannelResponse.fromJson(json);
+      expect(roundtripped.id, channel.id);
+      expect(roundtripped.name, channel.name);
     });
   });
 }
