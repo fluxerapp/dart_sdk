@@ -1,6 +1,5 @@
 import 'package:fluxer_dart/models/channel_response.dart';
 import 'package:fluxer_dart/models/guild_member_response.dart';
-import 'package:fluxer_dart/models/guild_response.dart';
 import 'package:fluxer_dart/models/message_response_schema.dart';
 import 'package:fluxer_dart/models/relationship_response.dart';
 import 'package:fluxer_dart/models/relationship_types.dart';
@@ -8,6 +7,7 @@ import 'package:fluxer_dart/models/user_private_response.dart';
 import 'package:fluxer_dart/models/user_settings_response.dart';
 
 import 'package:fluxer_dart/gateway_client/gateway_event.dart';
+import 'package:fluxer_dart/gateway_client/gateway_types.dart';
 
 /// Parses raw gateway dispatch event data into typed [GatewayEvent] objects.
 class EventParser {
@@ -71,10 +71,10 @@ class EventParser {
             channel: ChannelResponse.fromJson(data),
           ),
         'GUILD_CREATE' => GuildCreateEvent(
-            guild: GuildResponse.fromJson(_guildData(data)),
+            guild: GuildCreateData.fromJson(data),
           ),
         'GUILD_UPDATE' => GuildUpdateEvent(
-            guild: GuildResponse.fromJson(_guildData(data)),
+            guild: GuildCreateData.fromJson(data),
           ),
         'GUILD_DELETE' => GuildDeleteEvent(
             guildId: data['id'] as String,
@@ -126,7 +126,7 @@ class EventParser {
       ),
       guilds: _parseListSafe(
         data['guilds'],
-        (e) => GuildResponse.fromJson(_guildData(e as Map<String, dynamic>)),
+        (e) => GuildReadyData.fromJson(e as Map<String, dynamic>),
       ),
       privateChannels: _parseListSafe(
         data['private_channels'],
@@ -150,22 +150,6 @@ class EventParser {
           (data['presences'] as List<dynamic>?)?.cast<Map<String, dynamic>>() ??
               [],
     );
-  }
-
-  /// Extracts guild data from a gateway guild object.
-  ///
-  /// Gateway guild events wrap metadata under `properties`, while REST
-  /// API responses have fields at the top level.
-  static Map<String, Object?> _guildData(Map<String, dynamic> raw) {
-    final properties = raw['properties'] as Map<String, dynamic>?;
-    if (properties != null) {
-      // Gateway format: merge top-level id with properties.
-      return <String, Object?>{
-        ...properties,
-        'id': raw['id'] ?? properties['id'],
-      };
-    }
-    return raw;
   }
 
   /// Safely parses a JSON list, skipping items that fail deserialization.

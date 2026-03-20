@@ -1,6 +1,6 @@
+import 'package:fluxer_dart/gateway_client/gateway_types.dart';
 import 'package:fluxer_dart/models/channel_response.dart';
 import 'package:fluxer_dart/models/guild_member_response.dart';
-import 'package:fluxer_dart/models/guild_response.dart';
 import 'package:fluxer_dart/models/message_response_schema.dart';
 import 'package:fluxer_dart/models/relationship_response.dart';
 import 'package:fluxer_dart/models/relationship_types.dart';
@@ -30,7 +30,7 @@ class ReadyEvent extends GatewayEvent {
 
   final String sessionId;
   final UserPrivateResponse user;
-  final List<GuildResponse> guilds;
+  final List<GuildReadyData> guilds;
   final List<ChannelResponse> privateChannels;
   final List<RelationshipResponse> relationships;
   final UserSettingsResponse? userSettings;
@@ -181,13 +181,13 @@ class ChannelDeleteEvent extends GatewayEvent {
 class GuildCreateEvent extends GatewayEvent {
   const GuildCreateEvent({required this.guild});
 
-  final GuildResponse guild;
+  final GuildCreateData guild;
 }
 
 class GuildUpdateEvent extends GatewayEvent {
   const GuildUpdateEvent({required this.guild});
 
-  final GuildResponse guild;
+  final GuildCreateData guild;
 }
 
 class GuildDeleteEvent extends GatewayEvent {

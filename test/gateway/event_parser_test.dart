@@ -1,5 +1,6 @@
 import 'package:fluxer_dart/gateway_client/event_parser.dart';
 import 'package:fluxer_dart/gateway_client/gateway_event.dart';
+import 'package:fluxer_dart/gateway_client/gateway_types.dart';
 import 'package:fluxer_dart/models/relationship_types.dart';
 import 'package:test/test.dart';
 
@@ -64,7 +65,18 @@ Map<String, Object?> _channelJson({String id = '200', int type = 0}) => {
       'type': type,
     };
 
-/// Minimal JSON for a GuildResponse.
+/// Minimal JSON for a GuildReadyData (partial guild from READY).
+Map<String, Object?> _guildReadyJson({String id = '300'}) => {
+      'id': id,
+      'name': 'Test Guild',
+      'icon': null,
+      'owner_id': '100',
+      'member_count': 5,
+      'unavailable': false,
+      'joined_at': '2026-01-01T00:00:00.000Z',
+    };
+
+/// Minimal JSON for a GuildResponse (full guild properties).
 Map<String, Object?> _guildJson({String id = '300'}) => {
       'id': id,
       'name': 'Test Guild',
@@ -79,6 +91,30 @@ Map<String, Object?> _guildJson({String id = '300'}) => {
       'explicit_content_filter': 0,
       'default_message_notifications': 0,
       'disabled_operations': 0,
+    };
+
+/// Minimal JSON for a GuildRoleResponse.
+Map<String, Object?> _guildRoleJson({String id = '900'}) => {
+      'id': id,
+      'name': 'Test Role',
+      'color': 0,
+      'position': 0,
+      'permissions': '0',
+      'hoist': false,
+      'mentionable': false,
+    };
+
+/// Builds a GUILD_CREATE payload with properties wrapper and collections.
+Map<String, Object?> _guildCreateJson({String id = '300'}) => {
+      'id': id,
+      'properties': _guildJson(id: id),
+      'channels': [_channelJson(id: '200', type: 0)],
+      'members': [_guildMemberJson(userId: '100')],
+      'roles': [_guildRoleJson(id: '900')],
+      'presences': <Object?>[],
+      'voice_states': <Object?>[],
+      'joined_at': '2026-01-01T00:00:00.000Z',
+      'member_count': 5,
     };
 
 /// Minimal JSON for a MessageResponseSchema.
@@ -127,11 +163,11 @@ void main() {
   // ---------------------------------------------------------------------------
 
   group('Connection lifecycle', () {
-    test('READY → ReadyEvent with all fields', () {
+    test('READY → ReadyEvent with GuildReadyData guilds', () {
       final data = {
         'session_id': 'sess-abc-123',
         'user': _userPrivateJson(id: '42'),
-        'guilds': [_guildJson(id: '300'), _guildJson(id: '301')],
+        'guilds': [_guildReadyJson(id: '300'), _guildReadyJson(id: '301')],
         'private_channels': [_channelJson(id: '500', type: 1)],
         'relationships': [_relationshipJson(id: '100', type: 1)],
         'user_settings': null,
@@ -146,7 +182,11 @@ void main() {
       expect(ready.sessionId, 'sess-abc-123');
       expect(ready.user.id, '42');
       expect(ready.guilds, hasLength(2));
+      expect(ready.guilds[0], isA<GuildReadyData>());
       expect(ready.guilds[0].id, '300');
+      expect(ready.guilds[0].name, 'Test Guild');
+      expect(ready.guilds[0].memberCount, 5);
+      expect(ready.guilds[0].unavailable, false);
       expect(ready.guilds[1].id, '301');
       expect(ready.privateChannels, hasLength(1));
       expect(ready.privateChannels[0].id, '500');
@@ -340,23 +380,52 @@ void main() {
   // ---------------------------------------------------------------------------
 
   group('Guilds', () {
-    test('GUILD_CREATE → GuildCreateEvent', () {
-      final data = _guildJson(id: '600');
+    test('GUILD_CREATE → GuildCreateEvent with GuildCreateData', () {
+      final data = _guildCreateJson(id: '600');
       final event = parser.parse('GUILD_CREATE', data);
 
       expect(event, isA<GuildCreateEvent>());
       final e = event as GuildCreateEvent;
-      expect(e.guild.id, '600');
-      expect(e.guild.name, 'Test Guild');
+      expect(e.guild, isA<GuildCreateData>());
+      expect(e.guild.guild.id, '600');
+      expect(e.guild.guild.name, 'Test Guild');
+      expect(e.guild.channels, hasLength(1));
+      expect(e.guild.channels[0].id, '200');
+      expect(e.guild.members, hasLength(1));
+      expect(e.guild.members[0].user.id, '100');
+      expect(e.guild.roles, hasLength(1));
+      expect(e.guild.roles[0].id, '900');
+      expect(e.guild.joinedAt, '2026-01-01T00:00:00.000Z');
+      expect(e.guild.memberCount, 5);
     });
 
-    test('GUILD_UPDATE → GuildUpdateEvent', () {
-      final data = _guildJson(id: '601');
+    test('GUILD_CREATE without properties wrapper (fallback)', () {
+      final data = <String, Object?>{
+        ..._guildJson(id: '603'),
+        'channels': <Object?>[],
+        'members': <Object?>[],
+        'roles': <Object?>[],
+      };
+      final event = parser.parse('GUILD_CREATE', data);
+
+      expect(event, isA<GuildCreateEvent>());
+      final e = event as GuildCreateEvent;
+      expect(e.guild.guild.id, '603');
+      expect(e.guild.guild.name, 'Test Guild');
+      expect(e.guild.channels, isEmpty);
+    });
+
+    test('GUILD_UPDATE → GuildUpdateEvent with GuildCreateData', () {
+      final data = _guildCreateJson(id: '601');
       final event = parser.parse('GUILD_UPDATE', data);
 
       expect(event, isA<GuildUpdateEvent>());
       final e = event as GuildUpdateEvent;
-      expect(e.guild.id, '601');
+      expect(e.guild, isA<GuildCreateData>());
+      expect(e.guild.guild.id, '601');
+      expect(e.guild.guild.name, 'Test Guild');
+      expect(e.guild.channels, hasLength(1));
+      expect(e.guild.roles, hasLength(1));
     });
 
     test('GUILD_DELETE → GuildDeleteEvent with guildId', () {
