@@ -61,7 +61,8 @@ class InviteResponseSchemaGuildInviteResponse {
 
   factory InviteResponseSchemaGuildInviteResponse.fromJson(
     Map<String, dynamic> json,
-  ) => _$InviteResponseSchemaGuildInviteResponseFromJson(json);
+  ) =>
+      _$InviteResponseSchemaGuildInviteResponseFromJson(json);
 
   Map<String, dynamic> toJson() =>
       _$InviteResponseSchemaGuildInviteResponseToJson(this);
@@ -91,7 +92,8 @@ class InviteResponseSchemaGroupDmInviteResponse {
 
   factory InviteResponseSchemaGroupDmInviteResponse.fromJson(
     Map<String, dynamic> json,
-  ) => _$InviteResponseSchemaGroupDmInviteResponseFromJson(json);
+  ) =>
+      _$InviteResponseSchemaGroupDmInviteResponseFromJson(json);
 
   Map<String, dynamic> toJson() =>
       _$InviteResponseSchemaGroupDmInviteResponseToJson(this);
@@ -118,7 +120,8 @@ class InviteResponseSchemaPackInviteResponse {
 
   factory InviteResponseSchemaPackInviteResponse.fromJson(
     Map<String, dynamic> json,
-  ) => _$InviteResponseSchemaPackInviteResponseFromJson(json);
+  ) =>
+      _$InviteResponseSchemaPackInviteResponseFromJson(json);
 
   Map<String, dynamic> toJson() =>
       _$InviteResponseSchemaPackInviteResponseToJson(this);

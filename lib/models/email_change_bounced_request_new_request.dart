@@ -16,7 +16,8 @@ class EmailChangeBouncedRequestNewRequest {
 
   factory EmailChangeBouncedRequestNewRequest.fromJson(
     Map<String, Object?> json,
-  ) => _$EmailChangeBouncedRequestNewRequestFromJson(json);
+  ) =>
+      _$EmailChangeBouncedRequestNewRequestFromJson(json);
 
   @JsonKey(name: 'new_email')
   final EmailType newEmail;

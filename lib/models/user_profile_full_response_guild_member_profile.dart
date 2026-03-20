@@ -19,7 +19,8 @@ class UserProfileFullResponseGuildMemberProfile {
 
   factory UserProfileFullResponseGuildMemberProfile.fromJson(
     Map<String, Object?> json,
-  ) => _$UserProfileFullResponseGuildMemberProfileFromJson(json);
+  ) =>
+      _$UserProfileFullResponseGuildMemberProfileFromJson(json);
 
   /// Guild-specific biography text
   final String? bio;

@@ -16,7 +16,8 @@ class GitHubWebhookCheckRunCheckSuitePullRequests {
 
   factory GitHubWebhookCheckRunCheckSuitePullRequests.fromJson(
     Map<String, Object?> json,
-  ) => _$GitHubWebhookCheckRunCheckSuitePullRequestsFromJson(json);
+  ) =>
+      _$GitHubWebhookCheckRunCheckSuitePullRequestsFromJson(json);
 
   final Int32Type number;
 

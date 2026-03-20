@@ -25,14 +25,17 @@ class InviteMetadataResponseSchema {
   Map<String, dynamic> toJson() => _json;
 
   InviteMetadataResponseSchemaGuildInviteMetadataResponse
-  toGuildInviteMetadataResponse() =>
-      InviteMetadataResponseSchemaGuildInviteMetadataResponse.fromJson(_json);
+      toGuildInviteMetadataResponse() =>
+          InviteMetadataResponseSchemaGuildInviteMetadataResponse.fromJson(
+              _json);
   InviteMetadataResponseSchemaGroupDmInviteMetadataResponse
-  toGroupDmInviteMetadataResponse() =>
-      InviteMetadataResponseSchemaGroupDmInviteMetadataResponse.fromJson(_json);
+      toGroupDmInviteMetadataResponse() =>
+          InviteMetadataResponseSchemaGroupDmInviteMetadataResponse.fromJson(
+              _json);
   InviteMetadataResponseSchemaPackInviteMetadataResponse
-  toPackInviteMetadataResponse() =>
-      InviteMetadataResponseSchemaPackInviteMetadataResponse.fromJson(_json);
+      toPackInviteMetadataResponse() =>
+          InviteMetadataResponseSchemaPackInviteMetadataResponse.fromJson(
+              _json);
 }
 
 @JsonSerializable()
@@ -75,7 +78,8 @@ class InviteMetadataResponseSchemaGuildInviteMetadataResponse {
 
   factory InviteMetadataResponseSchemaGuildInviteMetadataResponse.fromJson(
     Map<String, dynamic> json,
-  ) => _$InviteMetadataResponseSchemaGuildInviteMetadataResponseFromJson(json);
+  ) =>
+      _$InviteMetadataResponseSchemaGuildInviteMetadataResponseFromJson(json);
 
   Map<String, dynamic> toJson() =>
       _$InviteMetadataResponseSchemaGuildInviteMetadataResponseToJson(this);
@@ -149,7 +153,8 @@ class InviteMetadataResponseSchemaPackInviteMetadataResponse {
 
   factory InviteMetadataResponseSchemaPackInviteMetadataResponse.fromJson(
     Map<String, dynamic> json,
-  ) => _$InviteMetadataResponseSchemaPackInviteMetadataResponseFromJson(json);
+  ) =>
+      _$InviteMetadataResponseSchemaPackInviteMetadataResponseFromJson(json);
 
   Map<String, dynamic> toJson() =>
       _$InviteMetadataResponseSchemaPackInviteMetadataResponseToJson(this);

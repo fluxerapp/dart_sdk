@@ -15,7 +15,8 @@ class GuildEmojiBulkCreateResponseFailed {
 
   factory GuildEmojiBulkCreateResponseFailed.fromJson(
     Map<String, Object?> json,
-  ) => _$GuildEmojiBulkCreateResponseFailedFromJson(json);
+  ) =>
+      _$GuildEmojiBulkCreateResponseFailedFromJson(json);
 
   /// The name of the emoji that failed to create
   final String name;

@@ -14,7 +14,8 @@ class RelationshipNicknameUpdateRequest {
 
   factory RelationshipNicknameUpdateRequest.fromJson(
     Map<String, Object?> json,
-  ) => _$RelationshipNicknameUpdateRequestFromJson(json);
+  ) =>
+      _$RelationshipNicknameUpdateRequestFromJson(json);
 
   /// Custom nickname for this friend (max 256 characters)
   final String? nickname;

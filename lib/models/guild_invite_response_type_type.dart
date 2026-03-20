@@ -16,13 +16,13 @@ enum GuildInviteResponseTypeType {
   const GuildInviteResponseTypeType(this.json);
 
   factory GuildInviteResponseTypeType.fromJson(int json) => values.firstWhere(
-    (e) => e.json == json,
-    orElse: () => $unknown,
-  );
+        (e) => e.json == json,
+        orElse: () => $unknown,
+      );
 
   final int? json;
 
-  String toJson() => json?.toString() ?? 'null';
+  int? toJson() => json;
 
   @override
   String toString() => json?.toString() ?? super.toString();

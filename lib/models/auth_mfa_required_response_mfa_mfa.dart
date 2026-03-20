@@ -24,7 +24,7 @@ enum AuthMfaRequiredResponseMfaMfa {
 
   final bool? json;
 
-  String toJson() => json?.toString() ?? 'null';
+  bool? toJson() => json;
 
   @override
   String toString() => json?.toString() ?? super.toString();

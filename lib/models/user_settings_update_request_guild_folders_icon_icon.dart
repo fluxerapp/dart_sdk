@@ -42,5 +42,5 @@ enum UserSettingsUpdateRequestGuildFoldersIconIcon {
 
   /// Returns all defined enum values excluding the $unknown value.
   static List<UserSettingsUpdateRequestGuildFoldersIconIcon>
-  get $valuesDefined => values.where((value) => value != $unknown).toList();
+      get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

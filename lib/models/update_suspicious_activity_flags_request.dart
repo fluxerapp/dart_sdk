@@ -18,7 +18,8 @@ class UpdateSuspiciousActivityFlagsRequest {
 
   factory UpdateSuspiciousActivityFlagsRequest.fromJson(
     Map<String, Object?> json,
-  ) => _$UpdateSuspiciousActivityFlagsRequestFromJson(json);
+  ) =>
+      _$UpdateSuspiciousActivityFlagsRequestFromJson(json);
 
   @JsonKey(name: 'user_id')
   final SnowflakeType userId;

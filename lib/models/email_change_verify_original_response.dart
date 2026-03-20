@@ -14,7 +14,8 @@ class EmailChangeVerifyOriginalResponse {
 
   factory EmailChangeVerifyOriginalResponse.fromJson(
     Map<String, Object?> json,
-  ) => _$EmailChangeVerifyOriginalResponseFromJson(json);
+  ) =>
+      _$EmailChangeVerifyOriginalResponseFromJson(json);
 
   /// Proof token issued after verifying the original email
   @JsonKey(name: 'original_proof')

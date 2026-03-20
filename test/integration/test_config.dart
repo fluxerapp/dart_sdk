@@ -36,26 +36,39 @@ class TestConfig {
   static String get baseUrl =>
       _get('FLUXER_TEST_BASE_URL', defaultValue: 'https://api.fluxer.app/v1');
 
-  /// Email for login
+  /// Direct token (use when captcha prevents email/password login)
+  static String get token => _get('FLUXER_TEST_TOKEN');
+
+  /// Email for login (alternative to direct token)
   static String get email => _get('FLUXER_TEST_EMAIL');
 
-  /// Password for login
+  /// Password for login (alternative to direct token)
   static String get password => _get('FLUXER_TEST_PASSWORD');
 
-  /// Whether live API tests should run
-  static bool get isConfigured => email.isNotEmpty && password.isNotEmpty;
+  /// Whether live API tests should run.
+  /// Needs either a direct token or email/password credentials.
+  static bool get isConfigured =>
+      token.isNotEmpty || (email.isNotEmpty && password.isNotEmpty);
 
   /// Create a bare Dio instance (no auth)
   static Dio _createBareDio() => Dio(BaseOptions(
         baseUrl: baseUrl,
+        contentType: 'application/json',
         connectTimeout: const Duration(seconds: 15),
         receiveTimeout: const Duration(seconds: 10),
       ));
 
-  /// Login with email/password and return a token. Caches across tests.
+  /// Get auth token — uses direct token if set, otherwise logs in with email/password.
   static Future<String> getToken() async {
     if (_cachedToken != null) return _cachedToken!;
 
+    // Prefer direct token (avoids captcha issues on live API)
+    if (token.isNotEmpty) {
+      _cachedToken = token;
+      return _cachedToken!;
+    }
+
+    // Fall back to email/password login (for staging/local APIs)
     final dio = _createBareDio();
     final authApi = AuthApi(dio, baseUrl: baseUrl);
     final response = await authApi.loginUser(
@@ -68,9 +81,9 @@ class TestConfig {
 
   /// Create a configured Dio instance with auth token
   static Future<Dio> createDio() async {
-    final token = await getToken();
+    final authToken = await getToken();
     final dio = _createBareDio();
-    dio.options.headers['Authorization'] = 'Bearer $token';
+    dio.options.headers['Authorization'] = 'Bearer $authToken';
     return dio;
   }
 }

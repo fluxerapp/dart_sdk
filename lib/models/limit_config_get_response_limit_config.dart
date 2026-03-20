@@ -17,7 +17,8 @@ class LimitConfigGetResponseLimitConfig {
 
   factory LimitConfigGetResponseLimitConfig.fromJson(
     Map<String, Object?> json,
-  ) => _$LimitConfigGetResponseLimitConfigFromJson(json);
+  ) =>
+      _$LimitConfigGetResponseLimitConfigFromJson(json);
 
   final List<String> traitDefinitions;
   final List<LimitConfigGetResponseLimitConfigRules> rules;

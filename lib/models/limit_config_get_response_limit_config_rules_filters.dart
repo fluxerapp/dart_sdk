@@ -15,7 +15,8 @@ class LimitConfigGetResponseLimitConfigRulesFilters {
 
   factory LimitConfigGetResponseLimitConfigRulesFilters.fromJson(
     Map<String, Object?> json,
-  ) => _$LimitConfigGetResponseLimitConfigRulesFiltersFromJson(json);
+  ) =>
+      _$LimitConfigGetResponseLimitConfigRulesFiltersFromJson(json);
 
   /// Trait filters that must match for the rule to apply
   final List<String>? traits;

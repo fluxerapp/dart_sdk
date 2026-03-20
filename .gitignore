@@ -40,5 +40,5 @@ pubspec.lock
 # Mac
 .DS_Store
 
-.openapi-generator/
+openapi.json
 .env

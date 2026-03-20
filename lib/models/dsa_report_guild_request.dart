@@ -43,7 +43,7 @@ class DsaReportGuildRequest {
   /// EU country code of the reporter residence
   @JsonKey(name: 'reporter_country_of_residence')
   final DsaReportGuildRequestReporterCountryOfResidenceReporterCountryOfResidence
-  reporterCountryOfResidence;
+      reporterCountryOfResidence;
 
   /// Fluxer tag of the reporter if they have an account
   @JsonKey(name: 'reporter_fluxer_tag')

@@ -18,7 +18,8 @@ class WellKnownFluxerResponsePublicKey {
 
   factory WellKnownFluxerResponsePublicKey.fromJson(
     Map<String, Object?> json,
-  ) => _$WellKnownFluxerResponsePublicKeyFromJson(json);
+  ) =>
+      _$WellKnownFluxerResponsePublicKeyFromJson(json);
 
   /// Key identifier
   final String id;

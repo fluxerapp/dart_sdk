@@ -19,7 +19,8 @@ class LimitConfigGetResponseLimitConfigRules {
 
   factory LimitConfigGetResponseLimitConfigRules.fromJson(
     Map<String, Object?> json,
-  ) => _$LimitConfigGetResponseLimitConfigRulesFromJson(json);
+  ) =>
+      _$LimitConfigGetResponseLimitConfigRulesFromJson(json);
 
   /// Unique rule identifier
   final String id;

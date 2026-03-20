@@ -16,7 +16,8 @@ class DeleteSnowflakeReservationRequest {
 
   factory DeleteSnowflakeReservationRequest.fromJson(
     Map<String, Object?> json,
-  ) => _$DeleteSnowflakeReservationRequestFromJson(json);
+  ) =>
+      _$DeleteSnowflakeReservationRequestFromJson(json);
 
   final EmailType email;
 

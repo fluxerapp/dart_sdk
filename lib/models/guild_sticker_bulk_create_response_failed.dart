@@ -15,7 +15,8 @@ class GuildStickerBulkCreateResponseFailed {
 
   factory GuildStickerBulkCreateResponseFailed.fromJson(
     Map<String, Object?> json,
-  ) => _$GuildStickerBulkCreateResponseFailedFromJson(json);
+  ) =>
+      _$GuildStickerBulkCreateResponseFailedFromJson(json);
 
   /// The name of the sticker that failed to create
   final String name;

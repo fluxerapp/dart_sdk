@@ -14,11 +14,11 @@ void main() {
       expect(NsfwLevel.fromJson(999), NsfwLevel.$unknown);
     });
 
-    test('serializes to string representation', () {
-      expect(NsfwLevel.valueDefault.toJson(), '0');
-      expect(NsfwLevel.explicit.toJson(), '1');
-      expect(NsfwLevel.safe.toJson(), '2');
-      expect(NsfwLevel.ageRestricted.toJson(), '3');
+    test('serializes to int representation', () {
+      expect(NsfwLevel.valueDefault.toJson(), 0);
+      expect(NsfwLevel.explicit.toJson(), 1);
+      expect(NsfwLevel.safe.toJson(), 2);
+      expect(NsfwLevel.ageRestricted.toJson(), 3);
     });
 
     test('\$valuesDefined excludes \$unknown', () {

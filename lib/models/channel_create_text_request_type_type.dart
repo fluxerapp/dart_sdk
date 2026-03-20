@@ -22,7 +22,7 @@ enum ChannelCreateTextRequestTypeType {
 
   final int? json;
 
-  String toJson() => json?.toString() ?? 'null';
+  int? toJson() => json;
 
   @override
   String toString() => json?.toString() ?? super.toString();

@@ -34,5 +34,5 @@ enum PurgeGuildAssetResultSchemaAssetTypeAssetType {
 
   /// Returns all defined enum values excluding the $unknown value.
   static List<PurgeGuildAssetResultSchemaAssetTypeAssetType>
-  get $valuesDefined => values.where((value) => value != $unknown).toList();
+      get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

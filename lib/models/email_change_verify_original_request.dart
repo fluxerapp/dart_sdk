@@ -15,7 +15,8 @@ class EmailChangeVerifyOriginalRequest {
 
   factory EmailChangeVerifyOriginalRequest.fromJson(
     Map<String, Object?> json,
-  ) => _$EmailChangeVerifyOriginalRequestFromJson(json);
+  ) =>
+      _$EmailChangeVerifyOriginalRequestFromJson(json);
 
   /// Email change ticket identifier
   final String ticket;

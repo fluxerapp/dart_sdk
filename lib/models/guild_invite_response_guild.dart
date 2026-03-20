@@ -66,7 +66,7 @@ class GuildInviteResponseGuild {
   /// The alignment of the splash card
   @JsonKey(name: 'splash_card_alignment')
   final GuildInviteResponseGuildSplashCardAlignmentSplashCardAlignment
-  splashCardAlignment;
+      splashCardAlignment;
 
   /// The hash of the embedded invite splash
   @JsonKey(name: 'embed_splash')

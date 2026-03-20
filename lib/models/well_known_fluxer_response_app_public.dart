@@ -14,7 +14,8 @@ class WellKnownFluxerResponseAppPublic {
 
   factory WellKnownFluxerResponseAppPublic.fromJson(
     Map<String, Object?> json,
-  ) => _$WellKnownFluxerResponseAppPublicFromJson(json);
+  ) =>
+      _$WellKnownFluxerResponseAppPublicFromJson(json);
 
   /// Sentry DSN for client-side error reporting
   @JsonKey(name: 'sentry_dsn')

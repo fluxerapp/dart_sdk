@@ -22,9 +22,9 @@ enum HarvestStatusEnum {
   const HarvestStatusEnum(this.json);
 
   factory HarvestStatusEnum.fromJson(String json) => values.firstWhere(
-    (e) => e.json == json,
-    orElse: () => $unknown,
-  );
+        (e) => e.json == json,
+        orElse: () => $unknown,
+      );
 
   final String? json;
 

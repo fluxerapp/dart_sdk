@@ -24,12 +24,12 @@ enum MessageSearchIndexingResponseIndexingIndexing {
 
   final bool? json;
 
-  String toJson() => json?.toString() ?? 'null';
+  bool? toJson() => json;
 
   @override
   String toString() => json?.toString() ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
   static List<MessageSearchIndexingResponseIndexingIndexing>
-  get $valuesDefined => values.where((value) => value != $unknown).toList();
+      get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

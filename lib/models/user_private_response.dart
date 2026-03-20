@@ -222,7 +222,7 @@ class UserPrivateResponse {
   /// Information about a pending bulk message deletion request
   @JsonKey(name: 'pending_bulk_message_deletion')
   final UserPrivateResponsePendingBulkMessageDeletion?
-  pendingBulkMessageDeletion;
+      pendingBulkMessageDeletion;
 
   Map<String, Object?> toJson() => _$UserPrivateResponseToJson(this);
 }

@@ -295,5 +295,5 @@ abstract class AuthApi {
   /// Retrieve WebAuthn authentication challenge and options for passwordless login with biometrics or security keys.
   @POST('/auth/webauthn/authentication-options')
   Future<WebAuthnAuthenticationOptionsResponse>
-  getWebauthnAuthenticationOptions();
+      getWebauthnAuthenticationOptions();
 }

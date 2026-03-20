@@ -15,7 +15,8 @@ class WellKnownFluxerResponseFederation {
 
   factory WellKnownFluxerResponseFederation.fromJson(
     Map<String, Object?> json,
-  ) => _$WellKnownFluxerResponseFederationFromJson(json);
+  ) =>
+      _$WellKnownFluxerResponseFederationFromJson(json);
 
   /// Whether federation is enabled on this instance
   final bool enabled;

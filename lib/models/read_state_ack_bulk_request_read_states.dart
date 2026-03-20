@@ -17,7 +17,8 @@ class ReadStateAckBulkRequestReadStates {
 
   factory ReadStateAckBulkRequestReadStates.fromJson(
     Map<String, Object?> json,
-  ) => _$ReadStateAckBulkRequestReadStatesFromJson(json);
+  ) =>
+      _$ReadStateAckBulkRequestReadStatesFromJson(json);
 
   @JsonKey(name: 'channel_id')
   final SnowflakeType channelId;

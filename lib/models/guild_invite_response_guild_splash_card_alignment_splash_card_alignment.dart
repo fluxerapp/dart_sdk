@@ -23,19 +23,20 @@ enum GuildInviteResponseGuildSplashCardAlignmentSplashCardAlignment {
 
   factory GuildInviteResponseGuildSplashCardAlignmentSplashCardAlignment.fromJson(
     int json,
-  ) => values.firstWhere(
-    (e) => e.json == json,
-    orElse: () => $unknown,
-  );
+  ) =>
+      values.firstWhere(
+        (e) => e.json == json,
+        orElse: () => $unknown,
+      );
 
   final int? json;
 
-  String toJson() => json?.toString() ?? 'null';
+  int? toJson() => json;
 
   @override
   String toString() => json?.toString() ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
   static List<GuildInviteResponseGuildSplashCardAlignmentSplashCardAlignment>
-  get $valuesDefined => values.where((value) => value != $unknown).toList();
+      get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

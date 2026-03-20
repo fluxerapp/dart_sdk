@@ -18,9 +18,9 @@ enum MessageSortOrder {
   const MessageSortOrder(this.json);
 
   factory MessageSortOrder.fromJson(String json) => values.firstWhere(
-    (e) => e.json == json,
-    orElse: () => $unknown,
-  );
+        (e) => e.json == json,
+        orElse: () => $unknown,
+      );
 
   final String? json;
 

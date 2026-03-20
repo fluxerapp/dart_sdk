@@ -20,7 +20,8 @@ class UserProfileFullResponseUserProfile {
 
   factory UserProfileFullResponseUserProfile.fromJson(
     Map<String, Object?> json,
-  ) => _$UserProfileFullResponseUserProfileFromJson(json);
+  ) =>
+      _$UserProfileFullResponseUserProfileFromJson(json);
 
   /// User biography text
   final String? bio;

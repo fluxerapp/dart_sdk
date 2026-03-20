@@ -40,12 +40,12 @@ enum MessageSearchResultsResponseMessagesTypeType {
 
   final int? json;
 
-  String toJson() => json?.toString() ?? 'null';
+  int? toJson() => json;
 
   @override
   String toString() => json?.toString() ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
   static List<MessageSearchResultsResponseMessagesTypeType>
-  get $valuesDefined => values.where((value) => value != $unknown).toList();
+      get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

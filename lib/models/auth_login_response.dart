@@ -19,8 +19,8 @@ class AuthLoginResponse {
   Map<String, dynamic> toJson() => _json;
 
   AuthLoginResponseAuthTokenWithUserIdResponse
-  toAuthTokenWithUserIdResponse() =>
-      AuthLoginResponseAuthTokenWithUserIdResponse.fromJson(_json);
+      toAuthTokenWithUserIdResponse() =>
+          AuthLoginResponseAuthTokenWithUserIdResponse.fromJson(_json);
   AuthLoginResponseAuthMfaRequiredResponse toAuthMfaRequiredResponse() =>
       AuthLoginResponseAuthMfaRequiredResponse.fromJson(_json);
 }
@@ -38,7 +38,8 @@ class AuthLoginResponseAuthTokenWithUserIdResponse {
 
   factory AuthLoginResponseAuthTokenWithUserIdResponse.fromJson(
     Map<String, dynamic> json,
-  ) => _$AuthLoginResponseAuthTokenWithUserIdResponseFromJson(json);
+  ) =>
+      _$AuthLoginResponseAuthTokenWithUserIdResponseFromJson(json);
 
   Map<String, dynamic> toJson() =>
       _$AuthLoginResponseAuthTokenWithUserIdResponseToJson(this);
@@ -68,7 +69,8 @@ class AuthLoginResponseAuthMfaRequiredResponse {
 
   factory AuthLoginResponseAuthMfaRequiredResponse.fromJson(
     Map<String, dynamic> json,
-  ) => _$AuthLoginResponseAuthMfaRequiredResponseFromJson(json);
+  ) =>
+      _$AuthLoginResponseAuthMfaRequiredResponseFromJson(json);
 
   Map<String, dynamic> toJson() =>
       _$AuthLoginResponseAuthMfaRequiredResponseToJson(this);

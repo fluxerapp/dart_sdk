@@ -25,7 +25,8 @@ class ReportAdminResponseSchemaMessageContext {
 
   factory ReportAdminResponseSchemaMessageContext.fromJson(
     Map<String, Object?> json,
-  ) => _$ReportAdminResponseSchemaMessageContextFromJson(json);
+  ) =>
+      _$ReportAdminResponseSchemaMessageContextFromJson(json);
 
   final SnowflakeType id;
   @JsonKey(name: 'channel_id')

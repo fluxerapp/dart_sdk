@@ -21,15 +21,15 @@ class MessageShredStatusResponse {
   Map<String, dynamic> toJson() => _json;
 
   MessageShredStatusResponseMessageShredStatusNotFoundResponse
-  toMessageShredStatusNotFoundResponse() =>
-      MessageShredStatusResponseMessageShredStatusNotFoundResponse.fromJson(
-        _json,
-      );
+      toMessageShredStatusNotFoundResponse() =>
+          MessageShredStatusResponseMessageShredStatusNotFoundResponse.fromJson(
+            _json,
+          );
   MessageShredStatusResponseMessageShredStatusProgressResponse
-  toMessageShredStatusProgressResponse() =>
-      MessageShredStatusResponseMessageShredStatusProgressResponse.fromJson(
-        _json,
-      );
+      toMessageShredStatusProgressResponse() =>
+          MessageShredStatusResponseMessageShredStatusProgressResponse.fromJson(
+            _json,
+          );
 }
 
 @JsonSerializable()
@@ -42,9 +42,10 @@ class MessageShredStatusResponseMessageShredStatusNotFoundResponse {
 
   factory MessageShredStatusResponseMessageShredStatusNotFoundResponse.fromJson(
     Map<String, dynamic> json,
-  ) => _$MessageShredStatusResponseMessageShredStatusNotFoundResponseFromJson(
-    json,
-  );
+  ) =>
+      _$MessageShredStatusResponseMessageShredStatusNotFoundResponseFromJson(
+        json,
+      );
 
   Map<String, dynamic> toJson() =>
       _$MessageShredStatusResponseMessageShredStatusNotFoundResponseToJson(
@@ -81,9 +82,10 @@ class MessageShredStatusResponseMessageShredStatusProgressResponse {
 
   factory MessageShredStatusResponseMessageShredStatusProgressResponse.fromJson(
     Map<String, dynamic> json,
-  ) => _$MessageShredStatusResponseMessageShredStatusProgressResponseFromJson(
-    json,
-  );
+  ) =>
+      _$MessageShredStatusResponseMessageShredStatusProgressResponseFromJson(
+        json,
+      );
 
   Map<String, dynamic> toJson() =>
       _$MessageShredStatusResponseMessageShredStatusProgressResponseToJson(

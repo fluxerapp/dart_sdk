@@ -15,7 +15,8 @@ class DiscoveryApplicationPatchRequest {
 
   factory DiscoveryApplicationPatchRequest.fromJson(
     Map<String, Object?> json,
-  ) => _$DiscoveryApplicationPatchRequestFromJson(json);
+  ) =>
+      _$DiscoveryApplicationPatchRequestFromJson(json);
 
   /// Updated description for discovery listing
   final String? description;

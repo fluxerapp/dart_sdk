@@ -25,7 +25,8 @@ class MessageShredStatusProgressResponse {
 
   factory MessageShredStatusProgressResponse.fromJson(
     Map<String, Object?> json,
-  ) => _$MessageShredStatusProgressResponseFromJson(json);
+  ) =>
+      _$MessageShredStatusProgressResponseFromJson(json);
 
   /// Current message shred job status
   final MessageShredStatusProgressResponseStatusStatus status;

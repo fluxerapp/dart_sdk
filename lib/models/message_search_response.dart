@@ -20,11 +20,11 @@ class MessageSearchResponse {
   Map<String, dynamic> toJson() => _json;
 
   MessageSearchResponseMessageSearchResultsResponse
-  toMessageSearchResultsResponse() =>
-      MessageSearchResponseMessageSearchResultsResponse.fromJson(_json);
+      toMessageSearchResultsResponse() =>
+          MessageSearchResponseMessageSearchResultsResponse.fromJson(_json);
   MessageSearchResponseMessageSearchIndexingResponse
-  toMessageSearchIndexingResponse() =>
-      MessageSearchResponseMessageSearchIndexingResponse.fromJson(_json);
+      toMessageSearchIndexingResponse() =>
+          MessageSearchResponseMessageSearchIndexingResponse.fromJson(_json);
 }
 
 @JsonSerializable()
@@ -44,7 +44,8 @@ class MessageSearchResponseMessageSearchResultsResponse {
 
   factory MessageSearchResponseMessageSearchResultsResponse.fromJson(
     Map<String, dynamic> json,
-  ) => _$MessageSearchResponseMessageSearchResultsResponseFromJson(json);
+  ) =>
+      _$MessageSearchResponseMessageSearchResultsResponseFromJson(json);
 
   Map<String, dynamic> toJson() =>
       _$MessageSearchResponseMessageSearchResultsResponseToJson(this);
@@ -60,7 +61,8 @@ class MessageSearchResponseMessageSearchIndexingResponse {
 
   factory MessageSearchResponseMessageSearchIndexingResponse.fromJson(
     Map<String, dynamic> json,
-  ) => _$MessageSearchResponseMessageSearchIndexingResponseFromJson(json);
+  ) =>
+      _$MessageSearchResponseMessageSearchIndexingResponseFromJson(json);
 
   Map<String, dynamic> toJson() =>
       _$MessageSearchResponseMessageSearchIndexingResponseToJson(this);

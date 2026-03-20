@@ -16,7 +16,8 @@ class MessageShredStatusNotFoundResponse {
 
   factory MessageShredStatusNotFoundResponse.fromJson(
     Map<String, Object?> json,
-  ) => _$MessageShredStatusNotFoundResponseFromJson(json);
+  ) =>
+      _$MessageShredStatusNotFoundResponseFromJson(json);
 
   final MessageShredStatusNotFoundResponseStatusStatus status;
 

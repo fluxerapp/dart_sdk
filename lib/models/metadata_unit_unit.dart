@@ -17,9 +17,9 @@ enum MetadataUnitUnit {
   const MetadataUnitUnit(this.json);
 
   factory MetadataUnitUnit.fromJson(String json) => values.firstWhere(
-    (e) => e.json == json,
-    orElse: () => $unknown,
-  );
+        (e) => e.json == json,
+        orElse: () => $unknown,
+      );
 
   final String? json;
 

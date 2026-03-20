@@ -48,8 +48,8 @@ extension DsaReportRequestUnionDeserializer on DsaReportRequest {
       _ when value == effective[DsaReportRequestGuild] =>
         DsaReportRequestGuild.fromJson(json),
       _ => throw FormatException(
-        'Unknown discriminator value "${json[key]}" for DsaReportRequest',
-      ),
+          'Unknown discriminator value "${json[key]}" for DsaReportRequest',
+        ),
     };
   }
 }
@@ -63,7 +63,7 @@ class DsaReportRequestMessage extends DsaReportRequest {
   final String reporterFullLegalName;
   @JsonKey(name: 'reporter_country_of_residence')
   final DsaReportMessageRequestReporterCountryOfResidenceReporterCountryOfResidence
-  reporterCountryOfResidence;
+      reporterCountryOfResidence;
   @JsonKey(name: 'reporter_fluxer_tag')
   final String? reporterFluxerTag;
   @JsonKey(name: 'report_type')
@@ -102,7 +102,7 @@ class DsaReportRequestUser extends DsaReportRequest {
   final String reporterFullLegalName;
   @JsonKey(name: 'reporter_country_of_residence')
   final DsaReportUserRequestReporterCountryOfResidenceReporterCountryOfResidence
-  reporterCountryOfResidence;
+      reporterCountryOfResidence;
   @JsonKey(name: 'reporter_fluxer_tag')
   final String? reporterFluxerTag;
   @JsonKey(name: 'report_type')
@@ -141,7 +141,7 @@ class DsaReportRequestGuild extends DsaReportRequest {
   final String reporterFullLegalName;
   @JsonKey(name: 'reporter_country_of_residence')
   final DsaReportGuildRequestReporterCountryOfResidenceReporterCountryOfResidence
-  reporterCountryOfResidence;
+      reporterCountryOfResidence;
   @JsonKey(name: 'reporter_fluxer_tag')
   final String? reporterFluxerTag;
   @JsonKey(name: 'report_type')

@@ -16,7 +16,8 @@ class CancelBulkMessageDeletionRequest {
 
   factory CancelBulkMessageDeletionRequest.fromJson(
     Map<String, Object?> json,
-  ) => _$CancelBulkMessageDeletionRequestFromJson(json);
+  ) =>
+      _$CancelBulkMessageDeletionRequestFromJson(json);
 
   @JsonKey(name: 'user_id')
   final SnowflakeType userId;

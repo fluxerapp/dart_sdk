@@ -35,7 +35,8 @@ class IndexRefreshStatusResponseVariant1 {
 
   factory IndexRefreshStatusResponseVariant1.fromJson(
     Map<String, dynamic> json,
-  ) => _$IndexRefreshStatusResponseVariant1FromJson(json);
+  ) =>
+      _$IndexRefreshStatusResponseVariant1FromJson(json);
 
   Map<String, dynamic> toJson() =>
       _$IndexRefreshStatusResponseVariant1ToJson(this);
@@ -69,7 +70,8 @@ class IndexRefreshStatusResponseVariant2 {
 
   factory IndexRefreshStatusResponseVariant2.fromJson(
     Map<String, dynamic> json,
-  ) => _$IndexRefreshStatusResponseVariant2FromJson(json);
+  ) =>
+      _$IndexRefreshStatusResponseVariant2FromJson(json);
 
   Map<String, dynamic> toJson() =>
       _$IndexRefreshStatusResponseVariant2ToJson(this);

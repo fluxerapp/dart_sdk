@@ -17,7 +17,8 @@ class VerifyAndCreateConnectionRequest {
 
   factory VerifyAndCreateConnectionRequest.fromJson(
     Map<String, Object?> json,
-  ) => _$VerifyAndCreateConnectionRequestFromJson(json);
+  ) =>
+      _$VerifyAndCreateConnectionRequestFromJson(json);
 
   /// The signed initiation token returned from the create endpoint
   @JsonKey(name: 'initiation_token')

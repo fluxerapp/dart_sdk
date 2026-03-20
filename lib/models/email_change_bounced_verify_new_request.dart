@@ -15,7 +15,8 @@ class EmailChangeBouncedVerifyNewRequest {
 
   factory EmailChangeBouncedVerifyNewRequest.fromJson(
     Map<String, Object?> json,
-  ) => _$EmailChangeBouncedVerifyNewRequestFromJson(json);
+  ) =>
+      _$EmailChangeBouncedVerifyNewRequestFromJson(json);
 
   /// Email change ticket identifier
   final String ticket;

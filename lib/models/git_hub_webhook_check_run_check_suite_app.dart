@@ -14,7 +14,8 @@ class GitHubWebhookCheckRunCheckSuiteApp {
 
   factory GitHubWebhookCheckRunCheckSuiteApp.fromJson(
     Map<String, Object?> json,
-  ) => _$GitHubWebhookCheckRunCheckSuiteAppFromJson(json);
+  ) =>
+      _$GitHubWebhookCheckRunCheckSuiteAppFromJson(json);
 
   final String name;
 

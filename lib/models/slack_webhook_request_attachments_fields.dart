@@ -16,7 +16,8 @@ class SlackWebhookRequestAttachmentsFields {
 
   factory SlackWebhookRequestAttachmentsFields.fromJson(
     Map<String, Object?> json,
-  ) => _$SlackWebhookRequestAttachmentsFieldsFromJson(json);
+  ) =>
+      _$SlackWebhookRequestAttachmentsFieldsFromJson(json);
 
   /// Title of the field
   final String? title;

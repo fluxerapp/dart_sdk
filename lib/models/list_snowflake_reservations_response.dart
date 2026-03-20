@@ -16,7 +16,8 @@ class ListSnowflakeReservationsResponse {
 
   factory ListSnowflakeReservationsResponse.fromJson(
     Map<String, Object?> json,
-  ) => _$ListSnowflakeReservationsResponseFromJson(json);
+  ) =>
+      _$ListSnowflakeReservationsResponseFromJson(json);
 
   /// List of snowflake reservations
   final List<SnowflakeReservationEntry> reservations;

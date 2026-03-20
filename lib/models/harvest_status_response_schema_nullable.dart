@@ -15,15 +15,17 @@ class HarvestStatusResponseSchemaNullable {
 
   factory HarvestStatusResponseSchemaNullable.fromJson(
     Map<String, dynamic> json,
-  ) => HarvestStatusResponseSchemaNullable(json);
+  ) =>
+      HarvestStatusResponseSchemaNullable(json);
 
   Map<String, dynamic> toJson() => _json;
 
   HarvestStatusResponseSchemaNullableHarvestStatusResponseSchema
-  toHarvestStatusResponseSchema() =>
-      HarvestStatusResponseSchemaNullableHarvestStatusResponseSchema.fromJson(
-        _json,
-      );
+      toHarvestStatusResponseSchema() =>
+          HarvestStatusResponseSchemaNullableHarvestStatusResponseSchema
+              .fromJson(
+            _json,
+          );
 }
 
 @JsonSerializable()
@@ -69,9 +71,10 @@ class HarvestStatusResponseSchemaNullableHarvestStatusResponseSchema {
 
   factory HarvestStatusResponseSchemaNullableHarvestStatusResponseSchema.fromJson(
     Map<String, dynamic> json,
-  ) => _$HarvestStatusResponseSchemaNullableHarvestStatusResponseSchemaFromJson(
-    json,
-  );
+  ) =>
+      _$HarvestStatusResponseSchemaNullableHarvestStatusResponseSchemaFromJson(
+        json,
+      );
 
   Map<String, dynamic> toJson() =>
       _$HarvestStatusResponseSchemaNullableHarvestStatusResponseSchemaToJson(

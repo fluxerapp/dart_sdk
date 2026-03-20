@@ -17,10 +17,11 @@ enum IndexRefreshStatusResponseVariant1StatusStatus {
 
   factory IndexRefreshStatusResponseVariant1StatusStatus.fromJson(
     String json,
-  ) => values.firstWhere(
-    (e) => e.json == json,
-    orElse: () => $unknown,
-  );
+  ) =>
+      values.firstWhere(
+        (e) => e.json == json,
+        orElse: () => $unknown,
+      );
 
   final String? json;
 
@@ -31,5 +32,5 @@ enum IndexRefreshStatusResponseVariant1StatusStatus {
 
   /// Returns all defined enum values excluding the $unknown value.
   static List<IndexRefreshStatusResponseVariant1StatusStatus>
-  get $valuesDefined => values.where((value) => value != $unknown).toList();
+      get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

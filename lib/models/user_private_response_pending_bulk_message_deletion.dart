@@ -16,7 +16,8 @@ class UserPrivateResponsePendingBulkMessageDeletion {
 
   factory UserPrivateResponsePendingBulkMessageDeletion.fromJson(
     Map<String, Object?> json,
-  ) => _$UserPrivateResponsePendingBulkMessageDeletionFromJson(json);
+  ) =>
+      _$UserPrivateResponsePendingBulkMessageDeletionFromJson(json);
 
   /// ISO8601 timestamp of when the deletion was scheduled
   @JsonKey(name: 'scheduled_at')
