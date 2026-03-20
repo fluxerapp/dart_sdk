@@ -9,6 +9,7 @@ import 'well_known_fluxer_response_captcha.dart';
 import 'well_known_fluxer_response_endpoints.dart';
 import 'well_known_fluxer_response_features.dart';
 import 'well_known_fluxer_response_federation.dart';
+import 'well_known_fluxer_response_gateway.dart';
 import 'well_known_fluxer_response_gif.dart';
 import 'well_known_fluxer_response_limits.dart';
 import 'well_known_fluxer_response_oauth2.dart';
@@ -33,6 +34,7 @@ class WellKnownFluxerResponse {
     this.federation,
     this.publicKey,
     this.oauth2,
+    this.gateway,
   });
 
   factory WellKnownFluxerResponse.fromJson(Map<String, Object?> json) =>
@@ -76,6 +78,9 @@ class WellKnownFluxerResponse {
 
   /// OAuth2 endpoints for federation
   final WellKnownFluxerResponseOauth2? oauth2;
+
+  /// Gateway session retry configuration
+  final WellKnownFluxerResponseGateway? gateway;
 
   Map<String, Object?> toJson() => _$WellKnownFluxerResponseToJson(this);
 }

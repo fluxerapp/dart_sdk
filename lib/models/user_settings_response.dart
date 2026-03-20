@@ -48,6 +48,9 @@ class UserSettingsResponse {
     required this.defaultHideMutedChannels,
     this.statusResetsAt,
     this.statusResetsTo,
+    this.sensitiveContentFriendDmFilter,
+    this.sensitiveContentNonFriendDmFilter,
+    this.sensitiveContentGuildFilter,
   });
 
   factory UserSettingsResponse.fromJson(Map<String, Object?> json) =>
@@ -153,6 +156,18 @@ class UserSettingsResponse {
   /// Whether muted channels are hidden by default in new guilds
   @JsonKey(name: 'default_hide_muted_channels')
   final bool defaultHideMutedChannels;
+
+  /// Sensitive content filter level for friend DMs
+  @JsonKey(name: 'sensitive_content_friend_dm_filter')
+  final int? sensitiveContentFriendDmFilter;
+
+  /// Sensitive content filter level for non-friend DMs
+  @JsonKey(name: 'sensitive_content_non_friend_dm_filter')
+  final int? sensitiveContentNonFriendDmFilter;
+
+  /// Sensitive content filter level for guild messages
+  @JsonKey(name: 'sensitive_content_guild_filter')
+  final int? sensitiveContentGuildFilter;
 
   Map<String, Object?> toJson() => _$UserSettingsResponseToJson(this);
 }

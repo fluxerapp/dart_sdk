@@ -55,6 +55,12 @@ UserSettingsResponse _$UserSettingsResponseFromJson(
           ? null
           : DateTime.parse(json['status_resets_at'] as String),
       statusResetsTo: json['status_resets_to'] as String?,
+      sensitiveContentFriendDmFilter:
+          (json['sensitive_content_friend_dm_filter'] as num?)?.toInt(),
+      sensitiveContentNonFriendDmFilter:
+          (json['sensitive_content_non_friend_dm_filter'] as num?)?.toInt(),
+      sensitiveContentGuildFilter:
+          (json['sensitive_content_guild_filter'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$UserSettingsResponseToJson(
@@ -88,4 +94,9 @@ Map<String, dynamic> _$UserSettingsResponseToJson(
       'developer_mode': instance.developerMode,
       'trusted_domains': instance.trustedDomains,
       'default_hide_muted_channels': instance.defaultHideMutedChannels,
+      'sensitive_content_friend_dm_filter':
+          instance.sensitiveContentFriendDmFilter,
+      'sensitive_content_non_friend_dm_filter':
+          instance.sensitiveContentNonFriendDmFilter,
+      'sensitive_content_guild_filter': instance.sensitiveContentGuildFilter,
     };

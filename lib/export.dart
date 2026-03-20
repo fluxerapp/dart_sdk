@@ -574,6 +574,7 @@ export 'models/well_known_fluxer_response_app_public.dart';
 export 'models/well_known_fluxer_response_federation.dart';
 export 'models/well_known_fluxer_response_public_key.dart';
 export 'models/well_known_fluxer_response_oauth2.dart';
+export 'models/well_known_fluxer_response_gateway.dart';
 export 'models/guild_memory_stats_response_guilds.dart';
 export 'models/node_stats_response_memory.dart';
 export 'models/lookup_guild_response_guild_channels.dart';

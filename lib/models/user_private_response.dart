@@ -15,50 +15,54 @@ part 'user_private_response.g.dart';
 @JsonSerializable()
 class UserPrivateResponse {
   const UserPrivateResponse({
-    required this.requiredActions,
+    required this.bio,
     required this.username,
     required this.discriminator,
     required this.globalName,
     required this.avatar,
     required this.avatarColor,
-    required this.phone,
+    required this.pendingBulkMessageDeletion,
+    required this.usedMobileClient,
     required this.flags,
     required this.isStaff,
     required this.acls,
     required this.traits,
     required this.email,
+    required this.unreadGiftInventoryCount,
+    required this.phone,
     required this.id,
-    required this.bio,
     required this.pronouns,
     required this.accentColor,
     required this.banner,
     required this.bannerColor,
     required this.mfaEnabled,
-    required this.premiumLifetimeSequence,
+    required this.hasUnreadGiftInventory,
     required this.verified,
     required this.premiumType,
     required this.premiumSince,
     required this.premiumUntil,
     required this.premiumWillCancel,
     required this.premiumBillingCycle,
-    required this.pendingBulkMessageDeletion,
+    required this.premiumLifetimeSequence,
     required this.premiumBadgeHidden,
     required this.premiumBadgeMasked,
-    required this.premiumBadgeTimestampHidden,
+    required this.hasEverPurchased,
     required this.premiumBadgeSequenceHidden,
     required this.premiumPurchaseDisabled,
     required this.premiumEnabledOverride,
     required this.passwordLastChangedAt,
+    required this.requiredActions,
     required this.nsfwAllowed,
     required this.hasDismissedPremiumOnboarding,
-    required this.hasEverPurchased,
-    required this.usedMobileClient,
-    required this.unreadGiftInventoryCount,
-    required this.hasUnreadGiftInventory,
-    this.system,
-    this.emailBounced,
-    this.bot,
+    required this.premiumBadgeTimestampHidden,
     this.authenticatorTypes,
+    this.emailBounced,
+    this.system,
+    this.bot,
+    this.premiumOutOfBandTrialEndsAt,
+    this.premiumDiscriminator,
+    this.termsAgreedAt,
+    this.privacyAgreedAt,
   });
 
   factory UserPrivateResponse.fromJson(Map<String, Object?> json) =>
@@ -223,6 +227,22 @@ class UserPrivateResponse {
   @JsonKey(name: 'pending_bulk_message_deletion')
   final UserPrivateResponsePendingBulkMessageDeletion?
       pendingBulkMessageDeletion;
+
+  /// When the out-of-band premium trial ends
+  @JsonKey(name: 'premium_out_of_band_trial_ends_at')
+  final DateTime? premiumOutOfBandTrialEndsAt;
+
+  /// Whether the user has a premium discriminator
+  @JsonKey(name: 'premium_discriminator')
+  final bool? premiumDiscriminator;
+
+  /// When the user agreed to terms of service
+  @JsonKey(name: 'terms_agreed_at')
+  final DateTime? termsAgreedAt;
+
+  /// When the user agreed to the privacy policy
+  @JsonKey(name: 'privacy_agreed_at')
+  final DateTime? privacyAgreedAt;
 
   Map<String, Object?> toJson() => _$UserPrivateResponseToJson(this);
 }
