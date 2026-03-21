@@ -78,7 +78,10 @@ class EventParser {
         'GUILD_UPDATE' => GuildUpdateEvent(
           guild: GuildCreateData.fromJson(data),
         ),
-        'GUILD_DELETE' => GuildDeleteEvent(guildId: data['id'] as String),
+        'GUILD_DELETE' => GuildDeleteEvent(
+          guildId: data['id'] as String,
+          unavailable: data['unavailable'] as bool? ?? false,
+        ),
         'GUILD_MEMBER_ADD' => GuildMemberAddEvent(
           guildId: data['guild_id'] as String,
           member: GuildMemberResponse.fromJson(data),

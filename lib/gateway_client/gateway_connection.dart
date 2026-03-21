@@ -215,7 +215,9 @@ class GatewayConnection {
         _heartbeat.ackReceived();
         _session.updateLastAck();
       case GatewayOpcodes.dispatch:
-        _handleDispatch(t!, d as Map<String, dynamic>);
+        if (d is Map<String, dynamic>) {
+          _handleDispatch(t!, d);
+        }
       case GatewayOpcodes.heartbeat:
         _sendHeartbeat();
       case GatewayOpcodes.reconnect:
