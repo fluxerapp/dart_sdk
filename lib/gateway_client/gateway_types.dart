@@ -310,20 +310,35 @@ class GuildCreateData {
   final String? joinedAt;
   final int? memberCount;
 
-  /// Extracts guild data from a gateway guild object.
-  ///
-  /// Gateway guild events wrap metadata under `properties`, while REST
-  /// API responses have fields at the top level.
+  /// Extracts guild data, unwrapping `properties` if present.
   static Map<String, Object?> _guildData(Map<String, dynamic> raw) {
     final properties = raw['properties'] as Map<String, dynamic>?;
-    if (properties != null) {
-      return <String, Object?>{
-        ...properties,
-        'id': raw['id'] ?? properties['id'],
-      };
+    final data = properties != null
+        ? <String, Object?>{...properties, 'id': raw['id'] ?? properties['id']}
+        : Map<String, Object?>.from(raw);
+
+    // Coerce numeric fields that may arrive as strings.
+    for (final key in _numericGuildFields) {
+      final v = data[key];
+      if (v is String) {
+        data[key] = int.tryParse(v) ?? 0;
+      }
     }
-    return raw;
+
+    return data;
   }
+
+  static const _numericGuildFields = [
+    'splash_card_alignment',
+    'system_channel_flags',
+    'afk_timeout',
+    'verification_level',
+    'mfa_level',
+    'nsfw_level',
+    'explicit_content_filter',
+    'default_message_notifications',
+    'disabled_operations',
+  ];
 
   /// Safely parses a JSON list, skipping items that fail deserialization.
   static List<T> _parseListSafe<T>(
