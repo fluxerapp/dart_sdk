@@ -14,22 +14,14 @@ import 'package:fluxer_dart/gateway_client/gateway_models.dart';
 import 'package:fluxer_dart/gateway_client/gateway_opcodes.dart';
 import 'package:fluxer_dart/gateway_client/heartbeat_manager.dart';
 import 'package:fluxer_dart/gateway_client/session_manager.dart';
-
-/// Callback for decompressing binary WebSocket frames.
-///
-/// Provide an implementation (e.g. using `zstandard`) when connecting
-/// with `compress: 'zstd-stream'`. Returns the decompressed bytes,
-/// or `null` to skip the frame.
-typedef GatewayDecompressor = Future<Uint8List?> Function(Uint8List data);
+import 'package:zstd_dart/zstd_dart.dart';
 
 /// Main gateway WebSocket client for the Fluxer platform.
 ///
 /// Manages the full lifecycle: connecting, identifying/resuming,
 /// heartbeating, event dispatching, and automatic reconnection.
 ///
-/// By default uses `compress: 'none'` (no decompressor needed).
-/// To enable zstd compression, pass `compress: 'zstd-stream'` and
-/// provide a [decompressor] callback.
+/// Uses zstd compression by default for binary WebSocket frames.
 class GatewayConnection {
   GatewayConnection({
     required String token,
@@ -37,13 +29,11 @@ class GatewayConnection {
     String? gatewayUrl,
     GatewayIdentifyProperties? properties,
     GatewayPresence? presence,
-    String compress = 'none',
-    GatewayDecompressor? decompressor,
+    String compress = 'zstd-stream',
   })  : _token = token,
         _dio = dio,
         _gatewayUrlOverride = gatewayUrl,
         _compress = compress,
-        _decompressor = decompressor,
         _properties = properties ??
             const GatewayIdentifyProperties(
               os: 'linux',
@@ -56,7 +46,6 @@ class GatewayConnection {
   final Dio _dio;
   final String? _gatewayUrlOverride;
   final String _compress;
-  final GatewayDecompressor? _decompressor;
   final GatewayIdentifyProperties _properties;
   GatewayPresence? _presence;
 
@@ -184,10 +173,7 @@ class GatewayConnection {
     late final Map<String, dynamic> payload;
 
     if (raw is Uint8List) {
-      final decompress = _decompressor;
-      if (decompress == null) return;
-      final decompressed = await decompress(raw);
-      if (decompressed == null) return;
+      final decompressed = ZstdCodec.decompress(raw);
       final jsonString = utf8.decode(decompressed);
       payload = json.decode(jsonString) as Map<String, dynamic>;
     } else if (raw is String) {
