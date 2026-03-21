@@ -199,11 +199,13 @@ class GuildReadyData {
   });
 
   factory GuildReadyData.fromJson(Map<String, dynamic> json) {
+    // Gateway wraps guild metadata under `properties`.
+    final props = json['properties'] as Map<String, dynamic>? ?? json;
     return GuildReadyData(
       id: json['id'] as String,
-      name: json['name'] as String?,
-      icon: json['icon'] as String?,
-      ownerId: json['owner_id'] as String?,
+      name: props['name'] as String?,
+      icon: props['icon'] as String?,
+      ownerId: props['owner_id'] as String?,
       memberCount: json['member_count'] as int?,
       unavailable: json['unavailable'] as bool?,
       joinedAt: json['joined_at'] as String?,
