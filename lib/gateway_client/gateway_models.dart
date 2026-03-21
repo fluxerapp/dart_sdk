@@ -7,16 +7,37 @@ class GatewayIdentifyProperties {
     required this.os,
     required this.browser,
     required this.device,
+    this.osVersion,
+    this.locale,
+    this.browserVersion,
+    this.buildTimestamp,
+    this.desktopAppVersion,
+    this.desktopArch,
+    this.desktopOs,
   });
 
   final String os;
   final String browser;
   final String device;
+  final String? osVersion;
+  final String? locale;
+  final String? browserVersion;
+  final String? buildTimestamp;
+  final String? desktopAppVersion;
+  final String? desktopArch;
+  final String? desktopOs;
 
   Map<String, Object?> toJson() => {
     'os': os,
     'browser': browser,
     'device': device,
+    if (osVersion != null) 'os_version': osVersion,
+    if (locale != null) 'locale': locale,
+    if (browserVersion != null) 'browser_version': browserVersion,
+    if (buildTimestamp != null) 'build_timestamp': buildTimestamp,
+    if (desktopAppVersion != null) 'desktop_app_version': desktopAppVersion,
+    if (desktopArch != null) 'desktop_arch': desktopArch,
+    if (desktopOs != null) 'desktop_os': desktopOs,
   };
 }
 

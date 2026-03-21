@@ -31,10 +31,14 @@ class GatewayConnection {
     GatewayIdentifyProperties? properties,
     GatewayPresence? presence,
     String compress = 'zstd-stream',
+    String? initialGuildId,
+    int flags = 0,
   }) : _token = token,
        _dio = dio,
        _gatewayUrlOverride = gatewayUrl,
        _compress = compress,
+       _initialGuildId = initialGuildId,
+       _flags = flags,
        _properties =
            properties ??
            const GatewayIdentifyProperties(
@@ -47,6 +51,8 @@ class GatewayConnection {
   final String _token;
   final Dio _dio;
   final String? _gatewayUrlOverride;
+  final String? _initialGuildId;
+  final int _flags;
   final String _compress;
   final GatewayIdentifyProperties _properties;
   GatewayPresence? _presence;
@@ -313,6 +319,12 @@ class GatewayConnection {
     };
     if (_presence != null) {
       payload['presence'] = _presence!.toJson();
+    }
+    if (_flags != 0) {
+      payload['flags'] = _flags;
+    }
+    if (_initialGuildId != null) {
+      payload['initial_guild_id'] = _initialGuildId;
     }
     _send({'op': GatewayOpcodes.identify, 'd': payload});
   }
