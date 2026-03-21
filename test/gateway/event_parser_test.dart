@@ -2,6 +2,8 @@ import 'package:fluxer_dart/gateway_client/event_parser.dart';
 import 'package:fluxer_dart/gateway_client/gateway_event.dart';
 import 'package:fluxer_dart/gateway_client/gateway_types.dart';
 import 'package:fluxer_dart/models/relationship_types.dart';
+import 'package:fluxer_dart/models/user_guild_settings_response.dart';
+import 'package:fluxer_dart/models/user_notification_settings.dart';
 import 'package:test/test.dart';
 
 /// Minimal JSON for a UserPartialResponse.
@@ -1537,6 +1539,197 @@ void main() {
       final e = event as UnknownGatewayEvent;
       expect(e.eventType, 'MESSAGE_CREATE');
       expect(e.data, data);
+    });
+  });
+
+  // ---------------------------------------------------------------------------
+  // READY extended fields
+  // ---------------------------------------------------------------------------
+
+  group('READY extended fields', () {
+    /// Builds a minimal READY payload with only the required fields.
+    Map<String, Object?> minimalReadyPayload([
+      Map<String, Object?> overrides = const {},
+    ]) => {
+      'session_id': 'sess-test',
+      'user': _userPrivateJson(),
+      'guilds': <Object?>[],
+      'private_channels': <Object?>[],
+      'relationships': <Object?>[],
+      'presences': <Object?>[],
+      ...overrides,
+    };
+
+    test('notes — Map<String, String> parsed correctly', () {
+      final data = minimalReadyPayload({
+        'notes': {'user1': 'A friend', 'user2': 'A colleague'},
+      });
+      final event = parser.parse('READY', data) as ReadyEvent;
+
+      expect(event.notes, isA<Map<String, String>>());
+      expect(event.notes, hasLength(2));
+      expect(event.notes!['user1'], 'A friend');
+      expect(event.notes!['user2'], 'A colleague');
+    });
+
+    test('pinned_dms — List<String> parsed correctly', () {
+      final data = minimalReadyPayload({
+        'pinned_dms': ['ch1', 'ch2', 'ch3'],
+      });
+      final event = parser.parse('READY', data) as ReadyEvent;
+
+      expect(event.pinnedDms, isA<List<String>>());
+      expect(event.pinnedDms, ['ch1', 'ch2', 'ch3']);
+    });
+
+    test('country_code — String parsed correctly', () {
+      final data = minimalReadyPayload({'country_code': 'US'});
+      final event = parser.parse('READY', data) as ReadyEvent;
+
+      expect(event.countryCode, 'US');
+    });
+
+    test('auth_session_id_hash — String parsed correctly', () {
+      final data = minimalReadyPayload({'auth_session_id_hash': 'abc123hash'});
+      final event = parser.parse('READY', data) as ReadyEvent;
+
+      expect(event.authSessionIdHash, 'abc123hash');
+    });
+
+    test('read_states — List<GatewayReadState> with field access', () {
+      final data = minimalReadyPayload({
+        'read_states': [
+          {
+            'id': 'ch100',
+            'last_message_id': 'msg999',
+            'mention_count': 3,
+            'last_pin_timestamp': '2026-01-15T00:00:00.000Z',
+          },
+          {'id': 'ch200', 'last_message_id': null, 'mention_count': 0},
+        ],
+      });
+      final event = parser.parse('READY', data) as ReadyEvent;
+
+      expect(event.readStates, hasLength(2));
+      expect(event.readStates[0], isA<GatewayReadState>());
+      expect(event.readStates[0].id, 'ch100');
+      expect(event.readStates[0].lastMessageId, 'msg999');
+      expect(event.readStates[0].mentionCount, 3);
+      expect(event.readStates[0].lastPinTimestamp, '2026-01-15T00:00:00.000Z');
+      expect(event.readStates[1].id, 'ch200');
+      expect(event.readStates[1].lastMessageId, isNull);
+      expect(event.readStates[1].mentionCount, 0);
+    });
+
+    test(
+      'favorite_memes — List<Map<String, dynamic>> preserved as raw maps',
+      () {
+        final data = minimalReadyPayload({
+          'favorite_memes': [
+            {'url': 'https://meme.example/1.png', 'name': 'doge'},
+            {'url': 'https://meme.example/2.png', 'name': 'nyan'},
+          ],
+        });
+        final event = parser.parse('READY', data) as ReadyEvent;
+
+        expect(event.favoriteMemes, isA<List<Map<String, dynamic>>>());
+        expect(event.favoriteMemes, hasLength(2));
+        expect(event.favoriteMemes![0]['url'], 'https://meme.example/1.png');
+        expect(event.favoriteMemes![1]['name'], 'nyan');
+      },
+    );
+
+    test('users — List<Map<String, dynamic>> preserved as raw maps', () {
+      final data = minimalReadyPayload({
+        'users': [
+          {'id': 'u1', 'username': 'alice'},
+          {'id': 'u2', 'username': 'bob'},
+        ],
+      });
+      final event = parser.parse('READY', data) as ReadyEvent;
+
+      expect(event.users, isA<List<Map<String, dynamic>>>());
+      expect(event.users, hasLength(2));
+      expect(event.users![0]['id'], 'u1');
+      expect(event.users![1]['username'], 'bob');
+    });
+
+    test('rtc_regions — List<Map<String, dynamic>> preserved as raw maps', () {
+      final data = minimalReadyPayload({
+        'rtc_regions': [
+          {'id': 'us-east', 'name': 'US East', 'optimal': true},
+          {'id': 'eu-west', 'name': 'EU West', 'optimal': false},
+        ],
+      });
+      final event = parser.parse('READY', data) as ReadyEvent;
+
+      expect(event.rtcRegions, isA<List<Map<String, dynamic>>>());
+      expect(event.rtcRegions, hasLength(2));
+      expect(event.rtcRegions![0]['id'], 'us-east');
+      expect(event.rtcRegions![1]['optimal'], false);
+    });
+
+    test(
+      'user_guild_settings — List<UserGuildSettingsResponse> parsed correctly',
+      () {
+        final data = minimalReadyPayload({
+          'user_guild_settings': [
+            {
+              'guild_id': 'g1',
+              'message_notifications': 0,
+              'muted': true,
+              'mute_config': null,
+              'mobile_push': true,
+              'suppress_everyone': false,
+              'suppress_roles': false,
+              'hide_muted_channels': false,
+              'channel_overrides': null,
+              'version': 1,
+            },
+            {
+              'guild_id': null,
+              'message_notifications': 1,
+              'muted': false,
+              'mute_config': null,
+              'mobile_push': false,
+              'suppress_everyone': true,
+              'suppress_roles': true,
+              'hide_muted_channels': true,
+              'channel_overrides': null,
+              'version': 2,
+            },
+          ],
+        });
+        final event = parser.parse('READY', data) as ReadyEvent;
+
+        expect(event.userGuildSettings, isA<List<UserGuildSettingsResponse>>());
+        expect(event.userGuildSettings, hasLength(2));
+        expect(event.userGuildSettings![0].guildId, 'g1');
+        expect(event.userGuildSettings![0].muted, true);
+        expect(
+          event.userGuildSettings![0].messageNotifications,
+          UserNotificationSettings.allMessages,
+        );
+        expect(event.userGuildSettings![0].version, 1);
+        expect(event.userGuildSettings![1].guildId, isNull);
+        expect(event.userGuildSettings![1].suppressEveryone, true);
+        expect(event.userGuildSettings![1].version, 2);
+      },
+    );
+
+    test('all new optional fields default to null when missing', () {
+      final data = minimalReadyPayload();
+      final event = parser.parse('READY', data) as ReadyEvent;
+
+      expect(event.notes, isNull);
+      expect(event.pinnedDms, isNull);
+      expect(event.countryCode, isNull);
+      expect(event.authSessionIdHash, isNull);
+      expect(event.favoriteMemes, isNull);
+      expect(event.users, isNull);
+      expect(event.rtcRegions, isNull);
+      expect(event.userGuildSettings, isNull);
+      expect(event.readStates, isEmpty);
     });
   });
 }
