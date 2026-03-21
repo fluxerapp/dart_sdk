@@ -1,7 +1,9 @@
 import 'package:fluxer_dart/models/channel_response.dart';
+import 'package:fluxer_dart/models/guild_emoji_response.dart';
 import 'package:fluxer_dart/models/guild_member_response.dart';
 import 'package:fluxer_dart/models/guild_response.dart';
 import 'package:fluxer_dart/models/guild_role_response.dart';
+import 'package:fluxer_dart/models/guild_sticker_response.dart';
 
 // ---------------------------------------------------------------------------
 // Voice state
@@ -253,6 +255,8 @@ class GuildCreateData {
     required this.roles,
     required this.presences,
     required this.voiceStates,
+    this.emojis = const [],
+    this.stickers = const [],
     this.joinedAt,
     this.memberCount,
   });
@@ -280,6 +284,14 @@ class GuildCreateData {
               ?.map((e) => VoiceState.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
+      emojis: _parseListSafe(
+        json['emojis'],
+        (e) => GuildEmojiResponse.fromJson(e as Map<String, Object?>),
+      ),
+      stickers: _parseListSafe(
+        json['stickers'],
+        (e) => GuildStickerResponse.fromJson(e as Map<String, Object?>),
+      ),
       joinedAt: json['joined_at'] as String?,
       memberCount: json['member_count'] as int?,
     );
@@ -291,6 +303,8 @@ class GuildCreateData {
   final List<GuildRoleResponse> roles;
   final List<Map<String, dynamic>> presences;
   final List<VoiceState> voiceStates;
+  final List<GuildEmojiResponse> emojis;
+  final List<GuildStickerResponse> stickers;
   final String? joinedAt;
   final int? memberCount;
 
