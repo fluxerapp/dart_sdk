@@ -7,10 +7,7 @@ import 'dart:math';
 /// thundering-herd problems. If an ACK is not received within 15 seconds,
 /// the [onTimeout] callback is invoked.
 class HeartbeatManager {
-  HeartbeatManager({
-    required this.onSendHeartbeat,
-    required this.onTimeout,
-  });
+  HeartbeatManager({required this.onSendHeartbeat, required this.onTimeout});
 
   /// Called when a heartbeat should be sent over the WebSocket.
   final void Function() onSendHeartbeat;

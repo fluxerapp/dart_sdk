@@ -12,6 +12,7 @@ import 'package:fluxer_dart/gateway_client/gateway_close_code.dart';
 import 'package:fluxer_dart/gateway_client/gateway_event.dart';
 import 'package:fluxer_dart/gateway_client/gateway_models.dart';
 import 'package:fluxer_dart/gateway_client/gateway_opcodes.dart';
+import 'package:fluxer_dart/gateway_client/gateway_types.dart';
 import 'package:fluxer_dart/gateway_client/heartbeat_manager.dart';
 import 'package:fluxer_dart/gateway_client/session_manager.dart';
 import 'package:zstd_dart/zstd_dart.dart';
@@ -30,17 +31,18 @@ class GatewayConnection {
     GatewayIdentifyProperties? properties,
     GatewayPresence? presence,
     String compress = 'zstd-stream',
-  })  : _token = token,
-        _dio = dio,
-        _gatewayUrlOverride = gatewayUrl,
-        _compress = compress,
-        _properties = properties ??
-            const GatewayIdentifyProperties(
-              os: 'linux',
-              browser: 'fluxeron',
-              device: 'fluxer_dart',
-            ),
-        _presence = presence;
+  }) : _token = token,
+       _dio = dio,
+       _gatewayUrlOverride = gatewayUrl,
+       _compress = compress,
+       _properties =
+           properties ??
+           const GatewayIdentifyProperties(
+             os: 'linux',
+             browser: 'fluxeron',
+             device: 'fluxer_dart',
+           ),
+       _presence = presence;
 
   final String _token;
   final Dio _dio;
@@ -123,9 +125,20 @@ class GatewayConnection {
   /// Updates the client's presence on the gateway.
   void updatePresence(GatewayPresence presence) {
     _presence = presence;
+    _send({'op': GatewayOpcodes.presenceUpdate, 'd': presence.toJson()});
+  }
+
+  /// Sends a lazy request to subscribe to guild member lists and presence.
+  void sendLazyRequest({
+    required Map<String, LazyRequestSubscription> subscriptions,
+  }) {
     _send({
-      'op': GatewayOpcodes.presenceUpdate,
-      'd': presence.toJson(),
+      'op': GatewayOpcodes.lazyRequest,
+      'd': {
+        'subscriptions': subscriptions.map(
+          (key, value) => MapEntry(key, value.toJson()),
+        ),
+      },
     });
   }
 
@@ -203,6 +216,8 @@ class GatewayConnection {
         _handleReconnect();
       case GatewayOpcodes.invalidSession:
         _handleInvalidSession(d as bool? ?? false);
+      case GatewayOpcodes.gatewayError:
+        _handleGatewayError(d as Map<String, dynamic>);
     }
   }
 
@@ -280,6 +295,12 @@ class GatewayConnection {
     Future<void>.delayed(delay, _closeAndReconnect);
   }
 
+  void _handleGatewayError(Map<String, dynamic> data) {
+    final code = data['code'] as int;
+    final message = data['message'] as String;
+    _eventController.add(GatewayErrorEvent(code: code, message: message));
+  }
+
   // ---------------------------------------------------------------------------
   // Internal: send helpers
   // ---------------------------------------------------------------------------
@@ -293,10 +314,7 @@ class GatewayConnection {
     if (_presence != null) {
       payload['presence'] = _presence!.toJson();
     }
-    _send({
-      'op': GatewayOpcodes.identify,
-      'd': payload,
-    });
+    _send({'op': GatewayOpcodes.identify, 'd': payload});
   }
 
   void _sendResume() {
@@ -311,10 +329,7 @@ class GatewayConnection {
   }
 
   void _sendHeartbeat() {
-    _send({
-      'op': GatewayOpcodes.heartbeat,
-      'd': _session.lastSequence,
-    });
+    _send({'op': GatewayOpcodes.heartbeat, 'd': _session.lastSequence});
   }
 
   void _send(Map<String, Object?> payload) {

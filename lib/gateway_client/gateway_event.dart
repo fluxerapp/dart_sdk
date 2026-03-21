@@ -75,11 +75,7 @@ class MessageDeleteEvent extends GatewayEvent {
 // ---------------------------------------------------------------------------
 
 class ReactionEmoji {
-  const ReactionEmoji({
-    required this.name,
-    this.id,
-    this.animated = false,
-  });
+  const ReactionEmoji({required this.name, this.id, this.animated = false});
 
   final String name;
   final String? id;
@@ -201,30 +197,21 @@ class GuildDeleteEvent extends GatewayEvent {
 // ---------------------------------------------------------------------------
 
 class GuildMemberAddEvent extends GatewayEvent {
-  const GuildMemberAddEvent({
-    required this.guildId,
-    required this.member,
-  });
+  const GuildMemberAddEvent({required this.guildId, required this.member});
 
   final String guildId;
   final GuildMemberResponse member;
 }
 
 class GuildMemberUpdateEvent extends GatewayEvent {
-  const GuildMemberUpdateEvent({
-    required this.guildId,
-    required this.member,
-  });
+  const GuildMemberUpdateEvent({required this.guildId, required this.member});
 
   final String guildId;
   final GuildMemberResponse member;
 }
 
 class GuildMemberRemoveEvent extends GatewayEvent {
-  const GuildMemberRemoveEvent({
-    required this.guildId,
-    required this.userId,
-  });
+  const GuildMemberRemoveEvent({required this.guildId, required this.userId});
 
   final String guildId;
   final String userId;
@@ -281,10 +268,7 @@ class RelationshipUpdateEvent extends GatewayEvent {
 }
 
 class RelationshipRemoveEvent extends GatewayEvent {
-  const RelationshipRemoveEvent({
-    required this.userId,
-    required this.type,
-  });
+  const RelationshipRemoveEvent({required this.userId, required this.type});
 
   final String userId;
   final RelationshipTypes type;
@@ -295,10 +279,7 @@ class RelationshipRemoveEvent extends GatewayEvent {
 // ---------------------------------------------------------------------------
 
 class UnknownGatewayEvent extends GatewayEvent {
-  const UnknownGatewayEvent({
-    required this.eventType,
-    required this.data,
-  });
+  const UnknownGatewayEvent({required this.eventType, required this.data});
 
   final String eventType;
   final Map<String, dynamic> data;

@@ -23,94 +23,90 @@ class EventParser {
         'READY' => _parseReady(data),
         'RESUMED' => const ResumedEvent(),
         'MESSAGE_CREATE' => MessageCreateEvent(
-            message: MessageResponseSchema.fromJson(data),
-          ),
+          message: MessageResponseSchema.fromJson(data),
+        ),
         'MESSAGE_UPDATE' => MessageUpdateEvent(
-            message: MessageResponseSchema.fromJson(data),
-          ),
+          message: MessageResponseSchema.fromJson(data),
+        ),
         'MESSAGE_DELETE' => MessageDeleteEvent(
-            channelId: data['channel_id'] as String,
-            messageId: data['id'] as String,
-            guildId: data['guild_id'] as String?,
-          ),
+          channelId: data['channel_id'] as String,
+          messageId: data['id'] as String,
+          guildId: data['guild_id'] as String?,
+        ),
         'MESSAGE_REACTION_ADD' => MessageReactionAddEvent(
-            channelId: data['channel_id'] as String,
-            messageId: data['message_id'] as String,
-            userId: data['user_id'] as String,
-            emoji:
-                ReactionEmoji.fromJson(data['emoji'] as Map<String, dynamic>),
-            guildId: data['guild_id'] as String?,
-          ),
+          channelId: data['channel_id'] as String,
+          messageId: data['message_id'] as String,
+          userId: data['user_id'] as String,
+          emoji: ReactionEmoji.fromJson(data['emoji'] as Map<String, dynamic>),
+          guildId: data['guild_id'] as String?,
+        ),
         'MESSAGE_REACTION_REMOVE' => MessageReactionRemoveEvent(
-            channelId: data['channel_id'] as String,
-            messageId: data['message_id'] as String,
-            userId: data['user_id'] as String,
-            emoji:
-                ReactionEmoji.fromJson(data['emoji'] as Map<String, dynamic>),
-            guildId: data['guild_id'] as String?,
-          ),
+          channelId: data['channel_id'] as String,
+          messageId: data['message_id'] as String,
+          userId: data['user_id'] as String,
+          emoji: ReactionEmoji.fromJson(data['emoji'] as Map<String, dynamic>),
+          guildId: data['guild_id'] as String?,
+        ),
         'MESSAGE_REACTION_REMOVE_ALL' => MessageReactionRemoveAllEvent(
-            channelId: data['channel_id'] as String,
-            messageId: data['message_id'] as String,
-            guildId: data['guild_id'] as String?,
-          ),
+          channelId: data['channel_id'] as String,
+          messageId: data['message_id'] as String,
+          guildId: data['guild_id'] as String?,
+        ),
         'MESSAGE_REACTION_REMOVE_EMOJI' => MessageReactionRemoveEmojiEvent(
-            channelId: data['channel_id'] as String,
-            messageId: data['message_id'] as String,
-            emoji:
-                ReactionEmoji.fromJson(data['emoji'] as Map<String, dynamic>),
-            guildId: data['guild_id'] as String?,
-          ),
+          channelId: data['channel_id'] as String,
+          messageId: data['message_id'] as String,
+          emoji: ReactionEmoji.fromJson(data['emoji'] as Map<String, dynamic>),
+          guildId: data['guild_id'] as String?,
+        ),
         'CHANNEL_CREATE' => ChannelCreateEvent(
-            channel: ChannelResponse.fromJson(data),
-          ),
+          channel: ChannelResponse.fromJson(data),
+        ),
         'CHANNEL_UPDATE' => ChannelUpdateEvent(
-            channel: ChannelResponse.fromJson(data),
-          ),
+          channel: ChannelResponse.fromJson(data),
+        ),
         'CHANNEL_DELETE' => ChannelDeleteEvent(
-            channel: ChannelResponse.fromJson(data),
-          ),
+          channel: ChannelResponse.fromJson(data),
+        ),
         'GUILD_CREATE' => GuildCreateEvent(
-            guild: GuildCreateData.fromJson(data),
-          ),
+          guild: GuildCreateData.fromJson(data),
+        ),
         'GUILD_UPDATE' => GuildUpdateEvent(
-            guild: GuildCreateData.fromJson(data),
-          ),
-        'GUILD_DELETE' => GuildDeleteEvent(
-            guildId: data['id'] as String,
-          ),
+          guild: GuildCreateData.fromJson(data),
+        ),
+        'GUILD_DELETE' => GuildDeleteEvent(guildId: data['id'] as String),
         'GUILD_MEMBER_ADD' => GuildMemberAddEvent(
-            guildId: data['guild_id'] as String,
-            member: GuildMemberResponse.fromJson(data),
-          ),
+          guildId: data['guild_id'] as String,
+          member: GuildMemberResponse.fromJson(data),
+        ),
         'GUILD_MEMBER_UPDATE' => GuildMemberUpdateEvent(
-            guildId: data['guild_id'] as String,
-            member: GuildMemberResponse.fromJson(data),
-          ),
+          guildId: data['guild_id'] as String,
+          member: GuildMemberResponse.fromJson(data),
+        ),
         'GUILD_MEMBER_REMOVE' => GuildMemberRemoveEvent(
-            guildId: data['guild_id'] as String,
-            userId: data['user_id'] as String? ??
-                (data['user'] as Map<String, dynamic>)['id'] as String,
-          ),
+          guildId: data['guild_id'] as String,
+          userId:
+              data['user_id'] as String? ??
+              (data['user'] as Map<String, dynamic>)['id'] as String,
+        ),
         'PRESENCE_UPDATE' => _parsePresenceUpdate(data),
         'TYPING_START' => TypingStartEvent(
-            channelId: data['channel_id'] as String,
-            userId: data['user_id'] as String,
-            timestamp: DateTime.fromMillisecondsSinceEpoch(
-              (data['timestamp'] as num).toInt() * 1000,
-            ),
-            guildId: data['guild_id'] as String?,
+          channelId: data['channel_id'] as String,
+          userId: data['user_id'] as String,
+          timestamp: DateTime.fromMillisecondsSinceEpoch(
+            (data['timestamp'] as num).toInt() * 1000,
           ),
+          guildId: data['guild_id'] as String?,
+        ),
         'RELATIONSHIP_ADD' => RelationshipAddEvent(
-            relationship: RelationshipResponse.fromJson(data),
-          ),
+          relationship: RelationshipResponse.fromJson(data),
+        ),
         'RELATIONSHIP_UPDATE' => RelationshipUpdateEvent(
-            relationship: RelationshipResponse.fromJson(data),
-          ),
+          relationship: RelationshipResponse.fromJson(data),
+        ),
         'RELATIONSHIP_REMOVE' => RelationshipRemoveEvent(
-            userId: data['id'] as String,
-            type: RelationshipTypes.fromJson(data['type'] as int),
-          ),
+          userId: data['id'] as String,
+          type: RelationshipTypes.fromJson(data['type'] as int),
+        ),
         _ => UnknownGatewayEvent(eventType: eventType, data: data),
       };
     } catch (_) {
@@ -121,9 +117,7 @@ class EventParser {
   ReadyEvent _parseReady(Map<String, dynamic> data) {
     return ReadyEvent(
       sessionId: data['session_id'] as String,
-      user: UserPrivateResponse.fromJson(
-        data['user'] as Map<String, Object?>,
-      ),
+      user: UserPrivateResponse.fromJson(data['user'] as Map<String, Object?>),
       guilds: _parseListSafe(
         data['guilds'],
         (e) => GuildReadyData.fromJson(e as Map<String, dynamic>),
@@ -143,12 +137,13 @@ class EventParser {
               )
             : null,
       ),
-      readStates: (data['read_states'] as List<dynamic>?)
+      readStates:
+          (data['read_states'] as List<dynamic>?)
               ?.cast<Map<String, dynamic>>() ??
           [],
       presences:
           (data['presences'] as List<dynamic>?)?.cast<Map<String, dynamic>>() ??
-              [],
+          [],
     );
   }
 
