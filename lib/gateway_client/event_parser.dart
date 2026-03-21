@@ -331,6 +331,11 @@ class EventParser {
   }
 
   ReadyEvent _parseReady(Map<String, dynamic> data) {
+    final rawGuildsList = data['guilds'] as List<dynamic>? ?? [];
+    final rawGuilds = rawGuildsList
+        .whereType<Map<String, dynamic>>()
+        .toList();
+
     final guilds = _parseListSafe(
       data['guilds'],
       (e) => GuildReadyData.fromJson(e as Map<String, dynamic>),
@@ -389,6 +394,7 @@ class EventParser {
       sessionId: data['session_id'] as String,
       user: UserPrivateResponse.fromJson(data['user'] as Map<String, dynamic>),
       guilds: guilds,
+      rawGuilds: rawGuilds,
       privateChannels: privateChannels,
       relationships: relationships,
       readStates: readStates,

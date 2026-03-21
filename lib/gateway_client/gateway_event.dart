@@ -26,6 +26,7 @@ class ReadyEvent extends GatewayEvent {
     required this.sessionId,
     required this.user,
     required this.guilds,
+    required this.rawGuilds,
     required this.privateChannels,
     required this.relationships,
     required this.readStates,
@@ -44,6 +45,10 @@ class ReadyEvent extends GatewayEvent {
   final String sessionId;
   final UserPrivateResponse user;
   final List<GuildReadyData> guilds;
+
+  /// Raw guild JSON maps from the READY payload, for extracting full guild
+  /// data (channels, roles, members) that [GuildReadyData] omits.
+  final List<Map<String, dynamic>> rawGuilds;
   final List<ChannelResponse> privateChannels;
   final List<RelationshipResponse> relationships;
   final UserSettingsResponse? userSettings;
