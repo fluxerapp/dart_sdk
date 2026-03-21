@@ -196,6 +196,7 @@ class GuildReadyData {
     this.memberCount,
     this.unavailable,
     this.joinedAt,
+    this.features = const [],
   });
 
   factory GuildReadyData.fromJson(Map<String, dynamic> json) {
@@ -209,6 +210,11 @@ class GuildReadyData {
       memberCount: json['member_count'] as int?,
       unavailable: json['unavailable'] as bool?,
       joinedAt: json['joined_at'] as String?,
+      features:
+          (props['features'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
     );
   }
 
@@ -219,6 +225,7 @@ class GuildReadyData {
   final int? memberCount;
   final bool? unavailable;
   final String? joinedAt;
+  final List<String> features;
 }
 
 /// Read state from the READY event payload.
