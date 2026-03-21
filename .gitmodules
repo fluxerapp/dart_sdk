@@ -1,3 +1,6 @@
 [submodule "openapi_retrofit_generator"]
 	path = openapi_retrofit_generator
 	url = https://github.com/M0n7y5/openapi_retrofit_generator.git
+[submodule "zstd_dart"]
+	path = zstd_dart
+	url = /home/admin/repos/zstd_dart

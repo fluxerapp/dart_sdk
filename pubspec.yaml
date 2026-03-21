@@ -5,13 +5,15 @@ homepage: https://fluxer.app
 repository: https://github.com/fluxerapp/dart_sdk
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
+  sdk: ">=3.10.0 <4.0.0"
 
 dependencies:
   dio: "^5.7.0"
   json_annotation: "^4.9.0"
   retrofit: "^4.4.1"
   web_socket_channel: "^3.0.1"
+  zstd_dart:
+    path: zstd_dart
 
 dev_dependencies:
   json_serializable: "^6.9.0"
