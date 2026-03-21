@@ -8,6 +8,7 @@ import 'package:fluxer_dart/models/relationship_response.dart';
 import 'package:fluxer_dart/models/relationship_types.dart';
 import 'package:fluxer_dart/models/user_partial_response.dart';
 import 'package:fluxer_dart/models/user_private_response.dart';
+import 'package:fluxer_dart/models/user_guild_settings_response.dart';
 import 'package:fluxer_dart/models/user_settings_response.dart';
 
 import 'package:fluxer_dart/gateway_client/gateway_event.dart';
@@ -327,35 +328,77 @@ class EventParser {
   }
 
   ReadyEvent _parseReady(Map<String, dynamic> data) {
+    final guilds = _parseListSafe(
+      data['guilds'],
+      (e) => GuildReadyData.fromJson(e as Map<String, dynamic>),
+    );
+
+    final privateChannels = _parseListSafe(
+      data['private_channels'],
+      (e) => ChannelResponse.fromJson(e as Map<String, Object?>),
+    );
+
+    final relationships = _parseListSafe(
+      data['relationships'],
+      (e) => RelationshipResponse.fromJson(e as Map<String, Object?>),
+    );
+
+    final readStates = _parseListSafe(
+      data['read_states'],
+      (e) => GatewayReadState.fromJson(e as Map<String, dynamic>),
+    );
+
+    final presencesRaw = data['presences'] as List<dynamic>? ?? [];
+    final presences = presencesRaw.cast<Map<String, dynamic>>().toList();
+
+    final userSettingsRaw = data['user_settings'] as Map<String, dynamic>?;
+    final userSettings = userSettingsRaw != null
+        ? UserSettingsResponse.fromJson(userSettingsRaw)
+        : null;
+
+    final userGuildSettingsRaw = data['user_guild_settings'] as List<dynamic>?;
+    final userGuildSettings = userGuildSettingsRaw != null
+        ? userGuildSettingsRaw
+              .cast<Map<String, dynamic>>()
+              .map((e) => UserGuildSettingsResponse.fromJson(e))
+              .toList()
+        : null;
+
+    final notesRaw = data['notes'] as Map<String, dynamic>?;
+    final notes = notesRaw?.map((key, value) => MapEntry(key, value as String));
+
+    final pinnedDmsRaw = data['pinned_dms'] as List<dynamic>?;
+    final pinnedDms = pinnedDmsRaw?.cast<String>().toList();
+
+    final favoriteMemes = (data['favorite_memes'] as List<dynamic>?)
+        ?.cast<Map<String, dynamic>>()
+        .toList();
+
+    final users = (data['users'] as List<dynamic>?)
+        ?.cast<Map<String, dynamic>>()
+        .toList();
+
+    final rtcRegions = (data['rtc_regions'] as List<dynamic>?)
+        ?.cast<Map<String, dynamic>>()
+        .toList();
+
     return ReadyEvent(
       sessionId: data['session_id'] as String,
-      user: UserPrivateResponse.fromJson(data['user'] as Map<String, Object?>),
-      guilds: _parseListSafe(
-        data['guilds'],
-        (e) => GuildReadyData.fromJson(e as Map<String, dynamic>),
-      ),
-      privateChannels: _parseListSafe(
-        data['private_channels'],
-        (e) => ChannelResponse.fromJson(e as Map<String, Object?>),
-      ),
-      relationships: _parseListSafe(
-        data['relationships'],
-        (e) => RelationshipResponse.fromJson(e as Map<String, Object?>),
-      ),
-      userSettings: _tryParse(
-        () => data['user_settings'] != null
-            ? UserSettingsResponse.fromJson(
-                data['user_settings'] as Map<String, Object?>,
-              )
-            : null,
-      ),
-      readStates:
-          (data['read_states'] as List<dynamic>?)
-              ?.cast<Map<String, dynamic>>() ??
-          [],
-      presences:
-          (data['presences'] as List<dynamic>?)?.cast<Map<String, dynamic>>() ??
-          [],
+      user: UserPrivateResponse.fromJson(data['user'] as Map<String, dynamic>),
+      guilds: guilds,
+      privateChannels: privateChannels,
+      relationships: relationships,
+      readStates: readStates,
+      presences: presences,
+      userSettings: userSettings,
+      userGuildSettings: userGuildSettings,
+      notes: notes,
+      countryCode: data['country_code'] as String?,
+      pinnedDms: pinnedDms,
+      favoriteMemes: favoriteMemes,
+      users: users,
+      authSessionIdHash: data['auth_session_id_hash'] as String?,
+      rtcRegions: rtcRegions,
     );
   }
 
@@ -374,15 +417,6 @@ class EventParser {
       }
     }
     return result;
-  }
-
-  /// Runs [fn] and returns null on failure.
-  static T? _tryParse<T>(T? Function() fn) {
-    try {
-      return fn();
-    } catch (_) {
-      return null;
-    }
   }
 
   PresenceUpdateEvent _parsePresenceUpdate(Map<String, dynamic> data) {

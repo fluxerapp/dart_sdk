@@ -9,6 +9,7 @@ import 'package:fluxer_dart/models/relationship_response.dart';
 import 'package:fluxer_dart/models/relationship_types.dart';
 import 'package:fluxer_dart/models/user_partial_response.dart';
 import 'package:fluxer_dart/models/user_private_response.dart';
+import 'package:fluxer_dart/models/user_guild_settings_response.dart';
 import 'package:fluxer_dart/models/user_settings_response.dart';
 
 /// Base class for all gateway events.
@@ -27,9 +28,17 @@ class ReadyEvent extends GatewayEvent {
     required this.guilds,
     required this.privateChannels,
     required this.relationships,
-    this.userSettings,
     required this.readStates,
     required this.presences,
+    this.userSettings,
+    this.userGuildSettings,
+    this.notes,
+    this.countryCode,
+    this.pinnedDms,
+    this.favoriteMemes,
+    this.users,
+    this.authSessionIdHash,
+    this.rtcRegions,
   });
 
   final String sessionId;
@@ -38,8 +47,16 @@ class ReadyEvent extends GatewayEvent {
   final List<ChannelResponse> privateChannels;
   final List<RelationshipResponse> relationships;
   final UserSettingsResponse? userSettings;
-  final List<Map<String, dynamic>> readStates;
+  final List<UserGuildSettingsResponse>? userGuildSettings;
+  final List<GatewayReadState> readStates;
   final List<Map<String, dynamic>> presences;
+  final Map<String, String>? notes;
+  final String? countryCode;
+  final List<String>? pinnedDms;
+  final List<Map<String, dynamic>>? favoriteMemes;
+  final List<Map<String, dynamic>>? users;
+  final String? authSessionIdHash;
+  final List<Map<String, dynamic>>? rtcRegions;
 }
 
 class ResumedEvent extends GatewayEvent {

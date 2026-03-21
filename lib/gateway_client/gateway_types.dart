@@ -217,6 +217,30 @@ class GuildReadyData {
   final String? joinedAt;
 }
 
+/// Read state from the READY event payload.
+class GatewayReadState {
+  const GatewayReadState({
+    required this.id,
+    this.lastMessageId,
+    this.mentionCount = 0,
+    this.lastPinTimestamp,
+  });
+
+  factory GatewayReadState.fromJson(Map<String, dynamic> json) {
+    return GatewayReadState(
+      id: json['id'] as String,
+      lastMessageId: json['last_message_id'] as String?,
+      mentionCount: json['mention_count'] as int? ?? 0,
+      lastPinTimestamp: json['last_pin_timestamp'] as String?,
+    );
+  }
+
+  final String id;
+  final String? lastMessageId;
+  final int mentionCount;
+  final String? lastPinTimestamp;
+}
+
 /// Full guild data from GUILD_CREATE / GUILD_UPDATE events.
 ///
 /// The gateway wraps guild metadata under a `properties` key and includes
