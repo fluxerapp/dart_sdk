@@ -23,10 +23,8 @@ enum JoinSourceType {
 
   const JoinSourceType(this.json);
 
-  factory JoinSourceType.fromJson(int json) => values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+  factory JoinSourceType.fromJson(int json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

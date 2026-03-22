@@ -8,9 +8,7 @@ part 'theme_create_response.g.dart';
 
 @JsonSerializable()
 class ThemeCreateResponse {
-  const ThemeCreateResponse({
-    required this.id,
-  });
+  const ThemeCreateResponse({required this.id});
 
   factory ThemeCreateResponse.fromJson(Map<String, Object?> json) =>
       _$ThemeCreateResponseFromJson(json);

@@ -7,15 +7,15 @@ part of 'get_voice_region_request.dart';
 // **************************************************************************
 
 GetVoiceRegionRequest _$GetVoiceRegionRequestFromJson(
-        Map<String, dynamic> json) =>
-    GetVoiceRegionRequest(
-      id: json['id'] as String,
-      includeServers: json['include_servers'] as bool?,
-    );
+  Map<String, dynamic> json,
+) => GetVoiceRegionRequest(
+  id: json['id'] as String,
+  includeServers: json['include_servers'] as bool?,
+);
 
 Map<String, dynamic> _$GetVoiceRegionRequestToJson(
-        GetVoiceRegionRequest instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'include_servers': instance.includeServers,
-    };
+  GetVoiceRegionRequest instance,
+) => <String, dynamic>{
+  'id': instance.id,
+  'include_servers': instance.includeServers,
+};

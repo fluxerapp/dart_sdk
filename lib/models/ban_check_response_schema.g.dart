@@ -7,13 +7,9 @@ part of 'ban_check_response_schema.dart';
 // **************************************************************************
 
 BanCheckResponseSchema _$BanCheckResponseSchemaFromJson(
-        Map<String, dynamic> json) =>
-    BanCheckResponseSchema(
-      banned: json['banned'] as bool,
-    );
+  Map<String, dynamic> json,
+) => BanCheckResponseSchema(banned: json['banned'] as bool);
 
 Map<String, dynamic> _$BanCheckResponseSchemaToJson(
-        BanCheckResponseSchema instance) =>
-    <String, dynamic>{
-      'banned': instance.banned,
-    };
+  BanCheckResponseSchema instance,
+) => <String, dynamic>{'banned': instance.banned};

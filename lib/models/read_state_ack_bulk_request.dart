@@ -10,9 +10,7 @@ part 'read_state_ack_bulk_request.g.dart';
 
 @JsonSerializable()
 class ReadStateAckBulkRequest {
-  const ReadStateAckBulkRequest({
-    required this.readStates,
-  });
+  const ReadStateAckBulkRequest({required this.readStates});
 
   factory ReadStateAckBulkRequest.fromJson(Map<String, Object?> json) =>
       _$ReadStateAckBulkRequestFromJson(json);

@@ -32,8 +32,7 @@ class ScheduledMessageResponseSchemaPayload {
 
   factory ScheduledMessageResponseSchemaPayload.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$ScheduledMessageResponseSchemaPayloadFromJson(json);
+  ) => _$ScheduledMessageResponseSchemaPayloadFromJson(json);
 
   /// The text content of the scheduled message
   final String? content;

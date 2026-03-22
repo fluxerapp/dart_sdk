@@ -10,9 +10,7 @@ part 'shutdown_guild_request.g.dart';
 
 @JsonSerializable()
 class ShutdownGuildRequest {
-  const ShutdownGuildRequest({
-    required this.guildId,
-  });
+  const ShutdownGuildRequest({required this.guildId});
 
   factory ShutdownGuildRequest.fromJson(Map<String, Object?> json) =>
       _$ShutdownGuildRequestFromJson(json);

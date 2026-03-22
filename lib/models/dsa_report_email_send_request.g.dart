@@ -7,13 +7,9 @@ part of 'dsa_report_email_send_request.dart';
 // **************************************************************************
 
 DsaReportEmailSendRequest _$DsaReportEmailSendRequestFromJson(
-        Map<String, dynamic> json) =>
-    DsaReportEmailSendRequest(
-      email: json['email'] as String,
-    );
+  Map<String, dynamic> json,
+) => DsaReportEmailSendRequest(email: json['email'] as String);
 
 Map<String, dynamic> _$DsaReportEmailSendRequestToJson(
-        DsaReportEmailSendRequest instance) =>
-    <String, dynamic>{
-      'email': instance.email,
-    };
+  DsaReportEmailSendRequest instance,
+) => <String, dynamic>{'email': instance.email};

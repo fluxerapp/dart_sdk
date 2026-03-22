@@ -10,11 +10,7 @@ part 'guild_create_request.g.dart';
 
 @JsonSerializable()
 class GuildCreateRequest {
-  const GuildCreateRequest({
-    required this.name,
-    this.icon,
-    this.emptyFeatures,
-  });
+  const GuildCreateRequest({required this.name, this.icon, this.emptyFeatures});
 
   factory GuildCreateRequest.fromJson(Map<String, Object?> json) =>
       _$GuildCreateRequestFromJson(json);

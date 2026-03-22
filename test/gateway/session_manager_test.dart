@@ -17,17 +17,18 @@ void main() {
     });
 
     test(
-        'after setSession + updateSequence + updateLastAck → canResume is true',
-        () {
-      session.setSession('sess-123');
-      session.updateSequence(42);
-      session.updateLastAck();
+      'after setSession + updateSequence + updateLastAck → canResume is true',
+      () {
+        session.setSession('sess-123');
+        session.updateSequence(42);
+        session.updateLastAck();
 
-      expect(session.canResume, isTrue);
-      expect(session.sessionId, 'sess-123');
-      expect(session.lastSequence, 42);
-      expect(session.lastAckAt, isNotNull);
-    });
+        expect(session.canResume, isTrue);
+        expect(session.sessionId, 'sess-123');
+        expect(session.lastSequence, 42);
+        expect(session.lastAckAt, isNotNull);
+      },
+    );
 
     test('canResume is false when only sessionId is set', () {
       session.setSession('sess-123');

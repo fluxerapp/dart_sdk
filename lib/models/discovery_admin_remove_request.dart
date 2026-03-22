@@ -8,9 +8,7 @@ part 'discovery_admin_remove_request.g.dart';
 
 @JsonSerializable()
 class DiscoveryAdminRemoveRequest {
-  const DiscoveryAdminRemoveRequest({
-    required this.reason,
-  });
+  const DiscoveryAdminRemoveRequest({required this.reason});
 
   factory DiscoveryAdminRemoveRequest.fromJson(Map<String, Object?> json) =>
       _$DiscoveryAdminRemoveRequestFromJson(json);

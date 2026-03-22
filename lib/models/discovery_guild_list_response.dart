@@ -10,10 +10,7 @@ part 'discovery_guild_list_response.g.dart';
 
 @JsonSerializable()
 class DiscoveryGuildListResponse {
-  const DiscoveryGuildListResponse({
-    required this.guilds,
-    required this.total,
-  });
+  const DiscoveryGuildListResponse({required this.guilds, required this.total});
 
   factory DiscoveryGuildListResponse.fromJson(Map<String, Object?> json) =>
       _$DiscoveryGuildListResponseFromJson(json);

@@ -8,9 +8,7 @@ part 'discovery_admin_reject_request.g.dart';
 
 @JsonSerializable()
 class DiscoveryAdminRejectRequest {
-  const DiscoveryAdminRejectRequest({
-    required this.reason,
-  });
+  const DiscoveryAdminRejectRequest({required this.reason});
 
   factory DiscoveryAdminRejectRequest.fromJson(Map<String, Object?> json) =>
       _$DiscoveryAdminRejectRequestFromJson(json);

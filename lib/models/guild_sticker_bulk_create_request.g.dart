@@ -7,16 +7,13 @@ part of 'guild_sticker_bulk_create_request.dart';
 // **************************************************************************
 
 GuildStickerBulkCreateRequest _$GuildStickerBulkCreateRequestFromJson(
-        Map<String, dynamic> json) =>
-    GuildStickerBulkCreateRequest(
-      stickers: (json['stickers'] as List<dynamic>)
-          .map((e) =>
-              GuildStickerCreateRequest.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
+  Map<String, dynamic> json,
+) => GuildStickerBulkCreateRequest(
+  stickers: (json['stickers'] as List<dynamic>)
+      .map((e) => GuildStickerCreateRequest.fromJson(e as Map<String, dynamic>))
+      .toList(),
+);
 
 Map<String, dynamic> _$GuildStickerBulkCreateRequestToJson(
-        GuildStickerBulkCreateRequest instance) =>
-    <String, dynamic>{
-      'stickers': instance.stickers,
-    };
+  GuildStickerBulkCreateRequest instance,
+) => <String, dynamic>{'stickers': instance.stickers};

@@ -11,10 +11,7 @@ part 'list_guild_emojis_response.g.dart';
 
 @JsonSerializable()
 class ListGuildEmojisResponse {
-  const ListGuildEmojisResponse({
-    required this.guildId,
-    required this.emojis,
-  });
+  const ListGuildEmojisResponse({required this.guildId, required this.emojis});
 
   factory ListGuildEmojisResponse.fromJson(Map<String, Object?> json) =>
       _$ListGuildEmojisResponseFromJson(json);

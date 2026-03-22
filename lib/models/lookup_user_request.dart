@@ -28,14 +28,11 @@ class LookupUserRequest {
 class LookupUserRequestLookupUserByQueryRequest {
   final String query;
 
-  const LookupUserRequestLookupUserByQueryRequest({
-    required this.query,
-  });
+  const LookupUserRequestLookupUserByQueryRequest({required this.query});
 
   factory LookupUserRequestLookupUserByQueryRequest.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$LookupUserRequestLookupUserByQueryRequestFromJson(json);
+  ) => _$LookupUserRequestLookupUserByQueryRequestFromJson(json);
 
   Map<String, dynamic> toJson() =>
       _$LookupUserRequestLookupUserByQueryRequestToJson(this);
@@ -46,14 +43,11 @@ class LookupUserRequestLookupUserByIdsRequest {
   @JsonKey(name: 'user_ids')
   final List<SnowflakeType> userIds;
 
-  const LookupUserRequestLookupUserByIdsRequest({
-    required this.userIds,
-  });
+  const LookupUserRequestLookupUserByIdsRequest({required this.userIds});
 
   factory LookupUserRequestLookupUserByIdsRequest.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$LookupUserRequestLookupUserByIdsRequestFromJson(json);
+  ) => _$LookupUserRequestLookupUserByIdsRequestFromJson(json);
 
   Map<String, dynamic> toJson() =>
       _$LookupUserRequestLookupUserByIdsRequestToJson(this);

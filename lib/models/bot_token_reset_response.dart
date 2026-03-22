@@ -10,10 +10,7 @@ part 'bot_token_reset_response.g.dart';
 
 @JsonSerializable()
 class BotTokenResetResponse {
-  const BotTokenResetResponse({
-    required this.token,
-    required this.bot,
-  });
+  const BotTokenResetResponse({required this.token, required this.bot});
 
   factory BotTokenResetResponse.fromJson(Map<String, Object?> json) =>
       _$BotTokenResetResponseFromJson(json);

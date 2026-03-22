@@ -18,10 +18,8 @@ enum MessageReferenceType {
 
   const MessageReferenceType(this.json);
 
-  factory MessageReferenceType.fromJson(int json) => values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+  factory MessageReferenceType.fromJson(int json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

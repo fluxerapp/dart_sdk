@@ -8,9 +8,7 @@ part 'o_auth2_consent_response.g.dart';
 
 @JsonSerializable()
 class OAuth2ConsentResponse {
-  const OAuth2ConsentResponse({
-    required this.redirectTo,
-  });
+  const OAuth2ConsentResponse({required this.redirectTo});
 
   factory OAuth2ConsentResponse.fromJson(Map<String, Object?> json) =>
       _$OAuth2ConsentResponseFromJson(json);

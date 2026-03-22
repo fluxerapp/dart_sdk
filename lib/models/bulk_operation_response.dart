@@ -11,10 +11,7 @@ part 'bulk_operation_response.g.dart';
 
 @JsonSerializable()
 class BulkOperationResponse {
-  const BulkOperationResponse({
-    required this.successful,
-    required this.failed,
-  });
+  const BulkOperationResponse({required this.successful, required this.failed});
 
   factory BulkOperationResponse.fromJson(Map<String, Object?> json) =>
       _$BulkOperationResponseFromJson(json);

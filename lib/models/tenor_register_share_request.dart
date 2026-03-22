@@ -10,11 +10,7 @@ part 'tenor_register_share_request.g.dart';
 
 @JsonSerializable()
 class TenorRegisterShareRequest {
-  const TenorRegisterShareRequest({
-    required this.id,
-    this.q,
-    this.locale,
-  });
+  const TenorRegisterShareRequest({required this.id, this.q, this.locale});
 
   factory TenorRegisterShareRequest.fromJson(Map<String, Object?> json) =>
       _$TenorRegisterShareRequestFromJson(json);

@@ -7,13 +7,9 @@ part of 'webhook_received_response.dart';
 // **************************************************************************
 
 WebhookReceivedResponse _$WebhookReceivedResponseFromJson(
-        Map<String, dynamic> json) =>
-    WebhookReceivedResponse(
-      received: json['received'] as bool,
-    );
+  Map<String, dynamic> json,
+) => WebhookReceivedResponse(received: json['received'] as bool);
 
 Map<String, dynamic> _$WebhookReceivedResponseToJson(
-        WebhookReceivedResponse instance) =>
-    <String, dynamic>{
-      'received': instance.received,
-    };
+  WebhookReceivedResponse instance,
+) => <String, dynamic>{'received': instance.received};

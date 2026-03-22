@@ -8,9 +8,7 @@ part 'reorder_connections_request.g.dart';
 
 @JsonSerializable()
 class ReorderConnectionsRequest {
-  const ReorderConnectionsRequest({
-    required this.connectionIds,
-  });
+  const ReorderConnectionsRequest({required this.connectionIds});
 
   factory ReorderConnectionsRequest.fromJson(Map<String, Object?> json) =>
       _$ReorderConnectionsRequestFromJson(json);

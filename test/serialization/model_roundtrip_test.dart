@@ -135,10 +135,7 @@ void main() {
     });
 
     test('handles minimal channel (DM)', () {
-      final json = <String, Object?>{
-        'id': '300',
-        'type': 1,
-      };
+      final json = <String, Object?>{'id': '300', 'type': 1};
 
       final model = ChannelResponse.fromJson(json);
       expect(model.id, '300');
@@ -200,12 +197,7 @@ void main() {
           {'type': 'image', 'url': 'https://example.com/img.png'},
         ],
         'attachments': [
-          {
-            'id': '1',
-            'filename': 'test.png',
-            'size': 1024,
-            'flags': 0,
-          },
+          {'id': '1', 'filename': 'test.png', 'size': 1024, 'flags': 0},
         ],
       };
 
@@ -321,10 +313,7 @@ void main() {
     });
 
     test('preserves raw json through toJson', () {
-      final json = <String, dynamic>{
-        'token': 'abc',
-        'user_id': '1',
-      };
+      final json = <String, dynamic>{'token': 'abc', 'user_id': '1'};
 
       final response = AuthLoginResponse.fromJson(json);
       expect(response.toJson(), json);

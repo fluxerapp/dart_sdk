@@ -7,12 +7,8 @@ part of 'delete_voice_response.dart';
 // **************************************************************************
 
 DeleteVoiceResponse _$DeleteVoiceResponseFromJson(Map<String, dynamic> json) =>
-    DeleteVoiceResponse(
-      success: json['success'] as bool,
-    );
+    DeleteVoiceResponse(success: json['success'] as bool);
 
 Map<String, dynamic> _$DeleteVoiceResponseToJson(
-        DeleteVoiceResponse instance) =>
-    <String, dynamic>{
-      'success': instance.success,
-    };
+  DeleteVoiceResponse instance,
+) => <String, dynamic>{'success': instance.success};

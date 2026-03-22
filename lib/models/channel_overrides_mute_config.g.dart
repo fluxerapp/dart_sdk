@@ -7,15 +7,15 @@ part of 'channel_overrides_mute_config.dart';
 // **************************************************************************
 
 ChannelOverridesMuteConfig _$ChannelOverridesMuteConfigFromJson(
-        Map<String, dynamic> json) =>
-    ChannelOverridesMuteConfig(
-      endTime: json['end_time'] as String?,
-      selectedTimeWindow: (json['selected_time_window'] as num).toInt(),
-    );
+  Map<String, dynamic> json,
+) => ChannelOverridesMuteConfig(
+  endTime: json['end_time'] as String?,
+  selectedTimeWindow: (json['selected_time_window'] as num).toInt(),
+);
 
 Map<String, dynamic> _$ChannelOverridesMuteConfigToJson(
-        ChannelOverridesMuteConfig instance) =>
-    <String, dynamic>{
-      'end_time': instance.endTime,
-      'selected_time_window': instance.selectedTimeWindow,
-    };
+  ChannelOverridesMuteConfig instance,
+) => <String, dynamic>{
+  'end_time': instance.endTime,
+  'selected_time_window': instance.selectedTimeWindow,
+};

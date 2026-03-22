@@ -21,11 +21,7 @@ enum WebAuthnCredentialUpdateRequestMfaMethodMfaMethod {
 
   factory WebAuthnCredentialUpdateRequestMfaMethodMfaMethod.fromJson(
     String json,
-  ) =>
-      values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+  ) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -36,5 +32,5 @@ enum WebAuthnCredentialUpdateRequestMfaMethodMfaMethod {
 
   /// Returns all defined enum values excluding the $unknown value.
   static List<WebAuthnCredentialUpdateRequestMfaMethodMfaMethod>
-      get $valuesDefined => values.where((value) => value != $unknown).toList();
+  get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

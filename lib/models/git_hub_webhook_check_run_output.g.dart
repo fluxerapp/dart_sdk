@@ -7,15 +7,12 @@ part of 'git_hub_webhook_check_run_output.dart';
 // **************************************************************************
 
 GitHubWebhookCheckRunOutput _$GitHubWebhookCheckRunOutputFromJson(
-        Map<String, dynamic> json) =>
-    GitHubWebhookCheckRunOutput(
-      title: json['title'] as String?,
-      summary: json['summary'] as String?,
-    );
+  Map<String, dynamic> json,
+) => GitHubWebhookCheckRunOutput(
+  title: json['title'] as String?,
+  summary: json['summary'] as String?,
+);
 
 Map<String, dynamic> _$GitHubWebhookCheckRunOutputToJson(
-        GitHubWebhookCheckRunOutput instance) =>
-    <String, dynamic>{
-      'title': instance.title,
-      'summary': instance.summary,
-    };
+  GitHubWebhookCheckRunOutput instance,
+) => <String, dynamic>{'title': instance.title, 'summary': instance.summary};

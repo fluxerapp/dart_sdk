@@ -10,9 +10,7 @@ part 'limit_config_update_request.g.dart';
 
 @JsonSerializable()
 class LimitConfigUpdateRequest {
-  const LimitConfigUpdateRequest({
-    required this.limitConfig,
-  });
+  const LimitConfigUpdateRequest({required this.limitConfig});
 
   factory LimitConfigUpdateRequest.fromJson(Map<String, Object?> json) =>
       _$LimitConfigUpdateRequestFromJson(json);

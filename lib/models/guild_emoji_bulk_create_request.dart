@@ -10,9 +10,7 @@ part 'guild_emoji_bulk_create_request.g.dart';
 
 @JsonSerializable()
 class GuildEmojiBulkCreateRequest {
-  const GuildEmojiBulkCreateRequest({
-    required this.emojis,
-  });
+  const GuildEmojiBulkCreateRequest({required this.emojis});
 
   factory GuildEmojiBulkCreateRequest.fromJson(Map<String, Object?> json) =>
       _$GuildEmojiBulkCreateRequestFromJson(json);

@@ -18,10 +18,7 @@ enum PackInviteMetadataResponseTypeType {
   const PackInviteMetadataResponseTypeType(this.json);
 
   factory PackInviteMetadataResponseTypeType.fromJson(int json) =>
-      values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

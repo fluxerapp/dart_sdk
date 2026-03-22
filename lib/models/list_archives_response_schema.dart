@@ -10,9 +10,7 @@ part 'list_archives_response_schema.g.dart';
 
 @JsonSerializable()
 class ListArchivesResponseSchema {
-  const ListArchivesResponseSchema({
-    required this.archives,
-  });
+  const ListArchivesResponseSchema({required this.archives});
 
   factory ListArchivesResponseSchema.fromJson(Map<String, Object?> json) =>
       _$ListArchivesResponseSchemaFromJson(json);

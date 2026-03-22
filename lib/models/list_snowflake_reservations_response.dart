@@ -10,14 +10,11 @@ part 'list_snowflake_reservations_response.g.dart';
 
 @JsonSerializable()
 class ListSnowflakeReservationsResponse {
-  const ListSnowflakeReservationsResponse({
-    required this.reservations,
-  });
+  const ListSnowflakeReservationsResponse({required this.reservations});
 
   factory ListSnowflakeReservationsResponse.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$ListSnowflakeReservationsResponseFromJson(json);
+  ) => _$ListSnowflakeReservationsResponseFromJson(json);
 
   /// List of snowflake reservations
   final List<SnowflakeReservationEntry> reservations;

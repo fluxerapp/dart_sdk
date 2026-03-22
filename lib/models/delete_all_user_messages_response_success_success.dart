@@ -16,10 +16,7 @@ enum DeleteAllUserMessagesResponseSuccessSuccess {
   const DeleteAllUserMessagesResponseSuccessSuccess(this.json);
 
   factory DeleteAllUserMessagesResponseSuccessSuccess.fromJson(bool json) =>
-      values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final bool? json;
 

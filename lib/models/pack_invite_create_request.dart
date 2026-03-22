@@ -8,11 +8,7 @@ part 'pack_invite_create_request.g.dart';
 
 @JsonSerializable()
 class PackInviteCreateRequest {
-  const PackInviteCreateRequest({
-    this.maxUses,
-    this.maxAge,
-    this.unique,
-  });
+  const PackInviteCreateRequest({this.maxUses, this.maxAge, this.unique});
 
   factory PackInviteCreateRequest.fromJson(Map<String, Object?> json) =>
       _$PackInviteCreateRequestFromJson(json);

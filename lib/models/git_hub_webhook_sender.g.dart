@@ -15,10 +15,10 @@ GitHubWebhookSender _$GitHubWebhookSenderFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$GitHubWebhookSenderToJson(
-        GitHubWebhookSender instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'login': instance.login,
-      'html_url': instance.htmlUrl,
-      'avatar_url': instance.avatarUrl,
-    };
+  GitHubWebhookSender instance,
+) => <String, dynamic>{
+  'id': instance.id,
+  'login': instance.login,
+  'html_url': instance.htmlUrl,
+  'avatar_url': instance.avatarUrl,
+};

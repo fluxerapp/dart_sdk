@@ -10,9 +10,7 @@ part 'relationship_type_put_request.g.dart';
 
 @JsonSerializable()
 class RelationshipTypePutRequest {
-  const RelationshipTypePutRequest({
-    this.type,
-  });
+  const RelationshipTypePutRequest({this.type});
 
   factory RelationshipTypePutRequest.fromJson(Map<String, Object?> json) =>
       _$RelationshipTypePutRequestFromJson(json);

@@ -7,17 +7,17 @@ part of 'handoff_complete_request.dart';
 // **************************************************************************
 
 HandoffCompleteRequest _$HandoffCompleteRequestFromJson(
-        Map<String, dynamic> json) =>
-    HandoffCompleteRequest(
-      code: json['code'] as String,
-      token: json['token'] as String,
-      userId: json['user_id'] as String,
-    );
+  Map<String, dynamic> json,
+) => HandoffCompleteRequest(
+  code: json['code'] as String,
+  token: json['token'] as String,
+  userId: json['user_id'] as String,
+);
 
 Map<String, dynamic> _$HandoffCompleteRequestToJson(
-        HandoffCompleteRequest instance) =>
-    <String, dynamic>{
-      'code': instance.code,
-      'token': instance.token,
-      'user_id': instance.userId,
-    };
+  HandoffCompleteRequest instance,
+) => <String, dynamic>{
+  'code': instance.code,
+  'token': instance.token,
+  'user_id': instance.userId,
+};

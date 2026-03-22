@@ -25,10 +25,8 @@ enum MessageSearchScope {
 
   const MessageSearchScope(this.json);
 
-  factory MessageSearchScope.fromJson(String json) => values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+  factory MessageSearchScope.fromJson(String json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 

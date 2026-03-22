@@ -7,13 +7,9 @@ part of 'git_hub_webhook_check_suite_app.dart';
 // **************************************************************************
 
 GitHubWebhookCheckSuiteApp _$GitHubWebhookCheckSuiteAppFromJson(
-        Map<String, dynamic> json) =>
-    GitHubWebhookCheckSuiteApp(
-      name: json['name'] as String,
-    );
+  Map<String, dynamic> json,
+) => GitHubWebhookCheckSuiteApp(name: json['name'] as String);
 
 Map<String, dynamic> _$GitHubWebhookCheckSuiteAppToJson(
-        GitHubWebhookCheckSuiteApp instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-    };
+  GitHubWebhookCheckSuiteApp instance,
+) => <String, dynamic>{'name': instance.name};

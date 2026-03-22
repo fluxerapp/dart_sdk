@@ -10,11 +10,7 @@ part 'klipy_register_share_request.g.dart';
 
 @JsonSerializable()
 class KlipyRegisterShareRequest {
-  const KlipyRegisterShareRequest({
-    required this.id,
-    this.q,
-    this.locale,
-  });
+  const KlipyRegisterShareRequest({required this.id, this.q, this.locale});
 
   factory KlipyRegisterShareRequest.fromJson(Map<String, Object?> json) =>
       _$KlipyRegisterShareRequestFromJson(json);

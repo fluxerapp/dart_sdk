@@ -17,10 +17,8 @@ enum ConnectionResponseTypeType {
 
   const ConnectionResponseTypeType(this.json);
 
-  factory ConnectionResponseTypeType.fromJson(String json) => values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+  factory ConnectionResponseTypeType.fromJson(String json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 

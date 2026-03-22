@@ -8,9 +8,7 @@ part 'delete_voice_region_request.g.dart';
 
 @JsonSerializable()
 class DeleteVoiceRegionRequest {
-  const DeleteVoiceRegionRequest({
-    required this.id,
-  });
+  const DeleteVoiceRegionRequest({required this.id});
 
   factory DeleteVoiceRegionRequest.fromJson(Map<String, Object?> json) =>
       _$DeleteVoiceRegionRequestFromJson(json);

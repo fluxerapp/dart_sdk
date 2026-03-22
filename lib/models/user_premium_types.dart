@@ -19,10 +19,8 @@ enum UserPremiumTypes {
 
   const UserPremiumTypes(this.json);
 
-  factory UserPremiumTypes.fromJson(int json) => values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+  factory UserPremiumTypes.fromJson(int json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

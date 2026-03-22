@@ -18,10 +18,7 @@ enum SearchAuditLogsRequestSortBySortBy {
   const SearchAuditLogsRequestSortBySortBy(this.json);
 
   factory SearchAuditLogsRequestSortBySortBy.fromJson(String json) =>
-      values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 

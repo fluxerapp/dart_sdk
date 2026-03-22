@@ -8,9 +8,7 @@ part 'get_process_memory_stats_request.g.dart';
 
 @JsonSerializable()
 class GetProcessMemoryStatsRequest {
-  const GetProcessMemoryStatsRequest({
-    this.limit,
-  });
+  const GetProcessMemoryStatsRequest({this.limit});
 
   factory GetProcessMemoryStatsRequest.fromJson(Map<String, Object?> json) =>
       _$GetProcessMemoryStatsRequestFromJson(json);

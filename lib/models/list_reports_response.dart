@@ -10,9 +10,7 @@ part 'list_reports_response.g.dart';
 
 @JsonSerializable()
 class ListReportsResponse {
-  const ListReportsResponse({
-    required this.reports,
-  });
+  const ListReportsResponse({required this.reports});
 
   factory ListReportsResponse.fromJson(Map<String, Object?> json) =>
       _$ListReportsResponseFromJson(json);

@@ -8,15 +8,11 @@ part 'discovery_application_patch_request.g.dart';
 
 @JsonSerializable()
 class DiscoveryApplicationPatchRequest {
-  const DiscoveryApplicationPatchRequest({
-    this.description,
-    this.categoryType,
-  });
+  const DiscoveryApplicationPatchRequest({this.description, this.categoryType});
 
   factory DiscoveryApplicationPatchRequest.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$DiscoveryApplicationPatchRequestFromJson(json);
+  ) => _$DiscoveryApplicationPatchRequestFromJson(json);
 
   /// Updated description for discovery listing
   final String? description;

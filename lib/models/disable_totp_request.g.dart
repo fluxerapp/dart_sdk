@@ -13,7 +13,8 @@ DisableTotpRequest _$DisableTotpRequestFromJson(Map<String, dynamic> json) =>
       mfaMethod: json['mfa_method'] == null
           ? null
           : DisableTotpRequestMfaMethodMfaMethod.fromJson(
-              json['mfa_method'] as String),
+              json['mfa_method'] as String,
+            ),
       mfaCode: json['mfa_code'] as String?,
       webauthnResponse: json['webauthn_response'],
       webauthnChallenge: json['webauthn_challenge'] as String?,

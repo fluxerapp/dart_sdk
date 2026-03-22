@@ -10,9 +10,7 @@ part 'ban_phone_request.g.dart';
 
 @JsonSerializable()
 class BanPhoneRequest {
-  const BanPhoneRequest({
-    required this.phone,
-  });
+  const BanPhoneRequest({required this.phone});
 
   factory BanPhoneRequest.fromJson(Map<String, Object?> json) =>
       _$BanPhoneRequestFromJson(json);

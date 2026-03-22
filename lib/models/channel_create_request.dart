@@ -47,8 +47,8 @@ extension ChannelCreateRequestUnionDeserializer on ChannelCreateRequest {
       _ when value == effective[ChannelCreateRequest998] =>
         ChannelCreateRequest998.fromJson(json),
       _ => throw FormatException(
-          'Unknown discriminator value "${json[key]}" for ChannelCreateRequest',
-        ),
+        'Unknown discriminator value "${json[key]}" for ChannelCreateRequest',
+      ),
     };
   }
 }

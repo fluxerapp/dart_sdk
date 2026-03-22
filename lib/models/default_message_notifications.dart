@@ -17,10 +17,8 @@ enum DefaultMessageNotifications {
 
   const DefaultMessageNotifications(this.json);
 
-  factory DefaultMessageNotifications.fromJson(int json) => values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+  factory DefaultMessageNotifications.fromJson(int json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

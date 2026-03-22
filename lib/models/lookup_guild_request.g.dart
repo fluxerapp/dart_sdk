@@ -7,11 +7,7 @@ part of 'lookup_guild_request.dart';
 // **************************************************************************
 
 LookupGuildRequest _$LookupGuildRequestFromJson(Map<String, dynamic> json) =>
-    LookupGuildRequest(
-      guildId: json['guild_id'] as String,
-    );
+    LookupGuildRequest(guildId: json['guild_id'] as String);
 
 Map<String, dynamic> _$LookupGuildRequestToJson(LookupGuildRequest instance) =>
-    <String, dynamic>{
-      'guild_id': instance.guildId,
-    };
+    <String, dynamic>{'guild_id': instance.guildId};

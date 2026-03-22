@@ -22,8 +22,7 @@ class LookupGuildResponseGuildChannels {
 
   factory LookupGuildResponseGuildChannels.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$LookupGuildResponseGuildChannelsFromJson(json);
+  ) => _$LookupGuildResponseGuildChannelsFromJson(json);
 
   final SnowflakeType id;
   final String? name;

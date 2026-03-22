@@ -7,11 +7,7 @@ part of 'ban_email_request.dart';
 // **************************************************************************
 
 BanEmailRequest _$BanEmailRequestFromJson(Map<String, dynamic> json) =>
-    BanEmailRequest(
-      email: json['email'] as String,
-    );
+    BanEmailRequest(email: json['email'] as String);
 
 Map<String, dynamic> _$BanEmailRequestToJson(BanEmailRequest instance) =>
-    <String, dynamic>{
-      'email': instance.email,
-    };
+    <String, dynamic>{'email': instance.email};

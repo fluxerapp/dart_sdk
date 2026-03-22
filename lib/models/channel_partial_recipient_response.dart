@@ -8,9 +8,7 @@ part 'channel_partial_recipient_response.g.dart';
 
 @JsonSerializable()
 class ChannelPartialRecipientResponse {
-  const ChannelPartialRecipientResponse({
-    required this.username,
-  });
+  const ChannelPartialRecipientResponse({required this.username});
 
   factory ChannelPartialRecipientResponse.fromJson(Map<String, Object?> json) =>
       _$ChannelPartialRecipientResponseFromJson(json);

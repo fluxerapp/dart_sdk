@@ -7,13 +7,9 @@ part of 'expand_visionary_slots_request.dart';
 // **************************************************************************
 
 ExpandVisionarySlotsRequest _$ExpandVisionarySlotsRequestFromJson(
-        Map<String, dynamic> json) =>
-    ExpandVisionarySlotsRequest(
-      count: (json['count'] as num).toInt(),
-    );
+  Map<String, dynamic> json,
+) => ExpandVisionarySlotsRequest(count: (json['count'] as num).toInt());
 
 Map<String, dynamic> _$ExpandVisionarySlotsRequestToJson(
-        ExpandVisionarySlotsRequest instance) =>
-    <String, dynamic>{
-      'count': instance.count,
-    };
+  ExpandVisionarySlotsRequest instance,
+) => <String, dynamic>{'count': instance.count};

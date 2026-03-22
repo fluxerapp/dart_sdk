@@ -10,9 +10,7 @@ part 'delete_message_response.g.dart';
 
 @JsonSerializable()
 class DeleteMessageResponse {
-  const DeleteMessageResponse({
-    required this.success,
-  });
+  const DeleteMessageResponse({required this.success});
 
   factory DeleteMessageResponse.fromJson(Map<String, Object?> json) =>
       _$DeleteMessageResponseFromJson(json);

@@ -26,10 +26,7 @@ enum ScheduledMessageResponseSchemaStatusStatus {
   const ScheduledMessageResponseSchemaStatusStatus(this.json);
 
   factory ScheduledMessageResponseSchemaStatusStatus.fromJson(String json) =>
-      values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 

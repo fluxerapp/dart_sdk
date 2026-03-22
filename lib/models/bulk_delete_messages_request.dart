@@ -10,9 +10,7 @@ part 'bulk_delete_messages_request.g.dart';
 
 @JsonSerializable()
 class BulkDeleteMessagesRequest {
-  const BulkDeleteMessagesRequest({
-    required this.messageIds,
-  });
+  const BulkDeleteMessagesRequest({required this.messageIds});
 
   factory BulkDeleteMessagesRequest.fromJson(Map<String, Object?> json) =>
       _$BulkDeleteMessagesRequestFromJson(json);

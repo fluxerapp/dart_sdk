@@ -8,11 +8,7 @@ part 'update_favorite_meme_body_schema.g.dart';
 
 @JsonSerializable()
 class UpdateFavoriteMemeBodySchema {
-  const UpdateFavoriteMemeBodySchema({
-    this.name,
-    this.altText,
-    this.tags,
-  });
+  const UpdateFavoriteMemeBodySchema({this.name, this.altText, this.tags});
 
   factory UpdateFavoriteMemeBodySchema.fromJson(Map<String, Object?> json) =>
       _$UpdateFavoriteMemeBodySchemaFromJson(json);

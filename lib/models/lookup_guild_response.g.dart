@@ -11,11 +11,10 @@ LookupGuildResponse _$LookupGuildResponseFromJson(Map<String, dynamic> json) =>
       guild: json['guild'] == null
           ? null
           : LookupGuildResponseGuild.fromJson(
-              json['guild'] as Map<String, dynamic>),
+              json['guild'] as Map<String, dynamic>,
+            ),
     );
 
 Map<String, dynamic> _$LookupGuildResponseToJson(
-        LookupGuildResponse instance) =>
-    <String, dynamic>{
-      'guild': instance.guild,
-    };
+  LookupGuildResponse instance,
+) => <String, dynamic>{'guild': instance.guild};

@@ -8,14 +8,11 @@ part 'well_known_fluxer_response_app_public.g.dart';
 
 @JsonSerializable()
 class WellKnownFluxerResponseAppPublic {
-  const WellKnownFluxerResponseAppPublic({
-    required this.sentryDsn,
-  });
+  const WellKnownFluxerResponseAppPublic({required this.sentryDsn});
 
   factory WellKnownFluxerResponseAppPublic.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$WellKnownFluxerResponseAppPublicFromJson(json);
+  ) => _$WellKnownFluxerResponseAppPublicFromJson(json);
 
   /// Sentry DSN for client-side error reporting
   @JsonKey(name: 'sentry_dsn')

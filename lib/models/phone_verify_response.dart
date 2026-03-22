@@ -8,9 +8,7 @@ part 'phone_verify_response.g.dart';
 
 @JsonSerializable()
 class PhoneVerifyResponse {
-  const PhoneVerifyResponse({
-    required this.phoneToken,
-  });
+  const PhoneVerifyResponse({required this.phoneToken});
 
   factory PhoneVerifyResponse.fromJson(Map<String, Object?> json) =>
       _$PhoneVerifyResponseFromJson(json);

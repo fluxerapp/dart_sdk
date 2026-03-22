@@ -10,10 +10,7 @@ part 'dsa_report_email_verify_request.g.dart';
 
 @JsonSerializable()
 class DsaReportEmailVerifyRequest {
-  const DsaReportEmailVerifyRequest({
-    required this.email,
-    required this.code,
-  });
+  const DsaReportEmailVerifyRequest({required this.email, required this.code});
 
   factory DsaReportEmailVerifyRequest.fromJson(Map<String, Object?> json) =>
       _$DsaReportEmailVerifyRequestFromJson(json);

@@ -9,11 +9,10 @@ part of 'guild_update_response.dart';
 GuildUpdateResponse _$GuildUpdateResponseFromJson(Map<String, dynamic> json) =>
     GuildUpdateResponse(
       guild: GuildUpdateResponseGuild.fromJson(
-          json['guild'] as Map<String, dynamic>),
+        json['guild'] as Map<String, dynamic>,
+      ),
     );
 
 Map<String, dynamic> _$GuildUpdateResponseToJson(
-        GuildUpdateResponse instance) =>
-    <String, dynamic>{
-      'guild': instance.guild,
-    };
+  GuildUpdateResponse instance,
+) => <String, dynamic>{'guild': instance.guild};

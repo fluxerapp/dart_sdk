@@ -10,10 +10,7 @@ part 'purge_guild_asset_error_schema.g.dart';
 
 @JsonSerializable()
 class PurgeGuildAssetErrorSchema {
-  const PurgeGuildAssetErrorSchema({
-    required this.id,
-    required this.error,
-  });
+  const PurgeGuildAssetErrorSchema({required this.id, required this.error});
 
   factory PurgeGuildAssetErrorSchema.fromJson(Map<String, Object?> json) =>
       _$PurgeGuildAssetErrorSchemaFromJson(json);

@@ -18,10 +18,7 @@ enum ChannelOverwriteResponseTypeType {
   const ChannelOverwriteResponseTypeType(this.json);
 
   factory ChannelOverwriteResponseTypeType.fromJson(int json) =>
-      values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

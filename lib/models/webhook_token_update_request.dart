@@ -10,10 +10,7 @@ part 'webhook_token_update_request.g.dart';
 
 @JsonSerializable()
 class WebhookTokenUpdateRequest {
-  const WebhookTokenUpdateRequest({
-    this.name,
-    this.avatar,
-  });
+  const WebhookTokenUpdateRequest({this.name, this.avatar});
 
   factory WebhookTokenUpdateRequest.fromJson(Map<String, Object?> json) =>
       _$WebhookTokenUpdateRequestFromJson(json);

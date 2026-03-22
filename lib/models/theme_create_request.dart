@@ -8,9 +8,7 @@ part 'theme_create_request.g.dart';
 
 @JsonSerializable()
 class ThemeCreateRequest {
-  const ThemeCreateRequest({
-    required this.css,
-  });
+  const ThemeCreateRequest({required this.css});
 
   factory ThemeCreateRequest.fromJson(Map<String, Object?> json) =>
       _$ThemeCreateRequestFromJson(json);

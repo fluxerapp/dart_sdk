@@ -12,16 +12,19 @@ SlackWebhookRequest _$SlackWebhookRequestFromJson(Map<String, dynamic> json) =>
       username: json['username'] as String?,
       iconUrl: json['icon_url'] as String?,
       attachments: (json['attachments'] as List<dynamic>?)
-          ?.map((e) => SlackWebhookRequestAttachments.fromJson(
-              e as Map<String, dynamic>))
+          ?.map(
+            (e) => SlackWebhookRequestAttachments.fromJson(
+              e as Map<String, dynamic>,
+            ),
+          )
           .toList(),
     );
 
 Map<String, dynamic> _$SlackWebhookRequestToJson(
-        SlackWebhookRequest instance) =>
-    <String, dynamic>{
-      'text': instance.text,
-      'username': instance.username,
-      'icon_url': instance.iconUrl,
-      'attachments': instance.attachments,
-    };
+  SlackWebhookRequest instance,
+) => <String, dynamic>{
+  'text': instance.text,
+  'username': instance.username,
+  'icon_url': instance.iconUrl,
+  'attachments': instance.attachments,
+};

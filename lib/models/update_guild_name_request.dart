@@ -10,10 +10,7 @@ part 'update_guild_name_request.g.dart';
 
 @JsonSerializable()
 class UpdateGuildNameRequest {
-  const UpdateGuildNameRequest({
-    required this.guildId,
-    required this.name,
-  });
+  const UpdateGuildNameRequest({required this.guildId, required this.name});
 
   factory UpdateGuildNameRequest.fromJson(Map<String, Object?> json) =>
       _$UpdateGuildNameRequestFromJson(json);

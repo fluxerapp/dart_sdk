@@ -7,13 +7,9 @@ part of 'user_tag_check_response.dart';
 // **************************************************************************
 
 UserTagCheckResponse _$UserTagCheckResponseFromJson(
-        Map<String, dynamic> json) =>
-    UserTagCheckResponse(
-      taken: json['taken'] as bool,
-    );
+  Map<String, dynamic> json,
+) => UserTagCheckResponse(taken: json['taken'] as bool);
 
 Map<String, dynamic> _$UserTagCheckResponseToJson(
-        UserTagCheckResponse instance) =>
-    <String, dynamic>{
-      'taken': instance.taken,
-    };
+  UserTagCheckResponse instance,
+) => <String, dynamic>{'taken': instance.taken};

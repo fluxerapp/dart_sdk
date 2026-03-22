@@ -7,15 +7,12 @@ part of 'update_suspicious_activity_flags_request.dart';
 // **************************************************************************
 
 UpdateSuspiciousActivityFlagsRequest
-    _$UpdateSuspiciousActivityFlagsRequestFromJson(Map<String, dynamic> json) =>
-        UpdateSuspiciousActivityFlagsRequest(
-          userId: json['user_id'] as String,
-          flags: (json['flags'] as num).toInt(),
-        );
+_$UpdateSuspiciousActivityFlagsRequestFromJson(Map<String, dynamic> json) =>
+    UpdateSuspiciousActivityFlagsRequest(
+      userId: json['user_id'] as String,
+      flags: (json['flags'] as num).toInt(),
+    );
 
 Map<String, dynamic> _$UpdateSuspiciousActivityFlagsRequestToJson(
-        UpdateSuspiciousActivityFlagsRequest instance) =>
-    <String, dynamic>{
-      'user_id': instance.userId,
-      'flags': instance.flags,
-    };
+  UpdateSuspiciousActivityFlagsRequest instance,
+) => <String, dynamic>{'user_id': instance.userId, 'flags': instance.flags};

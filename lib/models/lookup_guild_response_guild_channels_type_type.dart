@@ -28,10 +28,7 @@ enum LookupGuildResponseGuildChannelsTypeType {
   const LookupGuildResponseGuildChannelsTypeType(this.json);
 
   factory LookupGuildResponseGuildChannelsTypeType.fromJson(int json) =>
-      values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

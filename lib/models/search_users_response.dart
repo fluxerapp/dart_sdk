@@ -10,10 +10,7 @@ part 'search_users_response.g.dart';
 
 @JsonSerializable()
 class SearchUsersResponse {
-  const SearchUsersResponse({
-    required this.users,
-    required this.total,
-  });
+  const SearchUsersResponse({required this.users, required this.total});
 
   factory SearchUsersResponse.fromJson(Map<String, Object?> json) =>
       _$SearchUsersResponseFromJson(json);

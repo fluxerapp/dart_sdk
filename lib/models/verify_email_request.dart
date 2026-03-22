@@ -8,9 +8,7 @@ part 'verify_email_request.g.dart';
 
 @JsonSerializable()
 class VerifyEmailRequest {
-  const VerifyEmailRequest({
-    required this.token,
-  });
+  const VerifyEmailRequest({required this.token});
 
   factory VerifyEmailRequest.fromJson(Map<String, Object?> json) =>
       _$VerifyEmailRequestFromJson(json);

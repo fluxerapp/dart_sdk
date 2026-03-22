@@ -27,8 +27,7 @@ class GuildAuditLogEntryResponseOptions {
 
   factory GuildAuditLogEntryResponseOptions.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$GuildAuditLogEntryResponseOptionsFromJson(json);
+  ) => _$GuildAuditLogEntryResponseOptionsFromJson(json);
 
   /// Channel ID for relevant actions
   @JsonKey(name: 'channel_id')

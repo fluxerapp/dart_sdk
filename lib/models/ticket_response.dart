@@ -8,9 +8,7 @@ part 'ticket_response.g.dart';
 
 @JsonSerializable()
 class TicketResponse {
-  const TicketResponse({
-    required this.ticket,
-  });
+  const TicketResponse({required this.ticket});
 
   factory TicketResponse.fromJson(Map<String, Object?> json) =>
       _$TicketResponseFromJson(json);

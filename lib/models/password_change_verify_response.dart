@@ -8,9 +8,7 @@ part 'password_change_verify_response.g.dart';
 
 @JsonSerializable()
 class PasswordChangeVerifyResponse {
-  const PasswordChangeVerifyResponse({
-    required this.verificationProof,
-  });
+  const PasswordChangeVerifyResponse({required this.verificationProof});
 
   factory PasswordChangeVerifyResponse.fromJson(Map<String, Object?> json) =>
       _$PasswordChangeVerifyResponseFromJson(json);

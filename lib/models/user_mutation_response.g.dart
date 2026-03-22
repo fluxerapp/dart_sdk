@@ -7,14 +7,11 @@ part of 'user_mutation_response.dart';
 // **************************************************************************
 
 UserMutationResponse _$UserMutationResponseFromJson(
-        Map<String, dynamic> json) =>
-    UserMutationResponse(
-      user: UserAdminResponseSchema.fromJson(
-          json['user'] as Map<String, dynamic>),
-    );
+  Map<String, dynamic> json,
+) => UserMutationResponse(
+  user: UserAdminResponseSchema.fromJson(json['user'] as Map<String, dynamic>),
+);
 
 Map<String, dynamic> _$UserMutationResponseToJson(
-        UserMutationResponse instance) =>
-    <String, dynamic>{
-      'user': instance.user,
-    };
+  UserMutationResponse instance,
+) => <String, dynamic>{'user': instance.user};

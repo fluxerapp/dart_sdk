@@ -13,7 +13,4 @@ MfaSmsRequest _$MfaSmsRequestFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$MfaSmsRequestToJson(MfaSmsRequest instance) =>
-    <String, dynamic>{
-      'code': instance.code,
-      'ticket': instance.ticket,
-    };
+    <String, dynamic>{'code': instance.code, 'ticket': instance.ticket};

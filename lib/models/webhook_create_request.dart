@@ -10,10 +10,7 @@ part 'webhook_create_request.g.dart';
 
 @JsonSerializable()
 class WebhookCreateRequest {
-  const WebhookCreateRequest({
-    required this.name,
-    this.avatar,
-  });
+  const WebhookCreateRequest({required this.name, this.avatar});
 
   factory WebhookCreateRequest.fromJson(Map<String, Object?> json) =>
       _$WebhookCreateRequestFromJson(json);

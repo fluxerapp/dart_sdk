@@ -13,7 +13,4 @@ SsoCompleteRequest _$SsoCompleteRequestFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$SsoCompleteRequestToJson(SsoCompleteRequest instance) =>
-    <String, dynamic>{
-      'code': instance.code,
-      'state': instance.state,
-    };
+    <String, dynamic>{'code': instance.code, 'state': instance.state};

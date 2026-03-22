@@ -10,9 +10,7 @@ part 'lookup_user_response.g.dart';
 
 @JsonSerializable()
 class LookupUserResponse {
-  const LookupUserResponse({
-    required this.users,
-  });
+  const LookupUserResponse({required this.users});
 
   factory LookupUserResponse.fromJson(Map<String, Object?> json) =>
       _$LookupUserResponseFromJson(json);

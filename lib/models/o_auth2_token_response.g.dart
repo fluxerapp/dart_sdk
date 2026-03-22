@@ -16,11 +16,11 @@ OAuth2TokenResponse _$OAuth2TokenResponseFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$OAuth2TokenResponseToJson(
-        OAuth2TokenResponse instance) =>
-    <String, dynamic>{
-      'access_token': instance.accessToken,
-      'token_type': instance.tokenType,
-      'expires_in': instance.expiresIn,
-      'refresh_token': instance.refreshToken,
-      'scope': instance.scope,
-    };
+  OAuth2TokenResponse instance,
+) => <String, dynamic>{
+  'access_token': instance.accessToken,
+  'token_type': instance.tokenType,
+  'expires_in': instance.expiresIn,
+  'refresh_token': instance.refreshToken,
+  'scope': instance.scope,
+};

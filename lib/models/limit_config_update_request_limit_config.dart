@@ -17,8 +17,7 @@ class LimitConfigUpdateRequestLimitConfig {
 
   factory LimitConfigUpdateRequestLimitConfig.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$LimitConfigUpdateRequestLimitConfigFromJson(json);
+  ) => _$LimitConfigUpdateRequestLimitConfigFromJson(json);
 
   /// Trait definitions used by rules
   final List<String>? traitDefinitions;

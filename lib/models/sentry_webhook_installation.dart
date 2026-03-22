@@ -8,9 +8,7 @@ part 'sentry_webhook_installation.g.dart';
 
 @JsonSerializable()
 class SentryWebhookInstallation {
-  const SentryWebhookInstallation({
-    required this.uuid,
-  });
+  const SentryWebhookInstallation({required this.uuid});
 
   factory SentryWebhookInstallation.fromJson(Map<String, Object?> json) =>
       _$SentryWebhookInstallationFromJson(json);

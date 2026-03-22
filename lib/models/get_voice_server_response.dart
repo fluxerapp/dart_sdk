@@ -10,9 +10,7 @@ part 'get_voice_server_response.g.dart';
 
 @JsonSerializable()
 class GetVoiceServerResponse {
-  const GetVoiceServerResponse({
-    required this.server,
-  });
+  const GetVoiceServerResponse({required this.server});
 
   factory GetVoiceServerResponse.fromJson(Map<String, Object?> json) =>
       _$GetVoiceServerResponseFromJson(json);

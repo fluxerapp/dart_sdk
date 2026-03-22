@@ -19,10 +19,8 @@ enum TimeFormatTypes {
 
   const TimeFormatTypes(this.json);
 
-  factory TimeFormatTypes.fromJson(int json) => values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+  factory TimeFormatTypes.fromJson(int json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

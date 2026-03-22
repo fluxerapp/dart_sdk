@@ -8,10 +8,7 @@ part 'git_hub_webhook_check_run_output.g.dart';
 
 @JsonSerializable()
 class GitHubWebhookCheckRunOutput {
-  const GitHubWebhookCheckRunOutput({
-    this.title,
-    this.summary,
-  });
+  const GitHubWebhookCheckRunOutput({this.title, this.summary});
 
   factory GitHubWebhookCheckRunOutput.fromJson(Map<String, Object?> json) =>
       _$GitHubWebhookCheckRunOutputFromJson(json);

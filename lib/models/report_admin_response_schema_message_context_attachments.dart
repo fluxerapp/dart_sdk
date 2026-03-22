@@ -15,8 +15,7 @@ class ReportAdminResponseSchemaMessageContextAttachments {
 
   factory ReportAdminResponseSchemaMessageContextAttachments.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$ReportAdminResponseSchemaMessageContextAttachmentsFromJson(json);
+  ) => _$ReportAdminResponseSchemaMessageContextAttachmentsFromJson(json);
 
   final String filename;
   final String url;

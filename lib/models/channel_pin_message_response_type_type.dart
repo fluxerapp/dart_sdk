@@ -33,10 +33,7 @@ enum ChannelPinMessageResponseTypeType {
   const ChannelPinMessageResponseTypeType(this.json);
 
   factory ChannelPinMessageResponseTypeType.fromJson(int json) =>
-      values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

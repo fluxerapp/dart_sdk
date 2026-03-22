@@ -7,43 +7,42 @@ part of 'guild_member_update_request.dart';
 // **************************************************************************
 
 GuildMemberUpdateRequest _$GuildMemberUpdateRequestFromJson(
-        Map<String, dynamic> json) =>
-    GuildMemberUpdateRequest(
-      nick: json['nick'] as String?,
-      roles:
-          (json['roles'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      avatar: json['avatar'] as String?,
-      banner: json['banner'] as String?,
-      bio: json['bio'] as String?,
-      pronouns: json['pronouns'] as String?,
-      accentColor: (json['accent_color'] as num?)?.toInt(),
-      profileFlags: (json['profile_flags'] as num?)?.toInt(),
-      mute: json['mute'] as bool?,
-      deaf: json['deaf'] as bool?,
-      communicationDisabledUntil: json['communication_disabled_until'] == null
-          ? null
-          : DateTime.parse(json['communication_disabled_until'] as String),
-      timeoutReason: json['timeout_reason'] as String?,
-      channelId: json['channel_id'] as String?,
-      connectionId: json['connection_id'] as String?,
-    );
+  Map<String, dynamic> json,
+) => GuildMemberUpdateRequest(
+  nick: json['nick'] as String?,
+  roles: (json['roles'] as List<dynamic>?)?.map((e) => e as String).toList(),
+  avatar: json['avatar'] as String?,
+  banner: json['banner'] as String?,
+  bio: json['bio'] as String?,
+  pronouns: json['pronouns'] as String?,
+  accentColor: (json['accent_color'] as num?)?.toInt(),
+  profileFlags: (json['profile_flags'] as num?)?.toInt(),
+  mute: json['mute'] as bool?,
+  deaf: json['deaf'] as bool?,
+  communicationDisabledUntil: json['communication_disabled_until'] == null
+      ? null
+      : DateTime.parse(json['communication_disabled_until'] as String),
+  timeoutReason: json['timeout_reason'] as String?,
+  channelId: json['channel_id'] as String?,
+  connectionId: json['connection_id'] as String?,
+);
 
 Map<String, dynamic> _$GuildMemberUpdateRequestToJson(
-        GuildMemberUpdateRequest instance) =>
-    <String, dynamic>{
-      'nick': instance.nick,
-      'roles': instance.roles,
-      'avatar': instance.avatar,
-      'banner': instance.banner,
-      'bio': instance.bio,
-      'pronouns': instance.pronouns,
-      'accent_color': instance.accentColor,
-      'profile_flags': instance.profileFlags,
-      'mute': instance.mute,
-      'deaf': instance.deaf,
-      'communication_disabled_until':
-          instance.communicationDisabledUntil?.toIso8601String(),
-      'timeout_reason': instance.timeoutReason,
-      'channel_id': instance.channelId,
-      'connection_id': instance.connectionId,
-    };
+  GuildMemberUpdateRequest instance,
+) => <String, dynamic>{
+  'nick': instance.nick,
+  'roles': instance.roles,
+  'avatar': instance.avatar,
+  'banner': instance.banner,
+  'bio': instance.bio,
+  'pronouns': instance.pronouns,
+  'accent_color': instance.accentColor,
+  'profile_flags': instance.profileFlags,
+  'mute': instance.mute,
+  'deaf': instance.deaf,
+  'communication_disabled_until': instance.communicationDisabledUntil
+      ?.toIso8601String(),
+  'timeout_reason': instance.timeoutReason,
+  'channel_id': instance.channelId,
+  'connection_id': instance.connectionId,
+};

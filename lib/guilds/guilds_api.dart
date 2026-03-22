@@ -59,9 +59,7 @@ abstract class GuildsApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/guilds')
-  Future<GuildResponse> createGuild({
-    @Body() required GuildCreateRequest body,
-  });
+  Future<GuildResponse> createGuild({@Body() required GuildCreateRequest body});
 
   /// Get guild information.
   ///
@@ -610,7 +608,5 @@ abstract class GuildsApi {
   ///
   /// [guildId] - The ID of the guild.
   @DELETE('/users/@me/guilds/{guild_id}')
-  Future<void> leaveGuild({
-    @Path('guild_id') required SnowflakeType guildId,
-  });
+  Future<void> leaveGuild({@Path('guild_id') required SnowflakeType guildId});
 }

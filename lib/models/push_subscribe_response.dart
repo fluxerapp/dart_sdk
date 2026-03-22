@@ -8,9 +8,7 @@ part 'push_subscribe_response.g.dart';
 
 @JsonSerializable()
 class PushSubscribeResponse {
-  const PushSubscribeResponse({
-    required this.subscriptionId,
-  });
+  const PushSubscribeResponse({required this.subscriptionId});
 
   factory PushSubscribeResponse.fromJson(Map<String, Object?> json) =>
       _$PushSubscribeResponseFromJson(json);

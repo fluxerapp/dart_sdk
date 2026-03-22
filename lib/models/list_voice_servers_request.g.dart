@@ -7,13 +7,9 @@ part of 'list_voice_servers_request.dart';
 // **************************************************************************
 
 ListVoiceServersRequest _$ListVoiceServersRequestFromJson(
-        Map<String, dynamic> json) =>
-    ListVoiceServersRequest(
-      regionId: json['region_id'] as String,
-    );
+  Map<String, dynamic> json,
+) => ListVoiceServersRequest(regionId: json['region_id'] as String);
 
 Map<String, dynamic> _$ListVoiceServersRequestToJson(
-        ListVoiceServersRequest instance) =>
-    <String, dynamic>{
-      'region_id': instance.regionId,
-    };
+  ListVoiceServersRequest instance,
+) => <String, dynamic>{'region_id': instance.regionId};

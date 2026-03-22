@@ -8,9 +8,7 @@ part 'email_token_response.g.dart';
 
 @JsonSerializable()
 class EmailTokenResponse {
-  const EmailTokenResponse({
-    required this.emailToken,
-  });
+  const EmailTokenResponse({required this.emailToken});
 
   factory EmailTokenResponse.fromJson(Map<String, Object?> json) =>
       _$EmailTokenResponseFromJson(json);

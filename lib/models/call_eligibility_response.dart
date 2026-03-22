@@ -8,10 +8,7 @@ part 'call_eligibility_response.g.dart';
 
 @JsonSerializable()
 class CallEligibilityResponse {
-  const CallEligibilityResponse({
-    required this.ringable,
-    required this.silent,
-  });
+  const CallEligibilityResponse({required this.ringable, required this.silent});
 
   factory CallEligibilityResponse.fromJson(Map<String, Object?> json) =>
       _$CallEligibilityResponseFromJson(json);

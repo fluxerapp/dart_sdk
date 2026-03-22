@@ -7,15 +7,13 @@ part of 'username_suggestions_response.dart';
 // **************************************************************************
 
 UsernameSuggestionsResponse _$UsernameSuggestionsResponseFromJson(
-        Map<String, dynamic> json) =>
-    UsernameSuggestionsResponse(
-      suggestions: (json['suggestions'] as List<dynamic>)
-          .map((e) => e as String)
-          .toList(),
-    );
+  Map<String, dynamic> json,
+) => UsernameSuggestionsResponse(
+  suggestions: (json['suggestions'] as List<dynamic>)
+      .map((e) => e as String)
+      .toList(),
+);
 
 Map<String, dynamic> _$UsernameSuggestionsResponseToJson(
-        UsernameSuggestionsResponse instance) =>
-    <String, dynamic>{
-      'suggestions': instance.suggestions,
-    };
+  UsernameSuggestionsResponse instance,
+) => <String, dynamic>{'suggestions': instance.suggestions};

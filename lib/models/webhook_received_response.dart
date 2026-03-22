@@ -8,9 +8,7 @@ part 'webhook_received_response.g.dart';
 
 @JsonSerializable()
 class WebhookReceivedResponse {
-  const WebhookReceivedResponse({
-    required this.received,
-  });
+  const WebhookReceivedResponse({required this.received});
 
   factory WebhookReceivedResponse.fromJson(Map<String, Object?> json) =>
       _$WebhookReceivedResponseFromJson(json);

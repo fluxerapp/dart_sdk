@@ -33,10 +33,7 @@ enum MessageSearchResultsResponseMessagesTypeType {
   const MessageSearchResultsResponseMessagesTypeType(this.json);
 
   factory MessageSearchResultsResponseMessagesTypeType.fromJson(int json) =>
-      values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 
@@ -47,5 +44,5 @@ enum MessageSearchResultsResponseMessagesTypeType {
 
   /// Returns all defined enum values excluding the $unknown value.
   static List<MessageSearchResultsResponseMessagesTypeType>
-      get $valuesDefined => values.where((value) => value != $unknown).toList();
+  get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

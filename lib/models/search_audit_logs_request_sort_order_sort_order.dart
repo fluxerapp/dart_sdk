@@ -18,10 +18,7 @@ enum SearchAuditLogsRequestSortOrderSortOrder {
   const SearchAuditLogsRequestSortOrderSortOrder(this.json);
 
   factory SearchAuditLogsRequestSortOrderSortOrder.fromJson(String json) =>
-      values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 

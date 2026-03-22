@@ -10,9 +10,7 @@ part 'terminate_sessions_response.g.dart';
 
 @JsonSerializable()
 class TerminateSessionsResponse {
-  const TerminateSessionsResponse({
-    required this.terminatedCount,
-  });
+  const TerminateSessionsResponse({required this.terminatedCount});
 
   factory TerminateSessionsResponse.fromJson(Map<String, Object?> json) =>
       _$TerminateSessionsResponseFromJson(json);

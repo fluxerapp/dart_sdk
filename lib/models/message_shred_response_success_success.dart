@@ -16,10 +16,7 @@ enum MessageShredResponseSuccessSuccess {
   const MessageShredResponseSuccessSuccess(this.json);
 
   factory MessageShredResponseSuccessSuccess.fromJson(bool json) =>
-      values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final bool? json;
 

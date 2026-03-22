@@ -8,10 +8,7 @@ part 'mutual_guild_response.g.dart';
 
 @JsonSerializable()
 class MutualGuildResponse {
-  const MutualGuildResponse({
-    required this.id,
-    required this.nick,
-  });
+  const MutualGuildResponse({required this.id, required this.nick});
 
   factory MutualGuildResponse.fromJson(Map<String, Object?> json) =>
       _$MutualGuildResponseFromJson(json);

@@ -8,14 +8,11 @@ part 'git_hub_webhook_check_run_check_suite_app.g.dart';
 
 @JsonSerializable()
 class GitHubWebhookCheckRunCheckSuiteApp {
-  const GitHubWebhookCheckRunCheckSuiteApp({
-    required this.name,
-  });
+  const GitHubWebhookCheckRunCheckSuiteApp({required this.name});
 
   factory GitHubWebhookCheckRunCheckSuiteApp.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$GitHubWebhookCheckRunCheckSuiteAppFromJson(json);
+  ) => _$GitHubWebhookCheckRunCheckSuiteAppFromJson(json);
 
   final String name;
 

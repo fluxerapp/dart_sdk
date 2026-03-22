@@ -7,13 +7,9 @@ part of 'enabled_toggle_request.dart';
 // **************************************************************************
 
 EnabledToggleRequest _$EnabledToggleRequestFromJson(
-        Map<String, dynamic> json) =>
-    EnabledToggleRequest(
-      enabled: json['enabled'] as bool,
-    );
+  Map<String, dynamic> json,
+) => EnabledToggleRequest(enabled: json['enabled'] as bool);
 
 Map<String, dynamic> _$EnabledToggleRequestToJson(
-        EnabledToggleRequest instance) =>
-    <String, dynamic>{
-      'enabled': instance.enabled,
-    };
+  EnabledToggleRequest instance,
+) => <String, dynamic>{'enabled': instance.enabled};

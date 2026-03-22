@@ -8,11 +8,7 @@ part 'auth_session_location.g.dart';
 
 @JsonSerializable()
 class AuthSessionLocation {
-  const AuthSessionLocation({
-    this.city,
-    this.region,
-    this.country,
-  });
+  const AuthSessionLocation({this.city, this.region, this.country});
 
   factory AuthSessionLocation.fromJson(Map<String, Object?> json) =>
       _$AuthSessionLocationFromJson(json);

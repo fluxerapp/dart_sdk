@@ -10,9 +10,7 @@ part 'lookup_user_by_ids_request.g.dart';
 
 @JsonSerializable()
 class LookupUserByIdsRequest {
-  const LookupUserByIdsRequest({
-    required this.userIds,
-  });
+  const LookupUserByIdsRequest({required this.userIds});
 
   factory LookupUserByIdsRequest.fromJson(Map<String, Object?> json) =>
       _$LookupUserByIdsRequestFromJson(json);

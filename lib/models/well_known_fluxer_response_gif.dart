@@ -10,9 +10,7 @@ part 'well_known_fluxer_response_gif.g.dart';
 
 @JsonSerializable()
 class WellKnownFluxerResponseGif {
-  const WellKnownFluxerResponseGif({
-    required this.provider,
-  });
+  const WellKnownFluxerResponseGif({required this.provider});
 
   factory WellKnownFluxerResponseGif.fromJson(Map<String, Object?> json) =>
       _$WellKnownFluxerResponseGifFromJson(json);

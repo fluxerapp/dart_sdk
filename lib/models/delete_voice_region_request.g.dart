@@ -7,13 +7,9 @@ part of 'delete_voice_region_request.dart';
 // **************************************************************************
 
 DeleteVoiceRegionRequest _$DeleteVoiceRegionRequestFromJson(
-        Map<String, dynamic> json) =>
-    DeleteVoiceRegionRequest(
-      id: json['id'] as String,
-    );
+  Map<String, dynamic> json,
+) => DeleteVoiceRegionRequest(id: json['id'] as String);
 
 Map<String, dynamic> _$DeleteVoiceRegionRequestToJson(
-        DeleteVoiceRegionRequest instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-    };
+  DeleteVoiceRegionRequest instance,
+) => <String, dynamic>{'id': instance.id};

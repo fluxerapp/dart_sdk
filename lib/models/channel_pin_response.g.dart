@@ -9,7 +9,8 @@ part of 'channel_pin_response.dart';
 ChannelPinResponse _$ChannelPinResponseFromJson(Map<String, dynamic> json) =>
     ChannelPinResponse(
       message: ChannelPinMessageResponse.fromJson(
-          json['message'] as Map<String, dynamic>),
+        json['message'] as Map<String, dynamic>,
+      ),
       pinnedAt: DateTime.parse(json['pinned_at'] as String),
     );
 

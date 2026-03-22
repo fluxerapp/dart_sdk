@@ -7,11 +7,7 @@ part of 'ticket_response.dart';
 // **************************************************************************
 
 TicketResponse _$TicketResponseFromJson(Map<String, dynamic> json) =>
-    TicketResponse(
-      ticket: json['ticket'] as String,
-    );
+    TicketResponse(ticket: json['ticket'] as String);
 
 Map<String, dynamic> _$TicketResponseToJson(TicketResponse instance) =>
-    <String, dynamic>{
-      'ticket': instance.ticket,
-    };
+    <String, dynamic>{'ticket': instance.ticket};

@@ -8,9 +8,7 @@ part 'discovery_admin_review_request.g.dart';
 
 @JsonSerializable()
 class DiscoveryAdminReviewRequest {
-  const DiscoveryAdminReviewRequest({
-    this.reason,
-  });
+  const DiscoveryAdminReviewRequest({this.reason});
 
   factory DiscoveryAdminReviewRequest.fromJson(Map<String, Object?> json) =>
       _$DiscoveryAdminReviewRequestFromJson(json);

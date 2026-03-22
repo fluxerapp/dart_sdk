@@ -16,10 +16,7 @@ enum DeleteApiKeyResponseSuccessSuccess {
   const DeleteApiKeyResponseSuccessSuccess(this.json);
 
   factory DeleteApiKeyResponseSuccessSuccess.fromJson(bool json) =>
-      values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final bool? json;
 

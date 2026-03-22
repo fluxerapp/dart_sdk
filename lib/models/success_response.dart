@@ -10,9 +10,7 @@ part 'success_response.g.dart';
 
 @JsonSerializable()
 class SuccessResponse {
-  const SuccessResponse({
-    required this.success,
-  });
+  const SuccessResponse({required this.success});
 
   factory SuccessResponse.fromJson(Map<String, Object?> json) =>
       _$SuccessResponseFromJson(json);

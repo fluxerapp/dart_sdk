@@ -10,10 +10,7 @@ part 'resolve_report_request.g.dart';
 
 @JsonSerializable()
 class ResolveReportRequest {
-  const ResolveReportRequest({
-    required this.reportId,
-    this.publicComment,
-  });
+  const ResolveReportRequest({required this.reportId, this.publicComment});
 
   factory ResolveReportRequest.fromJson(Map<String, Object?> json) =>
       _$ResolveReportRequestFromJson(json);

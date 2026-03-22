@@ -43,8 +43,7 @@ class UserUpdateWithVerificationRequest {
 
   factory UserUpdateWithVerificationRequest.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$UserUpdateWithVerificationRequestFromJson(json);
+  ) => _$UserUpdateWithVerificationRequestFromJson(json);
 
   final UsernameType? username;
 

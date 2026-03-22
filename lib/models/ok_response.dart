@@ -8,9 +8,7 @@ part 'ok_response.g.dart';
 
 @JsonSerializable()
 class OkResponse {
-  const OkResponse({
-    required this.ok,
-  });
+  const OkResponse({required this.ok});
 
   factory OkResponse.fromJson(Map<String, Object?> json) =>
       _$OkResponseFromJson(json);

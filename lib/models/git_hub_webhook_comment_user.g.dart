@@ -7,19 +7,19 @@ part of 'git_hub_webhook_comment_user.dart';
 // **************************************************************************
 
 GitHubWebhookCommentUser _$GitHubWebhookCommentUserFromJson(
-        Map<String, dynamic> json) =>
-    GitHubWebhookCommentUser(
-      id: (json['id'] as num).toInt(),
-      login: json['login'] as String,
-      htmlUrl: json['html_url'] as String,
-      avatarUrl: json['avatar_url'] as String,
-    );
+  Map<String, dynamic> json,
+) => GitHubWebhookCommentUser(
+  id: (json['id'] as num).toInt(),
+  login: json['login'] as String,
+  htmlUrl: json['html_url'] as String,
+  avatarUrl: json['avatar_url'] as String,
+);
 
 Map<String, dynamic> _$GitHubWebhookCommentUserToJson(
-        GitHubWebhookCommentUser instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'login': instance.login,
-      'html_url': instance.htmlUrl,
-      'avatar_url': instance.avatarUrl,
-    };
+  GitHubWebhookCommentUser instance,
+) => <String, dynamic>{
+  'id': instance.id,
+  'login': instance.login,
+  'html_url': instance.htmlUrl,
+  'avatar_url': instance.avatarUrl,
+};

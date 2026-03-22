@@ -8,9 +8,7 @@ part 'password_change_ticket_request.g.dart';
 
 @JsonSerializable()
 class PasswordChangeTicketRequest {
-  const PasswordChangeTicketRequest({
-    required this.ticket,
-  });
+  const PasswordChangeTicketRequest({required this.ticket});
 
   factory PasswordChangeTicketRequest.fromJson(Map<String, Object?> json) =>
       _$PasswordChangeTicketRequestFromJson(json);

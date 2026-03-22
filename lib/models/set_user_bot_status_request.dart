@@ -10,10 +10,7 @@ part 'set_user_bot_status_request.g.dart';
 
 @JsonSerializable()
 class SetUserBotStatusRequest {
-  const SetUserBotStatusRequest({
-    required this.userId,
-    required this.bot,
-  });
+  const SetUserBotStatusRequest({required this.userId, required this.bot});
 
   factory SetUserBotStatusRequest.fromJson(Map<String, Object?> json) =>
       _$SetUserBotStatusRequestFromJson(json);

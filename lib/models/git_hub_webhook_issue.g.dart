@@ -11,8 +11,9 @@ GitHubWebhookIssue _$GitHubWebhookIssueFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       number: (json['number'] as num).toInt(),
       htmlUrl: json['html_url'] as String,
-      user:
-          GitHubWebhookIssueUser.fromJson(json['user'] as Map<String, dynamic>),
+      user: GitHubWebhookIssueUser.fromJson(
+        json['user'] as Map<String, dynamic>,
+      ),
       title: json['title'] as String,
       body: json['body'] as String?,
     );

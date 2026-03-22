@@ -10,9 +10,7 @@ part 'disable_mfa_request.g.dart';
 
 @JsonSerializable()
 class DisableMfaRequest {
-  const DisableMfaRequest({
-    required this.userId,
-  });
+  const DisableMfaRequest({required this.userId});
 
   factory DisableMfaRequest.fromJson(Map<String, Object?> json) =>
       _$DisableMfaRequestFromJson(json);

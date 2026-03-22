@@ -24,8 +24,7 @@ class UserSettingsUpdateRequestGuildFolders {
 
   factory UserSettingsUpdateRequestGuildFolders.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$UserSettingsUpdateRequestGuildFoldersFromJson(json);
+  ) => _$UserSettingsUpdateRequestGuildFoldersFromJson(json);
 
   /// Unique identifier for the folder (-1 for uncategorized)
   final int id;

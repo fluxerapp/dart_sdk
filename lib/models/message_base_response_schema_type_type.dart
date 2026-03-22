@@ -33,10 +33,7 @@ enum MessageBaseResponseSchemaTypeType {
   const MessageBaseResponseSchemaTypeType(this.json);
 
   factory MessageBaseResponseSchemaTypeType.fromJson(int json) =>
-      values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

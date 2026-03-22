@@ -20,10 +20,7 @@ enum SearchReportsRequestSortBySortBy {
   const SearchReportsRequestSortBySortBy(this.json);
 
   factory SearchReportsRequestSortBySortBy.fromJson(String json) =>
-      values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 

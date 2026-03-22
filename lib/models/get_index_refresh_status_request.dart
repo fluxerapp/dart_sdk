@@ -8,9 +8,7 @@ part 'get_index_refresh_status_request.g.dart';
 
 @JsonSerializable()
 class GetIndexRefreshStatusRequest {
-  const GetIndexRefreshStatusRequest({
-    required this.jobId,
-  });
+  const GetIndexRefreshStatusRequest({required this.jobId});
 
   factory GetIndexRefreshStatusRequest.fromJson(Map<String, Object?> json) =>
       _$GetIndexRefreshStatusRequestFromJson(json);

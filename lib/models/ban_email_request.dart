@@ -10,9 +10,7 @@ part 'ban_email_request.g.dart';
 
 @JsonSerializable()
 class BanEmailRequest {
-  const BanEmailRequest({
-    required this.email,
-  });
+  const BanEmailRequest({required this.email});
 
   factory BanEmailRequest.fromJson(Map<String, Object?> json) =>
       _$BanEmailRequestFromJson(json);

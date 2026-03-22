@@ -7,14 +7,13 @@ part of 'create_voice_region_response.dart';
 // **************************************************************************
 
 CreateVoiceRegionResponse _$CreateVoiceRegionResponseFromJson(
-        Map<String, dynamic> json) =>
-    CreateVoiceRegionResponse(
-      region: CreateVoiceRegionResponseRegion.fromJson(
-          json['region'] as Map<String, dynamic>),
-    );
+  Map<String, dynamic> json,
+) => CreateVoiceRegionResponse(
+  region: CreateVoiceRegionResponseRegion.fromJson(
+    json['region'] as Map<String, dynamic>,
+  ),
+);
 
 Map<String, dynamic> _$CreateVoiceRegionResponseToJson(
-        CreateVoiceRegionResponse instance) =>
-    <String, dynamic>{
-      'region': instance.region,
-    };
+  CreateVoiceRegionResponse instance,
+) => <String, dynamic>{'region': instance.region};

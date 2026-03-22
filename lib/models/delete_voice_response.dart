@@ -8,9 +8,7 @@ part 'delete_voice_response.g.dart';
 
 @JsonSerializable()
 class DeleteVoiceResponse {
-  const DeleteVoiceResponse({
-    required this.success,
-  });
+  const DeleteVoiceResponse({required this.success});
 
   factory DeleteVoiceResponse.fromJson(Map<String, Object?> json) =>
       _$DeleteVoiceResponseFromJson(json);

@@ -8,9 +8,7 @@ part 'guild_vanity_url_update_response.g.dart';
 
 @JsonSerializable()
 class GuildVanityUrlUpdateResponse {
-  const GuildVanityUrlUpdateResponse({
-    required this.code,
-  });
+  const GuildVanityUrlUpdateResponse({required this.code});
 
   factory GuildVanityUrlUpdateResponse.fromJson(Map<String, Object?> json) =>
       _$GuildVanityUrlUpdateResponseFromJson(json);

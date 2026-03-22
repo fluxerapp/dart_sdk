@@ -10,10 +10,7 @@ part 'email_revert_request.g.dart';
 
 @JsonSerializable()
 class EmailRevertRequest {
-  const EmailRevertRequest({
-    required this.token,
-    required this.password,
-  });
+  const EmailRevertRequest({required this.token, required this.password});
 
   factory EmailRevertRequest.fromJson(Map<String, Object?> json) =>
       _$EmailRevertRequestFromJson(json);

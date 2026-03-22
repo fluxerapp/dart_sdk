@@ -15,10 +15,10 @@ EmbedAuthorResponse _$EmbedAuthorResponseFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$EmbedAuthorResponseToJson(
-        EmbedAuthorResponse instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'url': instance.url,
-      'icon_url': instance.iconUrl,
-      'proxy_icon_url': instance.proxyIconUrl,
-    };
+  EmbedAuthorResponse instance,
+) => <String, dynamic>{
+  'name': instance.name,
+  'url': instance.url,
+  'icon_url': instance.iconUrl,
+  'proxy_icon_url': instance.proxyIconUrl,
+};

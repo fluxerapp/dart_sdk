@@ -10,9 +10,7 @@ part 'trigger_guild_archive_request.g.dart';
 
 @JsonSerializable()
 class TriggerGuildArchiveRequest {
-  const TriggerGuildArchiveRequest({
-    required this.guildId,
-  });
+  const TriggerGuildArchiveRequest({required this.guildId});
 
   factory TriggerGuildArchiveRequest.fromJson(Map<String, Object?> json) =>
       _$TriggerGuildArchiveRequestFromJson(json);

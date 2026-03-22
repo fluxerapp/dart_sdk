@@ -15,10 +15,10 @@ GitHubWebhookForkee _$GitHubWebhookForkeeFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$GitHubWebhookForkeeToJson(
-        GitHubWebhookForkee instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'html_url': instance.htmlUrl,
-      'name': instance.name,
-      'full_name': instance.fullName,
-    };
+  GitHubWebhookForkee instance,
+) => <String, dynamic>{
+  'id': instance.id,
+  'html_url': instance.htmlUrl,
+  'name': instance.name,
+  'full_name': instance.fullName,
+};

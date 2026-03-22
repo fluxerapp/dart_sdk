@@ -15,10 +15,7 @@ enum ChannelUpdateCategoryRequestTypeType {
   const ChannelUpdateCategoryRequestTypeType(this.json);
 
   factory ChannelUpdateCategoryRequestTypeType.fromJson(int json) =>
-      values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

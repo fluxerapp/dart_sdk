@@ -7,13 +7,9 @@ part of 'discovery_admin_remove_request.dart';
 // **************************************************************************
 
 DiscoveryAdminRemoveRequest _$DiscoveryAdminRemoveRequestFromJson(
-        Map<String, dynamic> json) =>
-    DiscoveryAdminRemoveRequest(
-      reason: json['reason'] as String,
-    );
+  Map<String, dynamic> json,
+) => DiscoveryAdminRemoveRequest(reason: json['reason'] as String);
 
 Map<String, dynamic> _$DiscoveryAdminRemoveRequestToJson(
-        DiscoveryAdminRemoveRequest instance) =>
-    <String, dynamic>{
-      'reason': instance.reason,
-    };
+  DiscoveryAdminRemoveRequest instance,
+) => <String, dynamic>{'reason': instance.reason};

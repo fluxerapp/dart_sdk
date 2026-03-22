@@ -13,8 +13,5 @@ MutualGuildResponse _$MutualGuildResponseFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$MutualGuildResponseToJson(
-        MutualGuildResponse instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'nick': instance.nick,
-    };
+  MutualGuildResponse instance,
+) => <String, dynamic>{'id': instance.id, 'nick': instance.nick};

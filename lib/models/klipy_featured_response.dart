@@ -11,10 +11,7 @@ part 'klipy_featured_response.g.dart';
 
 @JsonSerializable()
 class KlipyFeaturedResponse {
-  const KlipyFeaturedResponse({
-    required this.gifs,
-    required this.categories,
-  });
+  const KlipyFeaturedResponse({required this.gifs, required this.categories});
 
   factory KlipyFeaturedResponse.fromJson(Map<String, Object?> json) =>
       _$KlipyFeaturedResponseFromJson(json);

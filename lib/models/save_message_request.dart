@@ -10,10 +10,7 @@ part 'save_message_request.g.dart';
 
 @JsonSerializable()
 class SaveMessageRequest {
-  const SaveMessageRequest({
-    required this.channelId,
-    required this.messageId,
-  });
+  const SaveMessageRequest({required this.channelId, required this.messageId});
 
   factory SaveMessageRequest.fromJson(Map<String, Object?> json) =>
       _$SaveMessageRequestFromJson(json);

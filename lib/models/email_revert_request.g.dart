@@ -13,7 +13,4 @@ EmailRevertRequest _$EmailRevertRequestFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$EmailRevertRequestToJson(EmailRevertRequest instance) =>
-    <String, dynamic>{
-      'token': instance.token,
-      'password': instance.password,
-    };
+    <String, dynamic>{'token': instance.token, 'password': instance.password};

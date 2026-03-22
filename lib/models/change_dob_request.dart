@@ -10,10 +10,7 @@ part 'change_dob_request.g.dart';
 
 @JsonSerializable()
 class ChangeDobRequest {
-  const ChangeDobRequest({
-    required this.userId,
-    required this.dateOfBirth,
-  });
+  const ChangeDobRequest({required this.userId, required this.dateOfBirth});
 
   factory ChangeDobRequest.fromJson(Map<String, Object?> json) =>
       _$ChangeDobRequestFromJson(json);

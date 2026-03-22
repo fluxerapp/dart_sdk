@@ -9,8 +9,9 @@ part of 'system_dm_job_response.dart';
 SystemDmJobResponse _$SystemDmJobResponseFromJson(Map<String, dynamic> json) =>
     SystemDmJobResponse(
       jobId: json['job_id'] as String,
-      status:
-          SystemDmJobResponseStatusStatus.fromJson(json['status'] as String),
+      status: SystemDmJobResponseStatusStatus.fromJson(
+        json['status'] as String,
+      ),
       content: json['content'] as String,
       targetCount: (json['target_count'] as num).toInt(),
       sentCount: (json['sent_count'] as num).toInt(),
@@ -26,18 +27,18 @@ SystemDmJobResponse _$SystemDmJobResponseFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$SystemDmJobResponseToJson(
-        SystemDmJobResponse instance) =>
-    <String, dynamic>{
-      'job_id': instance.jobId,
-      'status': instance.status,
-      'content': instance.content,
-      'target_count': instance.targetCount,
-      'sent_count': instance.sentCount,
-      'failed_count': instance.failedCount,
-      'created_at': instance.createdAt,
-      'approved_at': instance.approvedAt,
-      'registration_start': instance.registrationStart,
-      'registration_end': instance.registrationEnd,
-      'excluded_guild_ids': instance.excludedGuildIds,
-      'last_error': instance.lastError,
-    };
+  SystemDmJobResponse instance,
+) => <String, dynamic>{
+  'job_id': instance.jobId,
+  'status': instance.status,
+  'content': instance.content,
+  'target_count': instance.targetCount,
+  'sent_count': instance.sentCount,
+  'failed_count': instance.failedCount,
+  'created_at': instance.createdAt,
+  'approved_at': instance.approvedAt,
+  'registration_start': instance.registrationStart,
+  'registration_end': instance.registrationEnd,
+  'excluded_guild_ids': instance.excludedGuildIds,
+  'last_error': instance.lastError,
+};

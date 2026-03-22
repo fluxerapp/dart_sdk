@@ -14,9 +14,9 @@ ValidationErrorItem _$ValidationErrorItemFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$ValidationErrorItemToJson(
-        ValidationErrorItem instance) =>
-    <String, dynamic>{
-      'path': instance.path,
-      'message': instance.message,
-      'code': instance.code,
-    };
+  ValidationErrorItem instance,
+) => <String, dynamic>{
+  'path': instance.path,
+  'message': instance.message,
+  'code': instance.code,
+};

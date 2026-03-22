@@ -101,7 +101,7 @@ class GuildUpdateRequest {
   /// Alignment of the splash card (center, left, or right)
   @JsonKey(name: 'splash_card_alignment')
   final GuildUpdateRequestSplashCardAlignmentSplashCardAlignment?
-      splashCardAlignment;
+  splashCardAlignment;
 
   /// Array of guild feature strings
   final List<String>? features;

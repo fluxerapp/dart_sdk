@@ -10,9 +10,7 @@ part 'guild_sticker_bulk_create_request.g.dart';
 
 @JsonSerializable()
 class GuildStickerBulkCreateRequest {
-  const GuildStickerBulkCreateRequest({
-    required this.stickers,
-  });
+  const GuildStickerBulkCreateRequest({required this.stickers});
 
   factory GuildStickerBulkCreateRequest.fromJson(Map<String, Object?> json) =>
       _$GuildStickerBulkCreateRequestFromJson(json);

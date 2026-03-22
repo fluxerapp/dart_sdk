@@ -7,13 +7,9 @@ part of 'message_shred_status_request.dart';
 // **************************************************************************
 
 MessageShredStatusRequest _$MessageShredStatusRequestFromJson(
-        Map<String, dynamic> json) =>
-    MessageShredStatusRequest(
-      jobId: json['job_id'] as String,
-    );
+  Map<String, dynamic> json,
+) => MessageShredStatusRequest(jobId: json['job_id'] as String);
 
 Map<String, dynamic> _$MessageShredStatusRequestToJson(
-        MessageShredStatusRequest instance) =>
-    <String, dynamic>{
-      'job_id': instance.jobId,
-    };
+  MessageShredStatusRequest instance,
+) => <String, dynamic>{'job_id': instance.jobId};

@@ -8,9 +8,7 @@ part 'sso_start_request.g.dart';
 
 @JsonSerializable()
 class SsoStartRequest {
-  const SsoStartRequest({
-    this.redirectTo,
-  });
+  const SsoStartRequest({this.redirectTo});
 
   factory SsoStartRequest.fromJson(Map<String, Object?> json) =>
       _$SsoStartRequestFromJson(json);

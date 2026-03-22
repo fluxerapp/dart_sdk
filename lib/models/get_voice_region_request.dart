@@ -8,10 +8,7 @@ part 'get_voice_region_request.g.dart';
 
 @JsonSerializable()
 class GetVoiceRegionRequest {
-  const GetVoiceRegionRequest({
-    required this.id,
-    this.includeServers,
-  });
+  const GetVoiceRegionRequest({required this.id, this.includeServers});
 
   factory GetVoiceRegionRequest.fromJson(Map<String, Object?> json) =>
       _$GetVoiceRegionRequestFromJson(json);

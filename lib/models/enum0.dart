@@ -18,10 +18,8 @@ enum Enum0 {
 
   const Enum0(this.json);
 
-  factory Enum0.fromJson(String json) => values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+  factory Enum0.fromJson(String json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 

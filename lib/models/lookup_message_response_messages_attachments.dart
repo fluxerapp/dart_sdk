@@ -15,8 +15,7 @@ class LookupMessageResponseMessagesAttachments {
 
   factory LookupMessageResponseMessagesAttachments.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$LookupMessageResponseMessagesAttachmentsFromJson(json);
+  ) => _$LookupMessageResponseMessagesAttachmentsFromJson(json);
 
   final String filename;
   final String url;

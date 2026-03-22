@@ -12,6 +12,4 @@ SuccessResponse _$SuccessResponseFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$SuccessResponseToJson(SuccessResponse instance) =>
-    <String, dynamic>{
-      'success': instance.success,
-    };
+    <String, dynamic>{'success': instance.success};

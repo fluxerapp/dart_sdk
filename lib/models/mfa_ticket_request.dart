@@ -8,9 +8,7 @@ part 'mfa_ticket_request.g.dart';
 
 @JsonSerializable()
 class MfaTicketRequest {
-  const MfaTicketRequest({
-    required this.ticket,
-  });
+  const MfaTicketRequest({required this.ticket});
 
   factory MfaTicketRequest.fromJson(Map<String, Object?> json) =>
       _$MfaTicketRequestFromJson(json);

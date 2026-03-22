@@ -13,7 +13,4 @@ PhoneVerifyRequest _$PhoneVerifyRequestFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$PhoneVerifyRequestToJson(PhoneVerifyRequest instance) =>
-    <String, dynamic>{
-      'phone': instance.phone,
-      'code': instance.code,
-    };
+    <String, dynamic>{'phone': instance.phone, 'code': instance.code};

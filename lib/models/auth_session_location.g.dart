@@ -14,9 +14,9 @@ AuthSessionLocation _$AuthSessionLocationFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$AuthSessionLocationToJson(
-        AuthSessionLocation instance) =>
-    <String, dynamic>{
-      'city': instance.city,
-      'region': instance.region,
-      'country': instance.country,
-    };
+  AuthSessionLocation instance,
+) => <String, dynamic>{
+  'city': instance.city,
+  'region': instance.region,
+  'country': instance.country,
+};

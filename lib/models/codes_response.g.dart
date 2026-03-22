@@ -12,6 +12,4 @@ CodesResponse _$CodesResponseFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$CodesResponseToJson(CodesResponse instance) =>
-    <String, dynamic>{
-      'codes': instance.codes,
-    };
+    <String, dynamic>{'codes': instance.codes};

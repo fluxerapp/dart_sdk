@@ -13,7 +13,8 @@ LimitRuleResponse _$LimitRuleResponseFromJson(Map<String, dynamic> json) =>
       filters: json['filters'] == null
           ? null
           : LimitFilterResponse.fromJson(
-              json['filters'] as Map<String, dynamic>),
+              json['filters'] as Map<String, dynamic>,
+            ),
     );
 
 Map<String, dynamic> _$LimitRuleResponseToJson(LimitRuleResponse instance) =>

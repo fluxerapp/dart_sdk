@@ -10,10 +10,7 @@ part 'set_user_acls_request.g.dart';
 
 @JsonSerializable()
 class SetUserAclsRequest {
-  const SetUserAclsRequest({
-    required this.userId,
-    required this.acls,
-  });
+  const SetUserAclsRequest({required this.userId, required this.acls});
 
   factory SetUserAclsRequest.fromJson(Map<String, Object?> json) =>
       _$SetUserAclsRequestFromJson(json);

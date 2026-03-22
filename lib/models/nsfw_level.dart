@@ -22,10 +22,8 @@ enum NsfwLevel {
 
   const NsfwLevel(this.json);
 
-  factory NsfwLevel.fromJson(int json) => values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+  factory NsfwLevel.fromJson(int json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

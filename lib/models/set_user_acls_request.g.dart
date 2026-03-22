@@ -13,7 +13,4 @@ SetUserAclsRequest _$SetUserAclsRequestFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$SetUserAclsRequestToJson(SetUserAclsRequest instance) =>
-    <String, dynamic>{
-      'user_id': instance.userId,
-      'acls': instance.acls,
-    };
+    <String, dynamic>{'user_id': instance.userId, 'acls': instance.acls};

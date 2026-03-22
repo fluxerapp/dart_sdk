@@ -7,15 +7,15 @@ part of 'discovery_application_request.dart';
 // **************************************************************************
 
 DiscoveryApplicationRequest _$DiscoveryApplicationRequestFromJson(
-        Map<String, dynamic> json) =>
-    DiscoveryApplicationRequest(
-      description: json['description'] as String,
-      categoryType: (json['category_type'] as num).toInt(),
-    );
+  Map<String, dynamic> json,
+) => DiscoveryApplicationRequest(
+  description: json['description'] as String,
+  categoryType: (json['category_type'] as num).toInt(),
+);
 
 Map<String, dynamic> _$DiscoveryApplicationRequestToJson(
-        DiscoveryApplicationRequest instance) =>
-    <String, dynamic>{
-      'description': instance.description,
-      'category_type': instance.categoryType,
-    };
+  DiscoveryApplicationRequest instance,
+) => <String, dynamic>{
+  'description': instance.description,
+  'category_type': instance.categoryType,
+};

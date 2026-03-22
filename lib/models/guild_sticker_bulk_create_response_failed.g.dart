@@ -7,15 +7,12 @@ part of 'guild_sticker_bulk_create_response_failed.dart';
 // **************************************************************************
 
 GuildStickerBulkCreateResponseFailed
-    _$GuildStickerBulkCreateResponseFailedFromJson(Map<String, dynamic> json) =>
-        GuildStickerBulkCreateResponseFailed(
-          name: json['name'] as String,
-          error: json['error'] as String,
-        );
+_$GuildStickerBulkCreateResponseFailedFromJson(Map<String, dynamic> json) =>
+    GuildStickerBulkCreateResponseFailed(
+      name: json['name'] as String,
+      error: json['error'] as String,
+    );
 
 Map<String, dynamic> _$GuildStickerBulkCreateResponseFailedToJson(
-        GuildStickerBulkCreateResponseFailed instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'error': instance.error,
-    };
+  GuildStickerBulkCreateResponseFailed instance,
+) => <String, dynamic>{'name': instance.name, 'error': instance.error};

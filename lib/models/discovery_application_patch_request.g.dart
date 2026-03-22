@@ -7,15 +7,15 @@ part of 'discovery_application_patch_request.dart';
 // **************************************************************************
 
 DiscoveryApplicationPatchRequest _$DiscoveryApplicationPatchRequestFromJson(
-        Map<String, dynamic> json) =>
-    DiscoveryApplicationPatchRequest(
-      description: json['description'] as String?,
-      categoryType: (json['category_type'] as num?)?.toInt(),
-    );
+  Map<String, dynamic> json,
+) => DiscoveryApplicationPatchRequest(
+  description: json['description'] as String?,
+  categoryType: (json['category_type'] as num?)?.toInt(),
+);
 
 Map<String, dynamic> _$DiscoveryApplicationPatchRequestToJson(
-        DiscoveryApplicationPatchRequest instance) =>
-    <String, dynamic>{
-      'description': instance.description,
-      'category_type': instance.categoryType,
-    };
+  DiscoveryApplicationPatchRequest instance,
+) => <String, dynamic>{
+  'description': instance.description,
+  'category_type': instance.categoryType,
+};

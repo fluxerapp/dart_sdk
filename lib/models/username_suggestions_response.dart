@@ -8,9 +8,7 @@ part 'username_suggestions_response.g.dart';
 
 @JsonSerializable()
 class UsernameSuggestionsResponse {
-  const UsernameSuggestionsResponse({
-    required this.suggestions,
-  });
+  const UsernameSuggestionsResponse({required this.suggestions});
 
   factory UsernameSuggestionsResponse.fromJson(Map<String, Object?> json) =>
       _$UsernameSuggestionsResponseFromJson(json);

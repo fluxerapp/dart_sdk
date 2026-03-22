@@ -7,14 +7,13 @@ part of 'message_search_indexing_response.dart';
 // **************************************************************************
 
 MessageSearchIndexingResponse _$MessageSearchIndexingResponseFromJson(
-        Map<String, dynamic> json) =>
-    MessageSearchIndexingResponse(
-      indexing: MessageSearchIndexingResponseIndexingIndexing.fromJson(
-          json['indexing'] as bool),
-    );
+  Map<String, dynamic> json,
+) => MessageSearchIndexingResponse(
+  indexing: MessageSearchIndexingResponseIndexingIndexing.fromJson(
+    json['indexing'] as bool,
+  ),
+);
 
 Map<String, dynamic> _$MessageSearchIndexingResponseToJson(
-        MessageSearchIndexingResponse instance) =>
-    <String, dynamic>{
-      'indexing': instance.indexing,
-    };
+  MessageSearchIndexingResponse instance,
+) => <String, dynamic>{'indexing': instance.indexing};

@@ -7,13 +7,9 @@ part of 'get_index_refresh_status_request.dart';
 // **************************************************************************
 
 GetIndexRefreshStatusRequest _$GetIndexRefreshStatusRequestFromJson(
-        Map<String, dynamic> json) =>
-    GetIndexRefreshStatusRequest(
-      jobId: json['job_id'] as String,
-    );
+  Map<String, dynamic> json,
+) => GetIndexRefreshStatusRequest(jobId: json['job_id'] as String);
 
 Map<String, dynamic> _$GetIndexRefreshStatusRequestToJson(
-        GetIndexRefreshStatusRequest instance) =>
-    <String, dynamic>{
-      'job_id': instance.jobId,
-    };
+  GetIndexRefreshStatusRequest instance,
+) => <String, dynamic>{'job_id': instance.jobId};

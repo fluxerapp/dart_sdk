@@ -10,9 +10,7 @@ part 'list_email_bans_response_schema.g.dart';
 
 @JsonSerializable()
 class ListEmailBansResponseSchema {
-  const ListEmailBansResponseSchema({
-    required this.bans,
-  });
+  const ListEmailBansResponseSchema({required this.bans});
 
   factory ListEmailBansResponseSchema.fromJson(Map<String, Object?> json) =>
       _$ListEmailBansResponseSchemaFromJson(json);

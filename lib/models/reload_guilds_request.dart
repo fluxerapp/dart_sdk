@@ -10,9 +10,7 @@ part 'reload_guilds_request.g.dart';
 
 @JsonSerializable()
 class ReloadGuildsRequest {
-  const ReloadGuildsRequest({
-    required this.guildIds,
-  });
+  const ReloadGuildsRequest({required this.guildIds});
 
   factory ReloadGuildsRequest.fromJson(Map<String, Object?> json) =>
       _$ReloadGuildsRequestFromJson(json);

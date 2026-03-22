@@ -8,10 +8,7 @@ part 'bounds.g.dart';
 
 @JsonSerializable()
 class Bounds {
-  const Bounds({
-    required this.min,
-    required this.max,
-  });
+  const Bounds({required this.min, required this.max});
 
   factory Bounds.fromJson(Map<String, Object?> json) => _$BoundsFromJson(json);
 

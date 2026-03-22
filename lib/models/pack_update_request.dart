@@ -8,10 +8,7 @@ part 'pack_update_request.g.dart';
 
 @JsonSerializable()
 class PackUpdateRequest {
-  const PackUpdateRequest({
-    this.name,
-    this.description,
-  });
+  const PackUpdateRequest({this.name, this.description});
 
   factory PackUpdateRequest.fromJson(Map<String, Object?> json) =>
       _$PackUpdateRequestFromJson(json);

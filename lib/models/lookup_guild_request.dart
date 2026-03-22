@@ -10,9 +10,7 @@ part 'lookup_guild_request.g.dart';
 
 @JsonSerializable()
 class LookupGuildRequest {
-  const LookupGuildRequest({
-    required this.guildId,
-  });
+  const LookupGuildRequest({required this.guildId});
 
   factory LookupGuildRequest.fromJson(Map<String, Object?> json) =>
       _$LookupGuildRequestFromJson(json);

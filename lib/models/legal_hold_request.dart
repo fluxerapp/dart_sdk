@@ -8,9 +8,7 @@ part 'legal_hold_request.g.dart';
 
 @JsonSerializable()
 class LegalHoldRequest {
-  const LegalHoldRequest({
-    this.expiresAt,
-  });
+  const LegalHoldRequest({this.expiresAt});
 
   factory LegalHoldRequest.fromJson(Map<String, Object?> json) =>
       _$LegalHoldRequestFromJson(json);

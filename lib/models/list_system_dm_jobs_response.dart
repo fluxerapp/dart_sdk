@@ -10,10 +10,7 @@ part 'list_system_dm_jobs_response.g.dart';
 
 @JsonSerializable()
 class ListSystemDmJobsResponse {
-  const ListSystemDmJobsResponse({
-    required this.jobs,
-    this.nextCursor,
-  });
+  const ListSystemDmJobsResponse({required this.jobs, this.nextCursor});
 
   factory ListSystemDmJobsResponse.fromJson(Map<String, Object?> json) =>
       _$ListSystemDmJobsResponseFromJson(json);

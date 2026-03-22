@@ -7,13 +7,9 @@ part of 'email_change_ticket_request.dart';
 // **************************************************************************
 
 EmailChangeTicketRequest _$EmailChangeTicketRequestFromJson(
-        Map<String, dynamic> json) =>
-    EmailChangeTicketRequest(
-      ticket: json['ticket'] as String,
-    );
+  Map<String, dynamic> json,
+) => EmailChangeTicketRequest(ticket: json['ticket'] as String);
 
 Map<String, dynamic> _$EmailChangeTicketRequestToJson(
-        EmailChangeTicketRequest instance) =>
-    <String, dynamic>{
-      'ticket': instance.ticket,
-    };
+  EmailChangeTicketRequest instance,
+) => <String, dynamic>{'ticket': instance.ticket};

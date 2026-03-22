@@ -7,14 +7,13 @@ part of 'message_shred_status_not_found_response.dart';
 // **************************************************************************
 
 MessageShredStatusNotFoundResponse _$MessageShredStatusNotFoundResponseFromJson(
-        Map<String, dynamic> json) =>
-    MessageShredStatusNotFoundResponse(
-      status: MessageShredStatusNotFoundResponseStatusStatus.fromJson(
-          json['status'] as String),
-    );
+  Map<String, dynamic> json,
+) => MessageShredStatusNotFoundResponse(
+  status: MessageShredStatusNotFoundResponseStatusStatus.fromJson(
+    json['status'] as String,
+  ),
+);
 
 Map<String, dynamic> _$MessageShredStatusNotFoundResponseToJson(
-        MessageShredStatusNotFoundResponse instance) =>
-    <String, dynamic>{
-      'status': instance.status,
-    };
+  MessageShredStatusNotFoundResponse instance,
+) => <String, dynamic>{'status': instance.status};

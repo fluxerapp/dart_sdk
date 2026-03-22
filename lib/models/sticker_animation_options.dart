@@ -19,10 +19,8 @@ enum StickerAnimationOptions {
 
   const StickerAnimationOptions(this.json);
 
-  factory StickerAnimationOptions.fromJson(int json) => values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+  factory StickerAnimationOptions.fromJson(int json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

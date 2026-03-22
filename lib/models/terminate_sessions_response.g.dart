@@ -7,13 +7,11 @@ part of 'terminate_sessions_response.dart';
 // **************************************************************************
 
 TerminateSessionsResponse _$TerminateSessionsResponseFromJson(
-        Map<String, dynamic> json) =>
-    TerminateSessionsResponse(
-      terminatedCount: (json['terminated_count'] as num).toInt(),
-    );
+  Map<String, dynamic> json,
+) => TerminateSessionsResponse(
+  terminatedCount: (json['terminated_count'] as num).toInt(),
+);
 
 Map<String, dynamic> _$TerminateSessionsResponseToJson(
-        TerminateSessionsResponse instance) =>
-    <String, dynamic>{
-      'terminated_count': instance.terminatedCount,
-    };
+  TerminateSessionsResponse instance,
+) => <String, dynamic>{'terminated_count': instance.terminatedCount};

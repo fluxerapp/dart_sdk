@@ -8,9 +8,7 @@ part 'bluesky_authorize_request.g.dart';
 
 @JsonSerializable()
 class BlueskyAuthorizeRequest {
-  const BlueskyAuthorizeRequest({
-    required this.handle,
-  });
+  const BlueskyAuthorizeRequest({required this.handle});
 
   factory BlueskyAuthorizeRequest.fromJson(Map<String, Object?> json) =>
       _$BlueskyAuthorizeRequestFromJson(json);

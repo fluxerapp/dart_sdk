@@ -7,11 +7,7 @@ part of 'sso_start_request.dart';
 // **************************************************************************
 
 SsoStartRequest _$SsoStartRequestFromJson(Map<String, dynamic> json) =>
-    SsoStartRequest(
-      redirectTo: json['redirect_to'] as String?,
-    );
+    SsoStartRequest(redirectTo: json['redirect_to'] as String?);
 
 Map<String, dynamic> _$SsoStartRequestToJson(SsoStartRequest instance) =>
-    <String, dynamic>{
-      'redirect_to': instance.redirectTo,
-    };
+    <String, dynamic>{'redirect_to': instance.redirectTo};

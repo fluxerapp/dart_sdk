@@ -10,8 +10,9 @@ GuildAdminResponse _$GuildAdminResponseFromJson(Map<String, dynamic> json) =>
     GuildAdminResponse(
       id: json['id'] as String,
       name: json['name'] as String,
-      features:
-          (json['features'] as List<dynamic>).map((e) => e as String).toList(),
+      features: (json['features'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
       ownerId: json['owner_id'] as String,
       icon: json['icon'] as String?,
       banner: json['banner'] as String?,

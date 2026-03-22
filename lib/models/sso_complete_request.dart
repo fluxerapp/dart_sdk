@@ -8,10 +8,7 @@ part 'sso_complete_request.g.dart';
 
 @JsonSerializable()
 class SsoCompleteRequest {
-  const SsoCompleteRequest({
-    required this.code,
-    required this.state,
-  });
+  const SsoCompleteRequest({required this.code, required this.state});
 
   factory SsoCompleteRequest.fromJson(Map<String, Object?> json) =>
       _$SsoCompleteRequestFromJson(json);

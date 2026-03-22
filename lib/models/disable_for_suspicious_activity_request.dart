@@ -18,8 +18,7 @@ class DisableForSuspiciousActivityRequest {
 
   factory DisableForSuspiciousActivityRequest.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$DisableForSuspiciousActivityRequestFromJson(json);
+  ) => _$DisableForSuspiciousActivityRequestFromJson(json);
 
   @JsonKey(name: 'user_id')
   final SnowflakeType userId;

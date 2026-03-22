@@ -8,9 +8,7 @@ part 'call_update_body_schema.g.dart';
 
 @JsonSerializable()
 class CallUpdateBodySchema {
-  const CallUpdateBodySchema({
-    this.region,
-  });
+  const CallUpdateBodySchema({this.region});
 
   factory CallUpdateBodySchema.fromJson(Map<String, Object?> json) =>
       _$CallUpdateBodySchemaFromJson(json);

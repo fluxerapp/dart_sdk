@@ -33,11 +33,7 @@ import 'themes/themes_api.dart';
 ///
 /// API for Fluxer, a free and open source instant messaging and VoIP platform built for friends, groups, and communities.
 class FluxerClient {
-  FluxerClient(
-    Dio dio, {
-    String? baseUrl,
-  })  : _dio = dio,
-        _baseUrl = baseUrl;
+  FluxerClient(Dio dio, {String? baseUrl}) : _dio = dio, _baseUrl = baseUrl;
 
   final Dio _dio;
   final String? _baseUrl;

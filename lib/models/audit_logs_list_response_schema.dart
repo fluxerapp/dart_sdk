@@ -10,10 +10,7 @@ part 'audit_logs_list_response_schema.g.dart';
 
 @JsonSerializable()
 class AuditLogsListResponseSchema {
-  const AuditLogsListResponseSchema({
-    required this.logs,
-    required this.total,
-  });
+  const AuditLogsListResponseSchema({required this.logs, required this.total});
 
   factory AuditLogsListResponseSchema.fromJson(Map<String, Object?> json) =>
       _$AuditLogsListResponseSchemaFromJson(json);

@@ -78,7 +78,5 @@ abstract class ReportsApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/reports/user')
-  Future<ReportResponse> reportUser({
-    @Body() required ReportUserRequest body,
-  });
+  Future<ReportResponse> reportUser({@Body() required ReportUserRequest body});
 }

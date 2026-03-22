@@ -24,8 +24,7 @@ class UserSettingsResponseGuildFolders {
 
   factory UserSettingsResponseGuildFolders.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$UserSettingsResponseGuildFoldersFromJson(json);
+  ) => _$UserSettingsResponseGuildFoldersFromJson(json);
 
   /// The unique identifier for the folder (-1 for uncategorized)
   final int? id;

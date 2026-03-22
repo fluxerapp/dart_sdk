@@ -19,10 +19,8 @@ enum GuildExplicitContentFilter {
 
   const GuildExplicitContentFilter(this.json);
 
-  factory GuildExplicitContentFilter.fromJson(int json) => values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+  factory GuildExplicitContentFilter.fromJson(int json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

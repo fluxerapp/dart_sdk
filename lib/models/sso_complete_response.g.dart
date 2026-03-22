@@ -14,9 +14,9 @@ SsoCompleteResponse _$SsoCompleteResponseFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$SsoCompleteResponseToJson(
-        SsoCompleteResponse instance) =>
-    <String, dynamic>{
-      'token': instance.token,
-      'user_id': instance.userId,
-      'redirect_to': instance.redirectTo,
-    };
+  SsoCompleteResponse instance,
+) => <String, dynamic>{
+  'token': instance.token,
+  'user_id': instance.userId,
+  'redirect_to': instance.redirectTo,
+};

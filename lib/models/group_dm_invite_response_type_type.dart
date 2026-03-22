@@ -15,10 +15,8 @@ enum GroupDmInviteResponseTypeType {
 
   const GroupDmInviteResponseTypeType(this.json);
 
-  factory GroupDmInviteResponseTypeType.fromJson(int json) => values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+  factory GroupDmInviteResponseTypeType.fromJson(int json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

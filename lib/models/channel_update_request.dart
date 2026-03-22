@@ -53,8 +53,8 @@ extension ChannelUpdateRequestUnionDeserializer on ChannelUpdateRequest {
       _ when value == effective[ChannelUpdateRequest3] =>
         ChannelUpdateRequest3.fromJson(json),
       _ => throw FormatException(
-          'Unknown discriminator value "${json[key]}" for ChannelUpdateRequest',
-        ),
+        'Unknown discriminator value "${json[key]}" for ChannelUpdateRequest',
+      ),
     };
   }
 }

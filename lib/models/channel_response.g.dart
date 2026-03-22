@@ -26,8 +26,9 @@ ChannelResponse _$ChannelResponseFromJson(Map<String, dynamic> json) =>
           ? null
           : DateTime.parse(json['last_pin_timestamp'] as String),
       permissionOverwrites: (json['permission_overwrites'] as List<dynamic>?)
-          ?.map((e) =>
-              ChannelOverwriteResponse.fromJson(e as Map<String, dynamic>))
+          ?.map(
+            (e) => ChannelOverwriteResponse.fromJson(e as Map<String, dynamic>),
+          )
           .toList(),
       recipients: (json['recipients'] as List<dynamic>?)
           ?.map((e) => UserPartialResponse.fromJson(e as Map<String, dynamic>))

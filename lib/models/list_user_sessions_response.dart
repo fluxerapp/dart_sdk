@@ -10,9 +10,7 @@ part 'list_user_sessions_response.g.dart';
 
 @JsonSerializable()
 class ListUserSessionsResponse {
-  const ListUserSessionsResponse({
-    required this.sessions,
-  });
+  const ListUserSessionsResponse({required this.sessions});
 
   factory ListUserSessionsResponse.fromJson(Map<String, Object?> json) =>
       _$ListUserSessionsResponseFromJson(json);

@@ -10,9 +10,7 @@ part 'send_password_reset_request.g.dart';
 
 @JsonSerializable()
 class SendPasswordResetRequest {
-  const SendPasswordResetRequest({
-    required this.userId,
-  });
+  const SendPasswordResetRequest({required this.userId});
 
   factory SendPasswordResetRequest.fromJson(Map<String, Object?> json) =>
       _$SendPasswordResetRequestFromJson(json);

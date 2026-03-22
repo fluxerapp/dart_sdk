@@ -20,7 +20,5 @@ abstract class ReadStatesApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/read-states/ack-bulk')
-  Future<void> ackBulkMessages({
-    @Body() required ReadStateAckBulkRequest body,
-  });
+  Future<void> ackBulkMessages({@Body() required ReadStateAckBulkRequest body});
 }

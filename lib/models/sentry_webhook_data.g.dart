@@ -9,10 +9,9 @@ part of 'sentry_webhook_data.dart';
 SentryWebhookData _$SentryWebhookDataFromJson(Map<String, dynamic> json) =>
     SentryWebhookData(
       issue: SentryWebhookDataIssue.fromJson(
-          json['issue'] as Map<String, dynamic>),
+        json['issue'] as Map<String, dynamic>,
+      ),
     );
 
 Map<String, dynamic> _$SentryWebhookDataToJson(SentryWebhookData instance) =>
-    <String, dynamic>{
-      'issue': instance.issue,
-    };
+    <String, dynamic>{'issue': instance.issue};

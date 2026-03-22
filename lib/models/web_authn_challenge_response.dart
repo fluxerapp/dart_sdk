@@ -8,9 +8,7 @@ part 'web_authn_challenge_response.g.dart';
 
 @JsonSerializable()
 class WebAuthnChallengeResponse {
-  const WebAuthnChallengeResponse({
-    required this.challenge,
-  });
+  const WebAuthnChallengeResponse({required this.challenge});
 
   factory WebAuthnChallengeResponse.fromJson(Map<String, Object?> json) =>
       _$WebAuthnChallengeResponseFromJson(json);

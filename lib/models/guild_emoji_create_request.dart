@@ -10,10 +10,7 @@ part 'guild_emoji_create_request.g.dart';
 
 @JsonSerializable()
 class GuildEmojiCreateRequest {
-  const GuildEmojiCreateRequest({
-    required this.name,
-    required this.image,
-  });
+  const GuildEmojiCreateRequest({required this.name, required this.image});
 
   factory GuildEmojiCreateRequest.fromJson(Map<String, Object?> json) =>
       _$GuildEmojiCreateRequestFromJson(json);

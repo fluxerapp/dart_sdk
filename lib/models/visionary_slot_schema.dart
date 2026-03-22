@@ -10,10 +10,7 @@ part 'visionary_slot_schema.g.dart';
 
 @JsonSerializable()
 class VisionarySlotSchema {
-  const VisionarySlotSchema({
-    required this.slotIndex,
-    required this.userId,
-  });
+  const VisionarySlotSchema({required this.slotIndex, required this.userId});
 
   factory VisionarySlotSchema.fromJson(Map<String, Object?> json) =>
       _$VisionarySlotSchemaFromJson(json);

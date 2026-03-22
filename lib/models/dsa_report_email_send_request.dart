@@ -10,9 +10,7 @@ part 'dsa_report_email_send_request.g.dart';
 
 @JsonSerializable()
 class DsaReportEmailSendRequest {
-  const DsaReportEmailSendRequest({
-    required this.email,
-  });
+  const DsaReportEmailSendRequest({required this.email});
 
   factory DsaReportEmailSendRequest.fromJson(Map<String, Object?> json) =>
       _$DsaReportEmailSendRequestFromJson(json);

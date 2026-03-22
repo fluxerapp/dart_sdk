@@ -7,13 +7,9 @@ part of 'resend_verification_email_request.dart';
 // **************************************************************************
 
 ResendVerificationEmailRequest _$ResendVerificationEmailRequestFromJson(
-        Map<String, dynamic> json) =>
-    ResendVerificationEmailRequest(
-      userId: json['user_id'] as String,
-    );
+  Map<String, dynamic> json,
+) => ResendVerificationEmailRequest(userId: json['user_id'] as String);
 
 Map<String, dynamic> _$ResendVerificationEmailRequestToJson(
-        ResendVerificationEmailRequest instance) =>
-    <String, dynamic>{
-      'user_id': instance.userId,
-    };
+  ResendVerificationEmailRequest instance,
+) => <String, dynamic>{'user_id': instance.userId};

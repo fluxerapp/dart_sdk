@@ -11,7 +11,8 @@ import 'test_config.dart';
 bool skipIfNotConfigured() {
   if (!TestConfig.isConfigured) {
     markTestSkipped(
-        'No credentials set — provide FLUXER_TEST_TOKEN or EMAIL/PASSWORD in .env');
+      'No credentials set — provide FLUXER_TEST_TOKEN or EMAIL/PASSWORD in .env',
+    );
     return true;
   }
   return false;
@@ -32,10 +33,7 @@ void main() {
       final token = await TestConfig.getToken();
       final dio = await TestConfig.createDio();
 
-      connection = GatewayConnection(
-        token: token,
-        dio: dio,
-      );
+      connection = GatewayConnection(token: token, dio: dio);
 
       // Listen for READY before connecting
       final readyFuture = connection!.events
@@ -68,10 +66,7 @@ void main() {
       final token = await TestConfig.getToken();
       final dio = await TestConfig.createDio();
 
-      connection = GatewayConnection(
-        token: token,
-        dio: dio,
-      );
+      connection = GatewayConnection(token: token, dio: dio);
 
       expect(connection!.state, GatewayState.disconnected);
 
@@ -99,10 +94,7 @@ void main() {
       final token = await TestConfig.getToken();
       final dio = await TestConfig.createDio();
 
-      connection = GatewayConnection(
-        token: token,
-        dio: dio,
-      );
+      connection = GatewayConnection(token: token, dio: dio);
 
       // Wait for connection before disconnecting
       final connectedFuture = connection!.stateChanges

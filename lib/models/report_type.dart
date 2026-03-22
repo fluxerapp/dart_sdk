@@ -19,10 +19,8 @@ enum ReportType {
 
   const ReportType(this.json);
 
-  factory ReportType.fromJson(int json) => values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+  factory ReportType.fromJson(int json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

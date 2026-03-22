@@ -16,10 +16,7 @@ enum VisionarySlotOperationResponseSuccessSuccess {
   const VisionarySlotOperationResponseSuccessSuccess(this.json);
 
   factory VisionarySlotOperationResponseSuccessSuccess.fromJson(bool json) =>
-      values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final bool? json;
 
@@ -30,5 +27,5 @@ enum VisionarySlotOperationResponseSuccessSuccess {
 
   /// Returns all defined enum values excluding the $unknown value.
   static List<VisionarySlotOperationResponseSuccessSuccess>
-      get $valuesDefined => values.where((value) => value != $unknown).toList();
+  get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

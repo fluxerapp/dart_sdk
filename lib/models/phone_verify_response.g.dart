@@ -7,12 +7,8 @@ part of 'phone_verify_response.dart';
 // **************************************************************************
 
 PhoneVerifyResponse _$PhoneVerifyResponseFromJson(Map<String, dynamic> json) =>
-    PhoneVerifyResponse(
-      phoneToken: json['phone_token'] as String,
-    );
+    PhoneVerifyResponse(phoneToken: json['phone_token'] as String);
 
 Map<String, dynamic> _$PhoneVerifyResponseToJson(
-        PhoneVerifyResponse instance) =>
-    <String, dynamic>{
-      'phone_token': instance.phoneToken,
-    };
+  PhoneVerifyResponse instance,
+) => <String, dynamic>{'phone_token': instance.phoneToken};

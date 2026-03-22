@@ -10,11 +10,7 @@ part 'list_reports_request.g.dart';
 
 @JsonSerializable()
 class ListReportsRequest {
-  const ListReportsRequest({
-    this.status,
-    this.limit,
-    this.offset,
-  });
+  const ListReportsRequest({this.status, this.limit, this.offset});
 
   factory ListReportsRequest.fromJson(Map<String, Object?> json) =>
       _$ListReportsRequestFromJson(json);

@@ -10,9 +10,7 @@ part 'preload_messages_request.g.dart';
 
 @JsonSerializable()
 class PreloadMessagesRequest {
-  const PreloadMessagesRequest({
-    required this.channels,
-  });
+  const PreloadMessagesRequest({required this.channels});
 
   factory PreloadMessagesRequest.fromJson(Map<String, Object?> json) =>
       _$PreloadMessagesRequestFromJson(json);

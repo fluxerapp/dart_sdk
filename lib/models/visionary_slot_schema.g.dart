@@ -13,8 +13,8 @@ VisionarySlotSchema _$VisionarySlotSchemaFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$VisionarySlotSchemaToJson(
-        VisionarySlotSchema instance) =>
-    <String, dynamic>{
-      'slot_index': instance.slotIndex,
-      'user_id': instance.userId,
-    };
+  VisionarySlotSchema instance,
+) => <String, dynamic>{
+  'slot_index': instance.slotIndex,
+  'user_id': instance.userId,
+};

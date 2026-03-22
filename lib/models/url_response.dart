@@ -8,9 +8,7 @@ part 'url_response.g.dart';
 
 @JsonSerializable()
 class UrlResponse {
-  const UrlResponse({
-    required this.url,
-  });
+  const UrlResponse({required this.url});
 
   factory UrlResponse.fromJson(Map<String, Object?> json) =>
       _$UrlResponseFromJson(json);

@@ -8,14 +8,11 @@ part 'relationship_nickname_update_request.g.dart';
 
 @JsonSerializable()
 class RelationshipNicknameUpdateRequest {
-  const RelationshipNicknameUpdateRequest({
-    required this.nickname,
-  });
+  const RelationshipNicknameUpdateRequest({required this.nickname});
 
   factory RelationshipNicknameUpdateRequest.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$RelationshipNicknameUpdateRequestFromJson(json);
+  ) => _$RelationshipNicknameUpdateRequestFromJson(json);
 
   /// Custom nickname for this friend (max 256 characters)
   final String? nickname;

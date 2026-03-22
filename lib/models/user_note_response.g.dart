@@ -7,11 +7,7 @@ part of 'user_note_response.dart';
 // **************************************************************************
 
 UserNoteResponse _$UserNoteResponseFromJson(Map<String, dynamic> json) =>
-    UserNoteResponse(
-      note: json['note'] as String,
-    );
+    UserNoteResponse(note: json['note'] as String);
 
 Map<String, dynamic> _$UserNoteResponseToJson(UserNoteResponse instance) =>
-    <String, dynamic>{
-      'note': instance.note,
-    };
+    <String, dynamic>{'note': instance.note};

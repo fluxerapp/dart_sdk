@@ -17,10 +17,8 @@ enum PackInviteResponseTypeType {
 
   const PackInviteResponseTypeType(this.json);
 
-  factory PackInviteResponseTypeType.fromJson(int json) => values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+  factory PackInviteResponseTypeType.fromJson(int json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

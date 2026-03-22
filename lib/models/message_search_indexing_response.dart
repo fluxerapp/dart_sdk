@@ -10,9 +10,7 @@ part 'message_search_indexing_response.g.dart';
 
 @JsonSerializable()
 class MessageSearchIndexingResponse {
-  const MessageSearchIndexingResponse({
-    required this.indexing,
-  });
+  const MessageSearchIndexingResponse({required this.indexing});
 
   factory MessageSearchIndexingResponse.fromJson(Map<String, Object?> json) =>
       _$MessageSearchIndexingResponseFromJson(json);

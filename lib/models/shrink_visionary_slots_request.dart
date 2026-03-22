@@ -8,9 +8,7 @@ part 'shrink_visionary_slots_request.g.dart';
 
 @JsonSerializable()
 class ShrinkVisionarySlotsRequest {
-  const ShrinkVisionarySlotsRequest({
-    required this.targetCount,
-  });
+  const ShrinkVisionarySlotsRequest({required this.targetCount});
 
   factory ShrinkVisionarySlotsRequest.fromJson(Map<String, Object?> json) =>
       _$ShrinkVisionarySlotsRequestFromJson(json);

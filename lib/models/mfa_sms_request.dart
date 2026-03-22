@@ -8,10 +8,7 @@ part 'mfa_sms_request.g.dart';
 
 @JsonSerializable()
 class MfaSmsRequest {
-  const MfaSmsRequest({
-    required this.code,
-    required this.ticket,
-  });
+  const MfaSmsRequest({required this.code, required this.ticket});
 
   factory MfaSmsRequest.fromJson(Map<String, Object?> json) =>
       _$MfaSmsRequestFromJson(json);

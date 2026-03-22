@@ -8,9 +8,7 @@ part 'user_tag_check_response.g.dart';
 
 @JsonSerializable()
 class UserTagCheckResponse {
-  const UserTagCheckResponse({
-    required this.taken,
-  });
+  const UserTagCheckResponse({required this.taken});
 
   factory UserTagCheckResponse.fromJson(Map<String, Object?> json) =>
       _$UserTagCheckResponseFromJson(json);

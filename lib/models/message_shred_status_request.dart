@@ -8,9 +8,7 @@ part 'message_shred_status_request.g.dart';
 
 @JsonSerializable()
 class MessageShredStatusRequest {
-  const MessageShredStatusRequest({
-    required this.jobId,
-  });
+  const MessageShredStatusRequest({required this.jobId});
 
   factory MessageShredStatusRequest.fromJson(Map<String, Object?> json) =>
       _$MessageShredStatusRequestFromJson(json);

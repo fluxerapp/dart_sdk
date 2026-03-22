@@ -30,9 +30,7 @@ abstract class DonationsApi {
   ///
   /// Validates the magic link token and redirects to Stripe billing portal.
   @GET('/donations/manage')
-  Future<void> manageDonation({
-    @Query('token') required String token,
-  });
+  Future<void> manageDonation({@Query('token') required String token});
 
   /// Request donation management link.
   ///

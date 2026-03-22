@@ -10,9 +10,7 @@ part 'verify_user_email_request.g.dart';
 
 @JsonSerializable()
 class VerifyUserEmailRequest {
-  const VerifyUserEmailRequest({
-    required this.userId,
-  });
+  const VerifyUserEmailRequest({required this.userId});
 
   factory VerifyUserEmailRequest.fromJson(Map<String, Object?> json) =>
       _$VerifyUserEmailRequestFromJson(json);

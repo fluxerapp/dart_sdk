@@ -19,11 +19,7 @@ enum AdminArchiveResponseSchemaSubjectTypeSubjectType {
 
   factory AdminArchiveResponseSchemaSubjectTypeSubjectType.fromJson(
     String json,
-  ) =>
-      values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+  ) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -34,5 +30,5 @@ enum AdminArchiveResponseSchemaSubjectTypeSubjectType {
 
   /// Returns all defined enum values excluding the $unknown value.
   static List<AdminArchiveResponseSchemaSubjectTypeSubjectType>
-      get $valuesDefined => values.where((value) => value != $unknown).toList();
+  get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

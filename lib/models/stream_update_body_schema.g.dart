@@ -7,13 +7,9 @@ part of 'stream_update_body_schema.dart';
 // **************************************************************************
 
 StreamUpdateBodySchema _$StreamUpdateBodySchemaFromJson(
-        Map<String, dynamic> json) =>
-    StreamUpdateBodySchema(
-      region: json['region'] as String?,
-    );
+  Map<String, dynamic> json,
+) => StreamUpdateBodySchema(region: json['region'] as String?);
 
 Map<String, dynamic> _$StreamUpdateBodySchemaToJson(
-        StreamUpdateBodySchema instance) =>
-    <String, dynamic>{
-      'region': instance.region,
-    };
+  StreamUpdateBodySchema instance,
+) => <String, dynamic>{'region': instance.region};

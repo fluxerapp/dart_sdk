@@ -8,10 +8,7 @@ part 'pack_create_request.g.dart';
 
 @JsonSerializable()
 class PackCreateRequest {
-  const PackCreateRequest({
-    required this.name,
-    this.description,
-  });
+  const PackCreateRequest({required this.name, this.description});
 
   factory PackCreateRequest.fromJson(Map<String, Object?> json) =>
       _$PackCreateRequestFromJson(json);

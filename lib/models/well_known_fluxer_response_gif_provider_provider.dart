@@ -18,10 +18,7 @@ enum WellKnownFluxerResponseGifProviderProvider {
   const WellKnownFluxerResponseGifProviderProvider(this.json);
 
   factory WellKnownFluxerResponseGifProviderProvider.fromJson(String json) =>
-      values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 

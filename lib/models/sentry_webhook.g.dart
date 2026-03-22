@@ -12,7 +12,8 @@ SentryWebhook _$SentryWebhookFromJson(Map<String, dynamic> json) =>
       installation: json['installation'] == null
           ? null
           : SentryWebhookInstallation.fromJson(
-              json['installation'] as Map<String, dynamic>),
+              json['installation'] as Map<String, dynamic>,
+            ),
       data: json['data'] == null
           ? null
           : SentryWebhookData.fromJson(json['data'] as Map<String, dynamic>),

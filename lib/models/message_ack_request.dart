@@ -10,10 +10,7 @@ part 'message_ack_request.g.dart';
 
 @JsonSerializable()
 class MessageAckRequest {
-  const MessageAckRequest({
-    this.mentionCount,
-    this.manual,
-  });
+  const MessageAckRequest({this.mentionCount, this.manual});
 
   factory MessageAckRequest.fromJson(Map<String, Object?> json) =>
       _$MessageAckRequestFromJson(json);

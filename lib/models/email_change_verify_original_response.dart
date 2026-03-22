@@ -8,14 +8,11 @@ part 'email_change_verify_original_response.g.dart';
 
 @JsonSerializable()
 class EmailChangeVerifyOriginalResponse {
-  const EmailChangeVerifyOriginalResponse({
-    required this.originalProof,
-  });
+  const EmailChangeVerifyOriginalResponse({required this.originalProof});
 
   factory EmailChangeVerifyOriginalResponse.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$EmailChangeVerifyOriginalResponseFromJson(json);
+  ) => _$EmailChangeVerifyOriginalResponseFromJson(json);
 
   /// Proof token issued after verifying the original email
   @JsonKey(name: 'original_proof')

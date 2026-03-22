@@ -10,7 +10,8 @@ import 'test_config.dart';
 bool skipIfNotConfigured() {
   if (!TestConfig.isConfigured) {
     markTestSkipped(
-        'No credentials set — provide FLUXER_TEST_TOKEN or EMAIL/PASSWORD in .env');
+      'No credentials set — provide FLUXER_TEST_TOKEN or EMAIL/PASSWORD in .env',
+    );
     return true;
   }
   return false;
@@ -129,8 +130,9 @@ void main() {
         markTestSkipped('No guilds available');
         return;
       }
-      final channels =
-          await client.guilds.listGuildChannels(guildId: guilds.first.id);
+      final channels = await client.guilds.listGuildChannels(
+        guildId: guilds.first.id,
+      );
       expect(channels, isA<List<ChannelResponse>>());
       if (channels.isNotEmpty) {
         expect(channels.first.id, isNotEmpty);
@@ -145,8 +147,9 @@ void main() {
         return;
       }
       try {
-        final roles =
-            await client.guilds.listGuildRoles(guildId: guilds.first.id);
+        final roles = await client.guilds.listGuildRoles(
+          guildId: guilds.first.id,
+        );
         expect(roles, isA<List<GuildRoleResponse>>());
         expect(roles, isNotEmpty);
         expect(roles.first.id, isNotEmpty);
@@ -167,8 +170,9 @@ void main() {
         markTestSkipped('No guilds available');
         return;
       }
-      final members =
-          await client.guilds.listGuildMembers2(guildId: guilds.first.id);
+      final members = await client.guilds.listGuildMembers2(
+        guildId: guilds.first.id,
+      );
       expect(members, isA<List<GuildMemberResponse>>());
       expect(members, isNotEmpty);
     });
@@ -180,8 +184,9 @@ void main() {
         markTestSkipped('No guilds available');
         return;
       }
-      final member =
-          await client.guilds.getCurrentGuildMember(guildId: guilds.first.id);
+      final member = await client.guilds.getCurrentGuildMember(
+        guildId: guilds.first.id,
+      );
       expect(member, isNotNull);
       expect(member.user, isNotNull);
     });
@@ -193,8 +198,9 @@ void main() {
         markTestSkipped('No guilds available');
         return;
       }
-      final emojis =
-          await client.guilds.listGuildEmojis2(guildId: guilds.first.id);
+      final emojis = await client.guilds.listGuildEmojis2(
+        guildId: guilds.first.id,
+      );
       expect(emojis, isNotNull);
     });
 
@@ -205,8 +211,9 @@ void main() {
         markTestSkipped('No guilds available');
         return;
       }
-      final stickers =
-          await client.guilds.listGuildStickers2(guildId: guilds.first.id);
+      final stickers = await client.guilds.listGuildStickers2(
+        guildId: guilds.first.id,
+      );
       expect(stickers, isNotNull);
     });
   });
@@ -222,14 +229,16 @@ void main() {
         markTestSkipped('No guilds available');
         return;
       }
-      final channels =
-          await client.guilds.listGuildChannels(guildId: guilds.first.id);
+      final channels = await client.guilds.listGuildChannels(
+        guildId: guilds.first.id,
+      );
       if (channels.isEmpty) {
         markTestSkipped('No channels available');
         return;
       }
-      final channel =
-          await client.channels.getChannel(channelId: channels.first.id);
+      final channel = await client.channels.getChannel(
+        channelId: channels.first.id,
+      );
       expect(channel.id, channels.first.id);
     });
 
@@ -240,19 +249,21 @@ void main() {
         markTestSkipped('No guilds available');
         return;
       }
-      final channels =
-          await client.guilds.listGuildChannels(guildId: guilds.first.id);
+      final channels = await client.guilds.listGuildChannels(
+        guildId: guilds.first.id,
+      );
       // Find a text channel
       final textChannel = channels.cast<ChannelResponse?>().firstWhere(
-            (c) => c?.type == 0,
-            orElse: () => null,
-          );
+        (c) => c?.type == 0,
+        orElse: () => null,
+      );
       if (textChannel == null) {
         markTestSkipped('No text channels available');
         return;
       }
-      final messages =
-          await client.channels.listMessages(channelId: textChannel.id);
+      final messages = await client.channels.listMessages(
+        channelId: textChannel.id,
+      );
       expect(messages, isA<List<MessageResponseSchema>>());
       if (messages.isNotEmpty) {
         final msg = messages.first;
@@ -269,18 +280,20 @@ void main() {
         markTestSkipped('No guilds available');
         return;
       }
-      final channels =
-          await client.guilds.listGuildChannels(guildId: guilds.first.id);
+      final channels = await client.guilds.listGuildChannels(
+        guildId: guilds.first.id,
+      );
       final textChannel = channels.cast<ChannelResponse?>().firstWhere(
-            (c) => c?.type == 0,
-            orElse: () => null,
-          );
+        (c) => c?.type == 0,
+        orElse: () => null,
+      );
       if (textChannel == null) {
         markTestSkipped('No text channels available');
         return;
       }
-      final pins =
-          await client.channels.listPinnedMessages(channelId: textChannel.id);
+      final pins = await client.channels.listPinnedMessages(
+        channelId: textChannel.id,
+      );
       expect(pins, isNotNull);
     });
   });
@@ -380,8 +393,9 @@ void main() {
         markTestSkipped('No guilds available');
         return;
       }
-      final members =
-          await client.guilds.listGuildMembers2(guildId: guilds.first.id);
+      final members = await client.guilds.listGuildMembers2(
+        guildId: guilds.first.id,
+      );
       if (members.isEmpty) {
         markTestSkipped('No members available');
         return;
@@ -399,8 +413,9 @@ void main() {
         markTestSkipped('No guilds available');
         return;
       }
-      final channels =
-          await client.guilds.listGuildChannels(guildId: guilds.first.id);
+      final channels = await client.guilds.listGuildChannels(
+        guildId: guilds.first.id,
+      );
       for (final ch in channels) {
         expect(ch.id, isNotEmpty);
         expect(ch.type, isA<int>());
@@ -433,18 +448,20 @@ void main() {
         markTestSkipped('No guilds available');
         return;
       }
-      final channels =
-          await client.guilds.listGuildChannels(guildId: guilds.first.id);
+      final channels = await client.guilds.listGuildChannels(
+        guildId: guilds.first.id,
+      );
       final textChannel = channels.cast<ChannelResponse?>().firstWhere(
-            (c) => c?.type == 0,
-            orElse: () => null,
-          );
+        (c) => c?.type == 0,
+        orElse: () => null,
+      );
       if (textChannel == null) {
         markTestSkipped('No text channels available');
         return;
       }
-      final messages =
-          await client.channels.listMessages(channelId: textChannel.id);
+      final messages = await client.channels.listMessages(
+        channelId: textChannel.id,
+      );
       if (messages.isEmpty) {
         markTestSkipped('No messages available');
         return;
@@ -474,8 +491,9 @@ void main() {
         markTestSkipped('No guilds available');
         return;
       }
-      final member =
-          await client.guilds.getCurrentGuildMember(guildId: guilds.first.id);
+      final member = await client.guilds.getCurrentGuildMember(
+        guildId: guilds.first.id,
+      );
       expect(member.user.id, isNotEmpty);
       expect(member.user.username, isNotEmpty);
       expect(member.roles, isA<List>());
@@ -542,18 +560,20 @@ void main() {
         markTestSkipped('No guilds available');
         return;
       }
-      final channels =
-          await client.guilds.listGuildChannels(guildId: guilds.first.id);
+      final channels = await client.guilds.listGuildChannels(
+        guildId: guilds.first.id,
+      );
       final textChannel = channels.cast<ChannelResponse?>().firstWhere(
-            (c) => c?.type == 0,
-            orElse: () => null,
-          );
+        (c) => c?.type == 0,
+        orElse: () => null,
+      );
       if (textChannel == null) {
         markTestSkipped('No text channels available');
         return;
       }
-      final messages =
-          await client.channels.listMessages(channelId: textChannel.id);
+      final messages = await client.channels.listMessages(
+        channelId: textChannel.id,
+      );
       if (messages.isEmpty) {
         markTestSkipped('No messages available');
         return;
@@ -574,8 +594,9 @@ void main() {
         markTestSkipped('No guilds available');
         return;
       }
-      final channels =
-          await client.guilds.listGuildChannels(guildId: guilds.first.id);
+      final channels = await client.guilds.listGuildChannels(
+        guildId: guilds.first.id,
+      );
       if (channels.isEmpty) {
         markTestSkipped('No channels available');
         return;
@@ -595,8 +616,9 @@ void main() {
         markTestSkipped('No guilds available');
         return;
       }
-      final members =
-          await client.guilds.listGuildMembers2(guildId: guilds.first.id);
+      final members = await client.guilds.listGuildMembers2(
+        guildId: guilds.first.id,
+      );
       if (members.isEmpty) {
         markTestSkipped('No members available');
         return;

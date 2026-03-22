@@ -10,9 +10,7 @@ part 'delete_guild_request.g.dart';
 
 @JsonSerializable()
 class DeleteGuildRequest {
-  const DeleteGuildRequest({
-    required this.guildId,
-  });
+  const DeleteGuildRequest({required this.guildId});
 
   factory DeleteGuildRequest.fromJson(Map<String, Object?> json) =>
       _$DeleteGuildRequestFromJson(json);

@@ -14,7 +14,8 @@ NodeStatsResponse _$NodeStatsResponseFromJson(Map<String, dynamic> json) =>
       presences: (json['presences'] as num).toInt(),
       calls: (json['calls'] as num).toInt(),
       memory: NodeStatsResponseMemory.fromJson(
-          json['memory'] as Map<String, dynamic>),
+        json['memory'] as Map<String, dynamic>,
+      ),
       processCount: (json['process_count'] as num).toInt(),
       processLimit: (json['process_limit'] as num).toInt(),
       uptimeSeconds: (json['uptime_seconds'] as num).toInt(),

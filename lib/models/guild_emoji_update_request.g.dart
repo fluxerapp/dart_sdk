@@ -7,13 +7,9 @@ part of 'guild_emoji_update_request.dart';
 // **************************************************************************
 
 GuildEmojiUpdateRequest _$GuildEmojiUpdateRequestFromJson(
-        Map<String, dynamic> json) =>
-    GuildEmojiUpdateRequest(
-      name: json['name'] as String,
-    );
+  Map<String, dynamic> json,
+) => GuildEmojiUpdateRequest(name: json['name'] as String);
 
 Map<String, dynamic> _$GuildEmojiUpdateRequestToJson(
-        GuildEmojiUpdateRequest instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-    };
+  GuildEmojiUpdateRequest instance,
+) => <String, dynamic>{'name': instance.name};

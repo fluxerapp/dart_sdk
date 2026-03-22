@@ -33,10 +33,7 @@ enum MessageSnapshotResponseTypeType {
   const MessageSnapshotResponseTypeType(this.json);
 
   factory MessageSnapshotResponseTypeType.fromJson(int json) =>
-      values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

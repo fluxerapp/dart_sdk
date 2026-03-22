@@ -8,10 +8,7 @@ part 'ip_ban_list_entry_schema.g.dart';
 
 @JsonSerializable()
 class IpBanListEntrySchema {
-  const IpBanListEntrySchema({
-    required this.ip,
-    required this.reverseDns,
-  });
+  const IpBanListEntrySchema({required this.ip, required this.reverseDns});
 
   factory IpBanListEntrySchema.fromJson(Map<String, Object?> json) =>
       _$IpBanListEntrySchemaFromJson(json);

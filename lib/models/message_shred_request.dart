@@ -11,10 +11,7 @@ part 'message_shred_request.g.dart';
 
 @JsonSerializable()
 class MessageShredRequest {
-  const MessageShredRequest({
-    required this.userId,
-    required this.entries,
-  });
+  const MessageShredRequest({required this.userId, required this.entries});
 
   factory MessageShredRequest.fromJson(Map<String, Object?> json) =>
       _$MessageShredRequestFromJson(json);

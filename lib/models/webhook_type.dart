@@ -17,10 +17,8 @@ enum WebhookType {
 
   const WebhookType(this.json);
 
-  factory WebhookType.fromJson(int json) => values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+  factory WebhookType.fromJson(int json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

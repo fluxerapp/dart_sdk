@@ -7,11 +7,7 @@ part of 'delete_guild_request.dart';
 // **************************************************************************
 
 DeleteGuildRequest _$DeleteGuildRequestFromJson(Map<String, dynamic> json) =>
-    DeleteGuildRequest(
-      guildId: json['guild_id'] as String,
-    );
+    DeleteGuildRequest(guildId: json['guild_id'] as String);
 
 Map<String, dynamic> _$DeleteGuildRequestToJson(DeleteGuildRequest instance) =>
-    <String, dynamic>{
-      'guild_id': instance.guildId,
-    };
+    <String, dynamic>{'guild_id': instance.guildId};

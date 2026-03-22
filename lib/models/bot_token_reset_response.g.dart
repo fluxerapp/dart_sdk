@@ -7,15 +7,12 @@ part of 'bot_token_reset_response.dart';
 // **************************************************************************
 
 BotTokenResetResponse _$BotTokenResetResponseFromJson(
-        Map<String, dynamic> json) =>
-    BotTokenResetResponse(
-      token: json['token'] as String,
-      bot: ApplicationBotResponse.fromJson(json['bot'] as Map<String, dynamic>),
-    );
+  Map<String, dynamic> json,
+) => BotTokenResetResponse(
+  token: json['token'] as String,
+  bot: ApplicationBotResponse.fromJson(json['bot'] as Map<String, dynamic>),
+);
 
 Map<String, dynamic> _$BotTokenResetResponseToJson(
-        BotTokenResetResponse instance) =>
-    <String, dynamic>{
-      'token': instance.token,
-      'bot': instance.bot,
-    };
+  BotTokenResetResponse instance,
+) => <String, dynamic>{'token': instance.token, 'bot': instance.bot};

@@ -10,9 +10,7 @@ part 'user_mutation_response.g.dart';
 
 @JsonSerializable()
 class UserMutationResponse {
-  const UserMutationResponse({
-    required this.user,
-  });
+  const UserMutationResponse({required this.user});
 
   factory UserMutationResponse.fromJson(Map<String, Object?> json) =>
       _$UserMutationResponseFromJson(json);

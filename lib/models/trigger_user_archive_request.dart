@@ -10,9 +10,7 @@ part 'trigger_user_archive_request.g.dart';
 
 @JsonSerializable()
 class TriggerUserArchiveRequest {
-  const TriggerUserArchiveRequest({
-    required this.userId,
-  });
+  const TriggerUserArchiveRequest({required this.userId});
 
   factory TriggerUserArchiveRequest.fromJson(Map<String, Object?> json) =>
       _$TriggerUserArchiveRequestFromJson(json);

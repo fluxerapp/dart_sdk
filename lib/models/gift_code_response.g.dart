@@ -14,7 +14,8 @@ GiftCodeResponse _$GiftCodeResponseFromJson(Map<String, dynamic> json) =>
       createdBy: json['created_by'] == null
           ? null
           : UserPartialResponse.fromJson(
-              json['created_by'] as Map<String, dynamic>),
+              json['created_by'] as Map<String, dynamic>,
+            ),
     );
 
 Map<String, dynamic> _$GiftCodeResponseToJson(GiftCodeResponse instance) =>

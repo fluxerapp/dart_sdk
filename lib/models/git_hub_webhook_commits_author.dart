@@ -8,10 +8,7 @@ part 'git_hub_webhook_commits_author.g.dart';
 
 @JsonSerializable()
 class GitHubWebhookCommitsAuthor {
-  const GitHubWebhookCommitsAuthor({
-    required this.name,
-    this.username,
-  });
+  const GitHubWebhookCommitsAuthor({required this.name, this.username});
 
   factory GitHubWebhookCommitsAuthor.fromJson(Map<String, Object?> json) =>
       _$GitHubWebhookCommitsAuthorFromJson(json);

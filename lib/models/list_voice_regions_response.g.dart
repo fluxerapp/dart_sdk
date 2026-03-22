@@ -7,16 +7,13 @@ part of 'list_voice_regions_response.dart';
 // **************************************************************************
 
 ListVoiceRegionsResponse _$ListVoiceRegionsResponseFromJson(
-        Map<String, dynamic> json) =>
-    ListVoiceRegionsResponse(
-      regions: (json['regions'] as List<dynamic>)
-          .map((e) =>
-              VoiceRegionAdminResponse.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
+  Map<String, dynamic> json,
+) => ListVoiceRegionsResponse(
+  regions: (json['regions'] as List<dynamic>)
+      .map((e) => VoiceRegionAdminResponse.fromJson(e as Map<String, dynamic>))
+      .toList(),
+);
 
 Map<String, dynamic> _$ListVoiceRegionsResponseToJson(
-        ListVoiceRegionsResponse instance) =>
-    <String, dynamic>{
-      'regions': instance.regions,
-    };
+  ListVoiceRegionsResponse instance,
+) => <String, dynamic>{'regions': instance.regions};

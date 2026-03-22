@@ -10,10 +10,7 @@ part 'channel_pin_response.g.dart';
 
 @JsonSerializable()
 class ChannelPinResponse {
-  const ChannelPinResponse({
-    required this.message,
-    required this.pinnedAt,
-  });
+  const ChannelPinResponse({required this.message, required this.pinnedAt});
 
   factory ChannelPinResponse.fromJson(Map<String, Object?> json) =>
       _$ChannelPinResponseFromJson(json);

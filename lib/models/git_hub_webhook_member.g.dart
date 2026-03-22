@@ -15,10 +15,10 @@ GitHubWebhookMember _$GitHubWebhookMemberFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$GitHubWebhookMemberToJson(
-        GitHubWebhookMember instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'login': instance.login,
-      'html_url': instance.htmlUrl,
-      'avatar_url': instance.avatarUrl,
-    };
+  GitHubWebhookMember instance,
+) => <String, dynamic>{
+  'id': instance.id,
+  'login': instance.login,
+  'html_url': instance.htmlUrl,
+  'avatar_url': instance.avatarUrl,
+};

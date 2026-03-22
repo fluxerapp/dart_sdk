@@ -7,15 +7,12 @@ part of 'email_change_verify_original_request.dart';
 // **************************************************************************
 
 EmailChangeVerifyOriginalRequest _$EmailChangeVerifyOriginalRequestFromJson(
-        Map<String, dynamic> json) =>
-    EmailChangeVerifyOriginalRequest(
-      ticket: json['ticket'] as String,
-      code: json['code'] as String,
-    );
+  Map<String, dynamic> json,
+) => EmailChangeVerifyOriginalRequest(
+  ticket: json['ticket'] as String,
+  code: json['code'] as String,
+);
 
 Map<String, dynamic> _$EmailChangeVerifyOriginalRequestToJson(
-        EmailChangeVerifyOriginalRequest instance) =>
-    <String, dynamic>{
-      'ticket': instance.ticket,
-      'code': instance.code,
-    };
+  EmailChangeVerifyOriginalRequest instance,
+) => <String, dynamic>{'ticket': instance.ticket, 'code': instance.code};

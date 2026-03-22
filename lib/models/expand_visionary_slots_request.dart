@@ -8,9 +8,7 @@ part 'expand_visionary_slots_request.g.dart';
 
 @JsonSerializable()
 class ExpandVisionarySlotsRequest {
-  const ExpandVisionarySlotsRequest({
-    required this.count,
-  });
+  const ExpandVisionarySlotsRequest({required this.count});
 
   factory ExpandVisionarySlotsRequest.fromJson(Map<String, Object?> json) =>
       _$ExpandVisionarySlotsRequestFromJson(json);

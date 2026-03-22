@@ -21,11 +21,7 @@ enum GuildUpdateRequestSplashCardAlignmentSplashCardAlignment {
 
   factory GuildUpdateRequestSplashCardAlignmentSplashCardAlignment.fromJson(
     int json,
-  ) =>
-      values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+  ) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 
@@ -36,5 +32,5 @@ enum GuildUpdateRequestSplashCardAlignmentSplashCardAlignment {
 
   /// Returns all defined enum values excluding the $unknown value.
   static List<GuildUpdateRequestSplashCardAlignmentSplashCardAlignment>
-      get $valuesDefined => values.where((value) => value != $unknown).toList();
+  get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

@@ -10,10 +10,7 @@ part 'create_private_channel_request.g.dart';
 
 @JsonSerializable()
 class CreatePrivateChannelRequest {
-  const CreatePrivateChannelRequest({
-    this.recipientId,
-    this.recipients,
-  });
+  const CreatePrivateChannelRequest({this.recipientId, this.recipients});
 
   factory CreatePrivateChannelRequest.fromJson(Map<String, Object?> json) =>
       _$CreatePrivateChannelRequestFromJson(json);

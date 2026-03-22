@@ -10,10 +10,7 @@ part 'kick_guild_member_request.g.dart';
 
 @JsonSerializable()
 class KickGuildMemberRequest {
-  const KickGuildMemberRequest({
-    required this.guildId,
-    required this.userId,
-  });
+  const KickGuildMemberRequest({required this.guildId, required this.userId});
 
   factory KickGuildMemberRequest.fromJson(Map<String, Object?> json) =>
       _$KickGuildMemberRequestFromJson(json);

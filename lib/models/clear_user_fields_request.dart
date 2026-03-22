@@ -11,10 +11,7 @@ part 'clear_user_fields_request.g.dart';
 
 @JsonSerializable()
 class ClearUserFieldsRequest {
-  const ClearUserFieldsRequest({
-    required this.userId,
-    required this.fields,
-  });
+  const ClearUserFieldsRequest({required this.userId, required this.fields});
 
   factory ClearUserFieldsRequest.fromJson(Map<String, Object?> json) =>
       _$ClearUserFieldsRequestFromJson(json);

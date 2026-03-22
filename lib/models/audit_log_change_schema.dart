@@ -8,11 +8,7 @@ part 'audit_log_change_schema.g.dart';
 
 @JsonSerializable()
 class AuditLogChangeSchema {
-  const AuditLogChangeSchema({
-    required this.key,
-    this.oldValue,
-    this.newValue,
-  });
+  const AuditLogChangeSchema({required this.key, this.oldValue, this.newValue});
 
   factory AuditLogChangeSchema.fromJson(Map<String, Object?> json) =>
       _$AuditLogChangeSchemaFromJson(json);

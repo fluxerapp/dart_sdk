@@ -10,9 +10,7 @@ part 'update_voice_server_response.g.dart';
 
 @JsonSerializable()
 class UpdateVoiceServerResponse {
-  const UpdateVoiceServerResponse({
-    required this.server,
-  });
+  const UpdateVoiceServerResponse({required this.server});
 
   factory UpdateVoiceServerResponse.fromJson(Map<String, Object?> json) =>
       _$UpdateVoiceServerResponseFromJson(json);

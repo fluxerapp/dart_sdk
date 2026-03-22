@@ -332,9 +332,7 @@ class EventParser {
 
   ReadyEvent _parseReady(Map<String, dynamic> data) {
     final rawGuildsList = data['guilds'] as List<dynamic>? ?? [];
-    final rawGuilds = rawGuildsList
-        .whereType<Map<String, dynamic>>()
-        .toList();
+    final rawGuilds = rawGuildsList.whereType<Map<String, dynamic>>().toList();
 
     final guilds = _parseListSafe(
       data['guilds'],

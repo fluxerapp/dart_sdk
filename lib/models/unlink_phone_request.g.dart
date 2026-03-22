@@ -7,11 +7,7 @@ part of 'unlink_phone_request.dart';
 // **************************************************************************
 
 UnlinkPhoneRequest _$UnlinkPhoneRequestFromJson(Map<String, dynamic> json) =>
-    UnlinkPhoneRequest(
-      userId: json['user_id'] as String,
-    );
+    UnlinkPhoneRequest(userId: json['user_id'] as String);
 
 Map<String, dynamic> _$UnlinkPhoneRequestToJson(UnlinkPhoneRequest instance) =>
-    <String, dynamic>{
-      'user_id': instance.userId,
-    };
+    <String, dynamic>{'user_id': instance.userId};

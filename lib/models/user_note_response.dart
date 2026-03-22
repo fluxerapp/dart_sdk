@@ -8,9 +8,7 @@ part 'user_note_response.g.dart';
 
 @JsonSerializable()
 class UserNoteResponse {
-  const UserNoteResponse({
-    required this.note,
-  });
+  const UserNoteResponse({required this.note});
 
   factory UserNoteResponse.fromJson(Map<String, Object?> json) =>
       _$UserNoteResponseFromJson(json);

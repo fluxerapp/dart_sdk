@@ -7,13 +7,9 @@ part of 'discovery_admin_review_request.dart';
 // **************************************************************************
 
 DiscoveryAdminReviewRequest _$DiscoveryAdminReviewRequestFromJson(
-        Map<String, dynamic> json) =>
-    DiscoveryAdminReviewRequest(
-      reason: json['reason'] as String?,
-    );
+  Map<String, dynamic> json,
+) => DiscoveryAdminReviewRequest(reason: json['reason'] as String?);
 
 Map<String, dynamic> _$DiscoveryAdminReviewRequestToJson(
-        DiscoveryAdminReviewRequest instance) =>
-    <String, dynamic>{
-      'reason': instance.reason,
-    };
+  DiscoveryAdminReviewRequest instance,
+) => <String, dynamic>{'reason': instance.reason};

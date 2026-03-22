@@ -10,14 +10,11 @@ part 'cancel_bulk_message_deletion_request.g.dart';
 
 @JsonSerializable()
 class CancelBulkMessageDeletionRequest {
-  const CancelBulkMessageDeletionRequest({
-    required this.userId,
-  });
+  const CancelBulkMessageDeletionRequest({required this.userId});
 
   factory CancelBulkMessageDeletionRequest.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$CancelBulkMessageDeletionRequestFromJson(json);
+  ) => _$CancelBulkMessageDeletionRequestFromJson(json);
 
   @JsonKey(name: 'user_id')
   final SnowflakeType userId;

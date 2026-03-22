@@ -48,9 +48,7 @@ abstract class AuthApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/auth/authorize-ip')
-  Future<void> authorizeIpAddress({
-    @Body() required AuthorizeIpRequest body,
-  });
+  Future<void> authorizeIpAddress({@Body() required AuthorizeIpRequest body});
 
   /// Revert email change.
   ///
@@ -68,9 +66,7 @@ abstract class AuthApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/auth/forgot')
-  Future<void> forgotPassword({
-    @Body() required ForgotPasswordRequest body,
-  });
+  Future<void> forgotPassword({@Body() required ForgotPasswordRequest body});
 
   /// Complete handoff.
   ///
@@ -78,9 +74,7 @@ abstract class AuthApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/auth/handoff/complete')
-  Future<void> completeHandoff({
-    @Body() required HandoffCompleteRequest body,
-  });
+  Future<void> completeHandoff({@Body() required HandoffCompleteRequest body});
 
   /// Initiate handoff.
   ///
@@ -94,9 +88,7 @@ abstract class AuthApi {
   ///
   /// [code] - The code.
   @DELETE('/auth/handoff/{code}')
-  Future<void> cancelHandoff({
-    @Path('code') required String code,
-  });
+  Future<void> cancelHandoff({@Path('code') required String code});
 
   /// Get handoff status.
   ///
@@ -122,9 +114,7 @@ abstract class AuthApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/auth/ip-authorization/resend')
-  Future<void> resendIpAuthorization({
-    @Body() required MfaTicketRequest body,
-  });
+  Future<void> resendIpAuthorization({@Body() required MfaTicketRequest body});
 
   /// Login account.
   ///
@@ -132,9 +122,7 @@ abstract class AuthApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/auth/login')
-  Future<AuthLoginResponse> loginUser({
-    @Body() required LoginRequest body,
-  });
+  Future<AuthLoginResponse> loginUser({@Body() required LoginRequest body});
 
   /// Login with SMS MFA.
   ///
@@ -152,9 +140,7 @@ abstract class AuthApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/auth/login/mfa/sms/send')
-  Future<void> sendSmsMfaCode({
-    @Body() required MfaTicketRequest body,
-  });
+  Future<void> sendSmsMfaCode({@Body() required MfaTicketRequest body});
 
   /// Login with TOTP.
   ///
@@ -244,9 +230,7 @@ abstract class AuthApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/auth/sso/start')
-  Future<SsoStartResponse> startSso({
-    @Body() required SsoStartRequest body,
-  });
+  Future<SsoStartResponse> startSso({@Body() required SsoStartRequest body});
 
   /// Get SSO status.
   ///
@@ -270,9 +254,7 @@ abstract class AuthApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/auth/verify')
-  Future<void> verifyEmail({
-    @Body() required VerifyEmailRequest body,
-  });
+  Future<void> verifyEmail({@Body() required VerifyEmailRequest body});
 
   /// Resend verification email.
   ///
@@ -295,5 +277,5 @@ abstract class AuthApi {
   /// Retrieve WebAuthn authentication challenge and options for passwordless login with biometrics or security keys.
   @POST('/auth/webauthn/authentication-options')
   Future<WebAuthnAuthenticationOptionsResponse>
-      getWebauthnAuthenticationOptions();
+  getWebauthnAuthenticationOptions();
 }

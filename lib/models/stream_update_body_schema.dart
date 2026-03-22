@@ -8,9 +8,7 @@ part 'stream_update_body_schema.g.dart';
 
 @JsonSerializable()
 class StreamUpdateBodySchema {
-  const StreamUpdateBodySchema({
-    this.region,
-  });
+  const StreamUpdateBodySchema({this.region});
 
   factory StreamUpdateBodySchema.fromJson(Map<String, Object?> json) =>
       _$StreamUpdateBodySchemaFromJson(json);

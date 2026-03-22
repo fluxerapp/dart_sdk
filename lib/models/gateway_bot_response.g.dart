@@ -11,7 +11,8 @@ GatewayBotResponse _$GatewayBotResponseFromJson(Map<String, dynamic> json) =>
       url: json['url'] as String,
       shards: (json['shards'] as num).toInt(),
       sessionStartLimit: GatewayBotResponseSessionStartLimit.fromJson(
-          json['session_start_limit'] as Map<String, dynamic>),
+        json['session_start_limit'] as Map<String, dynamic>,
+      ),
     );
 
 Map<String, dynamic> _$GatewayBotResponseToJson(GatewayBotResponse instance) =>

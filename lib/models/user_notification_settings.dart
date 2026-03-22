@@ -21,10 +21,8 @@ enum UserNotificationSettings {
 
   const UserNotificationSettings(this.json);
 
-  factory UserNotificationSettings.fromJson(int json) => values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+  factory UserNotificationSettings.fromJson(int json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

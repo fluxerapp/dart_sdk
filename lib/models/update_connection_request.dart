@@ -10,10 +10,7 @@ part 'update_connection_request.g.dart';
 
 @JsonSerializable()
 class UpdateConnectionRequest {
-  const UpdateConnectionRequest({
-    this.visibilityFlags,
-    this.sortOrder,
-  });
+  const UpdateConnectionRequest({this.visibilityFlags, this.sortOrder});
 
   factory UpdateConnectionRequest.fromJson(Map<String, Object?> json) =>
       _$UpdateConnectionRequestFromJson(json);

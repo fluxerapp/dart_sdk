@@ -7,11 +7,7 @@ part of 'ban_phone_request.dart';
 // **************************************************************************
 
 BanPhoneRequest _$BanPhoneRequestFromJson(Map<String, dynamic> json) =>
-    BanPhoneRequest(
-      phone: json['phone'] as String,
-    );
+    BanPhoneRequest(phone: json['phone'] as String);
 
 Map<String, dynamic> _$BanPhoneRequestToJson(BanPhoneRequest instance) =>
-    <String, dynamic>{
-      'phone': instance.phone,
-    };
+    <String, dynamic>{'phone': instance.phone};

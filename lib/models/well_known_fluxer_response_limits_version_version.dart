@@ -16,10 +16,7 @@ enum WellKnownFluxerResponseLimitsVersionVersion {
   const WellKnownFluxerResponseLimitsVersionVersion(this.json);
 
   factory WellKnownFluxerResponseLimitsVersionVersion.fromJson(int json) =>
-      values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

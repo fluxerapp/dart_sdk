@@ -10,11 +10,7 @@ part 'handoff_status_response.g.dart';
 
 @JsonSerializable()
 class HandoffStatusResponse {
-  const HandoffStatusResponse({
-    required this.status,
-    this.token,
-    this.userId,
-  });
+  const HandoffStatusResponse({required this.status, this.token, this.userId});
 
   factory HandoffStatusResponse.fromJson(Map<String, Object?> json) =>
       _$HandoffStatusResponseFromJson(json);

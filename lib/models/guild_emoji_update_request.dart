@@ -8,9 +8,7 @@ part 'guild_emoji_update_request.g.dart';
 
 @JsonSerializable()
 class GuildEmojiUpdateRequest {
-  const GuildEmojiUpdateRequest({
-    required this.name,
-  });
+  const GuildEmojiUpdateRequest({required this.name});
 
   factory GuildEmojiUpdateRequest.fromJson(Map<String, Object?> json) =>
       _$GuildEmojiUpdateRequestFromJson(json);

@@ -10,14 +10,11 @@ part 'git_hub_webhook_check_run_pull_requests.g.dart';
 
 @JsonSerializable()
 class GitHubWebhookCheckRunPullRequests {
-  const GitHubWebhookCheckRunPullRequests({
-    required this.number,
-  });
+  const GitHubWebhookCheckRunPullRequests({required this.number});
 
   factory GitHubWebhookCheckRunPullRequests.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$GitHubWebhookCheckRunPullRequestsFromJson(json);
+  ) => _$GitHubWebhookCheckRunPullRequestsFromJson(json);
 
   final Int32Type number;
 

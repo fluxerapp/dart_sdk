@@ -9,9 +9,11 @@ part of 'o_auth2_me_response.dart';
 OAuth2MeResponse _$OAuth2MeResponseFromJson(Map<String, dynamic> json) =>
     OAuth2MeResponse(
       application: OAuth2MeResponseApplication.fromJson(
-          json['application'] as Map<String, dynamic>),
-      scopes:
-          (json['scopes'] as List<dynamic>).map((e) => e as String).toList(),
+        json['application'] as Map<String, dynamic>,
+      ),
+      scopes: (json['scopes'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
       expires: json['expires'] as String,
       user: json['user'] == null
           ? null

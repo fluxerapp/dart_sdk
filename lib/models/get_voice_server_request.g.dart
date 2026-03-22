@@ -7,15 +7,15 @@ part of 'get_voice_server_request.dart';
 // **************************************************************************
 
 GetVoiceServerRequest _$GetVoiceServerRequestFromJson(
-        Map<String, dynamic> json) =>
-    GetVoiceServerRequest(
-      regionId: json['region_id'] as String,
-      serverId: json['server_id'] as String,
-    );
+  Map<String, dynamic> json,
+) => GetVoiceServerRequest(
+  regionId: json['region_id'] as String,
+  serverId: json['server_id'] as String,
+);
 
 Map<String, dynamic> _$GetVoiceServerRequestToJson(
-        GetVoiceServerRequest instance) =>
-    <String, dynamic>{
-      'region_id': instance.regionId,
-      'server_id': instance.serverId,
-    };
+  GetVoiceServerRequest instance,
+) => <String, dynamic>{
+  'region_id': instance.regionId,
+  'server_id': instance.serverId,
+};

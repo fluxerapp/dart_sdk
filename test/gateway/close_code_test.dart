@@ -4,24 +4,15 @@ import 'package:test/test.dart';
 void main() {
   group('GatewayCloseCode.fromCode', () {
     test('fromCode(4000) → unknownError', () {
-      expect(
-        GatewayCloseCode.fromCode(4000),
-        GatewayCloseCode.unknownError,
-      );
+      expect(GatewayCloseCode.fromCode(4000), GatewayCloseCode.unknownError);
     });
 
     test('fromCode(4001) → unknownOpcode', () {
-      expect(
-        GatewayCloseCode.fromCode(4001),
-        GatewayCloseCode.unknownOpcode,
-      );
+      expect(GatewayCloseCode.fromCode(4001), GatewayCloseCode.unknownOpcode);
     });
 
     test('fromCode(4002) → decodeError', () {
-      expect(
-        GatewayCloseCode.fromCode(4002),
-        GatewayCloseCode.decodeError,
-      );
+      expect(GatewayCloseCode.fromCode(4002), GatewayCloseCode.decodeError);
     });
 
     test('fromCode(4003) → notAuthenticated', () {
@@ -46,31 +37,19 @@ void main() {
     });
 
     test('fromCode(4007) → invalidSequence', () {
-      expect(
-        GatewayCloseCode.fromCode(4007),
-        GatewayCloseCode.invalidSequence,
-      );
+      expect(GatewayCloseCode.fromCode(4007), GatewayCloseCode.invalidSequence);
     });
 
     test('fromCode(4008) → rateLimited', () {
-      expect(
-        GatewayCloseCode.fromCode(4008),
-        GatewayCloseCode.rateLimited,
-      );
+      expect(GatewayCloseCode.fromCode(4008), GatewayCloseCode.rateLimited);
     });
 
     test('fromCode(4009) → sessionTimedOut', () {
-      expect(
-        GatewayCloseCode.fromCode(4009),
-        GatewayCloseCode.sessionTimedOut,
-      );
+      expect(GatewayCloseCode.fromCode(4009), GatewayCloseCode.sessionTimedOut);
     });
 
     test('fromCode(4010) → invalidShard', () {
-      expect(
-        GatewayCloseCode.fromCode(4010),
-        GatewayCloseCode.invalidShard,
-      );
+      expect(GatewayCloseCode.fromCode(4010), GatewayCloseCode.invalidShard);
     });
 
     test('fromCode(4011) → shardingRequired', () {

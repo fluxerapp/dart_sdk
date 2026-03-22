@@ -8,9 +8,7 @@ part 'well_known_fluxer_response_push.g.dart';
 
 @JsonSerializable()
 class WellKnownFluxerResponsePush {
-  const WellKnownFluxerResponsePush({
-    required this.publicVapidKey,
-  });
+  const WellKnownFluxerResponsePush({required this.publicVapidKey});
 
   factory WellKnownFluxerResponsePush.fromJson(Map<String, Object?> json) =>
       _$WellKnownFluxerResponsePushFromJson(json);

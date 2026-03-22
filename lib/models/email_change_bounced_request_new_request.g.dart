@@ -7,13 +7,9 @@ part of 'email_change_bounced_request_new_request.dart';
 // **************************************************************************
 
 EmailChangeBouncedRequestNewRequest
-    _$EmailChangeBouncedRequestNewRequestFromJson(Map<String, dynamic> json) =>
-        EmailChangeBouncedRequestNewRequest(
-          newEmail: json['new_email'] as String,
-        );
+_$EmailChangeBouncedRequestNewRequestFromJson(Map<String, dynamic> json) =>
+    EmailChangeBouncedRequestNewRequest(newEmail: json['new_email'] as String);
 
 Map<String, dynamic> _$EmailChangeBouncedRequestNewRequestToJson(
-        EmailChangeBouncedRequestNewRequest instance) =>
-    <String, dynamic>{
-      'new_email': instance.newEmail,
-    };
+  EmailChangeBouncedRequestNewRequest instance,
+) => <String, dynamic>{'new_email': instance.newEmail};

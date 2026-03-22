@@ -10,10 +10,7 @@ part 'guild_role_position_item.g.dart';
 
 @JsonSerializable()
 class GuildRolePositionItem {
-  const GuildRolePositionItem({
-    required this.id,
-    this.position,
-  });
+  const GuildRolePositionItem({required this.id, this.position});
 
   factory GuildRolePositionItem.fromJson(Map<String, Object?> json) =>
       _$GuildRolePositionItemFromJson(json);

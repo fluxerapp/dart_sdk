@@ -8,9 +8,7 @@ part 'username_suggestions_request.g.dart';
 
 @JsonSerializable()
 class UsernameSuggestionsRequest {
-  const UsernameSuggestionsRequest({
-    required this.globalName,
-  });
+  const UsernameSuggestionsRequest({required this.globalName});
 
   factory UsernameSuggestionsRequest.fromJson(Map<String, Object?> json) =>
       _$UsernameSuggestionsRequestFromJson(json);

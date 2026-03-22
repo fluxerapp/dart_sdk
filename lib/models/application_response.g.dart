@@ -19,17 +19,18 @@ ApplicationResponse _$ApplicationResponseFromJson(Map<String, dynamic> json) =>
       bot: json['bot'] == null
           ? null
           : ApplicationBotResponse.fromJson(
-              json['bot'] as Map<String, dynamic>),
+              json['bot'] as Map<String, dynamic>,
+            ),
     );
 
 Map<String, dynamic> _$ApplicationResponseToJson(
-        ApplicationResponse instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'redirect_uris': instance.redirectUris,
-      'bot_public': instance.botPublic,
-      'bot_require_code_grant': instance.botRequireCodeGrant,
-      'client_secret': instance.clientSecret,
-      'bot': instance.bot,
-    };
+  ApplicationResponse instance,
+) => <String, dynamic>{
+  'id': instance.id,
+  'name': instance.name,
+  'redirect_uris': instance.redirectUris,
+  'bot_public': instance.botPublic,
+  'bot_require_code_grant': instance.botRequireCodeGrant,
+  'client_secret': instance.clientSecret,
+  'bot': instance.bot,
+};

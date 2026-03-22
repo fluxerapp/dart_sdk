@@ -51,12 +51,14 @@ class TestConfig {
       token.isNotEmpty || (email.isNotEmpty && password.isNotEmpty);
 
   /// Create a bare Dio instance (no auth)
-  static Dio _createBareDio() => Dio(BaseOptions(
-        baseUrl: baseUrl,
-        contentType: 'application/json',
-        connectTimeout: const Duration(seconds: 15),
-        receiveTimeout: const Duration(seconds: 10),
-      ));
+  static Dio _createBareDio() => Dio(
+    BaseOptions(
+      baseUrl: baseUrl,
+      contentType: 'application/json',
+      connectTimeout: const Duration(seconds: 15),
+      receiveTimeout: const Duration(seconds: 10),
+    ),
+  );
 
   /// Get auth token — uses direct token if set, otherwise logs in with email/password.
   static Future<String> getToken() async {

@@ -21,14 +21,14 @@ PackSummaryResponse _$PackSummaryResponseFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$PackSummaryResponseToJson(
-        PackSummaryResponse instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'description': instance.description,
-      'type': instance.type,
-      'creator_id': instance.creatorId,
-      'created_at': instance.createdAt.toIso8601String(),
-      'updated_at': instance.updatedAt.toIso8601String(),
-      'installed_at': instance.installedAt?.toIso8601String(),
-    };
+  PackSummaryResponse instance,
+) => <String, dynamic>{
+  'id': instance.id,
+  'name': instance.name,
+  'description': instance.description,
+  'type': instance.type,
+  'creator_id': instance.creatorId,
+  'created_at': instance.createdAt.toIso8601String(),
+  'updated_at': instance.updatedAt.toIso8601String(),
+  'installed_at': instance.installedAt?.toIso8601String(),
+};

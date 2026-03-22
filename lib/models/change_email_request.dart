@@ -11,10 +11,7 @@ part 'change_email_request.g.dart';
 
 @JsonSerializable()
 class ChangeEmailRequest {
-  const ChangeEmailRequest({
-    required this.userId,
-    required this.email,
-  });
+  const ChangeEmailRequest({required this.userId, required this.email});
 
   factory ChangeEmailRequest.fromJson(Map<String, Object?> json) =>
       _$ChangeEmailRequestFromJson(json);

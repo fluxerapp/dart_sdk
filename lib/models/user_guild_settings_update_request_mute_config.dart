@@ -15,8 +15,7 @@ class UserGuildSettingsUpdateRequestMuteConfig {
 
   factory UserGuildSettingsUpdateRequestMuteConfig.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$UserGuildSettingsUpdateRequestMuteConfigFromJson(json);
+  ) => _$UserGuildSettingsUpdateRequestMuteConfigFromJson(json);
 
   /// When the mute expires
   @JsonKey(name: 'end_time')

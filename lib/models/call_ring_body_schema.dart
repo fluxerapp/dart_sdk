@@ -10,9 +10,7 @@ part 'call_ring_body_schema.g.dart';
 
 @JsonSerializable()
 class CallRingBodySchema {
-  const CallRingBodySchema({
-    this.recipients,
-  });
+  const CallRingBodySchema({this.recipients});
 
   factory CallRingBodySchema.fromJson(Map<String, Object?> json) =>
       _$CallRingBodySchemaFromJson(json);

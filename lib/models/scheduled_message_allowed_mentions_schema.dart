@@ -20,8 +20,7 @@ class ScheduledMessageAllowedMentionsSchema {
 
   factory ScheduledMessageAllowedMentionsSchema.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$ScheduledMessageAllowedMentionsSchemaFromJson(json);
+  ) => _$ScheduledMessageAllowedMentionsSchemaFromJson(json);
 
   /// Types of mentions to parse from content
   final List<ScheduledMessageAllowedMentionsSchemaParseParse>? parse;

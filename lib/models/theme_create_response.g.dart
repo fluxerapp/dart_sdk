@@ -7,12 +7,8 @@ part of 'theme_create_response.dart';
 // **************************************************************************
 
 ThemeCreateResponse _$ThemeCreateResponseFromJson(Map<String, dynamic> json) =>
-    ThemeCreateResponse(
-      id: json['id'] as String,
-    );
+    ThemeCreateResponse(id: json['id'] as String);
 
 Map<String, dynamic> _$ThemeCreateResponseToJson(
-        ThemeCreateResponse instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-    };
+  ThemeCreateResponse instance,
+) => <String, dynamic>{'id': instance.id};

@@ -92,9 +92,7 @@ abstract class ChannelsApi {
   ///
   /// [channelId] - The ID of the channel.
   @POST('/channels/{channel_id}/call/end')
-  Future<void> endCall({
-    @Path('channel_id') required SnowflakeType channelId,
-  });
+  Future<void> endCall({@Path('channel_id') required SnowflakeType channelId});
 
   /// Ring call recipients.
   ///

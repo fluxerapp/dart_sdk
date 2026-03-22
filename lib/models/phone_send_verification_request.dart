@@ -10,9 +10,7 @@ part 'phone_send_verification_request.g.dart';
 
 @JsonSerializable()
 class PhoneSendVerificationRequest {
-  const PhoneSendVerificationRequest({
-    required this.phone,
-  });
+  const PhoneSendVerificationRequest({required this.phone});
 
   factory PhoneSendVerificationRequest.fromJson(Map<String, Object?> json) =>
       _$PhoneSendVerificationRequestFromJson(json);

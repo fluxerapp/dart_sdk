@@ -31,8 +31,7 @@ class GuildInviteMetadataResponseGuild {
 
   factory GuildInviteMetadataResponseGuild.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$GuildInviteMetadataResponseGuildFromJson(json);
+  ) => _$GuildInviteMetadataResponseGuildFromJson(json);
 
   /// The unique identifier for this guild
   final String id;
@@ -68,7 +67,7 @@ class GuildInviteMetadataResponseGuild {
   /// The alignment of the splash card
   @JsonKey(name: 'splash_card_alignment')
   final GuildInviteMetadataResponseGuildSplashCardAlignmentSplashCardAlignment
-      splashCardAlignment;
+  splashCardAlignment;
 
   /// The hash of the embedded invite splash
   @JsonKey(name: 'embed_splash')

@@ -24,8 +24,7 @@ class WellKnownFluxerResponseEndpoints {
 
   factory WellKnownFluxerResponseEndpoints.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$WellKnownFluxerResponseEndpointsFromJson(json);
+  ) => _$WellKnownFluxerResponseEndpointsFromJson(json);
 
   /// Base URL for authenticated API requests
   final String api;

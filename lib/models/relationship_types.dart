@@ -21,10 +21,8 @@ enum RelationshipTypes {
 
   const RelationshipTypes(this.json);
 
-  factory RelationshipTypes.fromJson(int json) => values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+  factory RelationshipTypes.fromJson(int json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

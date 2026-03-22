@@ -10,9 +10,7 @@ part 'terminate_sessions_request.g.dart';
 
 @JsonSerializable()
 class TerminateSessionsRequest {
-  const TerminateSessionsRequest({
-    required this.userId,
-  });
+  const TerminateSessionsRequest({required this.userId});
 
   factory TerminateSessionsRequest.fromJson(Map<String, Object?> json) =>
       _$TerminateSessionsRequestFromJson(json);

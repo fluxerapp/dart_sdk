@@ -15,10 +15,8 @@ enum GuildInviteResponseTypeType {
 
   const GuildInviteResponseTypeType(this.json);
 
-  factory GuildInviteResponseTypeType.fromJson(int json) => values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+  factory GuildInviteResponseTypeType.fromJson(int json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

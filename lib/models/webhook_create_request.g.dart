@@ -7,15 +7,12 @@ part of 'webhook_create_request.dart';
 // **************************************************************************
 
 WebhookCreateRequest _$WebhookCreateRequestFromJson(
-        Map<String, dynamic> json) =>
-    WebhookCreateRequest(
-      name: json['name'] as String,
-      avatar: json['avatar'] as String?,
-    );
+  Map<String, dynamic> json,
+) => WebhookCreateRequest(
+  name: json['name'] as String,
+  avatar: json['avatar'] as String?,
+);
 
 Map<String, dynamic> _$WebhookCreateRequestToJson(
-        WebhookCreateRequest instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'avatar': instance.avatar,
-    };
+  WebhookCreateRequest instance,
+) => <String, dynamic>{'name': instance.name, 'avatar': instance.avatar};

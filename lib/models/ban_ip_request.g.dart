@@ -6,11 +6,8 @@ part of 'ban_ip_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-BanIpRequest _$BanIpRequestFromJson(Map<String, dynamic> json) => BanIpRequest(
-      ip: json['ip'] as String,
-    );
+BanIpRequest _$BanIpRequestFromJson(Map<String, dynamic> json) =>
+    BanIpRequest(ip: json['ip'] as String);
 
 Map<String, dynamic> _$BanIpRequestToJson(BanIpRequest instance) =>
-    <String, dynamic>{
-      'ip': instance.ip,
-    };
+    <String, dynamic>{'ip': instance.ip};

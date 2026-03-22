@@ -31,10 +31,8 @@ enum MessageContentType {
 
   const MessageContentType(this.json);
 
-  factory MessageContentType.fromJson(String json) => values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+  factory MessageContentType.fromJson(String json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 

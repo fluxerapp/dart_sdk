@@ -14,9 +14,9 @@ EmbedFooterResponse _$EmbedFooterResponseFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$EmbedFooterResponseToJson(
-        EmbedFooterResponse instance) =>
-    <String, dynamic>{
-      'text': instance.text,
-      'icon_url': instance.iconUrl,
-      'proxy_icon_url': instance.proxyIconUrl,
-    };
+  EmbedFooterResponse instance,
+) => <String, dynamic>{
+  'text': instance.text,
+  'icon_url': instance.iconUrl,
+  'proxy_icon_url': instance.proxyIconUrl,
+};

@@ -7,11 +7,7 @@ part of 'reload_guild_request.dart';
 // **************************************************************************
 
 ReloadGuildRequest _$ReloadGuildRequestFromJson(Map<String, dynamic> json) =>
-    ReloadGuildRequest(
-      guildId: json['guild_id'] as String,
-    );
+    ReloadGuildRequest(guildId: json['guild_id'] as String);
 
 Map<String, dynamic> _$ReloadGuildRequestToJson(ReloadGuildRequest instance) =>
-    <String, dynamic>{
-      'guild_id': instance.guildId,
-    };
+    <String, dynamic>{'guild_id': instance.guildId};

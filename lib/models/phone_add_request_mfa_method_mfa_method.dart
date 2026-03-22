@@ -20,10 +20,7 @@ enum PhoneAddRequestMfaMethodMfaMethod {
   const PhoneAddRequestMfaMethodMfaMethod(this.json);
 
   factory PhoneAddRequestMfaMethodMfaMethod.fromJson(String json) =>
-      values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 

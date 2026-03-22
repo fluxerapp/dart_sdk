@@ -19,8 +19,8 @@ class AuthRegisterResponse {
   Map<String, dynamic> toJson() => _json;
 
   AuthRegisterResponseAuthTokenWithUserIdResponse
-      toAuthTokenWithUserIdResponse() =>
-          AuthRegisterResponseAuthTokenWithUserIdResponse.fromJson(_json);
+  toAuthTokenWithUserIdResponse() =>
+      AuthRegisterResponseAuthTokenWithUserIdResponse.fromJson(_json);
   AuthRegisterResponseAuthMfaRequiredResponse toAuthMfaRequiredResponse() =>
       AuthRegisterResponseAuthMfaRequiredResponse.fromJson(_json);
 }
@@ -38,8 +38,7 @@ class AuthRegisterResponseAuthTokenWithUserIdResponse {
 
   factory AuthRegisterResponseAuthTokenWithUserIdResponse.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$AuthRegisterResponseAuthTokenWithUserIdResponseFromJson(json);
+  ) => _$AuthRegisterResponseAuthTokenWithUserIdResponseFromJson(json);
 
   Map<String, dynamic> toJson() =>
       _$AuthRegisterResponseAuthTokenWithUserIdResponseToJson(this);
@@ -69,8 +68,7 @@ class AuthRegisterResponseAuthMfaRequiredResponse {
 
   factory AuthRegisterResponseAuthMfaRequiredResponse.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$AuthRegisterResponseAuthMfaRequiredResponseFromJson(json);
+  ) => _$AuthRegisterResponseAuthMfaRequiredResponseFromJson(json);
 
   Map<String, dynamic> toJson() =>
       _$AuthRegisterResponseAuthMfaRequiredResponseToJson(this);

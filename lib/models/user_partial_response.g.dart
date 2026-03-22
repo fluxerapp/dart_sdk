@@ -20,15 +20,15 @@ UserPartialResponse _$UserPartialResponseFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$UserPartialResponseToJson(
-        UserPartialResponse instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'username': instance.username,
-      'discriminator': instance.discriminator,
-      'global_name': instance.globalName,
-      'avatar': instance.avatar,
-      'avatar_color': instance.avatarColor,
-      'bot': instance.bot,
-      'system': instance.system,
-      'flags': instance.flags,
-    };
+  UserPartialResponse instance,
+) => <String, dynamic>{
+  'id': instance.id,
+  'username': instance.username,
+  'discriminator': instance.discriminator,
+  'global_name': instance.globalName,
+  'avatar': instance.avatar,
+  'avatar_color': instance.avatarColor,
+  'bot': instance.bot,
+  'system': instance.system,
+  'flags': instance.flags,
+};

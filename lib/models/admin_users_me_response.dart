@@ -10,9 +10,7 @@ part 'admin_users_me_response.g.dart';
 
 @JsonSerializable()
 class AdminUsersMeResponse {
-  const AdminUsersMeResponse({
-    required this.user,
-  });
+  const AdminUsersMeResponse({required this.user});
 
   factory AdminUsersMeResponse.fromJson(Map<String, Object?> json) =>
       _$AdminUsersMeResponseFromJson(json);

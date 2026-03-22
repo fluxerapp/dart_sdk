@@ -15,10 +15,10 @@ CustomStatusPayload _$CustomStatusPayloadFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$CustomStatusPayloadToJson(
-        CustomStatusPayload instance) =>
-    <String, dynamic>{
-      'text': instance.text,
-      'expires_at': instance.expiresAt,
-      'emoji_id': instance.emojiId,
-      'emoji_name': instance.emojiName,
-    };
+  CustomStatusPayload instance,
+) => <String, dynamic>{
+  'text': instance.text,
+  'expires_at': instance.expiresAt,
+  'emoji_id': instance.emojiId,
+  'emoji_name': instance.emojiName,
+};

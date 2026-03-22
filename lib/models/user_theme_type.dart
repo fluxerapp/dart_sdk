@@ -21,10 +21,8 @@ enum UserThemeType {
 
   const UserThemeType(this.json);
 
-  factory UserThemeType.fromJson(String json) => values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+  factory UserThemeType.fromJson(String json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 

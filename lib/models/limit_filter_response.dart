@@ -8,10 +8,7 @@ part 'limit_filter_response.g.dart';
 
 @JsonSerializable()
 class LimitFilterResponse {
-  const LimitFilterResponse({
-    this.traits,
-    this.guildFeatures,
-  });
+  const LimitFilterResponse({this.traits, this.guildFeatures});
 
   factory LimitFilterResponse.fromJson(Map<String, Object?> json) =>
       _$LimitFilterResponseFromJson(json);

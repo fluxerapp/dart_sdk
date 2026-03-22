@@ -81,10 +81,8 @@ enum Locale {
 
   const Locale(this.json);
 
-  factory Locale.fromJson(String json) => values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+  factory Locale.fromJson(String json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 

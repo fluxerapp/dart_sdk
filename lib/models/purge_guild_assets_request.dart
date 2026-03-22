@@ -8,9 +8,7 @@ part 'purge_guild_assets_request.g.dart';
 
 @JsonSerializable()
 class PurgeGuildAssetsRequest {
-  const PurgeGuildAssetsRequest({
-    required this.ids,
-  });
+  const PurgeGuildAssetsRequest({required this.ids});
 
   factory PurgeGuildAssetsRequest.fromJson(Map<String, Object?> json) =>
       _$PurgeGuildAssetsRequestFromJson(json);

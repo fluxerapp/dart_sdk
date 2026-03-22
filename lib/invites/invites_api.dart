@@ -77,9 +77,7 @@ abstract class InvitesApi {
   ///
   /// [inviteCode] - The invite code.
   @DELETE('/invites/{invite_code}')
-  Future<void> deleteInvite({
-    @Path('invite_code') required String inviteCode,
-  });
+  Future<void> deleteInvite({@Path('invite_code') required String inviteCode});
 
   /// List pack invites.
   ///

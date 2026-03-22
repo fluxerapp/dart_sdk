@@ -10,9 +10,7 @@ part 'guild_update_response.g.dart';
 
 @JsonSerializable()
 class GuildUpdateResponse {
-  const GuildUpdateResponse({
-    required this.guild,
-  });
+  const GuildUpdateResponse({required this.guild});
 
   factory GuildUpdateResponse.fromJson(Map<String, Object?> json) =>
       _$GuildUpdateResponseFromJson(json);

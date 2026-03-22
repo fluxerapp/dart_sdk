@@ -7,13 +7,9 @@ part of 'guild_vanity_url_update_response.dart';
 // **************************************************************************
 
 GuildVanityUrlUpdateResponse _$GuildVanityUrlUpdateResponseFromJson(
-        Map<String, dynamic> json) =>
-    GuildVanityUrlUpdateResponse(
-      code: json['code'] as String,
-    );
+  Map<String, dynamic> json,
+) => GuildVanityUrlUpdateResponse(code: json['code'] as String);
 
 Map<String, dynamic> _$GuildVanityUrlUpdateResponseToJson(
-        GuildVanityUrlUpdateResponse instance) =>
-    <String, dynamic>{
-      'code': instance.code,
-    };
+  GuildVanityUrlUpdateResponse instance,
+) => <String, dynamic>{'code': instance.code};

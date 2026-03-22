@@ -10,10 +10,7 @@ part 'set_user_traits_request.g.dart';
 
 @JsonSerializable()
 class SetUserTraitsRequest {
-  const SetUserTraitsRequest({
-    required this.userId,
-    required this.traits,
-  });
+  const SetUserTraitsRequest({required this.userId, required this.traits});
 
   factory SetUserTraitsRequest.fromJson(Map<String, Object?> json) =>
       _$SetUserTraitsRequestFromJson(json);

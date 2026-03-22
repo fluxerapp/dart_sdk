@@ -10,14 +10,11 @@ part 'message_shred_status_not_found_response.g.dart';
 
 @JsonSerializable()
 class MessageShredStatusNotFoundResponse {
-  const MessageShredStatusNotFoundResponse({
-    required this.status,
-  });
+  const MessageShredStatusNotFoundResponse({required this.status});
 
   factory MessageShredStatusNotFoundResponse.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$MessageShredStatusNotFoundResponseFromJson(json);
+  ) => _$MessageShredStatusNotFoundResponseFromJson(json);
 
   final MessageShredStatusNotFoundResponseStatusStatus status;
 

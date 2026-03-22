@@ -7,13 +7,9 @@ part of 'channel_partial_recipient_response.dart';
 // **************************************************************************
 
 ChannelPartialRecipientResponse _$ChannelPartialRecipientResponseFromJson(
-        Map<String, dynamic> json) =>
-    ChannelPartialRecipientResponse(
-      username: json['username'] as String,
-    );
+  Map<String, dynamic> json,
+) => ChannelPartialRecipientResponse(username: json['username'] as String);
 
 Map<String, dynamic> _$ChannelPartialRecipientResponseToJson(
-        ChannelPartialRecipientResponse instance) =>
-    <String, dynamic>{
-      'username': instance.username,
-    };
+  ChannelPartialRecipientResponse instance,
+) => <String, dynamic>{'username': instance.username};

@@ -7,15 +7,15 @@ part of 'resolve_report_request.dart';
 // **************************************************************************
 
 ResolveReportRequest _$ResolveReportRequestFromJson(
-        Map<String, dynamic> json) =>
-    ResolveReportRequest(
-      reportId: json['report_id'] as String,
-      publicComment: json['public_comment'] as String?,
-    );
+  Map<String, dynamic> json,
+) => ResolveReportRequest(
+  reportId: json['report_id'] as String,
+  publicComment: json['public_comment'] as String?,
+);
 
 Map<String, dynamic> _$ResolveReportRequestToJson(
-        ResolveReportRequest instance) =>
-    <String, dynamic>{
-      'report_id': instance.reportId,
-      'public_comment': instance.publicComment,
-    };
+  ResolveReportRequest instance,
+) => <String, dynamic>{
+  'report_id': instance.reportId,
+  'public_comment': instance.publicComment,
+};

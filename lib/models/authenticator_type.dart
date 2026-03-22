@@ -19,10 +19,8 @@ enum AuthenticatorType {
 
   const AuthenticatorType(this.json);
 
-  factory AuthenticatorType.fromJson(int json) => values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+  factory AuthenticatorType.fromJson(int json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

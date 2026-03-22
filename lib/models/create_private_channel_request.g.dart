@@ -7,17 +7,17 @@ part of 'create_private_channel_request.dart';
 // **************************************************************************
 
 CreatePrivateChannelRequest _$CreatePrivateChannelRequestFromJson(
-        Map<String, dynamic> json) =>
-    CreatePrivateChannelRequest(
-      recipientId: json['recipient_id'] as String?,
-      recipients: (json['recipients'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-    );
+  Map<String, dynamic> json,
+) => CreatePrivateChannelRequest(
+  recipientId: json['recipient_id'] as String?,
+  recipients: (json['recipients'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList(),
+);
 
 Map<String, dynamic> _$CreatePrivateChannelRequestToJson(
-        CreatePrivateChannelRequest instance) =>
-    <String, dynamic>{
-      'recipient_id': instance.recipientId,
-      'recipients': instance.recipients,
-    };
+  CreatePrivateChannelRequest instance,
+) => <String, dynamic>{
+  'recipient_id': instance.recipientId,
+  'recipients': instance.recipients,
+};

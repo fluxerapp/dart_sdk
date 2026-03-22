@@ -300,9 +300,7 @@ abstract class AdminApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/admin/bans/email/add')
-  Future<void> addEmailBan({
-    @Body() required BanEmailRequest body,
-  });
+  Future<void> addEmailBan({@Body() required BanEmailRequest body});
 
   /// Check email ban status.
   ///
@@ -330,9 +328,7 @@ abstract class AdminApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/admin/bans/email/remove')
-  Future<void> removeEmailBan({
-    @Body() required BanEmailRequest body,
-  });
+  Future<void> removeEmailBan({@Body() required BanEmailRequest body});
 
   /// Add IP ban.
   ///
@@ -340,9 +336,7 @@ abstract class AdminApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/admin/bans/ip/add')
-  Future<void> addIpBan({
-    @Body() required BanIpRequest body,
-  });
+  Future<void> addIpBan({@Body() required BanIpRequest body});
 
   /// Check IP ban status.
   ///
@@ -370,9 +364,7 @@ abstract class AdminApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/admin/bans/ip/remove')
-  Future<void> removeIpBan({
-    @Body() required BanIpRequest body,
-  });
+  Future<void> removeIpBan({@Body() required BanIpRequest body});
 
   /// Add phone ban.
   ///
@@ -380,9 +372,7 @@ abstract class AdminApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/admin/bans/phone/add')
-  Future<void> addPhoneBan({
-    @Body() required BanPhoneRequest body,
-  });
+  Future<void> addPhoneBan({@Body() required BanPhoneRequest body});
 
   /// Check phone ban status.
   ///
@@ -410,9 +400,7 @@ abstract class AdminApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/admin/bans/phone/remove')
-  Future<void> removePhoneBan({
-    @Body() required BanPhoneRequest body,
-  });
+  Future<void> removePhoneBan({@Body() required BanPhoneRequest body});
 
   /// Bulk add guild members.
   ///
@@ -545,9 +533,7 @@ abstract class AdminApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/admin/guilds/ban-member')
-  Future<void> banGuildMember({
-    @Body() required BanGuildMemberRequest body,
-  });
+  Future<void> banGuildMember({@Body() required BanGuildMemberRequest body});
 
   /// Clear guild fields.
   ///
@@ -585,9 +571,7 @@ abstract class AdminApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/admin/guilds/kick-member')
-  Future<void> kickGuildMember({
-    @Body() required KickGuildMemberRequest body,
-  });
+  Future<void> kickGuildMember({@Body() required KickGuildMemberRequest body});
 
   /// List guild members.
   ///
@@ -1055,9 +1039,7 @@ abstract class AdminApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/admin/users/disable-mfa')
-  Future<void> disableUserMfa({
-    @Body() required DisableMfaRequest body,
-  });
+  Future<void> disableUserMfa({@Body() required DisableMfaRequest body});
 
   /// Disable user for suspicious activity.
   ///

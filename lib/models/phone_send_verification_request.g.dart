@@ -7,13 +7,9 @@ part of 'phone_send_verification_request.dart';
 // **************************************************************************
 
 PhoneSendVerificationRequest _$PhoneSendVerificationRequestFromJson(
-        Map<String, dynamic> json) =>
-    PhoneSendVerificationRequest(
-      phone: json['phone'] as String,
-    );
+  Map<String, dynamic> json,
+) => PhoneSendVerificationRequest(phone: json['phone'] as String);
 
 Map<String, dynamic> _$PhoneSendVerificationRequestToJson(
-        PhoneSendVerificationRequest instance) =>
-    <String, dynamic>{
-      'phone': instance.phone,
-    };
+  PhoneSendVerificationRequest instance,
+) => <String, dynamic>{'phone': instance.phone};

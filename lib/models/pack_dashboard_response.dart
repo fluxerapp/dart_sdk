@@ -11,10 +11,7 @@ part 'pack_dashboard_response.g.dart';
 
 @JsonSerializable()
 class PackDashboardResponse {
-  const PackDashboardResponse({
-    required this.emoji,
-    required this.sticker,
-  });
+  const PackDashboardResponse({required this.emoji, required this.sticker});
 
   factory PackDashboardResponse.fromJson(Map<String, Object?> json) =>
       _$PackDashboardResponseFromJson(json);

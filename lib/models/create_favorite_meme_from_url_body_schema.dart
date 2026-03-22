@@ -19,8 +19,7 @@ class CreateFavoriteMemeFromUrlBodySchema {
 
   factory CreateFavoriteMemeFromUrlBodySchema.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$CreateFavoriteMemeFromUrlBodySchemaFromJson(json);
+  ) => _$CreateFavoriteMemeFromUrlBodySchemaFromJson(json);
 
   /// Alternative text description for accessibility
   @JsonKey(name: 'alt_text')

@@ -10,9 +10,7 @@ part 'delete_api_key_response.g.dart';
 
 @JsonSerializable()
 class DeleteApiKeyResponse {
-  const DeleteApiKeyResponse({
-    required this.success,
-  });
+  const DeleteApiKeyResponse({required this.success});
 
   factory DeleteApiKeyResponse.fromJson(Map<String, Object?> json) =>
       _$DeleteApiKeyResponseFromJson(json);

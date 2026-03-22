@@ -15,10 +15,7 @@ enum ChannelCreateTextRequestTypeType {
   const ChannelCreateTextRequestTypeType(this.json);
 
   factory ChannelCreateTextRequestTypeType.fromJson(int json) =>
-      values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

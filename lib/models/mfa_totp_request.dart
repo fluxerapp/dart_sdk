@@ -8,10 +8,7 @@ part 'mfa_totp_request.g.dart';
 
 @JsonSerializable()
 class MfaTotpRequest {
-  const MfaTotpRequest({
-    required this.code,
-    required this.ticket,
-  });
+  const MfaTotpRequest({required this.code, required this.ticket});
 
   factory MfaTotpRequest.fromJson(Map<String, Object?> json) =>
       _$MfaTotpRequestFromJson(json);

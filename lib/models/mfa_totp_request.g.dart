@@ -13,7 +13,4 @@ MfaTotpRequest _$MfaTotpRequestFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$MfaTotpRequestToJson(MfaTotpRequest instance) =>
-    <String, dynamic>{
-      'code': instance.code,
-      'ticket': instance.ticket,
-    };
+    <String, dynamic>{'code': instance.code, 'ticket': instance.ticket};

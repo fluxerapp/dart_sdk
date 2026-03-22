@@ -11,10 +11,7 @@ part 'clear_guild_fields_request.g.dart';
 
 @JsonSerializable()
 class ClearGuildFieldsRequest {
-  const ClearGuildFieldsRequest({
-    required this.guildId,
-    required this.fields,
-  });
+  const ClearGuildFieldsRequest({required this.guildId, required this.fields});
 
   factory ClearGuildFieldsRequest.fromJson(Map<String, Object?> json) =>
       _$ClearGuildFieldsRequestFromJson(json);

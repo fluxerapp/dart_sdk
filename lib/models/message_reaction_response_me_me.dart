@@ -15,10 +15,8 @@ enum MessageReactionResponseMeMe {
 
   const MessageReactionResponseMeMe(this.json);
 
-  factory MessageReactionResponseMeMe.fromJson(bool json) => values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+  factory MessageReactionResponseMeMe.fromJson(bool json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final bool? json;
 

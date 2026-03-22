@@ -381,9 +381,7 @@ abstract class UsersApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/users/@me/mfa/sms/disable')
-  Future<void> disableSmsMfa({
-    @Body() required SudoVerificationSchema body,
-  });
+  Future<void> disableSmsMfa({@Body() required SudoVerificationSchema body});
 
   /// Enable SMS multi-factor authentication.
   ///
@@ -391,9 +389,7 @@ abstract class UsersApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/users/@me/mfa/sms/enable')
-  Future<void> enableSmsMfa({
-    @Body() required SudoVerificationSchema body,
-  });
+  Future<void> enableSmsMfa({@Body() required SudoVerificationSchema body});
 
   /// Disable TOTP multi-factor authentication.
   ///
@@ -401,9 +397,7 @@ abstract class UsersApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/users/@me/mfa/totp/disable')
-  Future<void> disableTotpMfa({
-    @Body() required DisableTotpRequest body,
-  });
+  Future<void> disableTotpMfa({@Body() required DisableTotpRequest body});
 
   /// Enable TOTP multi-factor authentication.
   ///
@@ -542,9 +536,7 @@ abstract class UsersApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/users/@me/phone')
-  Future<void> addPhoneToAccount({
-    @Body() required PhoneAddRequest body,
-  });
+  Future<void> addPhoneToAccount({@Body() required PhoneAddRequest body});
 
   /// Remove phone number from account.
   ///
@@ -694,9 +686,7 @@ abstract class UsersApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/users/@me/saved-messages')
-  Future<void> saveMessage({
-    @Body() required SaveMessageRequest body,
-  });
+  Future<void> saveMessage({@Body() required SaveMessageRequest body});
 
   /// Unsave message.
   ///

@@ -8,9 +8,7 @@ part 'ban_check_response_schema.g.dart';
 
 @JsonSerializable()
 class BanCheckResponseSchema {
-  const BanCheckResponseSchema({
-    required this.banned,
-  });
+  const BanCheckResponseSchema({required this.banned});
 
   factory BanCheckResponseSchema.fromJson(Map<String, Object?> json) =>
       _$BanCheckResponseSchemaFromJson(json);

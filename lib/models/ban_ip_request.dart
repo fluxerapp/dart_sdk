@@ -8,9 +8,7 @@ part 'ban_ip_request.g.dart';
 
 @JsonSerializable()
 class BanIpRequest {
-  const BanIpRequest({
-    required this.ip,
-  });
+  const BanIpRequest({required this.ip});
 
   factory BanIpRequest.fromJson(Map<String, Object?> json) =>
       _$BanIpRequestFromJson(json);

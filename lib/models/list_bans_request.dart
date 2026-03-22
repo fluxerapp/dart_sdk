@@ -8,9 +8,7 @@ part 'list_bans_request.g.dart';
 
 @JsonSerializable()
 class ListBansRequest {
-  const ListBansRequest({
-    this.limit,
-  });
+  const ListBansRequest({this.limit});
 
   factory ListBansRequest.fromJson(Map<String, Object?> json) =>
       _$ListBansRequestFromJson(json);

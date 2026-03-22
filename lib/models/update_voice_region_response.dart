@@ -10,9 +10,7 @@ part 'update_voice_region_response.g.dart';
 
 @JsonSerializable()
 class UpdateVoiceRegionResponse {
-  const UpdateVoiceRegionResponse({
-    required this.region,
-  });
+  const UpdateVoiceRegionResponse({required this.region});
 
   factory UpdateVoiceRegionResponse.fromJson(Map<String, Object?> json) =>
       _$UpdateVoiceRegionResponseFromJson(json);

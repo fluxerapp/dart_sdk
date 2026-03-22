@@ -10,10 +10,7 @@ part 'delete_all_user_messages_request.g.dart';
 
 @JsonSerializable()
 class DeleteAllUserMessagesRequest {
-  const DeleteAllUserMessagesRequest({
-    required this.userId,
-    this.dryRun,
-  });
+  const DeleteAllUserMessagesRequest({required this.userId, this.dryRun});
 
   factory DeleteAllUserMessagesRequest.fromJson(Map<String, Object?> json) =>
       _$DeleteAllUserMessagesRequestFromJson(json);

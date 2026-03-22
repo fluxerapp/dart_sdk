@@ -9,12 +9,11 @@ part of 'lookup_user_response.dart';
 LookupUserResponse _$LookupUserResponseFromJson(Map<String, dynamic> json) =>
     LookupUserResponse(
       users: (json['users'] as List<dynamic>)
-          .map((e) =>
-              UserAdminResponseSchema.fromJson(e as Map<String, dynamic>))
+          .map(
+            (e) => UserAdminResponseSchema.fromJson(e as Map<String, dynamic>),
+          )
           .toList(),
     );
 
 Map<String, dynamic> _$LookupUserResponseToJson(LookupUserResponse instance) =>
-    <String, dynamic>{
-      'users': instance.users,
-    };
+    <String, dynamic>{'users': instance.users};

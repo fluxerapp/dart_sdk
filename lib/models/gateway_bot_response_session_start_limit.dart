@@ -17,8 +17,7 @@ class GatewayBotResponseSessionStartLimit {
 
   factory GatewayBotResponseSessionStartLimit.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$GatewayBotResponseSessionStartLimitFromJson(json);
+  ) => _$GatewayBotResponseSessionStartLimitFromJson(json);
 
   /// Total number of session starts allowed
   final int total;

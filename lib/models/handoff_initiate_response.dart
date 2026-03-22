@@ -8,10 +8,7 @@ part 'handoff_initiate_response.g.dart';
 
 @JsonSerializable()
 class HandoffInitiateResponse {
-  const HandoffInitiateResponse({
-    required this.code,
-    required this.expiresAt,
-  });
+  const HandoffInitiateResponse({required this.code, required this.expiresAt});
 
   factory HandoffInitiateResponse.fromJson(Map<String, Object?> json) =>
       _$HandoffInitiateResponseFromJson(json);

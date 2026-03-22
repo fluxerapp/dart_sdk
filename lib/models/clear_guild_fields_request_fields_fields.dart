@@ -22,10 +22,7 @@ enum ClearGuildFieldsRequestFieldsFields {
   const ClearGuildFieldsRequestFieldsFields(this.json);
 
   factory ClearGuildFieldsRequestFieldsFields.fromJson(String json) =>
-      values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 

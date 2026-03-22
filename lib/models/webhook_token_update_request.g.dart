@@ -7,15 +7,12 @@ part of 'webhook_token_update_request.dart';
 // **************************************************************************
 
 WebhookTokenUpdateRequest _$WebhookTokenUpdateRequestFromJson(
-        Map<String, dynamic> json) =>
-    WebhookTokenUpdateRequest(
-      name: json['name'] as String?,
-      avatar: json['avatar'] as String?,
-    );
+  Map<String, dynamic> json,
+) => WebhookTokenUpdateRequest(
+  name: json['name'] as String?,
+  avatar: json['avatar'] as String?,
+);
 
 Map<String, dynamic> _$WebhookTokenUpdateRequestToJson(
-        WebhookTokenUpdateRequest instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'avatar': instance.avatar,
-    };
+  WebhookTokenUpdateRequest instance,
+) => <String, dynamic>{'name': instance.name, 'avatar': instance.avatar};

@@ -10,9 +10,7 @@ part 'mfa_backup_codes_response.g.dart';
 
 @JsonSerializable()
 class MfaBackupCodesResponse {
-  const MfaBackupCodesResponse({
-    required this.backupCodes,
-  });
+  const MfaBackupCodesResponse({required this.backupCodes});
 
   factory MfaBackupCodesResponse.fromJson(Map<String, Object?> json) =>
       _$MfaBackupCodesResponseFromJson(json);

@@ -8,10 +8,7 @@ part 'message_call_response.g.dart';
 
 @JsonSerializable()
 class MessageCallResponse {
-  const MessageCallResponse({
-    required this.participants,
-    this.endedTimestamp,
-  });
+  const MessageCallResponse({required this.participants, this.endedTimestamp});
 
   factory MessageCallResponse.fromJson(Map<String, Object?> json) =>
       _$MessageCallResponseFromJson(json);

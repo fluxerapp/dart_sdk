@@ -20,9 +20,7 @@ abstract class GiftsApi {
   ///
   /// [code] - The code.
   @GET('/gifts/{code}')
-  Future<GiftCodeResponse> getGiftCode({
-    @Path('code') required String code,
-  });
+  Future<GiftCodeResponse> getGiftCode({@Path('code') required String code});
 
   /// Redeem gift code.
   ///
@@ -30,7 +28,5 @@ abstract class GiftsApi {
   ///
   /// [code] - The code.
   @POST('/gifts/{code}/redeem')
-  Future<void> redeemGiftCode({
-    @Path('code') required String code,
-  });
+  Future<void> redeemGiftCode({@Path('code') required String code});
 }

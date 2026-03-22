@@ -19,8 +19,7 @@ class LookupMessageByAttachmentRequest {
 
   factory LookupMessageByAttachmentRequest.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$LookupMessageByAttachmentRequestFromJson(json);
+  ) => _$LookupMessageByAttachmentRequestFromJson(json);
 
   @JsonKey(name: 'channel_id')
   final SnowflakeType channelId;

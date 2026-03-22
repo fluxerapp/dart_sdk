@@ -8,9 +8,7 @@ part 'donation_checkout_response.g.dart';
 
 @JsonSerializable()
 class DonationCheckoutResponse {
-  const DonationCheckoutResponse({
-    required this.url,
-  });
+  const DonationCheckoutResponse({required this.url});
 
   factory DonationCheckoutResponse.fromJson(Map<String, Object?> json) =>
       _$DonationCheckoutResponseFromJson(json);

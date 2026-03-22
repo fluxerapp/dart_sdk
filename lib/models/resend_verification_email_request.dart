@@ -10,9 +10,7 @@ part 'resend_verification_email_request.g.dart';
 
 @JsonSerializable()
 class ResendVerificationEmailRequest {
-  const ResendVerificationEmailRequest({
-    required this.userId,
-  });
+  const ResendVerificationEmailRequest({required this.userId});
 
   factory ResendVerificationEmailRequest.fromJson(Map<String, Object?> json) =>
       _$ResendVerificationEmailRequestFromJson(json);

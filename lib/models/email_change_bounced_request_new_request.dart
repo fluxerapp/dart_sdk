@@ -10,14 +10,11 @@ part 'email_change_bounced_request_new_request.g.dart';
 
 @JsonSerializable()
 class EmailChangeBouncedRequestNewRequest {
-  const EmailChangeBouncedRequestNewRequest({
-    required this.newEmail,
-  });
+  const EmailChangeBouncedRequestNewRequest({required this.newEmail});
 
   factory EmailChangeBouncedRequestNewRequest.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$EmailChangeBouncedRequestNewRequestFromJson(json);
+  ) => _$EmailChangeBouncedRequestNewRequestFromJson(json);
 
   @JsonKey(name: 'new_email')
   final EmailType newEmail;

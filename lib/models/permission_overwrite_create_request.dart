@@ -19,8 +19,7 @@ class PermissionOverwriteCreateRequest {
 
   factory PermissionOverwriteCreateRequest.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$PermissionOverwriteCreateRequestFromJson(json);
+  ) => _$PermissionOverwriteCreateRequestFromJson(json);
 
   /// The type of overwrite (0 = role, 1 = member)
   final PermissionOverwriteCreateRequestTypeType type;

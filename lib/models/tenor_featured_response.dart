@@ -11,10 +11,7 @@ part 'tenor_featured_response.g.dart';
 
 @JsonSerializable()
 class TenorFeaturedResponse {
-  const TenorFeaturedResponse({
-    required this.gifs,
-    required this.categories,
-  });
+  const TenorFeaturedResponse({required this.gifs, required this.categories});
 
   factory TenorFeaturedResponse.fromJson(Map<String, Object?> json) =>
       _$TenorFeaturedResponseFromJson(json);

@@ -21,10 +21,8 @@ enum MessageEmbedType {
 
   const MessageEmbedType(this.json);
 
-  factory MessageEmbedType.fromJson(String json) => values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+  factory MessageEmbedType.fromJson(String json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 

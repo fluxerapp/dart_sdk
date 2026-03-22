@@ -10,9 +10,7 @@ part 'guild_memory_stats_response.g.dart';
 
 @JsonSerializable()
 class GuildMemoryStatsResponse {
-  const GuildMemoryStatsResponse({
-    required this.guilds,
-  });
+  const GuildMemoryStatsResponse({required this.guilds});
 
   factory GuildMemoryStatsResponse.fromJson(Map<String, Object?> json) =>
       _$GuildMemoryStatsResponseFromJson(json);

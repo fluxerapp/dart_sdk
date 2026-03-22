@@ -8,11 +8,7 @@ part 'search_guilds_request.g.dart';
 
 @JsonSerializable()
 class SearchGuildsRequest {
-  const SearchGuildsRequest({
-    this.query,
-    this.limit,
-    this.offset,
-  });
+  const SearchGuildsRequest({this.query, this.limit, this.offset});
 
   factory SearchGuildsRequest.fromJson(Map<String, Object?> json) =>
       _$SearchGuildsRequestFromJson(json);

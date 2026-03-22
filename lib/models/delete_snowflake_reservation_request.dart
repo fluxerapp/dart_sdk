@@ -10,14 +10,11 @@ part 'delete_snowflake_reservation_request.g.dart';
 
 @JsonSerializable()
 class DeleteSnowflakeReservationRequest {
-  const DeleteSnowflakeReservationRequest({
-    required this.email,
-  });
+  const DeleteSnowflakeReservationRequest({required this.email});
 
   factory DeleteSnowflakeReservationRequest.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$DeleteSnowflakeReservationRequestFromJson(json);
+  ) => _$DeleteSnowflakeReservationRequestFromJson(json);
 
   final EmailType email;
 

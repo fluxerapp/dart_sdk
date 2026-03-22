@@ -8,8 +8,9 @@ part of 'price_ids_response.dart';
 
 PriceIdsResponse _$PriceIdsResponseFromJson(Map<String, dynamic> json) =>
     PriceIdsResponse(
-      currency:
-          PriceIdsResponseCurrencyCurrency.fromJson(json['currency'] as String),
+      currency: PriceIdsResponseCurrencyCurrency.fromJson(
+        json['currency'] as String,
+      ),
       monthly: json['monthly'] as String?,
       yearly: json['yearly'] as String?,
       gift1Month: json['gift_1_month'] as String?,

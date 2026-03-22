@@ -7,13 +7,9 @@ part of 'trigger_guild_archive_request.dart';
 // **************************************************************************
 
 TriggerGuildArchiveRequest _$TriggerGuildArchiveRequestFromJson(
-        Map<String, dynamic> json) =>
-    TriggerGuildArchiveRequest(
-      guildId: json['guild_id'] as String,
-    );
+  Map<String, dynamic> json,
+) => TriggerGuildArchiveRequest(guildId: json['guild_id'] as String);
 
 Map<String, dynamic> _$TriggerGuildArchiveRequestToJson(
-        TriggerGuildArchiveRequest instance) =>
-    <String, dynamic>{
-      'guild_id': instance.guildId,
-    };
+  TriggerGuildArchiveRequest instance,
+) => <String, dynamic>{'guild_id': instance.guildId};

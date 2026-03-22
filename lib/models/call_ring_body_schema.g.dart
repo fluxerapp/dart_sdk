@@ -14,6 +14,4 @@ CallRingBodySchema _$CallRingBodySchemaFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$CallRingBodySchemaToJson(CallRingBodySchema instance) =>
-    <String, dynamic>{
-      'recipients': instance.recipients,
-    };
+    <String, dynamic>{'recipients': instance.recipients};

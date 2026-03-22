@@ -7,11 +7,7 @@ part of 'mfa_ticket_request.dart';
 // **************************************************************************
 
 MfaTicketRequest _$MfaTicketRequestFromJson(Map<String, dynamic> json) =>
-    MfaTicketRequest(
-      ticket: json['ticket'] as String,
-    );
+    MfaTicketRequest(ticket: json['ticket'] as String);
 
 Map<String, dynamic> _$MfaTicketRequestToJson(MfaTicketRequest instance) =>
-    <String, dynamic>{
-      'ticket': instance.ticket,
-    };
+    <String, dynamic>{'ticket': instance.ticket};

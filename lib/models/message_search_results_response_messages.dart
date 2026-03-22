@@ -47,8 +47,7 @@ class MessageSearchResultsResponseMessages {
 
   factory MessageSearchResultsResponseMessages.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$MessageSearchResultsResponseMessagesFromJson(json);
+  ) => _$MessageSearchResultsResponseMessagesFromJson(json);
 
   /// The unique identifier (snowflake) for this message
   final String id;

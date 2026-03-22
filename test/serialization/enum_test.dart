@@ -67,19 +67,29 @@ void main() {
 
   group('MessageResponseSchemaTypeType (int enum)', () {
     test('deserializes common message types', () {
-      expect(MessageResponseSchemaTypeType.fromJson(0),
-          MessageResponseSchemaTypeType.valueDefault);
-      expect(MessageResponseSchemaTypeType.fromJson(6),
-          MessageResponseSchemaTypeType.channelPinnedMessage);
-      expect(MessageResponseSchemaTypeType.fromJson(7),
-          MessageResponseSchemaTypeType.userJoin);
-      expect(MessageResponseSchemaTypeType.fromJson(19),
-          MessageResponseSchemaTypeType.reply);
+      expect(
+        MessageResponseSchemaTypeType.fromJson(0),
+        MessageResponseSchemaTypeType.valueDefault,
+      );
+      expect(
+        MessageResponseSchemaTypeType.fromJson(6),
+        MessageResponseSchemaTypeType.channelPinnedMessage,
+      );
+      expect(
+        MessageResponseSchemaTypeType.fromJson(7),
+        MessageResponseSchemaTypeType.userJoin,
+      );
+      expect(
+        MessageResponseSchemaTypeType.fromJson(19),
+        MessageResponseSchemaTypeType.reply,
+      );
     });
 
     test('unknown values fall back to \$unknown', () {
-      expect(MessageResponseSchemaTypeType.fromJson(999),
-          MessageResponseSchemaTypeType.$unknown);
+      expect(
+        MessageResponseSchemaTypeType.fromJson(999),
+        MessageResponseSchemaTypeType.$unknown,
+      );
     });
 
     test('serializes back to int', () {
@@ -95,8 +105,10 @@ void main() {
     });
 
     test('unknown values fall back to \$unknown', () {
-      expect(GuildVerificationLevel.fromJson(999),
-          GuildVerificationLevel.$unknown);
+      expect(
+        GuildVerificationLevel.fromJson(999),
+        GuildVerificationLevel.$unknown,
+      );
     });
   });
 

@@ -8,9 +8,7 @@ part 'email_change_ticket_request.g.dart';
 
 @JsonSerializable()
 class EmailChangeTicketRequest {
-  const EmailChangeTicketRequest({
-    required this.ticket,
-  });
+  const EmailChangeTicketRequest({required this.ticket});
 
   factory EmailChangeTicketRequest.fromJson(Map<String, Object?> json) =>
       _$EmailChangeTicketRequestFromJson(json);

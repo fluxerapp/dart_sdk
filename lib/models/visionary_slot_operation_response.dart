@@ -10,9 +10,7 @@ part 'visionary_slot_operation_response.g.dart';
 
 @JsonSerializable()
 class VisionarySlotOperationResponse {
-  const VisionarySlotOperationResponse({
-    required this.success,
-  });
+  const VisionarySlotOperationResponse({required this.success});
 
   factory VisionarySlotOperationResponse.fromJson(Map<String, Object?> json) =>
       _$VisionarySlotOperationResponseFromJson(json);

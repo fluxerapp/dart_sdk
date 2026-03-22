@@ -10,9 +10,7 @@ part 'reload_all_guilds_response.g.dart';
 
 @JsonSerializable()
 class ReloadAllGuildsResponse {
-  const ReloadAllGuildsResponse({
-    required this.count,
-  });
+  const ReloadAllGuildsResponse({required this.count});
 
   factory ReloadAllGuildsResponse.fromJson(Map<String, Object?> json) =>
       _$ReloadAllGuildsResponseFromJson(json);

@@ -7,15 +7,15 @@ part of 'well_known_fluxer_response_federation.dart';
 // **************************************************************************
 
 WellKnownFluxerResponseFederation _$WellKnownFluxerResponseFederationFromJson(
-        Map<String, dynamic> json) =>
-    WellKnownFluxerResponseFederation(
-      enabled: json['enabled'] as bool,
-      version: (json['version'] as num).toInt(),
-    );
+  Map<String, dynamic> json,
+) => WellKnownFluxerResponseFederation(
+  enabled: json['enabled'] as bool,
+  version: (json['version'] as num).toInt(),
+);
 
 Map<String, dynamic> _$WellKnownFluxerResponseFederationToJson(
-        WellKnownFluxerResponseFederation instance) =>
-    <String, dynamic>{
-      'enabled': instance.enabled,
-      'version': instance.version,
-    };
+  WellKnownFluxerResponseFederation instance,
+) => <String, dynamic>{
+  'enabled': instance.enabled,
+  'version': instance.version,
+};

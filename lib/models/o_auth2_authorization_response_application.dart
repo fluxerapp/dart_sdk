@@ -18,8 +18,7 @@ class OAuth2AuthorizationResponseApplication {
 
   factory OAuth2AuthorizationResponseApplication.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$OAuth2AuthorizationResponseApplicationFromJson(json);
+  ) => _$OAuth2AuthorizationResponseApplicationFromJson(json);
 
   /// The unique identifier of the application
   final String id;

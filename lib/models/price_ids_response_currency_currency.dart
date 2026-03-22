@@ -18,10 +18,7 @@ enum PriceIdsResponseCurrencyCurrency {
   const PriceIdsResponseCurrencyCurrency(this.json);
 
   factory PriceIdsResponseCurrencyCurrency.fromJson(String json) =>
-      values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 

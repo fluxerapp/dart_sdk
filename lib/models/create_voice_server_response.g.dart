@@ -7,14 +7,13 @@ part of 'create_voice_server_response.dart';
 // **************************************************************************
 
 CreateVoiceServerResponse _$CreateVoiceServerResponseFromJson(
-        Map<String, dynamic> json) =>
-    CreateVoiceServerResponse(
-      server: CreateVoiceServerResponseServer.fromJson(
-          json['server'] as Map<String, dynamic>),
-    );
+  Map<String, dynamic> json,
+) => CreateVoiceServerResponse(
+  server: CreateVoiceServerResponseServer.fromJson(
+    json['server'] as Map<String, dynamic>,
+  ),
+);
 
 Map<String, dynamic> _$CreateVoiceServerResponseToJson(
-        CreateVoiceServerResponse instance) =>
-    <String, dynamic>{
-      'server': instance.server,
-    };
+  CreateVoiceServerResponse instance,
+) => <String, dynamic>{'server': instance.server};

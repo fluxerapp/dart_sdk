@@ -187,9 +187,7 @@ abstract class PacksApi {
   ///
   /// [packId] - The ID of the pack.
   @DELETE('/packs/{pack_id}')
-  Future<void> deletePack({
-    @Path('pack_id') required SnowflakeType packId,
-  });
+  Future<void> deletePack({@Path('pack_id') required SnowflakeType packId});
 
   /// Install pack.
   ///
@@ -197,9 +195,7 @@ abstract class PacksApi {
   ///
   /// [packId] - The ID of the pack.
   @POST('/packs/{pack_id}/install')
-  Future<void> installPack({
-    @Path('pack_id') required SnowflakeType packId,
-  });
+  Future<void> installPack({@Path('pack_id') required SnowflakeType packId});
 
   /// Uninstall pack.
   ///
@@ -207,9 +203,7 @@ abstract class PacksApi {
   ///
   /// [packId] - The ID of the pack.
   @DELETE('/packs/{pack_id}/install')
-  Future<void> uninstallPack({
-    @Path('pack_id') required SnowflakeType packId,
-  });
+  Future<void> uninstallPack({@Path('pack_id') required SnowflakeType packId});
 
   /// Create pack.
   ///

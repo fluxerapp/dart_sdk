@@ -7,16 +7,13 @@ part of 'list_user_dm_channels_response.dart';
 // **************************************************************************
 
 ListUserDmChannelsResponse _$ListUserDmChannelsResponseFromJson(
-        Map<String, dynamic> json) =>
-    ListUserDmChannelsResponse(
-      channels: (json['channels'] as List<dynamic>)
-          .map((e) =>
-              AdminUserDmChannelSchema.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
+  Map<String, dynamic> json,
+) => ListUserDmChannelsResponse(
+  channels: (json['channels'] as List<dynamic>)
+      .map((e) => AdminUserDmChannelSchema.fromJson(e as Map<String, dynamic>))
+      .toList(),
+);
 
 Map<String, dynamic> _$ListUserDmChannelsResponseToJson(
-        ListUserDmChannelsResponse instance) =>
-    <String, dynamic>{
-      'channels': instance.channels,
-    };
+  ListUserDmChannelsResponse instance,
+) => <String, dynamic>{'channels': instance.channels};

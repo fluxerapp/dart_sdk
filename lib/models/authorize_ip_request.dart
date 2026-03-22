@@ -8,9 +8,7 @@ part 'authorize_ip_request.g.dart';
 
 @JsonSerializable()
 class AuthorizeIpRequest {
-  const AuthorizeIpRequest({
-    required this.token,
-  });
+  const AuthorizeIpRequest({required this.token});
 
   factory AuthorizeIpRequest.fromJson(Map<String, Object?> json) =>
       _$AuthorizeIpRequestFromJson(json);

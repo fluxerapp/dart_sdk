@@ -8,9 +8,7 @@ part 'legal_hold_response.g.dart';
 
 @JsonSerializable()
 class LegalHoldResponse {
-  const LegalHoldResponse({
-    required this.held,
-  });
+  const LegalHoldResponse({required this.held});
 
   factory LegalHoldResponse.fromJson(Map<String, Object?> json) =>
       _$LegalHoldResponseFromJson(json);

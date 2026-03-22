@@ -7,17 +7,17 @@ part of 'snowflake_reservation_entry.dart';
 // **************************************************************************
 
 SnowflakeReservationEntry _$SnowflakeReservationEntryFromJson(
-        Map<String, dynamic> json) =>
-    SnowflakeReservationEntry(
-      email: json['email'] as String,
-      snowflake: json['snowflake'] as String,
-      updatedAt: json['updated_at'] as String?,
-    );
+  Map<String, dynamic> json,
+) => SnowflakeReservationEntry(
+  email: json['email'] as String,
+  snowflake: json['snowflake'] as String,
+  updatedAt: json['updated_at'] as String?,
+);
 
 Map<String, dynamic> _$SnowflakeReservationEntryToJson(
-        SnowflakeReservationEntry instance) =>
-    <String, dynamic>{
-      'email': instance.email,
-      'snowflake': instance.snowflake,
-      'updated_at': instance.updatedAt,
-    };
+  SnowflakeReservationEntry instance,
+) => <String, dynamic>{
+  'email': instance.email,
+  'snowflake': instance.snowflake,
+  'updated_at': instance.updatedAt,
+};

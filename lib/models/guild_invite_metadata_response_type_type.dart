@@ -16,10 +16,7 @@ enum GuildInviteMetadataResponseTypeType {
   const GuildInviteMetadataResponseTypeType(this.json);
 
   factory GuildInviteMetadataResponseTypeType.fromJson(int json) =>
-      values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

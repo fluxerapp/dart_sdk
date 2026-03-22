@@ -16,10 +16,7 @@ enum DsaReportGuildRequestReportTypeReportType {
   const DsaReportGuildRequestReportTypeReportType(this.json);
 
   factory DsaReportGuildRequestReportTypeReportType.fromJson(String json) =>
-      values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 

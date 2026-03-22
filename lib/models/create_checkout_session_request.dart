@@ -8,9 +8,7 @@ part 'create_checkout_session_request.g.dart';
 
 @JsonSerializable()
 class CreateCheckoutSessionRequest {
-  const CreateCheckoutSessionRequest({
-    required this.priceId,
-  });
+  const CreateCheckoutSessionRequest({required this.priceId});
 
   factory CreateCheckoutSessionRequest.fromJson(Map<String, Object?> json) =>
       _$CreateCheckoutSessionRequestFromJson(json);

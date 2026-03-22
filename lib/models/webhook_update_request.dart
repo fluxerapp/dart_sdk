@@ -11,11 +11,7 @@ part 'webhook_update_request.g.dart';
 
 @JsonSerializable()
 class WebhookUpdateRequest {
-  const WebhookUpdateRequest({
-    this.name,
-    this.avatar,
-    this.channelId,
-  });
+  const WebhookUpdateRequest({this.name, this.avatar, this.channelId});
 
   factory WebhookUpdateRequest.fromJson(Map<String, Object?> json) =>
       _$WebhookUpdateRequestFromJson(json);

@@ -10,9 +10,7 @@ part 'unlink_phone_request.g.dart';
 
 @JsonSerializable()
 class UnlinkPhoneRequest {
-  const UnlinkPhoneRequest({
-    required this.userId,
-  });
+  const UnlinkPhoneRequest({required this.userId});
 
   factory UnlinkPhoneRequest.fromJson(Map<String, Object?> json) =>
       _$UnlinkPhoneRequestFromJson(json);

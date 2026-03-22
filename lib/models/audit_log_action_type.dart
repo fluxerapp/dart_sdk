@@ -83,10 +83,8 @@ enum AuditLogActionType {
 
   const AuditLogActionType(this.json);
 
-  factory AuditLogActionType.fromJson(int json) => values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+  factory AuditLogActionType.fromJson(int json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

@@ -15,8 +15,5 @@ ChannelPinsResponse _$ChannelPinsResponseFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$ChannelPinsResponseToJson(
-        ChannelPinsResponse instance) =>
-    <String, dynamic>{
-      'items': instance.items,
-      'has_more': instance.hasMore,
-    };
+  ChannelPinsResponse instance,
+) => <String, dynamic>{'items': instance.items, 'has_more': instance.hasMore};

@@ -7,15 +7,15 @@ part of 'web_authn_authenticate_request.dart';
 // **************************************************************************
 
 WebAuthnAuthenticateRequest _$WebAuthnAuthenticateRequestFromJson(
-        Map<String, dynamic> json) =>
-    WebAuthnAuthenticateRequest(
-      response: json['response'],
-      challenge: json['challenge'] as String,
-    );
+  Map<String, dynamic> json,
+) => WebAuthnAuthenticateRequest(
+  response: json['response'],
+  challenge: json['challenge'] as String,
+);
 
 Map<String, dynamic> _$WebAuthnAuthenticateRequestToJson(
-        WebAuthnAuthenticateRequest instance) =>
-    <String, dynamic>{
-      'response': instance.response,
-      'challenge': instance.challenge,
-    };
+  WebAuthnAuthenticateRequest instance,
+) => <String, dynamic>{
+  'response': instance.response,
+  'challenge': instance.challenge,
+};

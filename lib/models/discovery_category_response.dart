@@ -8,10 +8,7 @@ part 'discovery_category_response.g.dart';
 
 @JsonSerializable()
 class DiscoveryCategoryResponse {
-  const DiscoveryCategoryResponse({
-    required this.id,
-    required this.name,
-  });
+  const DiscoveryCategoryResponse({required this.id, required this.name});
 
   factory DiscoveryCategoryResponse.fromJson(Map<String, Object?> json) =>
       _$DiscoveryCategoryResponseFromJson(json);

@@ -19,14 +19,14 @@ UserSessionResponse _$UserSessionResponseFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$UserSessionResponseToJson(
-        UserSessionResponse instance) =>
-    <String, dynamic>{
-      'session_id_hash': instance.sessionIdHash,
-      'created_at': instance.createdAt,
-      'approx_last_used_at': instance.approxLastUsedAt,
-      'client_ip': instance.clientIp,
-      'client_ip_reverse': instance.clientIpReverse,
-      'client_os': instance.clientOs,
-      'client_platform': instance.clientPlatform,
-      'client_location': instance.clientLocation,
-    };
+  UserSessionResponse instance,
+) => <String, dynamic>{
+  'session_id_hash': instance.sessionIdHash,
+  'created_at': instance.createdAt,
+  'approx_last_used_at': instance.approxLastUsedAt,
+  'client_ip': instance.clientIp,
+  'client_ip_reverse': instance.clientIpReverse,
+  'client_os': instance.clientOs,
+  'client_platform': instance.clientPlatform,
+  'client_location': instance.clientLocation,
+};

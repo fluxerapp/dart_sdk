@@ -10,9 +10,7 @@ part 'sentry_webhook_data.g.dart';
 
 @JsonSerializable()
 class SentryWebhookData {
-  const SentryWebhookData({
-    required this.issue,
-  });
+  const SentryWebhookData({required this.issue});
 
   factory SentryWebhookData.fromJson(Map<String, Object?> json) =>
       _$SentryWebhookDataFromJson(json);

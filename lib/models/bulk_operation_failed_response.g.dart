@@ -7,15 +7,12 @@ part of 'bulk_operation_failed_response.dart';
 // **************************************************************************
 
 BulkOperationFailedResponse _$BulkOperationFailedResponseFromJson(
-        Map<String, dynamic> json) =>
-    BulkOperationFailedResponse(
-      id: json['id'] as String,
-      error: json['error'] as String,
-    );
+  Map<String, dynamic> json,
+) => BulkOperationFailedResponse(
+  id: json['id'] as String,
+  error: json['error'] as String,
+);
 
 Map<String, dynamic> _$BulkOperationFailedResponseToJson(
-        BulkOperationFailedResponse instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'error': instance.error,
-    };
+  BulkOperationFailedResponse instance,
+) => <String, dynamic>{'id': instance.id, 'error': instance.error};

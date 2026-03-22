@@ -7,11 +7,7 @@ part of 'legal_hold_request.dart';
 // **************************************************************************
 
 LegalHoldRequest _$LegalHoldRequestFromJson(Map<String, dynamic> json) =>
-    LegalHoldRequest(
-      expiresAt: json['expires_at'] as String?,
-    );
+    LegalHoldRequest(expiresAt: json['expires_at'] as String?);
 
 Map<String, dynamic> _$LegalHoldRequestToJson(LegalHoldRequest instance) =>
-    <String, dynamic>{
-      'expires_at': instance.expiresAt,
-    };
+    <String, dynamic>{'expires_at': instance.expiresAt};

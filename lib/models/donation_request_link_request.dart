@@ -8,9 +8,7 @@ part 'donation_request_link_request.g.dart';
 
 @JsonSerializable()
 class DonationRequestLinkRequest {
-  const DonationRequestLinkRequest({
-    required this.email,
-  });
+  const DonationRequestLinkRequest({required this.email});
 
   factory DonationRequestLinkRequest.fromJson(Map<String, Object?> json) =>
       _$DonationRequestLinkRequestFromJson(json);

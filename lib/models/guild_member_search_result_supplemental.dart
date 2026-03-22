@@ -18,8 +18,7 @@ class GuildMemberSearchResultSupplemental {
 
   factory GuildMemberSearchResultSupplemental.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$GuildMemberSearchResultSupplementalFromJson(json);
+  ) => _$GuildMemberSearchResultSupplementalFromJson(json);
 
   /// How the member joined
   @JsonKey(name: 'join_source_type')

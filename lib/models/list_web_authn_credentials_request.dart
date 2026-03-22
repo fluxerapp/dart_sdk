@@ -10,9 +10,7 @@ part 'list_web_authn_credentials_request.g.dart';
 
 @JsonSerializable()
 class ListWebAuthnCredentialsRequest {
-  const ListWebAuthnCredentialsRequest({
-    required this.userId,
-  });
+  const ListWebAuthnCredentialsRequest({required this.userId});
 
   factory ListWebAuthnCredentialsRequest.fromJson(Map<String, Object?> json) =>
       _$ListWebAuthnCredentialsRequestFromJson(json);

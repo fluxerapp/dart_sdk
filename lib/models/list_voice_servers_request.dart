@@ -8,9 +8,7 @@ part 'list_voice_servers_request.g.dart';
 
 @JsonSerializable()
 class ListVoiceServersRequest {
-  const ListVoiceServersRequest({
-    required this.regionId,
-  });
+  const ListVoiceServersRequest({required this.regionId});
 
   factory ListVoiceServersRequest.fromJson(Map<String, Object?> json) =>
       _$ListVoiceServersRequestFromJson(json);

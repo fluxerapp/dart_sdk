@@ -8,9 +8,7 @@ part 'enabled_toggle_request.g.dart';
 
 @JsonSerializable()
 class EnabledToggleRequest {
-  const EnabledToggleRequest({
-    required this.enabled,
-  });
+  const EnabledToggleRequest({required this.enabled});
 
   factory EnabledToggleRequest.fromJson(Map<String, Object?> json) =>
       _$EnabledToggleRequestFromJson(json);

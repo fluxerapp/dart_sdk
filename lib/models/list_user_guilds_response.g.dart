@@ -7,15 +7,13 @@ part of 'list_user_guilds_response.dart';
 // **************************************************************************
 
 ListUserGuildsResponse _$ListUserGuildsResponseFromJson(
-        Map<String, dynamic> json) =>
-    ListUserGuildsResponse(
-      guilds: (json['guilds'] as List<dynamic>)
-          .map((e) => GuildAdminResponse.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
+  Map<String, dynamic> json,
+) => ListUserGuildsResponse(
+  guilds: (json['guilds'] as List<dynamic>)
+      .map((e) => GuildAdminResponse.fromJson(e as Map<String, dynamic>))
+      .toList(),
+);
 
 Map<String, dynamic> _$ListUserGuildsResponseToJson(
-        ListUserGuildsResponse instance) =>
-    <String, dynamic>{
-      'guilds': instance.guilds,
-    };
+  ListUserGuildsResponse instance,
+) => <String, dynamic>{'guilds': instance.guilds};

@@ -15,10 +15,7 @@ enum ChannelUpdateGroupDmRequestTypeType {
   const ChannelUpdateGroupDmRequestTypeType(this.json);
 
   factory ChannelUpdateGroupDmRequestTypeType.fromJson(int json) =>
-      values.firstWhere(
-        (e) => e.json == json,
-        orElse: () => $unknown,
-      );
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

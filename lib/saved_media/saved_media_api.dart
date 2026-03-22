@@ -80,7 +80,5 @@ abstract class SavedMediaApi {
   ///
   /// [memeId] - The meme id.
   @DELETE('/users/@me/memes/{meme_id}')
-  Future<void> deleteFavoriteMeme({
-    @Path('meme_id') required String memeId,
-  });
+  Future<void> deleteFavoriteMeme({@Path('meme_id') required String memeId});
 }
