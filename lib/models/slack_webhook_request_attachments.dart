@@ -31,51 +31,59 @@ class SlackWebhookRequestAttachments {
       _$SlackWebhookRequestAttachmentsFromJson(json);
 
   /// Fallback text for notifications
+  @JsonKey(includeIfNull: false)
   final String? fallback;
 
   /// Text that appears above the attachment block
+  @JsonKey(includeIfNull: false)
   final String? pretext;
 
   /// Main text content of the attachment
+  @JsonKey(includeIfNull: false)
   final String? text;
 
   /// Colour of the attachment sidebar (hex code or preset)
+  @JsonKey(includeIfNull: false)
   final String? color;
 
   /// Title of the attachment
+  @JsonKey(includeIfNull: false)
   final String? title;
 
   /// URL to link from the title
-  @JsonKey(name: 'title_link')
+  @JsonKey(includeIfNull: false, name: 'title_link')
   final String? titleLink;
 
   /// Array of field objects
+  @JsonKey(includeIfNull: false)
   final List<SlackWebhookRequestAttachmentsFields>? fields;
 
   /// Footer text displayed at the bottom
+  @JsonKey(includeIfNull: false)
   final String? footer;
 
   /// Unix timestamp for the attachment footer
+  @JsonKey(includeIfNull: false)
   final int? ts;
 
   /// Name of the author
-  @JsonKey(name: 'author_name')
+  @JsonKey(includeIfNull: false, name: 'author_name')
   final String? authorName;
 
   /// URL to link from the author name
-  @JsonKey(name: 'author_link')
+  @JsonKey(includeIfNull: false, name: 'author_link')
   final String? authorLink;
 
   /// URL for the author icon image
-  @JsonKey(name: 'author_icon')
+  @JsonKey(includeIfNull: false, name: 'author_icon')
   final String? authorIcon;
 
   /// URL of the main image to display
-  @JsonKey(name: 'image_url')
+  @JsonKey(includeIfNull: false, name: 'image_url')
   final String? imageUrl;
 
   /// URL of a thumbnail image
-  @JsonKey(name: 'thumb_url')
+  @JsonKey(includeIfNull: false, name: 'thumb_url')
   final String? thumbUrl;
 
   Map<String, Object?> toJson() => _$SlackWebhookRequestAttachmentsToJson(this);

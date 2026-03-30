@@ -31,30 +31,35 @@ class EmbedMediaResponse {
   final String url;
 
   /// The proxied URL of the media
-  @JsonKey(name: 'proxy_url')
+  @JsonKey(includeIfNull: false, name: 'proxy_url')
   final String? proxyUrl;
 
   /// The MIME type of the media
-  @JsonKey(name: 'content_type')
+  @JsonKey(includeIfNull: false, name: 'content_type')
   final String? contentType;
 
   /// The hash of the media content
-  @JsonKey(name: 'content_hash')
+  @JsonKey(includeIfNull: false, name: 'content_hash')
   final String? contentHash;
 
   /// The width of the media in pixels
+  @JsonKey(includeIfNull: false)
   final Int32Type? width;
 
   /// The height of the media in pixels
+  @JsonKey(includeIfNull: false)
   final Int32Type? height;
 
   /// The description of the media
+  @JsonKey(includeIfNull: false)
   final String? description;
 
   /// The base64 encoded placeholder image for lazy loading
+  @JsonKey(includeIfNull: false)
   final String? placeholder;
 
   /// The duration of the media in seconds
+  @JsonKey(includeIfNull: false)
   final Int32Type? duration;
   final EmbedMediaFlags flags;
 

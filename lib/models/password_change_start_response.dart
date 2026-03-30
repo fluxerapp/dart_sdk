@@ -25,7 +25,7 @@ class PasswordChangeStartResponse {
   final String codeExpiresAt;
 
   /// ISO8601 timestamp when the code can be resent
-  @JsonKey(name: 'resend_available_at')
+  @JsonKey(includeIfNull: true, name: 'resend_available_at')
   final String? resendAvailableAt;
 
   Map<String, Object?> toJson() => _$PasswordChangeStartResponseToJson(this);

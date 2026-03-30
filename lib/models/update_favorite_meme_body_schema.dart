@@ -14,13 +14,15 @@ class UpdateFavoriteMemeBodySchema {
       _$UpdateFavoriteMemeBodySchemaFromJson(json);
 
   /// Display name for the meme
+  @JsonKey(includeIfNull: false)
   final String? name;
 
   /// Alternative text description for accessibility
-  @JsonKey(name: 'alt_text')
+  @JsonKey(includeIfNull: false, name: 'alt_text')
   final String? altText;
 
   /// New tags for categorizing and searching the meme
+  @JsonKey(includeIfNull: false)
   final List<String>? tags;
 
   Map<String, Object?> toJson() => _$UpdateFavoriteMemeBodySchemaToJson(this);

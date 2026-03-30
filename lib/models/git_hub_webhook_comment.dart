@@ -26,7 +26,7 @@ class GitHubWebhookComment {
   @JsonKey(name: 'html_url')
   final String htmlUrl;
   final GitHubWebhookCommentUser user;
-  @JsonKey(name: 'commit_id')
+  @JsonKey(includeIfNull: false, name: 'commit_id')
   final String? commitId;
   final String body;
 

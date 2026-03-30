@@ -23,18 +23,19 @@ class ListArchivesRequest {
       _$ListArchivesRequestFromJson(json);
 
   /// Type of archives to list
-  @JsonKey(name: 'subject_type')
+  @JsonKey(includeIfNull: false, name: 'subject_type')
   final ListArchivesRequestSubjectTypeSubjectType? subjectType;
-  @JsonKey(name: 'subject_id')
+  @JsonKey(includeIfNull: false, name: 'subject_id')
   final SnowflakeType? subjectId;
-  @JsonKey(name: 'requested_by')
+  @JsonKey(includeIfNull: false, name: 'requested_by')
   final SnowflakeType? requestedBy;
 
   /// Maximum number of archives to return
+  @JsonKey(includeIfNull: false)
   final num? limit;
 
   /// Whether to include expired archives
-  @JsonKey(name: 'include_expired')
+  @JsonKey(includeIfNull: false, name: 'include_expired')
   final bool? includeExpired;
 
   Map<String, Object?> toJson() => _$ListArchivesRequestToJson(this);

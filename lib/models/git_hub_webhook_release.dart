@@ -25,6 +25,7 @@ class GitHubWebhookRelease {
   final String tagName;
   @JsonKey(name: 'html_url')
   final String htmlUrl;
+  @JsonKey(includeIfNull: false)
   final String? body;
 
   Map<String, Object?> toJson() => _$GitHubWebhookReleaseToJson(this);

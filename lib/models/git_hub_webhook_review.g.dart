@@ -20,7 +20,7 @@ Map<String, dynamic> _$GitHubWebhookReviewToJson(
   GitHubWebhookReview instance,
 ) => <String, dynamic>{
   'user': instance.user,
-  'body': instance.body,
+  'body': ?instance.body,
   'html_url': instance.htmlUrl,
   'state': instance.state,
 };

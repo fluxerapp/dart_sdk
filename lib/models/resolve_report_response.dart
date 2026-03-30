@@ -24,9 +24,9 @@ class ResolveReportResponse {
   @JsonKey(name: 'report_id')
   final SnowflakeType reportId;
   final ReportStatus status;
-  @JsonKey(name: 'resolved_at')
+  @JsonKey(includeIfNull: true, name: 'resolved_at')
   final String? resolvedAt;
-  @JsonKey(name: 'public_comment')
+  @JsonKey(includeIfNull: true, name: 'public_comment')
   final String? publicComment;
 
   Map<String, Object?> toJson() => _$ResolveReportResponseToJson(this);

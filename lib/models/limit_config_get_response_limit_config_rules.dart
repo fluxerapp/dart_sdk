@@ -25,10 +25,12 @@ class LimitConfigGetResponseLimitConfigRules {
   final String id;
 
   /// Optional filters that scope the rule
+  @JsonKey(includeIfNull: false)
   final LimitConfigGetResponseLimitConfigRulesFilters? filters;
 
   /// Per-limit key values
   final Map<String, num> limits;
+  @JsonKey(includeIfNull: false)
   final List<String>? modifiedFields;
 
   Map<String, Object?> toJson() =>

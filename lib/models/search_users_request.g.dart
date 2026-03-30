@@ -15,7 +15,7 @@ SearchUsersRequest _$SearchUsersRequestFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$SearchUsersRequestToJson(SearchUsersRequest instance) =>
     <String, dynamic>{
-      'query': instance.query,
-      'limit': instance.limit,
-      'offset': instance.offset,
+      'query': ?instance.query,
+      'limit': ?instance.limit,
+      'offset': ?instance.offset,
     };

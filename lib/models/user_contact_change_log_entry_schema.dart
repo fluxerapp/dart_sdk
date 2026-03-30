@@ -24,12 +24,13 @@ class UserContactChangeLogEntrySchema {
   @JsonKey(name: 'event_id')
   final String eventId;
   final String field;
-  @JsonKey(name: 'old_value')
+  @JsonKey(includeIfNull: true, name: 'old_value')
   final String? oldValue;
-  @JsonKey(name: 'new_value')
+  @JsonKey(includeIfNull: true, name: 'new_value')
   final String? newValue;
+  @JsonKey(includeIfNull: true)
   final String? reason;
-  @JsonKey(name: 'actor_user_id')
+  @JsonKey(includeIfNull: true, name: 'actor_user_id')
   final String? actorUserId;
   @JsonKey(name: 'event_at')
   final String eventAt;

@@ -15,4 +15,4 @@ DeleteAllUserMessagesRequest _$DeleteAllUserMessagesRequestFromJson(
 
 Map<String, dynamic> _$DeleteAllUserMessagesRequestToJson(
   DeleteAllUserMessagesRequest instance,
-) => <String, dynamic>{'user_id': instance.userId, 'dry_run': instance.dryRun};
+) => <String, dynamic>{'user_id': instance.userId, 'dry_run': ?instance.dryRun};

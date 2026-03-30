@@ -32,20 +32,23 @@ class GuildAuditLogEntryResponse {
   final AuditLogActionType actionType;
 
   /// The user ID of the user who performed the action
-  @JsonKey(name: 'user_id')
+  @JsonKey(includeIfNull: false, name: 'user_id')
   final SnowflakeType? userId;
 
   /// The ID of the affected entity (user, channel, role, invite code, etc.)
-  @JsonKey(name: 'target_id')
+  @JsonKey(includeIfNull: false, name: 'target_id')
   final String? targetId;
 
   /// The reason provided for the action
+  @JsonKey(includeIfNull: false)
   final String? reason;
 
   /// Additional options depending on action type
+  @JsonKey(includeIfNull: false)
   final GuildAuditLogEntryResponseOptions? options;
 
   /// Changes made to the target
+  @JsonKey(includeIfNull: false)
   final List<AuditLogChangeSchema>? changes;
 
   Map<String, Object?> toJson() => _$GuildAuditLogEntryResponseToJson(this);

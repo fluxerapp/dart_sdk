@@ -38,6 +38,7 @@ class WebhookResponse {
   final String name;
 
   /// The hash of the webhook avatar image
+  @JsonKey(includeIfNull: false)
   final String? avatar;
 
   /// The secure token used to execute the webhook

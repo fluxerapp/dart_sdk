@@ -17,5 +17,5 @@ Map<String, dynamic> _$TempBanUserRequestToJson(TempBanUserRequest instance) =>
     <String, dynamic>{
       'user_id': instance.userId,
       'duration_hours': instance.durationHours,
-      'reason': instance.reason,
+      'reason': ?instance.reason,
     };

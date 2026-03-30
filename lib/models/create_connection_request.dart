@@ -25,7 +25,7 @@ class CreateConnectionRequest {
 
   /// The connection identifier (handle or domain)
   final String identifier;
-  @JsonKey(name: 'visibility_flags')
+  @JsonKey(includeIfNull: false, name: 'visibility_flags')
   final Int32Type? visibilityFlags;
 
   Map<String, Object?> toJson() => _$CreateConnectionRequestToJson(this);

@@ -12,4 +12,4 @@ GetProcessMemoryStatsRequest _$GetProcessMemoryStatsRequestFromJson(
 
 Map<String, dynamic> _$GetProcessMemoryStatsRequestToJson(
   GetProcessMemoryStatsRequest instance,
-) => <String, dynamic>{'limit': instance.limit};
+) => <String, dynamic>{'limit': ?instance.limit};

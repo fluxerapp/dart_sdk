@@ -24,6 +24,7 @@ class LimitConfigUpdateRequestLimitConfigRules {
   final String id;
 
   /// Optional filters that scope the rule
+  @JsonKey(includeIfNull: false)
   final LimitConfigUpdateRequestLimitConfigRulesFilters? filters;
 
   /// Per-limit key values

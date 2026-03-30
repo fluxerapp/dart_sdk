@@ -30,7 +30,7 @@ class MessageReferenceResponse {
   final String messageId;
 
   /// The ID of the guild containing the referenced message
-  @JsonKey(name: 'guild_id')
+  @JsonKey(includeIfNull: false, name: 'guild_id')
   final SnowflakeType? guildId;
   final MessageReferenceType type;
 

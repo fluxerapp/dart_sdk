@@ -15,4 +15,4 @@ WebhookCreateRequest _$WebhookCreateRequestFromJson(
 
 Map<String, dynamic> _$WebhookCreateRequestToJson(
   WebhookCreateRequest instance,
-) => <String, dynamic>{'name': instance.name, 'avatar': instance.avatar};
+) => <String, dynamic>{'name': instance.name, 'avatar': ?instance.avatar};

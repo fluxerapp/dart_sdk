@@ -25,22 +25,23 @@ class DisableTotpRequest {
 
   /// The TOTP code to verify
   final String code;
+  @JsonKey(includeIfNull: false)
   final PasswordType? password;
 
   /// MFA method to use for verification
-  @JsonKey(name: 'mfa_method')
+  @JsonKey(includeIfNull: false, name: 'mfa_method')
   final DisableTotpRequestMfaMethodMfaMethod? mfaMethod;
 
   /// MFA verification code from authenticator app or SMS
-  @JsonKey(name: 'mfa_code')
+  @JsonKey(includeIfNull: false, name: 'mfa_code')
   final String? mfaCode;
 
   /// WebAuthn authentication response
-  @JsonKey(name: 'webauthn_response')
+  @JsonKey(includeIfNull: false, name: 'webauthn_response')
   final dynamic webauthnResponse;
 
   /// WebAuthn challenge string
-  @JsonKey(name: 'webauthn_challenge')
+  @JsonKey(includeIfNull: false, name: 'webauthn_challenge')
   final String? webauthnChallenge;
 
   Map<String, Object?> toJson() => _$DisableTotpRequestToJson(this);

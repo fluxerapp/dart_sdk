@@ -22,9 +22,9 @@ ListArchivesRequest _$ListArchivesRequestFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$ListArchivesRequestToJson(
   ListArchivesRequest instance,
 ) => <String, dynamic>{
-  'subject_type': instance.subjectType,
-  'subject_id': instance.subjectId,
-  'requested_by': instance.requestedBy,
-  'limit': instance.limit,
-  'include_expired': instance.includeExpired,
+  'subject_type': ?instance.subjectType,
+  'subject_id': ?instance.subjectId,
+  'requested_by': ?instance.requestedBy,
+  'limit': ?instance.limit,
+  'include_expired': ?instance.includeExpired,
 };

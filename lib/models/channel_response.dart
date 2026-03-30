@@ -41,65 +41,74 @@ class ChannelResponse {
 
   /// The unique identifier (snowflake) for this channel
   final String id;
-  @JsonKey(name: 'guild_id')
+  @JsonKey(includeIfNull: false, name: 'guild_id')
   final SnowflakeType? guildId;
 
   /// The name of the channel
+  @JsonKey(includeIfNull: false)
   final String? name;
 
   /// The topic of the channel
+  @JsonKey(includeIfNull: false)
   final String? topic;
 
   /// The URL associated with the channel
+  @JsonKey(includeIfNull: false)
   final String? url;
 
   /// The icon hash of the channel (for group DMs)
+  @JsonKey(includeIfNull: false)
   final String? icon;
 
   /// The ID of the owner of the channel (for group DMs)
-  @JsonKey(name: 'owner_id')
+  @JsonKey(includeIfNull: false, name: 'owner_id')
   final SnowflakeType? ownerId;
 
   /// The type of the channel
   final int type;
+  @JsonKey(includeIfNull: false)
   final Int32Type? position;
 
   /// The ID of the parent category for this channel
-  @JsonKey(name: 'parent_id')
+  @JsonKey(includeIfNull: false, name: 'parent_id')
   final SnowflakeType? parentId;
 
   /// The bitrate of the voice channel in bits per second
+  @JsonKey(includeIfNull: false)
   final Int32Type? bitrate;
 
   /// The maximum number of users allowed in the voice channel
-  @JsonKey(name: 'user_limit')
+  @JsonKey(includeIfNull: false, name: 'user_limit')
   final Int32Type? userLimit;
 
   /// The voice region ID for the voice channel
-  @JsonKey(name: 'rtc_region')
+  @JsonKey(includeIfNull: false, name: 'rtc_region')
   final String? rtcRegion;
 
   /// The ID of the last message sent in this channel
-  @JsonKey(name: 'last_message_id')
+  @JsonKey(includeIfNull: false, name: 'last_message_id')
   final SnowflakeType? lastMessageId;
 
   /// The ISO 8601 timestamp of when the last pinned message was pinned
-  @JsonKey(name: 'last_pin_timestamp')
+  @JsonKey(includeIfNull: false, name: 'last_pin_timestamp')
   final DateTime? lastPinTimestamp;
 
   /// The permission overwrites for this channel
-  @JsonKey(name: 'permission_overwrites')
+  @JsonKey(includeIfNull: false, name: 'permission_overwrites')
   final List<ChannelOverwriteResponse>? permissionOverwrites;
 
   /// The recipients of the DM channel
+  @JsonKey(includeIfNull: false)
   final List<UserPartialResponse>? recipients;
 
   /// Whether the channel is marked as NSFW
+  @JsonKey(includeIfNull: false)
   final bool? nsfw;
-  @JsonKey(name: 'rate_limit_per_user')
+  @JsonKey(includeIfNull: false, name: 'rate_limit_per_user')
   final Int32Type? rateLimitPerUser;
 
   /// Custom nicknames for users in this channel (for group DMs)
+  @JsonKey(includeIfNull: false)
   final Map<String, String>? nicks;
 
   Map<String, Object?> toJson() => _$ChannelResponseToJson(this);

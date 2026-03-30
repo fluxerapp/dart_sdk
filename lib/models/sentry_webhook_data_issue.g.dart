@@ -36,7 +36,7 @@ Map<String, dynamic> _$SentryWebhookDataIssueToJson(
   'id': instance.id,
   'shortId': instance.shortId,
   'title': instance.title,
-  'culprit': instance.culprit,
+  'culprit': ?instance.culprit,
   'permalink': instance.permalink,
   'level': instance.level,
   'status': instance.status,

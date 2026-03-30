@@ -14,6 +14,7 @@ class GuildVanityUrlResponse {
       _$GuildVanityUrlResponseFromJson(json);
 
   /// The vanity URL code for the guild
+  @JsonKey(includeIfNull: false)
   final String? code;
 
   /// The number of times this vanity URL has been used

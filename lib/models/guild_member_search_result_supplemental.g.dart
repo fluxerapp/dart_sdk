@@ -19,7 +19,7 @@ _$GuildMemberSearchResultSupplementalFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$GuildMemberSearchResultSupplementalToJson(
   GuildMemberSearchResultSupplemental instance,
 ) => <String, dynamic>{
-  'join_source_type': instance.joinSourceType,
+  'join_source_type': ?instance.joinSourceType,
   'source_invite_code': instance.sourceInviteCode,
   'inviter_id': instance.inviterId,
 };

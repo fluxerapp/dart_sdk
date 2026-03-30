@@ -24,18 +24,19 @@ class ChannelPositionUpdateRequest {
   final SnowflakeType id;
 
   /// New position for the channel
+  @JsonKey(includeIfNull: false)
   final int? position;
 
   /// New parent category ID
-  @JsonKey(name: 'parent_id')
+  @JsonKey(includeIfNull: false, name: 'parent_id')
   final SnowflakeType? parentId;
 
   /// ID of the sibling channel that should directly precede this channel after reordering
-  @JsonKey(name: 'preceding_sibling_id')
+  @JsonKey(includeIfNull: false, name: 'preceding_sibling_id')
   final SnowflakeType? precedingSiblingId;
 
   /// Whether to sync permissions with the new parent
-  @JsonKey(name: 'lock_permissions')
+  @JsonKey(includeIfNull: false, name: 'lock_permissions')
   final bool? lockPermissions;
 
   Map<String, Object?> toJson() => _$ChannelPositionUpdateRequestToJson(this);

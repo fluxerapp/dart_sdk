@@ -78,20 +78,23 @@ class UserPrivateResponse {
   final String discriminator;
 
   /// The display name of the user, if set
-  @JsonKey(name: 'global_name')
+  @JsonKey(includeIfNull: true, name: 'global_name')
   final String? globalName;
 
   /// The hash of the user avatar image
+  @JsonKey(includeIfNull: true)
   final String? avatar;
 
   /// The dominant avatar color of the user as an integer
-  @JsonKey(name: 'avatar_color')
+  @JsonKey(includeIfNull: true, name: 'avatar_color')
   final Int32Type? avatarColor;
 
   /// Whether the user is a bot account
+  @JsonKey(includeIfNull: false)
   final bool? bot;
 
   /// Whether the user is an official system user
+  @JsonKey(includeIfNull: false)
   final bool? system;
   final PublicUserFlags flags;
 
@@ -106,30 +109,35 @@ class UserPrivateResponse {
   final List<String> traits;
 
   /// The email address associated with the account
+  @JsonKey(includeIfNull: true)
   final String? email;
 
   /// Whether the current email address is marked as bounced by the mail provider
-  @JsonKey(name: 'email_bounced')
+  @JsonKey(includeIfNull: false, name: 'email_bounced')
   final bool? emailBounced;
 
   /// The phone number associated with the account
+  @JsonKey(includeIfNull: true)
   final String? phone;
 
   /// The user biography text
+  @JsonKey(includeIfNull: true)
   final String? bio;
 
   /// The preferred pronouns of the user
+  @JsonKey(includeIfNull: true)
   final String? pronouns;
 
   /// The user-selected accent color as an integer
-  @JsonKey(name: 'accent_color')
+  @JsonKey(includeIfNull: true, name: 'accent_color')
   final Int32Type? accentColor;
 
   /// The hash of the user profile banner image
+  @JsonKey(includeIfNull: true)
   final String? banner;
 
   /// The default banner color if no custom banner is set
-  @JsonKey(name: 'banner_color')
+  @JsonKey(includeIfNull: true, name: 'banner_color')
   final Int32Type? bannerColor;
 
   /// Whether multi-factor authentication is enabled
@@ -137,22 +145,22 @@ class UserPrivateResponse {
   final bool mfaEnabled;
 
   /// The types of authenticators configured for MFA
-  @JsonKey(name: 'authenticator_types')
+  @JsonKey(includeIfNull: false, name: 'authenticator_types')
   final List<UserAuthenticatorTypes>? authenticatorTypes;
 
   /// Whether the email address has been verified
   final bool verified;
 
   /// The type of premium subscription
-  @JsonKey(name: 'premium_type')
+  @JsonKey(includeIfNull: true, name: 'premium_type')
   final UserPremiumTypes? premiumType;
 
   /// ISO8601 timestamp of when premium was first activated
-  @JsonKey(name: 'premium_since')
+  @JsonKey(includeIfNull: true, name: 'premium_since')
   final String? premiumSince;
 
   /// ISO8601 timestamp of when the current premium period ends
-  @JsonKey(name: 'premium_until')
+  @JsonKey(includeIfNull: true, name: 'premium_until')
   final String? premiumUntil;
 
   /// Whether premium is set to cancel at the end of the billing period
@@ -160,11 +168,11 @@ class UserPrivateResponse {
   final bool premiumWillCancel;
 
   /// The billing cycle for the premium subscription
-  @JsonKey(name: 'premium_billing_cycle')
+  @JsonKey(includeIfNull: true, name: 'premium_billing_cycle')
   final String? premiumBillingCycle;
 
   /// The sequence number for lifetime premium subscribers
-  @JsonKey(name: 'premium_lifetime_sequence')
+  @JsonKey(includeIfNull: true, name: 'premium_lifetime_sequence')
   final Int32Type? premiumLifetimeSequence;
 
   /// Whether the premium badge is hidden on the profile
@@ -192,11 +200,11 @@ class UserPrivateResponse {
   final bool premiumEnabledOverride;
 
   /// ISO8601 timestamp of the last password change
-  @JsonKey(name: 'password_last_changed_at')
+  @JsonKey(includeIfNull: true, name: 'password_last_changed_at')
   final String? passwordLastChangedAt;
 
   /// Actions the user must complete before full access
-  @JsonKey(name: 'required_actions')
+  @JsonKey(includeIfNull: true, name: 'required_actions')
   final List<String>? requiredActions;
 
   /// Whether the user is allowed to view NSFW content
@@ -224,24 +232,24 @@ class UserPrivateResponse {
   final bool usedMobileClient;
 
   /// Information about a pending bulk message deletion request
-  @JsonKey(name: 'pending_bulk_message_deletion')
+  @JsonKey(includeIfNull: true, name: 'pending_bulk_message_deletion')
   final UserPrivateResponsePendingBulkMessageDeletion?
   pendingBulkMessageDeletion;
 
   /// When the out-of-band premium trial ends
-  @JsonKey(name: 'premium_out_of_band_trial_ends_at')
+  @JsonKey(includeIfNull: false, name: 'premium_out_of_band_trial_ends_at')
   final DateTime? premiumOutOfBandTrialEndsAt;
 
   /// Whether the user has a premium discriminator
-  @JsonKey(name: 'premium_discriminator')
+  @JsonKey(includeIfNull: false, name: 'premium_discriminator')
   final bool? premiumDiscriminator;
 
   /// When the user agreed to terms of service
-  @JsonKey(name: 'terms_agreed_at')
+  @JsonKey(includeIfNull: false, name: 'terms_agreed_at')
   final DateTime? termsAgreedAt;
 
   /// When the user agreed to the privacy policy
-  @JsonKey(name: 'privacy_agreed_at')
+  @JsonKey(includeIfNull: false, name: 'privacy_agreed_at')
   final DateTime? privacyAgreedAt;
 
   Map<String, Object?> toJson() => _$UserPrivateResponseToJson(this);

@@ -19,5 +19,5 @@ Map<String, dynamic> _$MessageShredResponseToJson(
 ) => <String, dynamic>{
   'success': instance.success,
   'job_id': instance.jobId,
-  'requested': instance.requested,
+  'requested': ?instance.requested,
 };

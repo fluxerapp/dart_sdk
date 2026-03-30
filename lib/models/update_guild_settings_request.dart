@@ -33,25 +33,25 @@ class UpdateGuildSettingsRequest {
   final SnowflakeType guildId;
 
   /// Required verification level for guild members
-  @JsonKey(name: 'verification_level')
+  @JsonKey(includeIfNull: false, name: 'verification_level')
   final GuildVerificationLevel? verificationLevel;
 
   /// Required MFA level for moderators
-  @JsonKey(name: 'mfa_level')
+  @JsonKey(includeIfNull: false, name: 'mfa_level')
   final GuildMfaLevel? mfaLevel;
 
   /// NSFW content level for the guild
-  @JsonKey(name: 'nsfw_level')
+  @JsonKey(includeIfNull: false, name: 'nsfw_level')
   final NsfwLevel? nsfwLevel;
 
   /// Explicit content filter level
-  @JsonKey(name: 'explicit_content_filter')
+  @JsonKey(includeIfNull: false, name: 'explicit_content_filter')
   final GuildExplicitContentFilter? explicitContentFilter;
 
   /// Default notification setting for new members
-  @JsonKey(name: 'default_message_notifications')
+  @JsonKey(includeIfNull: false, name: 'default_message_notifications')
   final DefaultMessageNotifications? defaultMessageNotifications;
-  @JsonKey(name: 'disabled_operations')
+  @JsonKey(includeIfNull: false, name: 'disabled_operations')
   final GuildOperations? disabledOperations;
 
   Map<String, Object?> toJson() => _$UpdateGuildSettingsRequestToJson(this);

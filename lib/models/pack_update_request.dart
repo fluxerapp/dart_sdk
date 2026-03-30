@@ -14,9 +14,11 @@ class PackUpdateRequest {
       _$PackUpdateRequestFromJson(json);
 
   /// The new name of the pack
+  @JsonKey(includeIfNull: false)
   final String? name;
 
   /// The new description of the pack
+  @JsonKey(includeIfNull: false)
   final String? description;
 
   Map<String, Object?> toJson() => _$PackUpdateRequestToJson(this);

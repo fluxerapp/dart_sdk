@@ -14,12 +14,15 @@ class AuthSessionLocation {
       _$AuthSessionLocationFromJson(json);
 
   /// The city name reported by the client
+  @JsonKey(includeIfNull: false)
   final String? city;
 
   /// The region reported by the client
+  @JsonKey(includeIfNull: false)
   final String? region;
 
   /// The country reported by the client
+  @JsonKey(includeIfNull: false)
   final String? country;
 
   Map<String, Object?> toJson() => _$AuthSessionLocationToJson(this);

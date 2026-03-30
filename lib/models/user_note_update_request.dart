@@ -14,6 +14,7 @@ class UserNoteUpdateRequest {
       _$UserNoteUpdateRequestFromJson(json);
 
   /// The note text (max 256 characters)
+  @JsonKey(includeIfNull: false)
   final String? note;
 
   Map<String, Object?> toJson() => _$UserNoteUpdateRequestToJson(this);

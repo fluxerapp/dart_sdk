@@ -42,53 +42,63 @@ class MessageAttachmentResponse {
   final String filename;
 
   /// The title of the attachment
+  @JsonKey(includeIfNull: false)
   final String? title;
 
   /// The description of the attachment
+  @JsonKey(includeIfNull: false)
   final String? description;
 
   /// The MIME type of the attachment
-  @JsonKey(name: 'content_type')
+  @JsonKey(includeIfNull: false, name: 'content_type')
   final String? contentType;
 
   /// The hash of the attachment content
-  @JsonKey(name: 'content_hash')
+  @JsonKey(includeIfNull: false, name: 'content_hash')
   final String? contentHash;
 
   /// The size of the attachment in bytes
   final int size;
 
   /// The URL of the attachment
+  @JsonKey(includeIfNull: false)
   final String? url;
 
   /// The proxied URL of the attachment
-  @JsonKey(name: 'proxy_url')
+  @JsonKey(includeIfNull: false, name: 'proxy_url')
   final String? proxyUrl;
 
   /// The width of the attachment in pixels (for images/videos)
+  @JsonKey(includeIfNull: false)
   final Int32Type? width;
 
   /// The height of the attachment in pixels (for images/videos)
+  @JsonKey(includeIfNull: false)
   final Int32Type? height;
 
   /// The base64 encoded placeholder image for lazy loading
+  @JsonKey(includeIfNull: false)
   final String? placeholder;
   final MessageAttachmentFlags flags;
 
   /// Whether the attachment is flagged as NSFW
+  @JsonKey(includeIfNull: false)
   final bool? nsfw;
 
   /// The duration of the media in seconds
+  @JsonKey(includeIfNull: false)
   final Int32Type? duration;
 
   /// The base64 encoded audio waveform data
+  @JsonKey(includeIfNull: false)
   final String? waveform;
 
   /// The ISO 8601 timestamp when the attachment URL expires
-  @JsonKey(name: 'expires_at')
+  @JsonKey(includeIfNull: false, name: 'expires_at')
   final String? expiresAt;
 
   /// Whether the attachment URL has expired
+  @JsonKey(includeIfNull: false)
   final bool? expired;
 
   Map<String, Object?> toJson() => _$MessageAttachmentResponseToJson(this);

@@ -70,16 +70,19 @@ class WellKnownFluxerResponse {
   final WellKnownFluxerResponseAppPublic appPublic;
 
   /// Federation configuration
+  @JsonKey(includeIfNull: false)
   final WellKnownFluxerResponseFederation? federation;
 
   /// Public key for E2E encryption
-  @JsonKey(name: 'public_key')
+  @JsonKey(includeIfNull: false, name: 'public_key')
   final WellKnownFluxerResponsePublicKey? publicKey;
 
   /// OAuth2 endpoints for federation
+  @JsonKey(includeIfNull: false)
   final WellKnownFluxerResponseOauth2? oauth2;
 
   /// Gateway session retry configuration
+  @JsonKey(includeIfNull: false)
   final WellKnownFluxerResponseGateway? gateway;
 
   Map<String, Object?> toJson() => _$WellKnownFluxerResponseToJson(this);

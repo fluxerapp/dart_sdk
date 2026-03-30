@@ -20,10 +20,10 @@ BotProfileUpdateRequest _$BotProfileUpdateRequestFromJson(
 Map<String, dynamic> _$BotProfileUpdateRequestToJson(
   BotProfileUpdateRequest instance,
 ) => <String, dynamic>{
-  'username': instance.username,
-  'discriminator': instance.discriminator,
-  'avatar': instance.avatar,
-  'banner': instance.banner,
-  'bio': instance.bio,
-  'bot_flags': instance.botFlags,
+  'username': ?instance.username,
+  'discriminator': ?instance.discriminator,
+  'avatar': ?instance.avatar,
+  'banner': ?instance.banner,
+  'bio': ?instance.bio,
+  'bot_flags': ?instance.botFlags,
 };

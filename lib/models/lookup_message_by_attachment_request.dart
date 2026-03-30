@@ -26,7 +26,7 @@ class LookupMessageByAttachmentRequest {
   @JsonKey(name: 'attachment_id')
   final SnowflakeType attachmentId;
   final String filename;
-  @JsonKey(name: 'context_limit')
+  @JsonKey(includeIfNull: false, name: 'context_limit')
   final int? contextLimit;
 
   Map<String, Object?> toJson() =>

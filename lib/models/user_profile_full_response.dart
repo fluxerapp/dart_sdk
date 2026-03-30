@@ -40,33 +40,33 @@ class UserProfileFullResponse {
   /// The user profile data
   @JsonKey(name: 'user_profile')
   final UserProfileFullResponseUserProfile userProfile;
-  @JsonKey(name: 'guild_member')
+  @JsonKey(includeIfNull: false, name: 'guild_member')
   final GuildMemberResponse? guildMember;
 
   /// Guild-specific profile data
-  @JsonKey(name: 'guild_member_profile')
+  @JsonKey(includeIfNull: false, name: 'guild_member_profile')
   final UserProfileFullResponseGuildMemberProfile? guildMemberProfile;
 
   /// The type of premium subscription
-  @JsonKey(name: 'premium_type')
+  @JsonKey(includeIfNull: false, name: 'premium_type')
   final UserPremiumTypes? premiumType;
 
   /// ISO8601 timestamp of when premium was activated
-  @JsonKey(name: 'premium_since')
+  @JsonKey(includeIfNull: false, name: 'premium_since')
   final String? premiumSince;
-  @JsonKey(name: 'premium_lifetime_sequence')
+  @JsonKey(includeIfNull: false, name: 'premium_lifetime_sequence')
   final Int32Type? premiumLifetimeSequence;
 
   /// Array of mutual friends
-  @JsonKey(name: 'mutual_friends')
+  @JsonKey(includeIfNull: false, name: 'mutual_friends')
   final List<UserPartialResponse>? mutualFriends;
 
   /// Array of mutual guilds
-  @JsonKey(name: 'mutual_guilds')
+  @JsonKey(includeIfNull: false, name: 'mutual_guilds')
   final List<MutualGuildResponse>? mutualGuilds;
 
   /// Array of verified external connections
-  @JsonKey(name: 'connected_accounts')
+  @JsonKey(includeIfNull: false, name: 'connected_accounts')
   final List<ConnectionResponse>? connectedAccounts;
 
   Map<String, Object?> toJson() => _$UserProfileFullResponseToJson(this);

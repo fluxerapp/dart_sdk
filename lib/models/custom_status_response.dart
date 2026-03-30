@@ -22,18 +22,19 @@ class CustomStatusResponse {
       _$CustomStatusResponseFromJson(json);
 
   /// The custom status message text
+  @JsonKey(includeIfNull: false)
   final String? text;
 
   /// ISO8601 timestamp of when the custom status expires
-  @JsonKey(name: 'expires_at')
+  @JsonKey(includeIfNull: false, name: 'expires_at')
   final DateTime? expiresAt;
 
   /// The ID of the custom emoji used in the status
-  @JsonKey(name: 'emoji_id')
+  @JsonKey(includeIfNull: false, name: 'emoji_id')
   final SnowflakeType? emojiId;
 
   /// The name of the emoji used in the status
-  @JsonKey(name: 'emoji_name')
+  @JsonKey(includeIfNull: false, name: 'emoji_name')
   final String? emojiName;
 
   /// Whether the status emoji is animated

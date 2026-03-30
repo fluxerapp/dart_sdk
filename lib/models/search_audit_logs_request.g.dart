@@ -27,11 +27,11 @@ SearchAuditLogsRequest _$SearchAuditLogsRequestFromJson(
 Map<String, dynamic> _$SearchAuditLogsRequestToJson(
   SearchAuditLogsRequest instance,
 ) => <String, dynamic>{
-  'query': instance.query,
-  'admin_user_id': instance.adminUserId,
-  'target_id': instance.targetId,
-  'sort_by': instance.sortBy,
-  'sort_order': instance.sortOrder,
-  'limit': instance.limit,
-  'offset': instance.offset,
+  'query': ?instance.query,
+  'admin_user_id': ?instance.adminUserId,
+  'target_id': ?instance.targetId,
+  'sort_by': ?instance.sortBy,
+  'sort_order': ?instance.sortOrder,
+  'limit': ?instance.limit,
+  'offset': ?instance.offset,
 };

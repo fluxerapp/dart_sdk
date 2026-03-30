@@ -20,10 +20,10 @@ GuildRoleUpdateRequest _$GuildRoleUpdateRequestFromJson(
 Map<String, dynamic> _$GuildRoleUpdateRequestToJson(
   GuildRoleUpdateRequest instance,
 ) => <String, dynamic>{
-  'name': instance.name,
-  'color': instance.color,
-  'permissions': instance.permissions,
-  'hoist': instance.hoist,
-  'hoist_position': instance.hoistPosition,
-  'mentionable': instance.mentionable,
+  'name': ?instance.name,
+  'color': ?instance.color,
+  'permissions': ?instance.permissions,
+  'hoist': ?instance.hoist,
+  'hoist_position': ?instance.hoistPosition,
+  'mentionable': ?instance.mentionable,
 };

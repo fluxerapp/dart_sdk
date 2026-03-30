@@ -25,7 +25,7 @@ class WellKnownFluxerResponseSso {
   final bool enforced;
 
   /// Display name of the SSO provider
-  @JsonKey(name: 'display_name')
+  @JsonKey(includeIfNull: true, name: 'display_name')
   final String? displayName;
 
   /// OAuth redirect URI for SSO

@@ -20,6 +20,6 @@ LimitRuleResponse _$LimitRuleResponseFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$LimitRuleResponseToJson(LimitRuleResponse instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'filters': instance.filters,
+      'filters': ?instance.filters,
       'overrides': instance.overrides,
     };

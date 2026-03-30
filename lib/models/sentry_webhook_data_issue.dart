@@ -35,6 +35,7 @@ class SentryWebhookDataIssue {
   final String id;
   final String shortId;
   final String title;
+  @JsonKey(includeIfNull: false)
   final String? culprit;
   final String permalink;
   final String level;

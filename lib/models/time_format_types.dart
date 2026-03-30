@@ -15,12 +15,15 @@ enum TimeFormatTypes {
   twentyFourHour(2),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
-  $unknown(null);
+  $unknown(null)
+  ;
 
   const TimeFormatTypes(this.json);
 
-  factory TimeFormatTypes.fromJson(int json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory TimeFormatTypes.fromJson(int json) => values.firstWhere(
+    (e) => e.json == json,
+    orElse: () => $unknown,
+  );
 
   final int? json;
 

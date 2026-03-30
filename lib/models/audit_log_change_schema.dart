@@ -17,11 +17,11 @@ class AuditLogChangeSchema {
   final String key;
 
   /// Value before the change
-  @JsonKey(name: 'old_value')
+  @JsonKey(includeIfNull: false, name: 'old_value')
   final dynamic oldValue;
 
   /// Value after the change
-  @JsonKey(name: 'new_value')
+  @JsonKey(includeIfNull: false, name: 'new_value')
   final dynamic newValue;
 
   Map<String, Object?> toJson() => _$AuditLogChangeSchemaToJson(this);

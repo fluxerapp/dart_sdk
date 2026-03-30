@@ -23,16 +23,19 @@ class ScheduledMessageAllowedMentionsSchema {
   ) => _$ScheduledMessageAllowedMentionsSchemaFromJson(json);
 
   /// Types of mentions to parse from content
+  @JsonKey(includeIfNull: false)
   final List<ScheduledMessageAllowedMentionsSchemaParseParse>? parse;
 
   /// Array of user IDs to mention
+  @JsonKey(includeIfNull: false)
   final List<SnowflakeType>? users;
 
   /// Array of role IDs to mention
+  @JsonKey(includeIfNull: false)
   final List<SnowflakeType>? roles;
 
   /// Whether to mention the author of the replied message
-  @JsonKey(name: 'replied_user')
+  @JsonKey(includeIfNull: false, name: 'replied_user')
   final bool? repliedUser;
 
   Map<String, Object?> toJson() =>

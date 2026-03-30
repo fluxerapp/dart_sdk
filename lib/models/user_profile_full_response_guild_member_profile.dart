@@ -22,16 +22,19 @@ class UserProfileFullResponseGuildMemberProfile {
   ) => _$UserProfileFullResponseGuildMemberProfileFromJson(json);
 
   /// Guild-specific biography text
+  @JsonKey(includeIfNull: true)
   final String? bio;
 
   /// Guild-specific pronouns
+  @JsonKey(includeIfNull: true)
   final String? pronouns;
 
   /// Hash of the guild-specific banner image
+  @JsonKey(includeIfNull: true)
   final String? banner;
 
   /// Guild-specific accent color
-  @JsonKey(name: 'accent_color')
+  @JsonKey(includeIfNull: true, name: 'accent_color')
   final Int32Type? accentColor;
 
   Map<String, Object?> toJson() =>

@@ -18,7 +18,7 @@ Map<String, dynamic> _$EmbedAuthorResponseToJson(
   EmbedAuthorResponse instance,
 ) => <String, dynamic>{
   'name': instance.name,
-  'url': instance.url,
-  'icon_url': instance.iconUrl,
-  'proxy_icon_url': instance.proxyIconUrl,
+  'url': ?instance.url,
+  'icon_url': ?instance.iconUrl,
+  'proxy_icon_url': ?instance.proxyIconUrl,
 };

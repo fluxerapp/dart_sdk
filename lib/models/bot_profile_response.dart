@@ -30,12 +30,15 @@ class BotProfileResponse {
   final String discriminator;
 
   /// The avatar hash of the bot
+  @JsonKey(includeIfNull: true)
   final String? avatar;
 
   /// The banner hash of the bot
+  @JsonKey(includeIfNull: true)
   final String? banner;
 
   /// The bio or description of the bot
+  @JsonKey(includeIfNull: true)
   final String? bio;
 
   Map<String, Object?> toJson() => _$BotProfileResponseToJson(this);

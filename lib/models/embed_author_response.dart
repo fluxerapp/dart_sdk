@@ -22,14 +22,15 @@ class EmbedAuthorResponse {
   final String name;
 
   /// The URL of the author
+  @JsonKey(includeIfNull: false)
   final String? url;
 
   /// The URL of the author icon
-  @JsonKey(name: 'icon_url')
+  @JsonKey(includeIfNull: false, name: 'icon_url')
   final String? iconUrl;
 
   /// The proxied URL of the author icon
-  @JsonKey(name: 'proxy_icon_url')
+  @JsonKey(includeIfNull: false, name: 'proxy_icon_url')
   final String? proxyIconUrl;
 
   Map<String, Object?> toJson() => _$EmbedAuthorResponseToJson(this);

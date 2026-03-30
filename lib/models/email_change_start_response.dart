@@ -28,19 +28,19 @@ class EmailChangeStartResponse {
   final bool requireOriginal;
 
   /// The original email address on record
-  @JsonKey(name: 'original_email')
+  @JsonKey(includeIfNull: true, name: 'original_email')
   final String? originalEmail;
 
   /// Proof token generated when original email verification is not required
-  @JsonKey(name: 'original_proof')
+  @JsonKey(includeIfNull: true, name: 'original_proof')
   final String? originalProof;
 
   /// ISO8601 timestamp when the original verification code expires
-  @JsonKey(name: 'original_code_expires_at')
+  @JsonKey(includeIfNull: true, name: 'original_code_expires_at')
   final String? originalCodeExpiresAt;
 
   /// ISO8601 timestamp when the original verification code can be resent
-  @JsonKey(name: 'resend_available_at')
+  @JsonKey(includeIfNull: true, name: 'resend_available_at')
   final String? resendAvailableAt;
 
   Map<String, Object?> toJson() => _$EmailChangeStartResponseToJson(this);

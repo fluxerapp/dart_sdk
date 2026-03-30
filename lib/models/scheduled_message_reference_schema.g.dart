@@ -21,7 +21,7 @@ Map<String, dynamic> _$ScheduledMessageReferenceSchemaToJson(
   ScheduledMessageReferenceSchema instance,
 ) => <String, dynamic>{
   'message_id': instance.messageId,
-  'channel_id': instance.channelId,
-  'guild_id': instance.guildId,
-  'type': instance.type,
+  'channel_id': ?instance.channelId,
+  'guild_id': ?instance.guildId,
+  'type': ?instance.type,
 };

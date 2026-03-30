@@ -50,59 +50,60 @@ class ReportAdminResponseSchema {
 
   @JsonKey(name: 'report_id')
   final SnowflakeType reportId;
-  @JsonKey(name: 'reporter_id')
+  @JsonKey(includeIfNull: true, name: 'reporter_id')
   final SnowflakeType? reporterId;
-  @JsonKey(name: 'reporter_tag')
+  @JsonKey(includeIfNull: true, name: 'reporter_tag')
   final String? reporterTag;
-  @JsonKey(name: 'reporter_username')
+  @JsonKey(includeIfNull: true, name: 'reporter_username')
   final String? reporterUsername;
-  @JsonKey(name: 'reporter_discriminator')
+  @JsonKey(includeIfNull: true, name: 'reporter_discriminator')
   final String? reporterDiscriminator;
-  @JsonKey(name: 'reporter_email')
+  @JsonKey(includeIfNull: true, name: 'reporter_email')
   final String? reporterEmail;
-  @JsonKey(name: 'reporter_full_legal_name')
+  @JsonKey(includeIfNull: true, name: 'reporter_full_legal_name')
   final String? reporterFullLegalName;
-  @JsonKey(name: 'reporter_country_of_residence')
+  @JsonKey(includeIfNull: true, name: 'reporter_country_of_residence')
   final String? reporterCountryOfResidence;
   @JsonKey(name: 'reported_at')
   final String reportedAt;
   final ReportStatus status;
   @JsonKey(name: 'report_type')
   final ReportType reportType;
+  @JsonKey(includeIfNull: true)
   final String? category;
-  @JsonKey(name: 'additional_info')
+  @JsonKey(includeIfNull: true, name: 'additional_info')
   final String? additionalInfo;
-  @JsonKey(name: 'reported_user_id')
+  @JsonKey(includeIfNull: true, name: 'reported_user_id')
   final SnowflakeType? reportedUserId;
-  @JsonKey(name: 'reported_user_tag')
+  @JsonKey(includeIfNull: true, name: 'reported_user_tag')
   final String? reportedUserTag;
-  @JsonKey(name: 'reported_user_username')
+  @JsonKey(includeIfNull: true, name: 'reported_user_username')
   final String? reportedUserUsername;
-  @JsonKey(name: 'reported_user_discriminator')
+  @JsonKey(includeIfNull: true, name: 'reported_user_discriminator')
   final String? reportedUserDiscriminator;
-  @JsonKey(name: 'reported_user_avatar_hash')
+  @JsonKey(includeIfNull: true, name: 'reported_user_avatar_hash')
   final String? reportedUserAvatarHash;
-  @JsonKey(name: 'reported_guild_id')
+  @JsonKey(includeIfNull: true, name: 'reported_guild_id')
   final SnowflakeType? reportedGuildId;
-  @JsonKey(name: 'reported_guild_name')
+  @JsonKey(includeIfNull: true, name: 'reported_guild_name')
   final String? reportedGuildName;
-  @JsonKey(name: 'reported_message_id')
+  @JsonKey(includeIfNull: true, name: 'reported_message_id')
   final SnowflakeType? reportedMessageId;
-  @JsonKey(name: 'reported_channel_id')
+  @JsonKey(includeIfNull: true, name: 'reported_channel_id')
   final SnowflakeType? reportedChannelId;
-  @JsonKey(name: 'reported_channel_name')
+  @JsonKey(includeIfNull: true, name: 'reported_channel_name')
   final String? reportedChannelName;
-  @JsonKey(name: 'reported_guild_invite_code')
+  @JsonKey(includeIfNull: true, name: 'reported_guild_invite_code')
   final String? reportedGuildInviteCode;
-  @JsonKey(name: 'resolved_at')
+  @JsonKey(includeIfNull: true, name: 'resolved_at')
   final String? resolvedAt;
-  @JsonKey(name: 'resolved_by_admin_id')
+  @JsonKey(includeIfNull: true, name: 'resolved_by_admin_id')
   final SnowflakeType? resolvedByAdminId;
-  @JsonKey(name: 'public_comment')
+  @JsonKey(includeIfNull: true, name: 'public_comment')
   final String? publicComment;
-  @JsonKey(name: 'mutual_dm_channel_id')
+  @JsonKey(includeIfNull: false, name: 'mutual_dm_channel_id')
   final SnowflakeType? mutualDmChannelId;
-  @JsonKey(name: 'message_context')
+  @JsonKey(includeIfNull: false, name: 'message_context')
   final List<ReportAdminResponseSchemaMessageContext>? messageContext;
 
   Map<String, Object?> toJson() => _$ReportAdminResponseSchemaToJson(this);

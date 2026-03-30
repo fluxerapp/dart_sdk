@@ -29,7 +29,7 @@ class WebAuthnCredentialResponse {
   final String createdAt;
 
   /// When the credential was last used
-  @JsonKey(name: 'last_used_at')
+  @JsonKey(includeIfNull: true, name: 'last_used_at')
   final String? lastUsedAt;
 
   Map<String, Object?> toJson() => _$WebAuthnCredentialResponseToJson(this);

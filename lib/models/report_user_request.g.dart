@@ -18,6 +18,6 @@ Map<String, dynamic> _$ReportUserRequestToJson(ReportUserRequest instance) =>
     <String, dynamic>{
       'user_id': instance.userId,
       'category': instance.category,
-      'additional_info': instance.additionalInfo,
-      'guild_id': instance.guildId,
+      'additional_info': ?instance.additionalInfo,
+      'guild_id': ?instance.guildId,
     };

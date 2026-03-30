@@ -16,6 +16,6 @@ GuildCreateRequest _$GuildCreateRequestFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$GuildCreateRequestToJson(GuildCreateRequest instance) =>
     <String, dynamic>{
       'name': instance.name,
-      'icon': instance.icon,
-      'empty_features': instance.emptyFeatures,
+      'icon': ?instance.icon,
+      'empty_features': ?instance.emptyFeatures,
     };

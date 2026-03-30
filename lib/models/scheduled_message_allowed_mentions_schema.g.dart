@@ -25,8 +25,8 @@ _$ScheduledMessageAllowedMentionsSchemaFromJson(
 Map<String, dynamic> _$ScheduledMessageAllowedMentionsSchemaToJson(
   ScheduledMessageAllowedMentionsSchema instance,
 ) => <String, dynamic>{
-  'parse': instance.parse,
-  'users': instance.users,
-  'roles': instance.roles,
-  'replied_user': instance.repliedUser,
+  'parse': ?instance.parse,
+  'users': ?instance.users,
+  'roles': ?instance.roles,
+  'replied_user': ?instance.repliedUser,
 };

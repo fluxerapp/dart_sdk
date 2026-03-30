@@ -21,6 +21,7 @@ class Error {
   final String message;
 
   /// Field-specific validation errors
+  @JsonKey(includeIfNull: false)
   final List<ValidationErrorItem>? errors;
 
   Map<String, Object?> toJson() => _$ErrorToJson(this);

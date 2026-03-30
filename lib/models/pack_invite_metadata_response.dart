@@ -37,10 +37,11 @@ class PackInviteMetadataResponse {
   final PackInviteMetadataResponsePack pack;
 
   /// The user who created the invite
+  @JsonKey(includeIfNull: false)
   final UserPartialResponse? inviter;
 
   /// ISO8601 timestamp of when the invite expires
-  @JsonKey(name: 'expires_at')
+  @JsonKey(includeIfNull: false, name: 'expires_at')
   final DateTime? expiresAt;
 
   /// Whether the invite grants temporary access

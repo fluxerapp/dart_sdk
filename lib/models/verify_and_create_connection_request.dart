@@ -22,7 +22,7 @@ class VerifyAndCreateConnectionRequest {
   /// The signed initiation token returned from the create endpoint
   @JsonKey(name: 'initiation_token')
   final String initiationToken;
-  @JsonKey(name: 'visibility_flags')
+  @JsonKey(includeIfNull: false, name: 'visibility_flags')
   final Int32Type? visibilityFlags;
 
   Map<String, Object?> toJson() =>

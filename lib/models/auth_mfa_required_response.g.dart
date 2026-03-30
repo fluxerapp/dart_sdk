@@ -26,7 +26,7 @@ Map<String, dynamic> _$AuthMfaRequiredResponseToJson(
   'mfa': instance.mfa,
   'ticket': instance.ticket,
   'allowed_methods': instance.allowedMethods,
-  'sms_phone_hint': instance.smsPhoneHint,
+  'sms_phone_hint': ?instance.smsPhoneHint,
   'sms': instance.sms,
   'totp': instance.totp,
   'webauthn': instance.webauthn,

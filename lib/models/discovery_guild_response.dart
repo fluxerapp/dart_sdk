@@ -30,9 +30,11 @@ class DiscoveryGuildResponse {
   final String name;
 
   /// Guild icon hash
+  @JsonKey(includeIfNull: false)
   final String? icon;
 
   /// Discovery description
+  @JsonKey(includeIfNull: false)
   final String? description;
 
   /// Discovery category type

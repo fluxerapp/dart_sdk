@@ -13,6 +13,7 @@ class GetProcessMemoryStatsRequest {
   factory GetProcessMemoryStatsRequest.fromJson(Map<String, Object?> json) =>
       _$GetProcessMemoryStatsRequestFromJson(json);
 
+  @JsonKey(includeIfNull: false)
   final int? limit;
 
   Map<String, Object?> toJson() => _$GetProcessMemoryStatsRequestToJson(this);

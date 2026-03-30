@@ -35,34 +35,35 @@ class UpdateVoiceServerRequest {
   final String serverId;
 
   /// Client signal WebSocket endpoint URL for the voice server
+  @JsonKey(includeIfNull: false)
   final String? endpoint;
 
   /// API key for authenticating with the voice server
-  @JsonKey(name: 'api_key')
+  @JsonKey(includeIfNull: false, name: 'api_key')
   final String? apiKey;
 
   /// API secret for authenticating with the voice server
-  @JsonKey(name: 'api_secret')
+  @JsonKey(includeIfNull: false, name: 'api_secret')
   final String? apiSecret;
 
   /// Whether the server is currently active
-  @JsonKey(name: 'is_active')
+  @JsonKey(includeIfNull: false, name: 'is_active')
   final bool? isActive;
 
   /// Whether this server is restricted to VIP users
-  @JsonKey(name: 'vip_only')
+  @JsonKey(includeIfNull: false, name: 'vip_only')
   final bool? vipOnly;
 
   /// Guild features required to use this server
-  @JsonKey(name: 'required_guild_features')
+  @JsonKey(includeIfNull: false, name: 'required_guild_features')
   final List<String>? requiredGuildFeatures;
 
   /// Guild IDs explicitly allowed to use this server
-  @JsonKey(name: 'allowed_guild_ids')
+  @JsonKey(includeIfNull: false, name: 'allowed_guild_ids')
   final List<SnowflakeType>? allowedGuildIds;
 
   /// User IDs explicitly allowed to use this server
-  @JsonKey(name: 'allowed_user_ids')
+  @JsonKey(includeIfNull: false, name: 'allowed_user_ids')
   final List<SnowflakeType>? allowedUserIds;
 
   Map<String, Object?> toJson() => _$UpdateVoiceServerRequestToJson(this);

@@ -23,10 +23,11 @@ class IpAuthorizationPollResponse {
   final bool completed;
 
   /// Authentication token if authorization is complete
+  @JsonKey(includeIfNull: false)
   final String? token;
 
   /// User ID if authorization is complete
-  @JsonKey(name: 'user_id')
+  @JsonKey(includeIfNull: false, name: 'user_id')
   final SnowflakeType? userId;
 
   Map<String, Object?> toJson() => _$IpAuthorizationPollResponseToJson(this);

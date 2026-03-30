@@ -26,7 +26,7 @@ Map<String, dynamic> _$PackInviteResponseToJson(PackInviteResponse instance) =>
       'code': instance.code,
       'type': instance.type,
       'pack': instance.pack,
-      'inviter': instance.inviter,
-      'expires_at': instance.expiresAt?.toIso8601String(),
+      'inviter': ?instance.inviter,
+      'expires_at': ?instance.expiresAt?.toIso8601String(),
       'temporary': instance.temporary,
     };

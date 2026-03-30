@@ -32,7 +32,7 @@ class ChannelOverrides {
   final bool muted;
 
   /// The mute configuration for this channel
-  @JsonKey(name: 'mute_config')
+  @JsonKey(includeIfNull: true, name: 'mute_config')
   final ChannelOverridesMuteConfig? muteConfig;
 
   Map<String, Object?> toJson() => _$ChannelOverridesToJson(this);

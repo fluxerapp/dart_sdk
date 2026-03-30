@@ -23,20 +23,23 @@ class UserProfileFullResponseUserProfile {
   ) => _$UserProfileFullResponseUserProfileFromJson(json);
 
   /// User biography text
+  @JsonKey(includeIfNull: true)
   final String? bio;
 
   /// User pronouns
+  @JsonKey(includeIfNull: true)
   final String? pronouns;
 
   /// Hash of the profile banner image
+  @JsonKey(includeIfNull: true)
   final String? banner;
 
   /// Default banner color if no custom banner
-  @JsonKey(name: 'banner_color')
+  @JsonKey(includeIfNull: false, name: 'banner_color')
   final Int32Type? bannerColor;
 
   /// User-selected accent color
-  @JsonKey(name: 'accent_color')
+  @JsonKey(includeIfNull: true, name: 'accent_color')
   final Int32Type? accentColor;
 
   Map<String, Object?> toJson() =>

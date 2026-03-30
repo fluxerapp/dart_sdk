@@ -24,6 +24,7 @@ class GuildBanResponse {
   final UserPartialResponse user;
 
   /// The reason for the ban
+  @JsonKey(includeIfNull: false)
   final String? reason;
 
   /// The ID of the moderator who issued the ban
@@ -35,7 +36,7 @@ class GuildBanResponse {
   final DateTime bannedAt;
 
   /// ISO8601 timestamp of when the ban expires (null if permanent)
-  @JsonKey(name: 'expires_at')
+  @JsonKey(includeIfNull: false, name: 'expires_at')
   final DateTime? expiresAt;
 
   Map<String, Object?> toJson() => _$GuildBanResponseToJson(this);

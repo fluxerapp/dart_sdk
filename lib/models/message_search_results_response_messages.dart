@@ -58,7 +58,7 @@ class MessageSearchResultsResponseMessages {
   final UserPartialResponse author;
 
   /// The ID of the webhook that sent this message
-  @JsonKey(name: 'webhook_id')
+  @JsonKey(includeIfNull: false, name: 'webhook_id')
   final SnowflakeType? webhookId;
 
   /// The type of message
@@ -72,7 +72,7 @@ class MessageSearchResultsResponseMessages {
   final DateTime timestamp;
 
   /// The ISO 8601 timestamp of when the message was last edited
-  @JsonKey(name: 'edited_timestamp')
+  @JsonKey(includeIfNull: false, name: 'edited_timestamp')
   final DateTime? editedTimestamp;
 
   /// Whether the message is pinned
@@ -83,39 +83,47 @@ class MessageSearchResultsResponseMessages {
   final bool mentionEveryone;
 
   /// Whether the message was sent as text-to-speech
+  @JsonKey(includeIfNull: false)
   final bool? tts;
 
   /// The users mentioned in the message
+  @JsonKey(includeIfNull: false)
   final List<UserPartialResponse>? mentions;
 
   /// The role IDs mentioned in the message
-  @JsonKey(name: 'mention_roles')
+  @JsonKey(includeIfNull: false, name: 'mention_roles')
   final List<String>? mentionRoles;
 
   /// The embeds attached to the message
+  @JsonKey(includeIfNull: false)
   final List<MessageEmbedResponse>? embeds;
 
   /// The files attached to the message
+  @JsonKey(includeIfNull: false)
   final List<MessageAttachmentResponse>? attachments;
 
   /// The stickers sent with the message
+  @JsonKey(includeIfNull: false)
   final List<MessageStickerResponse>? stickers;
 
   /// The reactions on the message
+  @JsonKey(includeIfNull: false)
   final List<MessageReactionResponse>? reactions;
 
   /// Reference data for replies or forwards
-  @JsonKey(name: 'message_reference')
+  @JsonKey(includeIfNull: false, name: 'message_reference')
   final MessageReferenceResponse? messageReference;
 
   /// Snapshots of forwarded messages
-  @JsonKey(name: 'message_snapshots')
+  @JsonKey(includeIfNull: false, name: 'message_snapshots')
   final List<MessageSnapshotResponse>? messageSnapshots;
 
   /// A client-provided value for message deduplication
+  @JsonKey(includeIfNull: false)
   final String? nonce;
 
   /// Call information if this message represents a call
+  @JsonKey(includeIfNull: false)
   final MessageCallResponse? call;
 
   Map<String, Object?> toJson() =>

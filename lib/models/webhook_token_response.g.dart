@@ -24,6 +24,6 @@ Map<String, dynamic> _$WebhookTokenResponseToJson(
   'guild_id': instance.guildId,
   'channel_id': instance.channelId,
   'name': instance.name,
-  'avatar': instance.avatar,
+  'avatar': ?instance.avatar,
   'token': instance.token,
 };

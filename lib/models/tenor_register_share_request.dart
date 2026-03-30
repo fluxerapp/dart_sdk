@@ -19,7 +19,9 @@ class TenorRegisterShareRequest {
   final String id;
 
   /// The search query used to find the GIF
+  @JsonKey(includeIfNull: false)
   final String? q;
+  @JsonKey(includeIfNull: false)
   final Locale? locale;
 
   Map<String, Object?> toJson() => _$TenorRegisterShareRequestToJson(this);

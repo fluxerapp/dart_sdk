@@ -19,9 +19,9 @@ ListAuditLogsRequest _$ListAuditLogsRequestFromJson(
 Map<String, dynamic> _$ListAuditLogsRequestToJson(
   ListAuditLogsRequest instance,
 ) => <String, dynamic>{
-  'admin_user_id': instance.adminUserId,
-  'target_type': instance.targetType,
-  'target_id': instance.targetId,
-  'limit': instance.limit,
-  'offset': instance.offset,
+  'admin_user_id': ?instance.adminUserId,
+  'target_type': ?instance.targetType,
+  'target_id': ?instance.targetId,
+  'limit': ?instance.limit,
+  'offset': ?instance.offset,
 };

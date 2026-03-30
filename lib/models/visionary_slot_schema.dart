@@ -20,7 +20,7 @@ class VisionarySlotSchema {
   final int slotIndex;
 
   /// User ID that reserved this slot, or null if unreserved (special value -1 is also valid)
-  @JsonKey(name: 'user_id')
+  @JsonKey(includeIfNull: true, name: 'user_id')
   final Int64StringType? userId;
 
   Map<String, Object?> toJson() => _$VisionarySlotSchemaToJson(this);

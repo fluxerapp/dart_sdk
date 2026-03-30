@@ -14,6 +14,6 @@ MessageAckRequest _$MessageAckRequestFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$MessageAckRequestToJson(MessageAckRequest instance) =>
     <String, dynamic>{
-      'mention_count': instance.mentionCount,
-      'manual': instance.manual,
+      'mention_count': ?instance.mentionCount,
+      'manual': ?instance.manual,
     };

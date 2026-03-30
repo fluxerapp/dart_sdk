@@ -26,26 +26,29 @@ class SearchAuditLogsRequest {
       _$SearchAuditLogsRequestFromJson(json);
 
   /// Search query string
+  @JsonKey(includeIfNull: false)
   final String? query;
-  @JsonKey(name: 'admin_user_id')
+  @JsonKey(includeIfNull: false, name: 'admin_user_id')
   final SnowflakeType? adminUserId;
 
   /// Filter by target entity ID (user, channel, role, invite code, etc.)
-  @JsonKey(name: 'target_id')
+  @JsonKey(includeIfNull: false, name: 'target_id')
   final String? targetId;
 
   /// Field to sort audit logs by
-  @JsonKey(name: 'sort_by')
+  @JsonKey(includeIfNull: false, name: 'sort_by')
   final SearchAuditLogsRequestSortBySortBy? sortBy;
 
   /// Sort order direction
-  @JsonKey(name: 'sort_order')
+  @JsonKey(includeIfNull: false, name: 'sort_order')
   final SearchAuditLogsRequestSortOrderSortOrder? sortOrder;
 
   /// Maximum number of entries to return
+  @JsonKey(includeIfNull: false)
   final int? limit;
 
   /// Number of entries to skip
+  @JsonKey(includeIfNull: false)
   final int? offset;
 
   Map<String, Object?> toJson() => _$SearchAuditLogsRequestToJson(this);

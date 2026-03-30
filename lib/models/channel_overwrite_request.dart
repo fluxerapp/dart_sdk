@@ -26,7 +26,9 @@ class ChannelOverwriteRequest {
 
   /// The type of overwrite (0 = role, 1 = member)
   final ChannelOverwriteRequestTypeType type;
+  @JsonKey(includeIfNull: false)
   final UnsignedInt64Type? allow;
+  @JsonKey(includeIfNull: false)
   final UnsignedInt64Type? deny;
 
   Map<String, Object?> toJson() => _$ChannelOverwriteRequestToJson(this);

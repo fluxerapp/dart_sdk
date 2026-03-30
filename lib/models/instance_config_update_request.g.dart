@@ -28,13 +28,13 @@ InstanceConfigUpdateRequest _$InstanceConfigUpdateRequestFromJson(
 Map<String, dynamic> _$InstanceConfigUpdateRequestToJson(
   InstanceConfigUpdateRequest instance,
 ) => <String, dynamic>{
-  'manual_review_enabled': instance.manualReviewEnabled,
-  'manual_review_schedule_enabled': instance.manualReviewScheduleEnabled,
+  'manual_review_enabled': ?instance.manualReviewEnabled,
+  'manual_review_schedule_enabled': ?instance.manualReviewScheduleEnabled,
   'manual_review_schedule_start_hour_utc':
-      instance.manualReviewScheduleStartHourUtc,
+      ?instance.manualReviewScheduleStartHourUtc,
   'manual_review_schedule_end_hour_utc':
-      instance.manualReviewScheduleEndHourUtc,
-  'registration_alerts_webhook_url': instance.registrationAlertsWebhookUrl,
-  'system_alerts_webhook_url': instance.systemAlertsWebhookUrl,
-  'sso': instance.sso,
+      ?instance.manualReviewScheduleEndHourUtc,
+  'registration_alerts_webhook_url': ?instance.registrationAlertsWebhookUrl,
+  'system_alerts_webhook_url': ?instance.systemAlertsWebhookUrl,
+  'sso': ?instance.sso,
 };

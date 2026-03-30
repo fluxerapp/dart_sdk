@@ -25,5 +25,5 @@ Map<String, dynamic> _$DeleteAllUserMessagesResponseToJson(
   'dry_run': instance.dryRun,
   'channel_count': instance.channelCount,
   'message_count': instance.messageCount,
-  'job_id': instance.jobId,
+  'job_id': ?instance.jobId,
 };

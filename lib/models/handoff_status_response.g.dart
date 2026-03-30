@@ -18,6 +18,6 @@ Map<String, dynamic> _$HandoffStatusResponseToJson(
   HandoffStatusResponse instance,
 ) => <String, dynamic>{
   'status': instance.status,
-  'token': instance.token,
-  'user_id': instance.userId,
+  'token': ?instance.token,
+  'user_id': ?instance.userId,
 };

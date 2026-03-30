@@ -15,9 +15,9 @@ class UpdateConnectionRequest {
   factory UpdateConnectionRequest.fromJson(Map<String, Object?> json) =>
       _$UpdateConnectionRequestFromJson(json);
 
-  @JsonKey(name: 'visibility_flags')
+  @JsonKey(includeIfNull: false, name: 'visibility_flags')
   final Int32Type? visibilityFlags;
-  @JsonKey(name: 'sort_order')
+  @JsonKey(includeIfNull: false, name: 'sort_order')
   final Int32Type? sortOrder;
 
   Map<String, Object?> toJson() => _$UpdateConnectionRequestToJson(this);

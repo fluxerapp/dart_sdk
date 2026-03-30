@@ -32,6 +32,7 @@ class DonationCheckoutRequest {
   final DonationCheckoutRequestCurrencyCurrency currency;
 
   /// Billing interval (null for one-time donation)
+  @JsonKey(includeIfNull: true)
   final DonationCheckoutRequestIntervalInterval? interval;
 
   Map<String, Object?> toJson() => _$DonationCheckoutRequestToJson(this);

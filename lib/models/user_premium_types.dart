@@ -15,12 +15,15 @@ enum UserPremiumTypes {
   lifetime(2),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
-  $unknown(null);
+  $unknown(null)
+  ;
 
   const UserPremiumTypes(this.json);
 
-  factory UserPremiumTypes.fromJson(int json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory UserPremiumTypes.fromJson(int json) => values.firstWhere(
+    (e) => e.json == json,
+    orElse: () => $unknown,
+  );
 
   final int? json;
 

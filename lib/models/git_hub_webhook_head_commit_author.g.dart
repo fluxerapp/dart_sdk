@@ -15,4 +15,4 @@ GitHubWebhookHeadCommitAuthor _$GitHubWebhookHeadCommitAuthorFromJson(
 
 Map<String, dynamic> _$GitHubWebhookHeadCommitAuthorToJson(
   GitHubWebhookHeadCommitAuthor instance,
-) => <String, dynamic>{'username': instance.username, 'name': instance.name};
+) => <String, dynamic>{'username': ?instance.username, 'name': instance.name};

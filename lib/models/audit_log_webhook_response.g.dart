@@ -22,8 +22,8 @@ Map<String, dynamic> _$AuditLogWebhookResponseToJson(
 ) => <String, dynamic>{
   'id': instance.id,
   'type': instance.type,
-  'guild_id': instance.guildId,
-  'channel_id': instance.channelId,
+  'guild_id': ?instance.guildId,
+  'channel_id': ?instance.channelId,
   'name': instance.name,
-  'avatar_hash': instance.avatarHash,
+  'avatar_hash': ?instance.avatarHash,
 };

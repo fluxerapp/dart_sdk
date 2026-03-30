@@ -26,7 +26,7 @@ Map<String, dynamic> _$PackInviteMetadataResponsePackToJson(
 ) => <String, dynamic>{
   'id': instance.id,
   'name': instance.name,
-  'description': instance.description,
+  'description': ?instance.description,
   'type': instance.type,
   'creator_id': instance.creatorId,
   'created_at': instance.createdAt.toIso8601String(),

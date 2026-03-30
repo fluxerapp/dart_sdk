@@ -28,18 +28,18 @@ class AuditLogWebhookResponse {
   final WebhookType type;
 
   /// The guild ID this webhook belongs to
-  @JsonKey(name: 'guild_id')
+  @JsonKey(includeIfNull: false, name: 'guild_id')
   final SnowflakeType? guildId;
 
   /// The channel ID this webhook posts to
-  @JsonKey(name: 'channel_id')
+  @JsonKey(includeIfNull: false, name: 'channel_id')
   final SnowflakeType? channelId;
 
   /// The name of the webhook
   final String name;
 
   /// The hash of the webhook avatar
-  @JsonKey(name: 'avatar_hash')
+  @JsonKey(includeIfNull: false, name: 'avatar_hash')
   final String? avatarHash;
 
   Map<String, Object?> toJson() => _$AuditLogWebhookResponseToJson(this);

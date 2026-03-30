@@ -27,6 +27,7 @@ class MessageReactionResponse {
   final int count;
 
   /// Whether the current user has reacted with this emoji
+  @JsonKey(includeIfNull: false)
   final MessageReactionResponseMeMe? me;
 
   Map<String, Object?> toJson() => _$MessageReactionResponseToJson(this);

@@ -24,15 +24,15 @@ class CreateSystemDmJobRequest {
   final String content;
 
   /// Only target users registered after this date
-  @JsonKey(name: 'registration_start')
+  @JsonKey(includeIfNull: false, name: 'registration_start')
   final String? registrationStart;
 
   /// Only target users registered before this date
-  @JsonKey(name: 'registration_end')
+  @JsonKey(includeIfNull: false, name: 'registration_end')
   final String? registrationEnd;
 
   /// Guild IDs whose members should be excluded
-  @JsonKey(name: 'excluded_guild_ids')
+  @JsonKey(includeIfNull: false, name: 'excluded_guild_ids')
   final List<SnowflakeType>? excludedGuildIds;
 
   Map<String, Object?> toJson() => _$CreateSystemDmJobRequestToJson(this);

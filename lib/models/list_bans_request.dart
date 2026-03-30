@@ -14,6 +14,7 @@ class ListBansRequest {
       _$ListBansRequestFromJson(json);
 
   /// Maximum number of bans to return
+  @JsonKey(includeIfNull: false)
   final int? limit;
 
   Map<String, Object?> toJson() => _$ListBansRequestToJson(this);

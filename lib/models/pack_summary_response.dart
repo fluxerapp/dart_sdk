@@ -31,6 +31,7 @@ class PackSummaryResponse {
   final String name;
 
   /// The description of the pack
+  @JsonKey(includeIfNull: true)
   final String? description;
 
   /// The type of expression pack (emoji or sticker)
@@ -49,7 +50,7 @@ class PackSummaryResponse {
   final DateTime updatedAt;
 
   /// ISO8601 timestamp of when the pack was installed by the user
-  @JsonKey(name: 'installed_at')
+  @JsonKey(includeIfNull: false, name: 'installed_at')
   final DateTime? installedAt;
 
   Map<String, Object?> toJson() => _$PackSummaryResponseToJson(this);

@@ -24,6 +24,6 @@ Map<String, dynamic> _$WellKnownFluxerResponseFeaturesToJson(
   'voice_enabled': instance.voiceEnabled,
   'stripe_enabled': instance.stripeEnabled,
   'self_hosted': instance.selfHosted,
-  'manual_review_enabled': instance.manualReviewEnabled,
-  'presigned_attachment_uploads': instance.presignedAttachmentUploads,
+  'manual_review_enabled': ?instance.manualReviewEnabled,
+  'presigned_attachment_uploads': ?instance.presignedAttachmentUploads,
 };

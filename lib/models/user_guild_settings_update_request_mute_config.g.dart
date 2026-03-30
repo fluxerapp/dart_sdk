@@ -16,6 +16,6 @@ _$UserGuildSettingsUpdateRequestMuteConfigFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$UserGuildSettingsUpdateRequestMuteConfigToJson(
   UserGuildSettingsUpdateRequestMuteConfig instance,
 ) => <String, dynamic>{
-  'end_time': instance.endTime,
+  'end_time': ?instance.endTime,
   'selected_time_window': instance.selectedTimeWindow,
 };

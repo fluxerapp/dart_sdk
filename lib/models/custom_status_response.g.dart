@@ -21,9 +21,9 @@ CustomStatusResponse _$CustomStatusResponseFromJson(
 Map<String, dynamic> _$CustomStatusResponseToJson(
   CustomStatusResponse instance,
 ) => <String, dynamic>{
-  'text': instance.text,
-  'expires_at': instance.expiresAt?.toIso8601String(),
-  'emoji_id': instance.emojiId,
-  'emoji_name': instance.emojiName,
+  'text': ?instance.text,
+  'expires_at': ?instance.expiresAt?.toIso8601String(),
+  'emoji_id': ?instance.emojiId,
+  'emoji_name': ?instance.emojiName,
   'emoji_animated': instance.emojiAnimated,
 };

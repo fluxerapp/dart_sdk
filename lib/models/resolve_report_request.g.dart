@@ -17,5 +17,5 @@ Map<String, dynamic> _$ResolveReportRequestToJson(
   ResolveReportRequest instance,
 ) => <String, dynamic>{
   'report_id': instance.reportId,
-  'public_comment': instance.publicComment,
+  'public_comment': ?instance.publicComment,
 };

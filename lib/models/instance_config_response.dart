@@ -36,9 +36,9 @@ class InstanceConfigResponse {
   final Int32Type manualReviewScheduleEndHourUtc;
   @JsonKey(name: 'manual_review_active_now')
   final bool manualReviewActiveNow;
-  @JsonKey(name: 'registration_alerts_webhook_url')
+  @JsonKey(includeIfNull: true, name: 'registration_alerts_webhook_url')
   final String? registrationAlertsWebhookUrl;
-  @JsonKey(name: 'system_alerts_webhook_url')
+  @JsonKey(includeIfNull: true, name: 'system_alerts_webhook_url')
   final String? systemAlertsWebhookUrl;
   final SsoConfigResponse sso;
   @JsonKey(name: 'self_hosted')

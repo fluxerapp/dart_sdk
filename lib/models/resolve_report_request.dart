@@ -19,7 +19,7 @@ class ResolveReportRequest {
   final SnowflakeType reportId;
 
   /// Public comment to include with the resolution
-  @JsonKey(name: 'public_comment')
+  @JsonKey(includeIfNull: false, name: 'public_comment')
   final String? publicComment;
 
   Map<String, Object?> toJson() => _$ResolveReportRequestToJson(this);

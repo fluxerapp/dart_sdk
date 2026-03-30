@@ -24,7 +24,7 @@ Map<String, dynamic> _$ChannelPartialResponseToJson(
   ChannelPartialResponse instance,
 ) => <String, dynamic>{
   'id': instance.id,
-  'name': instance.name,
+  'name': ?instance.name,
   'type': instance.type,
-  'recipients': instance.recipients,
+  'recipients': ?instance.recipients,
 };

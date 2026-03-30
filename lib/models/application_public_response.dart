@@ -31,9 +31,11 @@ class ApplicationPublicResponse {
   final String name;
 
   /// The icon hash of the application
+  @JsonKey(includeIfNull: true)
   final String? icon;
 
   /// The description of the application
+  @JsonKey(includeIfNull: true)
   final String? description;
 
   /// The registered redirect URIs for OAuth2
@@ -48,6 +50,7 @@ class ApplicationPublicResponse {
   final bool botPublic;
 
   /// The bot user associated with the application
+  @JsonKey(includeIfNull: true)
   final ApplicationBotResponse? bot;
 
   Map<String, Object?> toJson() => _$ApplicationPublicResponseToJson(this);

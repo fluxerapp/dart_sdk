@@ -24,12 +24,14 @@ class ChannelPartialResponse {
   final String id;
 
   /// The name of the channel
+  @JsonKey(includeIfNull: false)
   final String? name;
 
   /// The type of the channel
   final int type;
 
   /// The recipients of the DM channel
+  @JsonKey(includeIfNull: false)
   final List<ChannelPartialRecipientResponse>? recipients;
 
   Map<String, Object?> toJson() => _$ChannelPartialResponseToJson(this);

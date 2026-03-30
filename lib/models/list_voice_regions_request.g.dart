@@ -12,4 +12,4 @@ ListVoiceRegionsRequest _$ListVoiceRegionsRequestFromJson(
 
 Map<String, dynamic> _$ListVoiceRegionsRequestToJson(
   ListVoiceRegionsRequest instance,
-) => <String, dynamic>{'include_servers': instance.includeServers};
+) => <String, dynamic>{'include_servers': ?instance.includeServers};

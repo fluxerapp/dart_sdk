@@ -15,6 +15,7 @@ class GetArchiveResponseSchema {
   factory GetArchiveResponseSchema.fromJson(Map<String, Object?> json) =>
       _$GetArchiveResponseSchemaFromJson(json);
 
+  @JsonKey(includeIfNull: true)
   final AdminArchiveResponseSchema? archive;
 
   Map<String, Object?> toJson() => _$GetArchiveResponseSchemaToJson(this);

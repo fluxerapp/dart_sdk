@@ -20,8 +20,8 @@ Map<String, dynamic> _$ListUserGuildsRequestToJson(
   ListUserGuildsRequest instance,
 ) => <String, dynamic>{
   'user_id': instance.userId,
-  'before': instance.before,
-  'after': instance.after,
-  'limit': instance.limit,
-  'with_counts': instance.withCounts,
+  'before': ?instance.before,
+  'after': ?instance.after,
+  'limit': ?instance.limit,
+  'with_counts': ?instance.withCounts,
 };

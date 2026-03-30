@@ -21,7 +21,7 @@ Map<String, dynamic> _$ApplicationCreateRequestToJson(
   ApplicationCreateRequest instance,
 ) => <String, dynamic>{
   'name': instance.name,
-  'redirect_uris': instance.redirectUris,
-  'bot_public': instance.botPublic,
-  'bot_require_code_grant': instance.botRequireCodeGrant,
+  'redirect_uris': ?instance.redirectUris,
+  'bot_public': ?instance.botPublic,
+  'bot_require_code_grant': ?instance.botRequireCodeGrant,
 };

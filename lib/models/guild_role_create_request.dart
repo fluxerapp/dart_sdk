@@ -23,7 +23,9 @@ class GuildRoleCreateRequest {
   final String name;
 
   /// The color of the role as an integer (default: 0)
+  @JsonKey(includeIfNull: false)
   final int? color;
+  @JsonKey(includeIfNull: false)
   final UnsignedInt64Type? permissions;
 
   Map<String, Object?> toJson() => _$GuildRoleCreateRequestToJson(this);

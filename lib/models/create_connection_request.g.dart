@@ -19,5 +19,5 @@ Map<String, dynamic> _$CreateConnectionRequestToJson(
 ) => <String, dynamic>{
   'type': instance.type,
   'identifier': instance.identifier,
-  'visibility_flags': instance.visibilityFlags,
+  'visibility_flags': ?instance.visibilityFlags,
 };

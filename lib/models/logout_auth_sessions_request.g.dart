@@ -19,5 +19,5 @@ Map<String, dynamic> _$LogoutAuthSessionsRequestToJson(
   LogoutAuthSessionsRequest instance,
 ) => <String, dynamic>{
   'session_id_hashes': instance.sessionIdHashes,
-  'password': instance.password,
+  'password': ?instance.password,
 };

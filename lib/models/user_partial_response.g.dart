@@ -28,7 +28,7 @@ Map<String, dynamic> _$UserPartialResponseToJson(
   'global_name': instance.globalName,
   'avatar': instance.avatar,
   'avatar_color': instance.avatarColor,
-  'bot': instance.bot,
-  'system': instance.system,
+  'bot': ?instance.bot,
+  'system': ?instance.system,
   'flags': instance.flags,
 };

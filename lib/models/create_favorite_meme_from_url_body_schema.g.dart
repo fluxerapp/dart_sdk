@@ -20,10 +20,10 @@ _$CreateFavoriteMemeFromUrlBodySchemaFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$CreateFavoriteMemeFromUrlBodySchemaToJson(
   CreateFavoriteMemeFromUrlBodySchema instance,
 ) => <String, dynamic>{
-  'alt_text': instance.altText,
-  'tags': instance.tags,
+  'alt_text': ?instance.altText,
+  'tags': ?instance.tags,
   'url': instance.url,
-  'klipy_slug': instance.klipySlug,
-  'tenor_slug_id': instance.tenorSlugId,
-  'name': instance.name,
+  'klipy_slug': ?instance.klipySlug,
+  'tenor_slug_id': ?instance.tenorSlugId,
+  'name': ?instance.name,
 };

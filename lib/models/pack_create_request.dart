@@ -17,6 +17,7 @@ class PackCreateRequest {
   final String name;
 
   /// The description of the pack
+  @JsonKey(includeIfNull: false)
   final String? description;
 
   Map<String, Object?> toJson() => _$PackCreateRequestToJson(this);

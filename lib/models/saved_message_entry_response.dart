@@ -37,6 +37,7 @@ class SavedMessageEntryResponse {
   final SavedMessageEntryResponseStatusStatus status;
 
   /// The message content if available
+  @JsonKey(includeIfNull: true)
   final MessageResponseSchema? message;
 
   Map<String, Object?> toJson() => _$SavedMessageEntryResponseToJson(this);

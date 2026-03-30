@@ -22,7 +22,7 @@ class UpdateGuildVanityRequest {
   final SnowflakeType guildId;
 
   /// New vanity URL code, or null to remove
-  @JsonKey(name: 'vanity_url_code')
+  @JsonKey(includeIfNull: true, name: 'vanity_url_code')
   final String? vanityUrlCode;
 
   Map<String, Object?> toJson() => _$UpdateGuildVanityRequestToJson(this);

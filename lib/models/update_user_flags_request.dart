@@ -24,11 +24,11 @@ class UpdateUserFlagsRequest {
   final SnowflakeType userId;
 
   /// User flags to add
-  @JsonKey(name: 'add_flags')
+  @JsonKey(includeIfNull: false, name: 'add_flags')
   final List<UserFlags>? addFlags;
 
   /// User flags to remove
-  @JsonKey(name: 'remove_flags')
+  @JsonKey(includeIfNull: false, name: 'remove_flags')
   final List<UserFlags>? removeFlags;
 
   Map<String, Object?> toJson() => _$UpdateUserFlagsRequestToJson(this);

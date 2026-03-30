@@ -18,8 +18,9 @@ class NcmecSubmitResultResponse {
       _$NcmecSubmitResultResponseFromJson(json);
 
   final bool success;
-  @JsonKey(name: 'ncmec_report_id')
+  @JsonKey(includeIfNull: true, name: 'ncmec_report_id')
   final String? ncmecReportId;
+  @JsonKey(includeIfNull: true)
   final String? error;
 
   Map<String, Object?> toJson() => _$NcmecSubmitResultResponseToJson(this);

@@ -21,5 +21,5 @@ Map<String, dynamic> _$ReportMessageRequestToJson(
   'channel_id': instance.channelId,
   'message_id': instance.messageId,
   'category': instance.category,
-  'additional_info': instance.additionalInfo,
+  'additional_info': ?instance.additionalInfo,
 };

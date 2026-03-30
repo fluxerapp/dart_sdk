@@ -27,34 +27,35 @@ class UserGuildSettingsUpdateRequest {
       _$UserGuildSettingsUpdateRequestFromJson(json);
 
   /// Default guild notification level
-  @JsonKey(name: 'message_notifications')
+  @JsonKey(includeIfNull: false, name: 'message_notifications')
   final UserNotificationSettings? messageNotifications;
 
   /// Guild muted
+  @JsonKey(includeIfNull: false)
   final bool? muted;
 
   /// Guild mute configuration
-  @JsonKey(name: 'mute_config')
+  @JsonKey(includeIfNull: false, name: 'mute_config')
   final UserGuildSettingsUpdateRequestMuteConfig? muteConfig;
 
   /// Mobile push notifications enabled
-  @JsonKey(name: 'mobile_push')
+  @JsonKey(includeIfNull: false, name: 'mobile_push')
   final bool? mobilePush;
 
   /// Suppress @everyone mentions
-  @JsonKey(name: 'suppress_everyone')
+  @JsonKey(includeIfNull: false, name: 'suppress_everyone')
   final bool? suppressEveryone;
 
   /// Suppress role mentions
-  @JsonKey(name: 'suppress_roles')
+  @JsonKey(includeIfNull: false, name: 'suppress_roles')
   final bool? suppressRoles;
 
   /// Hide muted channels
-  @JsonKey(name: 'hide_muted_channels')
+  @JsonKey(includeIfNull: false, name: 'hide_muted_channels')
   final bool? hideMutedChannels;
 
   /// Per-channel overrides
-  @JsonKey(name: 'channel_overrides')
+  @JsonKey(includeIfNull: false, name: 'channel_overrides')
   final Map<String, ChannelOverrides>? channelOverrides;
 
   Map<String, Object?> toJson() => _$UserGuildSettingsUpdateRequestToJson(this);

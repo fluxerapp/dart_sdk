@@ -23,5 +23,5 @@ Map<String, dynamic> _$GiftCodeResponseToJson(GiftCodeResponse instance) =>
       'code': instance.code,
       'duration_months': instance.durationMonths,
       'redeemed': instance.redeemed,
-      'created_by': instance.createdBy,
+      'created_by': ?instance.createdBy,
     };

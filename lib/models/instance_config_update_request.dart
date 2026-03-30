@@ -23,18 +23,19 @@ class InstanceConfigUpdateRequest {
   factory InstanceConfigUpdateRequest.fromJson(Map<String, Object?> json) =>
       _$InstanceConfigUpdateRequestFromJson(json);
 
-  @JsonKey(name: 'manual_review_enabled')
+  @JsonKey(includeIfNull: false, name: 'manual_review_enabled')
   final bool? manualReviewEnabled;
-  @JsonKey(name: 'manual_review_schedule_enabled')
+  @JsonKey(includeIfNull: false, name: 'manual_review_schedule_enabled')
   final bool? manualReviewScheduleEnabled;
-  @JsonKey(name: 'manual_review_schedule_start_hour_utc')
+  @JsonKey(includeIfNull: false, name: 'manual_review_schedule_start_hour_utc')
   final int? manualReviewScheduleStartHourUtc;
-  @JsonKey(name: 'manual_review_schedule_end_hour_utc')
+  @JsonKey(includeIfNull: false, name: 'manual_review_schedule_end_hour_utc')
   final int? manualReviewScheduleEndHourUtc;
-  @JsonKey(name: 'registration_alerts_webhook_url')
+  @JsonKey(includeIfNull: false, name: 'registration_alerts_webhook_url')
   final String? registrationAlertsWebhookUrl;
-  @JsonKey(name: 'system_alerts_webhook_url')
+  @JsonKey(includeIfNull: false, name: 'system_alerts_webhook_url')
   final String? systemAlertsWebhookUrl;
+  @JsonKey(includeIfNull: false)
   final InstanceConfigUpdateRequestSso? sso;
 
   Map<String, Object?> toJson() => _$InstanceConfigUpdateRequestToJson(this);

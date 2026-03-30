@@ -17,12 +17,15 @@ enum UserNotificationSettings {
   inherit(3),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
-  $unknown(null);
+  $unknown(null)
+  ;
 
   const UserNotificationSettings(this.json);
 
-  factory UserNotificationSettings.fromJson(int json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory UserNotificationSettings.fromJson(int json) => values.firstWhere(
+    (e) => e.json == json,
+    orElse: () => $unknown,
+  );
 
   final int? json;
 

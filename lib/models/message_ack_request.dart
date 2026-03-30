@@ -15,10 +15,11 @@ class MessageAckRequest {
   factory MessageAckRequest.fromJson(Map<String, Object?> json) =>
       _$MessageAckRequestFromJson(json);
 
-  @JsonKey(name: 'mention_count')
+  @JsonKey(includeIfNull: false, name: 'mention_count')
   final Int32Type? mentionCount;
 
   /// Whether this is a manual acknowledgement
+  @JsonKey(includeIfNull: false)
   final bool? manual;
 
   Map<String, Object?> toJson() => _$MessageAckRequestToJson(this);

@@ -31,52 +31,55 @@ class GuildMemberSearchRequest {
       _$GuildMemberSearchRequestFromJson(json);
 
   /// Text to search for in usernames, global names, and nicknames
+  @JsonKey(includeIfNull: false)
   final String? query;
 
   /// Maximum number of results to return
+  @JsonKey(includeIfNull: false)
   final int? limit;
 
   /// Number of results to skip for pagination
+  @JsonKey(includeIfNull: false)
   final int? offset;
 
   /// Filter by role IDs (member must have all specified roles)
-  @JsonKey(name: 'role_ids')
+  @JsonKey(includeIfNull: false, name: 'role_ids')
   final List<String>? roleIds;
 
   /// Filter members who joined at or after this unix timestamp
-  @JsonKey(name: 'joined_at_gte')
+  @JsonKey(includeIfNull: false, name: 'joined_at_gte')
   final int? joinedAtGte;
 
   /// Filter members who joined at or before this unix timestamp
-  @JsonKey(name: 'joined_at_lte')
+  @JsonKey(includeIfNull: false, name: 'joined_at_lte')
   final int? joinedAtLte;
 
   /// Filter by join source types
-  @JsonKey(name: 'join_source_type')
+  @JsonKey(includeIfNull: false, name: 'join_source_type')
   final List<int>? joinSourceType;
 
   /// Filter by invite codes used to join
-  @JsonKey(name: 'source_invite_code')
+  @JsonKey(includeIfNull: false, name: 'source_invite_code')
   final List<String>? sourceInviteCode;
 
   /// Filter by bot status
-  @JsonKey(name: 'is_bot')
+  @JsonKey(includeIfNull: false, name: 'is_bot')
   final bool? isBot;
 
   /// Filter members whose account was created at or after this unix timestamp
-  @JsonKey(name: 'user_created_at_gte')
+  @JsonKey(includeIfNull: false, name: 'user_created_at_gte')
   final int? userCreatedAtGte;
 
   /// Filter members whose account was created at or before this unix timestamp
-  @JsonKey(name: 'user_created_at_lte')
+  @JsonKey(includeIfNull: false, name: 'user_created_at_lte')
   final int? userCreatedAtLte;
 
   /// Sort results by field
-  @JsonKey(name: 'sort_by')
+  @JsonKey(includeIfNull: false, name: 'sort_by')
   final GuildMemberSearchRequestSortBySortBy? sortBy;
 
   /// Sort order
-  @JsonKey(name: 'sort_order')
+  @JsonKey(includeIfNull: false, name: 'sort_order')
   final GuildMemberSearchRequestSortOrderSortOrder? sortOrder;
 
   Map<String, Object?> toJson() => _$GuildMemberSearchRequestToJson(this);

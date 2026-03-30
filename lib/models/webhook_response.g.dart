@@ -23,7 +23,7 @@ Map<String, dynamic> _$WebhookResponseToJson(WebhookResponse instance) =>
       'guild_id': instance.guildId,
       'channel_id': instance.channelId,
       'name': instance.name,
-      'avatar': instance.avatar,
+      'avatar': ?instance.avatar,
       'token': instance.token,
       'user': instance.user,
     };

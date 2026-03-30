@@ -29,7 +29,9 @@ class GuildUpdateResponseGuild {
   final List<String> features;
   @JsonKey(name: 'owner_id')
   final SnowflakeType ownerId;
+  @JsonKey(includeIfNull: true)
   final String? icon;
+  @JsonKey(includeIfNull: true)
   final String? banner;
   @JsonKey(name: 'member_count')
   final Int32Type memberCount;

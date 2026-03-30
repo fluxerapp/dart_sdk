@@ -22,6 +22,6 @@ Map<String, dynamic> _$LimitConfigUpdateRequestLimitConfigRulesToJson(
   LimitConfigUpdateRequestLimitConfigRules instance,
 ) => <String, dynamic>{
   'id': instance.id,
-  'filters': instance.filters,
+  'filters': ?instance.filters,
   'limits': instance.limits,
 };

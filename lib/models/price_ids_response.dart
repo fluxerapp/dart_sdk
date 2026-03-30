@@ -22,17 +22,19 @@ class PriceIdsResponse {
       _$PriceIdsResponseFromJson(json);
 
   /// Stripe price ID for the monthly subscription
+  @JsonKey(includeIfNull: false)
   final String? monthly;
 
   /// Stripe price ID for the yearly subscription
+  @JsonKey(includeIfNull: false)
   final String? yearly;
 
   /// Stripe price ID for the 1 month gift
-  @JsonKey(name: 'gift_1_month')
+  @JsonKey(includeIfNull: false, name: 'gift_1_month')
   final String? gift1Month;
 
   /// Stripe price ID for the 1 year gift
-  @JsonKey(name: 'gift_1_year')
+  @JsonKey(includeIfNull: false, name: 'gift_1_year')
   final String? gift1Year;
 
   /// Currency for the prices

@@ -33,7 +33,7 @@ class DsaReportGuildRequest {
   final String ticket;
 
   /// Additional context or details about the report
-  @JsonKey(name: 'additional_info')
+  @JsonKey(includeIfNull: false, name: 'additional_info')
   final String? additionalInfo;
 
   /// Full legal name of the person filing the report
@@ -46,7 +46,7 @@ class DsaReportGuildRequest {
   reporterCountryOfResidence;
 
   /// Fluxer tag of the reporter if they have an account
-  @JsonKey(name: 'reporter_fluxer_tag')
+  @JsonKey(includeIfNull: false, name: 'reporter_fluxer_tag')
   final String? reporterFluxerTag;
 
   /// Type of report
@@ -57,7 +57,7 @@ class DsaReportGuildRequest {
   final SnowflakeType guildId;
 
   /// Invite code used to access the guild
-  @JsonKey(name: 'invite_code')
+  @JsonKey(includeIfNull: false, name: 'invite_code')
   final String? inviteCode;
 
   Map<String, Object?> toJson() => _$DsaReportGuildRequestToJson(this);

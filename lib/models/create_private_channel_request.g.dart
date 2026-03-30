@@ -18,6 +18,6 @@ CreatePrivateChannelRequest _$CreatePrivateChannelRequestFromJson(
 Map<String, dynamic> _$CreatePrivateChannelRequestToJson(
   CreatePrivateChannelRequest instance,
 ) => <String, dynamic>{
-  'recipient_id': instance.recipientId,
-  'recipients': instance.recipients,
+  'recipient_id': ?instance.recipientId,
+  'recipients': ?instance.recipients,
 };

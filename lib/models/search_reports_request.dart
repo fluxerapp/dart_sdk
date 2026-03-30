@@ -35,38 +35,43 @@ class SearchReportsRequest {
       _$SearchReportsRequestFromJson(json);
 
   /// Search query string
+  @JsonKey(includeIfNull: false)
   final String? query;
 
   /// Maximum number of entries to return
+  @JsonKey(includeIfNull: false)
   final int? limit;
 
   /// Number of entries to skip
+  @JsonKey(includeIfNull: false)
   final int? offset;
-  @JsonKey(name: 'reporter_id')
+  @JsonKey(includeIfNull: false, name: 'reporter_id')
   final SnowflakeType? reporterId;
+  @JsonKey(includeIfNull: false)
   final ReportStatus? status;
-  @JsonKey(name: 'report_type')
+  @JsonKey(includeIfNull: false, name: 'report_type')
   final ReportType? reportType;
 
   /// Filter by report category
+  @JsonKey(includeIfNull: false)
   final String? category;
-  @JsonKey(name: 'reported_user_id')
+  @JsonKey(includeIfNull: false, name: 'reported_user_id')
   final SnowflakeType? reportedUserId;
-  @JsonKey(name: 'reported_guild_id')
+  @JsonKey(includeIfNull: false, name: 'reported_guild_id')
   final SnowflakeType? reportedGuildId;
-  @JsonKey(name: 'reported_channel_id')
+  @JsonKey(includeIfNull: false, name: 'reported_channel_id')
   final SnowflakeType? reportedChannelId;
-  @JsonKey(name: 'guild_context_id')
+  @JsonKey(includeIfNull: false, name: 'guild_context_id')
   final SnowflakeType? guildContextId;
-  @JsonKey(name: 'resolved_by_admin_id')
+  @JsonKey(includeIfNull: false, name: 'resolved_by_admin_id')
   final SnowflakeType? resolvedByAdminId;
 
   /// Field to sort reports by
-  @JsonKey(name: 'sort_by')
+  @JsonKey(includeIfNull: false, name: 'sort_by')
   final SearchReportsRequestSortBySortBy? sortBy;
 
   /// Sort order direction
-  @JsonKey(name: 'sort_order')
+  @JsonKey(includeIfNull: false, name: 'sort_order')
   final SearchReportsRequestSortOrderSortOrder? sortOrder;
 
   Map<String, Object?> toJson() => _$SearchReportsRequestToJson(this);

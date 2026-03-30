@@ -30,7 +30,7 @@ class EmailChangeRequestNewResponse {
   final String newCodeExpiresAt;
 
   /// ISO8601 timestamp when the new email code can be resent
-  @JsonKey(name: 'resend_available_at')
+  @JsonKey(includeIfNull: true, name: 'resend_available_at')
   final String? resendAvailableAt;
 
   Map<String, Object?> toJson() => _$EmailChangeRequestNewResponseToJson(this);

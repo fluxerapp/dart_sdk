@@ -17,7 +17,7 @@ UpdateFavoriteMemeBodySchema _$UpdateFavoriteMemeBodySchemaFromJson(
 Map<String, dynamic> _$UpdateFavoriteMemeBodySchemaToJson(
   UpdateFavoriteMemeBodySchema instance,
 ) => <String, dynamic>{
-  'name': instance.name,
-  'alt_text': instance.altText,
-  'tags': instance.tags,
+  'name': ?instance.name,
+  'alt_text': ?instance.altText,
+  'tags': ?instance.tags,
 };

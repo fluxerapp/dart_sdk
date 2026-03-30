@@ -15,12 +15,15 @@ enum RenderSpoilers {
   ifModerator(2),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
-  $unknown(null);
+  $unknown(null)
+  ;
 
   const RenderSpoilers(this.json);
 
-  factory RenderSpoilers.fromJson(int json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory RenderSpoilers.fromJson(int json) => values.firstWhere(
+    (e) => e.json == json,
+    orElse: () => $unknown,
+  );
 
   final int? json;
 

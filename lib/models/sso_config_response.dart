@@ -28,27 +28,29 @@ class SsoConfigResponse {
       _$SsoConfigResponseFromJson(json);
 
   final bool enabled;
-  @JsonKey(name: 'display_name')
+  @JsonKey(includeIfNull: true, name: 'display_name')
   final String? displayName;
+  @JsonKey(includeIfNull: true)
   final String? issuer;
-  @JsonKey(name: 'authorization_url')
+  @JsonKey(includeIfNull: true, name: 'authorization_url')
   final String? authorizationUrl;
-  @JsonKey(name: 'token_url')
+  @JsonKey(includeIfNull: true, name: 'token_url')
   final String? tokenUrl;
-  @JsonKey(name: 'userinfo_url')
+  @JsonKey(includeIfNull: true, name: 'userinfo_url')
   final String? userinfoUrl;
-  @JsonKey(name: 'jwks_url')
+  @JsonKey(includeIfNull: true, name: 'jwks_url')
   final String? jwksUrl;
-  @JsonKey(name: 'client_id')
+  @JsonKey(includeIfNull: true, name: 'client_id')
   final String? clientId;
   @JsonKey(name: 'client_secret_set')
   final bool clientSecretSet;
+  @JsonKey(includeIfNull: true)
   final String? scope;
   @JsonKey(name: 'allowed_domains')
   final List<String> allowedDomains;
   @JsonKey(name: 'auto_provision')
   final bool autoProvision;
-  @JsonKey(name: 'redirect_uri')
+  @JsonKey(includeIfNull: true, name: 'redirect_uri')
   final String? redirectUri;
 
   Map<String, Object?> toJson() => _$SsoConfigResponseToJson(this);

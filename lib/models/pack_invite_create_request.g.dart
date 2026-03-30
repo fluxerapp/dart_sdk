@@ -17,7 +17,7 @@ PackInviteCreateRequest _$PackInviteCreateRequestFromJson(
 Map<String, dynamic> _$PackInviteCreateRequestToJson(
   PackInviteCreateRequest instance,
 ) => <String, dynamic>{
-  'max_uses': instance.maxUses,
-  'max_age': instance.maxAge,
-  'unique': instance.unique,
+  'max_uses': ?instance.maxUses,
+  'max_age': ?instance.maxAge,
+  'unique': ?instance.unique,
 };

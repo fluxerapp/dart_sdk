@@ -21,21 +21,23 @@ class ListAuditLogsRequest {
   factory ListAuditLogsRequest.fromJson(Map<String, Object?> json) =>
       _$ListAuditLogsRequestFromJson(json);
 
-  @JsonKey(name: 'admin_user_id')
+  @JsonKey(includeIfNull: false, name: 'admin_user_id')
   final SnowflakeType? adminUserId;
 
   /// Filter by target entity type
-  @JsonKey(name: 'target_type')
+  @JsonKey(includeIfNull: false, name: 'target_type')
   final String? targetType;
 
   /// Filter by target entity ID (user, channel, role, invite code, etc.)
-  @JsonKey(name: 'target_id')
+  @JsonKey(includeIfNull: false, name: 'target_id')
   final String? targetId;
 
   /// Maximum number of entries to return
+  @JsonKey(includeIfNull: false)
   final int? limit;
 
   /// Number of entries to skip
+  @JsonKey(includeIfNull: false)
   final int? offset;
 
   Map<String, Object?> toJson() => _$ListAuditLogsRequestToJson(this);

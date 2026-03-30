@@ -32,6 +32,6 @@ Map<String, dynamic> _$GiftCodeMetadataResponseToJson(
   'duration_months': instance.durationMonths,
   'created_at': instance.createdAt.toIso8601String(),
   'created_by': instance.createdBy,
-  'redeemed_at': instance.redeemedAt?.toIso8601String(),
-  'redeemed_by': instance.redeemedBy,
+  'redeemed_at': ?instance.redeemedAt?.toIso8601String(),
+  'redeemed_by': ?instance.redeemedBy,
 };

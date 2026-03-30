@@ -25,11 +25,11 @@ class GuildMemoryStatsResponseGuilds {
   factory GuildMemoryStatsResponseGuilds.fromJson(Map<String, Object?> json) =>
       _$GuildMemoryStatsResponseGuildsFromJson(json);
 
-  @JsonKey(name: 'guild_id')
+  @JsonKey(includeIfNull: true, name: 'guild_id')
   final SnowflakeType? guildId;
   @JsonKey(name: 'guild_name')
   final String guildName;
-  @JsonKey(name: 'guild_icon')
+  @JsonKey(includeIfNull: true, name: 'guild_icon')
   final String? guildIcon;
   final Int64StringType memory;
   @JsonKey(name: 'member_count')

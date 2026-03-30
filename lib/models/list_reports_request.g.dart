@@ -17,7 +17,7 @@ ListReportsRequest _$ListReportsRequestFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$ListReportsRequestToJson(ListReportsRequest instance) =>
     <String, dynamic>{
-      'status': instance.status,
-      'limit': instance.limit,
-      'offset': instance.offset,
+      'status': ?instance.status,
+      'limit': ?instance.limit,
+      'offset': ?instance.offset,
     };

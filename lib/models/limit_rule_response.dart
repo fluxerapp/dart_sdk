@@ -21,6 +21,7 @@ class LimitRuleResponse {
 
   /// Unique identifier for this limit rule
   final String id;
+  @JsonKey(includeIfNull: false)
   final LimitFilterResponse? filters;
 
   /// Map of limit keys to their override values (differences from defaults)

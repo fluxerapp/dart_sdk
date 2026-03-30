@@ -32,12 +32,12 @@ UserGuildSettingsUpdateRequest _$UserGuildSettingsUpdateRequestFromJson(
 Map<String, dynamic> _$UserGuildSettingsUpdateRequestToJson(
   UserGuildSettingsUpdateRequest instance,
 ) => <String, dynamic>{
-  'message_notifications': instance.messageNotifications,
-  'muted': instance.muted,
-  'mute_config': instance.muteConfig,
-  'mobile_push': instance.mobilePush,
-  'suppress_everyone': instance.suppressEveryone,
-  'suppress_roles': instance.suppressRoles,
-  'hide_muted_channels': instance.hideMutedChannels,
-  'channel_overrides': instance.channelOverrides,
+  'message_notifications': ?instance.messageNotifications,
+  'muted': ?instance.muted,
+  'mute_config': ?instance.muteConfig,
+  'mobile_push': ?instance.mobilePush,
+  'suppress_everyone': ?instance.suppressEveryone,
+  'suppress_roles': ?instance.suppressRoles,
+  'hide_muted_channels': ?instance.hideMutedChannels,
+  'channel_overrides': ?instance.channelOverrides,
 };

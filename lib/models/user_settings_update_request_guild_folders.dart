@@ -30,13 +30,17 @@ class UserSettingsUpdateRequestGuildFolders {
   final int id;
 
   /// Display name of the folder
+  @JsonKey(includeIfNull: false)
   final String? name;
 
   /// Color of the folder as integer
+  @JsonKey(includeIfNull: false)
   final Int32Type? color;
+  @JsonKey(includeIfNull: false)
   final GuildFolderFlags? flags;
 
   /// Selected icon for the guild folder
+  @JsonKey(includeIfNull: false)
   final UserSettingsUpdateRequestGuildFoldersIconIcon? icon;
 
   /// Guild IDs in this folder

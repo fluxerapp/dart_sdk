@@ -76,6 +76,6 @@ Map<String, dynamic> _$ReportAdminResponseSchemaToJson(
   'resolved_at': instance.resolvedAt,
   'resolved_by_admin_id': instance.resolvedByAdminId,
   'public_comment': instance.publicComment,
-  'mutual_dm_channel_id': instance.mutualDmChannelId,
-  'message_context': instance.messageContext,
+  'mutual_dm_channel_id': ?instance.mutualDmChannelId,
+  'message_context': ?instance.messageContext,
 };

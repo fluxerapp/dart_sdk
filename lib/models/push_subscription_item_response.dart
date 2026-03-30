@@ -21,7 +21,7 @@ class PushSubscriptionItemResponse {
   final String subscriptionId;
 
   /// The user agent that registered this subscription
-  @JsonKey(name: 'user_agent')
+  @JsonKey(includeIfNull: true, name: 'user_agent')
   final String? userAgent;
 
   Map<String, Object?> toJson() => _$PushSubscriptionItemResponseToJson(this);

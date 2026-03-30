@@ -49,7 +49,7 @@ class ScheduledMessageResponseSchema {
   final ScheduledMessageResponseSchemaStatusStatus status;
 
   /// A human-readable reason for the current status, if applicable
-  @JsonKey(name: 'status_reason')
+  @JsonKey(includeIfNull: true, name: 'status_reason')
   final String? statusReason;
 
   /// The message content and metadata to be sent
@@ -60,7 +60,7 @@ class ScheduledMessageResponseSchema {
   final String createdAt;
 
   /// The ISO 8601 timestamp when the message was marked invalid
-  @JsonKey(name: 'invalidated_at')
+  @JsonKey(includeIfNull: true, name: 'invalidated_at')
   final String? invalidatedAt;
 
   Map<String, Object?> toJson() => _$ScheduledMessageResponseSchemaToJson(this);

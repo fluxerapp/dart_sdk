@@ -63,7 +63,8 @@ enum DsaReportMessageRequestReporterCountryOfResidenceReporterCountryOfResidence
   se('SE'),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
-  $unknown(null);
+  $unknown(null)
+  ;
 
   const DsaReportMessageRequestReporterCountryOfResidenceReporterCountryOfResidence(
     this.json,
@@ -71,7 +72,10 @@ enum DsaReportMessageRequestReporterCountryOfResidenceReporterCountryOfResidence
 
   factory DsaReportMessageRequestReporterCountryOfResidenceReporterCountryOfResidence.fromJson(
     String json,
-  ) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  ) => values.firstWhere(
+    (e) => e.json == json,
+    orElse: () => $unknown,
+  );
 
   final String? json;
 

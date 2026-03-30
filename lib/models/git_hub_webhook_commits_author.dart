@@ -13,6 +13,7 @@ class GitHubWebhookCommitsAuthor {
   factory GitHubWebhookCommitsAuthor.fromJson(Map<String, Object?> json) =>
       _$GitHubWebhookCommitsAuthorFromJson(json);
 
+  @JsonKey(includeIfNull: false)
   final String? username;
   final String name;
 

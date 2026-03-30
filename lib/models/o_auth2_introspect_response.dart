@@ -29,18 +29,23 @@ class OAuth2IntrospectResponse {
   final bool active;
 
   /// The space-separated list of scopes
+  @JsonKey(includeIfNull: false)
   final String? scope;
-  @JsonKey(name: 'client_id')
+  @JsonKey(includeIfNull: false, name: 'client_id')
   final SnowflakeType? clientId;
 
   /// The username of the token owner
+  @JsonKey(includeIfNull: false)
   final String? username;
 
   /// The type of token
-  @JsonKey(name: 'token_type')
+  @JsonKey(includeIfNull: false, name: 'token_type')
   final String? tokenType;
+  @JsonKey(includeIfNull: false)
   final Int32Type? exp;
+  @JsonKey(includeIfNull: false)
   final Int32Type? iat;
+  @JsonKey(includeIfNull: false)
   final SnowflakeType? sub;
 
   Map<String, Object?> toJson() => _$OAuth2IntrospectResponseToJson(this);

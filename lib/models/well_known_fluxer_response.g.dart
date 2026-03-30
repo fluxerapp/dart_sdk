@@ -64,8 +64,8 @@ Map<String, dynamic> _$WellKnownFluxerResponseToJson(
   'limits': instance.limits,
   'push': instance.push,
   'app_public': instance.appPublic,
-  'federation': instance.federation,
-  'public_key': instance.publicKey,
-  'oauth2': instance.oauth2,
-  'gateway': instance.gateway,
+  'federation': ?instance.federation,
+  'public_key': ?instance.publicKey,
+  'oauth2': ?instance.oauth2,
+  'gateway': ?instance.gateway,
 };

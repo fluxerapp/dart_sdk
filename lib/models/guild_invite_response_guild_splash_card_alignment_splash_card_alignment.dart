@@ -15,7 +15,8 @@ enum GuildInviteResponseGuildSplashCardAlignmentSplashCardAlignment {
   value2(2),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
-  $unknown(null);
+  $unknown(null)
+  ;
 
   const GuildInviteResponseGuildSplashCardAlignmentSplashCardAlignment(
     this.json,
@@ -23,7 +24,10 @@ enum GuildInviteResponseGuildSplashCardAlignmentSplashCardAlignment {
 
   factory GuildInviteResponseGuildSplashCardAlignmentSplashCardAlignment.fromJson(
     int json,
-  ) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  ) => values.firstWhere(
+    (e) => e.json == json,
+    orElse: () => $unknown,
+  );
 
   final int? json;
 

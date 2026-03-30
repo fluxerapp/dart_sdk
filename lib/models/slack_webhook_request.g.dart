@@ -23,8 +23,8 @@ SlackWebhookRequest _$SlackWebhookRequestFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$SlackWebhookRequestToJson(
   SlackWebhookRequest instance,
 ) => <String, dynamic>{
-  'text': instance.text,
-  'username': instance.username,
-  'icon_url': instance.iconUrl,
-  'attachments': instance.attachments,
+  'text': ?instance.text,
+  'username': ?instance.username,
+  'icon_url': ?instance.iconUrl,
+  'attachments': ?instance.attachments,
 };

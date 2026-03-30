@@ -18,6 +18,7 @@ class GuildRolePositionItem {
   final SnowflakeType id;
 
   /// The new position for the role
+  @JsonKey(includeIfNull: false)
   final int? position;
 
   Map<String, Object?> toJson() => _$GuildRolePositionItemToJson(this);

@@ -19,7 +19,9 @@ class KlipyRegisterShareRequest {
   final String id;
 
   /// The search query used to find the clip
+  @JsonKey(includeIfNull: false)
   final String? q;
+  @JsonKey(includeIfNull: false)
   final Locale? locale;
 
   Map<String, Object?> toJson() => _$KlipyRegisterShareRequestToJson(this);

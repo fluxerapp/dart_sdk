@@ -25,9 +25,9 @@ Map<String, dynamic> _$WebAuthnCredentialUpdateRequestToJson(
   WebAuthnCredentialUpdateRequest instance,
 ) => <String, dynamic>{
   'name': instance.name,
-  'password': instance.password,
-  'mfa_method': instance.mfaMethod,
-  'mfa_code': instance.mfaCode,
-  'webauthn_response': instance.webauthnResponse,
-  'webauthn_challenge': instance.webauthnChallenge,
+  'password': ?instance.password,
+  'mfa_method': ?instance.mfaMethod,
+  'mfa_code': ?instance.mfaCode,
+  'webauthn_response': ?instance.webauthnResponse,
+  'webauthn_challenge': ?instance.webauthnChallenge,
 };

@@ -17,7 +17,7 @@ class IpBanListEntrySchema {
   final String ip;
 
   /// Reverse DNS hostname for the IP, if available
-  @JsonKey(name: 'reverse_dns')
+  @JsonKey(includeIfNull: true, name: 'reverse_dns')
   final String? reverseDns;
 
   Map<String, Object?> toJson() => _$IpBanListEntrySchemaToJson(this);

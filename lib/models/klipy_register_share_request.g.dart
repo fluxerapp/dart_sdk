@@ -20,6 +20,6 @@ Map<String, dynamic> _$KlipyRegisterShareRequestToJson(
   KlipyRegisterShareRequest instance,
 ) => <String, dynamic>{
   'id': instance.id,
-  'q': instance.q,
-  'locale': instance.locale,
+  'q': ?instance.q,
+  'locale': ?instance.locale,
 };

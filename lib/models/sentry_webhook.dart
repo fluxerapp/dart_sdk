@@ -17,9 +17,13 @@ class SentryWebhook {
   factory SentryWebhook.fromJson(Map<String, Object?> json) =>
       _$SentryWebhookFromJson(json);
 
+  @JsonKey(includeIfNull: false)
   final String? action;
+  @JsonKey(includeIfNull: false)
   final SentryWebhookInstallation? installation;
+  @JsonKey(includeIfNull: false)
   final SentryWebhookData? data;
+  @JsonKey(includeIfNull: false)
   final SentryWebhookActor? actor;
 
   Map<String, Object?> toJson() => _$SentryWebhookToJson(this);

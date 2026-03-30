@@ -21,16 +21,19 @@ class SlackWebhookRequest {
       _$SlackWebhookRequestFromJson(json);
 
   /// Main text content of the message
+  @JsonKey(includeIfNull: false)
   final String? text;
 
   /// Override the default username of the webhook
+  @JsonKey(includeIfNull: false)
   final String? username;
 
   /// Override the default icon of the webhook
-  @JsonKey(name: 'icon_url')
+  @JsonKey(includeIfNull: false, name: 'icon_url')
   final String? iconUrl;
 
   /// Array of attachment objects
+  @JsonKey(includeIfNull: false)
   final List<SlackWebhookRequestAttachments>? attachments;
 
   Map<String, Object?> toJson() => _$SlackWebhookRequestToJson(this);

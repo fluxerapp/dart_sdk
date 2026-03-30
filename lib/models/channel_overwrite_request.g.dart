@@ -20,6 +20,6 @@ Map<String, dynamic> _$ChannelOverwriteRequestToJson(
 ) => <String, dynamic>{
   'id': instance.id,
   'type': instance.type,
-  'allow': instance.allow,
-  'deny': instance.deny,
+  'allow': ?instance.allow,
+  'deny': ?instance.deny,
 };

@@ -23,7 +23,7 @@ class LookupMessageRequest {
   final SnowflakeType channelId;
   @JsonKey(name: 'message_id')
   final SnowflakeType messageId;
-  @JsonKey(name: 'context_limit')
+  @JsonKey(includeIfNull: false, name: 'context_limit')
   final int? contextLimit;
 
   Map<String, Object?> toJson() => _$LookupMessageRequestToJson(this);

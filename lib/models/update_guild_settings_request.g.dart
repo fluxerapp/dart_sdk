@@ -38,10 +38,10 @@ Map<String, dynamic> _$UpdateGuildSettingsRequestToJson(
   UpdateGuildSettingsRequest instance,
 ) => <String, dynamic>{
   'guild_id': instance.guildId,
-  'verification_level': instance.verificationLevel,
-  'mfa_level': instance.mfaLevel,
-  'nsfw_level': instance.nsfwLevel,
-  'explicit_content_filter': instance.explicitContentFilter,
-  'default_message_notifications': instance.defaultMessageNotifications,
-  'disabled_operations': instance.disabledOperations,
+  'verification_level': ?instance.verificationLevel,
+  'mfa_level': ?instance.mfaLevel,
+  'nsfw_level': ?instance.nsfwLevel,
+  'explicit_content_filter': ?instance.explicitContentFilter,
+  'default_message_notifications': ?instance.defaultMessageNotifications,
+  'disabled_operations': ?instance.disabledOperations,
 };

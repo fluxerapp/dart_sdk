@@ -22,6 +22,7 @@ class MessageShredResponse {
   final MessageShredResponseSuccessSuccess success;
   @JsonKey(name: 'job_id')
   final String jobId;
+  @JsonKey(includeIfNull: false)
   final int? requested;
 
   Map<String, Object?> toJson() => _$MessageShredResponseToJson(this);

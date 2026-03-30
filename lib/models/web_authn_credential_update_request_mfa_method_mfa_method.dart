@@ -15,13 +15,17 @@ enum WebAuthnCredentialUpdateRequestMfaMethodMfaMethod {
   webAuthn('webauthn'),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
-  $unknown(null);
+  $unknown(null)
+  ;
 
   const WebAuthnCredentialUpdateRequestMfaMethodMfaMethod(this.json);
 
   factory WebAuthnCredentialUpdateRequestMfaMethodMfaMethod.fromJson(
     String json,
-  ) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  ) => values.firstWhere(
+    (e) => e.json == json,
+    orElse: () => $unknown,
+  );
 
   final String? json;
 

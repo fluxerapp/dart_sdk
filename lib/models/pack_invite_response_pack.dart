@@ -32,6 +32,7 @@ class PackInviteResponsePack {
   final String name;
 
   /// The description of the pack
+  @JsonKey(includeIfNull: false)
   final String? description;
 
   /// The type of pack (emoji or sticker)

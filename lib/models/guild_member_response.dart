@@ -32,16 +32,19 @@ class GuildMemberResponse {
   final UserPartialResponse user;
 
   /// The nickname of the member in this guild
+  @JsonKey(includeIfNull: false)
   final String? nick;
 
   /// The hash of the member guild-specific avatar
+  @JsonKey(includeIfNull: false)
   final String? avatar;
 
   /// The hash of the member guild-specific banner
+  @JsonKey(includeIfNull: false)
   final String? banner;
 
   /// The accent colour of the member guild profile as an integer
-  @JsonKey(name: 'accent_color')
+  @JsonKey(includeIfNull: false, name: 'accent_color')
   final Int32Type? accentColor;
 
   /// Array of role IDs the member has
@@ -58,9 +61,9 @@ class GuildMemberResponse {
   final bool deaf;
 
   /// ISO8601 timestamp until which the member is timed out
-  @JsonKey(name: 'communication_disabled_until')
+  @JsonKey(includeIfNull: false, name: 'communication_disabled_until')
   final DateTime? communicationDisabledUntil;
-  @JsonKey(name: 'profile_flags')
+  @JsonKey(includeIfNull: false, name: 'profile_flags')
   final GuildMemberProfileFlags? profileFlags;
 
   Map<String, Object?> toJson() => _$GuildMemberResponseToJson(this);

@@ -13,7 +13,9 @@ class GitHubWebhookCheckRunOutput {
   factory GitHubWebhookCheckRunOutput.fromJson(Map<String, Object?> json) =>
       _$GitHubWebhookCheckRunOutputFromJson(json);
 
+  @JsonKey(includeIfNull: false)
   final String? title;
+  @JsonKey(includeIfNull: false)
   final String? summary;
 
   Map<String, Object?> toJson() => _$GitHubWebhookCheckRunOutputToJson(this);

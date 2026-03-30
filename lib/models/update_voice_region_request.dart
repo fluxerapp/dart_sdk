@@ -30,35 +30,39 @@ class UpdateVoiceRegionRequest {
   final String id;
 
   /// Display name of the voice region
+  @JsonKey(includeIfNull: false)
   final String? name;
 
   /// Emoji representing the region
+  @JsonKey(includeIfNull: false)
   final String? emoji;
 
   /// Geographic latitude coordinate
+  @JsonKey(includeIfNull: false)
   final num? latitude;
 
   /// Geographic longitude coordinate
+  @JsonKey(includeIfNull: false)
   final num? longitude;
 
   /// Whether this is the default region
-  @JsonKey(name: 'is_default')
+  @JsonKey(includeIfNull: false, name: 'is_default')
   final bool? isDefault;
 
   /// Whether this region is restricted to VIP users
-  @JsonKey(name: 'vip_only')
+  @JsonKey(includeIfNull: false, name: 'vip_only')
   final bool? vipOnly;
 
   /// Guild features required to use this region
-  @JsonKey(name: 'required_guild_features')
+  @JsonKey(includeIfNull: false, name: 'required_guild_features')
   final List<String>? requiredGuildFeatures;
 
   /// Guild IDs explicitly allowed to use this region
-  @JsonKey(name: 'allowed_guild_ids')
+  @JsonKey(includeIfNull: false, name: 'allowed_guild_ids')
   final List<SnowflakeType>? allowedGuildIds;
 
   /// User IDs explicitly allowed to use this region
-  @JsonKey(name: 'allowed_user_ids')
+  @JsonKey(includeIfNull: false, name: 'allowed_user_ids')
   final List<SnowflakeType>? allowedUserIds;
 
   Map<String, Object?> toJson() => _$UpdateVoiceRegionRequestToJson(this);

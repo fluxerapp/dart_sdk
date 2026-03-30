@@ -25,11 +25,11 @@ class BulkUpdateUserFlagsRequest {
   final List<SnowflakeType> userIds;
 
   /// User flags to add to all specified users
-  @JsonKey(name: 'add_flags')
+  @JsonKey(includeIfNull: false, name: 'add_flags')
   final List<UserFlags>? addFlags;
 
   /// User flags to remove from all specified users
-  @JsonKey(name: 'remove_flags')
+  @JsonKey(includeIfNull: false, name: 'remove_flags')
   final List<UserFlags>? removeFlags;
 
   Map<String, Object?> toJson() => _$BulkUpdateUserFlagsRequestToJson(this);

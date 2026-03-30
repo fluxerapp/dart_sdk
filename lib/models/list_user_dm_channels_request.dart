@@ -22,10 +22,13 @@ class ListUserDmChannelsRequest {
 
   @JsonKey(name: 'user_id')
   final SnowflakeType userId;
+  @JsonKey(includeIfNull: false)
   final SnowflakeType? before;
+  @JsonKey(includeIfNull: false)
   final SnowflakeType? after;
 
   /// Maximum number of DM channels to return
+  @JsonKey(includeIfNull: false)
   final int? limit;
 
   Map<String, Object?> toJson() => _$ListUserDmChannelsRequestToJson(this);

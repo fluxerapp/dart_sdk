@@ -37,11 +37,11 @@ class WellKnownFluxerResponseFeatures {
   final bool selfHosted;
 
   /// Whether manual review mode is enabled for registrations
-  @JsonKey(name: 'manual_review_enabled')
+  @JsonKey(includeIfNull: false, name: 'manual_review_enabled')
   final bool? manualReviewEnabled;
 
   /// Whether presigned attachment uploads are enabled
-  @JsonKey(name: 'presigned_attachment_uploads')
+  @JsonKey(includeIfNull: false, name: 'presigned_attachment_uploads')
   final bool? presignedAttachmentUploads;
 
   Map<String, Object?> toJson() =>

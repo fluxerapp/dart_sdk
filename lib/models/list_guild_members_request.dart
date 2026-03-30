@@ -21,7 +21,9 @@ class ListGuildMembersRequest {
 
   @JsonKey(name: 'guild_id')
   final SnowflakeType guildId;
+  @JsonKey(includeIfNull: false)
   final int? limit;
+  @JsonKey(includeIfNull: false)
   final int? offset;
 
   Map<String, Object?> toJson() => _$ListGuildMembersRequestToJson(this);

@@ -18,6 +18,6 @@ Map<String, dynamic> _$GuildRoleCreateRequestToJson(
   GuildRoleCreateRequest instance,
 ) => <String, dynamic>{
   'name': instance.name,
-  'color': instance.color,
-  'permissions': instance.permissions,
+  'color': ?instance.color,
+  'permissions': ?instance.permissions,
 };

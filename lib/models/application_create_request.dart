@@ -24,15 +24,15 @@ class ApplicationCreateRequest {
   final String name;
 
   /// The redirect URIs for OAuth2 flows
-  @JsonKey(name: 'redirect_uris')
+  @JsonKey(includeIfNull: false, name: 'redirect_uris')
   final List<OAuth2RedirectUriCreateType>? redirectUris;
 
   /// Whether the bot can be invited by anyone
-  @JsonKey(name: 'bot_public')
+  @JsonKey(includeIfNull: false, name: 'bot_public')
   final bool? botPublic;
 
   /// Whether the bot requires OAuth2 code grant
-  @JsonKey(name: 'bot_require_code_grant')
+  @JsonKey(includeIfNull: false, name: 'bot_require_code_grant')
   final bool? botRequireCodeGrant;
 
   Map<String, Object?> toJson() => _$ApplicationCreateRequestToJson(this);

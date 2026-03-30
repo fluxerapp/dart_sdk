@@ -20,8 +20,8 @@ AuthSessionClientInfo _$AuthSessionClientInfoFromJson(
 Map<String, dynamic> _$AuthSessionClientInfoToJson(
   AuthSessionClientInfo instance,
 ) => <String, dynamic>{
-  'platform': instance.platform,
-  'os': instance.os,
-  'browser': instance.browser,
-  'location': instance.location,
+  'platform': ?instance.platform,
+  'os': ?instance.os,
+  'browser': ?instance.browser,
+  'location': ?instance.location,
 };

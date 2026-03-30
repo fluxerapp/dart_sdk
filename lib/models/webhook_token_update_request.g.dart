@@ -15,4 +15,4 @@ WebhookTokenUpdateRequest _$WebhookTokenUpdateRequestFromJson(
 
 Map<String, dynamic> _$WebhookTokenUpdateRequestToJson(
   WebhookTokenUpdateRequest instance,
-) => <String, dynamic>{'name': instance.name, 'avatar': instance.avatar};
+) => <String, dynamic>{'name': ?instance.name, 'avatar': ?instance.avatar};

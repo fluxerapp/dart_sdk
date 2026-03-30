@@ -17,7 +17,7 @@ WebhookUpdateRequest _$WebhookUpdateRequestFromJson(
 Map<String, dynamic> _$WebhookUpdateRequestToJson(
   WebhookUpdateRequest instance,
 ) => <String, dynamic>{
-  'name': instance.name,
-  'avatar': instance.avatar,
-  'channel_id': instance.channelId,
+  'name': ?instance.name,
+  'avatar': ?instance.avatar,
+  'channel_id': ?instance.channelId,
 };

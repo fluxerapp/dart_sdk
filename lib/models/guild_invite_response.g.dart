@@ -36,9 +36,9 @@ Map<String, dynamic> _$GuildInviteResponseToJson(
   'type': instance.type,
   'guild': instance.guild,
   'channel': instance.channel,
-  'inviter': instance.inviter,
+  'inviter': ?instance.inviter,
   'member_count': instance.memberCount,
   'presence_count': instance.presenceCount,
-  'expires_at': instance.expiresAt?.toIso8601String(),
+  'expires_at': ?instance.expiresAt?.toIso8601String(),
   'temporary': instance.temporary,
 };

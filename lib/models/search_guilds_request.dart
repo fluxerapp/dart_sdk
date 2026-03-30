@@ -13,8 +13,11 @@ class SearchGuildsRequest {
   factory SearchGuildsRequest.fromJson(Map<String, Object?> json) =>
       _$SearchGuildsRequestFromJson(json);
 
+  @JsonKey(includeIfNull: false)
   final String? query;
+  @JsonKey(includeIfNull: false)
   final int? limit;
+  @JsonKey(includeIfNull: false)
   final int? offset;
 
   Map<String, Object?> toJson() => _$SearchGuildsRequestToJson(this);

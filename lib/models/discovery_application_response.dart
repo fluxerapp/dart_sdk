@@ -40,11 +40,11 @@ class DiscoveryApplicationResponse {
   final String appliedAt;
 
   /// Review timestamp
-  @JsonKey(name: 'reviewed_at')
+  @JsonKey(includeIfNull: false, name: 'reviewed_at')
   final String? reviewedAt;
 
   /// Review reason
-  @JsonKey(name: 'review_reason')
+  @JsonKey(includeIfNull: false, name: 'review_reason')
   final String? reviewReason;
 
   Map<String, Object?> toJson() => _$DiscoveryApplicationResponseToJson(this);

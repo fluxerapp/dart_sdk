@@ -33,12 +33,13 @@ class MessageShredStatusProgressResponse {
   final Int32Type total;
   final Int32Type processed;
   final Int32Type skipped;
-  @JsonKey(name: 'started_at')
+  @JsonKey(includeIfNull: false, name: 'started_at')
   final String? startedAt;
-  @JsonKey(name: 'completed_at')
+  @JsonKey(includeIfNull: false, name: 'completed_at')
   final String? completedAt;
-  @JsonKey(name: 'failed_at')
+  @JsonKey(includeIfNull: false, name: 'failed_at')
   final String? failedAt;
+  @JsonKey(includeIfNull: false)
   final String? error;
 
   Map<String, Object?> toJson() =>

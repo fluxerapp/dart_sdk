@@ -25,11 +25,11 @@ class AuthSessionResponse {
   final String idHash;
 
   /// Client metadata recorded for this session
-  @JsonKey(name: 'client_info')
+  @JsonKey(includeIfNull: false, name: 'client_info')
   final AuthSessionClientInfo? clientInfo;
 
   /// Approximate timestamp of the last session activity
-  @JsonKey(name: 'approx_last_used_at')
+  @JsonKey(includeIfNull: false, name: 'approx_last_used_at')
   final DateTime? approxLastUsedAt;
 
   /// Whether this is the current session making the request

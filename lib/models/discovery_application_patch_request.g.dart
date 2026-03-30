@@ -16,6 +16,6 @@ DiscoveryApplicationPatchRequest _$DiscoveryApplicationPatchRequestFromJson(
 Map<String, dynamic> _$DiscoveryApplicationPatchRequestToJson(
   DiscoveryApplicationPatchRequest instance,
 ) => <String, dynamic>{
-  'description': instance.description,
-  'category_type': instance.categoryType,
+  'description': ?instance.description,
+  'category_type': ?instance.categoryType,
 };

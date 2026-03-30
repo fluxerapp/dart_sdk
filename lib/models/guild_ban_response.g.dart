@@ -20,8 +20,8 @@ GuildBanResponse _$GuildBanResponseFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$GuildBanResponseToJson(GuildBanResponse instance) =>
     <String, dynamic>{
       'user': instance.user,
-      'reason': instance.reason,
+      'reason': ?instance.reason,
       'moderator_id': instance.moderatorId,
       'banned_at': instance.bannedAt.toIso8601String(),
-      'expires_at': instance.expiresAt?.toIso8601String(),
+      'expires_at': ?instance.expiresAt?.toIso8601String(),
     };

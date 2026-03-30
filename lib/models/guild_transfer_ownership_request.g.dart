@@ -17,5 +17,5 @@ Map<String, dynamic> _$GuildTransferOwnershipRequestToJson(
   GuildTransferOwnershipRequest instance,
 ) => <String, dynamic>{
   'new_owner_id': instance.newOwnerId,
-  'password': instance.password,
+  'password': ?instance.password,
 };

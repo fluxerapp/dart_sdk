@@ -19,7 +19,7 @@ Map<String, dynamic> _$GuildStickerCreateRequestToJson(
   GuildStickerCreateRequest instance,
 ) => <String, dynamic>{
   'name': instance.name,
-  'description': instance.description,
-  'tags': instance.tags,
+  'description': ?instance.description,
+  'tags': ?instance.tags,
   'image': instance.image,
 };

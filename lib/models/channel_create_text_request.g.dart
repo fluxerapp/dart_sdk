@@ -27,13 +27,13 @@ ChannelCreateTextRequest _$ChannelCreateTextRequestFromJson(
 Map<String, dynamic> _$ChannelCreateTextRequestToJson(
   ChannelCreateTextRequest instance,
 ) => <String, dynamic>{
-  'topic': instance.topic,
-  'url': instance.url,
-  'parent_id': instance.parentId,
-  'bitrate': instance.bitrate,
-  'user_limit': instance.userLimit,
-  'permission_overwrites': instance.permissionOverwrites,
-  'nsfw': instance.nsfw,
+  'topic': ?instance.topic,
+  'url': ?instance.url,
+  'parent_id': ?instance.parentId,
+  'bitrate': ?instance.bitrate,
+  'user_limit': ?instance.userLimit,
+  'permission_overwrites': ?instance.permissionOverwrites,
+  'nsfw': ?instance.nsfw,
   'type': instance.type,
   'name': instance.name,
 };

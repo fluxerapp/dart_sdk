@@ -16,5 +16,5 @@ Map<String, dynamic> _$LoginRequestToJson(LoginRequest instance) =>
     <String, dynamic>{
       'email': instance.email,
       'password': instance.password,
-      'invite_code': instance.inviteCode,
+      'invite_code': ?instance.inviteCode,
     };

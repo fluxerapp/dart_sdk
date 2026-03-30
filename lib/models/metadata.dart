@@ -31,8 +31,11 @@ class Metadata {
   final String category;
   final String scope;
   final bool isToggle;
+  @JsonKey(includeIfNull: false)
   final MetadataUnitUnit? unit;
+  @JsonKey(includeIfNull: false)
   final num? min;
+  @JsonKey(includeIfNull: false)
   final num? max;
 
   Map<String, Object?> toJson() => _$MetadataToJson(this);

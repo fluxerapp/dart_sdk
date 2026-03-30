@@ -25,5 +25,5 @@ Map<String, dynamic> _$OAuth2MeResponseToJson(OAuth2MeResponse instance) =>
       'application': instance.application,
       'scopes': instance.scopes,
       'expires': instance.expires,
-      'user': instance.user,
+      'user': ?instance.user,
     };

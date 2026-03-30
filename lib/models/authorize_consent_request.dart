@@ -24,24 +24,26 @@ class AuthorizeConsentRequest {
       _$AuthorizeConsentRequestFromJson(json);
 
   /// The OAuth2 response type
-  @JsonKey(name: 'response_type')
+  @JsonKey(includeIfNull: false, name: 'response_type')
   final String? responseType;
   @JsonKey(name: 'client_id')
   final SnowflakeType clientId;
 
   /// The URI to redirect to after authorization
-  @JsonKey(name: 'redirect_uri')
+  @JsonKey(includeIfNull: false, name: 'redirect_uri')
   final String? redirectUri;
 
   /// The space-separated list of requested scopes
   final String scope;
 
   /// A random string for CSRF protection
+  @JsonKey(includeIfNull: false)
   final String? state;
 
   /// The bot permissions to request
+  @JsonKey(includeIfNull: false)
   final String? permissions;
-  @JsonKey(name: 'guild_id')
+  @JsonKey(includeIfNull: false, name: 'guild_id')
   final SnowflakeType? guildId;
 
   Map<String, Object?> toJson() => _$AuthorizeConsentRequestToJson(this);

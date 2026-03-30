@@ -21,15 +21,19 @@ class AuthSessionClientInfo {
       _$AuthSessionClientInfoFromJson(json);
 
   /// The platform reported by the client
+  @JsonKey(includeIfNull: false)
   final String? platform;
 
   /// The operating system reported by the client
+  @JsonKey(includeIfNull: false)
   final String? os;
 
   /// The browser reported by the client
+  @JsonKey(includeIfNull: false)
   final String? browser;
 
   /// The geolocation data sent by the client
+  @JsonKey(includeIfNull: false)
   final AuthSessionLocation? location;
 
   Map<String, Object?> toJson() => _$AuthSessionClientInfoToJson(this);

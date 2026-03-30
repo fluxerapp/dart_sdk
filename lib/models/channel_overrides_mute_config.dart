@@ -17,7 +17,7 @@ class ChannelOverridesMuteConfig {
       _$ChannelOverridesMuteConfigFromJson(json);
 
   /// ISO8601 timestamp of when the mute expires
-  @JsonKey(name: 'end_time')
+  @JsonKey(includeIfNull: true, name: 'end_time')
   final String? endTime;
 
   /// The selected mute duration in seconds

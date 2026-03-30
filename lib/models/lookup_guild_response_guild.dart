@@ -52,12 +52,15 @@ class LookupGuildResponseGuild {
   @JsonKey(name: 'owner_id')
   final SnowflakeType ownerId;
   final String name;
-  @JsonKey(name: 'vanity_url_code')
+  @JsonKey(includeIfNull: true, name: 'vanity_url_code')
   final String? vanityUrlCode;
+  @JsonKey(includeIfNull: true)
   final String? icon;
+  @JsonKey(includeIfNull: true)
   final String? banner;
+  @JsonKey(includeIfNull: true)
   final String? splash;
-  @JsonKey(name: 'embed_splash')
+  @JsonKey(includeIfNull: true, name: 'embed_splash')
   final String? embedSplash;
   final List<String> features;
   @JsonKey(name: 'verification_level')
@@ -70,15 +73,15 @@ class LookupGuildResponseGuild {
   final GuildExplicitContentFilter explicitContentFilter;
   @JsonKey(name: 'default_message_notifications')
   final DefaultMessageNotifications defaultMessageNotifications;
-  @JsonKey(name: 'afk_channel_id')
+  @JsonKey(includeIfNull: true, name: 'afk_channel_id')
   final SnowflakeType? afkChannelId;
   @JsonKey(name: 'afk_timeout')
   final Int32Type afkTimeout;
-  @JsonKey(name: 'system_channel_id')
+  @JsonKey(includeIfNull: true, name: 'system_channel_id')
   final SnowflakeType? systemChannelId;
   @JsonKey(name: 'system_channel_flags')
   final SystemChannelFlags systemChannelFlags;
-  @JsonKey(name: 'rules_channel_id')
+  @JsonKey(includeIfNull: true, name: 'rules_channel_id')
   final SnowflakeType? rulesChannelId;
   @JsonKey(name: 'disabled_operations')
   final Int32Type disabledOperations;

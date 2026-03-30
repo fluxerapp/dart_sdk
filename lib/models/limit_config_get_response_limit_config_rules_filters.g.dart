@@ -19,6 +19,6 @@ _$LimitConfigGetResponseLimitConfigRulesFiltersFromJson(
 Map<String, dynamic> _$LimitConfigGetResponseLimitConfigRulesFiltersToJson(
   LimitConfigGetResponseLimitConfigRulesFilters instance,
 ) => <String, dynamic>{
-  'traits': instance.traits,
-  'guildFeatures': instance.guildFeatures,
+  'traits': ?instance.traits,
+  'guildFeatures': ?instance.guildFeatures,
 };

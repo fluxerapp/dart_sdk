@@ -18,6 +18,6 @@ Map<String, dynamic> _$ListGuildMembersRequestToJson(
   ListGuildMembersRequest instance,
 ) => <String, dynamic>{
   'guild_id': instance.guildId,
-  'limit': instance.limit,
-  'offset': instance.offset,
+  'limit': ?instance.limit,
+  'offset': ?instance.offset,
 };

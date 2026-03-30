@@ -20,6 +20,6 @@ Map<String, dynamic> _$TenorRegisterShareRequestToJson(
   TenorRegisterShareRequest instance,
 ) => <String, dynamic>{
   'id': instance.id,
-  'q': instance.q,
-  'locale': instance.locale,
+  'q': ?instance.q,
+  'locale': ?instance.locale,
 };

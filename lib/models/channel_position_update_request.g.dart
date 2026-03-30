@@ -20,8 +20,8 @@ Map<String, dynamic> _$ChannelPositionUpdateRequestToJson(
   ChannelPositionUpdateRequest instance,
 ) => <String, dynamic>{
   'id': instance.id,
-  'position': instance.position,
-  'parent_id': instance.parentId,
-  'preceding_sibling_id': instance.precedingSiblingId,
-  'lock_permissions': instance.lockPermissions,
+  'position': ?instance.position,
+  'parent_id': ?instance.parentId,
+  'preceding_sibling_id': ?instance.precedingSiblingId,
+  'lock_permissions': ?instance.lockPermissions,
 };

@@ -15,6 +15,7 @@ class LookupGuildResponse {
   factory LookupGuildResponse.fromJson(Map<String, Object?> json) =>
       _$LookupGuildResponseFromJson(json);
 
+  @JsonKey(includeIfNull: true)
   final LookupGuildResponseGuild? guild;
 
   Map<String, Object?> toJson() => _$LookupGuildResponseToJson(this);

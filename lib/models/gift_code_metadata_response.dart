@@ -36,11 +36,11 @@ class GiftCodeMetadataResponse {
   final UserPartialResponse createdBy;
 
   /// Timestamp when the gift code was redeemed
-  @JsonKey(name: 'redeemed_at')
+  @JsonKey(includeIfNull: false, name: 'redeemed_at')
   final DateTime? redeemedAt;
 
   /// The user who redeemed the gift code
-  @JsonKey(name: 'redeemed_by')
+  @JsonKey(includeIfNull: false, name: 'redeemed_by')
   final UserPartialResponse? redeemedBy;
 
   Map<String, Object?> toJson() => _$GiftCodeMetadataResponseToJson(this);

@@ -19,10 +19,11 @@ class HandoffStatusResponse {
   final String status;
 
   /// Authentication token if handoff is complete
+  @JsonKey(includeIfNull: false)
   final String? token;
 
   /// User ID if handoff is complete
-  @JsonKey(name: 'user_id')
+  @JsonKey(includeIfNull: false, name: 'user_id')
   final SnowflakeType? userId;
 
   Map<String, Object?> toJson() => _$HandoffStatusResponseToJson(this);

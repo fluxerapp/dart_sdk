@@ -18,7 +18,7 @@ class UserGuildSettingsUpdateRequestMuteConfig {
   ) => _$UserGuildSettingsUpdateRequestMuteConfigFromJson(json);
 
   /// When the mute expires
-  @JsonKey(name: 'end_time')
+  @JsonKey(includeIfNull: false, name: 'end_time')
   final dynamic endTime;
 
   /// Selected mute duration

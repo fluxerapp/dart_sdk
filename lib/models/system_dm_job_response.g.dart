@@ -36,9 +36,9 @@ Map<String, dynamic> _$SystemDmJobResponseToJson(
   'sent_count': instance.sentCount,
   'failed_count': instance.failedCount,
   'created_at': instance.createdAt,
-  'approved_at': instance.approvedAt,
-  'registration_start': instance.registrationStart,
-  'registration_end': instance.registrationEnd,
+  'approved_at': ?instance.approvedAt,
+  'registration_start': ?instance.registrationStart,
+  'registration_end': ?instance.registrationEnd,
   'excluded_guild_ids': instance.excludedGuildIds,
-  'last_error': instance.lastError,
+  'last_error': ?instance.lastError,
 };

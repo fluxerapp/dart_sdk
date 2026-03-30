@@ -33,7 +33,7 @@ class DsaReportUserRequest {
   final String ticket;
 
   /// Additional context or details about the report
-  @JsonKey(name: 'additional_info')
+  @JsonKey(includeIfNull: false, name: 'additional_info')
   final String? additionalInfo;
 
   /// Full legal name of the person filing the report
@@ -46,18 +46,18 @@ class DsaReportUserRequest {
   reporterCountryOfResidence;
 
   /// Fluxer tag of the reporter if they have an account
-  @JsonKey(name: 'reporter_fluxer_tag')
+  @JsonKey(includeIfNull: false, name: 'reporter_fluxer_tag')
   final String? reporterFluxerTag;
 
   /// Type of report
   @JsonKey(name: 'report_type')
   final DsaReportUserRequestReportTypeReportType reportType;
   final UserReportCategoryEnum category;
-  @JsonKey(name: 'user_id')
+  @JsonKey(includeIfNull: false, name: 'user_id')
   final SnowflakeType? userId;
 
   /// Fluxer tag of the user being reported
-  @JsonKey(name: 'user_tag')
+  @JsonKey(includeIfNull: false, name: 'user_tag')
   final String? userTag;
 
   Map<String, Object?> toJson() => _$DsaReportUserRequestToJson(this);

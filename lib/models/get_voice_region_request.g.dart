@@ -17,5 +17,5 @@ Map<String, dynamic> _$GetVoiceRegionRequestToJson(
   GetVoiceRegionRequest instance,
 ) => <String, dynamic>{
   'id': instance.id,
-  'include_servers': instance.includeServers,
+  'include_servers': ?instance.includeServers,
 };

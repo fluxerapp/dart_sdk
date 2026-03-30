@@ -19,5 +19,5 @@ Map<String, dynamic> _$ChangeUsernameRequestToJson(
 ) => <String, dynamic>{
   'user_id': instance.userId,
   'username': instance.username,
-  'discriminator': instance.discriminator,
+  'discriminator': ?instance.discriminator,
 };

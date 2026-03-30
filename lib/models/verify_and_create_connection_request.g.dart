@@ -17,5 +17,5 @@ Map<String, dynamic> _$VerifyAndCreateConnectionRequestToJson(
   VerifyAndCreateConnectionRequest instance,
 ) => <String, dynamic>{
   'initiation_token': instance.initiationToken,
-  'visibility_flags': instance.visibilityFlags,
+  'visibility_flags': ?instance.visibilityFlags,
 };

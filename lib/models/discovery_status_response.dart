@@ -20,6 +20,7 @@ class DiscoveryStatusResponse {
       _$DiscoveryStatusResponseFromJson(json);
 
   /// Current discovery application, if any
+  @JsonKey(includeIfNull: false)
   final DiscoveryApplicationResponse? application;
 
   /// Whether the guild meets the requirements to apply for discovery

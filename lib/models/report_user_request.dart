@@ -26,9 +26,9 @@ class ReportUserRequest {
   final UserReportCategoryEnum category;
 
   /// Additional context or details about the report
-  @JsonKey(name: 'additional_info')
+  @JsonKey(includeIfNull: false, name: 'additional_info')
   final String? additionalInfo;
-  @JsonKey(name: 'guild_id')
+  @JsonKey(includeIfNull: false, name: 'guild_id')
   final SnowflakeType? guildId;
 
   Map<String, Object?> toJson() => _$ReportUserRequestToJson(this);

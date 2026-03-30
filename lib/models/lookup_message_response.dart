@@ -20,7 +20,7 @@ class LookupMessageResponse {
       _$LookupMessageResponseFromJson(json);
 
   final List<LookupMessageResponseMessages> messages;
-  @JsonKey(name: 'message_id')
+  @JsonKey(includeIfNull: true, name: 'message_id')
   final SnowflakeType? messageId;
 
   Map<String, Object?> toJson() => _$LookupMessageResponseToJson(this);

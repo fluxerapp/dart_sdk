@@ -20,6 +20,6 @@ Map<String, dynamic> _$RefreshSearchIndexRequestToJson(
   RefreshSearchIndexRequest instance,
 ) => <String, dynamic>{
   'index_type': instance.indexType,
-  'guild_id': instance.guildId,
-  'user_id': instance.userId,
+  'guild_id': ?instance.guildId,
+  'user_id': ?instance.userId,
 };

@@ -15,10 +15,11 @@ class CreatePrivateChannelRequest {
   factory CreatePrivateChannelRequest.fromJson(Map<String, Object?> json) =>
       _$CreatePrivateChannelRequestFromJson(json);
 
-  @JsonKey(name: 'recipient_id')
+  @JsonKey(includeIfNull: false, name: 'recipient_id')
   final SnowflakeType? recipientId;
 
   /// Array of user IDs for creating a group DM (max 9)
+  @JsonKey(includeIfNull: false)
   final List<SnowflakeType>? recipients;
 
   Map<String, Object?> toJson() => _$CreatePrivateChannelRequestToJson(this);

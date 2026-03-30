@@ -11,12 +11,15 @@ enum GroupDmInviteResponseTypeType {
   value1(1),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
-  $unknown(null);
+  $unknown(null)
+  ;
 
   const GroupDmInviteResponseTypeType(this.json);
 
-  factory GroupDmInviteResponseTypeType.fromJson(int json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory GroupDmInviteResponseTypeType.fromJson(int json) => values.firstWhere(
+    (e) => e.json == json,
+    orElse: () => $unknown,
+  );
 
   final int? json;
 

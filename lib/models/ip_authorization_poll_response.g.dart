@@ -18,6 +18,6 @@ Map<String, dynamic> _$IpAuthorizationPollResponseToJson(
   IpAuthorizationPollResponse instance,
 ) => <String, dynamic>{
   'completed': instance.completed,
-  'token': instance.token,
-  'user_id': instance.userId,
+  'token': ?instance.token,
+  'user_id': ?instance.userId,
 };

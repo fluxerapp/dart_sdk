@@ -21,11 +21,11 @@ class WellKnownFluxerResponseCaptcha {
   final String provider;
 
   /// hCaptcha site key if using hCaptcha
-  @JsonKey(name: 'hcaptcha_site_key')
+  @JsonKey(includeIfNull: true, name: 'hcaptcha_site_key')
   final String? hcaptchaSiteKey;
 
   /// Cloudflare Turnstile site key if using Turnstile
-  @JsonKey(name: 'turnstile_site_key')
+  @JsonKey(includeIfNull: true, name: 'turnstile_site_key')
   final String? turnstileSiteKey;
 
   Map<String, Object?> toJson() => _$WellKnownFluxerResponseCaptchaToJson(this);

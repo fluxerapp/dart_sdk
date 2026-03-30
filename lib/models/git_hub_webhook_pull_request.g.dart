@@ -27,5 +27,5 @@ Map<String, dynamic> _$GitHubWebhookPullRequestToJson(
   'html_url': instance.htmlUrl,
   'user': instance.user,
   'title': instance.title,
-  'body': instance.body,
+  'body': ?instance.body,
 };

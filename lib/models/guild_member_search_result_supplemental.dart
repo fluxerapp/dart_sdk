@@ -21,15 +21,15 @@ class GuildMemberSearchResultSupplemental {
   ) => _$GuildMemberSearchResultSupplementalFromJson(json);
 
   /// How the member joined
-  @JsonKey(name: 'join_source_type')
+  @JsonKey(includeIfNull: false, name: 'join_source_type')
   final JoinSourceType? joinSourceType;
 
   /// Invite code used to join
-  @JsonKey(name: 'source_invite_code')
+  @JsonKey(includeIfNull: true, name: 'source_invite_code')
   final String? sourceInviteCode;
 
   /// User ID of the member who sent the invite
-  @JsonKey(name: 'inviter_id')
+  @JsonKey(includeIfNull: true, name: 'inviter_id')
   final String? inviterId;
 
   Map<String, Object?> toJson() =>

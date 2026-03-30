@@ -14,7 +14,7 @@ class SsoStartRequest {
       _$SsoStartRequestFromJson(json);
 
   /// URL to redirect to after SSO completion
-  @JsonKey(name: 'redirect_to')
+  @JsonKey(includeIfNull: false, name: 'redirect_to')
   final String? redirectTo;
 
   Map<String, Object?> toJson() => _$SsoStartRequestToJson(this);

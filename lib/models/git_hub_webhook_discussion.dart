@@ -27,8 +27,9 @@ class GitHubWebhookDiscussion {
   final Int32Type number;
   @JsonKey(name: 'html_url')
   final String htmlUrl;
-  @JsonKey(name: 'answer_html_url')
+  @JsonKey(includeIfNull: false, name: 'answer_html_url')
   final String? answerHtmlUrl;
+  @JsonKey(includeIfNull: false)
   final String? body;
   final GitHubWebhookDiscussionUser user;
 

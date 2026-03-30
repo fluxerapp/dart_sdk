@@ -16,4 +16,4 @@ RelationshipTypePutRequest _$RelationshipTypePutRequestFromJson(
 
 Map<String, dynamic> _$RelationshipTypePutRequestToJson(
   RelationshipTypePutRequest instance,
-) => <String, dynamic>{'type': instance.type};
+) => <String, dynamic>{'type': ?instance.type};

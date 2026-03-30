@@ -123,8 +123,8 @@ print(f'Applied {patches} patch(es)')
 "
 
 echo "=== Step 4/6: Generating SDK ==="
-# Clean previous generated output (preserve lib/ dir itself)
-find lib/ -mindepth 1 -maxdepth 1 ! -name '.*' -exec rm -rf {} + 2>/dev/null || true
+# Clean previous generated output, preserving hand-written directories.
+find lib/ -mindepth 1 -maxdepth 1 ! -name '.*' ! -name 'gateway_client' ! -name 'gateway.dart' -exec rm -rf {} + 2>/dev/null || true
 dart run openapi_retrofit_generator --file openapi_generator.yaml
 
 echo "=== Step 5/6: Running build_runner ==="

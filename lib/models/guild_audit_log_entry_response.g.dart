@@ -29,9 +29,9 @@ Map<String, dynamic> _$GuildAuditLogEntryResponseToJson(
 ) => <String, dynamic>{
   'id': instance.id,
   'action_type': instance.actionType,
-  'user_id': instance.userId,
-  'target_id': instance.targetId,
-  'reason': instance.reason,
-  'options': instance.options,
-  'changes': instance.changes,
+  'user_id': ?instance.userId,
+  'target_id': ?instance.targetId,
+  'reason': ?instance.reason,
+  'options': ?instance.options,
+  'changes': ?instance.changes,
 };

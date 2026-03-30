@@ -23,10 +23,13 @@ class ListUserGuildsRequest {
 
   @JsonKey(name: 'user_id')
   final SnowflakeType userId;
+  @JsonKey(includeIfNull: false)
   final SnowflakeType? before;
+  @JsonKey(includeIfNull: false)
   final SnowflakeType? after;
+  @JsonKey(includeIfNull: false)
   final int? limit;
-  @JsonKey(name: 'with_counts')
+  @JsonKey(includeIfNull: false, name: 'with_counts')
   final bool? withCounts;
 
   Map<String, Object?> toJson() => _$ListUserGuildsRequestToJson(this);

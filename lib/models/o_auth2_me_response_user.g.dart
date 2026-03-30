@@ -31,9 +31,9 @@ Map<String, dynamic> _$OAuth2MeResponseUserToJson(
   'global_name': instance.globalName,
   'avatar': instance.avatar,
   'avatar_color': instance.avatarColor,
-  'bot': instance.bot,
-  'system': instance.system,
+  'bot': ?instance.bot,
+  'system': ?instance.system,
   'flags': instance.flags,
-  'email': instance.email,
-  'verified': instance.verified,
+  'email': ?instance.email,
+  'verified': ?instance.verified,
 };

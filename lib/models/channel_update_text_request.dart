@@ -36,47 +36,54 @@ class ChannelUpdateTextRequest {
       _$ChannelUpdateTextRequestFromJson(json);
 
   /// The channel topic (1-1024 characters)
+  @JsonKey(includeIfNull: false)
   final String? topic;
 
   /// External URL for link channels
+  @JsonKey(includeIfNull: false)
   final String? url;
 
   /// ID of the parent category for this channel
-  @JsonKey(name: 'parent_id')
+  @JsonKey(includeIfNull: false, name: 'parent_id')
   final SnowflakeType? parentId;
 
   /// Voice channel bitrate in bits per second (8000-320000)
+  @JsonKey(includeIfNull: false)
   final int? bitrate;
 
   /// Maximum users allowed in voice channel (0-99, 0 means unlimited)
-  @JsonKey(name: 'user_limit')
+  @JsonKey(includeIfNull: false, name: 'user_limit')
   final int? userLimit;
 
   /// Permission overwrites for roles and members
-  @JsonKey(name: 'permission_overwrites')
+  @JsonKey(includeIfNull: false, name: 'permission_overwrites')
   final List<ChannelOverwriteRequest>? permissionOverwrites;
 
   /// Whether the channel is marked as NSFW
+  @JsonKey(includeIfNull: false)
   final bool? nsfw;
 
   /// Slowmode delay in seconds (0-21600)
-  @JsonKey(name: 'rate_limit_per_user')
+  @JsonKey(includeIfNull: false, name: 'rate_limit_per_user')
   final int? rateLimitPerUser;
 
   /// Base64-encoded icon image for group DM channels
+  @JsonKey(includeIfNull: false)
   final Base64ImageType? icon;
 
   /// ID of the new owner for group DM channels
-  @JsonKey(name: 'owner_id')
+  @JsonKey(includeIfNull: false, name: 'owner_id')
   final SnowflakeType? ownerId;
+  @JsonKey(includeIfNull: false)
   final ChannelNicknameOverrides? nicks;
 
   /// Voice region ID for the voice channel (1-64 characters)
-  @JsonKey(name: 'rtc_region')
+  @JsonKey(includeIfNull: false, name: 'rtc_region')
   final String? rtcRegion;
   final ChannelUpdateTextRequestTypeType type;
 
   /// The name of the channel
+  @JsonKey(includeIfNull: false)
   final String? name;
 
   Map<String, Object?> toJson() => _$ChannelUpdateTextRequestToJson(this);

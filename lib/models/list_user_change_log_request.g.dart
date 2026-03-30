@@ -18,6 +18,6 @@ Map<String, dynamic> _$ListUserChangeLogRequestToJson(
   ListUserChangeLogRequest instance,
 ) => <String, dynamic>{
   'user_id': instance.userId,
-  'limit': instance.limit,
-  'page_token': instance.pageToken,
+  'limit': ?instance.limit,
+  'page_token': ?instance.pageToken,
 };

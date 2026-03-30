@@ -17,7 +17,7 @@ class MessageCallResponse {
   final List<String> participants;
 
   /// The ISO 8601 timestamp of when the call ended
-  @JsonKey(name: 'ended_timestamp')
+  @JsonKey(includeIfNull: false, name: 'ended_timestamp')
   final DateTime? endedTimestamp;
 
   Map<String, Object?> toJson() => _$MessageCallResponseToJson(this);

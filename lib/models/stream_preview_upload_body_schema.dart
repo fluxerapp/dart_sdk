@@ -26,7 +26,7 @@ class StreamPreviewUploadBodySchema {
   final String thumbnail;
 
   /// MIME type of the thumbnail image
-  @JsonKey(name: 'content_type')
+  @JsonKey(includeIfNull: false, name: 'content_type')
   final String? contentType;
 
   Map<String, Object?> toJson() => _$StreamPreviewUploadBodySchemaToJson(this);

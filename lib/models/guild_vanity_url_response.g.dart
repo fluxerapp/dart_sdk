@@ -15,4 +15,4 @@ GuildVanityUrlResponse _$GuildVanityUrlResponseFromJson(
 
 Map<String, dynamic> _$GuildVanityUrlResponseToJson(
   GuildVanityUrlResponse instance,
-) => <String, dynamic>{'code': instance.code, 'uses': instance.uses};
+) => <String, dynamic>{'code': ?instance.code, 'uses': instance.uses};

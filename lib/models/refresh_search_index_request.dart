@@ -23,9 +23,9 @@ class RefreshSearchIndexRequest {
   /// Type of search index to refresh
   @JsonKey(name: 'index_type')
   final RefreshSearchIndexRequestIndexTypeIndexType indexType;
-  @JsonKey(name: 'guild_id')
+  @JsonKey(includeIfNull: false, name: 'guild_id')
   final SnowflakeType? guildId;
-  @JsonKey(name: 'user_id')
+  @JsonKey(includeIfNull: false, name: 'user_id')
   final SnowflakeType? userId;
 
   Map<String, Object?> toJson() => _$RefreshSearchIndexRequestToJson(this);

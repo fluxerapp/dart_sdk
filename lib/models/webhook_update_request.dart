@@ -17,11 +17,13 @@ class WebhookUpdateRequest {
       _$WebhookUpdateRequestFromJson(json);
 
   /// The new name of the webhook
+  @JsonKey(includeIfNull: false)
   final String? name;
 
   /// The new avatar image as a base64-encoded data URI
+  @JsonKey(includeIfNull: false)
   final Base64ImageType? avatar;
-  @JsonKey(name: 'channel_id')
+  @JsonKey(includeIfNull: false, name: 'channel_id')
   final SnowflakeType? channelId;
 
   Map<String, Object?> toJson() => _$WebhookUpdateRequestToJson(this);

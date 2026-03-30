@@ -13,8 +13,11 @@ class SearchUsersRequest {
   factory SearchUsersRequest.fromJson(Map<String, Object?> json) =>
       _$SearchUsersRequestFromJson(json);
 
+  @JsonKey(includeIfNull: false)
   final String? query;
+  @JsonKey(includeIfNull: false)
   final int? limit;
+  @JsonKey(includeIfNull: false)
   final int? offset;
 
   Map<String, Object?> toJson() => _$SearchUsersRequestToJson(this);

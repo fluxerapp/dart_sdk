@@ -30,8 +30,8 @@ Map<String, dynamic> _$MessageShredStatusProgressResponseToJson(
   'total': instance.total,
   'processed': instance.processed,
   'skipped': instance.skipped,
-  'started_at': instance.startedAt,
-  'completed_at': instance.completedAt,
-  'failed_at': instance.failedAt,
-  'error': instance.error,
+  'started_at': ?instance.startedAt,
+  'completed_at': ?instance.completedAt,
+  'failed_at': ?instance.failedAt,
+  'error': ?instance.error,
 };

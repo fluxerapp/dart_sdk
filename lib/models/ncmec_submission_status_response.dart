@@ -26,19 +26,19 @@ class NcmecSubmissionStatusResponse {
   final NcmecSubmissionStatusResponseStatusStatus status;
 
   /// NCMEC report ID if submitted
-  @JsonKey(name: 'ncmec_report_id')
+  @JsonKey(includeIfNull: true, name: 'ncmec_report_id')
   final String? ncmecReportId;
 
   /// ISO 8601 timestamp when the report was submitted
-  @JsonKey(name: 'submitted_at')
+  @JsonKey(includeIfNull: true, name: 'submitted_at')
   final String? submittedAt;
 
   /// ID of the admin who submitted the report
-  @JsonKey(name: 'submitted_by_admin_id')
+  @JsonKey(includeIfNull: true, name: 'submitted_by_admin_id')
   final SnowflakeType? submittedByAdminId;
 
   /// Reason for submission failure if failed
-  @JsonKey(name: 'failure_reason')
+  @JsonKey(includeIfNull: true, name: 'failure_reason')
   final String? failureReason;
 
   Map<String, Object?> toJson() => _$NcmecSubmissionStatusResponseToJson(this);

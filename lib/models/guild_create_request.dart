@@ -19,10 +19,11 @@ class GuildCreateRequest {
   final String name;
 
   /// Base64-encoded image data for the guild icon
+  @JsonKey(includeIfNull: false)
   final Base64ImageType? icon;
 
   /// Whether to create the guild without default features
-  @JsonKey(name: 'empty_features')
+  @JsonKey(includeIfNull: false, name: 'empty_features')
   final bool? emptyFeatures;
 
   Map<String, Object?> toJson() => _$GuildCreateRequestToJson(this);

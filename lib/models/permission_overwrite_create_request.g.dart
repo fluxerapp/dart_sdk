@@ -20,6 +20,6 @@ Map<String, dynamic> _$PermissionOverwriteCreateRequestToJson(
   PermissionOverwriteCreateRequest instance,
 ) => <String, dynamic>{
   'type': instance.type,
-  'allow': instance.allow,
-  'deny': instance.deny,
+  'allow': ?instance.allow,
+  'deny': ?instance.deny,
 };

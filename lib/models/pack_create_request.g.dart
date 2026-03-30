@@ -15,5 +15,5 @@ PackCreateRequest _$PackCreateRequestFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$PackCreateRequestToJson(PackCreateRequest instance) =>
     <String, dynamic>{
       'name': instance.name,
-      'description': instance.description,
+      'description': ?instance.description,
     };

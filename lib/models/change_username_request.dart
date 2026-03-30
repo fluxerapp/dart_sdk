@@ -24,6 +24,7 @@ class ChangeUsernameRequest {
   @JsonKey(name: 'user_id')
   final SnowflakeType userId;
   final UsernameType username;
+  @JsonKey(includeIfNull: false)
   final Int32Type? discriminator;
 
   Map<String, Object?> toJson() => _$ChangeUsernameRequestToJson(this);

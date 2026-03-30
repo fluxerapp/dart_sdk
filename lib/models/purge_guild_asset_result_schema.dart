@@ -33,7 +33,7 @@ class PurgeGuildAssetResultSchema {
   final bool foundInDb;
 
   /// ID of the guild the asset belongs to
-  @JsonKey(name: 'guild_id')
+  @JsonKey(includeIfNull: true, name: 'guild_id')
   final SnowflakeType? guildId;
 
   Map<String, Object?> toJson() => _$PurgeGuildAssetResultSchemaToJson(this);

@@ -19,7 +19,7 @@ class ListSystemDmJobsResponse {
   final List<SystemDmJobResponse> jobs;
 
   /// Pagination cursor for the next page
-  @JsonKey(name: 'next_cursor')
+  @JsonKey(includeIfNull: false, name: 'next_cursor')
   final String? nextCursor;
 
   Map<String, Object?> toJson() => _$ListSystemDmJobsResponseToJson(this);

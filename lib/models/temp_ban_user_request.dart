@@ -27,6 +27,7 @@ class TempBanUserRequest {
   final int durationHours;
 
   /// Reason for the temporary ban
+  @JsonKey(includeIfNull: false)
   final String? reason;
 
   Map<String, Object?> toJson() => _$TempBanUserRequestToJson(this);

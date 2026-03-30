@@ -16,6 +16,7 @@ class GetVoiceServerResponse {
       _$GetVoiceServerResponseFromJson(json);
 
   /// Voice server details or null if not found
+  @JsonKey(includeIfNull: true)
   final VoiceServerAdminResponse? server;
 
   Map<String, Object?> toJson() => _$GetVoiceServerResponseToJson(this);

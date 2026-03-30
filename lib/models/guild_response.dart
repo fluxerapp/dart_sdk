@@ -62,28 +62,31 @@ class GuildResponse {
   final String name;
 
   /// The hash of the guild icon
+  @JsonKey(includeIfNull: false)
   final String? icon;
 
   /// The hash of the guild banner
+  @JsonKey(includeIfNull: false)
   final String? banner;
 
   /// The width of the guild banner in pixels
-  @JsonKey(name: 'banner_width')
+  @JsonKey(includeIfNull: false, name: 'banner_width')
   final Int32Type? bannerWidth;
 
   /// The height of the guild banner in pixels
-  @JsonKey(name: 'banner_height')
+  @JsonKey(includeIfNull: false, name: 'banner_height')
   final Int32Type? bannerHeight;
 
   /// The hash of the guild splash screen
+  @JsonKey(includeIfNull: false)
   final String? splash;
 
   /// The width of the guild splash in pixels
-  @JsonKey(name: 'splash_width')
+  @JsonKey(includeIfNull: false, name: 'splash_width')
   final Int32Type? splashWidth;
 
   /// The height of the guild splash in pixels
-  @JsonKey(name: 'splash_height')
+  @JsonKey(includeIfNull: false, name: 'splash_height')
   final Int32Type? splashHeight;
 
   /// The alignment of the splash card
@@ -91,19 +94,19 @@ class GuildResponse {
   final GuildResponseSplashCardAlignmentSplashCardAlignment splashCardAlignment;
 
   /// The hash of the embedded invite splash
-  @JsonKey(name: 'embed_splash')
+  @JsonKey(includeIfNull: false, name: 'embed_splash')
   final String? embedSplash;
 
   /// The width of the embedded invite splash in pixels
-  @JsonKey(name: 'embed_splash_width')
+  @JsonKey(includeIfNull: false, name: 'embed_splash_width')
   final Int32Type? embedSplashWidth;
 
   /// The height of the embedded invite splash in pixels
-  @JsonKey(name: 'embed_splash_height')
+  @JsonKey(includeIfNull: false, name: 'embed_splash_height')
   final Int32Type? embedSplashHeight;
 
   /// The vanity URL code for the guild
-  @JsonKey(name: 'vanity_url_code')
+  @JsonKey(includeIfNull: false, name: 'vanity_url_code')
   final String? vanityUrlCode;
 
   /// The ID of the guild owner
@@ -111,17 +114,17 @@ class GuildResponse {
   final String ownerId;
 
   /// The ID of the channel where system messages are sent
-  @JsonKey(name: 'system_channel_id')
+  @JsonKey(includeIfNull: false, name: 'system_channel_id')
   final SnowflakeType? systemChannelId;
   @JsonKey(name: 'system_channel_flags')
   final SystemChannelFlags systemChannelFlags;
 
   /// The ID of the rules channel
-  @JsonKey(name: 'rules_channel_id')
+  @JsonKey(includeIfNull: false, name: 'rules_channel_id')
   final SnowflakeType? rulesChannelId;
 
   /// The ID of the AFK voice channel
-  @JsonKey(name: 'afk_channel_id')
+  @JsonKey(includeIfNull: false, name: 'afk_channel_id')
   final SnowflakeType? afkChannelId;
 
   /// AFK timeout in seconds before moving users to the AFK channel
@@ -154,10 +157,11 @@ class GuildResponse {
   final GuildOperations disabledOperations;
 
   /// ISO8601 timestamp controlling how far back members without Read Message History can access messages. When null, no historical access is allowed.
-  @JsonKey(name: 'message_history_cutoff')
+  @JsonKey(includeIfNull: false, name: 'message_history_cutoff')
   final DateTime? messageHistoryCutoff;
 
   /// The current user permissions in this guild
+  @JsonKey(includeIfNull: false)
   final String? permissions;
 
   Map<String, Object?> toJson() => _$GuildResponseToJson(this);

@@ -17,7 +17,7 @@ class GetVoiceRegionRequest {
   final String id;
 
   /// Whether to include voice servers in the response
-  @JsonKey(name: 'include_servers')
+  @JsonKey(includeIfNull: false, name: 'include_servers')
   final bool? includeServers;
 
   Map<String, Object?> toJson() => _$GetVoiceRegionRequestToJson(this);

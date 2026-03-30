@@ -39,28 +39,31 @@ class GuildInviteResponseGuild {
   final String name;
 
   /// The hash of the guild icon
+  @JsonKey(includeIfNull: false)
   final String? icon;
 
   /// The hash of the guild banner
+  @JsonKey(includeIfNull: false)
   final String? banner;
 
   /// The width of the guild banner in pixels
-  @JsonKey(name: 'banner_width')
+  @JsonKey(includeIfNull: false, name: 'banner_width')
   final Int32Type? bannerWidth;
 
   /// The height of the guild banner in pixels
-  @JsonKey(name: 'banner_height')
+  @JsonKey(includeIfNull: false, name: 'banner_height')
   final Int32Type? bannerHeight;
 
   /// The hash of the guild splash screen
+  @JsonKey(includeIfNull: false)
   final String? splash;
 
   /// The width of the guild splash in pixels
-  @JsonKey(name: 'splash_width')
+  @JsonKey(includeIfNull: false, name: 'splash_width')
   final Int32Type? splashWidth;
 
   /// The height of the guild splash in pixels
-  @JsonKey(name: 'splash_height')
+  @JsonKey(includeIfNull: false, name: 'splash_height')
   final Int32Type? splashHeight;
 
   /// The alignment of the splash card
@@ -69,15 +72,15 @@ class GuildInviteResponseGuild {
   splashCardAlignment;
 
   /// The hash of the embedded invite splash
-  @JsonKey(name: 'embed_splash')
+  @JsonKey(includeIfNull: false, name: 'embed_splash')
   final String? embedSplash;
 
   /// The width of the embedded invite splash in pixels
-  @JsonKey(name: 'embed_splash_width')
+  @JsonKey(includeIfNull: false, name: 'embed_splash_width')
   final Int32Type? embedSplashWidth;
 
   /// The height of the embedded invite splash in pixels
-  @JsonKey(name: 'embed_splash_height')
+  @JsonKey(includeIfNull: false, name: 'embed_splash_height')
   final Int32Type? embedSplashHeight;
 
   /// Array of guild feature flags

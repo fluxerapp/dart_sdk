@@ -19,5 +19,5 @@ Map<String, dynamic> _$ListSystemDmJobsResponseToJson(
   ListSystemDmJobsResponse instance,
 ) => <String, dynamic>{
   'jobs': instance.jobs,
-  'next_cursor': instance.nextCursor,
+  'next_cursor': ?instance.nextCursor,
 };

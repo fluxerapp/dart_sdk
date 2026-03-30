@@ -25,9 +25,9 @@ Map<String, dynamic> _$MfaBackupCodesRequestToJson(
   MfaBackupCodesRequest instance,
 ) => <String, dynamic>{
   'regenerate': instance.regenerate,
-  'password': instance.password,
-  'mfa_method': instance.mfaMethod,
-  'mfa_code': instance.mfaCode,
-  'webauthn_response': instance.webauthnResponse,
-  'webauthn_challenge': instance.webauthnChallenge,
+  'password': ?instance.password,
+  'mfa_method': ?instance.mfaMethod,
+  'mfa_code': ?instance.mfaCode,
+  'webauthn_response': ?instance.webauthnResponse,
+  'webauthn_challenge': ?instance.webauthnChallenge,
 };

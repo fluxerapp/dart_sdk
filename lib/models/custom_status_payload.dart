@@ -21,18 +21,19 @@ class CustomStatusPayload {
       _$CustomStatusPayloadFromJson(json);
 
   /// Custom status text (max 128 characters)
+  @JsonKey(includeIfNull: false)
   final String? text;
 
   /// When the custom status expires
-  @JsonKey(name: 'expires_at')
+  @JsonKey(includeIfNull: false, name: 'expires_at')
   final dynamic expiresAt;
 
   /// ID of custom emoji to display
-  @JsonKey(name: 'emoji_id')
+  @JsonKey(includeIfNull: false, name: 'emoji_id')
   final SnowflakeType? emojiId;
 
   /// Unicode emoji or custom emoji name
-  @JsonKey(name: 'emoji_name')
+  @JsonKey(includeIfNull: false, name: 'emoji_name')
   final String? emojiName;
 
   Map<String, Object?> toJson() => _$CustomStatusPayloadToJson(this);

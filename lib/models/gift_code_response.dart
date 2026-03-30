@@ -31,7 +31,7 @@ class GiftCodeResponse {
   final bool redeemed;
 
   /// The user who created the gift code
-  @JsonKey(name: 'created_by')
+  @JsonKey(includeIfNull: false, name: 'created_by')
   final UserPartialResponse? createdBy;
 
   Map<String, Object?> toJson() => _$GiftCodeResponseToJson(this);

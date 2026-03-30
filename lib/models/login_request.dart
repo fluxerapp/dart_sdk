@@ -24,7 +24,7 @@ class LoginRequest {
   final PasswordType password;
 
   /// Guild invite code to join after login
-  @JsonKey(name: 'invite_code')
+  @JsonKey(includeIfNull: false, name: 'invite_code')
   final String? inviteCode;
 
   Map<String, Object?> toJson() => _$LoginRequestToJson(this);

@@ -24,6 +24,6 @@ Map<String, dynamic> _$BulkUpdateGuildFeaturesRequestToJson(
   BulkUpdateGuildFeaturesRequest instance,
 ) => <String, dynamic>{
   'guild_ids': instance.guildIds,
-  'add_features': instance.addFeatures,
-  'remove_features': instance.removeFeatures,
+  'add_features': ?instance.addFeatures,
+  'remove_features': ?instance.removeFeatures,
 };

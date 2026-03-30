@@ -1987,7 +1987,7 @@ class _UsersApi implements UsersApi {
 
   @override
   Future<WebAuthnChallengeResponse>
-      getSudoWebauthnAuthenticationOptions() async {
+  getSudoWebauthnAuthenticationOptions() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

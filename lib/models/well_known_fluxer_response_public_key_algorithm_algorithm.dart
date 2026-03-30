@@ -11,13 +11,17 @@ enum WellKnownFluxerResponsePublicKeyAlgorithmAlgorithm {
   x25519('x25519'),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
-  $unknown(null);
+  $unknown(null)
+  ;
 
   const WellKnownFluxerResponsePublicKeyAlgorithmAlgorithm(this.json);
 
   factory WellKnownFluxerResponsePublicKeyAlgorithmAlgorithm.fromJson(
     String json,
-  ) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  ) => values.firstWhere(
+    (e) => e.json == json,
+    orElse: () => $unknown,
+  );
 
   final String? json;
 

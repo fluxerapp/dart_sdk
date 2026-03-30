@@ -20,5 +20,5 @@ Map<String, dynamic> _$MessageCallResponseToJson(
   MessageCallResponse instance,
 ) => <String, dynamic>{
   'participants': instance.participants,
-  'ended_timestamp': instance.endedTimestamp?.toIso8601String(),
+  'ended_timestamp': ?instance.endedTimestamp?.toIso8601String(),
 };

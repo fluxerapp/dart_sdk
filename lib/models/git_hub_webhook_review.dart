@@ -21,6 +21,7 @@ class GitHubWebhookReview {
       _$GitHubWebhookReviewFromJson(json);
 
   final GitHubWebhookReviewUser user;
+  @JsonKey(includeIfNull: false)
   final String? body;
   @JsonKey(name: 'html_url')
   final String htmlUrl;

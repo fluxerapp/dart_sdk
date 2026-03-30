@@ -29,11 +29,11 @@ class BulkScheduleUserDeletionRequest {
   final int reasonCode;
 
   /// Public-facing reason for the deletion
-  @JsonKey(name: 'public_reason')
+  @JsonKey(includeIfNull: false, name: 'public_reason')
   final String? publicReason;
 
   /// Number of days until the accounts are deleted
-  @JsonKey(name: 'days_until_deletion')
+  @JsonKey(includeIfNull: false, name: 'days_until_deletion')
   final int? daysUntilDeletion;
 
   Map<String, Object?> toJson() =>

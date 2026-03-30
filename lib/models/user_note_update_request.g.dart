@@ -12,4 +12,4 @@ UserNoteUpdateRequest _$UserNoteUpdateRequestFromJson(
 
 Map<String, dynamic> _$UserNoteUpdateRequestToJson(
   UserNoteUpdateRequest instance,
-) => <String, dynamic>{'note': instance.note};
+) => <String, dynamic>{'note': ?instance.note};

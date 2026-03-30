@@ -30,9 +30,11 @@ class RelationshipResponse {
   final UserPartialResponse user;
 
   /// ISO8601 timestamp of when the relationship was established
+  @JsonKey(includeIfNull: false)
   final DateTime? since;
 
   /// A custom nickname set for the related user
+  @JsonKey(includeIfNull: true)
   final String? nickname;
 
   Map<String, Object?> toJson() => _$RelationshipResponseToJson(this);

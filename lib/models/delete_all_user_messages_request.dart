@@ -17,7 +17,7 @@ class DeleteAllUserMessagesRequest {
 
   @JsonKey(name: 'user_id')
   final SnowflakeType userId;
-  @JsonKey(name: 'dry_run')
+  @JsonKey(includeIfNull: false, name: 'dry_run')
   final bool? dryRun;
 
   Map<String, Object?> toJson() => _$DeleteAllUserMessagesRequestToJson(this);

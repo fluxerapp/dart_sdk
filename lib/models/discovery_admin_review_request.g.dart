@@ -12,4 +12,4 @@ DiscoveryAdminReviewRequest _$DiscoveryAdminReviewRequestFromJson(
 
 Map<String, dynamic> _$DiscoveryAdminReviewRequestToJson(
   DiscoveryAdminReviewRequest instance,
-) => <String, dynamic>{'reason': instance.reason};
+) => <String, dynamic>{'reason': ?instance.reason};

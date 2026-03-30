@@ -25,12 +25,13 @@ class LookupGuildResponseGuildChannels {
   ) => _$LookupGuildResponseGuildChannelsFromJson(json);
 
   final SnowflakeType id;
+  @JsonKey(includeIfNull: true)
   final String? name;
 
   /// The type of the channel
   final LookupGuildResponseGuildChannelsTypeType type;
   final Int32Type position;
-  @JsonKey(name: 'parent_id')
+  @JsonKey(includeIfNull: true, name: 'parent_id')
   final SnowflakeType? parentId;
 
   Map<String, Object?> toJson() =>

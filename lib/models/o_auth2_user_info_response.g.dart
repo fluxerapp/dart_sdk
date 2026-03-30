@@ -29,7 +29,7 @@ Map<String, dynamic> _$OAuth2UserInfoResponseToJson(
   'discriminator': instance.discriminator,
   'global_name': instance.globalName,
   'avatar': instance.avatar,
-  'email': instance.email,
-  'verified': instance.verified,
-  'flags': instance.flags,
+  'email': ?instance.email,
+  'verified': ?instance.verified,
+  'flags': ?instance.flags,
 };

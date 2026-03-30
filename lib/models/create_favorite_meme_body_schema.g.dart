@@ -20,8 +20,8 @@ Map<String, dynamic> _$CreateFavoriteMemeBodySchemaToJson(
   CreateFavoriteMemeBodySchema instance,
 ) => <String, dynamic>{
   'name': instance.name,
-  'alt_text': instance.altText,
-  'tags': instance.tags,
-  'attachment_id': instance.attachmentId,
-  'embed_index': instance.embedIndex,
+  'alt_text': ?instance.altText,
+  'tags': ?instance.tags,
+  'attachment_id': ?instance.attachmentId,
+  'embed_index': ?instance.embedIndex,
 };

@@ -11,12 +11,15 @@ enum MessageReactionResponseMeMe {
   valueTrue(true),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
-  $unknown(null);
+  $unknown(null)
+  ;
 
   const MessageReactionResponseMeMe(this.json);
 
-  factory MessageReactionResponseMeMe.fromJson(bool json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory MessageReactionResponseMeMe.fromJson(bool json) => values.firstWhere(
+    (e) => e.json == json,
+    orElse: () => $unknown,
+  );
 
   final bool? json;
 

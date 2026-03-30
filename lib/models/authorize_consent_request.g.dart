@@ -21,11 +21,11 @@ AuthorizeConsentRequest _$AuthorizeConsentRequestFromJson(
 Map<String, dynamic> _$AuthorizeConsentRequestToJson(
   AuthorizeConsentRequest instance,
 ) => <String, dynamic>{
-  'response_type': instance.responseType,
+  'response_type': ?instance.responseType,
   'client_id': instance.clientId,
-  'redirect_uri': instance.redirectUri,
+  'redirect_uri': ?instance.redirectUri,
   'scope': instance.scope,
-  'state': instance.state,
-  'permissions': instance.permissions,
-  'guild_id': instance.guildId,
+  'state': ?instance.state,
+  'permissions': ?instance.permissions,
+  'guild_id': ?instance.guildId,
 };

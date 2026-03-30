@@ -15,12 +15,15 @@ class ListReportsRequest {
   factory ListReportsRequest.fromJson(Map<String, Object?> json) =>
       _$ListReportsRequestFromJson(json);
 
+  @JsonKey(includeIfNull: false)
   final ReportStatus? status;
 
   /// Maximum number of reports to return
+  @JsonKey(includeIfNull: false)
   final int? limit;
 
   /// Number of reports to skip
+  @JsonKey(includeIfNull: false)
   final int? offset;
 
   Map<String, Object?> toJson() => _$ListReportsRequestToJson(this);

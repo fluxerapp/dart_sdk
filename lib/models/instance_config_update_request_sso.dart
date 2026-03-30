@@ -27,28 +27,31 @@ class InstanceConfigUpdateRequestSso {
   factory InstanceConfigUpdateRequestSso.fromJson(Map<String, Object?> json) =>
       _$InstanceConfigUpdateRequestSsoFromJson(json);
 
+  @JsonKey(includeIfNull: false)
   final bool? enabled;
-  @JsonKey(name: 'display_name')
+  @JsonKey(includeIfNull: false, name: 'display_name')
   final String? displayName;
+  @JsonKey(includeIfNull: false)
   final String? issuer;
-  @JsonKey(name: 'authorization_url')
+  @JsonKey(includeIfNull: false, name: 'authorization_url')
   final String? authorizationUrl;
-  @JsonKey(name: 'token_url')
+  @JsonKey(includeIfNull: false, name: 'token_url')
   final String? tokenUrl;
-  @JsonKey(name: 'userinfo_url')
+  @JsonKey(includeIfNull: false, name: 'userinfo_url')
   final String? userinfoUrl;
-  @JsonKey(name: 'jwks_url')
+  @JsonKey(includeIfNull: false, name: 'jwks_url')
   final String? jwksUrl;
-  @JsonKey(name: 'client_id')
+  @JsonKey(includeIfNull: false, name: 'client_id')
   final String? clientId;
-  @JsonKey(name: 'client_secret')
+  @JsonKey(includeIfNull: false, name: 'client_secret')
   final String? clientSecret;
+  @JsonKey(includeIfNull: false)
   final String? scope;
-  @JsonKey(name: 'allowed_domains')
+  @JsonKey(includeIfNull: false, name: 'allowed_domains')
   final List<String>? allowedDomains;
-  @JsonKey(name: 'auto_provision')
+  @JsonKey(includeIfNull: false, name: 'auto_provision')
   final bool? autoProvision;
-  @JsonKey(name: 'redirect_uri')
+  @JsonKey(includeIfNull: false, name: 'redirect_uri')
   final String? redirectUri;
 
   Map<String, Object?> toJson() => _$InstanceConfigUpdateRequestSsoToJson(this);

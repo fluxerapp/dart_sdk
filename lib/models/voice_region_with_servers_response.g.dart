@@ -47,5 +47,5 @@ Map<String, dynamic> _$VoiceRegionWithServersResponseToJson(
   'allowed_user_ids': instance.allowedUserIds,
   'created_at': instance.createdAt,
   'updated_at': instance.updatedAt,
-  'servers': instance.servers,
+  'servers': ?instance.servers,
 };

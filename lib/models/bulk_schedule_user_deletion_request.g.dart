@@ -20,6 +20,6 @@ Map<String, dynamic> _$BulkScheduleUserDeletionRequestToJson(
 ) => <String, dynamic>{
   'user_ids': instance.userIds,
   'reason_code': instance.reasonCode,
-  'public_reason': instance.publicReason,
-  'days_until_deletion': instance.daysUntilDeletion,
+  'public_reason': ?instance.publicReason,
+  'days_until_deletion': ?instance.daysUntilDeletion,
 };

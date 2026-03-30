@@ -30,6 +30,7 @@ class GitHubWebhookIssue {
   final String htmlUrl;
   final GitHubWebhookIssueUser user;
   final String title;
+  @JsonKey(includeIfNull: false)
   final String? body;
 
   Map<String, Object?> toJson() => _$GitHubWebhookIssueToJson(this);

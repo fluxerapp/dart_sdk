@@ -19,7 +19,7 @@ class ListUserChangeLogResponseSchema {
       _$ListUserChangeLogResponseSchemaFromJson(json);
 
   final List<UserContactChangeLogEntrySchema> entries;
-  @JsonKey(name: 'next_page_token')
+  @JsonKey(includeIfNull: true, name: 'next_page_token')
   final String? nextPageToken;
 
   Map<String, Object?> toJson() =>

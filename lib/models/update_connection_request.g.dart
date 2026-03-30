@@ -16,6 +16,6 @@ UpdateConnectionRequest _$UpdateConnectionRequestFromJson(
 Map<String, dynamic> _$UpdateConnectionRequestToJson(
   UpdateConnectionRequest instance,
 ) => <String, dynamic>{
-  'visibility_flags': instance.visibilityFlags,
-  'sort_order': instance.sortOrder,
+  'visibility_flags': ?instance.visibilityFlags,
+  'sort_order': ?instance.sortOrder,
 };

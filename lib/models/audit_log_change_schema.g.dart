@@ -18,6 +18,6 @@ Map<String, dynamic> _$AuditLogChangeSchemaToJson(
   AuditLogChangeSchema instance,
 ) => <String, dynamic>{
   'key': instance.key,
-  'old_value': instance.oldValue,
-  'new_value': instance.newValue,
+  'old_value': ?instance.oldValue,
+  'new_value': ?instance.newValue,
 };

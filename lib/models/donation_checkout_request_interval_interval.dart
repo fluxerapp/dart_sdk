@@ -12,7 +12,8 @@ enum DonationCheckoutRequestIntervalInterval {
   year('year'),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
-  $unknown(null);
+  $unknown(null)
+  ;
 
   const DonationCheckoutRequestIntervalInterval(this.json);
 

@@ -29,18 +29,18 @@ MyGuildMemberUpdateRequest _$MyGuildMemberUpdateRequestFromJson(
 Map<String, dynamic> _$MyGuildMemberUpdateRequestToJson(
   MyGuildMemberUpdateRequest instance,
 ) => <String, dynamic>{
-  'nick': instance.nick,
-  'avatar': instance.avatar,
-  'banner': instance.banner,
-  'bio': instance.bio,
-  'pronouns': instance.pronouns,
-  'accent_color': instance.accentColor,
-  'profile_flags': instance.profileFlags,
-  'mute': instance.mute,
-  'deaf': instance.deaf,
-  'communication_disabled_until': instance.communicationDisabledUntil
+  'nick': ?instance.nick,
+  'avatar': ?instance.avatar,
+  'banner': ?instance.banner,
+  'bio': ?instance.bio,
+  'pronouns': ?instance.pronouns,
+  'accent_color': ?instance.accentColor,
+  'profile_flags': ?instance.profileFlags,
+  'mute': ?instance.mute,
+  'deaf': ?instance.deaf,
+  'communication_disabled_until': ?instance.communicationDisabledUntil
       ?.toIso8601String(),
-  'timeout_reason': instance.timeoutReason,
-  'channel_id': instance.channelId,
-  'connection_id': instance.connectionId,
+  'timeout_reason': ?instance.timeoutReason,
+  'channel_id': ?instance.channelId,
+  'connection_id': ?instance.connectionId,
 };

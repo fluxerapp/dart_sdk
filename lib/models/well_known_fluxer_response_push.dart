@@ -14,7 +14,7 @@ class WellKnownFluxerResponsePush {
       _$WellKnownFluxerResponsePushFromJson(json);
 
   /// VAPID public key for web push notifications
-  @JsonKey(name: 'public_vapid_key')
+  @JsonKey(includeIfNull: true, name: 'public_vapid_key')
   final String? publicVapidKey;
 
   Map<String, Object?> toJson() => _$WellKnownFluxerResponsePushToJson(this);

@@ -30,9 +30,11 @@ class OAuth2MeResponseApplication {
   final String name;
 
   /// The icon hash of the application
+  @JsonKey(includeIfNull: true)
   final String? icon;
 
   /// The description of the application
+  @JsonKey(includeIfNull: true)
   final String? description;
 
   /// Whether the bot can be invited by anyone

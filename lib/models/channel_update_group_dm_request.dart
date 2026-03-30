@@ -28,16 +28,19 @@ class ChannelUpdateGroupDmRequest {
   final ChannelUpdateGroupDmRequestTypeType type;
 
   /// The name of the group DM
+  @JsonKey(includeIfNull: false)
   final String? name;
 
   /// Base64-encoded icon image for the group DM
+  @JsonKey(includeIfNull: false)
   final Base64ImageType? icon;
 
   /// ID of the new owner of the group DM
-  @JsonKey(name: 'owner_id')
+  @JsonKey(includeIfNull: false, name: 'owner_id')
   final SnowflakeType? ownerId;
 
   /// Custom nicknames for users in this group DM
+  @JsonKey(includeIfNull: false)
   final ChannelNicknameOverrides? nicks;
 
   Map<String, Object?> toJson() => _$ChannelUpdateGroupDmRequestToJson(this);

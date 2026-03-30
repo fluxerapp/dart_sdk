@@ -20,6 +20,6 @@ Map<String, dynamic> _$MessageReferenceResponseToJson(
 ) => <String, dynamic>{
   'channel_id': instance.channelId,
   'message_id': instance.messageId,
-  'guild_id': instance.guildId,
+  'guild_id': ?instance.guildId,
   'type': instance.type,
 };

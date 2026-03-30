@@ -50,29 +50,43 @@ class GitHubWebhook {
   factory GitHubWebhook.fromJson(Map<String, Object?> json) =>
       _$GitHubWebhookFromJson(json);
 
+  @JsonKey(includeIfNull: false)
   final String? action;
+  @JsonKey(includeIfNull: false)
   final GitHubWebhookAnswer? answer;
-  @JsonKey(name: 'check_run')
+  @JsonKey(includeIfNull: false, name: 'check_run')
   final GitHubWebhookCheckRun? checkRun;
-  @JsonKey(name: 'check_suite')
+  @JsonKey(includeIfNull: false, name: 'check_suite')
   final GitHubWebhookCheckSuite? checkSuite;
+  @JsonKey(includeIfNull: false)
   final GitHubWebhookComment? comment;
+  @JsonKey(includeIfNull: false)
   final List<GitHubWebhookCommits>? commits;
+  @JsonKey(includeIfNull: false)
   final String? compare;
+  @JsonKey(includeIfNull: false)
   final GitHubWebhookDiscussion? discussion;
+  @JsonKey(includeIfNull: false)
   final bool? forced;
+  @JsonKey(includeIfNull: false)
   final GitHubWebhookForkee? forkee;
-  @JsonKey(name: 'head_commit')
+  @JsonKey(includeIfNull: false, name: 'head_commit')
   final GitHubWebhookHeadCommit? headCommit;
+  @JsonKey(includeIfNull: false)
   final GitHubWebhookIssue? issue;
+  @JsonKey(includeIfNull: false)
   final GitHubWebhookMember? member;
-  @JsonKey(name: 'pull_request')
+  @JsonKey(includeIfNull: false, name: 'pull_request')
   final GitHubWebhookPullRequest? pullRequest;
-  @JsonKey(name: 'ref_type')
+  @JsonKey(includeIfNull: false, name: 'ref_type')
   final String? refType;
+  @JsonKey(includeIfNull: false)
   final String? ref;
+  @JsonKey(includeIfNull: false)
   final GitHubWebhookRelease? release;
+  @JsonKey(includeIfNull: false)
   final GitHubWebhookRepository? repository;
+  @JsonKey(includeIfNull: false)
   final GitHubWebhookReview? review;
   final GitHubWebhookSender sender;
 

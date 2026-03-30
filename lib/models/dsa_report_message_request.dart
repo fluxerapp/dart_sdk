@@ -32,7 +32,7 @@ class DsaReportMessageRequest {
   final String ticket;
 
   /// Additional context or details about the report
-  @JsonKey(name: 'additional_info')
+  @JsonKey(includeIfNull: false, name: 'additional_info')
   final String? additionalInfo;
 
   /// Full legal name of the person filing the report
@@ -45,7 +45,7 @@ class DsaReportMessageRequest {
   reporterCountryOfResidence;
 
   /// Fluxer tag of the reporter if they have an account
-  @JsonKey(name: 'reporter_fluxer_tag')
+  @JsonKey(includeIfNull: false, name: 'reporter_fluxer_tag')
   final String? reporterFluxerTag;
 
   /// Type of report
@@ -58,7 +58,7 @@ class DsaReportMessageRequest {
   final String messageLink;
 
   /// Fluxer tag of the user who sent the message
-  @JsonKey(name: 'reported_user_tag')
+  @JsonKey(includeIfNull: false, name: 'reported_user_tag')
   final String? reportedUserTag;
 
   Map<String, Object?> toJson() => _$DsaReportMessageRequestToJson(this);

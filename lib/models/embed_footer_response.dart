@@ -21,11 +21,11 @@ class EmbedFooterResponse {
   final String text;
 
   /// The URL of the footer icon
-  @JsonKey(name: 'icon_url')
+  @JsonKey(includeIfNull: false, name: 'icon_url')
   final String? iconUrl;
 
   /// The proxied URL of the footer icon
-  @JsonKey(name: 'proxy_icon_url')
+  @JsonKey(includeIfNull: false, name: 'proxy_icon_url')
   final String? proxyIconUrl;
 
   Map<String, Object?> toJson() => _$EmbedFooterResponseToJson(this);

@@ -17,5 +17,5 @@ Map<String, dynamic> _$ReportGuildRequestToJson(ReportGuildRequest instance) =>
     <String, dynamic>{
       'guild_id': instance.guildId,
       'category': instance.category,
-      'additional_info': instance.additionalInfo,
+      'additional_info': ?instance.additionalInfo,
     };

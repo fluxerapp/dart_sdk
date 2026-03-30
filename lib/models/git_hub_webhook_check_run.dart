@@ -25,16 +25,18 @@ class GitHubWebhookCheckRun {
   factory GitHubWebhookCheckRun.fromJson(Map<String, Object?> json) =>
       _$GitHubWebhookCheckRunFromJson(json);
 
+  @JsonKey(includeIfNull: false)
   final String? conclusion;
   final String name;
   @JsonKey(name: 'html_url')
   final String htmlUrl;
   @JsonKey(name: 'check_suite')
   final GitHubWebhookCheckRunCheckSuite checkSuite;
-  @JsonKey(name: 'details_url')
+  @JsonKey(includeIfNull: false, name: 'details_url')
   final String? detailsUrl;
+  @JsonKey(includeIfNull: false)
   final GitHubWebhookCheckRunOutput? output;
-  @JsonKey(name: 'pull_requests')
+  @JsonKey(includeIfNull: false, name: 'pull_requests')
   final List<GitHubWebhookCheckRunPullRequests>? pullRequests;
 
   Map<String, Object?> toJson() => _$GitHubWebhookCheckRunToJson(this);

@@ -14,6 +14,7 @@ class DiscoveryAdminReviewRequest {
       _$DiscoveryAdminReviewRequestFromJson(json);
 
   /// Review reason
+  @JsonKey(includeIfNull: false)
   final String? reason;
 
   Map<String, Object?> toJson() => _$DiscoveryAdminReviewRequestToJson(this);

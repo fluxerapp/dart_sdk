@@ -15,4 +15,4 @@ GuildRolePositionItem _$GuildRolePositionItemFromJson(
 
 Map<String, dynamic> _$GuildRolePositionItemToJson(
   GuildRolePositionItem instance,
-) => <String, dynamic>{'id': instance.id, 'position': instance.position};
+) => <String, dynamic>{'id': instance.id, 'position': ?instance.position};

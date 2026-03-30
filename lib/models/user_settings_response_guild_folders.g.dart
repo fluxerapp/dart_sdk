@@ -26,10 +26,10 @@ UserSettingsResponseGuildFolders _$UserSettingsResponseGuildFoldersFromJson(
 Map<String, dynamic> _$UserSettingsResponseGuildFoldersToJson(
   UserSettingsResponseGuildFolders instance,
 ) => <String, dynamic>{
-  'id': instance.id,
-  'name': instance.name,
-  'color': instance.color,
-  'flags': instance.flags,
-  'icon': instance.icon,
+  'id': ?instance.id,
+  'name': ?instance.name,
+  'color': ?instance.color,
+  'flags': ?instance.flags,
+  'icon': ?instance.icon,
   'guild_ids': instance.guildIds,
 };

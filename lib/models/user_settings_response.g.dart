@@ -72,8 +72,8 @@ Map<String, dynamic> _$UserSettingsResponseToJson(
   UserSettingsResponse instance,
 ) => <String, dynamic>{
   'status': instance.status,
-  'status_resets_at': instance.statusResetsAt?.toIso8601String(),
-  'status_resets_to': instance.statusResetsTo,
+  'status_resets_at': ?instance.statusResetsAt?.toIso8601String(),
+  'status_resets_to': ?instance.statusResetsTo,
   'theme': instance.theme,
   'locale': instance.locale,
   'restricted_guilds': instance.restrictedGuilds,
@@ -99,8 +99,9 @@ Map<String, dynamic> _$UserSettingsResponseToJson(
   'developer_mode': instance.developerMode,
   'trusted_domains': instance.trustedDomains,
   'default_hide_muted_channels': instance.defaultHideMutedChannels,
-  'sensitive_content_friend_dm_filter': instance.sensitiveContentFriendDmFilter,
+  'sensitive_content_friend_dm_filter':
+      ?instance.sensitiveContentFriendDmFilter,
   'sensitive_content_non_friend_dm_filter':
-      instance.sensitiveContentNonFriendDmFilter,
-  'sensitive_content_guild_filter': instance.sensitiveContentGuildFilter,
+      ?instance.sensitiveContentNonFriendDmFilter,
+  'sensitive_content_guild_filter': ?instance.sensitiveContentGuildFilter,
 };

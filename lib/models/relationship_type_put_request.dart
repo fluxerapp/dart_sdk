@@ -16,6 +16,7 @@ class RelationshipTypePutRequest {
       _$RelationshipTypePutRequestFromJson(json);
 
   /// Type of relationship to create
+  @JsonKey(includeIfNull: false)
   final RelationshipTypes? type;
 
   Map<String, Object?> toJson() => _$RelationshipTypePutRequestToJson(this);

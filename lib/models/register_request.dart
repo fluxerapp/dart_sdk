@@ -25,12 +25,15 @@ class RegisterRequest {
   factory RegisterRequest.fromJson(Map<String, Object?> json) =>
       _$RegisterRequestFromJson(json);
 
+  @JsonKey(includeIfNull: false)
   final EmailType? email;
+  @JsonKey(includeIfNull: false)
   final UsernameType? username;
 
   /// Display name shown to other users
-  @JsonKey(name: 'global_name')
+  @JsonKey(includeIfNull: false, name: 'global_name')
   final String? globalName;
+  @JsonKey(includeIfNull: false)
   final PasswordType? password;
 
   /// Date of birth in YYYY-MM-DD format
@@ -41,7 +44,7 @@ class RegisterRequest {
   final bool consent;
 
   /// Guild invite code to join after registration
-  @JsonKey(name: 'invite_code')
+  @JsonKey(includeIfNull: false, name: 'invite_code')
   final String? inviteCode;
 
   Map<String, Object?> toJson() => _$RegisterRequestToJson(this);

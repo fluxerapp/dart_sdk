@@ -26,7 +26,7 @@ class GitHubWebhookAnswer {
   @JsonKey(name: 'html_url')
   final String htmlUrl;
   final GitHubWebhookAnswerUser user;
-  @JsonKey(name: 'commit_id')
+  @JsonKey(includeIfNull: false, name: 'commit_id')
   final String? commitId;
   final String body;
 

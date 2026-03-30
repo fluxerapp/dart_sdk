@@ -27,9 +27,9 @@ Map<String, dynamic> _$UserSettingsUpdateRequestGuildFoldersToJson(
   UserSettingsUpdateRequestGuildFolders instance,
 ) => <String, dynamic>{
   'id': instance.id,
-  'name': instance.name,
-  'color': instance.color,
-  'flags': instance.flags,
-  'icon': instance.icon,
+  'name': ?instance.name,
+  'color': ?instance.color,
+  'flags': ?instance.flags,
+  'icon': ?instance.icon,
   'guild_ids': instance.guildIds,
 };

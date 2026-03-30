@@ -21,5 +21,5 @@ Map<String, dynamic> _$LookupMessageByAttachmentRequestToJson(
   'channel_id': instance.channelId,
   'attachment_id': instance.attachmentId,
   'filename': instance.filename,
-  'context_limit': instance.contextLimit,
+  'context_limit': ?instance.contextLimit,
 };

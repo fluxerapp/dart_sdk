@@ -19,5 +19,5 @@ Map<String, dynamic> _$LookupMessageRequestToJson(
 ) => <String, dynamic>{
   'channel_id': instance.channelId,
   'message_id': instance.messageId,
-  'context_limit': instance.contextLimit,
+  'context_limit': ?instance.contextLimit,
 };

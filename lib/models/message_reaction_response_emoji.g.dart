@@ -17,7 +17,7 @@ MessageReactionResponseEmoji _$MessageReactionResponseEmojiFromJson(
 Map<String, dynamic> _$MessageReactionResponseEmojiToJson(
   MessageReactionResponseEmoji instance,
 ) => <String, dynamic>{
-  'id': instance.id,
+  'id': ?instance.id,
   'name': instance.name,
-  'animated': instance.animated,
+  'animated': ?instance.animated,
 };

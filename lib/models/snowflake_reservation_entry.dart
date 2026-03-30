@@ -24,7 +24,7 @@ class SnowflakeReservationEntry {
   final String snowflake;
 
   /// ISO 8601 timestamp when the reservation was last updated
-  @JsonKey(name: 'updated_at')
+  @JsonKey(includeIfNull: true, name: 'updated_at')
   final String? updatedAt;
 
   Map<String, Object?> toJson() => _$SnowflakeReservationEntryToJson(this);

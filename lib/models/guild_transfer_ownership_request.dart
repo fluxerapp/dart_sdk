@@ -21,6 +21,7 @@ class GuildTransferOwnershipRequest {
 
   @JsonKey(name: 'new_owner_id')
   final SnowflakeType newOwnerId;
+  @JsonKey(includeIfNull: false)
   final PasswordType? password;
 
   Map<String, Object?> toJson() => _$GuildTransferOwnershipRequestToJson(this);

@@ -24,7 +24,7 @@ class PushSubscribeRequest {
   final PushSubscribeRequestKeys keys;
 
   /// The user agent string
-  @JsonKey(name: 'user_agent')
+  @JsonKey(includeIfNull: false, name: 'user_agent')
   final String? userAgent;
 
   Map<String, Object?> toJson() => _$PushSubscribeRequestToJson(this);

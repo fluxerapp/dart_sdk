@@ -14,9 +14,11 @@ class LimitFilterResponse {
       _$LimitFilterResponseFromJson(json);
 
   /// Trait filters for this limit rule
+  @JsonKey(includeIfNull: false)
   final List<String>? traits;
 
   /// Guild feature filters for this limit rule
+  @JsonKey(includeIfNull: false)
   final List<String>? guildFeatures;
 
   Map<String, Object?> toJson() => _$LimitFilterResponseToJson(this);

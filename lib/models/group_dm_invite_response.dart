@@ -33,6 +33,7 @@ class GroupDmInviteResponse {
   final ChannelPartialResponse channel;
 
   /// The user who created the invite
+  @JsonKey(includeIfNull: false)
   final UserPartialResponse? inviter;
 
   /// The current member count of the group DM
@@ -40,7 +41,7 @@ class GroupDmInviteResponse {
   final int memberCount;
 
   /// ISO8601 timestamp of when the invite expires
-  @JsonKey(name: 'expires_at')
+  @JsonKey(includeIfNull: false, name: 'expires_at')
   final DateTime? expiresAt;
 
   /// Whether the invite grants temporary membership

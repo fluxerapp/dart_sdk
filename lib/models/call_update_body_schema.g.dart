@@ -12,4 +12,4 @@ CallUpdateBodySchema _$CallUpdateBodySchemaFromJson(
 
 Map<String, dynamic> _$CallUpdateBodySchemaToJson(
   CallUpdateBodySchema instance,
-) => <String, dynamic>{'region': instance.region};
+) => <String, dynamic>{'region': ?instance.region};

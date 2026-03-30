@@ -32,9 +32,11 @@ class ApplicationsMeResponse {
   final String name;
 
   /// The icon hash of the application
+  @JsonKey(includeIfNull: true)
   final String? icon;
 
   /// The description of the application
+  @JsonKey(includeIfNull: true)
   final String? description;
 
   /// Whether the bot can be invited by anyone
@@ -45,6 +47,7 @@ class ApplicationsMeResponse {
   @JsonKey(name: 'bot_require_code_grant')
   final bool botRequireCodeGrant;
   final ApplicationFlags flags;
+  @JsonKey(includeIfNull: false)
   final ApplicationBotResponse? bot;
 
   Map<String, Object?> toJson() => _$ApplicationsMeResponseToJson(this);

@@ -19,7 +19,7 @@ Map<String, dynamic> _$ListUserDmChannelsRequestToJson(
   ListUserDmChannelsRequest instance,
 ) => <String, dynamic>{
   'user_id': instance.userId,
-  'before': instance.before,
-  'after': instance.after,
-  'limit': instance.limit,
+  'before': ?instance.before,
+  'after': ?instance.after,
+  'limit': ?instance.limit,
 };

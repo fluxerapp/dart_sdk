@@ -17,7 +17,7 @@ GuildBanCreateRequest _$GuildBanCreateRequestFromJson(
 Map<String, dynamic> _$GuildBanCreateRequestToJson(
   GuildBanCreateRequest instance,
 ) => <String, dynamic>{
-  'delete_message_days': instance.deleteMessageDays,
-  'reason': instance.reason,
-  'ban_duration_seconds': instance.banDurationSeconds,
+  'delete_message_days': ?instance.deleteMessageDays,
+  'reason': ?instance.reason,
+  'ban_duration_seconds': ?instance.banDurationSeconds,
 };

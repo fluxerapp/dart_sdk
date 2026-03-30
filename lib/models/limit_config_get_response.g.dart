@@ -39,5 +39,5 @@ Map<String, dynamic> _$LimitConfigGetResponseToJson(
   'metadata': instance.metadata,
   'categories': instance.categories,
   'limit_keys': instance.limitKeys,
-  'bounds': instance.bounds,
+  'bounds': ?instance.bounds,
 };

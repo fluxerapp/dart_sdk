@@ -27,7 +27,7 @@ Map<String, dynamic> _$MetadataToJson(Metadata instance) => <String, dynamic>{
   'category': instance.category,
   'scope': instance.scope,
   'isToggle': instance.isToggle,
-  'unit': instance.unit,
-  'min': instance.min,
-  'max': instance.max,
+  'unit': ?instance.unit,
+  'min': ?instance.min,
+  'max': ?instance.max,
 };

@@ -15,10 +15,11 @@ class DiscoveryApplicationPatchRequest {
   ) => _$DiscoveryApplicationPatchRequestFromJson(json);
 
   /// Updated description for discovery listing
+  @JsonKey(includeIfNull: false)
   final String? description;
 
   /// Updated discovery category type
-  @JsonKey(name: 'category_type')
+  @JsonKey(includeIfNull: false, name: 'category_type')
   final int? categoryType;
 
   Map<String, Object?> toJson() =>

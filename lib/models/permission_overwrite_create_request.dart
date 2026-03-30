@@ -23,7 +23,9 @@ class PermissionOverwriteCreateRequest {
 
   /// The type of overwrite (0 = role, 1 = member)
   final PermissionOverwriteCreateRequestTypeType type;
+  @JsonKey(includeIfNull: false)
   final UnsignedInt64Type? allow;
+  @JsonKey(includeIfNull: false)
   final UnsignedInt64Type? deny;
 
   Map<String, Object?> toJson() =>

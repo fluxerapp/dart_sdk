@@ -22,12 +22,13 @@ class GitHubWebhookCheckSuite {
   factory GitHubWebhookCheckSuite.fromJson(Map<String, Object?> json) =>
       _$GitHubWebhookCheckSuiteFromJson(json);
 
+  @JsonKey(includeIfNull: false)
   final String? conclusion;
-  @JsonKey(name: 'head_branch')
+  @JsonKey(includeIfNull: false, name: 'head_branch')
   final String? headBranch;
   @JsonKey(name: 'head_sha')
   final String headSha;
-  @JsonKey(name: 'pull_requests')
+  @JsonKey(includeIfNull: false, name: 'pull_requests')
   final List<GitHubWebhookCheckSuitePullRequests>? pullRequests;
   final GitHubWebhookCheckSuiteApp app;
 

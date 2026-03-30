@@ -38,23 +38,27 @@ class ApplicationBotResponse {
   final String discriminator;
 
   /// The avatar hash of the bot
+  @JsonKey(includeIfNull: false)
   final String? avatar;
 
   /// The banner hash of the bot
+  @JsonKey(includeIfNull: false)
   final String? banner;
 
   /// The bio or description of the bot
+  @JsonKey(includeIfNull: true)
   final String? bio;
 
   /// The bot token for authentication
+  @JsonKey(includeIfNull: false)
   final String? token;
 
   /// Whether the bot has MFA enabled
-  @JsonKey(name: 'mfa_enabled')
+  @JsonKey(includeIfNull: false, name: 'mfa_enabled')
   final bool? mfaEnabled;
 
   /// The types of authenticators enabled
-  @JsonKey(name: 'authenticator_types')
+  @JsonKey(includeIfNull: false, name: 'authenticator_types')
   final List<AuthenticatorType>? authenticatorTypes;
   final BotFlags flags;
 

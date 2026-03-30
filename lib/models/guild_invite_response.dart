@@ -39,6 +39,7 @@ class GuildInviteResponse {
   final ChannelPartialResponse channel;
 
   /// The user who created the invite
+  @JsonKey(includeIfNull: false)
   final UserPartialResponse? inviter;
 
   /// The approximate total member count of the guild
@@ -50,7 +51,7 @@ class GuildInviteResponse {
   final int presenceCount;
 
   /// ISO8601 timestamp of when the invite expires
-  @JsonKey(name: 'expires_at')
+  @JsonKey(includeIfNull: false, name: 'expires_at')
   final DateTime? expiresAt;
 
   /// Whether the invite grants temporary membership

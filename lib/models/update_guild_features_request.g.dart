@@ -22,6 +22,6 @@ Map<String, dynamic> _$UpdateGuildFeaturesRequestToJson(
   UpdateGuildFeaturesRequest instance,
 ) => <String, dynamic>{
   'guild_id': instance.guildId,
-  'add_features': instance.addFeatures,
-  'remove_features': instance.removeFeatures,
+  'add_features': ?instance.addFeatures,
+  'remove_features': ?instance.removeFeatures,
 };

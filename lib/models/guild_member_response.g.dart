@@ -27,15 +27,15 @@ Map<String, dynamic> _$GuildMemberResponseToJson(
   GuildMemberResponse instance,
 ) => <String, dynamic>{
   'user': instance.user,
-  'nick': instance.nick,
-  'avatar': instance.avatar,
-  'banner': instance.banner,
-  'accent_color': instance.accentColor,
+  'nick': ?instance.nick,
+  'avatar': ?instance.avatar,
+  'banner': ?instance.banner,
+  'accent_color': ?instance.accentColor,
   'roles': instance.roles,
   'joined_at': instance.joinedAt.toIso8601String(),
   'mute': instance.mute,
   'deaf': instance.deaf,
-  'communication_disabled_until': instance.communicationDisabledUntil
+  'communication_disabled_until': ?instance.communicationDisabledUntil
       ?.toIso8601String(),
-  'profile_flags': instance.profileFlags,
+  'profile_flags': ?instance.profileFlags,
 };

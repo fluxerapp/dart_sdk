@@ -17,6 +17,7 @@ class MutualGuildResponse {
   final String id;
 
   /// The nickname of the target user in this guild
+  @JsonKey(includeIfNull: true)
   final String? nick;
 
   Map<String, Object?> toJson() => _$MutualGuildResponseToJson(this);

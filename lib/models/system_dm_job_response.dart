@@ -55,15 +55,15 @@ class SystemDmJobResponse {
   final String createdAt;
 
   /// ISO 8601 timestamp when the job was approved
-  @JsonKey(name: 'approved_at')
+  @JsonKey(includeIfNull: false, name: 'approved_at')
   final String? approvedAt;
 
   /// Registration date filter start
-  @JsonKey(name: 'registration_start')
+  @JsonKey(includeIfNull: false, name: 'registration_start')
   final String? registrationStart;
 
   /// Registration date filter end
-  @JsonKey(name: 'registration_end')
+  @JsonKey(includeIfNull: false, name: 'registration_end')
   final String? registrationEnd;
 
   /// List of excluded guild IDs
@@ -71,7 +71,7 @@ class SystemDmJobResponse {
   final List<String> excludedGuildIds;
 
   /// Last error message if the job failed
-  @JsonKey(name: 'last_error')
+  @JsonKey(includeIfNull: false, name: 'last_error')
   final String? lastError;
 
   Map<String, Object?> toJson() => _$SystemDmJobResponseToJson(this);

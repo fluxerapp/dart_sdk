@@ -21,7 +21,7 @@ class CreateAdminApiKeyRequest {
   final String name;
 
   /// Number of days until the key expires
-  @JsonKey(name: 'expires_in_days')
+  @JsonKey(includeIfNull: false, name: 'expires_in_days')
   final int? expiresInDays;
 
   /// List of access control permissions for the key

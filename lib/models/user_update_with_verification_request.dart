@@ -45,85 +45,93 @@ class UserUpdateWithVerificationRequest {
     Map<String, Object?> json,
   ) => _$UserUpdateWithVerificationRequestFromJson(json);
 
+  @JsonKey(includeIfNull: false)
   final UsernameType? username;
 
   /// The 4-digit discriminator tag
+  @JsonKey(includeIfNull: false)
   final String? discriminator;
 
   /// The display name shown to other users
-  @JsonKey(name: 'global_name')
+  @JsonKey(includeIfNull: false, name: 'global_name')
   final String? globalName;
+  @JsonKey(includeIfNull: false)
   final EmailType? email;
-  @JsonKey(name: 'new_password')
+  @JsonKey(includeIfNull: false, name: 'new_password')
   final PasswordType? newPassword;
+  @JsonKey(includeIfNull: false)
   final PasswordType? password;
 
   /// Base64-encoded avatar image
+  @JsonKey(includeIfNull: false)
   final Base64ImageType? avatar;
 
   /// Base64-encoded profile banner image
+  @JsonKey(includeIfNull: false)
   final Base64ImageType? banner;
 
   /// User biography text (max 320 characters)
+  @JsonKey(includeIfNull: false)
   final String? bio;
 
   /// User pronouns (max 40 characters)
+  @JsonKey(includeIfNull: false)
   final String? pronouns;
 
   /// Profile accent color as integer
-  @JsonKey(name: 'accent_color')
+  @JsonKey(includeIfNull: false, name: 'accent_color')
   final int? accentColor;
 
   /// Whether to hide the premium badge
-  @JsonKey(name: 'premium_badge_hidden')
+  @JsonKey(includeIfNull: false, name: 'premium_badge_hidden')
   final bool? premiumBadgeHidden;
 
   /// Whether to mask the premium badge
-  @JsonKey(name: 'premium_badge_masked')
+  @JsonKey(includeIfNull: false, name: 'premium_badge_masked')
   final bool? premiumBadgeMasked;
 
   /// Whether to hide premium badge timestamp
-  @JsonKey(name: 'premium_badge_timestamp_hidden')
+  @JsonKey(includeIfNull: false, name: 'premium_badge_timestamp_hidden')
   final bool? premiumBadgeTimestampHidden;
 
   /// Whether to hide premium badge sequence
-  @JsonKey(name: 'premium_badge_sequence_hidden')
+  @JsonKey(includeIfNull: false, name: 'premium_badge_sequence_hidden')
   final bool? premiumBadgeSequenceHidden;
 
   /// Override premium enabled state
-  @JsonKey(name: 'premium_enabled_override')
+  @JsonKey(includeIfNull: false, name: 'premium_enabled_override')
   final bool? premiumEnabledOverride;
 
   /// Whether user dismissed premium onboarding
-  @JsonKey(name: 'has_dismissed_premium_onboarding')
+  @JsonKey(includeIfNull: false, name: 'has_dismissed_premium_onboarding')
   final bool? hasDismissedPremiumOnboarding;
 
   /// Whether user has unread gifts
-  @JsonKey(name: 'has_unread_gift_inventory')
+  @JsonKey(includeIfNull: false, name: 'has_unread_gift_inventory')
   final bool? hasUnreadGiftInventory;
 
   /// Whether user has used mobile client
-  @JsonKey(name: 'used_mobile_client')
+  @JsonKey(includeIfNull: false, name: 'used_mobile_client')
   final bool? usedMobileClient;
 
   /// Email change token for updating email
-  @JsonKey(name: 'email_token')
+  @JsonKey(includeIfNull: false, name: 'email_token')
   final String? emailToken;
 
   /// MFA method to use for verification
-  @JsonKey(name: 'mfa_method')
+  @JsonKey(includeIfNull: false, name: 'mfa_method')
   final UserUpdateWithVerificationRequestMfaMethodMfaMethod? mfaMethod;
 
   /// MFA verification code from authenticator app or SMS
-  @JsonKey(name: 'mfa_code')
+  @JsonKey(includeIfNull: false, name: 'mfa_code')
   final String? mfaCode;
 
   /// WebAuthn authentication response
-  @JsonKey(name: 'webauthn_response')
+  @JsonKey(includeIfNull: false, name: 'webauthn_response')
   final dynamic webauthnResponse;
 
   /// WebAuthn challenge string
-  @JsonKey(name: 'webauthn_challenge')
+  @JsonKey(includeIfNull: false, name: 'webauthn_challenge')
   final String? webauthnChallenge;
 
   Map<String, Object?> toJson() =>

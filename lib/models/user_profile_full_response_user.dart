@@ -36,20 +36,23 @@ class UserProfileFullResponseUser {
   final String discriminator;
 
   /// The display name of the user, if set
-  @JsonKey(name: 'global_name')
+  @JsonKey(includeIfNull: true, name: 'global_name')
   final String? globalName;
 
   /// The hash of the user avatar image
+  @JsonKey(includeIfNull: true)
   final String? avatar;
 
   /// The dominant avatar color of the user as an integer
-  @JsonKey(name: 'avatar_color')
+  @JsonKey(includeIfNull: true, name: 'avatar_color')
   final Int32Type? avatarColor;
 
   /// Whether the user is a bot account
+  @JsonKey(includeIfNull: false)
   final bool? bot;
 
   /// Whether the user is an official system user
+  @JsonKey(includeIfNull: false)
   final bool? system;
   final PublicUserFlags flags;
 

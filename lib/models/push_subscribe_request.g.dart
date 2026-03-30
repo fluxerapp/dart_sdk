@@ -19,5 +19,5 @@ Map<String, dynamic> _$PushSubscribeRequestToJson(
 ) => <String, dynamic>{
   'endpoint': instance.endpoint,
   'keys': instance.keys,
-  'user_agent': instance.userAgent,
+  'user_agent': ?instance.userAgent,
 };

@@ -19,12 +19,15 @@ class SlackWebhookRequestAttachmentsFields {
   ) => _$SlackWebhookRequestAttachmentsFieldsFromJson(json);
 
   /// Title of the field
+  @JsonKey(includeIfNull: false)
   final String? title;
 
   /// Value of the field
+  @JsonKey(includeIfNull: false)
   final String? value;
 
   /// Whether the field should be displayed as a short column
+  @JsonKey(includeIfNull: false)
   final bool? short;
 
   Map<String, Object?> toJson() =>

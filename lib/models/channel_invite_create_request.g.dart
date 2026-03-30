@@ -18,8 +18,8 @@ ChannelInviteCreateRequest _$ChannelInviteCreateRequestFromJson(
 Map<String, dynamic> _$ChannelInviteCreateRequestToJson(
   ChannelInviteCreateRequest instance,
 ) => <String, dynamic>{
-  'max_uses': instance.maxUses,
-  'max_age': instance.maxAge,
-  'unique': instance.unique,
-  'temporary': instance.temporary,
+  'max_uses': ?instance.maxUses,
+  'max_age': ?instance.maxAge,
+  'unique': ?instance.unique,
+  'temporary': ?instance.temporary,
 };

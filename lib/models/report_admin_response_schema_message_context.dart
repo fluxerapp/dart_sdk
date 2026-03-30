@@ -30,7 +30,7 @@ class ReportAdminResponseSchemaMessageContext {
   final SnowflakeType id;
   @JsonKey(name: 'channel_id')
   final SnowflakeType channelId;
-  @JsonKey(name: 'guild_id')
+  @JsonKey(includeIfNull: true, name: 'guild_id')
   final SnowflakeType? guildId;
   final String content;
   final String timestamp;

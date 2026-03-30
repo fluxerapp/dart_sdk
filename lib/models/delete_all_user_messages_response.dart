@@ -29,7 +29,7 @@ class DeleteAllUserMessagesResponse {
   final Int32Type channelCount;
   @JsonKey(name: 'message_count')
   final Int32Type messageCount;
-  @JsonKey(name: 'job_id')
+  @JsonKey(includeIfNull: false, name: 'job_id')
   final String? jobId;
 
   Map<String, Object?> toJson() => _$DeleteAllUserMessagesResponseToJson(this);

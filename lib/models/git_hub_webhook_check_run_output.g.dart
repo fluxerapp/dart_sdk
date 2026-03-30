@@ -15,4 +15,4 @@ GitHubWebhookCheckRunOutput _$GitHubWebhookCheckRunOutputFromJson(
 
 Map<String, dynamic> _$GitHubWebhookCheckRunOutputToJson(
   GitHubWebhookCheckRunOutput instance,
-) => <String, dynamic>{'title': instance.title, 'summary': instance.summary};
+) => <String, dynamic>{'title': ?instance.title, 'summary': ?instance.summary};

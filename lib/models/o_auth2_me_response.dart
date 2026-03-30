@@ -31,6 +31,7 @@ class OAuth2MeResponse {
   final String expires;
 
   /// The user associated with the token
+  @JsonKey(includeIfNull: false)
   final OAuth2MeResponseUser? user;
 
   Map<String, Object?> toJson() => _$OAuth2MeResponseToJson(this);

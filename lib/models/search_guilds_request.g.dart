@@ -16,7 +16,7 @@ SearchGuildsRequest _$SearchGuildsRequestFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$SearchGuildsRequestToJson(
   SearchGuildsRequest instance,
 ) => <String, dynamic>{
-  'query': instance.query,
-  'limit': instance.limit,
-  'offset': instance.offset,
+  'query': ?instance.query,
+  'limit': ?instance.limit,
+  'offset': ?instance.offset,
 };

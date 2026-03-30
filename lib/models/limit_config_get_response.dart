@@ -37,6 +37,7 @@ class LimitConfigGetResponse {
   final Map<String, String> categories;
   @JsonKey(name: 'limit_keys')
   final List<String> limitKeys;
+  @JsonKey(includeIfNull: false)
   final Map<String, Bounds>? bounds;
 
   Map<String, Object?> toJson() => _$LimitConfigGetResponseToJson(this);

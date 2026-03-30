@@ -31,29 +31,34 @@ class MessageSnapshotResponse {
       _$MessageSnapshotResponseFromJson(json);
 
   /// The text content of the snapshot
+  @JsonKey(includeIfNull: false)
   final String? content;
 
   /// The ISO 8601 timestamp of when the original message was created
   final DateTime timestamp;
 
   /// The ISO 8601 timestamp of when the original message was last edited
-  @JsonKey(name: 'edited_timestamp')
+  @JsonKey(includeIfNull: false, name: 'edited_timestamp')
   final DateTime? editedTimestamp;
 
   /// The user IDs mentioned in the snapshot
+  @JsonKey(includeIfNull: false)
   final List<String>? mentions;
 
   /// The role IDs mentioned in the snapshot
-  @JsonKey(name: 'mention_roles')
+  @JsonKey(includeIfNull: false, name: 'mention_roles')
   final List<String>? mentionRoles;
 
   /// The embeds included in the snapshot
+  @JsonKey(includeIfNull: false)
   final List<MessageEmbedResponse>? embeds;
 
   /// The attachments included in the snapshot
+  @JsonKey(includeIfNull: false)
   final List<MessageAttachmentResponse>? attachments;
 
   /// The stickers included in the snapshot
+  @JsonKey(includeIfNull: false)
   final List<MessageStickerResponse>? stickers;
 
   /// The type of message

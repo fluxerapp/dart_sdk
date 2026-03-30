@@ -14,6 +14,7 @@ class StreamUpdateBodySchema {
       _$StreamUpdateBodySchemaFromJson(json);
 
   /// The preferred voice region for the stream (1-64 characters)
+  @JsonKey(includeIfNull: false)
   final String? region;
 
   Map<String, Object?> toJson() => _$StreamUpdateBodySchemaToJson(this);

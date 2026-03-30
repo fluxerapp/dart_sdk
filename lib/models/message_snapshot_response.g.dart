@@ -38,14 +38,14 @@ MessageSnapshotResponse _$MessageSnapshotResponseFromJson(
 Map<String, dynamic> _$MessageSnapshotResponseToJson(
   MessageSnapshotResponse instance,
 ) => <String, dynamic>{
-  'content': instance.content,
+  'content': ?instance.content,
   'timestamp': instance.timestamp.toIso8601String(),
-  'edited_timestamp': instance.editedTimestamp?.toIso8601String(),
-  'mentions': instance.mentions,
-  'mention_roles': instance.mentionRoles,
-  'embeds': instance.embeds,
-  'attachments': instance.attachments,
-  'stickers': instance.stickers,
+  'edited_timestamp': ?instance.editedTimestamp?.toIso8601String(),
+  'mentions': ?instance.mentions,
+  'mention_roles': ?instance.mentionRoles,
+  'embeds': ?instance.embeds,
+  'attachments': ?instance.attachments,
+  'stickers': ?instance.stickers,
   'type': instance.type,
   'flags': instance.flags,
 };

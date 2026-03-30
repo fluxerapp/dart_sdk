@@ -25,18 +25,19 @@ class CreateFavoriteMemeBodySchema {
   final String name;
 
   /// Alternative text description for accessibility
-  @JsonKey(name: 'alt_text')
+  @JsonKey(includeIfNull: false, name: 'alt_text')
   final String? altText;
 
   /// Tags for categorizing and searching the meme
+  @JsonKey(includeIfNull: false)
   final List<String>? tags;
 
   /// ID of the message attachment to save as a meme
-  @JsonKey(name: 'attachment_id')
+  @JsonKey(includeIfNull: false, name: 'attachment_id')
   final SnowflakeType? attachmentId;
 
   /// Index of the message embed to save as a meme
-  @JsonKey(name: 'embed_index')
+  @JsonKey(includeIfNull: false, name: 'embed_index')
   final int? embedIndex;
 
   Map<String, Object?> toJson() => _$CreateFavoriteMemeBodySchemaToJson(this);

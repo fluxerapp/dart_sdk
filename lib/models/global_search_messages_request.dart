@@ -59,126 +59,133 @@ class GlobalSearchMessagesRequest {
       _$GlobalSearchMessagesRequestFromJson(json);
 
   /// Number of results per page (1-25)
-  @JsonKey(name: 'hits_per_page')
+  @JsonKey(includeIfNull: false, name: 'hits_per_page')
   final int? hitsPerPage;
 
   /// Page number for pagination
+  @JsonKey(includeIfNull: false)
   final int? page;
-  @JsonKey(name: 'max_id')
+  @JsonKey(includeIfNull: false, name: 'max_id')
   final SnowflakeType? maxId;
-  @JsonKey(name: 'min_id')
+  @JsonKey(includeIfNull: false, name: 'min_id')
   final SnowflakeType? minId;
 
   /// Text content to search for
+  @JsonKey(includeIfNull: false)
   final String? content;
 
   /// Multiple content queries to search for
+  @JsonKey(includeIfNull: false)
   final List<String>? contents;
 
   /// Exact phrases that must appear contiguously in message content
-  @JsonKey(name: 'exact_phrases')
+  @JsonKey(includeIfNull: false, name: 'exact_phrases')
   final List<String>? exactPhrases;
 
   /// Channel IDs to search in
-  @JsonKey(name: 'channel_id')
+  @JsonKey(includeIfNull: false, name: 'channel_id')
   final List<SnowflakeType>? channelId;
 
   /// Channel IDs to exclude from search
-  @JsonKey(name: 'exclude_channel_id')
+  @JsonKey(includeIfNull: false, name: 'exclude_channel_id')
   final List<SnowflakeType>? excludeChannelId;
 
   /// Author types to filter by
-  @JsonKey(name: 'author_type')
+  @JsonKey(includeIfNull: false, name: 'author_type')
   final List<MessageAuthorType>? authorType;
 
   /// Author types to exclude
-  @JsonKey(name: 'exclude_author_type')
+  @JsonKey(includeIfNull: false, name: 'exclude_author_type')
   final List<MessageAuthorType>? excludeAuthorType;
 
   /// Author user IDs to filter by
-  @JsonKey(name: 'author_id')
+  @JsonKey(includeIfNull: false, name: 'author_id')
   final List<SnowflakeType>? authorId;
 
   /// Author user IDs to exclude
-  @JsonKey(name: 'exclude_author_id')
+  @JsonKey(includeIfNull: false, name: 'exclude_author_id')
   final List<SnowflakeType>? excludeAuthorId;
 
   /// User IDs that must be mentioned
+  @JsonKey(includeIfNull: false)
   final List<SnowflakeType>? mentions;
 
   /// User IDs that must not be mentioned
-  @JsonKey(name: 'exclude_mentions')
+  @JsonKey(includeIfNull: false, name: 'exclude_mentions')
   final List<SnowflakeType>? excludeMentions;
 
   /// Filter by whether message mentions everyone
-  @JsonKey(name: 'mention_everyone')
+  @JsonKey(includeIfNull: false, name: 'mention_everyone')
   final bool? mentionEveryone;
 
   /// Filter by pinned status
+  @JsonKey(includeIfNull: false)
   final bool? pinned;
 
   /// Content types the message must have
+  @JsonKey(includeIfNull: false)
   final List<MessageContentType>? has;
 
   /// Content types the message must not have
-  @JsonKey(name: 'exclude_has')
+  @JsonKey(includeIfNull: false, name: 'exclude_has')
   final List<MessageContentType>? excludeHas;
 
   /// Embed types to filter by
-  @JsonKey(name: 'embed_type')
+  @JsonKey(includeIfNull: false, name: 'embed_type')
   final List<MessageEmbedType>? embedType;
 
   /// Embed types to exclude
-  @JsonKey(name: 'exclude_embed_type')
+  @JsonKey(includeIfNull: false, name: 'exclude_embed_type')
   final List<MessageEmbedType>? excludeEmbedType;
 
   /// Embed providers to filter by
-  @JsonKey(name: 'embed_provider')
+  @JsonKey(includeIfNull: false, name: 'embed_provider')
   final List<String>? embedProvider;
 
   /// Embed providers to exclude
-  @JsonKey(name: 'exclude_embed_provider')
+  @JsonKey(includeIfNull: false, name: 'exclude_embed_provider')
   final List<String>? excludeEmbedProvider;
 
   /// Link hostnames to filter by
-  @JsonKey(name: 'link_hostname')
+  @JsonKey(includeIfNull: false, name: 'link_hostname')
   final List<String>? linkHostname;
 
   /// Link hostnames to exclude
-  @JsonKey(name: 'exclude_link_hostname')
+  @JsonKey(includeIfNull: false, name: 'exclude_link_hostname')
   final List<String>? excludeLinkHostname;
 
   /// Attachment filenames to filter by
-  @JsonKey(name: 'attachment_filename')
+  @JsonKey(includeIfNull: false, name: 'attachment_filename')
   final List<String>? attachmentFilename;
 
   /// Attachment filenames to exclude
-  @JsonKey(name: 'exclude_attachment_filename')
+  @JsonKey(includeIfNull: false, name: 'exclude_attachment_filename')
   final List<String>? excludeAttachmentFilename;
 
   /// File extensions to filter by
-  @JsonKey(name: 'attachment_extension')
+  @JsonKey(includeIfNull: false, name: 'attachment_extension')
   final List<String>? attachmentExtension;
 
   /// File extensions to exclude
-  @JsonKey(name: 'exclude_attachment_extension')
+  @JsonKey(includeIfNull: false, name: 'exclude_attachment_extension')
   final List<String>? excludeAttachmentExtension;
-  @JsonKey(name: 'sort_by')
+  @JsonKey(includeIfNull: false, name: 'sort_by')
   final MessageSortField? sortBy;
-  @JsonKey(name: 'sort_order')
+  @JsonKey(includeIfNull: false, name: 'sort_order')
   final MessageSortOrder? sortOrder;
 
   /// Whether to include NSFW channel results
-  @JsonKey(name: 'include_nsfw')
+  @JsonKey(includeIfNull: false, name: 'include_nsfw')
   final bool? includeNsfw;
+  @JsonKey(includeIfNull: false)
   final MessageSearchScope? scope;
-  @JsonKey(name: 'context_channel_id')
+  @JsonKey(includeIfNull: false, name: 'context_channel_id')
   final SnowflakeType? contextChannelId;
-  @JsonKey(name: 'context_guild_id')
+  @JsonKey(includeIfNull: false, name: 'context_guild_id')
   final SnowflakeType? contextGuildId;
 
   /// Specific channel IDs to search in
-  @JsonKey(name: 'channel_ids')
+  @JsonKey(includeIfNull: false, name: 'channel_ids')
   final List<SnowflakeType>? channelIds;
 
   Map<String, Object?> toJson() => _$GlobalSearchMessagesRequestToJson(this);

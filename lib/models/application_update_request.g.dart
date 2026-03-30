@@ -20,8 +20,8 @@ ApplicationUpdateRequest _$ApplicationUpdateRequestFromJson(
 Map<String, dynamic> _$ApplicationUpdateRequestToJson(
   ApplicationUpdateRequest instance,
 ) => <String, dynamic>{
-  'name': instance.name,
-  'redirect_uris': instance.redirectUris,
-  'bot_public': instance.botPublic,
-  'bot_require_code_grant': instance.botRequireCodeGrant,
+  'name': ?instance.name,
+  'redirect_uris': ?instance.redirectUris,
+  'bot_public': ?instance.botPublic,
+  'bot_require_code_grant': ?instance.botRequireCodeGrant,
 };

@@ -24,8 +24,8 @@ Map<String, dynamic> _$ChannelUpdateGroupDmRequestToJson(
   ChannelUpdateGroupDmRequest instance,
 ) => <String, dynamic>{
   'type': instance.type,
-  'name': instance.name,
-  'icon': instance.icon,
-  'owner_id': instance.ownerId,
-  'nicks': instance.nicks,
+  'name': ?instance.name,
+  'icon': ?instance.icon,
+  'owner_id': ?instance.ownerId,
+  'nicks': ?instance.nicks,
 };

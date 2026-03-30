@@ -21,5 +21,5 @@ Map<String, dynamic> _$GitHubWebhookReleaseToJson(
   'id': instance.id,
   'tag_name': instance.tagName,
   'html_url': instance.htmlUrl,
-  'body': instance.body,
+  'body': ?instance.body,
 };

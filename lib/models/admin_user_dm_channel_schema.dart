@@ -24,11 +24,11 @@ class AdminUserDmChannelSchema {
 
   @JsonKey(name: 'channel_id')
   final SnowflakeType channelId;
-  @JsonKey(name: 'channel_type')
+  @JsonKey(includeIfNull: true, name: 'channel_type')
   final Int32Type? channelType;
   @JsonKey(name: 'recipient_ids')
   final List<SnowflakeType> recipientIds;
-  @JsonKey(name: 'last_message_id')
+  @JsonKey(includeIfNull: true, name: 'last_message_id')
   final SnowflakeType? lastMessageId;
   @JsonKey(name: 'is_open')
   final bool isOpen;

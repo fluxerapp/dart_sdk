@@ -21,12 +21,15 @@ enum MessageSearchScope {
   openDmsAndAllGuilds('open_dms_and_all_guilds'),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
-  $unknown(null);
+  $unknown(null)
+  ;
 
   const MessageSearchScope(this.json);
 
-  factory MessageSearchScope.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory MessageSearchScope.fromJson(String json) => values.firstWhere(
+    (e) => e.json == json,
+    orElse: () => $unknown,
+  );
 
   final String? json;
 

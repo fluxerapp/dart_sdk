@@ -14,7 +14,7 @@ class LegalHoldRequest {
       _$LegalHoldRequestFromJson(json);
 
   /// ISO 8601 timestamp when the legal hold expires
-  @JsonKey(name: 'expires_at')
+  @JsonKey(includeIfNull: false, name: 'expires_at')
   final String? expiresAt;
 
   Map<String, Object?> toJson() => _$LegalHoldRequestToJson(this);

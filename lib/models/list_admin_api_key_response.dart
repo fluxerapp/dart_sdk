@@ -33,11 +33,11 @@ class ListAdminApiKeyResponse {
   final String createdAt;
 
   /// ISO 8601 timestamp when the key was last used, or null if never used
-  @JsonKey(name: 'last_used_at')
+  @JsonKey(includeIfNull: true, name: 'last_used_at')
   final String? lastUsedAt;
 
   /// ISO 8601 timestamp when the key expires, or null if no expiration
-  @JsonKey(name: 'expires_at')
+  @JsonKey(includeIfNull: true, name: 'expires_at')
   final String? expiresAt;
 
   /// User ID of the admin who created this key

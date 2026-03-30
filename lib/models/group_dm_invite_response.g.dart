@@ -30,8 +30,8 @@ Map<String, dynamic> _$GroupDmInviteResponseToJson(
   'code': instance.code,
   'type': instance.type,
   'channel': instance.channel,
-  'inviter': instance.inviter,
+  'inviter': ?instance.inviter,
   'member_count': instance.memberCount,
-  'expires_at': instance.expiresAt?.toIso8601String(),
+  'expires_at': ?instance.expiresAt?.toIso8601String(),
   'temporary': instance.temporary,
 };

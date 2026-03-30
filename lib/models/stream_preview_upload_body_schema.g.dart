@@ -19,5 +19,5 @@ Map<String, dynamic> _$StreamPreviewUploadBodySchemaToJson(
 ) => <String, dynamic>{
   'channel_id': instance.channelId,
   'thumbnail': instance.thumbnail,
-  'content_type': instance.contentType,
+  'content_type': ?instance.contentType,
 };

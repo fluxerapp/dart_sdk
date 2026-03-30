@@ -14,6 +14,7 @@ class GuildVanityUrlUpdateRequest {
       _$GuildVanityUrlUpdateRequestFromJson(json);
 
   /// The new vanity URL code (2-32 characters, alphanumeric and hyphens)
+  @JsonKey(includeIfNull: false)
   final String? code;
 
   Map<String, Object?> toJson() => _$GuildVanityUrlUpdateRequestToJson(this);

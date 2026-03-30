@@ -24,8 +24,8 @@ SentryWebhook _$SentryWebhookFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$SentryWebhookToJson(SentryWebhook instance) =>
     <String, dynamic>{
-      'action': instance.action,
-      'installation': instance.installation,
-      'data': instance.data,
-      'actor': instance.actor,
+      'action': ?instance.action,
+      'installation': ?instance.installation,
+      'data': ?instance.data,
+      'actor': ?instance.actor,
     };

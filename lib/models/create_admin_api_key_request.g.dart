@@ -18,6 +18,6 @@ Map<String, dynamic> _$CreateAdminApiKeyRequestToJson(
   CreateAdminApiKeyRequest instance,
 ) => <String, dynamic>{
   'name': instance.name,
-  'expires_in_days': instance.expiresInDays,
+  'expires_in_days': ?instance.expiresInDays,
   'acls': instance.acls,
 };

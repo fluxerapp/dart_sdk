@@ -38,7 +38,7 @@ class GuildRoleResponse {
   final int position;
 
   /// The position of the role in the hoisted member list
-  @JsonKey(name: 'hoist_position')
+  @JsonKey(includeIfNull: false, name: 'hoist_position')
   final Int32Type? hoistPosition;
 
   /// The permissions bitfield for the role
@@ -51,7 +51,7 @@ class GuildRoleResponse {
   final bool mentionable;
 
   /// The unicode emoji for this role
-  @JsonKey(name: 'unicode_emoji')
+  @JsonKey(includeIfNull: false, name: 'unicode_emoji')
   final String? unicodeEmoji;
 
   Map<String, Object?> toJson() => _$GuildRoleResponseToJson(this);

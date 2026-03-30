@@ -14,14 +14,15 @@ class PackInviteCreateRequest {
       _$PackInviteCreateRequestFromJson(json);
 
   /// Maximum number of times this invite can be used (0 for unlimited)
-  @JsonKey(name: 'max_uses')
+  @JsonKey(includeIfNull: false, name: 'max_uses')
   final int? maxUses;
 
   /// Duration in seconds before the invite expires (0 for never)
-  @JsonKey(name: 'max_age')
+  @JsonKey(includeIfNull: false, name: 'max_age')
   final int? maxAge;
 
   /// Whether to create a new unique invite or reuse an existing one
+  @JsonKey(includeIfNull: false)
   final bool? unique;
 
   Map<String, Object?> toJson() => _$PackInviteCreateRequestToJson(this);

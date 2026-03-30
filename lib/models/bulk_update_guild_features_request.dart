@@ -25,11 +25,11 @@ class BulkUpdateGuildFeaturesRequest {
   final List<SnowflakeType> guildIds;
 
   /// Guild features to add to all specified guilds
-  @JsonKey(name: 'add_features')
+  @JsonKey(includeIfNull: false, name: 'add_features')
   final List<GuildFeatureSchema>? addFeatures;
 
   /// Guild features to remove from all specified guilds
-  @JsonKey(name: 'remove_features')
+  @JsonKey(includeIfNull: false, name: 'remove_features')
   final List<GuildFeatureSchema>? removeFeatures;
 
   Map<String, Object?> toJson() => _$BulkUpdateGuildFeaturesRequestToJson(this);

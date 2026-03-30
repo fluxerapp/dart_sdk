@@ -57,43 +57,50 @@ class UserAdminResponseSchema {
   final SnowflakeType id;
   final String username;
   final Int32Type discriminator;
-  @JsonKey(name: 'global_name')
+  @JsonKey(includeIfNull: true, name: 'global_name')
   final String? globalName;
   final bool bot;
   final bool system;
   final UserFlags flags;
+  @JsonKey(includeIfNull: true)
   final String? avatar;
+  @JsonKey(includeIfNull: true)
   final String? banner;
+  @JsonKey(includeIfNull: true)
   final String? bio;
+  @JsonKey(includeIfNull: true)
   final String? pronouns;
-  @JsonKey(name: 'accent_color')
+  @JsonKey(includeIfNull: true, name: 'accent_color')
   final Int32Type? accentColor;
+  @JsonKey(includeIfNull: true)
   final String? email;
   @JsonKey(name: 'email_verified')
   final bool emailVerified;
   @JsonKey(name: 'email_bounced')
   final bool emailBounced;
+  @JsonKey(includeIfNull: true)
   final String? phone;
-  @JsonKey(name: 'date_of_birth')
+  @JsonKey(includeIfNull: true, name: 'date_of_birth')
   final String? dateOfBirth;
+  @JsonKey(includeIfNull: true)
   final String? locale;
-  @JsonKey(name: 'premium_type')
+  @JsonKey(includeIfNull: true, name: 'premium_type')
   final Int32Type? premiumType;
-  @JsonKey(name: 'premium_since')
+  @JsonKey(includeIfNull: true, name: 'premium_since')
   final String? premiumSince;
-  @JsonKey(name: 'premium_until')
+  @JsonKey(includeIfNull: true, name: 'premium_until')
   final String? premiumUntil;
   @JsonKey(name: 'suspicious_activity_flags')
   final SuspiciousActivityFlags suspiciousActivityFlags;
-  @JsonKey(name: 'temp_banned_until')
+  @JsonKey(includeIfNull: true, name: 'temp_banned_until')
   final String? tempBannedUntil;
-  @JsonKey(name: 'pending_deletion_at')
+  @JsonKey(includeIfNull: true, name: 'pending_deletion_at')
   final String? pendingDeletionAt;
-  @JsonKey(name: 'pending_bulk_message_deletion_at')
+  @JsonKey(includeIfNull: true, name: 'pending_bulk_message_deletion_at')
   final String? pendingBulkMessageDeletionAt;
-  @JsonKey(name: 'deletion_reason_code')
+  @JsonKey(includeIfNull: true, name: 'deletion_reason_code')
   final Int32Type? deletionReasonCode;
-  @JsonKey(name: 'deletion_public_reason')
+  @JsonKey(includeIfNull: true, name: 'deletion_public_reason')
   final String? deletionPublicReason;
   final List<String> acls;
   final List<String> traits;
@@ -101,13 +108,13 @@ class UserAdminResponseSchema {
   final bool hasTotp;
   @JsonKey(name: 'authenticator_types')
   final List<Int32Type> authenticatorTypes;
-  @JsonKey(name: 'last_active_at')
+  @JsonKey(includeIfNull: true, name: 'last_active_at')
   final String? lastActiveAt;
-  @JsonKey(name: 'last_active_ip')
+  @JsonKey(includeIfNull: true, name: 'last_active_ip')
   final String? lastActiveIp;
-  @JsonKey(name: 'last_active_ip_reverse')
+  @JsonKey(includeIfNull: true, name: 'last_active_ip_reverse')
   final String? lastActiveIpReverse;
-  @JsonKey(name: 'last_active_location')
+  @JsonKey(includeIfNull: true, name: 'last_active_location')
   final String? lastActiveLocation;
 
   Map<String, Object?> toJson() => _$UserAdminResponseSchemaToJson(this);

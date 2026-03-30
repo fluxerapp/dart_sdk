@@ -35,32 +35,39 @@ class ScheduledMessageResponseSchemaPayload {
   ) => _$ScheduledMessageResponseSchemaPayloadFromJson(json);
 
   /// The text content of the scheduled message
+  @JsonKey(includeIfNull: false)
   final String? content;
 
   /// Whether this is a text-to-speech message
+  @JsonKey(includeIfNull: false)
   final bool? tts;
 
   /// Array of embed objects attached to the message
+  @JsonKey(includeIfNull: false)
   final List<MessageEmbedResponse>? embeds;
 
   /// Array of attachment objects for the message
+  @JsonKey(includeIfNull: false)
   final List<MessageAttachmentResponse>? attachments;
 
   /// Array of sticker objects attached to the message
+  @JsonKey(includeIfNull: false)
   final List<MessageStickerResponse>? stickers;
 
   /// Array of sticker IDs to include in the message
-  @JsonKey(name: 'sticker_ids')
+  @JsonKey(includeIfNull: false, name: 'sticker_ids')
   final List<SnowflakeType>? stickerIds;
-  @JsonKey(name: 'allowed_mentions')
+  @JsonKey(includeIfNull: false, name: 'allowed_mentions')
   final ScheduledMessageAllowedMentionsSchema? allowedMentions;
-  @JsonKey(name: 'message_reference')
+  @JsonKey(includeIfNull: false, name: 'message_reference')
   final ScheduledMessageReferenceSchema? messageReference;
+  @JsonKey(includeIfNull: false)
   final MessageFlags? flags;
 
   /// Client-generated identifier for the message
+  @JsonKey(includeIfNull: false)
   final String? nonce;
-  @JsonKey(name: 'favorite_meme_id')
+  @JsonKey(includeIfNull: false, name: 'favorite_meme_id')
   final SnowflakeType? favoriteMemeId;
 
   Map<String, Object?> toJson() =>

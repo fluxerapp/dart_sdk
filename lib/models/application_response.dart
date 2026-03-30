@@ -42,8 +42,9 @@ class ApplicationResponse {
   final bool botRequireCodeGrant;
 
   /// The client secret for OAuth2 authentication
-  @JsonKey(name: 'client_secret')
+  @JsonKey(includeIfNull: false, name: 'client_secret')
   final String? clientSecret;
+  @JsonKey(includeIfNull: false)
   final ApplicationBotResponse? bot;
 
   Map<String, Object?> toJson() => _$ApplicationResponseToJson(this);

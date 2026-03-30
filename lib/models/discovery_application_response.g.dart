@@ -26,6 +26,6 @@ Map<String, dynamic> _$DiscoveryApplicationResponseToJson(
   'description': instance.description,
   'category_type': instance.categoryType,
   'applied_at': instance.appliedAt,
-  'reviewed_at': instance.reviewedAt,
-  'review_reason': instance.reviewReason,
+  'reviewed_at': ?instance.reviewedAt,
+  'review_reason': ?instance.reviewReason,
 };

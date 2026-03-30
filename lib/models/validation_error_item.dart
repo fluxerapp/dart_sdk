@@ -24,6 +24,7 @@ class ValidationErrorItem {
 
   /// A human-readable description of the validation issue
   final String message;
+  @JsonKey(includeIfNull: false)
   final ValidationErrorCodeSchema? code;
 
   Map<String, Object?> toJson() => _$ValidationErrorItemToJson(this);

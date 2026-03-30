@@ -33,11 +33,11 @@ GitHubWebhookCheckRun _$GitHubWebhookCheckRunFromJson(
 Map<String, dynamic> _$GitHubWebhookCheckRunToJson(
   GitHubWebhookCheckRun instance,
 ) => <String, dynamic>{
-  'conclusion': instance.conclusion,
+  'conclusion': ?instance.conclusion,
   'name': instance.name,
   'html_url': instance.htmlUrl,
   'check_suite': instance.checkSuite,
-  'details_url': instance.detailsUrl,
-  'output': instance.output,
-  'pull_requests': instance.pullRequests,
+  'details_url': ?instance.detailsUrl,
+  'output': ?instance.output,
+  'pull_requests': ?instance.pullRequests,
 };

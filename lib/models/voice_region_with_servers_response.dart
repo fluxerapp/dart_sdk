@@ -66,14 +66,15 @@ class VoiceRegionWithServersResponse {
   final List<SnowflakeType> allowedUserIds;
 
   /// ISO 8601 timestamp when the region was created
-  @JsonKey(name: 'created_at')
+  @JsonKey(includeIfNull: true, name: 'created_at')
   final String? createdAt;
 
   /// ISO 8601 timestamp when the region was last updated
-  @JsonKey(name: 'updated_at')
+  @JsonKey(includeIfNull: true, name: 'updated_at')
   final String? updatedAt;
 
   /// Voice servers in this region
+  @JsonKey(includeIfNull: false)
   final List<VoiceServerAdminResponse>? servers;
 
   Map<String, Object?> toJson() => _$VoiceRegionWithServersResponseToJson(this);

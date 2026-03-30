@@ -25,7 +25,7 @@ Map<String, dynamic> _$LimitConfigGetResponseLimitConfigRulesToJson(
   LimitConfigGetResponseLimitConfigRules instance,
 ) => <String, dynamic>{
   'id': instance.id,
-  'filters': instance.filters,
+  'filters': ?instance.filters,
   'limits': instance.limits,
-  'modifiedFields': instance.modifiedFields,
+  'modifiedFields': ?instance.modifiedFields,
 };

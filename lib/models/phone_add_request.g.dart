@@ -23,9 +23,9 @@ PhoneAddRequest _$PhoneAddRequestFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$PhoneAddRequestToJson(PhoneAddRequest instance) =>
     <String, dynamic>{
       'phone_token': instance.phoneToken,
-      'password': instance.password,
-      'mfa_method': instance.mfaMethod,
-      'mfa_code': instance.mfaCode,
-      'webauthn_response': instance.webauthnResponse,
-      'webauthn_challenge': instance.webauthnChallenge,
+      'password': ?instance.password,
+      'mfa_method': ?instance.mfaMethod,
+      'mfa_code': ?instance.mfaCode,
+      'webauthn_response': ?instance.webauthnResponse,
+      'webauthn_challenge': ?instance.webauthnChallenge,
     };

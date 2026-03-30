@@ -22,6 +22,6 @@ Map<String, dynamic> _$UpdateUserFlagsRequestToJson(
   UpdateUserFlagsRequest instance,
 ) => <String, dynamic>{
   'user_id': instance.userId,
-  'add_flags': instance.addFlags,
-  'remove_flags': instance.removeFlags,
+  'add_flags': ?instance.addFlags,
+  'remove_flags': ?instance.removeFlags,
 };

@@ -24,20 +24,25 @@ class BotProfileUpdateRequest {
   factory BotProfileUpdateRequest.fromJson(Map<String, Object?> json) =>
       _$BotProfileUpdateRequestFromJson(json);
 
+  @JsonKey(includeIfNull: false)
   final UsernameType? username;
 
   /// The discriminator of the bot
+  @JsonKey(includeIfNull: false)
   final String? discriminator;
 
   /// The avatar image as base64
+  @JsonKey(includeIfNull: false)
   final Base64ImageType? avatar;
 
   /// The banner image as base64
+  @JsonKey(includeIfNull: false)
   final Base64ImageType? banner;
 
   /// The bio or description of the bot
+  @JsonKey(includeIfNull: false)
   final String? bio;
-  @JsonKey(name: 'bot_flags')
+  @JsonKey(includeIfNull: false, name: 'bot_flags')
   final BotFlags? botFlags;
 
   Map<String, Object?> toJson() => _$BotProfileUpdateRequestToJson(this);

@@ -25,7 +25,7 @@ class ReportGuildRequest {
   final GuildReportCategoryEnum category;
 
   /// Additional context or details about the report
-  @JsonKey(name: 'additional_info')
+  @JsonKey(includeIfNull: false, name: 'additional_info')
   final String? additionalInfo;
 
   Map<String, Object?> toJson() => _$ReportGuildRequestToJson(this);

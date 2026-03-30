@@ -22,6 +22,6 @@ Map<String, dynamic> _$RelationshipResponseToJson(
   'id': instance.id,
   'type': instance.type,
   'user': instance.user,
-  'since': instance.since?.toIso8601String(),
+  'since': ?instance.since?.toIso8601String(),
   'nickname': instance.nickname,
 };

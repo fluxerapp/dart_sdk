@@ -16,9 +16,11 @@ class WebhookTokenUpdateRequest {
       _$WebhookTokenUpdateRequestFromJson(json);
 
   /// The new name of the webhook
+  @JsonKey(includeIfNull: false)
   final String? name;
 
   /// The new avatar image as a base64-encoded data URI
+  @JsonKey(includeIfNull: false)
   final Base64ImageType? avatar;
 
   Map<String, Object?> toJson() => _$WebhookTokenUpdateRequestToJson(this);

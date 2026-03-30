@@ -19,11 +19,11 @@ RegisterRequest _$RegisterRequestFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$RegisterRequestToJson(RegisterRequest instance) =>
     <String, dynamic>{
-      'email': instance.email,
-      'username': instance.username,
-      'global_name': instance.globalName,
-      'password': instance.password,
+      'email': ?instance.email,
+      'username': ?instance.username,
+      'global_name': ?instance.globalName,
+      'password': ?instance.password,
       'date_of_birth': instance.dateOfBirth,
       'consent': instance.consent,
-      'invite_code': instance.inviteCode,
+      'invite_code': ?instance.inviteCode,
     };

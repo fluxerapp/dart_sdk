@@ -22,6 +22,6 @@ Map<String, dynamic> _$GitHubWebhookCommentToJson(
   'id': instance.id,
   'html_url': instance.htmlUrl,
   'user': instance.user,
-  'commit_id': instance.commitId,
+  'commit_id': ?instance.commitId,
   'body': instance.body,
 };

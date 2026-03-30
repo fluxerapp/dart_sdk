@@ -22,14 +22,15 @@ class BanGuildMemberRequest {
       _$BanGuildMemberRequestFromJson(json);
 
   /// Number of days of messages to delete from the banned user (0-7)
-  @JsonKey(name: 'delete_message_days')
+  @JsonKey(includeIfNull: false, name: 'delete_message_days')
   final int? deleteMessageDays;
 
   /// The reason for the ban (max 512 characters)
+  @JsonKey(includeIfNull: false)
   final String? reason;
 
   /// Duration of the ban in seconds (0 for permanent, or a valid temporary duration)
-  @JsonKey(name: 'ban_duration_seconds')
+  @JsonKey(includeIfNull: false, name: 'ban_duration_seconds')
   final int? banDurationSeconds;
   @JsonKey(name: 'guild_id')
   final SnowflakeType guildId;

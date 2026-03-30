@@ -22,6 +22,6 @@ Map<String, dynamic> _$BulkUpdateUserFlagsRequestToJson(
   BulkUpdateUserFlagsRequest instance,
 ) => <String, dynamic>{
   'user_ids': instance.userIds,
-  'add_flags': instance.addFlags,
-  'remove_flags': instance.removeFlags,
+  'add_flags': ?instance.addFlags,
+  'remove_flags': ?instance.removeFlags,
 };

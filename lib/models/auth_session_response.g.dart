@@ -24,7 +24,7 @@ Map<String, dynamic> _$AuthSessionResponseToJson(
   AuthSessionResponse instance,
 ) => <String, dynamic>{
   'id_hash': instance.idHash,
-  'client_info': instance.clientInfo,
-  'approx_last_used_at': instance.approxLastUsedAt?.toIso8601String(),
+  'client_info': ?instance.clientInfo,
+  'approx_last_used_at': ?instance.approxLastUsedAt?.toIso8601String(),
   'current': instance.current,
 };

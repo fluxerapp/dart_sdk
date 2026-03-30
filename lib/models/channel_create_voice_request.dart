@@ -29,27 +29,31 @@ class ChannelCreateVoiceRequest {
       _$ChannelCreateVoiceRequestFromJson(json);
 
   /// The channel topic (1-1024 characters)
+  @JsonKey(includeIfNull: false)
   final String? topic;
 
   /// External URL for link channels
+  @JsonKey(includeIfNull: false)
   final String? url;
 
   /// ID of the parent category for this channel
-  @JsonKey(name: 'parent_id')
+  @JsonKey(includeIfNull: false, name: 'parent_id')
   final SnowflakeType? parentId;
 
   /// Voice channel bitrate in bits per second (8000-320000)
+  @JsonKey(includeIfNull: false)
   final int? bitrate;
 
   /// Maximum users allowed in voice channel (0-99, 0 means unlimited)
-  @JsonKey(name: 'user_limit')
+  @JsonKey(includeIfNull: false, name: 'user_limit')
   final int? userLimit;
 
   /// Permission overwrites for roles and members
-  @JsonKey(name: 'permission_overwrites')
+  @JsonKey(includeIfNull: false, name: 'permission_overwrites')
   final List<ChannelOverwriteRequest>? permissionOverwrites;
 
   /// Whether the channel is marked as NSFW
+  @JsonKey(includeIfNull: false)
   final bool? nsfw;
   final ChannelCreateVoiceRequestTypeType type;
 

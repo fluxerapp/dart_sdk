@@ -23,10 +23,11 @@ class ListUserChangeLogRequest {
   final SnowflakeType userId;
 
   /// Maximum number of entries to return
+  @JsonKey(includeIfNull: false)
   final num? limit;
 
   /// Pagination token for the next page of results
-  @JsonKey(name: 'page_token')
+  @JsonKey(includeIfNull: false, name: 'page_token')
   final String? pageToken;
 
   Map<String, Object?> toJson() => _$ListUserChangeLogRequestToJson(this);

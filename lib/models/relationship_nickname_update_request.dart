@@ -15,6 +15,7 @@ class RelationshipNicknameUpdateRequest {
   ) => _$RelationshipNicknameUpdateRequestFromJson(json);
 
   /// Custom nickname for this friend (max 256 characters)
+  @JsonKey(includeIfNull: true)
   final String? nickname;
 
   Map<String, Object?> toJson() =>

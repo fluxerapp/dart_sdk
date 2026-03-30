@@ -31,6 +31,6 @@ Map<String, dynamic> _$ApplicationResponseToJson(
   'redirect_uris': instance.redirectUris,
   'bot_public': instance.botPublic,
   'bot_require_code_grant': instance.botRequireCodeGrant,
-  'client_secret': instance.clientSecret,
-  'bot': instance.bot,
+  'client_secret': ?instance.clientSecret,
+  'bot': ?instance.bot,
 };

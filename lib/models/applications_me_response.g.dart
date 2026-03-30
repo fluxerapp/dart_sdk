@@ -31,5 +31,5 @@ Map<String, dynamic> _$ApplicationsMeResponseToJson(
   'bot_public': instance.botPublic,
   'bot_require_code_grant': instance.botRequireCodeGrant,
   'flags': instance.flags,
-  'bot': instance.bot,
+  'bot': ?instance.bot,
 };

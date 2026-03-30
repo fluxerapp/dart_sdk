@@ -37,9 +37,11 @@ class GuildAdminResponse {
   final String ownerId;
 
   /// The hash of the guild icon
+  @JsonKey(includeIfNull: true)
   final String? icon;
 
   /// The hash of the guild banner
+  @JsonKey(includeIfNull: true)
   final String? banner;
 
   /// The number of members in the guild

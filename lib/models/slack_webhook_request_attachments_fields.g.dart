@@ -17,7 +17,7 @@ _$SlackWebhookRequestAttachmentsFieldsFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$SlackWebhookRequestAttachmentsFieldsToJson(
   SlackWebhookRequestAttachmentsFields instance,
 ) => <String, dynamic>{
-  'title': instance.title,
-  'value': instance.value,
-  'short': instance.short,
+  'title': ?instance.title,
+  'value': ?instance.value,
+  'short': ?instance.short,
 };

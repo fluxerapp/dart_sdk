@@ -21,7 +21,7 @@ DiscoveryStatusResponse _$DiscoveryStatusResponseFromJson(
 Map<String, dynamic> _$DiscoveryStatusResponseToJson(
   DiscoveryStatusResponse instance,
 ) => <String, dynamic>{
-  'application': instance.application,
+  'application': ?instance.application,
   'eligible': instance.eligible,
   'min_member_count': instance.minMemberCount,
 };

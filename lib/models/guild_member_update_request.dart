@@ -33,49 +33,57 @@ class GuildMemberUpdateRequest {
       _$GuildMemberUpdateRequestFromJson(json);
 
   /// The nickname to set for the member (1-32 characters)
+  @JsonKey(includeIfNull: false)
   final String? nick;
 
   /// Array of role IDs to assign to the member (max 100)
+  @JsonKey(includeIfNull: false)
   final List<SnowflakeType>? roles;
 
   /// Base64-encoded image data for the member guild avatar
+  @JsonKey(includeIfNull: false)
   final Base64ImageType? avatar;
 
   /// Base64-encoded image data for the member guild banner
+  @JsonKey(includeIfNull: false)
   final Base64ImageType? banner;
 
   /// The member guild profile bio (1-320 characters)
+  @JsonKey(includeIfNull: false)
   final String? bio;
 
   /// The member guild profile pronouns (1-40 characters)
+  @JsonKey(includeIfNull: false)
   final String? pronouns;
 
   /// The accent color for the member guild profile as an integer
-  @JsonKey(name: 'accent_color')
+  @JsonKey(includeIfNull: false, name: 'accent_color')
   final int? accentColor;
-  @JsonKey(name: 'profile_flags')
+  @JsonKey(includeIfNull: false, name: 'profile_flags')
   final GuildMemberProfileFlags? profileFlags;
 
   /// Whether the member is muted in voice channels
+  @JsonKey(includeIfNull: false)
   final bool? mute;
 
   /// Whether the member is deafened in voice channels
+  @JsonKey(includeIfNull: false)
   final bool? deaf;
 
   /// ISO8601 timestamp until which the member is timed out
-  @JsonKey(name: 'communication_disabled_until')
+  @JsonKey(includeIfNull: false, name: 'communication_disabled_until')
   final DateTime? communicationDisabledUntil;
 
   /// The reason for timing out the member (1-512 characters)
-  @JsonKey(name: 'timeout_reason')
+  @JsonKey(includeIfNull: false, name: 'timeout_reason')
   final String? timeoutReason;
 
   /// The voice channel ID to move the member to
-  @JsonKey(name: 'channel_id')
+  @JsonKey(includeIfNull: false, name: 'channel_id')
   final SnowflakeType? channelId;
 
   /// The voice connection ID for the member
-  @JsonKey(name: 'connection_id')
+  @JsonKey(includeIfNull: false, name: 'connection_id')
   final String? connectionId;
 
   Map<String, Object?> toJson() => _$GuildMemberUpdateRequestToJson(this);

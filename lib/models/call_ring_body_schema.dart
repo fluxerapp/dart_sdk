@@ -16,6 +16,7 @@ class CallRingBodySchema {
       _$CallRingBodySchemaFromJson(json);
 
   /// User IDs to ring for the call
+  @JsonKey(includeIfNull: false)
   final List<SnowflakeType>? recipients;
 
   Map<String, Object?> toJson() => _$CallRingBodySchemaToJson(this);

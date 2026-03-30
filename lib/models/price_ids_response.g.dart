@@ -19,9 +19,9 @@ PriceIdsResponse _$PriceIdsResponseFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$PriceIdsResponseToJson(PriceIdsResponse instance) =>
     <String, dynamic>{
-      'monthly': instance.monthly,
-      'yearly': instance.yearly,
-      'gift_1_month': instance.gift1Month,
-      'gift_1_year': instance.gift1Year,
+      'monthly': ?instance.monthly,
+      'yearly': ?instance.yearly,
+      'gift_1_month': ?instance.gift1Month,
+      'gift_1_year': ?instance.gift1Year,
       'currency': instance.currency,
     };

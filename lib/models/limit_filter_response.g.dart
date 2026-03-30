@@ -19,6 +19,6 @@ LimitFilterResponse _$LimitFilterResponseFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$LimitFilterResponseToJson(
   LimitFilterResponse instance,
 ) => <String, dynamic>{
-  'traits': instance.traits,
-  'guildFeatures': instance.guildFeatures,
+  'traits': ?instance.traits,
+  'guildFeatures': ?instance.guildFeatures,
 };

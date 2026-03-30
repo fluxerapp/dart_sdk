@@ -24,12 +24,13 @@ class ScheduledMessageReferenceSchema {
   /// ID of the message being referenced
   @JsonKey(name: 'message_id')
   final String messageId;
-  @JsonKey(name: 'channel_id')
+  @JsonKey(includeIfNull: false, name: 'channel_id')
   final SnowflakeType? channelId;
-  @JsonKey(name: 'guild_id')
+  @JsonKey(includeIfNull: false, name: 'guild_id')
   final SnowflakeType? guildId;
 
   /// The type of message reference
+  @JsonKey(includeIfNull: false)
   final MessageReferenceType? type;
 
   Map<String, Object?> toJson() =>

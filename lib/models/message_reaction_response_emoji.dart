@@ -20,12 +20,14 @@ class MessageReactionResponseEmoji {
       _$MessageReactionResponseEmojiFromJson(json);
 
   /// The ID of the custom emoji (null for Unicode emojis)
+  @JsonKey(includeIfNull: false)
   final SnowflakeType? id;
 
   /// The name of the emoji (or Unicode character for standard emojis)
   final String name;
 
   /// Whether the emoji is animated
+  @JsonKey(includeIfNull: false)
   final bool? animated;
 
   Map<String, Object?> toJson() => _$MessageReactionResponseEmojiToJson(this);

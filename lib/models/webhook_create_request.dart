@@ -19,6 +19,7 @@ class WebhookCreateRequest {
   final String name;
 
   /// The avatar image as a base64-encoded data URI
+  @JsonKey(includeIfNull: false)
   final Base64ImageType? avatar;
 
   Map<String, Object?> toJson() => _$WebhookCreateRequestToJson(this);

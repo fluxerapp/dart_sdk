@@ -23,20 +23,25 @@ class GuildRoleUpdateRequest {
       _$GuildRoleUpdateRequestFromJson(json);
 
   /// The name of the role (1-100 characters)
+  @JsonKey(includeIfNull: false)
   final String? name;
 
   /// The color of the role as an integer
+  @JsonKey(includeIfNull: false)
   final int? color;
+  @JsonKey(includeIfNull: false)
   final UnsignedInt64Type? permissions;
 
   /// Whether the role should be displayed separately in the member list
+  @JsonKey(includeIfNull: false)
   final bool? hoist;
 
   /// The position of the role in the hoisted member list
-  @JsonKey(name: 'hoist_position')
+  @JsonKey(includeIfNull: false, name: 'hoist_position')
   final int? hoistPosition;
 
   /// Whether the role can be mentioned by anyone
+  @JsonKey(includeIfNull: false)
   final bool? mentionable;
 
   Map<String, Object?> toJson() => _$GuildRoleUpdateRequestToJson(this);

@@ -30,6 +30,7 @@ class GitHubWebhookPullRequest {
   final String htmlUrl;
   final GitHubWebhookPullRequestUser user;
   final String title;
+  @JsonKey(includeIfNull: false)
   final String? body;
 
   Map<String, Object?> toJson() => _$GitHubWebhookPullRequestToJson(this);

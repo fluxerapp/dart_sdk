@@ -21,6 +21,7 @@ class LogoutAuthSessionsRequest {
   /// Array of session ID hashes to log out (max 100)
   @JsonKey(name: 'session_id_hashes')
   final List<String> sessionIdHashes;
+  @JsonKey(includeIfNull: false)
   final PasswordType? password;
 
   Map<String, Object?> toJson() => _$LogoutAuthSessionsRequestToJson(this);

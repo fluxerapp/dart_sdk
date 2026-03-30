@@ -35,7 +35,7 @@ class AdminAuditLogResponseSchema {
   @JsonKey(name: 'target_id')
   final String targetId;
   final String action;
-  @JsonKey(name: 'audit_log_reason')
+  @JsonKey(includeIfNull: true, name: 'audit_log_reason')
   final String? auditLogReason;
   final Map<String, String> metadata;
   @JsonKey(name: 'created_at')

@@ -23,13 +23,13 @@ EmbedMediaResponse _$EmbedMediaResponseFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$EmbedMediaResponseToJson(EmbedMediaResponse instance) =>
     <String, dynamic>{
       'url': instance.url,
-      'proxy_url': instance.proxyUrl,
-      'content_type': instance.contentType,
-      'content_hash': instance.contentHash,
-      'width': instance.width,
-      'height': instance.height,
-      'description': instance.description,
-      'placeholder': instance.placeholder,
-      'duration': instance.duration,
+      'proxy_url': ?instance.proxyUrl,
+      'content_type': ?instance.contentType,
+      'content_hash': ?instance.contentHash,
+      'width': ?instance.width,
+      'height': ?instance.height,
+      'description': ?instance.description,
+      'placeholder': ?instance.placeholder,
+      'duration': ?instance.duration,
       'flags': instance.flags,
     };

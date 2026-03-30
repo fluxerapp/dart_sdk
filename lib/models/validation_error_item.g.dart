@@ -18,5 +18,5 @@ Map<String, dynamic> _$ValidationErrorItemToJson(
 ) => <String, dynamic>{
   'path': instance.path,
   'message': instance.message,
-  'code': instance.code,
+  'code': ?instance.code,
 };

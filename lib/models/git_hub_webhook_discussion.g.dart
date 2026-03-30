@@ -25,7 +25,7 @@ Map<String, dynamic> _$GitHubWebhookDiscussionToJson(
   'title': instance.title,
   'number': instance.number,
   'html_url': instance.htmlUrl,
-  'answer_html_url': instance.answerHtmlUrl,
-  'body': instance.body,
+  'answer_html_url': ?instance.answerHtmlUrl,
+  'body': ?instance.body,
   'user': instance.user,
 };

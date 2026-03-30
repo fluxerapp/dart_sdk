@@ -27,16 +27,21 @@ class UserSettingsResponseGuildFolders {
   ) => _$UserSettingsResponseGuildFoldersFromJson(json);
 
   /// The unique identifier for the folder (-1 for uncategorized)
+  @JsonKey(includeIfNull: false)
   final int? id;
 
   /// The display name of the folder
+  @JsonKey(includeIfNull: false)
   final String? name;
 
   /// The color of the folder as an integer
+  @JsonKey(includeIfNull: false)
   final Int32Type? color;
+  @JsonKey(includeIfNull: false)
   final GuildFolderFlags? flags;
 
   /// Selected icon for the guild folder
+  @JsonKey(includeIfNull: false)
   final UserSettingsResponseGuildFoldersIconIcon? icon;
 
   /// The IDs of guilds contained in this folder

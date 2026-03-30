@@ -38,19 +38,19 @@ class HarvestStatusResponseSchema {
   final String createdAt;
 
   /// ISO 8601 timestamp when the harvest started, or null if pending
-  @JsonKey(name: 'started_at')
+  @JsonKey(includeIfNull: true, name: 'started_at')
   final String? startedAt;
 
   /// ISO 8601 timestamp when the harvest completed, or null otherwise
-  @JsonKey(name: 'completed_at')
+  @JsonKey(includeIfNull: true, name: 'completed_at')
   final String? completedAt;
 
   /// ISO 8601 timestamp when the harvest failed, or null otherwise
-  @JsonKey(name: 'failed_at')
+  @JsonKey(includeIfNull: true, name: 'failed_at')
   final String? failedAt;
 
   /// Final file size of the downloaded data, expressed as a string, or null if not available
-  @JsonKey(name: 'file_size')
+  @JsonKey(includeIfNull: true, name: 'file_size')
   final String? fileSize;
 
   /// Harvest progress as a percentage value between 0 and 100
@@ -58,19 +58,19 @@ class HarvestStatusResponseSchema {
   final num progressPercent;
 
   /// Textual description of the current harvest step, if available
-  @JsonKey(name: 'progress_step')
+  @JsonKey(includeIfNull: true, name: 'progress_step')
   final String? progressStep;
 
   /// Error message when the harvest fails, or null otherwise
-  @JsonKey(name: 'error_message')
+  @JsonKey(includeIfNull: true, name: 'error_message')
   final String? errorMessage;
 
   /// ISO 8601 timestamp when the download URL expires, or null if unavailable
-  @JsonKey(name: 'download_url_expires_at')
+  @JsonKey(includeIfNull: true, name: 'download_url_expires_at')
   final String? downloadUrlExpiresAt;
 
   /// ISO 8601 timestamp when the harvest download expires, or null if unavailable
-  @JsonKey(name: 'expires_at')
+  @JsonKey(includeIfNull: true, name: 'expires_at')
   final String? expiresAt;
 
   Map<String, Object?> toJson() => _$HarvestStatusResponseSchemaToJson(this);

@@ -23,7 +23,7 @@ class ReserveVisionarySlotRequest {
   final int slotIndex;
 
   /// User ID to reserve the slot for, or null to unreserve (special value -1 is also valid)
-  @JsonKey(name: 'user_id')
+  @JsonKey(includeIfNull: true, name: 'user_id')
   final Int64StringType? userId;
 
   Map<String, Object?> toJson() => _$ReserveVisionarySlotRequestToJson(this);

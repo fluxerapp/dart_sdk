@@ -22,24 +22,26 @@ class CreateFavoriteMemeFromUrlBodySchema {
   ) => _$CreateFavoriteMemeFromUrlBodySchemaFromJson(json);
 
   /// Alternative text description for accessibility
-  @JsonKey(name: 'alt_text')
+  @JsonKey(includeIfNull: false, name: 'alt_text')
   final String? altText;
 
   /// Tags for categorizing and searching the meme
+  @JsonKey(includeIfNull: false)
   final List<String>? tags;
 
   /// URL of the image or video to save as a favorite meme
   final String url;
 
   /// Klipy clip slug if the URL is from Klipy
-  @JsonKey(name: 'klipy_slug')
+  @JsonKey(includeIfNull: false, name: 'klipy_slug')
   final String? klipySlug;
 
   /// Tenor view/<slug>-<id> identifier if the URL is from Tenor
-  @JsonKey(name: 'tenor_slug_id')
+  @JsonKey(includeIfNull: false, name: 'tenor_slug_id')
   final String? tenorSlugId;
 
   /// Display name for the meme
+  @JsonKey(includeIfNull: false)
   final String? name;
 
   Map<String, Object?> toJson() =>

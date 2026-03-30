@@ -75,7 +75,7 @@ class _OAuth2Api implements OAuth2Api {
 
   @override
   Future<List<OAuth2AuthorizationResponse>>
-      listUserOauth2Authorizations() async {
+  listUserOauth2Authorizations() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -442,11 +442,11 @@ class _OAuth2Api implements OAuth2Api {
     }
     final _options = _setStreamType<OAuth2IntrospectResponse>(
       Options(
-        method: 'POST',
-        headers: _headers,
-        extra: _extra,
-        contentType: 'multipart/form-data',
-      )
+            method: 'POST',
+            headers: _headers,
+            extra: _extra,
+            contentType: 'multipart/form-data',
+          )
           .compose(
             _dio.options,
             '/oauth2/introspect',
@@ -474,11 +474,11 @@ class _OAuth2Api implements OAuth2Api {
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<OAuth2TokenResponse>(
       Options(
-        method: 'POST',
-        headers: _headers,
-        extra: _extra,
-        contentType: 'multipart/form-data',
-      )
+            method: 'POST',
+            headers: _headers,
+            extra: _extra,
+            contentType: 'multipart/form-data',
+          )
           .compose(
             _dio.options,
             '/oauth2/token',
@@ -522,11 +522,11 @@ class _OAuth2Api implements OAuth2Api {
     }
     final _options = _setStreamType<void>(
       Options(
-        method: 'POST',
-        headers: _headers,
-        extra: _extra,
-        contentType: 'multipart/form-data',
-      )
+            method: 'POST',
+            headers: _headers,
+            extra: _extra,
+            contentType: 'multipart/form-data',
+          )
           .compose(
             _dio.options,
             '/oauth2/token/revoke',

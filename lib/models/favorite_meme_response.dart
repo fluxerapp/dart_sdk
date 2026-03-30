@@ -42,7 +42,7 @@ class FavoriteMemeResponse {
   final String name;
 
   /// Alternative text description for accessibility
-  @JsonKey(name: 'alt_text')
+  @JsonKey(includeIfNull: false, name: 'alt_text')
   final String? altText;
 
   /// Tags for categorizing and searching the meme
@@ -60,34 +60,37 @@ class FavoriteMemeResponse {
   final String contentType;
 
   /// Hash of the file content for deduplication
-  @JsonKey(name: 'content_hash')
+  @JsonKey(includeIfNull: false, name: 'content_hash')
   final String? contentHash;
 
   /// File size in bytes
   final num size;
 
   /// Width of the image or video in pixels
+  @JsonKey(includeIfNull: false)
   final int? width;
 
   /// Height of the image or video in pixels
+  @JsonKey(includeIfNull: false)
   final int? height;
 
   /// Duration of the video in seconds
+  @JsonKey(includeIfNull: false)
   final num? duration;
 
   /// CDN URL to access the meme
   final String url;
 
   /// Whether the meme is a video converted from GIF
-  @JsonKey(name: 'is_gifv')
+  @JsonKey(includeIfNull: false, name: 'is_gifv')
   final bool? isGifv;
 
   /// Klipy clip slug if the meme was sourced from Klipy
-  @JsonKey(name: 'klipy_slug')
+  @JsonKey(includeIfNull: false, name: 'klipy_slug')
   final String? klipySlug;
 
   /// Tenor view/<slug>-<id> identifier if the meme was sourced from Tenor
-  @JsonKey(name: 'tenor_slug_id')
+  @JsonKey(includeIfNull: false, name: 'tenor_slug_id')
   final String? tenorSlugId;
 
   Map<String, Object?> toJson() => _$FavoriteMemeResponseToJson(this);

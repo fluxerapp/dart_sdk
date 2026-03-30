@@ -20,6 +20,7 @@ class LimitConfigUpdateRequestLimitConfig {
   ) => _$LimitConfigUpdateRequestLimitConfigFromJson(json);
 
   /// Trait definitions used by rules
+  @JsonKey(includeIfNull: false)
   final List<String>? traitDefinitions;
 
   /// Limit rules

@@ -14,6 +14,7 @@ class CallUpdateBodySchema {
       _$CallUpdateBodySchemaFromJson(json);
 
   /// The preferred voice region for the call (1-64 characters). Omit or set to null for automatic region selection.
+  @JsonKey(includeIfNull: false)
   final String? region;
 
   Map<String, Object?> toJson() => _$CallUpdateBodySchemaToJson(this);

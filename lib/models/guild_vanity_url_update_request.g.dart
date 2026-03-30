@@ -12,4 +12,4 @@ GuildVanityUrlUpdateRequest _$GuildVanityUrlUpdateRequestFromJson(
 
 Map<String, dynamic> _$GuildVanityUrlUpdateRequestToJson(
   GuildVanityUrlUpdateRequest instance,
-) => <String, dynamic>{'code': instance.code};
+) => <String, dynamic>{'code': ?instance.code};

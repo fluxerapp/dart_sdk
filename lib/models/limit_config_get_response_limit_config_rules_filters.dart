@@ -18,9 +18,11 @@ class LimitConfigGetResponseLimitConfigRulesFilters {
   ) => _$LimitConfigGetResponseLimitConfigRulesFiltersFromJson(json);
 
   /// Trait filters that must match for the rule to apply
+  @JsonKey(includeIfNull: false)
   final List<String>? traits;
 
   /// Guild feature flags required for the rule to apply
+  @JsonKey(includeIfNull: false)
   final List<String>? guildFeatures;
 
   Map<String, Object?> toJson() =>

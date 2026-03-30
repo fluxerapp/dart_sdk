@@ -25,9 +25,9 @@ Map<String, dynamic> _$GuildRoleResponseToJson(GuildRoleResponse instance) =>
       'name': instance.name,
       'color': instance.color,
       'position': instance.position,
-      'hoist_position': instance.hoistPosition,
+      'hoist_position': ?instance.hoistPosition,
       'permissions': instance.permissions,
       'hoist': instance.hoist,
       'mentionable': instance.mentionable,
-      'unicode_emoji': instance.unicodeEmoji,
+      'unicode_emoji': ?instance.unicodeEmoji,
     };

@@ -23,11 +23,11 @@ Map<String, dynamic> _$OAuth2IntrospectResponseToJson(
   OAuth2IntrospectResponse instance,
 ) => <String, dynamic>{
   'active': instance.active,
-  'scope': instance.scope,
-  'client_id': instance.clientId,
-  'username': instance.username,
-  'token_type': instance.tokenType,
-  'exp': instance.exp,
-  'iat': instance.iat,
-  'sub': instance.sub,
+  'scope': ?instance.scope,
+  'client_id': ?instance.clientId,
+  'username': ?instance.username,
+  'token_type': ?instance.tokenType,
+  'exp': ?instance.exp,
+  'iat': ?instance.iat,
+  'sub': ?instance.sub,
 };

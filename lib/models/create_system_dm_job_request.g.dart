@@ -21,7 +21,7 @@ Map<String, dynamic> _$CreateSystemDmJobRequestToJson(
   CreateSystemDmJobRequest instance,
 ) => <String, dynamic>{
   'content': instance.content,
-  'registration_start': instance.registrationStart,
-  'registration_end': instance.registrationEnd,
-  'excluded_guild_ids': instance.excludedGuildIds,
+  'registration_start': ?instance.registrationStart,
+  'registration_end': ?instance.registrationEnd,
+  'excluded_guild_ids': ?instance.excludedGuildIds,
 };

@@ -12,4 +12,4 @@ StreamUpdateBodySchema _$StreamUpdateBodySchemaFromJson(
 
 Map<String, dynamic> _$StreamUpdateBodySchemaToJson(
   StreamUpdateBodySchema instance,
-) => <String, dynamic>{'region': instance.region};
+) => <String, dynamic>{'region': ?instance.region};

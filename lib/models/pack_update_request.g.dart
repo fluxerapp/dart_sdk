@@ -14,6 +14,6 @@ PackUpdateRequest _$PackUpdateRequestFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$PackUpdateRequestToJson(PackUpdateRequest instance) =>
     <String, dynamic>{
-      'name': instance.name,
-      'description': instance.description,
+      'name': ?instance.name,
+      'description': ?instance.description,
     };

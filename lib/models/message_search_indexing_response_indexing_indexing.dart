@@ -12,7 +12,8 @@ enum MessageSearchIndexingResponseIndexingIndexing {
   valueTrue(true),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
-  $unknown(null);
+  $unknown(null)
+  ;
 
   const MessageSearchIndexingResponseIndexingIndexing(this.json);
 

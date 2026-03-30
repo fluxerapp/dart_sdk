@@ -45,10 +45,11 @@ class GuildMemberSearchResult {
   final String discriminator;
 
   /// Global display name
-  @JsonKey(name: 'global_name')
+  @JsonKey(includeIfNull: true, name: 'global_name')
   final String? globalName;
 
   /// Guild nickname
+  @JsonKey(includeIfNull: true)
   final String? nickname;
 
   /// Role IDs

@@ -22,6 +22,6 @@ Map<String, dynamic> _$UserProfileFullResponseUserProfileToJson(
   'bio': instance.bio,
   'pronouns': instance.pronouns,
   'banner': instance.banner,
-  'banner_color': instance.bannerColor,
+  'banner_color': ?instance.bannerColor,
   'accent_color': instance.accentColor,
 };

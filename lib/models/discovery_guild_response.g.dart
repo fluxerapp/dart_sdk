@@ -27,8 +27,8 @@ Map<String, dynamic> _$DiscoveryGuildResponseToJson(
 ) => <String, dynamic>{
   'id': instance.id,
   'name': instance.name,
-  'icon': instance.icon,
-  'description': instance.description,
+  'icon': ?instance.icon,
+  'description': ?instance.description,
   'category_type': instance.categoryType,
   'member_count': instance.memberCount,
   'online_count': instance.onlineCount,

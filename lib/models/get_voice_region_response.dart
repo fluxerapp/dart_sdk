@@ -16,6 +16,7 @@ class GetVoiceRegionResponse {
       _$GetVoiceRegionResponseFromJson(json);
 
   /// Voice region details or null if not found
+  @JsonKey(includeIfNull: true)
   final VoiceRegionWithServersResponse? region;
 
   Map<String, Object?> toJson() => _$GetVoiceRegionResponseToJson(this);

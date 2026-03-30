@@ -35,7 +35,7 @@ class CreateAdminApiKeyResponse {
   final String createdAt;
 
   /// ISO 8601 timestamp when the key expires, or null if no expiration
-  @JsonKey(name: 'expires_at')
+  @JsonKey(includeIfNull: true, name: 'expires_at')
   final String? expiresAt;
 
   /// List of access control permissions for the key

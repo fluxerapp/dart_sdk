@@ -60,11 +60,11 @@ class UserSettingsResponse {
   final String status;
 
   /// ISO8601 timestamp of when the status will reset
-  @JsonKey(name: 'status_resets_at')
+  @JsonKey(includeIfNull: false, name: 'status_resets_at')
   final DateTime? statusResetsAt;
 
   /// The status to reset to after the scheduled reset
-  @JsonKey(name: 'status_resets_to')
+  @JsonKey(includeIfNull: false, name: 'status_resets_to')
   final String? statusResetsTo;
 
   /// The UI theme preference
@@ -134,7 +134,7 @@ class UserSettingsResponse {
   final List<UserSettingsResponseGuildFolders> guildFolders;
 
   /// The custom status set by the user
-  @JsonKey(name: 'custom_status')
+  @JsonKey(includeIfNull: true, name: 'custom_status')
   final CustomStatusResponse? customStatus;
 
   /// The idle timeout in seconds before going AFK
@@ -158,15 +158,15 @@ class UserSettingsResponse {
   final bool defaultHideMutedChannels;
 
   /// Sensitive content filter level for friend DMs
-  @JsonKey(name: 'sensitive_content_friend_dm_filter')
+  @JsonKey(includeIfNull: false, name: 'sensitive_content_friend_dm_filter')
   final int? sensitiveContentFriendDmFilter;
 
   /// Sensitive content filter level for non-friend DMs
-  @JsonKey(name: 'sensitive_content_non_friend_dm_filter')
+  @JsonKey(includeIfNull: false, name: 'sensitive_content_non_friend_dm_filter')
   final int? sensitiveContentNonFriendDmFilter;
 
   /// Sensitive content filter level for guild messages
-  @JsonKey(name: 'sensitive_content_guild_filter')
+  @JsonKey(includeIfNull: false, name: 'sensitive_content_guild_filter')
   final int? sensitiveContentGuildFilter;
 
   Map<String, Object?> toJson() => _$UserSettingsResponseToJson(this);

@@ -39,19 +39,19 @@ class UserSessionResponse {
   final String clientIp;
 
   /// Reverse DNS hostname for the client IP (PTR), if available
-  @JsonKey(name: 'client_ip_reverse')
+  @JsonKey(includeIfNull: true, name: 'client_ip_reverse')
   final String? clientIpReverse;
 
   /// Client operating system, if detected
-  @JsonKey(name: 'client_os')
+  @JsonKey(includeIfNull: true, name: 'client_os')
   final String? clientOs;
 
   /// Client platform, if detected
-  @JsonKey(name: 'client_platform')
+  @JsonKey(includeIfNull: true, name: 'client_platform')
   final String? clientPlatform;
 
   /// Approximate geo location label for the client IP, if available
-  @JsonKey(name: 'client_location')
+  @JsonKey(includeIfNull: true, name: 'client_location')
   final String? clientLocation;
 
   Map<String, Object?> toJson() => _$UserSessionResponseToJson(this);

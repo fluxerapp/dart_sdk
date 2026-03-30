@@ -27,9 +27,9 @@ GitHubWebhookCheckRunCheckSuite _$GitHubWebhookCheckRunCheckSuiteFromJson(
 Map<String, dynamic> _$GitHubWebhookCheckRunCheckSuiteToJson(
   GitHubWebhookCheckRunCheckSuite instance,
 ) => <String, dynamic>{
-  'conclusion': instance.conclusion,
-  'head_branch': instance.headBranch,
+  'conclusion': ?instance.conclusion,
+  'head_branch': ?instance.headBranch,
   'head_sha': instance.headSha,
-  'pull_requests': instance.pullRequests,
+  'pull_requests': ?instance.pullRequests,
   'app': instance.app,
 };

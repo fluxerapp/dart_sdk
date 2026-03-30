@@ -34,7 +34,7 @@ class AuthMfaRequiredResponse {
   final List<String> allowedMethods;
 
   /// Masked phone number hint for SMS MFA
-  @JsonKey(name: 'sms_phone_hint')
+  @JsonKey(includeIfNull: false, name: 'sms_phone_hint')
   final String? smsPhoneHint;
 
   /// Whether SMS MFA is available
