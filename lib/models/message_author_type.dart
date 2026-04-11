@@ -15,15 +15,12 @@ enum MessageAuthorType {
   webhook('webhook'),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
-  $unknown(null)
-  ;
+  $unknown(null);
 
   const MessageAuthorType(this.json);
 
-  factory MessageAuthorType.fromJson(String json) => values.firstWhere(
-    (e) => e.json == json,
-    orElse: () => $unknown,
-  );
+  factory MessageAuthorType.fromJson(String json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 

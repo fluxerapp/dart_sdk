@@ -116,6 +116,22 @@ add_field('UserSettingsResponse', 'sensitive_content_guild_filter', {
     'description': 'Sensitive content filter level for guild messages'
 })
 
+# --- MessageReactionResponse patches ---
+
+# me: spec defines as anyOf[boolean enum [true], null] which generates an enum
+# with @JsonValue(true) that json_serializable cannot handle (only String/int/null).
+# Simplify to a plain nullable boolean.
+reaction = schemas.get('MessageReactionResponse', {})
+me_prop = reaction.get('properties', {}).get('me')
+if me_prop and 'anyOf' in me_prop:
+    desc = me_prop.get('description', '')
+    reaction['properties']['me'] = {
+        'anyOf': [{'type': 'boolean'}, {'type': 'null'}],
+        'description': desc,
+    }
+    patches += 1
+    print('  Simplified MessageReactionResponse.me to nullable boolean')
+
 with open('openapi.json', 'w') as f:
     json.dump(spec, f, separators=(',', ':'))
 

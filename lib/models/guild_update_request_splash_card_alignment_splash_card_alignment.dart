@@ -15,17 +15,13 @@ enum GuildUpdateRequestSplashCardAlignmentSplashCardAlignment {
   right(2),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
-  $unknown(null)
-  ;
+  $unknown(null);
 
   const GuildUpdateRequestSplashCardAlignmentSplashCardAlignment(this.json);
 
   factory GuildUpdateRequestSplashCardAlignmentSplashCardAlignment.fromJson(
     int json,
-  ) => values.firstWhere(
-    (e) => e.json == json,
-    orElse: () => $unknown,
-  );
+  ) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

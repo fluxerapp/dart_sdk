@@ -33,6 +33,12 @@ The spec lives in the `fluxer` repo and may take time to update. Patches let us 
 | `sensitive_content_non_friend_dm_filter` | Added as `integer` | Live API returns this field (observed: `2`). Sensitive content filtering for non-friend DMs. |
 | `sensitive_content_guild_filter` | Added as `integer` | Live API returns this field (observed: `1`). Sensitive content filtering for guild messages. |
 
+### MessageReactionResponse
+
+| Field | Patch | Reason |
+|---|---|---|
+| `me` | Simplified from `anyOf[boolean enum [true], null]` to `anyOf[boolean, null]` | The `enum: [true]` constraint causes the generator to emit an enum with `@JsonValue(true)`, which `json_serializable` rejects (only supports String, int, or null). Simplifying to a plain nullable boolean preserves the semantics. |
+
 ## Detecting new drift
 
 Run the spec drift test to check for new discrepancies:

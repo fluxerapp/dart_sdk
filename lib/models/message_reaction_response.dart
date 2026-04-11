@@ -5,7 +5,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'message_reaction_response_emoji.dart';
-import 'message_reaction_response_me_me.dart';
 
 part 'message_reaction_response.g.dart';
 
@@ -28,7 +27,7 @@ class MessageReactionResponse {
 
   /// Whether the current user has reacted with this emoji
   @JsonKey(includeIfNull: false)
-  final MessageReactionResponseMeMe? me;
+  final bool? me;
 
   Map<String, Object?> toJson() => _$MessageReactionResponseToJson(this);
 }

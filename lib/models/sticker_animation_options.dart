@@ -15,15 +15,12 @@ enum StickerAnimationOptions {
   neverAnimate(2),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
-  $unknown(null)
-  ;
+  $unknown(null);
 
   const StickerAnimationOptions(this.json);
 
-  factory StickerAnimationOptions.fromJson(int json) => values.firstWhere(
-    (e) => e.json == json,
-    orElse: () => $unknown,
-  );
+  factory StickerAnimationOptions.fromJson(int json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

@@ -19,15 +19,12 @@ enum GuildVerificationLevel {
   veryHigh(4),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
-  $unknown(null)
-  ;
+  $unknown(null);
 
   const GuildVerificationLevel(this.json);
 
-  factory GuildVerificationLevel.fromJson(int json) => values.firstWhere(
-    (e) => e.json == json,
-    orElse: () => $unknown,
-  );
+  factory GuildVerificationLevel.fromJson(int json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

@@ -15,17 +15,13 @@ enum IndexRefreshStatusResponseVariant2StatusStatus {
   failed('failed'),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
-  $unknown(null)
-  ;
+  $unknown(null);
 
   const IndexRefreshStatusResponseVariant2StatusStatus(this.json);
 
   factory IndexRefreshStatusResponseVariant2StatusStatus.fromJson(
     String json,
-  ) => values.firstWhere(
-    (e) => e.json == json,
-    orElse: () => $unknown,
-  );
+  ) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 

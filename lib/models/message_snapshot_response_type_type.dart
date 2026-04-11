@@ -28,8 +28,7 @@ enum MessageSnapshotResponseTypeType {
   reply(19),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
-  $unknown(null)
-  ;
+  $unknown(null);
 
   const MessageSnapshotResponseTypeType(this.json);
 

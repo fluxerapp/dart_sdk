@@ -13,17 +13,13 @@ enum GenerateGiftCodesRequestProductTypeProductType {
   gift1Year('gift_1_year'),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
-  $unknown(null)
-  ;
+  $unknown(null);
 
   const GenerateGiftCodesRequestProductTypeProductType(this.json);
 
   factory GenerateGiftCodesRequestProductTypeProductType.fromJson(
     String json,
-  ) => values.firstWhere(
-    (e) => e.json == json,
-    orElse: () => $unknown,
-  );
+  ) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 

@@ -593,15 +593,12 @@ enum ApiErrorCode {
   webauthnCredentialLimitReached('WEBAUTHN_CREDENTIAL_LIMIT_REACHED'),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
-  $unknown(null)
-  ;
+  $unknown(null);
 
   const ApiErrorCode(this.json);
 
-  factory ApiErrorCode.fromJson(String json) => values.firstWhere(
-    (e) => e.json == json,
-    orElse: () => $unknown,
-  );
+  factory ApiErrorCode.fromJson(String json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 

@@ -15,17 +15,13 @@ enum MessageShredStatusProgressResponseStatusStatus {
   failed('failed'),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
-  $unknown(null)
-  ;
+  $unknown(null);
 
   const MessageShredStatusProgressResponseStatusStatus(this.json);
 
   factory MessageShredStatusProgressResponseStatusStatus.fromJson(
     String json,
-  ) => values.firstWhere(
-    (e) => e.json == json,
-    orElse: () => $unknown,
-  );
+  ) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 

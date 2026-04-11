@@ -17,15 +17,12 @@ enum RelationshipTypes {
   outgoingRequest(4),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
-  $unknown(null)
-  ;
+  $unknown(null);
 
   const RelationshipTypes(this.json);
 
-  factory RelationshipTypes.fromJson(int json) => values.firstWhere(
-    (e) => e.json == json,
-    orElse: () => $unknown,
-  );
+  factory RelationshipTypes.fromJson(int json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

@@ -15,15 +15,12 @@ enum AuthenticatorType {
   webauthn(2),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
-  $unknown(null)
-  ;
+  $unknown(null);
 
   const AuthenticatorType(this.json);
 
-  factory AuthenticatorType.fromJson(int json) => values.firstWhere(
-    (e) => e.json == json,
-    orElse: () => $unknown,
-  );
+  factory AuthenticatorType.fromJson(int json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 

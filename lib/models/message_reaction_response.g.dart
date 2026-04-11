@@ -13,9 +13,7 @@ MessageReactionResponse _$MessageReactionResponseFromJson(
     json['emoji'] as Map<String, dynamic>,
   ),
   count: (json['count'] as num).toInt(),
-  me: json['me'] == null
-      ? null
-      : MessageReactionResponseMeMe.fromJson(json['me'] as bool),
+  me: json['me'] as bool?,
 );
 
 Map<String, dynamic> _$MessageReactionResponseToJson(
@@ -23,5 +21,5 @@ Map<String, dynamic> _$MessageReactionResponseToJson(
 ) => <String, dynamic>{
   'emoji': instance.emoji,
   'count': instance.count,
-  'me': instance.me,
+  'me': ?instance.me,
 };

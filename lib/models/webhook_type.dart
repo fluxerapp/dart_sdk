@@ -13,15 +13,12 @@ enum WebhookType {
   channelFollower(2),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
-  $unknown(null)
-  ;
+  $unknown(null);
 
   const WebhookType(this.json);
 
-  factory WebhookType.fromJson(int json) => values.firstWhere(
-    (e) => e.json == json,
-    orElse: () => $unknown,
-  );
+  factory WebhookType.fromJson(int json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final int? json;
 
