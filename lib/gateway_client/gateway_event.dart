@@ -533,12 +533,14 @@ class TypingStartEvent extends GatewayEvent {
     required this.channelId,
     required this.userId,
     required this.timestamp,
+    required this.member,
     this.guildId,
   });
 
   final String channelId;
   final String userId;
   final DateTime timestamp;
+  final GuildMemberResponse member;
   final String? guildId;
 }
 

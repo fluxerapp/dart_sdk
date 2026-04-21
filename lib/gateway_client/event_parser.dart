@@ -104,6 +104,9 @@ class EventParser {
             (data['timestamp'] as num).toInt() * 1000,
           ),
           guildId: data['guild_id'] as String?,
+          member: GuildMemberResponse.fromJson(
+            data['member'] as Map<String, dynamic>,
+          ),
         ),
         'RELATIONSHIP_ADD' => RelationshipAddEvent(
           relationship: RelationshipResponse.fromJson(data),

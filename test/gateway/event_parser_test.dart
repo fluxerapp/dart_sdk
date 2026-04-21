@@ -585,6 +585,7 @@ void main() {
           'user_id': '100',
           'timestamp': 1700000000,
           'guild_id': '300',
+          'member': _guildMemberJson(userId: '100'),
         };
         final event = parser.parse('TYPING_START', data);
 
@@ -597,6 +598,9 @@ void main() {
           DateTime.fromMillisecondsSinceEpoch(1700000000 * 1000),
         );
         expect(e.guildId, '300');
+        expect(e.member, isNotNull);
+        expect(e.member!.user.avatar, isNull);
+        expect(e.member!.user.avatarColor, isNull);
       },
     );
 
