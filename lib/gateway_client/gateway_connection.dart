@@ -148,6 +148,19 @@ class GatewayConnection {
     });
   }
 
+  /// Join, move, or leave a voice channel. Requires an established gateway
+  /// session ([state] is [GatewayState.connected]).
+  ///
+  /// The server answers with [VoiceServerUpdateEvent] and voice state
+  /// dispatches; the client should connect to the LiveKit [endpoint] and
+  /// [token] from that event.
+  void updateVoiceState(GatewayVoiceStateUpdate update) {
+    if (_state != GatewayState.connected) {
+      return;
+    }
+    _send({'op': GatewayOpcodes.voiceStateUpdate, 'd': update.toJson()});
+  }
+
   // ---------------------------------------------------------------------------
   // Internal: connection
   // ---------------------------------------------------------------------------

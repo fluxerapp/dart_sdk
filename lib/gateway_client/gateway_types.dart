@@ -24,6 +24,7 @@ class VoiceState {
     this.mute = false,
     this.deaf = false,
     this.suppress = false,
+    this.isMobile = false,
   });
 
   final String userId;
@@ -38,6 +39,7 @@ class VoiceState {
   final bool mute;
   final bool deaf;
   final bool suppress;
+  final bool isMobile;
 
   factory VoiceState.fromJson(Map<String, dynamic> json) {
     return VoiceState(
@@ -53,7 +55,72 @@ class VoiceState {
       mute: json['mute'] as bool? ?? false,
       deaf: json['deaf'] as bool? ?? false,
       suppress: json['suppress'] as bool? ?? false,
+      isMobile: json['is_mobile'] as bool? ?? false,
     );
+  }
+}
+
+/// Outbound payload for [GatewayOpcodes.voiceStateUpdate] (client joins, moves,
+/// or leaves a voice channel).
+class GatewayVoiceStateUpdate {
+  const GatewayVoiceStateUpdate({
+    this.guildId,
+    this.channelId,
+    required this.selfMute,
+    required this.selfDeaf,
+    required this.selfVideo,
+    required this.selfStream,
+    this.viewerStreamKeys = const <String>[],
+    this.connectionId,
+    this.voiceE2eePublicKey,
+    this.voiceE2eePublicKeySignature,
+    this.isMobile,
+    this.latitude,
+    this.longitude,
+  });
+
+  final String? guildId;
+  final String? channelId;
+  final bool selfMute;
+  final bool selfDeaf;
+  final bool selfVideo;
+  final bool selfStream;
+  final List<String> viewerStreamKeys;
+  final String? connectionId;
+  final String? voiceE2eePublicKey;
+  final String? voiceE2eePublicKeySignature;
+  final bool? isMobile;
+  final String? latitude;
+  final String? longitude;
+
+  /// JSON object for the gateway `d` field. Omits optional keys when null.
+  Map<String, Object?> toJson() {
+    final map = <String, Object?>{
+      'guild_id': guildId,
+      'channel_id': channelId,
+      'self_mute': selfMute,
+      'self_deaf': selfDeaf,
+      'self_video': selfVideo,
+      'self_stream': selfStream,
+      'viewer_stream_keys': viewerStreamKeys,
+      'connection_id': connectionId,
+    };
+    if (voiceE2eePublicKey != null) {
+      map['voice_e2ee_public_key'] = voiceE2eePublicKey;
+    }
+    if (voiceE2eePublicKeySignature != null) {
+      map['voice_e2ee_public_key_signature'] = voiceE2eePublicKeySignature;
+    }
+    if (isMobile != null) {
+      map['is_mobile'] = isMobile;
+    }
+    if (latitude != null) {
+      map['latitude'] = latitude;
+    }
+    if (longitude != null) {
+      map['longitude'] = longitude;
+    }
+    return map;
   }
 }
 

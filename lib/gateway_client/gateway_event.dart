@@ -561,6 +561,7 @@ class VoiceServerUpdateEvent extends GatewayEvent {
     required this.connectionId,
     this.guildId,
     this.channelId,
+    this.e2eeEnabled,
   });
 
   final String token;
@@ -568,6 +569,7 @@ class VoiceServerUpdateEvent extends GatewayEvent {
   final String connectionId;
   final String? guildId;
   final String? channelId;
+  final bool? e2eeEnabled;
 }
 
 // ---------------------------------------------------------------------------
