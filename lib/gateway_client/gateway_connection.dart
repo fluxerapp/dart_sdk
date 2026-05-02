@@ -154,11 +154,14 @@ class GatewayConnection {
   /// The server answers with [VoiceServerUpdateEvent] and voice state
   /// dispatches; the client should connect to the LiveKit [endpoint] and
   /// [token] from that event.
-  void updateVoiceState(GatewayVoiceStateUpdate update) {
-    if (_state != GatewayState.connected) {
-      return;
+  ///
+  /// Returns whether the opcode was queued (socket open and connected).
+  bool updateVoiceState(GatewayVoiceStateUpdate update) {
+    if (_state != GatewayState.connected || _channel == null) {
+      return false;
     }
     _send({'op': GatewayOpcodes.voiceStateUpdate, 'd': update.toJson()});
+    return true;
   }
 
   // ---------------------------------------------------------------------------
