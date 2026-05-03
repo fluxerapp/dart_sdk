@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SPEC_URL="https://raw.githubusercontent.com/fluxerapp/fluxer/refs/heads/refactor/fluxer_docs/api-reference/openapi.json"
+SPEC_URL="https://api.fluxer.app/openapi.json"
 
 echo "=== Step 1/6: Checking prerequisites ==="
 command -v dart >/dev/null 2>&1 || { echo "ERROR: dart not found"; exit 1; }
