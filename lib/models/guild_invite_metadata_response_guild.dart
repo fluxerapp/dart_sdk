@@ -18,13 +18,17 @@ class GuildInviteMetadataResponseGuild {
     required this.splashCardAlignment,
     required this.features,
     this.icon,
+    this.iconFormats,
     this.banner,
+    this.bannerFormats,
     this.bannerWidth,
     this.bannerHeight,
     this.splash,
+    this.splashFormats,
     this.splashWidth,
     this.splashHeight,
     this.embedSplash,
+    this.embedSplashFormats,
     this.embedSplashWidth,
     this.embedSplashHeight,
   });
@@ -43,9 +47,17 @@ class GuildInviteMetadataResponseGuild {
   @JsonKey(includeIfNull: false)
   final String? icon;
 
+  /// Available derivative formats for the guild icon; absent for legacy assets
+  @JsonKey(includeIfNull: false, name: 'icon_formats')
+  final List<String>? iconFormats;
+
   /// The hash of the guild banner
   @JsonKey(includeIfNull: false)
   final String? banner;
+
+  /// Available derivative formats for the guild banner; absent for legacy assets
+  @JsonKey(includeIfNull: false, name: 'banner_formats')
+  final List<String>? bannerFormats;
 
   /// The width of the guild banner in pixels
   @JsonKey(includeIfNull: false, name: 'banner_width')
@@ -58,6 +70,10 @@ class GuildInviteMetadataResponseGuild {
   /// The hash of the guild splash screen
   @JsonKey(includeIfNull: false)
   final String? splash;
+
+  /// Available derivative formats for the splash; absent for legacy assets
+  @JsonKey(includeIfNull: false, name: 'splash_formats')
+  final List<String>? splashFormats;
 
   /// The width of the guild splash in pixels
   @JsonKey(includeIfNull: false, name: 'splash_width')
@@ -75,6 +91,10 @@ class GuildInviteMetadataResponseGuild {
   /// The hash of the embedded invite splash
   @JsonKey(includeIfNull: false, name: 'embed_splash')
   final String? embedSplash;
+
+  /// Available derivative formats for the embed splash; absent for legacy assets
+  @JsonKey(includeIfNull: false, name: 'embed_splash_formats')
+  final List<String>? embedSplashFormats;
 
   /// The width of the embedded invite splash in pixels
   @JsonKey(includeIfNull: false, name: 'embed_splash_width')

@@ -21,6 +21,13 @@ UpdateGuildSettingsRequest _$UpdateGuildSettingsRequestFromJson(
   nsfwLevel: json['nsfw_level'] == null
       ? null
       : NsfwLevel.fromJson((json['nsfw_level'] as num).toInt()),
+  nsfw: json['nsfw'] as bool?,
+  contentWarningLevel: json['content_warning_level'] == null
+      ? null
+      : ContentWarningLevel.fromJson(
+          (json['content_warning_level'] as num).toInt(),
+        ),
+  contentWarningText: json['content_warning_text'] as String?,
   explicitContentFilter: json['explicit_content_filter'] == null
       ? null
       : GuildExplicitContentFilter.fromJson(
@@ -41,6 +48,9 @@ Map<String, dynamic> _$UpdateGuildSettingsRequestToJson(
   'verification_level': ?instance.verificationLevel,
   'mfa_level': ?instance.mfaLevel,
   'nsfw_level': ?instance.nsfwLevel,
+  'nsfw': ?instance.nsfw,
+  'content_warning_level': ?instance.contentWarningLevel,
+  'content_warning_text': ?instance.contentWarningText,
   'explicit_content_filter': ?instance.explicitContentFilter,
   'default_message_notifications': ?instance.defaultMessageNotifications,
   'disabled_operations': ?instance.disabledOperations,

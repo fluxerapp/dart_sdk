@@ -22,6 +22,13 @@ ChannelCreateLinkRequest _$ChannelCreateLinkRequestFromJson(
       ?.map((e) => ChannelOverwriteRequest.fromJson(e as Map<String, dynamic>))
       .toList(),
   nsfw: json['nsfw'] as bool?,
+  nsfwOverride: json['nsfw_override'] as bool?,
+  contentWarningLevel: json['content_warning_level'] == null
+      ? null
+      : ContentWarningLevel.fromJson(
+          (json['content_warning_level'] as num).toInt(),
+        ),
+  contentWarningText: json['content_warning_text'] as String?,
 );
 
 Map<String, dynamic> _$ChannelCreateLinkRequestToJson(
@@ -34,6 +41,9 @@ Map<String, dynamic> _$ChannelCreateLinkRequestToJson(
   'user_limit': ?instance.userLimit,
   'permission_overwrites': ?instance.permissionOverwrites,
   'nsfw': ?instance.nsfw,
+  'nsfw_override': ?instance.nsfwOverride,
+  'content_warning_level': ?instance.contentWarningLevel,
+  'content_warning_text': ?instance.contentWarningText,
   'type': instance.type,
   'name': instance.name,
 };

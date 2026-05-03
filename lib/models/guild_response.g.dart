@@ -25,6 +25,10 @@ GuildResponse _$GuildResponseFromJson(Map<String, dynamic> json) =>
       ),
       mfaLevel: GuildMfaLevel.fromJson((json['mfa_level'] as num).toInt()),
       nsfwLevel: NsfwLevel.fromJson((json['nsfw_level'] as num).toInt()),
+      nsfw: json['nsfw'] as bool,
+      contentWarningLevel: ContentWarningLevel.fromJson(
+        (json['content_warning_level'] as num).toInt(),
+      ),
       explicitContentFilter: GuildExplicitContentFilter.fromJson(
         (json['explicit_content_filter'] as num).toInt(),
       ),
@@ -46,6 +50,7 @@ GuildResponse _$GuildResponseFromJson(Map<String, dynamic> json) =>
       systemChannelId: json['system_channel_id'] as String?,
       rulesChannelId: json['rules_channel_id'] as String?,
       afkChannelId: json['afk_channel_id'] as String?,
+      contentWarningText: json['content_warning_text'] as String?,
       messageHistoryCutoff: json['message_history_cutoff'] == null
           ? null
           : DateTime.parse(json['message_history_cutoff'] as String),
@@ -79,6 +84,9 @@ Map<String, dynamic> _$GuildResponseToJson(
   'verification_level': instance.verificationLevel,
   'mfa_level': instance.mfaLevel,
   'nsfw_level': instance.nsfwLevel,
+  'nsfw': instance.nsfw,
+  'content_warning_level': instance.contentWarningLevel,
+  'content_warning_text': ?instance.contentWarningText,
   'explicit_content_filter': instance.explicitContentFilter,
   'default_message_notifications': instance.defaultMessageNotifications,
   'disabled_operations': instance.disabledOperations,

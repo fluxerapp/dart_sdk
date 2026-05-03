@@ -1629,36 +1629,31 @@ class _AdminApi implements AdminApi {
   }
 
   @override
-  Future<List<DiscoveryApplicationResponse>> listDiscoveryApplications({
-    Status? status,
-    int? limit,
-    String? cursor,
-  }) async {
+  Future<List<DiscoveryAdminPendingApplicationResponse>>
+  listPendingDiscoveryApplications() async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'status': status?.toJson(),
-      r'limit': limit,
-      r'cursor': cursor,
-    };
-    queryParameters.removeWhere((k, v) => v == null);
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<DiscoveryApplicationResponse>>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/admin/discovery/applications',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
+    final _options =
+        _setStreamType<List<DiscoveryAdminPendingApplicationResponse>>(
+          Options(method: 'GET', headers: _headers, extra: _extra)
+              .compose(
+                _dio.options,
+                '/admin/discovery/applications',
+                queryParameters: queryParameters,
+                data: _data,
+              )
+              .copyWith(
+                baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl),
+              ),
+        );
     final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<DiscoveryApplicationResponse> _value;
+    late List<DiscoveryAdminPendingApplicationResponse> _value;
     try {
       _value = _result.data!
           .map(
-            (dynamic i) => DiscoveryApplicationResponse.fromJson(
+            (dynamic i) => DiscoveryAdminPendingApplicationResponse.fromJson(
               i as Map<String, dynamic>,
             ),
           )
@@ -1756,6 +1751,40 @@ class _AdminApi implements AdminApi {
     late DiscoveryApplicationResponse _value;
     try {
       _value = DiscoveryApplicationResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<List<DiscoveryAdminListedGuildResponse>>
+  listDiscoveryListedGuilds() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<List<DiscoveryAdminListedGuildResponse>>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/admin/discovery/listed',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<List<dynamic>>(_options);
+    late List<DiscoveryAdminListedGuildResponse> _value;
+    try {
+      _value = _result.data!
+          .map(
+            (dynamic i) => DiscoveryAdminListedGuildResponse.fromJson(
+              i as Map<String, dynamic>,
+            ),
+          )
+          .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;

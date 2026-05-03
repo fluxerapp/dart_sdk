@@ -22,6 +22,13 @@ ChannelUpdateRequest0 _$ChannelUpdateRequest0FromJson(
       ?.map((e) => ChannelOverwriteRequest.fromJson(e as Map<String, dynamic>))
       .toList(),
   nsfw: json['nsfw'] as bool?,
+  nsfwOverride: json['nsfw_override'] as bool?,
+  contentWarningLevel: json['content_warning_level'] == null
+      ? null
+      : ContentWarningLevel.fromJson(
+          (json['content_warning_level'] as num).toInt(),
+        ),
+  contentWarningText: json['content_warning_text'] as String?,
   rateLimitPerUser: (json['rate_limit_per_user'] as num?)?.toInt(),
   icon: json['icon'] as String?,
   ownerId: json['owner_id'] as String?,
@@ -45,6 +52,9 @@ Map<String, dynamic> _$ChannelUpdateRequest0ToJson(
   'user_limit': instance.userLimit,
   'permission_overwrites': instance.permissionOverwrites,
   'nsfw': instance.nsfw,
+  'nsfw_override': instance.nsfwOverride,
+  'content_warning_level': instance.contentWarningLevel,
+  'content_warning_text': instance.contentWarningText,
   'rate_limit_per_user': instance.rateLimitPerUser,
   'icon': instance.icon,
   'owner_id': instance.ownerId,
@@ -66,6 +76,13 @@ ChannelUpdateRequest2 _$ChannelUpdateRequest2FromJson(
       ?.map((e) => ChannelOverwriteRequest.fromJson(e as Map<String, dynamic>))
       .toList(),
   nsfw: json['nsfw'] as bool?,
+  nsfwOverride: json['nsfw_override'] as bool?,
+  contentWarningLevel: json['content_warning_level'] == null
+      ? null
+      : ContentWarningLevel.fromJson(
+          (json['content_warning_level'] as num).toInt(),
+        ),
+  contentWarningText: json['content_warning_text'] as String?,
   rateLimitPerUser: (json['rate_limit_per_user'] as num?)?.toInt(),
   icon: json['icon'] as String?,
   ownerId: json['owner_id'] as String?,
@@ -89,6 +106,9 @@ Map<String, dynamic> _$ChannelUpdateRequest2ToJson(
   'user_limit': instance.userLimit,
   'permission_overwrites': instance.permissionOverwrites,
   'nsfw': instance.nsfw,
+  'nsfw_override': instance.nsfwOverride,
+  'content_warning_level': instance.contentWarningLevel,
+  'content_warning_text': instance.contentWarningText,
   'rate_limit_per_user': instance.rateLimitPerUser,
   'icon': instance.icon,
   'owner_id': instance.ownerId,
@@ -110,6 +130,13 @@ ChannelUpdateRequest4 _$ChannelUpdateRequest4FromJson(
       ?.map((e) => ChannelOverwriteRequest.fromJson(e as Map<String, dynamic>))
       .toList(),
   nsfw: json['nsfw'] as bool?,
+  nsfwOverride: json['nsfw_override'] as bool?,
+  contentWarningLevel: json['content_warning_level'] == null
+      ? null
+      : ContentWarningLevel.fromJson(
+          (json['content_warning_level'] as num).toInt(),
+        ),
+  contentWarningText: json['content_warning_text'] as String?,
   rateLimitPerUser: (json['rate_limit_per_user'] as num?)?.toInt(),
   icon: json['icon'] as String?,
   ownerId: json['owner_id'] as String?,
@@ -133,6 +160,9 @@ Map<String, dynamic> _$ChannelUpdateRequest4ToJson(
   'user_limit': instance.userLimit,
   'permission_overwrites': instance.permissionOverwrites,
   'nsfw': instance.nsfw,
+  'nsfw_override': instance.nsfwOverride,
+  'content_warning_level': instance.contentWarningLevel,
+  'content_warning_text': instance.contentWarningText,
   'rate_limit_per_user': instance.rateLimitPerUser,
   'icon': instance.icon,
   'owner_id': instance.ownerId,
@@ -154,6 +184,13 @@ ChannelUpdateRequest998 _$ChannelUpdateRequest998FromJson(
       ?.map((e) => ChannelOverwriteRequest.fromJson(e as Map<String, dynamic>))
       .toList(),
   nsfw: json['nsfw'] as bool?,
+  nsfwOverride: json['nsfw_override'] as bool?,
+  contentWarningLevel: json['content_warning_level'] == null
+      ? null
+      : ContentWarningLevel.fromJson(
+          (json['content_warning_level'] as num).toInt(),
+        ),
+  contentWarningText: json['content_warning_text'] as String?,
   rateLimitPerUser: (json['rate_limit_per_user'] as num?)?.toInt(),
   icon: json['icon'] as String?,
   ownerId: json['owner_id'] as String?,
@@ -177,6 +214,9 @@ Map<String, dynamic> _$ChannelUpdateRequest998ToJson(
   'user_limit': instance.userLimit,
   'permission_overwrites': instance.permissionOverwrites,
   'nsfw': instance.nsfw,
+  'nsfw_override': instance.nsfwOverride,
+  'content_warning_level': instance.contentWarningLevel,
+  'content_warning_text': instance.contentWarningText,
   'rate_limit_per_user': instance.rateLimitPerUser,
   'icon': instance.icon,
   'owner_id': instance.ownerId,

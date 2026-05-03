@@ -18,7 +18,6 @@ import 'emojis/emojis_api.dart';
 import 'gateway/gateway_api.dart';
 import 'gifts/gifts_api.dart';
 import 'guilds/guilds_api.dart';
-import 'klipy/klipy_api.dart';
 import 'packs/packs_api.dart';
 import 'premium/premium_api.dart';
 import 'billing/billing_api.dart';
@@ -26,7 +25,6 @@ import 'read_states/read_states_api.dart';
 import 'reports/reports_api.dart';
 import 'search/search_api.dart';
 import 'stickers/stickers_api.dart';
-import 'tenor/tenor_api.dart';
 import 'users/users_api.dart';
 import 'connections/connections_api.dart';
 import 'themes/themes_api.dart';
@@ -57,7 +55,6 @@ class FluxerClient {
   GatewayApi? _gateway;
   GiftsApi? _gifts;
   GuildsApi? _guilds;
-  KlipyApi? _klipy;
   PacksApi? _packs;
   PremiumApi? _premium;
   BillingApi? _billing;
@@ -65,7 +62,6 @@ class FluxerClient {
   ReportsApi? _reports;
   SearchApi? _search;
   StickersApi? _stickers;
-  TenorApi? _tenor;
   UsersApi? _users;
   ConnectionsApi? _connections;
   ThemesApi? _themes;
@@ -105,8 +101,6 @@ class FluxerClient {
 
   GuildsApi get guilds => _guilds ??= GuildsApi(_dio, baseUrl: _baseUrl);
 
-  KlipyApi get klipy => _klipy ??= KlipyApi(_dio, baseUrl: _baseUrl);
-
   PacksApi get packs => _packs ??= PacksApi(_dio, baseUrl: _baseUrl);
 
   PremiumApi get premium => _premium ??= PremiumApi(_dio, baseUrl: _baseUrl);
@@ -122,8 +116,6 @@ class FluxerClient {
 
   StickersApi get stickers =>
       _stickers ??= StickersApi(_dio, baseUrl: _baseUrl);
-
-  TenorApi get tenor => _tenor ??= TenorApi(_dio, baseUrl: _baseUrl);
 
   UsersApi get users => _users ??= UsersApi(_dio, baseUrl: _baseUrl);
 

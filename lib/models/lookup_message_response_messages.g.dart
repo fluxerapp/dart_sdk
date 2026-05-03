@@ -32,6 +32,19 @@ LookupMessageResponseMessages _$LookupMessageResponseMessagesFromJson(
         ),
       )
       .toList(),
+  channelContentWarningLevel: json['channel_content_warning_level'] == null
+      ? null
+      : ContentWarningLevel.fromJson(
+          (json['channel_content_warning_level'] as num).toInt(),
+        ),
+  channelContentWarningText: json['channel_content_warning_text'] as String?,
+  guildNsfw: json['guild_nsfw'] as bool?,
+  guildContentWarningLevel: json['guild_content_warning_level'] == null
+      ? null
+      : ContentWarningLevel.fromJson(
+          (json['guild_content_warning_level'] as num).toInt(),
+        ),
+  guildContentWarningText: json['guild_content_warning_text'] as String?,
   userPriorNcmecReportIds:
       (json['user_prior_ncmec_report_ids'] as List<dynamic>?)
           ?.map((e) => e as String)
@@ -45,9 +58,14 @@ Map<String, dynamic> _$LookupMessageResponseMessagesToJson(
   'channel_id': instance.channelId,
   'channel_name': instance.channelName,
   'channel_nsfw': instance.channelNsfw,
+  'channel_content_warning_level': ?instance.channelContentWarningLevel,
+  'channel_content_warning_text': ?instance.channelContentWarningText,
   'guild_id': instance.guildId,
   'guild_name': instance.guildName,
   'guild_nsfw_level': instance.guildNsfwLevel,
+  'guild_nsfw': ?instance.guildNsfw,
+  'guild_content_warning_level': ?instance.guildContentWarningLevel,
+  'guild_content_warning_text': ?instance.guildContentWarningText,
   'author_id': instance.authorId,
   'author_username': instance.authorUsername,
   'author_global_name': instance.authorGlobalName,

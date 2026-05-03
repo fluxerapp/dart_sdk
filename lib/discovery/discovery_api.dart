@@ -34,6 +34,8 @@ abstract class DiscoveryApi {
   Future<DiscoveryGuildListResponse> searchDiscoveryGuilds({
     @Query('query') String? query,
     @Query('category') int? category,
+    @Query('language') String? language,
+    @Query('tag') String? tag,
     @Query('sort_by') SortBy? sortBy,
     @Query('limit') int? limit,
     @Query('offset') int? offset,

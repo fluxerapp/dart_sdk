@@ -24,8 +24,11 @@ FavoriteMemeResponse _$FavoriteMemeResponseFromJson(
   height: (json['height'] as num?)?.toInt(),
   duration: json['duration'] as num?,
   isGifv: json['is_gifv'] as bool?,
-  klipySlug: json['klipy_slug'] as String?,
-  tenorSlugId: json['tenor_slug_id'] as String?,
+  gifSlug: json['gif_slug'] as String?,
+  gifProvider: json['gif_provider'] as String?,
+  media: (json['media'] as Map<String, dynamic>?)?.map(
+    (k, e) => MapEntry(k, GifMediaFormat.fromJson(e as Map<String, dynamic>)),
+  ),
 );
 
 Map<String, dynamic> _$FavoriteMemeResponseToJson(
@@ -46,6 +49,7 @@ Map<String, dynamic> _$FavoriteMemeResponseToJson(
   'duration': ?instance.duration,
   'url': instance.url,
   'is_gifv': ?instance.isGifv,
-  'klipy_slug': ?instance.klipySlug,
-  'tenor_slug_id': ?instance.tenorSlugId,
+  'gif_slug': ?instance.gifSlug,
+  'gif_provider': ?instance.gifProvider,
+  'media': ?instance.media,
 };

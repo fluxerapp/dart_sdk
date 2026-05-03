@@ -7,6 +7,7 @@ import 'package:json_annotation/json_annotation.dart';
 import 'channel_create_category_request_type_type.dart';
 import 'channel_create_request.dart';
 import 'channel_overwrite_request.dart';
+import 'content_warning_level.dart';
 import 'snowflake_type.dart';
 
 part 'channel_create_category_request.g.dart';
@@ -23,6 +24,9 @@ class ChannelCreateCategoryRequest {
     this.userLimit,
     this.permissionOverwrites,
     this.nsfw,
+    this.nsfwOverride,
+    this.contentWarningLevel,
+    this.contentWarningText,
   });
 
   factory ChannelCreateCategoryRequest.fromJson(Map<String, Object?> json) =>
@@ -55,6 +59,16 @@ class ChannelCreateCategoryRequest {
   /// Whether the channel is marked as NSFW
   @JsonKey(includeIfNull: false)
   final bool? nsfw;
+
+  /// Per-channel adult-content override (true=on, false=off, null=inherit from category then guild). Takes precedence over the legacy `nsfw` field if both are present.
+  @JsonKey(includeIfNull: false, name: 'nsfw_override')
+  final bool? nsfwOverride;
+  @JsonKey(includeIfNull: false, name: 'content_warning_level')
+  final ContentWarningLevel? contentWarningLevel;
+
+  /// Custom channel content warning text (max 200 characters); null inherits from parent or guild
+  @JsonKey(includeIfNull: false, name: 'content_warning_text')
+  final String? contentWarningText;
   final ChannelCreateCategoryRequestTypeType type;
 
   /// The name of the category

@@ -1,27 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'tenor_gif_response.dart';
+part of 'gif_media_format.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-TenorGifResponse _$TenorGifResponseFromJson(Map<String, dynamic> json) =>
-    TenorGifResponse(
-      id: json['id'] as String,
-      title: json['title'] as String,
-      url: json['url'] as String,
+GifMediaFormat _$GifMediaFormatFromJson(Map<String, dynamic> json) =>
+    GifMediaFormat(
       src: json['src'] as String,
       proxySrc: json['proxy_src'] as String,
       width: (json['width'] as num).toInt(),
       height: (json['height'] as num).toInt(),
     );
 
-Map<String, dynamic> _$TenorGifResponseToJson(TenorGifResponse instance) =>
+Map<String, dynamic> _$GifMediaFormatToJson(GifMediaFormat instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'title': instance.title,
-      'url': instance.url,
       'src': instance.src,
       'proxy_src': instance.proxySrc,
       'width': instance.width,

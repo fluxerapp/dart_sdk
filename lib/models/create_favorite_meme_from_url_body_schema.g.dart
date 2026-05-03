@@ -12,8 +12,12 @@ _$CreateFavoriteMemeFromUrlBodySchemaFromJson(Map<String, dynamic> json) =>
       url: json['url'] as String,
       altText: json['alt_text'] as String?,
       tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      klipySlug: json['klipy_slug'] as String?,
-      tenorSlugId: json['tenor_slug_id'] as String?,
+      gifSlug: json['gif_slug'] as String?,
+      gifProvider: json['gif_provider'] as String?,
+      media: (json['media'] as Map<String, dynamic>?)?.map(
+        (k, e) =>
+            MapEntry(k, GifMediaFormat.fromJson(e as Map<String, dynamic>)),
+      ),
       name: json['name'] as String?,
     );
 
@@ -23,7 +27,8 @@ Map<String, dynamic> _$CreateFavoriteMemeFromUrlBodySchemaToJson(
   'alt_text': ?instance.altText,
   'tags': ?instance.tags,
   'url': instance.url,
-  'klipy_slug': ?instance.klipySlug,
-  'tenor_slug_id': ?instance.tenorSlugId,
+  'gif_slug': ?instance.gifSlug,
+  'gif_provider': ?instance.gifProvider,
+  'media': ?instance.media,
   'name': ?instance.name,
 };

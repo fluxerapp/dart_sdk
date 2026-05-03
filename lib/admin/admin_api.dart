@@ -75,6 +75,8 @@ import '../models/delete_voice_server_request.dart';
 import '../models/delete_web_authn_credential_request.dart';
 import '../models/disable_for_suspicious_activity_request.dart';
 import '../models/disable_mfa_request.dart';
+import '../models/discovery_admin_listed_guild_response.dart';
+import '../models/discovery_admin_pending_application_response.dart';
 import '../models/discovery_admin_reject_request.dart';
 import '../models/discovery_admin_remove_request.dart';
 import '../models/discovery_admin_review_request.dart';
@@ -190,7 +192,6 @@ import '../models/set_user_traits_request.dart';
 import '../models/shrink_visionary_slots_request.dart';
 import '../models/shutdown_guild_request.dart';
 import '../models/snowflake_type.dart';
-import '../models/status.dart';
 import '../models/success_response.dart';
 import '../models/suspicious_email_domain_request.dart';
 import '../models/swap_visionary_slots_request.dart';
@@ -826,15 +827,12 @@ abstract class AdminApi {
     @Body() required GenerateGiftCodesRequest body,
   });
 
-  /// List discovery applications.
+  /// List all pending discovery applications.
   ///
-  /// List discovery applications filtered by status. Requires DISCOVERY_REVIEW permission.
+  /// Returns every pending discovery application, enriched with guild metadata. No pagination. Requires DISCOVERY_REVIEW permission.
   @GET('/admin/discovery/applications')
-  Future<List<DiscoveryApplicationResponse>> listDiscoveryApplications({
-    @Query('status') Status? status,
-    @Query('limit') int? limit,
-    @Query('cursor') String? cursor,
-  });
+  Future<List<DiscoveryAdminPendingApplicationResponse>>
+  listPendingDiscoveryApplications();
 
   /// Approve discovery application.
   ///
@@ -874,6 +872,12 @@ abstract class AdminApi {
     @Path('guild_id') required SnowflakeType guildId,
     @Body() required DiscoveryAdminRemoveRequest body,
   });
+
+  /// List all guilds currently listed in discovery.
+  ///
+  /// Returns every approved/listed discovery guild, enriched with guild metadata. No pagination. Requires DISCOVERY_REVIEW permission.
+  @GET('/admin/discovery/listed')
+  Future<List<DiscoveryAdminListedGuildResponse>> listDiscoveryListedGuilds();
 
   /// Get guild memory statistics.
   ///

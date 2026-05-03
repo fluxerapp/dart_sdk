@@ -4,33 +4,30 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+/// The content warning level for a guild, category, or channel
 @JsonEnum()
-enum Status {
-  @JsonValue('pending')
-  pending('pending'),
-  @JsonValue('approved')
-  approved('approved'),
-  @JsonValue('rejected')
-  rejected('rejected'),
-  @JsonValue('removed')
-  removed('removed'),
+enum ContentWarningLevel {
+  @JsonValue(0)
+  inherit(0),
+  @JsonValue(1)
+  contentWarning(1),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
   $unknown(null);
 
-  const Status(this.json);
+  const ContentWarningLevel(this.json);
 
-  factory Status.fromJson(String json) =>
+  factory ContentWarningLevel.fromJson(int json) =>
       values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
-  final String? json;
+  final int? json;
 
-  String toJson() => json ?? 'null';
+  int? toJson() => json;
 
   @override
-  String toString() => json ?? super.toString();
+  String toString() => json?.toString() ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<Status> get $valuesDefined =>
+  static List<ContentWarningLevel> get $valuesDefined =>
       values.where((value) => value != $unknown).toList();
 }

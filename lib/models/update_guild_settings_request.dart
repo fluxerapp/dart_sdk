@@ -4,6 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+import 'content_warning_level.dart';
 import 'default_message_notifications.dart';
 import 'guild_explicit_content_filter.dart';
 import 'guild_mfa_level.dart';
@@ -21,6 +22,9 @@ class UpdateGuildSettingsRequest {
     this.verificationLevel,
     this.mfaLevel,
     this.nsfwLevel,
+    this.nsfw,
+    this.contentWarningLevel,
+    this.contentWarningText,
     this.explicitContentFilter,
     this.defaultMessageNotifications,
     this.disabledOperations,
@@ -43,6 +47,16 @@ class UpdateGuildSettingsRequest {
   /// NSFW content level for the guild
   @JsonKey(includeIfNull: false, name: 'nsfw_level')
   final NsfwLevel? nsfwLevel;
+
+  /// Whether the guild is flagged as adult content
+  @JsonKey(includeIfNull: false)
+  final bool? nsfw;
+  @JsonKey(includeIfNull: false, name: 'content_warning_level')
+  final ContentWarningLevel? contentWarningLevel;
+
+  /// Custom content warning text shown before entry
+  @JsonKey(includeIfNull: false, name: 'content_warning_text')
+  final String? contentWarningText;
 
   /// Explicit content filter level
   @JsonKey(includeIfNull: false, name: 'explicit_content_filter')

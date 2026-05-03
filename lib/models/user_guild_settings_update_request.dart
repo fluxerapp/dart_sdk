@@ -21,6 +21,7 @@ class UserGuildSettingsUpdateRequest {
     this.suppressRoles,
     this.hideMutedChannels,
     this.channelOverrides,
+    this.unreadBadges,
   });
 
   factory UserGuildSettingsUpdateRequest.fromJson(Map<String, Object?> json) =>
@@ -57,6 +58,10 @@ class UserGuildSettingsUpdateRequest {
   /// Per-channel overrides
   @JsonKey(includeIfNull: false, name: 'channel_overrides')
   final Map<String, ChannelOverrides>? channelOverrides;
+
+  /// Default unread badges level for the guild
+  @JsonKey(includeIfNull: false, name: 'unread_badges')
+  final UserNotificationSettings? unreadBadges;
 
   Map<String, Object?> toJson() => _$UserGuildSettingsUpdateRequestToJson(this);
 }

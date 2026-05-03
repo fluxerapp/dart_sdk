@@ -55,6 +55,8 @@ class _DiscoveryApi implements DiscoveryApi {
   Future<DiscoveryGuildListResponse> searchDiscoveryGuilds({
     String? query,
     int? category,
+    String? language,
+    String? tag,
     SortBy? sortBy,
     int? limit,
     int? offset,
@@ -63,6 +65,8 @@ class _DiscoveryApi implements DiscoveryApi {
     final queryParameters = <String, dynamic>{
       r'query': query,
       r'category': category,
+      r'language': language,
+      r'tag': tag,
       r'sort_by': sortBy?.toJson(),
       r'limit': limit,
       r'offset': offset,

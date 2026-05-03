@@ -18,6 +18,13 @@ LookupGuildResponseGuildChannels _$LookupGuildResponseGuildChannelsFromJson(
   parentId: json['parent_id'] as String?,
   nsfw: json['nsfw'] as bool?,
   url: json['url'] as String?,
+  nsfwOverride: json['nsfw_override'] as bool?,
+  contentWarningLevel: json['content_warning_level'] == null
+      ? null
+      : ContentWarningLevel.fromJson(
+          (json['content_warning_level'] as num).toInt(),
+        ),
+  contentWarningText: json['content_warning_text'] as String?,
 );
 
 Map<String, dynamic> _$LookupGuildResponseGuildChannelsToJson(
@@ -29,5 +36,8 @@ Map<String, dynamic> _$LookupGuildResponseGuildChannelsToJson(
   'position': instance.position,
   'parent_id': instance.parentId,
   'nsfw': instance.nsfw,
+  'nsfw_override': ?instance.nsfwOverride,
+  'content_warning_level': ?instance.contentWarningLevel,
+  'content_warning_text': ?instance.contentWarningText,
   'url': instance.url,
 };

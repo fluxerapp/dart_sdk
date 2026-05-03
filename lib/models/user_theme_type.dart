@@ -9,6 +9,8 @@ import 'package:json_annotation/json_annotation.dart';
 enum UserThemeType {
   @JsonValue('dark')
   dark('dark'),
+  @JsonValue('dark_legacy')
+  darkLegacy('dark_legacy'),
   @JsonValue('coal')
   coal('coal'),
   @JsonValue('light')

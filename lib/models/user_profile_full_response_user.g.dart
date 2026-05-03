@@ -16,6 +16,9 @@ UserProfileFullResponseUser _$UserProfileFullResponseUserFromJson(
   avatar: json['avatar'] as String?,
   avatarColor: (json['avatar_color'] as num?)?.toInt(),
   flags: (json['flags'] as num).toInt(),
+  avatarFormats: (json['avatar_formats'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList(),
   bot: json['bot'] as bool?,
   system: json['system'] as bool?,
 );
@@ -29,6 +32,7 @@ Map<String, dynamic> _$UserProfileFullResponseUserToJson(
   'global_name': instance.globalName,
   'avatar': instance.avatar,
   'avatar_color': instance.avatarColor,
+  'avatar_formats': ?instance.avatarFormats,
   'bot': ?instance.bot,
   'system': ?instance.system,
   'flags': instance.flags,

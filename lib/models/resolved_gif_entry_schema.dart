@@ -4,6 +4,8 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+import 'gif_media_format.dart';
+
 part 'resolved_gif_entry_schema.g.dart';
 
 @JsonSerializable()
@@ -13,6 +15,8 @@ class ResolvedGifEntrySchema {
     required this.proxyUrl,
     required this.width,
     required this.height,
+    this.media,
+    this.contentType,
   });
 
   factory ResolvedGifEntrySchema.fromJson(Map<String, Object?> json) =>
@@ -30,6 +34,14 @@ class ResolvedGifEntrySchema {
 
   /// Height of the GIF in pixels (0 if unknown)
   final int height;
+
+  /// Provider-issued format-name → media descriptor map (mirrors GifResponse.media). Empty when the URL is not recognizable as belonging to any registered GIF provider.
+  @JsonKey(includeIfNull: false)
+  final Map<String, GifMediaFormat>? media;
+
+  /// MIME type of the primary media (top-level url). Empty string means "unknown / image/gif" — clients should treat it as image/gif for backward compat.
+  @JsonKey(includeIfNull: false, name: 'content_type')
+  final String? contentType;
 
   Map<String, Object?> toJson() => _$ResolvedGifEntrySchemaToJson(this);
 }

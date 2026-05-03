@@ -4,6 +4,8 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+import 'gif_media_format.dart';
+
 part 'create_favorite_meme_from_url_body_schema.g.dart';
 
 @JsonSerializable()
@@ -12,8 +14,9 @@ class CreateFavoriteMemeFromUrlBodySchema {
     required this.url,
     this.altText,
     this.tags,
-    this.klipySlug,
-    this.tenorSlugId,
+    this.gifSlug,
+    this.gifProvider,
+    this.media,
     this.name,
   });
 
@@ -32,13 +35,17 @@ class CreateFavoriteMemeFromUrlBodySchema {
   /// URL of the image or video to save as a favorite meme
   final String url;
 
-  /// Klipy clip slug if the URL is from Klipy
-  @JsonKey(includeIfNull: false, name: 'klipy_slug')
-  final String? klipySlug;
+  /// Provider-issued slug or slug-id token for the GIF, when sourced from a provider
+  @JsonKey(includeIfNull: false, name: 'gif_slug')
+  final String? gifSlug;
 
-  /// Tenor view/<slug>-<id> identifier if the URL is from Tenor
-  @JsonKey(includeIfNull: false, name: 'tenor_slug_id')
-  final String? tenorSlugId;
+  /// Stable name of the GIF provider that issued gif_slug (e.g. "klipy", "tenor")
+  @JsonKey(includeIfNull: false, name: 'gif_provider')
+  final String? gifProvider;
+
+  /// Optional provider-issued format-name → media descriptor map captured by the client at favorite-time (mirrors GifResponse.media). Only persisted for gif-sourced memes; ignored otherwise.
+  @JsonKey(includeIfNull: false)
+  final Map<String, GifMediaFormat>? media;
 
   /// Display name for the meme
   @JsonKey(includeIfNull: false)

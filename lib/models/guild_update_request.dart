@@ -5,6 +5,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'base64_image_type.dart';
+import 'content_warning_level.dart';
 import 'default_message_notifications.dart';
 import 'guild_explicit_content_filter.dart';
 import 'guild_feature_schema.dart';
@@ -32,13 +33,15 @@ class GuildUpdateRequest {
     this.verificationLevel,
     this.mfaLevel,
     this.nsfwLevel,
+    this.nsfw,
+    this.contentWarningLevel,
+    this.contentWarningText,
     this.explicitContentFilter,
     this.banner,
     this.splash,
     this.embedSplash,
     this.splashCardAlignment,
-    this.addFeatures,
-    this.removeFeatures,
+    this.features,
     this.messageHistoryCutoff,
     this.password,
     this.mfaMethod,
@@ -84,9 +87,21 @@ class GuildUpdateRequest {
   @JsonKey(includeIfNull: false, name: 'mfa_level')
   final GuildMfaLevel? mfaLevel;
 
-  /// The NSFW level of the guild
+  /// Legacy: setting this translates to the modern nsfw flag and content warning level
   @JsonKey(includeIfNull: false, name: 'nsfw_level')
   final NsfwLevel? nsfwLevel;
+
+  /// Whether the guild is marked as adult (18+) content
+  @JsonKey(includeIfNull: false)
+  final bool? nsfw;
+
+  /// Whether the guild displays a content warning before entering
+  @JsonKey(includeIfNull: false, name: 'content_warning_level')
+  final ContentWarningLevel? contentWarningLevel;
+
+  /// Custom guild-wide content warning text (max 200 characters); null falls back to a localized default
+  @JsonKey(includeIfNull: false, name: 'content_warning_text')
+  final String? contentWarningText;
 
   /// Level of content filtering for explicit media
   @JsonKey(includeIfNull: false, name: 'explicit_content_filter')
@@ -109,13 +124,9 @@ class GuildUpdateRequest {
   final GuildUpdateRequestSplashCardAlignmentSplashCardAlignment?
   splashCardAlignment;
 
-  /// Toggleable guild features to enable on this guild
-  @JsonKey(includeIfNull: false, name: 'add_features')
-  final List<GuildFeatureSchema>? addFeatures;
-
-  /// Toggleable guild features to disable on this guild
-  @JsonKey(includeIfNull: false, name: 'remove_features')
-  final List<GuildFeatureSchema>? removeFeatures;
+  /// Complete desired feature set for the guild. Only user-toggleable features may differ from the current set; non-toggleable features must be preserved as-is.
+  @JsonKey(includeIfNull: false)
+  final List<GuildFeatureSchema>? features;
 
   /// ISO8601 timestamp controlling how far back members without Read Message History can access messages. Set to null to disable historical access.
   @JsonKey(includeIfNull: false, name: 'message_history_cutoff')

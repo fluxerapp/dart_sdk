@@ -6,6 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'snowflake_type.dart';
 import 'channel_overwrite_request.dart';
+import 'content_warning_level.dart';
 import 'base64_image_type.dart';
 import 'channel_nickname_overrides.dart';
 import 'channel_update_text_request_type_type.dart';
@@ -71,6 +72,12 @@ class ChannelUpdateRequest0 extends ChannelUpdateRequest {
   @JsonKey(name: 'permission_overwrites')
   final List<ChannelOverwriteRequest>? permissionOverwrites;
   final bool? nsfw;
+  @JsonKey(name: 'nsfw_override')
+  final bool? nsfwOverride;
+  @JsonKey(name: 'content_warning_level')
+  final ContentWarningLevel? contentWarningLevel;
+  @JsonKey(name: 'content_warning_text')
+  final String? contentWarningText;
   @JsonKey(name: 'rate_limit_per_user')
   final int? rateLimitPerUser;
   final Base64ImageType? icon;
@@ -90,6 +97,9 @@ class ChannelUpdateRequest0 extends ChannelUpdateRequest {
     required this.userLimit,
     required this.permissionOverwrites,
     required this.nsfw,
+    required this.nsfwOverride,
+    required this.contentWarningLevel,
+    required this.contentWarningText,
     required this.rateLimitPerUser,
     required this.icon,
     required this.ownerId,
@@ -118,6 +128,12 @@ class ChannelUpdateRequest2 extends ChannelUpdateRequest {
   @JsonKey(name: 'permission_overwrites')
   final List<ChannelOverwriteRequest>? permissionOverwrites;
   final bool? nsfw;
+  @JsonKey(name: 'nsfw_override')
+  final bool? nsfwOverride;
+  @JsonKey(name: 'content_warning_level')
+  final ContentWarningLevel? contentWarningLevel;
+  @JsonKey(name: 'content_warning_text')
+  final String? contentWarningText;
   @JsonKey(name: 'rate_limit_per_user')
   final int? rateLimitPerUser;
   final Base64ImageType? icon;
@@ -137,6 +153,9 @@ class ChannelUpdateRequest2 extends ChannelUpdateRequest {
     required this.userLimit,
     required this.permissionOverwrites,
     required this.nsfw,
+    required this.nsfwOverride,
+    required this.contentWarningLevel,
+    required this.contentWarningText,
     required this.rateLimitPerUser,
     required this.icon,
     required this.ownerId,
@@ -165,6 +184,12 @@ class ChannelUpdateRequest4 extends ChannelUpdateRequest {
   @JsonKey(name: 'permission_overwrites')
   final List<ChannelOverwriteRequest>? permissionOverwrites;
   final bool? nsfw;
+  @JsonKey(name: 'nsfw_override')
+  final bool? nsfwOverride;
+  @JsonKey(name: 'content_warning_level')
+  final ContentWarningLevel? contentWarningLevel;
+  @JsonKey(name: 'content_warning_text')
+  final String? contentWarningText;
   @JsonKey(name: 'rate_limit_per_user')
   final int? rateLimitPerUser;
   final Base64ImageType? icon;
@@ -184,6 +209,9 @@ class ChannelUpdateRequest4 extends ChannelUpdateRequest {
     required this.userLimit,
     required this.permissionOverwrites,
     required this.nsfw,
+    required this.nsfwOverride,
+    required this.contentWarningLevel,
+    required this.contentWarningText,
     required this.rateLimitPerUser,
     required this.icon,
     required this.ownerId,
@@ -212,6 +240,12 @@ class ChannelUpdateRequest998 extends ChannelUpdateRequest {
   @JsonKey(name: 'permission_overwrites')
   final List<ChannelOverwriteRequest>? permissionOverwrites;
   final bool? nsfw;
+  @JsonKey(name: 'nsfw_override')
+  final bool? nsfwOverride;
+  @JsonKey(name: 'content_warning_level')
+  final ContentWarningLevel? contentWarningLevel;
+  @JsonKey(name: 'content_warning_text')
+  final String? contentWarningText;
   @JsonKey(name: 'rate_limit_per_user')
   final int? rateLimitPerUser;
   final Base64ImageType? icon;
@@ -231,6 +265,9 @@ class ChannelUpdateRequest998 extends ChannelUpdateRequest {
     required this.userLimit,
     required this.permissionOverwrites,
     required this.nsfw,
+    required this.nsfwOverride,
+    required this.contentWarningLevel,
+    required this.contentWarningText,
     required this.rateLimitPerUser,
     required this.icon,
     required this.ownerId,

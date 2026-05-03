@@ -5,6 +5,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'snowflake_type.dart';
+import 'content_warning_level.dart';
 import 'nsfw_level.dart';
 import 'lookup_message_response_messages_attachments.dart';
 
@@ -28,6 +29,11 @@ class LookupMessageResponseMessages {
     required this.content,
     required this.timestamp,
     required this.attachments,
+    this.channelContentWarningLevel,
+    this.channelContentWarningText,
+    this.guildNsfw,
+    this.guildContentWarningLevel,
+    this.guildContentWarningText,
     this.userPriorNcmecReportIds,
   });
 
@@ -41,12 +47,22 @@ class LookupMessageResponseMessages {
   final String? channelName;
   @JsonKey(includeIfNull: true, name: 'channel_nsfw')
   final bool? channelNsfw;
+  @JsonKey(includeIfNull: false, name: 'channel_content_warning_level')
+  final ContentWarningLevel? channelContentWarningLevel;
+  @JsonKey(includeIfNull: false, name: 'channel_content_warning_text')
+  final String? channelContentWarningText;
   @JsonKey(includeIfNull: true, name: 'guild_id')
   final SnowflakeType? guildId;
   @JsonKey(includeIfNull: true, name: 'guild_name')
   final String? guildName;
   @JsonKey(includeIfNull: true, name: 'guild_nsfw_level')
   final NsfwLevel? guildNsfwLevel;
+  @JsonKey(includeIfNull: false, name: 'guild_nsfw')
+  final bool? guildNsfw;
+  @JsonKey(includeIfNull: false, name: 'guild_content_warning_level')
+  final ContentWarningLevel? guildContentWarningLevel;
+  @JsonKey(includeIfNull: false, name: 'guild_content_warning_text')
+  final String? guildContentWarningText;
   @JsonKey(name: 'author_id')
   final SnowflakeType authorId;
   @JsonKey(name: 'author_username')

@@ -21,6 +21,7 @@ import '../models/message_response_schema.dart';
 import '../models/permission_overwrite_create_request.dart';
 import '../models/presigned_attachment_upload_request.dart';
 import '../models/presigned_attachment_upload_response.dart';
+import '../models/purge_personal_notes_messages_response.dart';
 import '../models/reaction_users_list_response.dart';
 import '../models/rtc_region_response.dart';
 import '../models/scheduled_message_response_schema.dart';
@@ -210,6 +211,16 @@ abstract class ChannelsApi {
     @Path('channel_id') required SnowflakeType channelId,
     @Query('limit') int? limit,
     @Query('before') DateTime? before,
+  });
+
+  /// Purge all messages in personal notes.
+  ///
+  /// Deletes every message in the caller’s personal notes channel. Only allowed on the authenticated user’s DM_PERSONAL_NOTES channel. Returns the total number of deleted messages.
+  ///
+  /// [channelId] - The ID of the channel.
+  @POST('/channels/{channel_id}/messages/purge')
+  Future<PurgePersonalNotesMessagesResponse> purgePersonalNotesMessages({
+    @Path('channel_id') required SnowflakeType channelId,
   });
 
   /// Schedule a message to send later.

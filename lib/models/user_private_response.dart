@@ -15,7 +15,7 @@ part 'user_private_response.g.dart';
 @JsonSerializable()
 class UserPrivateResponse {
   const UserPrivateResponse({
-    required this.bio,
+    required this.premiumType,
     required this.username,
     required this.discriminator,
     required this.globalName,
@@ -23,6 +23,7 @@ class UserPrivateResponse {
     required this.avatarColor,
     required this.privacyAgreedAt,
     required this.termsAgreedAt,
+    required this.pronouns,
     required this.flags,
     required this.isStaff,
     required this.acls,
@@ -31,15 +32,16 @@ class UserPrivateResponse {
     required this.pendingBulkMessageDeletion,
     required this.phone,
     required this.hasVerifiedPhone,
+    required this.bio,
     required this.id,
-    required this.pronouns,
     required this.accentColor,
     required this.banner,
+    required this.usedMobileClient,
     required this.bannerColor,
     required this.mfaEnabled,
-    required this.usedMobileClient,
+    required this.unreadGiftInventoryCount,
     required this.verified,
-    required this.premiumType,
+    required this.premiumBadgeMasked,
     required this.premiumSince,
     required this.premiumUntil,
     required this.premiumWillCancel,
@@ -47,24 +49,25 @@ class UserPrivateResponse {
     required this.premiumLifetimeSequence,
     required this.premiumDiscriminator,
     required this.premiumBadgeHidden,
-    required this.unreadGiftInventoryCount,
+    required this.hasUnreadGiftInventory,
     required this.premiumBadgeTimestampHidden,
     required this.premiumBadgeSequenceHidden,
     required this.premiumPurchaseDisabled,
     required this.premiumEnabledOverride,
+    required this.hasDismissedPremiumOnboarding,
     required this.passwordLastChangedAt,
     required this.requiredActions,
     required this.nsfwAllowed,
-    required this.hasDismissedPremiumOnboarding,
     required this.hasEverPurchased,
-    required this.hasUnreadGiftInventory,
-    required this.premiumBadgeMasked,
+    this.system,
+    this.premiumOutOfBandTrialEndsAt,
     this.authenticatorTypes,
+    this.bannerFormats,
     this.emailBounced,
     this.ageVerifiedAdult,
-    this.system,
     this.bot,
-    this.premiumOutOfBandTrialEndsAt,
+    this.avatarFormats,
+    this.forceInboundPhoneVerification,
   });
 
   factory UserPrivateResponse.fromJson(Map<String, Object?> json) =>
@@ -90,6 +93,10 @@ class UserPrivateResponse {
   /// The dominant avatar color of the user as an integer
   @JsonKey(includeIfNull: true, name: 'avatar_color')
   final Int32Type? avatarColor;
+
+  /// Available derivative formats for the avatar (e.g. ["webp","avif","jpeg"]); absent for legacy assets
+  @JsonKey(includeIfNull: false, name: 'avatar_formats')
+  final List<String>? avatarFormats;
 
   /// Whether the user is a bot account
   @JsonKey(includeIfNull: false)
@@ -141,6 +148,10 @@ class UserPrivateResponse {
   /// The hash of the user profile banner image
   @JsonKey(includeIfNull: true)
   final String? banner;
+
+  /// Available derivative formats for the banner; absent for legacy assets
+  @JsonKey(includeIfNull: false, name: 'banner_formats')
+  final List<String>? bannerFormats;
 
   /// The default banner color if no custom banner is set
   @JsonKey(includeIfNull: true, name: 'banner_color')
@@ -208,6 +219,10 @@ class UserPrivateResponse {
   /// Whether premium features are enabled via override
   @JsonKey(name: 'premium_enabled_override')
   final bool premiumEnabledOverride;
+
+  /// Whether this account is forced through the inbound (expensive-destination) phone verification flow regardless of prefix, for debugging
+  @JsonKey(includeIfNull: false, name: 'force_inbound_phone_verification')
+  final bool? forceInboundPhoneVerification;
 
   /// ISO8601 timestamp of the last password change
   @JsonKey(includeIfNull: true, name: 'password_last_changed_at')

@@ -4,6 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+import 'content_warning_level.dart';
 import 'default_message_notifications.dart';
 import 'guild_explicit_content_filter.dart';
 import 'guild_feature_schema.dart';
@@ -31,6 +32,8 @@ class GuildResponse {
     required this.verificationLevel,
     required this.mfaLevel,
     required this.nsfwLevel,
+    required this.nsfw,
+    required this.contentWarningLevel,
     required this.explicitContentFilter,
     required this.defaultMessageNotifications,
     required this.disabledOperations,
@@ -48,6 +51,7 @@ class GuildResponse {
     this.systemChannelId,
     this.rulesChannelId,
     this.afkChannelId,
+    this.contentWarningText,
     this.messageHistoryCutoff,
     this.permissions,
   });
@@ -142,9 +146,20 @@ class GuildResponse {
   @JsonKey(name: 'mfa_level')
   final GuildMfaLevel mfaLevel;
 
-  /// The NSFW level of the guild
+  /// The NSFW level of the guild (legacy; derived from nsfw)
   @JsonKey(name: 'nsfw_level')
   final NsfwLevel nsfwLevel;
+
+  /// Whether the guild is marked as adult (18+) content
+  final bool nsfw;
+
+  /// Whether the guild displays a content warning before entering
+  @JsonKey(name: 'content_warning_level')
+  final ContentWarningLevel contentWarningLevel;
+
+  /// Custom guild-wide content warning text; null falls back to a localized default
+  @JsonKey(includeIfNull: false, name: 'content_warning_text')
+  final String? contentWarningText;
 
   /// Level of content filtering for explicit media
   @JsonKey(name: 'explicit_content_filter')

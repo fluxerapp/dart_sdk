@@ -15,10 +15,14 @@ class DiscoveryApplicationResponse {
     required this.status,
     required this.description,
     required this.categoryType,
+    required this.customTags,
     required this.appliedAt,
     this.guildNsfwLevel,
+    this.primaryLanguage,
     this.reviewedAt,
     this.reviewReason,
+    this.removedAt,
+    this.removalReason,
   });
 
   factory DiscoveryApplicationResponse.fromJson(Map<String, Object?> json) =>
@@ -42,6 +46,14 @@ class DiscoveryApplicationResponse {
   @JsonKey(name: 'category_type')
   final num categoryType;
 
+  /// Primary community language
+  @JsonKey(includeIfNull: false, name: 'primary_language')
+  final String? primaryLanguage;
+
+  /// Custom discovery tags
+  @JsonKey(name: 'custom_tags')
+  final List<String> customTags;
+
   /// Application timestamp
   @JsonKey(name: 'applied_at')
   final String appliedAt;
@@ -50,9 +62,17 @@ class DiscoveryApplicationResponse {
   @JsonKey(includeIfNull: false, name: 'reviewed_at')
   final String? reviewedAt;
 
-  /// Review reason
+  /// Review reason (approval/rejection)
   @JsonKey(includeIfNull: false, name: 'review_reason')
   final String? reviewReason;
+
+  /// Removal timestamp
+  @JsonKey(includeIfNull: false, name: 'removed_at')
+  final String? removedAt;
+
+  /// Removal reason
+  @JsonKey(includeIfNull: false, name: 'removal_reason')
+  final String? removalReason;
 
   Map<String, Object?> toJson() => _$DiscoveryApplicationResponseToJson(this);
 }

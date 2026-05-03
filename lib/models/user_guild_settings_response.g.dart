@@ -27,6 +27,11 @@ UserGuildSettingsResponse _$UserGuildSettingsResponseFromJson(
     (k, e) => MapEntry(k, ChannelOverrides.fromJson(e as Map<String, dynamic>)),
   ),
   version: (json['version'] as num).toInt(),
+  unreadBadges: json['unread_badges'] == null
+      ? null
+      : UserNotificationSettings.fromJson(
+          (json['unread_badges'] as num).toInt(),
+        ),
 );
 
 Map<String, dynamic> _$UserGuildSettingsResponseToJson(
@@ -41,5 +46,6 @@ Map<String, dynamic> _$UserGuildSettingsResponseToJson(
   'suppress_roles': instance.suppressRoles,
   'hide_muted_channels': instance.hideMutedChannels,
   'channel_overrides': instance.channelOverrides,
+  'unread_badges': ?instance.unreadBadges,
   'version': instance.version,
 };

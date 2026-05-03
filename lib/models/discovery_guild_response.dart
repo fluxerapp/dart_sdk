@@ -12,12 +12,14 @@ class DiscoveryGuildResponse {
     required this.id,
     required this.name,
     required this.categoryType,
+    required this.customTags,
     required this.memberCount,
     required this.onlineCount,
     required this.features,
     required this.verificationLevel,
     this.icon,
     this.description,
+    this.primaryLanguage,
   });
 
   factory DiscoveryGuildResponse.fromJson(Map<String, Object?> json) =>
@@ -40,6 +42,14 @@ class DiscoveryGuildResponse {
   /// Discovery category type
   @JsonKey(name: 'category_type')
   final num categoryType;
+
+  /// Primary community language
+  @JsonKey(includeIfNull: false, name: 'primary_language')
+  final String? primaryLanguage;
+
+  /// Custom discovery tags
+  @JsonKey(name: 'custom_tags')
+  final List<String> customTags;
 
   /// Approximate member count
   @JsonKey(name: 'member_count')

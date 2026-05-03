@@ -8,6 +8,7 @@ import 'snowflake_type.dart';
 import 'guild_verification_level.dart';
 import 'guild_mfa_level.dart';
 import 'nsfw_level.dart';
+import 'content_warning_level.dart';
 import 'guild_explicit_content_filter.dart';
 import 'default_message_notifications.dart';
 import 'int32_type.dart';
@@ -46,6 +47,9 @@ class LookupGuildResponseGuild {
     required this.memberCount,
     required this.channels,
     required this.roles,
+    this.nsfw,
+    this.contentWarningLevel,
+    this.contentWarningText,
   });
 
   factory LookupGuildResponseGuild.fromJson(Map<String, Object?> json) =>
@@ -78,6 +82,12 @@ class LookupGuildResponseGuild {
   final GuildMfaLevel mfaLevel;
   @JsonKey(name: 'nsfw_level')
   final NsfwLevel nsfwLevel;
+  @JsonKey(includeIfNull: false)
+  final bool? nsfw;
+  @JsonKey(includeIfNull: false, name: 'content_warning_level')
+  final ContentWarningLevel? contentWarningLevel;
+  @JsonKey(includeIfNull: false, name: 'content_warning_text')
+  final String? contentWarningText;
   @JsonKey(name: 'explicit_content_filter')
   final GuildExplicitContentFilter explicitContentFilter;
   @JsonKey(name: 'default_message_notifications')

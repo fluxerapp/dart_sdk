@@ -10,6 +10,7 @@ import '../models/bulk_ignore_friend_requests_request.dart';
 import '../models/bulk_ignore_friend_requests_response.dart';
 import '../models/channel_response.dart';
 import '../models/create_private_channel_request.dart';
+import '../models/developer_force_inbound_phone_verification_request.dart';
 import '../models/disable_totp_request.dart';
 import '../models/email_change_apply_request.dart';
 import '../models/email_change_bounced_request_new_request.dart';
@@ -42,6 +43,7 @@ import '../models/password_change_verify_request.dart';
 import '../models/password_change_verify_response.dart';
 import '../models/phone_add_request.dart';
 import '../models/phone_send_verification_request.dart';
+import '../models/phone_send_verification_response.dart';
 import '../models/phone_verify_request.dart';
 import '../models/phone_verify_response.dart';
 import '../models/preload_messages_request.dart';
@@ -110,6 +112,12 @@ abstract class UsersApi {
     @Body() required SudoVerificationSchema body,
   });
 
+  /// Join the canary testers guild.
+  ///
+  /// Adds the authenticated user to the hardcoded Fluxer Testers guild used for canary feedback. Restricted to non-bot users with verified email, an account at least 30 minutes old, no effective suspicious-activity flags, and not banned from the target guild. Rate-limited; surfaced via the canary nagbar.
+  @POST('/users/@me/canary-tester/join')
+  Future<SuccessResponse> joinCanaryTesters();
+
   /// List private channels.
   ///
   /// Retrieves all private channels (direct messages) accessible to the current user. Returns list of channel objects with metadata including recipient information.
@@ -164,6 +172,16 @@ abstract class UsersApi {
   @POST('/users/@me/delete')
   Future<void> deleteCurrentUserAccount({
     @Body() required SudoVerificationSchema body,
+  });
+
+  /// Set force inbound phone verification debugging flag.
+  ///
+  /// Sets an internal current-user debugging flag that forces phone verification through the inbound (expensive-destination) flow regardless of phone prefix.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/developer/force-phone-inbound')
+  Future<UserPrivateResponse> setCurrentUserForcePhoneInbound({
+    @Body() required DeveloperForceInboundPhoneVerificationRequest body,
   });
 
   /// Disable current user account.
@@ -572,11 +590,11 @@ abstract class UsersApi {
 
   /// Send phone verification code.
   ///
-  /// Request a verification code to be sent via SMS to the provided phone number. Requires authentication.
+  /// Request phone verification. Most requests return 204 after sending an SMS code. Developer-forced SNA returns a one-use mobile handoff; expensive outbound destinations return an inbound SMS challenge instead.
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/users/@me/phone/send-verification')
-  Future<void> sendPhoneVerificationCode({
+  Future<PhoneSendVerificationResponse> sendPhoneVerificationCode({
     @Body() required PhoneSendVerificationRequest body,
   });
 

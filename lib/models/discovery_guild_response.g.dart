@@ -12,6 +12,9 @@ DiscoveryGuildResponse _$DiscoveryGuildResponseFromJson(
   id: json['id'] as String,
   name: json['name'] as String,
   categoryType: json['category_type'] as num,
+  customTags: (json['custom_tags'] as List<dynamic>)
+      .map((e) => e as String)
+      .toList(),
   memberCount: json['member_count'] as num,
   onlineCount: json['online_count'] as num,
   features: (json['features'] as List<dynamic>)
@@ -20,6 +23,7 @@ DiscoveryGuildResponse _$DiscoveryGuildResponseFromJson(
   verificationLevel: json['verification_level'] as num,
   icon: json['icon'] as String?,
   description: json['description'] as String?,
+  primaryLanguage: json['primary_language'] as String?,
 );
 
 Map<String, dynamic> _$DiscoveryGuildResponseToJson(
@@ -30,6 +34,8 @@ Map<String, dynamic> _$DiscoveryGuildResponseToJson(
   'icon': ?instance.icon,
   'description': ?instance.description,
   'category_type': instance.categoryType,
+  'primary_language': ?instance.primaryLanguage,
+  'custom_tags': instance.customTags,
   'member_count': instance.memberCount,
   'online_count': instance.onlineCount,
   'features': instance.features,

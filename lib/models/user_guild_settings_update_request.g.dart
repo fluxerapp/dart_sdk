@@ -27,6 +27,11 @@ UserGuildSettingsUpdateRequest _$UserGuildSettingsUpdateRequestFromJson(
   channelOverrides: (json['channel_overrides'] as Map<String, dynamic>?)?.map(
     (k, e) => MapEntry(k, ChannelOverrides.fromJson(e as Map<String, dynamic>)),
   ),
+  unreadBadges: json['unread_badges'] == null
+      ? null
+      : UserNotificationSettings.fromJson(
+          (json['unread_badges'] as num).toInt(),
+        ),
 );
 
 Map<String, dynamic> _$UserGuildSettingsUpdateRequestToJson(
@@ -40,4 +45,5 @@ Map<String, dynamic> _$UserGuildSettingsUpdateRequestToJson(
   'suppress_roles': ?instance.suppressRoles,
   'hide_muted_channels': ?instance.hideMutedChannels,
   'channel_overrides': ?instance.channelOverrides,
+  'unread_badges': ?instance.unreadBadges,
 };

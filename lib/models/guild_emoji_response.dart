@@ -13,6 +13,7 @@ class GuildEmojiResponse {
     required this.name,
     required this.animated,
     required this.nsfw,
+    this.formats,
   });
 
   factory GuildEmojiResponse.fromJson(Map<String, Object?> json) =>
@@ -29,6 +30,10 @@ class GuildEmojiResponse {
 
   /// Whether this emoji is classified as NSFW
   final bool nsfw;
+
+  /// Available derivative formats for this emoji; absent for legacy assets
+  @JsonKey(includeIfNull: false)
+  final List<String>? formats;
 
   Map<String, Object?> toJson() => _$GuildEmojiResponseToJson(this);
 }

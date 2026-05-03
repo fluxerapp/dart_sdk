@@ -19,6 +19,7 @@ class UserProfileFullResponseUser {
     required this.avatar,
     required this.avatarColor,
     required this.flags,
+    this.avatarFormats,
     this.bot,
     this.system,
   });
@@ -46,6 +47,10 @@ class UserProfileFullResponseUser {
   /// The dominant avatar color of the user as an integer
   @JsonKey(includeIfNull: true, name: 'avatar_color')
   final Int32Type? avatarColor;
+
+  /// Available derivative formats for the avatar (e.g. ["webp","avif","jpeg"]); absent for legacy assets
+  @JsonKey(includeIfNull: false, name: 'avatar_formats')
+  final List<String>? avatarFormats;
 
   /// Whether the user is a bot account
   @JsonKey(includeIfNull: false)

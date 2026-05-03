@@ -4,6 +4,8 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+import 'gif_media_format.dart';
+
 part 'favorite_meme_response.g.dart';
 
 @JsonSerializable()
@@ -24,8 +26,9 @@ class FavoriteMemeResponse {
     this.height,
     this.duration,
     this.isGifv,
-    this.klipySlug,
-    this.tenorSlugId,
+    this.gifSlug,
+    this.gifProvider,
+    this.media,
   });
 
   factory FavoriteMemeResponse.fromJson(Map<String, Object?> json) =>
@@ -85,13 +88,17 @@ class FavoriteMemeResponse {
   @JsonKey(includeIfNull: false, name: 'is_gifv')
   final bool? isGifv;
 
-  /// Klipy clip slug if the meme was sourced from Klipy
-  @JsonKey(includeIfNull: false, name: 'klipy_slug')
-  final String? klipySlug;
+  /// Provider-issued slug for the GIF this meme was sourced from, if any
+  @JsonKey(includeIfNull: false, name: 'gif_slug')
+  final String? gifSlug;
 
-  /// Tenor view/<slug>-<id> identifier if the meme was sourced from Tenor
-  @JsonKey(includeIfNull: false, name: 'tenor_slug_id')
-  final String? tenorSlugId;
+  /// Stable name of the GIF provider that issued gif_slug (e.g. "klipy", "tenor"), if any
+  @JsonKey(includeIfNull: false, name: 'gif_provider')
+  final String? gifProvider;
+
+  /// Provider-issued format-name → media descriptor map for gif-sourced memes (mirrors GifResponse.media). Null on memes uploaded as plain attachments.
+  @JsonKey(includeIfNull: false)
+  final Map<String, GifMediaFormat>? media;
 
   Map<String, Object?> toJson() => _$FavoriteMemeResponseToJson(this);
 }

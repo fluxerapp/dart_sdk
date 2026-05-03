@@ -24,6 +24,7 @@ class UserGuildSettingsResponse {
     required this.hideMutedChannels,
     required this.channelOverrides,
     required this.version,
+    this.unreadBadges,
   });
 
   factory UserGuildSettingsResponse.fromJson(Map<String, Object?> json) =>
@@ -63,6 +64,10 @@ class UserGuildSettingsResponse {
   /// Per-channel notification overrides
   @JsonKey(includeIfNull: true, name: 'channel_overrides')
   final Map<String, ChannelOverrides>? channelOverrides;
+
+  /// Default unread badges level for the guild
+  @JsonKey(includeIfNull: false, name: 'unread_badges')
+  final UserNotificationSettings? unreadBadges;
 
   /// The version number of these settings for sync
   final int version;

@@ -5,6 +5,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'channel_overwrite_response.dart';
+import 'content_warning_level.dart';
 import 'int32_type.dart';
 import 'snowflake_type.dart';
 import 'user_partial_response.dart';
@@ -32,6 +33,9 @@ class ChannelResponse {
     this.permissionOverwrites,
     this.recipients,
     this.nsfw,
+    this.nsfwOverride,
+    this.contentWarningLevel,
+    this.contentWarningText,
     this.rateLimitPerUser,
     this.nicks,
   });
@@ -101,9 +105,19 @@ class ChannelResponse {
   @JsonKey(includeIfNull: false)
   final List<UserPartialResponse>? recipients;
 
-  /// Whether the channel is marked as NSFW
+  /// Whether the channel is marked as NSFW (effective value, walking channel → category → guild)
   @JsonKey(includeIfNull: false)
   final bool? nsfw;
+
+  /// Per-channel adult-content override; null means inherit from parent category and then guild. Categories use this same field as their own override.
+  @JsonKey(includeIfNull: false, name: 'nsfw_override')
+  final bool? nsfwOverride;
+  @JsonKey(includeIfNull: false, name: 'content_warning_level')
+  final ContentWarningLevel? contentWarningLevel;
+
+  /// Custom channel content warning text (max 200 characters); null inherits from parent or guild
+  @JsonKey(includeIfNull: false, name: 'content_warning_text')
+  final String? contentWarningText;
   @JsonKey(includeIfNull: false, name: 'rate_limit_per_user')
   final Int32Type? rateLimitPerUser;
 

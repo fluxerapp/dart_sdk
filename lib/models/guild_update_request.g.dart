@@ -30,6 +30,13 @@ GuildUpdateRequest _$GuildUpdateRequestFromJson(Map<String, dynamic> json) =>
       nsfwLevel: json['nsfw_level'] == null
           ? null
           : NsfwLevel.fromJson((json['nsfw_level'] as num).toInt()),
+      nsfw: json['nsfw'] as bool?,
+      contentWarningLevel: json['content_warning_level'] == null
+          ? null
+          : ContentWarningLevel.fromJson(
+              (json['content_warning_level'] as num).toInt(),
+            ),
+      contentWarningText: json['content_warning_text'] as String?,
       explicitContentFilter: json['explicit_content_filter'] == null
           ? null
           : GuildExplicitContentFilter.fromJson(
@@ -43,10 +50,7 @@ GuildUpdateRequest _$GuildUpdateRequestFromJson(Map<String, dynamic> json) =>
           : GuildUpdateRequestSplashCardAlignmentSplashCardAlignment.fromJson(
               (json['splash_card_alignment'] as num).toInt(),
             ),
-      addFeatures: (json['add_features'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-      removeFeatures: (json['remove_features'] as List<dynamic>?)
+      features: (json['features'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
       messageHistoryCutoff: json['message_history_cutoff'] == null
@@ -76,13 +80,15 @@ Map<String, dynamic> _$GuildUpdateRequestToJson(
   'verification_level': ?instance.verificationLevel,
   'mfa_level': ?instance.mfaLevel,
   'nsfw_level': ?instance.nsfwLevel,
+  'nsfw': ?instance.nsfw,
+  'content_warning_level': ?instance.contentWarningLevel,
+  'content_warning_text': ?instance.contentWarningText,
   'explicit_content_filter': ?instance.explicitContentFilter,
   'banner': ?instance.banner,
   'splash': ?instance.splash,
   'embed_splash': ?instance.embedSplash,
   'splash_card_alignment': ?instance.splashCardAlignment,
-  'add_features': ?instance.addFeatures,
-  'remove_features': ?instance.removeFeatures,
+  'features': ?instance.features,
   'message_history_cutoff': ?instance.messageHistoryCutoff?.toIso8601String(),
   'password': ?instance.password,
   'mfa_method': ?instance.mfaMethod,

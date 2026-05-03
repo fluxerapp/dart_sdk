@@ -6,6 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'snowflake_type.dart';
 import 'channel_overwrite_request.dart';
+import 'content_warning_level.dart';
 import 'channel_create_text_request_type_type.dart';
 import 'channel_create_voice_request_type_type.dart';
 import 'channel_create_category_request_type_type.dart';
@@ -65,6 +66,12 @@ class ChannelCreateRequest0 extends ChannelCreateRequest {
   @JsonKey(name: 'permission_overwrites')
   final List<ChannelOverwriteRequest>? permissionOverwrites;
   final bool? nsfw;
+  @JsonKey(name: 'nsfw_override')
+  final bool? nsfwOverride;
+  @JsonKey(name: 'content_warning_level')
+  final ContentWarningLevel? contentWarningLevel;
+  @JsonKey(name: 'content_warning_text')
+  final String? contentWarningText;
   final ChannelCreateTextRequestTypeType type;
   final String name;
 
@@ -76,6 +83,9 @@ class ChannelCreateRequest0 extends ChannelCreateRequest {
     required this.userLimit,
     required this.permissionOverwrites,
     required this.nsfw,
+    required this.nsfwOverride,
+    required this.contentWarningLevel,
+    required this.contentWarningText,
     required this.type,
     required this.name,
   });
@@ -99,6 +109,12 @@ class ChannelCreateRequest2 extends ChannelCreateRequest {
   @JsonKey(name: 'permission_overwrites')
   final List<ChannelOverwriteRequest>? permissionOverwrites;
   final bool? nsfw;
+  @JsonKey(name: 'nsfw_override')
+  final bool? nsfwOverride;
+  @JsonKey(name: 'content_warning_level')
+  final ContentWarningLevel? contentWarningLevel;
+  @JsonKey(name: 'content_warning_text')
+  final String? contentWarningText;
   final ChannelCreateVoiceRequestTypeType type;
   final String name;
 
@@ -110,6 +126,9 @@ class ChannelCreateRequest2 extends ChannelCreateRequest {
     required this.userLimit,
     required this.permissionOverwrites,
     required this.nsfw,
+    required this.nsfwOverride,
+    required this.contentWarningLevel,
+    required this.contentWarningText,
     required this.type,
     required this.name,
   });
@@ -133,6 +152,12 @@ class ChannelCreateRequest4 extends ChannelCreateRequest {
   @JsonKey(name: 'permission_overwrites')
   final List<ChannelOverwriteRequest>? permissionOverwrites;
   final bool? nsfw;
+  @JsonKey(name: 'nsfw_override')
+  final bool? nsfwOverride;
+  @JsonKey(name: 'content_warning_level')
+  final ContentWarningLevel? contentWarningLevel;
+  @JsonKey(name: 'content_warning_text')
+  final String? contentWarningText;
   final ChannelCreateCategoryRequestTypeType type;
   final String name;
 
@@ -144,6 +169,9 @@ class ChannelCreateRequest4 extends ChannelCreateRequest {
     required this.userLimit,
     required this.permissionOverwrites,
     required this.nsfw,
+    required this.nsfwOverride,
+    required this.contentWarningLevel,
+    required this.contentWarningText,
     required this.type,
     required this.name,
   });
@@ -167,6 +195,12 @@ class ChannelCreateRequest998 extends ChannelCreateRequest {
   @JsonKey(name: 'permission_overwrites')
   final List<ChannelOverwriteRequest>? permissionOverwrites;
   final bool? nsfw;
+  @JsonKey(name: 'nsfw_override')
+  final bool? nsfwOverride;
+  @JsonKey(name: 'content_warning_level')
+  final ContentWarningLevel? contentWarningLevel;
+  @JsonKey(name: 'content_warning_text')
+  final String? contentWarningText;
   final ChannelCreateLinkRequestTypeType type;
   final String name;
 
@@ -178,6 +212,9 @@ class ChannelCreateRequest998 extends ChannelCreateRequest {
     required this.userLimit,
     required this.permissionOverwrites,
     required this.nsfw,
+    required this.nsfwOverride,
+    required this.contentWarningLevel,
+    required this.contentWarningText,
     required this.type,
     required this.name,
   });

@@ -99,6 +99,33 @@ class _UsersApi implements UsersApi {
   }
 
   @override
+  Future<SuccessResponse> joinCanaryTesters() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<SuccessResponse>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/users/@me/canary-tester/join',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late SuccessResponse _value;
+    try {
+      _value = SuccessResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<List<ChannelResponse>> listPrivateChannels() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -252,6 +279,36 @@ class _UsersApi implements UsersApi {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     await _dio.fetch<void>(_options);
+  }
+
+  @override
+  Future<UserPrivateResponse> setCurrentUserForcePhoneInbound({
+    required DeveloperForceInboundPhoneVerificationRequest body,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<UserPrivateResponse>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/users/@me/developer/force-phone-inbound',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late UserPrivateResponse _value;
+    try {
+      _value = UserPrivateResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
   }
 
   @override
@@ -1390,7 +1447,7 @@ class _UsersApi implements UsersApi {
   }
 
   @override
-  Future<void> sendPhoneVerificationCode({
+  Future<PhoneSendVerificationResponse> sendPhoneVerificationCode({
     required PhoneSendVerificationRequest body,
   }) async {
     final _extra = <String, dynamic>{};
@@ -1398,7 +1455,7 @@ class _UsersApi implements UsersApi {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _options = _setStreamType<void>(
+    final _options = _setStreamType<PhoneSendVerificationResponse>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -1408,7 +1465,15 @@ class _UsersApi implements UsersApi {
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
-    await _dio.fetch<void>(_options);
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late PhoneSendVerificationResponse _value;
+    try {
+      _value = PhoneSendVerificationResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
   }
 
   @override

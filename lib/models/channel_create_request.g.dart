@@ -22,6 +22,13 @@ ChannelCreateRequest0 _$ChannelCreateRequest0FromJson(
       ?.map((e) => ChannelOverwriteRequest.fromJson(e as Map<String, dynamic>))
       .toList(),
   nsfw: json['nsfw'] as bool?,
+  nsfwOverride: json['nsfw_override'] as bool?,
+  contentWarningLevel: json['content_warning_level'] == null
+      ? null
+      : ContentWarningLevel.fromJson(
+          (json['content_warning_level'] as num).toInt(),
+        ),
+  contentWarningText: json['content_warning_text'] as String?,
   type: ChannelCreateTextRequestTypeType.fromJson(
     (json['type'] as num).toInt(),
   ),
@@ -38,6 +45,9 @@ Map<String, dynamic> _$ChannelCreateRequest0ToJson(
   'user_limit': instance.userLimit,
   'permission_overwrites': instance.permissionOverwrites,
   'nsfw': instance.nsfw,
+  'nsfw_override': instance.nsfwOverride,
+  'content_warning_level': instance.contentWarningLevel,
+  'content_warning_text': instance.contentWarningText,
   'type': instance.type,
   'name': instance.name,
 };
@@ -54,6 +64,13 @@ ChannelCreateRequest2 _$ChannelCreateRequest2FromJson(
       ?.map((e) => ChannelOverwriteRequest.fromJson(e as Map<String, dynamic>))
       .toList(),
   nsfw: json['nsfw'] as bool?,
+  nsfwOverride: json['nsfw_override'] as bool?,
+  contentWarningLevel: json['content_warning_level'] == null
+      ? null
+      : ContentWarningLevel.fromJson(
+          (json['content_warning_level'] as num).toInt(),
+        ),
+  contentWarningText: json['content_warning_text'] as String?,
   type: ChannelCreateVoiceRequestTypeType.fromJson(
     (json['type'] as num).toInt(),
   ),
@@ -70,6 +87,9 @@ Map<String, dynamic> _$ChannelCreateRequest2ToJson(
   'user_limit': instance.userLimit,
   'permission_overwrites': instance.permissionOverwrites,
   'nsfw': instance.nsfw,
+  'nsfw_override': instance.nsfwOverride,
+  'content_warning_level': instance.contentWarningLevel,
+  'content_warning_text': instance.contentWarningText,
   'type': instance.type,
   'name': instance.name,
 };
@@ -86,6 +106,13 @@ ChannelCreateRequest4 _$ChannelCreateRequest4FromJson(
       ?.map((e) => ChannelOverwriteRequest.fromJson(e as Map<String, dynamic>))
       .toList(),
   nsfw: json['nsfw'] as bool?,
+  nsfwOverride: json['nsfw_override'] as bool?,
+  contentWarningLevel: json['content_warning_level'] == null
+      ? null
+      : ContentWarningLevel.fromJson(
+          (json['content_warning_level'] as num).toInt(),
+        ),
+  contentWarningText: json['content_warning_text'] as String?,
   type: ChannelCreateCategoryRequestTypeType.fromJson(
     (json['type'] as num).toInt(),
   ),
@@ -102,6 +129,9 @@ Map<String, dynamic> _$ChannelCreateRequest4ToJson(
   'user_limit': instance.userLimit,
   'permission_overwrites': instance.permissionOverwrites,
   'nsfw': instance.nsfw,
+  'nsfw_override': instance.nsfwOverride,
+  'content_warning_level': instance.contentWarningLevel,
+  'content_warning_text': instance.contentWarningText,
   'type': instance.type,
   'name': instance.name,
 };
@@ -118,6 +148,13 @@ ChannelCreateRequest998 _$ChannelCreateRequest998FromJson(
       ?.map((e) => ChannelOverwriteRequest.fromJson(e as Map<String, dynamic>))
       .toList(),
   nsfw: json['nsfw'] as bool?,
+  nsfwOverride: json['nsfw_override'] as bool?,
+  contentWarningLevel: json['content_warning_level'] == null
+      ? null
+      : ContentWarningLevel.fromJson(
+          (json['content_warning_level'] as num).toInt(),
+        ),
+  contentWarningText: json['content_warning_text'] as String?,
   type: ChannelCreateLinkRequestTypeType.fromJson(
     (json['type'] as num).toInt(),
   ),
@@ -134,6 +171,9 @@ Map<String, dynamic> _$ChannelCreateRequest998ToJson(
   'user_limit': instance.userLimit,
   'permission_overwrites': instance.permissionOverwrites,
   'nsfw': instance.nsfw,
+  'nsfw_override': instance.nsfwOverride,
+  'content_warning_level': instance.contentWarningLevel,
+  'content_warning_text': instance.contentWarningText,
   'type': instance.type,
   'name': instance.name,
 };

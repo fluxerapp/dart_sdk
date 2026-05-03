@@ -9,6 +9,7 @@ import 'channel_nickname_overrides.dart';
 import 'channel_overwrite_request.dart';
 import 'channel_update_request.dart';
 import 'channel_update_voice_request_type_type.dart';
+import 'content_warning_level.dart';
 import 'snowflake_type.dart';
 
 part 'channel_update_voice_request.g.dart';
@@ -24,6 +25,9 @@ class ChannelUpdateVoiceRequest {
     this.userLimit,
     this.permissionOverwrites,
     this.nsfw,
+    this.nsfwOverride,
+    this.contentWarningLevel,
+    this.contentWarningText,
     this.rateLimitPerUser,
     this.icon,
     this.ownerId,
@@ -59,9 +63,19 @@ class ChannelUpdateVoiceRequest {
   @JsonKey(includeIfNull: false, name: 'permission_overwrites')
   final List<ChannelOverwriteRequest>? permissionOverwrites;
 
-  /// Whether the channel is marked as NSFW
+  /// Legacy: setting true maps to nsfw_override=true; setting false maps to nsfw_override=null (inherit). Prefer nsfw_override.
   @JsonKey(includeIfNull: false)
   final bool? nsfw;
+
+  /// Per-channel adult-content override (true=on, false=off, null=inherit from category then guild). Takes precedence over the legacy `nsfw` field if both are present.
+  @JsonKey(includeIfNull: false, name: 'nsfw_override')
+  final bool? nsfwOverride;
+  @JsonKey(includeIfNull: false, name: 'content_warning_level')
+  final ContentWarningLevel? contentWarningLevel;
+
+  /// Custom channel content warning text (max 200 characters); null inherits from parent or guild
+  @JsonKey(includeIfNull: false, name: 'content_warning_text')
+  final String? contentWarningText;
 
   /// Slowmode delay in seconds (0-21600)
   @JsonKey(includeIfNull: false, name: 'rate_limit_per_user')

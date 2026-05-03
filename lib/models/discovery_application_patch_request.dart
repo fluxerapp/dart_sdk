@@ -8,7 +8,12 @@ part 'discovery_application_patch_request.g.dart';
 
 @JsonSerializable()
 class DiscoveryApplicationPatchRequest {
-  const DiscoveryApplicationPatchRequest({this.description, this.categoryType});
+  const DiscoveryApplicationPatchRequest({
+    this.description,
+    this.categoryType,
+    this.primaryLanguage,
+    this.customTags,
+  });
 
   factory DiscoveryApplicationPatchRequest.fromJson(
     Map<String, Object?> json,
@@ -21,6 +26,14 @@ class DiscoveryApplicationPatchRequest {
   /// Updated discovery category type
   @JsonKey(includeIfNull: false, name: 'category_type')
   final int? categoryType;
+
+  /// Primary community language (BCP-47 code)
+  @JsonKey(includeIfNull: false, name: 'primary_language')
+  final String? primaryLanguage;
+
+  /// Up to 10 custom discovery tags
+  @JsonKey(includeIfNull: false, name: 'custom_tags')
+  final List<String>? customTags;
 
   Map<String, Object?> toJson() =>
       _$DiscoveryApplicationPatchRequestToJson(this);

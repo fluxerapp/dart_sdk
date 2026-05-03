@@ -16,6 +16,7 @@ class ChannelOverrides {
     required this.messageNotifications,
     required this.muted,
     required this.muteConfig,
+    this.unreadBadges,
   });
 
   factory ChannelOverrides.fromJson(Map<String, Object?> json) =>
@@ -34,6 +35,10 @@ class ChannelOverrides {
   /// The mute configuration for this channel
   @JsonKey(includeIfNull: true, name: 'mute_config')
   final ChannelOverridesMuteConfig? muteConfig;
+
+  /// Unread badges level override for this channel
+  @JsonKey(includeIfNull: false, name: 'unread_badges')
+  final UserNotificationSettings? unreadBadges;
 
   Map<String, Object?> toJson() => _$ChannelOverridesToJson(this);
 }

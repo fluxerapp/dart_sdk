@@ -13,6 +13,10 @@ ResolvedGifEntrySchema _$ResolvedGifEntrySchemaFromJson(
   proxyUrl: json['proxy_url'] as String,
   width: (json['width'] as num).toInt(),
   height: (json['height'] as num).toInt(),
+  media: (json['media'] as Map<String, dynamic>?)?.map(
+    (k, e) => MapEntry(k, GifMediaFormat.fromJson(e as Map<String, dynamic>)),
+  ),
+  contentType: json['content_type'] as String?,
 );
 
 Map<String, dynamic> _$ResolvedGifEntrySchemaToJson(
@@ -22,4 +26,6 @@ Map<String, dynamic> _$ResolvedGifEntrySchemaToJson(
   'proxy_url': instance.proxyUrl,
   'width': instance.width,
   'height': instance.height,
+  'media': ?instance.media,
+  'content_type': ?instance.contentType,
 };

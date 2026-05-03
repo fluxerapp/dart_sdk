@@ -7,6 +7,7 @@ import 'package:json_annotation/json_annotation.dart';
 import 'snowflake_type.dart';
 import 'lookup_guild_response_guild_channels_type_type.dart';
 import 'int32_type.dart';
+import 'content_warning_level.dart';
 
 part 'lookup_guild_response_guild_channels.g.dart';
 
@@ -20,6 +21,9 @@ class LookupGuildResponseGuildChannels {
     required this.parentId,
     required this.nsfw,
     required this.url,
+    this.nsfwOverride,
+    this.contentWarningLevel,
+    this.contentWarningText,
   });
 
   factory LookupGuildResponseGuildChannels.fromJson(
@@ -37,6 +41,12 @@ class LookupGuildResponseGuildChannels {
   final SnowflakeType? parentId;
   @JsonKey(includeIfNull: true)
   final bool? nsfw;
+  @JsonKey(includeIfNull: false, name: 'nsfw_override')
+  final bool? nsfwOverride;
+  @JsonKey(includeIfNull: false, name: 'content_warning_level')
+  final ContentWarningLevel? contentWarningLevel;
+  @JsonKey(includeIfNull: false, name: 'content_warning_text')
+  final String? contentWarningText;
   @JsonKey(includeIfNull: true)
   final String? url;
 

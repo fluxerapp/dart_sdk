@@ -11,6 +11,8 @@ class DiscoveryApplicationRequest {
   const DiscoveryApplicationRequest({
     required this.description,
     required this.categoryType,
+    this.primaryLanguage,
+    this.customTags,
   });
 
   factory DiscoveryApplicationRequest.fromJson(Map<String, Object?> json) =>
@@ -22,6 +24,14 @@ class DiscoveryApplicationRequest {
   /// Discovery category type
   @JsonKey(name: 'category_type')
   final int categoryType;
+
+  /// Primary community language (BCP-47 code)
+  @JsonKey(includeIfNull: false, name: 'primary_language')
+  final String? primaryLanguage;
+
+  /// Up to 10 custom discovery tags
+  @JsonKey(includeIfNull: false, name: 'custom_tags')
+  final List<String>? customTags;
 
   Map<String, Object?> toJson() => _$DiscoveryApplicationRequestToJson(this);
 }

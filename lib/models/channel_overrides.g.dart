@@ -18,6 +18,11 @@ ChannelOverrides _$ChannelOverridesFromJson(Map<String, dynamic> json) =>
           : ChannelOverridesMuteConfig.fromJson(
               json['mute_config'] as Map<String, dynamic>,
             ),
+      unreadBadges: json['unread_badges'] == null
+          ? null
+          : UserNotificationSettings.fromJson(
+              (json['unread_badges'] as num).toInt(),
+            ),
     );
 
 Map<String, dynamic> _$ChannelOverridesToJson(ChannelOverrides instance) =>
@@ -26,4 +31,5 @@ Map<String, dynamic> _$ChannelOverridesToJson(ChannelOverrides instance) =>
       'message_notifications': instance.messageNotifications,
       'muted': instance.muted,
       'mute_config': instance.muteConfig,
+      'unread_badges': ?instance.unreadBadges,
     };

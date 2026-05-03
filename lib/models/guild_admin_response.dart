@@ -4,6 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+import 'content_warning_level.dart';
 import 'guild_feature_schema.dart';
 import 'nsfw_level.dart';
 
@@ -23,6 +24,9 @@ class GuildAdminResponse {
     required this.banner,
     required this.memberCount,
     this.nsfwLevel,
+    this.nsfw,
+    this.contentWarningLevel,
+    this.contentWarningText,
   });
 
   factory GuildAdminResponse.fromJson(Map<String, Object?> json) =>
@@ -66,6 +70,16 @@ class GuildAdminResponse {
   final int memberCount;
   @JsonKey(includeIfNull: false, name: 'nsfw_level')
   final NsfwLevel? nsfwLevel;
+
+  /// Whether the guild is flagged as adult content
+  @JsonKey(includeIfNull: false)
+  final bool? nsfw;
+  @JsonKey(includeIfNull: false, name: 'content_warning_level')
+  final ContentWarningLevel? contentWarningLevel;
+
+  /// Custom content warning text shown before entry
+  @JsonKey(includeIfNull: false, name: 'content_warning_text')
+  final String? contentWarningText;
 
   Map<String, Object?> toJson() => _$GuildAdminResponseToJson(this);
 }
