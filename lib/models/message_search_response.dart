@@ -5,6 +5,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'message_search_results_response_messages.dart';
+import 'channel_response.dart';
 import 'message_search_indexing_response_indexing_indexing.dart';
 
 part 'message_search_response.g.dart';
@@ -30,16 +31,20 @@ class MessageSearchResponse {
 @JsonSerializable()
 class MessageSearchResponseMessageSearchResultsResponse {
   final List<MessageSearchResultsResponseMessages> messages;
+  final List<ChannelResponse> channels;
   final int total;
   @JsonKey(name: 'hits_per_page')
   final int hitsPerPage;
   final int page;
+  final List<String>? cursor;
 
   const MessageSearchResponseMessageSearchResultsResponse({
     required this.messages,
+    required this.channels,
     required this.total,
     required this.hitsPerPage,
     required this.page,
+    required this.cursor,
   });
 
   factory MessageSearchResponseMessageSearchResultsResponse.fromJson(

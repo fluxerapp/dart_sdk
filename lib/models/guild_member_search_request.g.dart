@@ -18,7 +18,7 @@ GuildMemberSearchRequest _$GuildMemberSearchRequestFromJson(
   joinedAtGte: (json['joined_at_gte'] as num?)?.toInt(),
   joinedAtLte: (json['joined_at_lte'] as num?)?.toInt(),
   joinSourceType: (json['join_source_type'] as List<dynamic>?)
-      ?.map((e) => (e as num).toInt())
+      ?.map((e) => JoinSourceType.fromJson((e as num).toInt()))
       .toList(),
   sourceInviteCode: (json['source_invite_code'] as List<dynamic>?)
       ?.map((e) => e as String)

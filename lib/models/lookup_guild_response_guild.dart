@@ -22,6 +22,9 @@ class LookupGuildResponseGuild {
   const LookupGuildResponseGuild({
     required this.id,
     required this.ownerId,
+    required this.ownerUsername,
+    required this.ownerGlobalName,
+    required this.ownerDiscriminator,
     required this.name,
     required this.vanityUrlCode,
     required this.icon,
@@ -51,6 +54,12 @@ class LookupGuildResponseGuild {
   final SnowflakeType id;
   @JsonKey(name: 'owner_id')
   final SnowflakeType ownerId;
+  @JsonKey(includeIfNull: true, name: 'owner_username')
+  final String? ownerUsername;
+  @JsonKey(includeIfNull: true, name: 'owner_global_name')
+  final String? ownerGlobalName;
+  @JsonKey(includeIfNull: true, name: 'owner_discriminator')
+  final String? ownerDiscriminator;
   final String name;
   @JsonKey(includeIfNull: true, name: 'vanity_url_code')
   final String? vanityUrlCode;

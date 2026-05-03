@@ -47,6 +47,8 @@ enum ApiErrorCode {
   alreadyFriends('ALREADY_FRIENDS'),
   @JsonValue('AUDIT_LOG_INDEXING')
   auditLogIndexing('AUDIT_LOG_INDEXING'),
+  @JsonValue('BOTS_CANNOT_CREATE_GUILDS')
+  botsCannotCreateGuilds('BOTS_CANNOT_CREATE_GUILDS'),
   @JsonValue('BOTS_CANNOT_SEND_FRIEND_REQUESTS')
   botsCannotSendFriendRequests('BOTS_CANNOT_SEND_FRIEND_REQUESTS'),
   @JsonValue('BOT_ALREADY_IN_GUILD')
@@ -69,6 +71,8 @@ enum ApiErrorCode {
   cannotEditOtherUserMessage('CANNOT_EDIT_OTHER_USER_MESSAGE'),
   @JsonValue('CANNOT_EXECUTE_ON_DM')
   cannotExecuteOnDm('CANNOT_EXECUTE_ON_DM'),
+  @JsonValue('CANNOT_BLOCK_SYSTEM_USER')
+  cannotBlockSystemUser('CANNOT_BLOCK_SYSTEM_USER'),
   @JsonValue('CANNOT_MODIFY_SYSTEM_WEBHOOK')
   cannotModifySystemWebhook('CANNOT_MODIFY_SYSTEM_WEBHOOK'),
   @JsonValue('CANNOT_MODIFY_VOICE_STATE')
@@ -163,6 +167,8 @@ enum ApiErrorCode {
   emptyEncryptedBody('EMPTY_ENCRYPTED_BODY'),
   @JsonValue('ENCRYPTION_FAILED')
   encryptionFailed('ENCRYPTION_FAILED'),
+  @JsonValue('EU_WITHDRAWAL_WAIVER_REQUIRED')
+  euWithdrawalWaiverRequired('EU_WITHDRAWAL_WAIVER_REQUIRED'),
   @JsonValue('EXPLICIT_CONTENT_CANNOT_BE_SENT')
   explicitContentCannotBeSent('EXPLICIT_CONTENT_CANNOT_BE_SENT'),
   @JsonValue('FEATURE_NOT_AVAILABLE_SELF_HOSTED')
@@ -185,6 +191,10 @@ enum ApiErrorCode {
   giftCodeAlreadyRedeemed('GIFT_CODE_ALREADY_REDEEMED'),
   @JsonValue('GUILD_PHONE_VERIFICATION_REQUIRED')
   guildPhoneVerificationRequired('GUILD_PHONE_VERIFICATION_REQUIRED'),
+  @JsonValue('GUILD_TEMPLATE_FETCH_FAILED')
+  guildTemplateFetchFailed('GUILD_TEMPLATE_FETCH_FAILED'),
+  @JsonValue('GUILD_TEMPLATE_INVALID')
+  guildTemplateInvalid('GUILD_TEMPLATE_INVALID'),
   @JsonValue('GUILD_VERIFICATION_REQUIRED')
   guildVerificationRequired('GUILD_VERIFICATION_REQUIRED'),
   @JsonValue('HANDOFF_CODE_EXPIRED')
@@ -293,8 +303,14 @@ enum ApiErrorCode {
   ipAuthorizationResendLimitExceeded('IP_AUTHORIZATION_RESEND_LIMIT_EXCEEDED'),
   @JsonValue('IP_BANNED')
   ipBanned('IP_BANNED'),
+  @JsonValue('RESIDENTIAL_PROXY_BLOCKED')
+  residentialProxyBlocked('RESIDENTIAL_PROXY_BLOCKED'),
+  @JsonValue('TOR_BLOCKED')
+  torBlocked('TOR_BLOCKED'),
   @JsonValue('MAX_ANIMATED_EMOJIS')
   maxAnimatedEmojis('MAX_ANIMATED_EMOJIS'),
+  @JsonValue('MAX_APPLICATIONS')
+  maxApplications('MAX_APPLICATIONS'),
   @JsonValue('MAX_BOOKMARKS')
   maxBookmarks('MAX_BOOKMARKS'),
   @JsonValue('MAX_CATEGORY_CHANNELS')
@@ -317,6 +333,8 @@ enum ApiErrorCode {
   maxGuildRoles('MAX_GUILD_ROLES'),
   @JsonValue('MAX_GUILDS')
   maxGuilds('MAX_GUILDS'),
+  @JsonValue('NEW_ACCOUNT_GUILD_JOIN_RATE_LIMITED')
+  newAccountGuildJoinRateLimited('NEW_ACCOUNT_GUILD_JOIN_RATE_LIMITED'),
   @JsonValue('MAX_INVITES')
   maxInvites('MAX_INVITES'),
   @JsonValue('MAX_PACK_EXPRESSIONS')
@@ -391,12 +409,16 @@ enum ApiErrorCode {
   notOwnerOfAdminApiKey('NOT_OWNER_OF_ADMIN_API_KEY'),
   @JsonValue('NSFW_CONTENT_AGE_RESTRICTED')
   nsfwContentAgeRestricted('NSFW_CONTENT_AGE_RESTRICTED'),
+  @JsonValue('NSFW_EMOJI_STICKER_BLOCKED')
+  nsfwEmojiStickerBlocked('NSFW_EMOJI_STICKER_BLOCKED'),
   @JsonValue('PACK_ACCESS_DENIED')
   packAccessDenied('PACK_ACCESS_DENIED'),
   @JsonValue('PASSKEY_AUTHENTICATION_FAILED')
   passkeyAuthenticationFailed('PASSKEY_AUTHENTICATION_FAILED'),
   @JsonValue('PASSKEYS_DISABLED')
   passkeysDisabled('PASSKEYS_DISABLED'),
+  @JsonValue('PHONE_ADD_NOT_ELIGIBLE')
+  phoneAddNotEligible('PHONE_ADD_NOT_ELIGIBLE'),
   @JsonValue('PHONE_ALREADY_USED')
   phoneAlreadyUsed('PHONE_ALREADY_USED'),
   @JsonValue('PHONE_RATE_LIMIT_EXCEEDED')
@@ -453,6 +475,10 @@ enum ApiErrorCode {
   stripeNoActiveSubscription('STRIPE_NO_ACTIVE_SUBSCRIPTION'),
   @JsonValue('STRIPE_NO_PURCHASE_HISTORY')
   stripeNoPurchaseHistory('STRIPE_NO_PURCHASE_HISTORY'),
+  @JsonValue('STRIPE_REFUND_OUTSIDE_WINDOW')
+  stripeRefundOutsideWindow('STRIPE_REFUND_OUTSIDE_WINDOW'),
+  @JsonValue('STRIPE_REFUND_COOLDOWN_ACTIVE')
+  stripeRefundCooldownActive('STRIPE_REFUND_COOLDOWN_ACTIVE'),
   @JsonValue('STRIPE_NO_SUBSCRIPTION')
   stripeNoSubscription('STRIPE_NO_SUBSCRIPTION'),
   @JsonValue('STRIPE_PAYMENT_NOT_AVAILABLE')
@@ -505,6 +531,8 @@ enum ApiErrorCode {
   unclaimedAccountCannotCreateApplications(
     'UNCLAIMED_ACCOUNT_CANNOT_CREATE_APPLICATIONS',
   ),
+  @JsonValue('UNCLAIMED_ACCOUNT_CANNOT_CREATE_GUILDS')
+  unclaimedAccountCannotCreateGuilds('UNCLAIMED_ACCOUNT_CANNOT_CREATE_GUILDS'),
   @JsonValue('UNCLAIMED_ACCOUNT_CANNOT_JOIN_GROUP_DMS')
   unclaimedAccountCannotJoinGroupDms('UNCLAIMED_ACCOUNT_CANNOT_JOIN_GROUP_DMS'),
   @JsonValue('UNCLAIMED_ACCOUNT_CANNOT_JOIN_ONE_ON_ONE_VOICE_CALLS')
@@ -529,6 +557,10 @@ enum ApiErrorCode {
   ),
   @JsonValue('UNCLAIMED_ACCOUNT_CANNOT_SEND_MESSAGES')
   unclaimedAccountCannotSendMessages('UNCLAIMED_ACCOUNT_CANNOT_SEND_MESSAGES'),
+  @JsonValue('UNCLAIMED_ACCOUNT_CANNOT_SUBMIT_REPORTS')
+  unclaimedAccountCannotSubmitReports(
+    'UNCLAIMED_ACCOUNT_CANNOT_SUBMIT_REPORTS',
+  ),
   @JsonValue('UNKNOWN_CHANNEL')
   unknownChannel('UNKNOWN_CHANNEL'),
   @JsonValue('UNKNOWN_EMOJI')
@@ -591,6 +623,10 @@ enum ApiErrorCode {
   voiceChannelFull('VOICE_CHANNEL_FULL'),
   @JsonValue('WEBAUTHN_CREDENTIAL_LIMIT_REACHED')
   webauthnCredentialLimitReached('WEBAUTHN_CREDENTIAL_LIMIT_REACHED'),
+  @JsonValue('AGE_VERIFICATION_ALREADY_VERIFIED')
+  ageVerificationAlreadyVerified('AGE_VERIFICATION_ALREADY_VERIFIED'),
+  @JsonValue('AGE_VERIFICATION_INVALID_CARD_TYPE')
+  ageVerificationInvalidCardType('AGE_VERIFICATION_INVALID_CARD_TYPE'),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
   $unknown(null);

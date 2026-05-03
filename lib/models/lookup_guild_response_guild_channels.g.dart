@@ -16,6 +16,8 @@ LookupGuildResponseGuildChannels _$LookupGuildResponseGuildChannelsFromJson(
   ),
   position: (json['position'] as num).toInt(),
   parentId: json['parent_id'] as String?,
+  nsfw: json['nsfw'] as bool?,
+  url: json['url'] as String?,
 );
 
 Map<String, dynamic> _$LookupGuildResponseGuildChannelsToJson(
@@ -26,4 +28,6 @@ Map<String, dynamic> _$LookupGuildResponseGuildChannelsToJson(
   'type': instance.type,
   'position': instance.position,
   'parent_id': instance.parentId,
+  'nsfw': instance.nsfw,
+  'url': instance.url,
 };

@@ -43,7 +43,10 @@ GuildUpdateRequest _$GuildUpdateRequestFromJson(Map<String, dynamic> json) =>
           : GuildUpdateRequestSplashCardAlignmentSplashCardAlignment.fromJson(
               (json['splash_card_alignment'] as num).toInt(),
             ),
-      features: (json['features'] as List<dynamic>?)
+      addFeatures: (json['add_features'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      removeFeatures: (json['remove_features'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
       messageHistoryCutoff: json['message_history_cutoff'] == null
@@ -78,7 +81,8 @@ Map<String, dynamic> _$GuildUpdateRequestToJson(
   'splash': ?instance.splash,
   'embed_splash': ?instance.embedSplash,
   'splash_card_alignment': ?instance.splashCardAlignment,
-  'features': ?instance.features,
+  'add_features': ?instance.addFeatures,
+  'remove_features': ?instance.removeFeatures,
   'message_history_cutoff': ?instance.messageHistoryCutoff?.toIso8601String(),
   'password': ?instance.password,
   'mfa_method': ?instance.mfaMethod,

@@ -4,37 +4,20 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+import 'gateway_rollout_config_update_request.dart';
 import 'instance_config_update_request_sso.dart';
 
 part 'instance_config_update_request.g.dart';
 
 @JsonSerializable()
 class InstanceConfigUpdateRequest {
-  const InstanceConfigUpdateRequest({
-    this.manualReviewEnabled,
-    this.manualReviewScheduleEnabled,
-    this.manualReviewScheduleStartHourUtc,
-    this.manualReviewScheduleEndHourUtc,
-    this.registrationAlertsWebhookUrl,
-    this.systemAlertsWebhookUrl,
-    this.sso,
-  });
+  const InstanceConfigUpdateRequest({this.gatewayRollout, this.sso});
 
   factory InstanceConfigUpdateRequest.fromJson(Map<String, Object?> json) =>
       _$InstanceConfigUpdateRequestFromJson(json);
 
-  @JsonKey(includeIfNull: false, name: 'manual_review_enabled')
-  final bool? manualReviewEnabled;
-  @JsonKey(includeIfNull: false, name: 'manual_review_schedule_enabled')
-  final bool? manualReviewScheduleEnabled;
-  @JsonKey(includeIfNull: false, name: 'manual_review_schedule_start_hour_utc')
-  final int? manualReviewScheduleStartHourUtc;
-  @JsonKey(includeIfNull: false, name: 'manual_review_schedule_end_hour_utc')
-  final int? manualReviewScheduleEndHourUtc;
-  @JsonKey(includeIfNull: false, name: 'registration_alerts_webhook_url')
-  final String? registrationAlertsWebhookUrl;
-  @JsonKey(includeIfNull: false, name: 'system_alerts_webhook_url')
-  final String? systemAlertsWebhookUrl;
+  @JsonKey(includeIfNull: false, name: 'gateway_rollout')
+  final GatewayRolloutConfigUpdateRequest? gatewayRollout;
   @JsonKey(includeIfNull: false)
   final InstanceConfigUpdateRequestSso? sso;
 

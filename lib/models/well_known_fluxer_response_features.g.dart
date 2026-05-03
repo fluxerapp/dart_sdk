@@ -13,8 +13,7 @@ WellKnownFluxerResponseFeatures _$WellKnownFluxerResponseFeaturesFromJson(
   voiceEnabled: json['voice_enabled'] as bool,
   stripeEnabled: json['stripe_enabled'] as bool,
   selfHosted: json['self_hosted'] as bool,
-  manualReviewEnabled: json['manual_review_enabled'] as bool?,
-  presignedAttachmentUploads: json['presigned_attachment_uploads'] as bool?,
+  presignedAttachmentUploads: json['presigned_attachment_uploads'] as bool,
 );
 
 Map<String, dynamic> _$WellKnownFluxerResponseFeaturesToJson(
@@ -24,6 +23,5 @@ Map<String, dynamic> _$WellKnownFluxerResponseFeaturesToJson(
   'voice_enabled': instance.voiceEnabled,
   'stripe_enabled': instance.stripeEnabled,
   'self_hosted': instance.selfHosted,
-  'manual_review_enabled': ?instance.manualReviewEnabled,
-  'presigned_attachment_uploads': ?instance.presignedAttachmentUploads,
+  'presigned_attachment_uploads': instance.presignedAttachmentUploads,
 };

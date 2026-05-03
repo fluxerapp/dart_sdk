@@ -75,7 +75,7 @@ abstract class OAuth2Api {
   ///
   /// Lists all OAuth2 applications owned by the authenticated user. Includes application credentials, metadata, and configuration.
   @GET('/oauth2/applications/@me')
-  Future<ApplicationListResponse> listUserApplications2();
+  Future<ApplicationListResponse> listUserApplications3();
 
   /// Get application.
   ///
@@ -231,5 +231,5 @@ abstract class OAuth2Api {
   ///
   /// Lists all OAuth2 applications owned by the authenticated user. Includes application credentials, metadata, and configuration.
   @GET('/users/@me/applications')
-  Future<ApplicationListResponse> listUserApplications();
+  Future<ApplicationListResponse> listUserApplications2();
 }

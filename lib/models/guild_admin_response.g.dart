@@ -14,9 +14,15 @@ GuildAdminResponse _$GuildAdminResponseFromJson(Map<String, dynamic> json) =>
           .map((e) => e as String)
           .toList(),
       ownerId: json['owner_id'] as String,
+      ownerUsername: json['owner_username'] as String?,
+      ownerGlobalName: json['owner_global_name'] as String?,
+      ownerDiscriminator: json['owner_discriminator'] as String?,
       icon: json['icon'] as String?,
       banner: json['banner'] as String?,
       memberCount: (json['member_count'] as num).toInt(),
+      nsfwLevel: json['nsfw_level'] == null
+          ? null
+          : NsfwLevel.fromJson((json['nsfw_level'] as num).toInt()),
     );
 
 Map<String, dynamic> _$GuildAdminResponseToJson(GuildAdminResponse instance) =>
@@ -25,7 +31,11 @@ Map<String, dynamic> _$GuildAdminResponseToJson(GuildAdminResponse instance) =>
       'name': instance.name,
       'features': instance.features,
       'owner_id': instance.ownerId,
+      'owner_username': instance.ownerUsername,
+      'owner_global_name': instance.ownerGlobalName,
+      'owner_discriminator': instance.ownerDiscriminator,
       'icon': instance.icon,
       'banner': instance.banner,
       'member_count': instance.memberCount,
+      'nsfw_level': ?instance.nsfwLevel,
     };

@@ -42,6 +42,9 @@ ChannelPinMessageResponse _$ChannelPinMessageResponseFromJson(
   stickers: (json['stickers'] as List<dynamic>?)
       ?.map((e) => MessageStickerResponse.fromJson(e as Map<String, dynamic>))
       .toList(),
+  nsfwEmojis: (json['nsfw_emojis'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList(),
   messageReference: json['message_reference'] == null
       ? null
       : MessageReferenceResponse.fromJson(
@@ -76,6 +79,7 @@ Map<String, dynamic> _$ChannelPinMessageResponseToJson(
   'embeds': ?instance.embeds,
   'attachments': ?instance.attachments,
   'stickers': ?instance.stickers,
+  'nsfw_emojis': ?instance.nsfwEmojis,
   'message_reference': ?instance.messageReference,
   'message_snapshots': ?instance.messageSnapshots,
   'nonce': ?instance.nonce,

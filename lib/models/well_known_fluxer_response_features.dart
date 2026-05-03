@@ -13,8 +13,7 @@ class WellKnownFluxerResponseFeatures {
     required this.voiceEnabled,
     required this.stripeEnabled,
     required this.selfHosted,
-    this.manualReviewEnabled,
-    this.presignedAttachmentUploads,
+    required this.presignedAttachmentUploads,
   });
 
   factory WellKnownFluxerResponseFeatures.fromJson(Map<String, Object?> json) =>
@@ -36,13 +35,9 @@ class WellKnownFluxerResponseFeatures {
   @JsonKey(name: 'self_hosted')
   final bool selfHosted;
 
-  /// Whether manual review mode is enabled for registrations
-  @JsonKey(includeIfNull: false, name: 'manual_review_enabled')
-  final bool? manualReviewEnabled;
-
-  /// Whether presigned attachment uploads are enabled
-  @JsonKey(includeIfNull: false, name: 'presigned_attachment_uploads')
-  final bool? presignedAttachmentUploads;
+  /// Whether clients can request presigned attachment upload URLs
+  @JsonKey(name: 'presigned_attachment_uploads')
+  final bool presignedAttachmentUploads;
 
   Map<String, Object?> toJson() =>
       _$WellKnownFluxerResponseFeaturesToJson(this);

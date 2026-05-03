@@ -5,12 +5,18 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'base64_image_type.dart';
+import 'template_serialized_guild.dart';
 
 part 'guild_create_request.g.dart';
 
 @JsonSerializable()
 class GuildCreateRequest {
-  const GuildCreateRequest({required this.name, this.icon, this.emptyFeatures});
+  const GuildCreateRequest({
+    required this.name,
+    this.icon,
+    this.emptyFeatures,
+    this.template,
+  });
 
   factory GuildCreateRequest.fromJson(Map<String, Object?> json) =>
       _$GuildCreateRequestFromJson(json);
@@ -25,6 +31,8 @@ class GuildCreateRequest {
   /// Whether to create the guild without default features
   @JsonKey(includeIfNull: false, name: 'empty_features')
   final bool? emptyFeatures;
+  @JsonKey(includeIfNull: false)
+  final TemplateSerializedGuild? template;
 
   Map<String, Object?> toJson() => _$GuildCreateRequestToJson(this);
 }

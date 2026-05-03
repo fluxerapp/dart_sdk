@@ -9,7 +9,10 @@ part of 'gift_code_response.dart';
 GiftCodeResponse _$GiftCodeResponseFromJson(Map<String, dynamic> json) =>
     GiftCodeResponse(
       code: json['code'] as String,
-      durationMonths: (json['duration_months'] as num).toInt(),
+      durationType: GiftCodeResponseDurationTypeDurationType.fromJson(
+        json['duration_type'] as String,
+      ),
+      durationQuantity: (json['duration_quantity'] as num).toInt(),
       redeemed: json['redeemed'] as bool,
       createdBy: json['created_by'] == null
           ? null
@@ -21,7 +24,8 @@ GiftCodeResponse _$GiftCodeResponseFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$GiftCodeResponseToJson(GiftCodeResponse instance) =>
     <String, dynamic>{
       'code': instance.code,
-      'duration_months': instance.durationMonths,
+      'duration_type': instance.durationType,
+      'duration_quantity': instance.durationQuantity,
       'redeemed': instance.redeemed,
       'created_by': ?instance.createdBy,
     };

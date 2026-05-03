@@ -20,7 +20,7 @@ class PushSubscriptionItemResponse {
   @JsonKey(name: 'subscription_id')
   final String subscriptionId;
 
-  /// The user agent that registered this subscription
+  /// The user agent that created this subscription
   @JsonKey(includeIfNull: true, name: 'user_agent')
   final String? userAgent;
 

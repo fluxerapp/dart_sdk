@@ -6,6 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'int32_type.dart';
 import 'node_stats_response_memory.dart';
+import 'node_stats_response_nodes.dart';
 
 part 'node_stats_response.g.dart';
 
@@ -21,6 +22,8 @@ class NodeStatsResponse {
     required this.processCount,
     required this.processLimit,
     required this.uptimeSeconds,
+    required this.nodeCount,
+    required this.nodes,
   });
 
   factory NodeStatsResponse.fromJson(Map<String, Object?> json) =>
@@ -38,6 +41,9 @@ class NodeStatsResponse {
   final Int32Type processLimit;
   @JsonKey(name: 'uptime_seconds')
   final Int32Type uptimeSeconds;
+  @JsonKey(name: 'node_count')
+  final Int32Type nodeCount;
+  final List<NodeStatsResponseNodes> nodes;
 
   Map<String, Object?> toJson() => _$NodeStatsResponseToJson(this);
 }

@@ -11,7 +11,11 @@ _$ReportAdminResponseSchemaMessageContextFromJson(Map<String, dynamic> json) =>
     ReportAdminResponseSchemaMessageContext(
       id: json['id'] as String,
       channelId: json['channel_id'] as String,
+      channelNsfw: json['channel_nsfw'] as bool?,
       guildId: json['guild_id'] as String?,
+      guildNsfwLevel: json['guild_nsfw_level'] == null
+          ? null
+          : NsfwLevel.fromJson((json['guild_nsfw_level'] as num).toInt()),
       content: json['content'] as String,
       timestamp: json['timestamp'] as String,
       attachments: (json['attachments'] as List<dynamic>)
@@ -23,7 +27,13 @@ _$ReportAdminResponseSchemaMessageContextFromJson(Map<String, dynamic> json) =>
           .toList(),
       authorId: json['author_id'] as String,
       authorUsername: json['author_username'] as String,
+      authorGlobalName: json['author_global_name'] as String?,
       authorDiscriminator: json['author_discriminator'] as String,
+      authorAvatar: json['author_avatar'] as String?,
+      userPriorNcmecReportIds:
+          (json['user_prior_ncmec_report_ids'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList(),
     );
 
 Map<String, dynamic> _$ReportAdminResponseSchemaMessageContextToJson(
@@ -31,11 +41,16 @@ Map<String, dynamic> _$ReportAdminResponseSchemaMessageContextToJson(
 ) => <String, dynamic>{
   'id': instance.id,
   'channel_id': instance.channelId,
+  'channel_nsfw': instance.channelNsfw,
   'guild_id': instance.guildId,
+  'guild_nsfw_level': instance.guildNsfwLevel,
   'content': instance.content,
   'timestamp': instance.timestamp,
   'attachments': instance.attachments,
   'author_id': instance.authorId,
   'author_username': instance.authorUsername,
+  'author_global_name': instance.authorGlobalName,
   'author_discriminator': instance.authorDiscriminator,
+  'author_avatar': instance.authorAvatar,
+  'user_prior_ncmec_report_ids': ?instance.userPriorNcmecReportIds,
 };

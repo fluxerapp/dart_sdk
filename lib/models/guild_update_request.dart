@@ -7,6 +7,7 @@ import 'package:json_annotation/json_annotation.dart';
 import 'base64_image_type.dart';
 import 'default_message_notifications.dart';
 import 'guild_explicit_content_filter.dart';
+import 'guild_feature_schema.dart';
 import 'guild_mfa_level.dart';
 import 'guild_update_request_mfa_method_mfa_method.dart';
 import 'guild_update_request_splash_card_alignment_splash_card_alignment.dart';
@@ -36,7 +37,8 @@ class GuildUpdateRequest {
     this.splash,
     this.embedSplash,
     this.splashCardAlignment,
-    this.features,
+    this.addFeatures,
+    this.removeFeatures,
     this.messageHistoryCutoff,
     this.password,
     this.mfaMethod,
@@ -107,9 +109,13 @@ class GuildUpdateRequest {
   final GuildUpdateRequestSplashCardAlignmentSplashCardAlignment?
   splashCardAlignment;
 
-  /// Array of guild feature strings
-  @JsonKey(includeIfNull: false)
-  final List<String>? features;
+  /// Toggleable guild features to enable on this guild
+  @JsonKey(includeIfNull: false, name: 'add_features')
+  final List<GuildFeatureSchema>? addFeatures;
+
+  /// Toggleable guild features to disable on this guild
+  @JsonKey(includeIfNull: false, name: 'remove_features')
+  final List<GuildFeatureSchema>? removeFeatures;
 
   /// ISO8601 timestamp controlling how far back members without Read Message History can access messages. Set to null to disable historical access.
   @JsonKey(includeIfNull: false, name: 'message_history_cutoff')

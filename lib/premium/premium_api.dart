@@ -6,7 +6,10 @@ import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
 import 'package:retrofit/error_logger.dart';
 
+import '../models/change_subscription_request.dart';
+import '../models/current_subscription_price_response.dart';
 import '../models/price_ids_response.dart';
+import '../models/pricing_mode_enum.dart';
 import '../models/url_response.dart';
 
 part 'premium_api.g.dart';
@@ -20,6 +23,22 @@ abstract class PremiumApi {
   /// Cancels the authenticated user's premium subscription at the end of the current billing period.
   @POST('/premium/cancel-subscription')
   Future<void> cancelSubscription();
+
+  /// Change subscription billing cycle.
+  ///
+  /// Switches the authenticated user between monthly and yearly billing for their active premium subscription.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/premium/change-subscription')
+  Future<void> changeSubscriptionBillingCycle({
+    @Body() required ChangeSubscriptionRequest body,
+  });
+
+  /// Get current subscription price.
+  ///
+  /// Returns the exact price the authenticated user is being billed for their active Stripe subscription, including whether they are on a grandfathered legacy rate.
+  @GET('/premium/current-subscription-price')
+  Future<CurrentSubscriptionPriceResponse> getCurrentSubscriptionPrice();
 
   /// Create customer portal.
   ///
@@ -39,6 +58,7 @@ abstract class PremiumApi {
   @GET('/premium/price-ids')
   Future<PriceIdsResponse> getPriceIds({
     @Query('country_code') String? countryCode,
+    @Query('pricing_mode') PricingModeEnum? pricingMode,
   });
 
   /// Reactivate subscription.

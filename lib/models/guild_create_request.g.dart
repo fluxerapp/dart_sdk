@@ -11,6 +11,11 @@ GuildCreateRequest _$GuildCreateRequestFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       icon: json['icon'] as String?,
       emptyFeatures: json['empty_features'] as bool?,
+      template: json['template'] == null
+          ? null
+          : TemplateSerializedGuild.fromJson(
+              json['template'] as Map<String, dynamic>,
+            ),
     );
 
 Map<String, dynamic> _$GuildCreateRequestToJson(GuildCreateRequest instance) =>
@@ -18,4 +23,5 @@ Map<String, dynamic> _$GuildCreateRequestToJson(GuildCreateRequest instance) =>
       'name': instance.name,
       'icon': ?instance.icon,
       'empty_features': ?instance.emptyFeatures,
+      'template': ?instance.template,
     };

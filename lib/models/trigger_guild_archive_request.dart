@@ -10,13 +10,20 @@ part 'trigger_guild_archive_request.g.dart';
 
 @JsonSerializable()
 class TriggerGuildArchiveRequest {
-  const TriggerGuildArchiveRequest({required this.guildId});
+  const TriggerGuildArchiveRequest({
+    required this.guildId,
+    this.includeAttachments,
+  });
 
   factory TriggerGuildArchiveRequest.fromJson(Map<String, Object?> json) =>
       _$TriggerGuildArchiveRequestFromJson(json);
 
   @JsonKey(name: 'guild_id')
   final SnowflakeType guildId;
+
+  /// Whether to include attachment binaries in the archive
+  @JsonKey(includeIfNull: false, name: 'include_attachments')
+  final bool? includeAttachments;
 
   Map<String, Object?> toJson() => _$TriggerGuildArchiveRequestToJson(this);
 }

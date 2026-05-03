@@ -10,6 +10,8 @@ import 'group_dm_add_permission_flags.dart';
 import 'incoming_call_flags.dart';
 import 'locale.dart';
 import 'render_spoilers.dart';
+import 'sensitive_media_filter_level.dart';
+import 'sensitive_media_guild_filter_level.dart';
 import 'snowflake_type.dart';
 import 'sticker_animation_options.dart';
 import 'time_format_types.dart';
@@ -22,7 +24,7 @@ part 'user_settings_update_request.g.dart';
 @JsonSerializable()
 class UserSettingsUpdateRequest {
   const UserSettingsUpdateRequest({
-    this.flags,
+    this.inlineEmbedMedia,
     this.status,
     this.statusResetsAt,
     this.statusResetsTo,
@@ -33,7 +35,7 @@ class UserSettingsUpdateRequest {
     this.defaultGuildsRestricted,
     this.botDefaultGuildsRestricted,
     this.inlineAttachmentMedia,
-    this.inlineEmbedMedia,
+    this.flags,
     this.gifAutoPlay,
     this.renderEmbeds,
     this.renderReactions,
@@ -45,12 +47,19 @@ class UserSettingsUpdateRequest {
     this.incomingCallFlags,
     this.groupDmAddPermissionFlags,
     this.guildFolders,
-    this.customStatus,
+    this.syncedPreferences,
     this.afkTimeout,
     this.timeFormat,
     this.developerMode,
     this.trustedDomains,
     this.defaultHideMutedChannels,
+    this.sensitiveContentFriendDmFilter,
+    this.sensitiveContentNonFriendDmFilter,
+    this.sensitiveContentGuildFilter,
+    this.suppressUnprivilegedSelfMentions,
+    this.suppressUnprivilegedSelfMentionsBypassUserIds,
+    this.staffDmAccessUserIds,
+    this.customStatus,
   });
 
   factory UserSettingsUpdateRequest.fromJson(Map<String, Object?> json) =>
@@ -156,6 +165,37 @@ class UserSettingsUpdateRequest {
   /// Hide muted channels by default in new guilds
   @JsonKey(includeIfNull: false, name: 'default_hide_muted_channels')
   final bool? defaultHideMutedChannels;
+
+  /// Sensitive media filter level for DMs from friends
+  @JsonKey(includeIfNull: false, name: 'sensitive_content_friend_dm_filter')
+  final SensitiveMediaFilterLevel? sensitiveContentFriendDmFilter;
+
+  /// Sensitive media filter level for DMs from non-friends
+  @JsonKey(includeIfNull: false, name: 'sensitive_content_non_friend_dm_filter')
+  final SensitiveMediaFilterLevel? sensitiveContentNonFriendDmFilter;
+
+  /// Sensitive media filter level for community channels
+  @JsonKey(includeIfNull: false, name: 'sensitive_content_guild_filter')
+  final SensitiveMediaGuildFilterLevel? sensitiveContentGuildFilter;
+
+  /// Suppress direct mentions and reply mentions from unprivileged users
+  @JsonKey(includeIfNull: false, name: 'suppress_unprivileged_self_mentions')
+  final bool? suppressUnprivilegedSelfMentions;
+
+  /// User IDs that bypass self-mention suppression
+  @JsonKey(
+    includeIfNull: false,
+    name: 'suppress_unprivileged_self_mentions_bypass_user_ids',
+  )
+  final List<SnowflakeType>? suppressUnprivilegedSelfMentionsBypassUserIds;
+
+  /// User IDs with Staff DM Access enabled
+  @JsonKey(includeIfNull: false, name: 'staff_dm_access_user_ids')
+  final List<SnowflakeType>? staffDmAccessUserIds;
+
+  /// Account-wide client preferences as a base64-encoded protobuf snapshot. Replaces the entire stored snapshot; pass null to clear it.
+  @JsonKey(includeIfNull: false, name: 'synced_preferences')
+  final String? syncedPreferences;
 
   Map<String, Object?> toJson() => _$UserSettingsUpdateRequestToJson(this);
 }

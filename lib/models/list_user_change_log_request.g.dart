@@ -10,7 +10,7 @@ ListUserChangeLogRequest _$ListUserChangeLogRequestFromJson(
   Map<String, dynamic> json,
 ) => ListUserChangeLogRequest(
   userId: json['user_id'] as String,
-  limit: json['limit'] as num?,
+  limit: (json['limit'] as num?)?.toInt(),
   pageToken: json['page_token'] as String?,
 );
 

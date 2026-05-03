@@ -21,22 +21,23 @@ class UserPrivateResponse {
     required this.globalName,
     required this.avatar,
     required this.avatarColor,
-    required this.pendingBulkMessageDeletion,
-    required this.usedMobileClient,
+    required this.privacyAgreedAt,
+    required this.termsAgreedAt,
     required this.flags,
     required this.isStaff,
     required this.acls,
     required this.traits,
     required this.email,
-    required this.unreadGiftInventoryCount,
+    required this.pendingBulkMessageDeletion,
     required this.phone,
+    required this.hasVerifiedPhone,
     required this.id,
     required this.pronouns,
     required this.accentColor,
     required this.banner,
     required this.bannerColor,
     required this.mfaEnabled,
-    required this.hasUnreadGiftInventory,
+    required this.usedMobileClient,
     required this.verified,
     required this.premiumType,
     required this.premiumSince,
@@ -44,9 +45,10 @@ class UserPrivateResponse {
     required this.premiumWillCancel,
     required this.premiumBillingCycle,
     required this.premiumLifetimeSequence,
+    required this.premiumDiscriminator,
     required this.premiumBadgeHidden,
-    required this.premiumBadgeMasked,
-    required this.hasEverPurchased,
+    required this.unreadGiftInventoryCount,
+    required this.premiumBadgeTimestampHidden,
     required this.premiumBadgeSequenceHidden,
     required this.premiumPurchaseDisabled,
     required this.premiumEnabledOverride,
@@ -54,15 +56,15 @@ class UserPrivateResponse {
     required this.requiredActions,
     required this.nsfwAllowed,
     required this.hasDismissedPremiumOnboarding,
-    required this.premiumBadgeTimestampHidden,
+    required this.hasEverPurchased,
+    required this.hasUnreadGiftInventory,
+    required this.premiumBadgeMasked,
     this.authenticatorTypes,
     this.emailBounced,
+    this.ageVerifiedAdult,
     this.system,
     this.bot,
     this.premiumOutOfBandTrialEndsAt,
-    this.premiumDiscriminator,
-    this.termsAgreedAt,
-    this.privacyAgreedAt,
   });
 
   factory UserPrivateResponse.fromJson(Map<String, Object?> json) =>
@@ -120,6 +122,10 @@ class UserPrivateResponse {
   @JsonKey(includeIfNull: true)
   final String? phone;
 
+  /// Whether this account has completed phone verification
+  @JsonKey(name: 'has_verified_phone')
+  final bool hasVerifiedPhone;
+
   /// The user biography text
   @JsonKey(includeIfNull: true)
   final String? bio;
@@ -175,6 +181,10 @@ class UserPrivateResponse {
   @JsonKey(includeIfNull: true, name: 'premium_lifetime_sequence')
   final Int32Type? premiumLifetimeSequence;
 
+  /// Whether the user selected a premium-only discriminator that will be rerolled when non-lifetime premium access ends
+  @JsonKey(name: 'premium_discriminator')
+  final bool premiumDiscriminator;
+
   /// Whether the premium badge is hidden on the profile
   @JsonKey(name: 'premium_badge_hidden')
   final bool premiumBadgeHidden;
@@ -204,8 +214,8 @@ class UserPrivateResponse {
   final String? passwordLastChangedAt;
 
   /// Actions the user must complete before full access
-  @JsonKey(includeIfNull: true, name: 'required_actions')
-  final List<String>? requiredActions;
+  @JsonKey(name: 'required_actions')
+  final List<String> requiredActions;
 
   /// Whether the user is allowed to view NSFW content
   @JsonKey(name: 'nsfw_allowed')
@@ -236,21 +246,21 @@ class UserPrivateResponse {
   final UserPrivateResponsePendingBulkMessageDeletion?
   pendingBulkMessageDeletion;
 
+  /// Whether the user has verified their age as an adult via credit card verification
+  @JsonKey(includeIfNull: false, name: 'age_verified_adult')
+  final bool? ageVerifiedAdult;
+
+  /// ISO8601 timestamp of when the user last agreed to the terms of service
+  @JsonKey(includeIfNull: true, name: 'terms_agreed_at')
+  final String? termsAgreedAt;
+
+  /// ISO8601 timestamp of when the user last agreed to the privacy policy
+  @JsonKey(includeIfNull: true, name: 'privacy_agreed_at')
+  final String? privacyAgreedAt;
+
   /// When the out-of-band premium trial ends
   @JsonKey(includeIfNull: false, name: 'premium_out_of_band_trial_ends_at')
   final DateTime? premiumOutOfBandTrialEndsAt;
-
-  /// Whether the user has a premium discriminator
-  @JsonKey(includeIfNull: false, name: 'premium_discriminator')
-  final bool? premiumDiscriminator;
-
-  /// When the user agreed to terms of service
-  @JsonKey(includeIfNull: false, name: 'terms_agreed_at')
-  final DateTime? termsAgreedAt;
-
-  /// When the user agreed to the privacy policy
-  @JsonKey(includeIfNull: false, name: 'privacy_agreed_at')
-  final DateTime? privacyAgreedAt;
 
   Map<String, Object?> toJson() => _$UserPrivateResponseToJson(this);
 }

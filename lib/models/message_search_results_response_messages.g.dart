@@ -43,6 +43,9 @@ _$MessageSearchResultsResponseMessagesFromJson(
   stickers: (json['stickers'] as List<dynamic>?)
       ?.map((e) => MessageStickerResponse.fromJson(e as Map<String, dynamic>))
       .toList(),
+  nsfwEmojis: (json['nsfw_emojis'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList(),
   reactions: (json['reactions'] as List<dynamic>?)
       ?.map((e) => MessageReactionResponse.fromJson(e as Map<String, dynamic>))
       .toList(),
@@ -80,6 +83,7 @@ Map<String, dynamic> _$MessageSearchResultsResponseMessagesToJson(
   'embeds': ?instance.embeds,
   'attachments': ?instance.attachments,
   'stickers': ?instance.stickers,
+  'nsfw_emojis': ?instance.nsfwEmojis,
   'reactions': ?instance.reactions,
   'message_reference': ?instance.messageReference,
   'message_snapshots': ?instance.messageSnapshots,

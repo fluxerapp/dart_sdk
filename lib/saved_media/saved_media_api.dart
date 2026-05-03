@@ -10,6 +10,8 @@ import '../models/create_favorite_meme_body_schema.dart';
 import '../models/create_favorite_meme_from_url_body_schema.dart';
 import '../models/favorite_meme_list_response.dart';
 import '../models/favorite_meme_response.dart';
+import '../models/resolve_gif_urls_body_schema.dart';
+import '../models/resolve_gif_urls_response.dart';
 import '../models/snowflake_type.dart';
 import '../models/update_favorite_meme_body_schema.dart';
 
@@ -33,6 +35,16 @@ abstract class SavedMediaApi {
     @Path('channel_id') required SnowflakeType channelId,
     @Path('message_id') required SnowflakeType messageId,
     @Body() required CreateFavoriteMemeBodySchema body,
+  });
+
+  /// Resolve GIF URLs to proxy entries.
+  ///
+  /// Resolves a batch of GIF URLs into entries containing signed media proxy URLs, suitable for storing as URL-only favorite GIFs.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/favorite-gifs/resolve')
+  Future<ResolveGifUrlsResponse> resolveGifUrls({
+    @Body() required ResolveGifUrlsBodySchema body,
   });
 
   /// List favorite memes.

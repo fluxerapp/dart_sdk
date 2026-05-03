@@ -19,6 +19,7 @@ class GlobalSearchMessagesRequest {
   const GlobalSearchMessagesRequest({
     this.authorId,
     this.page,
+    this.cursor,
     this.maxId,
     this.minId,
     this.content,
@@ -62,9 +63,13 @@ class GlobalSearchMessagesRequest {
   @JsonKey(includeIfNull: false, name: 'hits_per_page')
   final int? hitsPerPage;
 
-  /// Page number for pagination
+  /// Page number for pagination (ignored when cursor is provided)
   @JsonKey(includeIfNull: false)
   final int? page;
+
+  /// Opaque cursor for search_after pagination. When provided, page is ignored.
+  @JsonKey(includeIfNull: false)
+  final List<String>? cursor;
   @JsonKey(includeIfNull: false, name: 'max_id')
   final SnowflakeType? maxId;
   @JsonKey(includeIfNull: false, name: 'min_id')

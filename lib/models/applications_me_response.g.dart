@@ -16,6 +16,9 @@ ApplicationsMeResponse _$ApplicationsMeResponseFromJson(
   botPublic: json['bot_public'] as bool,
   botRequireCodeGrant: json['bot_require_code_grant'] as bool,
   flags: (json['flags'] as num).toInt(),
+  owner: ApplicationsMeResponseOwner.fromJson(
+    json['owner'] as Map<String, dynamic>,
+  ),
   bot: json['bot'] == null
       ? null
       : ApplicationBotResponse.fromJson(json['bot'] as Map<String, dynamic>),
@@ -31,5 +34,6 @@ Map<String, dynamic> _$ApplicationsMeResponseToJson(
   'bot_public': instance.botPublic,
   'bot_require_code_grant': instance.botRequireCodeGrant,
   'flags': instance.flags,
+  'owner': instance.owner,
   'bot': ?instance.bot,
 };

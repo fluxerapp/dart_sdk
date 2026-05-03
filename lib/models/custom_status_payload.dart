@@ -32,7 +32,7 @@ class CustomStatusPayload {
   @JsonKey(includeIfNull: false, name: 'emoji_id')
   final SnowflakeType? emojiId;
 
-  /// Unicode emoji or custom emoji name
+  /// Unicode emoji to display (ignored when emoji_id is provided)
   @JsonKey(includeIfNull: false, name: 'emoji_name')
   final String? emojiName;
 

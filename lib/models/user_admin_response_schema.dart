@@ -30,11 +30,13 @@ class UserAdminResponseSchema {
     required this.emailVerified,
     required this.emailBounced,
     required this.phone,
+    required this.hasVerifiedPhone,
     required this.dateOfBirth,
     required this.locale,
     required this.premiumType,
     required this.premiumSince,
     required this.premiumUntil,
+    required this.premiumLifetimeSequence,
     required this.suspiciousActivityFlags,
     required this.lastActiveLocation,
     required this.pendingDeletionAt,
@@ -80,6 +82,8 @@ class UserAdminResponseSchema {
   final bool emailBounced;
   @JsonKey(includeIfNull: true)
   final String? phone;
+  @JsonKey(name: 'has_verified_phone')
+  final bool hasVerifiedPhone;
   @JsonKey(includeIfNull: true, name: 'date_of_birth')
   final String? dateOfBirth;
   @JsonKey(includeIfNull: true)
@@ -90,6 +94,8 @@ class UserAdminResponseSchema {
   final String? premiumSince;
   @JsonKey(includeIfNull: true, name: 'premium_until')
   final String? premiumUntil;
+  @JsonKey(includeIfNull: true, name: 'premium_lifetime_sequence')
+  final Int32Type? premiumLifetimeSequence;
   @JsonKey(name: 'suspicious_activity_flags')
   final SuspiciousActivityFlags suspiciousActivityFlags;
   @JsonKey(includeIfNull: true, name: 'temp_banned_until')

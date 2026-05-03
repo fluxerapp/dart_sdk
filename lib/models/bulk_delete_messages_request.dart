@@ -10,14 +10,18 @@ part 'bulk_delete_messages_request.g.dart';
 
 @JsonSerializable()
 class BulkDeleteMessagesRequest {
-  const BulkDeleteMessagesRequest({required this.messageIds});
+  const BulkDeleteMessagesRequest({this.messageIds, this.messages});
 
   factory BulkDeleteMessagesRequest.fromJson(Map<String, Object?> json) =>
       _$BulkDeleteMessagesRequestFromJson(json);
 
   /// Array of message IDs to delete
-  @JsonKey(name: 'message_ids')
-  final List<SnowflakeType> messageIds;
+  @JsonKey(includeIfNull: false, name: 'message_ids')
+  final List<SnowflakeType>? messageIds;
+
+  /// Discord-compatible alias for message IDs
+  @JsonKey(includeIfNull: false)
+  final List<SnowflakeType>? messages;
 
   Map<String, Object?> toJson() => _$BulkDeleteMessagesRequestToJson(this);
 }

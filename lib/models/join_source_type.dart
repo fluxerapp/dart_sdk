@@ -17,6 +17,8 @@ enum JoinSourceType {
   botInvite(3),
   @JsonValue(4)
   adminForceAdd(4),
+  @JsonValue(6)
+  discovery(6),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
   $unknown(null);

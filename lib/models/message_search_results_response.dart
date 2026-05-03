@@ -4,6 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+import 'channel_response.dart';
 import 'message_search_results_response_messages.dart';
 
 part 'message_search_results_response.g.dart';
@@ -12,9 +13,11 @@ part 'message_search_results_response.g.dart';
 class MessageSearchResultsResponse {
   const MessageSearchResultsResponse({
     required this.messages,
+    required this.channels,
     required this.total,
     required this.hitsPerPage,
     required this.page,
+    this.cursor,
   });
 
   factory MessageSearchResultsResponse.fromJson(Map<String, Object?> json) =>
@@ -22,6 +25,9 @@ class MessageSearchResultsResponse {
 
   /// The messages matching the search query
   final List<MessageSearchResultsResponseMessages> messages;
+
+  /// Serialized channels referenced by the returned messages
+  final List<ChannelResponse> channels;
 
   /// The total number of messages matching the search
   final int total;
@@ -32,6 +38,10 @@ class MessageSearchResultsResponse {
 
   /// The current page number
   final int page;
+
+  /// Opaque cursor for fetching the next page of results
+  @JsonKey(includeIfNull: false)
+  final List<String>? cursor;
 
   Map<String, Object?> toJson() => _$MessageSearchResultsResponseToJson(this);
 }

@@ -16,6 +16,8 @@ class UpdateVoiceServerRequest {
     this.endpoint,
     this.apiKey,
     this.apiSecret,
+    this.latitude,
+    this.longitude,
     this.isActive,
     this.vipOnly,
     this.requiredGuildFeatures,
@@ -45,6 +47,14 @@ class UpdateVoiceServerRequest {
   /// API secret for authenticating with the voice server
   @JsonKey(includeIfNull: false, name: 'api_secret')
   final String? apiSecret;
+
+  /// Optional geographic latitude override for this server
+  @JsonKey(includeIfNull: false)
+  final num? latitude;
+
+  /// Optional geographic longitude override for this server
+  @JsonKey(includeIfNull: false)
+  final num? longitude;
 
   /// Whether the server is currently active
   @JsonKey(includeIfNull: false, name: 'is_active')

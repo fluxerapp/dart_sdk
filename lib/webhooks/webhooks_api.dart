@@ -12,6 +12,7 @@ import '../models/sentry_webhook.dart';
 import '../models/slack_webhook_request.dart';
 import '../models/snowflake_type.dart';
 import '../models/webhook_create_request.dart';
+import '../models/webhook_message_edit_request.dart';
 import '../models/webhook_response.dart';
 import '../models/webhook_token_response.dart';
 import '../models/webhook_token_update_request.dart';
@@ -159,6 +160,41 @@ abstract class WebhooksApi {
     @Path('webhook_id') required SnowflakeType webhookId,
     @Path('token') required String token,
     @Body() required GitHubWebhook body,
+  });
+
+  /// Get webhook message.
+  ///
+  /// Retrieves a message previously sent by the webhook. Only messages authored by the webhook can be retrieved.
+  ///
+  /// [webhookId] - The ID of the webhook.
+  ///
+  /// [token] - The token.
+  ///
+  /// [messageId] - The ID of the message.
+  @GET('/webhooks/{webhook_id}/{token}/messages/{message_id}')
+  Future<MessageResponseSchema> getWebhookMessage({
+    @Path('webhook_id') required SnowflakeType webhookId,
+    @Path('token') required String token,
+    @Path('message_id') required SnowflakeType messageId,
+  });
+
+  /// Edit webhook message.
+  ///
+  /// Edits a message previously sent by the webhook. Only messages authored by the webhook can be edited. Returns the updated message object.
+  ///
+  /// [webhookId] - The ID of the webhook.
+  ///
+  /// [token] - The token.
+  ///
+  /// [messageId] - The ID of the message.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @PATCH('/webhooks/{webhook_id}/{token}/messages/{message_id}')
+  Future<MessageResponseSchema> editWebhookMessage({
+    @Path('webhook_id') required SnowflakeType webhookId,
+    @Path('token') required String token,
+    @Path('message_id') required SnowflakeType messageId,
+    @Body() required WebhookMessageEditRequest body,
   });
 
   /// Execute Sentry webhook.

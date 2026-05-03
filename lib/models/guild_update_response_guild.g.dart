@@ -18,6 +18,9 @@ GuildUpdateResponseGuild _$GuildUpdateResponseGuildFromJson(
   icon: json['icon'] as String?,
   banner: json['banner'] as String?,
   memberCount: (json['member_count'] as num).toInt(),
+  nsfwLevel: json['nsfw_level'] == null
+      ? null
+      : NsfwLevel.fromJson((json['nsfw_level'] as num).toInt()),
 );
 
 Map<String, dynamic> _$GuildUpdateResponseGuildToJson(
@@ -30,4 +33,5 @@ Map<String, dynamic> _$GuildUpdateResponseGuildToJson(
   'icon': instance.icon,
   'banner': instance.banner,
   'member_count': instance.memberCount,
+  'nsfw_level': ?instance.nsfwLevel,
 };

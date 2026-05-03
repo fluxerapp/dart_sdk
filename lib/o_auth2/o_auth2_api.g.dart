@@ -158,7 +158,7 @@ class _OAuth2Api implements OAuth2Api {
   }
 
   @override
-  Future<List<ApplicationResponse>> listUserApplications2() async {
+  Future<List<ApplicationResponse>> listUserApplications3() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -566,7 +566,7 @@ class _OAuth2Api implements OAuth2Api {
   }
 
   @override
-  Future<List<ApplicationResponse>> listUserApplications() async {
+  Future<List<ApplicationResponse>> listUserApplications2() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

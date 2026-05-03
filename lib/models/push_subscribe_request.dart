@@ -21,9 +21,11 @@ class PushSubscribeRequest {
 
   /// The push subscription endpoint URL
   final String endpoint;
+
+  /// Encryption keys for the push subscription
   final PushSubscribeRequestKeys keys;
 
-  /// The user agent string
+  /// The user agent string identifying the client
   @JsonKey(includeIfNull: false, name: 'user_agent')
   final String? userAgent;
 

@@ -7,13 +7,8 @@ import 'package:json_annotation/json_annotation.dart';
 /// The NSFW level of the guild
 @JsonEnum()
 enum NsfwLevel {
-  /// The name has been replaced because it contains a keyword. Original name: `DEFAULT`.
   @JsonValue(0)
-  valueDefault(0),
-  @JsonValue(1)
-  explicit(1),
-  @JsonValue(2)
-  safe(2),
+  safe(0),
   @JsonValue(3)
   ageRestricted(3),
 

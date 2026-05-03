@@ -30,21 +30,6 @@ WellKnownFluxerResponse _$WellKnownFluxerResponseFromJson(
   appPublic: WellKnownFluxerResponseAppPublic.fromJson(
     json['app_public'] as Map<String, dynamic>,
   ),
-  federation: json['federation'] == null
-      ? null
-      : WellKnownFluxerResponseFederation.fromJson(
-          json['federation'] as Map<String, dynamic>,
-        ),
-  publicKey: json['public_key'] == null
-      ? null
-      : WellKnownFluxerResponsePublicKey.fromJson(
-          json['public_key'] as Map<String, dynamic>,
-        ),
-  oauth2: json['oauth2'] == null
-      ? null
-      : WellKnownFluxerResponseOauth2.fromJson(
-          json['oauth2'] as Map<String, dynamic>,
-        ),
   gateway: json['gateway'] == null
       ? null
       : WellKnownFluxerResponseGateway.fromJson(
@@ -64,8 +49,5 @@ Map<String, dynamic> _$WellKnownFluxerResponseToJson(
   'limits': instance.limits,
   'push': instance.push,
   'app_public': instance.appPublic,
-  'federation': ?instance.federation,
-  'public_key': ?instance.publicKey,
-  'oauth2': ?instance.oauth2,
   'gateway': ?instance.gateway,
 };

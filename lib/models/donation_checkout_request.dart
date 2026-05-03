@@ -24,7 +24,7 @@ class DonationCheckoutRequest {
   /// Donor email address
   final String email;
 
-  /// Donation amount in cents (500-100000)
+  /// Donation amount in minor units for the selected currency
   @JsonKey(name: 'amount_cents')
   final int amountCents;
 

@@ -6,6 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'application_bot_response.dart';
 import 'application_flags.dart';
+import 'applications_me_response_owner.dart';
 
 part 'applications_me_response.g.dart';
 
@@ -19,6 +20,7 @@ class ApplicationsMeResponse {
     required this.botPublic,
     required this.botRequireCodeGrant,
     required this.flags,
+    required this.owner,
     this.bot,
   });
 
@@ -47,6 +49,9 @@ class ApplicationsMeResponse {
   @JsonKey(name: 'bot_require_code_grant')
   final bool botRequireCodeGrant;
   final ApplicationFlags flags;
+
+  /// The owner of the application
+  final ApplicationsMeResponseOwner owner;
   @JsonKey(includeIfNull: false)
   final ApplicationBotResponse? bot;
 

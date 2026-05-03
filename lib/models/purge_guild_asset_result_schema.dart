@@ -4,6 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+import 'nsfw_level.dart';
 import 'purge_guild_asset_result_schema_asset_type_asset_type.dart';
 import 'snowflake_type.dart';
 
@@ -16,6 +17,7 @@ class PurgeGuildAssetResultSchema {
     required this.assetType,
     required this.foundInDb,
     required this.guildId,
+    required this.guildNsfwLevel,
   });
 
   factory PurgeGuildAssetResultSchema.fromJson(Map<String, Object?> json) =>
@@ -35,6 +37,10 @@ class PurgeGuildAssetResultSchema {
   /// ID of the guild the asset belongs to
   @JsonKey(includeIfNull: true, name: 'guild_id')
   final SnowflakeType? guildId;
+
+  /// NSFW level of the guild the asset belongs to
+  @JsonKey(includeIfNull: true, name: 'guild_nsfw_level')
+  final NsfwLevel? guildNsfwLevel;
 
   Map<String, Object?> toJson() => _$PurgeGuildAssetResultSchemaToJson(this);
 }

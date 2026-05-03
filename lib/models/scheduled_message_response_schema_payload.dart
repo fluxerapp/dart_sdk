@@ -11,6 +11,7 @@ import 'snowflake_type.dart';
 import 'scheduled_message_allowed_mentions_schema.dart';
 import 'scheduled_message_reference_schema.dart';
 import 'message_flags.dart';
+import 'message_nonce_request.dart';
 
 part 'scheduled_message_response_schema_payload.g.dart';
 
@@ -63,10 +64,8 @@ class ScheduledMessageResponseSchemaPayload {
   final ScheduledMessageReferenceSchema? messageReference;
   @JsonKey(includeIfNull: false)
   final MessageFlags? flags;
-
-  /// Client-generated identifier for the message
   @JsonKey(includeIfNull: false)
-  final String? nonce;
+  final MessageNonceRequest? nonce;
   @JsonKey(includeIfNull: false, name: 'favorite_meme_id')
   final SnowflakeType? favoriteMemeId;
 

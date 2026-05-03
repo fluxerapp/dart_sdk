@@ -12,6 +12,7 @@ GuildEmojiWithUserResponse _$GuildEmojiWithUserResponseFromJson(
   id: json['id'] as String,
   name: json['name'] as String,
   animated: json['animated'] as bool,
+  nsfw: json['nsfw'] as bool,
   user: UserPartialResponse.fromJson(json['user'] as Map<String, dynamic>),
 );
 
@@ -21,5 +22,6 @@ Map<String, dynamic> _$GuildEmojiWithUserResponseToJson(
   'id': instance.id,
   'name': instance.name,
   'animated': instance.animated,
+  'nsfw': instance.nsfw,
   'user': instance.user,
 };

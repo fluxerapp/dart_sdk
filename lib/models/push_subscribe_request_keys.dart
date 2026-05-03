@@ -13,10 +13,10 @@ class PushSubscribeRequestKeys {
   factory PushSubscribeRequestKeys.fromJson(Map<String, Object?> json) =>
       _$PushSubscribeRequestKeysFromJson(json);
 
-  /// The P-256 ECDH public key
+  /// The P-256 ECDH public key (base64url)
   final String p256dh;
 
-  /// The authentication secret
+  /// The authentication secret (base64url)
   final String auth;
 
   Map<String, Object?> toJson() => _$PushSubscribeRequestKeysToJson(this);

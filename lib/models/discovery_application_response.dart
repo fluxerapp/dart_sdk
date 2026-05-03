@@ -4,6 +4,8 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+import 'nsfw_level.dart';
+
 part 'discovery_application_response.g.dart';
 
 @JsonSerializable()
@@ -14,6 +16,7 @@ class DiscoveryApplicationResponse {
     required this.description,
     required this.categoryType,
     required this.appliedAt,
+    this.guildNsfwLevel,
     this.reviewedAt,
     this.reviewReason,
   });
@@ -24,6 +27,10 @@ class DiscoveryApplicationResponse {
   /// Guild ID
   @JsonKey(name: 'guild_id')
   final String guildId;
+
+  /// NSFW level of the guild
+  @JsonKey(includeIfNull: false, name: 'guild_nsfw_level')
+  final NsfwLevel? guildNsfwLevel;
 
   /// Application status
   final String status;

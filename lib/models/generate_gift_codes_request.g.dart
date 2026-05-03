@@ -10,14 +10,16 @@ GenerateGiftCodesRequest _$GenerateGiftCodesRequestFromJson(
   Map<String, dynamic> json,
 ) => GenerateGiftCodesRequest(
   count: (json['count'] as num).toInt(),
-  productType: GenerateGiftCodesRequestProductTypeProductType.fromJson(
-    json['product_type'] as String,
+  durationType: GenerateGiftCodesRequestDurationTypeDurationType.fromJson(
+    json['duration_type'] as String,
   ),
+  durationQuantity: (json['duration_quantity'] as num).toInt(),
 );
 
 Map<String, dynamic> _$GenerateGiftCodesRequestToJson(
   GenerateGiftCodesRequest instance,
 ) => <String, dynamic>{
   'count': instance.count,
-  'product_type': instance.productType,
+  'duration_type': instance.durationType,
+  'duration_quantity': instance.durationQuantity,
 };

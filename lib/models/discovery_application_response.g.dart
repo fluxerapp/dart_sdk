@@ -14,6 +14,9 @@ DiscoveryApplicationResponse _$DiscoveryApplicationResponseFromJson(
   description: json['description'] as String,
   categoryType: json['category_type'] as num,
   appliedAt: json['applied_at'] as String,
+  guildNsfwLevel: json['guild_nsfw_level'] == null
+      ? null
+      : NsfwLevel.fromJson((json['guild_nsfw_level'] as num).toInt()),
   reviewedAt: json['reviewed_at'] as String?,
   reviewReason: json['review_reason'] as String?,
 );
@@ -22,6 +25,7 @@ Map<String, dynamic> _$DiscoveryApplicationResponseToJson(
   DiscoveryApplicationResponse instance,
 ) => <String, dynamic>{
   'guild_id': instance.guildId,
+  'guild_nsfw_level': ?instance.guildNsfwLevel,
   'status': instance.status,
   'description': instance.description,
   'category_type': instance.categoryType,

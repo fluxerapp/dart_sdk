@@ -38,6 +38,7 @@ class MessageBaseResponseSchema {
     this.embeds,
     this.attachments,
     this.stickers,
+    this.nsfwEmojis,
     this.reactions,
     this.messageReference,
     this.messageSnapshots,
@@ -104,6 +105,10 @@ class MessageBaseResponseSchema {
   /// The stickers sent with the message
   @JsonKey(includeIfNull: false)
   final List<MessageStickerResponse>? stickers;
+
+  /// IDs of custom emojis in this message that are classified as NSFW
+  @JsonKey(includeIfNull: false, name: 'nsfw_emojis')
+  final List<SnowflakeType>? nsfwEmojis;
 
   /// The reactions on the message
   @JsonKey(includeIfNull: false)

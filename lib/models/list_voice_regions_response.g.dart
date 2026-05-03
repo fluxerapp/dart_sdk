@@ -10,7 +10,10 @@ ListVoiceRegionsResponse _$ListVoiceRegionsResponseFromJson(
   Map<String, dynamic> json,
 ) => ListVoiceRegionsResponse(
   regions: (json['regions'] as List<dynamic>)
-      .map((e) => VoiceRegionAdminResponse.fromJson(e as Map<String, dynamic>))
+      .map(
+        (e) =>
+            VoiceRegionWithServersResponse.fromJson(e as Map<String, dynamic>),
+      )
       .toList(),
 );
 

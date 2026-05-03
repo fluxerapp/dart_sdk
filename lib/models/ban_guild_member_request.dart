@@ -29,7 +29,7 @@ class BanGuildMemberRequest {
   @JsonKey(includeIfNull: false)
   final String? reason;
 
-  /// Duration of the ban in seconds (0 for permanent, or a valid temporary duration)
+  /// Duration of the ban in seconds (0 for permanent, or between 60 and 63072000 seconds for a temporary ban)
   @JsonKey(includeIfNull: false, name: 'ban_duration_seconds')
   final int? banDurationSeconds;
   @JsonKey(name: 'guild_id')

@@ -11,6 +11,9 @@ LookupGuildResponseGuild _$LookupGuildResponseGuildFromJson(
 ) => LookupGuildResponseGuild(
   id: json['id'] as String,
   ownerId: json['owner_id'] as String,
+  ownerUsername: json['owner_username'] as String?,
+  ownerGlobalName: json['owner_global_name'] as String?,
+  ownerDiscriminator: json['owner_discriminator'] as String?,
   name: json['name'] as String,
   vanityUrlCode: json['vanity_url_code'] as String?,
   icon: json['icon'] as String?,
@@ -58,6 +61,9 @@ Map<String, dynamic> _$LookupGuildResponseGuildToJson(
 ) => <String, dynamic>{
   'id': instance.id,
   'owner_id': instance.ownerId,
+  'owner_username': instance.ownerUsername,
+  'owner_global_name': instance.ownerGlobalName,
+  'owner_discriminator': instance.ownerDiscriminator,
   'name': instance.name,
   'vanity_url_code': instance.vanityUrlCode,
   'icon': instance.icon,

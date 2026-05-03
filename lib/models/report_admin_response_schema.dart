@@ -4,6 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+import 'nsfw_level.dart';
 import 'report_admin_response_schema_message_context.dart';
 import 'report_status.dart';
 import 'report_type.dart';
@@ -18,6 +19,7 @@ class ReportAdminResponseSchema {
     required this.reporterId,
     required this.reporterTag,
     required this.reporterUsername,
+    required this.reporterGlobalName,
     required this.reporterDiscriminator,
     required this.reporterEmail,
     required this.reporterFullLegalName,
@@ -30,6 +32,7 @@ class ReportAdminResponseSchema {
     required this.reportedUserId,
     required this.reportedUserTag,
     required this.reportedUserUsername,
+    required this.reportedUserGlobalName,
     required this.reportedUserDiscriminator,
     required this.reportedUserAvatarHash,
     required this.reportedGuildId,
@@ -37,7 +40,9 @@ class ReportAdminResponseSchema {
     required this.reportedMessageId,
     required this.reportedChannelId,
     required this.reportedChannelName,
+    required this.reportedChannelNsfw,
     required this.reportedGuildInviteCode,
+    required this.reportedGuildNsfwLevel,
     required this.resolvedAt,
     required this.resolvedByAdminId,
     required this.publicComment,
@@ -56,6 +61,8 @@ class ReportAdminResponseSchema {
   final String? reporterTag;
   @JsonKey(includeIfNull: true, name: 'reporter_username')
   final String? reporterUsername;
+  @JsonKey(includeIfNull: true, name: 'reporter_global_name')
+  final String? reporterGlobalName;
   @JsonKey(includeIfNull: true, name: 'reporter_discriminator')
   final String? reporterDiscriminator;
   @JsonKey(includeIfNull: true, name: 'reporter_email')
@@ -79,6 +86,8 @@ class ReportAdminResponseSchema {
   final String? reportedUserTag;
   @JsonKey(includeIfNull: true, name: 'reported_user_username')
   final String? reportedUserUsername;
+  @JsonKey(includeIfNull: true, name: 'reported_user_global_name')
+  final String? reportedUserGlobalName;
   @JsonKey(includeIfNull: true, name: 'reported_user_discriminator')
   final String? reportedUserDiscriminator;
   @JsonKey(includeIfNull: true, name: 'reported_user_avatar_hash')
@@ -93,8 +102,12 @@ class ReportAdminResponseSchema {
   final SnowflakeType? reportedChannelId;
   @JsonKey(includeIfNull: true, name: 'reported_channel_name')
   final String? reportedChannelName;
+  @JsonKey(includeIfNull: true, name: 'reported_channel_nsfw')
+  final bool? reportedChannelNsfw;
   @JsonKey(includeIfNull: true, name: 'reported_guild_invite_code')
   final String? reportedGuildInviteCode;
+  @JsonKey(includeIfNull: true, name: 'reported_guild_nsfw_level')
+  final NsfwLevel? reportedGuildNsfwLevel;
   @JsonKey(includeIfNull: true, name: 'resolved_at')
   final String? resolvedAt;
   @JsonKey(includeIfNull: true, name: 'resolved_by_admin_id')

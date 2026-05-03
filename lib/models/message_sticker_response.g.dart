@@ -12,6 +12,7 @@ MessageStickerResponse _$MessageStickerResponseFromJson(
   id: json['id'] as String,
   name: json['name'] as String,
   animated: json['animated'] as bool,
+  nsfw: json['nsfw'] as bool?,
 );
 
 Map<String, dynamic> _$MessageStickerResponseToJson(
@@ -20,4 +21,5 @@ Map<String, dynamic> _$MessageStickerResponseToJson(
   'id': instance.id,
   'name': instance.name,
   'animated': instance.animated,
+  'nsfw': ?instance.nsfw,
 };

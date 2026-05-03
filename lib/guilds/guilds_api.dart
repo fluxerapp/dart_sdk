@@ -10,7 +10,6 @@ import '../models/audit_log_action_type.dart';
 import '../models/channel_create_request.dart';
 import '../models/channel_position_update_request.dart';
 import '../models/channel_response.dart';
-import '../models/enabled_toggle_request.dart';
 import '../models/guild_audit_log_list_response.dart';
 import '../models/guild_ban_create_request.dart';
 import '../models/guild_ban_response.dart';
@@ -38,6 +37,7 @@ import '../models/guild_sticker_create_request.dart';
 import '../models/guild_sticker_response.dart';
 import '../models/guild_sticker_update_request.dart';
 import '../models/guild_sticker_with_user_list_response.dart';
+import '../models/guild_template_response.dart';
 import '../models/guild_transfer_ownership_request.dart';
 import '../models/guild_update_request.dart';
 import '../models/guild_vanity_url_response.dart';
@@ -55,11 +55,21 @@ abstract class GuildsApi {
 
   /// Create guild.
   ///
-  /// Only authenticated users can create guilds.
+  /// Only claimed, email-verified non-bot users can create guilds.
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/guilds')
   Future<GuildResponse> createGuild({@Body() required GuildCreateRequest body});
+
+  /// Get guild template.
+  ///
+  /// Fetches a Discord guild template by its code. Acts as a proxy to avoid CORS issues.
+  ///
+  /// [code] - The code.
+  @GET('/guilds/templates/{code}')
+  Future<GuildTemplateResponse> getGuildTemplate({
+    @Path('code') required String code,
+  });
 
   /// Get guild information.
   ///
@@ -86,7 +96,7 @@ abstract class GuildsApi {
 
   /// List guild audit logs.
   ///
-  /// List guild audit logs. Only default users can access. Requires view_audit_logs permission. Returns guild activity history with pagination and action filtering.
+  /// List guild audit logs. Requires view_audit_logs permission. Returns guild activity history with pagination and action filtering.
   ///
   /// [guildId] - The ID of the guild.
   @GET('/guilds/{guild_id}/audit-logs')
@@ -185,19 +195,6 @@ abstract class GuildsApi {
   Future<void> deleteGuild2({
     @Path('guild_id') required SnowflakeType guildId,
     @Body() required GuildDeleteRequest body,
-  });
-
-  /// Toggle detached banner.
-  ///
-  /// Requires manage_guild permission. Enables or disables independent banner display configuration.
-  ///
-  /// [guildId] - The ID of the guild.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @PATCH('/guilds/{guild_id}/detached-banner')
-  Future<GuildResponse> toggleDetachedBanner({
-    @Path('guild_id') required SnowflakeType guildId,
-    @Body() required EnabledToggleRequest body,
   });
 
   /// Create guild emoji.
@@ -542,19 +539,6 @@ abstract class GuildsApi {
     @Query('purge') String? purge,
   });
 
-  /// Toggle text channel flexible names.
-  ///
-  /// Requires manage_guild permission. Allows or disables flexible naming for text channels.
-  ///
-  /// [guildId] - The ID of the guild.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @PATCH('/guilds/{guild_id}/text-channel-flexible-names')
-  Future<GuildResponse> toggleTextChannelFlexibleNames({
-    @Path('guild_id') required SnowflakeType guildId,
-    @Body() required EnabledToggleRequest body,
-  });
-
   /// Transfer guild ownership.
   ///
   /// Transfer guild ownership. Only current owner can transfer. Requires sudo mode verification (MFA). Transfers all guild permissions to a new owner.
@@ -580,7 +564,7 @@ abstract class GuildsApi {
 
   /// Update guild vanity URL.
   ///
-  /// Only default users can set vanity URLs. Requires manage_guild permission. Sets or removes a custom invite code.
+  /// Requires manage_guild permission. Sets or removes a custom invite code.
   ///
   /// [guildId] - The ID of the guild.
   ///

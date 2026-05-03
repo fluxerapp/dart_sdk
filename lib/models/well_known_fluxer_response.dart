@@ -8,12 +8,9 @@ import 'well_known_fluxer_response_app_public.dart';
 import 'well_known_fluxer_response_captcha.dart';
 import 'well_known_fluxer_response_endpoints.dart';
 import 'well_known_fluxer_response_features.dart';
-import 'well_known_fluxer_response_federation.dart';
 import 'well_known_fluxer_response_gateway.dart';
 import 'well_known_fluxer_response_gif.dart';
 import 'well_known_fluxer_response_limits.dart';
-import 'well_known_fluxer_response_oauth2.dart';
-import 'well_known_fluxer_response_public_key.dart';
 import 'well_known_fluxer_response_push.dart';
 import 'well_known_fluxer_response_sso.dart';
 
@@ -31,9 +28,6 @@ class WellKnownFluxerResponse {
     required this.limits,
     required this.push,
     required this.appPublic,
-    this.federation,
-    this.publicKey,
-    this.oauth2,
     this.gateway,
   });
 
@@ -69,19 +63,7 @@ class WellKnownFluxerResponse {
   @JsonKey(name: 'app_public')
   final WellKnownFluxerResponseAppPublic appPublic;
 
-  /// Federation configuration
-  @JsonKey(includeIfNull: false)
-  final WellKnownFluxerResponseFederation? federation;
-
-  /// Public key for E2E encryption
-  @JsonKey(includeIfNull: false, name: 'public_key')
-  final WellKnownFluxerResponsePublicKey? publicKey;
-
-  /// OAuth2 endpoints for federation
-  @JsonKey(includeIfNull: false)
-  final WellKnownFluxerResponseOauth2? oauth2;
-
-  /// Gateway session retry configuration
+  /// Gateway session retry configuration for clients
   @JsonKey(includeIfNull: false)
   final WellKnownFluxerResponseGateway? gateway;
 

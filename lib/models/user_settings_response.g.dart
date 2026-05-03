@@ -9,7 +9,15 @@ part of 'user_settings_response.dart';
 UserSettingsResponse _$UserSettingsResponseFromJson(
   Map<String, dynamic> json,
 ) => UserSettingsResponse(
-  status: json['status'] as String,
+  renderEmbeds: json['render_embeds'] as bool,
+  staffDmAccessUserIds: (json['staff_dm_access_user_ids'] as List<dynamic>)
+      .map((e) => e as String)
+      .toList(),
+  suppressUnprivilegedSelfMentionsBypassUserIds:
+      (json['suppress_unprivileged_self_mentions_bypass_user_ids']
+              as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
   theme: json['theme'] as String,
   locale: Locale.fromJson(json['locale'] as String),
   restrictedGuilds: (json['restricted_guilds'] as List<dynamic>)
@@ -23,7 +31,7 @@ UserSettingsResponse _$UserSettingsResponseFromJson(
   inlineAttachmentMedia: json['inline_attachment_media'] as bool,
   inlineEmbedMedia: json['inline_embed_media'] as bool,
   gifAutoPlay: json['gif_auto_play'] as bool,
-  renderEmbeds: json['render_embeds'] as bool,
+  status: json['status'] as String,
   renderReactions: json['render_reactions'] as bool,
   animateEmoji: json['animate_emoji'] as bool,
   animateStickers: StickerAnimationOptions.fromJson(
@@ -44,11 +52,7 @@ UserSettingsResponse _$UserSettingsResponseFromJson(
         ),
       )
       .toList(),
-  customStatus: json['custom_status'] == null
-      ? null
-      : CustomStatusResponse.fromJson(
-          json['custom_status'] as Map<String, dynamic>,
-        ),
+  syncedPreferences: json['synced_preferences'] as String,
   afkTimeout: (json['afk_timeout'] as num).toInt(),
   timeFormat: TimeFormatTypes.fromJson((json['time_format'] as num).toInt()),
   developerMode: json['developer_mode'] as bool,
@@ -56,16 +60,26 @@ UserSettingsResponse _$UserSettingsResponseFromJson(
       .map((e) => e as String)
       .toList(),
   defaultHideMutedChannels: json['default_hide_muted_channels'] as bool,
+  sensitiveContentFriendDmFilter: SensitiveMediaFilterLevel.fromJson(
+    (json['sensitive_content_friend_dm_filter'] as num).toInt(),
+  ),
+  sensitiveContentNonFriendDmFilter: SensitiveMediaFilterLevel.fromJson(
+    (json['sensitive_content_non_friend_dm_filter'] as num).toInt(),
+  ),
+  sensitiveContentGuildFilter: SensitiveMediaGuildFilterLevel.fromJson(
+    (json['sensitive_content_guild_filter'] as num).toInt(),
+  ),
+  suppressUnprivilegedSelfMentions:
+      json['suppress_unprivileged_self_mentions'] as bool,
+  customStatus: json['custom_status'] == null
+      ? null
+      : CustomStatusResponse.fromJson(
+          json['custom_status'] as Map<String, dynamic>,
+        ),
   statusResetsAt: json['status_resets_at'] == null
       ? null
       : DateTime.parse(json['status_resets_at'] as String),
   statusResetsTo: json['status_resets_to'] as String?,
-  sensitiveContentFriendDmFilter:
-      (json['sensitive_content_friend_dm_filter'] as num?)?.toInt(),
-  sensitiveContentNonFriendDmFilter:
-      (json['sensitive_content_non_friend_dm_filter'] as num?)?.toInt(),
-  sensitiveContentGuildFilter: (json['sensitive_content_guild_filter'] as num?)
-      ?.toInt(),
 );
 
 Map<String, dynamic> _$UserSettingsResponseToJson(
@@ -99,9 +113,14 @@ Map<String, dynamic> _$UserSettingsResponseToJson(
   'developer_mode': instance.developerMode,
   'trusted_domains': instance.trustedDomains,
   'default_hide_muted_channels': instance.defaultHideMutedChannels,
-  'sensitive_content_friend_dm_filter':
-      ?instance.sensitiveContentFriendDmFilter,
+  'sensitive_content_friend_dm_filter': instance.sensitiveContentFriendDmFilter,
   'sensitive_content_non_friend_dm_filter':
-      ?instance.sensitiveContentNonFriendDmFilter,
-  'sensitive_content_guild_filter': ?instance.sensitiveContentGuildFilter,
+      instance.sensitiveContentNonFriendDmFilter,
+  'sensitive_content_guild_filter': instance.sensitiveContentGuildFilter,
+  'suppress_unprivileged_self_mentions':
+      instance.suppressUnprivilegedSelfMentions,
+  'suppress_unprivileged_self_mentions_bypass_user_ids':
+      instance.suppressUnprivilegedSelfMentionsBypassUserIds,
+  'staff_dm_access_user_ids': instance.staffDmAccessUserIds,
+  'synced_preferences': instance.syncedPreferences,
 };

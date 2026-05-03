@@ -6,24 +6,52 @@ import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
 import 'package:retrofit/error_logger.dart';
 
-import '../models/add_snowflake_reservation_request.dart';
+import '../models/active_jobs_response_schema.dart';
 import '../models/admin_archive_response_schema.dart';
+import '../models/admin_billing_cancel_immediately_request.dart';
+import '../models/admin_billing_overview_response.dart';
+import '../models/admin_billing_refund_latest_invoice_cancel_request.dart';
+import '../models/admin_billing_refund_latest_invoice_cancel_response.dart';
+import '../models/admin_billing_refund_request.dart';
+import '../models/admin_invoice_list_response.dart';
+import '../models/admin_payment_list_response.dart';
+import '../models/admin_payment_method_list_response.dart';
+import '../models/admin_subscription_response.dart';
 import '../models/admin_users_me_response.dart';
+import '../models/application_update_response.dart';
 import '../models/audit_logs_list_response_schema.dart';
+import '../models/ban_avatar_hash_request.dart';
 import '../models/ban_check_response_schema.dart';
 import '../models/ban_email_request.dart';
+import '../models/ban_file_sha_request.dart';
 import '../models/ban_guild_member_request.dart';
 import '../models/ban_ip_request.dart';
+import '../models/ban_phone_prefix_request.dart';
 import '../models/ban_phone_request.dart';
+import '../models/ban_phrase_request.dart';
+import '../models/ban_profile_substring_request.dart';
+import '../models/ban_url_domain_request.dart';
+import '../models/ban_url_request.dart';
+import '../models/ban_user_avatar_request.dart';
+import '../models/ban_user_avatar_response_schema.dart';
+import '../models/browse_channel_request.dart';
+import '../models/browse_channel_response.dart';
 import '../models/bulk_add_guild_members_request.dart';
-import '../models/bulk_operation_response.dart';
+import '../models/bulk_ban_file_shas_request.dart';
+import '../models/bulk_job_response.dart';
 import '../models/bulk_schedule_user_deletion_request.dart';
 import '../models/bulk_update_guild_features_request.dart';
+import '../models/bulk_update_suspicious_activity_flags_request.dart';
 import '../models/bulk_update_user_flags_request.dart';
 import '../models/cancel_bulk_message_deletion_request.dart';
+import '../models/cancel_job_request.dart';
+import '../models/cancel_job_response_schema.dart';
 import '../models/change_dob_request.dart';
 import '../models/change_email_request.dart';
 import '../models/change_username_request.dart';
+import '../models/check_avatar_hash_request.dart';
+import '../models/check_file_sha_request.dart';
+import '../models/check_url_blocklist_request.dart';
 import '../models/clear_guild_fields_request.dart';
 import '../models/clear_user_fields_request.dart';
 import '../models/codes_response.dart';
@@ -34,13 +62,13 @@ import '../models/create_voice_region_request.dart';
 import '../models/create_voice_region_response.dart';
 import '../models/create_voice_server_request.dart';
 import '../models/create_voice_server_response.dart';
+import '../models/csam_evidence_package_response.dart';
 import '../models/delete_all_user_messages_request.dart';
 import '../models/delete_all_user_messages_response.dart';
 import '../models/delete_api_key_response.dart';
 import '../models/delete_guild_request.dart';
 import '../models/delete_message_request.dart';
 import '../models/delete_message_response.dart';
-import '../models/delete_snowflake_reservation_request.dart';
 import '../models/delete_voice_region_request.dart';
 import '../models/delete_voice_response.dart';
 import '../models/delete_voice_server_request.dart';
@@ -54,16 +82,22 @@ import '../models/discovery_application_response.dart';
 import '../models/download_url_response_schema.dart';
 import '../models/expand_visionary_slots_request.dart';
 import '../models/force_add_user_to_guild_request.dart';
+import '../models/gateway_voice_state_counts_response.dart';
 import '../models/generate_gift_codes_request.dart';
 import '../models/get_archive_response_schema.dart';
 import '../models/get_index_refresh_status_request.dart';
+import '../models/get_job_request.dart';
+import '../models/get_job_response_schema.dart';
 import '../models/get_process_memory_stats_request.dart';
+import '../models/get_voice_diagnostic_download_request.dart';
+import '../models/get_voice_diagnostic_download_response.dart';
 import '../models/get_voice_region_request.dart';
 import '../models/get_voice_region_response.dart';
 import '../models/get_voice_server_request.dart';
 import '../models/get_voice_server_response.dart';
 import '../models/guild_memory_stats_response.dart';
 import '../models/guild_update_response.dart';
+import '../models/heap_snapshot_response.dart';
 import '../models/index_refresh_status_response.dart';
 import '../models/instance_config_response.dart';
 import '../models/instance_config_update_request.dart';
@@ -76,32 +110,39 @@ import '../models/list_admin_api_key_response.dart';
 import '../models/list_archives_request.dart';
 import '../models/list_archives_response_schema.dart';
 import '../models/list_audit_logs_request.dart';
-import '../models/list_bans_request.dart';
-import '../models/list_email_bans_response_schema.dart';
 import '../models/list_guild_emojis_response.dart';
 import '../models/list_guild_members_request.dart';
 import '../models/list_guild_members_response.dart';
 import '../models/list_guild_stickers_response.dart';
-import '../models/list_ip_bans_response_schema.dart';
-import '../models/list_phone_bans_response_schema.dart';
+import '../models/list_jobs_request.dart';
+import '../models/list_jobs_response_schema.dart';
 import '../models/list_reports_request.dart';
 import '../models/list_reports_response.dart';
-import '../models/list_snowflake_reservations_response.dart';
 import '../models/list_system_dm_jobs_response.dart';
+import '../models/list_user_applications_request.dart';
+import '../models/list_user_applications_response.dart';
 import '../models/list_user_change_log_request.dart';
 import '../models/list_user_change_log_response_schema.dart';
 import '../models/list_user_dm_channels_request.dart';
 import '../models/list_user_dm_channels_response.dart';
+import '../models/list_user_group_dm_channels_request.dart';
+import '../models/list_user_group_dm_channels_response.dart';
 import '../models/list_user_guilds_request.dart';
 import '../models/list_user_guilds_response.dart';
+import '../models/list_user_relationships_request.dart';
+import '../models/list_user_relationships_response.dart';
 import '../models/list_user_sessions_request.dart';
 import '../models/list_user_sessions_response.dart';
 import '../models/list_visionary_slots_response.dart';
+import '../models/list_voice_diagnostic_uploads_request.dart';
+import '../models/list_voice_diagnostic_uploads_response.dart';
 import '../models/list_voice_regions_request.dart';
 import '../models/list_voice_regions_response.dart';
 import '../models/list_voice_servers_request.dart';
 import '../models/list_voice_servers_response.dart';
 import '../models/list_web_authn_credentials_request.dart';
+import '../models/lookup_application_request.dart';
+import '../models/lookup_application_response.dart';
 import '../models/lookup_guild_request.dart';
 import '../models/lookup_guild_response.dart';
 import '../models/lookup_message_by_attachment_request.dart';
@@ -113,8 +154,7 @@ import '../models/message_shred_request.dart';
 import '../models/message_shred_response.dart';
 import '../models/message_shred_status_request.dart';
 import '../models/message_shred_status_response.dart';
-import '../models/ncmec_submission_status_response.dart';
-import '../models/ncmec_submit_result_response.dart';
+import '../models/ncmec_attachment_submit_result_response.dart';
 import '../models/node_stats_response.dart';
 import '../models/purge_guild_assets_request.dart';
 import '../models/purge_guild_assets_response_schema.dart';
@@ -123,13 +163,19 @@ import '../models/refresh_search_index_response.dart';
 import '../models/reload_all_guilds_response.dart';
 import '../models/reload_guild_request.dart';
 import '../models/reload_guilds_request.dart';
+import '../models/remove_user_relationship_request.dart';
+import '../models/remove_user_relationships_by_category_request.dart';
+import '../models/remove_user_relationships_response.dart';
 import '../models/report_admin_response_schema.dart';
+import '../models/report_attachment_to_ncmec_request.dart';
 import '../models/resend_verification_email_request.dart';
 import '../models/reserve_visionary_slot_request.dart';
 import '../models/resolve_report_request.dart';
 import '../models/resolve_report_response.dart';
 import '../models/schedule_account_deletion_request.dart';
 import '../models/search_audit_logs_request.dart';
+import '../models/search_channel_messages_request.dart';
+import '../models/search_channel_messages_response.dart';
 import '../models/search_guilds_request.dart';
 import '../models/search_guilds_response.dart';
 import '../models/search_reports_request.dart';
@@ -146,19 +192,25 @@ import '../models/shutdown_guild_request.dart';
 import '../models/snowflake_type.dart';
 import '../models/status.dart';
 import '../models/success_response.dart';
+import '../models/suspicious_email_domain_request.dart';
 import '../models/swap_visionary_slots_request.dart';
 import '../models/system_dm_job_response.dart';
 import '../models/temp_ban_user_request.dart';
 import '../models/terminate_sessions_request.dart';
 import '../models/terminate_sessions_response.dart';
+import '../models/transfer_application_ownership_request.dart';
 import '../models/transfer_guild_ownership_request.dart';
 import '../models/trigger_guild_archive_request.dart';
 import '../models/trigger_user_archive_request.dart';
+import '../models/unban_file_sha_request.dart';
+import '../models/unban_url_domain_request.dart';
+import '../models/unban_url_request.dart';
 import '../models/unlink_phone_request.dart';
 import '../models/update_guild_features_request.dart';
 import '../models/update_guild_name_request.dart';
 import '../models/update_guild_settings_request.dart';
 import '../models/update_guild_vanity_request.dart';
+import '../models/update_has_verified_phone_request.dart';
 import '../models/update_suspicious_activity_flags_request.dart';
 import '../models/update_user_flags_request.dart';
 import '../models/update_voice_region_request.dart';
@@ -200,6 +252,36 @@ abstract class AdminApi {
   @DELETE('/admin/api-keys/{keyId}')
   Future<DeleteApiKeyResponse> deleteAdminApiKey({
     @Path('keyId') required String keyId,
+  });
+
+  /// List applications owned by a user.
+  ///
+  /// Lists all applications (OAuth2 clients and bots) owned by a specific user. Requires APPLICATION_LIST_BY_OWNER permission.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/applications/list-by-owner')
+  Future<ListUserApplicationsResponse> listUserApplications({
+    @Body() required ListUserApplicationsRequest body,
+  });
+
+  /// Look up application.
+  ///
+  /// Retrieves complete application details including ownership, bot user, OAuth2 redirect URIs, and credential status. Requires APPLICATION_LOOKUP permission.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/applications/lookup')
+  Future<LookupApplicationResponse> lookupApplication({
+    @Body() required LookupApplicationRequest body,
+  });
+
+  /// Transfer application ownership.
+  ///
+  /// Transfers application ownership to another user. Used when owner is inactive or for administrative recovery. Logged to audit log. Requires APPLICATION_TRANSFER_OWNERSHIP permission.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/applications/transfer-ownership')
+  Future<ApplicationUpdateResponse> transferApplicationOwnership({
+    @Body() required TransferApplicationOwnershipRequest body,
   });
 
   /// Trigger guild archive.
@@ -294,6 +376,34 @@ abstract class AdminApi {
     @Body() required SearchAuditLogsRequest body,
   });
 
+  /// Add avatar hash ban.
+  ///
+  /// Ban one or more 8-char MD5-prefix avatar hashes. Avatars matching the banned hash will be rejected on upload.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/bans/avatar-hash/add')
+  Future<void> addAvatarHashBan({@Body() required BanAvatarHashRequest body});
+
+  /// Check avatar hash ban status.
+  ///
+  /// Query whether any of the provided avatar hashes are banned.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/bans/avatar-hash/check')
+  Future<BanCheckResponseSchema> checkAvatarHashBanStatus({
+    @Body() required CheckAvatarHashRequest body,
+  });
+
+  /// Remove avatar hash ban.
+  ///
+  /// Lift a previously applied avatar-hash ban.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/bans/avatar-hash/remove')
+  Future<void> removeAvatarHashBan({
+    @Body() required CheckAvatarHashRequest body,
+  });
+
   /// Add email ban.
   ///
   /// Ban one or more email addresses from registering or creating accounts. Users attempting to use banned emails will be blocked.
@@ -312,16 +422,6 @@ abstract class AdminApi {
     @Body() required BanEmailRequest body,
   });
 
-  /// List email bans.
-  ///
-  /// List currently banned email addresses.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @POST('/admin/bans/email/list')
-  Future<ListEmailBansResponseSchema> listEmailBans({
-    @Body() required ListBansRequest body,
-  });
-
   /// Remove email ban.
   ///
   /// Lift a previously applied email ban, allowing the address to be used for new registrations. Used for appeals or error correction.
@@ -329,6 +429,42 @@ abstract class AdminApi {
   /// [body] - Name not received - field will be skipped.
   @POST('/admin/bans/email/remove')
   Future<void> removeEmailBan({@Body() required BanEmailRequest body});
+
+  /// Add file SHA ban.
+  ///
+  /// Ban one or more files by SHA hash. Uploads matching the banned hash will be rejected.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/bans/file-sha/add')
+  Future<void> addFileShaBan({@Body() required BanFileShaRequest body});
+
+  /// Bulk-ban file SHAs as a background job.
+  ///
+  /// Enqueue a background job that bans many file SHAs at once. Returns a job_id immediately; observe progress at /admin/jobs/:job_id.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/bans/file-sha/bulk-add')
+  Future<BulkJobResponse> bulkBanFileShas({
+    @Body() required BulkBanFileShasRequest body,
+  });
+
+  /// Check file SHA ban status.
+  ///
+  /// Query whether one or more file SHA hashes are currently banned.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/bans/file-sha/check')
+  Future<BanCheckResponseSchema> checkFileShaBanStatus({
+    @Body() required CheckFileShaRequest body,
+  });
+
+  /// Remove file SHA ban.
+  ///
+  /// Lift a previously applied file SHA ban, allowing uploads of that file again.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/bans/file-sha/remove')
+  Future<void> removeFileShaBan({@Body() required UnbanFileShaRequest body});
 
   /// Add IP ban.
   ///
@@ -348,16 +484,6 @@ abstract class AdminApi {
     @Body() required BanIpRequest body,
   });
 
-  /// List IP bans.
-  ///
-  /// List currently banned IPs/CIDR ranges. Includes reverse DNS where available.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @POST('/admin/bans/ip/list')
-  Future<ListIpBansResponseSchema> listIpBans({
-    @Body() required ListBansRequest body,
-  });
-
   /// Remove IP ban.
   ///
   /// Lift a previously applied IP ban, allowing traffic from those addresses again. Used for appeals or when bans were applied in error.
@@ -365,6 +491,34 @@ abstract class AdminApi {
   /// [body] - Name not received - field will be skipped.
   @POST('/admin/bans/ip/remove')
   Future<void> removeIpBan({@Body() required BanIpRequest body});
+
+  /// Add phone-prefix ban.
+  ///
+  /// Ban an E.164 phone-number prefix (e.g. "+31970"). Any new phone verification whose number startsWith the prefix is rejected at signup before any Twilio request is made.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/bans/phone-prefix/add')
+  Future<void> addPhonePrefixBan({@Body() required BanPhonePrefixRequest body});
+
+  /// Check phone-prefix ban status.
+  ///
+  /// Query whether a specific E.164 prefix is currently in the ban list.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/bans/phone-prefix/check')
+  Future<BanCheckResponseSchema> checkPhonePrefixBanStatus({
+    @Body() required BanPhonePrefixRequest body,
+  });
+
+  /// Remove phone-prefix ban.
+  ///
+  /// Lift a previously applied phone-prefix ban, allowing phones in that E.164 prefix range to be verified again.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/bans/phone-prefix/remove')
+  Future<void> removePhonePrefixBan({
+    @Body() required BanPhonePrefixRequest body,
+  });
 
   /// Add phone ban.
   ///
@@ -384,16 +538,6 @@ abstract class AdminApi {
     @Body() required BanPhoneRequest body,
   });
 
-  /// List phone bans.
-  ///
-  /// List currently banned phone numbers.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @POST('/admin/bans/phone/list')
-  Future<ListPhoneBansResponseSchema> listPhoneBans({
-    @Body() required ListBansRequest body,
-  });
-
   /// Remove phone ban.
   ///
   /// Lift a previously applied phone ban, allowing the number to be used for verification again. Used for appeals or error correction.
@@ -402,53 +546,283 @@ abstract class AdminApi {
   @POST('/admin/bans/phone/remove')
   Future<void> removePhoneBan({@Body() required BanPhoneRequest body});
 
+  /// Add phrase ban.
+  ///
+  /// Ban a phrase. Matching is case-insensitive and also normalizes common bypass tricks such as inserted whitespace, punctuation, invisible characters, and compatibility glyphs.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/bans/phrase/add')
+  Future<void> addPhraseBan({@Body() required BanPhraseRequest body});
+
+  /// Check phrase ban status.
+  ///
+  /// Query whether a phrase is currently banned.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/bans/phrase/check')
+  Future<BanCheckResponseSchema> checkPhraseBanStatus({
+    @Body() required BanPhraseRequest body,
+  });
+
+  /// Remove phrase ban.
+  ///
+  /// Lift a previously applied phrase ban, allowing messages containing that phrase again.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/bans/phrase/remove')
+  Future<void> removePhraseBan({@Body() required BanPhraseRequest body});
+
+  /// Add profile-substring ban.
+  ///
+  /// Ban a substring within a specific profile field (username, global_name, bio, or pronouns). Matching reuses the phrase blocklist normalization (whitespace, punctuation, zero-width, lookalikes).
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/bans/profile-substring/add')
+  Future<void> addProfileSubstringBan({
+    @Body() required BanProfileSubstringRequest body,
+  });
+
+  /// Check profile-substring ban status.
+  ///
+  /// Query whether any of the provided substrings are banned for the given scope.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/bans/profile-substring/check')
+  Future<BanCheckResponseSchema> checkProfileSubstringBanStatus({
+    @Body() required BanProfileSubstringRequest body,
+  });
+
+  /// Remove profile-substring ban.
+  ///
+  /// Lift a previously applied profile-substring ban.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/bans/profile-substring/remove')
+  Future<void> removeProfileSubstringBan({
+    @Body() required BanProfileSubstringRequest body,
+  });
+
+  /// Add URL domain ban.
+  ///
+  /// Ban an entire URL domain from being linked on the platform. All URLs under the banned domain will be blocked.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/bans/url-domain/add')
+  Future<void> addUrlDomainBan({@Body() required BanUrlDomainRequest body});
+
+  /// Check URL domain ban status.
+  ///
+  /// Query whether a URL domain is currently banned from being linked.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/bans/url-domain/check')
+  Future<BanCheckResponseSchema> checkUrlDomainBanStatus({
+    @Body() required BanUrlDomainRequest body,
+  });
+
+  /// Remove URL domain ban.
+  ///
+  /// Lift a previously applied URL domain ban, allowing links to that domain again.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/bans/url-domain/remove')
+  Future<void> removeUrlDomainBan({
+    @Body() required UnbanUrlDomainRequest body,
+  });
+
+  /// Add URL ban.
+  ///
+  /// Ban one or more URLs from being posted on the platform. Messages containing banned URLs will be blocked.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/bans/url/add')
+  Future<void> addUrlBan({@Body() required BanUrlRequest body});
+
+  /// Check URL ban status.
+  ///
+  /// Query whether one or more URLs are currently banned from being posted.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/bans/url/check')
+  Future<BanCheckResponseSchema> checkUrlBanStatus({
+    @Body() required CheckUrlBlocklistRequest body,
+  });
+
+  /// Remove URL ban.
+  ///
+  /// Lift a previously applied URL ban, allowing the URL to be posted again.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/bans/url/remove')
+  Future<void> removeUrlBan({@Body() required UnbanUrlRequest body});
+
+  /// Cancel a user subscription.
+  ///
+  /// Set a user Stripe subscription to cancel at period end.
+  ///
+  /// [userId] - The userId.
+  @POST('/admin/billing/users/{userId}/cancel-subscription')
+  Future<void> adminBillingCancelSubscription({
+    @Path('userId') required String userId,
+  });
+
+  /// Cancel a user subscription immediately.
+  ///
+  /// Cancel a user Stripe subscription immediately without issuing a refund.
+  ///
+  /// [userId] - The userId.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/billing/users/{userId}/cancel-subscription-now')
+  Future<void> adminBillingCancelSubscriptionNow({
+    @Path('userId') required String userId,
+    @Body() required AdminBillingCancelImmediatelyRequest body,
+  });
+
+  /// List invoices for a user.
+  ///
+  /// Retrieve recent Stripe invoices for a user.
+  ///
+  /// [userId] - The userId.
+  @GET('/admin/billing/users/{userId}/invoices')
+  Future<AdminInvoiceListResponse> adminBillingListInvoices({
+    @Path('userId') required String userId,
+  });
+
+  /// Get billing overview for a user.
+  ///
+  /// Retrieve subscription status, payment history, and Stripe payment methods for a user.
+  ///
+  /// [userId] - The userId.
+  @GET('/admin/billing/users/{userId}/overview')
+  Future<AdminBillingOverviewResponse> adminBillingOverview({
+    @Path('userId') required String userId,
+  });
+
+  /// List payment methods for a user.
+  ///
+  /// Retrieve the Stripe payment methods associated with a user.
+  ///
+  /// [userId] - The userId.
+  @GET('/admin/billing/users/{userId}/payment-methods')
+  Future<AdminPaymentMethodListResponse> adminBillingListPaymentMethods({
+    @Path('userId') required String userId,
+  });
+
+  /// List payments for a user.
+  ///
+  /// Retrieve the payment history stored for a user.
+  ///
+  /// [userId] - The userId.
+  @GET('/admin/billing/users/{userId}/payments')
+  Future<AdminPaymentListResponse> adminBillingListPayments({
+    @Path('userId') required String userId,
+  });
+
+  /// Reactivate a user subscription.
+  ///
+  /// Remove a period-end cancellation from a user Stripe subscription.
+  ///
+  /// [userId] - The userId.
+  @POST('/admin/billing/users/{userId}/reactivate-subscription')
+  Future<void> adminBillingReactivateSubscription({
+    @Path('userId') required String userId,
+  });
+
+  /// Issue a refund for a user payment.
+  ///
+  /// Issue a full or partial refund for a user payment through Stripe.
+  ///
+  /// [userId] - The userId.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/billing/users/{userId}/refund')
+  Future<void> adminBillingRefund({
+    @Path('userId') required String userId,
+    @Body() required AdminBillingRefundRequest body,
+  });
+
+  /// Apply refund policy and cancel subscription immediately.
+  ///
+  /// Cancels a user subscription immediately and applies the support refund policy against the latest paid Stripe invoice.
+  ///
+  /// [userId] - The userId.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/billing/users/{userId}/refund-policy-cancel-now')
+  Future<AdminBillingRefundLatestInvoiceCancelResponse>
+  adminBillingRefundPolicyCancelNow({
+    @Path('userId') required String userId,
+    @Body() required AdminBillingRefundLatestInvoiceCancelRequest body,
+  });
+
+  /// Get subscription for a user.
+  ///
+  /// Retrieve the current Stripe subscription details for a user.
+  ///
+  /// [userId] - The userId.
+  @GET('/admin/billing/users/{userId}/subscription')
+  Future<AdminSubscriptionResponse> adminBillingGetSubscription({
+    @Path('userId') required String userId,
+  });
+
   /// Bulk add guild members.
   ///
-  /// Add multiple users to guilds in a batch operation. Bypasses normal invitation flow for administrative account setup.
+  /// Enqueue a background job that adds multiple users to a guild. Returns a job_id immediately; observe progress at /admin/jobs/:job_id.
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/admin/bulk/add-guild-members')
-  Future<BulkOperationResponse> bulkAddGuildMembers({
+  Future<BulkJobResponse> bulkAddGuildMembers({
     @Body() required BulkAddGuildMembersRequest body,
   });
 
   /// Schedule bulk user deletion.
   ///
-  /// Queue multiple users for deactivation/deletion with an optional grace period. Deletions are processed asynchronously according to retention policies.
+  /// Enqueue a background job that schedules account deletions for multiple users. Returns a job_id immediately; observe progress at /admin/jobs/:job_id. Note: the worker version skips Stripe refunds, session termination, and identifier banning — apply those separately for high-risk accounts.
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/admin/bulk/schedule-user-deletion')
-  Future<BulkOperationResponse> scheduleBulkUserDeletion({
+  Future<BulkJobResponse> scheduleBulkUserDeletion({
     @Body() required BulkScheduleUserDeletionRequest body,
   });
 
   /// Bulk update guild features.
   ///
-  /// Modify guild configuration and capabilities across multiple servers in a single operation. Includes feature flags, boost levels, and other guild attributes.
+  /// Enqueue a background job that modifies guild features across multiple servers. Returns a job_id immediately; observe progress at /admin/jobs/:job_id.
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/admin/bulk/update-guild-features')
-  Future<BulkOperationResponse> bulkUpdateGuildFeatures({
+  Future<BulkJobResponse> bulkUpdateGuildFeatures({
     @Body() required BulkUpdateGuildFeaturesRequest body,
+  });
+
+  /// Bulk update suspicious activity flags.
+  ///
+  /// Enqueue a background job that modifies suspicious activity flags for multiple users. Returns a job_id immediately; observe progress at /admin/jobs/:job_id.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/bulk/update-suspicious-activity-flags')
+  Future<BulkJobResponse> bulkUpdateSuspiciousActivityFlags({
+    @Body() required BulkUpdateSuspiciousActivityFlagsRequest body,
   });
 
   /// Bulk update user flags.
   ///
-  /// Modify user flags (e.g., verified, bot, system) for multiple users in a single operation. Used for mass account updates or corrections.
+  /// Enqueue a background job that modifies user flags (e.g., verified, bot, system) for multiple users. Returns a job_id immediately; observe progress at /admin/jobs/:job_id.
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/admin/bulk/update-user-flags')
-  Future<BulkOperationResponse> bulkUpdateUserFlags({
+  Future<BulkJobResponse> bulkUpdateUserFlags({
     @Body() required BulkUpdateUserFlagsRequest body,
   });
 
-  /// Generate gift subscription codes.
+  /// Generate gift codes.
   ///
-  /// Create redeemable gift codes that grant subscription benefits (e.g. 1 month, 1 year, lifetime). Each code can be used once to activate benefits.
+  /// Create one-use Plutonium gift codes with an explicit positive duration. Lifetime gifts are not supported.
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/admin/codes/gift')
-  Future<CodesResponse> generateGiftSubscriptionCodes({
+  Future<CodesResponse> generateGiftCodes({
     @Body() required GenerateGiftCodesRequest body,
   });
 
@@ -526,6 +900,12 @@ abstract class AdminApi {
   /// Returns uptime, process memory, and guild count. Used to monitor gateway health and performance. Requires GATEWAY_MEMORY_STATS permission.
   @GET('/admin/gateway/stats')
   Future<NodeStatsResponse> getGatewayNodeStatistics();
+
+  /// Get gateway voice state counts.
+  ///
+  /// Returns active voice state counts grouped by voice region and voice server. Requires GATEWAY_MEMORY_STATS permission.
+  @GET('/admin/gateway/voice-state-counts')
+  Future<GatewayVoiceStateCountsResponse> getGatewayVoiceStateCounts();
 
   /// Ban guild member.
   ///
@@ -695,18 +1075,52 @@ abstract class AdminApi {
 
   /// Get instance configuration.
   ///
-  /// Retrieves instance-wide configuration including manual review settings, webhooks, and SSO configuration. Returns current state and schedule information. Requires INSTANCE_CONFIG_VIEW permission.
+  /// Retrieves instance-wide configuration including webhooks and SSO configuration. Requires INSTANCE_CONFIG_VIEW permission.
   @POST('/admin/instance-config/get')
   Future<InstanceConfigResponse> getInstanceConfig();
 
   /// Update instance configuration.
   ///
-  /// Updates instance configuration settings including manual review mode, webhook URLs, and SSO parameters. Changes apply immediately. Requires INSTANCE_CONFIG_UPDATE permission.
+  /// Updates instance configuration settings including webhook URLs and SSO parameters. Changes apply immediately. Requires INSTANCE_CONFIG_UPDATE permission.
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/admin/instance-config/update')
   Future<InstanceConfigResponse> updateInstanceConfig({
     @Body() required InstanceConfigUpdateRequest body,
+  });
+
+  /// List active (queued + running) jobs.
+  ///
+  /// Polling endpoint for the Jobs page. Returns only currently-active jobs (queued or running) so the UI can refresh progress without scanning historical data.
+  @POST('/admin/jobs/active')
+  Future<ActiveJobsResponseSchema> listActiveJobs();
+
+  /// Request cancellation of a running job.
+  ///
+  /// Mark a job as cancel-requested. The handler must be cooperatively cancellable — it will see the flag at its next `helpers.shouldCancel()` check. Returns `{cancelled: false}` for already-terminal jobs.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/jobs/cancel')
+  Future<CancelJobResponseSchema> cancelJob({
+    @Body() required CancelJobRequest body,
+  });
+
+  /// Get job detail.
+  ///
+  /// Fetch a single job ledger entry with full payload, result, and progress.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/jobs/get')
+  Future<GetJobResponseSchema> getJob({@Body() required GetJobRequest body});
+
+  /// List jobs.
+  ///
+  /// Paginated, filterable list of background jobs from the human-facing ledger. Walks back through day-buckets and applies status / task-type / requester filters in-process.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/jobs/list')
+  Future<ListJobsResponseSchema> listJobs({
+    @Body() required ListJobsRequest body,
   });
 
   /// Get limit configuration.
@@ -723,6 +1137,16 @@ abstract class AdminApi {
   @POST('/admin/limit-config/update')
   Future<LimitConfigGetResponse> updateLimitConfig({
     @Body() required LimitConfigUpdateRequest body,
+  });
+
+  /// Browse channel messages.
+  ///
+  /// Browses messages in a channel with cursor-based pagination. Returns messages in reverse chronological order. Requires MESSAGE_LOOKUP permission.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/messages/browse')
+  Future<BrowseChannelResponse> browseChannelMessages({
+    @Body() required BrowseChannelRequest body,
   });
 
   /// Delete single message.
@@ -763,6 +1187,26 @@ abstract class AdminApi {
   @POST('/admin/messages/lookup-by-attachment')
   Future<LookupMessageResponse> lookupMessageByAttachment({
     @Body() required LookupMessageByAttachmentRequest body,
+  });
+
+  /// Report an image attachment to NCMEC.
+  ///
+  /// Submits a specific image attachment to NCMEC, creates an audit log entry, silently disables the user, triggers one archive for the user, and schedules content deletion after the archive completes.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/messages/report-to-ncmec')
+  Future<NcmecAttachmentSubmitResultResponse> reportMessageAttachmentToNcmec({
+    @Body() required ReportAttachmentToNcmecRequest body,
+  });
+
+  /// Search channel messages.
+  ///
+  /// Searches messages within a channel by content. Requires MESSAGE_LOOKUP permission.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/messages/search')
+  Future<SearchChannelMessagesResponse> searchChannelMessages({
+    @Body() required SearchChannelMessagesRequest body,
   });
 
   /// Queue message shred operation.
@@ -825,6 +1269,16 @@ abstract class AdminApi {
     @Path('report_id') required String reportId,
   });
 
+  /// Get CSAM evidence package status.
+  ///
+  /// Retrieve CSAM evidence package metadata and a presigned download URL when evidence exists for the report.
+  ///
+  /// [reportId] - The report id.
+  @GET('/admin/reports/{report_id}/evidence')
+  Future<CsamEvidencePackageResponse> getCsamEvidencePackage({
+    @Path('report_id') required String reportId,
+  });
+
   /// Get legal hold status.
   ///
   /// Retrieve the current legal hold status of a report. Indicates whether evidence is preserved for legal proceedings and the hold expiration date if set.
@@ -858,26 +1312,6 @@ abstract class AdminApi {
     @Path('report_id') required String reportId,
   });
 
-  /// Get NCMEC submission status.
-  ///
-  /// Retrieve the submission status of a report to the National Center for Missing & Exploited Children. Shows whether the report has been submitted and the current status with NCMEC.
-  ///
-  /// [reportId] - The report id.
-  @GET('/admin/reports/{report_id}/ncmec-status')
-  Future<NcmecSubmissionStatusResponse> getNcmecSubmissionStatus({
-    @Path('report_id') required String reportId,
-  });
-
-  /// Submit report to NCMEC.
-  ///
-  /// Manually submit a child safety report to the National Center for Missing & Exploited Children. Requires explicit authorization and includes evidence packaging. Can only be done once per report.
-  ///
-  /// [reportId] - The report id.
-  @POST('/admin/reports/{report_id}/ncmec-submit')
-  Future<NcmecSubmitResultResponse> submitReportToNcmec({
-    @Path('report_id') required String reportId,
-  });
-
   /// Refresh search index.
   ///
   /// Trigger full or partial search index rebuild. Creates background job to reindex guilds and users. Returns job ID for status tracking. Requires GUILD_LOOKUP permission.
@@ -898,31 +1332,35 @@ abstract class AdminApi {
     @Body() required GetIndexRefreshStatusRequest body,
   });
 
-  /// Add snowflake reservation.
+  /// Add suspicious email domain.
   ///
-  /// Reserves a snowflake ID range for future allocation. Creates audit log entry. Requires INSTANCE_SNOWFLAKE_RESERVATION_MANAGE permission.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @POST('/admin/snowflake-reservations/add')
-  Future<SuccessResponse> addSnowflakeReservation({
-    @Body() required AddSnowflakeReservationRequest body,
-  });
-
-  /// Delete snowflake reservation.
-  ///
-  /// Removes a snowflake ID reservation range. Creates audit log entry. Requires INSTANCE_SNOWFLAKE_RESERVATION_MANAGE permission.
+  /// Flag an email domain as suspicious. Registration is not blocked, but new accounts using this domain are required to verify a phone number before they can act on the platform. The list itself is not exposed to users — they only see the verified-phone gate.
   ///
   /// [body] - Name not received - field will be skipped.
-  @POST('/admin/snowflake-reservations/delete')
-  Future<SuccessResponse> deleteSnowflakeReservation({
-    @Body() required DeleteSnowflakeReservationRequest body,
+  @POST('/admin/suspicious-email-domains/add')
+  Future<void> addSuspiciousEmailDomain({
+    @Body() required SuspiciousEmailDomainRequest body,
   });
 
-  /// List snowflake reservations.
+  /// Check suspicious email domain status.
   ///
-  /// Lists all reserved snowflake ID ranges. Shows ranges reserved for future entities and their allocation status. Requires INSTANCE_SNOWFLAKE_RESERVATION_VIEW permission.
-  @POST('/admin/snowflake-reservations/list')
-  Future<ListSnowflakeReservationsResponse> listSnowflakeReservations();
+  /// Query whether an email domain is currently flagged as suspicious.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/suspicious-email-domains/check')
+  Future<BanCheckResponseSchema> checkSuspiciousEmailDomain({
+    @Body() required SuspiciousEmailDomainRequest body,
+  });
+
+  /// Remove suspicious email domain flag.
+  ///
+  /// Remove a domain from the suspicious list. New registrations from this domain will no longer be auto-required to verify a phone number on signup.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/suspicious-email-domains/remove')
+  Future<void> removeSuspiciousEmailDomain({
+    @Body() required SuspiciousEmailDomainRequest body,
+  });
 
   /// Create system DM job.
   ///
@@ -952,6 +1390,12 @@ abstract class AdminApi {
   Future<SystemDmJobResponse> approveSystemDmJob({
     @Path('job_id') required String jobId,
   });
+
+  /// Take a V8 heap snapshot.
+  ///
+  /// Triggers a V8 heap snapshot of the current process and returns the snapshot file. Used for diagnosing memory leaks. Requires SYSTEM_HEAP_SNAPSHOT permission.
+  @POST('/admin/system/heap-snapshot')
+  Future<HeapSnapshotResponse> takeHeapSnapshot();
 
   /// Cancel bulk message deletion.
   ///
@@ -1061,6 +1505,16 @@ abstract class AdminApi {
     @Body() required ListUserDmChannelsRequest body,
   });
 
+  /// List user group DM channels.
+  ///
+  /// List group DM channels for a user. Requires USER_LIST_DM_CHANNELS permission.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/users/list-group-dm-channels')
+  Future<ListUserGroupDmChannelsResponse> listUserGroupDmChannels({
+    @Body() required ListUserGroupDmChannelsRequest body,
+  });
+
   /// List user guilds.
   ///
   /// List all guilds a user is a member of. Shows roles and join dates. Requires USER_LIST_GUILDS permission.
@@ -1069,6 +1523,16 @@ abstract class AdminApi {
   @POST('/admin/users/list-guilds')
   Future<ListUserGuildsResponse> listUserGuilds({
     @Body() required ListUserGuildsRequest body,
+  });
+
+  /// List user relationships.
+  ///
+  /// List a user's friends, incoming and outgoing friend requests, and blocked users. Requires USER_LIST_RELATIONSHIPS permission.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/users/list-relationships')
+  Future<ListUserRelationshipsResponse> listUserRelationships({
+    @Body() required ListUserRelationshipsRequest body,
   });
 
   /// List user sessions.
@@ -1107,6 +1571,26 @@ abstract class AdminApi {
   @GET('/admin/users/me')
   Future<AdminUsersMeResponse> getAuthenticatedAdminUser();
 
+  /// Remove user relationship.
+  ///
+  /// Remove a single relationship row for a user. For friend and outgoing_request, the mirror entry on the other user is also removed. Dispatches RELATIONSHIP_REMOVE gateway events. Requires USER_REMOVE_RELATIONSHIP permission.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/users/remove-relationship')
+  Future<void> removeUserRelationship({
+    @Body() required RemoveUserRelationshipRequest body,
+  });
+
+  /// Remove all of a user's relationships in a category.
+  ///
+  /// Bulk-remove every relationship of the chosen category (friend, incoming_request, outgoing_request, blocked) for a user. Mirror entries on the other party are removed for friend, incoming_request, and outgoing_request. Requires USER_REMOVE_RELATIONSHIP permission.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/users/remove-relationships-by-category')
+  Future<RemoveUserRelationshipsResponse> removeUserRelationshipsByCategory({
+    @Body() required RemoveUserRelationshipsByCategoryRequest body,
+  });
+
   /// Resend verification email.
   ///
   /// Resend the account verification email for a user. Creates audit log entry and honours email verification resend limits. Requires USER_UPDATE_EMAIL permission.
@@ -1129,7 +1613,7 @@ abstract class AdminApi {
 
   /// Search users.
   ///
-  /// Searches users by username, email, ID, and other criteria. Supports full-text search and filtering by account status. Requires USER_LOOKUP permission.
+  /// Searches users by username, email, ID, last active IP, and other criteria. Supports full-text search and filtering by account status. Requires USER_LOOKUP permission.
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/admin/users/search')
@@ -1237,6 +1721,16 @@ abstract class AdminApi {
     @Body() required UpdateUserFlagsRequest body,
   });
 
+  /// Update user phone verification flag.
+  ///
+  /// Set whether a user is treated as having completed phone verification. This is the only supported path for clearing the irreversible user-facing phone verification flag.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/users/update-has-verified-phone')
+  Future<UserMutationResponse> updateUserHasVerifiedPhone({
+    @Body() required UpdateHasVerifiedPhoneRequest body,
+  });
+
   /// Update suspicious activity flags.
   ///
   /// Flag user as suspicious for account abuse, fraud, or policy violations. Enables enforcement actions and rate limiting. Creates audit log entry. Requires USER_UPDATE_SUSPICIOUS_ACTIVITY permission.
@@ -1255,6 +1749,19 @@ abstract class AdminApi {
   @POST('/admin/users/verify-email')
   Future<UserMutationResponse> verifyUserEmail({
     @Body() required VerifyUserEmailRequest body,
+  });
+
+  /// Ban this user's current avatar.
+  ///
+  /// Reads the user's current avatar_hash, strips any animation prefix, and adds the 8-char hash to the avatar blocklist. Returns the banned hash.
+  ///
+  /// [userId] - The ID of the user.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/users/{user_id}/ban-avatar')
+  Future<BanUserAvatarResponseSchema> banUserAvatar({
+    @Path('user_id') required SnowflakeType userId,
+    @Body() required BanUserAvatarRequest body,
   });
 
   /// List all visionary slots.
@@ -1301,6 +1808,26 @@ abstract class AdminApi {
   @POST('/admin/visionary-slots/swap')
   Future<VisionarySlotOperationResponse> swapVisionarySlots({
     @Body() required SwapVisionarySlotsRequest body,
+  });
+
+  /// Get a presigned download URL for a voice diagnostic upload.
+  ///
+  /// Issues a short-lived (5 minutes) presigned GET URL for the requested voice diagnostic archive in the dedicated bucket. Returns 404 (UnknownUserError) when the upload row does not exist for that user. Requires VOICE_DIAGNOSTICS_VIEW permission.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/voice-diagnostics/download')
+  Future<GetVoiceDiagnosticDownloadResponse> getVoiceDiagnosticDownload({
+    @Body() required GetVoiceDiagnosticDownloadRequest body,
+  });
+
+  /// List voice diagnostic uploads for a user.
+  ///
+  /// Lists voice diagnostic archive uploads for the given user, newest first. Returns up to `limit` (default 50, max 100) entries. Requires VOICE_DIAGNOSTICS_VIEW permission.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/voice-diagnostics/list')
+  Future<ListVoiceDiagnosticUploadsResponse> listVoiceDiagnosticUploads({
+    @Body() required ListVoiceDiagnosticUploadsRequest body,
   });
 
   /// Create voice region.

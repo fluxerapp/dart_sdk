@@ -5,6 +5,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'guild_feature_schema.dart';
+import 'nsfw_level.dart';
 
 part 'guild_admin_response.g.dart';
 
@@ -15,9 +16,13 @@ class GuildAdminResponse {
     required this.name,
     required this.features,
     required this.ownerId,
+    required this.ownerUsername,
+    required this.ownerGlobalName,
+    required this.ownerDiscriminator,
     required this.icon,
     required this.banner,
     required this.memberCount,
+    this.nsfwLevel,
   });
 
   factory GuildAdminResponse.fromJson(Map<String, Object?> json) =>
@@ -36,6 +41,18 @@ class GuildAdminResponse {
   @JsonKey(name: 'owner_id')
   final String ownerId;
 
+  /// The username of the guild owner
+  @JsonKey(includeIfNull: true, name: 'owner_username')
+  final String? ownerUsername;
+
+  /// The display name of the guild owner, if set
+  @JsonKey(includeIfNull: true, name: 'owner_global_name')
+  final String? ownerGlobalName;
+
+  /// The discriminator of the guild owner
+  @JsonKey(includeIfNull: true, name: 'owner_discriminator')
+  final String? ownerDiscriminator;
+
   /// The hash of the guild icon
   @JsonKey(includeIfNull: true)
   final String? icon;
@@ -47,6 +64,8 @@ class GuildAdminResponse {
   /// The number of members in the guild
   @JsonKey(name: 'member_count')
   final int memberCount;
+  @JsonKey(includeIfNull: false, name: 'nsfw_level')
+  final NsfwLevel? nsfwLevel;
 
   Map<String, Object?> toJson() => _$GuildAdminResponseToJson(this);
 }

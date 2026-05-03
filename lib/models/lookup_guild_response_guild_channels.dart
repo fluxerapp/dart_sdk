@@ -18,6 +18,8 @@ class LookupGuildResponseGuildChannels {
     required this.type,
     required this.position,
     required this.parentId,
+    required this.nsfw,
+    required this.url,
   });
 
   factory LookupGuildResponseGuildChannels.fromJson(
@@ -33,6 +35,10 @@ class LookupGuildResponseGuildChannels {
   final Int32Type position;
   @JsonKey(includeIfNull: true, name: 'parent_id')
   final SnowflakeType? parentId;
+  @JsonKey(includeIfNull: true)
+  final bool? nsfw;
+  @JsonKey(includeIfNull: true)
+  final String? url;
 
   Map<String, Object?> toJson() =>
       _$LookupGuildResponseGuildChannelsToJson(this);

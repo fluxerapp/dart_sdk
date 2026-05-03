@@ -11,7 +11,13 @@ CallRingBodySchema _$CallRingBodySchemaFromJson(Map<String, dynamic> json) =>
       recipients: (json['recipients'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
+      latitude: json['latitude'] as String?,
+      longitude: json['longitude'] as String?,
     );
 
 Map<String, dynamic> _$CallRingBodySchemaToJson(CallRingBodySchema instance) =>
-    <String, dynamic>{'recipients': ?instance.recipients};
+    <String, dynamic>{
+      'recipients': ?instance.recipients,
+      'latitude': ?instance.latitude,
+      'longitude': ?instance.longitude,
+    };

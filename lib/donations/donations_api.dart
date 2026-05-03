@@ -18,7 +18,7 @@ abstract class DonationsApi {
 
   /// Create donation checkout session.
   ///
-  /// Creates a Stripe checkout session for a recurring donation.
+  /// Creates a Stripe checkout session for a one-time or recurring donation.
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/donations/checkout')

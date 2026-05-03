@@ -8,13 +8,23 @@ part 'search_users_request.g.dart';
 
 @JsonSerializable()
 class SearchUsersRequest {
-  const SearchUsersRequest({this.query, this.limit, this.offset});
+  const SearchUsersRequest({
+    this.query,
+    this.email,
+    this.lastActiveIp,
+    this.limit,
+    this.offset,
+  });
 
   factory SearchUsersRequest.fromJson(Map<String, Object?> json) =>
       _$SearchUsersRequestFromJson(json);
 
   @JsonKey(includeIfNull: false)
   final String? query;
+  @JsonKey(includeIfNull: false)
+  final String? email;
+  @JsonKey(includeIfNull: false, name: 'last_active_ip')
+  final String? lastActiveIp;
   @JsonKey(includeIfNull: false)
   final int? limit;
   @JsonKey(includeIfNull: false)

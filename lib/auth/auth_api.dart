@@ -14,6 +14,7 @@ import '../models/authorize_ip_request.dart';
 import '../models/email_revert_request.dart';
 import '../models/forgot_password_request.dart';
 import '../models/handoff_complete_request.dart';
+import '../models/handoff_info_response.dart';
 import '../models/handoff_initiate_response.dart';
 import '../models/handoff_status_response.dart';
 import '../models/ip_authorization_poll_response.dart';
@@ -31,6 +32,7 @@ import '../models/sso_start_response.dart';
 import '../models/sso_status_response.dart';
 import '../models/username_suggestions_request.dart';
 import '../models/username_suggestions_response.dart';
+import '../models/validate_reset_password_token_response.dart';
 import '../models/verify_email_request.dart';
 import '../models/web_authn_authenticate_request.dart';
 import '../models/web_authn_authentication_options_response.dart';
@@ -89,6 +91,16 @@ abstract class AuthApi {
   /// [code] - The code.
   @DELETE('/auth/handoff/{code}')
   Future<void> cancelHandoff({@Path('code') required String code});
+
+  /// Get handoff info.
+  ///
+  /// Retrieve device and location information about a pending handoff request. Non-destructive – the code remains valid after this call.
+  ///
+  /// [code] - The code.
+  @GET('/auth/handoff/{code}/info')
+  Future<HandoffInfoResponse> getHandoffInfo({
+    @Path('code') required String code,
+  });
 
   /// Get handoff status.
   ///
@@ -196,6 +208,16 @@ abstract class AuthApi {
   @POST('/auth/reset')
   Future<AuthLoginResponse> resetPassword({
     @Body() required ResetPasswordRequest body,
+  });
+
+  /// Validate reset password token.
+  ///
+  /// Check whether a password reset token is valid and unexpired before allowing the user to submit a new password. Does not consume the token.
+  ///
+  /// [token] - The token.
+  @GET('/auth/reset/{token}')
+  Future<ValidateResetPasswordTokenResponse> validateResetPasswordToken({
+    @Path('token') required String token,
   });
 
   /// List auth sessions.

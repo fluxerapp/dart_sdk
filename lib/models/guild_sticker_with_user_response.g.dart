@@ -14,6 +14,7 @@ GuildStickerWithUserResponse _$GuildStickerWithUserResponseFromJson(
   description: json['description'] as String,
   tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
   animated: json['animated'] as bool,
+  nsfw: json['nsfw'] as bool,
   user: UserPartialResponse.fromJson(json['user'] as Map<String, dynamic>),
 );
 
@@ -25,5 +26,6 @@ Map<String, dynamic> _$GuildStickerWithUserResponseToJson(
   'description': instance.description,
   'tags': instance.tags,
   'animated': instance.animated,
+  'nsfw': instance.nsfw,
   'user': instance.user,
 };

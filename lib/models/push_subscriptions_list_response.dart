@@ -15,7 +15,7 @@ class PushSubscriptionsListResponse {
   factory PushSubscriptionsListResponse.fromJson(Map<String, Object?> json) =>
       _$PushSubscriptionsListResponseFromJson(json);
 
-  /// Array of push subscriptions
+  /// Array of push notification subscriptions
   final List<PushSubscriptionItemResponse> subscriptions;
 
   Map<String, Object?> toJson() => _$PushSubscriptionsListResponseToJson(this);

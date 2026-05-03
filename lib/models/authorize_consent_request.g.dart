@@ -16,6 +16,12 @@ AuthorizeConsentRequest _$AuthorizeConsentRequestFromJson(
   state: json['state'] as String?,
   permissions: json['permissions'] as String?,
   guildId: json['guild_id'] as String?,
+  codeChallenge: json['code_challenge'] as String?,
+  codeChallengeMethod: json['code_challenge_method'] == null
+      ? null
+      : AuthorizeConsentRequestCodeChallengeMethodCodeChallengeMethod.fromJson(
+          json['code_challenge_method'] as String,
+        ),
 );
 
 Map<String, dynamic> _$AuthorizeConsentRequestToJson(
@@ -28,4 +34,6 @@ Map<String, dynamic> _$AuthorizeConsentRequestToJson(
   'state': ?instance.state,
   'permissions': ?instance.permissions,
   'guild_id': ?instance.guildId,
+  'code_challenge': ?instance.codeChallenge,
+  'code_challenge_method': ?instance.codeChallengeMethod,
 };

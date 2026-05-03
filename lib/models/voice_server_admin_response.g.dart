@@ -12,6 +12,8 @@ VoiceServerAdminResponse _$VoiceServerAdminResponseFromJson(
   regionId: json['region_id'] as String,
   serverId: json['server_id'] as String,
   endpoint: json['endpoint'] as String,
+  latitude: json['latitude'] as num?,
+  longitude: json['longitude'] as num?,
   isActive: json['is_active'] as bool,
   vipOnly: json['vip_only'] as bool,
   requiredGuildFeatures: (json['required_guild_features'] as List<dynamic>)
@@ -33,6 +35,8 @@ Map<String, dynamic> _$VoiceServerAdminResponseToJson(
   'region_id': instance.regionId,
   'server_id': instance.serverId,
   'endpoint': instance.endpoint,
+  'latitude': instance.latitude,
+  'longitude': instance.longitude,
   'is_active': instance.isActive,
   'vip_only': instance.vipOnly,
   'required_guild_features': instance.requiredGuildFeatures,

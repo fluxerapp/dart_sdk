@@ -11,6 +11,16 @@ enum PriceIdsResponseCurrencyCurrency {
   usd('USD'),
   @JsonValue('EUR')
   eur('EUR'),
+  @JsonValue('BRL')
+  brl('BRL'),
+  @JsonValue('INR')
+  inr('INR'),
+  @JsonValue('PLN')
+  pln('PLN'),
+
+  /// The name has been replaced because it contains a keyword. Original name: `TRY`.
+  @JsonValue('TRY')
+  valueTry('TRY'),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
   $unknown(null);

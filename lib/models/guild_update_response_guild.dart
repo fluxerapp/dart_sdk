@@ -6,6 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'snowflake_type.dart';
 import 'int32_type.dart';
+import 'nsfw_level.dart';
 
 part 'guild_update_response_guild.g.dart';
 
@@ -19,6 +20,7 @@ class GuildUpdateResponseGuild {
     required this.icon,
     required this.banner,
     required this.memberCount,
+    this.nsfwLevel,
   });
 
   factory GuildUpdateResponseGuild.fromJson(Map<String, Object?> json) =>
@@ -35,6 +37,8 @@ class GuildUpdateResponseGuild {
   final String? banner;
   @JsonKey(name: 'member_count')
   final Int32Type memberCount;
+  @JsonKey(includeIfNull: false, name: 'nsfw_level')
+  final NsfwLevel? nsfwLevel;
 
   Map<String, Object?> toJson() => _$GuildUpdateResponseGuildToJson(this);
 }

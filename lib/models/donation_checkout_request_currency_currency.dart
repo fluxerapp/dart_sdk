@@ -11,6 +11,16 @@ enum DonationCheckoutRequestCurrencyCurrency {
   usd('usd'),
   @JsonValue('eur')
   eur('eur'),
+  @JsonValue('brl')
+  brl('brl'),
+  @JsonValue('inr')
+  inr('inr'),
+  @JsonValue('pln')
+  pln('pln'),
+
+  /// The name has been replaced because it contains a keyword. Original name: `try`.
+  @JsonValue('try')
+  valueTry('try'),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
   $unknown(null);

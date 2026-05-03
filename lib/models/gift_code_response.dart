@@ -4,6 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+import 'gift_code_response_duration_type_duration_type.dart';
 import 'user_partial_response.dart';
 
 part 'gift_code_response.g.dart';
@@ -12,7 +13,8 @@ part 'gift_code_response.g.dart';
 class GiftCodeResponse {
   const GiftCodeResponse({
     required this.code,
-    required this.durationMonths,
+    required this.durationType,
+    required this.durationQuantity,
     required this.redeemed,
     this.createdBy,
   });
@@ -23,9 +25,13 @@ class GiftCodeResponse {
   /// The unique gift code string
   final String code;
 
-  /// Duration of the subscription gift in months
-  @JsonKey(name: 'duration_months')
-  final int durationMonths;
+  /// Duration unit for the gift entitlement
+  @JsonKey(name: 'duration_type')
+  final GiftCodeResponseDurationTypeDurationType durationType;
+
+  /// Duration quantity for the selected duration unit
+  @JsonKey(name: 'duration_quantity')
+  final int durationQuantity;
 
   /// Whether the gift code has been redeemed
   final bool redeemed;

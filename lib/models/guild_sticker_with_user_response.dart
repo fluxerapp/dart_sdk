@@ -16,6 +16,7 @@ class GuildStickerWithUserResponse {
     required this.description,
     required this.tags,
     required this.animated,
+    required this.nsfw,
     required this.user,
   });
 
@@ -36,6 +37,9 @@ class GuildStickerWithUserResponse {
 
   /// Whether this sticker is animated
   final bool animated;
+
+  /// Whether this sticker is classified as NSFW
+  final bool nsfw;
   final UserPartialResponse user;
 
   Map<String, Object?> toJson() => _$GuildStickerWithUserResponseToJson(this);

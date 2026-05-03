@@ -16,7 +16,6 @@ class TenorGifResponse {
     required this.proxySrc,
     required this.width,
     required this.height,
-    this.media = const <String, TenorGifMediaResponse>{},
   });
 
   factory TenorGifResponse.fromJson(Map<String, Object?> json) =>
@@ -44,36 +43,5 @@ class TenorGifResponse {
   /// Height of the GIF in pixels
   final int height;
 
-  /// Alternate Tenor media formats keyed by format name
-  final Map<String, TenorGifMediaResponse> media;
-
   Map<String, Object?> toJson() => _$TenorGifResponseToJson(this);
-}
-
-@JsonSerializable()
-class TenorGifMediaResponse {
-  const TenorGifMediaResponse({
-    required this.src,
-    required this.proxySrc,
-    required this.width,
-    required this.height,
-  });
-
-  factory TenorGifMediaResponse.fromJson(Map<String, Object?> json) =>
-      _$TenorGifMediaResponseFromJson(json);
-
-  /// Direct URL to the media file
-  final String src;
-
-  /// Proxied URL to the media file
-  @JsonKey(name: 'proxy_src')
-  final String proxySrc;
-
-  /// Width of the media in pixels
-  final int width;
-
-  /// Height of the media in pixels
-  final int height;
-
-  Map<String, Object?> toJson() => _$TenorGifMediaResponseToJson(this);
 }

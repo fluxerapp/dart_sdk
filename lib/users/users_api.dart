@@ -6,9 +6,12 @@ import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
 import 'package:retrofit/error_logger.dart';
 
+import '../models/bulk_ignore_friend_requests_request.dart';
+import '../models/bulk_ignore_friend_requests_response.dart';
 import '../models/channel_response.dart';
 import '../models/create_private_channel_request.dart';
 import '../models/disable_totp_request.dart';
+import '../models/email_change_apply_request.dart';
 import '../models/email_change_bounced_request_new_request.dart';
 import '../models/email_change_bounced_verify_new_request.dart';
 import '../models/email_change_request_new_request.dart';
@@ -22,11 +25,13 @@ import '../models/email_token_response.dart';
 import '../models/empty_body_request.dart';
 import '../models/enable_mfa_totp_request.dart';
 import '../models/friend_request_by_tag_request.dart';
+import '../models/friend_request_create_request.dart';
 import '../models/gift_code_metadata_response.dart';
 import '../models/harvest_creation_response_schema.dart';
 import '../models/harvest_download_url_response.dart';
 import '../models/harvest_status_response_schema.dart';
 import '../models/harvest_status_response_schema_nullable.dart';
+import '../models/inbound_sms_challenge_start_response.dart';
 import '../models/message_list_response.dart';
 import '../models/mfa_backup_codes_request.dart';
 import '../models/mfa_backup_codes_response.dart';
@@ -41,6 +46,7 @@ import '../models/phone_verify_request.dart';
 import '../models/phone_verify_response.dart';
 import '../models/preload_messages_request.dart';
 import '../models/preload_messages_response.dart';
+import '../models/push_rotate_request.dart';
 import '../models/push_subscribe_request.dart';
 import '../models/push_subscribe_response.dart';
 import '../models/push_subscriptions_list_response.dart';
@@ -80,7 +86,7 @@ abstract class UsersApi {
 
   /// Get current user profile.
   ///
-  /// Retrieves the current authenticated user's profile information, including account details and settings. OAuth2 bearer tokens require identify scope, and email is returned only when the email scope is also present. Returns full user object with private fields visible only to the authenticated user.
+  /// Retrieves the current authenticated user's profile information, including account details and settings. OAuth2 bearer tokens require identify scope, and email is returned only when the email scope is also present. Bearer tokens receive a reduced response: sensitive fields such as phone, MFA status, authenticator types, ACLs, traits, premium billing details, and password metadata are omitted. Session and bot tokens return the full user object with all private fields.
   @GET('/users/@me')
   Future<UserPrivateResponse> getCurrentUser();
 
@@ -168,6 +174,16 @@ abstract class UsersApi {
   @POST('/users/@me/disable')
   Future<void> disableCurrentUserAccount({
     @Body() required SudoVerificationSchema body,
+  });
+
+  /// Apply a verified email change.
+  ///
+  /// Applies a previously verified email_token to the current user's account. Requires sudo mode verification (password for users without MFA, MFA proof for users with MFA). Returns the updated private user object. This is a dedicated alternative to PATCH /users/@me that cannot accidentally drag in unrelated profile edits.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/email-change/apply')
+  Future<UserPrivateResponse> applyEmailChange({
+    @Body() required EmailChangeApplyRequest body,
   });
 
   /// Request replacement email for bounced address.
@@ -548,6 +564,12 @@ abstract class UsersApi {
     @Body() required SudoVerificationSchema body,
   });
 
+  /// Start an inbound SMS challenge.
+  ///
+  /// For very-high-risk registrations the platform requires the user to text a one-time code to the platform's number, instead of receiving a code from the platform. This endpoint generates the code and the destination number to display.
+  @POST('/users/@me/phone/inbound-challenge')
+  Future<InboundSmsChallengeStartResponse> startInboundPhoneChallenge();
+
   /// Send phone verification code.
   ///
   /// Request a verification code to be sent via SMS to the provided phone number. Requires authentication.
@@ -584,6 +606,16 @@ abstract class UsersApi {
   @POST('/users/@me/premium/reset')
   Future<void> resetCurrentUserPremiumState();
 
+  /// Rotate a push notification subscription.
+  ///
+  /// Replaces an existing push subscription whose endpoint has been rotated by the browser (pushsubscriptionchange). Deletes the row keyed by the old endpoint and inserts a new one for the new endpoint.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/push/rotate')
+  Future<PushSubscribeResponse> rotatePushSubscription({
+    @Body() required PushRotateRequest body,
+  });
+
   /// Subscribe to push notifications.
   ///
   /// Registers a new push notification subscription for the current user. Takes push endpoint and encryption keys from a Web Push API subscription. Returns subscription ID for future reference.
@@ -614,7 +646,7 @@ abstract class UsersApi {
   ///
   /// Retrieves all relationships for the current user, including friends, friend requests (incoming and outgoing), and blocked users. Returns list of relationship objects with type and metadata.
   @GET('/users/@me/relationships')
-  Future<List<RelationshipResponse>> listUserRelationships();
+  Future<List<RelationshipResponse>> listUserRelationships2();
 
   /// Send friend request by tag.
   ///
@@ -626,14 +658,27 @@ abstract class UsersApi {
     @Body() required FriendRequestByTagRequest body,
   });
 
+  /// Bulk ignore friend requests.
+  ///
+  /// Ignores (removes) multiple incoming friend requests at once. Optionally filters by sender account age to target requests from new accounts.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/relationships/bulk-ignore')
+  Future<BulkIgnoreFriendRequestsResponse> bulkIgnoreFriendRequests({
+    @Body() required BulkIgnoreFriendRequestsRequest body,
+  });
+
   /// Send friend request.
   ///
   /// Sends a friend request to a user identified by user ID. Returns the new relationship object. Can fail if user not found or request already sent.
   ///
   /// [userId] - The ID of the user.
+  ///
+  /// [body] - Name not received - field will be skipped.
   @POST('/users/@me/relationships/{user_id}')
   Future<RelationshipResponse> sendFriendRequest({
     @Path('user_id') required SnowflakeType userId,
+    @Body() required FriendRequestCreateRequest body,
   });
 
   /// Accept or update friend request.
@@ -767,6 +812,16 @@ abstract class UsersApi {
   /// Generate WebAuthn challenge for sudo mode verification using a registered security key or biometric device.
   @POST('/users/@me/sudo/webauthn/authentication-options')
   Future<WebAuthnChallengeResponse> getSudoWebauthnAuthenticationOptions();
+
+  /// Accept updated terms of service and privacy policy.
+  ///
+  /// Records that the user has read and agreed to the current terms of service and privacy policy. Returns the updated private user object.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/terms-acceptance')
+  Future<UserPrivateResponse> acceptUpdatedTerms({
+    @Body() required EmptyBodyRequest body,
+  });
 
   /// Check username tag availability.
   ///

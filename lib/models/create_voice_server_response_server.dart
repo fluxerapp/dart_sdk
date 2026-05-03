@@ -14,6 +14,8 @@ class CreateVoiceServerResponseServer {
     required this.regionId,
     required this.serverId,
     required this.endpoint,
+    required this.latitude,
+    required this.longitude,
     required this.isActive,
     required this.vipOnly,
     required this.requiredGuildFeatures,
@@ -36,6 +38,14 @@ class CreateVoiceServerResponseServer {
 
   /// Client signal WebSocket endpoint URL for the voice server
   final String endpoint;
+
+  /// Optional geographic latitude override for this server
+  @JsonKey(includeIfNull: true)
+  final num? latitude;
+
+  /// Optional geographic longitude override for this server
+  @JsonKey(includeIfNull: true)
+  final num? longitude;
 
   /// Whether the server is currently active
   @JsonKey(name: 'is_active')

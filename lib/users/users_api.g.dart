@@ -277,6 +277,36 @@ class _UsersApi implements UsersApi {
   }
 
   @override
+  Future<UserPrivateResponse> applyEmailChange({
+    required EmailChangeApplyRequest body,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<UserPrivateResponse>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/users/@me/email-change/apply',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late UserPrivateResponse _value;
+    try {
+      _value = UserPrivateResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<EmailChangeRequestNewResponse> requestBouncedEmailReplacement({
     required EmailChangeBouncedRequestNewRequest body,
   }) async {
@@ -1333,6 +1363,33 @@ class _UsersApi implements UsersApi {
   }
 
   @override
+  Future<InboundSmsChallengeStartResponse> startInboundPhoneChallenge() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<InboundSmsChallengeStartResponse>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/users/@me/phone/inbound-challenge',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late InboundSmsChallengeStartResponse _value;
+    try {
+      _value = InboundSmsChallengeStartResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<void> sendPhoneVerificationCode({
     required PhoneSendVerificationRequest body,
   }) async {
@@ -1439,6 +1496,36 @@ class _UsersApi implements UsersApi {
   }
 
   @override
+  Future<PushSubscribeResponse> rotatePushSubscription({
+    required PushRotateRequest body,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<PushSubscribeResponse>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/users/@me/push/rotate',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late PushSubscribeResponse _value;
+    try {
+      _value = PushSubscribeResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<PushSubscribeResponse> subscribeToPushNotifications({
     required PushSubscribeRequest body,
   }) async {
@@ -1525,7 +1612,7 @@ class _UsersApi implements UsersApi {
   }
 
   @override
-  Future<List<RelationshipResponse>> listUserRelationships() async {
+  Future<List<RelationshipResponse>> listUserRelationships2() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -1587,13 +1674,45 @@ class _UsersApi implements UsersApi {
   }
 
   @override
-  Future<RelationshipResponse> sendFriendRequest({
-    required String userId,
+  Future<BulkIgnoreFriendRequestsResponse> bulkIgnoreFriendRequests({
+    required BulkIgnoreFriendRequestsRequest body,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<BulkIgnoreFriendRequestsResponse>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/users/@me/relationships/bulk-ignore',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late BulkIgnoreFriendRequestsResponse _value;
+    try {
+      _value = BulkIgnoreFriendRequestsResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<RelationshipResponse> sendFriendRequest({
+    required String userId,
+    required FriendRequestCreateRequest body,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
     final _options = _setStreamType<RelationshipResponse>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
@@ -2006,6 +2125,36 @@ class _UsersApi implements UsersApi {
     late WebAuthnChallengeResponse _value;
     try {
       _value = WebAuthnChallengeResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<UserPrivateResponse> acceptUpdatedTerms({
+    required EmptyBodyRequest body,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<UserPrivateResponse>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/users/@me/terms-acceptance',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late UserPrivateResponse _value;
+    try {
+      _value = UserPrivateResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;

@@ -24,7 +24,7 @@ class ListUserChangeLogRequest {
 
   /// Maximum number of entries to return
   @JsonKey(includeIfNull: false)
-  final num? limit;
+  final int? limit;
 
   /// Pagination token for the next page of results
   @JsonKey(includeIfNull: false, name: 'page_token')

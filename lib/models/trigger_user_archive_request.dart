@@ -10,13 +10,20 @@ part 'trigger_user_archive_request.g.dart';
 
 @JsonSerializable()
 class TriggerUserArchiveRequest {
-  const TriggerUserArchiveRequest({required this.userId});
+  const TriggerUserArchiveRequest({
+    required this.userId,
+    this.includeAttachments,
+  });
 
   factory TriggerUserArchiveRequest.fromJson(Map<String, Object?> json) =>
       _$TriggerUserArchiveRequestFromJson(json);
 
   @JsonKey(name: 'user_id')
   final SnowflakeType userId;
+
+  /// Whether to include attachment binaries in the archive
+  @JsonKey(includeIfNull: false, name: 'include_attachments')
+  final bool? includeAttachments;
 
   Map<String, Object?> toJson() => _$TriggerUserArchiveRequestToJson(this);
 }

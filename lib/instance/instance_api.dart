@@ -16,7 +16,7 @@ abstract class InstanceApi {
 
   /// Get instance discovery document.
   ///
-  /// Returns the instance discovery document including API endpoints, feature flags, limits, and federation capabilities. This is the canonical discovery endpoint for all Fluxer clients.
+  /// Returns the instance discovery document including API endpoints, feature flags, and limits. This is the canonical discovery endpoint for all Fluxer clients.
   @GET('/.well-known/fluxer')
   Future<WellKnownFluxerResponse> getWellKnownFluxer();
 }

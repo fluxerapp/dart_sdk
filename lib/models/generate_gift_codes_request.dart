@@ -4,7 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'generate_gift_codes_request_product_type_product_type.dart';
+import 'generate_gift_codes_request_duration_type_duration_type.dart';
 
 part 'generate_gift_codes_request.g.dart';
 
@@ -12,7 +12,8 @@ part 'generate_gift_codes_request.g.dart';
 class GenerateGiftCodesRequest {
   const GenerateGiftCodesRequest({
     required this.count,
-    required this.productType,
+    required this.durationType,
+    required this.durationQuantity,
   });
 
   factory GenerateGiftCodesRequest.fromJson(Map<String, Object?> json) =>
@@ -21,9 +22,13 @@ class GenerateGiftCodesRequest {
   /// Number of gift codes to generate
   final int count;
 
-  /// Type of gift subscription
-  @JsonKey(name: 'product_type')
-  final GenerateGiftCodesRequestProductTypeProductType productType;
+  /// Duration unit for the generated gift codes
+  @JsonKey(name: 'duration_type')
+  final GenerateGiftCodesRequestDurationTypeDurationType durationType;
+
+  /// Duration quantity for the selected unit. Lifetime gifts are not supported.
+  @JsonKey(name: 'duration_quantity')
+  final int durationQuantity;
 
   Map<String, Object?> toJson() => _$GenerateGiftCodesRequestToJson(this);
 }

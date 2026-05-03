@@ -12,10 +12,15 @@ import '../models/call_ring_body_schema.dart';
 import '../models/call_update_body_schema.dart';
 import '../models/channel_pins_response.dart';
 import '../models/channel_response.dart';
+import '../models/channel_slowmode_state_response.dart';
 import '../models/channel_update_request.dart';
+import '../models/complete_multipart_attachment_upload_request.dart';
+import '../models/complete_multipart_attachment_upload_response.dart';
 import '../models/message_ack_request.dart';
 import '../models/message_response_schema.dart';
 import '../models/permission_overwrite_create_request.dart';
+import '../models/presigned_attachment_upload_request.dart';
+import '../models/presigned_attachment_upload_response.dart';
 import '../models/reaction_users_list_response.dart';
 import '../models/rtc_region_response.dart';
 import '../models/scheduled_message_response_schema.dart';
@@ -61,6 +66,34 @@ abstract class ChannelsApi {
   Future<void> deleteChannel({
     @Path('channel_id') required SnowflakeType channelId,
     @Query('silent') String? silent,
+  });
+
+  /// Request presigned attachment upload URLs.
+  ///
+  /// Returns presigned upload URLs for message attachments in the target channel. Small files (<=10MB) return a singlepart PUT URL; larger files return a multipart plan (upload_id + per-part URLs) that the client should complete via the matching /attachments/complete endpoint. Requires message send and attachment permissions in guild channels.
+  ///
+  /// [channelId] - The ID of the channel.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/channels/{channel_id}/attachments')
+  Future<PresignedAttachmentUploadResponse>
+  requestPresignedMessageAttachmentUploads({
+    @Path('channel_id') required SnowflakeType channelId,
+    @Body() required PresignedAttachmentUploadRequest body,
+  });
+
+  /// Finalize multipart attachment uploads.
+  ///
+  /// Finalizes one or more multipart attachment uploads. Called after all chunks have been PUT to their presigned URLs. The server lists the uploaded parts and issues S3 CompleteMultipartUpload. Returns the finalized upload keys, which can be referenced in a subsequent message create request.
+  ///
+  /// [channelId] - The ID of the channel.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/channels/{channel_id}/attachments/complete')
+  Future<CompleteMultipartAttachmentUploadResponse>
+  completeMultipartMessageAttachmentUploads({
+    @Path('channel_id') required SnowflakeType channelId,
+    @Body() required CompleteMultipartAttachmentUploadRequest body,
   });
 
   /// Get call eligibility status.
@@ -146,7 +179,7 @@ abstract class ChannelsApi {
 
   /// Clear channel read state.
   ///
-  /// Clears all read state and acknowledgement records for a channel, marking all messages as unread. Only available for regular user accounts. Returns 204 No Content on success.
+  /// Clears all read state and acknowledgement records for a channel, marking all messages as unread. Returns 204 No Content on success.
   ///
   /// [channelId] - The ID of the channel.
   @DELETE('/channels/{channel_id}/messages/ack')
@@ -467,6 +500,16 @@ abstract class ChannelsApi {
     @Path('channel_id') required SnowflakeType channelId,
   });
 
+  /// Fetch slowmode state.
+  ///
+  /// Returns the current slowmode rate-limit state for the calling user in this channel, including the configured interval and the time at which they are next allowed to send a message. Lets clients restore slowmode countdowns across devices without relying on local persistence.
+  ///
+  /// [channelId] - The ID of the channel.
+  @GET('/channels/{channel_id}/slowmode')
+  Future<ChannelSlowmodeStateResponse> getChannelSlowmodeState({
+    @Path('channel_id') required SnowflakeType channelId,
+  });
+
   /// Indicate typing activity.
   ///
   /// Notifies other users in the channel that you are actively typing. Typing indicators typically expire after a short period (usually 10 seconds). Returns 204 No Content. Commonly called repeatedly while the user is composing a message.
@@ -498,6 +541,16 @@ abstract class ChannelsApi {
   Future<void> uploadStreamPreview({
     @Path('stream_key') required String streamKey,
     @Body() required StreamPreviewUploadBodySchema body,
+  });
+
+  /// Delete stream preview image.
+  ///
+  /// Removes the thumbnail preview for a stream. Used when the owner opts into "hide preview" so viewers no longer see a stale thumbnail.
+  ///
+  /// [streamKey] - The stream key.
+  @DELETE('/streams/{stream_key}/preview')
+  Future<void> deleteStreamPreview({
+    @Path('stream_key') required String streamKey,
   });
 
   /// Update stream region.

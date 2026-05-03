@@ -4,6 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+import 'gift_code_metadata_response_duration_type_duration_type.dart';
 import 'user_partial_response.dart';
 
 part 'gift_code_metadata_response.g.dart';
@@ -12,7 +13,8 @@ part 'gift_code_metadata_response.g.dart';
 class GiftCodeMetadataResponse {
   const GiftCodeMetadataResponse({
     required this.code,
-    required this.durationMonths,
+    required this.durationType,
+    required this.durationQuantity,
     required this.createdAt,
     required this.createdBy,
     this.redeemedAt,
@@ -25,9 +27,13 @@ class GiftCodeMetadataResponse {
   /// The unique gift code string
   final String code;
 
-  /// Duration of the subscription gift in months
-  @JsonKey(name: 'duration_months')
-  final int durationMonths;
+  /// Duration unit for the gift entitlement
+  @JsonKey(name: 'duration_type')
+  final GiftCodeMetadataResponseDurationTypeDurationType durationType;
+
+  /// Duration quantity for the selected duration unit
+  @JsonKey(name: 'duration_quantity')
+  final int durationQuantity;
 
   /// Timestamp when the gift code was created
   @JsonKey(name: 'created_at')

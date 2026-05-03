@@ -7,12 +7,37 @@ part of 'lookup_message_response_messages_attachments.dart';
 // **************************************************************************
 
 LookupMessageResponseMessagesAttachments
-_$LookupMessageResponseMessagesAttachmentsFromJson(Map<String, dynamic> json) =>
-    LookupMessageResponseMessagesAttachments(
-      filename: json['filename'] as String,
-      url: json['url'] as String,
-    );
+_$LookupMessageResponseMessagesAttachmentsFromJson(
+  Map<String, dynamic> json,
+) => LookupMessageResponseMessagesAttachments(
+  id: json['id'] as String,
+  filename: json['filename'] as String,
+  url: json['url'] as String,
+  nsfw: json['nsfw'] as bool?,
+  contentType: json['content_type'] as String?,
+  width: (json['width'] as num?)?.toInt(),
+  height: (json['height'] as num?)?.toInt(),
+  ncmecStatus:
+      LookupMessageResponseMessagesAttachmentsNcmecStatusNcmecStatus.fromJson(
+        json['ncmec_status'] as String,
+      ),
+  ncmecReportId: json['ncmec_report_id'] as String?,
+  ncmecFailureReason: json['ncmec_failure_reason'] as String?,
+  size: (json['size'] as num?)?.toInt(),
+);
 
 Map<String, dynamic> _$LookupMessageResponseMessagesAttachmentsToJson(
   LookupMessageResponseMessagesAttachments instance,
-) => <String, dynamic>{'filename': instance.filename, 'url': instance.url};
+) => <String, dynamic>{
+  'id': instance.id,
+  'filename': instance.filename,
+  'url': instance.url,
+  'nsfw': instance.nsfw,
+  'content_type': instance.contentType,
+  'width': instance.width,
+  'height': instance.height,
+  'size': ?instance.size,
+  'ncmec_status': instance.ncmecStatus,
+  'ncmec_report_id': instance.ncmecReportId,
+  'ncmec_failure_reason': instance.ncmecFailureReason,
+};

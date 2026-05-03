@@ -8,8 +8,14 @@ part of 'trigger_user_archive_request.dart';
 
 TriggerUserArchiveRequest _$TriggerUserArchiveRequestFromJson(
   Map<String, dynamic> json,
-) => TriggerUserArchiveRequest(userId: json['user_id'] as String);
+) => TriggerUserArchiveRequest(
+  userId: json['user_id'] as String,
+  includeAttachments: json['include_attachments'] as bool?,
+);
 
 Map<String, dynamic> _$TriggerUserArchiveRequestToJson(
   TriggerUserArchiveRequest instance,
-) => <String, dynamic>{'user_id': instance.userId};
+) => <String, dynamic>{
+  'user_id': instance.userId,
+  'include_attachments': ?instance.includeAttachments,
+};

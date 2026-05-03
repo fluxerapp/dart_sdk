@@ -15,6 +15,9 @@ PurgeGuildAssetResultSchema _$PurgeGuildAssetResultSchemaFromJson(
   ),
   foundInDb: json['found_in_db'] as bool,
   guildId: json['guild_id'] as String?,
+  guildNsfwLevel: json['guild_nsfw_level'] == null
+      ? null
+      : NsfwLevel.fromJson((json['guild_nsfw_level'] as num).toInt()),
 );
 
 Map<String, dynamic> _$PurgeGuildAssetResultSchemaToJson(
@@ -24,4 +27,5 @@ Map<String, dynamic> _$PurgeGuildAssetResultSchemaToJson(
   'asset_type': instance.assetType,
   'found_in_db': instance.foundInDb,
   'guild_id': instance.guildId,
+  'guild_nsfw_level': instance.guildNsfwLevel,
 };

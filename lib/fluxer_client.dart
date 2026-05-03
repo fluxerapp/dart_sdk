@@ -14,20 +14,23 @@ import 'saved_media/saved_media_api.dart';
 import 'webhooks/webhooks_api.dart';
 import 'discovery/discovery_api.dart';
 import 'donations/donations_api.dart';
+import 'emojis/emojis_api.dart';
 import 'gateway/gateway_api.dart';
 import 'gifts/gifts_api.dart';
 import 'guilds/guilds_api.dart';
 import 'klipy/klipy_api.dart';
 import 'packs/packs_api.dart';
 import 'premium/premium_api.dart';
+import 'billing/billing_api.dart';
 import 'read_states/read_states_api.dart';
 import 'reports/reports_api.dart';
 import 'search/search_api.dart';
-import 'billing/billing_api.dart';
+import 'stickers/stickers_api.dart';
 import 'tenor/tenor_api.dart';
 import 'users/users_api.dart';
 import 'connections/connections_api.dart';
 import 'themes/themes_api.dart';
+import 'voice/voice_api.dart';
 
 /// Fluxer API `v1.0.0`.
 ///
@@ -50,20 +53,23 @@ class FluxerClient {
   WebhooksApi? _webhooks;
   DiscoveryApi? _discovery;
   DonationsApi? _donations;
+  EmojisApi? _emojis;
   GatewayApi? _gateway;
   GiftsApi? _gifts;
   GuildsApi? _guilds;
   KlipyApi? _klipy;
   PacksApi? _packs;
   PremiumApi? _premium;
+  BillingApi? _billing;
   ReadStatesApi? _readStates;
   ReportsApi? _reports;
   SearchApi? _search;
-  BillingApi? _billing;
+  StickersApi? _stickers;
   TenorApi? _tenor;
   UsersApi? _users;
   ConnectionsApi? _connections;
   ThemesApi? _themes;
+  VoiceApi? _voice;
 
   InstanceApi get instance =>
       _instance ??= InstanceApi(_dio, baseUrl: _baseUrl);
@@ -91,6 +97,8 @@ class FluxerClient {
   DonationsApi get donations =>
       _donations ??= DonationsApi(_dio, baseUrl: _baseUrl);
 
+  EmojisApi get emojis => _emojis ??= EmojisApi(_dio, baseUrl: _baseUrl);
+
   GatewayApi get gateway => _gateway ??= GatewayApi(_dio, baseUrl: _baseUrl);
 
   GiftsApi get gifts => _gifts ??= GiftsApi(_dio, baseUrl: _baseUrl);
@@ -103,6 +111,8 @@ class FluxerClient {
 
   PremiumApi get premium => _premium ??= PremiumApi(_dio, baseUrl: _baseUrl);
 
+  BillingApi get billing => _billing ??= BillingApi(_dio, baseUrl: _baseUrl);
+
   ReadStatesApi get readStates =>
       _readStates ??= ReadStatesApi(_dio, baseUrl: _baseUrl);
 
@@ -110,7 +120,8 @@ class FluxerClient {
 
   SearchApi get search => _search ??= SearchApi(_dio, baseUrl: _baseUrl);
 
-  BillingApi get billing => _billing ??= BillingApi(_dio, baseUrl: _baseUrl);
+  StickersApi get stickers =>
+      _stickers ??= StickersApi(_dio, baseUrl: _baseUrl);
 
   TenorApi get tenor => _tenor ??= TenorApi(_dio, baseUrl: _baseUrl);
 
@@ -120,4 +131,6 @@ class FluxerClient {
       _connections ??= ConnectionsApi(_dio, baseUrl: _baseUrl);
 
   ThemesApi get themes => _themes ??= ThemesApi(_dio, baseUrl: _baseUrl);
+
+  VoiceApi get voice => _voice ??= VoiceApi(_dio, baseUrl: _baseUrl);
 }

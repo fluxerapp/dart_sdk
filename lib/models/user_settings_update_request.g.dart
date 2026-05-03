@@ -9,7 +9,7 @@ part of 'user_settings_update_request.dart';
 UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
   Map<String, dynamic> json,
 ) => UserSettingsUpdateRequest(
-  flags: (json['flags'] as num?)?.toInt(),
+  inlineEmbedMedia: json['inline_embed_media'] as bool?,
   status: json['status'] == null
       ? null
       : UserStatusType.fromJson(json['status'] as String),
@@ -32,7 +32,7 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
   defaultGuildsRestricted: json['default_guilds_restricted'] as bool?,
   botDefaultGuildsRestricted: json['bot_default_guilds_restricted'] as bool?,
   inlineAttachmentMedia: json['inline_attachment_media'] as bool?,
-  inlineEmbedMedia: json['inline_embed_media'] as bool?,
+  flags: (json['flags'] as num?)?.toInt(),
   gifAutoPlay: json['gif_auto_play'] as bool?,
   renderEmbeds: json['render_embeds'] as bool?,
   renderReactions: json['render_reactions'] as bool?,
@@ -57,11 +57,7 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
         ),
       )
       .toList(),
-  customStatus: json['custom_status'] == null
-      ? null
-      : CustomStatusPayload.fromJson(
-          json['custom_status'] as Map<String, dynamic>,
-        ),
+  syncedPreferences: json['synced_preferences'] as String?,
   afkTimeout: (json['afk_timeout'] as num?)?.toInt(),
   timeFormat: json['time_format'] == null
       ? null
@@ -71,6 +67,38 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
       ?.map((e) => e as String)
       .toList(),
   defaultHideMutedChannels: json['default_hide_muted_channels'] as bool?,
+  sensitiveContentFriendDmFilter:
+      json['sensitive_content_friend_dm_filter'] == null
+      ? null
+      : SensitiveMediaFilterLevel.fromJson(
+          (json['sensitive_content_friend_dm_filter'] as num).toInt(),
+        ),
+  sensitiveContentNonFriendDmFilter:
+      json['sensitive_content_non_friend_dm_filter'] == null
+      ? null
+      : SensitiveMediaFilterLevel.fromJson(
+          (json['sensitive_content_non_friend_dm_filter'] as num).toInt(),
+        ),
+  sensitiveContentGuildFilter: json['sensitive_content_guild_filter'] == null
+      ? null
+      : SensitiveMediaGuildFilterLevel.fromJson(
+          (json['sensitive_content_guild_filter'] as num).toInt(),
+        ),
+  suppressUnprivilegedSelfMentions:
+      json['suppress_unprivileged_self_mentions'] as bool?,
+  suppressUnprivilegedSelfMentionsBypassUserIds:
+      (json['suppress_unprivileged_self_mentions_bypass_user_ids']
+              as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+  staffDmAccessUserIds: (json['staff_dm_access_user_ids'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList(),
+  customStatus: json['custom_status'] == null
+      ? null
+      : CustomStatusPayload.fromJson(
+          json['custom_status'] as Map<String, dynamic>,
+        ),
 );
 
 Map<String, dynamic> _$UserSettingsUpdateRequestToJson(
@@ -105,4 +133,15 @@ Map<String, dynamic> _$UserSettingsUpdateRequestToJson(
   'developer_mode': ?instance.developerMode,
   'trusted_domains': ?instance.trustedDomains,
   'default_hide_muted_channels': ?instance.defaultHideMutedChannels,
+  'sensitive_content_friend_dm_filter':
+      ?instance.sensitiveContentFriendDmFilter,
+  'sensitive_content_non_friend_dm_filter':
+      ?instance.sensitiveContentNonFriendDmFilter,
+  'sensitive_content_guild_filter': ?instance.sensitiveContentGuildFilter,
+  'suppress_unprivileged_self_mentions':
+      ?instance.suppressUnprivilegedSelfMentions,
+  'suppress_unprivileged_self_mentions_bypass_user_ids':
+      ?instance.suppressUnprivilegedSelfMentionsBypassUserIds,
+  'staff_dm_access_user_ids': ?instance.staffDmAccessUserIds,
+  'synced_preferences': ?instance.syncedPreferences,
 };

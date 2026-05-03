@@ -4,7 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'voice_region_admin_response.dart';
+import 'voice_region_with_servers_response.dart';
 
 part 'list_voice_regions_response.g.dart';
 
@@ -16,7 +16,7 @@ class ListVoiceRegionsResponse {
       _$ListVoiceRegionsResponseFromJson(json);
 
   /// List of voice regions
-  final List<VoiceRegionAdminResponse> regions;
+  final List<VoiceRegionWithServersResponse> regions;
 
   Map<String, Object?> toJson() => _$ListVoiceRegionsResponseToJson(this);
 }

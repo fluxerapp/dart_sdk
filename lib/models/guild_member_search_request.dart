@@ -6,6 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'guild_member_search_request_sort_by_sort_by.dart';
 import 'guild_member_search_request_sort_order_sort_order.dart';
+import 'join_source_type.dart';
 
 part 'guild_member_search_request.g.dart';
 
@@ -56,7 +57,7 @@ class GuildMemberSearchRequest {
 
   /// Filter by join source types
   @JsonKey(includeIfNull: false, name: 'join_source_type')
-  final List<int>? joinSourceType;
+  final List<JoinSourceType>? joinSourceType;
 
   /// Filter by invite codes used to join
   @JsonKey(includeIfNull: false, name: 'source_invite_code')

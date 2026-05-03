@@ -8,7 +8,7 @@ part 'call_update_body_schema.g.dart';
 
 @JsonSerializable()
 class CallUpdateBodySchema {
-  const CallUpdateBodySchema({this.region});
+  const CallUpdateBodySchema({this.region, this.latitude, this.longitude});
 
   factory CallUpdateBodySchema.fromJson(Map<String, Object?> json) =>
       _$CallUpdateBodySchemaFromJson(json);
@@ -16,6 +16,14 @@ class CallUpdateBodySchema {
   /// The preferred voice region for the call (1-64 characters). Omit or set to null for automatic region selection.
   @JsonKey(includeIfNull: false)
   final String? region;
+
+  /// Client latitude used for automatic region selection
+  @JsonKey(includeIfNull: false)
+  final String? latitude;
+
+  /// Client longitude used for automatic region selection
+  @JsonKey(includeIfNull: false)
+  final String? longitude;
 
   Map<String, Object?> toJson() => _$CallUpdateBodySchemaToJson(this);
 }

@@ -13,6 +13,7 @@ GlobalSearchMessagesRequest _$GlobalSearchMessagesRequestFromJson(
       ?.map((e) => e as String)
       .toList(),
   page: (json['page'] as num?)?.toInt(),
+  cursor: (json['cursor'] as List<dynamic>?)?.map((e) => e as String).toList(),
   maxId: json['max_id'] as String?,
   minId: json['min_id'] as String?,
   content: json['content'] as String?,
@@ -106,6 +107,7 @@ Map<String, dynamic> _$GlobalSearchMessagesRequestToJson(
 ) => <String, dynamic>{
   'hits_per_page': ?instance.hitsPerPage,
   'page': ?instance.page,
+  'cursor': ?instance.cursor,
   'max_id': ?instance.maxId,
   'min_id': ?instance.minId,
   'content': ?instance.content,

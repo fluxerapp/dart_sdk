@@ -10,6 +10,9 @@ GuildMemberUpdateRequest _$GuildMemberUpdateRequestFromJson(
   Map<String, dynamic> json,
 ) => GuildMemberUpdateRequest(
   nick: json['nick'] as String?,
+  communicationDisabledUntil: json['communication_disabled_until'] == null
+      ? null
+      : DateTime.parse(json['communication_disabled_until'] as String),
   roles: (json['roles'] as List<dynamic>?)?.map((e) => e as String).toList(),
   avatar: json['avatar'] as String?,
   banner: json['banner'] as String?,
@@ -19,9 +22,6 @@ GuildMemberUpdateRequest _$GuildMemberUpdateRequestFromJson(
   profileFlags: (json['profile_flags'] as num?)?.toInt(),
   mute: json['mute'] as bool?,
   deaf: json['deaf'] as bool?,
-  communicationDisabledUntil: json['communication_disabled_until'] == null
-      ? null
-      : DateTime.parse(json['communication_disabled_until'] as String),
   timeoutReason: json['timeout_reason'] as String?,
   channelId: json['channel_id'] as String?,
   connectionId: json['connection_id'] as String?,
@@ -30,7 +30,7 @@ GuildMemberUpdateRequest _$GuildMemberUpdateRequestFromJson(
 Map<String, dynamic> _$GuildMemberUpdateRequestToJson(
   GuildMemberUpdateRequest instance,
 ) => <String, dynamic>{
-  'nick': ?instance.nick,
+  'nick': instance.nick,
   'roles': ?instance.roles,
   'avatar': ?instance.avatar,
   'banner': ?instance.banner,
@@ -40,7 +40,7 @@ Map<String, dynamic> _$GuildMemberUpdateRequestToJson(
   'profile_flags': ?instance.profileFlags,
   'mute': ?instance.mute,
   'deaf': ?instance.deaf,
-  'communication_disabled_until': ?instance.communicationDisabledUntil
+  'communication_disabled_until': instance.communicationDisabledUntil
       ?.toIso8601String(),
   'timeout_reason': ?instance.timeoutReason,
   'channel_id': ?instance.channelId,

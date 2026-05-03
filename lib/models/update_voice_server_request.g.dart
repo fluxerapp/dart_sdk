@@ -14,6 +14,8 @@ UpdateVoiceServerRequest _$UpdateVoiceServerRequestFromJson(
   endpoint: json['endpoint'] as String?,
   apiKey: json['api_key'] as String?,
   apiSecret: json['api_secret'] as String?,
+  latitude: json['latitude'] as num?,
+  longitude: json['longitude'] as num?,
   isActive: json['is_active'] as bool?,
   vipOnly: json['vip_only'] as bool?,
   requiredGuildFeatures: (json['required_guild_features'] as List<dynamic>?)
@@ -35,6 +37,8 @@ Map<String, dynamic> _$UpdateVoiceServerRequestToJson(
   'endpoint': ?instance.endpoint,
   'api_key': ?instance.apiKey,
   'api_secret': ?instance.apiSecret,
+  'latitude': ?instance.latitude,
+  'longitude': ?instance.longitude,
   'is_active': ?instance.isActive,
   'vip_only': ?instance.vipOnly,
   'required_guild_features': ?instance.requiredGuildFeatures,

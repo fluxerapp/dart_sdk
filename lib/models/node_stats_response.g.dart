@@ -19,6 +19,12 @@ NodeStatsResponse _$NodeStatsResponseFromJson(Map<String, dynamic> json) =>
       processCount: (json['process_count'] as num).toInt(),
       processLimit: (json['process_limit'] as num).toInt(),
       uptimeSeconds: (json['uptime_seconds'] as num).toInt(),
+      nodeCount: (json['node_count'] as num).toInt(),
+      nodes: (json['nodes'] as List<dynamic>)
+          .map(
+            (e) => NodeStatsResponseNodes.fromJson(e as Map<String, dynamic>),
+          )
+          .toList(),
     );
 
 Map<String, dynamic> _$NodeStatsResponseToJson(NodeStatsResponse instance) =>
@@ -32,4 +38,6 @@ Map<String, dynamic> _$NodeStatsResponseToJson(NodeStatsResponse instance) =>
       'process_count': instance.processCount,
       'process_limit': instance.processLimit,
       'uptime_seconds': instance.uptimeSeconds,
+      'node_count': instance.nodeCount,
+      'nodes': instance.nodes,
     };
