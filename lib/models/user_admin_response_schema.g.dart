@@ -31,9 +31,10 @@ UserAdminResponseSchema _$UserAdminResponseSchemaFromJson(
   premiumType: (json['premium_type'] as num?)?.toInt(),
   premiumSince: json['premium_since'] as String?,
   premiumUntil: json['premium_until'] as String?,
+  premiumGraceEndsAt: json['premium_grace_ends_at'] as String?,
   premiumLifetimeSequence: (json['premium_lifetime_sequence'] as num?)?.toInt(),
-  suspiciousActivityFlags: (json['suspicious_activity_flags'] as num).toInt(),
   lastActiveLocation: json['last_active_location'] as String?,
+  tempBannedUntil: json['temp_banned_until'] as String?,
   pendingDeletionAt: json['pending_deletion_at'] as String?,
   pendingBulkMessageDeletionAt:
       json['pending_bulk_message_deletion_at'] as String?,
@@ -48,7 +49,7 @@ UserAdminResponseSchema _$UserAdminResponseSchemaFromJson(
   lastActiveAt: json['last_active_at'] as String?,
   lastActiveIp: json['last_active_ip'] as String?,
   lastActiveIpReverse: json['last_active_ip_reverse'] as String?,
-  tempBannedUntil: json['temp_banned_until'] as String?,
+  suspiciousActivityFlags: (json['suspicious_activity_flags'] as num).toInt(),
 );
 
 Map<String, dynamic> _$UserAdminResponseSchemaToJson(
@@ -76,6 +77,7 @@ Map<String, dynamic> _$UserAdminResponseSchemaToJson(
   'premium_type': instance.premiumType,
   'premium_since': instance.premiumSince,
   'premium_until': instance.premiumUntil,
+  'premium_grace_ends_at': instance.premiumGraceEndsAt,
   'premium_lifetime_sequence': instance.premiumLifetimeSequence,
   'suspicious_activity_flags': instance.suspiciousActivityFlags,
   'temp_banned_until': instance.tempBannedUntil,

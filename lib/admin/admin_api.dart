@@ -680,6 +680,16 @@ abstract class AdminApi {
     @Body() required AdminBillingCancelImmediatelyRequest body,
   });
 
+  /// End a user's premium grace period.
+  ///
+  /// End the post-cancel premium grace period for a user immediately, downgrading them and clearing premium_since. Idempotent: safe to call when not in grace. Use when investigating fraud or honoring a user request to opt out of the recovery window.
+  ///
+  /// [userId] - The userId.
+  @POST('/admin/billing/users/{userId}/end-premium-grace-period')
+  Future<void> adminBillingEndPremiumGracePeriod({
+    @Path('userId') required String userId,
+  });
+
   /// List invoices for a user.
   ///
   /// Retrieve recent Stripe invoices for a user.

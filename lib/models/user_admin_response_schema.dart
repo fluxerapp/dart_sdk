@@ -36,9 +36,10 @@ class UserAdminResponseSchema {
     required this.premiumType,
     required this.premiumSince,
     required this.premiumUntil,
+    required this.premiumGraceEndsAt,
     required this.premiumLifetimeSequence,
-    required this.suspiciousActivityFlags,
     required this.lastActiveLocation,
+    required this.tempBannedUntil,
     required this.pendingDeletionAt,
     required this.pendingBulkMessageDeletionAt,
     required this.deletionReasonCode,
@@ -50,7 +51,7 @@ class UserAdminResponseSchema {
     required this.lastActiveAt,
     required this.lastActiveIp,
     required this.lastActiveIpReverse,
-    required this.tempBannedUntil,
+    required this.suspiciousActivityFlags,
   });
 
   factory UserAdminResponseSchema.fromJson(Map<String, Object?> json) =>
@@ -94,6 +95,8 @@ class UserAdminResponseSchema {
   final String? premiumSince;
   @JsonKey(includeIfNull: true, name: 'premium_until')
   final String? premiumUntil;
+  @JsonKey(includeIfNull: true, name: 'premium_grace_ends_at')
+  final String? premiumGraceEndsAt;
   @JsonKey(includeIfNull: true, name: 'premium_lifetime_sequence')
   final Int32Type? premiumLifetimeSequence;
   @JsonKey(name: 'suspicious_activity_flags')

@@ -9,9 +9,7 @@ part of 'user_private_response.dart';
 UserPrivateResponse _$UserPrivateResponseFromJson(
   Map<String, dynamic> json,
 ) => UserPrivateResponse(
-  premiumType: json['premium_type'] == null
-      ? null
-      : UserPremiumTypes.fromJson((json['premium_type'] as num).toInt()),
+  bio: json['bio'] as String?,
   username: json['username'] as String,
   discriminator: json['discriminator'] as String,
   globalName: json['global_name'] as String?,
@@ -19,38 +17,41 @@ UserPrivateResponse _$UserPrivateResponseFromJson(
   avatarColor: (json['avatar_color'] as num?)?.toInt(),
   privacyAgreedAt: json['privacy_agreed_at'] as String?,
   termsAgreedAt: json['terms_agreed_at'] as String?,
-  pronouns: json['pronouns'] as String?,
-  flags: (json['flags'] as num).toInt(),
-  isStaff: json['is_staff'] as bool,
-  acls: (json['acls'] as List<dynamic>).map((e) => e as String).toList(),
-  traits: (json['traits'] as List<dynamic>).map((e) => e as String).toList(),
-  email: json['email'] as String?,
   pendingBulkMessageDeletion: json['pending_bulk_message_deletion'] == null
       ? null
       : UserPrivateResponsePendingBulkMessageDeletion.fromJson(
           json['pending_bulk_message_deletion'] as Map<String, dynamic>,
         ),
+  flags: (json['flags'] as num).toInt(),
+  isStaff: json['is_staff'] as bool,
+  acls: (json['acls'] as List<dynamic>).map((e) => e as String).toList(),
+  traits: (json['traits'] as List<dynamic>).map((e) => e as String).toList(),
+  email: json['email'] as String?,
+  usedMobileClient: json['used_mobile_client'] as bool,
   phone: json['phone'] as String?,
   hasVerifiedPhone: json['has_verified_phone'] as bool,
-  bio: json['bio'] as String?,
   id: json['id'] as String,
+  pronouns: json['pronouns'] as String?,
   accentColor: (json['accent_color'] as num?)?.toInt(),
   banner: json['banner'] as String?,
-  usedMobileClient: json['used_mobile_client'] as bool,
-  bannerColor: (json['banner_color'] as num?)?.toInt(),
-  mfaEnabled: json['mfa_enabled'] as bool,
   unreadGiftInventoryCount: (json['unread_gift_inventory_count'] as num)
       .toInt(),
+  bannerColor: (json['banner_color'] as num?)?.toInt(),
+  mfaEnabled: json['mfa_enabled'] as bool,
+  hasUnreadGiftInventory: json['has_unread_gift_inventory'] as bool,
   verified: json['verified'] as bool,
-  premiumBadgeMasked: json['premium_badge_masked'] as bool,
+  premiumType: json['premium_type'] == null
+      ? null
+      : UserPremiumTypes.fromJson((json['premium_type'] as num).toInt()),
   premiumSince: json['premium_since'] as String?,
   premiumUntil: json['premium_until'] as String?,
   premiumWillCancel: json['premium_will_cancel'] as bool,
   premiumBillingCycle: json['premium_billing_cycle'] as String?,
   premiumLifetimeSequence: (json['premium_lifetime_sequence'] as num?)?.toInt(),
+  premiumGraceEndsAt: json['premium_grace_ends_at'] as String?,
   premiumDiscriminator: json['premium_discriminator'] as bool,
   premiumBadgeHidden: json['premium_badge_hidden'] as bool,
-  hasUnreadGiftInventory: json['has_unread_gift_inventory'] as bool,
+  hasEverPurchased: json['has_ever_purchased'] as bool,
   premiumBadgeTimestampHidden: json['premium_badge_timestamp_hidden'] as bool,
   premiumBadgeSequenceHidden: json['premium_badge_sequence_hidden'] as bool,
   premiumPurchaseDisabled: json['premium_purchase_disabled'] as bool,
@@ -62,8 +63,7 @@ UserPrivateResponse _$UserPrivateResponseFromJson(
       .map((e) => e as String)
       .toList(),
   nsfwAllowed: json['nsfw_allowed'] as bool,
-  hasEverPurchased: json['has_ever_purchased'] as bool,
-  system: json['system'] as bool?,
+  premiumBadgeMasked: json['premium_badge_masked'] as bool,
   premiumOutOfBandTrialEndsAt: json['premium_out_of_band_trial_ends_at'] == null
       ? null
       : DateTime.parse(json['premium_out_of_band_trial_ends_at'] as String),
@@ -74,6 +74,7 @@ UserPrivateResponse _$UserPrivateResponseFromJson(
       ?.map((e) => e as String)
       .toList(),
   emailBounced: json['email_bounced'] as bool?,
+  system: json['system'] as bool?,
   ageVerifiedAdult: json['age_verified_adult'] as bool?,
   bot: json['bot'] as bool?,
   avatarFormats: (json['avatar_formats'] as List<dynamic>?)
@@ -118,6 +119,7 @@ Map<String, dynamic> _$UserPrivateResponseToJson(
   'premium_will_cancel': instance.premiumWillCancel,
   'premium_billing_cycle': instance.premiumBillingCycle,
   'premium_lifetime_sequence': instance.premiumLifetimeSequence,
+  'premium_grace_ends_at': instance.premiumGraceEndsAt,
   'premium_discriminator': instance.premiumDiscriminator,
   'premium_badge_hidden': instance.premiumBadgeHidden,
   'premium_badge_masked': instance.premiumBadgeMasked,

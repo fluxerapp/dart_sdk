@@ -15,7 +15,7 @@ part 'user_private_response.g.dart';
 @JsonSerializable()
 class UserPrivateResponse {
   const UserPrivateResponse({
-    required this.premiumType,
+    required this.bio,
     required this.username,
     required this.discriminator,
     required this.globalName,
@@ -23,33 +23,34 @@ class UserPrivateResponse {
     required this.avatarColor,
     required this.privacyAgreedAt,
     required this.termsAgreedAt,
-    required this.pronouns,
+    required this.pendingBulkMessageDeletion,
     required this.flags,
     required this.isStaff,
     required this.acls,
     required this.traits,
     required this.email,
-    required this.pendingBulkMessageDeletion,
+    required this.usedMobileClient,
     required this.phone,
     required this.hasVerifiedPhone,
-    required this.bio,
     required this.id,
+    required this.pronouns,
     required this.accentColor,
     required this.banner,
-    required this.usedMobileClient,
+    required this.unreadGiftInventoryCount,
     required this.bannerColor,
     required this.mfaEnabled,
-    required this.unreadGiftInventoryCount,
+    required this.hasUnreadGiftInventory,
     required this.verified,
-    required this.premiumBadgeMasked,
+    required this.premiumType,
     required this.premiumSince,
     required this.premiumUntil,
     required this.premiumWillCancel,
     required this.premiumBillingCycle,
     required this.premiumLifetimeSequence,
+    required this.premiumGraceEndsAt,
     required this.premiumDiscriminator,
     required this.premiumBadgeHidden,
-    required this.hasUnreadGiftInventory,
+    required this.hasEverPurchased,
     required this.premiumBadgeTimestampHidden,
     required this.premiumBadgeSequenceHidden,
     required this.premiumPurchaseDisabled,
@@ -58,12 +59,12 @@ class UserPrivateResponse {
     required this.passwordLastChangedAt,
     required this.requiredActions,
     required this.nsfwAllowed,
-    required this.hasEverPurchased,
-    this.system,
+    required this.premiumBadgeMasked,
     this.premiumOutOfBandTrialEndsAt,
     this.authenticatorTypes,
     this.bannerFormats,
     this.emailBounced,
+    this.system,
     this.ageVerifiedAdult,
     this.bot,
     this.avatarFormats,
@@ -191,6 +192,10 @@ class UserPrivateResponse {
   /// The sequence number for lifetime premium subscribers
   @JsonKey(includeIfNull: true, name: 'premium_lifetime_sequence')
   final Int32Type? premiumLifetimeSequence;
+
+  /// ISO8601 timestamp at which the post-cancel grace period ends. Set when the subscription is fully canceled in Stripe; perks remain active and the original premium_since is restored on resubscribe until this timestamp passes. Null when not in grace.
+  @JsonKey(includeIfNull: true, name: 'premium_grace_ends_at')
+  final String? premiumGraceEndsAt;
 
   /// Whether the user selected a premium-only discriminator that will be rerolled when non-lifetime premium access ends
   @JsonKey(name: 'premium_discriminator')

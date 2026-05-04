@@ -10,6 +10,7 @@ import '../models/change_subscription_request.dart';
 import '../models/current_subscription_price_response.dart';
 import '../models/price_ids_response.dart';
 import '../models/pricing_mode_enum.dart';
+import '../models/success_response.dart';
 import '../models/url_response.dart';
 
 part 'premium_api.g.dart';
@@ -45,6 +46,12 @@ abstract class PremiumApi {
   /// Creates a session URL for the authenticated user to manage their Stripe subscription via the customer portal.
   @POST('/premium/customer-portal')
   Future<UrlResponse> createCustomerPortal();
+
+  /// End premium grace period now.
+  ///
+  /// Ends the post-cancel grace period immediately, downgrading the user from premium and clearing premium_since. Idempotent and safe to call when not in grace; returns success in either case. Use this when the user explicitly opts out of the 3-day recovery window.
+  @POST('/premium/grace/end')
+  Future<SuccessResponse> endPremiumGracePeriod();
 
   /// Rejoin operator guild.
   ///
