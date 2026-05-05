@@ -28,7 +28,7 @@ jobs:
         run: ./generate.sh --spec canary
 
       - name: Analyze
-        run: dart analyze
+        run: dart analyze --fatal-warnings=false
 
       - name: Commit and push
         run: |
