@@ -18,6 +18,7 @@ jobs:
         with:
           ref: canary
           fetch-depth: 0
+          submodules: recursive
 
       - uses: dart-lang/setup-dart@65eb853c7ba17dde3be364c3d2858773e7144260
         with:
