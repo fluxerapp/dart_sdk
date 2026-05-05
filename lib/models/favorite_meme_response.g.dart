@@ -29,6 +29,7 @@ FavoriteMemeResponse _$FavoriteMemeResponseFromJson(
   media: (json['media'] as Map<String, dynamic>?)?.map(
     (k, e) => MapEntry(k, GifMediaFormat.fromJson(e as Map<String, dynamic>)),
   ),
+  placeholder: json['placeholder'] as String?,
 );
 
 Map<String, dynamic> _$FavoriteMemeResponseToJson(
@@ -52,4 +53,5 @@ Map<String, dynamic> _$FavoriteMemeResponseToJson(
   'gif_slug': ?instance.gifSlug,
   'gif_provider': ?instance.gifProvider,
   'media': ?instance.media,
+  'placeholder': ?instance.placeholder,
 };

@@ -5,6 +5,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'int32_type.dart';
+import 'mention_reply_preferences.dart';
 import 'public_user_flags.dart';
 
 part 'user_partial_response.g.dart';
@@ -22,6 +23,7 @@ class UserPartialResponse {
     this.avatarFormats,
     this.bot,
     this.system,
+    this.mentionFlags,
   });
 
   factory UserPartialResponse.fromJson(Map<String, Object?> json) =>
@@ -60,6 +62,10 @@ class UserPartialResponse {
   @JsonKey(includeIfNull: false)
   final bool? system;
   final PublicUserFlags flags;
+
+  /// The user's account-wide reply mention preference
+  @JsonKey(includeIfNull: false, name: 'mention_flags')
+  final MentionReplyPreferences? mentionFlags;
 
   Map<String, Object?> toJson() => _$UserPartialResponseToJson(this);
 }

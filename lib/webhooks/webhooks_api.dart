@@ -2,15 +2,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, unused_import, invalid_annotation_target, unnecessary_import
 
+import 'dart:convert';
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
 import 'package:retrofit/error_logger.dart';
 
+import '../models/allowed_mentions_request.dart';
 import '../models/git_hub_webhook.dart';
+import '../models/message_content_request.dart';
+import '../models/message_flags.dart';
+import '../models/message_nonce_request.dart';
+import '../models/message_reference_request.dart';
 import '../models/message_response_schema.dart';
-import '../models/sentry_webhook.dart';
+import '../models/rich_embed_request.dart';
 import '../models/slack_webhook_request.dart';
 import '../models/snowflake_type.dart';
+import '../models/webhook_attachment_request.dart';
 import '../models/webhook_create_request.dart';
 import '../models/webhook_message_edit_request.dart';
 import '../models/webhook_response.dart';
@@ -139,11 +146,58 @@ abstract class WebhooksApi {
   /// [webhookId] - The ID of the webhook.
   ///
   /// [token] - The token.
+  ///
+  /// [content] - Name not received - field will be skipped.
+  /// Name not received - field will be skipped.
+  ///
+  /// [embeds] - Array of embed objects to include in the message.
+  /// Name not received - field will be skipped.
+  ///
+  /// [attachments] - Array of attachment objects.
+  /// Name not received - field will be skipped.
+  ///
+  /// [messageReference] - Name not received - field will be skipped.
+  /// Name not received - field will be skipped.
+  ///
+  /// [allowedMentions] - Name not received - field will be skipped.
+  /// Name not received - field will be skipped.
+  ///
+  /// [flags] - Name not received - field will be skipped.
+  ///
+  /// [nonce] - Name not received - field will be skipped.
+  ///
+  /// [favoriteMemeId] - Name not received - field will be skipped.
+  /// Name not received - field will be skipped.
+  ///
+  /// [stickerIds] - Name not received - field will be skipped.
+  /// Name not received - field will be skipped.
+  ///
+  /// [tts] - Whether this is a text-to-speech message.
+  /// Name not received - field will be skipped.
+  ///
+  /// [username] - Name not received - field will be skipped.
+  /// Name not received - field will be skipped.
+  ///
+  /// [avatarUrl] - Name not received - field will be skipped.
+  /// Name not received - field will be skipped.
+  @MultiPart()
   @POST('/webhooks/{webhook_id}/{token}')
   Future<MessageResponseSchema> executeWebhook({
     @Path('webhook_id') required SnowflakeType webhookId,
     @Path('token') required String token,
     @Query('wait') String? wait,
+    @Part(name: 'content') MessageContentRequest? content,
+    @Part(name: 'embeds') List<RichEmbedRequest>? embeds,
+    @Part(name: 'attachments') List<WebhookAttachmentRequest>? attachments,
+    @Part(name: 'message_reference') MessageReferenceRequest? messageReference,
+    @Part(name: 'allowed_mentions') AllowedMentionsRequest? allowedMentions,
+    @Part(name: 'flags') MessageFlags? flags,
+    @Part(name: 'nonce') MessageNonceRequest? nonce,
+    @Part(name: 'favorite_meme_id') SnowflakeType? favoriteMemeId,
+    @Part(name: 'sticker_ids') List<SnowflakeType>? stickerIds,
+    @Part(name: 'tts') bool? tts,
+    @Part(name: 'username') String? username,
+    @Part(name: 'avatar_url') String? avatarUrl,
   });
 
   /// Execute GitHub webhook.
@@ -195,22 +249,6 @@ abstract class WebhooksApi {
     @Path('token') required String token,
     @Path('message_id') required SnowflakeType messageId,
     @Body() required WebhookMessageEditRequest body,
-  });
-
-  /// Execute Sentry webhook.
-  ///
-  /// Receives and processes Sentry error tracking webhook events, formatting them as messages in the configured channel. Reads event type from X-Sentry-Event header.
-  ///
-  /// [webhookId] - The ID of the webhook.
-  ///
-  /// [token] - The token.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @POST('/webhooks/{webhook_id}/{token}/sentry')
-  Future<void> executeSentryWebhook({
-    @Path('webhook_id') required SnowflakeType webhookId,
-    @Path('token') required String token,
-    @Body() required SentryWebhook body,
   });
 
   /// Execute Slack webhook.

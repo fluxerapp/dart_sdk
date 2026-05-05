@@ -21,6 +21,11 @@ GuildMemberResponse _$GuildMemberResponseFromJson(Map<String, dynamic> json) =>
           ? null
           : DateTime.parse(json['communication_disabled_until'] as String),
       profileFlags: (json['profile_flags'] as num?)?.toInt(),
+      mentionFlags: json['mention_flags'] == null
+          ? null
+          : MentionReplyPreferences.fromJson(
+              (json['mention_flags'] as num).toInt(),
+            ),
     );
 
 Map<String, dynamic> _$GuildMemberResponseToJson(
@@ -38,4 +43,5 @@ Map<String, dynamic> _$GuildMemberResponseToJson(
   'communication_disabled_until': ?instance.communicationDisabledUntil
       ?.toIso8601String(),
   'profile_flags': ?instance.profileFlags,
+  'mention_flags': ?instance.mentionFlags,
 };

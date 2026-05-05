@@ -282,36 +282,6 @@ class _UsersApi implements UsersApi {
   }
 
   @override
-  Future<UserPrivateResponse> setCurrentUserForcePhoneInbound({
-    required DeveloperForceInboundPhoneVerificationRequest body,
-  }) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
-    final _options = _setStreamType<UserPrivateResponse>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/users/@me/developer/force-phone-inbound',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    final _result = await _dio.fetch<Map<String, Object?>>(_options);
-    late UserPrivateResponse _value;
-    try {
-      _value = UserPrivateResponse.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, response: _result);
-      rethrow;
-    }
-    return _value;
-  }
-
-  @override
   Future<void> disableCurrentUserAccount({
     required SudoVerificationSchema body,
   }) async {
@@ -977,46 +947,6 @@ class _UsersApi implements UsersApi {
   }
 
   @override
-  Future<void> disableSmsMfa({required SudoVerificationSchema body}) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
-    final _options = _setStreamType<void>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/users/@me/mfa/sms/disable',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    await _dio.fetch<void>(_options);
-  }
-
-  @override
-  Future<void> enableSmsMfa({required SudoVerificationSchema body}) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
-    final _options = _setStreamType<void>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/users/@me/mfa/sms/enable',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    await _dio.fetch<void>(_options);
-  }
-
-  @override
   Future<void> disableTotpMfa({required DisableTotpRequest body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -1378,27 +1308,7 @@ class _UsersApi implements UsersApi {
   }
 
   @override
-  Future<void> addPhoneToAccount({required PhoneAddRequest body}) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
-    final _options = _setStreamType<void>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/users/@me/phone',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    await _dio.fetch<void>(_options);
-  }
-
-  @override
-  Future<void> removePhoneFromAccount({
+  Future<void> clearVerifiedPhone({
     required SudoVerificationSchema body,
   }) async {
     final _extra = <String, dynamic>{};
@@ -1420,85 +1330,57 @@ class _UsersApi implements UsersApi {
   }
 
   @override
-  Future<InboundSmsChallengeStartResponse> startInboundPhoneChallenge() async {
+  Future<WhatsAppChallengeIssueResponse> issueWhatsappPhoneChallenge({
+    required EmptyBodyRequest body,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<WhatsAppChallengeIssueResponse>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/users/@me/phone/whatsapp-challenge',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late WhatsAppChallengeIssueResponse _value;
+    try {
+      _value = WhatsAppChallengeIssueResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<WhatsAppChallengeStatusResponse> getWhatsappPhoneChallengeStatus({
+    required String token,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'token': token};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<InboundSmsChallengeStartResponse>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
+    final _options = _setStreamType<WhatsAppChallengeStatusResponse>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/users/@me/phone/inbound-challenge',
+            '/users/@me/phone/whatsapp-challenge/status',
             queryParameters: queryParameters,
             data: _data,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, Object?>>(_options);
-    late InboundSmsChallengeStartResponse _value;
+    late WhatsAppChallengeStatusResponse _value;
     try {
-      _value = InboundSmsChallengeStartResponse.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, response: _result);
-      rethrow;
-    }
-    return _value;
-  }
-
-  @override
-  Future<PhoneSendVerificationResponse> sendPhoneVerificationCode({
-    required PhoneSendVerificationRequest body,
-  }) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
-    final _options = _setStreamType<PhoneSendVerificationResponse>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/users/@me/phone/send-verification',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    final _result = await _dio.fetch<Map<String, Object?>>(_options);
-    late PhoneSendVerificationResponse _value;
-    try {
-      _value = PhoneSendVerificationResponse.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, response: _result);
-      rethrow;
-    }
-    return _value;
-  }
-
-  @override
-  Future<PhoneVerifyResponse> verifyPhoneCode({
-    required PhoneVerifyRequest body,
-  }) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
-    final _options = _setStreamType<PhoneVerifyResponse>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/users/@me/phone/verify',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    final _result = await _dio.fetch<Map<String, Object?>>(_options);
-    late PhoneVerifyResponse _value;
-    try {
-      _value = PhoneVerifyResponse.fromJson(_result.data!);
+      _value = WhatsAppChallengeStatusResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
@@ -2040,13 +1922,65 @@ class _UsersApi implements UsersApi {
   @override
   Future<ScheduledMessageResponseSchema> updateScheduledMessage({
     required String scheduledMessageId,
+    required String scheduledLocalAt,
+    required String timezone,
+    String? content,
+    List<RichEmbedRequest>? embeds,
+    List<Object3>? attachments,
+    MessageReferenceRequest? messageReference,
+    AllowedMentionsRequest? allowedMentions,
+    int? flags,
+    String? nonce,
+    String? favoriteMemeId,
+    List<String>? stickerIds,
+    bool? tts,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final _data = FormData();
+    _data.fields.add(MapEntry('scheduled_local_at', scheduledLocalAt));
+    _data.fields.add(MapEntry('timezone', timezone));
+    if (content != null) {
+      _data.fields.add(MapEntry('content', content));
+    }
+    _data.fields.add(MapEntry('embeds', jsonEncode(embeds)));
+    _data.fields.add(MapEntry('attachments', jsonEncode(attachments)));
+    _data.fields.add(
+      MapEntry(
+        'message_reference',
+        jsonEncode(messageReference ?? <String, dynamic>{}),
+      ),
+    );
+    _data.fields.add(
+      MapEntry(
+        'allowed_mentions',
+        jsonEncode(allowedMentions ?? <String, dynamic>{}),
+      ),
+    );
+    if (flags != null) {
+      _data.fields.add(MapEntry('flags', flags.toString()));
+    }
+    if (nonce != null) {
+      _data.fields.add(MapEntry('nonce', nonce));
+    }
+    if (favoriteMemeId != null) {
+      _data.fields.add(MapEntry('favorite_meme_id', favoriteMemeId));
+    }
+    stickerIds?.forEach((i) {
+      _data.fields.add(MapEntry('sticker_ids', i));
+    });
+    if (tts != null) {
+      _data.fields.add(MapEntry('tts', tts.toString()));
+    }
     final _options = _setStreamType<ScheduledMessageResponseSchema>(
-      Options(method: 'PATCH', headers: _headers, extra: _extra)
+      Options(
+            method: 'PATCH',
+            headers: _headers,
+            extra: _extra,
+            contentType: 'multipart/form-data',
+          )
           .compose(
             _dio.options,
             '/users/@me/scheduled-messages/${scheduledMessageId}',
@@ -2121,52 +2055,6 @@ class _UsersApi implements UsersApi {
       rethrow;
     }
     return _value;
-  }
-
-  @override
-  Future<SudoMfaMethodsResponse> listSudoMfaMethods() async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<SudoMfaMethodsResponse>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/users/@me/sudo/mfa-methods',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    final _result = await _dio.fetch<Map<String, Object?>>(_options);
-    late SudoMfaMethodsResponse _value;
-    try {
-      _value = SudoMfaMethodsResponse.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, response: _result);
-      rethrow;
-    }
-    return _value;
-  }
-
-  @override
-  Future<void> sendSudoSmsCode() async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<void>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/users/@me/sudo/mfa/sms/send',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    await _dio.fetch<void>(_options);
   }
 
   @override

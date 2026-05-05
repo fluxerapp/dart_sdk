@@ -5,6 +5,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'allowed_mentions_request.dart';
+import 'message_content_request.dart';
 import 'message_flags.dart';
 import 'rich_embed_request.dart';
 
@@ -24,7 +25,7 @@ class WebhookMessageEditRequest {
 
   /// The new message content (up to 2000 characters)
   @JsonKey(includeIfNull: false)
-  final String? content;
+  final MessageContentRequest? content;
 
   /// Array of embed objects to include in the message
   @JsonKey(includeIfNull: false)

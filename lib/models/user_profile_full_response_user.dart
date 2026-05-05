@@ -6,6 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'int32_type.dart';
 import 'public_user_flags.dart';
+import 'mention_reply_preferences.dart';
 
 part 'user_profile_full_response_user.g.dart';
 
@@ -22,6 +23,7 @@ class UserProfileFullResponseUser {
     this.avatarFormats,
     this.bot,
     this.system,
+    this.mentionFlags,
   });
 
   factory UserProfileFullResponseUser.fromJson(Map<String, Object?> json) =>
@@ -60,6 +62,10 @@ class UserProfileFullResponseUser {
   @JsonKey(includeIfNull: false)
   final bool? system;
   final PublicUserFlags flags;
+
+  /// The user's account-wide reply mention preference
+  @JsonKey(includeIfNull: false, name: 'mention_flags')
+  final MentionReplyPreferences? mentionFlags;
 
   Map<String, Object?> toJson() => _$UserProfileFullResponseUserToJson(this);
 }

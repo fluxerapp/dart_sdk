@@ -9,7 +9,6 @@ part 'well_known_fluxer_response_features.g.dart';
 @JsonSerializable()
 class WellKnownFluxerResponseFeatures {
   const WellKnownFluxerResponseFeatures({
-    required this.smsMfaEnabled,
     required this.voiceEnabled,
     required this.stripeEnabled,
     required this.selfHosted,
@@ -18,10 +17,6 @@ class WellKnownFluxerResponseFeatures {
 
   factory WellKnownFluxerResponseFeatures.fromJson(Map<String, Object?> json) =>
       _$WellKnownFluxerResponseFeaturesFromJson(json);
-
-  /// Whether SMS-based MFA is available
-  @JsonKey(name: 'sms_mfa_enabled')
-  final bool smsMfaEnabled;
 
   /// Whether voice/video calling is enabled
   @JsonKey(name: 'voice_enabled')

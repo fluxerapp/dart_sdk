@@ -50,9 +50,6 @@ class AuthRegisterResponseAuthMfaRequiredResponse {
   final String ticket;
   @JsonKey(name: 'allowed_methods')
   final List<String> allowedMethods;
-  @JsonKey(name: 'sms_phone_hint')
-  final String? smsPhoneHint;
-  final bool sms;
   final bool totp;
   final bool webauthn;
 
@@ -60,8 +57,6 @@ class AuthRegisterResponseAuthMfaRequiredResponse {
     required this.mfa,
     required this.ticket,
     required this.allowedMethods,
-    required this.smsPhoneHint,
-    required this.sms,
     required this.totp,
     required this.webauthn,
   });

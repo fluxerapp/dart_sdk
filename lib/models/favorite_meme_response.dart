@@ -29,6 +29,7 @@ class FavoriteMemeResponse {
     this.gifSlug,
     this.gifProvider,
     this.media,
+    this.placeholder,
   });
 
   factory FavoriteMemeResponse.fromJson(Map<String, Object?> json) =>
@@ -99,6 +100,10 @@ class FavoriteMemeResponse {
   /// Provider-issued format-name → media descriptor map for gif-sourced memes (mirrors GifResponse.media). Null on memes uploaded as plain attachments.
   @JsonKey(includeIfNull: false)
   final Map<String, GifMediaFormat>? media;
+
+  /// Compact thumbhash placeholder produced by the media proxy at favorite-time. Clients render it as a low-res preview while the full media loads. Null when the proxy did not emit one.
+  @JsonKey(includeIfNull: false)
+  final String? placeholder;
 
   Map<String, Object?> toJson() => _$FavoriteMemeResponseToJson(this);
 }

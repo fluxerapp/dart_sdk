@@ -9,8 +9,6 @@ import 'package:json_annotation/json_annotation.dart';
 enum EmailChangeApplyRequestMfaMethodMfaMethod {
   @JsonValue('totp')
   totp('totp'),
-  @JsonValue('sms')
-  sms('sms'),
   @JsonValue('webauthn')
   webAuthn('webauthn'),
 

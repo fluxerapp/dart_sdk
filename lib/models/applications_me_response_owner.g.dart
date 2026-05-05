@@ -21,6 +21,11 @@ ApplicationsMeResponseOwner _$ApplicationsMeResponseOwnerFromJson(
       .toList(),
   bot: json['bot'] as bool?,
   system: json['system'] as bool?,
+  mentionFlags: json['mention_flags'] == null
+      ? null
+      : MentionReplyPreferences.fromJson(
+          (json['mention_flags'] as num).toInt(),
+        ),
 );
 
 Map<String, dynamic> _$ApplicationsMeResponseOwnerToJson(
@@ -36,4 +41,5 @@ Map<String, dynamic> _$ApplicationsMeResponseOwnerToJson(
   'bot': ?instance.bot,
   'system': ?instance.system,
   'flags': instance.flags,
+  'mention_flags': ?instance.mentionFlags,
 };

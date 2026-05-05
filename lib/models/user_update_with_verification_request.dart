@@ -6,6 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'base64_image_type.dart';
 import 'email_type.dart';
+import 'mention_reply_preferences.dart';
 import 'password_type.dart';
 import 'user_update_with_verification_request_mfa_method_mfa_method.dart';
 import 'username_type.dart';
@@ -33,7 +34,7 @@ class UserUpdateWithVerificationRequest {
     this.premiumEnabledOverride,
     this.hasDismissedPremiumOnboarding,
     this.hasUnreadGiftInventory,
-    this.usedMobileClient,
+    this.mentionFlags,
     this.emailToken,
     this.mfaMethod,
     this.mfaCode,
@@ -110,9 +111,9 @@ class UserUpdateWithVerificationRequest {
   @JsonKey(includeIfNull: false, name: 'has_unread_gift_inventory')
   final bool? hasUnreadGiftInventory;
 
-  /// Whether user has used mobile client
-  @JsonKey(includeIfNull: false, name: 'used_mobile_client')
-  final bool? usedMobileClient;
+  /// Account-wide reply mention preference (NO_PREFERENCE, PREFER_MENTION, PREFER_NO_MENTION)
+  @JsonKey(includeIfNull: false, name: 'mention_flags')
+  final MentionReplyPreferences? mentionFlags;
 
   /// Email change token for updating email
   @JsonKey(includeIfNull: false, name: 'email_token')
@@ -122,7 +123,7 @@ class UserUpdateWithVerificationRequest {
   @JsonKey(includeIfNull: false, name: 'mfa_method')
   final UserUpdateWithVerificationRequestMfaMethodMfaMethod? mfaMethod;
 
-  /// MFA verification code from authenticator app or SMS
+  /// MFA verification code from an authenticator app
   @JsonKey(includeIfNull: false, name: 'mfa_code')
   final String? mfaCode;
 

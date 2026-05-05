@@ -14,10 +14,8 @@ class AuthMfaRequiredResponse {
     required this.mfa,
     required this.ticket,
     required this.allowedMethods,
-    required this.sms,
     required this.totp,
     required this.webauthn,
-    this.smsPhoneHint,
   });
 
   factory AuthMfaRequiredResponse.fromJson(Map<String, Object?> json) =>
@@ -32,13 +30,6 @@ class AuthMfaRequiredResponse {
   /// List of allowed MFA methods
   @JsonKey(name: 'allowed_methods')
   final List<String> allowedMethods;
-
-  /// Masked phone number hint for SMS MFA
-  @JsonKey(includeIfNull: false, name: 'sms_phone_hint')
-  final String? smsPhoneHint;
-
-  /// Whether SMS MFA is available
-  final bool sms;
 
   /// Whether TOTP authenticator MFA is available
   final bool totp;

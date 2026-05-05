@@ -2,10 +2,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, unused_import, invalid_annotation_target, unnecessary_import
 
+import 'dart:convert';
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
 import 'package:retrofit/error_logger.dart';
 
+import '../models/allowed_mentions_request.dart';
 import '../models/bulk_delete_messages_request.dart';
 import '../models/call_eligibility_response.dart';
 import '../models/call_ring_body_schema.dart';
@@ -17,12 +19,21 @@ import '../models/channel_update_request.dart';
 import '../models/complete_multipart_attachment_upload_request.dart';
 import '../models/complete_multipart_attachment_upload_response.dart';
 import '../models/message_ack_request.dart';
+import '../models/message_content_request.dart';
+import '../models/message_flags.dart';
+import '../models/message_nonce_request.dart';
+import '../models/message_reference_request.dart';
 import '../models/message_response_schema.dart';
+import '../models/message_snapshot_edit_request.dart';
+import '../models/object0.dart';
+import '../models/object1.dart';
+import '../models/object2.dart';
 import '../models/permission_overwrite_create_request.dart';
 import '../models/presigned_attachment_upload_request.dart';
 import '../models/presigned_attachment_upload_response.dart';
 import '../models/purge_personal_notes_messages_response.dart';
 import '../models/reaction_users_list_response.dart';
+import '../models/rich_embed_request.dart';
 import '../models/rtc_region_response.dart';
 import '../models/scheduled_message_response_schema.dart';
 import '../models/snowflake_type.dart';
@@ -173,9 +184,48 @@ abstract class ChannelsApi {
   /// Sends a new message to a channel. Requires permission to send messages in the target channel. Supports text content, embeds, attachments (multipart), and mentions. Returns the created message object with full details.
   ///
   /// [channelId] - The ID of the channel.
+  ///
+  /// [content] - Name not received - field will be skipped.
+  /// Name not received - field will be skipped.
+  ///
+  /// [embeds] - Array of embed objects to include in the message.
+  /// Name not received - field will be skipped.
+  ///
+  /// [attachments] - Array of attachment objects.
+  /// Name not received - field will be skipped.
+  ///
+  /// [messageReference] - Name not received - field will be skipped.
+  /// Name not received - field will be skipped.
+  ///
+  /// [allowedMentions] - Name not received - field will be skipped.
+  /// Name not received - field will be skipped.
+  ///
+  /// [flags] - Name not received - field will be skipped.
+  ///
+  /// [nonce] - Name not received - field will be skipped.
+  ///
+  /// [favoriteMemeId] - Name not received - field will be skipped.
+  /// Name not received - field will be skipped.
+  ///
+  /// [stickerIds] - Name not received - field will be skipped.
+  /// Name not received - field will be skipped.
+  ///
+  /// [tts] - Whether this is a text-to-speech message.
+  /// Name not received - field will be skipped.
+  @MultiPart()
   @POST('/channels/{channel_id}/messages')
   Future<MessageResponseSchema> sendMessage({
     @Path('channel_id') required SnowflakeType channelId,
+    @Part(name: 'content') MessageContentRequest? content,
+    @Part(name: 'embeds') List<RichEmbedRequest>? embeds,
+    @Part(name: 'attachments') List<Object0>? attachments,
+    @Part(name: 'message_reference') MessageReferenceRequest? messageReference,
+    @Part(name: 'allowed_mentions') AllowedMentionsRequest? allowedMentions,
+    @Part(name: 'flags') MessageFlags? flags,
+    @Part(name: 'nonce') MessageNonceRequest? nonce,
+    @Part(name: 'favorite_meme_id') SnowflakeType? favoriteMemeId,
+    @Part(name: 'sticker_ids') List<SnowflakeType>? stickerIds,
+    @Part(name: 'tts') bool? tts,
   });
 
   /// Clear channel read state.
@@ -228,9 +278,56 @@ abstract class ChannelsApi {
   /// Schedules a message to be sent at a specified time. Only available for regular user accounts. Requires permission to send messages in the target channel. Message is sent automatically at the scheduled time. Returns the scheduled message object with delivery time.
   ///
   /// [channelId] - The ID of the channel.
+  ///
+  /// [content] - Name not received - field will be skipped.
+  /// Name not received - field will be skipped.
+  ///
+  /// [embeds] - Array of embed objects to include in the message.
+  /// Name not received - field will be skipped.
+  ///
+  /// [attachments] - Array of attachment objects.
+  /// Name not received - field will be skipped.
+  ///
+  /// [messageReference] - Name not received - field will be skipped.
+  /// Name not received - field will be skipped.
+  ///
+  /// [allowedMentions] - Name not received - field will be skipped.
+  /// Name not received - field will be skipped.
+  ///
+  /// [flags] - Name not received - field will be skipped.
+  ///
+  /// [nonce] - Name not received - field will be skipped.
+  ///
+  /// [favoriteMemeId] - Name not received - field will be skipped.
+  /// Name not received - field will be skipped.
+  ///
+  /// [stickerIds] - Name not received - field will be skipped.
+  /// Name not received - field will be skipped.
+  ///
+  /// [tts] - Whether this is a text-to-speech message.
+  /// Name not received - field will be skipped.
+  ///
+  /// [scheduledLocalAt] - ISO 8601 timestamp expressed in the user local timezone for when the message should be delivered.
+  /// Name not received - field will be skipped.
+  ///
+  /// [timezone] - IANA timezone identifier the schedule_local_at value is anchored to.
+  /// Name not received - field will be skipped.
+  @MultiPart()
   @POST('/channels/{channel_id}/messages/schedule')
   Future<ScheduledMessageResponseSchema> scheduleMessage({
     @Path('channel_id') required SnowflakeType channelId,
+    @Part(name: 'scheduled_local_at') required String scheduledLocalAt,
+    @Part(name: 'timezone') required String timezone,
+    @Part(name: 'content') MessageContentRequest? content,
+    @Part(name: 'embeds') List<RichEmbedRequest>? embeds,
+    @Part(name: 'attachments') List<Object1>? attachments,
+    @Part(name: 'message_reference') MessageReferenceRequest? messageReference,
+    @Part(name: 'allowed_mentions') AllowedMentionsRequest? allowedMentions,
+    @Part(name: 'flags') MessageFlags? flags,
+    @Part(name: 'nonce') MessageNonceRequest? nonce,
+    @Part(name: 'favorite_meme_id') SnowflakeType? favoriteMemeId,
+    @Part(name: 'sticker_ids') List<SnowflakeType>? stickerIds,
+    @Part(name: 'tts') bool? tts,
   });
 
   /// Fetch a message.
@@ -253,10 +350,35 @@ abstract class ChannelsApi {
   /// [channelId] - The ID of the channel.
   ///
   /// [messageId] - The ID of the message.
+  ///
+  /// [content] - Name not received - field will be skipped.
+  /// Name not received - field will be skipped.
+  ///
+  /// [embeds] - Array of embed objects to include in the message.
+  /// Name not received - field will be skipped.
+  ///
+  /// [allowedMentions] - Name not received - field will be skipped.
+  /// Name not received - field will be skipped.
+  ///
+  /// [flags] - Name not received - field will be skipped.
+  ///
+  /// [attachments] - Array of attachment objects to keep or add.
+  /// Name not received - field will be skipped.
+  ///
+  /// [messageSnapshots] - Per-snapshot edits aligned by index with the existing snapshots. Currently supports updating attachment metadata (title/description).
+  /// Name not received - field will be skipped.
+  @MultiPart()
   @PATCH('/channels/{channel_id}/messages/{message_id}')
   Future<MessageResponseSchema> editMessage({
     @Path('channel_id') required SnowflakeType channelId,
     @Path('message_id') required SnowflakeType messageId,
+    @Part(name: 'content') MessageContentRequest? content,
+    @Part(name: 'embeds') List<RichEmbedRequest>? embeds,
+    @Part(name: 'allowed_mentions') AllowedMentionsRequest? allowedMentions,
+    @Part(name: 'flags') MessageFlags? flags,
+    @Part(name: 'attachments') List<Object2>? attachments,
+    @Part(name: 'message_snapshots')
+    List<MessageSnapshotEditRequest>? messageSnapshots,
   });
 
   /// Delete a message.

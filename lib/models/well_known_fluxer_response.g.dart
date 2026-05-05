@@ -27,9 +27,7 @@ WellKnownFluxerResponse _$WellKnownFluxerResponseFromJson(
   push: WellKnownFluxerResponsePush.fromJson(
     json['push'] as Map<String, dynamic>,
   ),
-  appPublic: WellKnownFluxerResponseAppPublic.fromJson(
-    json['app_public'] as Map<String, dynamic>,
-  ),
+  appPublic: json['app_public'],
   gateway: json['gateway'] == null
       ? null
       : WellKnownFluxerResponseGateway.fromJson(

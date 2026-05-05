@@ -26,8 +26,6 @@ import '../models/ban_email_request.dart';
 import '../models/ban_file_sha_request.dart';
 import '../models/ban_guild_member_request.dart';
 import '../models/ban_ip_request.dart';
-import '../models/ban_phone_prefix_request.dart';
-import '../models/ban_phone_request.dart';
 import '../models/ban_phrase_request.dart';
 import '../models/ban_profile_substring_request.dart';
 import '../models/ban_url_domain_request.dart';
@@ -206,12 +204,12 @@ import '../models/trigger_user_archive_request.dart';
 import '../models/unban_file_sha_request.dart';
 import '../models/unban_url_domain_request.dart';
 import '../models/unban_url_request.dart';
-import '../models/unlink_phone_request.dart';
 import '../models/update_guild_features_request.dart';
 import '../models/update_guild_name_request.dart';
 import '../models/update_guild_settings_request.dart';
 import '../models/update_guild_vanity_request.dart';
 import '../models/update_has_verified_phone_request.dart';
+import '../models/update_premium_flags_request.dart';
 import '../models/update_suspicious_activity_flags_request.dart';
 import '../models/update_user_flags_request.dart';
 import '../models/update_voice_region_request.dart';
@@ -493,60 +491,6 @@ abstract class AdminApi {
   @POST('/admin/bans/ip/remove')
   Future<void> removeIpBan({@Body() required BanIpRequest body});
 
-  /// Add phone-prefix ban.
-  ///
-  /// Ban an E.164 phone-number prefix (e.g. "+31970"). Any new phone verification whose number startsWith the prefix is rejected at signup before any Twilio request is made.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @POST('/admin/bans/phone-prefix/add')
-  Future<void> addPhonePrefixBan({@Body() required BanPhonePrefixRequest body});
-
-  /// Check phone-prefix ban status.
-  ///
-  /// Query whether a specific E.164 prefix is currently in the ban list.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @POST('/admin/bans/phone-prefix/check')
-  Future<BanCheckResponseSchema> checkPhonePrefixBanStatus({
-    @Body() required BanPhonePrefixRequest body,
-  });
-
-  /// Remove phone-prefix ban.
-  ///
-  /// Lift a previously applied phone-prefix ban, allowing phones in that E.164 prefix range to be verified again.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @POST('/admin/bans/phone-prefix/remove')
-  Future<void> removePhonePrefixBan({
-    @Body() required BanPhonePrefixRequest body,
-  });
-
-  /// Add phone ban.
-  ///
-  /// Ban one or more phone numbers from account verification or SMS operations. Users attempting to use banned numbers will be blocked.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @POST('/admin/bans/phone/add')
-  Future<void> addPhoneBan({@Body() required BanPhoneRequest body});
-
-  /// Check phone ban status.
-  ///
-  /// Query whether one or more phone numbers are currently banned. Returns the ban status and metadata for verification or appeal purposes.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @POST('/admin/bans/phone/check')
-  Future<BanCheckResponseSchema> checkPhoneBanStatus({
-    @Body() required BanPhoneRequest body,
-  });
-
-  /// Remove phone ban.
-  ///
-  /// Lift a previously applied phone ban, allowing the number to be used for verification again. Used for appeals or error correction.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @POST('/admin/bans/phone/remove')
-  Future<void> removePhoneBan({@Body() required BanPhoneRequest body});
-
   /// Add phrase ban.
   ///
   /// Ban a phrase. Matching is case-insensitive and also normalizes common bypass tricks such as inserted whitespace, punctuation, invisible characters, and compatibility glyphs.
@@ -575,7 +519,7 @@ abstract class AdminApi {
 
   /// Add profile-substring ban.
   ///
-  /// Ban a substring within a specific profile field (username, global_name, bio, or pronouns). Matching reuses the phrase blocklist normalization (whitespace, punctuation, zero-width, lookalikes).
+  /// Ban a substring within a specific profile field (username, global_name, nickname, bio, or pronouns). Matching reuses the phrase blocklist normalization (whitespace, punctuation, zero-width, lookalikes).
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/admin/bans/profile-substring/add')
@@ -1715,16 +1659,6 @@ abstract class AdminApi {
     @Body() required DisableMfaRequest body,
   });
 
-  /// Unlink user phone.
-  ///
-  /// Remove phone number from user account. Unlinks any two-factor authentication that depends on phone. Creates audit log entry. Requires USER_UPDATE_PHONE permission.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @POST('/admin/users/unlink-phone')
-  Future<UserMutationResponse> unlinkUserPhone({
-    @Body() required UnlinkPhoneRequest body,
-  });
-
   /// Update user flags.
   ///
   /// Add or remove user flags to control account features and restrictions. Flags determine verification status and special properties. Creates audit log entry. Requires USER_UPDATE_FLAGS permission.
@@ -1743,6 +1677,16 @@ abstract class AdminApi {
   @POST('/admin/users/update-has-verified-phone')
   Future<UserMutationResponse> updateUserHasVerifiedPhone({
     @Body() required UpdateHasVerifiedPhoneRequest body,
+  });
+
+  /// Update user premium flags.
+  ///
+  /// Add or remove premium-related flags on a user account (badge visibility, override, purchase block, etc). Creates audit log entry. Requires USER_UPDATE_FLAGS permission.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/users/update-premium-flags')
+  Future<UserMutationResponse> updateUserPremiumFlags({
+    @Body() required UpdatePremiumFlagsRequest body,
   });
 
   /// Update suspicious activity flags.
@@ -1866,7 +1810,7 @@ abstract class AdminApi {
 
   /// Get voice region.
   ///
-  /// Gets detailed information about a voice region including assigned servers and capacity. Shows performance metrics and server details. Requires VOICE_REGION_LIST permission.
+  /// Gets detailed information about a voice region including assigned servers, capacity, and server details. Requires VOICE_REGION_LIST permission.
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/admin/voice/regions/get')
@@ -1916,7 +1860,7 @@ abstract class AdminApi {
 
   /// Get voice server.
   ///
-  /// Gets detailed voice server information including active connections, configuration, and performance metrics. Requires VOICE_SERVER_LIST permission.
+  /// Gets detailed voice server information including active connections and configuration. Requires VOICE_SERVER_LIST permission.
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/admin/voice/servers/get')
@@ -1926,7 +1870,7 @@ abstract class AdminApi {
 
   /// List voice servers.
   ///
-  /// Lists all voice servers with connection counts and capacity. Shows server status, region assignment, and load metrics. Supports filtering and pagination. Requires VOICE_SERVER_LIST permission.
+  /// Lists all voice servers with connection counts and capacity. Shows server status, region assignment, and load information. Supports filtering and pagination. Requires VOICE_SERVER_LIST permission.
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/admin/voice/servers/list')

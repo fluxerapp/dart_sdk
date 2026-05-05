@@ -9,7 +9,7 @@ part of 'user_private_response.dart';
 UserPrivateResponse _$UserPrivateResponseFromJson(
   Map<String, dynamic> json,
 ) => UserPrivateResponse(
-  bio: json['bio'] as String?,
+  verified: json['verified'] as bool,
   username: json['username'] as String,
   discriminator: json['discriminator'] as String,
   globalName: json['global_name'] as String?,
@@ -17,29 +17,29 @@ UserPrivateResponse _$UserPrivateResponseFromJson(
   avatarColor: (json['avatar_color'] as num?)?.toInt(),
   privacyAgreedAt: json['privacy_agreed_at'] as String?,
   termsAgreedAt: json['terms_agreed_at'] as String?,
+  bio: json['bio'] as String?,
+  flags: (json['flags'] as num).toInt(),
   pendingBulkMessageDeletion: json['pending_bulk_message_deletion'] == null
       ? null
       : UserPrivateResponsePendingBulkMessageDeletion.fromJson(
           json['pending_bulk_message_deletion'] as Map<String, dynamic>,
         ),
-  flags: (json['flags'] as num).toInt(),
   isStaff: json['is_staff'] as bool,
   acls: (json['acls'] as List<dynamic>).map((e) => e as String).toList(),
   traits: (json['traits'] as List<dynamic>).map((e) => e as String).toList(),
   email: json['email'] as String?,
-  usedMobileClient: json['used_mobile_client'] as bool,
-  phone: json['phone'] as String?,
+  unreadGiftInventoryCount: (json['unread_gift_inventory_count'] as num)
+      .toInt(),
   hasVerifiedPhone: json['has_verified_phone'] as bool,
   id: json['id'] as String,
   pronouns: json['pronouns'] as String?,
   accentColor: (json['accent_color'] as num?)?.toInt(),
   banner: json['banner'] as String?,
-  unreadGiftInventoryCount: (json['unread_gift_inventory_count'] as num)
-      .toInt(),
+  hasUnreadGiftInventory: json['has_unread_gift_inventory'] as bool,
   bannerColor: (json['banner_color'] as num?)?.toInt(),
   mfaEnabled: json['mfa_enabled'] as bool,
-  hasUnreadGiftInventory: json['has_unread_gift_inventory'] as bool,
-  verified: json['verified'] as bool,
+  hasEverPurchased: json['has_ever_purchased'] as bool,
+  premiumDiscriminator: json['premium_discriminator'] as bool,
   premiumType: json['premium_type'] == null
       ? null
       : UserPremiumTypes.fromJson((json['premium_type'] as num).toInt()),
@@ -49,24 +49,20 @@ UserPrivateResponse _$UserPrivateResponseFromJson(
   premiumBillingCycle: json['premium_billing_cycle'] as String?,
   premiumLifetimeSequence: (json['premium_lifetime_sequence'] as num?)?.toInt(),
   premiumGraceEndsAt: json['premium_grace_ends_at'] as String?,
-  premiumDiscriminator: json['premium_discriminator'] as bool,
+  nsfwAllowed: json['nsfw_allowed'] as bool,
   premiumBadgeHidden: json['premium_badge_hidden'] as bool,
-  hasEverPurchased: json['has_ever_purchased'] as bool,
+  premiumBadgeMasked: json['premium_badge_masked'] as bool,
   premiumBadgeTimestampHidden: json['premium_badge_timestamp_hidden'] as bool,
   premiumBadgeSequenceHidden: json['premium_badge_sequence_hidden'] as bool,
   premiumPurchaseDisabled: json['premium_purchase_disabled'] as bool,
   premiumEnabledOverride: json['premium_enabled_override'] as bool,
-  hasDismissedPremiumOnboarding:
-      json['has_dismissed_premium_onboarding'] as bool,
   passwordLastChangedAt: json['password_last_changed_at'] as String?,
   requiredActions: (json['required_actions'] as List<dynamic>)
       .map((e) => e as String)
       .toList(),
-  nsfwAllowed: json['nsfw_allowed'] as bool,
-  premiumBadgeMasked: json['premium_badge_masked'] as bool,
-  premiumOutOfBandTrialEndsAt: json['premium_out_of_band_trial_ends_at'] == null
-      ? null
-      : DateTime.parse(json['premium_out_of_band_trial_ends_at'] as String),
+  hasDismissedPremiumOnboarding:
+      json['has_dismissed_premium_onboarding'] as bool,
+  system: json['system'] as bool?,
   authenticatorTypes: (json['authenticator_types'] as List<dynamic>?)
       ?.map((e) => UserAuthenticatorTypes.fromJson((e as num).toInt()))
       .toList(),
@@ -74,14 +70,19 @@ UserPrivateResponse _$UserPrivateResponseFromJson(
       ?.map((e) => e as String)
       .toList(),
   emailBounced: json['email_bounced'] as bool?,
-  system: json['system'] as bool?,
+  mentionFlags: json['mention_flags'] == null
+      ? null
+      : MentionReplyPreferences.fromJson(
+          (json['mention_flags'] as num).toInt(),
+        ),
   ageVerifiedAdult: json['age_verified_adult'] as bool?,
   bot: json['bot'] as bool?,
   avatarFormats: (json['avatar_formats'] as List<dynamic>?)
       ?.map((e) => e as String)
       .toList(),
-  forceInboundPhoneVerification:
-      json['force_inbound_phone_verification'] as bool?,
+  premiumOutOfBandTrialEndsAt: json['premium_out_of_band_trial_ends_at'] == null
+      ? null
+      : DateTime.parse(json['premium_out_of_band_trial_ends_at'] as String),
 );
 
 Map<String, dynamic> _$UserPrivateResponseToJson(
@@ -97,12 +98,12 @@ Map<String, dynamic> _$UserPrivateResponseToJson(
   'bot': ?instance.bot,
   'system': ?instance.system,
   'flags': instance.flags,
+  'mention_flags': ?instance.mentionFlags,
   'is_staff': instance.isStaff,
   'acls': instance.acls,
   'traits': instance.traits,
   'email': instance.email,
   'email_bounced': ?instance.emailBounced,
-  'phone': instance.phone,
   'has_verified_phone': instance.hasVerifiedPhone,
   'bio': instance.bio,
   'pronouns': instance.pronouns,
@@ -127,7 +128,6 @@ Map<String, dynamic> _$UserPrivateResponseToJson(
   'premium_badge_sequence_hidden': instance.premiumBadgeSequenceHidden,
   'premium_purchase_disabled': instance.premiumPurchaseDisabled,
   'premium_enabled_override': instance.premiumEnabledOverride,
-  'force_inbound_phone_verification': ?instance.forceInboundPhoneVerification,
   'password_last_changed_at': instance.passwordLastChangedAt,
   'required_actions': instance.requiredActions,
   'nsfw_allowed': instance.nsfwAllowed,
@@ -135,7 +135,6 @@ Map<String, dynamic> _$UserPrivateResponseToJson(
   'has_ever_purchased': instance.hasEverPurchased,
   'has_unread_gift_inventory': instance.hasUnreadGiftInventory,
   'unread_gift_inventory_count': instance.unreadGiftInventoryCount,
-  'used_mobile_client': instance.usedMobileClient,
   'pending_bulk_message_deletion': instance.pendingBulkMessageDeletion,
   'age_verified_adult': ?instance.ageVerifiedAdult,
   'terms_agreed_at': instance.termsAgreedAt,

@@ -27,8 +27,6 @@ _$AuthRegisterResponseAuthMfaRequiredResponseFromJson(
   allowedMethods: (json['allowed_methods'] as List<dynamic>)
       .map((e) => e as String)
       .toList(),
-  smsPhoneHint: json['sms_phone_hint'] as String?,
-  sms: json['sms'] as bool,
   totp: json['totp'] as bool,
   webauthn: json['webauthn'] as bool,
 );
@@ -39,8 +37,6 @@ Map<String, dynamic> _$AuthRegisterResponseAuthMfaRequiredResponseToJson(
   'mfa': instance.mfa,
   'ticket': instance.ticket,
   'allowed_methods': instance.allowedMethods,
-  'sms_phone_hint': instance.smsPhoneHint,
-  'sms': instance.sms,
   'totp': instance.totp,
   'webauthn': instance.webauthn,
 };

@@ -20,6 +20,11 @@ GuildMemberUpdateRequest _$GuildMemberUpdateRequestFromJson(
   pronouns: json['pronouns'] as String?,
   accentColor: (json['accent_color'] as num?)?.toInt(),
   profileFlags: (json['profile_flags'] as num?)?.toInt(),
+  mentionFlags: json['mention_flags'] == null
+      ? null
+      : MentionReplyPreferences.fromJson(
+          (json['mention_flags'] as num).toInt(),
+        ),
   mute: json['mute'] as bool?,
   deaf: json['deaf'] as bool?,
   timeoutReason: json['timeout_reason'] as String?,
@@ -38,6 +43,7 @@ Map<String, dynamic> _$GuildMemberUpdateRequestToJson(
   'pronouns': ?instance.pronouns,
   'accent_color': ?instance.accentColor,
   'profile_flags': ?instance.profileFlags,
+  'mention_flags': ?instance.mentionFlags,
   'mute': ?instance.mute,
   'deaf': ?instance.deaf,
   'communication_disabled_until': instance.communicationDisabledUntil

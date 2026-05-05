@@ -5,6 +5,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'int32_type.dart';
+import 'premium_flags.dart';
 import 'snowflake_type.dart';
 import 'suspicious_activity_flags.dart';
 import 'user_flags.dart';
@@ -14,22 +15,22 @@ part 'user_admin_response_schema.g.dart';
 @JsonSerializable()
 class UserAdminResponseSchema {
   const UserAdminResponseSchema({
-    required this.email,
+    required this.accentColor,
     required this.username,
     required this.discriminator,
     required this.globalName,
     required this.bot,
     required this.system,
     required this.flags,
+    required this.premiumFlags,
     required this.avatar,
     required this.banner,
     required this.bio,
     required this.pronouns,
-    required this.accentColor,
     required this.id,
+    required this.email,
     required this.emailVerified,
     required this.emailBounced,
-    required this.phone,
     required this.hasVerifiedPhone,
     required this.dateOfBirth,
     required this.locale,
@@ -65,6 +66,8 @@ class UserAdminResponseSchema {
   final bool bot;
   final bool system;
   final UserFlags flags;
+  @JsonKey(name: 'premium_flags')
+  final PremiumFlags premiumFlags;
   @JsonKey(includeIfNull: true)
   final String? avatar;
   @JsonKey(includeIfNull: true)
@@ -81,8 +84,6 @@ class UserAdminResponseSchema {
   final bool emailVerified;
   @JsonKey(name: 'email_bounced')
   final bool emailBounced;
-  @JsonKey(includeIfNull: true)
-  final String? phone;
   @JsonKey(name: 'has_verified_phone')
   final bool hasVerifiedPhone;
   @JsonKey(includeIfNull: true, name: 'date_of_birth')

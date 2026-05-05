@@ -28,7 +28,11 @@ UserUpdateWithVerificationRequest _$UserUpdateWithVerificationRequestFromJson(
   hasDismissedPremiumOnboarding:
       json['has_dismissed_premium_onboarding'] as bool?,
   hasUnreadGiftInventory: json['has_unread_gift_inventory'] as bool?,
-  usedMobileClient: json['used_mobile_client'] as bool?,
+  mentionFlags: json['mention_flags'] == null
+      ? null
+      : MentionReplyPreferences.fromJson(
+          (json['mention_flags'] as num).toInt(),
+        ),
   emailToken: json['email_token'] as String?,
   mfaMethod: json['mfa_method'] == null
       ? null
@@ -61,7 +65,7 @@ Map<String, dynamic> _$UserUpdateWithVerificationRequestToJson(
   'premium_enabled_override': ?instance.premiumEnabledOverride,
   'has_dismissed_premium_onboarding': ?instance.hasDismissedPremiumOnboarding,
   'has_unread_gift_inventory': ?instance.hasUnreadGiftInventory,
-  'used_mobile_client': ?instance.usedMobileClient,
+  'mention_flags': ?instance.mentionFlags,
   'email_token': ?instance.emailToken,
   'mfa_method': ?instance.mfaMethod,
   'mfa_code': ?instance.mfaCode,
