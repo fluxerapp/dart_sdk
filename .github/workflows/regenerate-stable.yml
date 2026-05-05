@@ -28,7 +28,7 @@ jobs:
         run: ./generate.sh --spec prod
 
       - name: Analyze
-        run: dart analyze --no-fatal-warnings --no-fatal-infos
+        run: dart analyze --no-fatal-warnings
 
       - name: Commit and push
         run: |
