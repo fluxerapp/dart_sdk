@@ -9,7 +9,14 @@ part of 'lookup_user_request.dart';
 LookupUserRequestLookupUserByQueryRequest
 _$LookupUserRequestLookupUserByQueryRequestFromJson(
   Map<String, dynamic> json,
-) => LookupUserRequestLookupUserByQueryRequest(query: json['query'] as String);
+) => $checkedCreate('LookupUserRequestLookupUserByQueryRequest', json, (
+  $checkedConvert,
+) {
+  final val = LookupUserRequestLookupUserByQueryRequest(
+    query: $checkedConvert('query', (v) => v as String),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$LookupUserRequestLookupUserByQueryRequestToJson(
   LookupUserRequestLookupUserByQueryRequest instance,
@@ -17,10 +24,19 @@ Map<String, dynamic> _$LookupUserRequestLookupUserByQueryRequestToJson(
 
 LookupUserRequestLookupUserByIdsRequest
 _$LookupUserRequestLookupUserByIdsRequestFromJson(Map<String, dynamic> json) =>
-    LookupUserRequestLookupUserByIdsRequest(
-      userIds: (json['user_ids'] as List<dynamic>)
-          .map((e) => e as String)
-          .toList(),
+    $checkedCreate(
+      'LookupUserRequestLookupUserByIdsRequest',
+      json,
+      ($checkedConvert) {
+        final val = LookupUserRequestLookupUserByIdsRequest(
+          userIds: $checkedConvert(
+            'user_ids',
+            (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+          ),
+        );
+        return val;
+      },
+      fieldKeyMap: const {'userIds': 'user_ids'},
     );
 
 Map<String, dynamic> _$LookupUserRequestLookupUserByIdsRequestToJson(

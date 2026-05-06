@@ -8,10 +8,13 @@ part of 'set_user_bot_status_request.dart';
 
 SetUserBotStatusRequest _$SetUserBotStatusRequestFromJson(
   Map<String, dynamic> json,
-) => SetUserBotStatusRequest(
-  userId: json['user_id'] as String,
-  bot: json['bot'] as bool,
-);
+) => $checkedCreate('SetUserBotStatusRequest', json, ($checkedConvert) {
+  final val = SetUserBotStatusRequest(
+    userId: $checkedConvert('user_id', (v) => v as String),
+    bot: $checkedConvert('bot', (v) => v as bool),
+  );
+  return val;
+}, fieldKeyMap: const {'userId': 'user_id'});
 
 Map<String, dynamic> _$SetUserBotStatusRequestToJson(
   SetUserBotStatusRequest instance,

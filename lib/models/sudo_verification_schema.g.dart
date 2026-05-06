@@ -8,16 +8,33 @@ part of 'sudo_verification_schema.dart';
 
 SudoVerificationSchema _$SudoVerificationSchemaFromJson(
   Map<String, dynamic> json,
-) => SudoVerificationSchema(
-  password: json['password'] as String?,
-  mfaMethod: json['mfa_method'] == null
-      ? null
-      : SudoVerificationSchemaMfaMethodMfaMethod.fromJson(
-          json['mfa_method'] as String,
-        ),
-  mfaCode: json['mfa_code'] as String?,
-  webauthnResponse: json['webauthn_response'],
-  webauthnChallenge: json['webauthn_challenge'] as String?,
+) => $checkedCreate(
+  'SudoVerificationSchema',
+  json,
+  ($checkedConvert) {
+    final val = SudoVerificationSchema(
+      password: $checkedConvert('password', (v) => v as String?),
+      mfaMethod: $checkedConvert(
+        'mfa_method',
+        (v) => v == null
+            ? null
+            : SudoVerificationSchemaMfaMethodMfaMethod.fromJson(v as String),
+      ),
+      mfaCode: $checkedConvert('mfa_code', (v) => v as String?),
+      webauthnResponse: $checkedConvert('webauthn_response', (v) => v),
+      webauthnChallenge: $checkedConvert(
+        'webauthn_challenge',
+        (v) => v as String?,
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'mfaMethod': 'mfa_method',
+    'mfaCode': 'mfa_code',
+    'webauthnResponse': 'webauthn_response',
+    'webauthnChallenge': 'webauthn_challenge',
+  },
 );
 
 Map<String, dynamic> _$SudoVerificationSchemaToJson(

@@ -7,7 +7,12 @@ part of 'ban_phrase_request.dart';
 // **************************************************************************
 
 BanPhraseRequest _$BanPhraseRequestFromJson(Map<String, dynamic> json) =>
-    BanPhraseRequest(phrase: json['phrase'] as String);
+    $checkedCreate('BanPhraseRequest', json, ($checkedConvert) {
+      final val = BanPhraseRequest(
+        phrase: $checkedConvert('phrase', (v) => v as String),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$BanPhraseRequestToJson(BanPhraseRequest instance) =>
     <String, dynamic>{'phrase': instance.phrase};

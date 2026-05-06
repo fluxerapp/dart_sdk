@@ -7,14 +7,19 @@ part of 'limit_filter_response.dart';
 // **************************************************************************
 
 LimitFilterResponse _$LimitFilterResponseFromJson(Map<String, dynamic> json) =>
-    LimitFilterResponse(
-      traits: (json['traits'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-      guildFeatures: (json['guildFeatures'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-    );
+    $checkedCreate('LimitFilterResponse', json, ($checkedConvert) {
+      final val = LimitFilterResponse(
+        traits: $checkedConvert(
+          'traits',
+          (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+        ),
+        guildFeatures: $checkedConvert(
+          'guildFeatures',
+          (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+        ),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$LimitFilterResponseToJson(
   LimitFilterResponse instance,

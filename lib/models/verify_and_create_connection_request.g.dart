@@ -8,9 +8,23 @@ part of 'verify_and_create_connection_request.dart';
 
 VerifyAndCreateConnectionRequest _$VerifyAndCreateConnectionRequestFromJson(
   Map<String, dynamic> json,
-) => VerifyAndCreateConnectionRequest(
-  initiationToken: json['initiation_token'] as String,
-  visibilityFlags: (json['visibility_flags'] as num?)?.toInt(),
+) => $checkedCreate(
+  'VerifyAndCreateConnectionRequest',
+  json,
+  ($checkedConvert) {
+    final val = VerifyAndCreateConnectionRequest(
+      initiationToken: $checkedConvert('initiation_token', (v) => v as String),
+      visibilityFlags: $checkedConvert(
+        'visibility_flags',
+        (v) => (v as num?)?.toInt(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'initiationToken': 'initiation_token',
+    'visibilityFlags': 'visibility_flags',
+  },
 );
 
 Map<String, dynamic> _$VerifyAndCreateConnectionRequestToJson(

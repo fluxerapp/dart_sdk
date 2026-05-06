@@ -8,11 +8,15 @@ part of 'application_update_response.dart';
 
 ApplicationUpdateResponse _$ApplicationUpdateResponseFromJson(
   Map<String, dynamic> json,
-) => ApplicationUpdateResponse(
-  application: ApplicationAdminResponse.fromJson(
-    json['application'] as Map<String, dynamic>,
-  ),
-);
+) => $checkedCreate('ApplicationUpdateResponse', json, ($checkedConvert) {
+  final val = ApplicationUpdateResponse(
+    application: $checkedConvert(
+      'application',
+      (v) => ApplicationAdminResponse.fromJson(v as Map<String, dynamic>),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$ApplicationUpdateResponseToJson(
   ApplicationUpdateResponse instance,

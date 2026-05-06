@@ -8,13 +8,29 @@ part of 'discovery_application_patch_request.dart';
 
 DiscoveryApplicationPatchRequest _$DiscoveryApplicationPatchRequestFromJson(
   Map<String, dynamic> json,
-) => DiscoveryApplicationPatchRequest(
-  description: json['description'] as String?,
-  categoryType: (json['category_type'] as num?)?.toInt(),
-  primaryLanguage: json['primary_language'] as String?,
-  customTags: (json['custom_tags'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
+) => $checkedCreate(
+  'DiscoveryApplicationPatchRequest',
+  json,
+  ($checkedConvert) {
+    final val = DiscoveryApplicationPatchRequest(
+      description: $checkedConvert('description', (v) => v as String?),
+      categoryType: $checkedConvert(
+        'category_type',
+        (v) => (v as num?)?.toInt(),
+      ),
+      primaryLanguage: $checkedConvert('primary_language', (v) => v as String?),
+      customTags: $checkedConvert(
+        'custom_tags',
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'categoryType': 'category_type',
+    'primaryLanguage': 'primary_language',
+    'customTags': 'custom_tags',
+  },
 );
 
 Map<String, dynamic> _$DiscoveryApplicationPatchRequestToJson(

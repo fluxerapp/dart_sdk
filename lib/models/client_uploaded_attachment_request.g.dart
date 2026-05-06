@@ -8,17 +8,29 @@ part of 'client_uploaded_attachment_request.dart';
 
 ClientUploadedAttachmentRequest _$ClientUploadedAttachmentRequestFromJson(
   Map<String, dynamic> json,
-) => ClientUploadedAttachmentRequest(
-  id: (json['id'] as num).toInt(),
-  filename: json['filename'] as String,
-  uploadFilename: json['upload_filename'] as String,
-  fileSize: (json['file_size'] as num).toInt(),
-  contentType: json['content_type'] as String,
-  title: json['title'] as String?,
-  description: json['description'] as String?,
-  flags: (json['flags'] as num?)?.toInt(),
-  duration: (json['duration'] as num?)?.toInt(),
-  waveform: json['waveform'] as String?,
+) => $checkedCreate(
+  'ClientUploadedAttachmentRequest',
+  json,
+  ($checkedConvert) {
+    final val = ClientUploadedAttachmentRequest(
+      id: $checkedConvert('id', (v) => (v as num).toInt()),
+      filename: $checkedConvert('filename', (v) => v as String),
+      uploadFilename: $checkedConvert('upload_filename', (v) => v as String),
+      fileSize: $checkedConvert('file_size', (v) => (v as num).toInt()),
+      contentType: $checkedConvert('content_type', (v) => v as String),
+      title: $checkedConvert('title', (v) => v as String?),
+      description: $checkedConvert('description', (v) => v as String?),
+      flags: $checkedConvert('flags', (v) => (v as num?)?.toInt()),
+      duration: $checkedConvert('duration', (v) => (v as num?)?.toInt()),
+      waveform: $checkedConvert('waveform', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'uploadFilename': 'upload_filename',
+    'fileSize': 'file_size',
+    'contentType': 'content_type',
+  },
 );
 
 Map<String, dynamic> _$ClientUploadedAttachmentRequestToJson(

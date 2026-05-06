@@ -8,10 +8,13 @@ part of 'download_url_response_schema.dart';
 
 DownloadUrlResponseSchema _$DownloadUrlResponseSchemaFromJson(
   Map<String, dynamic> json,
-) => DownloadUrlResponseSchema(
-  downloadUrl: json['downloadUrl'] as String,
-  expiresAt: json['expiresAt'] as String,
-);
+) => $checkedCreate('DownloadUrlResponseSchema', json, ($checkedConvert) {
+  final val = DownloadUrlResponseSchema(
+    downloadUrl: $checkedConvert('downloadUrl', (v) => v as String),
+    expiresAt: $checkedConvert('expiresAt', (v) => v as String),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$DownloadUrlResponseSchemaToJson(
   DownloadUrlResponseSchema instance,

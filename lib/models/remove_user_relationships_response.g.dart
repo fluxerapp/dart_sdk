@@ -8,8 +8,16 @@ part of 'remove_user_relationships_response.dart';
 
 RemoveUserRelationshipsResponse _$RemoveUserRelationshipsResponseFromJson(
   Map<String, dynamic> json,
-) => RemoveUserRelationshipsResponse(
-  removedCount: (json['removed_count'] as num).toInt(),
+) => $checkedCreate(
+  'RemoveUserRelationshipsResponse',
+  json,
+  ($checkedConvert) {
+    final val = RemoveUserRelationshipsResponse(
+      removedCount: $checkedConvert('removed_count', (v) => (v as num).toInt()),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'removedCount': 'removed_count'},
 );
 
 Map<String, dynamic> _$RemoveUserRelationshipsResponseToJson(

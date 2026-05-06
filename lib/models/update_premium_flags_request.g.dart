@@ -8,14 +8,28 @@ part of 'update_premium_flags_request.dart';
 
 UpdatePremiumFlagsRequest _$UpdatePremiumFlagsRequestFromJson(
   Map<String, dynamic> json,
-) => UpdatePremiumFlagsRequest(
-  userId: json['user_id'] as String,
-  addFlags: (json['add_flags'] as List<dynamic>?)
-      ?.map((e) => (e as num).toInt())
-      .toList(),
-  removeFlags: (json['remove_flags'] as List<dynamic>?)
-      ?.map((e) => (e as num).toInt())
-      .toList(),
+) => $checkedCreate(
+  'UpdatePremiumFlagsRequest',
+  json,
+  ($checkedConvert) {
+    final val = UpdatePremiumFlagsRequest(
+      userId: $checkedConvert('user_id', (v) => v as String),
+      addFlags: $checkedConvert(
+        'add_flags',
+        (v) => (v as List<dynamic>?)?.map((e) => (e as num).toInt()).toList(),
+      ),
+      removeFlags: $checkedConvert(
+        'remove_flags',
+        (v) => (v as List<dynamic>?)?.map((e) => (e as num).toInt()).toList(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'userId': 'user_id',
+    'addFlags': 'add_flags',
+    'removeFlags': 'remove_flags',
+  },
 );
 
 Map<String, dynamic> _$UpdatePremiumFlagsRequestToJson(

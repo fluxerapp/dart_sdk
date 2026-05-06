@@ -7,12 +7,25 @@ part of 'o_auth2_token_response.dart';
 // **************************************************************************
 
 OAuth2TokenResponse _$OAuth2TokenResponseFromJson(Map<String, dynamic> json) =>
-    OAuth2TokenResponse(
-      accessToken: json['access_token'] as String,
-      tokenType: json['token_type'] as String,
-      expiresIn: (json['expires_in'] as num).toInt(),
-      refreshToken: json['refresh_token'] as String,
-      scope: json['scope'] as String,
+    $checkedCreate(
+      'OAuth2TokenResponse',
+      json,
+      ($checkedConvert) {
+        final val = OAuth2TokenResponse(
+          accessToken: $checkedConvert('access_token', (v) => v as String),
+          tokenType: $checkedConvert('token_type', (v) => v as String),
+          expiresIn: $checkedConvert('expires_in', (v) => (v as num).toInt()),
+          refreshToken: $checkedConvert('refresh_token', (v) => v as String),
+          scope: $checkedConvert('scope', (v) => v as String),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'accessToken': 'access_token',
+        'tokenType': 'token_type',
+        'expiresIn': 'expires_in',
+        'refreshToken': 'refresh_token',
+      },
     );
 
 Map<String, dynamic> _$OAuth2TokenResponseToJson(

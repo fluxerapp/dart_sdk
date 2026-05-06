@@ -8,7 +8,12 @@ part of 'cancel_job_response_schema.dart';
 
 CancelJobResponseSchema _$CancelJobResponseSchemaFromJson(
   Map<String, dynamic> json,
-) => CancelJobResponseSchema(cancelled: json['cancelled'] as bool);
+) => $checkedCreate('CancelJobResponseSchema', json, ($checkedConvert) {
+  final val = CancelJobResponseSchema(
+    cancelled: $checkedConvert('cancelled', (v) => v as bool),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$CancelJobResponseSchemaToJson(
   CancelJobResponseSchema instance,

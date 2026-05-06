@@ -8,13 +8,28 @@ part of 'create_admin_api_key_response.dart';
 
 CreateAdminApiKeyResponse _$CreateAdminApiKeyResponseFromJson(
   Map<String, dynamic> json,
-) => CreateAdminApiKeyResponse(
-  keyId: json['key_id'] as String,
-  key: json['key'] as String,
-  name: json['name'] as String,
-  createdAt: json['created_at'] as String,
-  expiresAt: json['expires_at'] as String?,
-  acls: (json['acls'] as List<dynamic>).map((e) => e as String).toList(),
+) => $checkedCreate(
+  'CreateAdminApiKeyResponse',
+  json,
+  ($checkedConvert) {
+    final val = CreateAdminApiKeyResponse(
+      keyId: $checkedConvert('key_id', (v) => v as String),
+      key: $checkedConvert('key', (v) => v as String),
+      name: $checkedConvert('name', (v) => v as String),
+      createdAt: $checkedConvert('created_at', (v) => v as String),
+      expiresAt: $checkedConvert('expires_at', (v) => v as String?),
+      acls: $checkedConvert(
+        'acls',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'keyId': 'key_id',
+    'createdAt': 'created_at',
+    'expiresAt': 'expires_at',
+  },
 );
 
 Map<String, dynamic> _$CreateAdminApiKeyResponseToJson(

@@ -8,13 +8,19 @@ part of 'handoff_info_client_info.dart';
 
 HandoffInfoClientInfo _$HandoffInfoClientInfoFromJson(
   Map<String, dynamic> json,
-) => HandoffInfoClientInfo(
-  platform: json['platform'] as String?,
-  os: json['os'] as String?,
-  location: json['location'] == null
-      ? null
-      : AuthSessionLocation.fromJson(json['location'] as Map<String, dynamic>),
-);
+) => $checkedCreate('HandoffInfoClientInfo', json, ($checkedConvert) {
+  final val = HandoffInfoClientInfo(
+    platform: $checkedConvert('platform', (v) => v as String?),
+    os: $checkedConvert('os', (v) => v as String?),
+    location: $checkedConvert(
+      'location',
+      (v) => v == null
+          ? null
+          : AuthSessionLocation.fromJson(v as Map<String, dynamic>),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$HandoffInfoClientInfoToJson(
   HandoffInfoClientInfo instance,

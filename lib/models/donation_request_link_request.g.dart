@@ -8,7 +8,12 @@ part of 'donation_request_link_request.dart';
 
 DonationRequestLinkRequest _$DonationRequestLinkRequestFromJson(
   Map<String, dynamic> json,
-) => DonationRequestLinkRequest(email: json['email'] as String);
+) => $checkedCreate('DonationRequestLinkRequest', json, ($checkedConvert) {
+  final val = DonationRequestLinkRequest(
+    email: $checkedConvert('email', (v) => v as String),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$DonationRequestLinkRequestToJson(
   DonationRequestLinkRequest instance,

@@ -8,12 +8,26 @@ part of 'o_auth2_authorization_response.dart';
 
 OAuth2AuthorizationResponse _$OAuth2AuthorizationResponseFromJson(
   Map<String, dynamic> json,
-) => OAuth2AuthorizationResponse(
-  application: OAuth2AuthorizationResponseApplication.fromJson(
-    json['application'] as Map<String, dynamic>,
-  ),
-  scopes: (json['scopes'] as List<dynamic>).map((e) => e as String).toList(),
-  authorizedAt: json['authorized_at'] as String,
+) => $checkedCreate(
+  'OAuth2AuthorizationResponse',
+  json,
+  ($checkedConvert) {
+    final val = OAuth2AuthorizationResponse(
+      application: $checkedConvert(
+        'application',
+        (v) => OAuth2AuthorizationResponseApplication.fromJson(
+          v as Map<String, dynamic>,
+        ),
+      ),
+      scopes: $checkedConvert(
+        'scopes',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      authorizedAt: $checkedConvert('authorized_at', (v) => v as String),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'authorizedAt': 'authorized_at'},
 );
 
 Map<String, dynamic> _$OAuth2AuthorizationResponseToJson(

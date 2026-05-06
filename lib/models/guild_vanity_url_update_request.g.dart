@@ -8,7 +8,12 @@ part of 'guild_vanity_url_update_request.dart';
 
 GuildVanityUrlUpdateRequest _$GuildVanityUrlUpdateRequestFromJson(
   Map<String, dynamic> json,
-) => GuildVanityUrlUpdateRequest(code: json['code'] as String?);
+) => $checkedCreate('GuildVanityUrlUpdateRequest', json, ($checkedConvert) {
+  final val = GuildVanityUrlUpdateRequest(
+    code: $checkedConvert('code', (v) => v as String?),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$GuildVanityUrlUpdateRequestToJson(
   GuildVanityUrlUpdateRequest instance,

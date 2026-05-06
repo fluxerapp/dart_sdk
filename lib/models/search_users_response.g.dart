@@ -7,14 +7,21 @@ part of 'search_users_response.dart';
 // **************************************************************************
 
 SearchUsersResponse _$SearchUsersResponseFromJson(Map<String, dynamic> json) =>
-    SearchUsersResponse(
-      users: (json['users'] as List<dynamic>)
-          .map(
-            (e) => UserAdminResponseSchema.fromJson(e as Map<String, dynamic>),
-          )
-          .toList(),
-      total: json['total'] as num,
-    );
+    $checkedCreate('SearchUsersResponse', json, ($checkedConvert) {
+      final val = SearchUsersResponse(
+        users: $checkedConvert(
+          'users',
+          (v) => (v as List<dynamic>)
+              .map(
+                (e) =>
+                    UserAdminResponseSchema.fromJson(e as Map<String, dynamic>),
+              )
+              .toList(),
+        ),
+        total: $checkedConvert('total', (v) => v as num),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$SearchUsersResponseToJson(
   SearchUsersResponse instance,

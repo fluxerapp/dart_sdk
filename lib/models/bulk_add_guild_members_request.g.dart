@@ -8,9 +8,20 @@ part of 'bulk_add_guild_members_request.dart';
 
 BulkAddGuildMembersRequest _$BulkAddGuildMembersRequestFromJson(
   Map<String, dynamic> json,
-) => BulkAddGuildMembersRequest(
-  guildId: json['guild_id'] as String,
-  userIds: (json['user_ids'] as List<dynamic>).map((e) => e as String).toList(),
+) => $checkedCreate(
+  'BulkAddGuildMembersRequest',
+  json,
+  ($checkedConvert) {
+    final val = BulkAddGuildMembersRequest(
+      guildId: $checkedConvert('guild_id', (v) => v as String),
+      userIds: $checkedConvert(
+        'user_ids',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'guildId': 'guild_id', 'userIds': 'user_ids'},
 );
 
 Map<String, dynamic> _$BulkAddGuildMembersRequestToJson(

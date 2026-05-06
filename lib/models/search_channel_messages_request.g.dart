@@ -8,10 +8,18 @@ part of 'search_channel_messages_request.dart';
 
 SearchChannelMessagesRequest _$SearchChannelMessagesRequestFromJson(
   Map<String, dynamic> json,
-) => SearchChannelMessagesRequest(
-  channelId: json['channel_id'] as String,
-  query: json['query'] as String,
-  limit: (json['limit'] as num?)?.toInt(),
+) => $checkedCreate(
+  'SearchChannelMessagesRequest',
+  json,
+  ($checkedConvert) {
+    final val = SearchChannelMessagesRequest(
+      channelId: $checkedConvert('channel_id', (v) => v as String),
+      query: $checkedConvert('query', (v) => v as String),
+      limit: $checkedConvert('limit', (v) => (v as num?)?.toInt()),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'channelId': 'channel_id'},
 );
 
 Map<String, dynamic> _$SearchChannelMessagesRequestToJson(

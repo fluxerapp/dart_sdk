@@ -6,70 +6,119 @@ part of 'git_hub_webhook.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-GitHubWebhook _$GitHubWebhookFromJson(
-  Map<String, dynamic> json,
-) => GitHubWebhook(
-  sender: GitHubWebhookSender.fromJson(json['sender'] as Map<String, dynamic>),
-  action: json['action'] as String?,
-  answer: json['answer'] == null
-      ? null
-      : GitHubWebhookAnswer.fromJson(json['answer'] as Map<String, dynamic>),
-  checkRun: json['check_run'] == null
-      ? null
-      : GitHubWebhookCheckRun.fromJson(
-          json['check_run'] as Map<String, dynamic>,
-        ),
-  checkSuite: json['check_suite'] == null
-      ? null
-      : GitHubWebhookCheckSuite.fromJson(
-          json['check_suite'] as Map<String, dynamic>,
-        ),
-  comment: json['comment'] == null
-      ? null
-      : GitHubWebhookComment.fromJson(json['comment'] as Map<String, dynamic>),
-  commits: (json['commits'] as List<dynamic>?)
-      ?.map((e) => GitHubWebhookCommits.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  compare: json['compare'] as String?,
-  discussion: json['discussion'] == null
-      ? null
-      : GitHubWebhookDiscussion.fromJson(
-          json['discussion'] as Map<String, dynamic>,
-        ),
-  forced: json['forced'] as bool?,
-  forkee: json['forkee'] == null
-      ? null
-      : GitHubWebhookForkee.fromJson(json['forkee'] as Map<String, dynamic>),
-  headCommit: json['head_commit'] == null
-      ? null
-      : GitHubWebhookHeadCommit.fromJson(
-          json['head_commit'] as Map<String, dynamic>,
-        ),
-  issue: json['issue'] == null
-      ? null
-      : GitHubWebhookIssue.fromJson(json['issue'] as Map<String, dynamic>),
-  member: json['member'] == null
-      ? null
-      : GitHubWebhookMember.fromJson(json['member'] as Map<String, dynamic>),
-  pullRequest: json['pull_request'] == null
-      ? null
-      : GitHubWebhookPullRequest.fromJson(
-          json['pull_request'] as Map<String, dynamic>,
-        ),
-  refType: json['ref_type'] as String?,
-  ref: json['ref'] as String?,
-  release: json['release'] == null
-      ? null
-      : GitHubWebhookRelease.fromJson(json['release'] as Map<String, dynamic>),
-  repository: json['repository'] == null
-      ? null
-      : GitHubWebhookRepository.fromJson(
-          json['repository'] as Map<String, dynamic>,
-        ),
-  review: json['review'] == null
-      ? null
-      : GitHubWebhookReview.fromJson(json['review'] as Map<String, dynamic>),
-);
+GitHubWebhook _$GitHubWebhookFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      'GitHubWebhook',
+      json,
+      ($checkedConvert) {
+        final val = GitHubWebhook(
+          sender: $checkedConvert(
+            'sender',
+            (v) => GitHubWebhookSender.fromJson(v as Map<String, dynamic>),
+          ),
+          action: $checkedConvert('action', (v) => v as String?),
+          answer: $checkedConvert(
+            'answer',
+            (v) => v == null
+                ? null
+                : GitHubWebhookAnswer.fromJson(v as Map<String, dynamic>),
+          ),
+          checkRun: $checkedConvert(
+            'check_run',
+            (v) => v == null
+                ? null
+                : GitHubWebhookCheckRun.fromJson(v as Map<String, dynamic>),
+          ),
+          checkSuite: $checkedConvert(
+            'check_suite',
+            (v) => v == null
+                ? null
+                : GitHubWebhookCheckSuite.fromJson(v as Map<String, dynamic>),
+          ),
+          comment: $checkedConvert(
+            'comment',
+            (v) => v == null
+                ? null
+                : GitHubWebhookComment.fromJson(v as Map<String, dynamic>),
+          ),
+          commits: $checkedConvert(
+            'commits',
+            (v) => (v as List<dynamic>?)
+                ?.map(
+                  (e) =>
+                      GitHubWebhookCommits.fromJson(e as Map<String, dynamic>),
+                )
+                .toList(),
+          ),
+          compare: $checkedConvert('compare', (v) => v as String?),
+          discussion: $checkedConvert(
+            'discussion',
+            (v) => v == null
+                ? null
+                : GitHubWebhookDiscussion.fromJson(v as Map<String, dynamic>),
+          ),
+          forced: $checkedConvert('forced', (v) => v as bool?),
+          forkee: $checkedConvert(
+            'forkee',
+            (v) => v == null
+                ? null
+                : GitHubWebhookForkee.fromJson(v as Map<String, dynamic>),
+          ),
+          headCommit: $checkedConvert(
+            'head_commit',
+            (v) => v == null
+                ? null
+                : GitHubWebhookHeadCommit.fromJson(v as Map<String, dynamic>),
+          ),
+          issue: $checkedConvert(
+            'issue',
+            (v) => v == null
+                ? null
+                : GitHubWebhookIssue.fromJson(v as Map<String, dynamic>),
+          ),
+          member: $checkedConvert(
+            'member',
+            (v) => v == null
+                ? null
+                : GitHubWebhookMember.fromJson(v as Map<String, dynamic>),
+          ),
+          pullRequest: $checkedConvert(
+            'pull_request',
+            (v) => v == null
+                ? null
+                : GitHubWebhookPullRequest.fromJson(v as Map<String, dynamic>),
+          ),
+          refType: $checkedConvert('ref_type', (v) => v as String?),
+          ref: $checkedConvert('ref', (v) => v as String?),
+          release: $checkedConvert(
+            'release',
+            (v) => v == null
+                ? null
+                : GitHubWebhookRelease.fromJson(v as Map<String, dynamic>),
+          ),
+          repository: $checkedConvert(
+            'repository',
+            (v) => v == null
+                ? null
+                : GitHubWebhookRepository.fromJson(v as Map<String, dynamic>),
+          ),
+          review: $checkedConvert(
+            'review',
+            (v) => v == null
+                ? null
+                : GitHubWebhookReview.fromJson(v as Map<String, dynamic>),
+          ),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'checkRun': 'check_run',
+        'checkSuite': 'check_suite',
+        'headCommit': 'head_commit',
+        'pullRequest': 'pull_request',
+        'refType': 'ref_type',
+      },
+    );
 
 Map<String, dynamic> _$GitHubWebhookToJson(GitHubWebhook instance) =>
     <String, dynamic>{

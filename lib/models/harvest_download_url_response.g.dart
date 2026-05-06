@@ -8,9 +8,17 @@ part of 'harvest_download_url_response.dart';
 
 HarvestDownloadUrlResponse _$HarvestDownloadUrlResponseFromJson(
   Map<String, dynamic> json,
-) => HarvestDownloadUrlResponse(
-  downloadUrl: json['download_url'] as String,
-  expiresAt: json['expires_at'] as String,
+) => $checkedCreate(
+  'HarvestDownloadUrlResponse',
+  json,
+  ($checkedConvert) {
+    final val = HarvestDownloadUrlResponse(
+      downloadUrl: $checkedConvert('download_url', (v) => v as String),
+      expiresAt: $checkedConvert('expires_at', (v) => v as String),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'downloadUrl': 'download_url', 'expiresAt': 'expires_at'},
 );
 
 Map<String, dynamic> _$HarvestDownloadUrlResponseToJson(

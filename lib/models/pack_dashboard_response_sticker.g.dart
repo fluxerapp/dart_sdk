@@ -8,15 +8,35 @@ part of 'pack_dashboard_response_sticker.dart';
 
 PackDashboardResponseSticker _$PackDashboardResponseStickerFromJson(
   Map<String, dynamic> json,
-) => PackDashboardResponseSticker(
-  installedLimit: (json['installed_limit'] as num).toInt(),
-  createdLimit: (json['created_limit'] as num).toInt(),
-  installed: (json['installed'] as List<dynamic>)
-      .map((e) => PackSummaryResponse.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  created: (json['created'] as List<dynamic>)
-      .map((e) => PackSummaryResponse.fromJson(e as Map<String, dynamic>))
-      .toList(),
+) => $checkedCreate(
+  'PackDashboardResponseSticker',
+  json,
+  ($checkedConvert) {
+    final val = PackDashboardResponseSticker(
+      installedLimit: $checkedConvert(
+        'installed_limit',
+        (v) => (v as num).toInt(),
+      ),
+      createdLimit: $checkedConvert('created_limit', (v) => (v as num).toInt()),
+      installed: $checkedConvert(
+        'installed',
+        (v) => (v as List<dynamic>)
+            .map((e) => PackSummaryResponse.fromJson(e as Map<String, dynamic>))
+            .toList(),
+      ),
+      created: $checkedConvert(
+        'created',
+        (v) => (v as List<dynamic>)
+            .map((e) => PackSummaryResponse.fromJson(e as Map<String, dynamic>))
+            .toList(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'installedLimit': 'installed_limit',
+    'createdLimit': 'created_limit',
+  },
 );
 
 Map<String, dynamic> _$PackDashboardResponseStickerToJson(

@@ -8,11 +8,16 @@ part of 'create_voice_server_response.dart';
 
 CreateVoiceServerResponse _$CreateVoiceServerResponseFromJson(
   Map<String, dynamic> json,
-) => CreateVoiceServerResponse(
-  server: CreateVoiceServerResponseServer.fromJson(
-    json['server'] as Map<String, dynamic>,
-  ),
-);
+) => $checkedCreate('CreateVoiceServerResponse', json, ($checkedConvert) {
+  final val = CreateVoiceServerResponse(
+    server: $checkedConvert(
+      'server',
+      (v) =>
+          CreateVoiceServerResponseServer.fromJson(v as Map<String, dynamic>),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$CreateVoiceServerResponseToJson(
   CreateVoiceServerResponse instance,

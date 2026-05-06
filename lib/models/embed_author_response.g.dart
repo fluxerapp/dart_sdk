@@ -7,11 +7,22 @@ part of 'embed_author_response.dart';
 // **************************************************************************
 
 EmbedAuthorResponse _$EmbedAuthorResponseFromJson(Map<String, dynamic> json) =>
-    EmbedAuthorResponse(
-      name: json['name'] as String,
-      url: json['url'] as String?,
-      iconUrl: json['icon_url'] as String?,
-      proxyIconUrl: json['proxy_icon_url'] as String?,
+    $checkedCreate(
+      'EmbedAuthorResponse',
+      json,
+      ($checkedConvert) {
+        final val = EmbedAuthorResponse(
+          name: $checkedConvert('name', (v) => v as String),
+          url: $checkedConvert('url', (v) => v as String?),
+          iconUrl: $checkedConvert('icon_url', (v) => v as String?),
+          proxyIconUrl: $checkedConvert('proxy_icon_url', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'iconUrl': 'icon_url',
+        'proxyIconUrl': 'proxy_icon_url',
+      },
     );
 
 Map<String, dynamic> _$EmbedAuthorResponseToJson(

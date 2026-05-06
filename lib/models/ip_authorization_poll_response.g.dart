@@ -8,11 +8,14 @@ part of 'ip_authorization_poll_response.dart';
 
 IpAuthorizationPollResponse _$IpAuthorizationPollResponseFromJson(
   Map<String, dynamic> json,
-) => IpAuthorizationPollResponse(
-  completed: json['completed'] as bool,
-  token: json['token'] as String?,
-  userId: json['user_id'] as String?,
-);
+) => $checkedCreate('IpAuthorizationPollResponse', json, ($checkedConvert) {
+  final val = IpAuthorizationPollResponse(
+    completed: $checkedConvert('completed', (v) => v as bool),
+    token: $checkedConvert('token', (v) => v as String?),
+    userId: $checkedConvert('user_id', (v) => v as String?),
+  );
+  return val;
+}, fieldKeyMap: const {'userId': 'user_id'});
 
 Map<String, dynamic> _$IpAuthorizationPollResponseToJson(
   IpAuthorizationPollResponse instance,

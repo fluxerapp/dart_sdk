@@ -8,77 +8,207 @@ part of 'report_admin_response_schema.dart';
 
 ReportAdminResponseSchema _$ReportAdminResponseSchemaFromJson(
   Map<String, dynamic> json,
-) => ReportAdminResponseSchema(
-  additionalInfo: json['additional_info'] as String?,
-  reporterId: json['reporter_id'] as String?,
-  reporterTag: json['reporter_tag'] as String?,
-  reporterUsername: json['reporter_username'] as String?,
-  reporterGlobalName: json['reporter_global_name'] as String?,
-  reporterDiscriminator: json['reporter_discriminator'] as String?,
-  reporterEmail: json['reporter_email'] as String?,
-  reporterFullLegalName: json['reporter_full_legal_name'] as String?,
-  reporterCountryOfResidence: json['reporter_country_of_residence'] as String?,
-  reportedAt: json['reported_at'] as String,
-  status: ReportStatus.fromJson((json['status'] as num).toInt()),
-  reportType: ReportType.fromJson((json['report_type'] as num).toInt()),
-  category: json['category'] as String?,
-  reportId: json['report_id'] as String,
-  reportedUserId: json['reported_user_id'] as String?,
-  reportedUserTag: json['reported_user_tag'] as String?,
-  reportedUserUsername: json['reported_user_username'] as String?,
-  reportedUserGlobalName: json['reported_user_global_name'] as String?,
-  reportedUserDiscriminator: json['reported_user_discriminator'] as String?,
-  reportedUserAvatarHash: json['reported_user_avatar_hash'] as String?,
-  reportedGuildId: json['reported_guild_id'] as String?,
-  reportedGuildName: json['reported_guild_name'] as String?,
-  reportedMessageId: json['reported_message_id'] as String?,
-  reportedChannelId: json['reported_channel_id'] as String?,
-  reportedChannelName: json['reported_channel_name'] as String?,
-  reportedChannelNsfw: json['reported_channel_nsfw'] as bool?,
-  reportedGuildInviteCode: json['reported_guild_invite_code'] as String?,
-  publicComment: json['public_comment'] as String?,
-  resolvedByAdminId: json['resolved_by_admin_id'] as String?,
-  reportedGuildNsfwLevel: json['reported_guild_nsfw_level'] == null
-      ? null
-      : NsfwLevel.fromJson((json['reported_guild_nsfw_level'] as num).toInt()),
-  resolvedAt: json['resolved_at'] as String?,
-  reportedChannelNsfwOverride: json['reported_channel_nsfw_override'] as bool?,
-  reportedChannelContentWarningLevel:
-      json['reported_channel_content_warning_level'] == null
-      ? null
-      : ContentWarningLevel.fromJson(
-          (json['reported_channel_content_warning_level'] as num).toInt(),
-        ),
-  reportedChannelContentWarningText:
-      json['reported_channel_content_warning_text'] as String?,
-  reportedChannelEffectiveNsfw:
-      json['reported_channel_effective_nsfw'] as bool?,
-  reportedChannelEffectiveContentWarningLevel:
-      json['reported_channel_effective_content_warning_level'] == null
-      ? null
-      : ContentWarningLevel.fromJson(
-          (json['reported_channel_effective_content_warning_level'] as num)
-              .toInt(),
-        ),
-  reportedChannelEffectiveContentWarningText:
-      json['reported_channel_effective_content_warning_text'] as String?,
-  reportedGuildContentWarningLevel:
-      json['reported_guild_content_warning_level'] == null
-      ? null
-      : ContentWarningLevel.fromJson(
-          (json['reported_guild_content_warning_level'] as num).toInt(),
-        ),
-  reportedGuildNsfw: json['reported_guild_nsfw'] as bool?,
-  messageContext: (json['message_context'] as List<dynamic>?)
-      ?.map(
-        (e) => ReportAdminResponseSchemaMessageContext.fromJson(
-          e as Map<String, dynamic>,
-        ),
-      )
-      .toList(),
-  mutualDmChannelId: json['mutual_dm_channel_id'] as String?,
-  reportedGuildContentWarningText:
-      json['reported_guild_content_warning_text'] as String?,
+) => $checkedCreate(
+  'ReportAdminResponseSchema',
+  json,
+  ($checkedConvert) {
+    final val = ReportAdminResponseSchema(
+      additionalInfo: $checkedConvert('additional_info', (v) => v as String?),
+      reporterId: $checkedConvert('reporter_id', (v) => v as String?),
+      reporterTag: $checkedConvert('reporter_tag', (v) => v as String?),
+      reporterUsername: $checkedConvert(
+        'reporter_username',
+        (v) => v as String?,
+      ),
+      reporterGlobalName: $checkedConvert(
+        'reporter_global_name',
+        (v) => v as String?,
+      ),
+      reporterDiscriminator: $checkedConvert(
+        'reporter_discriminator',
+        (v) => v as String?,
+      ),
+      reporterEmail: $checkedConvert('reporter_email', (v) => v as String?),
+      reporterFullLegalName: $checkedConvert(
+        'reporter_full_legal_name',
+        (v) => v as String?,
+      ),
+      reporterCountryOfResidence: $checkedConvert(
+        'reporter_country_of_residence',
+        (v) => v as String?,
+      ),
+      reportedAt: $checkedConvert('reported_at', (v) => v as String),
+      status: $checkedConvert(
+        'status',
+        (v) => ReportStatus.fromJson((v as num).toInt()),
+      ),
+      reportType: $checkedConvert(
+        'report_type',
+        (v) => ReportType.fromJson((v as num).toInt()),
+      ),
+      category: $checkedConvert('category', (v) => v as String?),
+      reportId: $checkedConvert('report_id', (v) => v as String),
+      reportedUserId: $checkedConvert('reported_user_id', (v) => v as String?),
+      reportedUserTag: $checkedConvert(
+        'reported_user_tag',
+        (v) => v as String?,
+      ),
+      reportedUserUsername: $checkedConvert(
+        'reported_user_username',
+        (v) => v as String?,
+      ),
+      reportedUserGlobalName: $checkedConvert(
+        'reported_user_global_name',
+        (v) => v as String?,
+      ),
+      reportedUserDiscriminator: $checkedConvert(
+        'reported_user_discriminator',
+        (v) => v as String?,
+      ),
+      reportedUserAvatarHash: $checkedConvert(
+        'reported_user_avatar_hash',
+        (v) => v as String?,
+      ),
+      reportedGuildId: $checkedConvert(
+        'reported_guild_id',
+        (v) => v as String?,
+      ),
+      reportedGuildName: $checkedConvert(
+        'reported_guild_name',
+        (v) => v as String?,
+      ),
+      reportedMessageId: $checkedConvert(
+        'reported_message_id',
+        (v) => v as String?,
+      ),
+      reportedChannelId: $checkedConvert(
+        'reported_channel_id',
+        (v) => v as String?,
+      ),
+      reportedChannelName: $checkedConvert(
+        'reported_channel_name',
+        (v) => v as String?,
+      ),
+      reportedChannelNsfw: $checkedConvert(
+        'reported_channel_nsfw',
+        (v) => v as bool?,
+      ),
+      reportedGuildInviteCode: $checkedConvert(
+        'reported_guild_invite_code',
+        (v) => v as String?,
+      ),
+      publicComment: $checkedConvert('public_comment', (v) => v as String?),
+      resolvedByAdminId: $checkedConvert(
+        'resolved_by_admin_id',
+        (v) => v as String?,
+      ),
+      reportedGuildNsfwLevel: $checkedConvert(
+        'reported_guild_nsfw_level',
+        (v) => v == null ? null : NsfwLevel.fromJson((v as num).toInt()),
+      ),
+      resolvedAt: $checkedConvert('resolved_at', (v) => v as String?),
+      reportedChannelNsfwOverride: $checkedConvert(
+        'reported_channel_nsfw_override',
+        (v) => v as bool?,
+      ),
+      reportedChannelContentWarningLevel: $checkedConvert(
+        'reported_channel_content_warning_level',
+        (v) =>
+            v == null ? null : ContentWarningLevel.fromJson((v as num).toInt()),
+      ),
+      reportedChannelContentWarningText: $checkedConvert(
+        'reported_channel_content_warning_text',
+        (v) => v as String?,
+      ),
+      reportedChannelEffectiveNsfw: $checkedConvert(
+        'reported_channel_effective_nsfw',
+        (v) => v as bool?,
+      ),
+      reportedChannelEffectiveContentWarningLevel: $checkedConvert(
+        'reported_channel_effective_content_warning_level',
+        (v) =>
+            v == null ? null : ContentWarningLevel.fromJson((v as num).toInt()),
+      ),
+      reportedChannelEffectiveContentWarningText: $checkedConvert(
+        'reported_channel_effective_content_warning_text',
+        (v) => v as String?,
+      ),
+      reportedGuildContentWarningLevel: $checkedConvert(
+        'reported_guild_content_warning_level',
+        (v) =>
+            v == null ? null : ContentWarningLevel.fromJson((v as num).toInt()),
+      ),
+      reportedGuildNsfw: $checkedConvert(
+        'reported_guild_nsfw',
+        (v) => v as bool?,
+      ),
+      messageContext: $checkedConvert(
+        'message_context',
+        (v) => (v as List<dynamic>?)
+            ?.map(
+              (e) => ReportAdminResponseSchemaMessageContext.fromJson(
+                e as Map<String, dynamic>,
+              ),
+            )
+            .toList(),
+      ),
+      mutualDmChannelId: $checkedConvert(
+        'mutual_dm_channel_id',
+        (v) => v as String?,
+      ),
+      reportedGuildContentWarningText: $checkedConvert(
+        'reported_guild_content_warning_text',
+        (v) => v as String?,
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'additionalInfo': 'additional_info',
+    'reporterId': 'reporter_id',
+    'reporterTag': 'reporter_tag',
+    'reporterUsername': 'reporter_username',
+    'reporterGlobalName': 'reporter_global_name',
+    'reporterDiscriminator': 'reporter_discriminator',
+    'reporterEmail': 'reporter_email',
+    'reporterFullLegalName': 'reporter_full_legal_name',
+    'reporterCountryOfResidence': 'reporter_country_of_residence',
+    'reportedAt': 'reported_at',
+    'reportType': 'report_type',
+    'reportId': 'report_id',
+    'reportedUserId': 'reported_user_id',
+    'reportedUserTag': 'reported_user_tag',
+    'reportedUserUsername': 'reported_user_username',
+    'reportedUserGlobalName': 'reported_user_global_name',
+    'reportedUserDiscriminator': 'reported_user_discriminator',
+    'reportedUserAvatarHash': 'reported_user_avatar_hash',
+    'reportedGuildId': 'reported_guild_id',
+    'reportedGuildName': 'reported_guild_name',
+    'reportedMessageId': 'reported_message_id',
+    'reportedChannelId': 'reported_channel_id',
+    'reportedChannelName': 'reported_channel_name',
+    'reportedChannelNsfw': 'reported_channel_nsfw',
+    'reportedGuildInviteCode': 'reported_guild_invite_code',
+    'publicComment': 'public_comment',
+    'resolvedByAdminId': 'resolved_by_admin_id',
+    'reportedGuildNsfwLevel': 'reported_guild_nsfw_level',
+    'resolvedAt': 'resolved_at',
+    'reportedChannelNsfwOverride': 'reported_channel_nsfw_override',
+    'reportedChannelContentWarningLevel':
+        'reported_channel_content_warning_level',
+    'reportedChannelContentWarningText':
+        'reported_channel_content_warning_text',
+    'reportedChannelEffectiveNsfw': 'reported_channel_effective_nsfw',
+    'reportedChannelEffectiveContentWarningLevel':
+        'reported_channel_effective_content_warning_level',
+    'reportedChannelEffectiveContentWarningText':
+        'reported_channel_effective_content_warning_text',
+    'reportedGuildContentWarningLevel': 'reported_guild_content_warning_level',
+    'reportedGuildNsfw': 'reported_guild_nsfw',
+    'messageContext': 'message_context',
+    'mutualDmChannelId': 'mutual_dm_channel_id',
+    'reportedGuildContentWarningText': 'reported_guild_content_warning_text',
+  },
 );
 
 Map<String, dynamic> _$ReportAdminResponseSchemaToJson(

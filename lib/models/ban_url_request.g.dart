@@ -7,13 +7,16 @@ part of 'ban_url_request.dart';
 // **************************************************************************
 
 BanUrlRequest _$BanUrlRequestFromJson(Map<String, dynamic> json) =>
-    BanUrlRequest(
-      url: json['url'] as String,
-      category: json['category'] as String?,
-      severity: (json['severity'] as num?)?.toInt(),
-      sourceUrl: json['source_url'] as String?,
-      notes: json['notes'] as String?,
-    );
+    $checkedCreate('BanUrlRequest', json, ($checkedConvert) {
+      final val = BanUrlRequest(
+        url: $checkedConvert('url', (v) => v as String),
+        category: $checkedConvert('category', (v) => v as String?),
+        severity: $checkedConvert('severity', (v) => (v as num?)?.toInt()),
+        sourceUrl: $checkedConvert('source_url', (v) => v as String?),
+        notes: $checkedConvert('notes', (v) => v as String?),
+      );
+      return val;
+    }, fieldKeyMap: const {'sourceUrl': 'source_url'});
 
 Map<String, dynamic> _$BanUrlRequestToJson(BanUrlRequest instance) =>
     <String, dynamic>{

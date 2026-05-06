@@ -8,11 +8,16 @@ part of 'update_voice_region_response.dart';
 
 UpdateVoiceRegionResponse _$UpdateVoiceRegionResponseFromJson(
   Map<String, dynamic> json,
-) => UpdateVoiceRegionResponse(
-  region: UpdateVoiceRegionResponseRegion.fromJson(
-    json['region'] as Map<String, dynamic>,
-  ),
-);
+) => $checkedCreate('UpdateVoiceRegionResponse', json, ($checkedConvert) {
+  final val = UpdateVoiceRegionResponse(
+    region: $checkedConvert(
+      'region',
+      (v) =>
+          UpdateVoiceRegionResponseRegion.fromJson(v as Map<String, dynamic>),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$UpdateVoiceRegionResponseToJson(
   UpdateVoiceRegionResponse instance,

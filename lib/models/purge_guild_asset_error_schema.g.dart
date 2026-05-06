@@ -8,10 +8,13 @@ part of 'purge_guild_asset_error_schema.dart';
 
 PurgeGuildAssetErrorSchema _$PurgeGuildAssetErrorSchemaFromJson(
   Map<String, dynamic> json,
-) => PurgeGuildAssetErrorSchema(
-  id: json['id'] as String,
-  error: json['error'] as String,
-);
+) => $checkedCreate('PurgeGuildAssetErrorSchema', json, ($checkedConvert) {
+  final val = PurgeGuildAssetErrorSchema(
+    id: $checkedConvert('id', (v) => v as String),
+    error: $checkedConvert('error', (v) => v as String),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$PurgeGuildAssetErrorSchemaToJson(
   PurgeGuildAssetErrorSchema instance,

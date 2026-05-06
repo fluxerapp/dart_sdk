@@ -8,10 +8,13 @@ part of 'push_subscribe_request_keys.dart';
 
 PushSubscribeRequestKeys _$PushSubscribeRequestKeysFromJson(
   Map<String, dynamic> json,
-) => PushSubscribeRequestKeys(
-  p256dh: json['p256dh'] as String,
-  auth: json['auth'] as String,
-);
+) => $checkedCreate('PushSubscribeRequestKeys', json, ($checkedConvert) {
+  final val = PushSubscribeRequestKeys(
+    p256dh: $checkedConvert('p256dh', (v) => v as String),
+    auth: $checkedConvert('auth', (v) => v as String),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$PushSubscribeRequestKeysToJson(
   PushSubscribeRequestKeys instance,

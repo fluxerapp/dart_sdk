@@ -8,12 +8,20 @@ part of 'guild_asset_item_schema.dart';
 
 GuildAssetItemSchema _$GuildAssetItemSchemaFromJson(
   Map<String, dynamic> json,
-) => GuildAssetItemSchema(
-  id: json['id'] as String,
-  name: json['name'] as String,
-  animated: json['animated'] as bool,
-  creatorId: json['creator_id'] as String,
-  mediaUrl: json['media_url'] as String,
+) => $checkedCreate(
+  'GuildAssetItemSchema',
+  json,
+  ($checkedConvert) {
+    final val = GuildAssetItemSchema(
+      id: $checkedConvert('id', (v) => v as String),
+      name: $checkedConvert('name', (v) => v as String),
+      animated: $checkedConvert('animated', (v) => v as bool),
+      creatorId: $checkedConvert('creator_id', (v) => v as String),
+      mediaUrl: $checkedConvert('media_url', (v) => v as String),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'creatorId': 'creator_id', 'mediaUrl': 'media_url'},
 );
 
 Map<String, dynamic> _$GuildAssetItemSchemaToJson(

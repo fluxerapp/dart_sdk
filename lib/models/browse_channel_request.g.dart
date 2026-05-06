@@ -8,12 +8,15 @@ part of 'browse_channel_request.dart';
 
 BrowseChannelRequest _$BrowseChannelRequestFromJson(
   Map<String, dynamic> json,
-) => BrowseChannelRequest(
-  channelId: json['channel_id'] as String,
-  before: json['before'] as String?,
-  after: json['after'] as String?,
-  limit: (json['limit'] as num?)?.toInt(),
-);
+) => $checkedCreate('BrowseChannelRequest', json, ($checkedConvert) {
+  final val = BrowseChannelRequest(
+    channelId: $checkedConvert('channel_id', (v) => v as String),
+    before: $checkedConvert('before', (v) => v as String?),
+    after: $checkedConvert('after', (v) => v as String?),
+    limit: $checkedConvert('limit', (v) => (v as num?)?.toInt()),
+  );
+  return val;
+}, fieldKeyMap: const {'channelId': 'channel_id'});
 
 Map<String, dynamic> _$BrowseChannelRequestToJson(
   BrowseChannelRequest instance,

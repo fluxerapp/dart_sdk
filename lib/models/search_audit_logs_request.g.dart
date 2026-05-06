@@ -8,20 +8,37 @@ part of 'search_audit_logs_request.dart';
 
 SearchAuditLogsRequest _$SearchAuditLogsRequestFromJson(
   Map<String, dynamic> json,
-) => SearchAuditLogsRequest(
-  query: json['query'] as String?,
-  adminUserId: json['admin_user_id'] as String?,
-  targetId: json['target_id'] as String?,
-  sortBy: json['sort_by'] == null
-      ? null
-      : SearchAuditLogsRequestSortBySortBy.fromJson(json['sort_by'] as String),
-  sortOrder: json['sort_order'] == null
-      ? null
-      : SearchAuditLogsRequestSortOrderSortOrder.fromJson(
-          json['sort_order'] as String,
-        ),
-  limit: (json['limit'] as num?)?.toInt(),
-  offset: (json['offset'] as num?)?.toInt(),
+) => $checkedCreate(
+  'SearchAuditLogsRequest',
+  json,
+  ($checkedConvert) {
+    final val = SearchAuditLogsRequest(
+      query: $checkedConvert('query', (v) => v as String?),
+      adminUserId: $checkedConvert('admin_user_id', (v) => v as String?),
+      targetId: $checkedConvert('target_id', (v) => v as String?),
+      sortBy: $checkedConvert(
+        'sort_by',
+        (v) => v == null
+            ? null
+            : SearchAuditLogsRequestSortBySortBy.fromJson(v as String),
+      ),
+      sortOrder: $checkedConvert(
+        'sort_order',
+        (v) => v == null
+            ? null
+            : SearchAuditLogsRequestSortOrderSortOrder.fromJson(v as String),
+      ),
+      limit: $checkedConvert('limit', (v) => (v as num?)?.toInt()),
+      offset: $checkedConvert('offset', (v) => (v as num?)?.toInt()),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'adminUserId': 'admin_user_id',
+    'targetId': 'target_id',
+    'sortBy': 'sort_by',
+    'sortOrder': 'sort_order',
+  },
 );
 
 Map<String, dynamic> _$SearchAuditLogsRequestToJson(

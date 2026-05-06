@@ -8,7 +8,14 @@ part of 'admin_billing_cancel_immediately_request.dart';
 
 AdminBillingCancelImmediatelyRequest
 _$AdminBillingCancelImmediatelyRequestFromJson(Map<String, dynamic> json) =>
-    AdminBillingCancelImmediatelyRequest(reason: json['reason'] as String?);
+    $checkedCreate('AdminBillingCancelImmediatelyRequest', json, (
+      $checkedConvert,
+    ) {
+      final val = AdminBillingCancelImmediatelyRequest(
+        reason: $checkedConvert('reason', (v) => v as String?),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$AdminBillingCancelImmediatelyRequestToJson(
   AdminBillingCancelImmediatelyRequest instance,

@@ -8,9 +8,17 @@ part of 'disable_for_suspicious_activity_request.dart';
 
 DisableForSuspiciousActivityRequest
 _$DisableForSuspiciousActivityRequestFromJson(Map<String, dynamic> json) =>
-    DisableForSuspiciousActivityRequest(
-      userId: json['user_id'] as String,
-      flags: (json['flags'] as num).toInt(),
+    $checkedCreate(
+      'DisableForSuspiciousActivityRequest',
+      json,
+      ($checkedConvert) {
+        final val = DisableForSuspiciousActivityRequest(
+          userId: $checkedConvert('user_id', (v) => v as String),
+          flags: $checkedConvert('flags', (v) => (v as num).toInt()),
+        );
+        return val;
+      },
+      fieldKeyMap: const {'userId': 'user_id'},
     );
 
 Map<String, dynamic> _$DisableForSuspiciousActivityRequestToJson(

@@ -8,15 +8,27 @@ part of 'git_hub_webhook_discussion.dart';
 
 GitHubWebhookDiscussion _$GitHubWebhookDiscussionFromJson(
   Map<String, dynamic> json,
-) => GitHubWebhookDiscussion(
-  title: json['title'] as String,
-  number: (json['number'] as num).toInt(),
-  htmlUrl: json['html_url'] as String,
-  user: GitHubWebhookDiscussionUser.fromJson(
-    json['user'] as Map<String, dynamic>,
-  ),
-  answerHtmlUrl: json['answer_html_url'] as String?,
-  body: json['body'] as String?,
+) => $checkedCreate(
+  'GitHubWebhookDiscussion',
+  json,
+  ($checkedConvert) {
+    final val = GitHubWebhookDiscussion(
+      title: $checkedConvert('title', (v) => v as String),
+      number: $checkedConvert('number', (v) => (v as num).toInt()),
+      htmlUrl: $checkedConvert('html_url', (v) => v as String),
+      user: $checkedConvert(
+        'user',
+        (v) => GitHubWebhookDiscussionUser.fromJson(v as Map<String, dynamic>),
+      ),
+      answerHtmlUrl: $checkedConvert('answer_html_url', (v) => v as String?),
+      body: $checkedConvert('body', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'htmlUrl': 'html_url',
+    'answerHtmlUrl': 'answer_html_url',
+  },
 );
 
 Map<String, dynamic> _$GitHubWebhookDiscussionToJson(

@@ -8,11 +8,19 @@ part of 'upload_voice_diagnostics_response.dart';
 
 UploadVoiceDiagnosticsResponse _$UploadVoiceDiagnosticsResponseFromJson(
   Map<String, dynamic> json,
-) => UploadVoiceDiagnosticsResponse(
-  id: json['id'] as String,
-  key: json['key'] as String,
-  sizeBytes: (json['size_bytes'] as num).toInt(),
-  createdAt: json['created_at'] as String,
+) => $checkedCreate(
+  'UploadVoiceDiagnosticsResponse',
+  json,
+  ($checkedConvert) {
+    final val = UploadVoiceDiagnosticsResponse(
+      id: $checkedConvert('id', (v) => v as String),
+      key: $checkedConvert('key', (v) => v as String),
+      sizeBytes: $checkedConvert('size_bytes', (v) => (v as num).toInt()),
+      createdAt: $checkedConvert('created_at', (v) => v as String),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'sizeBytes': 'size_bytes', 'createdAt': 'created_at'},
 );
 
 Map<String, dynamic> _$UploadVoiceDiagnosticsResponseToJson(

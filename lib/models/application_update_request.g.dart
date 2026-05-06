@@ -8,13 +8,29 @@ part of 'application_update_request.dart';
 
 ApplicationUpdateRequest _$ApplicationUpdateRequestFromJson(
   Map<String, dynamic> json,
-) => ApplicationUpdateRequest(
-  name: json['name'] as String?,
-  redirectUris: (json['redirect_uris'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
-  botPublic: json['bot_public'] as bool?,
-  botRequireCodeGrant: json['bot_require_code_grant'] as bool?,
+) => $checkedCreate(
+  'ApplicationUpdateRequest',
+  json,
+  ($checkedConvert) {
+    final val = ApplicationUpdateRequest(
+      name: $checkedConvert('name', (v) => v as String?),
+      redirectUris: $checkedConvert(
+        'redirect_uris',
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+      ),
+      botPublic: $checkedConvert('bot_public', (v) => v as bool?),
+      botRequireCodeGrant: $checkedConvert(
+        'bot_require_code_grant',
+        (v) => v as bool?,
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'redirectUris': 'redirect_uris',
+    'botPublic': 'bot_public',
+    'botRequireCodeGrant': 'bot_require_code_grant',
+  },
 );
 
 Map<String, dynamic> _$ApplicationUpdateRequestToJson(

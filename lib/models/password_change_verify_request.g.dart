@@ -8,10 +8,13 @@ part of 'password_change_verify_request.dart';
 
 PasswordChangeVerifyRequest _$PasswordChangeVerifyRequestFromJson(
   Map<String, dynamic> json,
-) => PasswordChangeVerifyRequest(
-  ticket: json['ticket'] as String,
-  code: json['code'] as String,
-);
+) => $checkedCreate('PasswordChangeVerifyRequest', json, ($checkedConvert) {
+  final val = PasswordChangeVerifyRequest(
+    ticket: $checkedConvert('ticket', (v) => v as String),
+    code: $checkedConvert('code', (v) => v as String),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$PasswordChangeVerifyRequestToJson(
   PasswordChangeVerifyRequest instance,

@@ -8,15 +8,30 @@ part of 'admin_payment_refund_response.dart';
 
 AdminPaymentRefundResponse _$AdminPaymentRefundResponseFromJson(
   Map<String, dynamic> json,
-) => AdminPaymentRefundResponse(
-  id: json['id'] as String,
-  amountCents: json['amount_cents'] as num,
-  currency: json['currency'] as String,
-  status: json['status'] as String?,
-  reason: json['reason'] as String?,
-  created: json['created'] as num,
-  paymentIntentId: json['payment_intent_id'] as String?,
-  chargeId: json['charge_id'] as String?,
+) => $checkedCreate(
+  'AdminPaymentRefundResponse',
+  json,
+  ($checkedConvert) {
+    final val = AdminPaymentRefundResponse(
+      id: $checkedConvert('id', (v) => v as String),
+      amountCents: $checkedConvert('amount_cents', (v) => v as num),
+      currency: $checkedConvert('currency', (v) => v as String),
+      status: $checkedConvert('status', (v) => v as String?),
+      reason: $checkedConvert('reason', (v) => v as String?),
+      created: $checkedConvert('created', (v) => v as num),
+      paymentIntentId: $checkedConvert(
+        'payment_intent_id',
+        (v) => v as String?,
+      ),
+      chargeId: $checkedConvert('charge_id', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'amountCents': 'amount_cents',
+    'paymentIntentId': 'payment_intent_id',
+    'chargeId': 'charge_id',
+  },
 );
 
 Map<String, dynamic> _$AdminPaymentRefundResponseToJson(

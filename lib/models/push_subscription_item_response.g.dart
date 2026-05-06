@@ -8,9 +8,20 @@ part of 'push_subscription_item_response.dart';
 
 PushSubscriptionItemResponse _$PushSubscriptionItemResponseFromJson(
   Map<String, dynamic> json,
-) => PushSubscriptionItemResponse(
-  subscriptionId: json['subscription_id'] as String,
-  userAgent: json['user_agent'] as String?,
+) => $checkedCreate(
+  'PushSubscriptionItemResponse',
+  json,
+  ($checkedConvert) {
+    final val = PushSubscriptionItemResponse(
+      subscriptionId: $checkedConvert('subscription_id', (v) => v as String),
+      userAgent: $checkedConvert('user_agent', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'subscriptionId': 'subscription_id',
+    'userAgent': 'user_agent',
+  },
 );
 
 Map<String, dynamic> _$PushSubscriptionItemResponseToJson(

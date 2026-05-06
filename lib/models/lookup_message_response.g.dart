@@ -8,15 +8,22 @@ part of 'lookup_message_response.dart';
 
 LookupMessageResponse _$LookupMessageResponseFromJson(
   Map<String, dynamic> json,
-) => LookupMessageResponse(
-  messages: (json['messages'] as List<dynamic>)
-      .map(
-        (e) =>
-            LookupMessageResponseMessages.fromJson(e as Map<String, dynamic>),
-      )
-      .toList(),
-  messageId: json['message_id'] as String?,
-);
+) => $checkedCreate('LookupMessageResponse', json, ($checkedConvert) {
+  final val = LookupMessageResponse(
+    messages: $checkedConvert(
+      'messages',
+      (v) => (v as List<dynamic>)
+          .map(
+            (e) => LookupMessageResponseMessages.fromJson(
+              e as Map<String, dynamic>,
+            ),
+          )
+          .toList(),
+    ),
+    messageId: $checkedConvert('message_id', (v) => v as String?),
+  );
+  return val;
+}, fieldKeyMap: const {'messageId': 'message_id'});
 
 Map<String, dynamic> _$LookupMessageResponseToJson(
   LookupMessageResponse instance,

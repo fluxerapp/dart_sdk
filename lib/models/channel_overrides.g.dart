@@ -7,22 +7,39 @@ part of 'channel_overrides.dart';
 // **************************************************************************
 
 ChannelOverrides _$ChannelOverridesFromJson(Map<String, dynamic> json) =>
-    ChannelOverrides(
-      collapsed: json['collapsed'] as bool,
-      messageNotifications: UserNotificationSettings.fromJson(
-        (json['message_notifications'] as num).toInt(),
-      ),
-      muted: json['muted'] as bool,
-      muteConfig: json['mute_config'] == null
-          ? null
-          : ChannelOverridesMuteConfig.fromJson(
-              json['mute_config'] as Map<String, dynamic>,
-            ),
-      unreadBadges: json['unread_badges'] == null
-          ? null
-          : UserNotificationSettings.fromJson(
-              (json['unread_badges'] as num).toInt(),
-            ),
+    $checkedCreate(
+      'ChannelOverrides',
+      json,
+      ($checkedConvert) {
+        final val = ChannelOverrides(
+          collapsed: $checkedConvert('collapsed', (v) => v as bool),
+          messageNotifications: $checkedConvert(
+            'message_notifications',
+            (v) => UserNotificationSettings.fromJson((v as num).toInt()),
+          ),
+          muted: $checkedConvert('muted', (v) => v as bool),
+          muteConfig: $checkedConvert(
+            'mute_config',
+            (v) => v == null
+                ? null
+                : ChannelOverridesMuteConfig.fromJson(
+                    v as Map<String, dynamic>,
+                  ),
+          ),
+          unreadBadges: $checkedConvert(
+            'unread_badges',
+            (v) => v == null
+                ? null
+                : UserNotificationSettings.fromJson((v as num).toInt()),
+          ),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'messageNotifications': 'message_notifications',
+        'muteConfig': 'mute_config',
+        'unreadBadges': 'unread_badges',
+      },
     );
 
 Map<String, dynamic> _$ChannelOverridesToJson(ChannelOverrides instance) =>

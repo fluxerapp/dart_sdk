@@ -8,13 +8,26 @@ part of 'voice_diagnostic_upload_entry.dart';
 
 VoiceDiagnosticUploadEntry _$VoiceDiagnosticUploadEntryFromJson(
   Map<String, dynamic> json,
-) => VoiceDiagnosticUploadEntry(
-  id: json['id'] as String,
-  userId: json['user_id'] as String,
-  key: json['key'] as String,
-  sizeBytes: (json['size_bytes'] as num).toInt(),
-  contentType: json['content_type'] as String,
-  createdAt: json['created_at'] as String,
+) => $checkedCreate(
+  'VoiceDiagnosticUploadEntry',
+  json,
+  ($checkedConvert) {
+    final val = VoiceDiagnosticUploadEntry(
+      id: $checkedConvert('id', (v) => v as String),
+      userId: $checkedConvert('user_id', (v) => v as String),
+      key: $checkedConvert('key', (v) => v as String),
+      sizeBytes: $checkedConvert('size_bytes', (v) => (v as num).toInt()),
+      contentType: $checkedConvert('content_type', (v) => v as String),
+      createdAt: $checkedConvert('created_at', (v) => v as String),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'userId': 'user_id',
+    'sizeBytes': 'size_bytes',
+    'contentType': 'content_type',
+    'createdAt': 'created_at',
+  },
 );
 
 Map<String, dynamic> _$VoiceDiagnosticUploadEntryToJson(

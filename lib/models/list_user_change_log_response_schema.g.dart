@@ -8,14 +8,26 @@ part of 'list_user_change_log_response_schema.dart';
 
 ListUserChangeLogResponseSchema _$ListUserChangeLogResponseSchemaFromJson(
   Map<String, dynamic> json,
-) => ListUserChangeLogResponseSchema(
-  entries: (json['entries'] as List<dynamic>)
-      .map(
-        (e) =>
-            UserContactChangeLogEntrySchema.fromJson(e as Map<String, dynamic>),
-      )
-      .toList(),
-  nextPageToken: json['next_page_token'] as String?,
+) => $checkedCreate(
+  'ListUserChangeLogResponseSchema',
+  json,
+  ($checkedConvert) {
+    final val = ListUserChangeLogResponseSchema(
+      entries: $checkedConvert(
+        'entries',
+        (v) => (v as List<dynamic>)
+            .map(
+              (e) => UserContactChangeLogEntrySchema.fromJson(
+                e as Map<String, dynamic>,
+              ),
+            )
+            .toList(),
+      ),
+      nextPageToken: $checkedConvert('next_page_token', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'nextPageToken': 'next_page_token'},
 );
 
 Map<String, dynamic> _$ListUserChangeLogResponseSchemaToJson(

@@ -8,10 +8,13 @@ part of 'web_authn_authenticate_request.dart';
 
 WebAuthnAuthenticateRequest _$WebAuthnAuthenticateRequestFromJson(
   Map<String, dynamic> json,
-) => WebAuthnAuthenticateRequest(
-  response: json['response'],
-  challenge: json['challenge'] as String,
-);
+) => $checkedCreate('WebAuthnAuthenticateRequest', json, ($checkedConvert) {
+  final val = WebAuthnAuthenticateRequest(
+    response: $checkedConvert('response', (v) => v),
+    challenge: $checkedConvert('challenge', (v) => v as String),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$WebAuthnAuthenticateRequestToJson(
   WebAuthnAuthenticateRequest instance,

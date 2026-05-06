@@ -8,13 +8,29 @@ part of 'application_create_request.dart';
 
 ApplicationCreateRequest _$ApplicationCreateRequestFromJson(
   Map<String, dynamic> json,
-) => ApplicationCreateRequest(
-  name: json['name'] as String,
-  redirectUris: (json['redirect_uris'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
-  botPublic: json['bot_public'] as bool?,
-  botRequireCodeGrant: json['bot_require_code_grant'] as bool?,
+) => $checkedCreate(
+  'ApplicationCreateRequest',
+  json,
+  ($checkedConvert) {
+    final val = ApplicationCreateRequest(
+      name: $checkedConvert('name', (v) => v as String),
+      redirectUris: $checkedConvert(
+        'redirect_uris',
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+      ),
+      botPublic: $checkedConvert('bot_public', (v) => v as bool?),
+      botRequireCodeGrant: $checkedConvert(
+        'bot_require_code_grant',
+        (v) => v as bool?,
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'redirectUris': 'redirect_uris',
+    'botPublic': 'bot_public',
+    'botRequireCodeGrant': 'bot_require_code_grant',
+  },
 );
 
 Map<String, dynamic> _$ApplicationCreateRequestToJson(

@@ -8,12 +8,18 @@ part of 'list_guild_stickers_response.dart';
 
 ListGuildStickersResponse _$ListGuildStickersResponseFromJson(
   Map<String, dynamic> json,
-) => ListGuildStickersResponse(
-  guildId: json['guild_id'] as String,
-  stickers: (json['stickers'] as List<dynamic>)
-      .map((e) => GuildAssetItemSchema.fromJson(e as Map<String, dynamic>))
-      .toList(),
-);
+) => $checkedCreate('ListGuildStickersResponse', json, ($checkedConvert) {
+  final val = ListGuildStickersResponse(
+    guildId: $checkedConvert('guild_id', (v) => v as String),
+    stickers: $checkedConvert(
+      'stickers',
+      (v) => (v as List<dynamic>)
+          .map((e) => GuildAssetItemSchema.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    ),
+  );
+  return val;
+}, fieldKeyMap: const {'guildId': 'guild_id'});
 
 Map<String, dynamic> _$ListGuildStickersResponseToJson(
   ListGuildStickersResponse instance,

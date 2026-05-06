@@ -8,7 +8,14 @@ part of 'validate_reset_password_token_response.dart';
 
 ValidateResetPasswordTokenResponse _$ValidateResetPasswordTokenResponseFromJson(
   Map<String, dynamic> json,
-) => ValidateResetPasswordTokenResponse(valid: json['valid'] as bool);
+) => $checkedCreate('ValidateResetPasswordTokenResponse', json, (
+  $checkedConvert,
+) {
+  final val = ValidateResetPasswordTokenResponse(
+    valid: $checkedConvert('valid', (v) => v as bool),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$ValidateResetPasswordTokenResponseToJson(
   ValidateResetPasswordTokenResponse instance,

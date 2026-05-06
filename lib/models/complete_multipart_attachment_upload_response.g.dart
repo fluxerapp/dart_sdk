@@ -9,15 +9,23 @@ part of 'complete_multipart_attachment_upload_response.dart';
 CompleteMultipartAttachmentUploadResponse
 _$CompleteMultipartAttachmentUploadResponseFromJson(
   Map<String, dynamic> json,
-) => CompleteMultipartAttachmentUploadResponse(
-  uploads: (json['uploads'] as List<dynamic>)
-      .map(
-        (e) => CompleteMultipartAttachmentUploadResult.fromJson(
-          e as Map<String, dynamic>,
-        ),
-      )
-      .toList(),
-);
+) => $checkedCreate('CompleteMultipartAttachmentUploadResponse', json, (
+  $checkedConvert,
+) {
+  final val = CompleteMultipartAttachmentUploadResponse(
+    uploads: $checkedConvert(
+      'uploads',
+      (v) => (v as List<dynamic>)
+          .map(
+            (e) => CompleteMultipartAttachmentUploadResult.fromJson(
+              e as Map<String, dynamic>,
+            ),
+          )
+          .toList(),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$CompleteMultipartAttachmentUploadResponseToJson(
   CompleteMultipartAttachmentUploadResponse instance,

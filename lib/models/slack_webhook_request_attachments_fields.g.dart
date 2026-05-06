@@ -8,11 +8,16 @@ part of 'slack_webhook_request_attachments_fields.dart';
 
 SlackWebhookRequestAttachmentsFields
 _$SlackWebhookRequestAttachmentsFieldsFromJson(Map<String, dynamic> json) =>
-    SlackWebhookRequestAttachmentsFields(
-      title: json['title'] as String?,
-      value: json['value'] as String?,
-      short: json['short'] as bool?,
-    );
+    $checkedCreate('SlackWebhookRequestAttachmentsFields', json, (
+      $checkedConvert,
+    ) {
+      final val = SlackWebhookRequestAttachmentsFields(
+        title: $checkedConvert('title', (v) => v as String?),
+        value: $checkedConvert('value', (v) => v as String?),
+        short: $checkedConvert('short', (v) => v as bool?),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$SlackWebhookRequestAttachmentsFieldsToJson(
   SlackWebhookRequestAttachmentsFields instance,

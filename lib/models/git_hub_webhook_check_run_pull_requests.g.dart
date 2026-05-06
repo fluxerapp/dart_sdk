@@ -8,7 +8,14 @@ part of 'git_hub_webhook_check_run_pull_requests.dart';
 
 GitHubWebhookCheckRunPullRequests _$GitHubWebhookCheckRunPullRequestsFromJson(
   Map<String, dynamic> json,
-) => GitHubWebhookCheckRunPullRequests(number: (json['number'] as num).toInt());
+) => $checkedCreate('GitHubWebhookCheckRunPullRequests', json, (
+  $checkedConvert,
+) {
+  final val = GitHubWebhookCheckRunPullRequests(
+    number: $checkedConvert('number', (v) => (v as num).toInt()),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$GitHubWebhookCheckRunPullRequestsToJson(
   GitHubWebhookCheckRunPullRequests instance,

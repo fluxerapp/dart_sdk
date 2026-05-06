@@ -8,10 +8,21 @@ part of 'harvest_creation_response_schema.dart';
 
 HarvestCreationResponseSchema _$HarvestCreationResponseSchemaFromJson(
   Map<String, dynamic> json,
-) => HarvestCreationResponseSchema(
-  harvestId: json['harvest_id'] as String,
-  status: HarvestStatusEnum.fromJson(json['status'] as String),
-  createdAt: json['created_at'] as String,
+) => $checkedCreate(
+  'HarvestCreationResponseSchema',
+  json,
+  ($checkedConvert) {
+    final val = HarvestCreationResponseSchema(
+      harvestId: $checkedConvert('harvest_id', (v) => v as String),
+      status: $checkedConvert(
+        'status',
+        (v) => HarvestStatusEnum.fromJson(v as String),
+      ),
+      createdAt: $checkedConvert('created_at', (v) => v as String),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'harvestId': 'harvest_id', 'createdAt': 'created_at'},
 );
 
 Map<String, dynamic> _$HarvestCreationResponseSchemaToJson(

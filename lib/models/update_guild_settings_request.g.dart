@@ -8,37 +8,66 @@ part of 'update_guild_settings_request.dart';
 
 UpdateGuildSettingsRequest _$UpdateGuildSettingsRequestFromJson(
   Map<String, dynamic> json,
-) => UpdateGuildSettingsRequest(
-  guildId: json['guild_id'] as String,
-  verificationLevel: json['verification_level'] == null
-      ? null
-      : GuildVerificationLevel.fromJson(
-          (json['verification_level'] as num).toInt(),
-        ),
-  mfaLevel: json['mfa_level'] == null
-      ? null
-      : GuildMfaLevel.fromJson((json['mfa_level'] as num).toInt()),
-  nsfwLevel: json['nsfw_level'] == null
-      ? null
-      : NsfwLevel.fromJson((json['nsfw_level'] as num).toInt()),
-  nsfw: json['nsfw'] as bool?,
-  contentWarningLevel: json['content_warning_level'] == null
-      ? null
-      : ContentWarningLevel.fromJson(
-          (json['content_warning_level'] as num).toInt(),
-        ),
-  contentWarningText: json['content_warning_text'] as String?,
-  explicitContentFilter: json['explicit_content_filter'] == null
-      ? null
-      : GuildExplicitContentFilter.fromJson(
-          (json['explicit_content_filter'] as num).toInt(),
-        ),
-  defaultMessageNotifications: json['default_message_notifications'] == null
-      ? null
-      : DefaultMessageNotifications.fromJson(
-          (json['default_message_notifications'] as num).toInt(),
-        ),
-  disabledOperations: (json['disabled_operations'] as num?)?.toInt(),
+) => $checkedCreate(
+  'UpdateGuildSettingsRequest',
+  json,
+  ($checkedConvert) {
+    final val = UpdateGuildSettingsRequest(
+      guildId: $checkedConvert('guild_id', (v) => v as String),
+      verificationLevel: $checkedConvert(
+        'verification_level',
+        (v) => v == null
+            ? null
+            : GuildVerificationLevel.fromJson((v as num).toInt()),
+      ),
+      mfaLevel: $checkedConvert(
+        'mfa_level',
+        (v) => v == null ? null : GuildMfaLevel.fromJson((v as num).toInt()),
+      ),
+      nsfwLevel: $checkedConvert(
+        'nsfw_level',
+        (v) => v == null ? null : NsfwLevel.fromJson((v as num).toInt()),
+      ),
+      nsfw: $checkedConvert('nsfw', (v) => v as bool?),
+      contentWarningLevel: $checkedConvert(
+        'content_warning_level',
+        (v) =>
+            v == null ? null : ContentWarningLevel.fromJson((v as num).toInt()),
+      ),
+      contentWarningText: $checkedConvert(
+        'content_warning_text',
+        (v) => v as String?,
+      ),
+      explicitContentFilter: $checkedConvert(
+        'explicit_content_filter',
+        (v) => v == null
+            ? null
+            : GuildExplicitContentFilter.fromJson((v as num).toInt()),
+      ),
+      defaultMessageNotifications: $checkedConvert(
+        'default_message_notifications',
+        (v) => v == null
+            ? null
+            : DefaultMessageNotifications.fromJson((v as num).toInt()),
+      ),
+      disabledOperations: $checkedConvert(
+        'disabled_operations',
+        (v) => (v as num?)?.toInt(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'guildId': 'guild_id',
+    'verificationLevel': 'verification_level',
+    'mfaLevel': 'mfa_level',
+    'nsfwLevel': 'nsfw_level',
+    'contentWarningLevel': 'content_warning_level',
+    'contentWarningText': 'content_warning_text',
+    'explicitContentFilter': 'explicit_content_filter',
+    'defaultMessageNotifications': 'default_message_notifications',
+    'disabledOperations': 'disabled_operations',
+  },
 );
 
 Map<String, dynamic> _$UpdateGuildSettingsRequestToJson(

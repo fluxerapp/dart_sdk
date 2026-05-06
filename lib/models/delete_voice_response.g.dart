@@ -7,7 +7,12 @@ part of 'delete_voice_response.dart';
 // **************************************************************************
 
 DeleteVoiceResponse _$DeleteVoiceResponseFromJson(Map<String, dynamic> json) =>
-    DeleteVoiceResponse(success: json['success'] as bool);
+    $checkedCreate('DeleteVoiceResponse', json, ($checkedConvert) {
+      final val = DeleteVoiceResponse(
+        success: $checkedConvert('success', (v) => v as bool),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$DeleteVoiceResponseToJson(
   DeleteVoiceResponse instance,

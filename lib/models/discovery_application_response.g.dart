@@ -8,23 +8,44 @@ part of 'discovery_application_response.dart';
 
 DiscoveryApplicationResponse _$DiscoveryApplicationResponseFromJson(
   Map<String, dynamic> json,
-) => DiscoveryApplicationResponse(
-  guildId: json['guild_id'] as String,
-  status: json['status'] as String,
-  description: json['description'] as String,
-  categoryType: json['category_type'] as num,
-  customTags: (json['custom_tags'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-  appliedAt: json['applied_at'] as String,
-  guildNsfwLevel: json['guild_nsfw_level'] == null
-      ? null
-      : NsfwLevel.fromJson((json['guild_nsfw_level'] as num).toInt()),
-  primaryLanguage: json['primary_language'] as String?,
-  reviewedAt: json['reviewed_at'] as String?,
-  reviewReason: json['review_reason'] as String?,
-  removedAt: json['removed_at'] as String?,
-  removalReason: json['removal_reason'] as String?,
+) => $checkedCreate(
+  'DiscoveryApplicationResponse',
+  json,
+  ($checkedConvert) {
+    final val = DiscoveryApplicationResponse(
+      guildId: $checkedConvert('guild_id', (v) => v as String),
+      status: $checkedConvert('status', (v) => v as String),
+      description: $checkedConvert('description', (v) => v as String),
+      categoryType: $checkedConvert('category_type', (v) => v as num),
+      customTags: $checkedConvert(
+        'custom_tags',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      appliedAt: $checkedConvert('applied_at', (v) => v as String),
+      guildNsfwLevel: $checkedConvert(
+        'guild_nsfw_level',
+        (v) => v == null ? null : NsfwLevel.fromJson((v as num).toInt()),
+      ),
+      primaryLanguage: $checkedConvert('primary_language', (v) => v as String?),
+      reviewedAt: $checkedConvert('reviewed_at', (v) => v as String?),
+      reviewReason: $checkedConvert('review_reason', (v) => v as String?),
+      removedAt: $checkedConvert('removed_at', (v) => v as String?),
+      removalReason: $checkedConvert('removal_reason', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'guildId': 'guild_id',
+    'categoryType': 'category_type',
+    'customTags': 'custom_tags',
+    'appliedAt': 'applied_at',
+    'guildNsfwLevel': 'guild_nsfw_level',
+    'primaryLanguage': 'primary_language',
+    'reviewedAt': 'reviewed_at',
+    'reviewReason': 'review_reason',
+    'removedAt': 'removed_at',
+    'removalReason': 'removal_reason',
+  },
 );
 
 Map<String, dynamic> _$DiscoveryApplicationResponseToJson(

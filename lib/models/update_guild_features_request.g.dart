@@ -8,14 +8,28 @@ part of 'update_guild_features_request.dart';
 
 UpdateGuildFeaturesRequest _$UpdateGuildFeaturesRequestFromJson(
   Map<String, dynamic> json,
-) => UpdateGuildFeaturesRequest(
-  guildId: json['guild_id'] as String,
-  addFeatures: (json['add_features'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
-  removeFeatures: (json['remove_features'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
+) => $checkedCreate(
+  'UpdateGuildFeaturesRequest',
+  json,
+  ($checkedConvert) {
+    final val = UpdateGuildFeaturesRequest(
+      guildId: $checkedConvert('guild_id', (v) => v as String),
+      addFeatures: $checkedConvert(
+        'add_features',
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+      ),
+      removeFeatures: $checkedConvert(
+        'remove_features',
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'guildId': 'guild_id',
+    'addFeatures': 'add_features',
+    'removeFeatures': 'remove_features',
+  },
 );
 
 Map<String, dynamic> _$UpdateGuildFeaturesRequestToJson(

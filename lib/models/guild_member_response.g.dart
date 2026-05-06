@@ -7,25 +7,56 @@ part of 'guild_member_response.dart';
 // **************************************************************************
 
 GuildMemberResponse _$GuildMemberResponseFromJson(Map<String, dynamic> json) =>
-    GuildMemberResponse(
-      user: UserPartialResponse.fromJson(json['user'] as Map<String, dynamic>),
-      roles: (json['roles'] as List<dynamic>).map((e) => e as String).toList(),
-      joinedAt: DateTime.parse(json['joined_at'] as String),
-      mute: json['mute'] as bool,
-      deaf: json['deaf'] as bool,
-      nick: json['nick'] as String?,
-      avatar: json['avatar'] as String?,
-      banner: json['banner'] as String?,
-      accentColor: (json['accent_color'] as num?)?.toInt(),
-      communicationDisabledUntil: json['communication_disabled_until'] == null
-          ? null
-          : DateTime.parse(json['communication_disabled_until'] as String),
-      profileFlags: (json['profile_flags'] as num?)?.toInt(),
-      mentionFlags: json['mention_flags'] == null
-          ? null
-          : MentionReplyPreferences.fromJson(
-              (json['mention_flags'] as num).toInt(),
-            ),
+    $checkedCreate(
+      'GuildMemberResponse',
+      json,
+      ($checkedConvert) {
+        final val = GuildMemberResponse(
+          user: $checkedConvert(
+            'user',
+            (v) => UserPartialResponse.fromJson(v as Map<String, dynamic>),
+          ),
+          roles: $checkedConvert(
+            'roles',
+            (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+          ),
+          joinedAt: $checkedConvert(
+            'joined_at',
+            (v) => DateTime.parse(v as String),
+          ),
+          mute: $checkedConvert('mute', (v) => v as bool),
+          deaf: $checkedConvert('deaf', (v) => v as bool),
+          nick: $checkedConvert('nick', (v) => v as String?),
+          avatar: $checkedConvert('avatar', (v) => v as String?),
+          banner: $checkedConvert('banner', (v) => v as String?),
+          accentColor: $checkedConvert(
+            'accent_color',
+            (v) => (v as num?)?.toInt(),
+          ),
+          communicationDisabledUntil: $checkedConvert(
+            'communication_disabled_until',
+            (v) => v == null ? null : DateTime.parse(v as String),
+          ),
+          profileFlags: $checkedConvert(
+            'profile_flags',
+            (v) => (v as num?)?.toInt(),
+          ),
+          mentionFlags: $checkedConvert(
+            'mention_flags',
+            (v) => v == null
+                ? null
+                : MentionReplyPreferences.fromJson((v as num).toInt()),
+          ),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'joinedAt': 'joined_at',
+        'accentColor': 'accent_color',
+        'communicationDisabledUntil': 'communication_disabled_until',
+        'profileFlags': 'profile_flags',
+        'mentionFlags': 'mention_flags',
+      },
     );
 
 Map<String, dynamic> _$GuildMemberResponseToJson(

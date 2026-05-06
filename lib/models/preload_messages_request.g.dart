@@ -8,11 +8,15 @@ part of 'preload_messages_request.dart';
 
 PreloadMessagesRequest _$PreloadMessagesRequestFromJson(
   Map<String, dynamic> json,
-) => PreloadMessagesRequest(
-  channels: (json['channels'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-);
+) => $checkedCreate('PreloadMessagesRequest', json, ($checkedConvert) {
+  final val = PreloadMessagesRequest(
+    channels: $checkedConvert(
+      'channels',
+      (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$PreloadMessagesRequestToJson(
   PreloadMessagesRequest instance,

@@ -7,13 +7,25 @@ part of 'ban_file_sha_request.dart';
 // **************************************************************************
 
 BanFileShaRequest _$BanFileShaRequestFromJson(Map<String, dynamic> json) =>
-    BanFileShaRequest(
-      sha256Hex: json['sha256_hex'] as String,
-      category: json['category'] as String?,
-      severity: (json['severity'] as num?)?.toInt(),
-      contentType: json['content_type'] as String?,
-      sourceUrl: json['source_url'] as String?,
-      notes: json['notes'] as String?,
+    $checkedCreate(
+      'BanFileShaRequest',
+      json,
+      ($checkedConvert) {
+        final val = BanFileShaRequest(
+          sha256Hex: $checkedConvert('sha256_hex', (v) => v as String),
+          category: $checkedConvert('category', (v) => v as String?),
+          severity: $checkedConvert('severity', (v) => (v as num?)?.toInt()),
+          contentType: $checkedConvert('content_type', (v) => v as String?),
+          sourceUrl: $checkedConvert('source_url', (v) => v as String?),
+          notes: $checkedConvert('notes', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'sha256Hex': 'sha256_hex',
+        'contentType': 'content_type',
+        'sourceUrl': 'source_url',
+      },
     );
 
 Map<String, dynamic> _$BanFileShaRequestToJson(BanFileShaRequest instance) =>

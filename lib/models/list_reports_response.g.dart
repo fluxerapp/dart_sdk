@@ -7,14 +7,21 @@ part of 'list_reports_response.dart';
 // **************************************************************************
 
 ListReportsResponse _$ListReportsResponseFromJson(Map<String, dynamic> json) =>
-    ListReportsResponse(
-      reports: (json['reports'] as List<dynamic>)
-          .map(
-            (e) =>
-                ReportAdminResponseSchema.fromJson(e as Map<String, dynamic>),
-          )
-          .toList(),
-    );
+    $checkedCreate('ListReportsResponse', json, ($checkedConvert) {
+      final val = ListReportsResponse(
+        reports: $checkedConvert(
+          'reports',
+          (v) => (v as List<dynamic>)
+              .map(
+                (e) => ReportAdminResponseSchema.fromJson(
+                  e as Map<String, dynamic>,
+                ),
+              )
+              .toList(),
+        ),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$ListReportsResponseToJson(
   ListReportsResponse instance,

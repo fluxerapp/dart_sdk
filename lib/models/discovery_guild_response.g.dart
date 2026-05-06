@@ -8,22 +8,39 @@ part of 'discovery_guild_response.dart';
 
 DiscoveryGuildResponse _$DiscoveryGuildResponseFromJson(
   Map<String, dynamic> json,
-) => DiscoveryGuildResponse(
-  id: json['id'] as String,
-  name: json['name'] as String,
-  categoryType: json['category_type'] as num,
-  customTags: (json['custom_tags'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-  memberCount: json['member_count'] as num,
-  onlineCount: json['online_count'] as num,
-  features: (json['features'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-  verificationLevel: json['verification_level'] as num,
-  icon: json['icon'] as String?,
-  description: json['description'] as String?,
-  primaryLanguage: json['primary_language'] as String?,
+) => $checkedCreate(
+  'DiscoveryGuildResponse',
+  json,
+  ($checkedConvert) {
+    final val = DiscoveryGuildResponse(
+      id: $checkedConvert('id', (v) => v as String),
+      name: $checkedConvert('name', (v) => v as String),
+      categoryType: $checkedConvert('category_type', (v) => v as num),
+      customTags: $checkedConvert(
+        'custom_tags',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      memberCount: $checkedConvert('member_count', (v) => v as num),
+      onlineCount: $checkedConvert('online_count', (v) => v as num),
+      features: $checkedConvert(
+        'features',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      verificationLevel: $checkedConvert('verification_level', (v) => v as num),
+      icon: $checkedConvert('icon', (v) => v as String?),
+      description: $checkedConvert('description', (v) => v as String?),
+      primaryLanguage: $checkedConvert('primary_language', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'categoryType': 'category_type',
+    'customTags': 'custom_tags',
+    'memberCount': 'member_count',
+    'onlineCount': 'online_count',
+    'verificationLevel': 'verification_level',
+    'primaryLanguage': 'primary_language',
+  },
 );
 
 Map<String, dynamic> _$DiscoveryGuildResponseToJson(

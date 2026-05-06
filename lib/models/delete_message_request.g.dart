@@ -8,9 +8,17 @@ part of 'delete_message_request.dart';
 
 DeleteMessageRequest _$DeleteMessageRequestFromJson(
   Map<String, dynamic> json,
-) => DeleteMessageRequest(
-  channelId: json['channel_id'] as String,
-  messageId: json['message_id'] as String,
+) => $checkedCreate(
+  'DeleteMessageRequest',
+  json,
+  ($checkedConvert) {
+    final val = DeleteMessageRequest(
+      channelId: $checkedConvert('channel_id', (v) => v as String),
+      messageId: $checkedConvert('message_id', (v) => v as String),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'channelId': 'channel_id', 'messageId': 'message_id'},
 );
 
 Map<String, dynamic> _$DeleteMessageRequestToJson(

@@ -8,9 +8,17 @@ part of 'get_voice_server_request.dart';
 
 GetVoiceServerRequest _$GetVoiceServerRequestFromJson(
   Map<String, dynamic> json,
-) => GetVoiceServerRequest(
-  regionId: json['region_id'] as String,
-  serverId: json['server_id'] as String,
+) => $checkedCreate(
+  'GetVoiceServerRequest',
+  json,
+  ($checkedConvert) {
+    final val = GetVoiceServerRequest(
+      regionId: $checkedConvert('region_id', (v) => v as String),
+      serverId: $checkedConvert('server_id', (v) => v as String),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'regionId': 'region_id', 'serverId': 'server_id'},
 );
 
 Map<String, dynamic> _$GetVoiceServerRequestToJson(

@@ -8,14 +8,27 @@ part of 'admin_payment_method_response.dart';
 
 AdminPaymentMethodResponse _$AdminPaymentMethodResponseFromJson(
   Map<String, dynamic> json,
-) => AdminPaymentMethodResponse(
-  id: json['id'] as String,
-  type: json['type'] as String,
-  cardBrand: json['card_brand'] as String?,
-  cardLast4: json['card_last4'] as String?,
-  cardExpMonth: json['card_exp_month'] as num?,
-  cardExpYear: json['card_exp_year'] as num?,
-  created: json['created'] as num,
+) => $checkedCreate(
+  'AdminPaymentMethodResponse',
+  json,
+  ($checkedConvert) {
+    final val = AdminPaymentMethodResponse(
+      id: $checkedConvert('id', (v) => v as String),
+      type: $checkedConvert('type', (v) => v as String),
+      cardBrand: $checkedConvert('card_brand', (v) => v as String?),
+      cardLast4: $checkedConvert('card_last4', (v) => v as String?),
+      cardExpMonth: $checkedConvert('card_exp_month', (v) => v as num?),
+      cardExpYear: $checkedConvert('card_exp_year', (v) => v as num?),
+      created: $checkedConvert('created', (v) => v as num),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'cardBrand': 'card_brand',
+    'cardLast4': 'card_last4',
+    'cardExpMonth': 'card_exp_month',
+    'cardExpYear': 'card_exp_year',
+  },
 );
 
 Map<String, dynamic> _$AdminPaymentMethodResponseToJson(

@@ -9,30 +9,60 @@ part of 'invite_metadata_response_schema.dart';
 InviteMetadataResponseSchemaGuildInviteMetadataResponse
 _$InviteMetadataResponseSchemaGuildInviteMetadataResponseFromJson(
   Map<String, dynamic> json,
-) => InviteMetadataResponseSchemaGuildInviteMetadataResponse(
-  code: json['code'] as String,
-  type: GuildInviteMetadataResponseTypeType.fromJson(
-    (json['type'] as num).toInt(),
-  ),
-  guild: GuildInviteMetadataResponseGuild.fromJson(
-    json['guild'] as Map<String, dynamic>,
-  ),
-  channel: ChannelPartialResponse.fromJson(
-    json['channel'] as Map<String, dynamic>,
-  ),
-  inviter: json['inviter'] == null
-      ? null
-      : UserPartialResponse.fromJson(json['inviter'] as Map<String, dynamic>),
-  memberCount: (json['member_count'] as num).toInt(),
-  presenceCount: (json['presence_count'] as num).toInt(),
-  expiresAt: json['expires_at'] == null
-      ? null
-      : DateTime.parse(json['expires_at'] as String),
-  temporary: json['temporary'] as bool,
-  createdAt: DateTime.parse(json['created_at'] as String),
-  uses: (json['uses'] as num).toInt(),
-  maxUses: (json['max_uses'] as num).toInt(),
-  maxAge: (json['max_age'] as num).toInt(),
+) => $checkedCreate(
+  'InviteMetadataResponseSchemaGuildInviteMetadataResponse',
+  json,
+  ($checkedConvert) {
+    final val = InviteMetadataResponseSchemaGuildInviteMetadataResponse(
+      code: $checkedConvert('code', (v) => v as String),
+      type: $checkedConvert(
+        'type',
+        (v) => GuildInviteMetadataResponseTypeType.fromJson((v as num).toInt()),
+      ),
+      guild: $checkedConvert(
+        'guild',
+        (v) => GuildInviteMetadataResponseGuild.fromJson(
+          v as Map<String, dynamic>,
+        ),
+      ),
+      channel: $checkedConvert(
+        'channel',
+        (v) => ChannelPartialResponse.fromJson(v as Map<String, dynamic>),
+      ),
+      inviter: $checkedConvert(
+        'inviter',
+        (v) => v == null
+            ? null
+            : UserPartialResponse.fromJson(v as Map<String, dynamic>),
+      ),
+      memberCount: $checkedConvert('member_count', (v) => (v as num).toInt()),
+      presenceCount: $checkedConvert(
+        'presence_count',
+        (v) => (v as num).toInt(),
+      ),
+      expiresAt: $checkedConvert(
+        'expires_at',
+        (v) => v == null ? null : DateTime.parse(v as String),
+      ),
+      temporary: $checkedConvert('temporary', (v) => v as bool),
+      createdAt: $checkedConvert(
+        'created_at',
+        (v) => DateTime.parse(v as String),
+      ),
+      uses: $checkedConvert('uses', (v) => (v as num).toInt()),
+      maxUses: $checkedConvert('max_uses', (v) => (v as num).toInt()),
+      maxAge: $checkedConvert('max_age', (v) => (v as num).toInt()),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'memberCount': 'member_count',
+    'presenceCount': 'presence_count',
+    'expiresAt': 'expires_at',
+    'createdAt': 'created_at',
+    'maxUses': 'max_uses',
+    'maxAge': 'max_age',
+  },
 );
 
 Map<String, dynamic>
@@ -57,25 +87,48 @@ _$InviteMetadataResponseSchemaGuildInviteMetadataResponseToJson(
 InviteMetadataResponseSchemaGroupDmInviteMetadataResponse
 _$InviteMetadataResponseSchemaGroupDmInviteMetadataResponseFromJson(
   Map<String, dynamic> json,
-) => InviteMetadataResponseSchemaGroupDmInviteMetadataResponse(
-  code: json['code'] as String,
-  type: GroupDmInviteMetadataResponseTypeType.fromJson(
-    (json['type'] as num).toInt(),
-  ),
-  channel: ChannelPartialResponse.fromJson(
-    json['channel'] as Map<String, dynamic>,
-  ),
-  inviter: json['inviter'] == null
-      ? null
-      : UserPartialResponse.fromJson(json['inviter'] as Map<String, dynamic>),
-  memberCount: (json['member_count'] as num).toInt(),
-  expiresAt: json['expires_at'] == null
-      ? null
-      : DateTime.parse(json['expires_at'] as String),
-  temporary: json['temporary'] as bool,
-  createdAt: DateTime.parse(json['created_at'] as String),
-  uses: (json['uses'] as num).toInt(),
-  maxUses: (json['max_uses'] as num).toInt(),
+) => $checkedCreate(
+  'InviteMetadataResponseSchemaGroupDmInviteMetadataResponse',
+  json,
+  ($checkedConvert) {
+    final val = InviteMetadataResponseSchemaGroupDmInviteMetadataResponse(
+      code: $checkedConvert('code', (v) => v as String),
+      type: $checkedConvert(
+        'type',
+        (v) =>
+            GroupDmInviteMetadataResponseTypeType.fromJson((v as num).toInt()),
+      ),
+      channel: $checkedConvert(
+        'channel',
+        (v) => ChannelPartialResponse.fromJson(v as Map<String, dynamic>),
+      ),
+      inviter: $checkedConvert(
+        'inviter',
+        (v) => v == null
+            ? null
+            : UserPartialResponse.fromJson(v as Map<String, dynamic>),
+      ),
+      memberCount: $checkedConvert('member_count', (v) => (v as num).toInt()),
+      expiresAt: $checkedConvert(
+        'expires_at',
+        (v) => v == null ? null : DateTime.parse(v as String),
+      ),
+      temporary: $checkedConvert('temporary', (v) => v as bool),
+      createdAt: $checkedConvert(
+        'created_at',
+        (v) => DateTime.parse(v as String),
+      ),
+      uses: $checkedConvert('uses', (v) => (v as num).toInt()),
+      maxUses: $checkedConvert('max_uses', (v) => (v as num).toInt()),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'memberCount': 'member_count',
+    'expiresAt': 'expires_at',
+    'createdAt': 'created_at',
+    'maxUses': 'max_uses',
+  },
 );
 
 Map<String, dynamic>
@@ -97,24 +150,46 @@ _$InviteMetadataResponseSchemaGroupDmInviteMetadataResponseToJson(
 InviteMetadataResponseSchemaPackInviteMetadataResponse
 _$InviteMetadataResponseSchemaPackInviteMetadataResponseFromJson(
   Map<String, dynamic> json,
-) => InviteMetadataResponseSchemaPackInviteMetadataResponse(
-  code: json['code'] as String,
-  type: PackInviteMetadataResponseTypeType.fromJson(
-    (json['type'] as num).toInt(),
-  ),
-  pack: PackInviteMetadataResponsePack.fromJson(
-    json['pack'] as Map<String, dynamic>,
-  ),
-  inviter: json['inviter'] == null
-      ? null
-      : UserPartialResponse.fromJson(json['inviter'] as Map<String, dynamic>),
-  expiresAt: json['expires_at'] == null
-      ? null
-      : DateTime.parse(json['expires_at'] as String),
-  temporary: json['temporary'] as bool,
-  createdAt: DateTime.parse(json['created_at'] as String),
-  uses: (json['uses'] as num).toInt(),
-  maxUses: (json['max_uses'] as num).toInt(),
+) => $checkedCreate(
+  'InviteMetadataResponseSchemaPackInviteMetadataResponse',
+  json,
+  ($checkedConvert) {
+    final val = InviteMetadataResponseSchemaPackInviteMetadataResponse(
+      code: $checkedConvert('code', (v) => v as String),
+      type: $checkedConvert(
+        'type',
+        (v) => PackInviteMetadataResponseTypeType.fromJson((v as num).toInt()),
+      ),
+      pack: $checkedConvert(
+        'pack',
+        (v) =>
+            PackInviteMetadataResponsePack.fromJson(v as Map<String, dynamic>),
+      ),
+      inviter: $checkedConvert(
+        'inviter',
+        (v) => v == null
+            ? null
+            : UserPartialResponse.fromJson(v as Map<String, dynamic>),
+      ),
+      expiresAt: $checkedConvert(
+        'expires_at',
+        (v) => v == null ? null : DateTime.parse(v as String),
+      ),
+      temporary: $checkedConvert('temporary', (v) => v as bool),
+      createdAt: $checkedConvert(
+        'created_at',
+        (v) => DateTime.parse(v as String),
+      ),
+      uses: $checkedConvert('uses', (v) => (v as num).toInt()),
+      maxUses: $checkedConvert('max_uses', (v) => (v as num).toInt()),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'expiresAt': 'expires_at',
+    'createdAt': 'created_at',
+    'maxUses': 'max_uses',
+  },
 );
 
 Map<String, dynamic>

@@ -7,9 +7,17 @@ part of 'change_dob_request.dart';
 // **************************************************************************
 
 ChangeDobRequest _$ChangeDobRequestFromJson(Map<String, dynamic> json) =>
-    ChangeDobRequest(
-      userId: json['user_id'] as String,
-      dateOfBirth: json['date_of_birth'] as String,
+    $checkedCreate(
+      'ChangeDobRequest',
+      json,
+      ($checkedConvert) {
+        final val = ChangeDobRequest(
+          userId: $checkedConvert('user_id', (v) => v as String),
+          dateOfBirth: $checkedConvert('date_of_birth', (v) => v as String),
+        );
+        return val;
+      },
+      fieldKeyMap: const {'userId': 'user_id', 'dateOfBirth': 'date_of_birth'},
     );
 
 Map<String, dynamic> _$ChangeDobRequestToJson(ChangeDobRequest instance) =>

@@ -8,13 +8,33 @@ part of 'channel_slowmode_state_response.dart';
 
 ChannelSlowmodeStateResponse _$ChannelSlowmodeStateResponseFromJson(
   Map<String, dynamic> json,
-) => ChannelSlowmodeStateResponse(
-  rateLimitPerUser: (json['rate_limit_per_user'] as num).toInt(),
-  retryAfterMs: (json['retry_after_ms'] as num).toInt(),
-  nextSendAllowedAt: json['next_send_allowed_at'] == null
-      ? null
-      : DateTime.parse(json['next_send_allowed_at'] as String),
-  canBypass: json['can_bypass'] as bool,
+) => $checkedCreate(
+  'ChannelSlowmodeStateResponse',
+  json,
+  ($checkedConvert) {
+    final val = ChannelSlowmodeStateResponse(
+      rateLimitPerUser: $checkedConvert(
+        'rate_limit_per_user',
+        (v) => (v as num).toInt(),
+      ),
+      retryAfterMs: $checkedConvert(
+        'retry_after_ms',
+        (v) => (v as num).toInt(),
+      ),
+      nextSendAllowedAt: $checkedConvert(
+        'next_send_allowed_at',
+        (v) => v == null ? null : DateTime.parse(v as String),
+      ),
+      canBypass: $checkedConvert('can_bypass', (v) => v as bool),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'rateLimitPerUser': 'rate_limit_per_user',
+    'retryAfterMs': 'retry_after_ms',
+    'nextSendAllowedAt': 'next_send_allowed_at',
+    'canBypass': 'can_bypass',
+  },
 );
 
 Map<String, dynamic> _$ChannelSlowmodeStateResponseToJson(

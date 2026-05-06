@@ -8,14 +8,28 @@ part of 'user_contact_change_log_entry_schema.dart';
 
 UserContactChangeLogEntrySchema _$UserContactChangeLogEntrySchemaFromJson(
   Map<String, dynamic> json,
-) => UserContactChangeLogEntrySchema(
-  eventId: json['event_id'] as String,
-  field: json['field'] as String,
-  oldValue: json['old_value'] as String?,
-  newValue: json['new_value'] as String?,
-  reason: json['reason'] as String?,
-  actorUserId: json['actor_user_id'] as String?,
-  eventAt: json['event_at'] as String,
+) => $checkedCreate(
+  'UserContactChangeLogEntrySchema',
+  json,
+  ($checkedConvert) {
+    final val = UserContactChangeLogEntrySchema(
+      eventId: $checkedConvert('event_id', (v) => v as String),
+      field: $checkedConvert('field', (v) => v as String),
+      oldValue: $checkedConvert('old_value', (v) => v as String?),
+      newValue: $checkedConvert('new_value', (v) => v as String?),
+      reason: $checkedConvert('reason', (v) => v as String?),
+      actorUserId: $checkedConvert('actor_user_id', (v) => v as String?),
+      eventAt: $checkedConvert('event_at', (v) => v as String),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'eventId': 'event_id',
+    'oldValue': 'old_value',
+    'newValue': 'new_value',
+    'actorUserId': 'actor_user_id',
+    'eventAt': 'event_at',
+  },
 );
 
 Map<String, dynamic> _$UserContactChangeLogEntrySchemaToJson(

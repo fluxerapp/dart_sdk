@@ -8,14 +8,21 @@ part of 'list_voice_regions_response.dart';
 
 ListVoiceRegionsResponse _$ListVoiceRegionsResponseFromJson(
   Map<String, dynamic> json,
-) => ListVoiceRegionsResponse(
-  regions: (json['regions'] as List<dynamic>)
-      .map(
-        (e) =>
-            VoiceRegionWithServersResponse.fromJson(e as Map<String, dynamic>),
-      )
-      .toList(),
-);
+) => $checkedCreate('ListVoiceRegionsResponse', json, ($checkedConvert) {
+  final val = ListVoiceRegionsResponse(
+    regions: $checkedConvert(
+      'regions',
+      (v) => (v as List<dynamic>)
+          .map(
+            (e) => VoiceRegionWithServersResponse.fromJson(
+              e as Map<String, dynamic>,
+            ),
+          )
+          .toList(),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$ListVoiceRegionsResponseToJson(
   ListVoiceRegionsResponse instance,

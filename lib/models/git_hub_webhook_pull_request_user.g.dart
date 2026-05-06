@@ -8,11 +8,19 @@ part of 'git_hub_webhook_pull_request_user.dart';
 
 GitHubWebhookPullRequestUser _$GitHubWebhookPullRequestUserFromJson(
   Map<String, dynamic> json,
-) => GitHubWebhookPullRequestUser(
-  id: (json['id'] as num).toInt(),
-  login: json['login'] as String,
-  htmlUrl: json['html_url'] as String,
-  avatarUrl: json['avatar_url'] as String,
+) => $checkedCreate(
+  'GitHubWebhookPullRequestUser',
+  json,
+  ($checkedConvert) {
+    final val = GitHubWebhookPullRequestUser(
+      id: $checkedConvert('id', (v) => (v as num).toInt()),
+      login: $checkedConvert('login', (v) => v as String),
+      htmlUrl: $checkedConvert('html_url', (v) => v as String),
+      avatarUrl: $checkedConvert('avatar_url', (v) => v as String),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'htmlUrl': 'html_url', 'avatarUrl': 'avatar_url'},
 );
 
 Map<String, dynamic> _$GitHubWebhookPullRequestUserToJson(

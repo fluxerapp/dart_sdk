@@ -8,24 +8,33 @@ part of 'webhook_attachment_request.dart';
 
 WebhookAttachmentRequest _$WebhookAttachmentRequestFromJson(
   Map<String, dynamic> json,
-) => WebhookAttachmentRequest(
-  id: json['id'] == null
-      ? null
-      : WebhookAttachmentRequestIdId.fromJson(
-          json['id'] as Map<String, dynamic>,
-        ),
-  filename: json['filename'] as String?,
-  description: json['description'] as String?,
-  contentType: json['content_type'] as String?,
-  size: (json['size'] as num?)?.toInt(),
-  url: json['url'] as String?,
-  proxyUrl: json['proxy_url'] as String?,
-  height: (json['height'] as num?)?.toInt(),
-  width: (json['width'] as num?)?.toInt(),
-  ephemeral: json['ephemeral'] as bool?,
-  duration: json['duration'] as num?,
-  waveform: json['waveform'] as String?,
-  flags: (json['flags'] as num?)?.toInt(),
+) => $checkedCreate(
+  'WebhookAttachmentRequest',
+  json,
+  ($checkedConvert) {
+    final val = WebhookAttachmentRequest(
+      id: $checkedConvert(
+        'id',
+        (v) => v == null
+            ? null
+            : WebhookAttachmentRequestIdId.fromJson(v as Map<String, dynamic>),
+      ),
+      filename: $checkedConvert('filename', (v) => v as String?),
+      description: $checkedConvert('description', (v) => v as String?),
+      contentType: $checkedConvert('content_type', (v) => v as String?),
+      size: $checkedConvert('size', (v) => (v as num?)?.toInt()),
+      url: $checkedConvert('url', (v) => v as String?),
+      proxyUrl: $checkedConvert('proxy_url', (v) => v as String?),
+      height: $checkedConvert('height', (v) => (v as num?)?.toInt()),
+      width: $checkedConvert('width', (v) => (v as num?)?.toInt()),
+      ephemeral: $checkedConvert('ephemeral', (v) => v as bool?),
+      duration: $checkedConvert('duration', (v) => v as num?),
+      waveform: $checkedConvert('waveform', (v) => v as String?),
+      flags: $checkedConvert('flags', (v) => (v as num?)?.toInt()),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'contentType': 'content_type', 'proxyUrl': 'proxy_url'},
 );
 
 Map<String, dynamic> _$WebhookAttachmentRequestToJson(

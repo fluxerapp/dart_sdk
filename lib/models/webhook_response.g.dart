@@ -7,14 +7,25 @@ part of 'webhook_response.dart';
 // **************************************************************************
 
 WebhookResponse _$WebhookResponseFromJson(Map<String, dynamic> json) =>
-    WebhookResponse(
-      id: json['id'] as String,
-      guildId: json['guild_id'] as String,
-      channelId: json['channel_id'] as String,
-      name: json['name'] as String,
-      token: json['token'] as String,
-      user: UserPartialResponse.fromJson(json['user'] as Map<String, dynamic>),
-      avatar: json['avatar'] as String?,
+    $checkedCreate(
+      'WebhookResponse',
+      json,
+      ($checkedConvert) {
+        final val = WebhookResponse(
+          id: $checkedConvert('id', (v) => v as String),
+          guildId: $checkedConvert('guild_id', (v) => v as String),
+          channelId: $checkedConvert('channel_id', (v) => v as String),
+          name: $checkedConvert('name', (v) => v as String),
+          token: $checkedConvert('token', (v) => v as String),
+          user: $checkedConvert(
+            'user',
+            (v) => UserPartialResponse.fromJson(v as Map<String, dynamic>),
+          ),
+          avatar: $checkedConvert('avatar', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {'guildId': 'guild_id', 'channelId': 'channel_id'},
     );
 
 Map<String, dynamic> _$WebhookResponseToJson(WebhookResponse instance) =>

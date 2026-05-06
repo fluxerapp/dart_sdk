@@ -7,7 +7,12 @@ part of 'authorize_ip_request.dart';
 // **************************************************************************
 
 AuthorizeIpRequest _$AuthorizeIpRequestFromJson(Map<String, dynamic> json) =>
-    AuthorizeIpRequest(token: json['token'] as String);
+    $checkedCreate('AuthorizeIpRequest', json, ($checkedConvert) {
+      final val = AuthorizeIpRequest(
+        token: $checkedConvert('token', (v) => v as String),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$AuthorizeIpRequestToJson(AuthorizeIpRequest instance) =>
     <String, dynamic>{'token': instance.token};

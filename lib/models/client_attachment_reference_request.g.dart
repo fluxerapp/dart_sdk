@@ -8,17 +8,24 @@ part of 'client_attachment_reference_request.dart';
 
 ClientAttachmentReferenceRequest _$ClientAttachmentReferenceRequestFromJson(
   Map<String, dynamic> json,
-) => ClientAttachmentReferenceRequest(
-  id: ClientAttachmentReferenceRequestIdId.fromJson(
-    json['id'] as Map<String, dynamic>,
-  ),
-  title: json['title'] as String?,
-  description: json['description'] as String?,
-  flags: (json['flags'] as num?)?.toInt(),
-  duration: (json['duration'] as num?)?.toInt(),
-  waveform: json['waveform'] as String?,
-  filename: json['filename'] as String?,
-);
+) =>
+    $checkedCreate('ClientAttachmentReferenceRequest', json, ($checkedConvert) {
+      final val = ClientAttachmentReferenceRequest(
+        id: $checkedConvert(
+          'id',
+          (v) => ClientAttachmentReferenceRequestIdId.fromJson(
+            v as Map<String, dynamic>,
+          ),
+        ),
+        title: $checkedConvert('title', (v) => v as String?),
+        description: $checkedConvert('description', (v) => v as String?),
+        flags: $checkedConvert('flags', (v) => (v as num?)?.toInt()),
+        duration: $checkedConvert('duration', (v) => (v as num?)?.toInt()),
+        waveform: $checkedConvert('waveform', (v) => v as String?),
+        filename: $checkedConvert('filename', (v) => v as String?),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$ClientAttachmentReferenceRequestToJson(
   ClientAttachmentReferenceRequest instance,

@@ -8,20 +8,41 @@ part of 'guild_member_search_result.dart';
 
 GuildMemberSearchResult _$GuildMemberSearchResultFromJson(
   Map<String, dynamic> json,
-) => GuildMemberSearchResult(
-  id: json['id'] as String,
-  guildId: json['guild_id'] as String,
-  userId: json['user_id'] as String,
-  username: json['username'] as String,
-  discriminator: json['discriminator'] as String,
-  globalName: json['global_name'] as String?,
-  nickname: json['nickname'] as String?,
-  roleIds: (json['role_ids'] as List<dynamic>).map((e) => e as String).toList(),
-  joinedAt: json['joined_at'] as num,
-  supplemental: GuildMemberSearchResultSupplemental.fromJson(
-    json['supplemental'] as Map<String, dynamic>,
-  ),
-  isBot: json['is_bot'] as bool,
+) => $checkedCreate(
+  'GuildMemberSearchResult',
+  json,
+  ($checkedConvert) {
+    final val = GuildMemberSearchResult(
+      id: $checkedConvert('id', (v) => v as String),
+      guildId: $checkedConvert('guild_id', (v) => v as String),
+      userId: $checkedConvert('user_id', (v) => v as String),
+      username: $checkedConvert('username', (v) => v as String),
+      discriminator: $checkedConvert('discriminator', (v) => v as String),
+      globalName: $checkedConvert('global_name', (v) => v as String?),
+      nickname: $checkedConvert('nickname', (v) => v as String?),
+      roleIds: $checkedConvert(
+        'role_ids',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      joinedAt: $checkedConvert('joined_at', (v) => v as num),
+      supplemental: $checkedConvert(
+        'supplemental',
+        (v) => GuildMemberSearchResultSupplemental.fromJson(
+          v as Map<String, dynamic>,
+        ),
+      ),
+      isBot: $checkedConvert('is_bot', (v) => v as bool),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'guildId': 'guild_id',
+    'userId': 'user_id',
+    'globalName': 'global_name',
+    'roleIds': 'role_ids',
+    'joinedAt': 'joined_at',
+    'isBot': 'is_bot',
+  },
 );
 
 Map<String, dynamic> _$GuildMemberSearchResultToJson(

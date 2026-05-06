@@ -8,61 +8,128 @@ part of 'message_base_response_schema.dart';
 
 MessageBaseResponseSchema _$MessageBaseResponseSchemaFromJson(
   Map<String, dynamic> json,
-) => MessageBaseResponseSchema(
-  id: json['id'] as String,
-  channelId: json['channel_id'] as String,
-  author: UserPartialResponse.fromJson(json['author'] as Map<String, dynamic>),
-  type: MessageBaseResponseSchemaTypeType.fromJson(
-    (json['type'] as num).toInt(),
-  ),
-  flags: (json['flags'] as num).toInt(),
-  content: json['content'] as String,
-  timestamp: DateTime.parse(json['timestamp'] as String),
-  pinned: json['pinned'] as bool,
-  mentionEveryone: json['mention_everyone'] as bool,
-  webhookId: json['webhook_id'] as String?,
-  editedTimestamp: json['edited_timestamp'] == null
-      ? null
-      : DateTime.parse(json['edited_timestamp'] as String),
-  tts: json['tts'] as bool?,
-  mentions: (json['mentions'] as List<dynamic>?)
-      ?.map((e) => UserPartialResponse.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  mentionRoles: (json['mention_roles'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
-  users: (json['users'] as List<dynamic>?)
-      ?.map((e) => UserPartialResponse.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  embeds: (json['embeds'] as List<dynamic>?)
-      ?.map((e) => MessageEmbedResponse.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  attachments: (json['attachments'] as List<dynamic>?)
-      ?.map(
-        (e) => MessageAttachmentResponse.fromJson(e as Map<String, dynamic>),
-      )
-      .toList(),
-  stickers: (json['stickers'] as List<dynamic>?)
-      ?.map((e) => MessageStickerResponse.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  nsfwEmojis: (json['nsfw_emojis'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
-  reactions: (json['reactions'] as List<dynamic>?)
-      ?.map((e) => MessageReactionResponse.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  messageReference: json['message_reference'] == null
-      ? null
-      : MessageReferenceResponse.fromJson(
-          json['message_reference'] as Map<String, dynamic>,
-        ),
-  messageSnapshots: (json['message_snapshots'] as List<dynamic>?)
-      ?.map((e) => MessageSnapshotResponse.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  nonce: json['nonce'] as String?,
-  call: json['call'] == null
-      ? null
-      : MessageCallResponse.fromJson(json['call'] as Map<String, dynamic>),
+) => $checkedCreate(
+  'MessageBaseResponseSchema',
+  json,
+  ($checkedConvert) {
+    final val = MessageBaseResponseSchema(
+      id: $checkedConvert('id', (v) => v as String),
+      channelId: $checkedConvert('channel_id', (v) => v as String),
+      author: $checkedConvert(
+        'author',
+        (v) => UserPartialResponse.fromJson(v as Map<String, dynamic>),
+      ),
+      type: $checkedConvert(
+        'type',
+        (v) => MessageBaseResponseSchemaTypeType.fromJson((v as num).toInt()),
+      ),
+      flags: $checkedConvert('flags', (v) => (v as num).toInt()),
+      content: $checkedConvert('content', (v) => v as String),
+      timestamp: $checkedConvert(
+        'timestamp',
+        (v) => DateTime.parse(v as String),
+      ),
+      pinned: $checkedConvert('pinned', (v) => v as bool),
+      mentionEveryone: $checkedConvert('mention_everyone', (v) => v as bool),
+      webhookId: $checkedConvert('webhook_id', (v) => v as String?),
+      editedTimestamp: $checkedConvert(
+        'edited_timestamp',
+        (v) => v == null ? null : DateTime.parse(v as String),
+      ),
+      tts: $checkedConvert('tts', (v) => v as bool?),
+      mentions: $checkedConvert(
+        'mentions',
+        (v) => (v as List<dynamic>?)
+            ?.map(
+              (e) => UserPartialResponse.fromJson(e as Map<String, dynamic>),
+            )
+            .toList(),
+      ),
+      mentionRoles: $checkedConvert(
+        'mention_roles',
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+      ),
+      users: $checkedConvert(
+        'users',
+        (v) => (v as List<dynamic>?)
+            ?.map(
+              (e) => UserPartialResponse.fromJson(e as Map<String, dynamic>),
+            )
+            .toList(),
+      ),
+      embeds: $checkedConvert(
+        'embeds',
+        (v) => (v as List<dynamic>?)
+            ?.map(
+              (e) => MessageEmbedResponse.fromJson(e as Map<String, dynamic>),
+            )
+            .toList(),
+      ),
+      attachments: $checkedConvert(
+        'attachments',
+        (v) => (v as List<dynamic>?)
+            ?.map(
+              (e) =>
+                  MessageAttachmentResponse.fromJson(e as Map<String, dynamic>),
+            )
+            .toList(),
+      ),
+      stickers: $checkedConvert(
+        'stickers',
+        (v) => (v as List<dynamic>?)
+            ?.map(
+              (e) => MessageStickerResponse.fromJson(e as Map<String, dynamic>),
+            )
+            .toList(),
+      ),
+      nsfwEmojis: $checkedConvert(
+        'nsfw_emojis',
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+      ),
+      reactions: $checkedConvert(
+        'reactions',
+        (v) => (v as List<dynamic>?)
+            ?.map(
+              (e) =>
+                  MessageReactionResponse.fromJson(e as Map<String, dynamic>),
+            )
+            .toList(),
+      ),
+      messageReference: $checkedConvert(
+        'message_reference',
+        (v) => v == null
+            ? null
+            : MessageReferenceResponse.fromJson(v as Map<String, dynamic>),
+      ),
+      messageSnapshots: $checkedConvert(
+        'message_snapshots',
+        (v) => (v as List<dynamic>?)
+            ?.map(
+              (e) =>
+                  MessageSnapshotResponse.fromJson(e as Map<String, dynamic>),
+            )
+            .toList(),
+      ),
+      nonce: $checkedConvert('nonce', (v) => v as String?),
+      call: $checkedConvert(
+        'call',
+        (v) => v == null
+            ? null
+            : MessageCallResponse.fromJson(v as Map<String, dynamic>),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'channelId': 'channel_id',
+    'mentionEveryone': 'mention_everyone',
+    'webhookId': 'webhook_id',
+    'editedTimestamp': 'edited_timestamp',
+    'mentionRoles': 'mention_roles',
+    'nsfwEmojis': 'nsfw_emojis',
+    'messageReference': 'message_reference',
+    'messageSnapshots': 'message_snapshots',
+  },
 );
 
 Map<String, dynamic> _$MessageBaseResponseSchemaToJson(

@@ -8,13 +8,28 @@ part of 'message_reference_request.dart';
 
 MessageReferenceRequest _$MessageReferenceRequestFromJson(
   Map<String, dynamic> json,
-) => MessageReferenceRequest(
-  messageId: json['message_id'] as String,
-  channelId: json['channel_id'] as String?,
-  guildId: json['guild_id'] as String?,
-  type: json['type'] == null
-      ? null
-      : MessageReferenceType.fromJson((json['type'] as num).toInt()),
+) => $checkedCreate(
+  'MessageReferenceRequest',
+  json,
+  ($checkedConvert) {
+    final val = MessageReferenceRequest(
+      messageId: $checkedConvert('message_id', (v) => v as String),
+      channelId: $checkedConvert('channel_id', (v) => v as String?),
+      guildId: $checkedConvert('guild_id', (v) => v as String?),
+      type: $checkedConvert(
+        'type',
+        (v) => v == null
+            ? null
+            : MessageReferenceType.fromJson((v as num).toInt()),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'messageId': 'message_id',
+    'channelId': 'channel_id',
+    'guildId': 'guild_id',
+  },
 );
 
 Map<String, dynamic> _$MessageReferenceRequestToJson(

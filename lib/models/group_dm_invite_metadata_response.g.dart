@@ -8,25 +8,48 @@ part of 'group_dm_invite_metadata_response.dart';
 
 GroupDmInviteMetadataResponse _$GroupDmInviteMetadataResponseFromJson(
   Map<String, dynamic> json,
-) => GroupDmInviteMetadataResponse(
-  code: json['code'] as String,
-  type: GroupDmInviteMetadataResponseTypeType.fromJson(
-    (json['type'] as num).toInt(),
-  ),
-  channel: ChannelPartialResponse.fromJson(
-    json['channel'] as Map<String, dynamic>,
-  ),
-  memberCount: (json['member_count'] as num).toInt(),
-  temporary: json['temporary'] as bool,
-  createdAt: DateTime.parse(json['created_at'] as String),
-  uses: (json['uses'] as num).toInt(),
-  maxUses: (json['max_uses'] as num).toInt(),
-  inviter: json['inviter'] == null
-      ? null
-      : UserPartialResponse.fromJson(json['inviter'] as Map<String, dynamic>),
-  expiresAt: json['expires_at'] == null
-      ? null
-      : DateTime.parse(json['expires_at'] as String),
+) => $checkedCreate(
+  'GroupDmInviteMetadataResponse',
+  json,
+  ($checkedConvert) {
+    final val = GroupDmInviteMetadataResponse(
+      code: $checkedConvert('code', (v) => v as String),
+      type: $checkedConvert(
+        'type',
+        (v) =>
+            GroupDmInviteMetadataResponseTypeType.fromJson((v as num).toInt()),
+      ),
+      channel: $checkedConvert(
+        'channel',
+        (v) => ChannelPartialResponse.fromJson(v as Map<String, dynamic>),
+      ),
+      memberCount: $checkedConvert('member_count', (v) => (v as num).toInt()),
+      temporary: $checkedConvert('temporary', (v) => v as bool),
+      createdAt: $checkedConvert(
+        'created_at',
+        (v) => DateTime.parse(v as String),
+      ),
+      uses: $checkedConvert('uses', (v) => (v as num).toInt()),
+      maxUses: $checkedConvert('max_uses', (v) => (v as num).toInt()),
+      inviter: $checkedConvert(
+        'inviter',
+        (v) => v == null
+            ? null
+            : UserPartialResponse.fromJson(v as Map<String, dynamic>),
+      ),
+      expiresAt: $checkedConvert(
+        'expires_at',
+        (v) => v == null ? null : DateTime.parse(v as String),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'memberCount': 'member_count',
+    'createdAt': 'created_at',
+    'maxUses': 'max_uses',
+    'expiresAt': 'expires_at',
+  },
 );
 
 Map<String, dynamic> _$GroupDmInviteMetadataResponseToJson(

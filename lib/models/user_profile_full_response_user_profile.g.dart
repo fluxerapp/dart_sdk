@@ -8,12 +8,23 @@ part of 'user_profile_full_response_user_profile.dart';
 
 UserProfileFullResponseUserProfile _$UserProfileFullResponseUserProfileFromJson(
   Map<String, dynamic> json,
-) => UserProfileFullResponseUserProfile(
-  bio: json['bio'] as String?,
-  pronouns: json['pronouns'] as String?,
-  banner: json['banner'] as String?,
-  accentColor: (json['accent_color'] as num?)?.toInt(),
-  bannerColor: (json['banner_color'] as num?)?.toInt(),
+) => $checkedCreate(
+  'UserProfileFullResponseUserProfile',
+  json,
+  ($checkedConvert) {
+    final val = UserProfileFullResponseUserProfile(
+      bio: $checkedConvert('bio', (v) => v as String?),
+      pronouns: $checkedConvert('pronouns', (v) => v as String?),
+      banner: $checkedConvert('banner', (v) => v as String?),
+      accentColor: $checkedConvert('accent_color', (v) => (v as num?)?.toInt()),
+      bannerColor: $checkedConvert('banner_color', (v) => (v as num?)?.toInt()),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'accentColor': 'accent_color',
+    'bannerColor': 'banner_color',
+  },
 );
 
 Map<String, dynamic> _$UserProfileFullResponseUserProfileToJson(

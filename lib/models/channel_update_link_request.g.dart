@@ -8,34 +8,68 @@ part of 'channel_update_link_request.dart';
 
 ChannelUpdateLinkRequest _$ChannelUpdateLinkRequestFromJson(
   Map<String, dynamic> json,
-) => ChannelUpdateLinkRequest(
-  type: ChannelUpdateLinkRequestTypeType.fromJson(
-    (json['type'] as num).toInt(),
-  ),
-  topic: json['topic'] as String?,
-  url: json['url'] as String?,
-  parentId: json['parent_id'] as String?,
-  bitrate: (json['bitrate'] as num?)?.toInt(),
-  userLimit: (json['user_limit'] as num?)?.toInt(),
-  permissionOverwrites: (json['permission_overwrites'] as List<dynamic>?)
-      ?.map((e) => ChannelOverwriteRequest.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  nsfw: json['nsfw'] as bool?,
-  nsfwOverride: json['nsfw_override'] as bool?,
-  contentWarningLevel: json['content_warning_level'] == null
-      ? null
-      : ContentWarningLevel.fromJson(
-          (json['content_warning_level'] as num).toInt(),
+) => $checkedCreate(
+  'ChannelUpdateLinkRequest',
+  json,
+  ($checkedConvert) {
+    final val = ChannelUpdateLinkRequest(
+      type: $checkedConvert(
+        'type',
+        (v) => ChannelUpdateLinkRequestTypeType.fromJson((v as num).toInt()),
+      ),
+      topic: $checkedConvert('topic', (v) => v as String?),
+      url: $checkedConvert('url', (v) => v as String?),
+      parentId: $checkedConvert('parent_id', (v) => v as String?),
+      bitrate: $checkedConvert('bitrate', (v) => (v as num?)?.toInt()),
+      userLimit: $checkedConvert('user_limit', (v) => (v as num?)?.toInt()),
+      permissionOverwrites: $checkedConvert(
+        'permission_overwrites',
+        (v) => (v as List<dynamic>?)
+            ?.map(
+              (e) =>
+                  ChannelOverwriteRequest.fromJson(e as Map<String, dynamic>),
+            )
+            .toList(),
+      ),
+      nsfw: $checkedConvert('nsfw', (v) => v as bool?),
+      nsfwOverride: $checkedConvert('nsfw_override', (v) => v as bool?),
+      contentWarningLevel: $checkedConvert(
+        'content_warning_level',
+        (v) =>
+            v == null ? null : ContentWarningLevel.fromJson((v as num).toInt()),
+      ),
+      contentWarningText: $checkedConvert(
+        'content_warning_text',
+        (v) => v as String?,
+      ),
+      rateLimitPerUser: $checkedConvert(
+        'rate_limit_per_user',
+        (v) => (v as num?)?.toInt(),
+      ),
+      icon: $checkedConvert('icon', (v) => v as String?),
+      ownerId: $checkedConvert('owner_id', (v) => v as String?),
+      nicks: $checkedConvert(
+        'nicks',
+        (v) => (v as Map<String, dynamic>?)?.map(
+          (k, e) => MapEntry(k, e as String?),
         ),
-  contentWarningText: json['content_warning_text'] as String?,
-  rateLimitPerUser: (json['rate_limit_per_user'] as num?)?.toInt(),
-  icon: json['icon'] as String?,
-  ownerId: json['owner_id'] as String?,
-  nicks: (json['nicks'] as Map<String, dynamic>?)?.map(
-    (k, e) => MapEntry(k, e as String?),
-  ),
-  rtcRegion: json['rtc_region'] as String?,
-  name: json['name'] as String?,
+      ),
+      rtcRegion: $checkedConvert('rtc_region', (v) => v as String?),
+      name: $checkedConvert('name', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'parentId': 'parent_id',
+    'userLimit': 'user_limit',
+    'permissionOverwrites': 'permission_overwrites',
+    'nsfwOverride': 'nsfw_override',
+    'contentWarningLevel': 'content_warning_level',
+    'contentWarningText': 'content_warning_text',
+    'rateLimitPerUser': 'rate_limit_per_user',
+    'ownerId': 'owner_id',
+    'rtcRegion': 'rtc_region',
+  },
 );
 
 Map<String, dynamic> _$ChannelUpdateLinkRequestToJson(

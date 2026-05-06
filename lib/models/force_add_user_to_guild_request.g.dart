@@ -8,9 +8,17 @@ part of 'force_add_user_to_guild_request.dart';
 
 ForceAddUserToGuildRequest _$ForceAddUserToGuildRequestFromJson(
   Map<String, dynamic> json,
-) => ForceAddUserToGuildRequest(
-  userId: json['user_id'] as String,
-  guildId: json['guild_id'] as String,
+) => $checkedCreate(
+  'ForceAddUserToGuildRequest',
+  json,
+  ($checkedConvert) {
+    final val = ForceAddUserToGuildRequest(
+      userId: $checkedConvert('user_id', (v) => v as String),
+      guildId: $checkedConvert('guild_id', (v) => v as String),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'userId': 'user_id', 'guildId': 'guild_id'},
 );
 
 Map<String, dynamic> _$ForceAddUserToGuildRequestToJson(

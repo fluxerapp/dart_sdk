@@ -7,12 +7,20 @@ part of 'channel_pins_response.dart';
 // **************************************************************************
 
 ChannelPinsResponse _$ChannelPinsResponseFromJson(Map<String, dynamic> json) =>
-    ChannelPinsResponse(
-      items: (json['items'] as List<dynamic>)
-          .map((e) => ChannelPinResponse.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      hasMore: json['has_more'] as bool,
-    );
+    $checkedCreate('ChannelPinsResponse', json, ($checkedConvert) {
+      final val = ChannelPinsResponse(
+        items: $checkedConvert(
+          'items',
+          (v) => (v as List<dynamic>)
+              .map(
+                (e) => ChannelPinResponse.fromJson(e as Map<String, dynamic>),
+              )
+              .toList(),
+        ),
+        hasMore: $checkedConvert('has_more', (v) => v as bool),
+      );
+      return val;
+    }, fieldKeyMap: const {'hasMore': 'has_more'});
 
 Map<String, dynamic> _$ChannelPinsResponseToJson(
   ChannelPinsResponse instance,

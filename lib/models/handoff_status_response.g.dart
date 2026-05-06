@@ -8,11 +8,14 @@ part of 'handoff_status_response.dart';
 
 HandoffStatusResponse _$HandoffStatusResponseFromJson(
   Map<String, dynamic> json,
-) => HandoffStatusResponse(
-  status: json['status'] as String,
-  token: json['token'] as String?,
-  userId: json['user_id'] as String?,
-);
+) => $checkedCreate('HandoffStatusResponse', json, ($checkedConvert) {
+  final val = HandoffStatusResponse(
+    status: $checkedConvert('status', (v) => v as String),
+    token: $checkedConvert('token', (v) => v as String?),
+    userId: $checkedConvert('user_id', (v) => v as String?),
+  );
+  return val;
+}, fieldKeyMap: const {'userId': 'user_id'});
 
 Map<String, dynamic> _$HandoffStatusResponseToJson(
   HandoffStatusResponse instance,

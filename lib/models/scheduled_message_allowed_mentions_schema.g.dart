@@ -7,20 +7,37 @@ part of 'scheduled_message_allowed_mentions_schema.dart';
 // **************************************************************************
 
 ScheduledMessageAllowedMentionsSchema
-_$ScheduledMessageAllowedMentionsSchemaFromJson(
-  Map<String, dynamic> json,
-) => ScheduledMessageAllowedMentionsSchema(
-  parse: (json['parse'] as List<dynamic>?)
-      ?.map(
-        (e) => ScheduledMessageAllowedMentionsSchemaParseParse.fromJson(
-          e as String,
-        ),
-      )
-      .toList(),
-  users: (json['users'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  roles: (json['roles'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  repliedUser: json['replied_user'] as bool?,
-);
+_$ScheduledMessageAllowedMentionsSchemaFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      'ScheduledMessageAllowedMentionsSchema',
+      json,
+      ($checkedConvert) {
+        final val = ScheduledMessageAllowedMentionsSchema(
+          parse: $checkedConvert(
+            'parse',
+            (v) => (v as List<dynamic>?)
+                ?.map(
+                  (e) =>
+                      ScheduledMessageAllowedMentionsSchemaParseParse.fromJson(
+                        e as String,
+                      ),
+                )
+                .toList(),
+          ),
+          users: $checkedConvert(
+            'users',
+            (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+          ),
+          roles: $checkedConvert(
+            'roles',
+            (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+          ),
+          repliedUser: $checkedConvert('replied_user', (v) => v as bool?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {'repliedUser': 'replied_user'},
+    );
 
 Map<String, dynamic> _$ScheduledMessageAllowedMentionsSchemaToJson(
   ScheduledMessageAllowedMentionsSchema instance,

@@ -8,9 +8,15 @@ part of 'get_job_response_schema.dart';
 
 GetJobResponseSchema _$GetJobResponseSchemaFromJson(
   Map<String, dynamic> json,
-) => GetJobResponseSchema(
-  job: JobLedgerEntrySchema.fromJson(json['job'] as Map<String, dynamic>),
-);
+) => $checkedCreate('GetJobResponseSchema', json, ($checkedConvert) {
+  final val = GetJobResponseSchema(
+    job: $checkedConvert(
+      'job',
+      (v) => JobLedgerEntrySchema.fromJson(v as Map<String, dynamic>),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$GetJobResponseSchemaToJson(
   GetJobResponseSchema instance,

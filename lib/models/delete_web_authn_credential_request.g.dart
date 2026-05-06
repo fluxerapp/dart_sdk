@@ -8,9 +8,17 @@ part of 'delete_web_authn_credential_request.dart';
 
 DeleteWebAuthnCredentialRequest _$DeleteWebAuthnCredentialRequestFromJson(
   Map<String, dynamic> json,
-) => DeleteWebAuthnCredentialRequest(
-  userId: json['user_id'] as String,
-  credentialId: json['credential_id'] as String,
+) => $checkedCreate(
+  'DeleteWebAuthnCredentialRequest',
+  json,
+  ($checkedConvert) {
+    final val = DeleteWebAuthnCredentialRequest(
+      userId: $checkedConvert('user_id', (v) => v as String),
+      credentialId: $checkedConvert('credential_id', (v) => v as String),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'userId': 'user_id', 'credentialId': 'credential_id'},
 );
 
 Map<String, dynamic> _$DeleteWebAuthnCredentialRequestToJson(

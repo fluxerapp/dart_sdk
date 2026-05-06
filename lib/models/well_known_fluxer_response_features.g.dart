@@ -8,11 +8,27 @@ part of 'well_known_fluxer_response_features.dart';
 
 WellKnownFluxerResponseFeatures _$WellKnownFluxerResponseFeaturesFromJson(
   Map<String, dynamic> json,
-) => WellKnownFluxerResponseFeatures(
-  voiceEnabled: json['voice_enabled'] as bool,
-  stripeEnabled: json['stripe_enabled'] as bool,
-  selfHosted: json['self_hosted'] as bool,
-  presignedAttachmentUploads: json['presigned_attachment_uploads'] as bool,
+) => $checkedCreate(
+  'WellKnownFluxerResponseFeatures',
+  json,
+  ($checkedConvert) {
+    final val = WellKnownFluxerResponseFeatures(
+      voiceEnabled: $checkedConvert('voice_enabled', (v) => v as bool),
+      stripeEnabled: $checkedConvert('stripe_enabled', (v) => v as bool),
+      selfHosted: $checkedConvert('self_hosted', (v) => v as bool),
+      presignedAttachmentUploads: $checkedConvert(
+        'presigned_attachment_uploads',
+        (v) => v as bool,
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'voiceEnabled': 'voice_enabled',
+    'stripeEnabled': 'stripe_enabled',
+    'selfHosted': 'self_hosted',
+    'presignedAttachmentUploads': 'presigned_attachment_uploads',
+  },
 );
 
 Map<String, dynamic> _$WellKnownFluxerResponseFeaturesToJson(

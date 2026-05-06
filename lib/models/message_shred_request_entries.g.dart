@@ -8,9 +8,17 @@ part of 'message_shred_request_entries.dart';
 
 MessageShredRequestEntries _$MessageShredRequestEntriesFromJson(
   Map<String, dynamic> json,
-) => MessageShredRequestEntries(
-  channelId: json['channel_id'] as String,
-  messageId: json['message_id'] as String,
+) => $checkedCreate(
+  'MessageShredRequestEntries',
+  json,
+  ($checkedConvert) {
+    final val = MessageShredRequestEntries(
+      channelId: $checkedConvert('channel_id', (v) => v as String),
+      messageId: $checkedConvert('message_id', (v) => v as String),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'channelId': 'channel_id', 'messageId': 'message_id'},
 );
 
 Map<String, dynamic> _$MessageShredRequestEntriesToJson(

@@ -8,7 +8,12 @@ part of 'bluesky_authorize_request.dart';
 
 BlueskyAuthorizeRequest _$BlueskyAuthorizeRequestFromJson(
   Map<String, dynamic> json,
-) => BlueskyAuthorizeRequest(handle: json['handle'] as String);
+) => $checkedCreate('BlueskyAuthorizeRequest', json, ($checkedConvert) {
+  final val = BlueskyAuthorizeRequest(
+    handle: $checkedConvert('handle', (v) => v as String),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$BlueskyAuthorizeRequestToJson(
   BlueskyAuthorizeRequest instance,

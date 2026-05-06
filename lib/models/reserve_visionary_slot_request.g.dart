@@ -8,9 +8,17 @@ part of 'reserve_visionary_slot_request.dart';
 
 ReserveVisionarySlotRequest _$ReserveVisionarySlotRequestFromJson(
   Map<String, dynamic> json,
-) => ReserveVisionarySlotRequest(
-  slotIndex: (json['slot_index'] as num).toInt(),
-  userId: json['user_id'] as String?,
+) => $checkedCreate(
+  'ReserveVisionarySlotRequest',
+  json,
+  ($checkedConvert) {
+    final val = ReserveVisionarySlotRequest(
+      slotIndex: $checkedConvert('slot_index', (v) => (v as num).toInt()),
+      userId: $checkedConvert('user_id', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'slotIndex': 'slot_index', 'userId': 'user_id'},
 );
 
 Map<String, dynamic> _$ReserveVisionarySlotRequestToJson(

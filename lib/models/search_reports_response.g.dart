@@ -8,14 +8,23 @@ part of 'search_reports_response.dart';
 
 SearchReportsResponse _$SearchReportsResponseFromJson(
   Map<String, dynamic> json,
-) => SearchReportsResponse(
-  reports: (json['reports'] as List<dynamic>)
-      .map((e) => ReportAdminResponseSchema.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  total: json['total'] as num,
-  offset: json['offset'] as num,
-  limit: json['limit'] as num,
-);
+) => $checkedCreate('SearchReportsResponse', json, ($checkedConvert) {
+  final val = SearchReportsResponse(
+    reports: $checkedConvert(
+      'reports',
+      (v) => (v as List<dynamic>)
+          .map(
+            (e) =>
+                ReportAdminResponseSchema.fromJson(e as Map<String, dynamic>),
+          )
+          .toList(),
+    ),
+    total: $checkedConvert('total', (v) => v as num),
+    offset: $checkedConvert('offset', (v) => v as num),
+    limit: $checkedConvert('limit', (v) => v as num),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$SearchReportsResponseToJson(
   SearchReportsResponse instance,

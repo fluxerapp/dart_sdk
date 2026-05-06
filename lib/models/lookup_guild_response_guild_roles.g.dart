@@ -8,15 +8,18 @@ part of 'lookup_guild_response_guild_roles.dart';
 
 LookupGuildResponseGuildRoles _$LookupGuildResponseGuildRolesFromJson(
   Map<String, dynamic> json,
-) => LookupGuildResponseGuildRoles(
-  id: json['id'] as String,
-  name: json['name'] as String,
-  color: (json['color'] as num).toInt(),
-  position: (json['position'] as num).toInt(),
-  permissions: json['permissions'] as String,
-  hoist: json['hoist'] as bool,
-  mentionable: json['mentionable'] as bool,
-);
+) => $checkedCreate('LookupGuildResponseGuildRoles', json, ($checkedConvert) {
+  final val = LookupGuildResponseGuildRoles(
+    id: $checkedConvert('id', (v) => v as String),
+    name: $checkedConvert('name', (v) => v as String),
+    color: $checkedConvert('color', (v) => (v as num).toInt()),
+    position: $checkedConvert('position', (v) => (v as num).toInt()),
+    permissions: $checkedConvert('permissions', (v) => v as String),
+    hoist: $checkedConvert('hoist', (v) => v as bool),
+    mentionable: $checkedConvert('mentionable', (v) => v as bool),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$LookupGuildResponseGuildRolesToJson(
   LookupGuildResponseGuildRoles instance,

@@ -8,13 +8,17 @@ part of 'get_archive_response_schema.dart';
 
 GetArchiveResponseSchema _$GetArchiveResponseSchemaFromJson(
   Map<String, dynamic> json,
-) => GetArchiveResponseSchema(
-  archive: json['archive'] == null
-      ? null
-      : AdminArchiveResponseSchema.fromJson(
-          json['archive'] as Map<String, dynamic>,
-        ),
-);
+) => $checkedCreate('GetArchiveResponseSchema', json, ($checkedConvert) {
+  final val = GetArchiveResponseSchema(
+    archive: $checkedConvert(
+      'archive',
+      (v) => v == null
+          ? null
+          : AdminArchiveResponseSchema.fromJson(v as Map<String, dynamic>),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$GetArchiveResponseSchemaToJson(
   GetArchiveResponseSchema instance,

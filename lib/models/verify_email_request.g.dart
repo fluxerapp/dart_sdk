@@ -7,7 +7,12 @@ part of 'verify_email_request.dart';
 // **************************************************************************
 
 VerifyEmailRequest _$VerifyEmailRequestFromJson(Map<String, dynamic> json) =>
-    VerifyEmailRequest(token: json['token'] as String);
+    $checkedCreate('VerifyEmailRequest', json, ($checkedConvert) {
+      final val = VerifyEmailRequest(
+        token: $checkedConvert('token', (v) => v as String),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$VerifyEmailRequestToJson(VerifyEmailRequest instance) =>
     <String, dynamic>{'token': instance.token};

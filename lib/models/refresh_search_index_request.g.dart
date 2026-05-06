@@ -8,12 +8,26 @@ part of 'refresh_search_index_request.dart';
 
 RefreshSearchIndexRequest _$RefreshSearchIndexRequestFromJson(
   Map<String, dynamic> json,
-) => RefreshSearchIndexRequest(
-  indexType: RefreshSearchIndexRequestIndexTypeIndexType.fromJson(
-    json['index_type'] as String,
-  ),
-  guildId: json['guild_id'] as String?,
-  userId: json['user_id'] as String?,
+) => $checkedCreate(
+  'RefreshSearchIndexRequest',
+  json,
+  ($checkedConvert) {
+    final val = RefreshSearchIndexRequest(
+      indexType: $checkedConvert(
+        'index_type',
+        (v) =>
+            RefreshSearchIndexRequestIndexTypeIndexType.fromJson(v as String),
+      ),
+      guildId: $checkedConvert('guild_id', (v) => v as String?),
+      userId: $checkedConvert('user_id', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'indexType': 'index_type',
+    'guildId': 'guild_id',
+    'userId': 'user_id',
+  },
 );
 
 Map<String, dynamic> _$RefreshSearchIndexRequestToJson(

@@ -8,17 +8,32 @@ part of 'object2.dart';
 
 Object2ClientUploadedAttachmentRequest
 _$Object2ClientUploadedAttachmentRequestFromJson(Map<String, dynamic> json) =>
-    Object2ClientUploadedAttachmentRequest(
-      title: json['title'] as String?,
-      description: json['description'] as String?,
-      flags: (json['flags'] as num?)?.toInt(),
-      duration: (json['duration'] as num?)?.toInt(),
-      waveform: json['waveform'] as String?,
-      id: (json['id'] as num).toInt(),
-      filename: json['filename'] as String,
-      uploadFilename: json['upload_filename'] as String,
-      fileSize: (json['file_size'] as num).toInt(),
-      contentType: json['content_type'] as String,
+    $checkedCreate(
+      'Object2ClientUploadedAttachmentRequest',
+      json,
+      ($checkedConvert) {
+        final val = Object2ClientUploadedAttachmentRequest(
+          title: $checkedConvert('title', (v) => v as String?),
+          description: $checkedConvert('description', (v) => v as String?),
+          flags: $checkedConvert('flags', (v) => (v as num?)?.toInt()),
+          duration: $checkedConvert('duration', (v) => (v as num?)?.toInt()),
+          waveform: $checkedConvert('waveform', (v) => v as String?),
+          id: $checkedConvert('id', (v) => (v as num).toInt()),
+          filename: $checkedConvert('filename', (v) => v as String),
+          uploadFilename: $checkedConvert(
+            'upload_filename',
+            (v) => v as String,
+          ),
+          fileSize: $checkedConvert('file_size', (v) => (v as num).toInt()),
+          contentType: $checkedConvert('content_type', (v) => v as String),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'uploadFilename': 'upload_filename',
+        'fileSize': 'file_size',
+        'contentType': 'content_type',
+      },
     );
 
 Map<String, dynamic> _$Object2ClientUploadedAttachmentRequestToJson(
@@ -38,17 +53,25 @@ Map<String, dynamic> _$Object2ClientUploadedAttachmentRequestToJson(
 
 Object2ClientAttachmentReferenceRequest
 _$Object2ClientAttachmentReferenceRequestFromJson(Map<String, dynamic> json) =>
-    Object2ClientAttachmentReferenceRequest(
-      title: json['title'] as String?,
-      description: json['description'] as String?,
-      flags: (json['flags'] as num?)?.toInt(),
-      duration: (json['duration'] as num?)?.toInt(),
-      waveform: json['waveform'] as String?,
-      id: ClientAttachmentReferenceRequestIdId.fromJson(
-        json['id'] as Map<String, dynamic>,
-      ),
-      filename: json['filename'] as String?,
-    );
+    $checkedCreate('Object2ClientAttachmentReferenceRequest', json, (
+      $checkedConvert,
+    ) {
+      final val = Object2ClientAttachmentReferenceRequest(
+        title: $checkedConvert('title', (v) => v as String?),
+        description: $checkedConvert('description', (v) => v as String?),
+        flags: $checkedConvert('flags', (v) => (v as num?)?.toInt()),
+        duration: $checkedConvert('duration', (v) => (v as num?)?.toInt()),
+        waveform: $checkedConvert('waveform', (v) => v as String?),
+        id: $checkedConvert(
+          'id',
+          (v) => ClientAttachmentReferenceRequestIdId.fromJson(
+            v as Map<String, dynamic>,
+          ),
+        ),
+        filename: $checkedConvert('filename', (v) => v as String?),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$Object2ClientAttachmentReferenceRequestToJson(
   Object2ClientAttachmentReferenceRequest instance,

@@ -8,59 +8,123 @@ part of 'lookup_guild_response_guild.dart';
 
 LookupGuildResponseGuild _$LookupGuildResponseGuildFromJson(
   Map<String, dynamic> json,
-) => LookupGuildResponseGuild(
-  id: json['id'] as String,
-  ownerId: json['owner_id'] as String,
-  ownerUsername: json['owner_username'] as String?,
-  ownerGlobalName: json['owner_global_name'] as String?,
-  ownerDiscriminator: json['owner_discriminator'] as String?,
-  name: json['name'] as String,
-  vanityUrlCode: json['vanity_url_code'] as String?,
-  icon: json['icon'] as String?,
-  banner: json['banner'] as String?,
-  splash: json['splash'] as String?,
-  embedSplash: json['embed_splash'] as String?,
-  features: (json['features'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-  verificationLevel: GuildVerificationLevel.fromJson(
-    (json['verification_level'] as num).toInt(),
-  ),
-  mfaLevel: GuildMfaLevel.fromJson((json['mfa_level'] as num).toInt()),
-  nsfwLevel: NsfwLevel.fromJson((json['nsfw_level'] as num).toInt()),
-  explicitContentFilter: GuildExplicitContentFilter.fromJson(
-    (json['explicit_content_filter'] as num).toInt(),
-  ),
-  defaultMessageNotifications: DefaultMessageNotifications.fromJson(
-    (json['default_message_notifications'] as num).toInt(),
-  ),
-  afkChannelId: json['afk_channel_id'] as String?,
-  afkTimeout: (json['afk_timeout'] as num).toInt(),
-  systemChannelId: json['system_channel_id'] as String?,
-  systemChannelFlags: (json['system_channel_flags'] as num).toInt(),
-  rulesChannelId: json['rules_channel_id'] as String?,
-  disabledOperations: (json['disabled_operations'] as num).toInt(),
-  memberCount: (json['member_count'] as num).toInt(),
-  channels: (json['channels'] as List<dynamic>)
-      .map(
-        (e) => LookupGuildResponseGuildChannels.fromJson(
-          e as Map<String, dynamic>,
-        ),
-      )
-      .toList(),
-  roles: (json['roles'] as List<dynamic>)
-      .map(
-        (e) =>
-            LookupGuildResponseGuildRoles.fromJson(e as Map<String, dynamic>),
-      )
-      .toList(),
-  nsfw: json['nsfw'] as bool?,
-  contentWarningLevel: json['content_warning_level'] == null
-      ? null
-      : ContentWarningLevel.fromJson(
-          (json['content_warning_level'] as num).toInt(),
-        ),
-  contentWarningText: json['content_warning_text'] as String?,
+) => $checkedCreate(
+  'LookupGuildResponseGuild',
+  json,
+  ($checkedConvert) {
+    final val = LookupGuildResponseGuild(
+      id: $checkedConvert('id', (v) => v as String),
+      ownerId: $checkedConvert('owner_id', (v) => v as String),
+      ownerUsername: $checkedConvert('owner_username', (v) => v as String?),
+      ownerGlobalName: $checkedConvert(
+        'owner_global_name',
+        (v) => v as String?,
+      ),
+      ownerDiscriminator: $checkedConvert(
+        'owner_discriminator',
+        (v) => v as String?,
+      ),
+      name: $checkedConvert('name', (v) => v as String),
+      vanityUrlCode: $checkedConvert('vanity_url_code', (v) => v as String?),
+      icon: $checkedConvert('icon', (v) => v as String?),
+      banner: $checkedConvert('banner', (v) => v as String?),
+      splash: $checkedConvert('splash', (v) => v as String?),
+      embedSplash: $checkedConvert('embed_splash', (v) => v as String?),
+      features: $checkedConvert(
+        'features',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      verificationLevel: $checkedConvert(
+        'verification_level',
+        (v) => GuildVerificationLevel.fromJson((v as num).toInt()),
+      ),
+      mfaLevel: $checkedConvert(
+        'mfa_level',
+        (v) => GuildMfaLevel.fromJson((v as num).toInt()),
+      ),
+      nsfwLevel: $checkedConvert(
+        'nsfw_level',
+        (v) => NsfwLevel.fromJson((v as num).toInt()),
+      ),
+      explicitContentFilter: $checkedConvert(
+        'explicit_content_filter',
+        (v) => GuildExplicitContentFilter.fromJson((v as num).toInt()),
+      ),
+      defaultMessageNotifications: $checkedConvert(
+        'default_message_notifications',
+        (v) => DefaultMessageNotifications.fromJson((v as num).toInt()),
+      ),
+      afkChannelId: $checkedConvert('afk_channel_id', (v) => v as String?),
+      afkTimeout: $checkedConvert('afk_timeout', (v) => (v as num).toInt()),
+      systemChannelId: $checkedConvert(
+        'system_channel_id',
+        (v) => v as String?,
+      ),
+      systemChannelFlags: $checkedConvert(
+        'system_channel_flags',
+        (v) => (v as num).toInt(),
+      ),
+      rulesChannelId: $checkedConvert('rules_channel_id', (v) => v as String?),
+      disabledOperations: $checkedConvert(
+        'disabled_operations',
+        (v) => (v as num).toInt(),
+      ),
+      memberCount: $checkedConvert('member_count', (v) => (v as num).toInt()),
+      channels: $checkedConvert(
+        'channels',
+        (v) => (v as List<dynamic>)
+            .map(
+              (e) => LookupGuildResponseGuildChannels.fromJson(
+                e as Map<String, dynamic>,
+              ),
+            )
+            .toList(),
+      ),
+      roles: $checkedConvert(
+        'roles',
+        (v) => (v as List<dynamic>)
+            .map(
+              (e) => LookupGuildResponseGuildRoles.fromJson(
+                e as Map<String, dynamic>,
+              ),
+            )
+            .toList(),
+      ),
+      nsfw: $checkedConvert('nsfw', (v) => v as bool?),
+      contentWarningLevel: $checkedConvert(
+        'content_warning_level',
+        (v) =>
+            v == null ? null : ContentWarningLevel.fromJson((v as num).toInt()),
+      ),
+      contentWarningText: $checkedConvert(
+        'content_warning_text',
+        (v) => v as String?,
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'ownerId': 'owner_id',
+    'ownerUsername': 'owner_username',
+    'ownerGlobalName': 'owner_global_name',
+    'ownerDiscriminator': 'owner_discriminator',
+    'vanityUrlCode': 'vanity_url_code',
+    'embedSplash': 'embed_splash',
+    'verificationLevel': 'verification_level',
+    'mfaLevel': 'mfa_level',
+    'nsfwLevel': 'nsfw_level',
+    'explicitContentFilter': 'explicit_content_filter',
+    'defaultMessageNotifications': 'default_message_notifications',
+    'afkChannelId': 'afk_channel_id',
+    'afkTimeout': 'afk_timeout',
+    'systemChannelId': 'system_channel_id',
+    'systemChannelFlags': 'system_channel_flags',
+    'rulesChannelId': 'rules_channel_id',
+    'disabledOperations': 'disabled_operations',
+    'memberCount': 'member_count',
+    'contentWarningLevel': 'content_warning_level',
+    'contentWarningText': 'content_warning_text',
+  },
 );
 
 Map<String, dynamic> _$LookupGuildResponseGuildToJson(

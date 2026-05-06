@@ -8,18 +8,39 @@ part of 'guild_memory_stats_response_guilds.dart';
 
 GuildMemoryStatsResponseGuilds _$GuildMemoryStatsResponseGuildsFromJson(
   Map<String, dynamic> json,
-) => GuildMemoryStatsResponseGuilds(
-  nodeId: json['node_id'] as String,
-  guildId: json['guild_id'] as String?,
-  guildName: json['guild_name'] as String,
-  guildIcon: json['guild_icon'] as String?,
-  nsfwLevel: json['nsfw_level'] == null
-      ? null
-      : NsfwLevel.fromJson((json['nsfw_level'] as num).toInt()),
-  memory: json['memory'] as String,
-  memberCount: (json['member_count'] as num).toInt(),
-  sessionCount: (json['session_count'] as num).toInt(),
-  presenceCount: (json['presence_count'] as num).toInt(),
+) => $checkedCreate(
+  'GuildMemoryStatsResponseGuilds',
+  json,
+  ($checkedConvert) {
+    final val = GuildMemoryStatsResponseGuilds(
+      nodeId: $checkedConvert('node_id', (v) => v as String),
+      guildId: $checkedConvert('guild_id', (v) => v as String?),
+      guildName: $checkedConvert('guild_name', (v) => v as String),
+      guildIcon: $checkedConvert('guild_icon', (v) => v as String?),
+      nsfwLevel: $checkedConvert(
+        'nsfw_level',
+        (v) => v == null ? null : NsfwLevel.fromJson((v as num).toInt()),
+      ),
+      memory: $checkedConvert('memory', (v) => v as String),
+      memberCount: $checkedConvert('member_count', (v) => (v as num).toInt()),
+      sessionCount: $checkedConvert('session_count', (v) => (v as num).toInt()),
+      presenceCount: $checkedConvert(
+        'presence_count',
+        (v) => (v as num).toInt(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'nodeId': 'node_id',
+    'guildId': 'guild_id',
+    'guildName': 'guild_name',
+    'guildIcon': 'guild_icon',
+    'nsfwLevel': 'nsfw_level',
+    'memberCount': 'member_count',
+    'sessionCount': 'session_count',
+    'presenceCount': 'presence_count',
+  },
 );
 
 Map<String, dynamic> _$GuildMemoryStatsResponseGuildsToJson(

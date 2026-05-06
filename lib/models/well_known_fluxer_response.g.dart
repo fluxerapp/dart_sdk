@@ -8,31 +8,64 @@ part of 'well_known_fluxer_response.dart';
 
 WellKnownFluxerResponse _$WellKnownFluxerResponseFromJson(
   Map<String, dynamic> json,
-) => WellKnownFluxerResponse(
-  apiCodeVersion: (json['api_code_version'] as num).toInt(),
-  endpoints: WellKnownFluxerResponseEndpoints.fromJson(
-    json['endpoints'] as Map<String, dynamic>,
-  ),
-  captcha: WellKnownFluxerResponseCaptcha.fromJson(
-    json['captcha'] as Map<String, dynamic>,
-  ),
-  features: WellKnownFluxerResponseFeatures.fromJson(
-    json['features'] as Map<String, dynamic>,
-  ),
-  gif: WellKnownFluxerResponseGif.fromJson(json['gif'] as Map<String, dynamic>),
-  sso: WellKnownFluxerResponseSso.fromJson(json['sso'] as Map<String, dynamic>),
-  limits: WellKnownFluxerResponseLimits.fromJson(
-    json['limits'] as Map<String, dynamic>,
-  ),
-  push: WellKnownFluxerResponsePush.fromJson(
-    json['push'] as Map<String, dynamic>,
-  ),
-  appPublic: json['app_public'],
-  gateway: json['gateway'] == null
-      ? null
-      : WellKnownFluxerResponseGateway.fromJson(
-          json['gateway'] as Map<String, dynamic>,
+) => $checkedCreate(
+  'WellKnownFluxerResponse',
+  json,
+  ($checkedConvert) {
+    final val = WellKnownFluxerResponse(
+      apiCodeVersion: $checkedConvert(
+        'api_code_version',
+        (v) => (v as num).toInt(),
+      ),
+      endpoints: $checkedConvert(
+        'endpoints',
+        (v) => WellKnownFluxerResponseEndpoints.fromJson(
+          v as Map<String, dynamic>,
         ),
+      ),
+      captcha: $checkedConvert(
+        'captcha',
+        (v) =>
+            WellKnownFluxerResponseCaptcha.fromJson(v as Map<String, dynamic>),
+      ),
+      features: $checkedConvert(
+        'features',
+        (v) =>
+            WellKnownFluxerResponseFeatures.fromJson(v as Map<String, dynamic>),
+      ),
+      gif: $checkedConvert(
+        'gif',
+        (v) => WellKnownFluxerResponseGif.fromJson(v as Map<String, dynamic>),
+      ),
+      sso: $checkedConvert(
+        'sso',
+        (v) => WellKnownFluxerResponseSso.fromJson(v as Map<String, dynamic>),
+      ),
+      limits: $checkedConvert(
+        'limits',
+        (v) =>
+            WellKnownFluxerResponseLimits.fromJson(v as Map<String, dynamic>),
+      ),
+      push: $checkedConvert(
+        'push',
+        (v) => WellKnownFluxerResponsePush.fromJson(v as Map<String, dynamic>),
+      ),
+      appPublic: $checkedConvert('app_public', (v) => v),
+      gateway: $checkedConvert(
+        'gateway',
+        (v) => v == null
+            ? null
+            : WellKnownFluxerResponseGateway.fromJson(
+                v as Map<String, dynamic>,
+              ),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'apiCodeVersion': 'api_code_version',
+    'appPublic': 'app_public',
+  },
 );
 
 Map<String, dynamic> _$WellKnownFluxerResponseToJson(

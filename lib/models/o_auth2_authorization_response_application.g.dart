@@ -8,12 +8,20 @@ part of 'o_auth2_authorization_response_application.dart';
 
 OAuth2AuthorizationResponseApplication
 _$OAuth2AuthorizationResponseApplicationFromJson(Map<String, dynamic> json) =>
-    OAuth2AuthorizationResponseApplication(
-      id: json['id'] as String,
-      name: json['name'] as String,
-      icon: json['icon'] as String?,
-      description: json['description'] as String?,
-      botPublic: json['bot_public'] as bool,
+    $checkedCreate(
+      'OAuth2AuthorizationResponseApplication',
+      json,
+      ($checkedConvert) {
+        final val = OAuth2AuthorizationResponseApplication(
+          id: $checkedConvert('id', (v) => v as String),
+          name: $checkedConvert('name', (v) => v as String),
+          icon: $checkedConvert('icon', (v) => v as String?),
+          description: $checkedConvert('description', (v) => v as String?),
+          botPublic: $checkedConvert('bot_public', (v) => v as bool),
+        );
+        return val;
+      },
+      fieldKeyMap: const {'botPublic': 'bot_public'},
     );
 
 Map<String, dynamic> _$OAuth2AuthorizationResponseApplicationToJson(

@@ -8,13 +8,21 @@ part of 'message_snapshot_attachment_edit_request.dart';
 
 MessageSnapshotAttachmentEditRequest
 _$MessageSnapshotAttachmentEditRequestFromJson(Map<String, dynamic> json) =>
-    MessageSnapshotAttachmentEditRequest(
-      id: MessageSnapshotAttachmentEditRequestIdId.fromJson(
-        json['id'] as Map<String, dynamic>,
-      ),
-      title: json['title'] as String?,
-      description: json['description'] as String?,
-    );
+    $checkedCreate('MessageSnapshotAttachmentEditRequest', json, (
+      $checkedConvert,
+    ) {
+      final val = MessageSnapshotAttachmentEditRequest(
+        id: $checkedConvert(
+          'id',
+          (v) => MessageSnapshotAttachmentEditRequestIdId.fromJson(
+            v as Map<String, dynamic>,
+          ),
+        ),
+        title: $checkedConvert('title', (v) => v as String?),
+        description: $checkedConvert('description', (v) => v as String?),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$MessageSnapshotAttachmentEditRequestToJson(
   MessageSnapshotAttachmentEditRequest instance,

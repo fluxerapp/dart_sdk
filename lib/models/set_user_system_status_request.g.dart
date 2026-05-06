@@ -8,10 +8,13 @@ part of 'set_user_system_status_request.dart';
 
 SetUserSystemStatusRequest _$SetUserSystemStatusRequestFromJson(
   Map<String, dynamic> json,
-) => SetUserSystemStatusRequest(
-  userId: json['user_id'] as String,
-  system: json['system'] as bool,
-);
+) => $checkedCreate('SetUserSystemStatusRequest', json, ($checkedConvert) {
+  final val = SetUserSystemStatusRequest(
+    userId: $checkedConvert('user_id', (v) => v as String),
+    system: $checkedConvert('system', (v) => v as bool),
+  );
+  return val;
+}, fieldKeyMap: const {'userId': 'user_id'});
 
 Map<String, dynamic> _$SetUserSystemStatusRequestToJson(
   SetUserSystemStatusRequest instance,

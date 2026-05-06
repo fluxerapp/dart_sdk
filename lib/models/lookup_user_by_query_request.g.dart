@@ -8,7 +8,12 @@ part of 'lookup_user_by_query_request.dart';
 
 LookupUserByQueryRequest _$LookupUserByQueryRequestFromJson(
   Map<String, dynamic> json,
-) => LookupUserByQueryRequest(query: json['query'] as String);
+) => $checkedCreate('LookupUserByQueryRequest', json, ($checkedConvert) {
+  final val = LookupUserByQueryRequest(
+    query: $checkedConvert('query', (v) => v as String),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$LookupUserByQueryRequestToJson(
   LookupUserByQueryRequest instance,

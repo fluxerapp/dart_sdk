@@ -8,11 +8,19 @@ part of 'web_authn_credential_response.dart';
 
 WebAuthnCredentialResponse _$WebAuthnCredentialResponseFromJson(
   Map<String, dynamic> json,
-) => WebAuthnCredentialResponse(
-  id: json['id'] as String,
-  name: json['name'] as String,
-  createdAt: json['created_at'] as String,
-  lastUsedAt: json['last_used_at'] as String?,
+) => $checkedCreate(
+  'WebAuthnCredentialResponse',
+  json,
+  ($checkedConvert) {
+    final val = WebAuthnCredentialResponse(
+      id: $checkedConvert('id', (v) => v as String),
+      name: $checkedConvert('name', (v) => v as String),
+      createdAt: $checkedConvert('created_at', (v) => v as String),
+      lastUsedAt: $checkedConvert('last_used_at', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'createdAt': 'created_at', 'lastUsedAt': 'last_used_at'},
 );
 
 Map<String, dynamic> _$WebAuthnCredentialResponseToJson(

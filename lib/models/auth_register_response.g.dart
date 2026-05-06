@@ -9,9 +9,17 @@ part of 'auth_register_response.dart';
 AuthRegisterResponseAuthTokenWithUserIdResponse
 _$AuthRegisterResponseAuthTokenWithUserIdResponseFromJson(
   Map<String, dynamic> json,
-) => AuthRegisterResponseAuthTokenWithUserIdResponse(
-  token: json['token'] as String,
-  userId: json['user_id'] as String,
+) => $checkedCreate(
+  'AuthRegisterResponseAuthTokenWithUserIdResponse',
+  json,
+  ($checkedConvert) {
+    final val = AuthRegisterResponseAuthTokenWithUserIdResponse(
+      token: $checkedConvert('token', (v) => v as String),
+      userId: $checkedConvert('user_id', (v) => v as String),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'userId': 'user_id'},
 );
 
 Map<String, dynamic> _$AuthRegisterResponseAuthTokenWithUserIdResponseToJson(
@@ -21,14 +29,26 @@ Map<String, dynamic> _$AuthRegisterResponseAuthTokenWithUserIdResponseToJson(
 AuthRegisterResponseAuthMfaRequiredResponse
 _$AuthRegisterResponseAuthMfaRequiredResponseFromJson(
   Map<String, dynamic> json,
-) => AuthRegisterResponseAuthMfaRequiredResponse(
-  mfa: AuthMfaRequiredResponseMfaMfa.fromJson(json['mfa'] as bool),
-  ticket: json['ticket'] as String,
-  allowedMethods: (json['allowed_methods'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-  totp: json['totp'] as bool,
-  webauthn: json['webauthn'] as bool,
+) => $checkedCreate(
+  'AuthRegisterResponseAuthMfaRequiredResponse',
+  json,
+  ($checkedConvert) {
+    final val = AuthRegisterResponseAuthMfaRequiredResponse(
+      mfa: $checkedConvert(
+        'mfa',
+        (v) => AuthMfaRequiredResponseMfaMfa.fromJson(v as bool),
+      ),
+      ticket: $checkedConvert('ticket', (v) => v as String),
+      allowedMethods: $checkedConvert(
+        'allowed_methods',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      totp: $checkedConvert('totp', (v) => v as bool),
+      webauthn: $checkedConvert('webauthn', (v) => v as bool),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'allowedMethods': 'allowed_methods'},
 );
 
 Map<String, dynamic> _$AuthRegisterResponseAuthMfaRequiredResponseToJson(

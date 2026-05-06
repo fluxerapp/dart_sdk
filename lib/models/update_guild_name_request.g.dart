@@ -8,10 +8,13 @@ part of 'update_guild_name_request.dart';
 
 UpdateGuildNameRequest _$UpdateGuildNameRequestFromJson(
   Map<String, dynamic> json,
-) => UpdateGuildNameRequest(
-  guildId: json['guild_id'] as String,
-  name: json['name'] as String,
-);
+) => $checkedCreate('UpdateGuildNameRequest', json, ($checkedConvert) {
+  final val = UpdateGuildNameRequest(
+    guildId: $checkedConvert('guild_id', (v) => v as String),
+    name: $checkedConvert('name', (v) => v as String),
+  );
+  return val;
+}, fieldKeyMap: const {'guildId': 'guild_id'});
 
 Map<String, dynamic> _$UpdateGuildNameRequestToJson(
   UpdateGuildNameRequest instance,

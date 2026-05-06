@@ -8,7 +8,12 @@ part of 'ban_check_response_schema.dart';
 
 BanCheckResponseSchema _$BanCheckResponseSchemaFromJson(
   Map<String, dynamic> json,
-) => BanCheckResponseSchema(banned: json['banned'] as bool);
+) => $checkedCreate('BanCheckResponseSchema', json, ($checkedConvert) {
+  final val = BanCheckResponseSchema(
+    banned: $checkedConvert('banned', (v) => v as bool),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$BanCheckResponseSchemaToJson(
   BanCheckResponseSchema instance,

@@ -7,7 +7,12 @@ part of 'delete_guild_request.dart';
 // **************************************************************************
 
 DeleteGuildRequest _$DeleteGuildRequestFromJson(Map<String, dynamic> json) =>
-    DeleteGuildRequest(guildId: json['guild_id'] as String);
+    $checkedCreate('DeleteGuildRequest', json, ($checkedConvert) {
+      final val = DeleteGuildRequest(
+        guildId: $checkedConvert('guild_id', (v) => v as String),
+      );
+      return val;
+    }, fieldKeyMap: const {'guildId': 'guild_id'});
 
 Map<String, dynamic> _$DeleteGuildRequestToJson(DeleteGuildRequest instance) =>
     <String, dynamic>{'guild_id': instance.guildId};

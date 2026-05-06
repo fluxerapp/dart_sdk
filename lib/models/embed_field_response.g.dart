@@ -7,11 +7,14 @@ part of 'embed_field_response.dart';
 // **************************************************************************
 
 EmbedFieldResponse _$EmbedFieldResponseFromJson(Map<String, dynamic> json) =>
-    EmbedFieldResponse(
-      name: json['name'] as String,
-      value: json['value'] as String,
-      inline: json['inline'] as bool,
-    );
+    $checkedCreate('EmbedFieldResponse', json, ($checkedConvert) {
+      final val = EmbedFieldResponse(
+        name: $checkedConvert('name', (v) => v as String),
+        value: $checkedConvert('value', (v) => v as String),
+        inline: $checkedConvert('inline', (v) => v as bool),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$EmbedFieldResponseToJson(EmbedFieldResponse instance) =>
     <String, dynamic>{

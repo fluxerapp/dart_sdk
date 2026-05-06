@@ -8,12 +8,15 @@ part of 'message_sticker_response.dart';
 
 MessageStickerResponse _$MessageStickerResponseFromJson(
   Map<String, dynamic> json,
-) => MessageStickerResponse(
-  id: json['id'] as String,
-  name: json['name'] as String,
-  animated: json['animated'] as bool,
-  nsfw: json['nsfw'] as bool?,
-);
+) => $checkedCreate('MessageStickerResponse', json, ($checkedConvert) {
+  final val = MessageStickerResponse(
+    id: $checkedConvert('id', (v) => v as String),
+    name: $checkedConvert('name', (v) => v as String),
+    animated: $checkedConvert('animated', (v) => v as bool),
+    nsfw: $checkedConvert('nsfw', (v) => v as bool?),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$MessageStickerResponseToJson(
   MessageStickerResponse instance,

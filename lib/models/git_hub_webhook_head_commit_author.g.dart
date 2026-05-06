@@ -8,10 +8,13 @@ part of 'git_hub_webhook_head_commit_author.dart';
 
 GitHubWebhookHeadCommitAuthor _$GitHubWebhookHeadCommitAuthorFromJson(
   Map<String, dynamic> json,
-) => GitHubWebhookHeadCommitAuthor(
-  name: json['name'] as String,
-  username: json['username'] as String?,
-);
+) => $checkedCreate('GitHubWebhookHeadCommitAuthor', json, ($checkedConvert) {
+  final val = GitHubWebhookHeadCommitAuthor(
+    name: $checkedConvert('name', (v) => v as String),
+    username: $checkedConvert('username', (v) => v as String?),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$GitHubWebhookHeadCommitAuthorToJson(
   GitHubWebhookHeadCommitAuthor instance,

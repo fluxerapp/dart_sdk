@@ -8,11 +8,17 @@ part of 'message_shred_response.dart';
 
 MessageShredResponse _$MessageShredResponseFromJson(
   Map<String, dynamic> json,
-) => MessageShredResponse(
-  success: MessageShredResponseSuccessSuccess.fromJson(json['success'] as bool),
-  jobId: json['job_id'] as String,
-  requested: (json['requested'] as num?)?.toInt(),
-);
+) => $checkedCreate('MessageShredResponse', json, ($checkedConvert) {
+  final val = MessageShredResponse(
+    success: $checkedConvert(
+      'success',
+      (v) => MessageShredResponseSuccessSuccess.fromJson(v as bool),
+    ),
+    jobId: $checkedConvert('job_id', (v) => v as String),
+    requested: $checkedConvert('requested', (v) => (v as num?)?.toInt()),
+  );
+  return val;
+}, fieldKeyMap: const {'jobId': 'job_id'});
 
 Map<String, dynamic> _$MessageShredResponseToJson(
   MessageShredResponse instance,

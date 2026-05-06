@@ -8,15 +8,21 @@ part of 'message_snapshot_edit_request.dart';
 
 MessageSnapshotEditRequest _$MessageSnapshotEditRequestFromJson(
   Map<String, dynamic> json,
-) => MessageSnapshotEditRequest(
-  attachments: (json['attachments'] as List<dynamic>?)
-      ?.map(
-        (e) => MessageSnapshotAttachmentEditRequest.fromJson(
-          e as Map<String, dynamic>,
-        ),
-      )
-      .toList(),
-);
+) => $checkedCreate('MessageSnapshotEditRequest', json, ($checkedConvert) {
+  final val = MessageSnapshotEditRequest(
+    attachments: $checkedConvert(
+      'attachments',
+      (v) => (v as List<dynamic>?)
+          ?.map(
+            (e) => MessageSnapshotAttachmentEditRequest.fromJson(
+              e as Map<String, dynamic>,
+            ),
+          )
+          .toList(),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$MessageSnapshotEditRequestToJson(
   MessageSnapshotEditRequest instance,

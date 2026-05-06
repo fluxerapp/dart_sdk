@@ -8,7 +8,12 @@ part of 'guild_emoji_update_request.dart';
 
 GuildEmojiUpdateRequest _$GuildEmojiUpdateRequestFromJson(
   Map<String, dynamic> json,
-) => GuildEmojiUpdateRequest(name: json['name'] as String);
+) => $checkedCreate('GuildEmojiUpdateRequest', json, ($checkedConvert) {
+  final val = GuildEmojiUpdateRequest(
+    name: $checkedConvert('name', (v) => v as String),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$GuildEmojiUpdateRequestToJson(
   GuildEmojiUpdateRequest instance,

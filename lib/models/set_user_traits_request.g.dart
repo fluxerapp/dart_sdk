@@ -8,10 +8,16 @@ part of 'set_user_traits_request.dart';
 
 SetUserTraitsRequest _$SetUserTraitsRequestFromJson(
   Map<String, dynamic> json,
-) => SetUserTraitsRequest(
-  userId: json['user_id'] as String,
-  traits: (json['traits'] as List<dynamic>).map((e) => e as String).toList(),
-);
+) => $checkedCreate('SetUserTraitsRequest', json, ($checkedConvert) {
+  final val = SetUserTraitsRequest(
+    userId: $checkedConvert('user_id', (v) => v as String),
+    traits: $checkedConvert(
+      'traits',
+      (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+    ),
+  );
+  return val;
+}, fieldKeyMap: const {'userId': 'user_id'});
 
 Map<String, dynamic> _$SetUserTraitsRequestToJson(
   SetUserTraitsRequest instance,

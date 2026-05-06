@@ -8,14 +8,38 @@ part of 'guild_member_search_response.dart';
 
 GuildMemberSearchResponse _$GuildMemberSearchResponseFromJson(
   Map<String, dynamic> json,
-) => GuildMemberSearchResponse(
-  guildId: json['guild_id'] as String,
-  members: (json['members'] as List<dynamic>)
-      .map((e) => GuildMemberSearchResult.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  pageResultCount: (json['page_result_count'] as num).toInt(),
-  totalResultCount: (json['total_result_count'] as num).toInt(),
-  indexing: json['indexing'] as bool,
+) => $checkedCreate(
+  'GuildMemberSearchResponse',
+  json,
+  ($checkedConvert) {
+    final val = GuildMemberSearchResponse(
+      guildId: $checkedConvert('guild_id', (v) => v as String),
+      members: $checkedConvert(
+        'members',
+        (v) => (v as List<dynamic>)
+            .map(
+              (e) =>
+                  GuildMemberSearchResult.fromJson(e as Map<String, dynamic>),
+            )
+            .toList(),
+      ),
+      pageResultCount: $checkedConvert(
+        'page_result_count',
+        (v) => (v as num).toInt(),
+      ),
+      totalResultCount: $checkedConvert(
+        'total_result_count',
+        (v) => (v as num).toInt(),
+      ),
+      indexing: $checkedConvert('indexing', (v) => v as bool),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'guildId': 'guild_id',
+    'pageResultCount': 'page_result_count',
+    'totalResultCount': 'total_result_count',
+  },
 );
 
 Map<String, dynamic> _$GuildMemberSearchResponseToJson(

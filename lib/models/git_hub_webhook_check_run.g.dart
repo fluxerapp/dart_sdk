@@ -8,26 +8,45 @@ part of 'git_hub_webhook_check_run.dart';
 
 GitHubWebhookCheckRun _$GitHubWebhookCheckRunFromJson(
   Map<String, dynamic> json,
-) => GitHubWebhookCheckRun(
-  name: json['name'] as String,
-  htmlUrl: json['html_url'] as String,
-  checkSuite: GitHubWebhookCheckRunCheckSuite.fromJson(
-    json['check_suite'] as Map<String, dynamic>,
-  ),
-  conclusion: json['conclusion'] as String?,
-  detailsUrl: json['details_url'] as String?,
-  output: json['output'] == null
-      ? null
-      : GitHubWebhookCheckRunOutput.fromJson(
-          json['output'] as Map<String, dynamic>,
-        ),
-  pullRequests: (json['pull_requests'] as List<dynamic>?)
-      ?.map(
-        (e) => GitHubWebhookCheckRunPullRequests.fromJson(
-          e as Map<String, dynamic>,
-        ),
-      )
-      .toList(),
+) => $checkedCreate(
+  'GitHubWebhookCheckRun',
+  json,
+  ($checkedConvert) {
+    final val = GitHubWebhookCheckRun(
+      name: $checkedConvert('name', (v) => v as String),
+      htmlUrl: $checkedConvert('html_url', (v) => v as String),
+      checkSuite: $checkedConvert(
+        'check_suite',
+        (v) =>
+            GitHubWebhookCheckRunCheckSuite.fromJson(v as Map<String, dynamic>),
+      ),
+      conclusion: $checkedConvert('conclusion', (v) => v as String?),
+      detailsUrl: $checkedConvert('details_url', (v) => v as String?),
+      output: $checkedConvert(
+        'output',
+        (v) => v == null
+            ? null
+            : GitHubWebhookCheckRunOutput.fromJson(v as Map<String, dynamic>),
+      ),
+      pullRequests: $checkedConvert(
+        'pull_requests',
+        (v) => (v as List<dynamic>?)
+            ?.map(
+              (e) => GitHubWebhookCheckRunPullRequests.fromJson(
+                e as Map<String, dynamic>,
+              ),
+            )
+            .toList(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'htmlUrl': 'html_url',
+    'checkSuite': 'check_suite',
+    'detailsUrl': 'details_url',
+    'pullRequests': 'pull_requests',
+  },
 );
 
 Map<String, dynamic> _$GitHubWebhookCheckRunToJson(

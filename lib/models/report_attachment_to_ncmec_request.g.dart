@@ -8,17 +8,38 @@ part of 'report_attachment_to_ncmec_request.dart';
 
 ReportAttachmentToNcmecRequest _$ReportAttachmentToNcmecRequestFromJson(
   Map<String, dynamic> json,
-) => ReportAttachmentToNcmecRequest(
-  channelId: json['channel_id'] as String,
-  messageId: json['message_id'] as String,
-  attachmentId: json['attachment_id'] as String,
-  filename: json['filename'] as String,
-  reporterFullName: json['reporter_full_name'] as String,
-  confirmedViewed:
-      ReportAttachmentToNcmecRequestConfirmedViewedConfirmedViewed.fromJson(
-        json['confirmed_viewed'] as bool,
+) => $checkedCreate(
+  'ReportAttachmentToNcmecRequest',
+  json,
+  ($checkedConvert) {
+    final val = ReportAttachmentToNcmecRequest(
+      channelId: $checkedConvert('channel_id', (v) => v as String),
+      messageId: $checkedConvert('message_id', (v) => v as String),
+      attachmentId: $checkedConvert('attachment_id', (v) => v as String),
+      filename: $checkedConvert('filename', (v) => v as String),
+      reporterFullName: $checkedConvert(
+        'reporter_full_name',
+        (v) => v as String,
       ),
-  sourceReportId: json['source_report_id'] as String?,
+      confirmedViewed: $checkedConvert(
+        'confirmed_viewed',
+        (v) =>
+            ReportAttachmentToNcmecRequestConfirmedViewedConfirmedViewed.fromJson(
+              v as bool,
+            ),
+      ),
+      sourceReportId: $checkedConvert('source_report_id', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'channelId': 'channel_id',
+    'messageId': 'message_id',
+    'attachmentId': 'attachment_id',
+    'reporterFullName': 'reporter_full_name',
+    'confirmedViewed': 'confirmed_viewed',
+    'sourceReportId': 'source_report_id',
+  },
 );
 
 Map<String, dynamic> _$ReportAttachmentToNcmecRequestToJson(

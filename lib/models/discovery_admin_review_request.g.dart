@@ -8,7 +8,12 @@ part of 'discovery_admin_review_request.dart';
 
 DiscoveryAdminReviewRequest _$DiscoveryAdminReviewRequestFromJson(
   Map<String, dynamic> json,
-) => DiscoveryAdminReviewRequest(reason: json['reason'] as String?);
+) => $checkedCreate('DiscoveryAdminReviewRequest', json, ($checkedConvert) {
+  final val = DiscoveryAdminReviewRequest(
+    reason: $checkedConvert('reason', (v) => v as String?),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$DiscoveryAdminReviewRequestToJson(
   DiscoveryAdminReviewRequest instance,

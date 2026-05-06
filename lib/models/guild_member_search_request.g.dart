@@ -8,34 +8,72 @@ part of 'guild_member_search_request.dart';
 
 GuildMemberSearchRequest _$GuildMemberSearchRequestFromJson(
   Map<String, dynamic> json,
-) => GuildMemberSearchRequest(
-  query: json['query'] as String?,
-  limit: (json['limit'] as num?)?.toInt(),
-  offset: (json['offset'] as num?)?.toInt(),
-  roleIds: (json['role_ids'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
-  joinedAtGte: (json['joined_at_gte'] as num?)?.toInt(),
-  joinedAtLte: (json['joined_at_lte'] as num?)?.toInt(),
-  joinSourceType: (json['join_source_type'] as List<dynamic>?)
-      ?.map((e) => JoinSourceType.fromJson((e as num).toInt()))
-      .toList(),
-  sourceInviteCode: (json['source_invite_code'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
-  isBot: json['is_bot'] as bool?,
-  userCreatedAtGte: (json['user_created_at_gte'] as num?)?.toInt(),
-  userCreatedAtLte: (json['user_created_at_lte'] as num?)?.toInt(),
-  sortBy: json['sort_by'] == null
-      ? null
-      : GuildMemberSearchRequestSortBySortBy.fromJson(
-          json['sort_by'] as String,
-        ),
-  sortOrder: json['sort_order'] == null
-      ? null
-      : GuildMemberSearchRequestSortOrderSortOrder.fromJson(
-          json['sort_order'] as String,
-        ),
+) => $checkedCreate(
+  'GuildMemberSearchRequest',
+  json,
+  ($checkedConvert) {
+    final val = GuildMemberSearchRequest(
+      query: $checkedConvert('query', (v) => v as String?),
+      limit: $checkedConvert('limit', (v) => (v as num?)?.toInt()),
+      offset: $checkedConvert('offset', (v) => (v as num?)?.toInt()),
+      roleIds: $checkedConvert(
+        'role_ids',
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+      ),
+      joinedAtGte: $checkedConvert(
+        'joined_at_gte',
+        (v) => (v as num?)?.toInt(),
+      ),
+      joinedAtLte: $checkedConvert(
+        'joined_at_lte',
+        (v) => (v as num?)?.toInt(),
+      ),
+      joinSourceType: $checkedConvert(
+        'join_source_type',
+        (v) => (v as List<dynamic>?)
+            ?.map((e) => JoinSourceType.fromJson((e as num).toInt()))
+            .toList(),
+      ),
+      sourceInviteCode: $checkedConvert(
+        'source_invite_code',
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+      ),
+      isBot: $checkedConvert('is_bot', (v) => v as bool?),
+      userCreatedAtGte: $checkedConvert(
+        'user_created_at_gte',
+        (v) => (v as num?)?.toInt(),
+      ),
+      userCreatedAtLte: $checkedConvert(
+        'user_created_at_lte',
+        (v) => (v as num?)?.toInt(),
+      ),
+      sortBy: $checkedConvert(
+        'sort_by',
+        (v) => v == null
+            ? null
+            : GuildMemberSearchRequestSortBySortBy.fromJson(v as String),
+      ),
+      sortOrder: $checkedConvert(
+        'sort_order',
+        (v) => v == null
+            ? null
+            : GuildMemberSearchRequestSortOrderSortOrder.fromJson(v as String),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'roleIds': 'role_ids',
+    'joinedAtGte': 'joined_at_gte',
+    'joinedAtLte': 'joined_at_lte',
+    'joinSourceType': 'join_source_type',
+    'sourceInviteCode': 'source_invite_code',
+    'isBot': 'is_bot',
+    'userCreatedAtGte': 'user_created_at_gte',
+    'userCreatedAtLte': 'user_created_at_lte',
+    'sortBy': 'sort_by',
+    'sortOrder': 'sort_order',
+  },
 );
 
 Map<String, dynamic> _$GuildMemberSearchRequestToJson(

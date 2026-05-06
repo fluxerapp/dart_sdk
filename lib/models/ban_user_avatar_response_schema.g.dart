@@ -8,7 +8,12 @@ part of 'ban_user_avatar_response_schema.dart';
 
 BanUserAvatarResponseSchema _$BanUserAvatarResponseSchemaFromJson(
   Map<String, dynamic> json,
-) => BanUserAvatarResponseSchema(hashShort: json['hash_short'] as String);
+) => $checkedCreate('BanUserAvatarResponseSchema', json, ($checkedConvert) {
+  final val = BanUserAvatarResponseSchema(
+    hashShort: $checkedConvert('hash_short', (v) => v as String),
+  );
+  return val;
+}, fieldKeyMap: const {'hashShort': 'hash_short'});
 
 Map<String, dynamic> _$BanUserAvatarResponseSchemaToJson(
   BanUserAvatarResponseSchema instance,

@@ -8,11 +8,19 @@ part of 'git_hub_webhook_review_user.dart';
 
 GitHubWebhookReviewUser _$GitHubWebhookReviewUserFromJson(
   Map<String, dynamic> json,
-) => GitHubWebhookReviewUser(
-  id: (json['id'] as num).toInt(),
-  login: json['login'] as String,
-  htmlUrl: json['html_url'] as String,
-  avatarUrl: json['avatar_url'] as String,
+) => $checkedCreate(
+  'GitHubWebhookReviewUser',
+  json,
+  ($checkedConvert) {
+    final val = GitHubWebhookReviewUser(
+      id: $checkedConvert('id', (v) => (v as num).toInt()),
+      login: $checkedConvert('login', (v) => v as String),
+      htmlUrl: $checkedConvert('html_url', (v) => v as String),
+      avatarUrl: $checkedConvert('avatar_url', (v) => v as String),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'htmlUrl': 'html_url', 'avatarUrl': 'avatar_url'},
 );
 
 Map<String, dynamic> _$GitHubWebhookReviewUserToJson(

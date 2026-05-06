@@ -9,7 +9,12 @@ part of 'client_attachment_reference_request_id_id.dart';
 ClientAttachmentReferenceRequestIdIdInt32Type
 _$ClientAttachmentReferenceRequestIdIdInt32TypeFromJson(
   Map<String, dynamic> json,
-) => ClientAttachmentReferenceRequestIdIdInt32Type();
+) => $checkedCreate('ClientAttachmentReferenceRequestIdIdInt32Type', json, (
+  $checkedConvert,
+) {
+  final val = ClientAttachmentReferenceRequestIdIdInt32Type();
+  return val;
+});
 
 Map<String, dynamic> _$ClientAttachmentReferenceRequestIdIdInt32TypeToJson(
   ClientAttachmentReferenceRequestIdIdInt32Type instance,
@@ -18,7 +23,12 @@ Map<String, dynamic> _$ClientAttachmentReferenceRequestIdIdInt32TypeToJson(
 ClientAttachmentReferenceRequestIdIdSnowflakeType
 _$ClientAttachmentReferenceRequestIdIdSnowflakeTypeFromJson(
   Map<String, dynamic> json,
-) => ClientAttachmentReferenceRequestIdIdSnowflakeType();
+) => $checkedCreate('ClientAttachmentReferenceRequestIdIdSnowflakeType', json, (
+  $checkedConvert,
+) {
+  final val = ClientAttachmentReferenceRequestIdIdSnowflakeType();
+  return val;
+});
 
 Map<String, dynamic> _$ClientAttachmentReferenceRequestIdIdSnowflakeTypeToJson(
   ClientAttachmentReferenceRequestIdIdSnowflakeType instance,

@@ -8,24 +8,46 @@ part of 'pack_invite_metadata_response.dart';
 
 PackInviteMetadataResponse _$PackInviteMetadataResponseFromJson(
   Map<String, dynamic> json,
-) => PackInviteMetadataResponse(
-  code: json['code'] as String,
-  type: PackInviteMetadataResponseTypeType.fromJson(
-    (json['type'] as num).toInt(),
-  ),
-  pack: PackInviteMetadataResponsePack.fromJson(
-    json['pack'] as Map<String, dynamic>,
-  ),
-  temporary: json['temporary'] as bool,
-  createdAt: DateTime.parse(json['created_at'] as String),
-  uses: (json['uses'] as num).toInt(),
-  maxUses: (json['max_uses'] as num).toInt(),
-  inviter: json['inviter'] == null
-      ? null
-      : UserPartialResponse.fromJson(json['inviter'] as Map<String, dynamic>),
-  expiresAt: json['expires_at'] == null
-      ? null
-      : DateTime.parse(json['expires_at'] as String),
+) => $checkedCreate(
+  'PackInviteMetadataResponse',
+  json,
+  ($checkedConvert) {
+    final val = PackInviteMetadataResponse(
+      code: $checkedConvert('code', (v) => v as String),
+      type: $checkedConvert(
+        'type',
+        (v) => PackInviteMetadataResponseTypeType.fromJson((v as num).toInt()),
+      ),
+      pack: $checkedConvert(
+        'pack',
+        (v) =>
+            PackInviteMetadataResponsePack.fromJson(v as Map<String, dynamic>),
+      ),
+      temporary: $checkedConvert('temporary', (v) => v as bool),
+      createdAt: $checkedConvert(
+        'created_at',
+        (v) => DateTime.parse(v as String),
+      ),
+      uses: $checkedConvert('uses', (v) => (v as num).toInt()),
+      maxUses: $checkedConvert('max_uses', (v) => (v as num).toInt()),
+      inviter: $checkedConvert(
+        'inviter',
+        (v) => v == null
+            ? null
+            : UserPartialResponse.fromJson(v as Map<String, dynamic>),
+      ),
+      expiresAt: $checkedConvert(
+        'expires_at',
+        (v) => v == null ? null : DateTime.parse(v as String),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'createdAt': 'created_at',
+    'maxUses': 'max_uses',
+    'expiresAt': 'expires_at',
+  },
 );
 
 Map<String, dynamic> _$PackInviteMetadataResponseToJson(

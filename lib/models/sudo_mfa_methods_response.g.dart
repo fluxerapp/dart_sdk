@@ -8,11 +8,14 @@ part of 'sudo_mfa_methods_response.dart';
 
 SudoMfaMethodsResponse _$SudoMfaMethodsResponseFromJson(
   Map<String, dynamic> json,
-) => SudoMfaMethodsResponse(
-  totp: json['totp'] as bool,
-  webauthn: json['webauthn'] as bool,
-  hasMfa: json['has_mfa'] as bool,
-);
+) => $checkedCreate('SudoMfaMethodsResponse', json, ($checkedConvert) {
+  final val = SudoMfaMethodsResponse(
+    totp: $checkedConvert('totp', (v) => v as bool),
+    webauthn: $checkedConvert('webauthn', (v) => v as bool),
+    hasMfa: $checkedConvert('has_mfa', (v) => v as bool),
+  );
+  return val;
+}, fieldKeyMap: const {'hasMfa': 'has_mfa'});
 
 Map<String, dynamic> _$SudoMfaMethodsResponseToJson(
   SudoMfaMethodsResponse instance,

@@ -8,11 +8,15 @@ part of 'delete_message_response.dart';
 
 DeleteMessageResponse _$DeleteMessageResponseFromJson(
   Map<String, dynamic> json,
-) => DeleteMessageResponse(
-  success: DeleteMessageResponseSuccessSuccess.fromJson(
-    json['success'] as bool,
-  ),
-);
+) => $checkedCreate('DeleteMessageResponse', json, ($checkedConvert) {
+  final val = DeleteMessageResponse(
+    success: $checkedConvert(
+      'success',
+      (v) => DeleteMessageResponseSuccessSuccess.fromJson(v as bool),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$DeleteMessageResponseToJson(
   DeleteMessageResponse instance,

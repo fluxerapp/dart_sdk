@@ -8,10 +8,16 @@ part of 'bot_token_reset_response.dart';
 
 BotTokenResetResponse _$BotTokenResetResponseFromJson(
   Map<String, dynamic> json,
-) => BotTokenResetResponse(
-  token: json['token'] as String,
-  bot: ApplicationBotResponse.fromJson(json['bot'] as Map<String, dynamic>),
-);
+) => $checkedCreate('BotTokenResetResponse', json, ($checkedConvert) {
+  final val = BotTokenResetResponse(
+    token: $checkedConvert('token', (v) => v as String),
+    bot: $checkedConvert(
+      'bot',
+      (v) => ApplicationBotResponse.fromJson(v as Map<String, dynamic>),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$BotTokenResetResponseToJson(
   BotTokenResetResponse instance,

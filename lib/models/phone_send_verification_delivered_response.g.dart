@@ -8,11 +8,19 @@ part of 'phone_send_verification_delivered_response.dart';
 
 PhoneSendVerificationDeliveredResponse
 _$PhoneSendVerificationDeliveredResponseFromJson(Map<String, dynamic> json) =>
-    PhoneSendVerificationDeliveredResponse(
-      channel: PhoneSendVerificationDeliveredResponseChannelChannel.fromJson(
-        json['channel'] as String,
-      ),
-    );
+    $checkedCreate('PhoneSendVerificationDeliveredResponse', json, (
+      $checkedConvert,
+    ) {
+      final val = PhoneSendVerificationDeliveredResponse(
+        channel: $checkedConvert(
+          'channel',
+          (v) => PhoneSendVerificationDeliveredResponseChannelChannel.fromJson(
+            v as String,
+          ),
+        ),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$PhoneSendVerificationDeliveredResponseToJson(
   PhoneSendVerificationDeliveredResponse instance,

@@ -8,25 +8,54 @@ part of 'limit_config_get_response.dart';
 
 LimitConfigGetResponse _$LimitConfigGetResponseFromJson(
   Map<String, dynamic> json,
-) => LimitConfigGetResponse(
-  limitConfig: LimitConfigGetResponseLimitConfig.fromJson(
-    json['limit_config'] as Map<String, dynamic>,
-  ),
-  limitConfigJson: json['limit_config_json'] as String,
-  selfHosted: json['self_hosted'] as bool,
-  defaults: (json['defaults'] as Map<String, dynamic>).map(
-    (k, e) => MapEntry(k, Map<String, num>.from(e as Map)),
-  ),
-  metadata: (json['metadata'] as Map<String, dynamic>).map(
-    (k, e) => MapEntry(k, Metadata.fromJson(e as Map<String, dynamic>)),
-  ),
-  categories: Map<String, String>.from(json['categories'] as Map),
-  limitKeys: (json['limit_keys'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-  bounds: (json['bounds'] as Map<String, dynamic>?)?.map(
-    (k, e) => MapEntry(k, Bounds.fromJson(e as Map<String, dynamic>)),
-  ),
+) => $checkedCreate(
+  'LimitConfigGetResponse',
+  json,
+  ($checkedConvert) {
+    final val = LimitConfigGetResponse(
+      limitConfig: $checkedConvert(
+        'limit_config',
+        (v) => LimitConfigGetResponseLimitConfig.fromJson(
+          v as Map<String, dynamic>,
+        ),
+      ),
+      limitConfigJson: $checkedConvert('limit_config_json', (v) => v as String),
+      selfHosted: $checkedConvert('self_hosted', (v) => v as bool),
+      defaults: $checkedConvert(
+        'defaults',
+        (v) => (v as Map<String, dynamic>).map(
+          (k, e) => MapEntry(k, Map<String, num>.from(e as Map)),
+        ),
+      ),
+      metadata: $checkedConvert(
+        'metadata',
+        (v) => (v as Map<String, dynamic>).map(
+          (k, e) => MapEntry(k, Metadata.fromJson(e as Map<String, dynamic>)),
+        ),
+      ),
+      categories: $checkedConvert(
+        'categories',
+        (v) => Map<String, String>.from(v as Map),
+      ),
+      limitKeys: $checkedConvert(
+        'limit_keys',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      bounds: $checkedConvert(
+        'bounds',
+        (v) => (v as Map<String, dynamic>?)?.map(
+          (k, e) => MapEntry(k, Bounds.fromJson(e as Map<String, dynamic>)),
+        ),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'limitConfig': 'limit_config',
+    'limitConfigJson': 'limit_config_json',
+    'selfHosted': 'self_hosted',
+    'limitKeys': 'limit_keys',
+  },
 );
 
 Map<String, dynamic> _$LimitConfigGetResponseToJson(

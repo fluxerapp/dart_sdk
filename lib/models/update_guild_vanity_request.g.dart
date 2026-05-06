@@ -8,9 +8,20 @@ part of 'update_guild_vanity_request.dart';
 
 UpdateGuildVanityRequest _$UpdateGuildVanityRequestFromJson(
   Map<String, dynamic> json,
-) => UpdateGuildVanityRequest(
-  guildId: json['guild_id'] as String,
-  vanityUrlCode: json['vanity_url_code'] as String?,
+) => $checkedCreate(
+  'UpdateGuildVanityRequest',
+  json,
+  ($checkedConvert) {
+    final val = UpdateGuildVanityRequest(
+      guildId: $checkedConvert('guild_id', (v) => v as String),
+      vanityUrlCode: $checkedConvert('vanity_url_code', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'guildId': 'guild_id',
+    'vanityUrlCode': 'vanity_url_code',
+  },
 );
 
 Map<String, dynamic> _$UpdateGuildVanityRequestToJson(

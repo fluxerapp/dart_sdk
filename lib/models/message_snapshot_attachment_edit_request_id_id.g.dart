@@ -9,7 +9,12 @@ part of 'message_snapshot_attachment_edit_request_id_id.dart';
 MessageSnapshotAttachmentEditRequestIdIdInt32Type
 _$MessageSnapshotAttachmentEditRequestIdIdInt32TypeFromJson(
   Map<String, dynamic> json,
-) => MessageSnapshotAttachmentEditRequestIdIdInt32Type();
+) => $checkedCreate('MessageSnapshotAttachmentEditRequestIdIdInt32Type', json, (
+  $checkedConvert,
+) {
+  final val = MessageSnapshotAttachmentEditRequestIdIdInt32Type();
+  return val;
+});
 
 Map<String, dynamic> _$MessageSnapshotAttachmentEditRequestIdIdInt32TypeToJson(
   MessageSnapshotAttachmentEditRequestIdIdInt32Type instance,
@@ -18,7 +23,14 @@ Map<String, dynamic> _$MessageSnapshotAttachmentEditRequestIdIdInt32TypeToJson(
 MessageSnapshotAttachmentEditRequestIdIdSnowflakeType
 _$MessageSnapshotAttachmentEditRequestIdIdSnowflakeTypeFromJson(
   Map<String, dynamic> json,
-) => MessageSnapshotAttachmentEditRequestIdIdSnowflakeType();
+) => $checkedCreate(
+  'MessageSnapshotAttachmentEditRequestIdIdSnowflakeType',
+  json,
+  ($checkedConvert) {
+    final val = MessageSnapshotAttachmentEditRequestIdIdSnowflakeType();
+    return val;
+  },
+);
 
 Map<String, dynamic>
 _$MessageSnapshotAttachmentEditRequestIdIdSnowflakeTypeToJson(

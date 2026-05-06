@@ -8,13 +8,19 @@ part of 'guild_emoji_with_user_response.dart';
 
 GuildEmojiWithUserResponse _$GuildEmojiWithUserResponseFromJson(
   Map<String, dynamic> json,
-) => GuildEmojiWithUserResponse(
-  id: json['id'] as String,
-  name: json['name'] as String,
-  animated: json['animated'] as bool,
-  nsfw: json['nsfw'] as bool,
-  user: UserPartialResponse.fromJson(json['user'] as Map<String, dynamic>),
-);
+) => $checkedCreate('GuildEmojiWithUserResponse', json, ($checkedConvert) {
+  final val = GuildEmojiWithUserResponse(
+    id: $checkedConvert('id', (v) => v as String),
+    name: $checkedConvert('name', (v) => v as String),
+    animated: $checkedConvert('animated', (v) => v as bool),
+    nsfw: $checkedConvert('nsfw', (v) => v as bool),
+    user: $checkedConvert(
+      'user',
+      (v) => UserPartialResponse.fromJson(v as Map<String, dynamic>),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$GuildEmojiWithUserResponseToJson(
   GuildEmojiWithUserResponse instance,

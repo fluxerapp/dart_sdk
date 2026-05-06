@@ -8,7 +8,12 @@ part of 'donation_checkout_response.dart';
 
 DonationCheckoutResponse _$DonationCheckoutResponseFromJson(
   Map<String, dynamic> json,
-) => DonationCheckoutResponse(url: json['url'] as String);
+) => $checkedCreate('DonationCheckoutResponse', json, ($checkedConvert) {
+  final val = DonationCheckoutResponse(
+    url: $checkedConvert('url', (v) => v as String),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$DonationCheckoutResponseToJson(
   DonationCheckoutResponse instance,

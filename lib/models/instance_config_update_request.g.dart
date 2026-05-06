@@ -8,17 +8,31 @@ part of 'instance_config_update_request.dart';
 
 InstanceConfigUpdateRequest _$InstanceConfigUpdateRequestFromJson(
   Map<String, dynamic> json,
-) => InstanceConfigUpdateRequest(
-  gatewayRollout: json['gateway_rollout'] == null
-      ? null
-      : GatewayRolloutConfigUpdateRequest.fromJson(
-          json['gateway_rollout'] as Map<String, dynamic>,
-        ),
-  sso: json['sso'] == null
-      ? null
-      : InstanceConfigUpdateRequestSso.fromJson(
-          json['sso'] as Map<String, dynamic>,
-        ),
+) => $checkedCreate(
+  'InstanceConfigUpdateRequest',
+  json,
+  ($checkedConvert) {
+    final val = InstanceConfigUpdateRequest(
+      gatewayRollout: $checkedConvert(
+        'gateway_rollout',
+        (v) => v == null
+            ? null
+            : GatewayRolloutConfigUpdateRequest.fromJson(
+                v as Map<String, dynamic>,
+              ),
+      ),
+      sso: $checkedConvert(
+        'sso',
+        (v) => v == null
+            ? null
+            : InstanceConfigUpdateRequestSso.fromJson(
+                v as Map<String, dynamic>,
+              ),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'gatewayRollout': 'gateway_rollout'},
 );
 
 Map<String, dynamic> _$InstanceConfigUpdateRequestToJson(

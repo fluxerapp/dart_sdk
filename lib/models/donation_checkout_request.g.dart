@@ -8,18 +8,23 @@ part of 'donation_checkout_request.dart';
 
 DonationCheckoutRequest _$DonationCheckoutRequestFromJson(
   Map<String, dynamic> json,
-) => DonationCheckoutRequest(
-  email: json['email'] as String,
-  amountCents: (json['amount_cents'] as num).toInt(),
-  currency: DonationCheckoutRequestCurrencyCurrency.fromJson(
-    json['currency'] as String,
-  ),
-  interval: json['interval'] == null
-      ? null
-      : DonationCheckoutRequestIntervalInterval.fromJson(
-          json['interval'] as String,
-        ),
-);
+) => $checkedCreate('DonationCheckoutRequest', json, ($checkedConvert) {
+  final val = DonationCheckoutRequest(
+    email: $checkedConvert('email', (v) => v as String),
+    amountCents: $checkedConvert('amount_cents', (v) => (v as num).toInt()),
+    currency: $checkedConvert(
+      'currency',
+      (v) => DonationCheckoutRequestCurrencyCurrency.fromJson(v as String),
+    ),
+    interval: $checkedConvert(
+      'interval',
+      (v) => v == null
+          ? null
+          : DonationCheckoutRequestIntervalInterval.fromJson(v as String),
+    ),
+  );
+  return val;
+}, fieldKeyMap: const {'amountCents': 'amount_cents'});
 
 Map<String, dynamic> _$DonationCheckoutRequestToJson(
   DonationCheckoutRequest instance,

@@ -9,21 +9,54 @@ part of 'guild_template_response_serialized_source_guild.dart';
 GuildTemplateResponseSerializedSourceGuild
 _$GuildTemplateResponseSerializedSourceGuildFromJson(
   Map<String, dynamic> json,
-) => GuildTemplateResponseSerializedSourceGuild(
-  name: json['name'] as String,
-  roles: (json['roles'] as List<dynamic>)
-      .map((e) => TemplateRole.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  channels: (json['channels'] as List<dynamic>)
-      .map((e) => TemplateChannel.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  description: json['description'] as String?,
-  verificationLevel: json['verification_level'] as num?,
-  defaultMessageNotifications: json['default_message_notifications'] as num?,
-  explicitContentFilter: json['explicit_content_filter'] as num?,
-  systemChannelId: json['system_channel_id'],
-  afkTimeout: json['afk_timeout'] as num?,
-  systemChannelFlags: json['system_channel_flags'] as num?,
+) => $checkedCreate(
+  'GuildTemplateResponseSerializedSourceGuild',
+  json,
+  ($checkedConvert) {
+    final val = GuildTemplateResponseSerializedSourceGuild(
+      name: $checkedConvert('name', (v) => v as String),
+      roles: $checkedConvert(
+        'roles',
+        (v) => (v as List<dynamic>)
+            .map((e) => TemplateRole.fromJson(e as Map<String, dynamic>))
+            .toList(),
+      ),
+      channels: $checkedConvert(
+        'channels',
+        (v) => (v as List<dynamic>)
+            .map((e) => TemplateChannel.fromJson(e as Map<String, dynamic>))
+            .toList(),
+      ),
+      description: $checkedConvert('description', (v) => v as String?),
+      verificationLevel: $checkedConvert(
+        'verification_level',
+        (v) => v as num?,
+      ),
+      defaultMessageNotifications: $checkedConvert(
+        'default_message_notifications',
+        (v) => v as num?,
+      ),
+      explicitContentFilter: $checkedConvert(
+        'explicit_content_filter',
+        (v) => v as num?,
+      ),
+      systemChannelId: $checkedConvert('system_channel_id', (v) => v),
+      afkTimeout: $checkedConvert('afk_timeout', (v) => v as num?),
+      systemChannelFlags: $checkedConvert(
+        'system_channel_flags',
+        (v) => v as num?,
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'verificationLevel': 'verification_level',
+    'defaultMessageNotifications': 'default_message_notifications',
+    'explicitContentFilter': 'explicit_content_filter',
+    'systemChannelId': 'system_channel_id',
+    'afkTimeout': 'afk_timeout',
+    'systemChannelFlags': 'system_channel_flags',
+  },
 );
 
 Map<String, dynamic> _$GuildTemplateResponseSerializedSourceGuildToJson(

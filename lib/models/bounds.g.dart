@@ -7,7 +7,13 @@ part of 'bounds.dart';
 // **************************************************************************
 
 Bounds _$BoundsFromJson(Map<String, dynamic> json) =>
-    Bounds(min: json['min'] as num, max: json['max'] as num);
+    $checkedCreate('Bounds', json, ($checkedConvert) {
+      final val = Bounds(
+        min: $checkedConvert('min', (v) => v as num),
+        max: $checkedConvert('max', (v) => v as num),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$BoundsToJson(Bounds instance) => <String, dynamic>{
   'min': instance.min,

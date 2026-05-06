@@ -8,11 +8,19 @@ part of 'list_user_group_dm_channels_response.dart';
 
 ListUserGroupDmChannelsResponse _$ListUserGroupDmChannelsResponseFromJson(
   Map<String, dynamic> json,
-) => ListUserGroupDmChannelsResponse(
-  channels: (json['channels'] as List<dynamic>)
-      .map((e) => AdminUserDmChannelSchema.fromJson(e as Map<String, dynamic>))
-      .toList(),
-);
+) => $checkedCreate('ListUserGroupDmChannelsResponse', json, ($checkedConvert) {
+  final val = ListUserGroupDmChannelsResponse(
+    channels: $checkedConvert(
+      'channels',
+      (v) => (v as List<dynamic>)
+          .map(
+            (e) => AdminUserDmChannelSchema.fromJson(e as Map<String, dynamic>),
+          )
+          .toList(),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$ListUserGroupDmChannelsResponseToJson(
   ListUserGroupDmChannelsResponse instance,

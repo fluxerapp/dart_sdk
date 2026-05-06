@@ -8,10 +8,13 @@ part of 'friend_request_by_tag_request.dart';
 
 FriendRequestByTagRequest _$FriendRequestByTagRequestFromJson(
   Map<String, dynamic> json,
-) => FriendRequestByTagRequest(
-  username: json['username'] as String,
-  discriminator: json['discriminator'] as String,
-);
+) => $checkedCreate('FriendRequestByTagRequest', json, ($checkedConvert) {
+  final val = FriendRequestByTagRequest(
+    username: $checkedConvert('username', (v) => v as String),
+    discriminator: $checkedConvert('discriminator', (v) => v as String),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$FriendRequestByTagRequestToJson(
   FriendRequestByTagRequest instance,

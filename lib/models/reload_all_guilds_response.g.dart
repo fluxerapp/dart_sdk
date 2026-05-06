@@ -8,7 +8,12 @@ part of 'reload_all_guilds_response.dart';
 
 ReloadAllGuildsResponse _$ReloadAllGuildsResponseFromJson(
   Map<String, dynamic> json,
-) => ReloadAllGuildsResponse(count: (json['count'] as num).toInt());
+) => $checkedCreate('ReloadAllGuildsResponse', json, ($checkedConvert) {
+  final val = ReloadAllGuildsResponse(
+    count: $checkedConvert('count', (v) => (v as num).toInt()),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$ReloadAllGuildsResponseToJson(
   ReloadAllGuildsResponse instance,

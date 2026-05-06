@@ -8,11 +8,30 @@ part of 'bulk_schedule_user_deletion_request.dart';
 
 BulkScheduleUserDeletionRequest _$BulkScheduleUserDeletionRequestFromJson(
   Map<String, dynamic> json,
-) => BulkScheduleUserDeletionRequest(
-  userIds: (json['user_ids'] as List<dynamic>).map((e) => e as String).toList(),
-  reasonCode: (json['reason_code'] as num).toInt(),
-  publicReason: json['public_reason'] as String?,
-  daysUntilDeletion: (json['days_until_deletion'] as num?)?.toInt(),
+) => $checkedCreate(
+  'BulkScheduleUserDeletionRequest',
+  json,
+  ($checkedConvert) {
+    final val = BulkScheduleUserDeletionRequest(
+      userIds: $checkedConvert(
+        'user_ids',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      reasonCode: $checkedConvert('reason_code', (v) => (v as num).toInt()),
+      publicReason: $checkedConvert('public_reason', (v) => v as String?),
+      daysUntilDeletion: $checkedConvert(
+        'days_until_deletion',
+        (v) => (v as num?)?.toInt(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'userIds': 'user_ids',
+    'reasonCode': 'reason_code',
+    'publicReason': 'public_reason',
+    'daysUntilDeletion': 'days_until_deletion',
+  },
 );
 
 Map<String, dynamic> _$BulkScheduleUserDeletionRequestToJson(

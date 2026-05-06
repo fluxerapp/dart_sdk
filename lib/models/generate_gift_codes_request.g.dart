@@ -8,12 +8,29 @@ part of 'generate_gift_codes_request.dart';
 
 GenerateGiftCodesRequest _$GenerateGiftCodesRequestFromJson(
   Map<String, dynamic> json,
-) => GenerateGiftCodesRequest(
-  count: (json['count'] as num).toInt(),
-  durationType: GenerateGiftCodesRequestDurationTypeDurationType.fromJson(
-    json['duration_type'] as String,
-  ),
-  durationQuantity: (json['duration_quantity'] as num).toInt(),
+) => $checkedCreate(
+  'GenerateGiftCodesRequest',
+  json,
+  ($checkedConvert) {
+    final val = GenerateGiftCodesRequest(
+      count: $checkedConvert('count', (v) => (v as num).toInt()),
+      durationType: $checkedConvert(
+        'duration_type',
+        (v) => GenerateGiftCodesRequestDurationTypeDurationType.fromJson(
+          v as String,
+        ),
+      ),
+      durationQuantity: $checkedConvert(
+        'duration_quantity',
+        (v) => (v as num).toInt(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'durationType': 'duration_type',
+    'durationQuantity': 'duration_quantity',
+  },
 );
 
 Map<String, dynamic> _$GenerateGiftCodesRequestToJson(

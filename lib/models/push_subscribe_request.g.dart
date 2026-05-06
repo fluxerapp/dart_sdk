@@ -8,11 +8,17 @@ part of 'push_subscribe_request.dart';
 
 PushSubscribeRequest _$PushSubscribeRequestFromJson(
   Map<String, dynamic> json,
-) => PushSubscribeRequest(
-  endpoint: json['endpoint'] as String,
-  keys: PushSubscribeRequestKeys.fromJson(json['keys'] as Map<String, dynamic>),
-  userAgent: json['user_agent'] as String?,
-);
+) => $checkedCreate('PushSubscribeRequest', json, ($checkedConvert) {
+  final val = PushSubscribeRequest(
+    endpoint: $checkedConvert('endpoint', (v) => v as String),
+    keys: $checkedConvert(
+      'keys',
+      (v) => PushSubscribeRequestKeys.fromJson(v as Map<String, dynamic>),
+    ),
+    userAgent: $checkedConvert('user_agent', (v) => v as String?),
+  );
+  return val;
+}, fieldKeyMap: const {'userAgent': 'user_agent'});
 
 Map<String, dynamic> _$PushSubscribeRequestToJson(
   PushSubscribeRequest instance,

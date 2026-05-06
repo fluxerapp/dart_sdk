@@ -8,12 +8,18 @@ part of 'clear_user_fields_request.dart';
 
 ClearUserFieldsRequest _$ClearUserFieldsRequestFromJson(
   Map<String, dynamic> json,
-) => ClearUserFieldsRequest(
-  userId: json['user_id'] as String,
-  fields: (json['fields'] as List<dynamic>)
-      .map((e) => ClearUserFieldsRequestFieldsFields.fromJson(e as String))
-      .toList(),
-);
+) => $checkedCreate('ClearUserFieldsRequest', json, ($checkedConvert) {
+  final val = ClearUserFieldsRequest(
+    userId: $checkedConvert('user_id', (v) => v as String),
+    fields: $checkedConvert(
+      'fields',
+      (v) => (v as List<dynamic>)
+          .map((e) => ClearUserFieldsRequestFieldsFields.fromJson(e as String))
+          .toList(),
+    ),
+  );
+  return val;
+}, fieldKeyMap: const {'userId': 'user_id'});
 
 Map<String, dynamic> _$ClearUserFieldsRequestToJson(
   ClearUserFieldsRequest instance,

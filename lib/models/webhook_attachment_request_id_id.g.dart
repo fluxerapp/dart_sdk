@@ -9,7 +9,12 @@ part of 'webhook_attachment_request_id_id.dart';
 WebhookAttachmentRequestIdIdSnowflakeType
 _$WebhookAttachmentRequestIdIdSnowflakeTypeFromJson(
   Map<String, dynamic> json,
-) => WebhookAttachmentRequestIdIdSnowflakeType();
+) => $checkedCreate('WebhookAttachmentRequestIdIdSnowflakeType', json, (
+  $checkedConvert,
+) {
+  final val = WebhookAttachmentRequestIdIdSnowflakeType();
+  return val;
+});
 
 Map<String, dynamic> _$WebhookAttachmentRequestIdIdSnowflakeTypeToJson(
   WebhookAttachmentRequestIdIdSnowflakeType instance,
@@ -17,7 +22,12 @@ Map<String, dynamic> _$WebhookAttachmentRequestIdIdSnowflakeTypeToJson(
 
 WebhookAttachmentRequestIdIdInt32Type
 _$WebhookAttachmentRequestIdIdInt32TypeFromJson(Map<String, dynamic> json) =>
-    WebhookAttachmentRequestIdIdInt32Type();
+    $checkedCreate('WebhookAttachmentRequestIdIdInt32Type', json, (
+      $checkedConvert,
+    ) {
+      final val = WebhookAttachmentRequestIdIdInt32Type();
+      return val;
+    });
 
 Map<String, dynamic> _$WebhookAttachmentRequestIdIdInt32TypeToJson(
   WebhookAttachmentRequestIdIdInt32Type instance,

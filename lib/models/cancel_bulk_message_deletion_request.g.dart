@@ -8,7 +8,13 @@ part of 'cancel_bulk_message_deletion_request.dart';
 
 CancelBulkMessageDeletionRequest _$CancelBulkMessageDeletionRequestFromJson(
   Map<String, dynamic> json,
-) => CancelBulkMessageDeletionRequest(userId: json['user_id'] as String);
+) =>
+    $checkedCreate('CancelBulkMessageDeletionRequest', json, ($checkedConvert) {
+      final val = CancelBulkMessageDeletionRequest(
+        userId: $checkedConvert('user_id', (v) => v as String),
+      );
+      return val;
+    }, fieldKeyMap: const {'userId': 'user_id'});
 
 Map<String, dynamic> _$CancelBulkMessageDeletionRequestToJson(
   CancelBulkMessageDeletionRequest instance,

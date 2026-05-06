@@ -8,7 +8,12 @@ part of 'expand_visionary_slots_request.dart';
 
 ExpandVisionarySlotsRequest _$ExpandVisionarySlotsRequestFromJson(
   Map<String, dynamic> json,
-) => ExpandVisionarySlotsRequest(count: (json['count'] as num).toInt());
+) => $checkedCreate('ExpandVisionarySlotsRequest', json, ($checkedConvert) {
+  final val = ExpandVisionarySlotsRequest(
+    count: $checkedConvert('count', (v) => (v as num).toInt()),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$ExpandVisionarySlotsRequestToJson(
   ExpandVisionarySlotsRequest instance,

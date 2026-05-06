@@ -8,9 +8,15 @@ part of 'check_avatar_hash_request.dart';
 
 CheckAvatarHashRequest _$CheckAvatarHashRequestFromJson(
   Map<String, dynamic> json,
-) => CheckAvatarHashRequest(
-  hashes: (json['hashes'] as List<dynamic>).map((e) => e as String).toList(),
-);
+) => $checkedCreate('CheckAvatarHashRequest', json, ($checkedConvert) {
+  final val = CheckAvatarHashRequest(
+    hashes: $checkedConvert(
+      'hashes',
+      (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$CheckAvatarHashRequestToJson(
   CheckAvatarHashRequest instance,

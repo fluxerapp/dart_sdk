@@ -8,12 +8,22 @@ part of 'remove_user_relationship_request.dart';
 
 RemoveUserRelationshipRequest _$RemoveUserRelationshipRequestFromJson(
   Map<String, dynamic> json,
-) => RemoveUserRelationshipRequest(
-  userId: json['user_id'] as String,
-  targetUserId: json['target_user_id'] as String,
-  category: RemoveUserRelationshipRequestCategoryCategory.fromJson(
-    json['category'] as String,
-  ),
+) => $checkedCreate(
+  'RemoveUserRelationshipRequest',
+  json,
+  ($checkedConvert) {
+    final val = RemoveUserRelationshipRequest(
+      userId: $checkedConvert('user_id', (v) => v as String),
+      targetUserId: $checkedConvert('target_user_id', (v) => v as String),
+      category: $checkedConvert(
+        'category',
+        (v) =>
+            RemoveUserRelationshipRequestCategoryCategory.fromJson(v as String),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'userId': 'user_id', 'targetUserId': 'target_user_id'},
 );
 
 Map<String, dynamic> _$RemoveUserRelationshipRequestToJson(

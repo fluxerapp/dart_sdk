@@ -7,14 +7,17 @@ part of 'bot_profile_response.dart';
 // **************************************************************************
 
 BotProfileResponse _$BotProfileResponseFromJson(Map<String, dynamic> json) =>
-    BotProfileResponse(
-      id: json['id'] as String,
-      username: json['username'] as String,
-      discriminator: json['discriminator'] as String,
-      avatar: json['avatar'] as String?,
-      banner: json['banner'] as String?,
-      bio: json['bio'] as String?,
-    );
+    $checkedCreate('BotProfileResponse', json, ($checkedConvert) {
+      final val = BotProfileResponse(
+        id: $checkedConvert('id', (v) => v as String),
+        username: $checkedConvert('username', (v) => v as String),
+        discriminator: $checkedConvert('discriminator', (v) => v as String),
+        avatar: $checkedConvert('avatar', (v) => v as String?),
+        banner: $checkedConvert('banner', (v) => v as String?),
+        bio: $checkedConvert('bio', (v) => v as String?),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$BotProfileResponseToJson(BotProfileResponse instance) =>
     <String, dynamic>{

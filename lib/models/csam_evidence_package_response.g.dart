@@ -8,12 +8,25 @@ part of 'csam_evidence_package_response.dart';
 
 CsamEvidencePackageResponse _$CsamEvidencePackageResponseFromJson(
   Map<String, dynamic> json,
-) => CsamEvidencePackageResponse(
-  available: json['available'] as bool,
-  integritySha256: json['integrity_sha256'] as String?,
-  createdAt: json['created_at'] as String?,
-  expiresAt: json['expires_at'] as String?,
-  downloadUrl: json['download_url'] as String?,
+) => $checkedCreate(
+  'CsamEvidencePackageResponse',
+  json,
+  ($checkedConvert) {
+    final val = CsamEvidencePackageResponse(
+      available: $checkedConvert('available', (v) => v as bool),
+      integritySha256: $checkedConvert('integrity_sha256', (v) => v as String?),
+      createdAt: $checkedConvert('created_at', (v) => v as String?),
+      expiresAt: $checkedConvert('expires_at', (v) => v as String?),
+      downloadUrl: $checkedConvert('download_url', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'integritySha256': 'integrity_sha256',
+    'createdAt': 'created_at',
+    'expiresAt': 'expires_at',
+    'downloadUrl': 'download_url',
+  },
 );
 
 Map<String, dynamic> _$CsamEvidencePackageResponseToJson(

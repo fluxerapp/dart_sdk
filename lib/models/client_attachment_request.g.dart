@@ -8,16 +8,19 @@ part of 'client_attachment_request.dart';
 
 ClientAttachmentRequest _$ClientAttachmentRequestFromJson(
   Map<String, dynamic> json,
-) => ClientAttachmentRequest(
-  id: (json['id'] as num).toInt(),
-  filename: json['filename'] as String,
-  title: json['title'] as String?,
-  description: json['description'] as String?,
-  flags: (json['flags'] as num?)?.toInt(),
-  duration: (json['duration'] as num?)?.toInt(),
-  waveform: json['waveform'] as String?,
-  contentType: json['content_type'] as String?,
-);
+) => $checkedCreate('ClientAttachmentRequest', json, ($checkedConvert) {
+  final val = ClientAttachmentRequest(
+    id: $checkedConvert('id', (v) => (v as num).toInt()),
+    filename: $checkedConvert('filename', (v) => v as String),
+    title: $checkedConvert('title', (v) => v as String?),
+    description: $checkedConvert('description', (v) => v as String?),
+    flags: $checkedConvert('flags', (v) => (v as num?)?.toInt()),
+    duration: $checkedConvert('duration', (v) => (v as num?)?.toInt()),
+    waveform: $checkedConvert('waveform', (v) => v as String?),
+    contentType: $checkedConvert('content_type', (v) => v as String?),
+  );
+  return val;
+}, fieldKeyMap: const {'contentType': 'content_type'});
 
 Map<String, dynamic> _$ClientAttachmentRequestToJson(
   ClientAttachmentRequest instance,

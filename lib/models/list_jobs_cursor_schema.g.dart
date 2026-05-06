@@ -8,10 +8,22 @@ part of 'list_jobs_cursor_schema.dart';
 
 ListJobsCursorSchema _$ListJobsCursorSchemaFromJson(
   Map<String, dynamic> json,
-) => ListJobsCursorSchema(
-  bucketDay: json['bucket_day'] as String,
-  createdAt: json['created_at'] as String,
-  jobId: json['job_id'] as String,
+) => $checkedCreate(
+  'ListJobsCursorSchema',
+  json,
+  ($checkedConvert) {
+    final val = ListJobsCursorSchema(
+      bucketDay: $checkedConvert('bucket_day', (v) => v as String),
+      createdAt: $checkedConvert('created_at', (v) => v as String),
+      jobId: $checkedConvert('job_id', (v) => v as String),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'bucketDay': 'bucket_day',
+    'createdAt': 'created_at',
+    'jobId': 'job_id',
+  },
 );
 
 Map<String, dynamic> _$ListJobsCursorSchemaToJson(

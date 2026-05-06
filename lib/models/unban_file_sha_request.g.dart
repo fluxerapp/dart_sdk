@@ -7,7 +7,12 @@ part of 'unban_file_sha_request.dart';
 // **************************************************************************
 
 UnbanFileShaRequest _$UnbanFileShaRequestFromJson(Map<String, dynamic> json) =>
-    UnbanFileShaRequest(sha256Hex: json['sha256_hex'] as String);
+    $checkedCreate('UnbanFileShaRequest', json, ($checkedConvert) {
+      final val = UnbanFileShaRequest(
+        sha256Hex: $checkedConvert('sha256_hex', (v) => v as String),
+      );
+      return val;
+    }, fieldKeyMap: const {'sha256Hex': 'sha256_hex'});
 
 Map<String, dynamic> _$UnbanFileShaRequestToJson(
   UnbanFileShaRequest instance,

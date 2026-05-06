@@ -7,16 +7,32 @@ part of 'list_archives_request.dart';
 // **************************************************************************
 
 ListArchivesRequest _$ListArchivesRequestFromJson(Map<String, dynamic> json) =>
-    ListArchivesRequest(
-      subjectType: json['subject_type'] == null
-          ? null
-          : ListArchivesRequestSubjectTypeSubjectType.fromJson(
-              json['subject_type'] as String,
-            ),
-      subjectId: json['subject_id'] as String?,
-      requestedBy: json['requested_by'] as String?,
-      limit: json['limit'] as num?,
-      includeExpired: json['include_expired'] as bool?,
+    $checkedCreate(
+      'ListArchivesRequest',
+      json,
+      ($checkedConvert) {
+        final val = ListArchivesRequest(
+          subjectType: $checkedConvert(
+            'subject_type',
+            (v) => v == null
+                ? null
+                : ListArchivesRequestSubjectTypeSubjectType.fromJson(
+                    v as String,
+                  ),
+          ),
+          subjectId: $checkedConvert('subject_id', (v) => v as String?),
+          requestedBy: $checkedConvert('requested_by', (v) => v as String?),
+          limit: $checkedConvert('limit', (v) => v as num?),
+          includeExpired: $checkedConvert('include_expired', (v) => v as bool?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'subjectType': 'subject_type',
+        'subjectId': 'subject_id',
+        'requestedBy': 'requested_by',
+        'includeExpired': 'include_expired',
+      },
     );
 
 Map<String, dynamic> _$ListArchivesRequestToJson(

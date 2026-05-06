@@ -8,11 +8,17 @@ part of 'heap_snapshot_response.dart';
 
 HeapSnapshotResponse _$HeapSnapshotResponseFromJson(
   Map<String, dynamic> json,
-) => HeapSnapshotResponse(
-  success: HeapSnapshotResponseSuccessSuccess.fromJson(json['success'] as bool),
-  filename: json['filename'] as String,
-  sizeBytes: json['size_bytes'] as num,
-);
+) => $checkedCreate('HeapSnapshotResponse', json, ($checkedConvert) {
+  final val = HeapSnapshotResponse(
+    success: $checkedConvert(
+      'success',
+      (v) => HeapSnapshotResponseSuccessSuccess.fromJson(v as bool),
+    ),
+    filename: $checkedConvert('filename', (v) => v as String),
+    sizeBytes: $checkedConvert('size_bytes', (v) => v as num),
+  );
+  return val;
+}, fieldKeyMap: const {'sizeBytes': 'size_bytes'});
 
 Map<String, dynamic> _$HeapSnapshotResponseToJson(
   HeapSnapshotResponse instance,

@@ -7,10 +7,13 @@ part of 'email_revert_request.dart';
 // **************************************************************************
 
 EmailRevertRequest _$EmailRevertRequestFromJson(Map<String, dynamic> json) =>
-    EmailRevertRequest(
-      token: json['token'] as String,
-      password: json['password'] as String,
-    );
+    $checkedCreate('EmailRevertRequest', json, ($checkedConvert) {
+      final val = EmailRevertRequest(
+        token: $checkedConvert('token', (v) => v as String),
+        password: $checkedConvert('password', (v) => v as String),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$EmailRevertRequestToJson(EmailRevertRequest instance) =>
     <String, dynamic>{'token': instance.token, 'password': instance.password};

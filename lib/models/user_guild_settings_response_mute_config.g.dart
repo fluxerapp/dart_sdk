@@ -8,9 +8,23 @@ part of 'user_guild_settings_response_mute_config.dart';
 
 UserGuildSettingsResponseMuteConfig
 _$UserGuildSettingsResponseMuteConfigFromJson(Map<String, dynamic> json) =>
-    UserGuildSettingsResponseMuteConfig(
-      endTime: json['end_time'] as String?,
-      selectedTimeWindow: (json['selected_time_window'] as num).toInt(),
+    $checkedCreate(
+      'UserGuildSettingsResponseMuteConfig',
+      json,
+      ($checkedConvert) {
+        final val = UserGuildSettingsResponseMuteConfig(
+          endTime: $checkedConvert('end_time', (v) => v as String?),
+          selectedTimeWindow: $checkedConvert(
+            'selected_time_window',
+            (v) => (v as num).toInt(),
+          ),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'endTime': 'end_time',
+        'selectedTimeWindow': 'selected_time_window',
+      },
     );
 
 Map<String, dynamic> _$UserGuildSettingsResponseMuteConfigToJson(

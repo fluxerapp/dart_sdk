@@ -8,11 +8,27 @@ part of 'schedule_account_deletion_request.dart';
 
 ScheduleAccountDeletionRequest _$ScheduleAccountDeletionRequestFromJson(
   Map<String, dynamic> json,
-) => ScheduleAccountDeletionRequest(
-  userId: json['user_id'] as String,
-  reasonCode: (json['reason_code'] as num).toInt(),
-  publicReason: json['public_reason'] as String?,
-  daysUntilDeletion: (json['days_until_deletion'] as num?)?.toInt(),
+) => $checkedCreate(
+  'ScheduleAccountDeletionRequest',
+  json,
+  ($checkedConvert) {
+    final val = ScheduleAccountDeletionRequest(
+      userId: $checkedConvert('user_id', (v) => v as String),
+      reasonCode: $checkedConvert('reason_code', (v) => (v as num).toInt()),
+      publicReason: $checkedConvert('public_reason', (v) => v as String?),
+      daysUntilDeletion: $checkedConvert(
+        'days_until_deletion',
+        (v) => (v as num?)?.toInt(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'userId': 'user_id',
+    'reasonCode': 'reason_code',
+    'publicReason': 'public_reason',
+    'daysUntilDeletion': 'days_until_deletion',
+  },
 );
 
 Map<String, dynamic> _$ScheduleAccountDeletionRequestToJson(

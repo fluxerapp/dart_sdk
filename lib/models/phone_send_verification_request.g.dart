@@ -8,14 +8,18 @@ part of 'phone_send_verification_request.dart';
 
 PhoneSendVerificationRequest _$PhoneSendVerificationRequestFromJson(
   Map<String, dynamic> json,
-) => PhoneSendVerificationRequest(
-  phone: json['phone'] as String,
-  channel: json['channel'] == null
-      ? null
-      : PhoneSendVerificationRequestChannelChannel.fromJson(
-          json['channel'] as String,
-        ),
-);
+) => $checkedCreate('PhoneSendVerificationRequest', json, ($checkedConvert) {
+  final val = PhoneSendVerificationRequest(
+    phone: $checkedConvert('phone', (v) => v as String),
+    channel: $checkedConvert(
+      'channel',
+      (v) => v == null
+          ? null
+          : PhoneSendVerificationRequestChannelChannel.fromJson(v as String),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$PhoneSendVerificationRequestToJson(
   PhoneSendVerificationRequest instance,

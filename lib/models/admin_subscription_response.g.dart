@@ -8,18 +8,48 @@ part of 'admin_subscription_response.dart';
 
 AdminSubscriptionResponse _$AdminSubscriptionResponseFromJson(
   Map<String, dynamic> json,
-) => AdminSubscriptionResponse(
-  id: json['id'] as String,
-  status: json['status'] as String,
-  currentPeriodStart: json['current_period_start'] as String?,
-  currentPeriodEnd: json['current_period_end'] as String?,
-  cancelAtPeriodEnd: json['cancel_at_period_end'] as bool,
-  cancelAt: json['cancel_at'] as String?,
-  canceledAt: json['canceled_at'] as String?,
-  planInterval: json['plan_interval'] as String?,
-  planAmountCents: json['plan_amount_cents'] as num?,
-  planCurrency: json['plan_currency'] as String?,
-  defaultPaymentMethodId: json['default_payment_method_id'] as String?,
+) => $checkedCreate(
+  'AdminSubscriptionResponse',
+  json,
+  ($checkedConvert) {
+    final val = AdminSubscriptionResponse(
+      id: $checkedConvert('id', (v) => v as String),
+      status: $checkedConvert('status', (v) => v as String),
+      currentPeriodStart: $checkedConvert(
+        'current_period_start',
+        (v) => v as String?,
+      ),
+      currentPeriodEnd: $checkedConvert(
+        'current_period_end',
+        (v) => v as String?,
+      ),
+      cancelAtPeriodEnd: $checkedConvert(
+        'cancel_at_period_end',
+        (v) => v as bool,
+      ),
+      cancelAt: $checkedConvert('cancel_at', (v) => v as String?),
+      canceledAt: $checkedConvert('canceled_at', (v) => v as String?),
+      planInterval: $checkedConvert('plan_interval', (v) => v as String?),
+      planAmountCents: $checkedConvert('plan_amount_cents', (v) => v as num?),
+      planCurrency: $checkedConvert('plan_currency', (v) => v as String?),
+      defaultPaymentMethodId: $checkedConvert(
+        'default_payment_method_id',
+        (v) => v as String?,
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'currentPeriodStart': 'current_period_start',
+    'currentPeriodEnd': 'current_period_end',
+    'cancelAtPeriodEnd': 'cancel_at_period_end',
+    'cancelAt': 'cancel_at',
+    'canceledAt': 'canceled_at',
+    'planInterval': 'plan_interval',
+    'planAmountCents': 'plan_amount_cents',
+    'planCurrency': 'plan_currency',
+    'defaultPaymentMethodId': 'default_payment_method_id',
+  },
 );
 
 Map<String, dynamic> _$AdminSubscriptionResponseToJson(

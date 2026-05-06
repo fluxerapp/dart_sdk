@@ -9,16 +9,39 @@ part of 'phone_send_verification_inbound_challenge_response.dart';
 PhoneSendVerificationInboundChallengeResponse
 _$PhoneSendVerificationInboundChallengeResponseFromJson(
   Map<String, dynamic> json,
-) => PhoneSendVerificationInboundChallengeResponse(
-  channel: PhoneSendVerificationInboundChallengeResponseChannelChannel.fromJson(
-    json['channel'] as String,
-  ),
-  challengeCode: json['challenge_code'] as String,
-  ourNumber: json['our_number'] as String,
-  expiresAt: DateTime.parse(json['expires_at'] as String),
-  reason: PhoneSendVerificationInboundChallengeResponseReasonReason.fromJson(
-    json['reason'] as String,
-  ),
+) => $checkedCreate(
+  'PhoneSendVerificationInboundChallengeResponse',
+  json,
+  ($checkedConvert) {
+    final val = PhoneSendVerificationInboundChallengeResponse(
+      channel: $checkedConvert(
+        'channel',
+        (v) =>
+            PhoneSendVerificationInboundChallengeResponseChannelChannel.fromJson(
+              v as String,
+            ),
+      ),
+      challengeCode: $checkedConvert('challenge_code', (v) => v as String),
+      ourNumber: $checkedConvert('our_number', (v) => v as String),
+      expiresAt: $checkedConvert(
+        'expires_at',
+        (v) => DateTime.parse(v as String),
+      ),
+      reason: $checkedConvert(
+        'reason',
+        (v) =>
+            PhoneSendVerificationInboundChallengeResponseReasonReason.fromJson(
+              v as String,
+            ),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'challengeCode': 'challenge_code',
+    'ourNumber': 'our_number',
+    'expiresAt': 'expires_at',
+  },
 );
 
 Map<String, dynamic> _$PhoneSendVerificationInboundChallengeResponseToJson(

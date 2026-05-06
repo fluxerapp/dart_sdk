@@ -8,38 +8,79 @@ part of 'guild_invite_response_guild.dart';
 
 GuildInviteResponseGuild _$GuildInviteResponseGuildFromJson(
   Map<String, dynamic> json,
-) => GuildInviteResponseGuild(
-  id: json['id'] as String,
-  name: json['name'] as String,
-  splashCardAlignment:
-      GuildInviteResponseGuildSplashCardAlignmentSplashCardAlignment.fromJson(
-        (json['splash_card_alignment'] as num).toInt(),
+) => $checkedCreate(
+  'GuildInviteResponseGuild',
+  json,
+  ($checkedConvert) {
+    final val = GuildInviteResponseGuild(
+      id: $checkedConvert('id', (v) => v as String),
+      name: $checkedConvert('name', (v) => v as String),
+      splashCardAlignment: $checkedConvert(
+        'splash_card_alignment',
+        (v) =>
+            GuildInviteResponseGuildSplashCardAlignmentSplashCardAlignment.fromJson(
+              (v as num).toInt(),
+            ),
       ),
-  features: (json['features'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-  icon: json['icon'] as String?,
-  iconFormats: (json['icon_formats'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
-  banner: json['banner'] as String?,
-  bannerFormats: (json['banner_formats'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
-  bannerWidth: (json['banner_width'] as num?)?.toInt(),
-  bannerHeight: (json['banner_height'] as num?)?.toInt(),
-  splash: json['splash'] as String?,
-  splashFormats: (json['splash_formats'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
-  splashWidth: (json['splash_width'] as num?)?.toInt(),
-  splashHeight: (json['splash_height'] as num?)?.toInt(),
-  embedSplash: json['embed_splash'] as String?,
-  embedSplashFormats: (json['embed_splash_formats'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
-  embedSplashWidth: (json['embed_splash_width'] as num?)?.toInt(),
-  embedSplashHeight: (json['embed_splash_height'] as num?)?.toInt(),
+      features: $checkedConvert(
+        'features',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      icon: $checkedConvert('icon', (v) => v as String?),
+      iconFormats: $checkedConvert(
+        'icon_formats',
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+      ),
+      banner: $checkedConvert('banner', (v) => v as String?),
+      bannerFormats: $checkedConvert(
+        'banner_formats',
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+      ),
+      bannerWidth: $checkedConvert('banner_width', (v) => (v as num?)?.toInt()),
+      bannerHeight: $checkedConvert(
+        'banner_height',
+        (v) => (v as num?)?.toInt(),
+      ),
+      splash: $checkedConvert('splash', (v) => v as String?),
+      splashFormats: $checkedConvert(
+        'splash_formats',
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+      ),
+      splashWidth: $checkedConvert('splash_width', (v) => (v as num?)?.toInt()),
+      splashHeight: $checkedConvert(
+        'splash_height',
+        (v) => (v as num?)?.toInt(),
+      ),
+      embedSplash: $checkedConvert('embed_splash', (v) => v as String?),
+      embedSplashFormats: $checkedConvert(
+        'embed_splash_formats',
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+      ),
+      embedSplashWidth: $checkedConvert(
+        'embed_splash_width',
+        (v) => (v as num?)?.toInt(),
+      ),
+      embedSplashHeight: $checkedConvert(
+        'embed_splash_height',
+        (v) => (v as num?)?.toInt(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'splashCardAlignment': 'splash_card_alignment',
+    'iconFormats': 'icon_formats',
+    'bannerFormats': 'banner_formats',
+    'bannerWidth': 'banner_width',
+    'bannerHeight': 'banner_height',
+    'splashFormats': 'splash_formats',
+    'splashWidth': 'splash_width',
+    'splashHeight': 'splash_height',
+    'embedSplash': 'embed_splash',
+    'embedSplashFormats': 'embed_splash_formats',
+    'embedSplashWidth': 'embed_splash_width',
+    'embedSplashHeight': 'embed_splash_height',
+  },
 );
 
 Map<String, dynamic> _$GuildInviteResponseGuildToJson(

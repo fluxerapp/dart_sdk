@@ -7,16 +7,20 @@ part of 'guild_create_request.dart';
 // **************************************************************************
 
 GuildCreateRequest _$GuildCreateRequestFromJson(Map<String, dynamic> json) =>
-    GuildCreateRequest(
-      name: json['name'] as String,
-      icon: json['icon'] as String?,
-      emptyFeatures: json['empty_features'] as bool?,
-      template: json['template'] == null
-          ? null
-          : TemplateSerializedGuild.fromJson(
-              json['template'] as Map<String, dynamic>,
-            ),
-    );
+    $checkedCreate('GuildCreateRequest', json, ($checkedConvert) {
+      final val = GuildCreateRequest(
+        name: $checkedConvert('name', (v) => v as String),
+        icon: $checkedConvert('icon', (v) => v as String?),
+        emptyFeatures: $checkedConvert('empty_features', (v) => v as bool?),
+        template: $checkedConvert(
+          'template',
+          (v) => v == null
+              ? null
+              : TemplateSerializedGuild.fromJson(v as Map<String, dynamic>),
+        ),
+      );
+      return val;
+    }, fieldKeyMap: const {'emptyFeatures': 'empty_features'});
 
 Map<String, dynamic> _$GuildCreateRequestToJson(GuildCreateRequest instance) =>
     <String, dynamic>{

@@ -8,12 +8,29 @@ part of 'list_visionary_slots_response.dart';
 
 ListVisionarySlotsResponse _$ListVisionarySlotsResponseFromJson(
   Map<String, dynamic> json,
-) => ListVisionarySlotsResponse(
-  slots: (json['slots'] as List<dynamic>)
-      .map((e) => VisionarySlotSchema.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  totalCount: (json['total_count'] as num).toInt(),
-  reservedCount: (json['reserved_count'] as num).toInt(),
+) => $checkedCreate(
+  'ListVisionarySlotsResponse',
+  json,
+  ($checkedConvert) {
+    final val = ListVisionarySlotsResponse(
+      slots: $checkedConvert(
+        'slots',
+        (v) => (v as List<dynamic>)
+            .map((e) => VisionarySlotSchema.fromJson(e as Map<String, dynamic>))
+            .toList(),
+      ),
+      totalCount: $checkedConvert('total_count', (v) => (v as num).toInt()),
+      reservedCount: $checkedConvert(
+        'reserved_count',
+        (v) => (v as num).toInt(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'totalCount': 'total_count',
+    'reservedCount': 'reserved_count',
+  },
 );
 
 Map<String, dynamic> _$ListVisionarySlotsResponseToJson(

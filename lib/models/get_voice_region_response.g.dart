@@ -8,13 +8,17 @@ part of 'get_voice_region_response.dart';
 
 GetVoiceRegionResponse _$GetVoiceRegionResponseFromJson(
   Map<String, dynamic> json,
-) => GetVoiceRegionResponse(
-  region: json['region'] == null
-      ? null
-      : VoiceRegionWithServersResponse.fromJson(
-          json['region'] as Map<String, dynamic>,
-        ),
-);
+) => $checkedCreate('GetVoiceRegionResponse', json, ($checkedConvert) {
+  final val = GetVoiceRegionResponse(
+    region: $checkedConvert(
+      'region',
+      (v) => v == null
+          ? null
+          : VoiceRegionWithServersResponse.fromJson(v as Map<String, dynamic>),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$GetVoiceRegionResponseToJson(
   GetVoiceRegionResponse instance,

@@ -8,7 +8,12 @@ part of 'list_web_authn_credentials_request.dart';
 
 ListWebAuthnCredentialsRequest _$ListWebAuthnCredentialsRequestFromJson(
   Map<String, dynamic> json,
-) => ListWebAuthnCredentialsRequest(userId: json['user_id'] as String);
+) => $checkedCreate('ListWebAuthnCredentialsRequest', json, ($checkedConvert) {
+  final val = ListWebAuthnCredentialsRequest(
+    userId: $checkedConvert('user_id', (v) => v as String),
+  );
+  return val;
+}, fieldKeyMap: const {'userId': 'user_id'});
 
 Map<String, dynamic> _$ListWebAuthnCredentialsRequestToJson(
   ListWebAuthnCredentialsRequest instance,

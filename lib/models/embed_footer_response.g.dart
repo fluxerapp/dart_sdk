@@ -7,10 +7,21 @@ part of 'embed_footer_response.dart';
 // **************************************************************************
 
 EmbedFooterResponse _$EmbedFooterResponseFromJson(Map<String, dynamic> json) =>
-    EmbedFooterResponse(
-      text: json['text'] as String,
-      iconUrl: json['icon_url'] as String?,
-      proxyIconUrl: json['proxy_icon_url'] as String?,
+    $checkedCreate(
+      'EmbedFooterResponse',
+      json,
+      ($checkedConvert) {
+        final val = EmbedFooterResponse(
+          text: $checkedConvert('text', (v) => v as String),
+          iconUrl: $checkedConvert('icon_url', (v) => v as String?),
+          proxyIconUrl: $checkedConvert('proxy_icon_url', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'iconUrl': 'icon_url',
+        'proxyIconUrl': 'proxy_icon_url',
+      },
     );
 
 Map<String, dynamic> _$EmbedFooterResponseToJson(

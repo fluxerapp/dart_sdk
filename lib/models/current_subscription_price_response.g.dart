@@ -9,19 +9,44 @@ part of 'current_subscription_price_response.dart';
 CurrentSubscriptionPriceResponseVariant1
 _$CurrentSubscriptionPriceResponseVariant1FromJson(
   Map<String, dynamic> json,
-) => CurrentSubscriptionPriceResponseVariant1(
-  priceId: json['price_id'] as String,
-  amountMinor: (json['amount_minor'] as num).toInt(),
-  currency: CurrentSubscriptionPriceResponseVariant1CurrencyCurrency.fromJson(
-    json['currency'] as String,
-  ),
-  billingCycle:
-      CurrentSubscriptionPriceResponseVariant1BillingCycleBillingCycle.fromJson(
-        json['billing_cycle'] as String,
+) => $checkedCreate(
+  'CurrentSubscriptionPriceResponseVariant1',
+  json,
+  ($checkedConvert) {
+    final val = CurrentSubscriptionPriceResponseVariant1(
+      priceId: $checkedConvert('price_id', (v) => v as String),
+      amountMinor: $checkedConvert('amount_minor', (v) => (v as num).toInt()),
+      currency: $checkedConvert(
+        'currency',
+        (v) =>
+            CurrentSubscriptionPriceResponseVariant1CurrencyCurrency.fromJson(
+              v as String,
+            ),
       ),
-  isGrandfathered: json['is_grandfathered'] as bool,
-  listAmountMinor: (json['list_amount_minor'] as num?)?.toInt(),
-  listPriceId: json['list_price_id'] as String?,
+      billingCycle: $checkedConvert(
+        'billing_cycle',
+        (v) =>
+            CurrentSubscriptionPriceResponseVariant1BillingCycleBillingCycle.fromJson(
+              v as String,
+            ),
+      ),
+      isGrandfathered: $checkedConvert('is_grandfathered', (v) => v as bool),
+      listAmountMinor: $checkedConvert(
+        'list_amount_minor',
+        (v) => (v as num?)?.toInt(),
+      ),
+      listPriceId: $checkedConvert('list_price_id', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'priceId': 'price_id',
+    'amountMinor': 'amount_minor',
+    'billingCycle': 'billing_cycle',
+    'isGrandfathered': 'is_grandfathered',
+    'listAmountMinor': 'list_amount_minor',
+    'listPriceId': 'list_price_id',
+  },
 );
 
 Map<String, dynamic> _$CurrentSubscriptionPriceResponseVariant1ToJson(

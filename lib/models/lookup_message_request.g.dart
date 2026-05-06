@@ -8,10 +8,25 @@ part of 'lookup_message_request.dart';
 
 LookupMessageRequest _$LookupMessageRequestFromJson(
   Map<String, dynamic> json,
-) => LookupMessageRequest(
-  channelId: json['channel_id'] as String,
-  messageId: json['message_id'] as String,
-  contextLimit: (json['context_limit'] as num?)?.toInt(),
+) => $checkedCreate(
+  'LookupMessageRequest',
+  json,
+  ($checkedConvert) {
+    final val = LookupMessageRequest(
+      channelId: $checkedConvert('channel_id', (v) => v as String),
+      messageId: $checkedConvert('message_id', (v) => v as String),
+      contextLimit: $checkedConvert(
+        'context_limit',
+        (v) => (v as num?)?.toInt(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'channelId': 'channel_id',
+    'messageId': 'message_id',
+    'contextLimit': 'context_limit',
+  },
 );
 
 Map<String, dynamic> _$LookupMessageRequestToJson(

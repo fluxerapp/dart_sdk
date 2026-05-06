@@ -8,14 +8,21 @@ part of 'ban_profile_substring_request.dart';
 
 BanProfileSubstringRequest _$BanProfileSubstringRequestFromJson(
   Map<String, dynamic> json,
-) => BanProfileSubstringRequest(
-  scope: ProfileSubstringScopeSchema.fromJson(json['scope'] as String),
-  substrings: (json['substrings'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-  reason: json['reason'] as String?,
-  notes: json['notes'] as String?,
-);
+) => $checkedCreate('BanProfileSubstringRequest', json, ($checkedConvert) {
+  final val = BanProfileSubstringRequest(
+    scope: $checkedConvert(
+      'scope',
+      (v) => ProfileSubstringScopeSchema.fromJson(v as String),
+    ),
+    substrings: $checkedConvert(
+      'substrings',
+      (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+    ),
+    reason: $checkedConvert('reason', (v) => v as String?),
+    notes: $checkedConvert('notes', (v) => v as String?),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$BanProfileSubstringRequestToJson(
   BanProfileSubstringRequest instance,

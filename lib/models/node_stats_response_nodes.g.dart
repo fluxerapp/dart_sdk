@@ -8,19 +8,36 @@ part of 'node_stats_response_nodes.dart';
 
 NodeStatsResponseNodes _$NodeStatsResponseNodesFromJson(
   Map<String, dynamic> json,
-) => NodeStatsResponseNodes(
-  nodeId: json['node_id'] as String,
-  status: json['status'] as String,
-  sessions: (json['sessions'] as num).toInt(),
-  guilds: (json['guilds'] as num).toInt(),
-  presences: (json['presences'] as num).toInt(),
-  calls: (json['calls'] as num).toInt(),
-  memory: NodeStatsResponseNodesMemory.fromJson(
-    json['memory'] as Map<String, dynamic>,
-  ),
-  processCount: (json['process_count'] as num).toInt(),
-  processLimit: (json['process_limit'] as num).toInt(),
-  uptimeSeconds: (json['uptime_seconds'] as num).toInt(),
+) => $checkedCreate(
+  'NodeStatsResponseNodes',
+  json,
+  ($checkedConvert) {
+    final val = NodeStatsResponseNodes(
+      nodeId: $checkedConvert('node_id', (v) => v as String),
+      status: $checkedConvert('status', (v) => v as String),
+      sessions: $checkedConvert('sessions', (v) => (v as num).toInt()),
+      guilds: $checkedConvert('guilds', (v) => (v as num).toInt()),
+      presences: $checkedConvert('presences', (v) => (v as num).toInt()),
+      calls: $checkedConvert('calls', (v) => (v as num).toInt()),
+      memory: $checkedConvert(
+        'memory',
+        (v) => NodeStatsResponseNodesMemory.fromJson(v as Map<String, dynamic>),
+      ),
+      processCount: $checkedConvert('process_count', (v) => (v as num).toInt()),
+      processLimit: $checkedConvert('process_limit', (v) => (v as num).toInt()),
+      uptimeSeconds: $checkedConvert(
+        'uptime_seconds',
+        (v) => (v as num).toInt(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'nodeId': 'node_id',
+    'processCount': 'process_count',
+    'processLimit': 'process_limit',
+    'uptimeSeconds': 'uptime_seconds',
+  },
 );
 
 Map<String, dynamic> _$NodeStatsResponseNodesToJson(

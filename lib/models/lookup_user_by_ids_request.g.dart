@@ -8,9 +8,15 @@ part of 'lookup_user_by_ids_request.dart';
 
 LookupUserByIdsRequest _$LookupUserByIdsRequestFromJson(
   Map<String, dynamic> json,
-) => LookupUserByIdsRequest(
-  userIds: (json['user_ids'] as List<dynamic>).map((e) => e as String).toList(),
-);
+) => $checkedCreate('LookupUserByIdsRequest', json, ($checkedConvert) {
+  final val = LookupUserByIdsRequest(
+    userIds: $checkedConvert(
+      'user_ids',
+      (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+    ),
+  );
+  return val;
+}, fieldKeyMap: const {'userIds': 'user_ids'});
 
 Map<String, dynamic> _$LookupUserByIdsRequestToJson(
   LookupUserByIdsRequest instance,

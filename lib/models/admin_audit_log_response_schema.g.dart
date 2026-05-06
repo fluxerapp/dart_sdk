@@ -8,15 +8,33 @@ part of 'admin_audit_log_response_schema.dart';
 
 AdminAuditLogResponseSchema _$AdminAuditLogResponseSchemaFromJson(
   Map<String, dynamic> json,
-) => AdminAuditLogResponseSchema(
-  logId: json['log_id'] as String,
-  adminUserId: json['admin_user_id'] as String,
-  targetType: json['target_type'] as String,
-  targetId: json['target_id'] as String,
-  action: json['action'] as String,
-  auditLogReason: json['audit_log_reason'] as String?,
-  metadata: Map<String, String>.from(json['metadata'] as Map),
-  createdAt: json['created_at'] as String,
+) => $checkedCreate(
+  'AdminAuditLogResponseSchema',
+  json,
+  ($checkedConvert) {
+    final val = AdminAuditLogResponseSchema(
+      logId: $checkedConvert('log_id', (v) => v as String),
+      adminUserId: $checkedConvert('admin_user_id', (v) => v as String),
+      targetType: $checkedConvert('target_type', (v) => v as String),
+      targetId: $checkedConvert('target_id', (v) => v as String),
+      action: $checkedConvert('action', (v) => v as String),
+      auditLogReason: $checkedConvert('audit_log_reason', (v) => v as String?),
+      metadata: $checkedConvert(
+        'metadata',
+        (v) => Map<String, String>.from(v as Map),
+      ),
+      createdAt: $checkedConvert('created_at', (v) => v as String),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'logId': 'log_id',
+    'adminUserId': 'admin_user_id',
+    'targetType': 'target_type',
+    'targetId': 'target_id',
+    'auditLogReason': 'audit_log_reason',
+    'createdAt': 'created_at',
+  },
 );
 
 Map<String, dynamic> _$AdminAuditLogResponseSchemaToJson(

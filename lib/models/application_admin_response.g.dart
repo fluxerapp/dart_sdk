@@ -8,32 +8,75 @@ part of 'application_admin_response.dart';
 
 ApplicationAdminResponse _$ApplicationAdminResponseFromJson(
   Map<String, dynamic> json,
-) => ApplicationAdminResponse(
-  id: json['id'] as String,
-  name: json['name'] as String,
-  ownerUserId: json['owner_user_id'] as String,
-  ownerUsername: json['owner_username'] as String?,
-  ownerGlobalName: json['owner_global_name'] as String?,
-  ownerDiscriminator: json['owner_discriminator'] as String?,
-  botUserId: json['bot_user_id'] as String?,
-  botUsername: json['bot_username'] as String?,
-  botGlobalName: json['bot_global_name'] as String?,
-  botDiscriminator: json['bot_discriminator'] as String?,
-  botIsPublic: json['bot_is_public'] as bool,
-  botRequireCodeGrant: json['bot_require_code_grant'] as bool,
-  oauth2RedirectUris: (json['oauth2_redirect_uris'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-  hasClientSecret: json['has_client_secret'] as bool,
-  hasBotToken: json['has_bot_token'] as bool,
-  botTokenPreview: json['bot_token_preview'] as String?,
-  botTokenCreatedAt: json['bot_token_created_at'] == null
-      ? null
-      : DateTime.parse(json['bot_token_created_at'] as String),
-  clientSecretCreatedAt: json['client_secret_created_at'] == null
-      ? null
-      : DateTime.parse(json['client_secret_created_at'] as String),
-  version: (json['version'] as num).toInt(),
+) => $checkedCreate(
+  'ApplicationAdminResponse',
+  json,
+  ($checkedConvert) {
+    final val = ApplicationAdminResponse(
+      id: $checkedConvert('id', (v) => v as String),
+      name: $checkedConvert('name', (v) => v as String),
+      ownerUserId: $checkedConvert('owner_user_id', (v) => v as String),
+      ownerUsername: $checkedConvert('owner_username', (v) => v as String?),
+      ownerGlobalName: $checkedConvert(
+        'owner_global_name',
+        (v) => v as String?,
+      ),
+      ownerDiscriminator: $checkedConvert(
+        'owner_discriminator',
+        (v) => v as String?,
+      ),
+      botUserId: $checkedConvert('bot_user_id', (v) => v as String?),
+      botUsername: $checkedConvert('bot_username', (v) => v as String?),
+      botGlobalName: $checkedConvert('bot_global_name', (v) => v as String?),
+      botDiscriminator: $checkedConvert(
+        'bot_discriminator',
+        (v) => v as String?,
+      ),
+      botIsPublic: $checkedConvert('bot_is_public', (v) => v as bool),
+      botRequireCodeGrant: $checkedConvert(
+        'bot_require_code_grant',
+        (v) => v as bool,
+      ),
+      oauth2RedirectUris: $checkedConvert(
+        'oauth2_redirect_uris',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      hasClientSecret: $checkedConvert('has_client_secret', (v) => v as bool),
+      hasBotToken: $checkedConvert('has_bot_token', (v) => v as bool),
+      botTokenPreview: $checkedConvert(
+        'bot_token_preview',
+        (v) => v as String?,
+      ),
+      botTokenCreatedAt: $checkedConvert(
+        'bot_token_created_at',
+        (v) => v == null ? null : DateTime.parse(v as String),
+      ),
+      clientSecretCreatedAt: $checkedConvert(
+        'client_secret_created_at',
+        (v) => v == null ? null : DateTime.parse(v as String),
+      ),
+      version: $checkedConvert('version', (v) => (v as num).toInt()),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'ownerUserId': 'owner_user_id',
+    'ownerUsername': 'owner_username',
+    'ownerGlobalName': 'owner_global_name',
+    'ownerDiscriminator': 'owner_discriminator',
+    'botUserId': 'bot_user_id',
+    'botUsername': 'bot_username',
+    'botGlobalName': 'bot_global_name',
+    'botDiscriminator': 'bot_discriminator',
+    'botIsPublic': 'bot_is_public',
+    'botRequireCodeGrant': 'bot_require_code_grant',
+    'oauth2RedirectUris': 'oauth2_redirect_uris',
+    'hasClientSecret': 'has_client_secret',
+    'hasBotToken': 'has_bot_token',
+    'botTokenPreview': 'bot_token_preview',
+    'botTokenCreatedAt': 'bot_token_created_at',
+    'clientSecretCreatedAt': 'client_secret_created_at',
+  },
 );
 
 Map<String, dynamic> _$ApplicationAdminResponseToJson(

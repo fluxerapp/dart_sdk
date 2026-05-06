@@ -8,17 +8,32 @@ part of 'object3.dart';
 
 Object3ClientUploadedAttachmentRequest
 _$Object3ClientUploadedAttachmentRequestFromJson(Map<String, dynamic> json) =>
-    Object3ClientUploadedAttachmentRequest(
-      title: json['title'] as String?,
-      description: json['description'] as String?,
-      flags: (json['flags'] as num?)?.toInt(),
-      duration: (json['duration'] as num?)?.toInt(),
-      waveform: json['waveform'] as String?,
-      id: (json['id'] as num).toInt(),
-      filename: json['filename'] as String,
-      uploadFilename: json['upload_filename'] as String,
-      fileSize: (json['file_size'] as num).toInt(),
-      contentType: json['content_type'] as String,
+    $checkedCreate(
+      'Object3ClientUploadedAttachmentRequest',
+      json,
+      ($checkedConvert) {
+        final val = Object3ClientUploadedAttachmentRequest(
+          title: $checkedConvert('title', (v) => v as String?),
+          description: $checkedConvert('description', (v) => v as String?),
+          flags: $checkedConvert('flags', (v) => (v as num?)?.toInt()),
+          duration: $checkedConvert('duration', (v) => (v as num?)?.toInt()),
+          waveform: $checkedConvert('waveform', (v) => v as String?),
+          id: $checkedConvert('id', (v) => (v as num).toInt()),
+          filename: $checkedConvert('filename', (v) => v as String),
+          uploadFilename: $checkedConvert(
+            'upload_filename',
+            (v) => v as String,
+          ),
+          fileSize: $checkedConvert('file_size', (v) => (v as num).toInt()),
+          contentType: $checkedConvert('content_type', (v) => v as String),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'uploadFilename': 'upload_filename',
+        'fileSize': 'file_size',
+        'contentType': 'content_type',
+      },
     );
 
 Map<String, dynamic> _$Object3ClientUploadedAttachmentRequestToJson(
@@ -38,15 +53,23 @@ Map<String, dynamic> _$Object3ClientUploadedAttachmentRequestToJson(
 
 Object3ClientAttachmentRequest _$Object3ClientAttachmentRequestFromJson(
   Map<String, dynamic> json,
-) => Object3ClientAttachmentRequest(
-  title: json['title'] as String?,
-  description: json['description'] as String?,
-  flags: (json['flags'] as num?)?.toInt(),
-  duration: (json['duration'] as num?)?.toInt(),
-  waveform: json['waveform'] as String?,
-  id: (json['id'] as num).toInt(),
-  filename: json['filename'] as String,
-  contentType: json['content_type'] as String?,
+) => $checkedCreate(
+  'Object3ClientAttachmentRequest',
+  json,
+  ($checkedConvert) {
+    final val = Object3ClientAttachmentRequest(
+      title: $checkedConvert('title', (v) => v as String?),
+      description: $checkedConvert('description', (v) => v as String?),
+      flags: $checkedConvert('flags', (v) => (v as num?)?.toInt()),
+      duration: $checkedConvert('duration', (v) => (v as num?)?.toInt()),
+      waveform: $checkedConvert('waveform', (v) => v as String?),
+      id: $checkedConvert('id', (v) => (v as num).toInt()),
+      filename: $checkedConvert('filename', (v) => v as String),
+      contentType: $checkedConvert('content_type', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'contentType': 'content_type'},
 );
 
 Map<String, dynamic> _$Object3ClientAttachmentRequestToJson(

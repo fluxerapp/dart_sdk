@@ -8,7 +8,12 @@ part of 'webhook_received_response.dart';
 
 WebhookReceivedResponse _$WebhookReceivedResponseFromJson(
   Map<String, dynamic> json,
-) => WebhookReceivedResponse(received: json['received'] as bool);
+) => $checkedCreate('WebhookReceivedResponse', json, ($checkedConvert) {
+  final val = WebhookReceivedResponse(
+    received: $checkedConvert('received', (v) => v as bool),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$WebhookReceivedResponseToJson(
   WebhookReceivedResponse instance,

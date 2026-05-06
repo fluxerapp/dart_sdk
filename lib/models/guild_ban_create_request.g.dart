@@ -8,10 +8,27 @@ part of 'guild_ban_create_request.dart';
 
 GuildBanCreateRequest _$GuildBanCreateRequestFromJson(
   Map<String, dynamic> json,
-) => GuildBanCreateRequest(
-  deleteMessageDays: (json['delete_message_days'] as num?)?.toInt(),
-  reason: json['reason'] as String?,
-  banDurationSeconds: (json['ban_duration_seconds'] as num?)?.toInt(),
+) => $checkedCreate(
+  'GuildBanCreateRequest',
+  json,
+  ($checkedConvert) {
+    final val = GuildBanCreateRequest(
+      deleteMessageDays: $checkedConvert(
+        'delete_message_days',
+        (v) => (v as num?)?.toInt(),
+      ),
+      reason: $checkedConvert('reason', (v) => v as String?),
+      banDurationSeconds: $checkedConvert(
+        'ban_duration_seconds',
+        (v) => (v as num?)?.toInt(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'deleteMessageDays': 'delete_message_days',
+    'banDurationSeconds': 'ban_duration_seconds',
+  },
 );
 
 Map<String, dynamic> _$GuildBanCreateRequestToJson(

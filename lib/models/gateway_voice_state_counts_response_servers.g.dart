@@ -8,9 +8,23 @@ part of 'gateway_voice_state_counts_response_servers.dart';
 
 GatewayVoiceStateCountsResponseServers
 _$GatewayVoiceStateCountsResponseServersFromJson(Map<String, dynamic> json) =>
-    GatewayVoiceStateCountsResponseServers(
-      serverId: json['server_id'] as String,
-      voiceStateCount: (json['voice_state_count'] as num).toInt(),
+    $checkedCreate(
+      'GatewayVoiceStateCountsResponseServers',
+      json,
+      ($checkedConvert) {
+        final val = GatewayVoiceStateCountsResponseServers(
+          serverId: $checkedConvert('server_id', (v) => v as String),
+          voiceStateCount: $checkedConvert(
+            'voice_state_count',
+            (v) => (v as num).toInt(),
+          ),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'serverId': 'server_id',
+        'voiceStateCount': 'voice_state_count',
+      },
     );
 
 Map<String, dynamic> _$GatewayVoiceStateCountsResponseServersToJson(

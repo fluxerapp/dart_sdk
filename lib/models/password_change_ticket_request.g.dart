@@ -8,7 +8,12 @@ part of 'password_change_ticket_request.dart';
 
 PasswordChangeTicketRequest _$PasswordChangeTicketRequestFromJson(
   Map<String, dynamic> json,
-) => PasswordChangeTicketRequest(ticket: json['ticket'] as String);
+) => $checkedCreate('PasswordChangeTicketRequest', json, ($checkedConvert) {
+  final val = PasswordChangeTicketRequest(
+    ticket: $checkedConvert('ticket', (v) => v as String),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$PasswordChangeTicketRequestToJson(
   PasswordChangeTicketRequest instance,

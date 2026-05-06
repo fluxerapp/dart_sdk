@@ -7,14 +7,18 @@ part of 'handoff_info_response.dart';
 // **************************************************************************
 
 HandoffInfoResponse _$HandoffInfoResponseFromJson(Map<String, dynamic> json) =>
-    HandoffInfoResponse(
-      status: json['status'] as String,
-      clientInfo: json['client_info'] == null
-          ? null
-          : HandoffInfoClientInfo.fromJson(
-              json['client_info'] as Map<String, dynamic>,
-            ),
-    );
+    $checkedCreate('HandoffInfoResponse', json, ($checkedConvert) {
+      final val = HandoffInfoResponse(
+        status: $checkedConvert('status', (v) => v as String),
+        clientInfo: $checkedConvert(
+          'client_info',
+          (v) => v == null
+              ? null
+              : HandoffInfoClientInfo.fromJson(v as Map<String, dynamic>),
+        ),
+      );
+      return val;
+    }, fieldKeyMap: const {'clientInfo': 'client_info'});
 
 Map<String, dynamic> _$HandoffInfoResponseToJson(
   HandoffInfoResponse instance,

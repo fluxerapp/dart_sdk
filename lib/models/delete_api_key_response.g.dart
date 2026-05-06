@@ -8,9 +8,15 @@ part of 'delete_api_key_response.dart';
 
 DeleteApiKeyResponse _$DeleteApiKeyResponseFromJson(
   Map<String, dynamic> json,
-) => DeleteApiKeyResponse(
-  success: DeleteApiKeyResponseSuccessSuccess.fromJson(json['success'] as bool),
-);
+) => $checkedCreate('DeleteApiKeyResponse', json, ($checkedConvert) {
+  final val = DeleteApiKeyResponse(
+    success: $checkedConvert(
+      'success',
+      (v) => DeleteApiKeyResponseSuccessSuccess.fromJson(v as bool),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$DeleteApiKeyResponseToJson(
   DeleteApiKeyResponse instance,

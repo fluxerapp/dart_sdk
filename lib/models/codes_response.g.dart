@@ -7,9 +7,15 @@ part of 'codes_response.dart';
 // **************************************************************************
 
 CodesResponse _$CodesResponseFromJson(Map<String, dynamic> json) =>
-    CodesResponse(
-      codes: (json['codes'] as List<dynamic>).map((e) => e as String).toList(),
-    );
+    $checkedCreate('CodesResponse', json, ($checkedConvert) {
+      final val = CodesResponse(
+        codes: $checkedConvert(
+          'codes',
+          (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+        ),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$CodesResponseToJson(CodesResponse instance) =>
     <String, dynamic>{'codes': instance.codes};

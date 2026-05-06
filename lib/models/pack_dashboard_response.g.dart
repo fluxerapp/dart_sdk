@@ -8,14 +8,19 @@ part of 'pack_dashboard_response.dart';
 
 PackDashboardResponse _$PackDashboardResponseFromJson(
   Map<String, dynamic> json,
-) => PackDashboardResponse(
-  emoji: PackDashboardResponseEmoji.fromJson(
-    json['emoji'] as Map<String, dynamic>,
-  ),
-  sticker: PackDashboardResponseSticker.fromJson(
-    json['sticker'] as Map<String, dynamic>,
-  ),
-);
+) => $checkedCreate('PackDashboardResponse', json, ($checkedConvert) {
+  final val = PackDashboardResponse(
+    emoji: $checkedConvert(
+      'emoji',
+      (v) => PackDashboardResponseEmoji.fromJson(v as Map<String, dynamic>),
+    ),
+    sticker: $checkedConvert(
+      'sticker',
+      (v) => PackDashboardResponseSticker.fromJson(v as Map<String, dynamic>),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$PackDashboardResponseToJson(
   PackDashboardResponse instance,

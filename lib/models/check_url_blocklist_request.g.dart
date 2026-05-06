@@ -8,7 +8,12 @@ part of 'check_url_blocklist_request.dart';
 
 CheckUrlBlocklistRequest _$CheckUrlBlocklistRequestFromJson(
   Map<String, dynamic> json,
-) => CheckUrlBlocklistRequest(url: json['url'] as String);
+) => $checkedCreate('CheckUrlBlocklistRequest', json, ($checkedConvert) {
+  final val = CheckUrlBlocklistRequest(
+    url: $checkedConvert('url', (v) => v as String),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$CheckUrlBlocklistRequestToJson(
   CheckUrlBlocklistRequest instance,

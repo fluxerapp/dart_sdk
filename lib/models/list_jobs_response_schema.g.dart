@@ -8,16 +8,23 @@ part of 'list_jobs_response_schema.dart';
 
 ListJobsResponseSchema _$ListJobsResponseSchemaFromJson(
   Map<String, dynamic> json,
-) => ListJobsResponseSchema(
-  jobs: (json['jobs'] as List<dynamic>)
-      .map((e) => JobLedgerEntrySchema.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  nextCursor: json['next_cursor'] == null
-      ? null
-      : ListJobsCursorSchema.fromJson(
-          json['next_cursor'] as Map<String, dynamic>,
-        ),
-);
+) => $checkedCreate('ListJobsResponseSchema', json, ($checkedConvert) {
+  final val = ListJobsResponseSchema(
+    jobs: $checkedConvert(
+      'jobs',
+      (v) => (v as List<dynamic>)
+          .map((e) => JobLedgerEntrySchema.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    ),
+    nextCursor: $checkedConvert(
+      'next_cursor',
+      (v) => v == null
+          ? null
+          : ListJobsCursorSchema.fromJson(v as Map<String, dynamic>),
+    ),
+  );
+  return val;
+}, fieldKeyMap: const {'nextCursor': 'next_cursor'});
 
 Map<String, dynamic> _$ListJobsResponseSchemaToJson(
   ListJobsResponseSchema instance,

@@ -8,25 +8,46 @@ part of 'voice_server_admin_response.dart';
 
 VoiceServerAdminResponse _$VoiceServerAdminResponseFromJson(
   Map<String, dynamic> json,
-) => VoiceServerAdminResponse(
-  regionId: json['region_id'] as String,
-  serverId: json['server_id'] as String,
-  endpoint: json['endpoint'] as String,
-  latitude: json['latitude'] as num?,
-  longitude: json['longitude'] as num?,
-  isActive: json['is_active'] as bool,
-  vipOnly: json['vip_only'] as bool,
-  requiredGuildFeatures: (json['required_guild_features'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-  allowedGuildIds: (json['allowed_guild_ids'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-  allowedUserIds: (json['allowed_user_ids'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-  createdAt: json['created_at'] as String?,
-  updatedAt: json['updated_at'] as String?,
+) => $checkedCreate(
+  'VoiceServerAdminResponse',
+  json,
+  ($checkedConvert) {
+    final val = VoiceServerAdminResponse(
+      regionId: $checkedConvert('region_id', (v) => v as String),
+      serverId: $checkedConvert('server_id', (v) => v as String),
+      endpoint: $checkedConvert('endpoint', (v) => v as String),
+      latitude: $checkedConvert('latitude', (v) => v as num?),
+      longitude: $checkedConvert('longitude', (v) => v as num?),
+      isActive: $checkedConvert('is_active', (v) => v as bool),
+      vipOnly: $checkedConvert('vip_only', (v) => v as bool),
+      requiredGuildFeatures: $checkedConvert(
+        'required_guild_features',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      allowedGuildIds: $checkedConvert(
+        'allowed_guild_ids',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      allowedUserIds: $checkedConvert(
+        'allowed_user_ids',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      createdAt: $checkedConvert('created_at', (v) => v as String?),
+      updatedAt: $checkedConvert('updated_at', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'regionId': 'region_id',
+    'serverId': 'server_id',
+    'isActive': 'is_active',
+    'vipOnly': 'vip_only',
+    'requiredGuildFeatures': 'required_guild_features',
+    'allowedGuildIds': 'allowed_guild_ids',
+    'allowedUserIds': 'allowed_user_ids',
+    'createdAt': 'created_at',
+    'updatedAt': 'updated_at',
+  },
 );
 
 Map<String, dynamic> _$VoiceServerAdminResponseToJson(

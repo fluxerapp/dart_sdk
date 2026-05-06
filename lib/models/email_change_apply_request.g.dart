@@ -8,17 +8,35 @@ part of 'email_change_apply_request.dart';
 
 EmailChangeApplyRequest _$EmailChangeApplyRequestFromJson(
   Map<String, dynamic> json,
-) => EmailChangeApplyRequest(
-  emailToken: json['email_token'] as String,
-  password: json['password'] as String?,
-  mfaMethod: json['mfa_method'] == null
-      ? null
-      : EmailChangeApplyRequestMfaMethodMfaMethod.fromJson(
-          json['mfa_method'] as String,
-        ),
-  mfaCode: json['mfa_code'] as String?,
-  webauthnResponse: json['webauthn_response'],
-  webauthnChallenge: json['webauthn_challenge'] as String?,
+) => $checkedCreate(
+  'EmailChangeApplyRequest',
+  json,
+  ($checkedConvert) {
+    final val = EmailChangeApplyRequest(
+      emailToken: $checkedConvert('email_token', (v) => v as String),
+      password: $checkedConvert('password', (v) => v as String?),
+      mfaMethod: $checkedConvert(
+        'mfa_method',
+        (v) => v == null
+            ? null
+            : EmailChangeApplyRequestMfaMethodMfaMethod.fromJson(v as String),
+      ),
+      mfaCode: $checkedConvert('mfa_code', (v) => v as String?),
+      webauthnResponse: $checkedConvert('webauthn_response', (v) => v),
+      webauthnChallenge: $checkedConvert(
+        'webauthn_challenge',
+        (v) => v as String?,
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'emailToken': 'email_token',
+    'mfaMethod': 'mfa_method',
+    'mfaCode': 'mfa_code',
+    'webauthnResponse': 'webauthn_response',
+    'webauthnChallenge': 'webauthn_challenge',
+  },
 );
 
 Map<String, dynamic> _$EmailChangeApplyRequestToJson(

@@ -7,16 +7,30 @@ part of 'guild_role_response.dart';
 // **************************************************************************
 
 GuildRoleResponse _$GuildRoleResponseFromJson(Map<String, dynamic> json) =>
-    GuildRoleResponse(
-      id: json['id'] as String,
-      name: json['name'] as String,
-      color: (json['color'] as num).toInt(),
-      position: (json['position'] as num).toInt(),
-      permissions: json['permissions'] as String,
-      hoist: json['hoist'] as bool,
-      mentionable: json['mentionable'] as bool,
-      hoistPosition: (json['hoist_position'] as num?)?.toInt(),
-      unicodeEmoji: json['unicode_emoji'] as String?,
+    $checkedCreate(
+      'GuildRoleResponse',
+      json,
+      ($checkedConvert) {
+        final val = GuildRoleResponse(
+          id: $checkedConvert('id', (v) => v as String),
+          name: $checkedConvert('name', (v) => v as String),
+          color: $checkedConvert('color', (v) => (v as num).toInt()),
+          position: $checkedConvert('position', (v) => (v as num).toInt()),
+          permissions: $checkedConvert('permissions', (v) => v as String),
+          hoist: $checkedConvert('hoist', (v) => v as bool),
+          mentionable: $checkedConvert('mentionable', (v) => v as bool),
+          hoistPosition: $checkedConvert(
+            'hoist_position',
+            (v) => (v as num?)?.toInt(),
+          ),
+          unicodeEmoji: $checkedConvert('unicode_emoji', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'hoistPosition': 'hoist_position',
+        'unicodeEmoji': 'unicode_emoji',
+      },
     );
 
 Map<String, dynamic> _$GuildRoleResponseToJson(GuildRoleResponse instance) =>
