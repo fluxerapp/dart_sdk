@@ -16,7 +16,7 @@ part 'user_private_response.g.dart';
 @JsonSerializable()
 class UserPrivateResponse {
   const UserPrivateResponse({
-    required this.verified,
+    required this.hasVerifiedPhone,
     required this.username,
     required this.discriminator,
     required this.globalName,
@@ -24,24 +24,25 @@ class UserPrivateResponse {
     required this.avatarColor,
     required this.privacyAgreedAt,
     required this.termsAgreedAt,
-    required this.bio,
-    required this.flags,
     required this.pendingBulkMessageDeletion,
+    required this.flags,
+    required this.unreadGiftInventoryCount,
     required this.isStaff,
     required this.acls,
     required this.traits,
     required this.email,
-    required this.unreadGiftInventoryCount,
-    required this.hasVerifiedPhone,
+    required this.hasUnreadGiftInventory,
+    required this.hasEverPurchased,
     required this.id,
+    required this.bio,
     required this.pronouns,
     required this.accentColor,
     required this.banner,
-    required this.hasUnreadGiftInventory,
+    required this.hasDismissedPremiumOnboarding,
     required this.bannerColor,
     required this.mfaEnabled,
-    required this.hasEverPurchased,
-    required this.premiumDiscriminator,
+    required this.nsfwAllowed,
+    required this.verified,
     required this.premiumType,
     required this.premiumSince,
     required this.premiumUntil,
@@ -49,25 +50,26 @@ class UserPrivateResponse {
     required this.premiumBillingCycle,
     required this.premiumLifetimeSequence,
     required this.premiumGraceEndsAt,
-    required this.nsfwAllowed,
-    required this.premiumBadgeHidden,
+    required this.premiumDiscriminator,
+    required this.requiredActions,
     required this.premiumBadgeMasked,
     required this.premiumBadgeTimestampHidden,
     required this.premiumBadgeSequenceHidden,
     required this.premiumPurchaseDisabled,
     required this.premiumEnabledOverride,
     required this.passwordLastChangedAt,
-    required this.requiredActions,
-    required this.hasDismissedPremiumOnboarding,
-    this.system,
+    required this.premiumBadgeHidden,
+    this.premiumOutOfBandTrialEndsAt,
     this.authenticatorTypes,
     this.bannerFormats,
+    this.phone,
     this.emailBounced,
     this.mentionFlags,
+    this.system,
     this.ageVerifiedAdult,
     this.bot,
     this.avatarFormats,
-    this.premiumOutOfBandTrialEndsAt,
+    this.forceInboundPhoneVerification,
   });
 
   factory UserPrivateResponse.fromJson(Map<String, Object?> json) =>
@@ -128,6 +130,10 @@ class UserPrivateResponse {
   /// Whether the current email address is marked as bounced by the mail provider
   @JsonKey(includeIfNull: false, name: 'email_bounced')
   final bool? emailBounced;
+
+  /// Always null. Retained for old-client backward compatibility — phone numbers are no longer stored on the user record.
+  @JsonKey(includeIfNull: false)
+  final String? phone;
 
   /// Whether this account has completed phone verification
   @JsonKey(name: 'has_verified_phone')
@@ -223,6 +229,10 @@ class UserPrivateResponse {
   /// Whether premium features are enabled via override
   @JsonKey(name: 'premium_enabled_override')
   final bool premiumEnabledOverride;
+
+  /// Whether this account is forced through the inbound (expensive-destination) phone verification flow regardless of prefix, for debugging
+  @JsonKey(includeIfNull: false, name: 'force_inbound_phone_verification')
+  final bool? forceInboundPhoneVerification;
 
   /// ISO8601 timestamp of the last password change
   @JsonKey(includeIfNull: true, name: 'password_last_changed_at')

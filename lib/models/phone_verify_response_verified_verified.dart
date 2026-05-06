@@ -4,32 +4,29 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-/// Current challenge status
+/// Indicates the phone number was verified successfully
 @JsonEnum()
-enum WhatsAppChallengeStatusResponseStatusStatus {
-  @JsonValue('pending')
-  pending('pending'),
-  @JsonValue('expired')
-  expired('expired'),
-  @JsonValue('completed')
-  completed('completed'),
+enum PhoneVerifyResponseVerifiedVerified {
+  /// The name has been replaced because it contains a keyword. Original name: `true`.
+  @JsonValue(true)
+  valueTrue(true),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
   $unknown(null);
 
-  const WhatsAppChallengeStatusResponseStatusStatus(this.json);
+  const PhoneVerifyResponseVerifiedVerified(this.json);
 
-  factory WhatsAppChallengeStatusResponseStatusStatus.fromJson(String json) =>
+  factory PhoneVerifyResponseVerifiedVerified.fromJson(bool json) =>
       values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
-  final String? json;
+  final bool? json;
 
-  String toJson() => json ?? 'null';
+  bool? toJson() => json;
 
   @override
-  String toString() => json ?? super.toString();
+  String toString() => json?.toString() ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<WhatsAppChallengeStatusResponseStatusStatus> get $valuesDefined =>
+  static List<PhoneVerifyResponseVerifiedVerified> get $valuesDefined =>
       values.where((value) => value != $unknown).toList();
 }

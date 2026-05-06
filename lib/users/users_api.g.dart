@@ -1308,50 +1308,25 @@ class _UsersApi implements UsersApi {
   }
 
   @override
-  Future<void> clearVerifiedPhone({
-    required SudoVerificationSchema body,
-  }) async {
+  Future<InboundSmsChallengeStartResponse> startInboundPhoneChallenge() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
-    final _options = _setStreamType<void>(
-      Options(method: 'DELETE', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/users/@me/phone',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    await _dio.fetch<void>(_options);
-  }
-
-  @override
-  Future<WhatsAppChallengeIssueResponse> issueWhatsappPhoneChallenge({
-    required EmptyBodyRequest body,
-  }) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
-    final _options = _setStreamType<WhatsAppChallengeIssueResponse>(
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<InboundSmsChallengeStartResponse>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/users/@me/phone/whatsapp-challenge',
+            '/users/@me/phone/inbound-challenge',
             queryParameters: queryParameters,
             data: _data,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, Object?>>(_options);
-    late WhatsAppChallengeIssueResponse _value;
+    late InboundSmsChallengeStartResponse _value;
     try {
-      _value = WhatsAppChallengeIssueResponse.fromJson(_result.data!);
+      _value = InboundSmsChallengeStartResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
@@ -1360,27 +1335,58 @@ class _UsersApi implements UsersApi {
   }
 
   @override
-  Future<WhatsAppChallengeStatusResponse> getWhatsappPhoneChallengeStatus({
-    required String token,
+  Future<PhoneSendVerificationResponse> sendPhoneVerificationCode({
+    required PhoneSendVerificationRequest body,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'token': token};
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<WhatsAppChallengeStatusResponse>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<PhoneSendVerificationResponse>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/users/@me/phone/whatsapp-challenge/status',
+            '/users/@me/phone/send-verification',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late PhoneSendVerificationResponse _value;
+    try {
+      _value = PhoneSendVerificationResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<PhoneVerifyResponse> verifyPhoneCode({
+    required PhoneVerifyRequest body,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<PhoneVerifyResponse>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/users/@me/phone/verify',
             queryParameters: queryParameters,
             data: _data,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, Object?>>(_options);
-    late WhatsAppChallengeStatusResponse _value;
+    late PhoneVerifyResponse _value;
     try {
-      _value = WhatsAppChallengeStatusResponse.fromJson(_result.data!);
+      _value = PhoneVerifyResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
@@ -2050,6 +2056,33 @@ class _UsersApi implements UsersApi {
     late UserSettingsResponse _value;
     try {
       _value = UserSettingsResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<SudoMfaMethodsResponse> listSudoMfaMethods() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<SudoMfaMethodsResponse>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/users/@me/sudo/mfa-methods',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late SudoMfaMethodsResponse _value;
+    try {
+      _value = SudoMfaMethodsResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;

@@ -259,6 +259,8 @@ enum ApiErrorCode {
   invalidPermissionsNegative('INVALID_PERMISSIONS_NEGATIVE'),
   @JsonValue('INVALID_PHONE_NUMBER')
   invalidPhoneNumber('INVALID_PHONE_NUMBER'),
+  @JsonValue('INVALID_PHONE_VERIFICATION_CODE')
+  invalidPhoneVerificationCode('INVALID_PHONE_VERIFICATION_CODE'),
   @JsonValue('INVALID_REDIRECT_URI')
   invalidRedirectUri('INVALID_REDIRECT_URI'),
   @JsonValue('INVALID_REQUEST')
@@ -419,6 +421,10 @@ enum ApiErrorCode {
   passkeysDisabled('PASSKEYS_DISABLED'),
   @JsonValue('PHONE_ADD_NOT_ELIGIBLE')
   phoneAddNotEligible('PHONE_ADD_NOT_ELIGIBLE'),
+  @JsonValue('PHONE_ALREADY_USED')
+  phoneAlreadyUsed('PHONE_ALREADY_USED'),
+  @JsonValue('PHONE_RATE_LIMIT_EXCEEDED')
+  phoneRateLimitExceeded('PHONE_RATE_LIMIT_EXCEEDED'),
   @JsonValue('PHONE_VERIFICATION_REQUIRED')
   phoneVerificationRequired('PHONE_VERIFICATION_REQUIRED'),
   @JsonValue('PREMIUM_PURCHASE_BLOCKED')
@@ -443,6 +449,8 @@ enum ApiErrorCode {
   sessionTokenMismatch('SESSION_TOKEN_MISMATCH'),
   @JsonValue('SLOWMODE_RATE_LIMITED')
   slowmodeRateLimited('SLOWMODE_RATE_LIMITED'),
+  @JsonValue('SMS_VERIFICATION_UNAVAILABLE')
+  smsVerificationUnavailable('SMS_VERIFICATION_UNAVAILABLE'),
   @JsonValue('SSO_REQUIRED')
   ssoRequired('SSO_REQUIRED'),
   @JsonValue('STREAM_KEY_CHANNEL_MISMATCH')

@@ -33,6 +33,7 @@ import '../models/harvest_creation_response_schema.dart';
 import '../models/harvest_download_url_response.dart';
 import '../models/harvest_status_response_schema.dart';
 import '../models/harvest_status_response_schema_nullable.dart';
+import '../models/inbound_sms_challenge_start_response.dart';
 import '../models/message_content_request.dart';
 import '../models/message_flags.dart';
 import '../models/message_list_response.dart';
@@ -46,6 +47,10 @@ import '../models/password_change_start_response.dart';
 import '../models/password_change_ticket_request.dart';
 import '../models/password_change_verify_request.dart';
 import '../models/password_change_verify_response.dart';
+import '../models/phone_send_verification_request.dart';
+import '../models/phone_send_verification_response.dart';
+import '../models/phone_verify_request.dart';
+import '../models/phone_verify_response.dart';
 import '../models/preload_messages_request.dart';
 import '../models/preload_messages_response.dart';
 import '../models/push_rotate_request.dart';
@@ -61,6 +66,7 @@ import '../models/saved_message_entry_list_response.dart';
 import '../models/scheduled_message_response_schema.dart';
 import '../models/snowflake_type.dart';
 import '../models/success_response.dart';
+import '../models/sudo_mfa_methods_response.dart';
 import '../models/sudo_verification_schema.dart';
 import '../models/user_guild_settings_response.dart';
 import '../models/user_guild_settings_update_request.dart';
@@ -79,8 +85,6 @@ import '../models/web_authn_challenge_response.dart';
 import '../models/web_authn_credential_list_response.dart';
 import '../models/web_authn_credential_update_request.dart';
 import '../models/web_authn_register_request.dart';
-import '../models/whats_app_challenge_issue_response.dart';
-import '../models/whats_app_challenge_status_response.dart';
 
 part 'users_api.g.dart';
 
@@ -540,32 +544,30 @@ abstract class UsersApi {
     @Body() required PasswordChangeVerifyRequest body,
   });
 
-  /// Clear verified-phone flag.
+  /// Start an inbound SMS challenge.
   ///
-  /// Clear the verified-phone flag from the current account. The phone number itself is never stored. Requires sudo mode verification.
+  /// For very-high-risk registrations the platform requires the user to text a one-time code to the platform's number, instead of receiving a code from the platform. This endpoint generates the code and the destination number to display.
+  @POST('/users/@me/phone/inbound-challenge')
+  Future<InboundSmsChallengeStartResponse> startInboundPhoneChallenge();
+
+  /// Send phone verification code.
+  ///
+  /// Send a one-time code on the requested channel. Defaults to the first available channel from server policy. Pass channel="sms" to request SMS (only honoured for SMS-allowlisted destinations) or channel="inbound_challenge" to receive challenge details to text in. Expensive outbound destinations always downgrade to an inbound challenge.
   ///
   /// [body] - Name not received - field will be skipped.
-  @DELETE('/users/@me/phone')
-  Future<void> clearVerifiedPhone({
-    @Body() required SudoVerificationSchema body,
+  @POST('/users/@me/phone/send-verification')
+  Future<PhoneSendVerificationResponse> sendPhoneVerificationCode({
+    @Body() required PhoneSendVerificationRequest body,
   });
 
-  /// Issue WhatsApp phone challenge.
+  /// Verify phone code.
   ///
-  /// Create a receive-only WhatsApp challenge. The user sends the returned token to the configured WhatsApp number to verify phone possession.
+  /// Verify a phone number by confirming the SMS verification code. Returns phone verification status.
   ///
   /// [body] - Name not received - field will be skipped.
-  @POST('/users/@me/phone/whatsapp-challenge')
-  Future<WhatsAppChallengeIssueResponse> issueWhatsappPhoneChallenge({
-    @Body() required EmptyBodyRequest body,
-  });
-
-  /// Get WhatsApp phone challenge status.
-  ///
-  /// Poll the current status for a WhatsApp receive-only phone verification challenge.
-  @GET('/users/@me/phone/whatsapp-challenge/status')
-  Future<WhatsAppChallengeStatusResponse> getWhatsappPhoneChallengeStatus({
-    @Query('token') required String token,
+  @POST('/users/@me/phone/verify')
+  Future<PhoneVerifyResponse> verifyPhoneCode({
+    @Body() required PhoneVerifyRequest body,
   });
 
   /// Preload messages for channels.
@@ -819,6 +821,12 @@ abstract class UsersApi {
   Future<UserSettingsResponse> updateCurrentUserSettings({
     @Body() required UserSettingsUpdateRequest body,
   });
+
+  /// List sudo multi-factor authentication methods.
+  ///
+  /// Retrieve all available MFA methods for sudo mode verification (TOTP, WebAuthn). Requires authentication.
+  @GET('/users/@me/sudo/mfa-methods')
+  Future<SudoMfaMethodsResponse> listSudoMfaMethods();
 
   /// Get sudo WebAuthn authentication options.
   ///

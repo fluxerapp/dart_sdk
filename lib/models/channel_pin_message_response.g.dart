@@ -31,6 +31,9 @@ ChannelPinMessageResponse _$ChannelPinMessageResponseFromJson(
   mentionRoles: (json['mention_roles'] as List<dynamic>?)
       ?.map((e) => e as String)
       .toList(),
+  users: (json['users'] as List<dynamic>?)
+      ?.map((e) => UserPartialResponse.fromJson(e as Map<String, dynamic>))
+      .toList(),
   embeds: (json['embeds'] as List<dynamic>?)
       ?.map((e) => MessageEmbedResponse.fromJson(e as Map<String, dynamic>))
       .toList(),
@@ -76,6 +79,7 @@ Map<String, dynamic> _$ChannelPinMessageResponseToJson(
   'tts': ?instance.tts,
   'mentions': ?instance.mentions,
   'mention_roles': ?instance.mentionRoles,
+  'users': ?instance.users,
   'embeds': ?instance.embeds,
   'attachments': ?instance.attachments,
   'stickers': ?instance.stickers,
