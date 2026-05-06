@@ -8,7 +8,17 @@ part of 'lookup_application_request.dart';
 
 LookupApplicationRequest _$LookupApplicationRequestFromJson(
   Map<String, dynamic> json,
-) => LookupApplicationRequest(applicationId: json['application_id'] as String);
+) => $checkedCreate(
+  'LookupApplicationRequest',
+  json,
+  ($checkedConvert) {
+    final val = LookupApplicationRequest(
+      applicationId: $checkedConvert('application_id', (v) => v as String),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'applicationId': 'application_id'},
+);
 
 Map<String, dynamic> _$LookupApplicationRequestToJson(
   LookupApplicationRequest instance,

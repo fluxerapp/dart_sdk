@@ -8,17 +8,20 @@ part of 'o_auth2_user_info_response.dart';
 
 OAuth2UserInfoResponse _$OAuth2UserInfoResponseFromJson(
   Map<String, dynamic> json,
-) => OAuth2UserInfoResponse(
-  sub: json['sub'] as String,
-  id: json['id'] as String,
-  username: json['username'] as String,
-  discriminator: json['discriminator'] as String,
-  globalName: json['global_name'] as String?,
-  avatar: json['avatar'] as String?,
-  email: json['email'] as String?,
-  verified: json['verified'] as bool?,
-  flags: (json['flags'] as num?)?.toInt(),
-);
+) => $checkedCreate('OAuth2UserInfoResponse', json, ($checkedConvert) {
+  final val = OAuth2UserInfoResponse(
+    sub: $checkedConvert('sub', (v) => v as String),
+    id: $checkedConvert('id', (v) => v as String),
+    username: $checkedConvert('username', (v) => v as String),
+    discriminator: $checkedConvert('discriminator', (v) => v as String),
+    globalName: $checkedConvert('global_name', (v) => v as String?),
+    avatar: $checkedConvert('avatar', (v) => v as String?),
+    email: $checkedConvert('email', (v) => v as String?),
+    verified: $checkedConvert('verified', (v) => v as bool?),
+    flags: $checkedConvert('flags', (v) => (v as num?)?.toInt()),
+  );
+  return val;
+}, fieldKeyMap: const {'globalName': 'global_name'});
 
 Map<String, dynamic> _$OAuth2UserInfoResponseToJson(
   OAuth2UserInfoResponse instance,

@@ -8,18 +8,27 @@ part of 'limit_config_update_request_limit_config.dart';
 
 LimitConfigUpdateRequestLimitConfig
 _$LimitConfigUpdateRequestLimitConfigFromJson(Map<String, dynamic> json) =>
-    LimitConfigUpdateRequestLimitConfig(
-      rules: (json['rules'] as List<dynamic>)
-          .map(
-            (e) => LimitConfigUpdateRequestLimitConfigRules.fromJson(
-              e as Map<String, dynamic>,
-            ),
-          )
-          .toList(),
-      traitDefinitions: (json['traitDefinitions'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-    );
+    $checkedCreate('LimitConfigUpdateRequestLimitConfig', json, (
+      $checkedConvert,
+    ) {
+      final val = LimitConfigUpdateRequestLimitConfig(
+        rules: $checkedConvert(
+          'rules',
+          (v) => (v as List<dynamic>)
+              .map(
+                (e) => LimitConfigUpdateRequestLimitConfigRules.fromJson(
+                  e as Map<String, dynamic>,
+                ),
+              )
+              .toList(),
+        ),
+        traitDefinitions: $checkedConvert(
+          'traitDefinitions',
+          (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+        ),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$LimitConfigUpdateRequestLimitConfigToJson(
   LimitConfigUpdateRequestLimitConfig instance,

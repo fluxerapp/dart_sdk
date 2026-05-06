@@ -8,11 +8,15 @@ part of 'username_suggestions_response.dart';
 
 UsernameSuggestionsResponse _$UsernameSuggestionsResponseFromJson(
   Map<String, dynamic> json,
-) => UsernameSuggestionsResponse(
-  suggestions: (json['suggestions'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-);
+) => $checkedCreate('UsernameSuggestionsResponse', json, ($checkedConvert) {
+  final val = UsernameSuggestionsResponse(
+    suggestions: $checkedConvert(
+      'suggestions',
+      (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$UsernameSuggestionsResponseToJson(
   UsernameSuggestionsResponse instance,

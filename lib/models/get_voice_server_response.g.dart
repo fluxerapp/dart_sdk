@@ -8,13 +8,17 @@ part of 'get_voice_server_response.dart';
 
 GetVoiceServerResponse _$GetVoiceServerResponseFromJson(
   Map<String, dynamic> json,
-) => GetVoiceServerResponse(
-  server: json['server'] == null
-      ? null
-      : VoiceServerAdminResponse.fromJson(
-          json['server'] as Map<String, dynamic>,
-        ),
-);
+) => $checkedCreate('GetVoiceServerResponse', json, ($checkedConvert) {
+  final val = GetVoiceServerResponse(
+    server: $checkedConvert(
+      'server',
+      (v) => v == null
+          ? null
+          : VoiceServerAdminResponse.fromJson(v as Map<String, dynamic>),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$GetVoiceServerResponseToJson(
   GetVoiceServerResponse instance,

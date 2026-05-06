@@ -8,10 +8,13 @@ part of 'call_eligibility_response.dart';
 
 CallEligibilityResponse _$CallEligibilityResponseFromJson(
   Map<String, dynamic> json,
-) => CallEligibilityResponse(
-  ringable: json['ringable'] as bool,
-  silent: json['silent'] as bool,
-);
+) => $checkedCreate('CallEligibilityResponse', json, ($checkedConvert) {
+  final val = CallEligibilityResponse(
+    ringable: $checkedConvert('ringable', (v) => v as bool),
+    silent: $checkedConvert('silent', (v) => v as bool),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$CallEligibilityResponseToJson(
   CallEligibilityResponse instance,

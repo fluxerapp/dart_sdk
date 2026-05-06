@@ -8,10 +8,21 @@ part of 'admin_billing_refund_request.dart';
 
 AdminBillingRefundRequest _$AdminBillingRefundRequestFromJson(
   Map<String, dynamic> json,
-) => AdminBillingRefundRequest(
-  paymentIntentId: json['payment_intent_id'] as String,
-  amountCents: (json['amount_cents'] as num?)?.toInt(),
-  reason: json['reason'] as String?,
+) => $checkedCreate(
+  'AdminBillingRefundRequest',
+  json,
+  ($checkedConvert) {
+    final val = AdminBillingRefundRequest(
+      paymentIntentId: $checkedConvert('payment_intent_id', (v) => v as String),
+      amountCents: $checkedConvert('amount_cents', (v) => (v as num?)?.toInt()),
+      reason: $checkedConvert('reason', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'paymentIntentId': 'payment_intent_id',
+    'amountCents': 'amount_cents',
+  },
 );
 
 Map<String, dynamic> _$AdminBillingRefundRequestToJson(

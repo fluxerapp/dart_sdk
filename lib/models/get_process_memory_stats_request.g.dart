@@ -8,7 +8,12 @@ part of 'get_process_memory_stats_request.dart';
 
 GetProcessMemoryStatsRequest _$GetProcessMemoryStatsRequestFromJson(
   Map<String, dynamic> json,
-) => GetProcessMemoryStatsRequest(limit: (json['limit'] as num?)?.toInt());
+) => $checkedCreate('GetProcessMemoryStatsRequest', json, ($checkedConvert) {
+  final val = GetProcessMemoryStatsRequest(
+    limit: $checkedConvert('limit', (v) => (v as num?)?.toInt()),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$GetProcessMemoryStatsRequestToJson(
   GetProcessMemoryStatsRequest instance,

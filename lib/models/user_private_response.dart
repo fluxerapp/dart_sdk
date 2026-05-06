@@ -5,6 +5,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'int32_type.dart';
+import 'mention_reply_preferences.dart';
 import 'public_user_flags.dart';
 import 'user_authenticator_types.dart';
 import 'user_premium_types.dart';
@@ -15,7 +16,7 @@ part 'user_private_response.g.dart';
 @JsonSerializable()
 class UserPrivateResponse {
   const UserPrivateResponse({
-    required this.bio,
+    required this.hasVerifiedPhone,
     required this.username,
     required this.discriminator,
     required this.globalName,
@@ -25,21 +26,22 @@ class UserPrivateResponse {
     required this.termsAgreedAt,
     required this.pendingBulkMessageDeletion,
     required this.flags,
+    required this.unreadGiftInventoryCount,
     required this.isStaff,
     required this.acls,
     required this.traits,
     required this.email,
-    required this.usedMobileClient,
-    required this.phone,
-    required this.hasVerifiedPhone,
+    required this.hasUnreadGiftInventory,
+    required this.hasEverPurchased,
     required this.id,
+    required this.bio,
     required this.pronouns,
     required this.accentColor,
     required this.banner,
-    required this.unreadGiftInventoryCount,
+    required this.hasDismissedPremiumOnboarding,
     required this.bannerColor,
     required this.mfaEnabled,
-    required this.hasUnreadGiftInventory,
+    required this.nsfwAllowed,
     required this.verified,
     required this.premiumType,
     required this.premiumSince,
@@ -49,21 +51,20 @@ class UserPrivateResponse {
     required this.premiumLifetimeSequence,
     required this.premiumGraceEndsAt,
     required this.premiumDiscriminator,
-    required this.premiumBadgeHidden,
-    required this.hasEverPurchased,
+    required this.requiredActions,
+    required this.premiumBadgeMasked,
     required this.premiumBadgeTimestampHidden,
     required this.premiumBadgeSequenceHidden,
     required this.premiumPurchaseDisabled,
     required this.premiumEnabledOverride,
-    required this.hasDismissedPremiumOnboarding,
     required this.passwordLastChangedAt,
-    required this.requiredActions,
-    required this.nsfwAllowed,
-    required this.premiumBadgeMasked,
+    required this.premiumBadgeHidden,
     this.premiumOutOfBandTrialEndsAt,
     this.authenticatorTypes,
     this.bannerFormats,
+    this.phone,
     this.emailBounced,
+    this.mentionFlags,
     this.system,
     this.ageVerifiedAdult,
     this.bot,
@@ -108,6 +109,10 @@ class UserPrivateResponse {
   final bool? system;
   final PublicUserFlags flags;
 
+  /// The user's account-wide reply mention preference
+  @JsonKey(includeIfNull: false, name: 'mention_flags')
+  final MentionReplyPreferences? mentionFlags;
+
   /// Whether the user has staff permissions
   @JsonKey(name: 'is_staff')
   final bool isStaff;
@@ -126,8 +131,8 @@ class UserPrivateResponse {
   @JsonKey(includeIfNull: false, name: 'email_bounced')
   final bool? emailBounced;
 
-  /// The phone number associated with the account
-  @JsonKey(includeIfNull: true)
+  /// Always null. Retained for old-client backward compatibility — phone numbers are no longer stored on the user record.
+  @JsonKey(includeIfNull: false)
   final String? phone;
 
   /// Whether this account has completed phone verification
@@ -256,10 +261,6 @@ class UserPrivateResponse {
   /// The number of unread gift inventory items
   @JsonKey(name: 'unread_gift_inventory_count')
   final int unreadGiftInventoryCount;
-
-  /// Whether the user has ever used the mobile client
-  @JsonKey(name: 'used_mobile_client')
-  final bool usedMobileClient;
 
   /// Information about a pending bulk message deletion request
   @JsonKey(includeIfNull: true, name: 'pending_bulk_message_deletion')

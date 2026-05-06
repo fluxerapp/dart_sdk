@@ -8,13 +8,29 @@ part of 'create_system_dm_job_request.dart';
 
 CreateSystemDmJobRequest _$CreateSystemDmJobRequestFromJson(
   Map<String, dynamic> json,
-) => CreateSystemDmJobRequest(
-  content: json['content'] as String,
-  registrationStart: json['registration_start'] as String?,
-  registrationEnd: json['registration_end'] as String?,
-  excludedGuildIds: (json['excluded_guild_ids'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
+) => $checkedCreate(
+  'CreateSystemDmJobRequest',
+  json,
+  ($checkedConvert) {
+    final val = CreateSystemDmJobRequest(
+      content: $checkedConvert('content', (v) => v as String),
+      registrationStart: $checkedConvert(
+        'registration_start',
+        (v) => v as String?,
+      ),
+      registrationEnd: $checkedConvert('registration_end', (v) => v as String?),
+      excludedGuildIds: $checkedConvert(
+        'excluded_guild_ids',
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'registrationStart': 'registration_start',
+    'registrationEnd': 'registration_end',
+    'excludedGuildIds': 'excluded_guild_ids',
+  },
 );
 
 Map<String, dynamic> _$CreateSystemDmJobRequestToJson(

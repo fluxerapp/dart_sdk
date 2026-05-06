@@ -8,7 +8,12 @@ part of 'web_authn_challenge_response.dart';
 
 WebAuthnChallengeResponse _$WebAuthnChallengeResponseFromJson(
   Map<String, dynamic> json,
-) => WebAuthnChallengeResponse(challenge: json['challenge'] as String);
+) => $checkedCreate('WebAuthnChallengeResponse', json, ($checkedConvert) {
+  final val = WebAuthnChallengeResponse(
+    challenge: $checkedConvert('challenge', (v) => v as String),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$WebAuthnChallengeResponseToJson(
   WebAuthnChallengeResponse instance,

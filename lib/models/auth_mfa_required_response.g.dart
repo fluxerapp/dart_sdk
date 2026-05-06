@@ -8,16 +8,26 @@ part of 'auth_mfa_required_response.dart';
 
 AuthMfaRequiredResponse _$AuthMfaRequiredResponseFromJson(
   Map<String, dynamic> json,
-) => AuthMfaRequiredResponse(
-  mfa: AuthMfaRequiredResponseMfaMfa.fromJson(json['mfa'] as bool),
-  ticket: json['ticket'] as String,
-  allowedMethods: (json['allowed_methods'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-  sms: json['sms'] as bool,
-  totp: json['totp'] as bool,
-  webauthn: json['webauthn'] as bool,
-  smsPhoneHint: json['sms_phone_hint'] as String?,
+) => $checkedCreate(
+  'AuthMfaRequiredResponse',
+  json,
+  ($checkedConvert) {
+    final val = AuthMfaRequiredResponse(
+      mfa: $checkedConvert(
+        'mfa',
+        (v) => AuthMfaRequiredResponseMfaMfa.fromJson(v as bool),
+      ),
+      ticket: $checkedConvert('ticket', (v) => v as String),
+      allowedMethods: $checkedConvert(
+        'allowed_methods',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      totp: $checkedConvert('totp', (v) => v as bool),
+      webauthn: $checkedConvert('webauthn', (v) => v as bool),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'allowedMethods': 'allowed_methods'},
 );
 
 Map<String, dynamic> _$AuthMfaRequiredResponseToJson(
@@ -26,8 +36,6 @@ Map<String, dynamic> _$AuthMfaRequiredResponseToJson(
   'mfa': instance.mfa,
   'ticket': instance.ticket,
   'allowed_methods': instance.allowedMethods,
-  'sms_phone_hint': ?instance.smsPhoneHint,
-  'sms': instance.sms,
   'totp': instance.totp,
   'webauthn': instance.webauthn,
 };

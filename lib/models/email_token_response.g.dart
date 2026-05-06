@@ -7,7 +7,12 @@ part of 'email_token_response.dart';
 // **************************************************************************
 
 EmailTokenResponse _$EmailTokenResponseFromJson(Map<String, dynamic> json) =>
-    EmailTokenResponse(emailToken: json['email_token'] as String);
+    $checkedCreate('EmailTokenResponse', json, ($checkedConvert) {
+      final val = EmailTokenResponse(
+        emailToken: $checkedConvert('email_token', (v) => v as String),
+      );
+      return val;
+    }, fieldKeyMap: const {'emailToken': 'email_token'});
 
 Map<String, dynamic> _$EmailTokenResponseToJson(EmailTokenResponse instance) =>
     <String, dynamic>{'email_token': instance.emailToken};

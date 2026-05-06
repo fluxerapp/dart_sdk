@@ -8,10 +8,15 @@ part of 'list_voice_diagnostic_uploads_request.dart';
 
 ListVoiceDiagnosticUploadsRequest _$ListVoiceDiagnosticUploadsRequestFromJson(
   Map<String, dynamic> json,
-) => ListVoiceDiagnosticUploadsRequest(
-  userId: json['user_id'] as String,
-  limit: (json['limit'] as num?)?.toInt(),
-);
+) => $checkedCreate('ListVoiceDiagnosticUploadsRequest', json, (
+  $checkedConvert,
+) {
+  final val = ListVoiceDiagnosticUploadsRequest(
+    userId: $checkedConvert('user_id', (v) => v as String),
+    limit: $checkedConvert('limit', (v) => (v as num?)?.toInt()),
+  );
+  return val;
+}, fieldKeyMap: const {'userId': 'user_id'});
 
 Map<String, dynamic> _$ListVoiceDiagnosticUploadsRequestToJson(
   ListVoiceDiagnosticUploadsRequest instance,

@@ -8,13 +8,28 @@ part of 'scheduled_message_reference_schema.dart';
 
 ScheduledMessageReferenceSchema _$ScheduledMessageReferenceSchemaFromJson(
   Map<String, dynamic> json,
-) => ScheduledMessageReferenceSchema(
-  messageId: json['message_id'] as String,
-  channelId: json['channel_id'] as String?,
-  guildId: json['guild_id'] as String?,
-  type: json['type'] == null
-      ? null
-      : MessageReferenceType.fromJson((json['type'] as num).toInt()),
+) => $checkedCreate(
+  'ScheduledMessageReferenceSchema',
+  json,
+  ($checkedConvert) {
+    final val = ScheduledMessageReferenceSchema(
+      messageId: $checkedConvert('message_id', (v) => v as String),
+      channelId: $checkedConvert('channel_id', (v) => v as String?),
+      guildId: $checkedConvert('guild_id', (v) => v as String?),
+      type: $checkedConvert(
+        'type',
+        (v) => v == null
+            ? null
+            : MessageReferenceType.fromJson((v as num).toInt()),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'messageId': 'message_id',
+    'channelId': 'channel_id',
+    'guildId': 'guild_id',
+  },
 );
 
 Map<String, dynamic> _$ScheduledMessageReferenceSchemaToJson(

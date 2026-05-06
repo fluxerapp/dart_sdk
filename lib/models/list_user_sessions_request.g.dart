@@ -8,7 +8,12 @@ part of 'list_user_sessions_request.dart';
 
 ListUserSessionsRequest _$ListUserSessionsRequestFromJson(
   Map<String, dynamic> json,
-) => ListUserSessionsRequest(userId: json['user_id'] as String);
+) => $checkedCreate('ListUserSessionsRequest', json, ($checkedConvert) {
+  final val = ListUserSessionsRequest(
+    userId: $checkedConvert('user_id', (v) => v as String),
+  );
+  return val;
+}, fieldKeyMap: const {'userId': 'user_id'});
 
 Map<String, dynamic> _$ListUserSessionsRequestToJson(
   ListUserSessionsRequest instance,

@@ -8,12 +8,20 @@ part of 'list_user_guilds_request.dart';
 
 ListUserGuildsRequest _$ListUserGuildsRequestFromJson(
   Map<String, dynamic> json,
-) => ListUserGuildsRequest(
-  userId: json['user_id'] as String,
-  before: json['before'] as String?,
-  after: json['after'] as String?,
-  limit: (json['limit'] as num?)?.toInt(),
-  withCounts: json['with_counts'] as bool?,
+) => $checkedCreate(
+  'ListUserGuildsRequest',
+  json,
+  ($checkedConvert) {
+    final val = ListUserGuildsRequest(
+      userId: $checkedConvert('user_id', (v) => v as String),
+      before: $checkedConvert('before', (v) => v as String?),
+      after: $checkedConvert('after', (v) => v as String?),
+      limit: $checkedConvert('limit', (v) => (v as num?)?.toInt()),
+      withCounts: $checkedConvert('with_counts', (v) => v as bool?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'userId': 'user_id', 'withCounts': 'with_counts'},
 );
 
 Map<String, dynamic> _$ListUserGuildsRequestToJson(

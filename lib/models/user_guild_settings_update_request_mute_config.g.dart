@@ -8,9 +8,23 @@ part of 'user_guild_settings_update_request_mute_config.dart';
 
 UserGuildSettingsUpdateRequestMuteConfig
 _$UserGuildSettingsUpdateRequestMuteConfigFromJson(Map<String, dynamic> json) =>
-    UserGuildSettingsUpdateRequestMuteConfig(
-      selectedTimeWindow: (json['selected_time_window'] as num).toInt(),
-      endTime: json['end_time'],
+    $checkedCreate(
+      'UserGuildSettingsUpdateRequestMuteConfig',
+      json,
+      ($checkedConvert) {
+        final val = UserGuildSettingsUpdateRequestMuteConfig(
+          selectedTimeWindow: $checkedConvert(
+            'selected_time_window',
+            (v) => (v as num).toInt(),
+          ),
+          endTime: $checkedConvert('end_time', (v) => v),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'selectedTimeWindow': 'selected_time_window',
+        'endTime': 'end_time',
+      },
     );
 
 Map<String, dynamic> _$UserGuildSettingsUpdateRequestMuteConfigToJson(

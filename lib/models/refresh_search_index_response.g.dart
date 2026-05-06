@@ -8,12 +8,16 @@ part of 'refresh_search_index_response.dart';
 
 RefreshSearchIndexResponse _$RefreshSearchIndexResponseFromJson(
   Map<String, dynamic> json,
-) => RefreshSearchIndexResponse(
-  success: RefreshSearchIndexResponseSuccessSuccess.fromJson(
-    json['success'] as bool,
-  ),
-  jobId: json['job_id'] as String,
-);
+) => $checkedCreate('RefreshSearchIndexResponse', json, ($checkedConvert) {
+  final val = RefreshSearchIndexResponse(
+    success: $checkedConvert(
+      'success',
+      (v) => RefreshSearchIndexResponseSuccessSuccess.fromJson(v as bool),
+    ),
+    jobId: $checkedConvert('job_id', (v) => v as String),
+  );
+  return val;
+}, fieldKeyMap: const {'jobId': 'job_id'});
 
 Map<String, dynamic> _$RefreshSearchIndexResponseToJson(
   RefreshSearchIndexResponse instance,

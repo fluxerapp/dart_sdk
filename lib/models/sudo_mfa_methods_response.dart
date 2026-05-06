@@ -10,7 +10,6 @@ part 'sudo_mfa_methods_response.g.dart';
 class SudoMfaMethodsResponse {
   const SudoMfaMethodsResponse({
     required this.totp,
-    required this.sms,
     required this.webauthn,
     required this.hasMfa,
   });
@@ -20,9 +19,6 @@ class SudoMfaMethodsResponse {
 
   /// Whether TOTP is enabled
   final bool totp;
-
-  /// Whether SMS MFA is enabled
-  final bool sms;
 
   /// Whether WebAuthn is enabled
   final bool webauthn;

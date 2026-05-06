@@ -8,23 +8,42 @@ part of 'lookup_guild_response_guild_channels.dart';
 
 LookupGuildResponseGuildChannels _$LookupGuildResponseGuildChannelsFromJson(
   Map<String, dynamic> json,
-) => LookupGuildResponseGuildChannels(
-  id: json['id'] as String,
-  name: json['name'] as String?,
-  type: LookupGuildResponseGuildChannelsTypeType.fromJson(
-    (json['type'] as num).toInt(),
-  ),
-  position: (json['position'] as num).toInt(),
-  parentId: json['parent_id'] as String?,
-  nsfw: json['nsfw'] as bool?,
-  url: json['url'] as String?,
-  nsfwOverride: json['nsfw_override'] as bool?,
-  contentWarningLevel: json['content_warning_level'] == null
-      ? null
-      : ContentWarningLevel.fromJson(
-          (json['content_warning_level'] as num).toInt(),
+) => $checkedCreate(
+  'LookupGuildResponseGuildChannels',
+  json,
+  ($checkedConvert) {
+    final val = LookupGuildResponseGuildChannels(
+      id: $checkedConvert('id', (v) => v as String),
+      name: $checkedConvert('name', (v) => v as String?),
+      type: $checkedConvert(
+        'type',
+        (v) => LookupGuildResponseGuildChannelsTypeType.fromJson(
+          (v as num).toInt(),
         ),
-  contentWarningText: json['content_warning_text'] as String?,
+      ),
+      position: $checkedConvert('position', (v) => (v as num).toInt()),
+      parentId: $checkedConvert('parent_id', (v) => v as String?),
+      nsfw: $checkedConvert('nsfw', (v) => v as bool?),
+      url: $checkedConvert('url', (v) => v as String?),
+      nsfwOverride: $checkedConvert('nsfw_override', (v) => v as bool?),
+      contentWarningLevel: $checkedConvert(
+        'content_warning_level',
+        (v) =>
+            v == null ? null : ContentWarningLevel.fromJson((v as num).toInt()),
+      ),
+      contentWarningText: $checkedConvert(
+        'content_warning_text',
+        (v) => v as String?,
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'parentId': 'parent_id',
+    'nsfwOverride': 'nsfw_override',
+    'contentWarningLevel': 'content_warning_level',
+    'contentWarningText': 'content_warning_text',
+  },
 );
 
 Map<String, dynamic> _$LookupGuildResponseGuildChannelsToJson(

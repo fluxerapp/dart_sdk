@@ -7,15 +7,22 @@ part of 'limit_rule_response.dart';
 // **************************************************************************
 
 LimitRuleResponse _$LimitRuleResponseFromJson(Map<String, dynamic> json) =>
-    LimitRuleResponse(
-      id: json['id'] as String,
-      overrides: Map<String, num>.from(json['overrides'] as Map),
-      filters: json['filters'] == null
-          ? null
-          : LimitFilterResponse.fromJson(
-              json['filters'] as Map<String, dynamic>,
-            ),
-    );
+    $checkedCreate('LimitRuleResponse', json, ($checkedConvert) {
+      final val = LimitRuleResponse(
+        id: $checkedConvert('id', (v) => v as String),
+        overrides: $checkedConvert(
+          'overrides',
+          (v) => Map<String, num>.from(v as Map),
+        ),
+        filters: $checkedConvert(
+          'filters',
+          (v) => v == null
+              ? null
+              : LimitFilterResponse.fromJson(v as Map<String, dynamic>),
+        ),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$LimitRuleResponseToJson(LimitRuleResponse instance) =>
     <String, dynamic>{

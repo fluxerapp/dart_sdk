@@ -8,7 +8,12 @@ part of 'message_shred_status_request.dart';
 
 MessageShredStatusRequest _$MessageShredStatusRequestFromJson(
   Map<String, dynamic> json,
-) => MessageShredStatusRequest(jobId: json['job_id'] as String);
+) => $checkedCreate('MessageShredStatusRequest', json, ($checkedConvert) {
+  final val = MessageShredStatusRequest(
+    jobId: $checkedConvert('job_id', (v) => v as String),
+  );
+  return val;
+}, fieldKeyMap: const {'jobId': 'job_id'});
 
 Map<String, dynamic> _$MessageShredStatusRequestToJson(
   MessageShredStatusRequest instance,

@@ -7,7 +7,12 @@ part of 'disable_mfa_request.dart';
 // **************************************************************************
 
 DisableMfaRequest _$DisableMfaRequestFromJson(Map<String, dynamic> json) =>
-    DisableMfaRequest(userId: json['user_id'] as String);
+    $checkedCreate('DisableMfaRequest', json, ($checkedConvert) {
+      final val = DisableMfaRequest(
+        userId: $checkedConvert('user_id', (v) => v as String),
+      );
+      return val;
+    }, fieldKeyMap: const {'userId': 'user_id'});
 
 Map<String, dynamic> _$DisableMfaRequestToJson(DisableMfaRequest instance) =>
     <String, dynamic>{'user_id': instance.userId};

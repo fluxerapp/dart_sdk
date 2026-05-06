@@ -8,11 +8,14 @@ part of 'message_reaction_response_emoji.dart';
 
 MessageReactionResponseEmoji _$MessageReactionResponseEmojiFromJson(
   Map<String, dynamic> json,
-) => MessageReactionResponseEmoji(
-  name: json['name'] as String,
-  id: json['id'] as String?,
-  animated: json['animated'] as bool?,
-);
+) => $checkedCreate('MessageReactionResponseEmoji', json, ($checkedConvert) {
+  final val = MessageReactionResponseEmoji(
+    name: $checkedConvert('name', (v) => v as String),
+    id: $checkedConvert('id', (v) => v as String?),
+    animated: $checkedConvert('animated', (v) => v as bool?),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$MessageReactionResponseEmojiToJson(
   MessageReactionResponseEmoji instance,

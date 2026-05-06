@@ -9,9 +9,17 @@ part of 'auth_login_response.dart';
 AuthLoginResponseAuthTokenWithUserIdResponse
 _$AuthLoginResponseAuthTokenWithUserIdResponseFromJson(
   Map<String, dynamic> json,
-) => AuthLoginResponseAuthTokenWithUserIdResponse(
-  token: json['token'] as String,
-  userId: json['user_id'] as String,
+) => $checkedCreate(
+  'AuthLoginResponseAuthTokenWithUserIdResponse',
+  json,
+  ($checkedConvert) {
+    final val = AuthLoginResponseAuthTokenWithUserIdResponse(
+      token: $checkedConvert('token', (v) => v as String),
+      userId: $checkedConvert('user_id', (v) => v as String),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'userId': 'user_id'},
 );
 
 Map<String, dynamic> _$AuthLoginResponseAuthTokenWithUserIdResponseToJson(
@@ -20,16 +28,26 @@ Map<String, dynamic> _$AuthLoginResponseAuthTokenWithUserIdResponseToJson(
 
 AuthLoginResponseAuthMfaRequiredResponse
 _$AuthLoginResponseAuthMfaRequiredResponseFromJson(Map<String, dynamic> json) =>
-    AuthLoginResponseAuthMfaRequiredResponse(
-      mfa: AuthMfaRequiredResponseMfaMfa.fromJson(json['mfa'] as bool),
-      ticket: json['ticket'] as String,
-      allowedMethods: (json['allowed_methods'] as List<dynamic>)
-          .map((e) => e as String)
-          .toList(),
-      smsPhoneHint: json['sms_phone_hint'] as String?,
-      sms: json['sms'] as bool,
-      totp: json['totp'] as bool,
-      webauthn: json['webauthn'] as bool,
+    $checkedCreate(
+      'AuthLoginResponseAuthMfaRequiredResponse',
+      json,
+      ($checkedConvert) {
+        final val = AuthLoginResponseAuthMfaRequiredResponse(
+          mfa: $checkedConvert(
+            'mfa',
+            (v) => AuthMfaRequiredResponseMfaMfa.fromJson(v as bool),
+          ),
+          ticket: $checkedConvert('ticket', (v) => v as String),
+          allowedMethods: $checkedConvert(
+            'allowed_methods',
+            (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+          ),
+          totp: $checkedConvert('totp', (v) => v as bool),
+          webauthn: $checkedConvert('webauthn', (v) => v as bool),
+        );
+        return val;
+      },
+      fieldKeyMap: const {'allowedMethods': 'allowed_methods'},
     );
 
 Map<String, dynamic> _$AuthLoginResponseAuthMfaRequiredResponseToJson(
@@ -38,8 +56,6 @@ Map<String, dynamic> _$AuthLoginResponseAuthMfaRequiredResponseToJson(
   'mfa': instance.mfa,
   'ticket': instance.ticket,
   'allowed_methods': instance.allowedMethods,
-  'sms_phone_hint': instance.smsPhoneHint,
-  'sms': instance.sms,
   'totp': instance.totp,
   'webauthn': instance.webauthn,
 };

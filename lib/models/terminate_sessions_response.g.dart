@@ -8,8 +8,19 @@ part of 'terminate_sessions_response.dart';
 
 TerminateSessionsResponse _$TerminateSessionsResponseFromJson(
   Map<String, dynamic> json,
-) => TerminateSessionsResponse(
-  terminatedCount: (json['terminated_count'] as num).toInt(),
+) => $checkedCreate(
+  'TerminateSessionsResponse',
+  json,
+  ($checkedConvert) {
+    final val = TerminateSessionsResponse(
+      terminatedCount: $checkedConvert(
+        'terminated_count',
+        (v) => (v as num).toInt(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'terminatedCount': 'terminated_count'},
 );
 
 Map<String, dynamic> _$TerminateSessionsResponseToJson(

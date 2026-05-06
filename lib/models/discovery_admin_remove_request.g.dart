@@ -8,7 +8,12 @@ part of 'discovery_admin_remove_request.dart';
 
 DiscoveryAdminRemoveRequest _$DiscoveryAdminRemoveRequestFromJson(
   Map<String, dynamic> json,
-) => DiscoveryAdminRemoveRequest(reason: json['reason'] as String);
+) => $checkedCreate('DiscoveryAdminRemoveRequest', json, ($checkedConvert) {
+  final val = DiscoveryAdminRemoveRequest(
+    reason: $checkedConvert('reason', (v) => v as String),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$DiscoveryAdminRemoveRequestToJson(
   DiscoveryAdminRemoveRequest instance,

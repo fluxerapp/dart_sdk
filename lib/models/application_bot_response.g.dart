@@ -8,19 +8,33 @@ part of 'application_bot_response.dart';
 
 ApplicationBotResponse _$ApplicationBotResponseFromJson(
   Map<String, dynamic> json,
-) => ApplicationBotResponse(
-  id: json['id'] as String,
-  username: json['username'] as String,
-  discriminator: json['discriminator'] as String,
-  bio: json['bio'] as String?,
-  flags: (json['flags'] as num).toInt(),
-  avatar: json['avatar'] as String?,
-  banner: json['banner'] as String?,
-  token: json['token'] as String?,
-  mfaEnabled: json['mfa_enabled'] as bool?,
-  authenticatorTypes: (json['authenticator_types'] as List<dynamic>?)
-      ?.map((e) => AuthenticatorType.fromJson((e as num).toInt()))
-      .toList(),
+) => $checkedCreate(
+  'ApplicationBotResponse',
+  json,
+  ($checkedConvert) {
+    final val = ApplicationBotResponse(
+      id: $checkedConvert('id', (v) => v as String),
+      username: $checkedConvert('username', (v) => v as String),
+      discriminator: $checkedConvert('discriminator', (v) => v as String),
+      bio: $checkedConvert('bio', (v) => v as String?),
+      flags: $checkedConvert('flags', (v) => (v as num).toInt()),
+      avatar: $checkedConvert('avatar', (v) => v as String?),
+      banner: $checkedConvert('banner', (v) => v as String?),
+      token: $checkedConvert('token', (v) => v as String?),
+      mfaEnabled: $checkedConvert('mfa_enabled', (v) => v as bool?),
+      authenticatorTypes: $checkedConvert(
+        'authenticator_types',
+        (v) => (v as List<dynamic>?)
+            ?.map((e) => AuthenticatorType.fromJson((e as num).toInt()))
+            .toList(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'mfaEnabled': 'mfa_enabled',
+    'authenticatorTypes': 'authenticator_types',
+  },
 );
 
 Map<String, dynamic> _$ApplicationBotResponseToJson(

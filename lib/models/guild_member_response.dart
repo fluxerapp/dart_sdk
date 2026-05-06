@@ -6,6 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'guild_member_profile_flags.dart';
 import 'int32_type.dart';
+import 'mention_reply_preferences.dart';
 import 'user_partial_response.dart';
 
 part 'guild_member_response.g.dart';
@@ -24,6 +25,7 @@ class GuildMemberResponse {
     this.accentColor,
     this.communicationDisabledUntil,
     this.profileFlags,
+    this.mentionFlags,
   });
 
   factory GuildMemberResponse.fromJson(Map<String, Object?> json) =>
@@ -65,6 +67,10 @@ class GuildMemberResponse {
   final DateTime? communicationDisabledUntil;
   @JsonKey(includeIfNull: false, name: 'profile_flags')
   final GuildMemberProfileFlags? profileFlags;
+
+  /// Per-guild reply mention preference override; NO_PREFERENCE means inherit the user-level mention_flags.
+  @JsonKey(includeIfNull: false, name: 'mention_flags')
+  final MentionReplyPreferences? mentionFlags;
 
   Map<String, Object?> toJson() => _$GuildMemberResponseToJson(this);
 }

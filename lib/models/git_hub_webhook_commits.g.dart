@@ -8,14 +8,18 @@ part of 'git_hub_webhook_commits.dart';
 
 GitHubWebhookCommits _$GitHubWebhookCommitsFromJson(
   Map<String, dynamic> json,
-) => GitHubWebhookCommits(
-  id: json['id'] as String,
-  url: json['url'] as String,
-  message: json['message'] as String,
-  author: GitHubWebhookCommitsAuthor.fromJson(
-    json['author'] as Map<String, dynamic>,
-  ),
-);
+) => $checkedCreate('GitHubWebhookCommits', json, ($checkedConvert) {
+  final val = GitHubWebhookCommits(
+    id: $checkedConvert('id', (v) => v as String),
+    url: $checkedConvert('url', (v) => v as String),
+    message: $checkedConvert('message', (v) => v as String),
+    author: $checkedConvert(
+      'author',
+      (v) => GitHubWebhookCommitsAuthor.fromJson(v as Map<String, dynamic>),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$GitHubWebhookCommitsToJson(
   GitHubWebhookCommits instance,

@@ -8,9 +8,17 @@ part of 'transfer_guild_ownership_request.dart';
 
 TransferGuildOwnershipRequest _$TransferGuildOwnershipRequestFromJson(
   Map<String, dynamic> json,
-) => TransferGuildOwnershipRequest(
-  guildId: json['guild_id'] as String,
-  newOwnerId: json['new_owner_id'] as String,
+) => $checkedCreate(
+  'TransferGuildOwnershipRequest',
+  json,
+  ($checkedConvert) {
+    final val = TransferGuildOwnershipRequest(
+      guildId: $checkedConvert('guild_id', (v) => v as String),
+      newOwnerId: $checkedConvert('new_owner_id', (v) => v as String),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'guildId': 'guild_id', 'newOwnerId': 'new_owner_id'},
 );
 
 Map<String, dynamic> _$TransferGuildOwnershipRequestToJson(

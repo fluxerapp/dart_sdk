@@ -8,11 +8,15 @@ part of 'visionary_slot_operation_response.dart';
 
 VisionarySlotOperationResponse _$VisionarySlotOperationResponseFromJson(
   Map<String, dynamic> json,
-) => VisionarySlotOperationResponse(
-  success: VisionarySlotOperationResponseSuccessSuccess.fromJson(
-    json['success'] as bool,
-  ),
-);
+) => $checkedCreate('VisionarySlotOperationResponse', json, ($checkedConvert) {
+  final val = VisionarySlotOperationResponse(
+    success: $checkedConvert(
+      'success',
+      (v) => VisionarySlotOperationResponseSuccessSuccess.fromJson(v as bool),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$VisionarySlotOperationResponseToJson(
   VisionarySlotOperationResponse instance,

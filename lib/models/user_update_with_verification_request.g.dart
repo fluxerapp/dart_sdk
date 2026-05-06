@@ -8,36 +8,92 @@ part of 'user_update_with_verification_request.dart';
 
 UserUpdateWithVerificationRequest _$UserUpdateWithVerificationRequestFromJson(
   Map<String, dynamic> json,
-) => UserUpdateWithVerificationRequest(
-  username: json['username'] as String?,
-  discriminator: json['discriminator'] as String?,
-  globalName: json['global_name'] as String?,
-  email: json['email'] as String?,
-  newPassword: json['new_password'] as String?,
-  password: json['password'] as String?,
-  avatar: json['avatar'] as String?,
-  banner: json['banner'] as String?,
-  bio: json['bio'] as String?,
-  pronouns: json['pronouns'] as String?,
-  accentColor: (json['accent_color'] as num?)?.toInt(),
-  premiumBadgeHidden: json['premium_badge_hidden'] as bool?,
-  premiumBadgeMasked: json['premium_badge_masked'] as bool?,
-  premiumBadgeTimestampHidden: json['premium_badge_timestamp_hidden'] as bool?,
-  premiumBadgeSequenceHidden: json['premium_badge_sequence_hidden'] as bool?,
-  premiumEnabledOverride: json['premium_enabled_override'] as bool?,
-  hasDismissedPremiumOnboarding:
-      json['has_dismissed_premium_onboarding'] as bool?,
-  hasUnreadGiftInventory: json['has_unread_gift_inventory'] as bool?,
-  usedMobileClient: json['used_mobile_client'] as bool?,
-  emailToken: json['email_token'] as String?,
-  mfaMethod: json['mfa_method'] == null
-      ? null
-      : UserUpdateWithVerificationRequestMfaMethodMfaMethod.fromJson(
-          json['mfa_method'] as String,
-        ),
-  mfaCode: json['mfa_code'] as String?,
-  webauthnResponse: json['webauthn_response'],
-  webauthnChallenge: json['webauthn_challenge'] as String?,
+) => $checkedCreate(
+  'UserUpdateWithVerificationRequest',
+  json,
+  ($checkedConvert) {
+    final val = UserUpdateWithVerificationRequest(
+      username: $checkedConvert('username', (v) => v as String?),
+      discriminator: $checkedConvert('discriminator', (v) => v as String?),
+      globalName: $checkedConvert('global_name', (v) => v as String?),
+      email: $checkedConvert('email', (v) => v as String?),
+      newPassword: $checkedConvert('new_password', (v) => v as String?),
+      password: $checkedConvert('password', (v) => v as String?),
+      avatar: $checkedConvert('avatar', (v) => v as String?),
+      banner: $checkedConvert('banner', (v) => v as String?),
+      bio: $checkedConvert('bio', (v) => v as String?),
+      pronouns: $checkedConvert('pronouns', (v) => v as String?),
+      accentColor: $checkedConvert('accent_color', (v) => (v as num?)?.toInt()),
+      premiumBadgeHidden: $checkedConvert(
+        'premium_badge_hidden',
+        (v) => v as bool?,
+      ),
+      premiumBadgeMasked: $checkedConvert(
+        'premium_badge_masked',
+        (v) => v as bool?,
+      ),
+      premiumBadgeTimestampHidden: $checkedConvert(
+        'premium_badge_timestamp_hidden',
+        (v) => v as bool?,
+      ),
+      premiumBadgeSequenceHidden: $checkedConvert(
+        'premium_badge_sequence_hidden',
+        (v) => v as bool?,
+      ),
+      premiumEnabledOverride: $checkedConvert(
+        'premium_enabled_override',
+        (v) => v as bool?,
+      ),
+      hasDismissedPremiumOnboarding: $checkedConvert(
+        'has_dismissed_premium_onboarding',
+        (v) => v as bool?,
+      ),
+      hasUnreadGiftInventory: $checkedConvert(
+        'has_unread_gift_inventory',
+        (v) => v as bool?,
+      ),
+      mentionFlags: $checkedConvert(
+        'mention_flags',
+        (v) => v == null
+            ? null
+            : MentionReplyPreferences.fromJson((v as num).toInt()),
+      ),
+      emailToken: $checkedConvert('email_token', (v) => v as String?),
+      mfaMethod: $checkedConvert(
+        'mfa_method',
+        (v) => v == null
+            ? null
+            : UserUpdateWithVerificationRequestMfaMethodMfaMethod.fromJson(
+                v as String,
+              ),
+      ),
+      mfaCode: $checkedConvert('mfa_code', (v) => v as String?),
+      webauthnResponse: $checkedConvert('webauthn_response', (v) => v),
+      webauthnChallenge: $checkedConvert(
+        'webauthn_challenge',
+        (v) => v as String?,
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'globalName': 'global_name',
+    'newPassword': 'new_password',
+    'accentColor': 'accent_color',
+    'premiumBadgeHidden': 'premium_badge_hidden',
+    'premiumBadgeMasked': 'premium_badge_masked',
+    'premiumBadgeTimestampHidden': 'premium_badge_timestamp_hidden',
+    'premiumBadgeSequenceHidden': 'premium_badge_sequence_hidden',
+    'premiumEnabledOverride': 'premium_enabled_override',
+    'hasDismissedPremiumOnboarding': 'has_dismissed_premium_onboarding',
+    'hasUnreadGiftInventory': 'has_unread_gift_inventory',
+    'mentionFlags': 'mention_flags',
+    'emailToken': 'email_token',
+    'mfaMethod': 'mfa_method',
+    'mfaCode': 'mfa_code',
+    'webauthnResponse': 'webauthn_response',
+    'webauthnChallenge': 'webauthn_challenge',
+  },
 );
 
 Map<String, dynamic> _$UserUpdateWithVerificationRequestToJson(
@@ -61,7 +117,7 @@ Map<String, dynamic> _$UserUpdateWithVerificationRequestToJson(
   'premium_enabled_override': ?instance.premiumEnabledOverride,
   'has_dismissed_premium_onboarding': ?instance.hasDismissedPremiumOnboarding,
   'has_unread_gift_inventory': ?instance.hasUnreadGiftInventory,
-  'used_mobile_client': ?instance.usedMobileClient,
+  'mention_flags': ?instance.mentionFlags,
   'email_token': ?instance.emailToken,
   'mfa_method': ?instance.mfaMethod,
   'mfa_code': ?instance.mfaCode,

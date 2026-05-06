@@ -7,7 +7,12 @@ part of 'get_job_request.dart';
 // **************************************************************************
 
 GetJobRequest _$GetJobRequestFromJson(Map<String, dynamic> json) =>
-    GetJobRequest(jobId: json['job_id'] as String);
+    $checkedCreate('GetJobRequest', json, ($checkedConvert) {
+      final val = GetJobRequest(
+        jobId: $checkedConvert('job_id', (v) => v as String),
+      );
+      return val;
+    }, fieldKeyMap: const {'jobId': 'job_id'});
 
 Map<String, dynamic> _$GetJobRequestToJson(GetJobRequest instance) =>
     <String, dynamic>{'job_id': instance.jobId};

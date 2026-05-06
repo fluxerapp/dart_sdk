@@ -8,10 +8,21 @@ part of 'change_subscription_request.dart';
 
 ChangeSubscriptionRequest _$ChangeSubscriptionRequestFromJson(
   Map<String, dynamic> json,
-) => ChangeSubscriptionRequest(
-  billingCycle: ChangeSubscriptionRequestBillingCycleBillingCycle.fromJson(
-    json['billing_cycle'] as String,
-  ),
+) => $checkedCreate(
+  'ChangeSubscriptionRequest',
+  json,
+  ($checkedConvert) {
+    final val = ChangeSubscriptionRequest(
+      billingCycle: $checkedConvert(
+        'billing_cycle',
+        (v) => ChangeSubscriptionRequestBillingCycleBillingCycle.fromJson(
+          v as String,
+        ),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'billingCycle': 'billing_cycle'},
 );
 
 Map<String, dynamic> _$ChangeSubscriptionRequestToJson(

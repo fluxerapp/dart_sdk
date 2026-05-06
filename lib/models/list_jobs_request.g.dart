@@ -7,19 +7,39 @@ part of 'list_jobs_request.dart';
 // **************************************************************************
 
 ListJobsRequest _$ListJobsRequestFromJson(Map<String, dynamic> json) =>
-    ListJobsRequest(
-      limit: (json['limit'] as num?)?.toInt(),
-      cursor: json['cursor'] == null
-          ? null
-          : ListJobsCursorSchema.fromJson(
-              json['cursor'] as Map<String, dynamic>,
-            ),
-      maxLookbackDays: (json['max_lookback_days'] as num?)?.toInt(),
-      status: json['status'] == null
-          ? null
-          : JobStatusEnum.fromJson(json['status'] as String),
-      taskType: json['task_type'] as String?,
-      requestedByUserId: json['requested_by_user_id'] as String?,
+    $checkedCreate(
+      'ListJobsRequest',
+      json,
+      ($checkedConvert) {
+        final val = ListJobsRequest(
+          limit: $checkedConvert('limit', (v) => (v as num?)?.toInt()),
+          cursor: $checkedConvert(
+            'cursor',
+            (v) => v == null
+                ? null
+                : ListJobsCursorSchema.fromJson(v as Map<String, dynamic>),
+          ),
+          maxLookbackDays: $checkedConvert(
+            'max_lookback_days',
+            (v) => (v as num?)?.toInt(),
+          ),
+          status: $checkedConvert(
+            'status',
+            (v) => v == null ? null : JobStatusEnum.fromJson(v as String),
+          ),
+          taskType: $checkedConvert('task_type', (v) => v as String?),
+          requestedByUserId: $checkedConvert(
+            'requested_by_user_id',
+            (v) => v as String?,
+          ),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'maxLookbackDays': 'max_lookback_days',
+        'taskType': 'task_type',
+        'requestedByUserId': 'requested_by_user_id',
+      },
     );
 
 Map<String, dynamic> _$ListJobsRequestToJson(ListJobsRequest instance) =>

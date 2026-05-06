@@ -8,11 +8,26 @@ part of 'resolve_report_response.dart';
 
 ResolveReportResponse _$ResolveReportResponseFromJson(
   Map<String, dynamic> json,
-) => ResolveReportResponse(
-  reportId: json['report_id'] as String,
-  status: ReportStatus.fromJson((json['status'] as num).toInt()),
-  resolvedAt: json['resolved_at'] as String?,
-  publicComment: json['public_comment'] as String?,
+) => $checkedCreate(
+  'ResolveReportResponse',
+  json,
+  ($checkedConvert) {
+    final val = ResolveReportResponse(
+      reportId: $checkedConvert('report_id', (v) => v as String),
+      status: $checkedConvert(
+        'status',
+        (v) => ReportStatus.fromJson((v as num).toInt()),
+      ),
+      resolvedAt: $checkedConvert('resolved_at', (v) => v as String?),
+      publicComment: $checkedConvert('public_comment', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'reportId': 'report_id',
+    'resolvedAt': 'resolved_at',
+    'publicComment': 'public_comment',
+  },
 );
 
 Map<String, dynamic> _$ResolveReportResponseToJson(

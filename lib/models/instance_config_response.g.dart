@@ -8,12 +8,27 @@ part of 'instance_config_response.dart';
 
 InstanceConfigResponse _$InstanceConfigResponseFromJson(
   Map<String, dynamic> json,
-) => InstanceConfigResponse(
-  sso: SsoConfigResponse.fromJson(json['sso'] as Map<String, dynamic>),
-  gatewayRollout: GatewayRolloutConfigResponse.fromJson(
-    json['gateway_rollout'] as Map<String, dynamic>,
-  ),
-  selfHosted: json['self_hosted'] as bool,
+) => $checkedCreate(
+  'InstanceConfigResponse',
+  json,
+  ($checkedConvert) {
+    final val = InstanceConfigResponse(
+      sso: $checkedConvert(
+        'sso',
+        (v) => SsoConfigResponse.fromJson(v as Map<String, dynamic>),
+      ),
+      gatewayRollout: $checkedConvert(
+        'gateway_rollout',
+        (v) => GatewayRolloutConfigResponse.fromJson(v as Map<String, dynamic>),
+      ),
+      selfHosted: $checkedConvert('self_hosted', (v) => v as bool),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'gatewayRollout': 'gateway_rollout',
+    'selfHosted': 'self_hosted',
+  },
 );
 
 Map<String, dynamic> _$InstanceConfigResponseToJson(

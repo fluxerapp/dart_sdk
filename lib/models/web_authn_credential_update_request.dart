@@ -32,7 +32,7 @@ class WebAuthnCredentialUpdateRequest {
   @JsonKey(includeIfNull: false, name: 'mfa_method')
   final WebAuthnCredentialUpdateRequestMfaMethodMfaMethod? mfaMethod;
 
-  /// MFA verification code from authenticator app or SMS
+  /// MFA verification code from an authenticator app
   @JsonKey(includeIfNull: false, name: 'mfa_code')
   final String? mfaCode;
 

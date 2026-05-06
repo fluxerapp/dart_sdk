@@ -7,7 +7,12 @@ part of 'check_file_sha_request.dart';
 // **************************************************************************
 
 CheckFileShaRequest _$CheckFileShaRequestFromJson(Map<String, dynamic> json) =>
-    CheckFileShaRequest(sha256Hex: json['sha256_hex'] as String);
+    $checkedCreate('CheckFileShaRequest', json, ($checkedConvert) {
+      final val = CheckFileShaRequest(
+        sha256Hex: $checkedConvert('sha256_hex', (v) => v as String),
+      );
+      return val;
+    }, fieldKeyMap: const {'sha256Hex': 'sha256_hex'});
 
 Map<String, dynamic> _$CheckFileShaRequestToJson(
   CheckFileShaRequest instance,

@@ -8,19 +8,45 @@ part of 'harvest_status_response_schema.dart';
 
 HarvestStatusResponseSchema _$HarvestStatusResponseSchemaFromJson(
   Map<String, dynamic> json,
-) => HarvestStatusResponseSchema(
-  harvestId: json['harvest_id'] as String,
-  status: HarvestStatusEnum.fromJson(json['status'] as String),
-  createdAt: json['created_at'] as String,
-  startedAt: json['started_at'] as String?,
-  completedAt: json['completed_at'] as String?,
-  failedAt: json['failed_at'] as String?,
-  fileSize: json['file_size'] as String?,
-  progressPercent: json['progress_percent'] as num,
-  progressStep: json['progress_step'] as String?,
-  errorMessage: json['error_message'] as String?,
-  downloadUrlExpiresAt: json['download_url_expires_at'] as String?,
-  expiresAt: json['expires_at'] as String?,
+) => $checkedCreate(
+  'HarvestStatusResponseSchema',
+  json,
+  ($checkedConvert) {
+    final val = HarvestStatusResponseSchema(
+      harvestId: $checkedConvert('harvest_id', (v) => v as String),
+      status: $checkedConvert(
+        'status',
+        (v) => HarvestStatusEnum.fromJson(v as String),
+      ),
+      createdAt: $checkedConvert('created_at', (v) => v as String),
+      startedAt: $checkedConvert('started_at', (v) => v as String?),
+      completedAt: $checkedConvert('completed_at', (v) => v as String?),
+      failedAt: $checkedConvert('failed_at', (v) => v as String?),
+      fileSize: $checkedConvert('file_size', (v) => v as String?),
+      progressPercent: $checkedConvert('progress_percent', (v) => v as num),
+      progressStep: $checkedConvert('progress_step', (v) => v as String?),
+      errorMessage: $checkedConvert('error_message', (v) => v as String?),
+      downloadUrlExpiresAt: $checkedConvert(
+        'download_url_expires_at',
+        (v) => v as String?,
+      ),
+      expiresAt: $checkedConvert('expires_at', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'harvestId': 'harvest_id',
+    'createdAt': 'created_at',
+    'startedAt': 'started_at',
+    'completedAt': 'completed_at',
+    'failedAt': 'failed_at',
+    'fileSize': 'file_size',
+    'progressPercent': 'progress_percent',
+    'progressStep': 'progress_step',
+    'errorMessage': 'error_message',
+    'downloadUrlExpiresAt': 'download_url_expires_at',
+    'expiresAt': 'expires_at',
+  },
 );
 
 Map<String, dynamic> _$HarvestStatusResponseSchemaToJson(

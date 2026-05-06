@@ -8,12 +8,18 @@ part of 'channel_overwrite_request.dart';
 
 ChannelOverwriteRequest _$ChannelOverwriteRequestFromJson(
   Map<String, dynamic> json,
-) => ChannelOverwriteRequest(
-  id: json['id'] as String,
-  type: ChannelOverwriteRequestTypeType.fromJson((json['type'] as num).toInt()),
-  allow: json['allow'] as String?,
-  deny: json['deny'] as String?,
-);
+) => $checkedCreate('ChannelOverwriteRequest', json, ($checkedConvert) {
+  final val = ChannelOverwriteRequest(
+    id: $checkedConvert('id', (v) => v as String),
+    type: $checkedConvert(
+      'type',
+      (v) => ChannelOverwriteRequestTypeType.fromJson((v as num).toInt()),
+    ),
+    allow: $checkedConvert('allow', (v) => v as String?),
+    deny: $checkedConvert('deny', (v) => v as String?),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$ChannelOverwriteRequestToJson(
   ChannelOverwriteRequest instance,

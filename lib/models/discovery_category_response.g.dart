@@ -8,10 +8,13 @@ part of 'discovery_category_response.dart';
 
 DiscoveryCategoryResponse _$DiscoveryCategoryResponseFromJson(
   Map<String, dynamic> json,
-) => DiscoveryCategoryResponse(
-  id: json['id'] as num,
-  name: json['name'] as String,
-);
+) => $checkedCreate('DiscoveryCategoryResponse', json, ($checkedConvert) {
+  final val = DiscoveryCategoryResponse(
+    id: $checkedConvert('id', (v) => v as num),
+    name: $checkedConvert('name', (v) => v as String),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$DiscoveryCategoryResponseToJson(
   DiscoveryCategoryResponse instance,

@@ -8,14 +8,21 @@ part of 'guild_memory_stats_response.dart';
 
 GuildMemoryStatsResponse _$GuildMemoryStatsResponseFromJson(
   Map<String, dynamic> json,
-) => GuildMemoryStatsResponse(
-  guilds: (json['guilds'] as List<dynamic>)
-      .map(
-        (e) =>
-            GuildMemoryStatsResponseGuilds.fromJson(e as Map<String, dynamic>),
-      )
-      .toList(),
-);
+) => $checkedCreate('GuildMemoryStatsResponse', json, ($checkedConvert) {
+  final val = GuildMemoryStatsResponse(
+    guilds: $checkedConvert(
+      'guilds',
+      (v) => (v as List<dynamic>)
+          .map(
+            (e) => GuildMemoryStatsResponseGuilds.fromJson(
+              e as Map<String, dynamic>,
+            ),
+          )
+          .toList(),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$GuildMemoryStatsResponseToJson(
   GuildMemoryStatsResponse instance,

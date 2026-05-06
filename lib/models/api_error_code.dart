@@ -325,6 +325,8 @@ enum ApiErrorCode {
   maxGroupDmRecipients('MAX_GROUP_DM_RECIPIENTS'),
   @JsonValue('MAX_GROUP_DMS')
   maxGroupDms('MAX_GROUP_DMS'),
+  @JsonValue('GROUP_DM_RECIPIENTS_NOT_ADDABLE')
+  groupDmRecipientsNotAddable('GROUP_DM_RECIPIENTS_NOT_ADDABLE'),
   @JsonValue('MAX_GUILD_CHANNELS')
   maxGuildChannels('MAX_GUILD_CHANNELS'),
   @JsonValue('MAX_GUILD_MEMBERS')
@@ -423,8 +425,6 @@ enum ApiErrorCode {
   phoneAlreadyUsed('PHONE_ALREADY_USED'),
   @JsonValue('PHONE_RATE_LIMIT_EXCEEDED')
   phoneRateLimitExceeded('PHONE_RATE_LIMIT_EXCEEDED'),
-  @JsonValue('PHONE_REQUIRED_FOR_SMS_MFA')
-  phoneRequiredForSmsMfa('PHONE_REQUIRED_FOR_SMS_MFA'),
   @JsonValue('PHONE_VERIFICATION_REQUIRED')
   phoneVerificationRequired('PHONE_VERIFICATION_REQUIRED'),
   @JsonValue('PREMIUM_PURCHASE_BLOCKED')
@@ -449,10 +449,6 @@ enum ApiErrorCode {
   sessionTokenMismatch('SESSION_TOKEN_MISMATCH'),
   @JsonValue('SLOWMODE_RATE_LIMITED')
   slowmodeRateLimited('SLOWMODE_RATE_LIMITED'),
-  @JsonValue('SMS_MFA_NOT_ENABLED')
-  smsMfaNotEnabled('SMS_MFA_NOT_ENABLED'),
-  @JsonValue('SMS_MFA_REQUIRES_TOTP')
-  smsMfaRequiresTotp('SMS_MFA_REQUIRES_TOTP'),
   @JsonValue('SMS_VERIFICATION_UNAVAILABLE')
   smsVerificationUnavailable('SMS_VERIFICATION_UNAVAILABLE'),
   @JsonValue('SSO_REQUIRED')

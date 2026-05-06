@@ -7,7 +7,10 @@ part of 'empty_body_request.dart';
 // **************************************************************************
 
 EmptyBodyRequest _$EmptyBodyRequestFromJson(Map<String, dynamic> json) =>
-    EmptyBodyRequest();
+    $checkedCreate('EmptyBodyRequest', json, ($checkedConvert) {
+      final val = EmptyBodyRequest();
+      return val;
+    });
 
 Map<String, dynamic> _$EmptyBodyRequestToJson(EmptyBodyRequest instance) =>
     <String, dynamic>{};

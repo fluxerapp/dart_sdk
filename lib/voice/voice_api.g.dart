@@ -20,13 +20,21 @@ class _VoiceApi implements VoiceApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<UploadVoiceDiagnosticsResponse> uploadVoiceDiagnostics() async {
+  Future<UploadVoiceDiagnosticsResponse> uploadVoiceDiagnostics({
+    required String archive,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final _data = FormData();
+    _data.fields.add(MapEntry('archive', archive));
     final _options = _setStreamType<UploadVoiceDiagnosticsResponse>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
+      Options(
+            method: 'POST',
+            headers: _headers,
+            extra: _extra,
+            contentType: 'multipart/form-data',
+          )
           .compose(
             _dio.options,
             '/voice-diagnostics/upload',

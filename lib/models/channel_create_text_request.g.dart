@@ -8,27 +8,52 @@ part of 'channel_create_text_request.dart';
 
 ChannelCreateTextRequest _$ChannelCreateTextRequestFromJson(
   Map<String, dynamic> json,
-) => ChannelCreateTextRequest(
-  type: ChannelCreateTextRequestTypeType.fromJson(
-    (json['type'] as num).toInt(),
-  ),
-  name: json['name'] as String,
-  topic: json['topic'] as String?,
-  url: json['url'] as String?,
-  parentId: json['parent_id'] as String?,
-  bitrate: (json['bitrate'] as num?)?.toInt(),
-  userLimit: (json['user_limit'] as num?)?.toInt(),
-  permissionOverwrites: (json['permission_overwrites'] as List<dynamic>?)
-      ?.map((e) => ChannelOverwriteRequest.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  nsfw: json['nsfw'] as bool?,
-  nsfwOverride: json['nsfw_override'] as bool?,
-  contentWarningLevel: json['content_warning_level'] == null
-      ? null
-      : ContentWarningLevel.fromJson(
-          (json['content_warning_level'] as num).toInt(),
-        ),
-  contentWarningText: json['content_warning_text'] as String?,
+) => $checkedCreate(
+  'ChannelCreateTextRequest',
+  json,
+  ($checkedConvert) {
+    final val = ChannelCreateTextRequest(
+      type: $checkedConvert(
+        'type',
+        (v) => ChannelCreateTextRequestTypeType.fromJson((v as num).toInt()),
+      ),
+      name: $checkedConvert('name', (v) => v as String),
+      topic: $checkedConvert('topic', (v) => v as String?),
+      url: $checkedConvert('url', (v) => v as String?),
+      parentId: $checkedConvert('parent_id', (v) => v as String?),
+      bitrate: $checkedConvert('bitrate', (v) => (v as num?)?.toInt()),
+      userLimit: $checkedConvert('user_limit', (v) => (v as num?)?.toInt()),
+      permissionOverwrites: $checkedConvert(
+        'permission_overwrites',
+        (v) => (v as List<dynamic>?)
+            ?.map(
+              (e) =>
+                  ChannelOverwriteRequest.fromJson(e as Map<String, dynamic>),
+            )
+            .toList(),
+      ),
+      nsfw: $checkedConvert('nsfw', (v) => v as bool?),
+      nsfwOverride: $checkedConvert('nsfw_override', (v) => v as bool?),
+      contentWarningLevel: $checkedConvert(
+        'content_warning_level',
+        (v) =>
+            v == null ? null : ContentWarningLevel.fromJson((v as num).toInt()),
+      ),
+      contentWarningText: $checkedConvert(
+        'content_warning_text',
+        (v) => v as String?,
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'parentId': 'parent_id',
+    'userLimit': 'user_limit',
+    'permissionOverwrites': 'permission_overwrites',
+    'nsfwOverride': 'nsfw_override',
+    'contentWarningLevel': 'content_warning_level',
+    'contentWarningText': 'content_warning_text',
+  },
 );
 
 Map<String, dynamic> _$ChannelCreateTextRequestToJson(

@@ -8,10 +8,13 @@ part of 'rich_embed_media_request_shape.dart';
 
 RichEmbedMediaRequestShape _$RichEmbedMediaRequestShapeFromJson(
   Map<String, dynamic> json,
-) => RichEmbedMediaRequestShape(
-  url: json['url'] as String,
-  description: json['description'] as String?,
-);
+) => $checkedCreate('RichEmbedMediaRequestShape', json, ($checkedConvert) {
+  final val = RichEmbedMediaRequestShape(
+    url: $checkedConvert('url', (v) => v as String),
+    description: $checkedConvert('description', (v) => v as String?),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$RichEmbedMediaRequestShapeToJson(
   RichEmbedMediaRequestShape instance,

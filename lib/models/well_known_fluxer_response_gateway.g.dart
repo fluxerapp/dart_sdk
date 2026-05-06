@@ -8,10 +8,31 @@ part of 'well_known_fluxer_response_gateway.dart';
 
 WellKnownFluxerResponseGateway _$WellKnownFluxerResponseGatewayFromJson(
   Map<String, dynamic> json,
-) => WellKnownFluxerResponseGateway(
-  sessionRetryMinMs: (json['session_retry_min_ms'] as num).toInt(),
-  sessionRetryMaxMs: (json['session_retry_max_ms'] as num).toInt(),
-  sessionRetryJitterMs: (json['session_retry_jitter_ms'] as num).toInt(),
+) => $checkedCreate(
+  'WellKnownFluxerResponseGateway',
+  json,
+  ($checkedConvert) {
+    final val = WellKnownFluxerResponseGateway(
+      sessionRetryMinMs: $checkedConvert(
+        'session_retry_min_ms',
+        (v) => (v as num).toInt(),
+      ),
+      sessionRetryMaxMs: $checkedConvert(
+        'session_retry_max_ms',
+        (v) => (v as num).toInt(),
+      ),
+      sessionRetryJitterMs: $checkedConvert(
+        'session_retry_jitter_ms',
+        (v) => (v as num).toInt(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'sessionRetryMinMs': 'session_retry_min_ms',
+    'sessionRetryMaxMs': 'session_retry_max_ms',
+    'sessionRetryJitterMs': 'session_retry_jitter_ms',
+  },
 );
 
 Map<String, dynamic> _$WellKnownFluxerResponseGatewayToJson(

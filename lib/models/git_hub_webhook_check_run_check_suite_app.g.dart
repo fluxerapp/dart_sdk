@@ -8,7 +8,14 @@ part of 'git_hub_webhook_check_run_check_suite_app.dart';
 
 GitHubWebhookCheckRunCheckSuiteApp _$GitHubWebhookCheckRunCheckSuiteAppFromJson(
   Map<String, dynamic> json,
-) => GitHubWebhookCheckRunCheckSuiteApp(name: json['name'] as String);
+) => $checkedCreate('GitHubWebhookCheckRunCheckSuiteApp', json, (
+  $checkedConvert,
+) {
+  final val = GitHubWebhookCheckRunCheckSuiteApp(
+    name: $checkedConvert('name', (v) => v as String),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$GitHubWebhookCheckRunCheckSuiteAppToJson(
   GitHubWebhookCheckRunCheckSuiteApp instance,

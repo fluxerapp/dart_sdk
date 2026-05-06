@@ -7,14 +7,26 @@ part of 'register_request.dart';
 // **************************************************************************
 
 RegisterRequest _$RegisterRequestFromJson(Map<String, dynamic> json) =>
-    RegisterRequest(
-      dateOfBirth: json['date_of_birth'] as String,
-      consent: json['consent'] as bool,
-      email: json['email'] as String?,
-      username: json['username'] as String?,
-      globalName: json['global_name'] as String?,
-      password: json['password'] as String?,
-      inviteCode: json['invite_code'] as String?,
+    $checkedCreate(
+      'RegisterRequest',
+      json,
+      ($checkedConvert) {
+        final val = RegisterRequest(
+          dateOfBirth: $checkedConvert('date_of_birth', (v) => v as String),
+          consent: $checkedConvert('consent', (v) => v as bool),
+          email: $checkedConvert('email', (v) => v as String?),
+          username: $checkedConvert('username', (v) => v as String?),
+          globalName: $checkedConvert('global_name', (v) => v as String?),
+          password: $checkedConvert('password', (v) => v as String?),
+          inviteCode: $checkedConvert('invite_code', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'dateOfBirth': 'date_of_birth',
+        'globalName': 'global_name',
+        'inviteCode': 'invite_code',
+      },
     );
 
 Map<String, dynamic> _$RegisterRequestToJson(RegisterRequest instance) =>

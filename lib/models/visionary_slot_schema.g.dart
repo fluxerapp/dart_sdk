@@ -7,9 +7,17 @@ part of 'visionary_slot_schema.dart';
 // **************************************************************************
 
 VisionarySlotSchema _$VisionarySlotSchemaFromJson(Map<String, dynamic> json) =>
-    VisionarySlotSchema(
-      slotIndex: (json['slot_index'] as num).toInt(),
-      userId: json['user_id'] as String?,
+    $checkedCreate(
+      'VisionarySlotSchema',
+      json,
+      ($checkedConvert) {
+        final val = VisionarySlotSchema(
+          slotIndex: $checkedConvert('slot_index', (v) => (v as num).toInt()),
+          userId: $checkedConvert('user_id', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {'slotIndex': 'slot_index', 'userId': 'user_id'},
     );
 
 Map<String, dynamic> _$VisionarySlotSchemaToJson(

@@ -9,10 +9,22 @@ part of 'user_private_response_pending_bulk_message_deletion.dart';
 UserPrivateResponsePendingBulkMessageDeletion
 _$UserPrivateResponsePendingBulkMessageDeletionFromJson(
   Map<String, dynamic> json,
-) => UserPrivateResponsePendingBulkMessageDeletion(
-  scheduledAt: json['scheduled_at'] as String,
-  channelCount: (json['channel_count'] as num).toInt(),
-  messageCount: (json['message_count'] as num).toInt(),
+) => $checkedCreate(
+  'UserPrivateResponsePendingBulkMessageDeletion',
+  json,
+  ($checkedConvert) {
+    final val = UserPrivateResponsePendingBulkMessageDeletion(
+      scheduledAt: $checkedConvert('scheduled_at', (v) => v as String),
+      channelCount: $checkedConvert('channel_count', (v) => (v as num).toInt()),
+      messageCount: $checkedConvert('message_count', (v) => (v as num).toInt()),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'scheduledAt': 'scheduled_at',
+    'channelCount': 'channel_count',
+    'messageCount': 'message_count',
+  },
 );
 
 Map<String, dynamic> _$UserPrivateResponsePendingBulkMessageDeletionToJson(

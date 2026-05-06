@@ -8,7 +8,12 @@ part of 'stream_update_body_schema.dart';
 
 StreamUpdateBodySchema _$StreamUpdateBodySchemaFromJson(
   Map<String, dynamic> json,
-) => StreamUpdateBodySchema(region: json['region'] as String?);
+) => $checkedCreate('StreamUpdateBodySchema', json, ($checkedConvert) {
+  final val = StreamUpdateBodySchema(
+    region: $checkedConvert('region', (v) => v as String?),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$StreamUpdateBodySchemaToJson(
   StreamUpdateBodySchema instance,

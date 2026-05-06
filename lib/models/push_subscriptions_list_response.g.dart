@@ -8,13 +8,21 @@ part of 'push_subscriptions_list_response.dart';
 
 PushSubscriptionsListResponse _$PushSubscriptionsListResponseFromJson(
   Map<String, dynamic> json,
-) => PushSubscriptionsListResponse(
-  subscriptions: (json['subscriptions'] as List<dynamic>)
-      .map(
-        (e) => PushSubscriptionItemResponse.fromJson(e as Map<String, dynamic>),
-      )
-      .toList(),
-);
+) => $checkedCreate('PushSubscriptionsListResponse', json, ($checkedConvert) {
+  final val = PushSubscriptionsListResponse(
+    subscriptions: $checkedConvert(
+      'subscriptions',
+      (v) => (v as List<dynamic>)
+          .map(
+            (e) => PushSubscriptionItemResponse.fromJson(
+              e as Map<String, dynamic>,
+            ),
+          )
+          .toList(),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$PushSubscriptionsListResponseToJson(
   PushSubscriptionsListResponse instance,

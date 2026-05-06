@@ -8,22 +8,39 @@ part of 'gateway_voice_state_counts_response.dart';
 
 GatewayVoiceStateCountsResponse _$GatewayVoiceStateCountsResponseFromJson(
   Map<String, dynamic> json,
-) => GatewayVoiceStateCountsResponse(
-  totalVoiceStates: (json['total_voice_states'] as num).toInt(),
-  regions: (json['regions'] as List<dynamic>)
-      .map(
-        (e) => GatewayVoiceStateCountsResponseRegions.fromJson(
-          e as Map<String, dynamic>,
-        ),
-      )
-      .toList(),
-  servers: (json['servers'] as List<dynamic>)
-      .map(
-        (e) => GatewayVoiceStateCountsResponseServers.fromJson(
-          e as Map<String, dynamic>,
-        ),
-      )
-      .toList(),
+) => $checkedCreate(
+  'GatewayVoiceStateCountsResponse',
+  json,
+  ($checkedConvert) {
+    final val = GatewayVoiceStateCountsResponse(
+      totalVoiceStates: $checkedConvert(
+        'total_voice_states',
+        (v) => (v as num).toInt(),
+      ),
+      regions: $checkedConvert(
+        'regions',
+        (v) => (v as List<dynamic>)
+            .map(
+              (e) => GatewayVoiceStateCountsResponseRegions.fromJson(
+                e as Map<String, dynamic>,
+              ),
+            )
+            .toList(),
+      ),
+      servers: $checkedConvert(
+        'servers',
+        (v) => (v as List<dynamic>)
+            .map(
+              (e) => GatewayVoiceStateCountsResponseServers.fromJson(
+                e as Map<String, dynamic>,
+              ),
+            )
+            .toList(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'totalVoiceStates': 'total_voice_states'},
 );
 
 Map<String, dynamic> _$GatewayVoiceStateCountsResponseToJson(

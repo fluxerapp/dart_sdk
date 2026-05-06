@@ -4,14 +4,77 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'phone_send_verification_response_channel_channel.dart';
-import 'phone_send_verification_response_reason_reason.dart';
+import 'phone_send_verification_delivered_response_channel_channel.dart';
+import 'phone_send_verification_inbound_challenge_response_channel_channel.dart';
+import 'phone_send_verification_inbound_challenge_response_reason_reason.dart';
 
 part 'phone_send_verification_response.g.dart';
 
+@JsonSerializable(createFactory: false)
+sealed class PhoneSendVerificationResponse {
+  const PhoneSendVerificationResponse();
+
+  factory PhoneSendVerificationResponse.fromJson(Map<String, dynamic> json) =>
+      PhoneSendVerificationResponseUnionDeserializer.tryDeserialize(json);
+
+  Map<String, dynamic> toJson();
+}
+
+extension PhoneSendVerificationResponseUnionDeserializer
+    on PhoneSendVerificationResponse {
+  static PhoneSendVerificationResponse tryDeserialize(
+    Map<String, dynamic> json, {
+    String key = 'channel',
+    Map<Type, Object?>? mapping,
+  }) {
+    final mappingFallback = const <Type, Object?>{
+      PhoneSendVerificationResponseSms: 'sms',
+      PhoneSendVerificationResponseInboundChallenge: 'inbound_challenge',
+    };
+    final value = json[key];
+    final effective = mapping ?? mappingFallback;
+    return switch (value) {
+      _ when value == effective[PhoneSendVerificationResponseSms] =>
+        PhoneSendVerificationResponseSms.fromJson(json),
+      _
+          when value ==
+              effective[PhoneSendVerificationResponseInboundChallenge] =>
+        PhoneSendVerificationResponseInboundChallenge.fromJson(json),
+      _ => throw FormatException(
+        'Unknown discriminator value "${json[key]}" for PhoneSendVerificationResponse',
+      ),
+    };
+  }
+}
+
 @JsonSerializable()
-class PhoneSendVerificationResponse {
-  const PhoneSendVerificationResponse({
+class PhoneSendVerificationResponseSms extends PhoneSendVerificationResponse {
+  final PhoneSendVerificationDeliveredResponseChannelChannel channel;
+
+  const PhoneSendVerificationResponseSms({required this.channel});
+
+  factory PhoneSendVerificationResponseSms.fromJson(
+    Map<String, dynamic> json,
+  ) => _$PhoneSendVerificationResponseSmsFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$PhoneSendVerificationResponseSmsToJson(this);
+}
+
+@JsonSerializable()
+class PhoneSendVerificationResponseInboundChallenge
+    extends PhoneSendVerificationResponse {
+  final PhoneSendVerificationInboundChallengeResponseChannelChannel channel;
+  @JsonKey(name: 'challenge_code')
+  final String challengeCode;
+  @JsonKey(name: 'our_number')
+  final String ourNumber;
+  @JsonKey(name: 'expires_at')
+  final DateTime expiresAt;
+  final PhoneSendVerificationInboundChallengeResponseReasonReason reason;
+
+  const PhoneSendVerificationResponseInboundChallenge({
     required this.channel,
     required this.challengeCode,
     required this.ourNumber,
@@ -19,26 +82,11 @@ class PhoneSendVerificationResponse {
     required this.reason,
   });
 
-  factory PhoneSendVerificationResponse.fromJson(Map<String, Object?> json) =>
-      _$PhoneSendVerificationResponseFromJson(json);
+  factory PhoneSendVerificationResponseInboundChallenge.fromJson(
+    Map<String, dynamic> json,
+  ) => _$PhoneSendVerificationResponseInboundChallengeFromJson(json);
 
-  /// The user must send Fluxer an SMS instead of receiving one
-  final PhoneSendVerificationResponseChannelChannel channel;
-
-  /// The numeric code the user must text to our number
-  @JsonKey(name: 'challenge_code')
-  final String challengeCode;
-
-  /// The Twilio number the user must text the code to (E.164)
-  @JsonKey(name: 'our_number')
-  final String ourNumber;
-
-  /// ISO 8601 timestamp when this inbound challenge expires
-  @JsonKey(name: 'expires_at')
-  final DateTime expiresAt;
-
-  /// Why inbound verification is required
-  final PhoneSendVerificationResponseReasonReason reason;
-
-  Map<String, Object?> toJson() => _$PhoneSendVerificationResponseToJson(this);
+  @override
+  Map<String, dynamic> toJson() =>
+      _$PhoneSendVerificationResponseInboundChallengeToJson(this);
 }

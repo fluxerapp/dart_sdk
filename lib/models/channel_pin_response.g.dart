@@ -7,12 +7,19 @@ part of 'channel_pin_response.dart';
 // **************************************************************************
 
 ChannelPinResponse _$ChannelPinResponseFromJson(Map<String, dynamic> json) =>
-    ChannelPinResponse(
-      message: ChannelPinMessageResponse.fromJson(
-        json['message'] as Map<String, dynamic>,
-      ),
-      pinnedAt: DateTime.parse(json['pinned_at'] as String),
-    );
+    $checkedCreate('ChannelPinResponse', json, ($checkedConvert) {
+      final val = ChannelPinResponse(
+        message: $checkedConvert(
+          'message',
+          (v) => ChannelPinMessageResponse.fromJson(v as Map<String, dynamic>),
+        ),
+        pinnedAt: $checkedConvert(
+          'pinned_at',
+          (v) => DateTime.parse(v as String),
+        ),
+      );
+      return val;
+    }, fieldKeyMap: const {'pinnedAt': 'pinned_at'});
 
 Map<String, dynamic> _$ChannelPinResponseToJson(ChannelPinResponse instance) =>
     <String, dynamic>{

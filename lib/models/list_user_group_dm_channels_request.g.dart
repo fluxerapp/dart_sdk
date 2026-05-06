@@ -8,7 +8,12 @@ part of 'list_user_group_dm_channels_request.dart';
 
 ListUserGroupDmChannelsRequest _$ListUserGroupDmChannelsRequestFromJson(
   Map<String, dynamic> json,
-) => ListUserGroupDmChannelsRequest(userId: json['user_id'] as String);
+) => $checkedCreate('ListUserGroupDmChannelsRequest', json, ($checkedConvert) {
+  final val = ListUserGroupDmChannelsRequest(
+    userId: $checkedConvert('user_id', (v) => v as String),
+  );
+  return val;
+}, fieldKeyMap: const {'userId': 'user_id'});
 
 Map<String, dynamic> _$ListUserGroupDmChannelsRequestToJson(
   ListUserGroupDmChannelsRequest instance,

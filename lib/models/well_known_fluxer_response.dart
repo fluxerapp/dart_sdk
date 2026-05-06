@@ -4,7 +4,6 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'well_known_fluxer_response_app_public.dart';
 import 'well_known_fluxer_response_captcha.dart';
 import 'well_known_fluxer_response_endpoints.dart';
 import 'well_known_fluxer_response_features.dart';
@@ -61,7 +60,7 @@ class WellKnownFluxerResponse {
 
   /// Public application configuration for client-side features
   @JsonKey(name: 'app_public')
-  final WellKnownFluxerResponseAppPublic appPublic;
+  final dynamic appPublic;
 
   /// Gateway session retry configuration for clients
   @JsonKey(includeIfNull: false)

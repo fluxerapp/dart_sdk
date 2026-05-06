@@ -8,18 +8,29 @@ part of 'purge_guild_assets_response_schema.dart';
 
 PurgeGuildAssetsResponseSchema _$PurgeGuildAssetsResponseSchemaFromJson(
   Map<String, dynamic> json,
-) => PurgeGuildAssetsResponseSchema(
-  processed: (json['processed'] as List<dynamic>)
-      .map(
-        (e) => PurgeGuildAssetResultSchema.fromJson(e as Map<String, dynamic>),
-      )
-      .toList(),
-  errors: (json['errors'] as List<dynamic>)
-      .map(
-        (e) => PurgeGuildAssetErrorSchema.fromJson(e as Map<String, dynamic>),
-      )
-      .toList(),
-);
+) => $checkedCreate('PurgeGuildAssetsResponseSchema', json, ($checkedConvert) {
+  final val = PurgeGuildAssetsResponseSchema(
+    processed: $checkedConvert(
+      'processed',
+      (v) => (v as List<dynamic>)
+          .map(
+            (e) =>
+                PurgeGuildAssetResultSchema.fromJson(e as Map<String, dynamic>),
+          )
+          .toList(),
+    ),
+    errors: $checkedConvert(
+      'errors',
+      (v) => (v as List<dynamic>)
+          .map(
+            (e) =>
+                PurgeGuildAssetErrorSchema.fromJson(e as Map<String, dynamic>),
+          )
+          .toList(),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$PurgeGuildAssetsResponseSchemaToJson(
   PurgeGuildAssetsResponseSchema instance,

@@ -8,7 +8,14 @@ part of 'localized_card_preapproval_continue_request.dart';
 
 LocalizedCardPreapprovalContinueRequest
 _$LocalizedCardPreapprovalContinueRequestFromJson(Map<String, dynamic> json) =>
-    LocalizedCardPreapprovalContinueRequest(token: json['token'] as String);
+    $checkedCreate('LocalizedCardPreapprovalContinueRequest', json, (
+      $checkedConvert,
+    ) {
+      final val = LocalizedCardPreapprovalContinueRequest(
+        token: $checkedConvert('token', (v) => v as String),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$LocalizedCardPreapprovalContinueRequestToJson(
   LocalizedCardPreapprovalContinueRequest instance,

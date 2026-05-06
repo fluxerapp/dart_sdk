@@ -8,14 +8,34 @@ part of 'list_admin_api_key_response.dart';
 
 ListAdminApiKeyResponse _$ListAdminApiKeyResponseFromJson(
   Map<String, dynamic> json,
-) => ListAdminApiKeyResponse(
-  keyId: json['key_id'] as String,
-  name: json['name'] as String,
-  createdAt: json['created_at'] as String,
-  lastUsedAt: json['last_used_at'] as String?,
-  expiresAt: json['expires_at'] as String?,
-  createdByUserId: json['created_by_user_id'] as String,
-  acls: (json['acls'] as List<dynamic>).map((e) => e as String).toList(),
+) => $checkedCreate(
+  'ListAdminApiKeyResponse',
+  json,
+  ($checkedConvert) {
+    final val = ListAdminApiKeyResponse(
+      keyId: $checkedConvert('key_id', (v) => v as String),
+      name: $checkedConvert('name', (v) => v as String),
+      createdAt: $checkedConvert('created_at', (v) => v as String),
+      lastUsedAt: $checkedConvert('last_used_at', (v) => v as String?),
+      expiresAt: $checkedConvert('expires_at', (v) => v as String?),
+      createdByUserId: $checkedConvert(
+        'created_by_user_id',
+        (v) => v as String,
+      ),
+      acls: $checkedConvert(
+        'acls',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'keyId': 'key_id',
+    'createdAt': 'created_at',
+    'lastUsedAt': 'last_used_at',
+    'expiresAt': 'expires_at',
+    'createdByUserId': 'created_by_user_id',
+  },
 );
 
 Map<String, dynamic> _$ListAdminApiKeyResponseToJson(

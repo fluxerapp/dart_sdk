@@ -8,21 +8,50 @@ part of 'dsa_report_guild_request.dart';
 
 DsaReportGuildRequest _$DsaReportGuildRequestFromJson(
   Map<String, dynamic> json,
-) => DsaReportGuildRequest(
-  ticket: json['ticket'] as String,
-  reporterFullLegalName: json['reporter_full_legal_name'] as String,
-  reporterCountryOfResidence:
-      DsaReportGuildRequestReporterCountryOfResidenceReporterCountryOfResidence.fromJson(
-        json['reporter_country_of_residence'] as String,
+) => $checkedCreate(
+  'DsaReportGuildRequest',
+  json,
+  ($checkedConvert) {
+    final val = DsaReportGuildRequest(
+      ticket: $checkedConvert('ticket', (v) => v as String),
+      reporterFullLegalName: $checkedConvert(
+        'reporter_full_legal_name',
+        (v) => v as String,
       ),
-  reportType: DsaReportGuildRequestReportTypeReportType.fromJson(
-    json['report_type'] as String,
-  ),
-  category: GuildReportCategoryEnum.fromJson(json['category'] as String),
-  guildId: json['guild_id'] as String,
-  additionalInfo: json['additional_info'] as String?,
-  reporterFluxerTag: json['reporter_fluxer_tag'] as String?,
-  inviteCode: json['invite_code'] as String?,
+      reporterCountryOfResidence: $checkedConvert(
+        'reporter_country_of_residence',
+        (v) =>
+            DsaReportGuildRequestReporterCountryOfResidenceReporterCountryOfResidence.fromJson(
+              v as String,
+            ),
+      ),
+      reportType: $checkedConvert(
+        'report_type',
+        (v) => DsaReportGuildRequestReportTypeReportType.fromJson(v as String),
+      ),
+      category: $checkedConvert(
+        'category',
+        (v) => GuildReportCategoryEnum.fromJson(v as String),
+      ),
+      guildId: $checkedConvert('guild_id', (v) => v as String),
+      additionalInfo: $checkedConvert('additional_info', (v) => v as String?),
+      reporterFluxerTag: $checkedConvert(
+        'reporter_fluxer_tag',
+        (v) => v as String?,
+      ),
+      inviteCode: $checkedConvert('invite_code', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'reporterFullLegalName': 'reporter_full_legal_name',
+    'reporterCountryOfResidence': 'reporter_country_of_residence',
+    'reportType': 'report_type',
+    'guildId': 'guild_id',
+    'additionalInfo': 'additional_info',
+    'reporterFluxerTag': 'reporter_fluxer_tag',
+    'inviteCode': 'invite_code',
+  },
 );
 
 Map<String, dynamic> _$DsaReportGuildRequestToJson(

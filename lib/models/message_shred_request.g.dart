@@ -7,15 +7,22 @@ part of 'message_shred_request.dart';
 // **************************************************************************
 
 MessageShredRequest _$MessageShredRequestFromJson(Map<String, dynamic> json) =>
-    MessageShredRequest(
-      userId: json['user_id'] as String,
-      entries: (json['entries'] as List<dynamic>)
-          .map(
-            (e) =>
-                MessageShredRequestEntries.fromJson(e as Map<String, dynamic>),
-          )
-          .toList(),
-    );
+    $checkedCreate('MessageShredRequest', json, ($checkedConvert) {
+      final val = MessageShredRequest(
+        userId: $checkedConvert('user_id', (v) => v as String),
+        entries: $checkedConvert(
+          'entries',
+          (v) => (v as List<dynamic>)
+              .map(
+                (e) => MessageShredRequestEntries.fromJson(
+                  e as Map<String, dynamic>,
+                ),
+              )
+              .toList(),
+        ),
+      );
+      return val;
+    }, fieldKeyMap: const {'userId': 'user_id'});
 
 Map<String, dynamic> _$MessageShredRequestToJson(
   MessageShredRequest instance,

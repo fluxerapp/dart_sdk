@@ -8,25 +8,38 @@ part of 'message_attachment_response.dart';
 
 MessageAttachmentResponse _$MessageAttachmentResponseFromJson(
   Map<String, dynamic> json,
-) => MessageAttachmentResponse(
-  id: json['id'] as String,
-  filename: json['filename'] as String,
-  size: (json['size'] as num).toInt(),
-  flags: (json['flags'] as num).toInt(),
-  title: json['title'] as String?,
-  description: json['description'] as String?,
-  contentType: json['content_type'] as String?,
-  contentHash: json['content_hash'] as String?,
-  url: json['url'] as String?,
-  proxyUrl: json['proxy_url'] as String?,
-  width: (json['width'] as num?)?.toInt(),
-  height: (json['height'] as num?)?.toInt(),
-  placeholder: json['placeholder'] as String?,
-  nsfw: json['nsfw'] as bool?,
-  duration: (json['duration'] as num?)?.toInt(),
-  waveform: json['waveform'] as String?,
-  expiresAt: json['expires_at'] as String?,
-  expired: json['expired'] as bool?,
+) => $checkedCreate(
+  'MessageAttachmentResponse',
+  json,
+  ($checkedConvert) {
+    final val = MessageAttachmentResponse(
+      id: $checkedConvert('id', (v) => v as String),
+      filename: $checkedConvert('filename', (v) => v as String),
+      size: $checkedConvert('size', (v) => (v as num).toInt()),
+      flags: $checkedConvert('flags', (v) => (v as num).toInt()),
+      title: $checkedConvert('title', (v) => v as String?),
+      description: $checkedConvert('description', (v) => v as String?),
+      contentType: $checkedConvert('content_type', (v) => v as String?),
+      contentHash: $checkedConvert('content_hash', (v) => v as String?),
+      url: $checkedConvert('url', (v) => v as String?),
+      proxyUrl: $checkedConvert('proxy_url', (v) => v as String?),
+      width: $checkedConvert('width', (v) => (v as num?)?.toInt()),
+      height: $checkedConvert('height', (v) => (v as num?)?.toInt()),
+      placeholder: $checkedConvert('placeholder', (v) => v as String?),
+      nsfw: $checkedConvert('nsfw', (v) => v as bool?),
+      duration: $checkedConvert('duration', (v) => (v as num?)?.toInt()),
+      waveform: $checkedConvert('waveform', (v) => v as String?),
+      expiresAt: $checkedConvert('expires_at', (v) => v as String?),
+      expired: $checkedConvert('expired', (v) => v as bool?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'contentType': 'content_type',
+    'contentHash': 'content_hash',
+    'proxyUrl': 'proxy_url',
+    'expiresAt': 'expires_at',
+  },
 );
 
 Map<String, dynamic> _$MessageAttachmentResponseToJson(

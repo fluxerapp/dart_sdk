@@ -7,10 +7,13 @@ part of 'pack_create_request.dart';
 // **************************************************************************
 
 PackCreateRequest _$PackCreateRequestFromJson(Map<String, dynamic> json) =>
-    PackCreateRequest(
-      name: json['name'] as String,
-      description: json['description'] as String?,
-    );
+    $checkedCreate('PackCreateRequest', json, ($checkedConvert) {
+      final val = PackCreateRequest(
+        name: $checkedConvert('name', (v) => v as String),
+        description: $checkedConvert('description', (v) => v as String?),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$PackCreateRequestToJson(PackCreateRequest instance) =>
     <String, dynamic>{

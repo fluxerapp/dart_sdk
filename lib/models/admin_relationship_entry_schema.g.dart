@@ -8,16 +8,28 @@ part of 'admin_relationship_entry_schema.dart';
 
 AdminRelationshipEntrySchema _$AdminRelationshipEntrySchemaFromJson(
   Map<String, dynamic> json,
-) => AdminRelationshipEntrySchema(
-  targetUserId: json['target_user_id'] as String,
-  category: RelationshipCategoryEnum.fromJson(json['category'] as String),
-  nickname: json['nickname'] as String?,
-  since: json['since'] as String?,
-  target: json['target'] == null
-      ? null
-      : AdminResolvedUserSchema.fromJson(
-          json['target'] as Map<String, dynamic>,
-        ),
+) => $checkedCreate(
+  'AdminRelationshipEntrySchema',
+  json,
+  ($checkedConvert) {
+    final val = AdminRelationshipEntrySchema(
+      targetUserId: $checkedConvert('target_user_id', (v) => v as String),
+      category: $checkedConvert(
+        'category',
+        (v) => RelationshipCategoryEnum.fromJson(v as String),
+      ),
+      nickname: $checkedConvert('nickname', (v) => v as String?),
+      since: $checkedConvert('since', (v) => v as String?),
+      target: $checkedConvert(
+        'target',
+        (v) => v == null
+            ? null
+            : AdminResolvedUserSchema.fromJson(v as Map<String, dynamic>),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'targetUserId': 'target_user_id'},
 );
 
 Map<String, dynamic> _$AdminRelationshipEntrySchemaToJson(

@@ -8,13 +8,17 @@ part of 'lookup_application_response.dart';
 
 LookupApplicationResponse _$LookupApplicationResponseFromJson(
   Map<String, dynamic> json,
-) => LookupApplicationResponse(
-  application: json['application'] == null
-      ? null
-      : ApplicationAdminResponse.fromJson(
-          json['application'] as Map<String, dynamic>,
-        ),
-);
+) => $checkedCreate('LookupApplicationResponse', json, ($checkedConvert) {
+  final val = LookupApplicationResponse(
+    application: $checkedConvert(
+      'application',
+      (v) => v == null
+          ? null
+          : ApplicationAdminResponse.fromJson(v as Map<String, dynamic>),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$LookupApplicationResponseToJson(
   LookupApplicationResponse instance,

@@ -9,9 +9,14 @@ part of 'admin_billing_refund_latest_invoice_cancel_request.dart';
 AdminBillingRefundLatestInvoiceCancelRequest
 _$AdminBillingRefundLatestInvoiceCancelRequestFromJson(
   Map<String, dynamic> json,
-) => AdminBillingRefundLatestInvoiceCancelRequest(
-  reason: json['reason'] as String?,
-);
+) => $checkedCreate('AdminBillingRefundLatestInvoiceCancelRequest', json, (
+  $checkedConvert,
+) {
+  final val = AdminBillingRefundLatestInvoiceCancelRequest(
+    reason: $checkedConvert('reason', (v) => v as String?),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$AdminBillingRefundLatestInvoiceCancelRequestToJson(
   AdminBillingRefundLatestInvoiceCancelRequest instance,

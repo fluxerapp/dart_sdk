@@ -8,13 +8,22 @@ part of 'list_voice_diagnostic_uploads_response.dart';
 
 ListVoiceDiagnosticUploadsResponse _$ListVoiceDiagnosticUploadsResponseFromJson(
   Map<String, dynamic> json,
-) => ListVoiceDiagnosticUploadsResponse(
-  uploads: (json['uploads'] as List<dynamic>)
-      .map(
-        (e) => VoiceDiagnosticUploadEntry.fromJson(e as Map<String, dynamic>),
-      )
-      .toList(),
-);
+) => $checkedCreate('ListVoiceDiagnosticUploadsResponse', json, (
+  $checkedConvert,
+) {
+  final val = ListVoiceDiagnosticUploadsResponse(
+    uploads: $checkedConvert(
+      'uploads',
+      (v) => (v as List<dynamic>)
+          .map(
+            (e) =>
+                VoiceDiagnosticUploadEntry.fromJson(e as Map<String, dynamic>),
+          )
+          .toList(),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$ListVoiceDiagnosticUploadsResponseToJson(
   ListVoiceDiagnosticUploadsResponse instance,

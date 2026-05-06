@@ -6,6 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'base64_image_type.dart';
 import 'guild_member_profile_flags.dart';
+import 'mention_reply_preferences.dart';
 import 'snowflake_type.dart';
 
 part 'guild_member_update_request.g.dart';
@@ -22,6 +23,7 @@ class GuildMemberUpdateRequest {
     this.pronouns,
     this.accentColor,
     this.profileFlags,
+    this.mentionFlags,
     this.mute,
     this.deaf,
     this.timeoutReason,
@@ -61,6 +63,10 @@ class GuildMemberUpdateRequest {
   final int? accentColor;
   @JsonKey(includeIfNull: false, name: 'profile_flags')
   final GuildMemberProfileFlags? profileFlags;
+
+  /// Per-guild reply mention preference override for this member; NO_PREFERENCE inherits the user's account-wide setting
+  @JsonKey(includeIfNull: false, name: 'mention_flags')
+  final MentionReplyPreferences? mentionFlags;
 
   /// Whether the member is muted in voice channels
   @JsonKey(includeIfNull: false)

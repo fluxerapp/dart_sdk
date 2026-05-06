@@ -8,9 +8,20 @@ part of 'guild_role_hoist_position_item.dart';
 
 GuildRoleHoistPositionItem _$GuildRoleHoistPositionItemFromJson(
   Map<String, dynamic> json,
-) => GuildRoleHoistPositionItem(
-  id: json['id'] as String,
-  hoistPosition: (json['hoist_position'] as num).toInt(),
+) => $checkedCreate(
+  'GuildRoleHoistPositionItem',
+  json,
+  ($checkedConvert) {
+    final val = GuildRoleHoistPositionItem(
+      id: $checkedConvert('id', (v) => v as String),
+      hoistPosition: $checkedConvert(
+        'hoist_position',
+        (v) => (v as num).toInt(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'hoistPosition': 'hoist_position'},
 );
 
 Map<String, dynamic> _$GuildRoleHoistPositionItemToJson(

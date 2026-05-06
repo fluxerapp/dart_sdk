@@ -6,16 +6,28 @@ part of 'template_role.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-TemplateRole _$TemplateRoleFromJson(Map<String, dynamic> json) => TemplateRole(
-  id: json['id'],
-  name: json['name'] as String?,
-  permissions: json['permissions'],
-  permissionsNew: json['permissions_new'],
-  color: json['color'] as num?,
-  hoist: json['hoist'] as bool?,
-  mentionable: json['mentionable'] as bool?,
-  unicodeEmoji: json['unicode_emoji'] as String?,
-);
+TemplateRole _$TemplateRoleFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      'TemplateRole',
+      json,
+      ($checkedConvert) {
+        final val = TemplateRole(
+          id: $checkedConvert('id', (v) => v),
+          name: $checkedConvert('name', (v) => v as String?),
+          permissions: $checkedConvert('permissions', (v) => v),
+          permissionsNew: $checkedConvert('permissions_new', (v) => v),
+          color: $checkedConvert('color', (v) => v as num?),
+          hoist: $checkedConvert('hoist', (v) => v as bool?),
+          mentionable: $checkedConvert('mentionable', (v) => v as bool?),
+          unicodeEmoji: $checkedConvert('unicode_emoji', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'permissionsNew': 'permissions_new',
+        'unicodeEmoji': 'unicode_emoji',
+      },
+    );
 
 Map<String, dynamic> _$TemplateRoleToJson(TemplateRole instance) =>
     <String, dynamic>{

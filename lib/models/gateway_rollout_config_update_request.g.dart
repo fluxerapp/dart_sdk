@@ -8,23 +8,76 @@ part of 'gateway_rollout_config_update_request.dart';
 
 GatewayRolloutConfigUpdateRequest _$GatewayRolloutConfigUpdateRequestFromJson(
   Map<String, dynamic> json,
-) => GatewayRolloutConfigUpdateRequest(
-  sessionRolloutPercentage: json['session_rollout_percentage'] as num?,
-  sessionRolloutMode: json['session_rollout_mode'] == null
-      ? null
-      : GatewayRolloutModeEnum.fromJson(json['session_rollout_mode'] as String),
-  guildRolloutPercentage: json['guild_rollout_percentage'] as num?,
-  sessionRetryMinMs: (json['session_retry_min_ms'] as num?)?.toInt(),
-  sessionRetryMaxMs: (json['session_retry_max_ms'] as num?)?.toInt(),
-  sessionRetryJitterMs: (json['session_retry_jitter_ms'] as num?)?.toInt(),
-  guildRetryMinMs: (json['guild_retry_min_ms'] as num?)?.toInt(),
-  guildRetryMaxMs: (json['guild_retry_max_ms'] as num?)?.toInt(),
-  guildRetryJitterMs: (json['guild_retry_jitter_ms'] as num?)?.toInt(),
-  rpcRequestTimeoutMs: (json['rpc_request_timeout_ms'] as num?)?.toInt(),
-  maxConcurrentSessionStarts: (json['max_concurrent_session_starts'] as num?)
-      ?.toInt(),
-  maxConcurrentGuildStarts: (json['max_concurrent_guild_starts'] as num?)
-      ?.toInt(),
+) => $checkedCreate(
+  'GatewayRolloutConfigUpdateRequest',
+  json,
+  ($checkedConvert) {
+    final val = GatewayRolloutConfigUpdateRequest(
+      sessionRolloutPercentage: $checkedConvert(
+        'session_rollout_percentage',
+        (v) => v as num?,
+      ),
+      sessionRolloutMode: $checkedConvert(
+        'session_rollout_mode',
+        (v) => v == null ? null : GatewayRolloutModeEnum.fromJson(v as String),
+      ),
+      guildRolloutPercentage: $checkedConvert(
+        'guild_rollout_percentage',
+        (v) => v as num?,
+      ),
+      sessionRetryMinMs: $checkedConvert(
+        'session_retry_min_ms',
+        (v) => (v as num?)?.toInt(),
+      ),
+      sessionRetryMaxMs: $checkedConvert(
+        'session_retry_max_ms',
+        (v) => (v as num?)?.toInt(),
+      ),
+      sessionRetryJitterMs: $checkedConvert(
+        'session_retry_jitter_ms',
+        (v) => (v as num?)?.toInt(),
+      ),
+      guildRetryMinMs: $checkedConvert(
+        'guild_retry_min_ms',
+        (v) => (v as num?)?.toInt(),
+      ),
+      guildRetryMaxMs: $checkedConvert(
+        'guild_retry_max_ms',
+        (v) => (v as num?)?.toInt(),
+      ),
+      guildRetryJitterMs: $checkedConvert(
+        'guild_retry_jitter_ms',
+        (v) => (v as num?)?.toInt(),
+      ),
+      rpcRequestTimeoutMs: $checkedConvert(
+        'rpc_request_timeout_ms',
+        (v) => (v as num?)?.toInt(),
+      ),
+      maxConcurrentSessionStarts: $checkedConvert(
+        'max_concurrent_session_starts',
+        (v) => (v as num?)?.toInt(),
+      ),
+      maxConcurrentGuildStarts: $checkedConvert(
+        'max_concurrent_guild_starts',
+        (v) => (v as num?)?.toInt(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'sessionRolloutPercentage': 'session_rollout_percentage',
+    'sessionRolloutMode': 'session_rollout_mode',
+    'guildRolloutPercentage': 'guild_rollout_percentage',
+    'sessionRetryMinMs': 'session_retry_min_ms',
+    'sessionRetryMaxMs': 'session_retry_max_ms',
+    'sessionRetryJitterMs': 'session_retry_jitter_ms',
+    'guildRetryMinMs': 'guild_retry_min_ms',
+    'guildRetryMaxMs': 'guild_retry_max_ms',
+    'guildRetryJitterMs': 'guild_retry_jitter_ms',
+    'rpcRequestTimeoutMs': 'rpc_request_timeout_ms',
+    'maxConcurrentSessionStarts': 'max_concurrent_session_starts',
+    'maxConcurrentGuildStarts': 'max_concurrent_guild_starts',
+  },
 );
 
 Map<String, dynamic> _$GatewayRolloutConfigUpdateRequestToJson(

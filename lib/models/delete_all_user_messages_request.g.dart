@@ -8,9 +8,17 @@ part of 'delete_all_user_messages_request.dart';
 
 DeleteAllUserMessagesRequest _$DeleteAllUserMessagesRequestFromJson(
   Map<String, dynamic> json,
-) => DeleteAllUserMessagesRequest(
-  userId: json['user_id'] as String,
-  dryRun: json['dry_run'] as bool?,
+) => $checkedCreate(
+  'DeleteAllUserMessagesRequest',
+  json,
+  ($checkedConvert) {
+    final val = DeleteAllUserMessagesRequest(
+      userId: $checkedConvert('user_id', (v) => v as String),
+      dryRun: $checkedConvert('dry_run', (v) => v as bool?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'userId': 'user_id', 'dryRun': 'dry_run'},
 );
 
 Map<String, dynamic> _$DeleteAllUserMessagesRequestToJson(

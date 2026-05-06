@@ -8,15 +8,22 @@ part of 'presigned_attachment_upload_request.dart';
 
 PresignedAttachmentUploadRequest _$PresignedAttachmentUploadRequestFromJson(
   Map<String, dynamic> json,
-) => PresignedAttachmentUploadRequest(
-  attachments: (json['attachments'] as List<dynamic>)
-      .map(
-        (e) => PresignedAttachmentUploadRequestItem.fromJson(
-          e as Map<String, dynamic>,
+) =>
+    $checkedCreate('PresignedAttachmentUploadRequest', json, ($checkedConvert) {
+      final val = PresignedAttachmentUploadRequest(
+        attachments: $checkedConvert(
+          'attachments',
+          (v) => (v as List<dynamic>)
+              .map(
+                (e) => PresignedAttachmentUploadRequestItem.fromJson(
+                  e as Map<String, dynamic>,
+                ),
+              )
+              .toList(),
         ),
-      )
-      .toList(),
-);
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$PresignedAttachmentUploadRequestToJson(
   PresignedAttachmentUploadRequest instance,

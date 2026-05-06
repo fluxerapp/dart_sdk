@@ -8,12 +8,29 @@ part of 'ncmec_attachment_submit_result_response.dart';
 
 NcmecAttachmentSubmitResultResponse
 _$NcmecAttachmentSubmitResultResponseFromJson(Map<String, dynamic> json) =>
-    NcmecAttachmentSubmitResultResponse(
-      success: NcmecAttachmentSubmitResultResponseSuccessSuccess.fromJson(
-        json['success'] as bool,
-      ),
-      ncmecReportId: json['ncmec_report_id'] as String,
-      auditLogReason: json['audit_log_reason'] as String,
+    $checkedCreate(
+      'NcmecAttachmentSubmitResultResponse',
+      json,
+      ($checkedConvert) {
+        final val = NcmecAttachmentSubmitResultResponse(
+          success: $checkedConvert(
+            'success',
+            (v) => NcmecAttachmentSubmitResultResponseSuccessSuccess.fromJson(
+              v as bool,
+            ),
+          ),
+          ncmecReportId: $checkedConvert('ncmec_report_id', (v) => v as String),
+          auditLogReason: $checkedConvert(
+            'audit_log_reason',
+            (v) => v as String,
+          ),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'ncmecReportId': 'ncmec_report_id',
+        'auditLogReason': 'audit_log_reason',
+      },
     );
 
 Map<String, dynamic> _$NcmecAttachmentSubmitResultResponseToJson(

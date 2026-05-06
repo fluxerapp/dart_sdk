@@ -8,21 +8,50 @@ part of 'dsa_report_user_request.dart';
 
 DsaReportUserRequest _$DsaReportUserRequestFromJson(
   Map<String, dynamic> json,
-) => DsaReportUserRequest(
-  ticket: json['ticket'] as String,
-  reporterFullLegalName: json['reporter_full_legal_name'] as String,
-  reporterCountryOfResidence:
-      DsaReportUserRequestReporterCountryOfResidenceReporterCountryOfResidence.fromJson(
-        json['reporter_country_of_residence'] as String,
+) => $checkedCreate(
+  'DsaReportUserRequest',
+  json,
+  ($checkedConvert) {
+    final val = DsaReportUserRequest(
+      ticket: $checkedConvert('ticket', (v) => v as String),
+      reporterFullLegalName: $checkedConvert(
+        'reporter_full_legal_name',
+        (v) => v as String,
       ),
-  reportType: DsaReportUserRequestReportTypeReportType.fromJson(
-    json['report_type'] as String,
-  ),
-  category: UserReportCategoryEnum.fromJson(json['category'] as String),
-  additionalInfo: json['additional_info'] as String?,
-  reporterFluxerTag: json['reporter_fluxer_tag'] as String?,
-  userId: json['user_id'] as String?,
-  userTag: json['user_tag'] as String?,
+      reporterCountryOfResidence: $checkedConvert(
+        'reporter_country_of_residence',
+        (v) =>
+            DsaReportUserRequestReporterCountryOfResidenceReporterCountryOfResidence.fromJson(
+              v as String,
+            ),
+      ),
+      reportType: $checkedConvert(
+        'report_type',
+        (v) => DsaReportUserRequestReportTypeReportType.fromJson(v as String),
+      ),
+      category: $checkedConvert(
+        'category',
+        (v) => UserReportCategoryEnum.fromJson(v as String),
+      ),
+      additionalInfo: $checkedConvert('additional_info', (v) => v as String?),
+      reporterFluxerTag: $checkedConvert(
+        'reporter_fluxer_tag',
+        (v) => v as String?,
+      ),
+      userId: $checkedConvert('user_id', (v) => v as String?),
+      userTag: $checkedConvert('user_tag', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'reporterFullLegalName': 'reporter_full_legal_name',
+    'reporterCountryOfResidence': 'reporter_country_of_residence',
+    'reportType': 'report_type',
+    'additionalInfo': 'additional_info',
+    'reporterFluxerTag': 'reporter_fluxer_tag',
+    'userId': 'user_id',
+    'userTag': 'user_tag',
+  },
 );
 
 Map<String, dynamic> _$DsaReportUserRequestToJson(

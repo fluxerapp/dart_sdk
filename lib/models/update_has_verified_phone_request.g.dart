@@ -8,9 +8,20 @@ part of 'update_has_verified_phone_request.dart';
 
 UpdateHasVerifiedPhoneRequest _$UpdateHasVerifiedPhoneRequestFromJson(
   Map<String, dynamic> json,
-) => UpdateHasVerifiedPhoneRequest(
-  userId: json['user_id'] as String,
-  hasVerifiedPhone: json['has_verified_phone'] as bool,
+) => $checkedCreate(
+  'UpdateHasVerifiedPhoneRequest',
+  json,
+  ($checkedConvert) {
+    final val = UpdateHasVerifiedPhoneRequest(
+      userId: $checkedConvert('user_id', (v) => v as String),
+      hasVerifiedPhone: $checkedConvert('has_verified_phone', (v) => v as bool),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'userId': 'user_id',
+    'hasVerifiedPhone': 'has_verified_phone',
+  },
 );
 
 Map<String, dynamic> _$UpdateHasVerifiedPhoneRequestToJson(

@@ -8,18 +8,35 @@ part of 'enable_mfa_totp_request.dart';
 
 EnableMfaTotpRequest _$EnableMfaTotpRequestFromJson(
   Map<String, dynamic> json,
-) => EnableMfaTotpRequest(
-  secret: json['secret'] as String,
-  code: json['code'] as String,
-  password: json['password'] as String?,
-  mfaMethod: json['mfa_method'] == null
-      ? null
-      : EnableMfaTotpRequestMfaMethodMfaMethod.fromJson(
-          json['mfa_method'] as String,
-        ),
-  mfaCode: json['mfa_code'] as String?,
-  webauthnResponse: json['webauthn_response'],
-  webauthnChallenge: json['webauthn_challenge'] as String?,
+) => $checkedCreate(
+  'EnableMfaTotpRequest',
+  json,
+  ($checkedConvert) {
+    final val = EnableMfaTotpRequest(
+      secret: $checkedConvert('secret', (v) => v as String),
+      code: $checkedConvert('code', (v) => v as String),
+      password: $checkedConvert('password', (v) => v as String?),
+      mfaMethod: $checkedConvert(
+        'mfa_method',
+        (v) => v == null
+            ? null
+            : EnableMfaTotpRequestMfaMethodMfaMethod.fromJson(v as String),
+      ),
+      mfaCode: $checkedConvert('mfa_code', (v) => v as String?),
+      webauthnResponse: $checkedConvert('webauthn_response', (v) => v),
+      webauthnChallenge: $checkedConvert(
+        'webauthn_challenge',
+        (v) => v as String?,
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'mfaMethod': 'mfa_method',
+    'mfaCode': 'mfa_code',
+    'webauthnResponse': 'webauthn_response',
+    'webauthnChallenge': 'webauthn_challenge',
+  },
 );
 
 Map<String, dynamic> _$EnableMfaTotpRequestToJson(

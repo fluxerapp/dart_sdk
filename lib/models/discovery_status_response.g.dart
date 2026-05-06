@@ -8,14 +8,23 @@ part of 'discovery_status_response.dart';
 
 DiscoveryStatusResponse _$DiscoveryStatusResponseFromJson(
   Map<String, dynamic> json,
-) => DiscoveryStatusResponse(
-  eligible: json['eligible'] as bool,
-  minMemberCount: json['min_member_count'] as num,
-  application: json['application'] == null
-      ? null
-      : DiscoveryApplicationResponse.fromJson(
-          json['application'] as Map<String, dynamic>,
-        ),
+) => $checkedCreate(
+  'DiscoveryStatusResponse',
+  json,
+  ($checkedConvert) {
+    final val = DiscoveryStatusResponse(
+      eligible: $checkedConvert('eligible', (v) => v as bool),
+      minMemberCount: $checkedConvert('min_member_count', (v) => v as num),
+      application: $checkedConvert(
+        'application',
+        (v) => v == null
+            ? null
+            : DiscoveryApplicationResponse.fromJson(v as Map<String, dynamic>),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'minMemberCount': 'min_member_count'},
 );
 
 Map<String, dynamic> _$DiscoveryStatusResponseToJson(

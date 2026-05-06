@@ -8,9 +8,15 @@ part of 'admin_users_me_response.dart';
 
 AdminUsersMeResponse _$AdminUsersMeResponseFromJson(
   Map<String, dynamic> json,
-) => AdminUsersMeResponse(
-  user: UserAdminResponseSchema.fromJson(json['user'] as Map<String, dynamic>),
-);
+) => $checkedCreate('AdminUsersMeResponse', json, ($checkedConvert) {
+  final val = AdminUsersMeResponse(
+    user: $checkedConvert(
+      'user',
+      (v) => UserAdminResponseSchema.fromJson(v as Map<String, dynamic>),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$AdminUsersMeResponseToJson(
   AdminUsersMeResponse instance,

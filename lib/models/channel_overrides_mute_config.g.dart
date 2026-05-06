@@ -8,9 +8,23 @@ part of 'channel_overrides_mute_config.dart';
 
 ChannelOverridesMuteConfig _$ChannelOverridesMuteConfigFromJson(
   Map<String, dynamic> json,
-) => ChannelOverridesMuteConfig(
-  endTime: json['end_time'] as String?,
-  selectedTimeWindow: (json['selected_time_window'] as num).toInt(),
+) => $checkedCreate(
+  'ChannelOverridesMuteConfig',
+  json,
+  ($checkedConvert) {
+    final val = ChannelOverridesMuteConfig(
+      endTime: $checkedConvert('end_time', (v) => v as String?),
+      selectedTimeWindow: $checkedConvert(
+        'selected_time_window',
+        (v) => (v as num).toInt(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'endTime': 'end_time',
+    'selectedTimeWindow': 'selected_time_window',
+  },
 );
 
 Map<String, dynamic> _$ChannelOverridesMuteConfigToJson(

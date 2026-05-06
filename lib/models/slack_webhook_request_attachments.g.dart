@@ -8,27 +8,45 @@ part of 'slack_webhook_request_attachments.dart';
 
 SlackWebhookRequestAttachments _$SlackWebhookRequestAttachmentsFromJson(
   Map<String, dynamic> json,
-) => SlackWebhookRequestAttachments(
-  fallback: json['fallback'] as String?,
-  pretext: json['pretext'] as String?,
-  text: json['text'] as String?,
-  color: json['color'] as String?,
-  title: json['title'] as String?,
-  titleLink: json['title_link'] as String?,
-  fields: (json['fields'] as List<dynamic>?)
-      ?.map(
-        (e) => SlackWebhookRequestAttachmentsFields.fromJson(
-          e as Map<String, dynamic>,
-        ),
-      )
-      .toList(),
-  footer: json['footer'] as String?,
-  ts: (json['ts'] as num?)?.toInt(),
-  authorName: json['author_name'] as String?,
-  authorLink: json['author_link'] as String?,
-  authorIcon: json['author_icon'] as String?,
-  imageUrl: json['image_url'] as String?,
-  thumbUrl: json['thumb_url'] as String?,
+) => $checkedCreate(
+  'SlackWebhookRequestAttachments',
+  json,
+  ($checkedConvert) {
+    final val = SlackWebhookRequestAttachments(
+      fallback: $checkedConvert('fallback', (v) => v as String?),
+      pretext: $checkedConvert('pretext', (v) => v as String?),
+      text: $checkedConvert('text', (v) => v as String?),
+      color: $checkedConvert('color', (v) => v as String?),
+      title: $checkedConvert('title', (v) => v as String?),
+      titleLink: $checkedConvert('title_link', (v) => v as String?),
+      fields: $checkedConvert(
+        'fields',
+        (v) => (v as List<dynamic>?)
+            ?.map(
+              (e) => SlackWebhookRequestAttachmentsFields.fromJson(
+                e as Map<String, dynamic>,
+              ),
+            )
+            .toList(),
+      ),
+      footer: $checkedConvert('footer', (v) => v as String?),
+      ts: $checkedConvert('ts', (v) => (v as num?)?.toInt()),
+      authorName: $checkedConvert('author_name', (v) => v as String?),
+      authorLink: $checkedConvert('author_link', (v) => v as String?),
+      authorIcon: $checkedConvert('author_icon', (v) => v as String?),
+      imageUrl: $checkedConvert('image_url', (v) => v as String?),
+      thumbUrl: $checkedConvert('thumb_url', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'titleLink': 'title_link',
+    'authorName': 'author_name',
+    'authorLink': 'author_link',
+    'authorIcon': 'author_icon',
+    'imageUrl': 'image_url',
+    'thumbUrl': 'thumb_url',
+  },
 );
 
 Map<String, dynamic> _$SlackWebhookRequestAttachmentsToJson(

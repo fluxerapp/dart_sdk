@@ -8,11 +8,26 @@ part of 'lookup_message_by_attachment_request.dart';
 
 LookupMessageByAttachmentRequest _$LookupMessageByAttachmentRequestFromJson(
   Map<String, dynamic> json,
-) => LookupMessageByAttachmentRequest(
-  channelId: json['channel_id'] as String,
-  attachmentId: json['attachment_id'] as String,
-  filename: json['filename'] as String,
-  contextLimit: (json['context_limit'] as num?)?.toInt(),
+) => $checkedCreate(
+  'LookupMessageByAttachmentRequest',
+  json,
+  ($checkedConvert) {
+    final val = LookupMessageByAttachmentRequest(
+      channelId: $checkedConvert('channel_id', (v) => v as String),
+      attachmentId: $checkedConvert('attachment_id', (v) => v as String),
+      filename: $checkedConvert('filename', (v) => v as String),
+      contextLimit: $checkedConvert(
+        'context_limit',
+        (v) => (v as num?)?.toInt(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'channelId': 'channel_id',
+    'attachmentId': 'attachment_id',
+    'contextLimit': 'context_limit',
+  },
 );
 
 Map<String, dynamic> _$LookupMessageByAttachmentRequestToJson(

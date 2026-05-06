@@ -8,13 +8,25 @@ part of 'bulk_ignore_friend_requests_request.dart';
 
 BulkIgnoreFriendRequestsRequest _$BulkIgnoreFriendRequestsRequestFromJson(
   Map<String, dynamic> json,
-) => BulkIgnoreFriendRequestsRequest(
-  filter: json['filter'] == null
-      ? null
-      : BulkIgnoreFriendRequestsRequestFilterFilter.fromJson(
-          json['filter'] as String,
-        ),
-  maxAccountAgeSeconds: (json['max_account_age_seconds'] as num?)?.toInt(),
+) => $checkedCreate(
+  'BulkIgnoreFriendRequestsRequest',
+  json,
+  ($checkedConvert) {
+    final val = BulkIgnoreFriendRequestsRequest(
+      filter: $checkedConvert(
+        'filter',
+        (v) => v == null
+            ? null
+            : BulkIgnoreFriendRequestsRequestFilterFilter.fromJson(v as String),
+      ),
+      maxAccountAgeSeconds: $checkedConvert(
+        'max_account_age_seconds',
+        (v) => (v as num?)?.toInt(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'maxAccountAgeSeconds': 'max_account_age_seconds'},
 );
 
 Map<String, dynamic> _$BulkIgnoreFriendRequestsRequestToJson(

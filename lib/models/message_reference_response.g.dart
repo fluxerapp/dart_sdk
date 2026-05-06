@@ -8,11 +8,26 @@ part of 'message_reference_response.dart';
 
 MessageReferenceResponse _$MessageReferenceResponseFromJson(
   Map<String, dynamic> json,
-) => MessageReferenceResponse(
-  channelId: json['channel_id'] as String,
-  messageId: json['message_id'] as String,
-  type: MessageReferenceType.fromJson((json['type'] as num).toInt()),
-  guildId: json['guild_id'] as String?,
+) => $checkedCreate(
+  'MessageReferenceResponse',
+  json,
+  ($checkedConvert) {
+    final val = MessageReferenceResponse(
+      channelId: $checkedConvert('channel_id', (v) => v as String),
+      messageId: $checkedConvert('message_id', (v) => v as String),
+      type: $checkedConvert(
+        'type',
+        (v) => MessageReferenceType.fromJson((v as num).toInt()),
+      ),
+      guildId: $checkedConvert('guild_id', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'channelId': 'channel_id',
+    'messageId': 'message_id',
+    'guildId': 'guild_id',
+  },
 );
 
 Map<String, dynamic> _$MessageReferenceResponseToJson(

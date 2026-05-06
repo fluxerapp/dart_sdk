@@ -8,27 +8,58 @@ part of 'list_user_relationships_response.dart';
 
 ListUserRelationshipsResponse _$ListUserRelationshipsResponseFromJson(
   Map<String, dynamic> json,
-) => ListUserRelationshipsResponse(
-  friends: (json['friends'] as List<dynamic>)
-      .map(
-        (e) => AdminRelationshipEntrySchema.fromJson(e as Map<String, dynamic>),
-      )
-      .toList(),
-  incomingRequests: (json['incoming_requests'] as List<dynamic>)
-      .map(
-        (e) => AdminRelationshipEntrySchema.fromJson(e as Map<String, dynamic>),
-      )
-      .toList(),
-  outgoingRequests: (json['outgoing_requests'] as List<dynamic>)
-      .map(
-        (e) => AdminRelationshipEntrySchema.fromJson(e as Map<String, dynamic>),
-      )
-      .toList(),
-  blocked: (json['blocked'] as List<dynamic>)
-      .map(
-        (e) => AdminRelationshipEntrySchema.fromJson(e as Map<String, dynamic>),
-      )
-      .toList(),
+) => $checkedCreate(
+  'ListUserRelationshipsResponse',
+  json,
+  ($checkedConvert) {
+    final val = ListUserRelationshipsResponse(
+      friends: $checkedConvert(
+        'friends',
+        (v) => (v as List<dynamic>)
+            .map(
+              (e) => AdminRelationshipEntrySchema.fromJson(
+                e as Map<String, dynamic>,
+              ),
+            )
+            .toList(),
+      ),
+      incomingRequests: $checkedConvert(
+        'incoming_requests',
+        (v) => (v as List<dynamic>)
+            .map(
+              (e) => AdminRelationshipEntrySchema.fromJson(
+                e as Map<String, dynamic>,
+              ),
+            )
+            .toList(),
+      ),
+      outgoingRequests: $checkedConvert(
+        'outgoing_requests',
+        (v) => (v as List<dynamic>)
+            .map(
+              (e) => AdminRelationshipEntrySchema.fromJson(
+                e as Map<String, dynamic>,
+              ),
+            )
+            .toList(),
+      ),
+      blocked: $checkedConvert(
+        'blocked',
+        (v) => (v as List<dynamic>)
+            .map(
+              (e) => AdminRelationshipEntrySchema.fromJson(
+                e as Map<String, dynamic>,
+              ),
+            )
+            .toList(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'incomingRequests': 'incoming_requests',
+    'outgoingRequests': 'outgoing_requests',
+  },
 );
 
 Map<String, dynamic> _$ListUserRelationshipsResponseToJson(

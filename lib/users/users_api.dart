@@ -2,15 +2,16 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, unused_import, invalid_annotation_target, unnecessary_import
 
+import 'dart:convert';
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
 import 'package:retrofit/error_logger.dart';
 
+import '../models/allowed_mentions_request.dart';
 import '../models/bulk_ignore_friend_requests_request.dart';
 import '../models/bulk_ignore_friend_requests_response.dart';
 import '../models/channel_response.dart';
 import '../models/create_private_channel_request.dart';
-import '../models/developer_force_inbound_phone_verification_request.dart';
 import '../models/disable_totp_request.dart';
 import '../models/email_change_apply_request.dart';
 import '../models/email_change_bounced_request_new_request.dart';
@@ -33,15 +34,19 @@ import '../models/harvest_download_url_response.dart';
 import '../models/harvest_status_response_schema.dart';
 import '../models/harvest_status_response_schema_nullable.dart';
 import '../models/inbound_sms_challenge_start_response.dart';
+import '../models/message_content_request.dart';
+import '../models/message_flags.dart';
 import '../models/message_list_response.dart';
+import '../models/message_nonce_request.dart';
+import '../models/message_reference_request.dart';
 import '../models/mfa_backup_codes_request.dart';
 import '../models/mfa_backup_codes_response.dart';
+import '../models/object3.dart';
 import '../models/password_change_complete_request.dart';
 import '../models/password_change_start_response.dart';
 import '../models/password_change_ticket_request.dart';
 import '../models/password_change_verify_request.dart';
 import '../models/password_change_verify_response.dart';
-import '../models/phone_add_request.dart';
 import '../models/phone_send_verification_request.dart';
 import '../models/phone_send_verification_response.dart';
 import '../models/phone_verify_request.dart';
@@ -55,6 +60,7 @@ import '../models/push_subscriptions_list_response.dart';
 import '../models/relationship_nickname_update_request.dart';
 import '../models/relationship_response.dart';
 import '../models/relationship_type_put_request.dart';
+import '../models/rich_embed_request.dart';
 import '../models/save_message_request.dart';
 import '../models/saved_message_entry_list_response.dart';
 import '../models/scheduled_message_response_schema.dart';
@@ -172,16 +178,6 @@ abstract class UsersApi {
   @POST('/users/@me/delete')
   Future<void> deleteCurrentUserAccount({
     @Body() required SudoVerificationSchema body,
-  });
-
-  /// Set force inbound phone verification debugging flag.
-  ///
-  /// Sets an internal current-user debugging flag that forces phone verification through the inbound (expensive-destination) flow regardless of phone prefix.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @POST('/users/@me/developer/force-phone-inbound')
-  Future<UserPrivateResponse> setCurrentUserForcePhoneInbound({
-    @Body() required DeveloperForceInboundPhoneVerificationRequest body,
   });
 
   /// Disable current user account.
@@ -409,22 +405,6 @@ abstract class UsersApi {
     @Body() required MfaBackupCodesRequest body,
   });
 
-  /// Disable SMS multi-factor authentication.
-  ///
-  /// Disable SMS-based multi-factor authentication on the current account. Requires sudo mode verification for security.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @POST('/users/@me/mfa/sms/disable')
-  Future<void> disableSmsMfa({@Body() required SudoVerificationSchema body});
-
-  /// Enable SMS multi-factor authentication.
-  ///
-  /// Enable SMS-based multi-factor authentication on the current account. Requires sudo mode verification and a verified phone number.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @POST('/users/@me/mfa/sms/enable')
-  Future<void> enableSmsMfa({@Body() required SudoVerificationSchema body});
-
   /// Disable TOTP multi-factor authentication.
   ///
   /// Disable TOTP multi-factor authentication on the current account. Requires sudo mode verification for security.
@@ -564,24 +544,6 @@ abstract class UsersApi {
     @Body() required PasswordChangeVerifyRequest body,
   });
 
-  /// Add phone number to account.
-  ///
-  /// Add or update the phone number associated with the current account. Requires sudo mode verification. Phone must be verified before use.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @POST('/users/@me/phone')
-  Future<void> addPhoneToAccount({@Body() required PhoneAddRequest body});
-
-  /// Remove phone number from account.
-  ///
-  /// Remove the phone number from the current account. Requires sudo mode verification. SMS MFA will be disabled if enabled.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @DELETE('/users/@me/phone')
-  Future<void> removePhoneFromAccount({
-    @Body() required SudoVerificationSchema body,
-  });
-
   /// Start an inbound SMS challenge.
   ///
   /// For very-high-risk registrations the platform requires the user to text a one-time code to the platform's number, instead of receiving a code from the platform. This endpoint generates the code and the destination number to display.
@@ -590,7 +552,7 @@ abstract class UsersApi {
 
   /// Send phone verification code.
   ///
-  /// Request phone verification. Most requests return 204 after sending an SMS code. Developer-forced SNA returns a one-use mobile handoff; expensive outbound destinations return an inbound SMS challenge instead.
+  /// Send a one-time code on the requested channel. Defaults to the first available channel from server policy. Pass channel="sms" to request SMS (only honoured for SMS-allowlisted destinations) or channel="inbound_challenge" to receive challenge details to text in. Expensive outbound destinations always downgrade to an inbound challenge.
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/users/@me/phone/send-verification')
@@ -792,9 +754,56 @@ abstract class UsersApi {
   /// Updates an existing scheduled message before it is sent. Can modify message content, scheduled time, and timezone. Returns updated scheduled message details.
   ///
   /// [scheduledMessageId] - The scheduled message id.
+  ///
+  /// [content] - Name not received - field will be skipped.
+  /// Name not received - field will be skipped.
+  ///
+  /// [embeds] - Array of embed objects to include in the message.
+  /// Name not received - field will be skipped.
+  ///
+  /// [attachments] - Array of attachment objects.
+  /// Name not received - field will be skipped.
+  ///
+  /// [messageReference] - Name not received - field will be skipped.
+  /// Name not received - field will be skipped.
+  ///
+  /// [allowedMentions] - Name not received - field will be skipped.
+  /// Name not received - field will be skipped.
+  ///
+  /// [flags] - Name not received - field will be skipped.
+  ///
+  /// [nonce] - Name not received - field will be skipped.
+  ///
+  /// [favoriteMemeId] - Name not received - field will be skipped.
+  /// Name not received - field will be skipped.
+  ///
+  /// [stickerIds] - Name not received - field will be skipped.
+  /// Name not received - field will be skipped.
+  ///
+  /// [tts] - Whether this is a text-to-speech message.
+  /// Name not received - field will be skipped.
+  ///
+  /// [scheduledLocalAt] - ISO 8601 timestamp expressed in the user local timezone for when the message should be delivered.
+  /// Name not received - field will be skipped.
+  ///
+  /// [timezone] - IANA timezone identifier the schedule_local_at value is anchored to.
+  /// Name not received - field will be skipped.
+  @MultiPart()
   @PATCH('/users/@me/scheduled-messages/{scheduled_message_id}')
   Future<ScheduledMessageResponseSchema> updateScheduledMessage({
     @Path('scheduled_message_id') required String scheduledMessageId,
+    @Part(name: 'scheduled_local_at') required String scheduledLocalAt,
+    @Part(name: 'timezone') required String timezone,
+    @Part(name: 'content') MessageContentRequest? content,
+    @Part(name: 'embeds') List<RichEmbedRequest>? embeds,
+    @Part(name: 'attachments') List<Object3>? attachments,
+    @Part(name: 'message_reference') MessageReferenceRequest? messageReference,
+    @Part(name: 'allowed_mentions') AllowedMentionsRequest? allowedMentions,
+    @Part(name: 'flags') MessageFlags? flags,
+    @Part(name: 'nonce') MessageNonceRequest? nonce,
+    @Part(name: 'favorite_meme_id') SnowflakeType? favoriteMemeId,
+    @Part(name: 'sticker_ids') List<SnowflakeType>? stickerIds,
+    @Part(name: 'tts') bool? tts,
   });
 
   /// Get current user settings.
@@ -815,15 +824,9 @@ abstract class UsersApi {
 
   /// List sudo multi-factor authentication methods.
   ///
-  /// Retrieve all available MFA methods for sudo mode verification (TOTP, SMS, WebAuthn). Requires authentication.
+  /// Retrieve all available MFA methods for sudo mode verification (TOTP, WebAuthn). Requires authentication.
   @GET('/users/@me/sudo/mfa-methods')
   Future<SudoMfaMethodsResponse> listSudoMfaMethods();
-
-  /// Send sudo SMS code.
-  ///
-  /// Request an SMS code to be sent for sudo mode verification. Used before entering sensitive account settings.
-  @POST('/users/@me/sudo/mfa/sms/send')
-  Future<void> sendSudoSmsCode();
 
   /// Get sudo WebAuthn authentication options.
   ///

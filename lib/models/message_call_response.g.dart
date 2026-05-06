@@ -7,13 +7,23 @@ part of 'message_call_response.dart';
 // **************************************************************************
 
 MessageCallResponse _$MessageCallResponseFromJson(Map<String, dynamic> json) =>
-    MessageCallResponse(
-      participants: (json['participants'] as List<dynamic>)
-          .map((e) => e as String)
-          .toList(),
-      endedTimestamp: json['ended_timestamp'] == null
-          ? null
-          : DateTime.parse(json['ended_timestamp'] as String),
+    $checkedCreate(
+      'MessageCallResponse',
+      json,
+      ($checkedConvert) {
+        final val = MessageCallResponse(
+          participants: $checkedConvert(
+            'participants',
+            (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+          ),
+          endedTimestamp: $checkedConvert(
+            'ended_timestamp',
+            (v) => v == null ? null : DateTime.parse(v as String),
+          ),
+        );
+        return val;
+      },
+      fieldKeyMap: const {'endedTimestamp': 'ended_timestamp'},
     );
 
 Map<String, dynamic> _$MessageCallResponseToJson(

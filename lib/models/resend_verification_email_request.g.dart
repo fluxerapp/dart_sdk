@@ -8,7 +8,12 @@ part of 'resend_verification_email_request.dart';
 
 ResendVerificationEmailRequest _$ResendVerificationEmailRequestFromJson(
   Map<String, dynamic> json,
-) => ResendVerificationEmailRequest(userId: json['user_id'] as String);
+) => $checkedCreate('ResendVerificationEmailRequest', json, ($checkedConvert) {
+  final val = ResendVerificationEmailRequest(
+    userId: $checkedConvert('user_id', (v) => v as String),
+  );
+  return val;
+}, fieldKeyMap: const {'userId': 'user_id'});
 
 Map<String, dynamic> _$ResendVerificationEmailRequestToJson(
   ResendVerificationEmailRequest instance,

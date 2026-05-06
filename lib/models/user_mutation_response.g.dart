@@ -8,9 +8,15 @@ part of 'user_mutation_response.dart';
 
 UserMutationResponse _$UserMutationResponseFromJson(
   Map<String, dynamic> json,
-) => UserMutationResponse(
-  user: UserAdminResponseSchema.fromJson(json['user'] as Map<String, dynamic>),
-);
+) => $checkedCreate('UserMutationResponse', json, ($checkedConvert) {
+  final val = UserMutationResponse(
+    user: $checkedConvert(
+      'user',
+      (v) => UserAdminResponseSchema.fromJson(v as Map<String, dynamic>),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$UserMutationResponseToJson(
   UserMutationResponse instance,

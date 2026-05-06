@@ -19,7 +19,7 @@ class BulkDeleteMessagesRequest {
   @JsonKey(includeIfNull: false, name: 'message_ids')
   final List<SnowflakeType>? messageIds;
 
-  /// Discord-compatible alias for message IDs
+  /// Alias for message IDs
   @JsonKey(includeIfNull: false)
   final List<SnowflakeType>? messages;
 

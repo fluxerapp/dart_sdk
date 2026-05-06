@@ -7,17 +7,40 @@ part of 'pack_summary_response.dart';
 // **************************************************************************
 
 PackSummaryResponse _$PackSummaryResponseFromJson(Map<String, dynamic> json) =>
-    PackSummaryResponse(
-      id: json['id'] as String,
-      name: json['name'] as String,
-      description: json['description'] as String?,
-      type: PackSummaryResponseTypeType.fromJson(json['type'] as String),
-      creatorId: json['creator_id'] as String,
-      createdAt: DateTime.parse(json['created_at'] as String),
-      updatedAt: DateTime.parse(json['updated_at'] as String),
-      installedAt: json['installed_at'] == null
-          ? null
-          : DateTime.parse(json['installed_at'] as String),
+    $checkedCreate(
+      'PackSummaryResponse',
+      json,
+      ($checkedConvert) {
+        final val = PackSummaryResponse(
+          id: $checkedConvert('id', (v) => v as String),
+          name: $checkedConvert('name', (v) => v as String),
+          description: $checkedConvert('description', (v) => v as String?),
+          type: $checkedConvert(
+            'type',
+            (v) => PackSummaryResponseTypeType.fromJson(v as String),
+          ),
+          creatorId: $checkedConvert('creator_id', (v) => v as String),
+          createdAt: $checkedConvert(
+            'created_at',
+            (v) => DateTime.parse(v as String),
+          ),
+          updatedAt: $checkedConvert(
+            'updated_at',
+            (v) => DateTime.parse(v as String),
+          ),
+          installedAt: $checkedConvert(
+            'installed_at',
+            (v) => v == null ? null : DateTime.parse(v as String),
+          ),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'creatorId': 'creator_id',
+        'createdAt': 'created_at',
+        'updatedAt': 'updated_at',
+        'installedAt': 'installed_at',
+      },
     );
 
 Map<String, dynamic> _$PackSummaryResponseToJson(

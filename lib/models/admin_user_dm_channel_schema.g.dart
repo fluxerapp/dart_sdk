@@ -8,24 +8,49 @@ part of 'admin_user_dm_channel_schema.dart';
 
 AdminUserDmChannelSchema _$AdminUserDmChannelSchemaFromJson(
   Map<String, dynamic> json,
-) => AdminUserDmChannelSchema(
-  channelId: json['channel_id'] as String,
-  channelType: (json['channel_type'] as num?)?.toInt(),
-  channelNsfw: json['channel_nsfw'] as bool?,
-  guildNsfwLevel: json['guild_nsfw_level'] == null
-      ? null
-      : NsfwLevel.fromJson((json['guild_nsfw_level'] as num).toInt()),
-  recipientIds: (json['recipient_ids'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-  recipients: (json['recipients'] as List<dynamic>)
-      .map((e) => AdminResolvedUserSchema.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  lastMessageId: json['last_message_id'] as String?,
-  isOpen: json['is_open'] as bool,
-  name: json['name'] as String?,
-  icon: json['icon'] as String?,
-  ownerId: json['owner_id'] as String?,
+) => $checkedCreate(
+  'AdminUserDmChannelSchema',
+  json,
+  ($checkedConvert) {
+    final val = AdminUserDmChannelSchema(
+      channelId: $checkedConvert('channel_id', (v) => v as String),
+      channelType: $checkedConvert('channel_type', (v) => (v as num?)?.toInt()),
+      channelNsfw: $checkedConvert('channel_nsfw', (v) => v as bool?),
+      guildNsfwLevel: $checkedConvert(
+        'guild_nsfw_level',
+        (v) => v == null ? null : NsfwLevel.fromJson((v as num).toInt()),
+      ),
+      recipientIds: $checkedConvert(
+        'recipient_ids',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      recipients: $checkedConvert(
+        'recipients',
+        (v) => (v as List<dynamic>)
+            .map(
+              (e) =>
+                  AdminResolvedUserSchema.fromJson(e as Map<String, dynamic>),
+            )
+            .toList(),
+      ),
+      lastMessageId: $checkedConvert('last_message_id', (v) => v as String?),
+      isOpen: $checkedConvert('is_open', (v) => v as bool),
+      name: $checkedConvert('name', (v) => v as String?),
+      icon: $checkedConvert('icon', (v) => v as String?),
+      ownerId: $checkedConvert('owner_id', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'channelId': 'channel_id',
+    'channelType': 'channel_type',
+    'channelNsfw': 'channel_nsfw',
+    'guildNsfwLevel': 'guild_nsfw_level',
+    'recipientIds': 'recipient_ids',
+    'lastMessageId': 'last_message_id',
+    'isOpen': 'is_open',
+    'ownerId': 'owner_id',
+  },
 );
 
 Map<String, dynamic> _$AdminUserDmChannelSchemaToJson(

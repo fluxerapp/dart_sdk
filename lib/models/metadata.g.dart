@@ -6,19 +6,24 @@ part of 'metadata.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Metadata _$MetadataFromJson(Map<String, dynamic> json) => Metadata(
-  key: json['key'] as String,
-  label: json['label'] as String,
-  description: json['description'] as String,
-  category: json['category'] as String,
-  scope: json['scope'] as String,
-  isToggle: json['isToggle'] as bool,
-  unit: json['unit'] == null
-      ? null
-      : MetadataUnitUnit.fromJson(json['unit'] as String),
-  min: json['min'] as num?,
-  max: json['max'] as num?,
-);
+Metadata _$MetadataFromJson(Map<String, dynamic> json) =>
+    $checkedCreate('Metadata', json, ($checkedConvert) {
+      final val = Metadata(
+        key: $checkedConvert('key', (v) => v as String),
+        label: $checkedConvert('label', (v) => v as String),
+        description: $checkedConvert('description', (v) => v as String),
+        category: $checkedConvert('category', (v) => v as String),
+        scope: $checkedConvert('scope', (v) => v as String),
+        isToggle: $checkedConvert('isToggle', (v) => v as bool),
+        unit: $checkedConvert(
+          'unit',
+          (v) => v == null ? null : MetadataUnitUnit.fromJson(v as String),
+        ),
+        min: $checkedConvert('min', (v) => v as num?),
+        max: $checkedConvert('max', (v) => v as num?),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$MetadataToJson(Metadata instance) => <String, dynamic>{
   'key': instance.key,

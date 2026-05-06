@@ -8,10 +8,24 @@ part of 'password_change_complete_request.dart';
 
 PasswordChangeCompleteRequest _$PasswordChangeCompleteRequestFromJson(
   Map<String, dynamic> json,
-) => PasswordChangeCompleteRequest(
-  ticket: json['ticket'] as String,
-  verificationProof: json['verification_proof'] as String,
-  newPassword: json['new_password'] as String,
+) => $checkedCreate(
+  'PasswordChangeCompleteRequest',
+  json,
+  ($checkedConvert) {
+    final val = PasswordChangeCompleteRequest(
+      ticket: $checkedConvert('ticket', (v) => v as String),
+      verificationProof: $checkedConvert(
+        'verification_proof',
+        (v) => v as String,
+      ),
+      newPassword: $checkedConvert('new_password', (v) => v as String),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'verificationProof': 'verification_proof',
+    'newPassword': 'new_password',
+  },
 );
 
 Map<String, dynamic> _$PasswordChangeCompleteRequestToJson(

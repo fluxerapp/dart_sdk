@@ -7,10 +7,24 @@ part of 'temp_ban_user_request.dart';
 // **************************************************************************
 
 TempBanUserRequest _$TempBanUserRequestFromJson(Map<String, dynamic> json) =>
-    TempBanUserRequest(
-      userId: json['user_id'] as String,
-      durationHours: (json['duration_hours'] as num).toInt(),
-      reason: json['reason'] as String?,
+    $checkedCreate(
+      'TempBanUserRequest',
+      json,
+      ($checkedConvert) {
+        final val = TempBanUserRequest(
+          userId: $checkedConvert('user_id', (v) => v as String),
+          durationHours: $checkedConvert(
+            'duration_hours',
+            (v) => (v as num).toInt(),
+          ),
+          reason: $checkedConvert('reason', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'userId': 'user_id',
+        'durationHours': 'duration_hours',
+      },
     );
 
 Map<String, dynamic> _$TempBanUserRequestToJson(TempBanUserRequest instance) =>

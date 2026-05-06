@@ -8,14 +8,28 @@ part of 'delete_all_user_messages_response.dart';
 
 DeleteAllUserMessagesResponse _$DeleteAllUserMessagesResponseFromJson(
   Map<String, dynamic> json,
-) => DeleteAllUserMessagesResponse(
-  success: DeleteAllUserMessagesResponseSuccessSuccess.fromJson(
-    json['success'] as bool,
-  ),
-  dryRun: json['dry_run'] as bool,
-  channelCount: (json['channel_count'] as num).toInt(),
-  messageCount: (json['message_count'] as num).toInt(),
-  jobId: json['job_id'] as String?,
+) => $checkedCreate(
+  'DeleteAllUserMessagesResponse',
+  json,
+  ($checkedConvert) {
+    final val = DeleteAllUserMessagesResponse(
+      success: $checkedConvert(
+        'success',
+        (v) => DeleteAllUserMessagesResponseSuccessSuccess.fromJson(v as bool),
+      ),
+      dryRun: $checkedConvert('dry_run', (v) => v as bool),
+      channelCount: $checkedConvert('channel_count', (v) => (v as num).toInt()),
+      messageCount: $checkedConvert('message_count', (v) => (v as num).toInt()),
+      jobId: $checkedConvert('job_id', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'dryRun': 'dry_run',
+    'channelCount': 'channel_count',
+    'messageCount': 'message_count',
+    'jobId': 'job_id',
+  },
 );
 
 Map<String, dynamic> _$DeleteAllUserMessagesResponseToJson(

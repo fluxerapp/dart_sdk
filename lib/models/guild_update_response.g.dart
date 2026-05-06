@@ -7,11 +7,15 @@ part of 'guild_update_response.dart';
 // **************************************************************************
 
 GuildUpdateResponse _$GuildUpdateResponseFromJson(Map<String, dynamic> json) =>
-    GuildUpdateResponse(
-      guild: GuildUpdateResponseGuild.fromJson(
-        json['guild'] as Map<String, dynamic>,
-      ),
-    );
+    $checkedCreate('GuildUpdateResponse', json, ($checkedConvert) {
+      final val = GuildUpdateResponse(
+        guild: $checkedConvert(
+          'guild',
+          (v) => GuildUpdateResponseGuild.fromJson(v as Map<String, dynamic>),
+        ),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$GuildUpdateResponseToJson(
   GuildUpdateResponse instance,

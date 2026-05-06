@@ -8,11 +8,15 @@ part of 'message_search_indexing_response.dart';
 
 MessageSearchIndexingResponse _$MessageSearchIndexingResponseFromJson(
   Map<String, dynamic> json,
-) => MessageSearchIndexingResponse(
-  indexing: MessageSearchIndexingResponseIndexingIndexing.fromJson(
-    json['indexing'] as bool,
-  ),
-);
+) => $checkedCreate('MessageSearchIndexingResponse', json, ($checkedConvert) {
+  final val = MessageSearchIndexingResponse(
+    indexing: $checkedConvert(
+      'indexing',
+      (v) => MessageSearchIndexingResponseIndexingIndexing.fromJson(v as bool),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$MessageSearchIndexingResponseToJson(
   MessageSearchIndexingResponse instance,

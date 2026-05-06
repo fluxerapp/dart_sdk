@@ -8,12 +8,15 @@ part of 'template_permission_overwrite.dart';
 
 TemplatePermissionOverwrite _$TemplatePermissionOverwriteFromJson(
   Map<String, dynamic> json,
-) => TemplatePermissionOverwrite(
-  id: json['id'],
-  type: json['type'],
-  allow: json['allow'],
-  deny: json['deny'],
-);
+) => $checkedCreate('TemplatePermissionOverwrite', json, ($checkedConvert) {
+  final val = TemplatePermissionOverwrite(
+    id: $checkedConvert('id', (v) => v),
+    type: $checkedConvert('type', (v) => v),
+    allow: $checkedConvert('allow', (v) => v),
+    deny: $checkedConvert('deny', (v) => v),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$TemplatePermissionOverwriteToJson(
   TemplatePermissionOverwrite instance,

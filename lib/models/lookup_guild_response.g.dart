@@ -7,13 +7,17 @@ part of 'lookup_guild_response.dart';
 // **************************************************************************
 
 LookupGuildResponse _$LookupGuildResponseFromJson(Map<String, dynamic> json) =>
-    LookupGuildResponse(
-      guild: json['guild'] == null
-          ? null
-          : LookupGuildResponseGuild.fromJson(
-              json['guild'] as Map<String, dynamic>,
-            ),
-    );
+    $checkedCreate('LookupGuildResponse', json, ($checkedConvert) {
+      final val = LookupGuildResponse(
+        guild: $checkedConvert(
+          'guild',
+          (v) => v == null
+              ? null
+              : LookupGuildResponseGuild.fromJson(v as Map<String, dynamic>),
+        ),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$LookupGuildResponseToJson(
   LookupGuildResponse instance,

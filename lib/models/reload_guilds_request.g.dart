@@ -7,11 +7,15 @@ part of 'reload_guilds_request.dart';
 // **************************************************************************
 
 ReloadGuildsRequest _$ReloadGuildsRequestFromJson(Map<String, dynamic> json) =>
-    ReloadGuildsRequest(
-      guildIds: (json['guild_ids'] as List<dynamic>)
-          .map((e) => e as String)
-          .toList(),
-    );
+    $checkedCreate('ReloadGuildsRequest', json, ($checkedConvert) {
+      final val = ReloadGuildsRequest(
+        guildIds: $checkedConvert(
+          'guild_ids',
+          (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+        ),
+      );
+      return val;
+    }, fieldKeyMap: const {'guildIds': 'guild_ids'});
 
 Map<String, dynamic> _$ReloadGuildsRequestToJson(
   ReloadGuildsRequest instance,

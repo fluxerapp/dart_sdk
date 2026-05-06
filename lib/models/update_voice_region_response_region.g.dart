@@ -8,25 +8,44 @@ part of 'update_voice_region_response_region.dart';
 
 UpdateVoiceRegionResponseRegion _$UpdateVoiceRegionResponseRegionFromJson(
   Map<String, dynamic> json,
-) => UpdateVoiceRegionResponseRegion(
-  id: json['id'] as String,
-  name: json['name'] as String,
-  emoji: json['emoji'] as String,
-  latitude: json['latitude'] as num,
-  longitude: json['longitude'] as num,
-  isDefault: json['is_default'] as bool,
-  vipOnly: json['vip_only'] as bool,
-  requiredGuildFeatures: (json['required_guild_features'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-  allowedGuildIds: (json['allowed_guild_ids'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-  allowedUserIds: (json['allowed_user_ids'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-  createdAt: json['created_at'] as String?,
-  updatedAt: json['updated_at'] as String?,
+) => $checkedCreate(
+  'UpdateVoiceRegionResponseRegion',
+  json,
+  ($checkedConvert) {
+    final val = UpdateVoiceRegionResponseRegion(
+      id: $checkedConvert('id', (v) => v as String),
+      name: $checkedConvert('name', (v) => v as String),
+      emoji: $checkedConvert('emoji', (v) => v as String),
+      latitude: $checkedConvert('latitude', (v) => v as num),
+      longitude: $checkedConvert('longitude', (v) => v as num),
+      isDefault: $checkedConvert('is_default', (v) => v as bool),
+      vipOnly: $checkedConvert('vip_only', (v) => v as bool),
+      requiredGuildFeatures: $checkedConvert(
+        'required_guild_features',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      allowedGuildIds: $checkedConvert(
+        'allowed_guild_ids',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      allowedUserIds: $checkedConvert(
+        'allowed_user_ids',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      createdAt: $checkedConvert('created_at', (v) => v as String?),
+      updatedAt: $checkedConvert('updated_at', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'isDefault': 'is_default',
+    'vipOnly': 'vip_only',
+    'requiredGuildFeatures': 'required_guild_features',
+    'allowedGuildIds': 'allowed_guild_ids',
+    'allowedUserIds': 'allowed_user_ids',
+    'createdAt': 'created_at',
+    'updatedAt': 'updated_at',
+  },
 );
 
 Map<String, dynamic> _$UpdateVoiceRegionResponseRegionToJson(

@@ -8,11 +8,16 @@ part of 'update_voice_server_response.dart';
 
 UpdateVoiceServerResponse _$UpdateVoiceServerResponseFromJson(
   Map<String, dynamic> json,
-) => UpdateVoiceServerResponse(
-  server: UpdateVoiceServerResponseServer.fromJson(
-    json['server'] as Map<String, dynamic>,
-  ),
-);
+) => $checkedCreate('UpdateVoiceServerResponse', json, ($checkedConvert) {
+  final val = UpdateVoiceServerResponse(
+    server: $checkedConvert(
+      'server',
+      (v) =>
+          UpdateVoiceServerResponseServer.fromJson(v as Map<String, dynamic>),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$UpdateVoiceServerResponseToJson(
   UpdateVoiceServerResponse instance,

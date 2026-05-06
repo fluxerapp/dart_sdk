@@ -7,10 +7,24 @@ part of 'sso_start_response.dart';
 // **************************************************************************
 
 SsoStartResponse _$SsoStartResponseFromJson(Map<String, dynamic> json) =>
-    SsoStartResponse(
-      authorizationUrl: json['authorization_url'] as String,
-      state: json['state'] as String,
-      redirectUri: json['redirect_uri'] as String,
+    $checkedCreate(
+      'SsoStartResponse',
+      json,
+      ($checkedConvert) {
+        final val = SsoStartResponse(
+          authorizationUrl: $checkedConvert(
+            'authorization_url',
+            (v) => v as String,
+          ),
+          state: $checkedConvert('state', (v) => v as String),
+          redirectUri: $checkedConvert('redirect_uri', (v) => v as String),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'authorizationUrl': 'authorization_url',
+        'redirectUri': 'redirect_uri',
+      },
     );
 
 Map<String, dynamic> _$SsoStartResponseToJson(SsoStartResponse instance) =>

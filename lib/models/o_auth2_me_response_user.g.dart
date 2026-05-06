@@ -8,18 +8,29 @@ part of 'o_auth2_me_response_user.dart';
 
 OAuth2MeResponseUser _$OAuth2MeResponseUserFromJson(
   Map<String, dynamic> json,
-) => OAuth2MeResponseUser(
-  id: json['id'] as String,
-  username: json['username'] as String,
-  discriminator: json['discriminator'] as String,
-  globalName: json['global_name'] as String?,
-  avatar: json['avatar'] as String?,
-  avatarColor: (json['avatar_color'] as num?)?.toInt(),
-  flags: (json['flags'] as num).toInt(),
-  bot: json['bot'] as bool?,
-  system: json['system'] as bool?,
-  email: json['email'] as String?,
-  verified: json['verified'] as bool?,
+) => $checkedCreate(
+  'OAuth2MeResponseUser',
+  json,
+  ($checkedConvert) {
+    final val = OAuth2MeResponseUser(
+      id: $checkedConvert('id', (v) => v as String),
+      username: $checkedConvert('username', (v) => v as String),
+      discriminator: $checkedConvert('discriminator', (v) => v as String),
+      globalName: $checkedConvert('global_name', (v) => v as String?),
+      avatar: $checkedConvert('avatar', (v) => v as String?),
+      avatarColor: $checkedConvert('avatar_color', (v) => (v as num?)?.toInt()),
+      flags: $checkedConvert('flags', (v) => (v as num).toInt()),
+      bot: $checkedConvert('bot', (v) => v as bool?),
+      system: $checkedConvert('system', (v) => v as bool?),
+      email: $checkedConvert('email', (v) => v as String?),
+      verified: $checkedConvert('verified', (v) => v as bool?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'globalName': 'global_name',
+    'avatarColor': 'avatar_color',
+  },
 );
 
 Map<String, dynamic> _$OAuth2MeResponseUserToJson(

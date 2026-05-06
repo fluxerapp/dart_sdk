@@ -8,7 +8,12 @@ part of 'suspicious_email_domain_request.dart';
 
 SuspiciousEmailDomainRequest _$SuspiciousEmailDomainRequestFromJson(
   Map<String, dynamic> json,
-) => SuspiciousEmailDomainRequest(domain: json['domain'] as String);
+) => $checkedCreate('SuspiciousEmailDomainRequest', json, ($checkedConvert) {
+  final val = SuspiciousEmailDomainRequest(
+    domain: $checkedConvert('domain', (v) => v as String),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$SuspiciousEmailDomainRequestToJson(
   SuspiciousEmailDomainRequest instance,

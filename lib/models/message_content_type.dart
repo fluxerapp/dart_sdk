@@ -4,7 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-/// The type of content contained in a message
+/// The type of content contained in a message. Upload filters inspect attachments; embed filters inspect generated or supplied message embeds.
 @JsonEnum()
 enum MessageContentType {
   @JsonValue('image')

@@ -8,10 +8,21 @@ part of 'email_change_request_new_request.dart';
 
 EmailChangeRequestNewRequest _$EmailChangeRequestNewRequestFromJson(
   Map<String, dynamic> json,
-) => EmailChangeRequestNewRequest(
-  ticket: json['ticket'] as String,
-  newEmail: json['new_email'] as String,
-  originalProof: json['original_proof'] as String,
+) => $checkedCreate(
+  'EmailChangeRequestNewRequest',
+  json,
+  ($checkedConvert) {
+    final val = EmailChangeRequestNewRequest(
+      ticket: $checkedConvert('ticket', (v) => v as String),
+      newEmail: $checkedConvert('new_email', (v) => v as String),
+      originalProof: $checkedConvert('original_proof', (v) => v as String),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'newEmail': 'new_email',
+    'originalProof': 'original_proof',
+  },
 );
 
 Map<String, dynamic> _$EmailChangeRequestNewRequestToJson(

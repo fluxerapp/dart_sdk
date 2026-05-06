@@ -8,11 +8,17 @@ part of 'change_username_request.dart';
 
 ChangeUsernameRequest _$ChangeUsernameRequestFromJson(
   Map<String, dynamic> json,
-) => ChangeUsernameRequest(
-  userId: json['user_id'] as String,
-  username: json['username'] as String,
-  discriminator: (json['discriminator'] as num?)?.toInt(),
-);
+) => $checkedCreate('ChangeUsernameRequest', json, ($checkedConvert) {
+  final val = ChangeUsernameRequest(
+    userId: $checkedConvert('user_id', (v) => v as String),
+    username: $checkedConvert('username', (v) => v as String),
+    discriminator: $checkedConvert(
+      'discriminator',
+      (v) => (v as num?)?.toInt(),
+    ),
+  );
+  return val;
+}, fieldKeyMap: const {'userId': 'user_id'});
 
 Map<String, dynamic> _$ChangeUsernameRequestToJson(
   ChangeUsernameRequest instance,

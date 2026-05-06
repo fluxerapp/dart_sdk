@@ -8,14 +8,17 @@ part of 'bot_profile_update_request.dart';
 
 BotProfileUpdateRequest _$BotProfileUpdateRequestFromJson(
   Map<String, dynamic> json,
-) => BotProfileUpdateRequest(
-  username: json['username'] as String?,
-  discriminator: json['discriminator'] as String?,
-  avatar: json['avatar'] as String?,
-  banner: json['banner'] as String?,
-  bio: json['bio'] as String?,
-  botFlags: (json['bot_flags'] as num?)?.toInt(),
-);
+) => $checkedCreate('BotProfileUpdateRequest', json, ($checkedConvert) {
+  final val = BotProfileUpdateRequest(
+    username: $checkedConvert('username', (v) => v as String?),
+    discriminator: $checkedConvert('discriminator', (v) => v as String?),
+    avatar: $checkedConvert('avatar', (v) => v as String?),
+    banner: $checkedConvert('banner', (v) => v as String?),
+    bio: $checkedConvert('bio', (v) => v as String?),
+    botFlags: $checkedConvert('bot_flags', (v) => (v as num?)?.toInt()),
+  );
+  return val;
+}, fieldKeyMap: const {'botFlags': 'bot_flags'});
 
 Map<String, dynamic> _$BotProfileUpdateRequestToJson(
   BotProfileUpdateRequest instance,

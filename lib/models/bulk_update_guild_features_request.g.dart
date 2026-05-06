@@ -8,16 +8,31 @@ part of 'bulk_update_guild_features_request.dart';
 
 BulkUpdateGuildFeaturesRequest _$BulkUpdateGuildFeaturesRequestFromJson(
   Map<String, dynamic> json,
-) => BulkUpdateGuildFeaturesRequest(
-  guildIds: (json['guild_ids'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-  addFeatures: (json['add_features'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
-  removeFeatures: (json['remove_features'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
+) => $checkedCreate(
+  'BulkUpdateGuildFeaturesRequest',
+  json,
+  ($checkedConvert) {
+    final val = BulkUpdateGuildFeaturesRequest(
+      guildIds: $checkedConvert(
+        'guild_ids',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      addFeatures: $checkedConvert(
+        'add_features',
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+      ),
+      removeFeatures: $checkedConvert(
+        'remove_features',
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'guildIds': 'guild_ids',
+    'addFeatures': 'add_features',
+    'removeFeatures': 'remove_features',
+  },
 );
 
 Map<String, dynamic> _$BulkUpdateGuildFeaturesRequestToJson(

@@ -7,22 +7,48 @@ part of 'sso_config_response.dart';
 // **************************************************************************
 
 SsoConfigResponse _$SsoConfigResponseFromJson(Map<String, dynamic> json) =>
-    SsoConfigResponse(
-      enabled: json['enabled'] as bool,
-      displayName: json['display_name'] as String?,
-      issuer: json['issuer'] as String?,
-      authorizationUrl: json['authorization_url'] as String?,
-      tokenUrl: json['token_url'] as String?,
-      userinfoUrl: json['userinfo_url'] as String?,
-      jwksUrl: json['jwks_url'] as String?,
-      clientId: json['client_id'] as String?,
-      clientSecretSet: json['client_secret_set'] as bool,
-      scope: json['scope'] as String?,
-      allowedDomains: (json['allowed_domains'] as List<dynamic>)
-          .map((e) => e as String)
-          .toList(),
-      autoProvision: json['auto_provision'] as bool,
-      redirectUri: json['redirect_uri'] as String?,
+    $checkedCreate(
+      'SsoConfigResponse',
+      json,
+      ($checkedConvert) {
+        final val = SsoConfigResponse(
+          enabled: $checkedConvert('enabled', (v) => v as bool),
+          displayName: $checkedConvert('display_name', (v) => v as String?),
+          issuer: $checkedConvert('issuer', (v) => v as String?),
+          authorizationUrl: $checkedConvert(
+            'authorization_url',
+            (v) => v as String?,
+          ),
+          tokenUrl: $checkedConvert('token_url', (v) => v as String?),
+          userinfoUrl: $checkedConvert('userinfo_url', (v) => v as String?),
+          jwksUrl: $checkedConvert('jwks_url', (v) => v as String?),
+          clientId: $checkedConvert('client_id', (v) => v as String?),
+          clientSecretSet: $checkedConvert(
+            'client_secret_set',
+            (v) => v as bool,
+          ),
+          scope: $checkedConvert('scope', (v) => v as String?),
+          allowedDomains: $checkedConvert(
+            'allowed_domains',
+            (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+          ),
+          autoProvision: $checkedConvert('auto_provision', (v) => v as bool),
+          redirectUri: $checkedConvert('redirect_uri', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'displayName': 'display_name',
+        'authorizationUrl': 'authorization_url',
+        'tokenUrl': 'token_url',
+        'userinfoUrl': 'userinfo_url',
+        'jwksUrl': 'jwks_url',
+        'clientId': 'client_id',
+        'clientSecretSet': 'client_secret_set',
+        'allowedDomains': 'allowed_domains',
+        'autoProvision': 'auto_provision',
+        'redirectUri': 'redirect_uri',
+      },
     );
 
 Map<String, dynamic> _$SsoConfigResponseToJson(SsoConfigResponse instance) =>

@@ -8,11 +8,17 @@ part of 'list_user_sessions_response.dart';
 
 ListUserSessionsResponse _$ListUserSessionsResponseFromJson(
   Map<String, dynamic> json,
-) => ListUserSessionsResponse(
-  sessions: (json['sessions'] as List<dynamic>)
-      .map((e) => UserSessionResponse.fromJson(e as Map<String, dynamic>))
-      .toList(),
-);
+) => $checkedCreate('ListUserSessionsResponse', json, ($checkedConvert) {
+  final val = ListUserSessionsResponse(
+    sessions: $checkedConvert(
+      'sessions',
+      (v) => (v as List<dynamic>)
+          .map((e) => UserSessionResponse.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$ListUserSessionsResponseToJson(
   ListUserSessionsResponse instance,

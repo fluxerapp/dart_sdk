@@ -8,7 +8,17 @@ part of 'push_subscribe_response.dart';
 
 PushSubscribeResponse _$PushSubscribeResponseFromJson(
   Map<String, dynamic> json,
-) => PushSubscribeResponse(subscriptionId: json['subscription_id'] as String);
+) => $checkedCreate(
+  'PushSubscribeResponse',
+  json,
+  ($checkedConvert) {
+    final val = PushSubscribeResponse(
+      subscriptionId: $checkedConvert('subscription_id', (v) => v as String),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'subscriptionId': 'subscription_id'},
+);
 
 Map<String, dynamic> _$PushSubscribeResponseToJson(
   PushSubscribeResponse instance,

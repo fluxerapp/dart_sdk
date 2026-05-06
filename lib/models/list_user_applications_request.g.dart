@@ -8,7 +8,12 @@ part of 'list_user_applications_request.dart';
 
 ListUserApplicationsRequest _$ListUserApplicationsRequestFromJson(
   Map<String, dynamic> json,
-) => ListUserApplicationsRequest(userId: json['user_id'] as String);
+) => $checkedCreate('ListUserApplicationsRequest', json, ($checkedConvert) {
+  final val = ListUserApplicationsRequest(
+    userId: $checkedConvert('user_id', (v) => v as String),
+  );
+  return val;
+}, fieldKeyMap: const {'userId': 'user_id'});
 
 Map<String, dynamic> _$ListUserApplicationsRequestToJson(
   ListUserApplicationsRequest instance,

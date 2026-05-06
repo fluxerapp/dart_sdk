@@ -8,13 +8,16 @@ part of 'admin_resolved_user_schema.dart';
 
 AdminResolvedUserSchema _$AdminResolvedUserSchemaFromJson(
   Map<String, dynamic> json,
-) => AdminResolvedUserSchema(
-  id: json['id'] as String,
-  username: json['username'] as String,
-  discriminator: json['discriminator'] as String,
-  globalName: json['global_name'] as String?,
-  avatar: json['avatar'] as String?,
-);
+) => $checkedCreate('AdminResolvedUserSchema', json, ($checkedConvert) {
+  final val = AdminResolvedUserSchema(
+    id: $checkedConvert('id', (v) => v as String),
+    username: $checkedConvert('username', (v) => v as String),
+    discriminator: $checkedConvert('discriminator', (v) => v as String),
+    globalName: $checkedConvert('global_name', (v) => v as String?),
+    avatar: $checkedConvert('avatar', (v) => v as String?),
+  );
+  return val;
+}, fieldKeyMap: const {'globalName': 'global_name'});
 
 Map<String, dynamic> _$AdminResolvedUserSchemaToJson(
   AdminResolvedUserSchema instance,

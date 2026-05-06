@@ -6,26 +6,47 @@ part of 'node_stats_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-NodeStatsResponse _$NodeStatsResponseFromJson(Map<String, dynamic> json) =>
-    NodeStatsResponse(
-      status: json['status'] as String,
-      sessions: (json['sessions'] as num).toInt(),
-      guilds: (json['guilds'] as num).toInt(),
-      presences: (json['presences'] as num).toInt(),
-      calls: (json['calls'] as num).toInt(),
-      memory: NodeStatsResponseMemory.fromJson(
-        json['memory'] as Map<String, dynamic>,
+NodeStatsResponse _$NodeStatsResponseFromJson(
+  Map<String, dynamic> json,
+) => $checkedCreate(
+  'NodeStatsResponse',
+  json,
+  ($checkedConvert) {
+    final val = NodeStatsResponse(
+      status: $checkedConvert('status', (v) => v as String),
+      sessions: $checkedConvert('sessions', (v) => (v as num).toInt()),
+      guilds: $checkedConvert('guilds', (v) => (v as num).toInt()),
+      presences: $checkedConvert('presences', (v) => (v as num).toInt()),
+      calls: $checkedConvert('calls', (v) => (v as num).toInt()),
+      memory: $checkedConvert(
+        'memory',
+        (v) => NodeStatsResponseMemory.fromJson(v as Map<String, dynamic>),
       ),
-      processCount: (json['process_count'] as num).toInt(),
-      processLimit: (json['process_limit'] as num).toInt(),
-      uptimeSeconds: (json['uptime_seconds'] as num).toInt(),
-      nodeCount: (json['node_count'] as num).toInt(),
-      nodes: (json['nodes'] as List<dynamic>)
-          .map(
-            (e) => NodeStatsResponseNodes.fromJson(e as Map<String, dynamic>),
-          )
-          .toList(),
+      processCount: $checkedConvert('process_count', (v) => (v as num).toInt()),
+      processLimit: $checkedConvert('process_limit', (v) => (v as num).toInt()),
+      uptimeSeconds: $checkedConvert(
+        'uptime_seconds',
+        (v) => (v as num).toInt(),
+      ),
+      nodeCount: $checkedConvert('node_count', (v) => (v as num).toInt()),
+      nodes: $checkedConvert(
+        'nodes',
+        (v) => (v as List<dynamic>)
+            .map(
+              (e) => NodeStatsResponseNodes.fromJson(e as Map<String, dynamic>),
+            )
+            .toList(),
+      ),
     );
+    return val;
+  },
+  fieldKeyMap: const {
+    'processCount': 'process_count',
+    'processLimit': 'process_limit',
+    'uptimeSeconds': 'uptime_seconds',
+    'nodeCount': 'node_count',
+  },
+);
 
 Map<String, dynamic> _$NodeStatsResponseToJson(NodeStatsResponse instance) =>
     <String, dynamic>{

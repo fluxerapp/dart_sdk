@@ -8,12 +8,24 @@ part of 'list_audit_logs_request.dart';
 
 ListAuditLogsRequest _$ListAuditLogsRequestFromJson(
   Map<String, dynamic> json,
-) => ListAuditLogsRequest(
-  adminUserId: json['admin_user_id'] as String?,
-  targetType: json['target_type'] as String?,
-  targetId: json['target_id'] as String?,
-  limit: (json['limit'] as num?)?.toInt(),
-  offset: (json['offset'] as num?)?.toInt(),
+) => $checkedCreate(
+  'ListAuditLogsRequest',
+  json,
+  ($checkedConvert) {
+    final val = ListAuditLogsRequest(
+      adminUserId: $checkedConvert('admin_user_id', (v) => v as String?),
+      targetType: $checkedConvert('target_type', (v) => v as String?),
+      targetId: $checkedConvert('target_id', (v) => v as String?),
+      limit: $checkedConvert('limit', (v) => (v as num?)?.toInt()),
+      offset: $checkedConvert('offset', (v) => (v as num?)?.toInt()),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'adminUserId': 'admin_user_id',
+    'targetType': 'target_type',
+    'targetId': 'target_id',
+  },
 );
 
 Map<String, dynamic> _$ListAuditLogsRequestToJson(

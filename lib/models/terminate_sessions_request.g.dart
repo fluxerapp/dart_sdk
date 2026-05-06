@@ -8,7 +8,12 @@ part of 'terminate_sessions_request.dart';
 
 TerminateSessionsRequest _$TerminateSessionsRequestFromJson(
   Map<String, dynamic> json,
-) => TerminateSessionsRequest(userId: json['user_id'] as String);
+) => $checkedCreate('TerminateSessionsRequest', json, ($checkedConvert) {
+  final val = TerminateSessionsRequest(
+    userId: $checkedConvert('user_id', (v) => v as String),
+  );
+  return val;
+}, fieldKeyMap: const {'userId': 'user_id'});
 
 Map<String, dynamic> _$TerminateSessionsRequestToJson(
   TerminateSessionsRequest instance,

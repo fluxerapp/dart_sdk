@@ -8,19 +8,31 @@ part of 'user_settings_update_request_guild_folders.dart';
 
 UserSettingsUpdateRequestGuildFolders
 _$UserSettingsUpdateRequestGuildFoldersFromJson(Map<String, dynamic> json) =>
-    UserSettingsUpdateRequestGuildFolders(
-      id: (json['id'] as num).toInt(),
-      guildIds: (json['guild_ids'] as List<dynamic>)
-          .map((e) => e as String)
-          .toList(),
-      name: json['name'] as String?,
-      color: (json['color'] as num?)?.toInt(),
-      flags: (json['flags'] as num?)?.toInt(),
-      icon: json['icon'] == null
-          ? null
-          : UserSettingsUpdateRequestGuildFoldersIconIcon.fromJson(
-              json['icon'] as String,
-            ),
+    $checkedCreate(
+      'UserSettingsUpdateRequestGuildFolders',
+      json,
+      ($checkedConvert) {
+        final val = UserSettingsUpdateRequestGuildFolders(
+          id: $checkedConvert('id', (v) => (v as num).toInt()),
+          guildIds: $checkedConvert(
+            'guild_ids',
+            (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+          ),
+          name: $checkedConvert('name', (v) => v as String?),
+          color: $checkedConvert('color', (v) => (v as num?)?.toInt()),
+          flags: $checkedConvert('flags', (v) => (v as num?)?.toInt()),
+          icon: $checkedConvert(
+            'icon',
+            (v) => v == null
+                ? null
+                : UserSettingsUpdateRequestGuildFoldersIconIcon.fromJson(
+                    v as String,
+                  ),
+          ),
+        );
+        return val;
+      },
+      fieldKeyMap: const {'guildIds': 'guild_ids'},
     );
 
 Map<String, dynamic> _$UserSettingsUpdateRequestGuildFoldersToJson(

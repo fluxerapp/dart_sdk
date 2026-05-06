@@ -8,11 +8,15 @@ part of 'bulk_ban_file_shas_request.dart';
 
 BulkBanFileShasRequest _$BulkBanFileShasRequestFromJson(
   Map<String, dynamic> json,
-) => BulkBanFileShasRequest(
-  sha256List: (json['sha256_list'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-);
+) => $checkedCreate('BulkBanFileShasRequest', json, ($checkedConvert) {
+  final val = BulkBanFileShasRequest(
+    sha256List: $checkedConvert(
+      'sha256_list',
+      (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+    ),
+  );
+  return val;
+}, fieldKeyMap: const {'sha256List': 'sha256_list'});
 
 Map<String, dynamic> _$BulkBanFileShasRequestToJson(
   BulkBanFileShasRequest instance,

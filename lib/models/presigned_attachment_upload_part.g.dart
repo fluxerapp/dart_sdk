@@ -8,9 +8,17 @@ part of 'presigned_attachment_upload_part.dart';
 
 PresignedAttachmentUploadPart _$PresignedAttachmentUploadPartFromJson(
   Map<String, dynamic> json,
-) => PresignedAttachmentUploadPart(
-  partNumber: (json['part_number'] as num).toInt(),
-  uploadUrl: json['upload_url'] as String,
+) => $checkedCreate(
+  'PresignedAttachmentUploadPart',
+  json,
+  ($checkedConvert) {
+    final val = PresignedAttachmentUploadPart(
+      partNumber: $checkedConvert('part_number', (v) => (v as num).toInt()),
+      uploadUrl: $checkedConvert('upload_url', (v) => v as String),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'partNumber': 'part_number', 'uploadUrl': 'upload_url'},
 );
 
 Map<String, dynamic> _$PresignedAttachmentUploadPartToJson(

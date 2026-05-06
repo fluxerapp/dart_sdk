@@ -8,12 +8,18 @@ part of 'search_guilds_response.dart';
 
 SearchGuildsResponse _$SearchGuildsResponseFromJson(
   Map<String, dynamic> json,
-) => SearchGuildsResponse(
-  guilds: (json['guilds'] as List<dynamic>)
-      .map((e) => GuildAdminResponse.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  total: json['total'] as num,
-);
+) => $checkedCreate('SearchGuildsResponse', json, ($checkedConvert) {
+  final val = SearchGuildsResponse(
+    guilds: $checkedConvert(
+      'guilds',
+      (v) => (v as List<dynamic>)
+          .map((e) => GuildAdminResponse.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    ),
+    total: $checkedConvert('total', (v) => v as num),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$SearchGuildsResponseToJson(
   SearchGuildsResponse instance,

@@ -7,48 +7,89 @@ part of 'report_admin_response_schema_message_context.dart';
 // **************************************************************************
 
 ReportAdminResponseSchemaMessageContext
-_$ReportAdminResponseSchemaMessageContextFromJson(Map<String, dynamic> json) =>
-    ReportAdminResponseSchemaMessageContext(
-      id: json['id'] as String,
-      channelId: json['channel_id'] as String,
-      channelNsfw: json['channel_nsfw'] as bool?,
-      guildId: json['guild_id'] as String?,
-      guildNsfwLevel: json['guild_nsfw_level'] == null
-          ? null
-          : NsfwLevel.fromJson((json['guild_nsfw_level'] as num).toInt()),
-      content: json['content'] as String,
-      timestamp: json['timestamp'] as String,
-      attachments: (json['attachments'] as List<dynamic>)
-          .map(
-            (e) => ReportAdminResponseSchemaMessageContextAttachments.fromJson(
-              e as Map<String, dynamic>,
-            ),
-          )
-          .toList(),
-      authorId: json['author_id'] as String,
-      authorUsername: json['author_username'] as String,
-      authorGlobalName: json['author_global_name'] as String?,
-      authorDiscriminator: json['author_discriminator'] as String,
-      authorAvatar: json['author_avatar'] as String?,
-      channelContentWarningLevel: json['channel_content_warning_level'] == null
-          ? null
-          : ContentWarningLevel.fromJson(
-              (json['channel_content_warning_level'] as num).toInt(),
-            ),
-      channelContentWarningText:
-          json['channel_content_warning_text'] as String?,
-      guildNsfw: json['guild_nsfw'] as bool?,
-      guildContentWarningLevel: json['guild_content_warning_level'] == null
-          ? null
-          : ContentWarningLevel.fromJson(
-              (json['guild_content_warning_level'] as num).toInt(),
-            ),
-      guildContentWarningText: json['guild_content_warning_text'] as String?,
-      userPriorNcmecReportIds:
-          (json['user_prior_ncmec_report_ids'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList(),
+_$ReportAdminResponseSchemaMessageContextFromJson(
+  Map<String, dynamic> json,
+) => $checkedCreate(
+  'ReportAdminResponseSchemaMessageContext',
+  json,
+  ($checkedConvert) {
+    final val = ReportAdminResponseSchemaMessageContext(
+      id: $checkedConvert('id', (v) => v as String),
+      channelId: $checkedConvert('channel_id', (v) => v as String),
+      channelNsfw: $checkedConvert('channel_nsfw', (v) => v as bool?),
+      guildId: $checkedConvert('guild_id', (v) => v as String?),
+      guildNsfwLevel: $checkedConvert(
+        'guild_nsfw_level',
+        (v) => v == null ? null : NsfwLevel.fromJson((v as num).toInt()),
+      ),
+      content: $checkedConvert('content', (v) => v as String),
+      timestamp: $checkedConvert('timestamp', (v) => v as String),
+      attachments: $checkedConvert(
+        'attachments',
+        (v) => (v as List<dynamic>)
+            .map(
+              (e) =>
+                  ReportAdminResponseSchemaMessageContextAttachments.fromJson(
+                    e as Map<String, dynamic>,
+                  ),
+            )
+            .toList(),
+      ),
+      authorId: $checkedConvert('author_id', (v) => v as String),
+      authorUsername: $checkedConvert('author_username', (v) => v as String),
+      authorGlobalName: $checkedConvert(
+        'author_global_name',
+        (v) => v as String?,
+      ),
+      authorDiscriminator: $checkedConvert(
+        'author_discriminator',
+        (v) => v as String,
+      ),
+      authorAvatar: $checkedConvert('author_avatar', (v) => v as String?),
+      channelContentWarningLevel: $checkedConvert(
+        'channel_content_warning_level',
+        (v) =>
+            v == null ? null : ContentWarningLevel.fromJson((v as num).toInt()),
+      ),
+      channelContentWarningText: $checkedConvert(
+        'channel_content_warning_text',
+        (v) => v as String?,
+      ),
+      guildNsfw: $checkedConvert('guild_nsfw', (v) => v as bool?),
+      guildContentWarningLevel: $checkedConvert(
+        'guild_content_warning_level',
+        (v) =>
+            v == null ? null : ContentWarningLevel.fromJson((v as num).toInt()),
+      ),
+      guildContentWarningText: $checkedConvert(
+        'guild_content_warning_text',
+        (v) => v as String?,
+      ),
+      userPriorNcmecReportIds: $checkedConvert(
+        'user_prior_ncmec_report_ids',
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+      ),
     );
+    return val;
+  },
+  fieldKeyMap: const {
+    'channelId': 'channel_id',
+    'channelNsfw': 'channel_nsfw',
+    'guildId': 'guild_id',
+    'guildNsfwLevel': 'guild_nsfw_level',
+    'authorId': 'author_id',
+    'authorUsername': 'author_username',
+    'authorGlobalName': 'author_global_name',
+    'authorDiscriminator': 'author_discriminator',
+    'authorAvatar': 'author_avatar',
+    'channelContentWarningLevel': 'channel_content_warning_level',
+    'channelContentWarningText': 'channel_content_warning_text',
+    'guildNsfw': 'guild_nsfw',
+    'guildContentWarningLevel': 'guild_content_warning_level',
+    'guildContentWarningText': 'guild_content_warning_text',
+    'userPriorNcmecReportIds': 'user_prior_ncmec_report_ids',
+  },
+);
 
 Map<String, dynamic> _$ReportAdminResponseSchemaMessageContextToJson(
   ReportAdminResponseSchemaMessageContext instance,

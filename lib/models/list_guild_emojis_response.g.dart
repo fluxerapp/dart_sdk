@@ -8,12 +8,18 @@ part of 'list_guild_emojis_response.dart';
 
 ListGuildEmojisResponse _$ListGuildEmojisResponseFromJson(
   Map<String, dynamic> json,
-) => ListGuildEmojisResponse(
-  guildId: json['guild_id'] as String,
-  emojis: (json['emojis'] as List<dynamic>)
-      .map((e) => GuildAssetItemSchema.fromJson(e as Map<String, dynamic>))
-      .toList(),
-);
+) => $checkedCreate('ListGuildEmojisResponse', json, ($checkedConvert) {
+  final val = ListGuildEmojisResponse(
+    guildId: $checkedConvert('guild_id', (v) => v as String),
+    emojis: $checkedConvert(
+      'emojis',
+      (v) => (v as List<dynamic>)
+          .map((e) => GuildAssetItemSchema.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    ),
+  );
+  return val;
+}, fieldKeyMap: const {'guildId': 'guild_id'});
 
 Map<String, dynamic> _$ListGuildEmojisResponseToJson(
   ListGuildEmojisResponse instance,

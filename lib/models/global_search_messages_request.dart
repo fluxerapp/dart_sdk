@@ -127,19 +127,19 @@ class GlobalSearchMessagesRequest {
   @JsonKey(includeIfNull: false)
   final bool? pinned;
 
-  /// Content types the message must have
+  /// Content flags the message must have. Use image, video, sound, or file for uploaded attachments and embed for link previews or rich embeds.
   @JsonKey(includeIfNull: false)
   final List<MessageContentType>? has;
 
-  /// Content types the message must not have
+  /// Content flags the message must not have. Use image, video, sound, or file for uploaded attachments and embed for link previews or rich embeds.
   @JsonKey(includeIfNull: false, name: 'exclude_has')
   final List<MessageContentType>? excludeHas;
 
-  /// Embed types to filter by
+  /// Generated or supplied embed types to filter by; does not match uploaded attachments
   @JsonKey(includeIfNull: false, name: 'embed_type')
   final List<MessageEmbedType>? embedType;
 
-  /// Embed types to exclude
+  /// Generated or supplied embed types to exclude; does not match uploaded attachments
   @JsonKey(includeIfNull: false, name: 'exclude_embed_type')
   final List<MessageEmbedType>? excludeEmbedType;
 

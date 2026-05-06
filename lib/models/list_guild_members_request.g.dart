@@ -8,11 +8,14 @@ part of 'list_guild_members_request.dart';
 
 ListGuildMembersRequest _$ListGuildMembersRequestFromJson(
   Map<String, dynamic> json,
-) => ListGuildMembersRequest(
-  guildId: json['guild_id'] as String,
-  limit: (json['limit'] as num?)?.toInt(),
-  offset: (json['offset'] as num?)?.toInt(),
-);
+) => $checkedCreate('ListGuildMembersRequest', json, ($checkedConvert) {
+  final val = ListGuildMembersRequest(
+    guildId: $checkedConvert('guild_id', (v) => v as String),
+    limit: $checkedConvert('limit', (v) => (v as num?)?.toInt()),
+    offset: $checkedConvert('offset', (v) => (v as num?)?.toInt()),
+  );
+  return val;
+}, fieldKeyMap: const {'guildId': 'guild_id'});
 
 Map<String, dynamic> _$ListGuildMembersRequestToJson(
   ListGuildMembersRequest instance,

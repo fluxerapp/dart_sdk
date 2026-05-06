@@ -8,7 +8,12 @@ part of 'list_user_relationships_request.dart';
 
 ListUserRelationshipsRequest _$ListUserRelationshipsRequestFromJson(
   Map<String, dynamic> json,
-) => ListUserRelationshipsRequest(userId: json['user_id'] as String);
+) => $checkedCreate('ListUserRelationshipsRequest', json, ($checkedConvert) {
+  final val = ListUserRelationshipsRequest(
+    userId: $checkedConvert('user_id', (v) => v as String),
+  );
+  return val;
+}, fieldKeyMap: const {'userId': 'user_id'});
 
 Map<String, dynamic> _$ListUserRelationshipsRequestToJson(
   ListUserRelationshipsRequest instance,

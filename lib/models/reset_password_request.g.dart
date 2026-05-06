@@ -8,10 +8,13 @@ part of 'reset_password_request.dart';
 
 ResetPasswordRequest _$ResetPasswordRequestFromJson(
   Map<String, dynamic> json,
-) => ResetPasswordRequest(
-  token: json['token'] as String,
-  password: json['password'] as String,
-);
+) => $checkedCreate('ResetPasswordRequest', json, ($checkedConvert) {
+  final val = ResetPasswordRequest(
+    token: $checkedConvert('token', (v) => v as String),
+    password: $checkedConvert('password', (v) => v as String),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$ResetPasswordRequestToJson(
   ResetPasswordRequest instance,

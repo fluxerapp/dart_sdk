@@ -8,9 +8,17 @@ part of 'get_voice_region_request.dart';
 
 GetVoiceRegionRequest _$GetVoiceRegionRequestFromJson(
   Map<String, dynamic> json,
-) => GetVoiceRegionRequest(
-  id: json['id'] as String,
-  includeServers: json['include_servers'] as bool?,
+) => $checkedCreate(
+  'GetVoiceRegionRequest',
+  json,
+  ($checkedConvert) {
+    final val = GetVoiceRegionRequest(
+      id: $checkedConvert('id', (v) => v as String),
+      includeServers: $checkedConvert('include_servers', (v) => v as bool?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'includeServers': 'include_servers'},
 );
 
 Map<String, dynamic> _$GetVoiceRegionRequestToJson(

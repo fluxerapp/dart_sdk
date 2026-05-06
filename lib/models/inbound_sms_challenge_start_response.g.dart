@@ -8,10 +8,22 @@ part of 'inbound_sms_challenge_start_response.dart';
 
 InboundSmsChallengeStartResponse _$InboundSmsChallengeStartResponseFromJson(
   Map<String, dynamic> json,
-) => InboundSmsChallengeStartResponse(
-  challengeCode: json['challenge_code'] as String,
-  ourNumber: json['our_number'] as String,
-  expiresAt: json['expires_at'] as String,
+) => $checkedCreate(
+  'InboundSmsChallengeStartResponse',
+  json,
+  ($checkedConvert) {
+    final val = InboundSmsChallengeStartResponse(
+      challengeCode: $checkedConvert('challenge_code', (v) => v as String),
+      ourNumber: $checkedConvert('our_number', (v) => v as String),
+      expiresAt: $checkedConvert('expires_at', (v) => v as String),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'challengeCode': 'challenge_code',
+    'ourNumber': 'our_number',
+    'expiresAt': 'expires_at',
+  },
 );
 
 Map<String, dynamic> _$InboundSmsChallengeStartResponseToJson(

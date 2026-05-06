@@ -8,14 +8,20 @@ part of 'list_guild_members_response.dart';
 
 ListGuildMembersResponse _$ListGuildMembersResponseFromJson(
   Map<String, dynamic> json,
-) => ListGuildMembersResponse(
-  members: (json['members'] as List<dynamic>)
-      .map((e) => GuildMemberResponse.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  total: (json['total'] as num).toInt(),
-  limit: (json['limit'] as num).toInt(),
-  offset: (json['offset'] as num).toInt(),
-);
+) => $checkedCreate('ListGuildMembersResponse', json, ($checkedConvert) {
+  final val = ListGuildMembersResponse(
+    members: $checkedConvert(
+      'members',
+      (v) => (v as List<dynamic>)
+          .map((e) => GuildMemberResponse.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    ),
+    total: $checkedConvert('total', (v) => (v as num).toInt()),
+    limit: $checkedConvert('limit', (v) => (v as num).toInt()),
+    offset: $checkedConvert('offset', (v) => (v as num).toInt()),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$ListGuildMembersResponseToJson(
   ListGuildMembersResponse instance,

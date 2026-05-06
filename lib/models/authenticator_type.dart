@@ -9,8 +9,6 @@ import 'package:json_annotation/json_annotation.dart';
 enum AuthenticatorType {
   @JsonValue(0)
   totp(0),
-  @JsonValue(1)
-  sms(1),
   @JsonValue(2)
   webauthn(2),
 

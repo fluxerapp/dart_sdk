@@ -6,56 +6,128 @@ part of 'guild_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-GuildResponse _$GuildResponseFromJson(Map<String, dynamic> json) =>
-    GuildResponse(
-      id: json['id'] as String,
-      name: json['name'] as String,
-      splashCardAlignment:
-          GuildResponseSplashCardAlignmentSplashCardAlignment.fromJson(
-            (json['splash_card_alignment'] as num).toInt(),
-          ),
-      ownerId: json['owner_id'] as String,
-      systemChannelFlags: (json['system_channel_flags'] as num).toInt(),
-      afkTimeout: (json['afk_timeout'] as num).toInt(),
-      features: (json['features'] as List<dynamic>)
-          .map((e) => e as String)
-          .toList(),
-      verificationLevel: GuildVerificationLevel.fromJson(
-        (json['verification_level'] as num).toInt(),
+GuildResponse _$GuildResponseFromJson(
+  Map<String, dynamic> json,
+) => $checkedCreate(
+  'GuildResponse',
+  json,
+  ($checkedConvert) {
+    final val = GuildResponse(
+      id: $checkedConvert('id', (v) => v as String),
+      name: $checkedConvert('name', (v) => v as String),
+      splashCardAlignment: $checkedConvert(
+        'splash_card_alignment',
+        (v) => GuildResponseSplashCardAlignmentSplashCardAlignment.fromJson(
+          (v as num).toInt(),
+        ),
       ),
-      mfaLevel: GuildMfaLevel.fromJson((json['mfa_level'] as num).toInt()),
-      nsfwLevel: NsfwLevel.fromJson((json['nsfw_level'] as num).toInt()),
-      nsfw: json['nsfw'] as bool,
-      contentWarningLevel: ContentWarningLevel.fromJson(
-        (json['content_warning_level'] as num).toInt(),
+      ownerId: $checkedConvert('owner_id', (v) => v as String),
+      systemChannelFlags: $checkedConvert(
+        'system_channel_flags',
+        (v) => (v as num).toInt(),
       ),
-      explicitContentFilter: GuildExplicitContentFilter.fromJson(
-        (json['explicit_content_filter'] as num).toInt(),
+      afkTimeout: $checkedConvert('afk_timeout', (v) => (v as num).toInt()),
+      features: $checkedConvert(
+        'features',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
       ),
-      defaultMessageNotifications: DefaultMessageNotifications.fromJson(
-        (json['default_message_notifications'] as num).toInt(),
+      verificationLevel: $checkedConvert(
+        'verification_level',
+        (v) => GuildVerificationLevel.fromJson((v as num).toInt()),
       ),
-      disabledOperations: (json['disabled_operations'] as num).toInt(),
-      icon: json['icon'] as String?,
-      banner: json['banner'] as String?,
-      bannerWidth: (json['banner_width'] as num?)?.toInt(),
-      bannerHeight: (json['banner_height'] as num?)?.toInt(),
-      splash: json['splash'] as String?,
-      splashWidth: (json['splash_width'] as num?)?.toInt(),
-      splashHeight: (json['splash_height'] as num?)?.toInt(),
-      embedSplash: json['embed_splash'] as String?,
-      embedSplashWidth: (json['embed_splash_width'] as num?)?.toInt(),
-      embedSplashHeight: (json['embed_splash_height'] as num?)?.toInt(),
-      vanityUrlCode: json['vanity_url_code'] as String?,
-      systemChannelId: json['system_channel_id'] as String?,
-      rulesChannelId: json['rules_channel_id'] as String?,
-      afkChannelId: json['afk_channel_id'] as String?,
-      contentWarningText: json['content_warning_text'] as String?,
-      messageHistoryCutoff: json['message_history_cutoff'] == null
-          ? null
-          : DateTime.parse(json['message_history_cutoff'] as String),
-      permissions: json['permissions'] as String?,
+      mfaLevel: $checkedConvert(
+        'mfa_level',
+        (v) => GuildMfaLevel.fromJson((v as num).toInt()),
+      ),
+      nsfwLevel: $checkedConvert(
+        'nsfw_level',
+        (v) => NsfwLevel.fromJson((v as num).toInt()),
+      ),
+      nsfw: $checkedConvert('nsfw', (v) => v as bool),
+      contentWarningLevel: $checkedConvert(
+        'content_warning_level',
+        (v) => ContentWarningLevel.fromJson((v as num).toInt()),
+      ),
+      explicitContentFilter: $checkedConvert(
+        'explicit_content_filter',
+        (v) => GuildExplicitContentFilter.fromJson((v as num).toInt()),
+      ),
+      defaultMessageNotifications: $checkedConvert(
+        'default_message_notifications',
+        (v) => DefaultMessageNotifications.fromJson((v as num).toInt()),
+      ),
+      disabledOperations: $checkedConvert(
+        'disabled_operations',
+        (v) => (v as num).toInt(),
+      ),
+      icon: $checkedConvert('icon', (v) => v as String?),
+      banner: $checkedConvert('banner', (v) => v as String?),
+      bannerWidth: $checkedConvert('banner_width', (v) => (v as num?)?.toInt()),
+      bannerHeight: $checkedConvert(
+        'banner_height',
+        (v) => (v as num?)?.toInt(),
+      ),
+      splash: $checkedConvert('splash', (v) => v as String?),
+      splashWidth: $checkedConvert('splash_width', (v) => (v as num?)?.toInt()),
+      splashHeight: $checkedConvert(
+        'splash_height',
+        (v) => (v as num?)?.toInt(),
+      ),
+      embedSplash: $checkedConvert('embed_splash', (v) => v as String?),
+      embedSplashWidth: $checkedConvert(
+        'embed_splash_width',
+        (v) => (v as num?)?.toInt(),
+      ),
+      embedSplashHeight: $checkedConvert(
+        'embed_splash_height',
+        (v) => (v as num?)?.toInt(),
+      ),
+      vanityUrlCode: $checkedConvert('vanity_url_code', (v) => v as String?),
+      systemChannelId: $checkedConvert(
+        'system_channel_id',
+        (v) => v as String?,
+      ),
+      rulesChannelId: $checkedConvert('rules_channel_id', (v) => v as String?),
+      afkChannelId: $checkedConvert('afk_channel_id', (v) => v as String?),
+      contentWarningText: $checkedConvert(
+        'content_warning_text',
+        (v) => v as String?,
+      ),
+      messageHistoryCutoff: $checkedConvert(
+        'message_history_cutoff',
+        (v) => v == null ? null : DateTime.parse(v as String),
+      ),
+      permissions: $checkedConvert('permissions', (v) => v as String?),
     );
+    return val;
+  },
+  fieldKeyMap: const {
+    'splashCardAlignment': 'splash_card_alignment',
+    'ownerId': 'owner_id',
+    'systemChannelFlags': 'system_channel_flags',
+    'afkTimeout': 'afk_timeout',
+    'verificationLevel': 'verification_level',
+    'mfaLevel': 'mfa_level',
+    'nsfwLevel': 'nsfw_level',
+    'contentWarningLevel': 'content_warning_level',
+    'explicitContentFilter': 'explicit_content_filter',
+    'defaultMessageNotifications': 'default_message_notifications',
+    'disabledOperations': 'disabled_operations',
+    'bannerWidth': 'banner_width',
+    'bannerHeight': 'banner_height',
+    'splashWidth': 'splash_width',
+    'splashHeight': 'splash_height',
+    'embedSplash': 'embed_splash',
+    'embedSplashWidth': 'embed_splash_width',
+    'embedSplashHeight': 'embed_splash_height',
+    'vanityUrlCode': 'vanity_url_code',
+    'systemChannelId': 'system_channel_id',
+    'rulesChannelId': 'rules_channel_id',
+    'afkChannelId': 'afk_channel_id',
+    'contentWarningText': 'content_warning_text',
+    'messageHistoryCutoff': 'message_history_cutoff',
+  },
+);
 
 Map<String, dynamic> _$GuildResponseToJson(
   GuildResponse instance,

@@ -8,10 +8,13 @@ part of 'dsa_report_email_verify_request.dart';
 
 DsaReportEmailVerifyRequest _$DsaReportEmailVerifyRequestFromJson(
   Map<String, dynamic> json,
-) => DsaReportEmailVerifyRequest(
-  email: json['email'] as String,
-  code: json['code'] as String,
-);
+) => $checkedCreate('DsaReportEmailVerifyRequest', json, ($checkedConvert) {
+  final val = DsaReportEmailVerifyRequest(
+    email: $checkedConvert('email', (v) => v as String),
+    code: $checkedConvert('code', (v) => v as String),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$DsaReportEmailVerifyRequestToJson(
   DsaReportEmailVerifyRequest instance,

@@ -7,7 +7,10 @@ part of 'ban_ip_request.dart';
 // **************************************************************************
 
 BanIpRequest _$BanIpRequestFromJson(Map<String, dynamic> json) =>
-    BanIpRequest(ip: json['ip'] as String);
+    $checkedCreate('BanIpRequest', json, ($checkedConvert) {
+      final val = BanIpRequest(ip: $checkedConvert('ip', (v) => v as String));
+      return val;
+    });
 
 Map<String, dynamic> _$BanIpRequestToJson(BanIpRequest instance) =>
     <String, dynamic>{'ip': instance.ip};

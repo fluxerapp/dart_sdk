@@ -7,13 +7,20 @@ part of 'lookup_user_response.dart';
 // **************************************************************************
 
 LookupUserResponse _$LookupUserResponseFromJson(Map<String, dynamic> json) =>
-    LookupUserResponse(
-      users: (json['users'] as List<dynamic>)
-          .map(
-            (e) => UserAdminResponseSchema.fromJson(e as Map<String, dynamic>),
-          )
-          .toList(),
-    );
+    $checkedCreate('LookupUserResponse', json, ($checkedConvert) {
+      final val = LookupUserResponse(
+        users: $checkedConvert(
+          'users',
+          (v) => (v as List<dynamic>)
+              .map(
+                (e) =>
+                    UserAdminResponseSchema.fromJson(e as Map<String, dynamic>),
+              )
+              .toList(),
+        ),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$LookupUserResponseToJson(LookupUserResponse instance) =>
     <String, dynamic>{'users': instance.users};

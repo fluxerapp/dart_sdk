@@ -7,7 +7,12 @@ part of 'ban_email_request.dart';
 // **************************************************************************
 
 BanEmailRequest _$BanEmailRequestFromJson(Map<String, dynamic> json) =>
-    BanEmailRequest(email: json['email'] as String);
+    $checkedCreate('BanEmailRequest', json, ($checkedConvert) {
+      final val = BanEmailRequest(
+        email: $checkedConvert('email', (v) => v as String),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$BanEmailRequestToJson(BanEmailRequest instance) =>
     <String, dynamic>{'email': instance.email};

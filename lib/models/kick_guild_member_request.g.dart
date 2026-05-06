@@ -8,9 +8,17 @@ part of 'kick_guild_member_request.dart';
 
 KickGuildMemberRequest _$KickGuildMemberRequestFromJson(
   Map<String, dynamic> json,
-) => KickGuildMemberRequest(
-  guildId: json['guild_id'] as String,
-  userId: json['user_id'] as String,
+) => $checkedCreate(
+  'KickGuildMemberRequest',
+  json,
+  ($checkedConvert) {
+    final val = KickGuildMemberRequest(
+      guildId: $checkedConvert('guild_id', (v) => v as String),
+      userId: $checkedConvert('user_id', (v) => v as String),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'guildId': 'guild_id', 'userId': 'user_id'},
 );
 
 Map<String, dynamic> _$KickGuildMemberRequestToJson(

@@ -8,10 +8,14 @@ part of 'email_change_verify_original_request.dart';
 
 EmailChangeVerifyOriginalRequest _$EmailChangeVerifyOriginalRequestFromJson(
   Map<String, dynamic> json,
-) => EmailChangeVerifyOriginalRequest(
-  ticket: json['ticket'] as String,
-  code: json['code'] as String,
-);
+) =>
+    $checkedCreate('EmailChangeVerifyOriginalRequest', json, ($checkedConvert) {
+      final val = EmailChangeVerifyOriginalRequest(
+        ticket: $checkedConvert('ticket', (v) => v as String),
+        code: $checkedConvert('code', (v) => v as String),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$EmailChangeVerifyOriginalRequestToJson(
   EmailChangeVerifyOriginalRequest instance,

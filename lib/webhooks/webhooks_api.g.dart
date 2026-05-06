@@ -282,14 +282,69 @@ class _WebhooksApi implements WebhooksApi {
     required String webhookId,
     required String token,
     String? wait,
+    String? content,
+    List<RichEmbedRequest>? embeds,
+    List<WebhookAttachmentRequest>? attachments,
+    MessageReferenceRequest? messageReference,
+    AllowedMentionsRequest? allowedMentions,
+    int? flags,
+    String? nonce,
+    String? favoriteMemeId,
+    List<String>? stickerIds,
+    bool? tts,
+    String? username,
+    String? avatarUrl,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'wait': wait};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final _data = FormData();
+    if (content != null) {
+      _data.fields.add(MapEntry('content', content));
+    }
+    _data.fields.add(MapEntry('embeds', jsonEncode(embeds)));
+    _data.fields.add(MapEntry('attachments', jsonEncode(attachments)));
+    _data.fields.add(
+      MapEntry(
+        'message_reference',
+        jsonEncode(messageReference ?? <String, dynamic>{}),
+      ),
+    );
+    _data.fields.add(
+      MapEntry(
+        'allowed_mentions',
+        jsonEncode(allowedMentions ?? <String, dynamic>{}),
+      ),
+    );
+    if (flags != null) {
+      _data.fields.add(MapEntry('flags', flags.toString()));
+    }
+    if (nonce != null) {
+      _data.fields.add(MapEntry('nonce', nonce));
+    }
+    if (favoriteMemeId != null) {
+      _data.fields.add(MapEntry('favorite_meme_id', favoriteMemeId));
+    }
+    stickerIds?.forEach((i) {
+      _data.fields.add(MapEntry('sticker_ids', i));
+    });
+    if (tts != null) {
+      _data.fields.add(MapEntry('tts', tts.toString()));
+    }
+    if (username != null) {
+      _data.fields.add(MapEntry('username', username));
+    }
+    if (avatarUrl != null) {
+      _data.fields.add(MapEntry('avatar_url', avatarUrl));
+    }
     final _options = _setStreamType<MessageResponseSchema>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
+      Options(
+            method: 'POST',
+            headers: _headers,
+            extra: _extra,
+            contentType: 'multipart/form-data',
+          )
           .compose(
             _dio.options,
             '/webhooks/${webhookId}/${token}',
@@ -395,30 +450,6 @@ class _WebhooksApi implements WebhooksApi {
       rethrow;
     }
     return _value;
-  }
-
-  @override
-  Future<void> executeSentryWebhook({
-    required String webhookId,
-    required String token,
-    required SentryWebhook body,
-  }) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
-    final _options = _setStreamType<void>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/webhooks/${webhookId}/${token}/sentry',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    await _dio.fetch<void>(_options);
   }
 
   @override

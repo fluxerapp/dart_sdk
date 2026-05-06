@@ -4,7 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-/// The type of embed content
+/// The type of generated or supplied embed content, not uploaded attachments
 @JsonEnum()
 enum MessageEmbedType {
   @JsonValue('image')

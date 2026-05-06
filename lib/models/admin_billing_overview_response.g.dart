@@ -8,21 +8,46 @@ part of 'admin_billing_overview_response.dart';
 
 AdminBillingOverviewResponse _$AdminBillingOverviewResponseFromJson(
   Map<String, dynamic> json,
-) => AdminBillingOverviewResponse(
-  subscription: json['subscription'] == null
-      ? null
-      : AdminSubscriptionResponse.fromJson(
-          json['subscription'] as Map<String, dynamic>,
-        ),
-  payments: (json['payments'] as List<dynamic>)
-      .map((e) => AdminPaymentResponse.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  paymentMethods: (json['payment_methods'] as List<dynamic>)
-      .map(
-        (e) => AdminPaymentMethodResponse.fromJson(e as Map<String, dynamic>),
-      )
-      .toList(),
-  stripeCustomerId: json['stripe_customer_id'] as String?,
+) => $checkedCreate(
+  'AdminBillingOverviewResponse',
+  json,
+  ($checkedConvert) {
+    final val = AdminBillingOverviewResponse(
+      subscription: $checkedConvert(
+        'subscription',
+        (v) => v == null
+            ? null
+            : AdminSubscriptionResponse.fromJson(v as Map<String, dynamic>),
+      ),
+      payments: $checkedConvert(
+        'payments',
+        (v) => (v as List<dynamic>)
+            .map(
+              (e) => AdminPaymentResponse.fromJson(e as Map<String, dynamic>),
+            )
+            .toList(),
+      ),
+      paymentMethods: $checkedConvert(
+        'payment_methods',
+        (v) => (v as List<dynamic>)
+            .map(
+              (e) => AdminPaymentMethodResponse.fromJson(
+                e as Map<String, dynamic>,
+              ),
+            )
+            .toList(),
+      ),
+      stripeCustomerId: $checkedConvert(
+        'stripe_customer_id',
+        (v) => v as String?,
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'paymentMethods': 'payment_methods',
+    'stripeCustomerId': 'stripe_customer_id',
+  },
 );
 
 Map<String, dynamic> _$AdminBillingOverviewResponseToJson(

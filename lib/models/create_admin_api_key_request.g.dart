@@ -8,10 +8,24 @@ part of 'create_admin_api_key_request.dart';
 
 CreateAdminApiKeyRequest _$CreateAdminApiKeyRequestFromJson(
   Map<String, dynamic> json,
-) => CreateAdminApiKeyRequest(
-  name: json['name'] as String,
-  acls: (json['acls'] as List<dynamic>).map((e) => e as String).toList(),
-  expiresInDays: (json['expires_in_days'] as num?)?.toInt(),
+) => $checkedCreate(
+  'CreateAdminApiKeyRequest',
+  json,
+  ($checkedConvert) {
+    final val = CreateAdminApiKeyRequest(
+      name: $checkedConvert('name', (v) => v as String),
+      acls: $checkedConvert(
+        'acls',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      expiresInDays: $checkedConvert(
+        'expires_in_days',
+        (v) => (v as num?)?.toInt(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'expiresInDays': 'expires_in_days'},
 );
 
 Map<String, dynamic> _$CreateAdminApiKeyRequestToJson(

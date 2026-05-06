@@ -8,7 +8,12 @@ part of 'get_index_refresh_status_request.dart';
 
 GetIndexRefreshStatusRequest _$GetIndexRefreshStatusRequestFromJson(
   Map<String, dynamic> json,
-) => GetIndexRefreshStatusRequest(jobId: json['job_id'] as String);
+) => $checkedCreate('GetIndexRefreshStatusRequest', json, ($checkedConvert) {
+  final val = GetIndexRefreshStatusRequest(
+    jobId: $checkedConvert('job_id', (v) => v as String),
+  );
+  return val;
+}, fieldKeyMap: const {'jobId': 'job_id'});
 
 Map<String, dynamic> _$GetIndexRefreshStatusRequestToJson(
   GetIndexRefreshStatusRequest instance,

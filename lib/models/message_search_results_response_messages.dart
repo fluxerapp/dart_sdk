@@ -35,6 +35,7 @@ class MessageSearchResultsResponseMessages {
     this.tts,
     this.mentions,
     this.mentionRoles,
+    this.users,
     this.embeds,
     this.attachments,
     this.stickers,
@@ -94,6 +95,10 @@ class MessageSearchResultsResponseMessages {
   /// The role IDs mentioned in the message
   @JsonKey(includeIfNull: false, name: 'mention_roles')
   final List<String>? mentionRoles;
+
+  /// Users referenced from embed and snapshot text, included for client-side resolution
+  @JsonKey(includeIfNull: false)
+  final List<UserPartialResponse>? users;
 
   /// The embeds attached to the message
   @JsonKey(includeIfNull: false)

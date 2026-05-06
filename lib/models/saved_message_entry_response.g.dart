@@ -8,16 +8,28 @@ part of 'saved_message_entry_response.dart';
 
 SavedMessageEntryResponse _$SavedMessageEntryResponseFromJson(
   Map<String, dynamic> json,
-) => SavedMessageEntryResponse(
-  id: json['id'] as String,
-  channelId: json['channel_id'] as String,
-  messageId: json['message_id'] as String,
-  status: SavedMessageEntryResponseStatusStatus.fromJson(
-    json['status'] as String,
-  ),
-  message: json['message'] == null
-      ? null
-      : MessageResponseSchema.fromJson(json['message'] as Map<String, dynamic>),
+) => $checkedCreate(
+  'SavedMessageEntryResponse',
+  json,
+  ($checkedConvert) {
+    final val = SavedMessageEntryResponse(
+      id: $checkedConvert('id', (v) => v as String),
+      channelId: $checkedConvert('channel_id', (v) => v as String),
+      messageId: $checkedConvert('message_id', (v) => v as String),
+      status: $checkedConvert(
+        'status',
+        (v) => SavedMessageEntryResponseStatusStatus.fromJson(v as String),
+      ),
+      message: $checkedConvert(
+        'message',
+        (v) => v == null
+            ? null
+            : MessageResponseSchema.fromJson(v as Map<String, dynamic>),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'channelId': 'channel_id', 'messageId': 'message_id'},
 );
 
 Map<String, dynamic> _$SavedMessageEntryResponseToJson(

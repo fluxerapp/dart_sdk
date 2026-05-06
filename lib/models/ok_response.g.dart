@@ -7,7 +7,10 @@ part of 'ok_response.dart';
 // **************************************************************************
 
 OkResponse _$OkResponseFromJson(Map<String, dynamic> json) =>
-    OkResponse(ok: json['ok'] as bool);
+    $checkedCreate('OkResponse', json, ($checkedConvert) {
+      final val = OkResponse(ok: $checkedConvert('ok', (v) => v as bool));
+      return val;
+    });
 
 Map<String, dynamic> _$OkResponseToJson(OkResponse instance) =>
     <String, dynamic>{'ok': instance.ok};

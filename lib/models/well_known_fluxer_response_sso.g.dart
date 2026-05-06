@@ -8,11 +8,22 @@ part of 'well_known_fluxer_response_sso.dart';
 
 WellKnownFluxerResponseSso _$WellKnownFluxerResponseSsoFromJson(
   Map<String, dynamic> json,
-) => WellKnownFluxerResponseSso(
-  enabled: json['enabled'] as bool,
-  enforced: json['enforced'] as bool,
-  displayName: json['display_name'] as String?,
-  redirectUri: json['redirect_uri'] as String,
+) => $checkedCreate(
+  'WellKnownFluxerResponseSso',
+  json,
+  ($checkedConvert) {
+    final val = WellKnownFluxerResponseSso(
+      enabled: $checkedConvert('enabled', (v) => v as bool),
+      enforced: $checkedConvert('enforced', (v) => v as bool),
+      displayName: $checkedConvert('display_name', (v) => v as String?),
+      redirectUri: $checkedConvert('redirect_uri', (v) => v as String),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'displayName': 'display_name',
+    'redirectUri': 'redirect_uri',
+  },
 );
 
 Map<String, dynamic> _$WellKnownFluxerResponseSsoToJson(

@@ -8,17 +8,24 @@ part of 'channel_update_group_dm_request.dart';
 
 ChannelUpdateGroupDmRequest _$ChannelUpdateGroupDmRequestFromJson(
   Map<String, dynamic> json,
-) => ChannelUpdateGroupDmRequest(
-  type: ChannelUpdateGroupDmRequestTypeType.fromJson(
-    (json['type'] as num).toInt(),
-  ),
-  name: json['name'] as String?,
-  icon: json['icon'] as String?,
-  ownerId: json['owner_id'] as String?,
-  nicks: (json['nicks'] as Map<String, dynamic>?)?.map(
-    (k, e) => MapEntry(k, e as String?),
-  ),
-);
+) => $checkedCreate('ChannelUpdateGroupDmRequest', json, ($checkedConvert) {
+  final val = ChannelUpdateGroupDmRequest(
+    type: $checkedConvert(
+      'type',
+      (v) => ChannelUpdateGroupDmRequestTypeType.fromJson((v as num).toInt()),
+    ),
+    name: $checkedConvert('name', (v) => v as String?),
+    icon: $checkedConvert('icon', (v) => v as String?),
+    ownerId: $checkedConvert('owner_id', (v) => v as String?),
+    nicks: $checkedConvert(
+      'nicks',
+      (v) => (v as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, e as String?),
+      ),
+    ),
+  );
+  return val;
+}, fieldKeyMap: const {'ownerId': 'owner_id'});
 
 Map<String, dynamic> _$ChannelUpdateGroupDmRequestToJson(
   ChannelUpdateGroupDmRequest instance,

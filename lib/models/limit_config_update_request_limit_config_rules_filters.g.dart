@@ -9,12 +9,21 @@ part of 'limit_config_update_request_limit_config_rules_filters.dart';
 LimitConfigUpdateRequestLimitConfigRulesFilters
 _$LimitConfigUpdateRequestLimitConfigRulesFiltersFromJson(
   Map<String, dynamic> json,
-) => LimitConfigUpdateRequestLimitConfigRulesFilters(
-  traits: (json['traits'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  guildFeatures: (json['guildFeatures'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
-);
+) => $checkedCreate('LimitConfigUpdateRequestLimitConfigRulesFilters', json, (
+  $checkedConvert,
+) {
+  final val = LimitConfigUpdateRequestLimitConfigRulesFilters(
+    traits: $checkedConvert(
+      'traits',
+      (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+    ),
+    guildFeatures: $checkedConvert(
+      'guildFeatures',
+      (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$LimitConfigUpdateRequestLimitConfigRulesFiltersToJson(
   LimitConfigUpdateRequestLimitConfigRulesFilters instance,

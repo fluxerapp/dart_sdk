@@ -8,10 +8,15 @@ part of 'get_voice_diagnostic_download_request.dart';
 
 GetVoiceDiagnosticDownloadRequest _$GetVoiceDiagnosticDownloadRequestFromJson(
   Map<String, dynamic> json,
-) => GetVoiceDiagnosticDownloadRequest(
-  userId: json['user_id'] as String,
-  id: json['id'] as String,
-);
+) => $checkedCreate('GetVoiceDiagnosticDownloadRequest', json, (
+  $checkedConvert,
+) {
+  final val = GetVoiceDiagnosticDownloadRequest(
+    userId: $checkedConvert('user_id', (v) => v as String),
+    id: $checkedConvert('id', (v) => v as String),
+  );
+  return val;
+}, fieldKeyMap: const {'userId': 'user_id'});
 
 Map<String, dynamic> _$GetVoiceDiagnosticDownloadRequestToJson(
   GetVoiceDiagnosticDownloadRequest instance,

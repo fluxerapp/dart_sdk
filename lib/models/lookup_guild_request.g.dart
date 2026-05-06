@@ -7,7 +7,12 @@ part of 'lookup_guild_request.dart';
 // **************************************************************************
 
 LookupGuildRequest _$LookupGuildRequestFromJson(Map<String, dynamic> json) =>
-    LookupGuildRequest(guildId: json['guild_id'] as String);
+    $checkedCreate('LookupGuildRequest', json, ($checkedConvert) {
+      final val = LookupGuildRequest(
+        guildId: $checkedConvert('guild_id', (v) => v as String),
+      );
+      return val;
+    }, fieldKeyMap: const {'guildId': 'guild_id'});
 
 Map<String, dynamic> _$LookupGuildRequestToJson(LookupGuildRequest instance) =>
     <String, dynamic>{'guild_id': instance.guildId};

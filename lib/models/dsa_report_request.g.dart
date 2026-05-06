@@ -11,21 +11,54 @@ Map<String, dynamic> _$DsaReportRequestToJson(DsaReportRequest instance) =>
 
 DsaReportRequestMessage _$DsaReportRequestMessageFromJson(
   Map<String, dynamic> json,
-) => DsaReportRequestMessage(
-  ticket: json['ticket'] as String,
-  additionalInfo: json['additional_info'] as String?,
-  reporterFullLegalName: json['reporter_full_legal_name'] as String,
-  reporterCountryOfResidence:
-      DsaReportMessageRequestReporterCountryOfResidenceReporterCountryOfResidence.fromJson(
-        json['reporter_country_of_residence'] as String,
+) => $checkedCreate(
+  'DsaReportRequestMessage',
+  json,
+  ($checkedConvert) {
+    final val = DsaReportRequestMessage(
+      ticket: $checkedConvert('ticket', (v) => v as String),
+      additionalInfo: $checkedConvert('additional_info', (v) => v as String?),
+      reporterFullLegalName: $checkedConvert(
+        'reporter_full_legal_name',
+        (v) => v as String,
       ),
-  reporterFluxerTag: json['reporter_fluxer_tag'] as String?,
-  reportType: DsaReportMessageRequestReportTypeReportType.fromJson(
-    json['report_type'] as String,
-  ),
-  category: MessageReportCategoryEnum.fromJson(json['category'] as String),
-  messageLink: json['message_link'] as String,
-  reportedUserTag: json['reported_user_tag'] as String?,
+      reporterCountryOfResidence: $checkedConvert(
+        'reporter_country_of_residence',
+        (v) =>
+            DsaReportMessageRequestReporterCountryOfResidenceReporterCountryOfResidence.fromJson(
+              v as String,
+            ),
+      ),
+      reporterFluxerTag: $checkedConvert(
+        'reporter_fluxer_tag',
+        (v) => v as String?,
+      ),
+      reportType: $checkedConvert(
+        'report_type',
+        (v) =>
+            DsaReportMessageRequestReportTypeReportType.fromJson(v as String),
+      ),
+      category: $checkedConvert(
+        'category',
+        (v) => MessageReportCategoryEnum.fromJson(v as String),
+      ),
+      messageLink: $checkedConvert('message_link', (v) => v as String),
+      reportedUserTag: $checkedConvert(
+        'reported_user_tag',
+        (v) => v as String?,
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'additionalInfo': 'additional_info',
+    'reporterFullLegalName': 'reporter_full_legal_name',
+    'reporterCountryOfResidence': 'reporter_country_of_residence',
+    'reporterFluxerTag': 'reporter_fluxer_tag',
+    'reportType': 'report_type',
+    'messageLink': 'message_link',
+    'reportedUserTag': 'reported_user_tag',
+  },
 );
 
 Map<String, dynamic> _$DsaReportRequestMessageToJson(
@@ -44,21 +77,50 @@ Map<String, dynamic> _$DsaReportRequestMessageToJson(
 
 DsaReportRequestUser _$DsaReportRequestUserFromJson(
   Map<String, dynamic> json,
-) => DsaReportRequestUser(
-  ticket: json['ticket'] as String,
-  additionalInfo: json['additional_info'] as String?,
-  reporterFullLegalName: json['reporter_full_legal_name'] as String,
-  reporterCountryOfResidence:
-      DsaReportUserRequestReporterCountryOfResidenceReporterCountryOfResidence.fromJson(
-        json['reporter_country_of_residence'] as String,
+) => $checkedCreate(
+  'DsaReportRequestUser',
+  json,
+  ($checkedConvert) {
+    final val = DsaReportRequestUser(
+      ticket: $checkedConvert('ticket', (v) => v as String),
+      additionalInfo: $checkedConvert('additional_info', (v) => v as String?),
+      reporterFullLegalName: $checkedConvert(
+        'reporter_full_legal_name',
+        (v) => v as String,
       ),
-  reporterFluxerTag: json['reporter_fluxer_tag'] as String?,
-  reportType: DsaReportUserRequestReportTypeReportType.fromJson(
-    json['report_type'] as String,
-  ),
-  category: UserReportCategoryEnum.fromJson(json['category'] as String),
-  userId: json['user_id'] as String?,
-  userTag: json['user_tag'] as String?,
+      reporterCountryOfResidence: $checkedConvert(
+        'reporter_country_of_residence',
+        (v) =>
+            DsaReportUserRequestReporterCountryOfResidenceReporterCountryOfResidence.fromJson(
+              v as String,
+            ),
+      ),
+      reporterFluxerTag: $checkedConvert(
+        'reporter_fluxer_tag',
+        (v) => v as String?,
+      ),
+      reportType: $checkedConvert(
+        'report_type',
+        (v) => DsaReportUserRequestReportTypeReportType.fromJson(v as String),
+      ),
+      category: $checkedConvert(
+        'category',
+        (v) => UserReportCategoryEnum.fromJson(v as String),
+      ),
+      userId: $checkedConvert('user_id', (v) => v as String?),
+      userTag: $checkedConvert('user_tag', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'additionalInfo': 'additional_info',
+    'reporterFullLegalName': 'reporter_full_legal_name',
+    'reporterCountryOfResidence': 'reporter_country_of_residence',
+    'reporterFluxerTag': 'reporter_fluxer_tag',
+    'reportType': 'report_type',
+    'userId': 'user_id',
+    'userTag': 'user_tag',
+  },
 );
 
 Map<String, dynamic> _$DsaReportRequestUserToJson(
@@ -77,21 +139,50 @@ Map<String, dynamic> _$DsaReportRequestUserToJson(
 
 DsaReportRequestGuild _$DsaReportRequestGuildFromJson(
   Map<String, dynamic> json,
-) => DsaReportRequestGuild(
-  ticket: json['ticket'] as String,
-  additionalInfo: json['additional_info'] as String?,
-  reporterFullLegalName: json['reporter_full_legal_name'] as String,
-  reporterCountryOfResidence:
-      DsaReportGuildRequestReporterCountryOfResidenceReporterCountryOfResidence.fromJson(
-        json['reporter_country_of_residence'] as String,
+) => $checkedCreate(
+  'DsaReportRequestGuild',
+  json,
+  ($checkedConvert) {
+    final val = DsaReportRequestGuild(
+      ticket: $checkedConvert('ticket', (v) => v as String),
+      additionalInfo: $checkedConvert('additional_info', (v) => v as String?),
+      reporterFullLegalName: $checkedConvert(
+        'reporter_full_legal_name',
+        (v) => v as String,
       ),
-  reporterFluxerTag: json['reporter_fluxer_tag'] as String?,
-  reportType: DsaReportGuildRequestReportTypeReportType.fromJson(
-    json['report_type'] as String,
-  ),
-  category: GuildReportCategoryEnum.fromJson(json['category'] as String),
-  guildId: json['guild_id'] as String,
-  inviteCode: json['invite_code'] as String?,
+      reporterCountryOfResidence: $checkedConvert(
+        'reporter_country_of_residence',
+        (v) =>
+            DsaReportGuildRequestReporterCountryOfResidenceReporterCountryOfResidence.fromJson(
+              v as String,
+            ),
+      ),
+      reporterFluxerTag: $checkedConvert(
+        'reporter_fluxer_tag',
+        (v) => v as String?,
+      ),
+      reportType: $checkedConvert(
+        'report_type',
+        (v) => DsaReportGuildRequestReportTypeReportType.fromJson(v as String),
+      ),
+      category: $checkedConvert(
+        'category',
+        (v) => GuildReportCategoryEnum.fromJson(v as String),
+      ),
+      guildId: $checkedConvert('guild_id', (v) => v as String),
+      inviteCode: $checkedConvert('invite_code', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'additionalInfo': 'additional_info',
+    'reporterFullLegalName': 'reporter_full_legal_name',
+    'reporterCountryOfResidence': 'reporter_country_of_residence',
+    'reporterFluxerTag': 'reporter_fluxer_tag',
+    'reportType': 'report_type',
+    'guildId': 'guild_id',
+    'inviteCode': 'invite_code',
+  },
 );
 
 Map<String, dynamic> _$DsaReportRequestGuildToJson(

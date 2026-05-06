@@ -8,8 +8,19 @@ part of 'password_change_verify_response.dart';
 
 PasswordChangeVerifyResponse _$PasswordChangeVerifyResponseFromJson(
   Map<String, dynamic> json,
-) => PasswordChangeVerifyResponse(
-  verificationProof: json['verification_proof'] as String,
+) => $checkedCreate(
+  'PasswordChangeVerifyResponse',
+  json,
+  ($checkedConvert) {
+    final val = PasswordChangeVerifyResponse(
+      verificationProof: $checkedConvert(
+        'verification_proof',
+        (v) => v as String,
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'verificationProof': 'verification_proof'},
 );
 
 Map<String, dynamic> _$PasswordChangeVerifyResponseToJson(

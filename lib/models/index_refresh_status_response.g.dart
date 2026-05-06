@@ -8,11 +8,18 @@ part of 'index_refresh_status_response.dart';
 
 IndexRefreshStatusResponseVariant1 _$IndexRefreshStatusResponseVariant1FromJson(
   Map<String, dynamic> json,
-) => IndexRefreshStatusResponseVariant1(
-  status: IndexRefreshStatusResponseVariant1StatusStatus.fromJson(
-    json['status'] as String,
-  ),
-);
+) => $checkedCreate('IndexRefreshStatusResponseVariant1', json, (
+  $checkedConvert,
+) {
+  final val = IndexRefreshStatusResponseVariant1(
+    status: $checkedConvert(
+      'status',
+      (v) =>
+          IndexRefreshStatusResponseVariant1StatusStatus.fromJson(v as String),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$IndexRefreshStatusResponseVariant1ToJson(
   IndexRefreshStatusResponseVariant1 instance,
@@ -20,17 +27,33 @@ Map<String, dynamic> _$IndexRefreshStatusResponseVariant1ToJson(
 
 IndexRefreshStatusResponseVariant2 _$IndexRefreshStatusResponseVariant2FromJson(
   Map<String, dynamic> json,
-) => IndexRefreshStatusResponseVariant2(
-  status: IndexRefreshStatusResponseVariant2StatusStatus.fromJson(
-    json['status'] as String,
-  ),
-  indexType: json['index_type'] as String,
-  total: json['total'] as num?,
-  indexed: json['indexed'] as num?,
-  startedAt: json['started_at'] as String?,
-  completedAt: json['completed_at'] as String?,
-  failedAt: json['failed_at'] as String?,
-  error: json['error'] as String?,
+) => $checkedCreate(
+  'IndexRefreshStatusResponseVariant2',
+  json,
+  ($checkedConvert) {
+    final val = IndexRefreshStatusResponseVariant2(
+      status: $checkedConvert(
+        'status',
+        (v) => IndexRefreshStatusResponseVariant2StatusStatus.fromJson(
+          v as String,
+        ),
+      ),
+      indexType: $checkedConvert('index_type', (v) => v as String),
+      total: $checkedConvert('total', (v) => v as num?),
+      indexed: $checkedConvert('indexed', (v) => v as num?),
+      startedAt: $checkedConvert('started_at', (v) => v as String?),
+      completedAt: $checkedConvert('completed_at', (v) => v as String?),
+      failedAt: $checkedConvert('failed_at', (v) => v as String?),
+      error: $checkedConvert('error', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'indexType': 'index_type',
+    'startedAt': 'started_at',
+    'completedAt': 'completed_at',
+    'failedAt': 'failed_at',
+  },
 );
 
 Map<String, dynamic> _$IndexRefreshStatusResponseVariant2ToJson(

@@ -8,23 +8,45 @@ part of 'presigned_attachment_upload_multipart.dart';
 
 PresignedAttachmentUploadMultipart _$PresignedAttachmentUploadMultipartFromJson(
   Map<String, dynamic> json,
-) => PresignedAttachmentUploadMultipart(
-  id: (json['id'] as num).toInt(),
-  filename: json['filename'] as String,
-  uploadFilename: json['upload_filename'] as String,
-  fileSize: (json['file_size'] as num).toInt(),
-  contentType: json['content_type'] as String,
-  uploadMode: PresignedAttachmentUploadMultipartUploadModeUploadMode.fromJson(
-    json['upload_mode'] as String,
-  ),
-  uploadId: json['upload_id'] as String,
-  partSize: (json['part_size'] as num).toInt(),
-  parts: (json['parts'] as List<dynamic>)
-      .map(
-        (e) =>
-            PresignedAttachmentUploadPart.fromJson(e as Map<String, dynamic>),
-      )
-      .toList(),
+) => $checkedCreate(
+  'PresignedAttachmentUploadMultipart',
+  json,
+  ($checkedConvert) {
+    final val = PresignedAttachmentUploadMultipart(
+      id: $checkedConvert('id', (v) => (v as num).toInt()),
+      filename: $checkedConvert('filename', (v) => v as String),
+      uploadFilename: $checkedConvert('upload_filename', (v) => v as String),
+      fileSize: $checkedConvert('file_size', (v) => (v as num).toInt()),
+      contentType: $checkedConvert('content_type', (v) => v as String),
+      uploadMode: $checkedConvert(
+        'upload_mode',
+        (v) => PresignedAttachmentUploadMultipartUploadModeUploadMode.fromJson(
+          v as String,
+        ),
+      ),
+      uploadId: $checkedConvert('upload_id', (v) => v as String),
+      partSize: $checkedConvert('part_size', (v) => (v as num).toInt()),
+      parts: $checkedConvert(
+        'parts',
+        (v) => (v as List<dynamic>)
+            .map(
+              (e) => PresignedAttachmentUploadPart.fromJson(
+                e as Map<String, dynamic>,
+              ),
+            )
+            .toList(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'uploadFilename': 'upload_filename',
+    'fileSize': 'file_size',
+    'contentType': 'content_type',
+    'uploadMode': 'upload_mode',
+    'uploadId': 'upload_id',
+    'partSize': 'part_size',
+  },
 );
 
 Map<String, dynamic> _$PresignedAttachmentUploadMultipartToJson(

@@ -7,11 +7,14 @@ part of 'search_guilds_request.dart';
 // **************************************************************************
 
 SearchGuildsRequest _$SearchGuildsRequestFromJson(Map<String, dynamic> json) =>
-    SearchGuildsRequest(
-      query: json['query'] as String?,
-      limit: (json['limit'] as num?)?.toInt(),
-      offset: (json['offset'] as num?)?.toInt(),
-    );
+    $checkedCreate('SearchGuildsRequest', json, ($checkedConvert) {
+      final val = SearchGuildsRequest(
+        query: $checkedConvert('query', (v) => v as String?),
+        limit: $checkedConvert('limit', (v) => (v as num?)?.toInt()),
+        offset: $checkedConvert('offset', (v) => (v as num?)?.toInt()),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$SearchGuildsRequestToJson(
   SearchGuildsRequest instance,

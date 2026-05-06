@@ -8,11 +8,17 @@ part of 'admin_payment_list_response.dart';
 
 AdminPaymentListResponse _$AdminPaymentListResponseFromJson(
   Map<String, dynamic> json,
-) => AdminPaymentListResponse(
-  payments: (json['payments'] as List<dynamic>)
-      .map((e) => AdminPaymentResponse.fromJson(e as Map<String, dynamic>))
-      .toList(),
-);
+) => $checkedCreate('AdminPaymentListResponse', json, ($checkedConvert) {
+  final val = AdminPaymentListResponse(
+    payments: $checkedConvert(
+      'payments',
+      (v) => (v as List<dynamic>)
+          .map((e) => AdminPaymentResponse.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$AdminPaymentListResponseToJson(
   AdminPaymentListResponse instance,

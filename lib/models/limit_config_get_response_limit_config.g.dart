@@ -8,18 +8,27 @@ part of 'limit_config_get_response_limit_config.dart';
 
 LimitConfigGetResponseLimitConfig _$LimitConfigGetResponseLimitConfigFromJson(
   Map<String, dynamic> json,
-) => LimitConfigGetResponseLimitConfig(
-  traitDefinitions: (json['traitDefinitions'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-  rules: (json['rules'] as List<dynamic>)
-      .map(
-        (e) => LimitConfigGetResponseLimitConfigRules.fromJson(
-          e as Map<String, dynamic>,
-        ),
-      )
-      .toList(),
-);
+) => $checkedCreate('LimitConfigGetResponseLimitConfig', json, (
+  $checkedConvert,
+) {
+  final val = LimitConfigGetResponseLimitConfig(
+    traitDefinitions: $checkedConvert(
+      'traitDefinitions',
+      (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+    ),
+    rules: $checkedConvert(
+      'rules',
+      (v) => (v as List<dynamic>)
+          .map(
+            (e) => LimitConfigGetResponseLimitConfigRules.fromJson(
+              e as Map<String, dynamic>,
+            ),
+          )
+          .toList(),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$LimitConfigGetResponseLimitConfigToJson(
   LimitConfigGetResponseLimitConfig instance,

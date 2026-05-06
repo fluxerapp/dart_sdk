@@ -8,9 +8,15 @@ part of 'purge_guild_assets_request.dart';
 
 PurgeGuildAssetsRequest _$PurgeGuildAssetsRequestFromJson(
   Map<String, dynamic> json,
-) => PurgeGuildAssetsRequest(
-  ids: (json['ids'] as List<dynamic>).map((e) => e as String).toList(),
-);
+) => $checkedCreate('PurgeGuildAssetsRequest', json, ($checkedConvert) {
+  final val = PurgeGuildAssetsRequest(
+    ids: $checkedConvert(
+      'ids',
+      (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$PurgeGuildAssetsRequestToJson(
   PurgeGuildAssetsRequest instance,

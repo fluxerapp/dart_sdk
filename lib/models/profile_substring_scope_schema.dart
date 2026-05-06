@@ -10,6 +10,8 @@ enum ProfileSubstringScopeSchema {
   username('username'),
   @JsonValue('global_name')
   globalName('global_name'),
+  @JsonValue('nickname')
+  nickname('nickname'),
   @JsonValue('bio')
   bio('bio'),
   @JsonValue('pronouns')

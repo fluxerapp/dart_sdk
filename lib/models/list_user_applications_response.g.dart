@@ -8,11 +8,19 @@ part of 'list_user_applications_response.dart';
 
 ListUserApplicationsResponse _$ListUserApplicationsResponseFromJson(
   Map<String, dynamic> json,
-) => ListUserApplicationsResponse(
-  applications: (json['applications'] as List<dynamic>)
-      .map((e) => ApplicationAdminResponse.fromJson(e as Map<String, dynamic>))
-      .toList(),
-);
+) => $checkedCreate('ListUserApplicationsResponse', json, ($checkedConvert) {
+  final val = ListUserApplicationsResponse(
+    applications: $checkedConvert(
+      'applications',
+      (v) => (v as List<dynamic>)
+          .map(
+            (e) => ApplicationAdminResponse.fromJson(e as Map<String, dynamic>),
+          )
+          .toList(),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$ListUserApplicationsResponseToJson(
   ListUserApplicationsResponse instance,

@@ -8,10 +8,13 @@ part of 'ban_user_avatar_request.dart';
 
 BanUserAvatarRequest _$BanUserAvatarRequestFromJson(
   Map<String, dynamic> json,
-) => BanUserAvatarRequest(
-  reason: json['reason'] as String?,
-  notes: json['notes'] as String?,
-);
+) => $checkedCreate('BanUserAvatarRequest', json, ($checkedConvert) {
+  final val = BanUserAvatarRequest(
+    reason: $checkedConvert('reason', (v) => v as String?),
+    notes: $checkedConvert('notes', (v) => v as String?),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$BanUserAvatarRequestToJson(
   BanUserAvatarRequest instance,

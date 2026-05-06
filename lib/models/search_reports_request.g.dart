@@ -8,31 +8,64 @@ part of 'search_reports_request.dart';
 
 SearchReportsRequest _$SearchReportsRequestFromJson(
   Map<String, dynamic> json,
-) => SearchReportsRequest(
-  query: json['query'] as String?,
-  limit: (json['limit'] as num?)?.toInt(),
-  offset: (json['offset'] as num?)?.toInt(),
-  reporterId: json['reporter_id'] as String?,
-  status: json['status'] == null
-      ? null
-      : ReportStatus.fromJson((json['status'] as num).toInt()),
-  reportType: json['report_type'] == null
-      ? null
-      : ReportType.fromJson((json['report_type'] as num).toInt()),
-  category: json['category'] as String?,
-  reportedUserId: json['reported_user_id'] as String?,
-  reportedGuildId: json['reported_guild_id'] as String?,
-  reportedChannelId: json['reported_channel_id'] as String?,
-  guildContextId: json['guild_context_id'] as String?,
-  resolvedByAdminId: json['resolved_by_admin_id'] as String?,
-  sortBy: json['sort_by'] == null
-      ? null
-      : SearchReportsRequestSortBySortBy.fromJson(json['sort_by'] as String),
-  sortOrder: json['sort_order'] == null
-      ? null
-      : SearchReportsRequestSortOrderSortOrder.fromJson(
-          json['sort_order'] as String,
-        ),
+) => $checkedCreate(
+  'SearchReportsRequest',
+  json,
+  ($checkedConvert) {
+    final val = SearchReportsRequest(
+      query: $checkedConvert('query', (v) => v as String?),
+      limit: $checkedConvert('limit', (v) => (v as num?)?.toInt()),
+      offset: $checkedConvert('offset', (v) => (v as num?)?.toInt()),
+      reporterId: $checkedConvert('reporter_id', (v) => v as String?),
+      status: $checkedConvert(
+        'status',
+        (v) => v == null ? null : ReportStatus.fromJson((v as num).toInt()),
+      ),
+      reportType: $checkedConvert(
+        'report_type',
+        (v) => v == null ? null : ReportType.fromJson((v as num).toInt()),
+      ),
+      category: $checkedConvert('category', (v) => v as String?),
+      reportedUserId: $checkedConvert('reported_user_id', (v) => v as String?),
+      reportedGuildId: $checkedConvert(
+        'reported_guild_id',
+        (v) => v as String?,
+      ),
+      reportedChannelId: $checkedConvert(
+        'reported_channel_id',
+        (v) => v as String?,
+      ),
+      guildContextId: $checkedConvert('guild_context_id', (v) => v as String?),
+      resolvedByAdminId: $checkedConvert(
+        'resolved_by_admin_id',
+        (v) => v as String?,
+      ),
+      sortBy: $checkedConvert(
+        'sort_by',
+        (v) => v == null
+            ? null
+            : SearchReportsRequestSortBySortBy.fromJson(v as String),
+      ),
+      sortOrder: $checkedConvert(
+        'sort_order',
+        (v) => v == null
+            ? null
+            : SearchReportsRequestSortOrderSortOrder.fromJson(v as String),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'reporterId': 'reporter_id',
+    'reportType': 'report_type',
+    'reportedUserId': 'reported_user_id',
+    'reportedGuildId': 'reported_guild_id',
+    'reportedChannelId': 'reported_channel_id',
+    'guildContextId': 'guild_context_id',
+    'resolvedByAdminId': 'resolved_by_admin_id',
+    'sortBy': 'sort_by',
+    'sortOrder': 'sort_order',
+  },
 );
 
 Map<String, dynamic> _$SearchReportsRequestToJson(

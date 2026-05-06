@@ -7,13 +7,27 @@ part of 'ban_url_domain_request.dart';
 // **************************************************************************
 
 BanUrlDomainRequest _$BanUrlDomainRequestFromJson(Map<String, dynamic> json) =>
-    BanUrlDomainRequest(
-      domain: json['domain'] as String,
-      matchSubdomains: json['match_subdomains'] as bool?,
-      category: json['category'] as String?,
-      severity: (json['severity'] as num?)?.toInt(),
-      sourceUrl: json['source_url'] as String?,
-      notes: json['notes'] as String?,
+    $checkedCreate(
+      'BanUrlDomainRequest',
+      json,
+      ($checkedConvert) {
+        final val = BanUrlDomainRequest(
+          domain: $checkedConvert('domain', (v) => v as String),
+          matchSubdomains: $checkedConvert(
+            'match_subdomains',
+            (v) => v as bool?,
+          ),
+          category: $checkedConvert('category', (v) => v as String?),
+          severity: $checkedConvert('severity', (v) => (v as num?)?.toInt()),
+          sourceUrl: $checkedConvert('source_url', (v) => v as String?),
+          notes: $checkedConvert('notes', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'matchSubdomains': 'match_subdomains',
+        'sourceUrl': 'source_url',
+      },
     );
 
 Map<String, dynamic> _$BanUrlDomainRequestToJson(

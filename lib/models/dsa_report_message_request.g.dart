@@ -8,21 +8,54 @@ part of 'dsa_report_message_request.dart';
 
 DsaReportMessageRequest _$DsaReportMessageRequestFromJson(
   Map<String, dynamic> json,
-) => DsaReportMessageRequest(
-  ticket: json['ticket'] as String,
-  reporterFullLegalName: json['reporter_full_legal_name'] as String,
-  reporterCountryOfResidence:
-      DsaReportMessageRequestReporterCountryOfResidenceReporterCountryOfResidence.fromJson(
-        json['reporter_country_of_residence'] as String,
+) => $checkedCreate(
+  'DsaReportMessageRequest',
+  json,
+  ($checkedConvert) {
+    final val = DsaReportMessageRequest(
+      ticket: $checkedConvert('ticket', (v) => v as String),
+      reporterFullLegalName: $checkedConvert(
+        'reporter_full_legal_name',
+        (v) => v as String,
       ),
-  reportType: DsaReportMessageRequestReportTypeReportType.fromJson(
-    json['report_type'] as String,
-  ),
-  category: MessageReportCategoryEnum.fromJson(json['category'] as String),
-  messageLink: json['message_link'] as String,
-  additionalInfo: json['additional_info'] as String?,
-  reporterFluxerTag: json['reporter_fluxer_tag'] as String?,
-  reportedUserTag: json['reported_user_tag'] as String?,
+      reporterCountryOfResidence: $checkedConvert(
+        'reporter_country_of_residence',
+        (v) =>
+            DsaReportMessageRequestReporterCountryOfResidenceReporterCountryOfResidence.fromJson(
+              v as String,
+            ),
+      ),
+      reportType: $checkedConvert(
+        'report_type',
+        (v) =>
+            DsaReportMessageRequestReportTypeReportType.fromJson(v as String),
+      ),
+      category: $checkedConvert(
+        'category',
+        (v) => MessageReportCategoryEnum.fromJson(v as String),
+      ),
+      messageLink: $checkedConvert('message_link', (v) => v as String),
+      additionalInfo: $checkedConvert('additional_info', (v) => v as String?),
+      reporterFluxerTag: $checkedConvert(
+        'reporter_fluxer_tag',
+        (v) => v as String?,
+      ),
+      reportedUserTag: $checkedConvert(
+        'reported_user_tag',
+        (v) => v as String?,
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'reporterFullLegalName': 'reporter_full_legal_name',
+    'reporterCountryOfResidence': 'reporter_country_of_residence',
+    'reportType': 'report_type',
+    'messageLink': 'message_link',
+    'additionalInfo': 'additional_info',
+    'reporterFluxerTag': 'reporter_fluxer_tag',
+    'reportedUserTag': 'reported_user_tag',
+  },
 );
 
 Map<String, dynamic> _$DsaReportMessageRequestToJson(

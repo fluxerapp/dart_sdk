@@ -8,11 +8,26 @@ part of 'report_message_request.dart';
 
 ReportMessageRequest _$ReportMessageRequestFromJson(
   Map<String, dynamic> json,
-) => ReportMessageRequest(
-  channelId: json['channel_id'] as String,
-  messageId: json['message_id'] as String,
-  category: MessageReportCategoryEnum.fromJson(json['category'] as String),
-  additionalInfo: json['additional_info'] as String?,
+) => $checkedCreate(
+  'ReportMessageRequest',
+  json,
+  ($checkedConvert) {
+    final val = ReportMessageRequest(
+      channelId: $checkedConvert('channel_id', (v) => v as String),
+      messageId: $checkedConvert('message_id', (v) => v as String),
+      category: $checkedConvert(
+        'category',
+        (v) => MessageReportCategoryEnum.fromJson(v as String),
+      ),
+      additionalInfo: $checkedConvert('additional_info', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'channelId': 'channel_id',
+    'messageId': 'message_id',
+    'additionalInfo': 'additional_info',
+  },
 );
 
 Map<String, dynamic> _$ReportMessageRequestToJson(

@@ -8,7 +8,12 @@ part of 'unban_url_domain_request.dart';
 
 UnbanUrlDomainRequest _$UnbanUrlDomainRequestFromJson(
   Map<String, dynamic> json,
-) => UnbanUrlDomainRequest(domain: json['domain'] as String);
+) => $checkedCreate('UnbanUrlDomainRequest', json, ($checkedConvert) {
+  final val = UnbanUrlDomainRequest(
+    domain: $checkedConvert('domain', (v) => v as String),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$UnbanUrlDomainRequestToJson(
   UnbanUrlDomainRequest instance,

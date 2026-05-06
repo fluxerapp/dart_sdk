@@ -8,9 +8,20 @@ part of 'resolve_report_request.dart';
 
 ResolveReportRequest _$ResolveReportRequestFromJson(
   Map<String, dynamic> json,
-) => ResolveReportRequest(
-  reportId: json['report_id'] as String,
-  publicComment: json['public_comment'] as String?,
+) => $checkedCreate(
+  'ResolveReportRequest',
+  json,
+  ($checkedConvert) {
+    final val = ResolveReportRequest(
+      reportId: $checkedConvert('report_id', (v) => v as String),
+      publicComment: $checkedConvert('public_comment', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'reportId': 'report_id',
+    'publicComment': 'public_comment',
+  },
 );
 
 Map<String, dynamic> _$ResolveReportRequestToJson(

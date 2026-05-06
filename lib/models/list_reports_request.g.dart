@@ -7,13 +7,17 @@ part of 'list_reports_request.dart';
 // **************************************************************************
 
 ListReportsRequest _$ListReportsRequestFromJson(Map<String, dynamic> json) =>
-    ListReportsRequest(
-      status: json['status'] == null
-          ? null
-          : ReportStatus.fromJson((json['status'] as num).toInt()),
-      limit: (json['limit'] as num?)?.toInt(),
-      offset: (json['offset'] as num?)?.toInt(),
-    );
+    $checkedCreate('ListReportsRequest', json, ($checkedConvert) {
+      final val = ListReportsRequest(
+        status: $checkedConvert(
+          'status',
+          (v) => v == null ? null : ReportStatus.fromJson((v as num).toInt()),
+        ),
+        limit: $checkedConvert('limit', (v) => (v as num?)?.toInt()),
+        offset: $checkedConvert('offset', (v) => (v as num?)?.toInt()),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$ListReportsRequestToJson(ListReportsRequest instance) =>
     <String, dynamic>{

@@ -8,19 +8,37 @@ part of 'application_public_response.dart';
 
 ApplicationPublicResponse _$ApplicationPublicResponseFromJson(
   Map<String, dynamic> json,
-) => ApplicationPublicResponse(
-  id: json['id'] as String,
-  name: json['name'] as String,
-  icon: json['icon'] as String?,
-  description: json['description'] as String?,
-  redirectUris: (json['redirect_uris'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-  scopes: (json['scopes'] as List<dynamic>).map((e) => e as String).toList(),
-  botPublic: json['bot_public'] as bool,
-  bot: json['bot'] == null
-      ? null
-      : ApplicationBotResponse.fromJson(json['bot'] as Map<String, dynamic>),
+) => $checkedCreate(
+  'ApplicationPublicResponse',
+  json,
+  ($checkedConvert) {
+    final val = ApplicationPublicResponse(
+      id: $checkedConvert('id', (v) => v as String),
+      name: $checkedConvert('name', (v) => v as String),
+      icon: $checkedConvert('icon', (v) => v as String?),
+      description: $checkedConvert('description', (v) => v as String?),
+      redirectUris: $checkedConvert(
+        'redirect_uris',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      scopes: $checkedConvert(
+        'scopes',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      botPublic: $checkedConvert('bot_public', (v) => v as bool),
+      bot: $checkedConvert(
+        'bot',
+        (v) => v == null
+            ? null
+            : ApplicationBotResponse.fromJson(v as Map<String, dynamic>),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'redirectUris': 'redirect_uris',
+    'botPublic': 'bot_public',
+  },
 );
 
 Map<String, dynamic> _$ApplicationPublicResponseToJson(

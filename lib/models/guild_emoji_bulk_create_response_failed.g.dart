@@ -8,10 +8,15 @@ part of 'guild_emoji_bulk_create_response_failed.dart';
 
 GuildEmojiBulkCreateResponseFailed _$GuildEmojiBulkCreateResponseFailedFromJson(
   Map<String, dynamic> json,
-) => GuildEmojiBulkCreateResponseFailed(
-  name: json['name'] as String,
-  error: json['error'] as String,
-);
+) => $checkedCreate('GuildEmojiBulkCreateResponseFailed', json, (
+  $checkedConvert,
+) {
+  final val = GuildEmojiBulkCreateResponseFailed(
+    name: $checkedConvert('name', (v) => v as String),
+    error: $checkedConvert('error', (v) => v as String),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$GuildEmojiBulkCreateResponseFailedToJson(
   GuildEmojiBulkCreateResponseFailed instance,

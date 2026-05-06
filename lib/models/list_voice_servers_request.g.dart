@@ -8,7 +8,12 @@ part of 'list_voice_servers_request.dart';
 
 ListVoiceServersRequest _$ListVoiceServersRequestFromJson(
   Map<String, dynamic> json,
-) => ListVoiceServersRequest(regionId: json['region_id'] as String);
+) => $checkedCreate('ListVoiceServersRequest', json, ($checkedConvert) {
+  final val = ListVoiceServersRequest(
+    regionId: $checkedConvert('region_id', (v) => v as String),
+  );
+  return val;
+}, fieldKeyMap: const {'regionId': 'region_id'});
 
 Map<String, dynamic> _$ListVoiceServersRequestToJson(
   ListVoiceServersRequest instance,

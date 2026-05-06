@@ -8,17 +8,34 @@ part of 'mfa_backup_codes_request.dart';
 
 MfaBackupCodesRequest _$MfaBackupCodesRequestFromJson(
   Map<String, dynamic> json,
-) => MfaBackupCodesRequest(
-  regenerate: json['regenerate'] as bool,
-  password: json['password'] as String?,
-  mfaMethod: json['mfa_method'] == null
-      ? null
-      : MfaBackupCodesRequestMfaMethodMfaMethod.fromJson(
-          json['mfa_method'] as String,
-        ),
-  mfaCode: json['mfa_code'] as String?,
-  webauthnResponse: json['webauthn_response'],
-  webauthnChallenge: json['webauthn_challenge'] as String?,
+) => $checkedCreate(
+  'MfaBackupCodesRequest',
+  json,
+  ($checkedConvert) {
+    final val = MfaBackupCodesRequest(
+      regenerate: $checkedConvert('regenerate', (v) => v as bool),
+      password: $checkedConvert('password', (v) => v as String?),
+      mfaMethod: $checkedConvert(
+        'mfa_method',
+        (v) => v == null
+            ? null
+            : MfaBackupCodesRequestMfaMethodMfaMethod.fromJson(v as String),
+      ),
+      mfaCode: $checkedConvert('mfa_code', (v) => v as String?),
+      webauthnResponse: $checkedConvert('webauthn_response', (v) => v),
+      webauthnChallenge: $checkedConvert(
+        'webauthn_challenge',
+        (v) => v as String?,
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'mfaMethod': 'mfa_method',
+    'mfaCode': 'mfa_code',
+    'webauthnResponse': 'webauthn_response',
+    'webauthnChallenge': 'webauthn_challenge',
+  },
 );
 
 Map<String, dynamic> _$MfaBackupCodesRequestToJson(

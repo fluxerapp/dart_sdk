@@ -7,10 +7,13 @@ part of 'mfa_totp_request.dart';
 // **************************************************************************
 
 MfaTotpRequest _$MfaTotpRequestFromJson(Map<String, dynamic> json) =>
-    MfaTotpRequest(
-      code: json['code'] as String,
-      ticket: json['ticket'] as String,
-    );
+    $checkedCreate('MfaTotpRequest', json, ($checkedConvert) {
+      final val = MfaTotpRequest(
+        code: $checkedConvert('code', (v) => v as String),
+        ticket: $checkedConvert('ticket', (v) => v as String),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$MfaTotpRequestToJson(MfaTotpRequest instance) =>
     <String, dynamic>{'code': instance.code, 'ticket': instance.ticket};

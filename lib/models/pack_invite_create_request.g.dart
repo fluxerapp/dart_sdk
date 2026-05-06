@@ -8,10 +8,18 @@ part of 'pack_invite_create_request.dart';
 
 PackInviteCreateRequest _$PackInviteCreateRequestFromJson(
   Map<String, dynamic> json,
-) => PackInviteCreateRequest(
-  maxUses: (json['max_uses'] as num?)?.toInt(),
-  maxAge: (json['max_age'] as num?)?.toInt(),
-  unique: json['unique'] as bool?,
+) => $checkedCreate(
+  'PackInviteCreateRequest',
+  json,
+  ($checkedConvert) {
+    final val = PackInviteCreateRequest(
+      maxUses: $checkedConvert('max_uses', (v) => (v as num?)?.toInt()),
+      maxAge: $checkedConvert('max_age', (v) => (v as num?)?.toInt()),
+      unique: $checkedConvert('unique', (v) => v as bool?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'maxUses': 'max_uses', 'maxAge': 'max_age'},
 );
 
 Map<String, dynamic> _$PackInviteCreateRequestToJson(

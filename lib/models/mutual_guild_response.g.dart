@@ -7,10 +7,13 @@ part of 'mutual_guild_response.dart';
 // **************************************************************************
 
 MutualGuildResponse _$MutualGuildResponseFromJson(Map<String, dynamic> json) =>
-    MutualGuildResponse(
-      id: json['id'] as String,
-      nick: json['nick'] as String?,
-    );
+    $checkedCreate('MutualGuildResponse', json, ($checkedConvert) {
+      final val = MutualGuildResponse(
+        id: $checkedConvert('id', (v) => v as String),
+        nick: $checkedConvert('nick', (v) => v as String?),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$MutualGuildResponseToJson(
   MutualGuildResponse instance,

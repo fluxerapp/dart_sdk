@@ -8,11 +8,14 @@ part of 'node_stats_response_memory.dart';
 
 NodeStatsResponseMemory _$NodeStatsResponseMemoryFromJson(
   Map<String, dynamic> json,
-) => NodeStatsResponseMemory(
-  total: json['total'] as String,
-  processes: json['processes'] as String,
-  system: json['system'] as String,
-);
+) => $checkedCreate('NodeStatsResponseMemory', json, ($checkedConvert) {
+  final val = NodeStatsResponseMemory(
+    total: $checkedConvert('total', (v) => v as String),
+    processes: $checkedConvert('processes', (v) => v as String),
+    system: $checkedConvert('system', (v) => v as String),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$NodeStatsResponseMemoryToJson(
   NodeStatsResponseMemory instance,

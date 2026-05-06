@@ -8,10 +8,18 @@ part of 'stream_preview_upload_body_schema.dart';
 
 StreamPreviewUploadBodySchema _$StreamPreviewUploadBodySchemaFromJson(
   Map<String, dynamic> json,
-) => StreamPreviewUploadBodySchema(
-  channelId: json['channel_id'] as String,
-  thumbnail: json['thumbnail'] as String,
-  contentType: json['content_type'] as String?,
+) => $checkedCreate(
+  'StreamPreviewUploadBodySchema',
+  json,
+  ($checkedConvert) {
+    final val = StreamPreviewUploadBodySchema(
+      channelId: $checkedConvert('channel_id', (v) => v as String),
+      thumbnail: $checkedConvert('thumbnail', (v) => v as String),
+      contentType: $checkedConvert('content_type', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'channelId': 'channel_id', 'contentType': 'content_type'},
 );
 
 Map<String, dynamic> _$StreamPreviewUploadBodySchemaToJson(

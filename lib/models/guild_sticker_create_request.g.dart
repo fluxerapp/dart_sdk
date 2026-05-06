@@ -8,12 +8,18 @@ part of 'guild_sticker_create_request.dart';
 
 GuildStickerCreateRequest _$GuildStickerCreateRequestFromJson(
   Map<String, dynamic> json,
-) => GuildStickerCreateRequest(
-  name: json['name'] as String,
-  image: json['image'] as String,
-  description: json['description'] as String?,
-  tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList(),
-);
+) => $checkedCreate('GuildStickerCreateRequest', json, ($checkedConvert) {
+  final val = GuildStickerCreateRequest(
+    name: $checkedConvert('name', (v) => v as String),
+    image: $checkedConvert('image', (v) => v as String),
+    description: $checkedConvert('description', (v) => v as String?),
+    tags: $checkedConvert(
+      'tags',
+      (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$GuildStickerCreateRequestToJson(
   GuildStickerCreateRequest instance,

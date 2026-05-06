@@ -7,7 +7,12 @@ part of 'unban_url_request.dart';
 // **************************************************************************
 
 UnbanUrlRequest _$UnbanUrlRequestFromJson(Map<String, dynamic> json) =>
-    UnbanUrlRequest(url: json['url'] as String);
+    $checkedCreate('UnbanUrlRequest', json, ($checkedConvert) {
+      final val = UnbanUrlRequest(
+        url: $checkedConvert('url', (v) => v as String),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$UnbanUrlRequestToJson(UnbanUrlRequest instance) =>
     <String, dynamic>{'url': instance.url};

@@ -8,11 +8,14 @@ part of 'rich_embed_author_request.dart';
 
 RichEmbedAuthorRequestVariant1 _$RichEmbedAuthorRequestVariant1FromJson(
   Map<String, dynamic> json,
-) => RichEmbedAuthorRequestVariant1(
-  name: json['name'] as String,
-  url: json['url'] as String?,
-  iconUrl: json['icon_url'] as String?,
-);
+) => $checkedCreate('RichEmbedAuthorRequestVariant1', json, ($checkedConvert) {
+  final val = RichEmbedAuthorRequestVariant1(
+    name: $checkedConvert('name', (v) => v as String),
+    url: $checkedConvert('url', (v) => v as String?),
+    iconUrl: $checkedConvert('icon_url', (v) => v as String?),
+  );
+  return val;
+}, fieldKeyMap: const {'iconUrl': 'icon_url'});
 
 Map<String, dynamic> _$RichEmbedAuthorRequestVariant1ToJson(
   RichEmbedAuthorRequestVariant1 instance,

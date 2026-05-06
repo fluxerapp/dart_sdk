@@ -8,18 +8,48 @@ part of 'self_serve_refund_eligibility_response.dart';
 
 SelfServeRefundEligibilityResponse _$SelfServeRefundEligibilityResponseFromJson(
   Map<String, dynamic> json,
-) => SelfServeRefundEligibilityResponse(
-  eligible: json['eligible'] as bool,
-  reason: json['reason'] == null
-      ? null
-      : SelfServeRefundIneligibilityReason.fromJson(json['reason'] as String),
-  invoiceId: json['invoice_id'] as String?,
-  invoiceAmountPaidCents: (json['invoice_amount_paid_cents'] as num?)?.toInt(),
-  currency: json['currency'] as String?,
-  paidAt: json['paid_at'] as String?,
-  refundWindowExpiresAt: json['refund_window_expires_at'] as String?,
-  cooldownExpiresAt: json['cooldown_expires_at'] as String?,
-  cancelsSubscription: json['cancels_subscription'] as bool,
+) => $checkedCreate(
+  'SelfServeRefundEligibilityResponse',
+  json,
+  ($checkedConvert) {
+    final val = SelfServeRefundEligibilityResponse(
+      eligible: $checkedConvert('eligible', (v) => v as bool),
+      reason: $checkedConvert(
+        'reason',
+        (v) => v == null
+            ? null
+            : SelfServeRefundIneligibilityReason.fromJson(v as String),
+      ),
+      invoiceId: $checkedConvert('invoice_id', (v) => v as String?),
+      invoiceAmountPaidCents: $checkedConvert(
+        'invoice_amount_paid_cents',
+        (v) => (v as num?)?.toInt(),
+      ),
+      currency: $checkedConvert('currency', (v) => v as String?),
+      paidAt: $checkedConvert('paid_at', (v) => v as String?),
+      refundWindowExpiresAt: $checkedConvert(
+        'refund_window_expires_at',
+        (v) => v as String?,
+      ),
+      cooldownExpiresAt: $checkedConvert(
+        'cooldown_expires_at',
+        (v) => v as String?,
+      ),
+      cancelsSubscription: $checkedConvert(
+        'cancels_subscription',
+        (v) => v as bool,
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'invoiceId': 'invoice_id',
+    'invoiceAmountPaidCents': 'invoice_amount_paid_cents',
+    'paidAt': 'paid_at',
+    'refundWindowExpiresAt': 'refund_window_expires_at',
+    'cooldownExpiresAt': 'cooldown_expires_at',
+    'cancelsSubscription': 'cancels_subscription',
+  },
 );
 
 Map<String, dynamic> _$SelfServeRefundEligibilityResponseToJson(

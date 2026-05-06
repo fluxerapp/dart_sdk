@@ -8,12 +8,29 @@ part of 'guild_member_search_result_supplemental.dart';
 
 GuildMemberSearchResultSupplemental
 _$GuildMemberSearchResultSupplementalFromJson(Map<String, dynamic> json) =>
-    GuildMemberSearchResultSupplemental(
-      sourceInviteCode: json['source_invite_code'] as String?,
-      inviterId: json['inviter_id'] as String?,
-      joinSourceType: json['join_source_type'] == null
-          ? null
-          : JoinSourceType.fromJson((json['join_source_type'] as num).toInt()),
+    $checkedCreate(
+      'GuildMemberSearchResultSupplemental',
+      json,
+      ($checkedConvert) {
+        final val = GuildMemberSearchResultSupplemental(
+          sourceInviteCode: $checkedConvert(
+            'source_invite_code',
+            (v) => v as String?,
+          ),
+          inviterId: $checkedConvert('inviter_id', (v) => v as String?),
+          joinSourceType: $checkedConvert(
+            'join_source_type',
+            (v) =>
+                v == null ? null : JoinSourceType.fromJson((v as num).toInt()),
+          ),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'sourceInviteCode': 'source_invite_code',
+        'inviterId': 'inviter_id',
+        'joinSourceType': 'join_source_type',
+      },
     );
 
 Map<String, dynamic> _$GuildMemberSearchResultSupplementalToJson(

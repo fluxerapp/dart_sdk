@@ -9,21 +9,40 @@ part of 'report_admin_response_schema_message_context_attachments.dart';
 ReportAdminResponseSchemaMessageContextAttachments
 _$ReportAdminResponseSchemaMessageContextAttachmentsFromJson(
   Map<String, dynamic> json,
-) => ReportAdminResponseSchemaMessageContextAttachments(
-  id: json['id'] as String,
-  filename: json['filename'] as String,
-  url: json['url'] as String,
-  nsfw: json['nsfw'] as bool?,
-  contentType: json['content_type'] as String?,
-  width: (json['width'] as num?)?.toInt(),
-  height: (json['height'] as num?)?.toInt(),
-  ncmecStatus:
-      ReportAdminResponseSchemaMessageContextAttachmentsNcmecStatusNcmecStatus.fromJson(
-        json['ncmec_status'] as String,
+) => $checkedCreate(
+  'ReportAdminResponseSchemaMessageContextAttachments',
+  json,
+  ($checkedConvert) {
+    final val = ReportAdminResponseSchemaMessageContextAttachments(
+      id: $checkedConvert('id', (v) => v as String),
+      filename: $checkedConvert('filename', (v) => v as String),
+      url: $checkedConvert('url', (v) => v as String),
+      nsfw: $checkedConvert('nsfw', (v) => v as bool?),
+      contentType: $checkedConvert('content_type', (v) => v as String?),
+      width: $checkedConvert('width', (v) => (v as num?)?.toInt()),
+      height: $checkedConvert('height', (v) => (v as num?)?.toInt()),
+      ncmecStatus: $checkedConvert(
+        'ncmec_status',
+        (v) =>
+            ReportAdminResponseSchemaMessageContextAttachmentsNcmecStatusNcmecStatus.fromJson(
+              v as String,
+            ),
       ),
-  ncmecReportId: json['ncmec_report_id'] as String?,
-  ncmecFailureReason: json['ncmec_failure_reason'] as String?,
-  size: (json['size'] as num?)?.toInt(),
+      ncmecReportId: $checkedConvert('ncmec_report_id', (v) => v as String?),
+      ncmecFailureReason: $checkedConvert(
+        'ncmec_failure_reason',
+        (v) => v as String?,
+      ),
+      size: $checkedConvert('size', (v) => (v as num?)?.toInt()),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'contentType': 'content_type',
+    'ncmecStatus': 'ncmec_status',
+    'ncmecReportId': 'ncmec_report_id',
+    'ncmecFailureReason': 'ncmec_failure_reason',
+  },
 );
 
 Map<String, dynamic> _$ReportAdminResponseSchemaMessageContextAttachmentsToJson(

@@ -9,10 +9,20 @@ part of 'message_shred_status_response.dart';
 MessageShredStatusResponseMessageShredStatusNotFoundResponse
 _$MessageShredStatusResponseMessageShredStatusNotFoundResponseFromJson(
   Map<String, dynamic> json,
-) => MessageShredStatusResponseMessageShredStatusNotFoundResponse(
-  status: MessageShredStatusNotFoundResponseStatusStatus.fromJson(
-    json['status'] as String,
-  ),
+) => $checkedCreate(
+  'MessageShredStatusResponseMessageShredStatusNotFoundResponse',
+  json,
+  ($checkedConvert) {
+    final val = MessageShredStatusResponseMessageShredStatusNotFoundResponse(
+      status: $checkedConvert(
+        'status',
+        (v) => MessageShredStatusNotFoundResponseStatusStatus.fromJson(
+          v as String,
+        ),
+      ),
+    );
+    return val;
+  },
 );
 
 Map<String, dynamic>
@@ -23,18 +33,33 @@ _$MessageShredStatusResponseMessageShredStatusNotFoundResponseToJson(
 MessageShredStatusResponseMessageShredStatusProgressResponse
 _$MessageShredStatusResponseMessageShredStatusProgressResponseFromJson(
   Map<String, dynamic> json,
-) => MessageShredStatusResponseMessageShredStatusProgressResponse(
-  status: MessageShredStatusProgressResponseStatusStatus.fromJson(
-    json['status'] as String,
-  ),
-  requested: (json['requested'] as num).toInt(),
-  total: (json['total'] as num).toInt(),
-  processed: (json['processed'] as num).toInt(),
-  skipped: (json['skipped'] as num).toInt(),
-  startedAt: json['started_at'] as String?,
-  completedAt: json['completed_at'] as String?,
-  failedAt: json['failed_at'] as String?,
-  error: json['error'] as String?,
+) => $checkedCreate(
+  'MessageShredStatusResponseMessageShredStatusProgressResponse',
+  json,
+  ($checkedConvert) {
+    final val = MessageShredStatusResponseMessageShredStatusProgressResponse(
+      status: $checkedConvert(
+        'status',
+        (v) => MessageShredStatusProgressResponseStatusStatus.fromJson(
+          v as String,
+        ),
+      ),
+      requested: $checkedConvert('requested', (v) => (v as num).toInt()),
+      total: $checkedConvert('total', (v) => (v as num).toInt()),
+      processed: $checkedConvert('processed', (v) => (v as num).toInt()),
+      skipped: $checkedConvert('skipped', (v) => (v as num).toInt()),
+      startedAt: $checkedConvert('started_at', (v) => v as String?),
+      completedAt: $checkedConvert('completed_at', (v) => v as String?),
+      failedAt: $checkedConvert('failed_at', (v) => v as String?),
+      error: $checkedConvert('error', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'startedAt': 'started_at',
+    'completedAt': 'completed_at',
+    'failedAt': 'failed_at',
+  },
 );
 
 Map<String, dynamic>
