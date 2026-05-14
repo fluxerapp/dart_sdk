@@ -148,6 +148,53 @@ class GatewayConnection {
     });
   }
 
+  /// Sends opcode 8 to request member payloads for one or more guilds.
+  ///
+  /// The server responds with `GUILD_MEMBERS_CHUNK` events
+  void requestGuildMembers({
+    String? guildId,
+    List<String>? guildIds,
+    String? query,
+    int? limit,
+    List<String>? userIds,
+    bool? presences,
+    String? nonce,
+  }) {
+    if (_state != GatewayState.connected || _channel == null) {
+      return;
+    }
+    final List<String> resolvedGuildIds = guildIds != null && guildIds.isNotEmpty
+        ? guildIds.where((String id) => id.isNotEmpty).toSet().toList()
+        : const <String>[];
+    final Map<String, Object?> d = <String, Object?>{};
+    if (resolvedGuildIds.isNotEmpty) {
+      d['guild_ids'] = resolvedGuildIds;
+    } else if (guildId != null && guildId.isNotEmpty) {
+      d['guild_id'] = guildId;
+    } else {
+      return;
+    }
+    if (query != null) {
+      d['query'] = query;
+    }
+    if (limit != null) {
+      d['limit'] = limit;
+    }
+    if (userIds != null && userIds.isNotEmpty) {
+      d['user_ids'] = userIds.toSet().toList();
+    }
+    if (presences != null) {
+      d['presences'] = presences;
+    }
+    if (nonce != null) {
+      d['nonce'] = nonce;
+    }
+    _send(<String, Object?>{
+      'op': GatewayOpcodes.requestGuildMembers,
+      'd': d,
+    });
+  }
+
   /// Join, move, or leave a voice channel. Requires an established gateway
   /// session ([state] is [GatewayState.connected]).
   ///
