@@ -1,6 +1,6 @@
 [submodule "openapi_retrofit_generator"]
 	path = openapi_retrofit_generator
-	url = https://github.com/M0n7y5/openapi_retrofit_generator.git
+	url = https://github.com/fluxerapp/openapi_sdk_gen_dart.git
 [submodule "zstd_dart"]
 	path = zstd_dart
-	url = https://github.com/M0n7y5/zstd_dart.git
+	url = https://github.com/fluxerapp/zstd_dart.git
