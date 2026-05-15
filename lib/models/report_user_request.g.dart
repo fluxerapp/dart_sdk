@@ -17,25 +17,16 @@ ReportUserRequest _$ReportUserRequestFromJson(Map<String, dynamic> json) =>
             'category',
             (v) => UserReportCategoryEnum.fromJson(v as String),
           ),
-          additionalInfo: $checkedConvert(
-            'additional_info',
-            (v) => v as String?,
-          ),
           guildId: $checkedConvert('guild_id', (v) => v as String?),
         );
         return val;
       },
-      fieldKeyMap: const {
-        'userId': 'user_id',
-        'additionalInfo': 'additional_info',
-        'guildId': 'guild_id',
-      },
+      fieldKeyMap: const {'userId': 'user_id', 'guildId': 'guild_id'},
     );
 
 Map<String, dynamic> _$ReportUserRequestToJson(ReportUserRequest instance) =>
     <String, dynamic>{
       'user_id': instance.userId,
       'category': instance.category,
-      'additional_info': ?instance.additionalInfo,
       'guild_id': ?instance.guildId,
     };

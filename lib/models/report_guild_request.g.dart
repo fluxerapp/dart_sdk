@@ -17,22 +17,16 @@ ReportGuildRequest _$ReportGuildRequestFromJson(Map<String, dynamic> json) =>
             'category',
             (v) => GuildReportCategoryEnum.fromJson(v as String),
           ),
-          additionalInfo: $checkedConvert(
-            'additional_info',
-            (v) => v as String?,
-          ),
+          inviteCode: $checkedConvert('invite_code', (v) => v as String?),
         );
         return val;
       },
-      fieldKeyMap: const {
-        'guildId': 'guild_id',
-        'additionalInfo': 'additional_info',
-      },
+      fieldKeyMap: const {'guildId': 'guild_id', 'inviteCode': 'invite_code'},
     );
 
 Map<String, dynamic> _$ReportGuildRequestToJson(ReportGuildRequest instance) =>
     <String, dynamic>{
       'guild_id': instance.guildId,
       'category': instance.category,
-      'additional_info': ?instance.additionalInfo,
+      'invite_code': ?instance.inviteCode,
     };

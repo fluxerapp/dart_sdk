@@ -4,13 +4,17 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+import 'channel_response.dart';
 import 'content_warning_level.dart';
 import 'default_message_notifications.dart';
+import 'guild_emoji_response.dart';
 import 'guild_explicit_content_filter.dart';
 import 'guild_feature_schema.dart';
 import 'guild_mfa_level.dart';
 import 'guild_operations.dart';
 import 'guild_response_splash_card_alignment_splash_card_alignment.dart';
+import 'guild_role_response.dart';
+import 'guild_sticker_response.dart';
 import 'guild_verification_level.dart';
 import 'int32_type.dart';
 import 'nsfw_level.dart';
@@ -22,9 +26,11 @@ part 'guild_response.g.dart';
 @JsonSerializable()
 class GuildResponse {
   const GuildResponse({
-    required this.id,
+    required this.disabledOperations,
     required this.name,
+    required this.nsfw,
     required this.splashCardAlignment,
+    required this.id,
     required this.ownerId,
     required this.systemChannelFlags,
     required this.afkTimeout,
@@ -32,28 +38,32 @@ class GuildResponse {
     required this.verificationLevel,
     required this.mfaLevel,
     required this.nsfwLevel,
-    required this.nsfw,
     required this.contentWarningLevel,
     required this.explicitContentFilter,
     required this.defaultMessageNotifications,
-    required this.disabledOperations,
-    this.icon,
-    this.banner,
-    this.bannerWidth,
-    this.bannerHeight,
-    this.splash,
-    this.splashWidth,
-    this.splashHeight,
-    this.embedSplash,
-    this.embedSplashWidth,
     this.embedSplashHeight,
-    this.vanityUrlCode,
-    this.systemChannelId,
+    this.icon,
     this.rulesChannelId,
     this.afkChannelId,
+    this.splashWidth,
+    this.splashHeight,
+    this.banner,
+    this.embedSplash,
+    this.embedSplashWidth,
+    this.onlineCount,
+    this.bannerWidth,
     this.contentWarningText,
+    this.vanityUrlCode,
+    this.bannerHeight,
+    this.systemChannelId,
     this.messageHistoryCutoff,
     this.permissions,
+    this.roles,
+    this.emojis,
+    this.stickers,
+    this.channels,
+    this.memberCount,
+    this.splash,
   });
 
   factory GuildResponse.fromJson(Map<String, Object?> json) =>
@@ -178,6 +188,26 @@ class GuildResponse {
   /// The current user permissions in this guild
   @JsonKey(includeIfNull: false)
   final String? permissions;
+
+  /// Roles in the guild from gateway state
+  @JsonKey(includeIfNull: false)
+  final List<GuildRoleResponse>? roles;
+
+  /// Emojis in the guild from gateway state
+  @JsonKey(includeIfNull: false)
+  final List<GuildEmojiResponse>? emojis;
+
+  /// Stickers in the guild from gateway state
+  @JsonKey(includeIfNull: false)
+  final List<GuildStickerResponse>? stickers;
+
+  /// Channels visible to the requesting user from gateway state
+  @JsonKey(includeIfNull: false)
+  final List<ChannelResponse>? channels;
+  @JsonKey(includeIfNull: false, name: 'member_count')
+  final Int32Type? memberCount;
+  @JsonKey(includeIfNull: false, name: 'online_count')
+  final Int32Type? onlineCount;
 
   Map<String, Object?> toJson() => _$GuildResponseToJson(this);
 }

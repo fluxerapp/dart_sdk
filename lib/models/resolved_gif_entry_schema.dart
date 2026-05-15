@@ -17,6 +17,7 @@ class ResolvedGifEntrySchema {
     required this.height,
     this.media,
     this.contentType,
+    this.placeholder,
   });
 
   factory ResolvedGifEntrySchema.fromJson(Map<String, Object?> json) =>
@@ -42,6 +43,10 @@ class ResolvedGifEntrySchema {
   /// MIME type of the primary media (top-level url). Empty string means "unknown / image/gif" — clients should treat it as image/gif for backward compat.
   @JsonKey(includeIfNull: false, name: 'content_type')
   final String? contentType;
+
+  /// Compact thumbhash placeholder produced by the media proxy. Persisted with the favorite so the picker can show a low-res preview while the GIF loads, and a fallback if the source URL later disappears.
+  @JsonKey(includeIfNull: false)
+  final String? placeholder;
 
   Map<String, Object?> toJson() => _$ResolvedGifEntrySchemaToJson(this);
 }

@@ -7,6 +7,7 @@ import 'package:json_annotation/json_annotation.dart';
 import 'message_attachment_response.dart';
 import 'message_base_response_schema_type_type.dart';
 import 'message_call_response.dart';
+import 'message_channel_mention_response.dart';
 import 'message_embed_response.dart';
 import 'message_flags.dart';
 import 'message_reaction_response.dart';
@@ -35,6 +36,7 @@ class MessageBaseResponseSchema {
     this.tts,
     this.mentions,
     this.mentionRoles,
+    this.mentionChannels,
     this.users,
     this.embeds,
     this.attachments,
@@ -94,6 +96,10 @@ class MessageBaseResponseSchema {
   /// The role IDs mentioned in the message
   @JsonKey(includeIfNull: false, name: 'mention_roles')
   final List<String>? mentionRoles;
+
+  /// Channels mentioned in the message that are visible to @everyone
+  @JsonKey(includeIfNull: false, name: 'mention_channels')
+  final List<MessageChannelMentionResponse>? mentionChannels;
 
   /// Users referenced from embed and snapshot text, included for client-side resolution
   @JsonKey(includeIfNull: false)

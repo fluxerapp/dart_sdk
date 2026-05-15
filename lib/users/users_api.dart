@@ -8,6 +8,7 @@ import 'package:retrofit/retrofit.dart';
 import 'package:retrofit/error_logger.dart';
 
 import '../models/allowed_mentions_request.dart';
+import '../models/bulk_delete_self_messages_request.dart';
 import '../models/bulk_ignore_friend_requests_request.dart';
 import '../models/bulk_ignore_friend_requests_response.dart';
 import '../models/channel_response.dart';
@@ -31,6 +32,7 @@ import '../models/friend_request_create_request.dart';
 import '../models/gift_code_metadata_response.dart';
 import '../models/harvest_creation_response_schema.dart';
 import '../models/harvest_download_url_response.dart';
+import '../models/harvest_self_data_request.dart';
 import '../models/harvest_status_response_schema.dart';
 import '../models/harvest_status_response_schema_nullable.dart';
 import '../models/inbound_sms_challenge_start_response.dart';
@@ -325,6 +327,16 @@ abstract class UsersApi {
   @POST('/users/@me/harvest')
   Future<HarvestCreationResponseSchema> requestDataHarvest();
 
+  /// Request filtered data harvest.
+  ///
+  /// Requests a data harvest with the same optional scope and date-range filters offered by the bulk-delete endpoint. Settings, memberships, and other non-message data are always included; the filter only constrains which messages end up in the archive. Returns harvest ID and status.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/harvest/filtered')
+  Future<HarvestCreationResponseSchema> requestFilteredDataHarvest({
+    @Body() required HarvestSelfDataRequest body,
+  });
+
   /// Get latest data harvest.
   ///
   /// Retrieves the status of the most recent data harvest request. Returns null if no harvest has been requested yet. Shows progress and estimated completion time.
@@ -373,6 +385,16 @@ abstract class UsersApi {
     @Path('message_id') required SnowflakeType messageId,
   });
 
+  /// Delete my messages with optional filters.
+  ///
+  /// Immediately deletes messages the caller has authored, subject to optional date-range and per-context filters (DMs, group DMs, guilds, with optional guild exclusions; or an inaccessible-only mode for contexts the caller is no longer a member of). Requires sudo mode verification. The deletion runs asynchronously; the caller receives a system DM with totals when it completes.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/messages/bulk-delete-mine')
+  Future<void> bulkDeleteMyMessages({
+    @Body() required BulkDeleteSelfMessagesRequest body,
+  });
+
   /// Request bulk message deletion.
   ///
   /// Initiates bulk deletion of all messages sent by the current user. Requires sudo mode verification. The deletion process is asynchronous and may take time to complete. User data remains intact.
@@ -388,12 +410,6 @@ abstract class UsersApi {
   /// Cancels an in-progress bulk message deletion request. Can only be used if the deletion has not yet completed. Returns success status.
   @DELETE('/users/@me/messages/delete')
   Future<SuccessResponse> cancelBulkMessageDeletion2();
-
-  /// Test bulk message deletion.
-  ///
-  /// Staff-only endpoint for testing bulk message deletion functionality. Creates a test deletion request with a 1-minute delay. Only accessible to users with staff privileges.
-  @POST('/users/@me/messages/delete/test')
-  Future<void> testBulkMessageDeletion();
 
   /// Get backup codes for multi-factor authentication.
   ///

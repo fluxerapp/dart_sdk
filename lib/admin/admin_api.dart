@@ -55,7 +55,6 @@ import '../models/clear_user_fields_request.dart';
 import '../models/codes_response.dart';
 import '../models/create_admin_api_key_request.dart';
 import '../models/create_admin_api_key_response.dart';
-import '../models/create_system_dm_job_request.dart';
 import '../models/create_voice_region_request.dart';
 import '../models/create_voice_region_response.dart';
 import '../models/create_voice_server_request.dart';
@@ -110,6 +109,8 @@ import '../models/list_admin_api_key_response.dart';
 import '../models/list_archives_request.dart';
 import '../models/list_archives_response_schema.dart';
 import '../models/list_audit_logs_request.dart';
+import '../models/list_guild_audit_logs_request.dart';
+import '../models/list_guild_audit_logs_response.dart';
 import '../models/list_guild_emojis_response.dart';
 import '../models/list_guild_members_request.dart';
 import '../models/list_guild_members_response.dart';
@@ -118,7 +119,6 @@ import '../models/list_jobs_request.dart';
 import '../models/list_jobs_response_schema.dart';
 import '../models/list_reports_request.dart';
 import '../models/list_reports_response.dart';
-import '../models/list_system_dm_jobs_response.dart';
 import '../models/list_user_applications_request.dart';
 import '../models/list_user_applications_response.dart';
 import '../models/list_user_change_log_request.dart';
@@ -183,6 +183,8 @@ import '../models/search_reports_response.dart';
 import '../models/search_users_request.dart';
 import '../models/search_users_response.dart';
 import '../models/send_password_reset_request.dart';
+import '../models/send_system_dm_request.dart';
+import '../models/send_system_dm_response.dart';
 import '../models/set_user_acls_request.dart';
 import '../models/set_user_bot_status_request.dart';
 import '../models/set_user_system_status_request.dart';
@@ -193,7 +195,6 @@ import '../models/snowflake_type.dart';
 import '../models/success_response.dart';
 import '../models/suspicious_email_domain_request.dart';
 import '../models/swap_visionary_slots_request.dart';
-import '../models/system_dm_job_response.dart';
 import '../models/temp_ban_user_request.dart';
 import '../models/terminate_sessions_request.dart';
 import '../models/terminate_sessions_response.dart';
@@ -865,6 +866,16 @@ abstract class AdminApi {
   @GET('/admin/gateway/voice-state-counts')
   Future<GatewayVoiceStateCountsResponse> getGatewayVoiceStateCounts();
 
+  /// List guild audit logs.
+  ///
+  /// Returns in-app guild audit log entries for a guild without requiring VIEW_AUDIT_LOG membership permission. Supports pagination via before/after log IDs and filtering by user_id or action_type. Requires GUILD_AUDIT_LOG_VIEW permission.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/admin/guilds/audit-logs')
+  Future<ListGuildAuditLogsResponse> listGuildAuditLogsAdmin({
+    @Body() required ListGuildAuditLogsRequest body,
+  });
+
   /// Ban guild member.
   ///
   /// Permanently bans a user from a guild. Prevents user from joining. Logged to audit log. Requires GUILD_BAN_MEMBER permission.
@@ -1320,33 +1331,14 @@ abstract class AdminApi {
     @Body() required SuspiciousEmailDomainRequest body,
   });
 
-  /// Create system DM job.
+  /// Send system DM.
   ///
-  /// Creates a system DM broadcast job to send messages to users matching registration date criteria. Supports date range filtering and guild exclusions. Requires SYSTEM_DM_SEND permission.
+  /// Queue a worker job that sends the same system DM content to each provided user ID. Progress is observable via the Jobs admin page (task_type=sendSystemDm). Requires SYSTEM_DM_SEND permission.
   ///
   /// [body] - Name not received - field will be skipped.
-  @POST('/admin/system-dm-jobs')
-  Future<SystemDmJobResponse> createSystemDmJob({
-    @Body() required CreateSystemDmJobRequest body,
-  });
-
-  /// List system DM jobs.
-  ///
-  /// Lists system DM broadcast jobs with pagination. Shows job status, creation time, and content preview. Requires SYSTEM_DM_SEND permission.
-  @GET('/admin/system-dm-jobs')
-  Future<ListSystemDmJobsResponse> listSystemDmJobs({
-    @Query('limit') String? limit,
-    @Query('before_job_id') SnowflakeType? beforeJobId,
-  });
-
-  /// Approve system DM job.
-  ///
-  /// Approves and queues a system DM job for immediate execution. Creates audit log entry. Job will begin sending messages to target users. Requires SYSTEM_DM_SEND permission.
-  ///
-  /// [jobId] - The job id.
-  @POST('/admin/system-dm-jobs/{job_id}/approve')
-  Future<SystemDmJobResponse> approveSystemDmJob({
-    @Path('job_id') required String jobId,
+  @POST('/admin/system-dm/send')
+  Future<SendSystemDmResponse> sendSystemDm({
+    @Body() required SendSystemDmRequest body,
   });
 
   /// Take a V8 heap snapshot.

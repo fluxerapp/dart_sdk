@@ -79,6 +79,8 @@ enum ApiErrorCode {
   cannotModifyVoiceState('CANNOT_MODIFY_VOICE_STATE'),
   @JsonValue('CANNOT_REDEEM_PLUTONIUM_WITH_VISIONARY')
   cannotRedeemPlutoniumWithVisionary('CANNOT_REDEEM_PLUTONIUM_WITH_VISIONARY'),
+  @JsonValue('CANNOT_REPORT_GUILD')
+  cannotReportGuild('CANNOT_REPORT_GUILD'),
   @JsonValue('CANNOT_REPORT_OWN_GUILD')
   cannotReportOwnGuild('CANNOT_REPORT_OWN_GUILD'),
   @JsonValue('CANNOT_REPORT_OWN_MESSAGE')
@@ -205,8 +207,6 @@ enum ApiErrorCode {
   harvestFailed('HARVEST_FAILED'),
   @JsonValue('HARVEST_NOT_READY')
   harvestNotReady('HARVEST_NOT_READY'),
-  @JsonValue('HARVEST_ON_COOLDOWN')
-  harvestOnCooldown('HARVEST_ON_COOLDOWN'),
   @JsonValue('HTTP_GET_AUTHORIZE_NOT_SUPPORTED')
   httpGetAuthorizeNotSupported('HTTP_GET_AUTHORIZE_NOT_SUPPORTED'),
   @JsonValue('INSTANCE_VERSION_MISMATCH')

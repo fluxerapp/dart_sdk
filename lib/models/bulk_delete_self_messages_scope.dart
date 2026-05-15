@@ -4,26 +4,20 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-/// Current status of the system DM job
+/// Which set of contexts the deletion targets
 @JsonEnum()
-enum SystemDmJobResponseStatusStatus {
-  @JsonValue('pending')
-  pending('pending'),
-  @JsonValue('approved')
-  approved('approved'),
-  @JsonValue('running')
-  running('running'),
-  @JsonValue('completed')
-  completed('completed'),
-  @JsonValue('failed')
-  failed('failed'),
+enum BulkDeleteSelfMessagesScope {
+  @JsonValue('selected')
+  selected('selected'),
+  @JsonValue('inaccessible_only')
+  inaccessibleOnly('inaccessible_only'),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
   $unknown(null);
 
-  const SystemDmJobResponseStatusStatus(this.json);
+  const BulkDeleteSelfMessagesScope(this.json);
 
-  factory SystemDmJobResponseStatusStatus.fromJson(String json) =>
+  factory BulkDeleteSelfMessagesScope.fromJson(String json) =>
       values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
@@ -34,6 +28,6 @@ enum SystemDmJobResponseStatusStatus {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<SystemDmJobResponseStatusStatus> get $valuesDefined =>
+  static List<BulkDeleteSelfMessagesScope> get $valuesDefined =>
       values.where((value) => value != $unknown).toList();
 }

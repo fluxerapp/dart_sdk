@@ -8,7 +8,7 @@ part of 'channels_api.dart';
 // RetrofitGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter,avoid_unused_constructor_parameters,unreachable_from_main
+// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter,avoid_unused_constructor_parameters,unreachable_from_main,avoid_redundant_argument_values
 
 class _ChannelsApi implements ChannelsApi {
   _ChannelsApi(this._dio, {this.baseUrl, this.errorLogger});
@@ -80,13 +80,19 @@ class _ChannelsApi implements ChannelsApi {
   @override
   Future<void> deleteChannel({
     required String channelId,
+    required SudoVerificationSchema body,
     String? silent,
+    String? deleteMessages,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'silent': silent};
+    final queryParameters = <String, dynamic>{
+      r'silent': silent,
+      r'delete_messages': deleteMessages,
+    };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
     final _options = _setStreamType<void>(
       Options(method: 'DELETE', headers: _headers, extra: _extra)
           .compose(
@@ -438,6 +444,29 @@ class _ChannelsApi implements ChannelsApi {
           .compose(
             _dio.options,
             '/channels/${channelId}/messages/bulk-delete',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    await _dio.fetch<void>(_options);
+  }
+
+  @override
+  Future<void> bulkDeleteMyMessagesInChannel({
+    required String channelId,
+    required SudoVerificationSchema body,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<void>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/channels/${channelId}/messages/bulk-delete-mine',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -884,6 +913,40 @@ class _ChannelsApi implements ChannelsApi {
   }
 
   @override
+  Future<ReactionUsersPageResponse> listReactionUsersV2({
+    required String channelId,
+    required String messageId,
+    required String emoji,
+    int? limit,
+    String? after,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'limit': limit, r'after': after};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<ReactionUsersPageResponse>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/channels/${channelId}/messages/${messageId}/reactions/${emoji}/users',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late ReactionUsersPageResponse _value;
+    try {
+      _value = ReactionUsersPageResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<void> removeReaction({
     required String channelId,
     required String messageId,
@@ -1044,13 +1107,19 @@ class _ChannelsApi implements ChannelsApi {
   Future<void> removeGroupDmRecipient({
     required String channelId,
     required String userId,
+    required SudoVerificationSchema body,
     String? silent,
+    String? deleteMessages,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'silent': silent};
+    final queryParameters = <String, dynamic>{
+      r'silent': silent,
+      r'delete_messages': deleteMessages,
+    };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
     final _options = _setStreamType<void>(
       Options(method: 'DELETE', headers: _headers, extra: _extra)
           .compose(

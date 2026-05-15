@@ -49,6 +49,16 @@ MessageBaseResponseSchema _$MessageBaseResponseSchemaFromJson(
         'mention_roles',
         (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
       ),
+      mentionChannels: $checkedConvert(
+        'mention_channels',
+        (v) => (v as List<dynamic>?)
+            ?.map(
+              (e) => MessageChannelMentionResponse.fromJson(
+                e as Map<String, dynamic>,
+              ),
+            )
+            .toList(),
+      ),
       users: $checkedConvert(
         'users',
         (v) => (v as List<dynamic>?)
@@ -126,6 +136,7 @@ MessageBaseResponseSchema _$MessageBaseResponseSchemaFromJson(
     'webhookId': 'webhook_id',
     'editedTimestamp': 'edited_timestamp',
     'mentionRoles': 'mention_roles',
+    'mentionChannels': 'mention_channels',
     'nsfwEmojis': 'nsfw_emojis',
     'messageReference': 'message_reference',
     'messageSnapshots': 'message_snapshots',
@@ -149,6 +160,7 @@ Map<String, dynamic> _$MessageBaseResponseSchemaToJson(
   'tts': ?instance.tts,
   'mentions': ?instance.mentions,
   'mention_roles': ?instance.mentionRoles,
+  'mention_channels': ?instance.mentionChannels,
   'users': ?instance.users,
   'embeds': ?instance.embeds,
   'attachments': ?instance.attachments,

@@ -13,10 +13,6 @@ GuildEmojiResponse _$GuildEmojiResponseFromJson(Map<String, dynamic> json) =>
         name: $checkedConvert('name', (v) => v as String),
         animated: $checkedConvert('animated', (v) => v as bool),
         nsfw: $checkedConvert('nsfw', (v) => v as bool),
-        formats: $checkedConvert(
-          'formats',
-          (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
-        ),
       );
       return val;
     });
@@ -27,5 +23,4 @@ Map<String, dynamic> _$GuildEmojiResponseToJson(GuildEmojiResponse instance) =>
       'name': instance.name,
       'animated': instance.animated,
       'nsfw': instance.nsfw,
-      'formats': ?instance.formats,
     };
