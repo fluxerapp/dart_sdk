@@ -13,6 +13,12 @@ IpAuthorizationPollResponse _$IpAuthorizationPollResponseFromJson(
     completed: $checkedConvert('completed', (v) => v as bool),
     token: $checkedConvert('token', (v) => v as String?),
     userId: $checkedConvert('user_id', (v) => v as String?),
+    user: $checkedConvert(
+      'user',
+      (v) => v == null
+          ? null
+          : UserPartialResponse.fromJson(v as Map<String, dynamic>),
+    ),
   );
   return val;
 }, fieldKeyMap: const {'userId': 'user_id'});
@@ -23,4 +29,5 @@ Map<String, dynamic> _$IpAuthorizationPollResponseToJson(
   'completed': instance.completed,
   'token': ?instance.token,
   'user_id': ?instance.userId,
+  'user': ?instance.user,
 };

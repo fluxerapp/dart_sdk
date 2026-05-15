@@ -14,6 +14,10 @@ SsoCompleteResponse _$SsoCompleteResponseFromJson(Map<String, dynamic> json) =>
         final val = SsoCompleteResponse(
           token: $checkedConvert('token', (v) => v as String),
           userId: $checkedConvert('user_id', (v) => v as String),
+          user: $checkedConvert(
+            'user',
+            (v) => SsoCompleteResponseUser.fromJson(v as Map<String, dynamic>),
+          ),
           redirectTo: $checkedConvert('redirect_to', (v) => v as String),
         );
         return val;
@@ -26,5 +30,6 @@ Map<String, dynamic> _$SsoCompleteResponseToJson(
 ) => <String, dynamic>{
   'token': instance.token,
   'user_id': instance.userId,
+  'user': instance.user,
   'redirect_to': instance.redirectTo,
 };

@@ -31,11 +31,11 @@ class MessageSearchResultsResponseMessages {
     required this.timestamp,
     required this.pinned,
     required this.mentionEveryone,
+    required this.tts,
+    required this.mentions,
+    required this.mentionRoles,
     this.webhookId,
     this.editedTimestamp,
-    this.tts,
-    this.mentions,
-    this.mentionRoles,
     this.mentionChannels,
     this.users,
     this.embeds,
@@ -87,16 +87,14 @@ class MessageSearchResultsResponseMessages {
   final bool mentionEveryone;
 
   /// Whether the message was sent as text-to-speech
-  @JsonKey(includeIfNull: false)
-  final bool? tts;
+  final bool tts;
 
   /// The users mentioned in the message
-  @JsonKey(includeIfNull: false)
-  final List<UserPartialResponse>? mentions;
+  final List<UserPartialResponse> mentions;
 
   /// The role IDs mentioned in the message
-  @JsonKey(includeIfNull: false, name: 'mention_roles')
-  final List<String>? mentionRoles;
+  @JsonKey(name: 'mention_roles')
+  final List<String> mentionRoles;
 
   /// Channels mentioned in the message that are visible to @everyone
   @JsonKey(includeIfNull: false, name: 'mention_channels')

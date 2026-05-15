@@ -36,6 +36,7 @@ import '../models/harvest_self_data_request.dart';
 import '../models/harvest_status_response_schema.dart';
 import '../models/harvest_status_response_schema_nullable.dart';
 import '../models/inbound_sms_challenge_start_response.dart';
+import '../models/mark_mentions_read_request.dart';
 import '../models/message_content_request.dart';
 import '../models/message_flags.dart';
 import '../models/message_list_response.dart';
@@ -43,8 +44,10 @@ import '../models/message_nonce_request.dart';
 import '../models/message_reference_request.dart';
 import '../models/mfa_backup_codes_request.dart';
 import '../models/mfa_backup_codes_response.dart';
+import '../models/mobile_devices_list_response.dart';
 import '../models/object3.dart';
 import '../models/password_change_complete_request.dart';
+import '../models/password_change_complete_response.dart';
 import '../models/password_change_start_response.dart';
 import '../models/password_change_ticket_request.dart';
 import '../models/password_change_verify_request.dart';
@@ -59,6 +62,8 @@ import '../models/push_rotate_request.dart';
 import '../models/push_subscribe_request.dart';
 import '../models/push_subscribe_response.dart';
 import '../models/push_subscriptions_list_response.dart';
+import '../models/register_mobile_device_request.dart';
+import '../models/register_mobile_device_response.dart';
 import '../models/relationship_nickname_update_request.dart';
 import '../models/relationship_response.dart';
 import '../models/relationship_type_put_request.dart';
@@ -70,6 +75,7 @@ import '../models/snowflake_type.dart';
 import '../models/success_response.dart';
 import '../models/sudo_mfa_methods_response.dart';
 import '../models/sudo_verification_schema.dart';
+import '../models/unregister_mobile_device_request.dart';
 import '../models/user_guild_settings_response.dart';
 import '../models/user_guild_settings_update_request.dart';
 import '../models/user_note_response.dart';
@@ -375,6 +381,16 @@ abstract class UsersApi {
     @Query('before') SnowflakeType? before,
   });
 
+  /// Mark mentions read.
+  ///
+  /// Removes multiple messages from the current user's recent mention history. Does not delete the original messages.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/mentions/read')
+  Future<void> markMentionsRead({
+    @Body() required MarkMentionsReadRequest body,
+  });
+
   /// Delete mention.
   ///
   /// Removes a mention from the current user's mention history. Does not delete the original message, only removes it from the user's personal mention list.
@@ -491,6 +507,42 @@ abstract class UsersApi {
     @Body() required SudoVerificationSchema body,
   });
 
+  /// Register mobile push device.
+  ///
+  /// Registers a mobile push device token for APNs, Firebase Cloud Messaging, or UnifiedPush. UnifiedPush registrations include the endpoint URL plus Web Push encryption keys.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/mobile-devices')
+  Future<RegisterMobileDeviceResponse> registerMobilePushDevice({
+    @Body() required RegisterMobileDeviceRequest body,
+  });
+
+  /// List mobile push devices.
+  ///
+  /// Lists mobile push device registrations for the current user.
+  @GET('/users/@me/mobile-devices')
+  Future<MobileDevicesListResponse> listMobilePushDevices();
+
+  /// Unregister mobile push device.
+  ///
+  /// Deletes a registered mobile push device using the platform token known by the client.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/mobile-devices/unregister')
+  Future<SuccessResponse> unregisterMobilePushDevice({
+    @Body() required UnregisterMobileDeviceRequest body,
+  });
+
+  /// Delete mobile push device.
+  ///
+  /// Deletes a registered mobile push device by device ID.
+  ///
+  /// [deviceId] - The device id.
+  @DELETE('/users/@me/mobile-devices/{device_id}')
+  Future<SuccessResponse> deleteMobilePushDevice({
+    @Path('device_id') required String deviceId,
+  });
+
   /// List current user notes.
   ///
   /// Retrieves all notes the current user has written about other users. Returns a record of user IDs to notes. These are private notes visible only to the authenticated user.
@@ -522,11 +574,11 @@ abstract class UsersApi {
 
   /// Complete password change.
   ///
-  /// Completes the password change after email verification. Requires the verification proof and new password. Invalidates all existing sessions.
+  /// Completes the password change after email verification. Requires the verification proof and new password. Invalidates all existing sessions and returns the replacement session token.
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/users/@me/password-change/complete')
-  Future<void> completePasswordChange({
+  Future<PasswordChangeCompleteResponse> completePasswordChange({
     @Body() required PasswordChangeCompleteRequest body,
   });
 

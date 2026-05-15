@@ -34,23 +34,21 @@ _$MessageSearchResultsResponseMessagesFromJson(
       ),
       pinned: $checkedConvert('pinned', (v) => v as bool),
       mentionEveryone: $checkedConvert('mention_everyone', (v) => v as bool),
-      webhookId: $checkedConvert('webhook_id', (v) => v as String?),
-      editedTimestamp: $checkedConvert(
-        'edited_timestamp',
-        (v) => v == null ? null : DateTime.parse(v as String),
-      ),
-      tts: $checkedConvert('tts', (v) => v as bool?),
+      tts: $checkedConvert('tts', (v) => v as bool),
       mentions: $checkedConvert(
         'mentions',
-        (v) => (v as List<dynamic>?)
-            ?.map(
-              (e) => UserPartialResponse.fromJson(e as Map<String, dynamic>),
-            )
+        (v) => (v as List<dynamic>)
+            .map((e) => UserPartialResponse.fromJson(e as Map<String, dynamic>))
             .toList(),
       ),
       mentionRoles: $checkedConvert(
         'mention_roles',
-        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      webhookId: $checkedConvert('webhook_id', (v) => v as String?),
+      editedTimestamp: $checkedConvert(
+        'edited_timestamp',
+        (v) => v == null ? null : DateTime.parse(v as String),
       ),
       mentionChannels: $checkedConvert(
         'mention_channels',
@@ -136,9 +134,9 @@ _$MessageSearchResultsResponseMessagesFromJson(
   fieldKeyMap: const {
     'channelId': 'channel_id',
     'mentionEveryone': 'mention_everyone',
+    'mentionRoles': 'mention_roles',
     'webhookId': 'webhook_id',
     'editedTimestamp': 'edited_timestamp',
-    'mentionRoles': 'mention_roles',
     'mentionChannels': 'mention_channels',
     'nsfwEmojis': 'nsfw_emojis',
     'messageReference': 'message_reference',
@@ -160,9 +158,9 @@ Map<String, dynamic> _$MessageSearchResultsResponseMessagesToJson(
   'edited_timestamp': ?instance.editedTimestamp?.toIso8601String(),
   'pinned': instance.pinned,
   'mention_everyone': instance.mentionEveryone,
-  'tts': ?instance.tts,
-  'mentions': ?instance.mentions,
-  'mention_roles': ?instance.mentionRoles,
+  'tts': instance.tts,
+  'mentions': instance.mentions,
+  'mention_roles': instance.mentionRoles,
   'mention_channels': ?instance.mentionChannels,
   'users': ?instance.users,
   'embeds': ?instance.embeds,

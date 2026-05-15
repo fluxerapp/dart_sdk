@@ -32,12 +32,19 @@ ApplicationPublicResponse _$ApplicationPublicResponseFromJson(
             ? null
             : ApplicationBotResponse.fromJson(v as Map<String, dynamic>),
       ),
+      currentUser: $checkedConvert(
+        'current_user',
+        (v) => v == null
+            ? null
+            : UserPartialResponse.fromJson(v as Map<String, dynamic>),
+      ),
     );
     return val;
   },
   fieldKeyMap: const {
     'redirectUris': 'redirect_uris',
     'botPublic': 'bot_public',
+    'currentUser': 'current_user',
   },
 );
 
@@ -52,4 +59,5 @@ Map<String, dynamic> _$ApplicationPublicResponseToJson(
   'scopes': instance.scopes,
   'bot_public': instance.botPublic,
   'bot': instance.bot,
+  'current_user': ?instance.currentUser,
 };

@@ -15,6 +15,7 @@ BotProfileResponse _$BotProfileResponseFromJson(Map<String, dynamic> json) =>
         avatar: $checkedConvert('avatar', (v) => v as String?),
         banner: $checkedConvert('banner', (v) => v as String?),
         bio: $checkedConvert('bio', (v) => v as String?),
+        flags: $checkedConvert('flags', (v) => (v as num).toInt()),
       );
       return val;
     });
@@ -27,4 +28,5 @@ Map<String, dynamic> _$BotProfileResponseToJson(BotProfileResponse instance) =>
       'avatar': instance.avatar,
       'banner': instance.banner,
       'bio': instance.bio,
+      'flags': instance.flags,
     };
