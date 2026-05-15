@@ -4,6 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+import 'auth_token_with_user_id_response_user.dart';
 import 'auth_mfa_required_response_mfa_mfa.dart';
 
 part 'auth_register_response.g.dart';
@@ -30,10 +31,12 @@ class AuthRegisterResponseAuthTokenWithUserIdResponse {
   final String token;
   @JsonKey(name: 'user_id')
   final String userId;
+  final AuthTokenWithUserIdResponseUser user;
 
   const AuthRegisterResponseAuthTokenWithUserIdResponse({
     required this.token,
     required this.userId,
+    required this.user,
   });
 
   factory AuthRegisterResponseAuthTokenWithUserIdResponse.fromJson(

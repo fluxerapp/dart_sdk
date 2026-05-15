@@ -16,6 +16,11 @@ _$AuthLoginResponseAuthTokenWithUserIdResponseFromJson(
     final val = AuthLoginResponseAuthTokenWithUserIdResponse(
       token: $checkedConvert('token', (v) => v as String),
       userId: $checkedConvert('user_id', (v) => v as String),
+      user: $checkedConvert(
+        'user',
+        (v) =>
+            AuthTokenWithUserIdResponseUser.fromJson(v as Map<String, dynamic>),
+      ),
     );
     return val;
   },
@@ -24,7 +29,11 @@ _$AuthLoginResponseAuthTokenWithUserIdResponseFromJson(
 
 Map<String, dynamic> _$AuthLoginResponseAuthTokenWithUserIdResponseToJson(
   AuthLoginResponseAuthTokenWithUserIdResponse instance,
-) => <String, dynamic>{'token': instance.token, 'user_id': instance.userId};
+) => <String, dynamic>{
+  'token': instance.token,
+  'user_id': instance.userId,
+  'user': instance.user,
+};
 
 AuthLoginResponseAuthMfaRequiredResponse
 _$AuthLoginResponseAuthMfaRequiredResponseFromJson(Map<String, dynamic> json) =>

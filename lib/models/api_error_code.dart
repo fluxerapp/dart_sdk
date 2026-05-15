@@ -301,6 +301,10 @@ enum ApiErrorCode {
   ipAuthorizationResendCooldown('IP_AUTHORIZATION_RESEND_COOLDOWN'),
   @JsonValue('IP_AUTHORIZATION_RESEND_LIMIT_EXCEEDED')
   ipAuthorizationResendLimitExceeded('IP_AUTHORIZATION_RESEND_LIMIT_EXCEEDED'),
+  @JsonValue('GLOBAL_IP_BANNED')
+  globalIpBanned('GLOBAL_IP_BANNED'),
+  @JsonValue('GLOBAL_IP_TEMPORARILY_BANNED')
+  globalIpTemporarilyBanned('GLOBAL_IP_TEMPORARILY_BANNED'),
   @JsonValue('IP_BANNED')
   ipBanned('IP_BANNED'),
   @JsonValue('RESIDENTIAL_PROXY_BLOCKED')

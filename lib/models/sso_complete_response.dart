@@ -4,6 +4,8 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+import 'sso_complete_response_user.dart';
+
 part 'sso_complete_response.g.dart';
 
 @JsonSerializable()
@@ -11,6 +13,7 @@ class SsoCompleteResponse {
   const SsoCompleteResponse({
     required this.token,
     required this.userId,
+    required this.user,
     required this.redirectTo,
   });
 
@@ -23,6 +26,9 @@ class SsoCompleteResponse {
   /// ID of the authenticated user
   @JsonKey(name: 'user_id')
   final String userId;
+
+  /// Partial user data for the authenticated account
+  final SsoCompleteResponseUser user;
 
   /// URL to redirect the user to after completion
   @JsonKey(name: 'redirect_to')

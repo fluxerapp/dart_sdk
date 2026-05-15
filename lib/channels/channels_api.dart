@@ -9,6 +9,8 @@ import 'package:retrofit/error_logger.dart';
 
 import '../models/allowed_mentions_request.dart';
 import '../models/bulk_delete_messages_request.dart';
+import '../models/bulk_message_fetch_request.dart';
+import '../models/bulk_message_fetch_response.dart';
 import '../models/call_eligibility_response.dart';
 import '../models/call_ring_body_schema.dart';
 import '../models/call_update_body_schema.dart';
@@ -47,6 +49,16 @@ part 'channels_api.g.dart';
 @RestApi()
 abstract class ChannelsApi {
   factory ChannelsApi(Dio dio, {String? baseUrl}) = _ChannelsApi;
+
+  /// List messages from multiple channels.
+  ///
+  /// Fetches bounded message windows from multiple channels in one request. Each entry uses the same pagination semantics as the single-channel message list endpoint.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/channels/messages/bulk')
+  Future<BulkMessageFetchResponse> bulkListChannelMessages({
+    @Body() required BulkMessageFetchRequest body,
+  });
 
   /// Fetch a channel.
   ///

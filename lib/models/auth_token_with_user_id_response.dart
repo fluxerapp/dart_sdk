@@ -4,6 +4,8 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+import 'auth_token_with_user_id_response_user.dart';
+
 part 'auth_token_with_user_id_response.g.dart';
 
 @JsonSerializable()
@@ -11,6 +13,7 @@ class AuthTokenWithUserIdResponse {
   const AuthTokenWithUserIdResponse({
     required this.token,
     required this.userId,
+    required this.user,
   });
 
   factory AuthTokenWithUserIdResponse.fromJson(Map<String, Object?> json) =>
@@ -22,6 +25,9 @@ class AuthTokenWithUserIdResponse {
   /// ID of the authenticated user
   @JsonKey(name: 'user_id')
   final String userId;
+
+  /// Partial user data for the authenticated account
+  final AuthTokenWithUserIdResponseUser user;
 
   Map<String, Object?> toJson() => _$AuthTokenWithUserIdResponseToJson(this);
 }

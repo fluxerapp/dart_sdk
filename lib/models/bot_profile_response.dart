@@ -4,6 +4,8 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+import 'bot_flags.dart';
+
 part 'bot_profile_response.g.dart';
 
 @JsonSerializable()
@@ -15,6 +17,7 @@ class BotProfileResponse {
     required this.avatar,
     required this.banner,
     required this.bio,
+    required this.flags,
   });
 
   factory BotProfileResponse.fromJson(Map<String, Object?> json) =>
@@ -40,6 +43,7 @@ class BotProfileResponse {
   /// The bio or description of the bot
   @JsonKey(includeIfNull: true)
   final String? bio;
+  final BotFlags flags;
 
   Map<String, Object?> toJson() => _$BotProfileResponseToJson(this);
 }

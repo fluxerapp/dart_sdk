@@ -71,11 +71,11 @@ abstract class OAuth2Api {
     @Body() required ApplicationCreateRequest body,
   });
 
-  /// List user applications.
+  /// Get current applications endpoint.
   ///
-  /// Lists all OAuth2 applications owned by the authenticated user. Includes application credentials, metadata, and configuration.
+  /// For user tokens, lists all OAuth2 applications owned by the authenticated user. For bot tokens, returns the bot application object.
   @GET('/oauth2/applications/@me')
-  Future<ApplicationListResponse> listUserApplications3();
+  Future<dynamic> getOauthApplicationsMe();
 
   /// Get application.
   ///

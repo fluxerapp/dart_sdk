@@ -22,7 +22,7 @@ ApplicationsMeResponse _$ApplicationsMeResponseFromJson(
         'bot_require_code_grant',
         (v) => v as bool,
       ),
-      flags: $checkedConvert('flags', (v) => (v as num).toInt()),
+      verifyKey: $checkedConvert('verify_key', (v) => v as String),
       owner: $checkedConvert(
         'owner',
         (v) => ApplicationsMeResponseOwner.fromJson(v as Map<String, dynamic>),
@@ -33,12 +33,18 @@ ApplicationsMeResponse _$ApplicationsMeResponseFromJson(
             ? null
             : ApplicationBotResponse.fromJson(v as Map<String, dynamic>),
       ),
+      redirectUris: $checkedConvert(
+        'redirect_uris',
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+      ),
     );
     return val;
   },
   fieldKeyMap: const {
     'botPublic': 'bot_public',
     'botRequireCodeGrant': 'bot_require_code_grant',
+    'verifyKey': 'verify_key',
+    'redirectUris': 'redirect_uris',
   },
 );
 
@@ -51,7 +57,8 @@ Map<String, dynamic> _$ApplicationsMeResponseToJson(
   'description': instance.description,
   'bot_public': instance.botPublic,
   'bot_require_code_grant': instance.botRequireCodeGrant,
-  'flags': instance.flags,
+  'verify_key': instance.verifyKey,
   'owner': instance.owner,
   'bot': ?instance.bot,
+  'redirect_uris': ?instance.redirectUris,
 };
