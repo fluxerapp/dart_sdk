@@ -163,7 +163,8 @@ class GatewayConnection {
     if (_state != GatewayState.connected || _channel == null) {
       return;
     }
-    final List<String> resolvedGuildIds = guildIds != null && guildIds.isNotEmpty
+    final List<String> resolvedGuildIds =
+        guildIds != null && guildIds.isNotEmpty
         ? guildIds.where((String id) => id.isNotEmpty).toSet().toList()
         : const <String>[];
     final Map<String, Object?> d = <String, Object?>{};
@@ -189,10 +190,7 @@ class GatewayConnection {
     if (nonce != null) {
       d['nonce'] = nonce;
     }
-    _send(<String, Object?>{
-      'op': GatewayOpcodes.requestGuildMembers,
-      'd': d,
-    });
+    _send(<String, Object?>{'op': GatewayOpcodes.requestGuildMembers, 'd': d});
   }
 
   /// Join, move, or leave a voice channel. Requires an established gateway

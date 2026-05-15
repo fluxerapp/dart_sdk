@@ -15,7 +15,6 @@ class ReportMessageRequest {
     required this.channelId,
     required this.messageId,
     required this.category,
-    this.additionalInfo,
   });
 
   factory ReportMessageRequest.fromJson(Map<String, Object?> json) =>
@@ -26,10 +25,6 @@ class ReportMessageRequest {
   @JsonKey(name: 'message_id')
   final SnowflakeType messageId;
   final MessageReportCategoryEnum category;
-
-  /// Additional context or details about the report
-  @JsonKey(includeIfNull: false, name: 'additional_info')
-  final String? additionalInfo;
 
   Map<String, Object?> toJson() => _$ReportMessageRequestToJson(this);
 }

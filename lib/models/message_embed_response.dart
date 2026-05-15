@@ -30,6 +30,9 @@ class MessageEmbedResponse {
     this.provider,
     this.video,
     this.audio,
+    this.html,
+    this.htmlWidth,
+    this.htmlHeight,
     this.nsfw,
     this.children,
   });
@@ -91,6 +94,18 @@ class MessageEmbedResponse {
   /// The audio of the embed
   @JsonKey(includeIfNull: false)
   final EmbedMediaResponse? audio;
+
+  /// Sanitized oEmbed HTML for trusted specialized embed renderers
+  @JsonKey(includeIfNull: false)
+  final String? html;
+
+  /// The preferred width of sanitized oEmbed HTML
+  @JsonKey(includeIfNull: false, name: 'html_width')
+  final Int32Type? htmlWidth;
+
+  /// The preferred height of sanitized oEmbed HTML
+  @JsonKey(includeIfNull: false, name: 'html_height')
+  final Int32Type? htmlHeight;
 
   /// Whether the embed is flagged as NSFW
   @JsonKey(includeIfNull: false)

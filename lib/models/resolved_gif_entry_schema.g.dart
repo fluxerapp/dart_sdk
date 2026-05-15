@@ -25,6 +25,7 @@ ResolvedGifEntrySchema _$ResolvedGifEntrySchemaFromJson(
         ),
       ),
       contentType: $checkedConvert('content_type', (v) => v as String?),
+      placeholder: $checkedConvert('placeholder', (v) => v as String?),
     );
     return val;
   },
@@ -40,4 +41,5 @@ Map<String, dynamic> _$ResolvedGifEntrySchemaToJson(
   'height': instance.height,
   'media': ?instance.media,
   'content_type': ?instance.contentType,
+  'placeholder': ?instance.placeholder,
 };

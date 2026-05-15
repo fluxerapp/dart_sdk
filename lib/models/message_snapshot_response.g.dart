@@ -35,6 +35,16 @@ MessageSnapshotResponse _$MessageSnapshotResponseFromJson(
         'mention_roles',
         (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
       ),
+      mentionChannels: $checkedConvert(
+        'mention_channels',
+        (v) => (v as List<dynamic>?)
+            ?.map(
+              (e) => MessageChannelMentionResponse.fromJson(
+                e as Map<String, dynamic>,
+              ),
+            )
+            .toList(),
+      ),
       embeds: $checkedConvert(
         'embeds',
         (v) => (v as List<dynamic>?)
@@ -66,6 +76,7 @@ MessageSnapshotResponse _$MessageSnapshotResponseFromJson(
   fieldKeyMap: const {
     'editedTimestamp': 'edited_timestamp',
     'mentionRoles': 'mention_roles',
+    'mentionChannels': 'mention_channels',
   },
 );
 
@@ -77,6 +88,7 @@ Map<String, dynamic> _$MessageSnapshotResponseToJson(
   'edited_timestamp': ?instance.editedTimestamp?.toIso8601String(),
   'mentions': ?instance.mentions,
   'mention_roles': ?instance.mentionRoles,
+  'mention_channels': ?instance.mentionChannels,
   'embeds': ?instance.embeds,
   'attachments': ?instance.attachments,
   'stickers': ?instance.stickers,

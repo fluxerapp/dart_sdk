@@ -19,15 +19,10 @@ ReportMessageRequest _$ReportMessageRequestFromJson(
         'category',
         (v) => MessageReportCategoryEnum.fromJson(v as String),
       ),
-      additionalInfo: $checkedConvert('additional_info', (v) => v as String?),
     );
     return val;
   },
-  fieldKeyMap: const {
-    'channelId': 'channel_id',
-    'messageId': 'message_id',
-    'additionalInfo': 'additional_info',
-  },
+  fieldKeyMap: const {'channelId': 'channel_id', 'messageId': 'message_id'},
 );
 
 Map<String, dynamic> _$ReportMessageRequestToJson(
@@ -36,5 +31,4 @@ Map<String, dynamic> _$ReportMessageRequestToJson(
   'channel_id': instance.channelId,
   'message_id': instance.messageId,
   'category': instance.category,
-  'additional_info': ?instance.additionalInfo,
 };

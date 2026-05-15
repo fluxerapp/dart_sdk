@@ -16,7 +16,7 @@ part 'user_private_response.g.dart';
 @JsonSerializable()
 class UserPrivateResponse {
   const UserPrivateResponse({
-    required this.hasVerifiedPhone,
+    required this.pronouns,
     required this.username,
     required this.discriminator,
     required this.globalName,
@@ -24,24 +24,22 @@ class UserPrivateResponse {
     required this.avatarColor,
     required this.privacyAgreedAt,
     required this.termsAgreedAt,
-    required this.pendingBulkMessageDeletion,
     required this.flags,
-    required this.unreadGiftInventoryCount,
+    required this.pendingBulkMessageDeletion,
     required this.isStaff,
     required this.acls,
     required this.traits,
     required this.email,
+    required this.unreadGiftInventoryCount,
     required this.hasUnreadGiftInventory,
-    required this.hasEverPurchased,
-    required this.id,
+    required this.hasVerifiedPhone,
     required this.bio,
-    required this.pronouns,
+    required this.id,
     required this.accentColor,
     required this.banner,
-    required this.hasDismissedPremiumOnboarding,
     required this.bannerColor,
     required this.mfaEnabled,
-    required this.nsfwAllowed,
+    required this.hasEverPurchased,
     required this.verified,
     required this.premiumType,
     required this.premiumSince,
@@ -51,24 +49,25 @@ class UserPrivateResponse {
     required this.premiumLifetimeSequence,
     required this.premiumGraceEndsAt,
     required this.premiumDiscriminator,
-    required this.requiredActions,
-    required this.premiumBadgeMasked,
+    required this.premiumBadgeHidden,
+    required this.hasDismissedPremiumOnboarding,
     required this.premiumBadgeTimestampHidden,
     required this.premiumBadgeSequenceHidden,
     required this.premiumPurchaseDisabled,
     required this.premiumEnabledOverride,
+    required this.premiumPerksDisabled,
+    required this.nsfwAllowed,
     required this.passwordLastChangedAt,
-    required this.premiumBadgeHidden,
+    required this.requiredActions,
+    required this.premiumBadgeMasked,
     this.premiumOutOfBandTrialEndsAt,
     this.authenticatorTypes,
-    this.bannerFormats,
     this.phone,
     this.emailBounced,
     this.mentionFlags,
-    this.system,
     this.ageVerifiedAdult,
+    this.system,
     this.bot,
-    this.avatarFormats,
     this.forceInboundPhoneVerification,
   });
 
@@ -95,10 +94,6 @@ class UserPrivateResponse {
   /// The dominant avatar color of the user as an integer
   @JsonKey(includeIfNull: true, name: 'avatar_color')
   final Int32Type? avatarColor;
-
-  /// Available derivative formats for the avatar (e.g. ["webp","avif","jpeg"]); absent for legacy assets
-  @JsonKey(includeIfNull: false, name: 'avatar_formats')
-  final List<String>? avatarFormats;
 
   /// Whether the user is a bot account
   @JsonKey(includeIfNull: false)
@@ -154,10 +149,6 @@ class UserPrivateResponse {
   /// The hash of the user profile banner image
   @JsonKey(includeIfNull: true)
   final String? banner;
-
-  /// Available derivative formats for the banner; absent for legacy assets
-  @JsonKey(includeIfNull: false, name: 'banner_formats')
-  final List<String>? bannerFormats;
 
   /// The default banner color if no custom banner is set
   @JsonKey(includeIfNull: true, name: 'banner_color')
@@ -230,6 +221,10 @@ class UserPrivateResponse {
   @JsonKey(name: 'premium_enabled_override')
   final bool premiumEnabledOverride;
 
+  /// Whether premium perks are temporarily disabled for this account
+  @JsonKey(name: 'premium_perks_disabled')
+  final bool premiumPerksDisabled;
+
   /// Whether this account is forced through the inbound (expensive-destination) phone verification flow regardless of prefix, for debugging
   @JsonKey(includeIfNull: false, name: 'force_inbound_phone_verification')
   final bool? forceInboundPhoneVerification;
@@ -262,7 +257,7 @@ class UserPrivateResponse {
   @JsonKey(name: 'unread_gift_inventory_count')
   final int unreadGiftInventoryCount;
 
-  /// Information about a pending bulk message deletion request
+  /// Information about a pending bulk message deletion request. Only populated when the legacy delayed-deletion flow is in progress; the new immediate-deletion flow does not surface a pending state here.
   @JsonKey(includeIfNull: true, name: 'pending_bulk_message_deletion')
   final UserPrivateResponsePendingBulkMessageDeletion?
   pendingBulkMessageDeletion;

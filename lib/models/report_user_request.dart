@@ -14,7 +14,6 @@ class ReportUserRequest {
   const ReportUserRequest({
     required this.userId,
     required this.category,
-    this.additionalInfo,
     this.guildId,
   });
 
@@ -24,10 +23,6 @@ class ReportUserRequest {
   @JsonKey(name: 'user_id')
   final SnowflakeType userId;
   final UserReportCategoryEnum category;
-
-  /// Additional context or details about the report
-  @JsonKey(includeIfNull: false, name: 'additional_info')
-  final String? additionalInfo;
   @JsonKey(includeIfNull: false, name: 'guild_id')
   final SnowflakeType? guildId;
 

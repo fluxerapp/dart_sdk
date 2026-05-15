@@ -46,6 +46,7 @@ import '../models/guild_vanity_url_update_response.dart';
 import '../models/int32_type.dart';
 import '../models/my_guild_member_update_request.dart';
 import '../models/snowflake_type.dart';
+import '../models/sudo_verification_schema.dart';
 
 part 'guilds_api.g.dart';
 
@@ -588,9 +589,28 @@ abstract class GuildsApi {
 
   /// Leave guild.
   ///
-  /// Removes the current user from the specified guild membership.
+  /// Removes the current user from the specified guild membership. When `delete_messages` is true, the caller's authored messages in the guild are deleted before leaving; that path requires sudo mode verification.
   ///
   /// [guildId] - The ID of the guild.
+  ///
+  /// [body] - Name not received - field will be skipped.
   @DELETE('/users/@me/guilds/{guild_id}')
-  Future<void> leaveGuild({@Path('guild_id') required SnowflakeType guildId});
+  Future<void> leaveGuild({
+    @Path('guild_id') required SnowflakeType guildId,
+    @Body() required SudoVerificationSchema body,
+    @Query('delete_messages') String? deleteMessages,
+  });
+
+  /// Bulk delete my messages in guild.
+  ///
+  /// Deletes every message the caller has authored across all channels of the specified guild. Caller must be a member of the guild and pass sudo mode verification.
+  ///
+  /// [guildId] - The ID of the guild.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/guilds/{guild_id}/messages/bulk-delete-mine')
+  Future<void> bulkDeleteMyMessagesInGuild({
+    @Path('guild_id') required SnowflakeType guildId,
+    @Body() required SudoVerificationSchema body,
+  });
 }

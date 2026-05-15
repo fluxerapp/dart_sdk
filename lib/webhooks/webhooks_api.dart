@@ -251,6 +251,22 @@ abstract class WebhooksApi {
     @Body() required WebhookMessageEditRequest body,
   });
 
+  /// Delete webhook message.
+  ///
+  /// Deletes a message previously sent by the webhook. Only messages authored by the webhook can be deleted. Returns a 204 status code on successful deletion.
+  ///
+  /// [webhookId] - The ID of the webhook.
+  ///
+  /// [token] - The token.
+  ///
+  /// [messageId] - The ID of the message.
+  @DELETE('/webhooks/{webhook_id}/{token}/messages/{message_id}')
+  Future<void> deleteWebhookMessage({
+    @Path('webhook_id') required SnowflakeType webhookId,
+    @Path('token') required String token,
+    @Path('message_id') required SnowflakeType messageId,
+  });
+
   /// Execute Slack webhook.
   ///
   /// Receives and processes Slack-formatted webhook payloads, converting them to messages in the configured channel. Returns "ok" as plain text with a 200 status code.

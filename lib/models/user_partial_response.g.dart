@@ -22,10 +22,6 @@ UserPartialResponse _$UserPartialResponseFromJson(Map<String, dynamic> json) =>
             (v) => (v as num?)?.toInt(),
           ),
           flags: $checkedConvert('flags', (v) => (v as num).toInt()),
-          avatarFormats: $checkedConvert(
-            'avatar_formats',
-            (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
-          ),
           bot: $checkedConvert('bot', (v) => v as bool?),
           system: $checkedConvert('system', (v) => v as bool?),
           mentionFlags: $checkedConvert(
@@ -40,7 +36,6 @@ UserPartialResponse _$UserPartialResponseFromJson(Map<String, dynamic> json) =>
       fieldKeyMap: const {
         'globalName': 'global_name',
         'avatarColor': 'avatar_color',
-        'avatarFormats': 'avatar_formats',
         'mentionFlags': 'mention_flags',
       },
     );
@@ -54,7 +49,6 @@ Map<String, dynamic> _$UserPartialResponseToJson(
   'global_name': instance.globalName,
   'avatar': instance.avatar,
   'avatar_color': instance.avatarColor,
-  'avatar_formats': ?instance.avatarFormats,
   'bot': ?instance.bot,
   'system': ?instance.system,
   'flags': instance.flags,

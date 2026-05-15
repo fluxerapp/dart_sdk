@@ -33,12 +33,14 @@ import '../models/presigned_attachment_upload_request.dart';
 import '../models/presigned_attachment_upload_response.dart';
 import '../models/purge_personal_notes_messages_response.dart';
 import '../models/reaction_users_list_response.dart';
+import '../models/reaction_users_page_response.dart';
 import '../models/rich_embed_request.dart';
 import '../models/rtc_region_response.dart';
 import '../models/scheduled_message_response_schema.dart';
 import '../models/snowflake_type.dart';
 import '../models/stream_preview_upload_body_schema.dart';
 import '../models/stream_update_body_schema.dart';
+import '../models/sudo_verification_schema.dart';
 
 part 'channels_api.g.dart';
 
@@ -71,13 +73,17 @@ abstract class ChannelsApi {
 
   /// Delete a channel.
   ///
-  /// Permanently removes a channel and all its content. Only server administrators or the channel owner can delete channels.
+  /// Permanently removes a channel and all its content. Only server administrators or the channel owner can delete channels. When `delete_messages` is set on a group DM, the caller's authored messages in the group are deleted before leaving and sudo mode verification is required.
   ///
   /// [channelId] - The ID of the channel.
+  ///
+  /// [body] - Name not received - field will be skipped.
   @DELETE('/channels/{channel_id}')
   Future<void> deleteChannel({
     @Path('channel_id') required SnowflakeType channelId,
+    @Body() required SudoVerificationSchema body,
     @Query('silent') String? silent,
+    @Query('delete_messages') String? deleteMessages,
   });
 
   /// Request presigned attachment upload URLs.
@@ -251,6 +257,19 @@ abstract class ChannelsApi {
     @Body() required BulkDeleteMessagesRequest body,
   });
 
+  /// Bulk delete my messages in channel.
+  ///
+  /// Deletes every message the caller has authored in the specified channel. Requires sudo mode verification. Returns 202 Accepted once matching messages have been removed.
+  ///
+  /// [channelId] - The ID of the channel.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/channels/{channel_id}/messages/bulk-delete-mine')
+  Future<void> bulkDeleteMyMessagesInChannel({
+    @Path('channel_id') required SnowflakeType channelId,
+    @Body() required SudoVerificationSchema body,
+  });
+
   /// List pinned messages.
   ///
   /// Retrieves a paginated list of messages pinned in a channel. User must have permission to view the channel. Supports pagination via limit and before parameters. Returns pinned messages with their pin timestamps.
@@ -265,7 +284,7 @@ abstract class ChannelsApi {
 
   /// Purge all messages in personal notes.
   ///
-  /// Deletes every message in the caller’s personal notes channel. Only allowed on the authenticated user’s DM_PERSONAL_NOTES channel. Returns the total number of deleted messages.
+  /// Deletes every message in the caller's personal notes channel. Only allowed on the authenticated user's DM_PERSONAL_NOTES channel. Returns the total number of deleted messages.
   ///
   /// [channelId] - The ID of the channel.
   @POST('/channels/{channel_id}/messages/purge')
@@ -509,6 +528,24 @@ abstract class ChannelsApi {
     @Query('session_id') String? sessionId,
   });
 
+  /// List users who reacted with emoji.
+  ///
+  /// Retrieves a paginated list of users who reacted to a message with a specific emoji. The response body includes pagination metadata, including the next cursor, so clients do not need to infer it from returned users.
+  ///
+  /// [channelId] - The ID of the channel.
+  ///
+  /// [messageId] - The ID of the message.
+  ///
+  /// [emoji] - The emoji.
+  @GET('/channels/{channel_id}/messages/{message_id}/reactions/{emoji}/users')
+  Future<ReactionUsersPageResponse> listReactionUsersV2({
+    @Path('channel_id') required SnowflakeType channelId,
+    @Path('message_id') required SnowflakeType messageId,
+    @Path('emoji') required String emoji,
+    @Query('limit') int? limit,
+    @Query('after') SnowflakeType? after,
+  });
+
   /// Remove reaction from message.
   ///
   /// Removes a specific user's emoji reaction from a message. Requires moderator or higher permissions to remove reactions from other users. Returns 204 No Content on success.
@@ -611,16 +648,20 @@ abstract class ChannelsApi {
 
   /// Remove recipient from group DM.
   ///
-  /// Removes a user from a group direct message channel. The requesting user must be a member with appropriate permissions.
+  /// Removes a user from a group direct message channel. The requesting user must be a member with appropriate permissions. When the caller removes themself with `delete_messages`, their authored messages in the group are deleted before leaving and sudo mode verification is required.
   ///
   /// [channelId] - The ID of the channel.
   ///
   /// [userId] - The ID of the user.
+  ///
+  /// [body] - Name not received - field will be skipped.
   @DELETE('/channels/{channel_id}/recipients/{user_id}')
   Future<void> removeGroupDmRecipient({
     @Path('channel_id') required SnowflakeType channelId,
     @Path('user_id') required SnowflakeType userId,
+    @Body() required SudoVerificationSchema body,
     @Query('silent') String? silent,
+    @Query('delete_messages') String? deleteMessages,
   });
 
   /// List RTC regions.
