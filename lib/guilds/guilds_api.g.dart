@@ -1241,8 +1241,8 @@ class _GuildsApi implements GuildsApi {
   @override
   Future<void> leaveGuild({
     required String guildId,
-    required SudoVerificationSchema body,
     String? deleteMessages,
+    SudoVerificationSchema? body,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -1251,7 +1251,7 @@ class _GuildsApi implements GuildsApi {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    _data.addAll(body?.toJson() ?? <String, dynamic>{});
     final _options = _setStreamType<void>(
       Options(method: 'DELETE', headers: _headers, extra: _extra)
           .compose(

@@ -597,8 +597,8 @@ abstract class GuildsApi {
   @DELETE('/users/@me/guilds/{guild_id}')
   Future<void> leaveGuild({
     @Path('guild_id') required SnowflakeType guildId,
-    @Body() required SudoVerificationSchema body,
     @Query('delete_messages') String? deleteMessages,
+    @Body() SudoVerificationSchema? body,
   });
 
   /// Bulk delete my messages in guild.

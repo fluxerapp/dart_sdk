@@ -93,9 +93,9 @@ abstract class ChannelsApi {
   @DELETE('/channels/{channel_id}')
   Future<void> deleteChannel({
     @Path('channel_id') required SnowflakeType channelId,
-    @Body() required SudoVerificationSchema body,
     @Query('silent') String? silent,
     @Query('delete_messages') String? deleteMessages,
+    @Body() SudoVerificationSchema? body,
   });
 
   /// Request presigned attachment upload URLs.
@@ -671,9 +671,9 @@ abstract class ChannelsApi {
   Future<void> removeGroupDmRecipient({
     @Path('channel_id') required SnowflakeType channelId,
     @Path('user_id') required SnowflakeType userId,
-    @Body() required SudoVerificationSchema body,
     @Query('silent') String? silent,
     @Query('delete_messages') String? deleteMessages,
+    @Body() SudoVerificationSchema? body,
   });
 
   /// List RTC regions.
