@@ -110,9 +110,9 @@ class _ChannelsApi implements ChannelsApi {
   @override
   Future<void> deleteChannel({
     required String channelId,
-    required SudoVerificationSchema body,
     String? silent,
     String? deleteMessages,
+    SudoVerificationSchema? body,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -122,7 +122,7 @@ class _ChannelsApi implements ChannelsApi {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    _data.addAll(body?.toJson() ?? <String, dynamic>{});
     final _options = _setStreamType<void>(
       Options(method: 'DELETE', headers: _headers, extra: _extra)
           .compose(
@@ -1137,9 +1137,9 @@ class _ChannelsApi implements ChannelsApi {
   Future<void> removeGroupDmRecipient({
     required String channelId,
     required String userId,
-    required SudoVerificationSchema body,
     String? silent,
     String? deleteMessages,
+    SudoVerificationSchema? body,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -1149,7 +1149,7 @@ class _ChannelsApi implements ChannelsApi {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    _data.addAll(body?.toJson() ?? <String, dynamic>{});
     final _options = _setStreamType<void>(
       Options(method: 'DELETE', headers: _headers, extra: _extra)
           .compose(
