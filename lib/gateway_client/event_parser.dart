@@ -287,7 +287,7 @@ class EventParser {
           connectionId: data['connection_id'] as String,
           guildId: data['guild_id'] as String?,
           channelId: data['channel_id'] as String?,
-          e2eeEnabled: data['e2ee_enabled'] as bool?,
+          e2eeKey: data['e2ee_key'] as String?,
         ),
 
         // Calls

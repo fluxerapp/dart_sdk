@@ -365,7 +365,8 @@ class GatewayConnection {
   }
 
   void _handleGatewayError(Map<String, dynamic> data) {
-    final code = data['code'] as int;
+    final Object? rawCode = data['code'];
+    final String code = rawCode is String ? rawCode : rawCode.toString();
     final message = data['message'] as String;
     _eventController.add(GatewayErrorEvent(code: code, message: message));
   }
