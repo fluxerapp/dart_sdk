@@ -9,6 +9,7 @@ import 'friend_source_flags.dart';
 import 'group_dm_add_permission_flags.dart';
 import 'incoming_call_flags.dart';
 import 'locale.dart';
+import 'profile_privacy_level.dart';
 import 'render_spoilers.dart';
 import 'sensitive_media_filter_level.dart';
 import 'sensitive_media_guild_filter_level.dart';
@@ -23,8 +24,8 @@ part 'user_settings_response.g.dart';
 class UserSettingsResponse {
   const UserSettingsResponse({
     required this.renderEmbeds,
-    required this.staffDmAccessUserIds,
-    required this.suppressUnprivilegedSelfMentionsBypassUserIds,
+    required this.profilePrivacy,
+    required this.syncedPreferences,
     required this.theme,
     required this.locale,
     required this.restrictedGuilds,
@@ -44,9 +45,9 @@ class UserSettingsResponse {
     required this.incomingCallFlags,
     required this.groupDmAddPermissionFlags,
     required this.guildFolders,
-    required this.syncedPreferences,
+    required this.customStatus,
     required this.afkTimeout,
-    required this.timeFormat,
+    required this.defaultShareVoiceActivity,
     required this.developerMode,
     required this.trustedDomains,
     required this.defaultHideMutedChannels,
@@ -54,7 +55,9 @@ class UserSettingsResponse {
     required this.sensitiveContentNonFriendDmFilter,
     required this.sensitiveContentGuildFilter,
     required this.suppressUnprivilegedSelfMentions,
-    required this.customStatus,
+    required this.suppressUnprivilegedSelfMentionsBypassUserIds,
+    required this.staffDmAccessUserIds,
+    required this.timeFormat,
     this.statusResetsAt,
     this.statusResetsTo,
   });
@@ -190,6 +193,14 @@ class UserSettingsResponse {
   /// Account-wide client preferences as a base64-encoded protobuf snapshot. Empty string when nothing has been synced yet.
   @JsonKey(name: 'synced_preferences')
   final String syncedPreferences;
+
+  /// Controls who sees the full profile: all guild members, only small-guild members, or only friends
+  @JsonKey(name: 'profile_privacy')
+  final ProfilePrivacyLevel profilePrivacy;
+
+  /// Default value of share_voice_activity applied to newly accepted friend relationships. Read-only here; mutated via PUT /users/@me/settings/voice-activity-sharing.
+  @JsonKey(name: 'default_share_voice_activity')
+  final bool defaultShareVoiceActivity;
 
   Map<String, Object?> toJson() => _$UserSettingsResponseToJson(this);
 }

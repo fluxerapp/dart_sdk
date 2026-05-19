@@ -13,7 +13,7 @@ UserPrivateResponse _$UserPrivateResponseFromJson(
   json,
   ($checkedConvert) {
     final val = UserPrivateResponse(
-      pronouns: $checkedConvert('pronouns', (v) => v as String?),
+      premiumSince: $checkedConvert('premium_since', (v) => v as String?),
       username: $checkedConvert('username', (v) => v as String),
       discriminator: $checkedConvert('discriminator', (v) => v as String),
       globalName: $checkedConvert('global_name', (v) => v as String?),
@@ -25,14 +25,7 @@ UserPrivateResponse _$UserPrivateResponseFromJson(
       ),
       termsAgreedAt: $checkedConvert('terms_agreed_at', (v) => v as String?),
       flags: $checkedConvert('flags', (v) => (v as num).toInt()),
-      pendingBulkMessageDeletion: $checkedConvert(
-        'pending_bulk_message_deletion',
-        (v) => v == null
-            ? null
-            : UserPrivateResponsePendingBulkMessageDeletion.fromJson(
-                v as Map<String, dynamic>,
-              ),
-      ),
+      bio: $checkedConvert('bio', (v) => v as String?),
       isStaff: $checkedConvert('is_staff', (v) => v as bool),
       acls: $checkedConvert(
         'acls',
@@ -43,28 +36,38 @@ UserPrivateResponse _$UserPrivateResponseFromJson(
         (v) => (v as List<dynamic>).map((e) => e as String).toList(),
       ),
       email: $checkedConvert('email', (v) => v as String?),
+      pendingBulkMessageDeletion: $checkedConvert(
+        'pending_bulk_message_deletion',
+        (v) => v == null
+            ? null
+            : UserPrivateResponsePendingBulkMessageDeletion.fromJson(
+                v as Map<String, dynamic>,
+              ),
+      ),
       unreadGiftInventoryCount: $checkedConvert(
         'unread_gift_inventory_count',
         (v) => (v as num).toInt(),
       ),
-      hasUnreadGiftInventory: $checkedConvert(
-        'has_unread_gift_inventory',
-        (v) => v as bool,
-      ),
       hasVerifiedPhone: $checkedConvert('has_verified_phone', (v) => v as bool),
-      bio: $checkedConvert('bio', (v) => v as String?),
       id: $checkedConvert('id', (v) => v as String),
+      pronouns: $checkedConvert('pronouns', (v) => v as String?),
       accentColor: $checkedConvert('accent_color', (v) => (v as num?)?.toInt()),
       banner: $checkedConvert('banner', (v) => v as String?),
       bannerColor: $checkedConvert('banner_color', (v) => (v as num?)?.toInt()),
       mfaEnabled: $checkedConvert('mfa_enabled', (v) => v as bool),
-      hasEverPurchased: $checkedConvert('has_ever_purchased', (v) => v as bool),
+      hasUnreadGiftInventory: $checkedConvert(
+        'has_unread_gift_inventory',
+        (v) => v as bool,
+      ),
       verified: $checkedConvert('verified', (v) => v as bool),
       premiumType: $checkedConvert(
         'premium_type',
         (v) => v == null ? null : UserPremiumTypes.fromJson((v as num).toInt()),
       ),
-      premiumSince: $checkedConvert('premium_since', (v) => v as String?),
+      premiumBadgeTimestampHidden: $checkedConvert(
+        'premium_badge_timestamp_hidden',
+        (v) => v as bool,
+      ),
       premiumUntil: $checkedConvert('premium_until', (v) => v as String?),
       premiumWillCancel: $checkedConvert(
         'premium_will_cancel',
@@ -90,14 +93,11 @@ UserPrivateResponse _$UserPrivateResponseFromJson(
         'premium_badge_hidden',
         (v) => v as bool,
       ),
-      hasDismissedPremiumOnboarding: $checkedConvert(
-        'has_dismissed_premium_onboarding',
+      premiumBadgeMasked: $checkedConvert(
+        'premium_badge_masked',
         (v) => v as bool,
       ),
-      premiumBadgeTimestampHidden: $checkedConvert(
-        'premium_badge_timestamp_hidden',
-        (v) => v as bool,
-      ),
+      hasEverPurchased: $checkedConvert('has_ever_purchased', (v) => v as bool),
       premiumBadgeSequenceHidden: $checkedConvert(
         'premium_badge_sequence_hidden',
         (v) => v as bool,
@@ -114,18 +114,26 @@ UserPrivateResponse _$UserPrivateResponseFromJson(
         'premium_perks_disabled',
         (v) => v as bool,
       ),
-      nsfwAllowed: $checkedConvert('nsfw_allowed', (v) => v as bool),
+      hasDismissedPremiumOnboarding: $checkedConvert(
+        'has_dismissed_premium_onboarding',
+        (v) => v as bool,
+      ),
       passwordLastChangedAt: $checkedConvert(
         'password_last_changed_at',
         (v) => v as String?,
       ),
+      lastVoiceActivitySharingChangeAt: $checkedConvert(
+        'last_voice_activity_sharing_change_at',
+        (v) => v as String?,
+      ),
+      nsfwAllowed: $checkedConvert('nsfw_allowed', (v) => v as bool),
       requiredActions: $checkedConvert(
         'required_actions',
         (v) => (v as List<dynamic>).map((e) => e as String).toList(),
       ),
-      premiumBadgeMasked: $checkedConvert(
-        'premium_badge_masked',
-        (v) => v as bool,
+      forceInboundPhoneVerification: $checkedConvert(
+        'force_inbound_phone_verification',
+        (v) => v as bool?,
       ),
       premiumOutOfBandTrialEndsAt: $checkedConvert(
         'premium_out_of_band_trial_ends_at',
@@ -139,41 +147,37 @@ UserPrivateResponse _$UserPrivateResponseFromJson(
       ),
       phone: $checkedConvert('phone', (v) => v as String?),
       emailBounced: $checkedConvert('email_bounced', (v) => v as bool?),
-      mentionFlags: $checkedConvert(
-        'mention_flags',
-        (v) => v == null
-            ? null
-            : MentionReplyPreferences.fromJson((v as num).toInt()),
-      ),
       ageVerifiedAdult: $checkedConvert(
         'age_verified_adult',
         (v) => v as bool?,
       ),
       system: $checkedConvert('system', (v) => v as bool?),
       bot: $checkedConvert('bot', (v) => v as bool?),
-      forceInboundPhoneVerification: $checkedConvert(
-        'force_inbound_phone_verification',
-        (v) => v as bool?,
+      mentionFlags: $checkedConvert(
+        'mention_flags',
+        (v) => v == null
+            ? null
+            : MentionReplyPreferences.fromJson((v as num).toInt()),
       ),
     );
     return val;
   },
   fieldKeyMap: const {
+    'premiumSince': 'premium_since',
     'globalName': 'global_name',
     'avatarColor': 'avatar_color',
     'privacyAgreedAt': 'privacy_agreed_at',
     'termsAgreedAt': 'terms_agreed_at',
-    'pendingBulkMessageDeletion': 'pending_bulk_message_deletion',
     'isStaff': 'is_staff',
+    'pendingBulkMessageDeletion': 'pending_bulk_message_deletion',
     'unreadGiftInventoryCount': 'unread_gift_inventory_count',
-    'hasUnreadGiftInventory': 'has_unread_gift_inventory',
     'hasVerifiedPhone': 'has_verified_phone',
     'accentColor': 'accent_color',
     'bannerColor': 'banner_color',
     'mfaEnabled': 'mfa_enabled',
-    'hasEverPurchased': 'has_ever_purchased',
+    'hasUnreadGiftInventory': 'has_unread_gift_inventory',
     'premiumType': 'premium_type',
-    'premiumSince': 'premium_since',
+    'premiumBadgeTimestampHidden': 'premium_badge_timestamp_hidden',
     'premiumUntil': 'premium_until',
     'premiumWillCancel': 'premium_will_cancel',
     'premiumBillingCycle': 'premium_billing_cycle',
@@ -181,22 +185,23 @@ UserPrivateResponse _$UserPrivateResponseFromJson(
     'premiumGraceEndsAt': 'premium_grace_ends_at',
     'premiumDiscriminator': 'premium_discriminator',
     'premiumBadgeHidden': 'premium_badge_hidden',
-    'hasDismissedPremiumOnboarding': 'has_dismissed_premium_onboarding',
-    'premiumBadgeTimestampHidden': 'premium_badge_timestamp_hidden',
+    'premiumBadgeMasked': 'premium_badge_masked',
+    'hasEverPurchased': 'has_ever_purchased',
     'premiumBadgeSequenceHidden': 'premium_badge_sequence_hidden',
     'premiumPurchaseDisabled': 'premium_purchase_disabled',
     'premiumEnabledOverride': 'premium_enabled_override',
     'premiumPerksDisabled': 'premium_perks_disabled',
-    'nsfwAllowed': 'nsfw_allowed',
+    'hasDismissedPremiumOnboarding': 'has_dismissed_premium_onboarding',
     'passwordLastChangedAt': 'password_last_changed_at',
+    'lastVoiceActivitySharingChangeAt': 'last_voice_activity_sharing_change_at',
+    'nsfwAllowed': 'nsfw_allowed',
     'requiredActions': 'required_actions',
-    'premiumBadgeMasked': 'premium_badge_masked',
+    'forceInboundPhoneVerification': 'force_inbound_phone_verification',
     'premiumOutOfBandTrialEndsAt': 'premium_out_of_band_trial_ends_at',
     'authenticatorTypes': 'authenticator_types',
     'emailBounced': 'email_bounced',
-    'mentionFlags': 'mention_flags',
     'ageVerifiedAdult': 'age_verified_adult',
-    'forceInboundPhoneVerification': 'force_inbound_phone_verification',
+    'mentionFlags': 'mention_flags',
   },
 );
 
@@ -245,6 +250,8 @@ Map<String, dynamic> _$UserPrivateResponseToJson(
   'premium_perks_disabled': instance.premiumPerksDisabled,
   'force_inbound_phone_verification': ?instance.forceInboundPhoneVerification,
   'password_last_changed_at': instance.passwordLastChangedAt,
+  'last_voice_activity_sharing_change_at':
+      instance.lastVoiceActivitySharingChangeAt,
   'required_actions': instance.requiredActions,
   'nsfw_allowed': instance.nsfwAllowed,
   'has_dismissed_premium_onboarding': instance.hasDismissedPremiumOnboarding,

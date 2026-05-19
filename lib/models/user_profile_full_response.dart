@@ -29,6 +29,7 @@ class UserProfileFullResponse {
     this.mutualFriends,
     this.mutualGuilds,
     this.connectedAccounts,
+    this.profileLimited,
   });
 
   factory UserProfileFullResponse.fromJson(Map<String, Object?> json) =>
@@ -68,6 +69,10 @@ class UserProfileFullResponse {
   /// Array of verified external connections
   @JsonKey(includeIfNull: false, name: 'connected_accounts')
   final List<ConnectionResponse>? connectedAccounts;
+
+  /// True when the target user has restricted their profile and the viewer does not meet the visibility tier; bio, pronouns, badges, and connected accounts have been stripped.
+  @JsonKey(includeIfNull: false, name: 'profile_limited')
+  final bool? profileLimited;
 
   Map<String, Object?> toJson() => _$UserProfileFullResponseToJson(this);
 }

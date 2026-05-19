@@ -61,6 +61,10 @@ GatewayRolloutConfigUpdateRequest _$GatewayRolloutConfigUpdateRequestFromJson(
         'max_concurrent_guild_starts',
         (v) => (v as num?)?.toInt(),
       ),
+      voiceE2eeScope: $checkedConvert(
+        'voice_e2ee_scope',
+        (v) => v == null ? null : VoiceE2EeScopeEnum.fromJson(v as String),
+      ),
     );
     return val;
   },
@@ -77,6 +81,7 @@ GatewayRolloutConfigUpdateRequest _$GatewayRolloutConfigUpdateRequestFromJson(
     'rpcRequestTimeoutMs': 'rpc_request_timeout_ms',
     'maxConcurrentSessionStarts': 'max_concurrent_session_starts',
     'maxConcurrentGuildStarts': 'max_concurrent_guild_starts',
+    'voiceE2eeScope': 'voice_e2ee_scope',
   },
 );
 
@@ -95,4 +100,5 @@ Map<String, dynamic> _$GatewayRolloutConfigUpdateRequestToJson(
   'rpc_request_timeout_ms': ?instance.rpcRequestTimeoutMs,
   'max_concurrent_session_starts': ?instance.maxConcurrentSessionStarts,
   'max_concurrent_guild_starts': ?instance.maxConcurrentGuildStarts,
+  'voice_e2ee_scope': ?instance.voiceE2eeScope,
 };

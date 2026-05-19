@@ -16,6 +16,8 @@ class RelationshipResponse {
     required this.type,
     required this.user,
     required this.nickname,
+    required this.shareVoiceActivity,
+    required this.friendSharesVoiceActivity,
     this.since,
   });
 
@@ -36,6 +38,14 @@ class RelationshipResponse {
   /// A custom nickname set for the related user
   @JsonKey(includeIfNull: true)
   final String? nickname;
+
+  /// Whether the current user has chosen to share their voice activity with this friend on the Active Now panel
+  @JsonKey(name: 'share_voice_activity')
+  final bool shareVoiceActivity;
+
+  /// Whether this friend has chosen to share their voice activity with the current user; for non-friend types this is always true
+  @JsonKey(name: 'friend_shares_voice_activity')
+  final bool friendSharesVoiceActivity;
 
   Map<String, Object?> toJson() => _$RelationshipResponseToJson(this);
 }

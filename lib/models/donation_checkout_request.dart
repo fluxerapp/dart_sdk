@@ -16,6 +16,7 @@ class DonationCheckoutRequest {
     required this.amountCents,
     required this.currency,
     required this.interval,
+    this.isBusiness,
   });
 
   factory DonationCheckoutRequest.fromJson(Map<String, Object?> json) =>
@@ -34,6 +35,10 @@ class DonationCheckoutRequest {
   /// Billing interval (null for one-time donation)
   @JsonKey(includeIfNull: true)
   final DonationCheckoutRequestIntervalInterval? interval;
+
+  /// Whether the donation is from a business. When true, Stripe Checkout requires a billing address for tax invoicing. When false or omitted, billing address collection is left to Stripe.
+  @JsonKey(includeIfNull: false, name: 'is_business')
+  final bool? isBusiness;
 
   Map<String, Object?> toJson() => _$DonationCheckoutRequestToJson(this);
 }

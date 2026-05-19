@@ -420,7 +420,7 @@ abstract class ChannelsApi {
   ///
   /// [messageId] - The ID of the message.
   @DELETE('/channels/{channel_id}/messages/{message_id}')
-  Future<void> deleteMessage2({
+  Future<void> deleteMessage({
     @Path('channel_id') required SnowflakeType channelId,
     @Path('message_id') required SnowflakeType messageId,
   });

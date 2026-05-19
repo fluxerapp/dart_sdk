@@ -130,7 +130,7 @@ abstract class GuildsApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @PUT('/guilds/{guild_id}/bans/{user_id}')
-  Future<void> banGuildMember2({
+  Future<void> banGuildMember({
     @Path('guild_id') required SnowflakeType guildId,
     @Path('user_id') required SnowflakeType userId,
     @Body() required GuildBanCreateRequest body,
@@ -193,7 +193,7 @@ abstract class GuildsApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/guilds/{guild_id}/delete')
-  Future<void> deleteGuild2({
+  Future<void> deleteGuild({
     @Path('guild_id') required SnowflakeType guildId,
     @Body() required GuildDeleteRequest body,
   });
@@ -217,7 +217,7 @@ abstract class GuildsApi {
   ///
   /// [guildId] - The ID of the guild.
   @GET('/guilds/{guild_id}/emojis')
-  Future<GuildEmojiWithUserListResponse> listGuildEmojis2({
+  Future<GuildEmojiWithUserListResponse> listGuildEmojis({
     @Path('guild_id') required SnowflakeType guildId,
   });
 
@@ -270,7 +270,7 @@ abstract class GuildsApi {
   ///
   /// [guildId] - The ID of the guild.
   @GET('/guilds/{guild_id}/members')
-  Future<List<GuildMemberResponse>> listGuildMembers2({
+  Future<List<GuildMemberResponse>> listGuildMembers({
     @Path('guild_id') required SnowflakeType guildId,
     @Query('limit') int? limit,
     @Query('after') SnowflakeType? after,
@@ -493,7 +493,7 @@ abstract class GuildsApi {
   ///
   /// [guildId] - The ID of the guild.
   @GET('/guilds/{guild_id}/stickers')
-  Future<GuildStickerWithUserListResponse> listGuildStickers2({
+  Future<GuildStickerWithUserListResponse> listGuildStickers({
     @Path('guild_id') required SnowflakeType guildId,
   });
 
@@ -548,7 +548,7 @@ abstract class GuildsApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/guilds/{guild_id}/transfer-ownership')
-  Future<GuildResponse> transferGuildOwnership2({
+  Future<GuildResponse> transferGuildOwnership({
     @Path('guild_id') required SnowflakeType guildId,
     @Body() required GuildTransferOwnershipRequest body,
   });

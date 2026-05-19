@@ -8,7 +8,7 @@ part of 'admin_api.dart';
 // RetrofitGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter,avoid_unused_constructor_parameters,unreachable_from_main,avoid_redundant_argument_values
+// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter,avoid_unused_constructor_parameters,unreachable_from_main
 
 class _AdminApi implements AdminApi {
   _AdminApi(this._dio, {this.baseUrl, this.errorLogger});
@@ -111,7 +111,7 @@ class _AdminApi implements AdminApi {
   }
 
   @override
-  Future<ListUserApplicationsResponse> listUserApplications({
+  Future<ListUserApplicationsResponse> adminListUserApplications({
     required ListUserApplicationsRequest body,
   }) async {
     final _extra = <String, dynamic>{};
@@ -1816,7 +1816,9 @@ class _AdminApi implements AdminApi {
   }
 
   @override
-  Future<void> banGuildMember({required BanGuildMemberRequest body}) async {
+  Future<void> adminBanGuildMember({
+    required BanGuildMemberRequest body,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -1856,7 +1858,7 @@ class _AdminApi implements AdminApi {
   }
 
   @override
-  Future<SuccessResponse> deleteGuild({
+  Future<SuccessResponse> adminDeleteGuild({
     required DeleteGuildRequest body,
   }) async {
     final _extra = <String, dynamic>{};
@@ -1936,7 +1938,7 @@ class _AdminApi implements AdminApi {
   }
 
   @override
-  Future<ListGuildMembersResponse> listGuildMembers({
+  Future<ListGuildMembersResponse> adminListGuildMembers({
     required ListGuildMembersRequest body,
   }) async {
     final _extra = <String, dynamic>{};
@@ -2086,7 +2088,7 @@ class _AdminApi implements AdminApi {
   }
 
   @override
-  Future<GuildUpdateResponse> transferGuildOwnership({
+  Future<GuildUpdateResponse> adminTransferGuildOwnership({
     required TransferGuildOwnershipRequest body,
   }) async {
     final _extra = <String, dynamic>{};
@@ -2236,7 +2238,7 @@ class _AdminApi implements AdminApi {
   }
 
   @override
-  Future<ListGuildEmojisResponse> listGuildEmojis({
+  Future<ListGuildEmojisResponse> adminListGuildEmojis({
     required String guildId,
   }) async {
     final _extra = <String, dynamic>{};
@@ -2265,7 +2267,7 @@ class _AdminApi implements AdminApi {
   }
 
   @override
-  Future<ListGuildStickersResponse> listGuildStickers({
+  Future<ListGuildStickersResponse> adminListGuildStickers({
     required String guildId,
   }) async {
     final _extra = <String, dynamic>{};
@@ -2553,7 +2555,7 @@ class _AdminApi implements AdminApi {
   }
 
   @override
-  Future<DeleteMessageResponse> deleteMessage({
+  Future<DeleteMessageResponse> adminDeleteMessage({
     required DeleteMessageRequest body,
   }) async {
     final _extra = <String, dynamic>{};
@@ -2912,124 +2914,6 @@ class _AdminApi implements AdminApi {
   }
 
   @override
-  Future<CsamEvidencePackageResponse> getCsamEvidencePackage({
-    required String reportId,
-  }) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<CsamEvidencePackageResponse>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/admin/reports/${reportId}/evidence',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    final _result = await _dio.fetch<Map<String, Object?>>(_options);
-    late CsamEvidencePackageResponse _value;
-    try {
-      _value = CsamEvidencePackageResponse.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, response: _result);
-      rethrow;
-    }
-    return _value;
-  }
-
-  @override
-  Future<LegalHoldResponse> getLegalHoldStatus({
-    required String reportId,
-  }) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<LegalHoldResponse>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/admin/reports/${reportId}/legal-hold',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    final _result = await _dio.fetch<Map<String, Object?>>(_options);
-    late LegalHoldResponse _value;
-    try {
-      _value = LegalHoldResponse.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, response: _result);
-      rethrow;
-    }
-    return _value;
-  }
-
-  @override
-  Future<LegalHoldResponse> setLegalHoldOnEvidence({
-    required String reportId,
-    required LegalHoldRequest body,
-  }) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
-    final _options = _setStreamType<LegalHoldResponse>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/admin/reports/${reportId}/legal-hold',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    final _result = await _dio.fetch<Map<String, Object?>>(_options);
-    late LegalHoldResponse _value;
-    try {
-      _value = LegalHoldResponse.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, response: _result);
-      rethrow;
-    }
-    return _value;
-  }
-
-  @override
-  Future<LegalHoldResponse> releaseLegalHoldOnEvidence({
-    required String reportId,
-  }) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<LegalHoldResponse>(
-      Options(method: 'DELETE', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/admin/reports/${reportId}/legal-hold',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    final _result = await _dio.fetch<Map<String, Object?>>(_options);
-    late LegalHoldResponse _value;
-    try {
-      _value = LegalHoldResponse.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, response: _result);
-      rethrow;
-    }
-    return _value;
-  }
-
-  @override
   Future<RefreshSearchIndexResponse> refreshSearchIndex({
     required RefreshSearchIndexRequest body,
   }) async {
@@ -3221,7 +3105,7 @@ class _AdminApi implements AdminApi {
   }
 
   @override
-  Future<UserMutationResponse> cancelBulkMessageDeletion({
+  Future<UserMutationResponse> adminCancelBulkMessageDeletion({
     required CancelBulkMessageDeletionRequest body,
   }) async {
     final _extra = <String, dynamic>{};
@@ -3593,7 +3477,7 @@ class _AdminApi implements AdminApi {
   }
 
   @override
-  Future<ListUserRelationshipsResponse> listUserRelationships({
+  Future<ListUserRelationshipsResponse> adminListUserRelationships({
     required ListUserRelationshipsRequest body,
   }) async {
     final _extra = <String, dynamic>{};

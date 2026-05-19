@@ -131,14 +131,6 @@ enum ApiErrorCode {
   contentBlocked('CONTENT_BLOCKED'),
   @JsonValue('CREATION_FAILED')
   creationFailed('CREATION_FAILED'),
-  @JsonValue('CSAM_SCAN_FAILED')
-  csamScanFailed('CSAM_SCAN_FAILED'),
-  @JsonValue('CSAM_SCAN_PARSE_ERROR')
-  csamScanParseError('CSAM_SCAN_PARSE_ERROR'),
-  @JsonValue('CSAM_SCAN_SUBSCRIPTION_ERROR')
-  csamScanSubscriptionError('CSAM_SCAN_SUBSCRIPTION_ERROR'),
-  @JsonValue('CSAM_SCAN_TIMEOUT')
-  csamScanTimeout('CSAM_SCAN_TIMEOUT'),
   @JsonValue('DECRYPTION_FAILED')
   decryptionFailed('DECRYPTION_FAILED'),
   @JsonValue('DELETION_FAILED')
@@ -165,6 +157,34 @@ enum ApiErrorCode {
   emailServiceNotTestable('EMAIL_SERVICE_NOT_TESTABLE'),
   @JsonValue('EMAIL_VERIFICATION_REQUIRED')
   emailVerificationRequired('EMAIL_VERIFICATION_REQUIRED'),
+  @JsonValue('CANARY_TESTER_EMAIL_VERIFICATION_REQUIRED')
+  canaryTesterEmailVerificationRequired(
+    'CANARY_TESTER_EMAIL_VERIFICATION_REQUIRED',
+  ),
+  @JsonValue('DIRECT_MESSAGE_EMAIL_VERIFICATION_REQUIRED')
+  directMessageEmailVerificationRequired(
+    'DIRECT_MESSAGE_EMAIL_VERIFICATION_REQUIRED',
+  ),
+  @JsonValue('FRIEND_REQUEST_EMAIL_VERIFICATION_REQUIRED')
+  friendRequestEmailVerificationRequired(
+    'FRIEND_REQUEST_EMAIL_VERIFICATION_REQUIRED',
+  ),
+  @JsonValue('GUILD_CREATION_EMAIL_VERIFICATION_REQUIRED')
+  guildCreationEmailVerificationRequired(
+    'GUILD_CREATION_EMAIL_VERIFICATION_REQUIRED',
+  ),
+  @JsonValue('GUILD_EMAIL_VERIFICATION_REQUIRED')
+  guildEmailVerificationRequired('GUILD_EMAIL_VERIFICATION_REQUIRED'),
+  @JsonValue('MFA_EMAIL_VERIFICATION_REQUIRED')
+  mfaEmailVerificationRequired('MFA_EMAIL_VERIFICATION_REQUIRED'),
+  @JsonValue('PROFILE_EMAIL_VERIFICATION_REQUIRED')
+  profileEmailVerificationRequired('PROFILE_EMAIL_VERIFICATION_REQUIRED'),
+  @JsonValue('PURCHASE_EMAIL_VERIFICATION_REQUIRED')
+  purchaseEmailVerificationRequired('PURCHASE_EMAIL_VERIFICATION_REQUIRED'),
+  @JsonValue('REACTION_EMAIL_VERIFICATION_REQUIRED')
+  reactionEmailVerificationRequired('REACTION_EMAIL_VERIFICATION_REQUIRED'),
+  @JsonValue('REPORT_EMAIL_VERIFICATION_REQUIRED')
+  reportEmailVerificationRequired('REPORT_EMAIL_VERIFICATION_REQUIRED'),
   @JsonValue('EMPTY_ENCRYPTED_BODY')
   emptyEncryptedBody('EMPTY_ENCRYPTED_BODY'),
   @JsonValue('ENCRYPTION_FAILED')
@@ -447,6 +467,8 @@ enum ApiErrorCode {
   reportBanned('REPORT_BANNED'),
   @JsonValue('RESPONSE_VALIDATION_ERROR')
   responseValidationError('RESPONSE_VALIDATION_ERROR'),
+  @JsonValue('RESOURCE_LOCKED')
+  resourceLocked('RESOURCE_LOCKED'),
   @JsonValue('SERVICE_UNAVAILABLE')
   serviceUnavailable('SERVICE_UNAVAILABLE'),
   @JsonValue('SESSION_TOKEN_MISMATCH')
@@ -603,6 +625,8 @@ enum ApiErrorCode {
   unknownApplication('UNKNOWN_APPLICATION'),
   @JsonValue('UNKNOWN_WEBHOOK')
   unknownWebhook('UNKNOWN_WEBHOOK'),
+  @JsonValue('UNFURL_STREAM_TOO_LARGE')
+  unfurlStreamTooLarge('UNFURL_STREAM_TOO_LARGE'),
   @JsonValue('UNSUPPORTED_RESPONSE_TYPE')
   unsupportedResponseType('UNSUPPORTED_RESPONSE_TYPE'),
   @JsonValue('USERNAME_NOT_AVAILABLE')

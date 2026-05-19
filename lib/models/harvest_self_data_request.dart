@@ -35,7 +35,7 @@ class HarvestSelfDataRequest {
   @JsonKey(includeIfNull: false, name: 'include_dms')
   final bool? includeDms;
 
-  /// Also include 1:1 direct messages the caller has closed. Ignored unless include_dms is true.
+  /// Include 1:1 direct messages the caller has previously closed. Independent of include_dms — set include_dms=false and include_dms_closed=true to target closed DMs only.
   @JsonKey(includeIfNull: false, name: 'include_dms_closed')
   final bool? includeDmsClosed;
 
