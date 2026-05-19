@@ -14,6 +14,7 @@ class GatewayIdentifyProperties {
     this.desktopAppVersion,
     this.desktopArch,
     this.desktopOs,
+    this.e2eeCapable,
   });
 
   final String os;
@@ -26,6 +27,7 @@ class GatewayIdentifyProperties {
   final String? desktopAppVersion;
   final String? desktopArch;
   final String? desktopOs;
+  final bool? e2eeCapable;
 
   Map<String, Object?> toJson() => {
     'os': os,
@@ -38,6 +40,7 @@ class GatewayIdentifyProperties {
     if (desktopAppVersion != null) 'desktop_app_version': desktopAppVersion,
     if (desktopArch != null) 'desktop_arch': desktopArch,
     if (desktopOs != null) 'desktop_os': desktopOs,
+    if (e2eeCapable != null) 'e2ee_capable': e2eeCapable,
   };
 }
 

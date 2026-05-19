@@ -25,6 +25,7 @@ class VoiceState {
     this.deaf = false,
     this.suppress = false,
     this.isMobile = false,
+    this.e2eeCapable,
   });
 
   final String userId;
@@ -40,6 +41,7 @@ class VoiceState {
   final bool deaf;
   final bool suppress;
   final bool isMobile;
+  final bool? e2eeCapable;
 
   factory VoiceState.fromJson(Map<String, dynamic> json) {
     return VoiceState(
@@ -56,6 +58,7 @@ class VoiceState {
       deaf: json['deaf'] as bool? ?? false,
       suppress: json['suppress'] as bool? ?? false,
       isMobile: json['is_mobile'] as bool? ?? false,
+      e2eeCapable: json['e2ee_capable'] as bool?,
     );
   }
 }
