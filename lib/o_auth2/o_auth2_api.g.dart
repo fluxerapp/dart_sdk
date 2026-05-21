@@ -158,12 +158,12 @@ class _OAuth2Api implements OAuth2Api {
   }
 
   @override
-  Future<dynamic> getOauthApplicationsMe() async {
+  Future<OAuth2ApplicationsMeResponse> getOauthApplicationsMe() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<dynamic>(
+    final _options = _setStreamType<OAuth2ApplicationsMeResponse>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -173,8 +173,14 @@ class _OAuth2Api implements OAuth2Api {
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late OAuth2ApplicationsMeResponse _value;
+    try {
+      _value = OAuth2ApplicationsMeResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
     return _value;
   }
 
@@ -291,7 +297,7 @@ class _OAuth2Api implements OAuth2Api {
   }
 
   @override
-  Future<BotTokenResetResponse> resetBotToken2({
+  Future<BotTokenResetResponse> resetBotToken({
     required String id,
     required SudoVerificationSchema body,
   }) async {
@@ -322,7 +328,7 @@ class _OAuth2Api implements OAuth2Api {
   }
 
   @override
-  Future<ApplicationResponse> resetClientSecret2({
+  Future<ApplicationResponse> resetClientSecret({
     required String id,
     required SudoVerificationSchema body,
   }) async {
@@ -555,7 +561,7 @@ class _OAuth2Api implements OAuth2Api {
   }
 
   @override
-  Future<List<ApplicationResponse>> listUserApplications2() async {
+  Future<List<ApplicationResponse>> listUserApplications() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

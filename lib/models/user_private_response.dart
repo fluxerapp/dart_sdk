@@ -16,7 +16,7 @@ part 'user_private_response.g.dart';
 @JsonSerializable()
 class UserPrivateResponse {
   const UserPrivateResponse({
-    required this.pronouns,
+    required this.premiumSince,
     required this.username,
     required this.discriminator,
     required this.globalName,
@@ -25,24 +25,24 @@ class UserPrivateResponse {
     required this.privacyAgreedAt,
     required this.termsAgreedAt,
     required this.flags,
-    required this.pendingBulkMessageDeletion,
+    required this.bio,
     required this.isStaff,
     required this.acls,
     required this.traits,
     required this.email,
+    required this.pendingBulkMessageDeletion,
     required this.unreadGiftInventoryCount,
-    required this.hasUnreadGiftInventory,
     required this.hasVerifiedPhone,
-    required this.bio,
     required this.id,
+    required this.pronouns,
     required this.accentColor,
     required this.banner,
     required this.bannerColor,
     required this.mfaEnabled,
-    required this.hasEverPurchased,
+    required this.hasUnreadGiftInventory,
     required this.verified,
     required this.premiumType,
-    required this.premiumSince,
+    required this.premiumBadgeTimestampHidden,
     required this.premiumUntil,
     required this.premiumWillCancel,
     required this.premiumBillingCycle,
@@ -50,25 +50,26 @@ class UserPrivateResponse {
     required this.premiumGraceEndsAt,
     required this.premiumDiscriminator,
     required this.premiumBadgeHidden,
-    required this.hasDismissedPremiumOnboarding,
-    required this.premiumBadgeTimestampHidden,
+    required this.premiumBadgeMasked,
+    required this.hasEverPurchased,
     required this.premiumBadgeSequenceHidden,
     required this.premiumPurchaseDisabled,
     required this.premiumEnabledOverride,
     required this.premiumPerksDisabled,
-    required this.nsfwAllowed,
+    required this.hasDismissedPremiumOnboarding,
     required this.passwordLastChangedAt,
+    required this.lastVoiceActivitySharingChangeAt,
+    required this.nsfwAllowed,
     required this.requiredActions,
-    required this.premiumBadgeMasked,
+    this.forceInboundPhoneVerification,
     this.premiumOutOfBandTrialEndsAt,
     this.authenticatorTypes,
     this.phone,
     this.emailBounced,
-    this.mentionFlags,
     this.ageVerifiedAdult,
     this.system,
     this.bot,
-    this.forceInboundPhoneVerification,
+    this.mentionFlags,
   });
 
   factory UserPrivateResponse.fromJson(Map<String, Object?> json) =>
@@ -232,6 +233,10 @@ class UserPrivateResponse {
   /// ISO8601 timestamp of the last password change
   @JsonKey(includeIfNull: true, name: 'password_last_changed_at')
   final String? passwordLastChangedAt;
+
+  /// ISO8601 timestamp of the last bulk voice-activity-sharing change. Drives the 24-hour cooldown for re-toggling the Active Now sharing default.
+  @JsonKey(includeIfNull: true, name: 'last_voice_activity_sharing_change_at')
+  final String? lastVoiceActivitySharingChangeAt;
 
   /// Actions the user must complete before full access
   @JsonKey(name: 'required_actions')

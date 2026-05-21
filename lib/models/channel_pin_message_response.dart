@@ -98,7 +98,7 @@ class ChannelPinMessageResponse {
   @JsonKey(includeIfNull: false, name: 'mention_channels')
   final List<MessageChannelMentionResponse>? mentionChannels;
 
-  /// Users referenced from embed and snapshot text, included for client-side resolution
+  /// Users referenced from non-notifying content, embed, and snapshot text, included for client-side resolution
   @JsonKey(includeIfNull: false)
   final List<UserPartialResponse>? users;
 

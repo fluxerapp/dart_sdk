@@ -68,6 +68,7 @@ UserProfileFullResponse _$UserProfileFullResponseFromJson(
             ?.map((e) => ConnectionResponse.fromJson(e as Map<String, dynamic>))
             .toList(),
       ),
+      profileLimited: $checkedConvert('profile_limited', (v) => v as bool?),
     );
     return val;
   },
@@ -81,6 +82,7 @@ UserProfileFullResponse _$UserProfileFullResponseFromJson(
     'mutualFriends': 'mutual_friends',
     'mutualGuilds': 'mutual_guilds',
     'connectedAccounts': 'connected_accounts',
+    'profileLimited': 'profile_limited',
   },
 );
 
@@ -97,4 +99,5 @@ Map<String, dynamic> _$UserProfileFullResponseToJson(
   'mutual_friends': ?instance.mutualFriends,
   'mutual_guilds': ?instance.mutualGuilds,
   'connected_accounts': ?instance.connectedAccounts,
+  'profile_limited': ?instance.profileLimited,
 };

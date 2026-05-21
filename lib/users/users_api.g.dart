@@ -943,7 +943,7 @@ class _UsersApi implements UsersApi {
   }
 
   @override
-  Future<SuccessResponse> cancelBulkMessageDeletion2() async {
+  Future<SuccessResponse> cancelBulkMessageDeletion() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -1742,7 +1742,7 @@ class _UsersApi implements UsersApi {
   }
 
   @override
-  Future<List<RelationshipResponse>> listUserRelationships2() async {
+  Future<List<RelationshipResponse>> listUserRelationships() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -2233,6 +2233,36 @@ class _UsersApi implements UsersApi {
     late UserSettingsResponse _value;
     try {
       _value = UserSettingsResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<UserPrivateResponse> updateVoiceActivitySharingDefault({
+    required VoiceActivitySharingUpdateRequest body,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<UserPrivateResponse>(
+      Options(method: 'PUT', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/users/@me/settings/voice-activity-sharing',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late UserPrivateResponse _value;
+    try {
+      _value = UserPrivateResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;

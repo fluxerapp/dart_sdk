@@ -207,7 +207,7 @@ class _GuildsApi implements GuildsApi {
   }
 
   @override
-  Future<void> banGuildMember2({
+  Future<void> banGuildMember({
     required String guildId,
     required String userId,
     required GuildBanCreateRequest body,
@@ -340,7 +340,7 @@ class _GuildsApi implements GuildsApi {
   }
 
   @override
-  Future<void> deleteGuild2({
+  Future<void> deleteGuild({
     required String guildId,
     required GuildDeleteRequest body,
   }) async {
@@ -394,7 +394,7 @@ class _GuildsApi implements GuildsApi {
   }
 
   @override
-  Future<List<GuildEmojiWithUserResponse>> listGuildEmojis2({
+  Future<List<GuildEmojiWithUserResponse>> listGuildEmojis({
     required String guildId,
   }) async {
     final _extra = <String, dynamic>{};
@@ -515,7 +515,7 @@ class _GuildsApi implements GuildsApi {
   }
 
   @override
-  Future<List<GuildMemberResponse>> listGuildMembers2({
+  Future<List<GuildMemberResponse>> listGuildMembers({
     required String guildId,
     int? limit,
     String? after,
@@ -986,7 +986,7 @@ class _GuildsApi implements GuildsApi {
   }
 
   @override
-  Future<List<GuildStickerWithUserResponse>> listGuildStickers2({
+  Future<List<GuildStickerWithUserResponse>> listGuildStickers({
     required String guildId,
   }) async {
     final _extra = <String, dynamic>{};
@@ -1108,7 +1108,7 @@ class _GuildsApi implements GuildsApi {
   }
 
   @override
-  Future<GuildResponse> transferGuildOwnership2({
+  Future<GuildResponse> transferGuildOwnership({
     required String guildId,
     required GuildTransferOwnershipRequest body,
   }) async {

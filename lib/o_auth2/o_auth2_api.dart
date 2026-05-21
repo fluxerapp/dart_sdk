@@ -18,6 +18,7 @@ import '../models/bot_profile_response.dart';
 import '../models/bot_profile_update_request.dart';
 import '../models/bot_token_reset_response.dart';
 import '../models/enum0.dart';
+import '../models/o_auth2_applications_me_response.dart';
 import '../models/o_auth2_authorizations_list_response.dart';
 import '../models/o_auth2_consent_response.dart';
 import '../models/o_auth2_introspect_response.dart';
@@ -75,7 +76,7 @@ abstract class OAuth2Api {
   ///
   /// For user tokens, lists all OAuth2 applications owned by the authenticated user. For bot tokens, returns the bot application object.
   @GET('/oauth2/applications/@me')
-  Future<dynamic> getOauthApplicationsMe();
+  Future<OAuth2ApplicationsMeResponse> getOauthApplicationsMe();
 
   /// Get application.
   ///
@@ -134,7 +135,7 @@ abstract class OAuth2Api {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/oauth2/applications/{id}/bot/reset-token')
-  Future<BotTokenResetResponse> resetBotToken2({
+  Future<BotTokenResetResponse> resetBotToken({
     @Path('id') required String id,
     @Body() required SudoVerificationSchema body,
   });
@@ -147,7 +148,7 @@ abstract class OAuth2Api {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/oauth2/applications/{id}/client-secret/reset')
-  Future<ApplicationResponse> resetClientSecret2({
+  Future<ApplicationResponse> resetClientSecret({
     @Path('id') required String id,
     @Body() required SudoVerificationSchema body,
   });
@@ -231,5 +232,5 @@ abstract class OAuth2Api {
   ///
   /// Lists all OAuth2 applications owned by the authenticated user. Includes application credentials, metadata, and configuration.
   @GET('/users/@me/applications')
-  Future<ApplicationListResponse> listUserApplications2();
+  Future<ApplicationListResponse> listUserApplications();
 }

@@ -13,10 +13,7 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
   json,
   ($checkedConvert) {
     final val = UserSettingsUpdateRequest(
-      inlineEmbedMedia: $checkedConvert(
-        'inline_embed_media',
-        (v) => v as bool?,
-      ),
+      gifAutoPlay: $checkedConvert('gif_auto_play', (v) => v as bool?),
       status: $checkedConvert(
         'status',
         (v) => v == null ? null : UserStatusType.fromJson(v as String),
@@ -54,8 +51,11 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
         'inline_attachment_media',
         (v) => v as bool?,
       ),
+      inlineEmbedMedia: $checkedConvert(
+        'inline_embed_media',
+        (v) => v as bool?,
+      ),
       flags: $checkedConvert('flags', (v) => (v as num?)?.toInt()),
-      gifAutoPlay: $checkedConvert('gif_auto_play', (v) => v as bool?),
       renderEmbeds: $checkedConvert('render_embeds', (v) => v as bool?),
       renderReactions: $checkedConvert('render_reactions', (v) => v as bool?),
       animateEmoji: $checkedConvert('animate_emoji', (v) => v as bool?),
@@ -95,11 +95,16 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
             )
             .toList(),
       ),
+      customStatus: $checkedConvert(
+        'custom_status',
+        (v) => v == null
+            ? null
+            : CustomStatusPayload.fromJson(v as Map<String, dynamic>),
+      ),
       syncedPreferences: $checkedConvert(
         'synced_preferences',
         (v) => v as String?,
       ),
-      afkTimeout: $checkedConvert('afk_timeout', (v) => (v as num?)?.toInt()),
       timeFormat: $checkedConvert(
         'time_format',
         (v) => v == null ? null : TimeFormatTypes.fromJson((v as num).toInt()),
@@ -143,17 +148,17 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
         'staff_dm_access_user_ids',
         (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
       ),
-      customStatus: $checkedConvert(
-        'custom_status',
-        (v) => v == null
-            ? null
-            : CustomStatusPayload.fromJson(v as Map<String, dynamic>),
+      profilePrivacy: $checkedConvert(
+        'profile_privacy',
+        (v) =>
+            v == null ? null : ProfilePrivacyLevel.fromJson((v as num).toInt()),
       ),
+      afkTimeout: $checkedConvert('afk_timeout', (v) => (v as num?)?.toInt()),
     );
     return val;
   },
   fieldKeyMap: const {
-    'inlineEmbedMedia': 'inline_embed_media',
+    'gifAutoPlay': 'gif_auto_play',
     'statusResetsAt': 'status_resets_at',
     'statusResetsTo': 'status_resets_to',
     'restrictedGuilds': 'restricted_guilds',
@@ -161,7 +166,7 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
     'defaultGuildsRestricted': 'default_guilds_restricted',
     'botDefaultGuildsRestricted': 'bot_default_guilds_restricted',
     'inlineAttachmentMedia': 'inline_attachment_media',
-    'gifAutoPlay': 'gif_auto_play',
+    'inlineEmbedMedia': 'inline_embed_media',
     'renderEmbeds': 'render_embeds',
     'renderReactions': 'render_reactions',
     'animateEmoji': 'animate_emoji',
@@ -172,8 +177,8 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
     'incomingCallFlags': 'incoming_call_flags',
     'groupDmAddPermissionFlags': 'group_dm_add_permission_flags',
     'guildFolders': 'guild_folders',
+    'customStatus': 'custom_status',
     'syncedPreferences': 'synced_preferences',
-    'afkTimeout': 'afk_timeout',
     'timeFormat': 'time_format',
     'developerMode': 'developer_mode',
     'trustedDomains': 'trusted_domains',
@@ -186,7 +191,8 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
     'suppressUnprivilegedSelfMentionsBypassUserIds':
         'suppress_unprivileged_self_mentions_bypass_user_ids',
     'staffDmAccessUserIds': 'staff_dm_access_user_ids',
-    'customStatus': 'custom_status',
+    'profilePrivacy': 'profile_privacy',
+    'afkTimeout': 'afk_timeout',
   },
 );
 
@@ -232,5 +238,6 @@ Map<String, dynamic> _$UserSettingsUpdateRequestToJson(
   'suppress_unprivileged_self_mentions_bypass_user_ids':
       ?instance.suppressUnprivilegedSelfMentionsBypassUserIds,
   'staff_dm_access_user_ids': ?instance.staffDmAccessUserIds,
+  'profile_privacy': ?instance.profilePrivacy,
   'synced_preferences': ?instance.syncedPreferences,
 };

@@ -59,7 +59,6 @@ import '../models/create_voice_region_request.dart';
 import '../models/create_voice_region_response.dart';
 import '../models/create_voice_server_request.dart';
 import '../models/create_voice_server_response.dart';
-import '../models/csam_evidence_package_response.dart';
 import '../models/delete_all_user_messages_request.dart';
 import '../models/delete_all_user_messages_response.dart';
 import '../models/delete_api_key_response.dart';
@@ -101,8 +100,6 @@ import '../models/index_refresh_status_response.dart';
 import '../models/instance_config_response.dart';
 import '../models/instance_config_update_request.dart';
 import '../models/kick_guild_member_request.dart';
-import '../models/legal_hold_request.dart';
-import '../models/legal_hold_response.dart';
 import '../models/limit_config_get_response.dart';
 import '../models/limit_config_update_request.dart';
 import '../models/list_admin_api_key_response.dart';
@@ -260,7 +257,7 @@ abstract class AdminApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/admin/applications/list-by-owner')
-  Future<ListUserApplicationsResponse> listUserApplications({
+  Future<ListUserApplicationsResponse> adminListUserApplications({
     @Body() required ListUserApplicationsRequest body,
   });
 
@@ -882,7 +879,9 @@ abstract class AdminApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/admin/guilds/ban-member')
-  Future<void> banGuildMember({@Body() required BanGuildMemberRequest body});
+  Future<void> adminBanGuildMember({
+    @Body() required BanGuildMemberRequest body,
+  });
 
   /// Clear guild fields.
   ///
@@ -900,7 +899,7 @@ abstract class AdminApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/admin/guilds/delete')
-  Future<SuccessResponse> deleteGuild({
+  Future<SuccessResponse> adminDeleteGuild({
     @Body() required DeleteGuildRequest body,
   });
 
@@ -928,7 +927,7 @@ abstract class AdminApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/admin/guilds/list-members')
-  Future<ListGuildMembersResponse> listGuildMembers({
+  Future<ListGuildMembersResponse> adminListGuildMembers({
     @Body() required ListGuildMembersRequest body,
   });
 
@@ -978,7 +977,7 @@ abstract class AdminApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/admin/guilds/transfer-ownership')
-  Future<GuildUpdateResponse> transferGuildOwnership({
+  Future<GuildUpdateResponse> adminTransferGuildOwnership({
     @Body() required TransferGuildOwnershipRequest body,
   });
 
@@ -1028,7 +1027,7 @@ abstract class AdminApi {
   ///
   /// [guildId] - The ID of the guild.
   @GET('/admin/guilds/{guild_id}/emojis')
-  Future<ListGuildEmojisResponse> listGuildEmojis({
+  Future<ListGuildEmojisResponse> adminListGuildEmojis({
     @Path('guild_id') required SnowflakeType guildId,
   });
 
@@ -1038,7 +1037,7 @@ abstract class AdminApi {
   ///
   /// [guildId] - The ID of the guild.
   @GET('/admin/guilds/{guild_id}/stickers')
-  Future<ListGuildStickersResponse> listGuildStickers({
+  Future<ListGuildStickersResponse> adminListGuildStickers({
     @Path('guild_id') required SnowflakeType guildId,
   });
 
@@ -1124,7 +1123,7 @@ abstract class AdminApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/admin/messages/delete')
-  Future<DeleteMessageResponse> deleteMessage({
+  Future<DeleteMessageResponse> adminDeleteMessage({
     @Body() required DeleteMessageRequest body,
   });
 
@@ -1238,49 +1237,6 @@ abstract class AdminApi {
     @Path('report_id') required String reportId,
   });
 
-  /// Get CSAM evidence package status.
-  ///
-  /// Retrieve CSAM evidence package metadata and a presigned download URL when evidence exists for the report.
-  ///
-  /// [reportId] - The report id.
-  @GET('/admin/reports/{report_id}/evidence')
-  Future<CsamEvidencePackageResponse> getCsamEvidencePackage({
-    @Path('report_id') required String reportId,
-  });
-
-  /// Get legal hold status.
-  ///
-  /// Retrieve the current legal hold status of a report. Indicates whether evidence is preserved for legal proceedings and the hold expiration date if set.
-  ///
-  /// [reportId] - The report id.
-  @GET('/admin/reports/{report_id}/legal-hold')
-  Future<LegalHoldResponse> getLegalHoldStatus({
-    @Path('report_id') required String reportId,
-  });
-
-  /// Set legal hold on evidence.
-  ///
-  /// Place a legal hold on report evidence to prevent automatic deletion. Used for compliance with legal investigations or regulatory requirements. Optionally specify an expiration date.
-  ///
-  /// [reportId] - The report id.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @POST('/admin/reports/{report_id}/legal-hold')
-  Future<LegalHoldResponse> setLegalHoldOnEvidence({
-    @Path('report_id') required String reportId,
-    @Body() required LegalHoldRequest body,
-  });
-
-  /// Release legal hold on evidence.
-  ///
-  /// Remove a legal hold on a report. Evidence becomes eligible for automatic deletion per the retention policy. Used after legal matters are resolved.
-  ///
-  /// [reportId] - The report id.
-  @DELETE('/admin/reports/{report_id}/legal-hold')
-  Future<LegalHoldResponse> releaseLegalHoldOnEvidence({
-    @Path('report_id') required String reportId,
-  });
-
   /// Refresh search index.
   ///
   /// Trigger full or partial search index rebuild. Creates background job to reindex guilds and users. Returns job ID for status tracking. Requires GUILD_LOOKUP permission.
@@ -1353,7 +1309,7 @@ abstract class AdminApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/admin/users/cancel-bulk-message-deletion')
-  Future<UserMutationResponse> cancelBulkMessageDeletion({
+  Future<UserMutationResponse> adminCancelBulkMessageDeletion({
     @Body() required CancelBulkMessageDeletionRequest body,
   });
 
@@ -1481,7 +1437,7 @@ abstract class AdminApi {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/admin/users/list-relationships')
-  Future<ListUserRelationshipsResponse> listUserRelationships({
+  Future<ListUserRelationshipsResponse> adminListUserRelationships({
     @Body() required ListUserRelationshipsRequest body,
   });
 

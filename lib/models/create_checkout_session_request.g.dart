@@ -32,6 +32,7 @@ CreateCheckoutSessionRequest _$CreateCheckoutSessionRequestFromJson(
         (v) =>
             v == null ? null : CheckoutPaymentMethodEnum.fromJson(v as String),
       ),
+      isBusiness: $checkedConvert('is_business', (v) => v as bool?),
     );
     return val;
   },
@@ -42,6 +43,7 @@ CreateCheckoutSessionRequest _$CreateCheckoutSessionRequestFromJson(
     'euWithdrawalWaiverAccepted': 'eu_withdrawal_waiver_accepted',
     'pricingMode': 'pricing_mode',
     'paymentMethod': 'payment_method',
+    'isBusiness': 'is_business',
   },
 );
 
@@ -54,4 +56,5 @@ Map<String, dynamic> _$CreateCheckoutSessionRequestToJson(
   'eu_withdrawal_waiver_accepted': ?instance.euWithdrawalWaiverAccepted,
   'pricing_mode': ?instance.pricingMode,
   'payment_method': ?instance.paymentMethod,
+  'is_business': ?instance.isBusiness,
 };

@@ -5,6 +5,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'gateway_rollout_mode_enum.dart';
+import 'voice_e2_ee_scope_enum.dart';
 
 part 'gateway_rollout_config_response.g.dart';
 
@@ -23,6 +24,7 @@ class GatewayRolloutConfigResponse {
     this.rpcRequestTimeoutMs,
     this.maxConcurrentSessionStarts,
     this.maxConcurrentGuildStarts,
+    this.voiceE2eeScope,
   });
 
   factory GatewayRolloutConfigResponse.fromJson(Map<String, Object?> json) =>
@@ -52,6 +54,8 @@ class GatewayRolloutConfigResponse {
   final int? maxConcurrentSessionStarts;
   @JsonKey(includeIfNull: false, name: 'max_concurrent_guild_starts')
   final int? maxConcurrentGuildStarts;
+  @JsonKey(includeIfNull: false, name: 'voice_e2ee_scope')
+  final VoiceE2EeScopeEnum? voiceE2eeScope;
 
   Map<String, Object?> toJson() => _$GatewayRolloutConfigResponseToJson(this);
 }

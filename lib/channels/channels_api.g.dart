@@ -740,7 +740,7 @@ class _ChannelsApi implements ChannelsApi {
   }
 
   @override
-  Future<void> deleteMessage2({
+  Future<void> deleteMessage({
     required String channelId,
     required String messageId,
   }) async {

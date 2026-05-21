@@ -89,6 +89,7 @@ import '../models/user_settings_update_request.dart';
 import '../models/user_tag_check_response.dart';
 import '../models/user_update_with_verification_request.dart';
 import '../models/username_type.dart';
+import '../models/voice_activity_sharing_update_request.dart';
 import '../models/web_authn_challenge_response.dart';
 import '../models/web_authn_credential_list_response.dart';
 import '../models/web_authn_credential_update_request.dart';
@@ -425,7 +426,7 @@ abstract class UsersApi {
   ///
   /// Cancels an in-progress bulk message deletion request. Can only be used if the deletion has not yet completed. Returns success status.
   @DELETE('/users/@me/messages/delete')
-  Future<SuccessResponse> cancelBulkMessageDeletion2();
+  Future<SuccessResponse> cancelBulkMessageDeletion();
 
   /// Get backup codes for multi-factor authentication.
   ///
@@ -694,7 +695,7 @@ abstract class UsersApi {
   ///
   /// Retrieves all relationships for the current user, including friends, friend requests (incoming and outgoing), and blocked users. Returns list of relationship objects with type and metadata.
   @GET('/users/@me/relationships')
-  Future<List<RelationshipResponse>> listUserRelationships2();
+  Future<List<RelationshipResponse>> listUserRelationships();
 
   /// Send friend request by tag.
   ///
@@ -888,6 +889,16 @@ abstract class UsersApi {
   @PATCH('/users/@me/settings')
   Future<UserSettingsResponse> updateCurrentUserSettings({
     @Body() required UserSettingsUpdateRequest body,
+  });
+
+  /// Update voice activity sharing default and apply to all friends.
+  ///
+  /// Sets the default share_voice_activity flag for the current user and rewrites every existing friend relationship to the new value. Dispatches RELATIONSHIP_UPDATE to both parties of each friendship plus USER_UPDATE and USER_SETTINGS_UPDATE for the caller. Enforces a 24-hour cooldown tracked via the user's last_voice_activity_sharing_change_at field. Returns the updated user.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @PUT('/users/@me/settings/voice-activity-sharing')
+  Future<UserPrivateResponse> updateVoiceActivitySharingDefault({
+    @Body() required VoiceActivitySharingUpdateRequest body,
   });
 
   /// List sudo multi-factor authentication methods.

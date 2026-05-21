@@ -18,6 +18,7 @@ class CreateCheckoutSessionRequest {
     this.euWithdrawalWaiverAccepted,
     this.pricingMode,
     this.paymentMethod,
+    this.isBusiness,
   });
 
   factory CreateCheckoutSessionRequest.fromJson(Map<String, Object?> json) =>
@@ -42,6 +43,10 @@ class CreateCheckoutSessionRequest {
   final PricingModeEnum? pricingMode;
   @JsonKey(includeIfNull: false, name: 'payment_method')
   final CheckoutPaymentMethodEnum? paymentMethod;
+
+  /// Whether the purchase is for a business. When true, Stripe Checkout requires a billing address (needed for tax invoicing). When false or omitted, billing address collection is left to Stripe (auto).
+  @JsonKey(includeIfNull: false, name: 'is_business')
+  final bool? isBusiness;
 
   Map<String, Object?> toJson() => _$CreateCheckoutSessionRequestToJson(this);
 }
