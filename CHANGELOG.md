@@ -1,3 +1,7 @@
+## V2.0.0
+
+- Updated to latest perduction OpenAPI Spec.
+
 ## V1.3.0
 
 - Improved the generation script to correctly mark fields as nullable when defined as nullable in the OpenAPI specification. Previously, fields using `$ref` types within `anyOf` nullable patterns were generated as non-nullable.

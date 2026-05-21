@@ -12,8 +12,7 @@ dependencies:
   json_annotation: "^4.9.0"
   retrofit: "^4.4.1"
   web_socket_channel: "^3.0.1"
-  zstd_dart:
-    path: zstd_dart
+  zstd_dart: ^1.0.0
 
 dev_dependencies:
   json_serializable: "^6.9.0"
