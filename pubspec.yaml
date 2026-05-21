@@ -17,6 +17,6 @@ dependencies:
 dev_dependencies:
   json_serializable: "^6.9.0"
   retrofit_generator: ^10.2.3
-  openapi_sdk_gen: ^2.1.0
+  openapi_sdk_gen: ^2.2.0
   build_runner: any
   test: "^1.16.0"
