@@ -59,7 +59,7 @@ class GatewayConnection {
 
   final EventParser _eventParser = const EventParser();
   final SessionManager _session = SessionManager();
-  late HeartbeatManager _heartbeat;
+  HeartbeatManager? _heartbeat;
 
   WebSocketChannel? _channel;
   StreamSubscription<dynamic>? _subscription;
@@ -73,6 +73,7 @@ class GatewayConnection {
   int _reconnectAttempts = 0;
   bool _disposed = false;
   String? _gatewayUrl;
+  Timer? _reconnectTimer;
 
   /// Stream of parsed gateway events.
   Stream<GatewayEvent> get events => _eventController.stream;
@@ -89,14 +90,13 @@ class GatewayConnection {
   /// opens a WebSocket connection.
   Future<void> connect() async {
     if (_disposed) return;
-
+    _cancelReconnectTimer();
+    await _tearDownSocket();
     _setState(GatewayState.connecting);
-
-    _heartbeat = HeartbeatManager(
+    _heartbeat ??= HeartbeatManager(
       onSendHeartbeat: _sendHeartbeat,
       onTimeout: _onHeartbeatTimeout,
     );
-
     try {
       _gatewayUrl = _gatewayUrlOverride ?? await _fetchGatewayUrl();
       await _openWebSocket(_gatewayUrl!);
@@ -106,10 +106,23 @@ class GatewayConnection {
     }
   }
 
+  /// Cancels pending backoff and reconnects immediately.
+  Future<void> reconnectNow() async {
+    if (_disposed) return;
+    _cancelReconnectTimer();
+    _reconnectAttempts = 0;
+    await _tearDownSocket();
+    if (_state == GatewayState.failed) {
+      _setState(GatewayState.disconnected);
+    }
+    await connect();
+  }
+
   /// Disconnects from the gateway gracefully.
   Future<void> disconnect() async {
+    _cancelReconnectTimer();
     _reconnectAttempts = 0;
-    _heartbeat.stop();
+    _heartbeat?.stop();
     await _subscription?.cancel();
     _subscription = null;
     await _channel?.sink.close(1000);
@@ -123,6 +136,7 @@ class GatewayConnection {
   /// After calling this, the instance cannot be reused.
   Future<void> dispose() async {
     _disposed = true;
+    _cancelReconnectTimer();
     await disconnect();
     await _eventController.close();
     await _stateController.close();
@@ -273,7 +287,7 @@ class GatewayConnection {
       case GatewayOpcodes.hello:
         _handleHello(d as Map<String, dynamic>);
       case GatewayOpcodes.heartbeatAck:
-        _heartbeat.ackReceived();
+        _heartbeat?.ackReceived();
         _session.updateLastAck();
       case GatewayOpcodes.dispatch:
         if (d is Map<String, dynamic>) {
@@ -297,13 +311,14 @@ class GatewayConnection {
   void _onDone() {
     final closeCode = _channel?.closeCode;
 
-    _heartbeat.stop();
+    _heartbeat?.stop();
 
     if (closeCode != null) {
       final code = GatewayCloseCode.fromCode(closeCode);
       if (code != null && code.isFatal) {
         _session.clear();
-        _setState(GatewayState.disconnected);
+        _cancelReconnectTimer();
+        _setState(GatewayState.failed);
         return;
       }
     }
@@ -319,7 +334,7 @@ class GatewayConnection {
 
   void _handleHello(Map<String, dynamic> data) {
     final intervalMs = data['heartbeat_interval'] as int;
-    _heartbeat.start(Duration(milliseconds: intervalMs));
+    _heartbeat!.start(Duration(milliseconds: intervalMs));
 
     if (_session.canResume) {
       _sendResume();
@@ -422,25 +437,35 @@ class GatewayConnection {
   }
 
   void _closeAndReconnect() {
-    _heartbeat.stop();
-    _subscription?.cancel();
-    _subscription = null;
-    _channel?.sink.close(4000);
-    _channel = null;
+    unawaited(_tearDownSocket());
     _scheduleReconnect();
+  }
+
+  Future<void> _tearDownSocket() async {
+    _heartbeat?.stop();
+    await _subscription?.cancel();
+    _subscription = null;
+    try {
+      await _channel?.sink.close(4000);
+    } catch (_) {}
+    _channel = null;
+  }
+
+  void _cancelReconnectTimer() {
+    _reconnectTimer?.cancel();
+    _reconnectTimer = null;
   }
 
   void _scheduleReconnect() {
     if (_disposed) return;
+    _cancelReconnectTimer();
     _setState(GatewayState.reconnecting);
-
-    // Exponential backoff: 1s, 2s, 4s, 8s, 16s, 32s cap.
     final delaySec = min(1 << _reconnectAttempts, 32);
     _reconnectAttempts++;
-
-    Future<void>.delayed(Duration(seconds: delaySec), () {
+    _reconnectTimer = Timer(Duration(seconds: delaySec), () {
+      _reconnectTimer = null;
       if (!_disposed) {
-        connect();
+        unawaited(connect());
       }
     });
   }
