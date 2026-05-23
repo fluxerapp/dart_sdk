@@ -24,6 +24,7 @@ import 'package:zstd_dart/zstd_dart.dart';
 ///
 /// Uses zstd compression by default for binary WebSocket frames.
 class GatewayConnection {
+  static const Duration webSocketReadyTimeout = Duration(seconds: 20);
   GatewayConnection({
     required String token,
     required Dio dio,
@@ -74,6 +75,7 @@ class GatewayConnection {
   bool _disposed = false;
   String? _gatewayUrl;
   Timer? _reconnectTimer;
+  int _connectGeneration = 0;
 
   /// Stream of parsed gateway events.
   Stream<GatewayEvent> get events => _eventController.stream;
@@ -90,8 +92,12 @@ class GatewayConnection {
   /// opens a WebSocket connection.
   Future<void> connect() async {
     if (_disposed) return;
+    final int generation = ++_connectGeneration;
     _cancelReconnectTimer();
     await _tearDownSocket();
+    if (_disposed || generation != _connectGeneration) {
+      return;
+    }
     _setState(GatewayState.connecting);
     _heartbeat ??= HeartbeatManager(
       onSendHeartbeat: _sendHeartbeat,
@@ -99,8 +105,14 @@ class GatewayConnection {
     );
     try {
       _gatewayUrl = _gatewayUrlOverride ?? await _fetchGatewayUrl();
-      await _openWebSocket(_gatewayUrl!);
+      if (generation != _connectGeneration) {
+        return;
+      }
+      await _openWebSocket(_gatewayUrl!, generation: generation);
     } catch (e) {
+      if (generation != _connectGeneration) {
+        return;
+      }
       _setState(GatewayState.disconnected);
       _scheduleReconnect();
     }
@@ -109,11 +121,15 @@ class GatewayConnection {
   /// Cancels pending backoff and reconnects immediately.
   Future<void> reconnectNow() async {
     if (_disposed) return;
+    _connectGeneration++;
     _cancelReconnectTimer();
     _reconnectAttempts = 0;
     await _tearDownSocket();
     if (_state == GatewayState.failed) {
       _setState(GatewayState.disconnected);
+    }
+    if (_disposed) {
+      return;
     }
     await connect();
   }
@@ -247,11 +263,22 @@ class GatewayConnection {
     return response.url;
   }
 
-  Future<void> _openWebSocket(String url) async {
+  Future<void> _openWebSocket(String url, {required int generation}) async {
     final wsUrl = Uri.parse('$url?v=1&encoding=json&compress=$_compress');
     _channel = WebSocketChannel.connect(wsUrl);
-    await _channel!.ready;
-
+    await _channel!.ready.timeout(
+      webSocketReadyTimeout,
+      onTimeout: () {
+        throw TimeoutException(
+          'Gateway WebSocket handshake timed out after '
+          '${webSocketReadyTimeout.inSeconds}s',
+        );
+      },
+    );
+    if (generation != _connectGeneration) {
+      await _tearDownSocket();
+      return;
+    }
     _subscription = _channel!.stream.listen(
       _onMessage,
       onError: _onError,
@@ -445,10 +472,16 @@ class GatewayConnection {
     _heartbeat?.stop();
     await _subscription?.cancel();
     _subscription = null;
-    try {
-      await _channel?.sink.close(4000);
-    } catch (_) {}
+    final WebSocketChannel? channel = _channel;
     _channel = null;
+    if (channel == null) {
+      return;
+    }
+    try {
+      await channel.sink
+          .close(4000)
+          .timeout(const Duration(seconds: 3), onTimeout: () {});
+    } catch (_) {}
   }
 
   void _cancelReconnectTimer() {
