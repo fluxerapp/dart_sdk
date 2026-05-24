@@ -365,10 +365,15 @@ class GuildUpdateEvent extends GatewayEvent {
 }
 
 class GuildDeleteEvent extends GatewayEvent {
-  const GuildDeleteEvent({required this.guildId, this.unavailable = false});
+  const GuildDeleteEvent({
+    required this.guildId,
+    this.unavailable = false,
+    this.unavailableHidden = false,
+  });
 
   final String guildId;
   final bool unavailable;
+  final bool unavailableHidden;
 }
 
 class GuildRoleCreateEvent extends GatewayEvent {
