@@ -21,6 +21,12 @@ part 'premium_api.g.dart';
 abstract class PremiumApi {
   factory PremiumApi(Dio dio, {String? baseUrl}) = _PremiumApi;
 
+  /// Cancel pending subscription billing cycle change.
+  ///
+  /// Cancels the authenticated user's pending premium billing cycle change without cancelling the active subscription.
+  @POST('/premium/cancel-pending-subscription-change')
+  Future<void> cancelPendingSubscriptionChange();
+
   /// Cancel subscription.
   ///
   /// Cancels the authenticated user's premium subscription at the end of the current billing period.
@@ -88,7 +94,7 @@ abstract class PremiumApi {
 
   /// Get premium state.
   ///
-  /// Returns the authenticated user actual premium entitlement, effective perk state, and mirrored billing data without querying Stripe.
+  /// Returns the authenticated user actual premium entitlement, effective perk state, and mirrored billing data. When Stripe is enabled, missing payment-method mirror data may be repaired lazily.
   @GET('/premium/state')
   Future<PremiumStateResponse> getPremiumState({
     @Query('country_code') String? countryCode,

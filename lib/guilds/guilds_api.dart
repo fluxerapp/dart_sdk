@@ -17,6 +17,7 @@ import '../models/guild_create_request.dart';
 import '../models/guild_delete_request.dart';
 import '../models/guild_emoji_bulk_create_request.dart';
 import '../models/guild_emoji_bulk_create_response.dart';
+import '../models/guild_emoji_clone_request.dart';
 import '../models/guild_emoji_create_request.dart';
 import '../models/guild_emoji_response.dart';
 import '../models/guild_emoji_update_request.dart';
@@ -33,6 +34,7 @@ import '../models/guild_role_response.dart';
 import '../models/guild_role_update_request.dart';
 import '../models/guild_sticker_bulk_create_request.dart';
 import '../models/guild_sticker_bulk_create_response.dart';
+import '../models/guild_sticker_clone_request.dart';
 import '../models/guild_sticker_create_request.dart';
 import '../models/guild_sticker_response.dart';
 import '../models/guild_sticker_update_request.dart';
@@ -232,6 +234,19 @@ abstract class GuildsApi {
   Future<GuildEmojiBulkCreateResponse> bulkCreateGuildEmojis({
     @Path('guild_id') required SnowflakeType guildId,
     @Body() required GuildEmojiBulkCreateRequest body,
+  });
+
+  /// Clone guild emoji.
+  ///
+  /// Clone an existing emoji into this guild by referencing its id. Copies the source image server-side, so the client does not need to re-upload it. Requires manage_emojis permission in the target guild, and the source guild must permit cloning.
+  ///
+  /// [guildId] - The ID of the guild.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/guilds/{guild_id}/emojis/clone')
+  Future<GuildEmojiResponse> cloneGuildEmoji({
+    @Path('guild_id') required SnowflakeType guildId,
+    @Body() required GuildEmojiCloneRequest body,
   });
 
   /// Update guild emoji.
@@ -510,6 +525,19 @@ abstract class GuildsApi {
     @Body() required GuildStickerBulkCreateRequest body,
   });
 
+  /// Clone guild sticker.
+  ///
+  /// Clone an existing sticker into this guild by referencing its id. Copies the source image server-side, so the client does not need to re-upload it. Requires manage_emojis permission in the target guild, and the source guild must permit cloning.
+  ///
+  /// [guildId] - The ID of the guild.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/guilds/{guild_id}/stickers/clone')
+  Future<GuildStickerResponse> cloneGuildSticker({
+    @Path('guild_id') required SnowflakeType guildId,
+    @Body() required GuildStickerCloneRequest body,
+  });
+
   /// Update guild sticker.
   ///
   /// Update guild sticker. Requires manage_emojis permission. Updates sticker name, description, or tags.
@@ -597,8 +625,8 @@ abstract class GuildsApi {
   @DELETE('/users/@me/guilds/{guild_id}')
   Future<void> leaveGuild({
     @Path('guild_id') required SnowflakeType guildId,
+    @Body() required SudoVerificationSchema body,
     @Query('delete_messages') String? deleteMessages,
-    @Body() SudoVerificationSchema? body,
   });
 
   /// Bulk delete my messages in guild.

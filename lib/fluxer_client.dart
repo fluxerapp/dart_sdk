@@ -5,7 +5,6 @@
 import 'package:dio/dio.dart' hide Headers;
 
 import 'instance/instance_api.dart';
-import 'admin/admin_api.dart';
 import 'o_auth2/o_auth2_api.dart';
 import 'auth/auth_api.dart';
 import 'channels/channels_api.dart';
@@ -25,6 +24,7 @@ import 'read_states/read_states_api.dart';
 import 'reports/reports_api.dart';
 import 'search/search_api.dart';
 import 'stickers/stickers_api.dart';
+import 'debug/debug_api.dart';
 import 'users/users_api.dart';
 import 'connections/connections_api.dart';
 import 'themes/themes_api.dart';
@@ -32,7 +32,7 @@ import 'voice/voice_api.dart';
 
 /// Fluxer API `v1.0.0`.
 ///
-/// API for Fluxer, a free and open source instant messaging and VoIP platform built for friends, groups, and communities.
+/// API for Fluxer, a free and open source instant messaging and VoIP chat app built for friends, groups, and communities.
 class FluxerClient {
   FluxerClient(Dio dio, {String? baseUrl}) : _dio = dio, _baseUrl = baseUrl;
 
@@ -42,7 +42,6 @@ class FluxerClient {
   static String get version => '1.0.0';
 
   InstanceApi? _instance;
-  AdminApi? _admin;
   OAuth2Api? _oAuth2;
   AuthApi? _auth;
   ChannelsApi? _channels;
@@ -62,6 +61,7 @@ class FluxerClient {
   ReportsApi? _reports;
   SearchApi? _search;
   StickersApi? _stickers;
+  DebugApi? _debug;
   UsersApi? _users;
   ConnectionsApi? _connections;
   ThemesApi? _themes;
@@ -69,8 +69,6 @@ class FluxerClient {
 
   InstanceApi get instance =>
       _instance ??= InstanceApi(_dio, baseUrl: _baseUrl);
-
-  AdminApi get admin => _admin ??= AdminApi(_dio, baseUrl: _baseUrl);
 
   OAuth2Api get oAuth2 => _oAuth2 ??= OAuth2Api(_dio, baseUrl: _baseUrl);
 
@@ -116,6 +114,8 @@ class FluxerClient {
 
   StickersApi get stickers =>
       _stickers ??= StickersApi(_dio, baseUrl: _baseUrl);
+
+  DebugApi get debug => _debug ??= DebugApi(_dio, baseUrl: _baseUrl);
 
   UsersApi get users => _users ??= UsersApi(_dio, baseUrl: _baseUrl);
 

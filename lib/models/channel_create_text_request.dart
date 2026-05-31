@@ -22,6 +22,7 @@ class ChannelCreateTextRequest {
     this.parentId,
     this.bitrate,
     this.userLimit,
+    this.voiceConnectionLimit,
     this.permissionOverwrites,
     this.nsfw,
     this.nsfwOverride,
@@ -51,6 +52,10 @@ class ChannelCreateTextRequest {
   /// Maximum users allowed in voice channel (0-99, 0 means unlimited)
   @JsonKey(includeIfNull: false, name: 'user_limit')
   final int? userLimit;
+
+  /// Maximum active voice connections allowed per user in a voice channel (1-100)
+  @JsonKey(includeIfNull: false, name: 'voice_connection_limit')
+  final int? voiceConnectionLimit;
 
   /// Permission overwrites for roles and members
   @JsonKey(includeIfNull: false, name: 'permission_overwrites')

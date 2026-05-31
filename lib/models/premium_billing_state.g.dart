@@ -23,6 +23,12 @@ PremiumBillingState _$PremiumBillingStateFromJson(
           v as Map<String, dynamic>,
         ),
       ),
+      pendingSubscriptionChange: $checkedConvert(
+        'pending_subscription_change',
+        (v) => PendingSubscriptionChangeResponse.fromJson(
+          v as Map<String, dynamic>,
+        ),
+      ),
       subscription: $checkedConvert(
         'subscription',
         (v) => v == null
@@ -64,6 +70,7 @@ PremiumBillingState _$PremiumBillingStateFromJson(
   fieldKeyMap: const {
     'stripeCustomerId': 'stripe_customer_id',
     'currentSubscriptionPrice': 'current_subscription_price',
+    'pendingSubscriptionChange': 'pending_subscription_change',
     'invoicesHasMore': 'invoices_has_more',
     'paymentMethods': 'payment_methods',
     'refundEligibility': 'refund_eligibility',
@@ -75,6 +82,7 @@ Map<String, dynamic> _$PremiumBillingStateToJson(
 ) => <String, dynamic>{
   'stripe_customer_id': instance.stripeCustomerId,
   'current_subscription_price': instance.currentSubscriptionPrice,
+  'pending_subscription_change': instance.pendingSubscriptionChange,
   'subscription': instance.subscription,
   'invoices': instance.invoices,
   'invoices_has_more': instance.invoicesHasMore,

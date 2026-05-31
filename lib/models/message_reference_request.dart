@@ -4,6 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+import 'int32_type.dart';
 import 'message_reference_type.dart';
 import 'snowflake_type.dart';
 
@@ -16,6 +17,8 @@ class MessageReferenceRequest {
     this.channelId,
     this.guildId,
     this.type,
+    this.attachmentIds,
+    this.embedIndices,
   });
 
   factory MessageReferenceRequest.fromJson(Map<String, Object?> json) =>
@@ -31,6 +34,14 @@ class MessageReferenceRequest {
   /// Type of reference (0 = default, 1 = forward)
   @JsonKey(includeIfNull: false)
   final MessageReferenceType? type;
+
+  /// Optional attachment IDs to include when forwarding only selected media
+  @JsonKey(includeIfNull: false, name: 'attachment_ids')
+  final List<SnowflakeType>? attachmentIds;
+
+  /// Optional embed indices to include when forwarding only selected media
+  @JsonKey(includeIfNull: false, name: 'embed_indices')
+  final List<Int32Type>? embedIndices;
 
   Map<String, Object?> toJson() => _$MessageReferenceRequestToJson(this);
 }

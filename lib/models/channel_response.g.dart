@@ -25,6 +25,10 @@ ChannelResponse _$ChannelResponseFromJson(
       parentId: $checkedConvert('parent_id', (v) => v as String?),
       bitrate: $checkedConvert('bitrate', (v) => (v as num?)?.toInt()),
       userLimit: $checkedConvert('user_limit', (v) => (v as num?)?.toInt()),
+      voiceConnectionLimit: $checkedConvert(
+        'voice_connection_limit',
+        (v) => (v as num?)?.toInt(),
+      ),
       rtcRegion: $checkedConvert('rtc_region', (v) => v as String?),
       lastMessageId: $checkedConvert('last_message_id', (v) => v as String?),
       lastPinTimestamp: $checkedConvert(
@@ -77,6 +81,7 @@ ChannelResponse _$ChannelResponseFromJson(
     'ownerId': 'owner_id',
     'parentId': 'parent_id',
     'userLimit': 'user_limit',
+    'voiceConnectionLimit': 'voice_connection_limit',
     'rtcRegion': 'rtc_region',
     'lastMessageId': 'last_message_id',
     'lastPinTimestamp': 'last_pin_timestamp',
@@ -102,6 +107,7 @@ Map<String, dynamic> _$ChannelResponseToJson(ChannelResponse instance) =>
       'parent_id': ?instance.parentId,
       'bitrate': ?instance.bitrate,
       'user_limit': ?instance.userLimit,
+      'voice_connection_limit': ?instance.voiceConnectionLimit,
       'rtc_region': ?instance.rtcRegion,
       'last_message_id': ?instance.lastMessageId,
       'last_pin_timestamp': ?instance.lastPinTimestamp?.toIso8601String(),

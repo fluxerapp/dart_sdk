@@ -22,6 +22,10 @@ ChannelUpdateRequest0 _$ChannelUpdateRequest0FromJson(
       parentId: $checkedConvert('parent_id', (v) => v as String?),
       bitrate: $checkedConvert('bitrate', (v) => (v as num?)?.toInt()),
       userLimit: $checkedConvert('user_limit', (v) => (v as num?)?.toInt()),
+      voiceConnectionLimit: $checkedConvert(
+        'voice_connection_limit',
+        (v) => (v as num?)?.toInt(),
+      ),
       permissionOverwrites: $checkedConvert(
         'permission_overwrites',
         (v) => (v as List<dynamic>?)
@@ -66,6 +70,7 @@ ChannelUpdateRequest0 _$ChannelUpdateRequest0FromJson(
   fieldKeyMap: const {
     'parentId': 'parent_id',
     'userLimit': 'user_limit',
+    'voiceConnectionLimit': 'voice_connection_limit',
     'permissionOverwrites': 'permission_overwrites',
     'nsfwOverride': 'nsfw_override',
     'contentWarningLevel': 'content_warning_level',
@@ -84,6 +89,7 @@ Map<String, dynamic> _$ChannelUpdateRequest0ToJson(
   'parent_id': instance.parentId,
   'bitrate': instance.bitrate,
   'user_limit': instance.userLimit,
+  'voice_connection_limit': instance.voiceConnectionLimit,
   'permission_overwrites': instance.permissionOverwrites,
   'nsfw': instance.nsfw,
   'nsfw_override': instance.nsfwOverride,
@@ -110,6 +116,10 @@ ChannelUpdateRequest2 _$ChannelUpdateRequest2FromJson(
       parentId: $checkedConvert('parent_id', (v) => v as String?),
       bitrate: $checkedConvert('bitrate', (v) => (v as num?)?.toInt()),
       userLimit: $checkedConvert('user_limit', (v) => (v as num?)?.toInt()),
+      voiceConnectionLimit: $checkedConvert(
+        'voice_connection_limit',
+        (v) => (v as num?)?.toInt(),
+      ),
       permissionOverwrites: $checkedConvert(
         'permission_overwrites',
         (v) => (v as List<dynamic>?)
@@ -154,6 +164,7 @@ ChannelUpdateRequest2 _$ChannelUpdateRequest2FromJson(
   fieldKeyMap: const {
     'parentId': 'parent_id',
     'userLimit': 'user_limit',
+    'voiceConnectionLimit': 'voice_connection_limit',
     'permissionOverwrites': 'permission_overwrites',
     'nsfwOverride': 'nsfw_override',
     'contentWarningLevel': 'content_warning_level',
@@ -172,6 +183,7 @@ Map<String, dynamic> _$ChannelUpdateRequest2ToJson(
   'parent_id': instance.parentId,
   'bitrate': instance.bitrate,
   'user_limit': instance.userLimit,
+  'voice_connection_limit': instance.voiceConnectionLimit,
   'permission_overwrites': instance.permissionOverwrites,
   'nsfw': instance.nsfw,
   'nsfw_override': instance.nsfwOverride,
@@ -198,6 +210,10 @@ ChannelUpdateRequest4 _$ChannelUpdateRequest4FromJson(
       parentId: $checkedConvert('parent_id', (v) => v as String?),
       bitrate: $checkedConvert('bitrate', (v) => (v as num?)?.toInt()),
       userLimit: $checkedConvert('user_limit', (v) => (v as num?)?.toInt()),
+      voiceConnectionLimit: $checkedConvert(
+        'voice_connection_limit',
+        (v) => (v as num?)?.toInt(),
+      ),
       permissionOverwrites: $checkedConvert(
         'permission_overwrites',
         (v) => (v as List<dynamic>?)
@@ -243,6 +259,7 @@ ChannelUpdateRequest4 _$ChannelUpdateRequest4FromJson(
   fieldKeyMap: const {
     'parentId': 'parent_id',
     'userLimit': 'user_limit',
+    'voiceConnectionLimit': 'voice_connection_limit',
     'permissionOverwrites': 'permission_overwrites',
     'nsfwOverride': 'nsfw_override',
     'contentWarningLevel': 'content_warning_level',
@@ -261,6 +278,7 @@ Map<String, dynamic> _$ChannelUpdateRequest4ToJson(
   'parent_id': instance.parentId,
   'bitrate': instance.bitrate,
   'user_limit': instance.userLimit,
+  'voice_connection_limit': instance.voiceConnectionLimit,
   'permission_overwrites': instance.permissionOverwrites,
   'nsfw': instance.nsfw,
   'nsfw_override': instance.nsfwOverride,
@@ -287,6 +305,10 @@ ChannelUpdateRequest998 _$ChannelUpdateRequest998FromJson(
       parentId: $checkedConvert('parent_id', (v) => v as String?),
       bitrate: $checkedConvert('bitrate', (v) => (v as num?)?.toInt()),
       userLimit: $checkedConvert('user_limit', (v) => (v as num?)?.toInt()),
+      voiceConnectionLimit: $checkedConvert(
+        'voice_connection_limit',
+        (v) => (v as num?)?.toInt(),
+      ),
       permissionOverwrites: $checkedConvert(
         'permission_overwrites',
         (v) => (v as List<dynamic>?)
@@ -331,6 +353,7 @@ ChannelUpdateRequest998 _$ChannelUpdateRequest998FromJson(
   fieldKeyMap: const {
     'parentId': 'parent_id',
     'userLimit': 'user_limit',
+    'voiceConnectionLimit': 'voice_connection_limit',
     'permissionOverwrites': 'permission_overwrites',
     'nsfwOverride': 'nsfw_override',
     'contentWarningLevel': 'content_warning_level',
@@ -349,6 +372,7 @@ Map<String, dynamic> _$ChannelUpdateRequest998ToJson(
   'parent_id': instance.parentId,
   'bitrate': instance.bitrate,
   'user_limit': instance.userLimit,
+  'voice_connection_limit': instance.voiceConnectionLimit,
   'permission_overwrites': instance.permissionOverwrites,
   'nsfw': instance.nsfw,
   'nsfw_override': instance.nsfwOverride,

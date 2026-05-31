@@ -23,6 +23,10 @@ ChannelCreateTextRequest _$ChannelCreateTextRequestFromJson(
       parentId: $checkedConvert('parent_id', (v) => v as String?),
       bitrate: $checkedConvert('bitrate', (v) => (v as num?)?.toInt()),
       userLimit: $checkedConvert('user_limit', (v) => (v as num?)?.toInt()),
+      voiceConnectionLimit: $checkedConvert(
+        'voice_connection_limit',
+        (v) => (v as num?)?.toInt(),
+      ),
       permissionOverwrites: $checkedConvert(
         'permission_overwrites',
         (v) => (v as List<dynamic>?)
@@ -49,6 +53,7 @@ ChannelCreateTextRequest _$ChannelCreateTextRequestFromJson(
   fieldKeyMap: const {
     'parentId': 'parent_id',
     'userLimit': 'user_limit',
+    'voiceConnectionLimit': 'voice_connection_limit',
     'permissionOverwrites': 'permission_overwrites',
     'nsfwOverride': 'nsfw_override',
     'contentWarningLevel': 'content_warning_level',
@@ -64,6 +69,7 @@ Map<String, dynamic> _$ChannelCreateTextRequestToJson(
   'parent_id': ?instance.parentId,
   'bitrate': ?instance.bitrate,
   'user_limit': ?instance.userLimit,
+  'voice_connection_limit': ?instance.voiceConnectionLimit,
   'permission_overwrites': ?instance.permissionOverwrites,
   'nsfw': ?instance.nsfw,
   'nsfw_override': ?instance.nsfwOverride,

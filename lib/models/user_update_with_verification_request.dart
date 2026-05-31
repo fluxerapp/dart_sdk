@@ -27,6 +27,8 @@ class UserUpdateWithVerificationRequest {
     this.bio,
     this.pronouns,
     this.accentColor,
+    this.timezone,
+    this.timezonePrivacyFlags,
     this.premiumBadgeHidden,
     this.premiumBadgeMasked,
     this.premiumBadgeTimestampHidden,
@@ -82,6 +84,14 @@ class UserUpdateWithVerificationRequest {
   /// Profile accent color as integer
   @JsonKey(includeIfNull: false, name: 'accent_color')
   final int? accentColor;
+
+  /// Staff-only IANA timezone identifier saved for profile local time. Ignored for non-staff users.
+  @JsonKey(includeIfNull: false)
+  final String? timezone;
+
+  /// Staff-only bitfield controlling who can see the profile timezone. Ignored for non-staff users.
+  @JsonKey(includeIfNull: false, name: 'timezone_privacy_flags')
+  final int? timezonePrivacyFlags;
 
   /// Whether to hide the premium badge
   @JsonKey(includeIfNull: false, name: 'premium_badge_hidden')

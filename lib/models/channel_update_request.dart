@@ -69,6 +69,8 @@ class ChannelUpdateRequest0 extends ChannelUpdateRequest {
   final int? bitrate;
   @JsonKey(name: 'user_limit')
   final int? userLimit;
+  @JsonKey(name: 'voice_connection_limit')
+  final int? voiceConnectionLimit;
   @JsonKey(name: 'permission_overwrites')
   final List<ChannelOverwriteRequest>? permissionOverwrites;
   final bool? nsfw;
@@ -95,6 +97,7 @@ class ChannelUpdateRequest0 extends ChannelUpdateRequest {
     required this.parentId,
     required this.bitrate,
     required this.userLimit,
+    required this.voiceConnectionLimit,
     required this.permissionOverwrites,
     required this.nsfw,
     required this.nsfwOverride,
@@ -125,6 +128,8 @@ class ChannelUpdateRequest2 extends ChannelUpdateRequest {
   final int? bitrate;
   @JsonKey(name: 'user_limit')
   final int? userLimit;
+  @JsonKey(name: 'voice_connection_limit')
+  final int? voiceConnectionLimit;
   @JsonKey(name: 'permission_overwrites')
   final List<ChannelOverwriteRequest>? permissionOverwrites;
   final bool? nsfw;
@@ -151,6 +156,7 @@ class ChannelUpdateRequest2 extends ChannelUpdateRequest {
     required this.parentId,
     required this.bitrate,
     required this.userLimit,
+    required this.voiceConnectionLimit,
     required this.permissionOverwrites,
     required this.nsfw,
     required this.nsfwOverride,
@@ -181,6 +187,8 @@ class ChannelUpdateRequest4 extends ChannelUpdateRequest {
   final int? bitrate;
   @JsonKey(name: 'user_limit')
   final int? userLimit;
+  @JsonKey(name: 'voice_connection_limit')
+  final int? voiceConnectionLimit;
   @JsonKey(name: 'permission_overwrites')
   final List<ChannelOverwriteRequest>? permissionOverwrites;
   final bool? nsfw;
@@ -207,6 +215,7 @@ class ChannelUpdateRequest4 extends ChannelUpdateRequest {
     required this.parentId,
     required this.bitrate,
     required this.userLimit,
+    required this.voiceConnectionLimit,
     required this.permissionOverwrites,
     required this.nsfw,
     required this.nsfwOverride,
@@ -237,6 +246,8 @@ class ChannelUpdateRequest998 extends ChannelUpdateRequest {
   final int? bitrate;
   @JsonKey(name: 'user_limit')
   final int? userLimit;
+  @JsonKey(name: 'voice_connection_limit')
+  final int? voiceConnectionLimit;
   @JsonKey(name: 'permission_overwrites')
   final List<ChannelOverwriteRequest>? permissionOverwrites;
   final bool? nsfw;
@@ -263,6 +274,7 @@ class ChannelUpdateRequest998 extends ChannelUpdateRequest {
     required this.parentId,
     required this.bitrate,
     required this.userLimit,
+    required this.voiceConnectionLimit,
     required this.permissionOverwrites,
     required this.nsfw,
     required this.nsfwOverride,

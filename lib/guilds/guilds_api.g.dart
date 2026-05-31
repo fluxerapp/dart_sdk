@@ -459,6 +459,37 @@ class _GuildsApi implements GuildsApi {
   }
 
   @override
+  Future<GuildEmojiResponse> cloneGuildEmoji({
+    required String guildId,
+    required GuildEmojiCloneRequest body,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<GuildEmojiResponse>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/guilds/${guildId}/emojis/clone',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late GuildEmojiResponse _value;
+    try {
+      _value = GuildEmojiResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<GuildEmojiResponse> updateGuildEmoji({
     required String guildId,
     required String emojiId,
@@ -1052,6 +1083,37 @@ class _GuildsApi implements GuildsApi {
   }
 
   @override
+  Future<GuildStickerResponse> cloneGuildSticker({
+    required String guildId,
+    required GuildStickerCloneRequest body,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<GuildStickerResponse>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/guilds/${guildId}/stickers/clone',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late GuildStickerResponse _value;
+    try {
+      _value = GuildStickerResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<GuildStickerResponse> updateGuildSticker({
     required String guildId,
     required String stickerId,
@@ -1241,8 +1303,8 @@ class _GuildsApi implements GuildsApi {
   @override
   Future<void> leaveGuild({
     required String guildId,
+    required SudoVerificationSchema body,
     String? deleteMessages,
-    SudoVerificationSchema? body,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -1251,7 +1313,7 @@ class _GuildsApi implements GuildsApi {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(body?.toJson() ?? <String, dynamic>{});
+    _data.addAll(body.toJson());
     final _options = _setStreamType<void>(
       Options(method: 'DELETE', headers: _headers, extra: _extra)
           .compose(

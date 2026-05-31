@@ -27,6 +27,11 @@ import '../models/email_change_verify_original_response.dart';
 import '../models/email_token_response.dart';
 import '../models/empty_body_request.dart';
 import '../models/enable_mfa_totp_request.dart';
+import '../models/entrance_sound_library_response.dart';
+import '../models/entrance_sound_rename_request.dart';
+import '../models/entrance_sound_response.dart';
+import '../models/entrance_sound_selection_request.dart';
+import '../models/entrance_sound_upload_request.dart';
 import '../models/friend_request_by_tag_request.dart';
 import '../models/friend_request_create_request.dart';
 import '../models/gift_code_metadata_response.dart';
@@ -299,6 +304,53 @@ abstract class UsersApi {
     @Body() required EmailChangeVerifyOriginalRequest body,
   });
 
+  /// Set the active entrance sound for a scope.
+  ///
+  /// Assigns one of the user's library sounds to a scope (global, guilds, dms, or guild:<id>). Pass sound_id null to clear.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @PUT('/users/@me/entrance-sound-selections')
+  Future<void> setEntranceSoundSelection({
+    @Body() required EntranceSoundSelectionRequest body,
+  });
+
+  /// List the user's entrance sound library.
+  ///
+  /// Returns the saved entrance sounds owned by the user plus the per-scope active selections.
+  @GET('/users/@me/entrance-sounds')
+  Future<EntranceSoundLibraryResponse> listEntranceSounds();
+
+  /// Upload an entrance sound.
+  ///
+  /// Uploads a short audio clip to the user's entrance sound library. Validates format, duration, and size server-side.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/entrance-sounds')
+  Future<EntranceSoundResponse> uploadEntranceSound({
+    @Body() required EntranceSoundUploadRequest body,
+  });
+
+  /// Rename an entrance sound.
+  ///
+  /// Updates the display label for a sound in the user's library. Audio bytes are unchanged.
+  ///
+  /// [soundId] - The sound id.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @PATCH('/users/@me/entrance-sounds/{sound_id}')
+  Future<EntranceSoundResponse> renameEntranceSound({
+    @Path('sound_id') required String soundId,
+    @Body() required EntranceSoundRenameRequest body,
+  });
+
+  /// Delete an entrance sound.
+  ///
+  /// Removes the sound from the library and clears any per-scope selections that pointed at it.
+  ///
+  /// [soundId] - The sound id.
+  @DELETE('/users/@me/entrance-sounds/{sound_id}')
+  Future<void> deleteEntranceSound({@Path('sound_id') required String soundId});
+
   /// List user gifts.
   ///
   /// Lists all gift codes created by the authenticated user.
@@ -464,7 +516,7 @@ abstract class UsersApi {
 
   /// Register WebAuthn credential.
   ///
-  /// Complete registration of a new WebAuthn credential (security key or biometric device). Requires sudo mode verification.
+  /// Complete registration of a new WebAuthn credential (security key or biometric device) using a challenge created after sudo mode verification.
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/users/@me/mfa/webauthn/credentials')

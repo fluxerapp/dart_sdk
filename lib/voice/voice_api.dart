@@ -2,12 +2,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, unused_import, invalid_annotation_target, unnecessary_import
 
-import 'dart:convert';
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
 import 'package:retrofit/error_logger.dart';
 
-import '../models/upload_voice_diagnostics_response.dart';
+import '../models/entrance_sound_play_request.dart';
+import '../models/snowflake_type.dart';
 
 part 'voice_api.g.dart';
 
@@ -15,15 +15,16 @@ part 'voice_api.g.dart';
 abstract class VoiceApi {
   factory VoiceApi(Dio dio, {String? baseUrl}) = _VoiceApi;
 
-  /// Upload a voice diagnostics archive.
+  /// Play an entrance sound in a voice channel.
   ///
-  /// Uploads a compressed (zip) voice diagnostics bundle collected by the desktop client. The archive is stored in the dedicated voice diagnostics bucket and a Snowflake-keyed row is recorded for admin review. Limited to one upload per user per hour and to 25 MiB per archive.
+  /// Requests that the API fan out an ENTRANCE_SOUND_PLAY gateway event to every other user currently connected to the voice channel. The other clients then fetch the audio from CDN and play it locally; no LiveKit track is published.
   ///
-  /// [archive] - Compressed (zip) voice diagnostics archive collected by the desktop client. Sent as a binary form-data part. Maximum 25 MiB.
-  /// Name not received - field will be skipped.
-  @MultiPart()
-  @POST('/voice-diagnostics/upload')
-  Future<UploadVoiceDiagnosticsResponse> uploadVoiceDiagnostics({
-    @Part(name: 'archive') required String archive,
+  /// [channelId] - The ID of the channel.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/voice/channels/{channel_id}/entrance-sound')
+  Future<void> playEntranceSound({
+    @Path('channel_id') required SnowflakeType channelId,
+    @Body() required EntranceSoundPlayRequest body,
   });
 }

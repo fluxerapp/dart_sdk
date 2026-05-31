@@ -20,6 +20,10 @@ TemplateChannel _$TemplateChannelFromJson(Map<String, dynamic> json) =>
           parentId: $checkedConvert('parent_id', (v) => v),
           bitrate: $checkedConvert('bitrate', (v) => v as num?),
           userLimit: $checkedConvert('user_limit', (v) => v as num?),
+          voiceConnectionLimit: $checkedConvert(
+            'voice_connection_limit',
+            (v) => v as num?,
+          ),
           nsfw: $checkedConvert('nsfw', (v) => v as bool?),
           rateLimitPerUser: $checkedConvert(
             'rate_limit_per_user',
@@ -41,6 +45,7 @@ TemplateChannel _$TemplateChannelFromJson(Map<String, dynamic> json) =>
       fieldKeyMap: const {
         'parentId': 'parent_id',
         'userLimit': 'user_limit',
+        'voiceConnectionLimit': 'voice_connection_limit',
         'rateLimitPerUser': 'rate_limit_per_user',
         'permissionOverwrites': 'permission_overwrites',
       },
@@ -56,6 +61,7 @@ Map<String, dynamic> _$TemplateChannelToJson(TemplateChannel instance) =>
       'parent_id': ?instance.parentId,
       'bitrate': ?instance.bitrate,
       'user_limit': ?instance.userLimit,
+      'voice_connection_limit': ?instance.voiceConnectionLimit,
       'nsfw': ?instance.nsfw,
       'rate_limit_per_user': ?instance.rateLimitPerUser,
       'permission_overwrites': ?instance.permissionOverwrites,

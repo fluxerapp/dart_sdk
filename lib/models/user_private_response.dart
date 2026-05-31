@@ -6,6 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'int32_type.dart';
 import 'mention_reply_preferences.dart';
+import 'profile_field_privacy_flags.dart';
 import 'public_user_flags.dart';
 import 'user_authenticator_types.dart';
 import 'user_premium_types.dart';
@@ -16,7 +17,7 @@ part 'user_private_response.g.dart';
 @JsonSerializable()
 class UserPrivateResponse {
   const UserPrivateResponse({
-    required this.premiumSince,
+    required this.premiumType,
     required this.username,
     required this.discriminator,
     required this.globalName,
@@ -25,7 +26,7 @@ class UserPrivateResponse {
     required this.privacyAgreedAt,
     required this.termsAgreedAt,
     required this.flags,
-    required this.bio,
+    required this.pronouns,
     required this.isStaff,
     required this.acls,
     required this.traits,
@@ -33,16 +34,18 @@ class UserPrivateResponse {
     required this.pendingBulkMessageDeletion,
     required this.unreadGiftInventoryCount,
     required this.hasVerifiedPhone,
+    required this.bio,
     required this.id,
-    required this.pronouns,
     required this.accentColor,
+    required this.hasUnreadGiftInventory,
+    required this.hasEverPurchased,
     required this.banner,
     required this.bannerColor,
     required this.mfaEnabled,
-    required this.hasUnreadGiftInventory,
+    required this.hasDismissedPremiumOnboarding,
     required this.verified,
-    required this.premiumType,
-    required this.premiumBadgeTimestampHidden,
+    required this.premiumBadgeMasked,
+    required this.premiumSince,
     required this.premiumUntil,
     required this.premiumWillCancel,
     required this.premiumBillingCycle,
@@ -50,26 +53,26 @@ class UserPrivateResponse {
     required this.premiumGraceEndsAt,
     required this.premiumDiscriminator,
     required this.premiumBadgeHidden,
-    required this.premiumBadgeMasked,
-    required this.hasEverPurchased,
+    required this.requiredActions,
+    required this.premiumBadgeTimestampHidden,
     required this.premiumBadgeSequenceHidden,
     required this.premiumPurchaseDisabled,
     required this.premiumEnabledOverride,
     required this.premiumPerksDisabled,
-    required this.hasDismissedPremiumOnboarding,
-    required this.passwordLastChangedAt,
     required this.lastVoiceActivitySharingChangeAt,
+    required this.passwordLastChangedAt,
     required this.nsfwAllowed,
-    required this.requiredActions,
-    this.forceInboundPhoneVerification,
     this.premiumOutOfBandTrialEndsAt,
+    this.mentionFlags,
     this.authenticatorTypes,
+    this.timezonePrivacyFlags,
+    this.timezone,
     this.phone,
     this.emailBounced,
     this.ageVerifiedAdult,
     this.system,
     this.bot,
-    this.mentionFlags,
+    this.forceInboundPhoneVerification,
   });
 
   factory UserPrivateResponse.fromJson(Map<String, Object?> json) =>
@@ -146,6 +149,12 @@ class UserPrivateResponse {
   /// The user-selected accent color as an integer
   @JsonKey(includeIfNull: true, name: 'accent_color')
   final Int32Type? accentColor;
+
+  /// The IANA timezone identifier saved by the user. Omitted unless the user has staff access.
+  @JsonKey(includeIfNull: false)
+  final String? timezone;
+  @JsonKey(includeIfNull: false, name: 'timezone_privacy_flags')
+  final ProfileFieldPrivacyFlags? timezonePrivacyFlags;
 
   /// The hash of the user profile banner image
   @JsonKey(includeIfNull: true)

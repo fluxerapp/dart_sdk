@@ -19,6 +19,7 @@ class TemplateChannel {
     this.parentId,
     this.bitrate,
     this.userLimit,
+    this.voiceConnectionLimit,
     this.nsfw,
     this.rateLimitPerUser,
     this.permissionOverwrites,
@@ -55,6 +56,10 @@ class TemplateChannel {
   /// The user limit for voice channels
   @JsonKey(includeIfNull: false, name: 'user_limit')
   final num? userLimit;
+
+  /// The per-user voice connection limit for voice channels
+  @JsonKey(includeIfNull: false, name: 'voice_connection_limit')
+  final num? voiceConnectionLimit;
 
   /// Whether the channel is NSFW
   @JsonKey(includeIfNull: false)

@@ -5,6 +5,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'current_subscription_price_response.dart';
+import 'pending_subscription_change_response.dart';
 import 'premium_billing_invoice_response.dart';
 import 'premium_billing_payment_method_response.dart';
 import 'premium_billing_subscription_response.dart';
@@ -17,6 +18,7 @@ class PremiumBillingState {
   const PremiumBillingState({
     required this.stripeCustomerId,
     required this.currentSubscriptionPrice,
+    required this.pendingSubscriptionChange,
     required this.subscription,
     required this.invoices,
     required this.invoicesHasMore,
@@ -31,6 +33,8 @@ class PremiumBillingState {
   final String? stripeCustomerId;
   @JsonKey(name: 'current_subscription_price')
   final CurrentSubscriptionPriceResponse currentSubscriptionPrice;
+  @JsonKey(name: 'pending_subscription_change')
+  final PendingSubscriptionChangeResponse pendingSubscriptionChange;
   @JsonKey(includeIfNull: true)
   final PremiumBillingSubscriptionResponse? subscription;
   final List<PremiumBillingInvoiceResponse> invoices;
