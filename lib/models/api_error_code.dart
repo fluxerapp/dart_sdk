@@ -401,8 +401,6 @@ enum ApiErrorCode {
   missingEphemeralKey('MISSING_EPHEMERAL_KEY'),
   @JsonValue('MISSING_IV')
   missingIv('MISSING_IV'),
-  @JsonValue('MISSING_OAUTH_ADMIN_SCOPE')
-  missingOauthAdminScope('MISSING_OAUTH_ADMIN_SCOPE'),
   @JsonValue('MISSING_OAUTH_FIELDS')
   missingOauthFields('MISSING_OAUTH_FIELDS'),
   @JsonValue('MISSING_OAUTH_SCOPE')

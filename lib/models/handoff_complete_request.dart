@@ -8,13 +8,21 @@ part 'handoff_complete_request.g.dart';
 
 @JsonSerializable()
 class HandoffCompleteRequest {
-  const HandoffCompleteRequest({required this.code, required this.userId});
+  const HandoffCompleteRequest({
+    required this.code,
+    required this.userId,
+    this.token,
+  });
 
   factory HandoffCompleteRequest.fromJson(Map<String, Object?> json) =>
       _$HandoffCompleteRequestFromJson(json);
 
   /// The handoff code from the initiating session
   final String code;
+
+  /// The authentication token to transfer
+  @JsonKey(includeIfNull: false)
+  final String? token;
 
   /// The user ID associated with the authenticated session
   @JsonKey(name: 'user_id')

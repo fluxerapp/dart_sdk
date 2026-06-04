@@ -17,15 +17,15 @@ class WellKnownFluxerResponseGateway {
   factory WellKnownFluxerResponseGateway.fromJson(Map<String, Object?> json) =>
       _$WellKnownFluxerResponseGatewayFromJson(json);
 
-  /// Minimum reconnect backoff delay in milliseconds
+  /// Minimum retry delay in milliseconds
   @JsonKey(name: 'session_retry_min_ms')
   final int sessionRetryMinMs;
 
-  /// Maximum reconnect backoff delay in milliseconds
+  /// Maximum retry delay in milliseconds
   @JsonKey(name: 'session_retry_max_ms')
   final int sessionRetryMaxMs;
 
-  /// Jitter added to reconnect backoff delay in milliseconds
+  /// Jitter added to retry delay in milliseconds
   @JsonKey(name: 'session_retry_jitter_ms')
   final int sessionRetryJitterMs;
 

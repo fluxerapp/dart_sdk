@@ -76,7 +76,7 @@ abstract class GuildsApi {
 
   /// Get guild information.
   ///
-  /// User must be a member of the guild to access this endpoint.
+  /// User must be a member of the guild to access this endpoint. Requires guilds OAuth scope if using bearer token.
   ///
   /// [guildId] - The ID of the guild.
   @GET('/guilds/{guild_id}')
@@ -403,7 +403,7 @@ abstract class GuildsApi {
 
   /// List guild roles.
   ///
-  /// List guild roles. Returns all roles defined in the guild including their permissions and settings.
+  /// List guild roles. Requires guilds OAuth scope if using bearer token. Returns all roles defined in the guild including their permissions and settings.
   ///
   /// [guildId] - The ID of the guild.
   @GET('/guilds/{guild_id}/roles')

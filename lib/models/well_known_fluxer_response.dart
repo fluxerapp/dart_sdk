@@ -62,7 +62,7 @@ class WellKnownFluxerResponse {
   @JsonKey(name: 'app_public')
   final dynamic appPublic;
 
-  /// Gateway session retry configuration for clients
+  /// Gateway session retry configuration
   @JsonKey(includeIfNull: false)
   final WellKnownFluxerResponseGateway? gateway;
 
