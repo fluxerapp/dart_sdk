@@ -10,6 +10,7 @@ import 'package:fluxer_dart/models/user_partial_response.dart';
 import 'package:fluxer_dart/models/user_private_response.dart';
 import 'package:fluxer_dart/models/user_guild_settings_response.dart';
 import 'package:fluxer_dart/models/user_settings_response.dart';
+import 'package:fluxer_dart/models/web_authn_credential_response.dart';
 
 import 'package:fluxer_dart/gateway_client/gateway_event.dart';
 import 'package:fluxer_dart/gateway_client/gateway_types.dart';
@@ -332,6 +333,29 @@ class EventParser {
       };
     } catch (_) {
       return UnknownGatewayEvent(eventType: eventType, data: data);
+    }
+  }
+
+  /// Parses a dispatch [eventType] whose payload is a JSON array.
+  ///
+  /// Returns `null` for unrecognized event types or when deserialization
+  /// fails, so the caller can skip emitting an event.
+  GatewayEvent? parseList(String eventType, List<dynamic> data) {
+    try {
+      return switch (eventType) {
+        'WEBAUTHN_CREDENTIALS_UPDATE' => WebauthnCredentialsUpdateEvent(
+          credentials: data
+              .map(
+                (e) => WebAuthnCredentialResponse.fromJson(
+                  (e as Map).cast<String, Object?>(),
+                ),
+              )
+              .toList(),
+        ),
+        _ => null,
+      };
+    } catch (_) {
+      return null;
     }
   }
 

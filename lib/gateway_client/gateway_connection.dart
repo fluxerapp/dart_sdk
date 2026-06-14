@@ -317,8 +317,12 @@ class GatewayConnection {
         _heartbeat?.ackReceived();
         _session.updateLastAck();
       case GatewayOpcodes.dispatch:
-        if (d is Map<String, dynamic>) {
-          _handleDispatch(t!, d);
+        if (t != null) {
+          if (d is Map<String, dynamic>) {
+            _handleDispatch(t, d);
+          } else if (d is List) {
+            _handleListDispatch(t, d);
+          }
         }
       case GatewayOpcodes.heartbeat:
         _sendHeartbeat();
@@ -389,6 +393,13 @@ class GatewayConnection {
       _eventController.add(
         UnknownGatewayEvent(eventType: eventType, data: data),
       );
+    }
+  }
+
+  void _handleListDispatch(String eventType, List<dynamic> data) {
+    final event = _eventParser.parseList(eventType, data);
+    if (event != null) {
+      _eventController.add(event);
     }
   }
 

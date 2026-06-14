@@ -11,6 +11,7 @@ import 'package:fluxer_dart/models/user_partial_response.dart';
 import 'package:fluxer_dart/models/user_private_response.dart';
 import 'package:fluxer_dart/models/user_guild_settings_response.dart';
 import 'package:fluxer_dart/models/user_settings_response.dart';
+import 'package:fluxer_dart/models/web_authn_credential_response.dart';
 
 /// Base class for all gateway events.
 sealed class GatewayEvent {
@@ -111,6 +112,12 @@ class UserConnectionsUpdateEvent extends GatewayEvent {
   const UserConnectionsUpdateEvent({required this.data});
 
   final Map<String, dynamic> data;
+}
+
+class WebauthnCredentialsUpdateEvent extends GatewayEvent {
+  const WebauthnCredentialsUpdateEvent({required this.credentials});
+
+  final List<WebAuthnCredentialResponse> credentials;
 }
 
 class AuthSessionChangeEvent extends GatewayEvent {
