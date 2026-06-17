@@ -43,6 +43,43 @@ class VoiceState {
   final bool isMobile;
   final bool? e2eeCapable;
 
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is VoiceState &&
+          runtimeType == other.runtimeType &&
+          userId == other.userId &&
+          channelId == other.channelId &&
+          guildId == other.guildId &&
+          sessionId == other.sessionId &&
+          connectionId == other.connectionId &&
+          selfMute == other.selfMute &&
+          selfDeaf == other.selfDeaf &&
+          selfVideo == other.selfVideo &&
+          selfStream == other.selfStream &&
+          mute == other.mute &&
+          deaf == other.deaf &&
+          suppress == other.suppress &&
+          isMobile == other.isMobile &&
+          e2eeCapable == other.e2eeCapable;
+  @override
+  int get hashCode => Object.hash(
+    userId,
+    channelId,
+    guildId,
+    sessionId,
+    connectionId,
+    selfMute,
+    selfDeaf,
+    selfVideo,
+    selfStream,
+    mute,
+    deaf,
+    suppress,
+    isMobile,
+    e2eeCapable,
+  );
+
   factory VoiceState.fromJson(Map<String, dynamic> json) {
     return VoiceState(
       userId: json['user_id'] as String,
