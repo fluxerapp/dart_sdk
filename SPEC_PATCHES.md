@@ -39,6 +39,13 @@ The spec lives in the `fluxer` repo and may take time to update. Patches let us 
 |---|---|---|
 | `me` | Simplified from `anyOf[boolean enum [true], null]` to `anyOf[boolean, null]` | The `enum: [true]` constraint causes the generator to emit an enum with `@JsonValue(true)`, which `json_serializable` rejects (only supports String, int, or null). Simplifying to a plain nullable boolean preserves the semantics. |
 
+### PremiumStateResponse.billing (generates the `PremiumBillingState` model)
+
+| Field | Patch | Reason |
+|---|---|---|
+| `current_subscription_price` | Made nullable (`anyOf[$ref, null]`) | Live API returns `null` when the user has no active subscription. Causes `type 'Null' is not a subtype of type 'Map<String, dynamic>'` during deserialization. |
+| `pending_subscription_change` | Made nullable (`anyOf[$ref, null]`) | Live API returns `null` when there is no pending subscription change (the common case). Same `unexpected_null` failure as above. |
+
 ## Detecting new drift
 
 Run the spec drift test to check for new discrepancies:

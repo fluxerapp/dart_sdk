@@ -105,6 +105,17 @@ def make_optional(schema_name, inline_prop, field_name):
         patches += 1
         print(f'  Made {schema_name}.{inline_prop}.{field_name} optional')
 
+def make_inline_nullable_ref(schema_name, inline_prop, field_name):
+    global patches
+    schema = schemas.get(schema_name, {})
+    inline = schema.get('properties', {}).get(inline_prop, {})
+    props = inline.get('properties', {})
+    prop = props.get(field_name)
+    if prop is not None and 'anyOf' not in prop:
+        props[field_name] = {'anyOf': [dict(prop), {'type': 'null'}]}
+        patches += 1
+        print(f'  Made {schema_name}.{inline_prop}.{field_name} nullable')
+
 # --- WellKnownFluxerResponse patches ---
 
 # features.manual_review_enabled: spec says required, API doesn't always return it
@@ -186,6 +197,16 @@ if me_prop and 'anyOf' in me_prop:
     }
     patches += 1
     print('  Simplified MessageReactionResponse.me to nullable boolean')
+
+# --- PremiumStateResponse.billing patches ---
+
+# current_subscription_price / pending_subscription_change: spec marks these as
+# required non-nullable refs on the inline billing object, but the live API
+# returns null when the user has no active subscription / no pending change
+# (same shape as the nullable subscription field). Without this the SDK throws
+# when deserializing the PremiumBillingState model.
+make_inline_nullable_ref('PremiumStateResponse', 'billing', 'current_subscription_price')
+make_inline_nullable_ref('PremiumStateResponse', 'billing', 'pending_subscription_change')
 
 with open('openapi.json', 'w') as f:
     json.dump(spec, f, separators=(',', ':'))
