@@ -1,3 +1,4 @@
+import 'package:fluxer_dart/gateway_client/custom_status_storage.dart';
 import 'package:fluxer_dart/models/channel_response.dart';
 import 'package:fluxer_dart/models/guild_emoji_response.dart';
 import 'package:fluxer_dart/models/guild_member_response.dart';
@@ -219,7 +220,7 @@ class MemberListMember {
     return MemberListMember(
       member: GuildMemberResponse.fromJson(json),
       status: presenceData?['status'] as String?,
-      customStatus: customStatusMap?['text'] as String?,
+      customStatus: serializeCustomStatusMap(customStatusMap),
     );
   }
 }
