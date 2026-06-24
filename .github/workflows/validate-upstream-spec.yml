@@ -1,0 +1,107 @@
+name: Validate Upstream OpenAPI Spec
+
+on:
+  repository_dispatch:
+    types:
+      - openapi-spec-validation
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-upstream-${{ github.event.client_payload.sha }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout SDK repo
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@65eb853c7ba17dde3be364c3d2858773e7144260
+        with:
+          sdk: stable
+
+      - name: Set pending status on upstream commit
+        env:
+          GITHUB_TOKEN: ${{ secrets.FLUXER_AUTOMATION_PAT }}
+          UPSTREAM_REPO: ${{ github.event.client_payload.repo }}
+          UPSTREAM_SHA: ${{ github.event.client_payload.sha }}
+        run: |
+          curl -fL \
+            -X POST \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/$UPSTREAM_REPO/statuses/$UPSTREAM_SHA" \
+            -d '{
+              "state": "pending",
+              "context": "dart-sdk-validation",
+              "description": "Validating OpenAPI spec against Dart SDK...",
+              "target_url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            }'
+
+      - name: Download spec from upstream PR
+        env:
+          UPSTREAM_REPO: ${{ github.event.client_payload.repo }}
+          UPSTREAM_REF: ${{ github.event.client_payload.ref }}
+        run: |
+          SPEC_URL="https://raw.githubusercontent.com/$UPSTREAM_REPO/$UPSTREAM_REF/fluxer_api/src/api/openapi/openapi.json"
+          echo "Downloading spec from: $SPEC_URL"
+          curl -fSL "$SPEC_URL" -o openapi_upstream.json
+          echo "Downloaded $(wc -c < openapi_upstream.json) bytes"
+
+      - name: Validate SDK generation
+        id: validate
+        run: |
+          chmod +x scripts/validate_upstream_spec.sh
+          if ! ./scripts/validate_upstream_spec.sh "https://raw.githubusercontent.com/${{ github.event.client_payload.repo }}/${{ github.event.client_payload.ref }}/fluxer_api/src/api/openapi/openapi.json"; then
+            echo "VALIDATION_FAILED=true" >> "$GITHUB_OUTPUT"
+            exit 1
+          fi
+        continue-on-error: true
+
+      - name: Post success status to upstream commit
+        if: steps.validate.outcome == 'success'
+        env:
+          GITHUB_TOKEN: ${{ secrets.FLUXER_AUTOMATION_PAT }}
+          UPSTREAM_REPO: ${{ github.event.client_payload.repo }}
+          UPSTREAM_SHA: ${{ github.event.client_payload.sha }}
+        run: |
+          curl -fL \
+            -X POST \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/$UPSTREAM_REPO/statuses/$UPSTREAM_SHA" \
+            -d '{
+              "state": "success",
+              "context": "dart-sdk-validation",
+              "description": "OpenAPI spec is compatible with Dart SDK",
+              "target_url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            }'
+
+      - name: Post failure status to upstream commit
+        if: steps.validate.outcome == 'failure'
+        env:
+          GITHUB_TOKEN: ${{ secrets.FLUXER_AUTOMATION_PAT }}
+          UPSTREAM_REPO: ${{ github.event.client_payload.repo }}
+          UPSTREAM_SHA: ${{ github.event.client_payload.sha }}
+        run: |
+          curl -fL \
+            -X POST \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/$UPSTREAM_REPO/statuses/$UPSTREAM_SHA" \
+            -d '{
+              "state": "failure",
+              "context": "dart-sdk-validation",
+              "description": "OpenAPI spec breaks Dart SDK generation. Check logs for details.",
+              "target_url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            }'
+
+      - name: Fail job if validation failed
+        if: steps.validate.outcome == 'failure'
+        run: |
+          echo "Validation failed. Check the logs above for details."
+          exit 1
