@@ -343,6 +343,7 @@ class GatewayReadState {
     this.lastMessageId,
     this.mentionCount = 0,
     this.lastPinTimestamp,
+    this.version,
   });
 
   factory GatewayReadState.fromJson(Map<String, dynamic> json) {
@@ -351,6 +352,7 @@ class GatewayReadState {
       lastMessageId: json['last_message_id'] as String?,
       mentionCount: json['mention_count'] as int? ?? 0,
       lastPinTimestamp: json['last_pin_timestamp'] as String?,
+      version: json['version'] as String?,
     );
   }
 
@@ -358,6 +360,7 @@ class GatewayReadState {
   final String? lastMessageId;
   final int mentionCount;
   final String? lastPinTimestamp;
+  final String? version;
 }
 
 /// Full guild data from GUILD_CREATE / GUILD_UPDATE events.

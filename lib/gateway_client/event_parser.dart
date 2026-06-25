@@ -161,6 +161,7 @@ class EventParser {
           messageId: data['message_id'] as String,
           mentionCount: data['mention_count'] as int?,
           manual: data['manual'] as bool?,
+          version: data['version'] as String?,
         ),
         'MESSAGE_REACTION_ADD_MANY' => MessageReactionAddManyEvent(
           channelId: data['channel_id'] as String,

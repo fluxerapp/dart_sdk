@@ -173,12 +173,14 @@ class MessageAckEvent extends GatewayEvent {
     required this.messageId,
     this.mentionCount,
     this.manual,
+    this.version,
   });
 
   final String channelId;
   final String messageId;
   final int? mentionCount;
   final bool? manual;
+  final String? version;
 }
 
 // ---------------------------------------------------------------------------
