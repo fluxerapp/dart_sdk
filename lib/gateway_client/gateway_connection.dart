@@ -73,6 +73,7 @@ class GatewayConnection {
   GatewayState _state = GatewayState.disconnected;
   int _reconnectAttempts = 0;
   bool _disposed = false;
+  bool _reconnectSuspended = false;
   String? _gatewayUrl;
   Timer? _reconnectTimer;
   int _connectGeneration = 0;
@@ -86,12 +87,15 @@ class GatewayConnection {
   /// Stream of connection state changes.
   Stream<GatewayState> get stateChanges => _stateController.stream;
 
+  /// True while [suspend] has paused automatic reconnects.
+  bool get isReconnectSuspended => _reconnectSuspended;
+
   /// Connects to the gateway.
   ///
   /// Fetches the gateway URL via the REST API (unless overridden) and
   /// opens a WebSocket connection.
   Future<void> connect() async {
-    if (_disposed) return;
+    if (_disposed || _reconnectSuspended) return;
     final int generation = ++_connectGeneration;
     _cancelReconnectTimer();
     await _tearDownSocket();
@@ -145,6 +149,21 @@ class GatewayConnection {
     _channel = null;
     _session.clear();
     _setState(GatewayState.disconnected);
+  }
+
+  /// Disconnects and suppresses automatic reconnect until [unsuspendAndReconnect].
+  Future<void> suspend() async {
+    if (_disposed) return;
+    _reconnectSuspended = true;
+    _cancelReconnectTimer();
+    await disconnect();
+  }
+
+  /// Clears the suspend flag and reconnects immediately.
+  Future<void> unsuspendAndReconnect() async {
+    if (_disposed) return;
+    _reconnectSuspended = false;
+    await reconnectNow();
   }
 
   /// Permanently disposes the connection and its stream controllers.
@@ -501,7 +520,7 @@ class GatewayConnection {
   }
 
   void _scheduleReconnect() {
-    if (_disposed) return;
+    if (_disposed || _reconnectSuspended) return;
     _cancelReconnectTimer();
     _setState(GatewayState.reconnecting);
     final delaySec = min(1 << _reconnectAttempts, 32);
