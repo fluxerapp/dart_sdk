@@ -4,11 +4,11 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-part 'o_auth2_authorizations_list_response_application.g.dart';
+part 'o_auth2_authorization_response_application.g.dart';
 
 @JsonSerializable()
-class OAuth2AuthorizationsListResponseApplication {
-  const OAuth2AuthorizationsListResponseApplication({
+class OAuth2AuthorizationResponseApplication {
+  const OAuth2AuthorizationResponseApplication({
     required this.id,
     required this.name,
     required this.icon,
@@ -16,9 +16,9 @@ class OAuth2AuthorizationsListResponseApplication {
     required this.botPublic,
   });
 
-  factory OAuth2AuthorizationsListResponseApplication.fromJson(
+  factory OAuth2AuthorizationResponseApplication.fromJson(
     Map<String, Object?> json,
-  ) => _$OAuth2AuthorizationsListResponseApplicationFromJson(json);
+  ) => _$OAuth2AuthorizationResponseApplicationFromJson(json);
 
   /// The unique identifier of the application
   final String id;
@@ -39,5 +39,5 @@ class OAuth2AuthorizationsListResponseApplication {
   final bool botPublic;
 
   Map<String, Object?> toJson() =>
-      _$OAuth2AuthorizationsListResponseApplicationToJson(this);
+      _$OAuth2AuthorizationResponseApplicationToJson(this);
 }

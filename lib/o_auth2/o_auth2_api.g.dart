@@ -74,13 +74,13 @@ class _OAuth2Api implements OAuth2Api {
   }
 
   @override
-  Future<OAuth2AuthorizationsListResponse>
+  Future<List<OAuth2AuthorizationResponse>>
   listUserOauth2Authorizations() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<OAuth2AuthorizationsListResponse>(
+    final _options = _setStreamType<List<OAuth2AuthorizationResponse>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -90,10 +90,15 @@ class _OAuth2Api implements OAuth2Api {
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
-    final _result = await _dio.fetch<Map<String, Object?>>(_options);
-    late OAuth2AuthorizationsListResponse _value;
+    final _result = await _dio.fetch<List<dynamic>>(_options);
+    late List<OAuth2AuthorizationResponse> _value;
     try {
-      _value = OAuth2AuthorizationsListResponse.fromJson(_result.data!);
+      _value = _result.data!
+          .map(
+            (dynamic i) =>
+                OAuth2AuthorizationResponse.fromJson(i as Map<String, dynamic>),
+          )
+          .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;

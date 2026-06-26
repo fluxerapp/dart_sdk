@@ -1,21 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'o_auth2_authorizations_list_response.dart';
+part of 'o_auth2_authorization_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-OAuth2AuthorizationsListResponse _$OAuth2AuthorizationsListResponseFromJson(
+OAuth2AuthorizationResponse _$OAuth2AuthorizationResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate(
-  'OAuth2AuthorizationsListResponse',
+  'OAuth2AuthorizationResponse',
   json,
   ($checkedConvert) {
-    final val = OAuth2AuthorizationsListResponse(
+    final val = OAuth2AuthorizationResponse(
       application: $checkedConvert(
         'application',
-        (v) => OAuth2AuthorizationsListResponseApplication.fromJson(
+        (v) => OAuth2AuthorizationResponseApplication.fromJson(
           v as Map<String, dynamic>,
         ),
       ),
@@ -30,8 +30,8 @@ OAuth2AuthorizationsListResponse _$OAuth2AuthorizationsListResponseFromJson(
   fieldKeyMap: const {'authorizedAt': 'authorized_at'},
 );
 
-Map<String, dynamic> _$OAuth2AuthorizationsListResponseToJson(
-  OAuth2AuthorizationsListResponse instance,
+Map<String, dynamic> _$OAuth2AuthorizationResponseToJson(
+  OAuth2AuthorizationResponse instance,
 ) => <String, dynamic>{
   'application': instance.application,
   'scopes': instance.scopes,
