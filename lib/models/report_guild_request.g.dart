@@ -7,15 +7,26 @@ part of 'report_guild_request.dart';
 // **************************************************************************
 
 ReportGuildRequest _$ReportGuildRequestFromJson(Map<String, dynamic> json) =>
-    ReportGuildRequest(
-      guildId: json['guild_id'] as String,
-      category: GuildReportCategoryEnum.fromJson(json['category'] as String),
-      additionalInfo: json['additional_info'] as String?,
+    $checkedCreate(
+      'ReportGuildRequest',
+      json,
+      ($checkedConvert) {
+        final val = ReportGuildRequest(
+          guildId: $checkedConvert('guild_id', (v) => v as String),
+          category: $checkedConvert(
+            'category',
+            (v) => ReportGuildRequestCategoryCategory.fromJson(v as String),
+          ),
+          inviteCode: $checkedConvert('invite_code', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {'guildId': 'guild_id', 'inviteCode': 'invite_code'},
     );
 
 Map<String, dynamic> _$ReportGuildRequestToJson(ReportGuildRequest instance) =>
     <String, dynamic>{
       'guild_id': instance.guildId,
       'category': instance.category,
-      'additional_info': ?instance.additionalInfo,
+      'invite_code': ?instance.inviteCode,
     };

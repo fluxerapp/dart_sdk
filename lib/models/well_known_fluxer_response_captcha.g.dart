@@ -8,10 +8,27 @@ part of 'well_known_fluxer_response_captcha.dart';
 
 WellKnownFluxerResponseCaptcha _$WellKnownFluxerResponseCaptchaFromJson(
   Map<String, dynamic> json,
-) => WellKnownFluxerResponseCaptcha(
-  provider: json['provider'] as String,
-  hcaptchaSiteKey: json['hcaptcha_site_key'] as String?,
-  turnstileSiteKey: json['turnstile_site_key'] as String?,
+) => $checkedCreate(
+  'WellKnownFluxerResponseCaptcha',
+  json,
+  ($checkedConvert) {
+    final val = WellKnownFluxerResponseCaptcha(
+      provider: $checkedConvert('provider', (v) => v as String),
+      hcaptchaSiteKey: $checkedConvert(
+        'hcaptcha_site_key',
+        (v) => v as String?,
+      ),
+      turnstileSiteKey: $checkedConvert(
+        'turnstile_site_key',
+        (v) => v as String?,
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'hcaptchaSiteKey': 'hcaptcha_site_key',
+    'turnstileSiteKey': 'turnstile_site_key',
+  },
 );
 
 Map<String, dynamic> _$WellKnownFluxerResponseCaptchaToJson(

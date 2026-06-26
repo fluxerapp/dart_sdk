@@ -7,13 +7,30 @@ part of 'connection_response.dart';
 // **************************************************************************
 
 ConnectionResponse _$ConnectionResponseFromJson(Map<String, dynamic> json) =>
-    ConnectionResponse(
-      id: json['id'] as String,
-      type: ConnectionResponseTypeType.fromJson(json['type'] as String),
-      name: json['name'] as String,
-      verified: json['verified'] as bool,
-      visibilityFlags: (json['visibility_flags'] as num).toInt(),
-      sortOrder: (json['sort_order'] as num).toInt(),
+    $checkedCreate(
+      'ConnectionResponse',
+      json,
+      ($checkedConvert) {
+        final val = ConnectionResponse(
+          id: $checkedConvert('id', (v) => v as String),
+          type: $checkedConvert(
+            'type',
+            (v) => ConnectionResponseTypeType.fromJson(v as String),
+          ),
+          name: $checkedConvert('name', (v) => v as String),
+          verified: $checkedConvert('verified', (v) => v as bool),
+          visibilityFlags: $checkedConvert(
+            'visibility_flags',
+            (v) => (v as num).toInt(),
+          ),
+          sortOrder: $checkedConvert('sort_order', (v) => (v as num).toInt()),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'visibilityFlags': 'visibility_flags',
+        'sortOrder': 'sort_order',
+      },
     );
 
 Map<String, dynamic> _$ConnectionResponseToJson(ConnectionResponse instance) =>

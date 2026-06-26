@@ -5,6 +5,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'message_attachment_response.dart';
+import 'message_channel_mention_response.dart';
 import 'message_embed_response.dart';
 import 'message_flags.dart';
 import 'message_snapshot_response_type_type.dart';
@@ -22,6 +23,7 @@ class MessageSnapshotResponse {
     this.editedTimestamp,
     this.mentions,
     this.mentionRoles,
+    this.mentionChannels,
     this.embeds,
     this.attachments,
     this.stickers,
@@ -48,6 +50,10 @@ class MessageSnapshotResponse {
   /// The role IDs mentioned in the snapshot
   @JsonKey(includeIfNull: false, name: 'mention_roles')
   final List<String>? mentionRoles;
+
+  /// Channels mentioned in the snapshot that are visible to @everyone
+  @JsonKey(includeIfNull: false, name: 'mention_channels')
+  final List<MessageChannelMentionResponse>? mentionChannels;
 
   /// The embeds included in the snapshot
   @JsonKey(includeIfNull: false)

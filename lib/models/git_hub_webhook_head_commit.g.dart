@@ -8,14 +8,18 @@ part of 'git_hub_webhook_head_commit.dart';
 
 GitHubWebhookHeadCommit _$GitHubWebhookHeadCommitFromJson(
   Map<String, dynamic> json,
-) => GitHubWebhookHeadCommit(
-  id: json['id'] as String,
-  url: json['url'] as String,
-  message: json['message'] as String,
-  author: GitHubWebhookHeadCommitAuthor.fromJson(
-    json['author'] as Map<String, dynamic>,
-  ),
-);
+) => $checkedCreate('GitHubWebhookHeadCommit', json, ($checkedConvert) {
+  final val = GitHubWebhookHeadCommit(
+    id: $checkedConvert('id', (v) => v as String),
+    url: $checkedConvert('url', (v) => v as String),
+    message: $checkedConvert('message', (v) => v as String),
+    author: $checkedConvert(
+      'author',
+      (v) => GitHubWebhookHeadCommitAuthor.fromJson(v as Map<String, dynamic>),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$GitHubWebhookHeadCommitToJson(
   GitHubWebhookHeadCommit instance,

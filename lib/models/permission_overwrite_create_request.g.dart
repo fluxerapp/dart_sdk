@@ -8,13 +8,20 @@ part of 'permission_overwrite_create_request.dart';
 
 PermissionOverwriteCreateRequest _$PermissionOverwriteCreateRequestFromJson(
   Map<String, dynamic> json,
-) => PermissionOverwriteCreateRequest(
-  type: PermissionOverwriteCreateRequestTypeType.fromJson(
-    (json['type'] as num).toInt(),
-  ),
-  allow: json['allow'] as String?,
-  deny: json['deny'] as String?,
-);
+) => $checkedCreate('PermissionOverwriteCreateRequest', json, (
+  $checkedConvert,
+) {
+  final val = PermissionOverwriteCreateRequest(
+    type: $checkedConvert(
+      'type',
+      (v) =>
+          PermissionOverwriteCreateRequestTypeType.fromJson((v as num).toInt()),
+    ),
+    allow: $checkedConvert('allow', (v) => v as String?),
+    deny: $checkedConvert('deny', (v) => v as String?),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$PermissionOverwriteCreateRequestToJson(
   PermissionOverwriteCreateRequest instance,

@@ -4,7 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'harvest_status_enum.dart';
+import 'harvest_status_response_schema_status_status.dart';
 
 part 'harvest_status_response_schema_nullable.g.dart';
 
@@ -30,7 +30,7 @@ class HarvestStatusResponseSchemaNullable {
 class HarvestStatusResponseSchemaNullableHarvestStatusResponseSchema {
   @JsonKey(name: 'harvest_id')
   final String harvestId;
-  final HarvestStatusEnum status;
+  final HarvestStatusResponseSchemaStatusStatus status;
   @JsonKey(name: 'created_at')
   final String createdAt;
   @JsonKey(name: 'started_at')

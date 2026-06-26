@@ -8,11 +8,25 @@ part of 'gateway_bot_response_session_start_limit.dart';
 
 GatewayBotResponseSessionStartLimit
 _$GatewayBotResponseSessionStartLimitFromJson(Map<String, dynamic> json) =>
-    GatewayBotResponseSessionStartLimit(
-      total: (json['total'] as num).toInt(),
-      remaining: (json['remaining'] as num).toInt(),
-      resetAfter: (json['reset_after'] as num).toInt(),
-      maxConcurrency: (json['max_concurrency'] as num).toInt(),
+    $checkedCreate(
+      'GatewayBotResponseSessionStartLimit',
+      json,
+      ($checkedConvert) {
+        final val = GatewayBotResponseSessionStartLimit(
+          total: $checkedConvert('total', (v) => (v as num).toInt()),
+          remaining: $checkedConvert('remaining', (v) => (v as num).toInt()),
+          resetAfter: $checkedConvert('reset_after', (v) => (v as num).toInt()),
+          maxConcurrency: $checkedConvert(
+            'max_concurrency',
+            (v) => (v as num).toInt(),
+          ),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'resetAfter': 'reset_after',
+        'maxConcurrency': 'max_concurrency',
+      },
     );
 
 Map<String, dynamic> _$GatewayBotResponseSessionStartLimitToJson(

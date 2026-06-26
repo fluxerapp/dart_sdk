@@ -9,6 +9,7 @@ import 'friend_source_flags.dart';
 import 'group_dm_add_permission_flags.dart';
 import 'incoming_call_flags.dart';
 import 'locale.dart';
+import 'profile_privacy_level.dart';
 import 'render_spoilers.dart';
 import 'sensitive_media_filter_level.dart';
 import 'sensitive_media_guild_filter_level.dart';
@@ -16,15 +17,16 @@ import 'snowflake_type.dart';
 import 'sticker_animation_options.dart';
 import 'time_format_types.dart';
 import 'user_settings_update_request_guild_folders.dart';
-import 'user_status_type.dart';
-import 'user_theme_type.dart';
+import 'user_settings_update_request_status_resets_to_status_resets_to.dart';
+import 'user_settings_update_request_status_status.dart';
+import 'user_settings_update_request_theme_theme.dart';
 
 part 'user_settings_update_request.g.dart';
 
 @JsonSerializable()
 class UserSettingsUpdateRequest {
   const UserSettingsUpdateRequest({
-    this.inlineEmbedMedia,
+    this.gifAutoPlay,
     this.status,
     this.statusResetsAt,
     this.statusResetsTo,
@@ -35,8 +37,8 @@ class UserSettingsUpdateRequest {
     this.defaultGuildsRestricted,
     this.botDefaultGuildsRestricted,
     this.inlineAttachmentMedia,
+    this.inlineEmbedMedia,
     this.flags,
-    this.gifAutoPlay,
     this.renderEmbeds,
     this.renderReactions,
     this.animateEmoji,
@@ -47,8 +49,8 @@ class UserSettingsUpdateRequest {
     this.incomingCallFlags,
     this.groupDmAddPermissionFlags,
     this.guildFolders,
+    this.customStatus,
     this.syncedPreferences,
-    this.afkTimeout,
     this.timeFormat,
     this.developerMode,
     this.trustedDomains,
@@ -59,7 +61,8 @@ class UserSettingsUpdateRequest {
     this.suppressUnprivilegedSelfMentions,
     this.suppressUnprivilegedSelfMentionsBypassUserIds,
     this.staffDmAccessUserIds,
-    this.customStatus,
+    this.profilePrivacy,
+    this.afkTimeout,
   });
 
   factory UserSettingsUpdateRequest.fromJson(Map<String, Object?> json) =>
@@ -67,16 +70,22 @@ class UserSettingsUpdateRequest {
 
   @JsonKey(includeIfNull: false)
   final FriendSourceFlags? flags;
+
+  /// User online status
   @JsonKey(includeIfNull: false)
-  final UserStatusType? status;
+  final UserSettingsUpdateRequestStatusStatus? status;
 
   /// When status resets
   @JsonKey(includeIfNull: false, name: 'status_resets_at')
   final dynamic statusResetsAt;
+
+  /// User online status
   @JsonKey(includeIfNull: false, name: 'status_resets_to')
-  final UserStatusType? statusResetsTo;
+  final UserSettingsUpdateRequestStatusResetsToStatusResetsTo? statusResetsTo;
+
+  /// UI theme preference
   @JsonKey(includeIfNull: false)
-  final UserThemeType? theme;
+  final UserSettingsUpdateRequestThemeTheme? theme;
   @JsonKey(includeIfNull: false)
   final Locale? locale;
 
@@ -192,6 +201,10 @@ class UserSettingsUpdateRequest {
   /// User IDs with Staff DM Access enabled
   @JsonKey(includeIfNull: false, name: 'staff_dm_access_user_ids')
   final List<SnowflakeType>? staffDmAccessUserIds;
+
+  /// Controls who sees the full profile: all guild members, only small-guild members, or only friends
+  @JsonKey(includeIfNull: false, name: 'profile_privacy')
+  final ProfilePrivacyLevel? profilePrivacy;
 
   /// Account-wide client preferences as a base64-encoded protobuf snapshot. Replaces the entire stored snapshot; pass null to clear it.
   @JsonKey(includeIfNull: false, name: 'synced_preferences')

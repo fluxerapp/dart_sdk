@@ -5,6 +5,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'int32_type.dart';
+import 'mention_reply_preferences.dart';
 import 'public_user_flags.dart';
 
 part 'user_partial_response.g.dart';
@@ -19,9 +20,9 @@ class UserPartialResponse {
     required this.avatar,
     required this.avatarColor,
     required this.flags,
-    this.avatarFormats,
     this.bot,
     this.system,
+    this.mentionFlags,
   });
 
   factory UserPartialResponse.fromJson(Map<String, Object?> json) =>
@@ -48,10 +49,6 @@ class UserPartialResponse {
   @JsonKey(includeIfNull: true, name: 'avatar_color')
   final Int32Type? avatarColor;
 
-  /// Available derivative formats for the avatar (e.g. ["webp","avif","jpeg"]); absent for legacy assets
-  @JsonKey(includeIfNull: false, name: 'avatar_formats')
-  final List<String>? avatarFormats;
-
   /// Whether the user is a bot account
   @JsonKey(includeIfNull: false)
   final bool? bot;
@@ -60,6 +57,10 @@ class UserPartialResponse {
   @JsonKey(includeIfNull: false)
   final bool? system;
   final PublicUserFlags flags;
+
+  /// The user's account-wide reply mention preference
+  @JsonKey(includeIfNull: false, name: 'mention_flags')
+  final MentionReplyPreferences? mentionFlags;
 
   Map<String, Object?> toJson() => _$UserPartialResponseToJson(this);
 }

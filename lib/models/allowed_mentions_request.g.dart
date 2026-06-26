@@ -8,14 +8,26 @@ part of 'allowed_mentions_request.dart';
 
 AllowedMentionsRequest _$AllowedMentionsRequestFromJson(
   Map<String, dynamic> json,
-) => AllowedMentionsRequest(
-  parse: (json['parse'] as List<dynamic>?)
-      ?.map((e) => AllowedMentionsRequestParseParse.fromJson(e as String))
-      .toList(),
-  users: (json['users'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  roles: (json['roles'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  repliedUser: json['replied_user'] as bool?,
-);
+) => $checkedCreate('AllowedMentionsRequest', json, ($checkedConvert) {
+  final val = AllowedMentionsRequest(
+    parse: $checkedConvert(
+      'parse',
+      (v) => (v as List<dynamic>?)
+          ?.map((e) => AllowedMentionsRequestParseParse.fromJson(e as String))
+          .toList(),
+    ),
+    users: $checkedConvert(
+      'users',
+      (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+    ),
+    roles: $checkedConvert(
+      'roles',
+      (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+    ),
+    repliedUser: $checkedConvert('replied_user', (v) => v as bool?),
+  );
+  return val;
+}, fieldKeyMap: const {'repliedUser': 'replied_user'});
 
 Map<String, dynamic> _$AllowedMentionsRequestToJson(
   AllowedMentionsRequest instance,

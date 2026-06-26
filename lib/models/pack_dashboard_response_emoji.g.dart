@@ -8,15 +8,35 @@ part of 'pack_dashboard_response_emoji.dart';
 
 PackDashboardResponseEmoji _$PackDashboardResponseEmojiFromJson(
   Map<String, dynamic> json,
-) => PackDashboardResponseEmoji(
-  installedLimit: (json['installed_limit'] as num).toInt(),
-  createdLimit: (json['created_limit'] as num).toInt(),
-  installed: (json['installed'] as List<dynamic>)
-      .map((e) => PackSummaryResponse.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  created: (json['created'] as List<dynamic>)
-      .map((e) => PackSummaryResponse.fromJson(e as Map<String, dynamic>))
-      .toList(),
+) => $checkedCreate(
+  'PackDashboardResponseEmoji',
+  json,
+  ($checkedConvert) {
+    final val = PackDashboardResponseEmoji(
+      installedLimit: $checkedConvert(
+        'installed_limit',
+        (v) => (v as num).toInt(),
+      ),
+      createdLimit: $checkedConvert('created_limit', (v) => (v as num).toInt()),
+      installed: $checkedConvert(
+        'installed',
+        (v) => (v as List<dynamic>)
+            .map((e) => PackSummaryResponse.fromJson(e as Map<String, dynamic>))
+            .toList(),
+      ),
+      created: $checkedConvert(
+        'created',
+        (v) => (v as List<dynamic>)
+            .map((e) => PackSummaryResponse.fromJson(e as Map<String, dynamic>))
+            .toList(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'installedLimit': 'installed_limit',
+    'createdLimit': 'created_limit',
+  },
 );
 
 Map<String, dynamic> _$PackDashboardResponseEmojiToJson(

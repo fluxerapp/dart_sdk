@@ -10,7 +10,9 @@ import 'package:fluxer_dart/models/user_partial_response.dart';
 import 'package:fluxer_dart/models/user_private_response.dart';
 import 'package:fluxer_dart/models/user_guild_settings_response.dart';
 import 'package:fluxer_dart/models/user_settings_response.dart';
+import 'package:fluxer_dart/models/web_authn_credential_response.dart';
 
+import 'package:fluxer_dart/gateway_client/custom_status_storage.dart';
 import 'package:fluxer_dart/gateway_client/gateway_event.dart';
 import 'package:fluxer_dart/gateway_client/gateway_types.dart';
 
@@ -81,6 +83,7 @@ class EventParser {
         'GUILD_DELETE' => GuildDeleteEvent(
           guildId: data['id'] as String,
           unavailable: data['unavailable'] as bool? ?? false,
+          unavailableHidden: data['unavailable_hidden'] as bool? ?? false,
         ),
         'GUILD_MEMBER_ADD' => GuildMemberAddEvent(
           guildId: data['guild_id'] as String,
@@ -287,7 +290,7 @@ class EventParser {
           connectionId: data['connection_id'] as String,
           guildId: data['guild_id'] as String?,
           channelId: data['channel_id'] as String?,
-          e2eeEnabled: data['e2ee_enabled'] as bool?,
+          e2eeKey: data['e2ee_key'] as String?,
         ),
 
         // Calls
@@ -331,6 +334,29 @@ class EventParser {
       };
     } catch (_) {
       return UnknownGatewayEvent(eventType: eventType, data: data);
+    }
+  }
+
+  /// Parses a dispatch [eventType] whose payload is a JSON array.
+  ///
+  /// Returns `null` for unrecognized event types or when deserialization
+  /// fails, so the caller can skip emitting an event.
+  GatewayEvent? parseList(String eventType, List<dynamic> data) {
+    try {
+      return switch (eventType) {
+        'WEBAUTHN_CREDENTIALS_UPDATE' => WebauthnCredentialsUpdateEvent(
+          credentials: data
+              .map(
+                (e) => WebAuthnCredentialResponse.fromJson(
+                  (e as Map).cast<String, Object?>(),
+                ),
+              )
+              .toList(),
+        ),
+        _ => null,
+      };
+    } catch (_) {
+      return null;
     }
   }
 
@@ -438,7 +464,7 @@ class EventParser {
     return PresenceUpdateEvent(
       userId: userId,
       status: data['status'] as String,
-      customStatus: customStatusMap?['text'] as String?,
+      customStatus: serializeCustomStatusMap(customStatusMap),
     );
   }
 

@@ -8,17 +8,20 @@ part of 'guild_sticker_response.dart';
 
 GuildStickerResponse _$GuildStickerResponseFromJson(
   Map<String, dynamic> json,
-) => GuildStickerResponse(
-  id: json['id'] as String,
-  name: json['name'] as String,
-  description: json['description'] as String,
-  tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
-  animated: json['animated'] as bool,
-  nsfw: json['nsfw'] as bool,
-  formats: (json['formats'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
-);
+) => $checkedCreate('GuildStickerResponse', json, ($checkedConvert) {
+  final val = GuildStickerResponse(
+    id: $checkedConvert('id', (v) => v as String),
+    name: $checkedConvert('name', (v) => v as String),
+    description: $checkedConvert('description', (v) => v as String),
+    tags: $checkedConvert(
+      'tags',
+      (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+    ),
+    animated: $checkedConvert('animated', (v) => v as bool),
+    nsfw: $checkedConvert('nsfw', (v) => v as bool),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$GuildStickerResponseToJson(
   GuildStickerResponse instance,
@@ -29,5 +32,4 @@ Map<String, dynamic> _$GuildStickerResponseToJson(
   'tags': instance.tags,
   'animated': instance.animated,
   'nsfw': instance.nsfw,
-  'formats': ?instance.formats,
 };

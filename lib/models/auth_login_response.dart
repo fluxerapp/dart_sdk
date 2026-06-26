@@ -4,7 +4,8 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'auth_mfa_required_response_mfa_mfa.dart';
+import 'auth_token_with_user_id_response_user.dart';
+import 'auth_login_response_variant2_mfa_mfa.dart';
 
 part 'auth_login_response.g.dart';
 
@@ -21,8 +22,8 @@ class AuthLoginResponse {
   AuthLoginResponseAuthTokenWithUserIdResponse
   toAuthTokenWithUserIdResponse() =>
       AuthLoginResponseAuthTokenWithUserIdResponse.fromJson(_json);
-  AuthLoginResponseAuthMfaRequiredResponse toAuthMfaRequiredResponse() =>
-      AuthLoginResponseAuthMfaRequiredResponse.fromJson(_json);
+  AuthLoginResponseVariant2 toVariant2() =>
+      AuthLoginResponseVariant2.fromJson(_json);
 }
 
 @JsonSerializable()
@@ -30,10 +31,12 @@ class AuthLoginResponseAuthTokenWithUserIdResponse {
   final String token;
   @JsonKey(name: 'user_id')
   final String userId;
+  final AuthTokenWithUserIdResponseUser user;
 
   const AuthLoginResponseAuthTokenWithUserIdResponse({
     required this.token,
     required this.userId,
+    required this.user,
   });
 
   factory AuthLoginResponseAuthTokenWithUserIdResponse.fromJson(
@@ -45,31 +48,24 @@ class AuthLoginResponseAuthTokenWithUserIdResponse {
 }
 
 @JsonSerializable()
-class AuthLoginResponseAuthMfaRequiredResponse {
-  final AuthMfaRequiredResponseMfaMfa mfa;
+class AuthLoginResponseVariant2 {
+  final AuthLoginResponseVariant2MfaMfa mfa;
   final String ticket;
   @JsonKey(name: 'allowed_methods')
   final List<String> allowedMethods;
-  @JsonKey(name: 'sms_phone_hint')
-  final String? smsPhoneHint;
-  final bool sms;
   final bool totp;
   final bool webauthn;
 
-  const AuthLoginResponseAuthMfaRequiredResponse({
+  const AuthLoginResponseVariant2({
     required this.mfa,
     required this.ticket,
     required this.allowedMethods,
-    required this.smsPhoneHint,
-    required this.sms,
     required this.totp,
     required this.webauthn,
   });
 
-  factory AuthLoginResponseAuthMfaRequiredResponse.fromJson(
-    Map<String, dynamic> json,
-  ) => _$AuthLoginResponseAuthMfaRequiredResponseFromJson(json);
+  factory AuthLoginResponseVariant2.fromJson(Map<String, dynamic> json) =>
+      _$AuthLoginResponseVariant2FromJson(json);
 
-  Map<String, dynamic> toJson() =>
-      _$AuthLoginResponseAuthMfaRequiredResponseToJson(this);
+  Map<String, dynamic> toJson() => _$AuthLoginResponseVariant2ToJson(this);
 }

@@ -4,7 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'channel_pin_message_response.dart';
+import 'channel_pin_response_message.dart';
 
 part 'channel_pin_response.g.dart';
 
@@ -15,7 +15,8 @@ class ChannelPinResponse {
   factory ChannelPinResponse.fromJson(Map<String, Object?> json) =>
       _$ChannelPinResponseFromJson(json);
 
-  final ChannelPinMessageResponse message;
+  /// The pinned message
+  final ChannelPinResponseMessage message;
 
   /// The ISO 8601 timestamp of when the message was pinned
   @JsonKey(name: 'pinned_at')

@@ -7,7 +7,12 @@ part of 'theme_create_response.dart';
 // **************************************************************************
 
 ThemeCreateResponse _$ThemeCreateResponseFromJson(Map<String, dynamic> json) =>
-    ThemeCreateResponse(id: json['id'] as String);
+    $checkedCreate('ThemeCreateResponse', json, ($checkedConvert) {
+      final val = ThemeCreateResponse(
+        id: $checkedConvert('id', (v) => v as String),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$ThemeCreateResponseToJson(
   ThemeCreateResponse instance,

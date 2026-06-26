@@ -18,7 +18,7 @@ class CreatePrivateChannelRequest {
   @JsonKey(includeIfNull: false, name: 'recipient_id')
   final SnowflakeType? recipientId;
 
-  /// Array of user IDs for creating a group DM (max 9)
+  /// Array of user IDs for creating a group DM (max 49)
   @JsonKey(includeIfNull: false)
   final List<SnowflakeType>? recipients;
 

@@ -4,8 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'application_bot_response.dart';
-import 'application_flags.dart';
+import 'applications_me_response_bot.dart';
 import 'applications_me_response_owner.dart';
 
 part 'applications_me_response.g.dart';
@@ -19,9 +18,10 @@ class ApplicationsMeResponse {
     required this.description,
     required this.botPublic,
     required this.botRequireCodeGrant,
-    required this.flags,
+    required this.verifyKey,
     required this.owner,
     this.bot,
+    this.redirectUris,
   });
 
   factory ApplicationsMeResponse.fromJson(Map<String, Object?> json) =>
@@ -33,11 +33,11 @@ class ApplicationsMeResponse {
   /// The name of the application
   final String name;
 
-  /// The icon hash of the application
+  /// The persisted bot avatar hash used as the application icon, if available
   @JsonKey(includeIfNull: true)
   final String? icon;
 
-  /// The description of the application
+  /// The persisted bot profile bio used as the application description
   @JsonKey(includeIfNull: true)
   final String? description;
 
@@ -48,12 +48,21 @@ class ApplicationsMeResponse {
   /// Whether the bot requires OAuth2 code grant
   @JsonKey(name: 'bot_require_code_grant')
   final bool botRequireCodeGrant;
-  final ApplicationFlags flags;
+
+  /// Compatibility placeholder for AppInfo clients until keys are persisted
+  @JsonKey(name: 'verify_key')
+  final String verifyKey;
 
   /// The owner of the application
   final ApplicationsMeResponseOwner owner;
+
+  /// The bot user associated with the application
   @JsonKey(includeIfNull: false)
-  final ApplicationBotResponse? bot;
+  final ApplicationsMeResponseBot? bot;
+
+  /// The registered redirect URIs for OAuth2
+  @JsonKey(includeIfNull: false, name: 'redirect_uris')
+  final List<String>? redirectUris;
 
   Map<String, Object?> toJson() => _$ApplicationsMeResponseToJson(this);
 }

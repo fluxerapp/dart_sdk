@@ -7,23 +7,48 @@ part of 'template_channel.dart';
 // **************************************************************************
 
 TemplateChannel _$TemplateChannelFromJson(Map<String, dynamic> json) =>
-    TemplateChannel(
-      id: json['id'],
-      type: json['type'] as num,
-      position: json['position'] as num,
-      name: json['name'] as String?,
-      topic: json['topic'] as String?,
-      parentId: json['parent_id'],
-      bitrate: json['bitrate'] as num?,
-      userLimit: json['user_limit'] as num?,
-      nsfw: json['nsfw'] as bool?,
-      rateLimitPerUser: json['rate_limit_per_user'] as num?,
-      permissionOverwrites: (json['permission_overwrites'] as List<dynamic>?)
-          ?.map(
-            (e) =>
-                TemplatePermissionOverwrite.fromJson(e as Map<String, dynamic>),
-          )
-          .toList(),
+    $checkedCreate(
+      'TemplateChannel',
+      json,
+      ($checkedConvert) {
+        final val = TemplateChannel(
+          id: $checkedConvert('id', (v) => v),
+          type: $checkedConvert('type', (v) => v as num),
+          position: $checkedConvert('position', (v) => v as num),
+          name: $checkedConvert('name', (v) => v as String?),
+          topic: $checkedConvert('topic', (v) => v as String?),
+          parentId: $checkedConvert('parent_id', (v) => v),
+          bitrate: $checkedConvert('bitrate', (v) => v as num?),
+          userLimit: $checkedConvert('user_limit', (v) => v as num?),
+          voiceConnectionLimit: $checkedConvert(
+            'voice_connection_limit',
+            (v) => v as num?,
+          ),
+          nsfw: $checkedConvert('nsfw', (v) => v as bool?),
+          rateLimitPerUser: $checkedConvert(
+            'rate_limit_per_user',
+            (v) => v as num?,
+          ),
+          permissionOverwrites: $checkedConvert(
+            'permission_overwrites',
+            (v) => (v as List<dynamic>?)
+                ?.map(
+                  (e) => TemplateChannelPermissionOverwrites.fromJson(
+                    e as Map<String, dynamic>,
+                  ),
+                )
+                .toList(),
+          ),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'parentId': 'parent_id',
+        'userLimit': 'user_limit',
+        'voiceConnectionLimit': 'voice_connection_limit',
+        'rateLimitPerUser': 'rate_limit_per_user',
+        'permissionOverwrites': 'permission_overwrites',
+      },
     );
 
 Map<String, dynamic> _$TemplateChannelToJson(TemplateChannel instance) =>
@@ -36,6 +61,7 @@ Map<String, dynamic> _$TemplateChannelToJson(TemplateChannel instance) =>
       'parent_id': ?instance.parentId,
       'bitrate': ?instance.bitrate,
       'user_limit': ?instance.userLimit,
+      'voice_connection_limit': ?instance.voiceConnectionLimit,
       'nsfw': ?instance.nsfw,
       'rate_limit_per_user': ?instance.rateLimitPerUser,
       'permission_overwrites': ?instance.permissionOverwrites,

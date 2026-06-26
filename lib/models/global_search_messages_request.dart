@@ -4,12 +4,15 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'message_author_type.dart';
-import 'message_content_type.dart';
-import 'message_embed_type.dart';
-import 'message_search_scope.dart';
-import 'message_sort_field.dart';
-import 'message_sort_order.dart';
+import 'global_search_messages_request_author_type_author_type.dart';
+import 'global_search_messages_request_embed_type_embed_type.dart';
+import 'global_search_messages_request_exclude_author_type_exclude_author_type.dart';
+import 'global_search_messages_request_exclude_embed_type_exclude_embed_type.dart';
+import 'global_search_messages_request_exclude_has_exclude_has.dart';
+import 'global_search_messages_request_has_has.dart';
+import 'global_search_messages_request_scope_scope.dart';
+import 'global_search_messages_request_sort_by_sort_by.dart';
+import 'global_search_messages_request_sort_order_sort_order.dart';
 import 'snowflake_type.dart';
 
 part 'global_search_messages_request.g.dart';
@@ -97,11 +100,12 @@ class GlobalSearchMessagesRequest {
 
   /// Author types to filter by
   @JsonKey(includeIfNull: false, name: 'author_type')
-  final List<MessageAuthorType>? authorType;
+  final List<GlobalSearchMessagesRequestAuthorTypeAuthorType>? authorType;
 
   /// Author types to exclude
   @JsonKey(includeIfNull: false, name: 'exclude_author_type')
-  final List<MessageAuthorType>? excludeAuthorType;
+  final List<GlobalSearchMessagesRequestExcludeAuthorTypeExcludeAuthorType>?
+  excludeAuthorType;
 
   /// Author user IDs to filter by
   @JsonKey(includeIfNull: false, name: 'author_id')
@@ -127,21 +131,22 @@ class GlobalSearchMessagesRequest {
   @JsonKey(includeIfNull: false)
   final bool? pinned;
 
-  /// Content types the message must have
+  /// Content flags the message must have. Use image, video, sound, or file for uploaded attachments and embed for link previews or rich embeds.
   @JsonKey(includeIfNull: false)
-  final List<MessageContentType>? has;
+  final List<GlobalSearchMessagesRequestHasHas>? has;
 
-  /// Content types the message must not have
+  /// Content flags the message must not have. Use image, video, sound, or file for uploaded attachments and embed for link previews or rich embeds.
   @JsonKey(includeIfNull: false, name: 'exclude_has')
-  final List<MessageContentType>? excludeHas;
+  final List<GlobalSearchMessagesRequestExcludeHasExcludeHas>? excludeHas;
 
-  /// Embed types to filter by
+  /// Generated or supplied embed types to filter by; does not match uploaded attachments
   @JsonKey(includeIfNull: false, name: 'embed_type')
-  final List<MessageEmbedType>? embedType;
+  final List<GlobalSearchMessagesRequestEmbedTypeEmbedType>? embedType;
 
-  /// Embed types to exclude
+  /// Generated or supplied embed types to exclude; does not match uploaded attachments
   @JsonKey(includeIfNull: false, name: 'exclude_embed_type')
-  final List<MessageEmbedType>? excludeEmbedType;
+  final List<GlobalSearchMessagesRequestExcludeEmbedTypeExcludeEmbedType>?
+  excludeEmbedType;
 
   /// Embed providers to filter by
   @JsonKey(includeIfNull: false, name: 'embed_provider')
@@ -174,16 +179,22 @@ class GlobalSearchMessagesRequest {
   /// File extensions to exclude
   @JsonKey(includeIfNull: false, name: 'exclude_attachment_extension')
   final List<String>? excludeAttachmentExtension;
+
+  /// Field to sort results by
   @JsonKey(includeIfNull: false, name: 'sort_by')
-  final MessageSortField? sortBy;
+  final GlobalSearchMessagesRequestSortBySortBy? sortBy;
+
+  /// Sort order for results
   @JsonKey(includeIfNull: false, name: 'sort_order')
-  final MessageSortOrder? sortOrder;
+  final GlobalSearchMessagesRequestSortOrderSortOrder? sortOrder;
 
   /// Whether to include NSFW channel results
   @JsonKey(includeIfNull: false, name: 'include_nsfw')
   final bool? includeNsfw;
+
+  /// Scope to search within when querying messages
   @JsonKey(includeIfNull: false)
-  final MessageSearchScope? scope;
+  final GlobalSearchMessagesRequestScopeScope? scope;
   @JsonKey(includeIfNull: false, name: 'context_channel_id')
   final SnowflakeType? contextChannelId;
   @JsonKey(includeIfNull: false, name: 'context_guild_id')

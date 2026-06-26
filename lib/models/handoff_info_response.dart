@@ -4,7 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'handoff_info_client_info.dart';
+import 'handoff_info_response_client_info.dart';
 
 part 'handoff_info_response.g.dart';
 
@@ -20,7 +20,7 @@ class HandoffInfoResponse {
 
   /// Client information of the initiating device
   @JsonKey(includeIfNull: false, name: 'client_info')
-  final HandoffInfoClientInfo? clientInfo;
+  final HandoffInfoResponseClientInfo? clientInfo;
 
   Map<String, Object?> toJson() => _$HandoffInfoResponseToJson(this);
 }

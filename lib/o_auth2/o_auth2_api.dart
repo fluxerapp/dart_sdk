@@ -18,6 +18,8 @@ import '../models/bot_profile_response.dart';
 import '../models/bot_profile_update_request.dart';
 import '../models/bot_token_reset_response.dart';
 import '../models/enum0.dart';
+import '../models/o_auth2_applications_me_response.dart';
+import '../models/o_auth2_authorizations_bulk_revoke_request.dart';
 import '../models/o_auth2_authorizations_list_response.dart';
 import '../models/o_auth2_consent_response.dart';
 import '../models/o_auth2_introspect_response.dart';
@@ -51,6 +53,16 @@ abstract class OAuth2Api {
   @GET('/oauth2/@me/authorizations')
   Future<OAuth2AuthorizationsListResponse> listUserOauth2Authorizations();
 
+  /// Bulk revoke OAuth2 authorizations.
+  ///
+  /// Revokes user authorizations for multiple third-party applications. Immediately invalidates all tokens issued to those applications.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/oauth2/@me/authorizations/revoke')
+  Future<void> bulkDeleteUserOauth2Authorizations({
+    @Body() required OAuth2AuthorizationsBulkRevokeRequest body,
+  });
+
   /// Revoke OAuth2 authorization.
   ///
   /// Revokes user authorization for a third-party application. Immediately invalidates all tokens issued to that application. User regains control of delegated access.
@@ -63,7 +75,7 @@ abstract class OAuth2Api {
 
   /// Create OAuth2 application.
   ///
-  /// Creates a new OAuth2 application (client). Returns client credentials including ID and secret. Application can be used for authorization flows and API access.
+  /// Creates a new bot-backed OAuth2 application (client). Requires CAPTCHA verification. Returns client credentials including ID and secret. Application can be used for authorization flows and API access.
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/oauth2/applications')
@@ -71,11 +83,11 @@ abstract class OAuth2Api {
     @Body() required ApplicationCreateRequest body,
   });
 
-  /// List user applications.
+  /// Get current applications endpoint.
   ///
-  /// Lists all OAuth2 applications owned by the authenticated user. Includes application credentials, metadata, and configuration.
+  /// For user tokens, lists all OAuth2 applications owned by the authenticated user. For bot tokens, returns the bot application object.
   @GET('/oauth2/applications/@me')
-  Future<ApplicationListResponse> listUserApplications3();
+  Future<OAuth2ApplicationsMeResponse> getOauthApplicationsMe();
 
   /// Get application.
   ///
@@ -134,7 +146,7 @@ abstract class OAuth2Api {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/oauth2/applications/{id}/bot/reset-token')
-  Future<BotTokenResetResponse> resetBotToken2({
+  Future<BotTokenResetResponse> resetBotToken({
     @Path('id') required String id,
     @Body() required SudoVerificationSchema body,
   });
@@ -147,7 +159,7 @@ abstract class OAuth2Api {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/oauth2/applications/{id}/client-secret/reset')
-  Future<ApplicationResponse> resetClientSecret2({
+  Future<ApplicationResponse> resetClientSecret({
     @Path('id') required String id,
     @Body() required SudoVerificationSchema body,
   });
@@ -231,5 +243,5 @@ abstract class OAuth2Api {
   ///
   /// Lists all OAuth2 applications owned by the authenticated user. Includes application credentials, metadata, and configuration.
   @GET('/users/@me/applications')
-  Future<ApplicationListResponse> listUserApplications2();
+  Future<ApplicationListResponse> listUserApplications();
 }

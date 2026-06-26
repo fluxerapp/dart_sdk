@@ -8,24 +8,51 @@ part of 'gift_code_metadata_response.dart';
 
 GiftCodeMetadataResponse _$GiftCodeMetadataResponseFromJson(
   Map<String, dynamic> json,
-) => GiftCodeMetadataResponse(
-  code: json['code'] as String,
-  durationType: GiftCodeMetadataResponseDurationTypeDurationType.fromJson(
-    json['duration_type'] as String,
-  ),
-  durationQuantity: (json['duration_quantity'] as num).toInt(),
-  createdAt: DateTime.parse(json['created_at'] as String),
-  createdBy: UserPartialResponse.fromJson(
-    json['created_by'] as Map<String, dynamic>,
-  ),
-  redeemedAt: json['redeemed_at'] == null
-      ? null
-      : DateTime.parse(json['redeemed_at'] as String),
-  redeemedBy: json['redeemed_by'] == null
-      ? null
-      : UserPartialResponse.fromJson(
-          json['redeemed_by'] as Map<String, dynamic>,
+) => $checkedCreate(
+  'GiftCodeMetadataResponse',
+  json,
+  ($checkedConvert) {
+    final val = GiftCodeMetadataResponse(
+      code: $checkedConvert('code', (v) => v as String),
+      durationType: $checkedConvert(
+        'duration_type',
+        (v) => GiftCodeMetadataResponseDurationTypeDurationType.fromJson(
+          v as String,
         ),
+      ),
+      durationQuantity: $checkedConvert(
+        'duration_quantity',
+        (v) => (v as num).toInt(),
+      ),
+      createdAt: $checkedConvert(
+        'created_at',
+        (v) => DateTime.parse(v as String),
+      ),
+      createdBy: $checkedConvert(
+        'created_by',
+        (v) => UserPartialResponse.fromJson(v as Map<String, dynamic>),
+      ),
+      redeemedAt: $checkedConvert(
+        'redeemed_at',
+        (v) => v == null ? null : DateTime.parse(v as String),
+      ),
+      redeemedBy: $checkedConvert(
+        'redeemed_by',
+        (v) => v == null
+            ? null
+            : UserPartialResponse.fromJson(v as Map<String, dynamic>),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'durationType': 'duration_type',
+    'durationQuantity': 'duration_quantity',
+    'createdAt': 'created_at',
+    'createdBy': 'created_by',
+    'redeemedAt': 'redeemed_at',
+    'redeemedBy': 'redeemed_by',
+  },
 );
 
 Map<String, dynamic> _$GiftCodeMetadataResponseToJson(

@@ -8,10 +8,13 @@ part of 'push_rotate_request_keys.dart';
 
 PushRotateRequestKeys _$PushRotateRequestKeysFromJson(
   Map<String, dynamic> json,
-) => PushRotateRequestKeys(
-  p256dh: json['p256dh'] as String,
-  auth: json['auth'] as String,
-);
+) => $checkedCreate('PushRotateRequestKeys', json, ($checkedConvert) {
+  final val = PushRotateRequestKeys(
+    p256dh: $checkedConvert('p256dh', (v) => v as String),
+    auth: $checkedConvert('auth', (v) => v as String),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$PushRotateRequestKeysToJson(
   PushRotateRequestKeys instance,

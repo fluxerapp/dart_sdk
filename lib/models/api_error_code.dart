@@ -79,6 +79,8 @@ enum ApiErrorCode {
   cannotModifyVoiceState('CANNOT_MODIFY_VOICE_STATE'),
   @JsonValue('CANNOT_REDEEM_PLUTONIUM_WITH_VISIONARY')
   cannotRedeemPlutoniumWithVisionary('CANNOT_REDEEM_PLUTONIUM_WITH_VISIONARY'),
+  @JsonValue('CANNOT_REPORT_GUILD')
+  cannotReportGuild('CANNOT_REPORT_GUILD'),
   @JsonValue('CANNOT_REPORT_OWN_GUILD')
   cannotReportOwnGuild('CANNOT_REPORT_OWN_GUILD'),
   @JsonValue('CANNOT_REPORT_OWN_MESSAGE')
@@ -129,14 +131,6 @@ enum ApiErrorCode {
   contentBlocked('CONTENT_BLOCKED'),
   @JsonValue('CREATION_FAILED')
   creationFailed('CREATION_FAILED'),
-  @JsonValue('CSAM_SCAN_FAILED')
-  csamScanFailed('CSAM_SCAN_FAILED'),
-  @JsonValue('CSAM_SCAN_PARSE_ERROR')
-  csamScanParseError('CSAM_SCAN_PARSE_ERROR'),
-  @JsonValue('CSAM_SCAN_SUBSCRIPTION_ERROR')
-  csamScanSubscriptionError('CSAM_SCAN_SUBSCRIPTION_ERROR'),
-  @JsonValue('CSAM_SCAN_TIMEOUT')
-  csamScanTimeout('CSAM_SCAN_TIMEOUT'),
   @JsonValue('DECRYPTION_FAILED')
   decryptionFailed('DECRYPTION_FAILED'),
   @JsonValue('DELETION_FAILED')
@@ -163,6 +157,42 @@ enum ApiErrorCode {
   emailServiceNotTestable('EMAIL_SERVICE_NOT_TESTABLE'),
   @JsonValue('EMAIL_VERIFICATION_REQUIRED')
   emailVerificationRequired('EMAIL_VERIFICATION_REQUIRED'),
+  @JsonValue('CANARY_TESTER_EMAIL_VERIFICATION_REQUIRED')
+  canaryTesterEmailVerificationRequired(
+    'CANARY_TESTER_EMAIL_VERIFICATION_REQUIRED',
+  ),
+  @JsonValue('DIRECT_MESSAGE_EMAIL_VERIFICATION_REQUIRED')
+  directMessageEmailVerificationRequired(
+    'DIRECT_MESSAGE_EMAIL_VERIFICATION_REQUIRED',
+  ),
+  @JsonValue('FRIEND_REQUEST_EMAIL_VERIFICATION_REQUIRED')
+  friendRequestEmailVerificationRequired(
+    'FRIEND_REQUEST_EMAIL_VERIFICATION_REQUIRED',
+  ),
+  @JsonValue('GUILD_CREATION_EMAIL_VERIFICATION_REQUIRED')
+  guildCreationEmailVerificationRequired(
+    'GUILD_CREATION_EMAIL_VERIFICATION_REQUIRED',
+  ),
+  @JsonValue('GUILD_EMAIL_VERIFICATION_REQUIRED')
+  guildEmailVerificationRequired('GUILD_EMAIL_VERIFICATION_REQUIRED'),
+  @JsonValue('MFA_EMAIL_VERIFICATION_REQUIRED')
+  mfaEmailVerificationRequired('MFA_EMAIL_VERIFICATION_REQUIRED'),
+  @JsonValue('PROFILE_EMAIL_VERIFICATION_REQUIRED')
+  profileEmailVerificationRequired('PROFILE_EMAIL_VERIFICATION_REQUIRED'),
+  @JsonValue('PURCHASE_EMAIL_VERIFICATION_REQUIRED')
+  purchaseEmailVerificationRequired('PURCHASE_EMAIL_VERIFICATION_REQUIRED'),
+  @JsonValue('REACTION_EMAIL_VERIFICATION_REQUIRED')
+  reactionEmailVerificationRequired('REACTION_EMAIL_VERIFICATION_REQUIRED'),
+  @JsonValue('REPORT_EMAIL_VERIFICATION_REQUIRED')
+  reportEmailVerificationRequired('REPORT_EMAIL_VERIFICATION_REQUIRED'),
+  @JsonValue('REGISTRATION_CLOSED')
+  registrationClosed('REGISTRATION_CLOSED'),
+  @JsonValue('REGISTRATION_PENDING_APPROVAL')
+  registrationPendingApproval('REGISTRATION_PENDING_APPROVAL'),
+  @JsonValue('REGISTRATION_REJECTED')
+  registrationRejected('REGISTRATION_REJECTED'),
+  @JsonValue('REGISTRATION_URL_INVALID')
+  registrationUrlInvalid('REGISTRATION_URL_INVALID'),
   @JsonValue('EMPTY_ENCRYPTED_BODY')
   emptyEncryptedBody('EMPTY_ENCRYPTED_BODY'),
   @JsonValue('ENCRYPTION_FAILED')
@@ -205,8 +235,6 @@ enum ApiErrorCode {
   harvestFailed('HARVEST_FAILED'),
   @JsonValue('HARVEST_NOT_READY')
   harvestNotReady('HARVEST_NOT_READY'),
-  @JsonValue('HARVEST_ON_COOLDOWN')
-  harvestOnCooldown('HARVEST_ON_COOLDOWN'),
   @JsonValue('HTTP_GET_AUTHORIZE_NOT_SUPPORTED')
   httpGetAuthorizeNotSupported('HTTP_GET_AUTHORIZE_NOT_SUPPORTED'),
   @JsonValue('INSTANCE_VERSION_MISMATCH')
@@ -301,6 +329,10 @@ enum ApiErrorCode {
   ipAuthorizationResendCooldown('IP_AUTHORIZATION_RESEND_COOLDOWN'),
   @JsonValue('IP_AUTHORIZATION_RESEND_LIMIT_EXCEEDED')
   ipAuthorizationResendLimitExceeded('IP_AUTHORIZATION_RESEND_LIMIT_EXCEEDED'),
+  @JsonValue('GLOBAL_IP_BANNED')
+  globalIpBanned('GLOBAL_IP_BANNED'),
+  @JsonValue('GLOBAL_IP_TEMPORARILY_BANNED')
+  globalIpTemporarilyBanned('GLOBAL_IP_TEMPORARILY_BANNED'),
   @JsonValue('IP_BANNED')
   ipBanned('IP_BANNED'),
   @JsonValue('RESIDENTIAL_PROXY_BLOCKED')
@@ -325,6 +357,8 @@ enum ApiErrorCode {
   maxGroupDmRecipients('MAX_GROUP_DM_RECIPIENTS'),
   @JsonValue('MAX_GROUP_DMS')
   maxGroupDms('MAX_GROUP_DMS'),
+  @JsonValue('GROUP_DM_RECIPIENTS_NOT_ADDABLE')
+  groupDmRecipientsNotAddable('GROUP_DM_RECIPIENTS_NOT_ADDABLE'),
   @JsonValue('MAX_GUILD_CHANNELS')
   maxGuildChannels('MAX_GUILD_CHANNELS'),
   @JsonValue('MAX_GUILD_MEMBERS')
@@ -375,8 +409,6 @@ enum ApiErrorCode {
   missingEphemeralKey('MISSING_EPHEMERAL_KEY'),
   @JsonValue('MISSING_IV')
   missingIv('MISSING_IV'),
-  @JsonValue('MISSING_OAUTH_ADMIN_SCOPE')
-  missingOauthAdminScope('MISSING_OAUTH_ADMIN_SCOPE'),
   @JsonValue('MISSING_OAUTH_FIELDS')
   missingOauthFields('MISSING_OAUTH_FIELDS'),
   @JsonValue('MISSING_OAUTH_SCOPE')
@@ -423,8 +455,6 @@ enum ApiErrorCode {
   phoneAlreadyUsed('PHONE_ALREADY_USED'),
   @JsonValue('PHONE_RATE_LIMIT_EXCEEDED')
   phoneRateLimitExceeded('PHONE_RATE_LIMIT_EXCEEDED'),
-  @JsonValue('PHONE_REQUIRED_FOR_SMS_MFA')
-  phoneRequiredForSmsMfa('PHONE_REQUIRED_FOR_SMS_MFA'),
   @JsonValue('PHONE_VERIFICATION_REQUIRED')
   phoneVerificationRequired('PHONE_VERIFICATION_REQUIRED'),
   @JsonValue('PREMIUM_PURCHASE_BLOCKED')
@@ -443,16 +473,22 @@ enum ApiErrorCode {
   reportBanned('REPORT_BANNED'),
   @JsonValue('RESPONSE_VALIDATION_ERROR')
   responseValidationError('RESPONSE_VALIDATION_ERROR'),
+  @JsonValue('RESOURCE_LOCKED')
+  resourceLocked('RESOURCE_LOCKED'),
   @JsonValue('SERVICE_UNAVAILABLE')
   serviceUnavailable('SERVICE_UNAVAILABLE'),
   @JsonValue('SESSION_TOKEN_MISMATCH')
   sessionTokenMismatch('SESSION_TOKEN_MISMATCH'),
+  @JsonValue('SINGLE_COMMUNITY_CANNOT_CREATE_GUILDS')
+  singleCommunityCannotCreateGuilds('SINGLE_COMMUNITY_CANNOT_CREATE_GUILDS'),
+  @JsonValue('SINGLE_COMMUNITY_CANNOT_DELETE')
+  singleCommunityCannotDelete('SINGLE_COMMUNITY_CANNOT_DELETE'),
+  @JsonValue('SINGLE_COMMUNITY_CANNOT_LEAVE')
+  singleCommunityCannotLeave('SINGLE_COMMUNITY_CANNOT_LEAVE'),
+  @JsonValue('INSTANCE_POLICY_TRANSITION_NOT_ALLOWED')
+  instancePolicyTransitionNotAllowed('INSTANCE_POLICY_TRANSITION_NOT_ALLOWED'),
   @JsonValue('SLOWMODE_RATE_LIMITED')
   slowmodeRateLimited('SLOWMODE_RATE_LIMITED'),
-  @JsonValue('SMS_MFA_NOT_ENABLED')
-  smsMfaNotEnabled('SMS_MFA_NOT_ENABLED'),
-  @JsonValue('SMS_MFA_REQUIRES_TOTP')
-  smsMfaRequiresTotp('SMS_MFA_REQUIRES_TOTP'),
   @JsonValue('SMS_VERIFICATION_UNAVAILABLE')
   smsVerificationUnavailable('SMS_VERIFICATION_UNAVAILABLE'),
   @JsonValue('SSO_REQUIRED')
@@ -495,6 +531,8 @@ enum ApiErrorCode {
   stripeWebhookSignatureInvalid('STRIPE_WEBHOOK_SIGNATURE_INVALID'),
   @JsonValue('STRIPE_WEBHOOK_SIGNATURE_MISSING')
   stripeWebhookSignatureMissing('STRIPE_WEBHOOK_SIGNATURE_MISSING'),
+  @JsonValue('DIRECT_MESSAGES_DISABLED')
+  directMessagesDisabled('DIRECT_MESSAGES_DISABLED'),
   @JsonValue('DONATION_AMOUNT_INVALID')
   donationAmountInvalid('DONATION_AMOUNT_INVALID'),
   @JsonValue('DONATION_MAGIC_LINK_EXPIRED')
@@ -603,6 +641,8 @@ enum ApiErrorCode {
   unknownApplication('UNKNOWN_APPLICATION'),
   @JsonValue('UNKNOWN_WEBHOOK')
   unknownWebhook('UNKNOWN_WEBHOOK'),
+  @JsonValue('UNFURL_STREAM_TOO_LARGE')
+  unfurlStreamTooLarge('UNFURL_STREAM_TOO_LARGE'),
   @JsonValue('UNSUPPORTED_RESPONSE_TYPE')
   unsupportedResponseType('UNSUPPORTED_RESPONSE_TYPE'),
   @JsonValue('USERNAME_NOT_AVAILABLE')

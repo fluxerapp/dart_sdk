@@ -13,9 +13,20 @@ Map<String, dynamic> _$LocalizedCardPreapprovalContinueResponseToJson(
 LocalizedCardPreapprovalContinueResponsePending
 _$LocalizedCardPreapprovalContinueResponsePendingFromJson(
   Map<String, dynamic> json,
-) => LocalizedCardPreapprovalContinueResponsePending(
-  status: json['status'] as String,
-);
+) => $checkedCreate('LocalizedCardPreapprovalContinueResponsePending', json, (
+  $checkedConvert,
+) {
+  final val = LocalizedCardPreapprovalContinueResponsePending(
+    status: $checkedConvert(
+      'status',
+      (v) =>
+          PendingLocalizedCardPreapprovalContinueResponseStatusStatus.fromJson(
+            v as String,
+          ),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$LocalizedCardPreapprovalContinueResponsePendingToJson(
   LocalizedCardPreapprovalContinueResponsePending instance,
@@ -24,10 +35,20 @@ Map<String, dynamic> _$LocalizedCardPreapprovalContinueResponsePendingToJson(
 LocalizedCardPreapprovalContinueResponseReady
 _$LocalizedCardPreapprovalContinueResponseReadyFromJson(
   Map<String, dynamic> json,
-) => LocalizedCardPreapprovalContinueResponseReady(
-  status: json['status'] as String,
-  url: json['url'] as String,
-);
+) => $checkedCreate('LocalizedCardPreapprovalContinueResponseReady', json, (
+  $checkedConvert,
+) {
+  final val = LocalizedCardPreapprovalContinueResponseReady(
+    status: $checkedConvert(
+      'status',
+      (v) => ReadyLocalizedCardPreapprovalContinueResponseStatusStatus.fromJson(
+        v as String,
+      ),
+    ),
+    url: $checkedConvert('url', (v) => v as String),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$LocalizedCardPreapprovalContinueResponseReadyToJson(
   LocalizedCardPreapprovalContinueResponseReady instance,
@@ -36,12 +57,30 @@ Map<String, dynamic> _$LocalizedCardPreapprovalContinueResponseReadyToJson(
 LocalizedCardPreapprovalContinueResponseRejected
 _$LocalizedCardPreapprovalContinueResponseRejectedFromJson(
   Map<String, dynamic> json,
-) => LocalizedCardPreapprovalContinueResponseRejected(
-  status: json['status'] as String,
-  reason: LocalizedCardPreapprovalContinueResponseRejectedReason.fromJson(
-    json['reason'] as String,
-  ),
-  actualCountry: json['actual_country'] as String?,
+) => $checkedCreate(
+  'LocalizedCardPreapprovalContinueResponseRejected',
+  json,
+  ($checkedConvert) {
+    final val = LocalizedCardPreapprovalContinueResponseRejected(
+      status: $checkedConvert(
+        'status',
+        (v) =>
+            RejectedLocalizedCardPreapprovalContinueResponseStatusStatus.fromJson(
+              v as String,
+            ),
+      ),
+      reason: $checkedConvert(
+        'reason',
+        (v) =>
+            RejectedLocalizedCardPreapprovalContinueResponseReasonReason.fromJson(
+              v as String,
+            ),
+      ),
+      actualCountry: $checkedConvert('actual_country', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'actualCountry': 'actual_country'},
 );
 
 Map<String, dynamic> _$LocalizedCardPreapprovalContinueResponseRejectedToJson(
@@ -55,9 +94,20 @@ Map<String, dynamic> _$LocalizedCardPreapprovalContinueResponseRejectedToJson(
 LocalizedCardPreapprovalContinueResponseExpired
 _$LocalizedCardPreapprovalContinueResponseExpiredFromJson(
   Map<String, dynamic> json,
-) => LocalizedCardPreapprovalContinueResponseExpired(
-  status: json['status'] as String,
-);
+) => $checkedCreate('LocalizedCardPreapprovalContinueResponseExpired', json, (
+  $checkedConvert,
+) {
+  final val = LocalizedCardPreapprovalContinueResponseExpired(
+    status: $checkedConvert(
+      'status',
+      (v) =>
+          ExpiredLocalizedCardPreapprovalContinueResponseStatusStatus.fromJson(
+            v as String,
+          ),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$LocalizedCardPreapprovalContinueResponseExpiredToJson(
   LocalizedCardPreapprovalContinueResponseExpired instance,

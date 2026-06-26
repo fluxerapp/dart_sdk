@@ -8,9 +8,11 @@ import 'package:retrofit/error_logger.dart';
 
 import '../models/change_subscription_request.dart';
 import '../models/current_subscription_price_response.dart';
+import '../models/premium_state_response.dart';
 import '../models/price_ids_response.dart';
 import '../models/pricing_mode_enum.dart';
 import '../models/success_response.dart';
+import '../models/update_premium_perks_disabled_request.dart';
 import '../models/url_response.dart';
 
 part 'premium_api.g.dart';
@@ -18,6 +20,12 @@ part 'premium_api.g.dart';
 @RestApi()
 abstract class PremiumApi {
   factory PremiumApi(Dio dio, {String? baseUrl}) = _PremiumApi;
+
+  /// Cancel pending subscription billing cycle change.
+  ///
+  /// Cancels the authenticated user's pending premium billing cycle change without cancelling the active subscription.
+  @POST('/premium/cancel-pending-subscription-change')
+  Future<void> cancelPendingSubscriptionChange();
 
   /// Cancel subscription.
   ///
@@ -53,11 +61,15 @@ abstract class PremiumApi {
   @POST('/premium/grace/end')
   Future<SuccessResponse> endPremiumGracePeriod();
 
-  /// Rejoin operator guild.
+  /// Set premium perks disabled.
   ///
-  /// Adds the authenticated user back to the operator community guild after premium re-subscription.
-  @POST('/premium/operator/rejoin')
-  Future<void> rejoinOperatorGuild();
+  /// Temporarily disables or restores premium perks for the authenticated user while preserving actual subscription and billing state.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @PATCH('/premium/perks-disabled')
+  Future<PremiumStateResponse> setPremiumPerksDisabled({
+    @Body() required UpdatePremiumPerksDisabledRequest body,
+  });
 
   /// Get Stripe price IDs.
   ///
@@ -73,6 +85,14 @@ abstract class PremiumApi {
   /// Reactivates a previously cancelled premium subscription for the authenticated user.
   @POST('/premium/reactivate-subscription')
   Future<void> reactivateSubscription();
+
+  /// Get premium state.
+  ///
+  /// Returns the authenticated user actual premium entitlement, effective perk state, and mirrored billing data. When Stripe is enabled, missing payment-method mirror data may be repaired lazily.
+  @GET('/premium/state')
+  Future<PremiumStateResponse> getPremiumState({
+    @Query('country_code') String? countryCode,
+  });
 
   /// Rejoin visionary guild.
   ///

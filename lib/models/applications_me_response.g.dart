@@ -8,20 +8,44 @@ part of 'applications_me_response.dart';
 
 ApplicationsMeResponse _$ApplicationsMeResponseFromJson(
   Map<String, dynamic> json,
-) => ApplicationsMeResponse(
-  id: json['id'] as String,
-  name: json['name'] as String,
-  icon: json['icon'] as String?,
-  description: json['description'] as String?,
-  botPublic: json['bot_public'] as bool,
-  botRequireCodeGrant: json['bot_require_code_grant'] as bool,
-  flags: (json['flags'] as num).toInt(),
-  owner: ApplicationsMeResponseOwner.fromJson(
-    json['owner'] as Map<String, dynamic>,
-  ),
-  bot: json['bot'] == null
-      ? null
-      : ApplicationBotResponse.fromJson(json['bot'] as Map<String, dynamic>),
+) => $checkedCreate(
+  'ApplicationsMeResponse',
+  json,
+  ($checkedConvert) {
+    final val = ApplicationsMeResponse(
+      id: $checkedConvert('id', (v) => v as String),
+      name: $checkedConvert('name', (v) => v as String),
+      icon: $checkedConvert('icon', (v) => v as String?),
+      description: $checkedConvert('description', (v) => v as String?),
+      botPublic: $checkedConvert('bot_public', (v) => v as bool),
+      botRequireCodeGrant: $checkedConvert(
+        'bot_require_code_grant',
+        (v) => v as bool,
+      ),
+      verifyKey: $checkedConvert('verify_key', (v) => v as String),
+      owner: $checkedConvert(
+        'owner',
+        (v) => ApplicationsMeResponseOwner.fromJson(v as Map<String, dynamic>),
+      ),
+      bot: $checkedConvert(
+        'bot',
+        (v) => v == null
+            ? null
+            : ApplicationsMeResponseBot.fromJson(v as Map<String, dynamic>),
+      ),
+      redirectUris: $checkedConvert(
+        'redirect_uris',
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'botPublic': 'bot_public',
+    'botRequireCodeGrant': 'bot_require_code_grant',
+    'verifyKey': 'verify_key',
+    'redirectUris': 'redirect_uris',
+  },
 );
 
 Map<String, dynamic> _$ApplicationsMeResponseToJson(
@@ -33,7 +57,8 @@ Map<String, dynamic> _$ApplicationsMeResponseToJson(
   'description': instance.description,
   'bot_public': instance.botPublic,
   'bot_require_code_grant': instance.botRequireCodeGrant,
-  'flags': instance.flags,
+  'verify_key': instance.verifyKey,
   'owner': instance.owner,
   'bot': ?instance.bot,
+  'redirect_uris': ?instance.redirectUris,
 };

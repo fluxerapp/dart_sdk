@@ -8,7 +8,7 @@ part of 'webhooks_api.dart';
 // RetrofitGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter,avoid_unused_constructor_parameters,unreachable_from_main
+// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter,avoid_unused_constructor_parameters,unreachable_from_main,avoid_redundant_argument_values
 
 class _WebhooksApi implements WebhooksApi {
   _WebhooksApi(this._dio, {this.baseUrl, this.errorLogger});
@@ -282,14 +282,69 @@ class _WebhooksApi implements WebhooksApi {
     required String webhookId,
     required String token,
     String? wait,
+    String? content,
+    List<RichEmbedRequest>? embeds,
+    List<Object5>? attachments,
+    MessageReferenceRequest? messageReference,
+    AllowedMentionsRequest? allowedMentions,
+    int? flags,
+    String? nonce,
+    String? favoriteMemeId,
+    List<String>? stickerIds,
+    bool? tts,
+    String? username,
+    String? avatarUrl,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'wait': wait};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final _data = FormData();
+    if (content != null) {
+      _data.fields.add(MapEntry('content', content));
+    }
+    _data.fields.add(MapEntry('embeds', jsonEncode(embeds)));
+    _data.fields.add(MapEntry('attachments', jsonEncode(attachments)));
+    _data.fields.add(
+      MapEntry(
+        'message_reference',
+        jsonEncode(messageReference ?? <String, dynamic>{}),
+      ),
+    );
+    _data.fields.add(
+      MapEntry(
+        'allowed_mentions',
+        jsonEncode(allowedMentions ?? <String, dynamic>{}),
+      ),
+    );
+    if (flags != null) {
+      _data.fields.add(MapEntry('flags', flags.toString()));
+    }
+    if (nonce != null) {
+      _data.fields.add(MapEntry('nonce', nonce));
+    }
+    if (favoriteMemeId != null) {
+      _data.fields.add(MapEntry('favorite_meme_id', favoriteMemeId));
+    }
+    stickerIds?.forEach((i) {
+      _data.fields.add(MapEntry('sticker_ids', i));
+    });
+    if (tts != null) {
+      _data.fields.add(MapEntry('tts', tts.toString()));
+    }
+    if (username != null) {
+      _data.fields.add(MapEntry('username', username));
+    }
+    if (avatarUrl != null) {
+      _data.fields.add(MapEntry('avatar_url', avatarUrl));
+    }
     final _options = _setStreamType<MessageResponseSchema>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
+      Options(
+            method: 'POST',
+            headers: _headers,
+            extra: _extra,
+            contentType: 'multipart/form-data',
+          )
           .compose(
             _dio.options,
             '/webhooks/${webhookId}/${token}',
@@ -398,21 +453,20 @@ class _WebhooksApi implements WebhooksApi {
   }
 
   @override
-  Future<void> executeSentryWebhook({
+  Future<void> deleteWebhookMessage({
     required String webhookId,
     required String token,
-    required SentryWebhook body,
+    required String messageId,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<void>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
+      Options(method: 'DELETE', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/webhooks/${webhookId}/${token}/sentry',
+            '/webhooks/${webhookId}/${token}/messages/${messageId}',
             queryParameters: queryParameters,
             data: _data,
           )

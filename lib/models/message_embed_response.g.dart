@@ -8,45 +8,85 @@ part of 'message_embed_response.dart';
 
 MessageEmbedResponse _$MessageEmbedResponseFromJson(
   Map<String, dynamic> json,
-) => MessageEmbedResponse(
-  type: json['type'] as String,
-  url: json['url'] as String?,
-  title: json['title'] as String?,
-  color: (json['color'] as num?)?.toInt(),
-  timestamp: json['timestamp'] == null
-      ? null
-      : DateTime.parse(json['timestamp'] as String),
-  description: json['description'] as String?,
-  author: json['author'] == null
-      ? null
-      : EmbedAuthorResponse.fromJson(json['author'] as Map<String, dynamic>),
-  image: json['image'] == null
-      ? null
-      : EmbedMediaResponse.fromJson(json['image'] as Map<String, dynamic>),
-  thumbnail: json['thumbnail'] == null
-      ? null
-      : EmbedMediaResponse.fromJson(json['thumbnail'] as Map<String, dynamic>),
-  footer: json['footer'] == null
-      ? null
-      : EmbedFooterResponse.fromJson(json['footer'] as Map<String, dynamic>),
-  fields: (json['fields'] as List<dynamic>?)
-      ?.map((e) => EmbedFieldResponse.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  provider: json['provider'] == null
-      ? null
-      : EmbedAuthorResponse.fromJson(json['provider'] as Map<String, dynamic>),
-  video: json['video'] == null
-      ? null
-      : EmbedMediaResponse.fromJson(json['video'] as Map<String, dynamic>),
-  audio: json['audio'] == null
-      ? null
-      : EmbedMediaResponse.fromJson(json['audio'] as Map<String, dynamic>),
-  nsfw: json['nsfw'] as bool?,
-  children: (json['children'] as List<dynamic>?)
-      ?.map(
-        (e) => MessageEmbedChildResponse.fromJson(e as Map<String, dynamic>),
-      )
-      .toList(),
+) => $checkedCreate(
+  'MessageEmbedResponse',
+  json,
+  ($checkedConvert) {
+    final val = MessageEmbedResponse(
+      type: $checkedConvert('type', (v) => v as String),
+      url: $checkedConvert('url', (v) => v as String?),
+      title: $checkedConvert('title', (v) => v as String?),
+      color: $checkedConvert('color', (v) => (v as num?)?.toInt()),
+      timestamp: $checkedConvert(
+        'timestamp',
+        (v) => v == null ? null : DateTime.parse(v as String),
+      ),
+      description: $checkedConvert('description', (v) => v as String?),
+      author: $checkedConvert(
+        'author',
+        (v) => v == null
+            ? null
+            : EmbedAuthorResponse.fromJson(v as Map<String, dynamic>),
+      ),
+      image: $checkedConvert(
+        'image',
+        (v) => v == null
+            ? null
+            : EmbedMediaResponse.fromJson(v as Map<String, dynamic>),
+      ),
+      thumbnail: $checkedConvert(
+        'thumbnail',
+        (v) => v == null
+            ? null
+            : EmbedMediaResponse.fromJson(v as Map<String, dynamic>),
+      ),
+      footer: $checkedConvert(
+        'footer',
+        (v) => v == null
+            ? null
+            : EmbedFooterResponse.fromJson(v as Map<String, dynamic>),
+      ),
+      fields: $checkedConvert(
+        'fields',
+        (v) => (v as List<dynamic>?)
+            ?.map((e) => EmbedFieldResponse.fromJson(e as Map<String, dynamic>))
+            .toList(),
+      ),
+      provider: $checkedConvert(
+        'provider',
+        (v) => v == null
+            ? null
+            : EmbedAuthorResponse.fromJson(v as Map<String, dynamic>),
+      ),
+      video: $checkedConvert(
+        'video',
+        (v) => v == null
+            ? null
+            : EmbedMediaResponse.fromJson(v as Map<String, dynamic>),
+      ),
+      audio: $checkedConvert(
+        'audio',
+        (v) => v == null
+            ? null
+            : EmbedMediaResponse.fromJson(v as Map<String, dynamic>),
+      ),
+      html: $checkedConvert('html', (v) => v as String?),
+      htmlWidth: $checkedConvert('html_width', (v) => (v as num?)?.toInt()),
+      htmlHeight: $checkedConvert('html_height', (v) => (v as num?)?.toInt()),
+      nsfw: $checkedConvert('nsfw', (v) => v as bool?),
+      children: $checkedConvert(
+        'children',
+        (v) => (v as List<dynamic>?)
+            ?.map(
+              (e) =>
+                  MessageEmbedChildResponse.fromJson(e as Map<String, dynamic>),
+            )
+            .toList(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'htmlWidth': 'html_width', 'htmlHeight': 'html_height'},
 );
 
 Map<String, dynamic> _$MessageEmbedResponseToJson(
@@ -66,6 +106,9 @@ Map<String, dynamic> _$MessageEmbedResponseToJson(
   'provider': ?instance.provider,
   'video': ?instance.video,
   'audio': ?instance.audio,
+  'html': ?instance.html,
+  'html_width': ?instance.htmlWidth,
+  'html_height': ?instance.htmlHeight,
   'nsfw': ?instance.nsfw,
   'children': ?instance.children,
 };

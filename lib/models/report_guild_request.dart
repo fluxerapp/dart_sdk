@@ -4,7 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'guild_report_category_enum.dart';
+import 'report_guild_request_category_category.dart';
 import 'snowflake_type.dart';
 
 part 'report_guild_request.g.dart';
@@ -14,7 +14,7 @@ class ReportGuildRequest {
   const ReportGuildRequest({
     required this.guildId,
     required this.category,
-    this.additionalInfo,
+    this.inviteCode,
   });
 
   factory ReportGuildRequest.fromJson(Map<String, Object?> json) =>
@@ -22,11 +22,13 @@ class ReportGuildRequest {
 
   @JsonKey(name: 'guild_id')
   final SnowflakeType guildId;
-  final GuildReportCategoryEnum category;
 
-  /// Additional context or details about the report
-  @JsonKey(includeIfNull: false, name: 'additional_info')
-  final String? additionalInfo;
+  /// Category of the guild report
+  final ReportGuildRequestCategoryCategory category;
+
+  /// Invite code proving access to the guild (required when not a member of a non-discoverable guild)
+  @JsonKey(includeIfNull: false, name: 'invite_code')
+  final String? inviteCode;
 
   Map<String, Object?> toJson() => _$ReportGuildRequestToJson(this);
 }

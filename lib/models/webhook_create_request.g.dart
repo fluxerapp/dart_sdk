@@ -8,10 +8,13 @@ part of 'webhook_create_request.dart';
 
 WebhookCreateRequest _$WebhookCreateRequestFromJson(
   Map<String, dynamic> json,
-) => WebhookCreateRequest(
-  name: json['name'] as String,
-  avatar: json['avatar'] as String?,
-);
+) => $checkedCreate('WebhookCreateRequest', json, ($checkedConvert) {
+  final val = WebhookCreateRequest(
+    name: $checkedConvert('name', (v) => v as String),
+    avatar: $checkedConvert('avatar', (v) => v as String?),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$WebhookCreateRequestToJson(
   WebhookCreateRequest instance,

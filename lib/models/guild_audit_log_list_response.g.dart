@@ -8,18 +8,40 @@ part of 'guild_audit_log_list_response.dart';
 
 GuildAuditLogListResponse _$GuildAuditLogListResponseFromJson(
   Map<String, dynamic> json,
-) => GuildAuditLogListResponse(
-  auditLogEntries: (json['audit_log_entries'] as List<dynamic>)
-      .map(
-        (e) => GuildAuditLogEntryResponse.fromJson(e as Map<String, dynamic>),
-      )
-      .toList(),
-  users: (json['users'] as List<dynamic>)
-      .map((e) => UserPartialResponse.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  webhooks: (json['webhooks'] as List<dynamic>)
-      .map((e) => AuditLogWebhookResponse.fromJson(e as Map<String, dynamic>))
-      .toList(),
+) => $checkedCreate(
+  'GuildAuditLogListResponse',
+  json,
+  ($checkedConvert) {
+    final val = GuildAuditLogListResponse(
+      auditLogEntries: $checkedConvert(
+        'audit_log_entries',
+        (v) => (v as List<dynamic>)
+            .map(
+              (e) => GuildAuditLogEntryResponse.fromJson(
+                e as Map<String, dynamic>,
+              ),
+            )
+            .toList(),
+      ),
+      users: $checkedConvert(
+        'users',
+        (v) => (v as List<dynamic>)
+            .map((e) => UserPartialResponse.fromJson(e as Map<String, dynamic>))
+            .toList(),
+      ),
+      webhooks: $checkedConvert(
+        'webhooks',
+        (v) => (v as List<dynamic>)
+            .map(
+              (e) =>
+                  AuditLogWebhookResponse.fromJson(e as Map<String, dynamic>),
+            )
+            .toList(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'auditLogEntries': 'audit_log_entries'},
 );
 
 Map<String, dynamic> _$GuildAuditLogListResponseToJson(

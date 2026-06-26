@@ -4,16 +4,16 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'dsa_report_message_request_reporter_country_of_residence_reporter_country_of_residence.dart';
-import 'dsa_report_message_request_report_type_report_type.dart';
-import 'message_report_category_enum.dart';
-import 'dsa_report_user_request_reporter_country_of_residence_reporter_country_of_residence.dart';
-import 'dsa_report_user_request_report_type_report_type.dart';
-import 'user_report_category_enum.dart';
+import 'message_dsa_report_request_reporter_country_of_residence_reporter_country_of_residence.dart';
+import 'message_dsa_report_request_report_type_report_type.dart';
+import 'message_dsa_report_request_category_category.dart';
+import 'user_dsa_report_request_reporter_country_of_residence_reporter_country_of_residence.dart';
+import 'user_dsa_report_request_report_type_report_type.dart';
+import 'user_dsa_report_request_category_category.dart';
 import 'snowflake_type.dart';
-import 'dsa_report_guild_request_reporter_country_of_residence_reporter_country_of_residence.dart';
-import 'dsa_report_guild_request_report_type_report_type.dart';
-import 'guild_report_category_enum.dart';
+import 'guild_dsa_report_request_reporter_country_of_residence_reporter_country_of_residence.dart';
+import 'guild_dsa_report_request_report_type_report_type.dart';
+import 'guild_dsa_report_request_category_category.dart';
 
 part 'dsa_report_request.g.dart';
 
@@ -62,13 +62,13 @@ class DsaReportRequestMessage extends DsaReportRequest {
   @JsonKey(name: 'reporter_full_legal_name')
   final String reporterFullLegalName;
   @JsonKey(name: 'reporter_country_of_residence')
-  final DsaReportMessageRequestReporterCountryOfResidenceReporterCountryOfResidence
+  final MessageDsaReportRequestReporterCountryOfResidenceReporterCountryOfResidence
   reporterCountryOfResidence;
   @JsonKey(name: 'reporter_fluxer_tag')
   final String? reporterFluxerTag;
   @JsonKey(name: 'report_type')
-  final DsaReportMessageRequestReportTypeReportType reportType;
-  final MessageReportCategoryEnum category;
+  final MessageDsaReportRequestReportTypeReportType reportType;
+  final MessageDsaReportRequestCategoryCategory category;
   @JsonKey(name: 'message_link')
   final String messageLink;
   @JsonKey(name: 'reported_user_tag')
@@ -101,13 +101,13 @@ class DsaReportRequestUser extends DsaReportRequest {
   @JsonKey(name: 'reporter_full_legal_name')
   final String reporterFullLegalName;
   @JsonKey(name: 'reporter_country_of_residence')
-  final DsaReportUserRequestReporterCountryOfResidenceReporterCountryOfResidence
+  final UserDsaReportRequestReporterCountryOfResidenceReporterCountryOfResidence
   reporterCountryOfResidence;
   @JsonKey(name: 'reporter_fluxer_tag')
   final String? reporterFluxerTag;
   @JsonKey(name: 'report_type')
-  final DsaReportUserRequestReportTypeReportType reportType;
-  final UserReportCategoryEnum category;
+  final UserDsaReportRequestReportTypeReportType reportType;
+  final UserDsaReportRequestCategoryCategory category;
   @JsonKey(name: 'user_id')
   final SnowflakeType? userId;
   @JsonKey(name: 'user_tag')
@@ -140,13 +140,13 @@ class DsaReportRequestGuild extends DsaReportRequest {
   @JsonKey(name: 'reporter_full_legal_name')
   final String reporterFullLegalName;
   @JsonKey(name: 'reporter_country_of_residence')
-  final DsaReportGuildRequestReporterCountryOfResidenceReporterCountryOfResidence
+  final GuildDsaReportRequestReporterCountryOfResidenceReporterCountryOfResidence
   reporterCountryOfResidence;
   @JsonKey(name: 'reporter_fluxer_tag')
   final String? reporterFluxerTag;
   @JsonKey(name: 'report_type')
-  final DsaReportGuildRequestReportTypeReportType reportType;
-  final GuildReportCategoryEnum category;
+  final GuildDsaReportRequestReportTypeReportType reportType;
+  final GuildDsaReportRequestCategoryCategory category;
   @JsonKey(name: 'guild_id')
   final SnowflakeType guildId;
   @JsonKey(name: 'invite_code')

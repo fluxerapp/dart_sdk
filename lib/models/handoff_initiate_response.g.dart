@@ -8,10 +8,16 @@ part of 'handoff_initiate_response.dart';
 
 HandoffInitiateResponse _$HandoffInitiateResponseFromJson(
   Map<String, dynamic> json,
-) => HandoffInitiateResponse(
-  code: json['code'] as String,
-  expiresAt: DateTime.parse(json['expires_at'] as String),
-);
+) => $checkedCreate('HandoffInitiateResponse', json, ($checkedConvert) {
+  final val = HandoffInitiateResponse(
+    code: $checkedConvert('code', (v) => v as String),
+    expiresAt: $checkedConvert(
+      'expires_at',
+      (v) => DateTime.parse(v as String),
+    ),
+  );
+  return val;
+}, fieldKeyMap: const {'expiresAt': 'expires_at'});
 
 Map<String, dynamic> _$HandoffInitiateResponseToJson(
   HandoffInitiateResponse instance,

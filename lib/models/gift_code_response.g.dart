@@ -7,18 +7,36 @@ part of 'gift_code_response.dart';
 // **************************************************************************
 
 GiftCodeResponse _$GiftCodeResponseFromJson(Map<String, dynamic> json) =>
-    GiftCodeResponse(
-      code: json['code'] as String,
-      durationType: GiftCodeResponseDurationTypeDurationType.fromJson(
-        json['duration_type'] as String,
-      ),
-      durationQuantity: (json['duration_quantity'] as num).toInt(),
-      redeemed: json['redeemed'] as bool,
-      createdBy: json['created_by'] == null
-          ? null
-          : UserPartialResponse.fromJson(
-              json['created_by'] as Map<String, dynamic>,
-            ),
+    $checkedCreate(
+      'GiftCodeResponse',
+      json,
+      ($checkedConvert) {
+        final val = GiftCodeResponse(
+          code: $checkedConvert('code', (v) => v as String),
+          durationType: $checkedConvert(
+            'duration_type',
+            (v) =>
+                GiftCodeResponseDurationTypeDurationType.fromJson(v as String),
+          ),
+          durationQuantity: $checkedConvert(
+            'duration_quantity',
+            (v) => (v as num).toInt(),
+          ),
+          redeemed: $checkedConvert('redeemed', (v) => v as bool),
+          createdBy: $checkedConvert(
+            'created_by',
+            (v) => v == null
+                ? null
+                : UserPartialResponse.fromJson(v as Map<String, dynamic>),
+          ),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'durationType': 'duration_type',
+        'durationQuantity': 'duration_quantity',
+        'createdBy': 'created_by',
+      },
     );
 
 Map<String, dynamic> _$GiftCodeResponseToJson(GiftCodeResponse instance) =>

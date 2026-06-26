@@ -7,10 +7,10 @@ import 'package:json_annotation/json_annotation.dart';
 import 'connection_response.dart';
 import 'guild_member_response.dart';
 import 'int32_type.dart';
-import 'mutual_guild_response.dart';
 import 'user_partial_response.dart';
 import 'user_premium_types.dart';
 import 'user_profile_full_response_guild_member_profile.dart';
+import 'user_profile_full_response_mutual_guilds.dart';
 import 'user_profile_full_response_user.dart';
 import 'user_profile_full_response_user_profile.dart';
 
@@ -21,6 +21,7 @@ class UserProfileFullResponse {
   const UserProfileFullResponse({
     required this.user,
     required this.userProfile,
+    required this.timezoneOffset,
     this.guildMember,
     this.guildMemberProfile,
     this.premiumType,
@@ -29,6 +30,7 @@ class UserProfileFullResponse {
     this.mutualFriends,
     this.mutualGuilds,
     this.connectedAccounts,
+    this.profileLimited,
   });
 
   factory UserProfileFullResponse.fromJson(Map<String, Object?> json) =>
@@ -63,11 +65,19 @@ class UserProfileFullResponse {
 
   /// Array of mutual guilds
   @JsonKey(includeIfNull: false, name: 'mutual_guilds')
-  final List<MutualGuildResponse>? mutualGuilds;
+  final List<UserProfileFullResponseMutualGuilds>? mutualGuilds;
 
   /// Array of verified external connections
   @JsonKey(includeIfNull: false, name: 'connected_accounts')
   final List<ConnectionResponse>? connectedAccounts;
+
+  /// Current timezone offset in minutes from UTC for the target user's profile timezone, or null when hidden or unset
+  @JsonKey(includeIfNull: true, name: 'timezone_offset')
+  final int? timezoneOffset;
+
+  /// True when the target user has restricted their profile and the viewer does not meet the visibility tier; bio, pronouns, badges, and connected accounts have been stripped.
+  @JsonKey(includeIfNull: false, name: 'profile_limited')
+  final bool? profileLimited;
 
   Map<String, Object?> toJson() => _$UserProfileFullResponseToJson(this);
 }

@@ -8,10 +8,24 @@ part of 'well_known_fluxer_response_gif.dart';
 
 WellKnownFluxerResponseGif _$WellKnownFluxerResponseGifFromJson(
   Map<String, dynamic> json,
-) => WellKnownFluxerResponseGif(
-  provider: json['provider'] as String,
-  displayName: json['display_name'] as String,
-  attributionRequired: json['attribution_required'] as bool,
+) => $checkedCreate(
+  'WellKnownFluxerResponseGif',
+  json,
+  ($checkedConvert) {
+    final val = WellKnownFluxerResponseGif(
+      provider: $checkedConvert('provider', (v) => v as String),
+      displayName: $checkedConvert('display_name', (v) => v as String),
+      attributionRequired: $checkedConvert(
+        'attribution_required',
+        (v) => v as bool,
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'displayName': 'display_name',
+    'attributionRequired': 'attribution_required',
+  },
 );
 
 Map<String, dynamic> _$WellKnownFluxerResponseGifToJson(

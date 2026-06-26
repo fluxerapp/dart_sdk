@@ -24,7 +24,7 @@ class SsoStartResponse {
   /// State parameter for CSRF protection
   final String state;
 
-  /// Redirect URI after SSO completion
+  /// OAuth redirect URI used for the SSO provider callback
   @JsonKey(name: 'redirect_uri')
   final String redirectUri;
 

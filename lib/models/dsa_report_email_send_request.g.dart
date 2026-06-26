@@ -8,7 +8,12 @@ part of 'dsa_report_email_send_request.dart';
 
 DsaReportEmailSendRequest _$DsaReportEmailSendRequestFromJson(
   Map<String, dynamic> json,
-) => DsaReportEmailSendRequest(email: json['email'] as String);
+) => $checkedCreate('DsaReportEmailSendRequest', json, ($checkedConvert) {
+  final val = DsaReportEmailSendRequest(
+    email: $checkedConvert('email', (v) => v as String),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$DsaReportEmailSendRequestToJson(
   DsaReportEmailSendRequest instance,

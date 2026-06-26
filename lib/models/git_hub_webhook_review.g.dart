@@ -7,14 +7,18 @@ part of 'git_hub_webhook_review.dart';
 // **************************************************************************
 
 GitHubWebhookReview _$GitHubWebhookReviewFromJson(Map<String, dynamic> json) =>
-    GitHubWebhookReview(
-      user: GitHubWebhookReviewUser.fromJson(
-        json['user'] as Map<String, dynamic>,
-      ),
-      htmlUrl: json['html_url'] as String,
-      state: json['state'] as String,
-      body: json['body'] as String?,
-    );
+    $checkedCreate('GitHubWebhookReview', json, ($checkedConvert) {
+      final val = GitHubWebhookReview(
+        user: $checkedConvert(
+          'user',
+          (v) => GitHubWebhookReviewUser.fromJson(v as Map<String, dynamic>),
+        ),
+        htmlUrl: $checkedConvert('html_url', (v) => v as String),
+        state: $checkedConvert('state', (v) => v as String),
+        body: $checkedConvert('body', (v) => v as String?),
+      );
+      return val;
+    }, fieldKeyMap: const {'htmlUrl': 'html_url'});
 
 Map<String, dynamic> _$GitHubWebhookReviewToJson(
   GitHubWebhookReview instance,

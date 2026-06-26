@@ -8,13 +8,21 @@ part of 'webhook_token_response.dart';
 
 WebhookTokenResponse _$WebhookTokenResponseFromJson(
   Map<String, dynamic> json,
-) => WebhookTokenResponse(
-  id: json['id'] as String,
-  guildId: json['guild_id'] as String,
-  channelId: json['channel_id'] as String,
-  name: json['name'] as String,
-  token: json['token'] as String,
-  avatar: json['avatar'] as String?,
+) => $checkedCreate(
+  'WebhookTokenResponse',
+  json,
+  ($checkedConvert) {
+    final val = WebhookTokenResponse(
+      id: $checkedConvert('id', (v) => v as String),
+      guildId: $checkedConvert('guild_id', (v) => v as String),
+      channelId: $checkedConvert('channel_id', (v) => v as String),
+      name: $checkedConvert('name', (v) => v as String),
+      token: $checkedConvert('token', (v) => v as String),
+      avatar: $checkedConvert('avatar', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'guildId': 'guild_id', 'channelId': 'channel_id'},
 );
 
 Map<String, dynamic> _$WebhookTokenResponseToJson(

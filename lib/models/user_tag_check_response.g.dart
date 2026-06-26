@@ -8,7 +8,12 @@ part of 'user_tag_check_response.dart';
 
 UserTagCheckResponse _$UserTagCheckResponseFromJson(
   Map<String, dynamic> json,
-) => UserTagCheckResponse(taken: json['taken'] as bool);
+) => $checkedCreate('UserTagCheckResponse', json, ($checkedConvert) {
+  final val = UserTagCheckResponse(
+    taken: $checkedConvert('taken', (v) => v as bool),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$UserTagCheckResponseToJson(
   UserTagCheckResponse instance,

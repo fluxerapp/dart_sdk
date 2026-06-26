@@ -8,7 +8,7 @@ part of 'channels_api.dart';
 // RetrofitGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter,avoid_unused_constructor_parameters,unreachable_from_main
+// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter,avoid_unused_constructor_parameters,unreachable_from_main,avoid_redundant_argument_values
 
 class _ChannelsApi implements ChannelsApi {
   _ChannelsApi(this._dio, {this.baseUrl, this.errorLogger});
@@ -18,6 +18,36 @@ class _ChannelsApi implements ChannelsApi {
   String? baseUrl;
 
   final ParseErrorLogger? errorLogger;
+
+  @override
+  Future<BulkMessageFetchResponse> bulkListChannelMessages({
+    required BulkMessageFetchRequest body,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<BulkMessageFetchResponse>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/channels/messages/bulk',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late BulkMessageFetchResponse _value;
+    try {
+      _value = BulkMessageFetchResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
 
   @override
   Future<ChannelResponse> getChannel({required String channelId}) async {
@@ -80,13 +110,19 @@ class _ChannelsApi implements ChannelsApi {
   @override
   Future<void> deleteChannel({
     required String channelId,
+    required SudoVerificationSchema body,
     String? silent,
+    String? deleteMessages,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'silent': silent};
+    final queryParameters = <String, dynamic>{
+      r'silent': silent,
+      r'delete_messages': deleteMessages,
+    };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
     final _options = _setStreamType<void>(
       Options(method: 'DELETE', headers: _headers, extra: _extra)
           .compose(
@@ -328,13 +364,63 @@ class _ChannelsApi implements ChannelsApi {
   }
 
   @override
-  Future<MessageResponseSchema> sendMessage({required String channelId}) async {
+  Future<MessageResponseSchema> sendMessage({
+    required String channelId,
+    String? content,
+    List<RichEmbedRequest>? embeds,
+    List<Object0>? attachments,
+    MessageReferenceRequest? messageReference,
+    AllowedMentionsRequest? allowedMentions,
+    int? flags,
+    String? nonce,
+    String? favoriteMemeId,
+    List<String>? stickerIds,
+    bool? tts,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final _data = FormData();
+    if (content != null) {
+      _data.fields.add(MapEntry('content', content));
+    }
+    _data.fields.add(MapEntry('embeds', jsonEncode(embeds)));
+    _data.fields.add(MapEntry('attachments', jsonEncode(attachments)));
+    _data.fields.add(
+      MapEntry(
+        'message_reference',
+        jsonEncode(messageReference ?? <String, dynamic>{}),
+      ),
+    );
+    _data.fields.add(
+      MapEntry(
+        'allowed_mentions',
+        jsonEncode(allowedMentions ?? <String, dynamic>{}),
+      ),
+    );
+    if (flags != null) {
+      _data.fields.add(MapEntry('flags', flags.toString()));
+    }
+    if (nonce != null) {
+      _data.fields.add(MapEntry('nonce', nonce));
+    }
+    if (favoriteMemeId != null) {
+      _data.fields.add(MapEntry('favorite_meme_id', favoriteMemeId));
+    }
+    stickerIds?.forEach((i) {
+      _data.fields.add(MapEntry('sticker_ids', i));
+    });
+    if (tts != null) {
+      _data.fields.add(MapEntry('tts', tts.toString()));
+    }
     final _options = _setStreamType<MessageResponseSchema>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
+      Options(
+            method: 'POST',
+            headers: _headers,
+            extra: _extra,
+            contentType: 'multipart/form-data',
+          )
           .compose(
             _dio.options,
             '/channels/${channelId}/messages',
@@ -388,6 +474,29 @@ class _ChannelsApi implements ChannelsApi {
           .compose(
             _dio.options,
             '/channels/${channelId}/messages/bulk-delete',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    await _dio.fetch<void>(_options);
+  }
+
+  @override
+  Future<void> bulkDeleteMyMessagesInChannel({
+    required String channelId,
+    required SudoVerificationSchema body,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<void>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/channels/${channelId}/messages/bulk-delete-mine',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -463,13 +572,65 @@ class _ChannelsApi implements ChannelsApi {
   @override
   Future<ScheduledMessageResponseSchema> scheduleMessage({
     required String channelId,
+    required String scheduledLocalAt,
+    required String timezone,
+    String? content,
+    List<RichEmbedRequest>? embeds,
+    List<Object1>? attachments,
+    MessageReferenceRequest? messageReference,
+    AllowedMentionsRequest? allowedMentions,
+    int? flags,
+    String? nonce,
+    String? favoriteMemeId,
+    List<String>? stickerIds,
+    bool? tts,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final _data = FormData();
+    _data.fields.add(MapEntry('scheduled_local_at', scheduledLocalAt));
+    _data.fields.add(MapEntry('timezone', timezone));
+    if (content != null) {
+      _data.fields.add(MapEntry('content', content));
+    }
+    _data.fields.add(MapEntry('embeds', jsonEncode(embeds)));
+    _data.fields.add(MapEntry('attachments', jsonEncode(attachments)));
+    _data.fields.add(
+      MapEntry(
+        'message_reference',
+        jsonEncode(messageReference ?? <String, dynamic>{}),
+      ),
+    );
+    _data.fields.add(
+      MapEntry(
+        'allowed_mentions',
+        jsonEncode(allowedMentions ?? <String, dynamic>{}),
+      ),
+    );
+    if (flags != null) {
+      _data.fields.add(MapEntry('flags', flags.toString()));
+    }
+    if (nonce != null) {
+      _data.fields.add(MapEntry('nonce', nonce));
+    }
+    if (favoriteMemeId != null) {
+      _data.fields.add(MapEntry('favorite_meme_id', favoriteMemeId));
+    }
+    stickerIds?.forEach((i) {
+      _data.fields.add(MapEntry('sticker_ids', i));
+    });
+    if (tts != null) {
+      _data.fields.add(MapEntry('tts', tts.toString()));
+    }
     final _options = _setStreamType<ScheduledMessageResponseSchema>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
+      Options(
+            method: 'POST',
+            headers: _headers,
+            extra: _extra,
+            contentType: 'multipart/form-data',
+          )
           .compose(
             _dio.options,
             '/channels/${channelId}/messages/schedule',
@@ -523,13 +684,42 @@ class _ChannelsApi implements ChannelsApi {
   Future<MessageResponseSchema> editMessage({
     required String channelId,
     required String messageId,
+    String? content,
+    List<RichEmbedRequest>? embeds,
+    AllowedMentionsRequest? allowedMentions,
+    int? flags,
+    List<Object2>? attachments,
+    List<Object3>? messageSnapshots,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final _data = FormData();
+    if (content != null) {
+      _data.fields.add(MapEntry('content', content));
+    }
+    _data.fields.add(MapEntry('embeds', jsonEncode(embeds)));
+    _data.fields.add(
+      MapEntry(
+        'allowed_mentions',
+        jsonEncode(allowedMentions ?? <String, dynamic>{}),
+      ),
+    );
+    if (flags != null) {
+      _data.fields.add(MapEntry('flags', flags.toString()));
+    }
+    _data.fields.add(MapEntry('attachments', jsonEncode(attachments)));
+    _data.fields.add(
+      MapEntry('message_snapshots', jsonEncode(messageSnapshots)),
+    );
     final _options = _setStreamType<MessageResponseSchema>(
-      Options(method: 'PATCH', headers: _headers, extra: _extra)
+      Options(
+            method: 'PATCH',
+            headers: _headers,
+            extra: _extra,
+            contentType: 'multipart/form-data',
+          )
           .compose(
             _dio.options,
             '/channels/${channelId}/messages/${messageId}',
@@ -550,7 +740,7 @@ class _ChannelsApi implements ChannelsApi {
   }
 
   @override
-  Future<void> deleteMessage2({
+  Future<void> deleteMessage({
     required String channelId,
     required String messageId,
   }) async {
@@ -753,6 +943,40 @@ class _ChannelsApi implements ChannelsApi {
   }
 
   @override
+  Future<ReactionUsersPageResponse> listReactionUsersV2({
+    required String channelId,
+    required String messageId,
+    required String emoji,
+    int? limit,
+    String? after,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'limit': limit, r'after': after};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<ReactionUsersPageResponse>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/channels/${channelId}/messages/${messageId}/reactions/${emoji}/users',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late ReactionUsersPageResponse _value;
+    try {
+      _value = ReactionUsersPageResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<void> removeReaction({
     required String channelId,
     required String messageId,
@@ -913,13 +1137,19 @@ class _ChannelsApi implements ChannelsApi {
   Future<void> removeGroupDmRecipient({
     required String channelId,
     required String userId,
+    required SudoVerificationSchema body,
     String? silent,
+    String? deleteMessages,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'silent': silent};
+    final queryParameters = <String, dynamic>{
+      r'silent': silent,
+      r'delete_messages': deleteMessages,
+    };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
     final _options = _setStreamType<void>(
       Options(method: 'DELETE', headers: _headers, extra: _extra)
           .compose(
@@ -1016,6 +1246,159 @@ class _ChannelsApi implements ChannelsApi {
   }
 
   @override
+  Future<VoiceDebugLoggingEventsResponse> uploadVoiceDebugLoggingEvents({
+    required String channelId,
+    required VoiceDebugLoggingEventsBodySchema body,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<VoiceDebugLoggingEventsResponse>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/channels/${channelId}/voice-debug-logging/events',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late VoiceDebugLoggingEventsResponse _value;
+    try {
+      _value = VoiceDebugLoggingEventsResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<VoiceDebugLoggingStatusResponse> getVoiceDebugLoggingStatus({
+    required String channelId,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<VoiceDebugLoggingStatusResponse>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/channels/${channelId}/voice-debug-logging/session',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late VoiceDebugLoggingStatusResponse _value;
+    try {
+      _value = VoiceDebugLoggingStatusResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<VoiceDebugLoggingStatusResponse> setVoiceDebugLoggingStatus({
+    required String channelId,
+    required VoiceDebugLoggingToggleBodySchema body,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<VoiceDebugLoggingStatusResponse>(
+      Options(method: 'PUT', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/channels/${channelId}/voice-debug-logging/session',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late VoiceDebugLoggingStatusResponse _value;
+    try {
+      _value = VoiceDebugLoggingStatusResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<VoicePresenceHeartbeatResponse> heartbeatVoicePresence({
+    required String channelId,
+    required VoicePresenceHeartbeatBodySchema body,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<VoicePresenceHeartbeatResponse>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/channels/${channelId}/voice-presence/heartbeat',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late VoicePresenceHeartbeatResponse _value;
+    try {
+      _value = VoicePresenceHeartbeatResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<VoicePresenceHeartbeatEndResponse> endVoicePresenceHeartbeat({
+    required String channelId,
+    required VoicePresenceHeartbeatBodySchema body,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<VoicePresenceHeartbeatEndResponse>(
+      Options(method: 'DELETE', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/channels/${channelId}/voice-presence/heartbeat',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late VoicePresenceHeartbeatEndResponse _value;
+    try {
+      _value = VoicePresenceHeartbeatEndResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<void> getStreamPreview({required String streamKey}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -1074,6 +1457,37 @@ class _ChannelsApi implements ChannelsApi {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     await _dio.fetch<void>(_options);
+  }
+
+  @override
+  Future<StreamPreviewUploadUrlResponseSchema> createStreamPreviewUploadUrl({
+    required String streamKey,
+    required StreamPreviewUploadUrlBodySchema body,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<StreamPreviewUploadUrlResponseSchema>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/streams/${streamKey}/preview/upload-url',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late StreamPreviewUploadUrlResponseSchema _value;
+    try {
+      _value = StreamPreviewUploadUrlResponseSchema.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
   }
 
   @override

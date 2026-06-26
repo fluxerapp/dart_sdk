@@ -64,7 +64,7 @@ abstract class ReportsApi {
 
   /// Report message.
   ///
-  /// Submits a report about a message to moderators for content violation review.
+  /// Submits a report about a message to moderators for content violation review. The reporter must be able to access the channel and target message.
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/reports/message')

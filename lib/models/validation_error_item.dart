@@ -4,28 +4,27 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'validation_error_code_schema.dart';
-
 part 'validation_error_item.g.dart';
 
 @JsonSerializable()
 class ValidationErrorItem {
   const ValidationErrorItem({
-    required this.path,
+    required this.field,
+    required this.code,
     required this.message,
-    this.code,
   });
 
   factory ValidationErrorItem.fromJson(Map<String, Object?> json) =>
       _$ValidationErrorItemFromJson(json);
 
-  /// The field path where the validation error occurred
-  final String path;
+  /// Field path that failed validation
+  final String field;
 
-  /// A human-readable description of the validation issue
+  /// Machine-readable validation error code
+  final String code;
+
+  /// Human-readable validation error message
   final String message;
-  @JsonKey(includeIfNull: false)
-  final ValidationErrorCodeSchema? code;
 
   Map<String, Object?> toJson() => _$ValidationErrorItemToJson(this);
 }

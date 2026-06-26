@@ -13,8 +13,9 @@ class GuildVanityUrlUpdateResponse {
   factory GuildVanityUrlUpdateResponse.fromJson(Map<String, Object?> json) =>
       _$GuildVanityUrlUpdateResponseFromJson(json);
 
-  /// The new vanity URL code
-  final String code;
+  /// The new vanity URL code, or null when the vanity URL was removed
+  @JsonKey(includeIfNull: true)
+  final String? code;
 
   Map<String, Object?> toJson() => _$GuildVanityUrlUpdateResponseToJson(this);
 }

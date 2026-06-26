@@ -8,18 +8,32 @@ part of 'well_known_fluxer_response_limits.dart';
 
 WellKnownFluxerResponseLimits _$WellKnownFluxerResponseLimitsFromJson(
   Map<String, dynamic> json,
-) => WellKnownFluxerResponseLimits(
-  version: WellKnownFluxerResponseLimitsVersionVersion.fromJson(
-    (json['version'] as num).toInt(),
-  ),
-  traitDefinitions: (json['traitDefinitions'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-  rules: (json['rules'] as List<dynamic>)
-      .map((e) => LimitRuleResponse.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  defaultsHash: json['defaultsHash'] as String,
-);
+) => $checkedCreate('WellKnownFluxerResponseLimits', json, ($checkedConvert) {
+  final val = WellKnownFluxerResponseLimits(
+    version: $checkedConvert(
+      'version',
+      (v) => WellKnownFluxerResponseLimitsVersionVersion.fromJson(
+        (v as num).toInt(),
+      ),
+    ),
+    traitDefinitions: $checkedConvert(
+      'traitDefinitions',
+      (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+    ),
+    rules: $checkedConvert(
+      'rules',
+      (v) => (v as List<dynamic>)
+          .map(
+            (e) => WellKnownFluxerResponseLimitsRules.fromJson(
+              e as Map<String, dynamic>,
+            ),
+          )
+          .toList(),
+    ),
+    defaultsHash: $checkedConvert('defaultsHash', (v) => v as String),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$WellKnownFluxerResponseLimitsToJson(
   WellKnownFluxerResponseLimits instance,

@@ -8,7 +8,7 @@ part of 'o_auth2_api.dart';
 // RetrofitGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter,avoid_unused_constructor_parameters,unreachable_from_main
+// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter,avoid_unused_constructor_parameters,unreachable_from_main,avoid_redundant_argument_values
 
 class _OAuth2Api implements OAuth2Api {
   _OAuth2Api(this._dio, {this.baseUrl, this.errorLogger});
@@ -74,13 +74,13 @@ class _OAuth2Api implements OAuth2Api {
   }
 
   @override
-  Future<List<OAuth2AuthorizationResponse>>
+  Future<OAuth2AuthorizationsListResponse>
   listUserOauth2Authorizations() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<OAuth2AuthorizationResponse>>(
+    final _options = _setStreamType<OAuth2AuthorizationsListResponse>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -90,20 +90,37 @@ class _OAuth2Api implements OAuth2Api {
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
-    final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<OAuth2AuthorizationResponse> _value;
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late OAuth2AuthorizationsListResponse _value;
     try {
-      _value = _result.data!
-          .map(
-            (dynamic i) =>
-                OAuth2AuthorizationResponse.fromJson(i as Map<String, dynamic>),
-          )
-          .toList();
+      _value = OAuth2AuthorizationsListResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
     }
     return _value;
+  }
+
+  @override
+  Future<void> bulkDeleteUserOauth2Authorizations({
+    required OAuth2AuthorizationsBulkRevokeRequest body,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<void>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/oauth2/@me/authorizations/revoke',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    await _dio.fetch<void>(_options);
   }
 
   @override
@@ -158,12 +175,12 @@ class _OAuth2Api implements OAuth2Api {
   }
 
   @override
-  Future<List<ApplicationResponse>> listUserApplications3() async {
+  Future<OAuth2ApplicationsMeResponse> getOauthApplicationsMe() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<ApplicationResponse>>(
+    final _options = _setStreamType<OAuth2ApplicationsMeResponse>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -173,15 +190,10 @@ class _OAuth2Api implements OAuth2Api {
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
-    final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<ApplicationResponse> _value;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late OAuth2ApplicationsMeResponse _value;
     try {
-      _value = _result.data!
-          .map(
-            (dynamic i) =>
-                ApplicationResponse.fromJson(i as Map<String, dynamic>),
-          )
-          .toList();
+      _value = OAuth2ApplicationsMeResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
@@ -302,7 +314,7 @@ class _OAuth2Api implements OAuth2Api {
   }
 
   @override
-  Future<BotTokenResetResponse> resetBotToken2({
+  Future<BotTokenResetResponse> resetBotToken({
     required String id,
     required SudoVerificationSchema body,
   }) async {
@@ -333,7 +345,7 @@ class _OAuth2Api implements OAuth2Api {
   }
 
   @override
-  Future<ApplicationResponse> resetClientSecret2({
+  Future<ApplicationResponse> resetClientSecret({
     required String id,
     required SudoVerificationSchema body,
   }) async {
@@ -566,7 +578,7 @@ class _OAuth2Api implements OAuth2Api {
   }
 
   @override
-  Future<List<ApplicationResponse>> listUserApplications2() async {
+  Future<List<ApplicationResponse>> listUserApplications() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

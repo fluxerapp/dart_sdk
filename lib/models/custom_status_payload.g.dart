@@ -7,11 +7,23 @@ part of 'custom_status_payload.dart';
 // **************************************************************************
 
 CustomStatusPayload _$CustomStatusPayloadFromJson(Map<String, dynamic> json) =>
-    CustomStatusPayload(
-      text: json['text'] as String?,
-      expiresAt: json['expires_at'],
-      emojiId: json['emoji_id'] as String?,
-      emojiName: json['emoji_name'] as String?,
+    $checkedCreate(
+      'CustomStatusPayload',
+      json,
+      ($checkedConvert) {
+        final val = CustomStatusPayload(
+          text: $checkedConvert('text', (v) => v as String?),
+          expiresAt: $checkedConvert('expires_at', (v) => v),
+          emojiId: $checkedConvert('emoji_id', (v) => v as String?),
+          emojiName: $checkedConvert('emoji_name', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'expiresAt': 'expires_at',
+        'emojiId': 'emoji_id',
+        'emojiName': 'emoji_name',
+      },
     );
 
 Map<String, dynamic> _$CustomStatusPayloadToJson(

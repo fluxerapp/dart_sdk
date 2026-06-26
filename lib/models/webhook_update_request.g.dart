@@ -8,11 +8,14 @@ part of 'webhook_update_request.dart';
 
 WebhookUpdateRequest _$WebhookUpdateRequestFromJson(
   Map<String, dynamic> json,
-) => WebhookUpdateRequest(
-  name: json['name'] as String?,
-  avatar: json['avatar'] as String?,
-  channelId: json['channel_id'] as String?,
-);
+) => $checkedCreate('WebhookUpdateRequest', json, ($checkedConvert) {
+  final val = WebhookUpdateRequest(
+    name: $checkedConvert('name', (v) => v as String?),
+    avatar: $checkedConvert('avatar', (v) => v as String?),
+    channelId: $checkedConvert('channel_id', (v) => v as String?),
+  );
+  return val;
+}, fieldKeyMap: const {'channelId': 'channel_id'});
 
 Map<String, dynamic> _$WebhookUpdateRequestToJson(
   WebhookUpdateRequest instance,

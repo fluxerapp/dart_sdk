@@ -6,12 +6,14 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'well_known_fluxer_response_app_public.dart';
 import 'well_known_fluxer_response_captcha.dart';
+import 'well_known_fluxer_response_community.dart';
 import 'well_known_fluxer_response_endpoints.dart';
 import 'well_known_fluxer_response_features.dart';
-import 'well_known_fluxer_response_gateway.dart';
 import 'well_known_fluxer_response_gif.dart';
 import 'well_known_fluxer_response_limits.dart';
 import 'well_known_fluxer_response_push.dart';
+import 'well_known_fluxer_response_registration.dart';
+import 'well_known_fluxer_response_services.dart';
 import 'well_known_fluxer_response_sso.dart';
 
 part 'well_known_fluxer_response.g.dart';
@@ -25,10 +27,12 @@ class WellKnownFluxerResponse {
     required this.features,
     required this.gif,
     required this.sso,
+    required this.registration,
+    required this.community,
+    required this.services,
     required this.limits,
     required this.push,
     required this.appPublic,
-    this.gateway,
   });
 
   factory WellKnownFluxerResponse.fromJson(Map<String, Object?> json) =>
@@ -53,6 +57,15 @@ class WellKnownFluxerResponse {
   /// Single sign-on configuration
   final WellKnownFluxerResponseSso sso;
 
+  /// Registration policy for this instance
+  final WellKnownFluxerResponseRegistration registration;
+
+  /// Community topology and direct-message policy for this instance
+  final WellKnownFluxerResponseCommunity community;
+
+  /// Optional third-party service integrations enabled for this instance
+  final WellKnownFluxerResponseServices services;
+
   /// Limit configuration with rules and trait definitions
   final WellKnownFluxerResponseLimits limits;
 
@@ -62,10 +75,6 @@ class WellKnownFluxerResponse {
   /// Public application configuration for client-side features
   @JsonKey(name: 'app_public')
   final WellKnownFluxerResponseAppPublic appPublic;
-
-  /// Gateway session retry configuration for clients
-  @JsonKey(includeIfNull: false)
-  final WellKnownFluxerResponseGateway? gateway;
 
   Map<String, Object?> toJson() => _$WellKnownFluxerResponseToJson(this);
 }

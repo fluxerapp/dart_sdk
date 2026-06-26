@@ -4,7 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'message_report_category_enum.dart';
+import 'report_message_request_category_category.dart';
 import 'snowflake_type.dart';
 
 part 'report_message_request.g.dart';
@@ -15,7 +15,6 @@ class ReportMessageRequest {
     required this.channelId,
     required this.messageId,
     required this.category,
-    this.additionalInfo,
   });
 
   factory ReportMessageRequest.fromJson(Map<String, Object?> json) =>
@@ -25,11 +24,9 @@ class ReportMessageRequest {
   final SnowflakeType channelId;
   @JsonKey(name: 'message_id')
   final SnowflakeType messageId;
-  final MessageReportCategoryEnum category;
 
-  /// Additional context or details about the report
-  @JsonKey(includeIfNull: false, name: 'additional_info')
-  final String? additionalInfo;
+  /// Category of the message report
+  final ReportMessageRequestCategoryCategory category;
 
   Map<String, Object?> toJson() => _$ReportMessageRequestToJson(this);
 }

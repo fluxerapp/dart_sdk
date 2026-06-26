@@ -8,11 +8,23 @@ part of 'auth_token_with_user_id_response.dart';
 
 AuthTokenWithUserIdResponse _$AuthTokenWithUserIdResponseFromJson(
   Map<String, dynamic> json,
-) => AuthTokenWithUserIdResponse(
-  token: json['token'] as String,
-  userId: json['user_id'] as String,
-);
+) => $checkedCreate('AuthTokenWithUserIdResponse', json, ($checkedConvert) {
+  final val = AuthTokenWithUserIdResponse(
+    token: $checkedConvert('token', (v) => v as String),
+    userId: $checkedConvert('user_id', (v) => v as String),
+    user: $checkedConvert(
+      'user',
+      (v) =>
+          AuthTokenWithUserIdResponseUser.fromJson(v as Map<String, dynamic>),
+    ),
+  );
+  return val;
+}, fieldKeyMap: const {'userId': 'user_id'});
 
 Map<String, dynamic> _$AuthTokenWithUserIdResponseToJson(
   AuthTokenWithUserIdResponse instance,
-) => <String, dynamic>{'token': instance.token, 'user_id': instance.userId};
+) => <String, dynamic>{
+  'token': instance.token,
+  'user_id': instance.userId,
+  'user': instance.user,
+};

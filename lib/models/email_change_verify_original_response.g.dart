@@ -8,8 +8,16 @@ part of 'email_change_verify_original_response.dart';
 
 EmailChangeVerifyOriginalResponse _$EmailChangeVerifyOriginalResponseFromJson(
   Map<String, dynamic> json,
-) => EmailChangeVerifyOriginalResponse(
-  originalProof: json['original_proof'] as String,
+) => $checkedCreate(
+  'EmailChangeVerifyOriginalResponse',
+  json,
+  ($checkedConvert) {
+    final val = EmailChangeVerifyOriginalResponse(
+      originalProof: $checkedConvert('original_proof', (v) => v as String),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'originalProof': 'original_proof'},
 );
 
 Map<String, dynamic> _$EmailChangeVerifyOriginalResponseToJson(

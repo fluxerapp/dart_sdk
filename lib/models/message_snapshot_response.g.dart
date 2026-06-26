@@ -8,31 +8,76 @@ part of 'message_snapshot_response.dart';
 
 MessageSnapshotResponse _$MessageSnapshotResponseFromJson(
   Map<String, dynamic> json,
-) => MessageSnapshotResponse(
-  timestamp: DateTime.parse(json['timestamp'] as String),
-  type: MessageSnapshotResponseTypeType.fromJson((json['type'] as num).toInt()),
-  flags: (json['flags'] as num).toInt(),
-  content: json['content'] as String?,
-  editedTimestamp: json['edited_timestamp'] == null
-      ? null
-      : DateTime.parse(json['edited_timestamp'] as String),
-  mentions: (json['mentions'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
-  mentionRoles: (json['mention_roles'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
-  embeds: (json['embeds'] as List<dynamic>?)
-      ?.map((e) => MessageEmbedResponse.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  attachments: (json['attachments'] as List<dynamic>?)
-      ?.map(
-        (e) => MessageAttachmentResponse.fromJson(e as Map<String, dynamic>),
-      )
-      .toList(),
-  stickers: (json['stickers'] as List<dynamic>?)
-      ?.map((e) => MessageStickerResponse.fromJson(e as Map<String, dynamic>))
-      .toList(),
+) => $checkedCreate(
+  'MessageSnapshotResponse',
+  json,
+  ($checkedConvert) {
+    final val = MessageSnapshotResponse(
+      timestamp: $checkedConvert(
+        'timestamp',
+        (v) => DateTime.parse(v as String),
+      ),
+      type: $checkedConvert(
+        'type',
+        (v) => MessageSnapshotResponseTypeType.fromJson((v as num).toInt()),
+      ),
+      flags: $checkedConvert('flags', (v) => (v as num).toInt()),
+      content: $checkedConvert('content', (v) => v as String?),
+      editedTimestamp: $checkedConvert(
+        'edited_timestamp',
+        (v) => v == null ? null : DateTime.parse(v as String),
+      ),
+      mentions: $checkedConvert(
+        'mentions',
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+      ),
+      mentionRoles: $checkedConvert(
+        'mention_roles',
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+      ),
+      mentionChannels: $checkedConvert(
+        'mention_channels',
+        (v) => (v as List<dynamic>?)
+            ?.map(
+              (e) => MessageChannelMentionResponse.fromJson(
+                e as Map<String, dynamic>,
+              ),
+            )
+            .toList(),
+      ),
+      embeds: $checkedConvert(
+        'embeds',
+        (v) => (v as List<dynamic>?)
+            ?.map(
+              (e) => MessageEmbedResponse.fromJson(e as Map<String, dynamic>),
+            )
+            .toList(),
+      ),
+      attachments: $checkedConvert(
+        'attachments',
+        (v) => (v as List<dynamic>?)
+            ?.map(
+              (e) =>
+                  MessageAttachmentResponse.fromJson(e as Map<String, dynamic>),
+            )
+            .toList(),
+      ),
+      stickers: $checkedConvert(
+        'stickers',
+        (v) => (v as List<dynamic>?)
+            ?.map(
+              (e) => MessageStickerResponse.fromJson(e as Map<String, dynamic>),
+            )
+            .toList(),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'editedTimestamp': 'edited_timestamp',
+    'mentionRoles': 'mention_roles',
+    'mentionChannels': 'mention_channels',
+  },
 );
 
 Map<String, dynamic> _$MessageSnapshotResponseToJson(
@@ -43,6 +88,7 @@ Map<String, dynamic> _$MessageSnapshotResponseToJson(
   'edited_timestamp': ?instance.editedTimestamp?.toIso8601String(),
   'mentions': ?instance.mentions,
   'mention_roles': ?instance.mentionRoles,
+  'mention_channels': ?instance.mentionChannels,
   'embeds': ?instance.embeds,
   'attachments': ?instance.attachments,
   'stickers': ?instance.stickers,

@@ -8,12 +8,40 @@ part of 'relationship_response.dart';
 
 RelationshipResponse _$RelationshipResponseFromJson(
   Map<String, dynamic> json,
-) => RelationshipResponse(
-  id: json['id'] as String,
-  type: RelationshipTypes.fromJson((json['type'] as num).toInt()),
-  user: UserPartialResponse.fromJson(json['user'] as Map<String, dynamic>),
-  nickname: json['nickname'] as String?,
-  since: json['since'] == null ? null : DateTime.parse(json['since'] as String),
+) => $checkedCreate(
+  'RelationshipResponse',
+  json,
+  ($checkedConvert) {
+    final val = RelationshipResponse(
+      id: $checkedConvert('id', (v) => v as String),
+      type: $checkedConvert(
+        'type',
+        (v) => RelationshipTypes.fromJson((v as num).toInt()),
+      ),
+      user: $checkedConvert(
+        'user',
+        (v) => UserPartialResponse.fromJson(v as Map<String, dynamic>),
+      ),
+      nickname: $checkedConvert('nickname', (v) => v as String?),
+      shareVoiceActivity: $checkedConvert(
+        'share_voice_activity',
+        (v) => v as bool,
+      ),
+      friendSharesVoiceActivity: $checkedConvert(
+        'friend_shares_voice_activity',
+        (v) => v as bool,
+      ),
+      since: $checkedConvert(
+        'since',
+        (v) => v == null ? null : DateTime.parse(v as String),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'shareVoiceActivity': 'share_voice_activity',
+    'friendSharesVoiceActivity': 'friend_shares_voice_activity',
+  },
 );
 
 Map<String, dynamic> _$RelationshipResponseToJson(
@@ -24,4 +52,6 @@ Map<String, dynamic> _$RelationshipResponseToJson(
   'user': instance.user,
   'since': ?instance.since?.toIso8601String(),
   'nickname': instance.nickname,
+  'share_voice_activity': instance.shareVoiceActivity,
+  'friend_shares_voice_activity': instance.friendSharesVoiceActivity,
 };

@@ -20,7 +20,6 @@ import '../models/handoff_status_response.dart';
 import '../models/ip_authorization_poll_response.dart';
 import '../models/login_request.dart';
 import '../models/logout_auth_sessions_request.dart';
-import '../models/mfa_sms_request.dart';
 import '../models/mfa_ticket_request.dart';
 import '../models/mfa_totp_request.dart';
 import '../models/register_request.dart';
@@ -135,24 +134,6 @@ abstract class AuthApi {
   /// [body] - Name not received - field will be skipped.
   @POST('/auth/login')
   Future<AuthLoginResponse> loginUser({@Body() required LoginRequest body});
-
-  /// Login with SMS MFA.
-  ///
-  /// Complete login by verifying the SMS code sent during MFA authentication. Requires the MFA ticket from initial login attempt.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @POST('/auth/login/mfa/sms')
-  Future<AuthTokenWithUserIdResponse> loginWithSmsMfa({
-    @Body() required MfaSmsRequest body,
-  });
-
-  /// Send SMS MFA code.
-  ///
-  /// Request an SMS code to be sent to the user's registered phone number during MFA login. Requires the MFA ticket from initial login attempt.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @POST('/auth/login/mfa/sms/send')
-  Future<void> sendSmsMfaCode({@Body() required MfaTicketRequest body});
 
   /// Login with TOTP.
   ///

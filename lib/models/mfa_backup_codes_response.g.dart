@@ -8,11 +8,21 @@ part of 'mfa_backup_codes_response.dart';
 
 MfaBackupCodesResponse _$MfaBackupCodesResponseFromJson(
   Map<String, dynamic> json,
-) => MfaBackupCodesResponse(
-  backupCodes: (json['backup_codes'] as List<dynamic>)
-      .map((e) => MfaBackupCodeResponse.fromJson(e as Map<String, dynamic>))
-      .toList(),
-);
+) => $checkedCreate('MfaBackupCodesResponse', json, ($checkedConvert) {
+  final val = MfaBackupCodesResponse(
+    backupCodes: $checkedConvert(
+      'backup_codes',
+      (v) => (v as List<dynamic>)
+          .map(
+            (e) => MfaBackupCodesResponseBackupCodes.fromJson(
+              e as Map<String, dynamic>,
+            ),
+          )
+          .toList(),
+    ),
+  );
+  return val;
+}, fieldKeyMap: const {'backupCodes': 'backup_codes'});
 
 Map<String, dynamic> _$MfaBackupCodesResponseToJson(
   MfaBackupCodesResponse instance,

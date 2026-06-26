@@ -4,8 +4,6 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'o_auth2_redirect_uri_create_type.dart';
-
 part 'application_create_request.g.dart';
 
 @JsonSerializable()
@@ -25,7 +23,7 @@ class ApplicationCreateRequest {
 
   /// The redirect URIs for OAuth2 flows
   @JsonKey(includeIfNull: false, name: 'redirect_uris')
-  final List<OAuth2RedirectUriCreateType>? redirectUris;
+  final List<String>? redirectUris;
 
   /// Whether the bot can be invited by anyone
   @JsonKey(includeIfNull: false, name: 'bot_public')

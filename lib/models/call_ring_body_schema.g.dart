@@ -7,13 +7,17 @@ part of 'call_ring_body_schema.dart';
 // **************************************************************************
 
 CallRingBodySchema _$CallRingBodySchemaFromJson(Map<String, dynamic> json) =>
-    CallRingBodySchema(
-      recipients: (json['recipients'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-      latitude: json['latitude'] as String?,
-      longitude: json['longitude'] as String?,
-    );
+    $checkedCreate('CallRingBodySchema', json, ($checkedConvert) {
+      final val = CallRingBodySchema(
+        recipients: $checkedConvert(
+          'recipients',
+          (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+        ),
+        latitude: $checkedConvert('latitude', (v) => v as String?),
+        longitude: $checkedConvert('longitude', (v) => v as String?),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$CallRingBodySchemaToJson(CallRingBodySchema instance) =>
     <String, dynamic>{

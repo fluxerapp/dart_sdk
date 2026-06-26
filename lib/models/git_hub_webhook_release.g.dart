@@ -8,11 +8,19 @@ part of 'git_hub_webhook_release.dart';
 
 GitHubWebhookRelease _$GitHubWebhookReleaseFromJson(
   Map<String, dynamic> json,
-) => GitHubWebhookRelease(
-  id: (json['id'] as num).toInt(),
-  tagName: json['tag_name'] as String,
-  htmlUrl: json['html_url'] as String,
-  body: json['body'] as String?,
+) => $checkedCreate(
+  'GitHubWebhookRelease',
+  json,
+  ($checkedConvert) {
+    final val = GitHubWebhookRelease(
+      id: $checkedConvert('id', (v) => (v as num).toInt()),
+      tagName: $checkedConvert('tag_name', (v) => v as String),
+      htmlUrl: $checkedConvert('html_url', (v) => v as String),
+      body: $checkedConvert('body', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'tagName': 'tag_name', 'htmlUrl': 'html_url'},
 );
 
 Map<String, dynamic> _$GitHubWebhookReleaseToJson(

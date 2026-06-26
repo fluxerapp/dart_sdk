@@ -15,7 +15,6 @@ class GuildStickerResponse {
     required this.tags,
     required this.animated,
     required this.nsfw,
-    this.formats,
   });
 
   factory GuildStickerResponse.fromJson(Map<String, Object?> json) =>
@@ -38,10 +37,6 @@ class GuildStickerResponse {
 
   /// Whether this sticker is classified as NSFW
   final bool nsfw;
-
-  /// Available derivative formats for this sticker; absent for legacy assets
-  @JsonKey(includeIfNull: false)
-  final List<String>? formats;
 
   Map<String, Object?> toJson() => _$GuildStickerResponseToJson(this);
 }

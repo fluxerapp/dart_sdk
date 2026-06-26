@@ -8,78 +8,175 @@ part of 'user_settings_response.dart';
 
 UserSettingsResponse _$UserSettingsResponseFromJson(
   Map<String, dynamic> json,
-) => UserSettingsResponse(
-  renderEmbeds: json['render_embeds'] as bool,
-  staffDmAccessUserIds: (json['staff_dm_access_user_ids'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-  suppressUnprivilegedSelfMentionsBypassUserIds:
-      (json['suppress_unprivileged_self_mentions_bypass_user_ids']
-              as List<dynamic>)
-          .map((e) => e as String)
-          .toList(),
-  theme: json['theme'] as String,
-  locale: Locale.fromJson(json['locale'] as String),
-  restrictedGuilds: (json['restricted_guilds'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-  botRestrictedGuilds: (json['bot_restricted_guilds'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-  defaultGuildsRestricted: json['default_guilds_restricted'] as bool,
-  botDefaultGuildsRestricted: json['bot_default_guilds_restricted'] as bool,
-  inlineAttachmentMedia: json['inline_attachment_media'] as bool,
-  inlineEmbedMedia: json['inline_embed_media'] as bool,
-  gifAutoPlay: json['gif_auto_play'] as bool,
-  status: json['status'] as String,
-  renderReactions: json['render_reactions'] as bool,
-  animateEmoji: json['animate_emoji'] as bool,
-  animateStickers: StickerAnimationOptions.fromJson(
-    (json['animate_stickers'] as num).toInt(),
-  ),
-  renderSpoilers: RenderSpoilers.fromJson(
-    (json['render_spoilers'] as num).toInt(),
-  ),
-  messageDisplayCompact: json['message_display_compact'] as bool,
-  friendSourceFlags: (json['friend_source_flags'] as num).toInt(),
-  incomingCallFlags: (json['incoming_call_flags'] as num).toInt(),
-  groupDmAddPermissionFlags: (json['group_dm_add_permission_flags'] as num)
-      .toInt(),
-  guildFolders: (json['guild_folders'] as List<dynamic>)
-      .map(
-        (e) => UserSettingsResponseGuildFolders.fromJson(
-          e as Map<String, dynamic>,
-        ),
-      )
-      .toList(),
-  syncedPreferences: json['synced_preferences'] as String,
-  afkTimeout: (json['afk_timeout'] as num).toInt(),
-  timeFormat: TimeFormatTypes.fromJson((json['time_format'] as num).toInt()),
-  developerMode: json['developer_mode'] as bool,
-  trustedDomains: (json['trusted_domains'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-  defaultHideMutedChannels: json['default_hide_muted_channels'] as bool,
-  sensitiveContentFriendDmFilter: SensitiveMediaFilterLevel.fromJson(
-    (json['sensitive_content_friend_dm_filter'] as num).toInt(),
-  ),
-  sensitiveContentNonFriendDmFilter: SensitiveMediaFilterLevel.fromJson(
-    (json['sensitive_content_non_friend_dm_filter'] as num).toInt(),
-  ),
-  sensitiveContentGuildFilter: SensitiveMediaGuildFilterLevel.fromJson(
-    (json['sensitive_content_guild_filter'] as num).toInt(),
-  ),
-  suppressUnprivilegedSelfMentions:
-      json['suppress_unprivileged_self_mentions'] as bool,
-  customStatus: json['custom_status'] == null
-      ? null
-      : CustomStatusResponse.fromJson(
-          json['custom_status'] as Map<String, dynamic>,
-        ),
-  statusResetsAt: json['status_resets_at'] == null
-      ? null
-      : DateTime.parse(json['status_resets_at'] as String),
-  statusResetsTo: json['status_resets_to'] as String?,
+) => $checkedCreate(
+  'UserSettingsResponse',
+  json,
+  ($checkedConvert) {
+    final val = UserSettingsResponse(
+      renderEmbeds: $checkedConvert('render_embeds', (v) => v as bool),
+      profilePrivacy: $checkedConvert(
+        'profile_privacy',
+        (v) => ProfilePrivacyLevel.fromJson((v as num).toInt()),
+      ),
+      syncedPreferences: $checkedConvert(
+        'synced_preferences',
+        (v) => v as String,
+      ),
+      theme: $checkedConvert('theme', (v) => v as String),
+      locale: $checkedConvert('locale', (v) => Locale.fromJson(v as String)),
+      restrictedGuilds: $checkedConvert(
+        'restricted_guilds',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      botRestrictedGuilds: $checkedConvert(
+        'bot_restricted_guilds',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      defaultGuildsRestricted: $checkedConvert(
+        'default_guilds_restricted',
+        (v) => v as bool,
+      ),
+      botDefaultGuildsRestricted: $checkedConvert(
+        'bot_default_guilds_restricted',
+        (v) => v as bool,
+      ),
+      inlineAttachmentMedia: $checkedConvert(
+        'inline_attachment_media',
+        (v) => v as bool,
+      ),
+      inlineEmbedMedia: $checkedConvert('inline_embed_media', (v) => v as bool),
+      gifAutoPlay: $checkedConvert('gif_auto_play', (v) => v as bool),
+      status: $checkedConvert('status', (v) => v as String),
+      renderReactions: $checkedConvert('render_reactions', (v) => v as bool),
+      animateEmoji: $checkedConvert('animate_emoji', (v) => v as bool),
+      animateStickers: $checkedConvert(
+        'animate_stickers',
+        (v) => StickerAnimationOptions.fromJson((v as num).toInt()),
+      ),
+      renderSpoilers: $checkedConvert(
+        'render_spoilers',
+        (v) => RenderSpoilers.fromJson((v as num).toInt()),
+      ),
+      messageDisplayCompact: $checkedConvert(
+        'message_display_compact',
+        (v) => v as bool,
+      ),
+      friendSourceFlags: $checkedConvert(
+        'friend_source_flags',
+        (v) => (v as num).toInt(),
+      ),
+      incomingCallFlags: $checkedConvert(
+        'incoming_call_flags',
+        (v) => (v as num).toInt(),
+      ),
+      groupDmAddPermissionFlags: $checkedConvert(
+        'group_dm_add_permission_flags',
+        (v) => (v as num).toInt(),
+      ),
+      guildFolders: $checkedConvert(
+        'guild_folders',
+        (v) => (v as List<dynamic>)
+            .map(
+              (e) => UserSettingsResponseGuildFolders.fromJson(
+                e as Map<String, dynamic>,
+              ),
+            )
+            .toList(),
+      ),
+      customStatus: $checkedConvert(
+        'custom_status',
+        (v) => v == null
+            ? null
+            : CustomStatusResponse.fromJson(v as Map<String, dynamic>),
+      ),
+      afkTimeout: $checkedConvert('afk_timeout', (v) => (v as num).toInt()),
+      defaultShareVoiceActivity: $checkedConvert(
+        'default_share_voice_activity',
+        (v) => v as bool,
+      ),
+      developerMode: $checkedConvert('developer_mode', (v) => v as bool),
+      trustedDomains: $checkedConvert(
+        'trusted_domains',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      defaultHideMutedChannels: $checkedConvert(
+        'default_hide_muted_channels',
+        (v) => v as bool,
+      ),
+      sensitiveContentFriendDmFilter: $checkedConvert(
+        'sensitive_content_friend_dm_filter',
+        (v) => SensitiveMediaFilterLevel.fromJson((v as num).toInt()),
+      ),
+      sensitiveContentNonFriendDmFilter: $checkedConvert(
+        'sensitive_content_non_friend_dm_filter',
+        (v) => SensitiveMediaFilterLevel.fromJson((v as num).toInt()),
+      ),
+      sensitiveContentGuildFilter: $checkedConvert(
+        'sensitive_content_guild_filter',
+        (v) => SensitiveMediaGuildFilterLevel.fromJson((v as num).toInt()),
+      ),
+      suppressUnprivilegedSelfMentions: $checkedConvert(
+        'suppress_unprivileged_self_mentions',
+        (v) => v as bool,
+      ),
+      suppressUnprivilegedSelfMentionsBypassUserIds: $checkedConvert(
+        'suppress_unprivileged_self_mentions_bypass_user_ids',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      staffDmAccessUserIds: $checkedConvert(
+        'staff_dm_access_user_ids',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      timeFormat: $checkedConvert(
+        'time_format',
+        (v) => TimeFormatTypes.fromJson((v as num).toInt()),
+      ),
+      statusResetsAt: $checkedConvert(
+        'status_resets_at',
+        (v) => v == null ? null : DateTime.parse(v as String),
+      ),
+      statusResetsTo: $checkedConvert('status_resets_to', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'renderEmbeds': 'render_embeds',
+    'profilePrivacy': 'profile_privacy',
+    'syncedPreferences': 'synced_preferences',
+    'restrictedGuilds': 'restricted_guilds',
+    'botRestrictedGuilds': 'bot_restricted_guilds',
+    'defaultGuildsRestricted': 'default_guilds_restricted',
+    'botDefaultGuildsRestricted': 'bot_default_guilds_restricted',
+    'inlineAttachmentMedia': 'inline_attachment_media',
+    'inlineEmbedMedia': 'inline_embed_media',
+    'gifAutoPlay': 'gif_auto_play',
+    'renderReactions': 'render_reactions',
+    'animateEmoji': 'animate_emoji',
+    'animateStickers': 'animate_stickers',
+    'renderSpoilers': 'render_spoilers',
+    'messageDisplayCompact': 'message_display_compact',
+    'friendSourceFlags': 'friend_source_flags',
+    'incomingCallFlags': 'incoming_call_flags',
+    'groupDmAddPermissionFlags': 'group_dm_add_permission_flags',
+    'guildFolders': 'guild_folders',
+    'customStatus': 'custom_status',
+    'afkTimeout': 'afk_timeout',
+    'defaultShareVoiceActivity': 'default_share_voice_activity',
+    'developerMode': 'developer_mode',
+    'trustedDomains': 'trusted_domains',
+    'defaultHideMutedChannels': 'default_hide_muted_channels',
+    'sensitiveContentFriendDmFilter': 'sensitive_content_friend_dm_filter',
+    'sensitiveContentNonFriendDmFilter':
+        'sensitive_content_non_friend_dm_filter',
+    'sensitiveContentGuildFilter': 'sensitive_content_guild_filter',
+    'suppressUnprivilegedSelfMentions': 'suppress_unprivileged_self_mentions',
+    'suppressUnprivilegedSelfMentionsBypassUserIds':
+        'suppress_unprivileged_self_mentions_bypass_user_ids',
+    'staffDmAccessUserIds': 'staff_dm_access_user_ids',
+    'timeFormat': 'time_format',
+    'statusResetsAt': 'status_resets_at',
+    'statusResetsTo': 'status_resets_to',
+  },
 );
 
 Map<String, dynamic> _$UserSettingsResponseToJson(
@@ -123,4 +220,6 @@ Map<String, dynamic> _$UserSettingsResponseToJson(
       instance.suppressUnprivilegedSelfMentionsBypassUserIds,
   'staff_dm_access_user_ids': instance.staffDmAccessUserIds,
   'synced_preferences': instance.syncedPreferences,
+  'profile_privacy': instance.profilePrivacy,
+  'default_share_voice_activity': instance.defaultShareVoiceActivity,
 };

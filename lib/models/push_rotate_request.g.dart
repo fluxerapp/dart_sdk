@@ -7,13 +7,25 @@ part of 'push_rotate_request.dart';
 // **************************************************************************
 
 PushRotateRequest _$PushRotateRequestFromJson(Map<String, dynamic> json) =>
-    PushRotateRequest(
-      oldEndpoint: json['old_endpoint'] as String,
-      endpoint: json['endpoint'] as String,
-      keys: PushRotateRequestKeys.fromJson(
-        json['keys'] as Map<String, dynamic>,
-      ),
-      userAgent: json['user_agent'] as String?,
+    $checkedCreate(
+      'PushRotateRequest',
+      json,
+      ($checkedConvert) {
+        final val = PushRotateRequest(
+          oldEndpoint: $checkedConvert('old_endpoint', (v) => v as String),
+          endpoint: $checkedConvert('endpoint', (v) => v as String),
+          keys: $checkedConvert(
+            'keys',
+            (v) => PushRotateRequestKeys.fromJson(v as Map<String, dynamic>),
+          ),
+          userAgent: $checkedConvert('user_agent', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'oldEndpoint': 'old_endpoint',
+        'userAgent': 'user_agent',
+      },
     );
 
 Map<String, dynamic> _$PushRotateRequestToJson(PushRotateRequest instance) =>

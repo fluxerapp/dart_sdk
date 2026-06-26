@@ -6,7 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'message_search_results_response_messages.dart';
 import 'channel_response.dart';
-import 'message_search_indexing_response_indexing_indexing.dart';
+import 'message_search_response_variant2_indexing_indexing.dart';
 
 part 'message_search_response.g.dart';
 
@@ -23,9 +23,8 @@ class MessageSearchResponse {
   MessageSearchResponseMessageSearchResultsResponse
   toMessageSearchResultsResponse() =>
       MessageSearchResponseMessageSearchResultsResponse.fromJson(_json);
-  MessageSearchResponseMessageSearchIndexingResponse
-  toMessageSearchIndexingResponse() =>
-      MessageSearchResponseMessageSearchIndexingResponse.fromJson(_json);
+  MessageSearchResponseVariant2 toVariant2() =>
+      MessageSearchResponseVariant2.fromJson(_json);
 }
 
 @JsonSerializable()
@@ -56,17 +55,13 @@ class MessageSearchResponseMessageSearchResultsResponse {
 }
 
 @JsonSerializable()
-class MessageSearchResponseMessageSearchIndexingResponse {
-  final MessageSearchIndexingResponseIndexingIndexing indexing;
+class MessageSearchResponseVariant2 {
+  final MessageSearchResponseVariant2IndexingIndexing indexing;
 
-  const MessageSearchResponseMessageSearchIndexingResponse({
-    required this.indexing,
-  });
+  const MessageSearchResponseVariant2({required this.indexing});
 
-  factory MessageSearchResponseMessageSearchIndexingResponse.fromJson(
-    Map<String, dynamic> json,
-  ) => _$MessageSearchResponseMessageSearchIndexingResponseFromJson(json);
+  factory MessageSearchResponseVariant2.fromJson(Map<String, dynamic> json) =>
+      _$MessageSearchResponseVariant2FromJson(json);
 
-  Map<String, dynamic> toJson() =>
-      _$MessageSearchResponseMessageSearchIndexingResponseToJson(this);
+  Map<String, dynamic> toJson() => _$MessageSearchResponseVariant2ToJson(this);
 }

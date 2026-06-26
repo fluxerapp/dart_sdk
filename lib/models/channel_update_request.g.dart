@@ -12,34 +12,75 @@ Map<String, dynamic> _$ChannelUpdateRequestToJson(
 
 ChannelUpdateRequest0 _$ChannelUpdateRequest0FromJson(
   Map<String, dynamic> json,
-) => ChannelUpdateRequest0(
-  topic: json['topic'] as String?,
-  url: json['url'] as String?,
-  parentId: json['parent_id'] as String?,
-  bitrate: (json['bitrate'] as num?)?.toInt(),
-  userLimit: (json['user_limit'] as num?)?.toInt(),
-  permissionOverwrites: (json['permission_overwrites'] as List<dynamic>?)
-      ?.map((e) => ChannelOverwriteRequest.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  nsfw: json['nsfw'] as bool?,
-  nsfwOverride: json['nsfw_override'] as bool?,
-  contentWarningLevel: json['content_warning_level'] == null
-      ? null
-      : ContentWarningLevel.fromJson(
-          (json['content_warning_level'] as num).toInt(),
+) => $checkedCreate(
+  'ChannelUpdateRequest0',
+  json,
+  ($checkedConvert) {
+    final val = ChannelUpdateRequest0(
+      topic: $checkedConvert('topic', (v) => v as String?),
+      url: $checkedConvert('url', (v) => v as String?),
+      parentId: $checkedConvert('parent_id', (v) => v as String?),
+      bitrate: $checkedConvert('bitrate', (v) => (v as num?)?.toInt()),
+      userLimit: $checkedConvert('user_limit', (v) => (v as num?)?.toInt()),
+      voiceConnectionLimit: $checkedConvert(
+        'voice_connection_limit',
+        (v) => (v as num?)?.toInt(),
+      ),
+      permissionOverwrites: $checkedConvert(
+        'permission_overwrites',
+        (v) => (v as List<dynamic>?)
+            ?.map(
+              (e) => GuildTextChannelUpdateRequestPermissionOverwrites.fromJson(
+                e as Map<String, dynamic>,
+              ),
+            )
+            .toList(),
+      ),
+      nsfw: $checkedConvert('nsfw', (v) => v as bool?),
+      nsfwOverride: $checkedConvert('nsfw_override', (v) => v as bool?),
+      contentWarningLevel: $checkedConvert(
+        'content_warning_level',
+        (v) =>
+            v == null ? null : ContentWarningLevel.fromJson((v as num).toInt()),
+      ),
+      contentWarningText: $checkedConvert(
+        'content_warning_text',
+        (v) => v as String?,
+      ),
+      rateLimitPerUser: $checkedConvert(
+        'rate_limit_per_user',
+        (v) => (v as num?)?.toInt(),
+      ),
+      icon: $checkedConvert('icon', (v) => v as String?),
+      ownerId: $checkedConvert('owner_id', (v) => v as String?),
+      nicks: $checkedConvert(
+        'nicks',
+        (v) => (v as Map<String, dynamic>?)?.map(
+          (k, e) => MapEntry(k, e as String?),
         ),
-  contentWarningText: json['content_warning_text'] as String?,
-  rateLimitPerUser: (json['rate_limit_per_user'] as num?)?.toInt(),
-  icon: json['icon'] as String?,
-  ownerId: json['owner_id'] as String?,
-  nicks: (json['nicks'] as Map<String, dynamic>?)?.map(
-    (k, e) => MapEntry(k, e as String?),
-  ),
-  rtcRegion: json['rtc_region'] as String?,
-  type: ChannelUpdateTextRequestTypeType.fromJson(
-    (json['type'] as num).toInt(),
-  ),
-  name: json['name'] as String?,
+      ),
+      rtcRegion: $checkedConvert('rtc_region', (v) => v as String?),
+      type: $checkedConvert(
+        'type',
+        (v) =>
+            GuildTextChannelUpdateRequestTypeType.fromJson((v as num).toInt()),
+      ),
+      name: $checkedConvert('name', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'parentId': 'parent_id',
+    'userLimit': 'user_limit',
+    'voiceConnectionLimit': 'voice_connection_limit',
+    'permissionOverwrites': 'permission_overwrites',
+    'nsfwOverride': 'nsfw_override',
+    'contentWarningLevel': 'content_warning_level',
+    'contentWarningText': 'content_warning_text',
+    'rateLimitPerUser': 'rate_limit_per_user',
+    'ownerId': 'owner_id',
+    'rtcRegion': 'rtc_region',
+  },
 );
 
 Map<String, dynamic> _$ChannelUpdateRequest0ToJson(
@@ -50,6 +91,7 @@ Map<String, dynamic> _$ChannelUpdateRequest0ToJson(
   'parent_id': instance.parentId,
   'bitrate': instance.bitrate,
   'user_limit': instance.userLimit,
+  'voice_connection_limit': instance.voiceConnectionLimit,
   'permission_overwrites': instance.permissionOverwrites,
   'nsfw': instance.nsfw,
   'nsfw_override': instance.nsfwOverride,
@@ -66,34 +108,76 @@ Map<String, dynamic> _$ChannelUpdateRequest0ToJson(
 
 ChannelUpdateRequest2 _$ChannelUpdateRequest2FromJson(
   Map<String, dynamic> json,
-) => ChannelUpdateRequest2(
-  topic: json['topic'] as String?,
-  url: json['url'] as String?,
-  parentId: json['parent_id'] as String?,
-  bitrate: (json['bitrate'] as num?)?.toInt(),
-  userLimit: (json['user_limit'] as num?)?.toInt(),
-  permissionOverwrites: (json['permission_overwrites'] as List<dynamic>?)
-      ?.map((e) => ChannelOverwriteRequest.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  nsfw: json['nsfw'] as bool?,
-  nsfwOverride: json['nsfw_override'] as bool?,
-  contentWarningLevel: json['content_warning_level'] == null
-      ? null
-      : ContentWarningLevel.fromJson(
-          (json['content_warning_level'] as num).toInt(),
+) => $checkedCreate(
+  'ChannelUpdateRequest2',
+  json,
+  ($checkedConvert) {
+    final val = ChannelUpdateRequest2(
+      topic: $checkedConvert('topic', (v) => v as String?),
+      url: $checkedConvert('url', (v) => v as String?),
+      parentId: $checkedConvert('parent_id', (v) => v as String?),
+      bitrate: $checkedConvert('bitrate', (v) => (v as num?)?.toInt()),
+      userLimit: $checkedConvert('user_limit', (v) => (v as num?)?.toInt()),
+      voiceConnectionLimit: $checkedConvert(
+        'voice_connection_limit',
+        (v) => (v as num?)?.toInt(),
+      ),
+      permissionOverwrites: $checkedConvert(
+        'permission_overwrites',
+        (v) => (v as List<dynamic>?)
+            ?.map(
+              (e) =>
+                  GuildVoiceChannelUpdateRequestPermissionOverwrites.fromJson(
+                    e as Map<String, dynamic>,
+                  ),
+            )
+            .toList(),
+      ),
+      nsfw: $checkedConvert('nsfw', (v) => v as bool?),
+      nsfwOverride: $checkedConvert('nsfw_override', (v) => v as bool?),
+      contentWarningLevel: $checkedConvert(
+        'content_warning_level',
+        (v) =>
+            v == null ? null : ContentWarningLevel.fromJson((v as num).toInt()),
+      ),
+      contentWarningText: $checkedConvert(
+        'content_warning_text',
+        (v) => v as String?,
+      ),
+      rateLimitPerUser: $checkedConvert(
+        'rate_limit_per_user',
+        (v) => (v as num?)?.toInt(),
+      ),
+      icon: $checkedConvert('icon', (v) => v as String?),
+      ownerId: $checkedConvert('owner_id', (v) => v as String?),
+      nicks: $checkedConvert(
+        'nicks',
+        (v) => (v as Map<String, dynamic>?)?.map(
+          (k, e) => MapEntry(k, e as String?),
         ),
-  contentWarningText: json['content_warning_text'] as String?,
-  rateLimitPerUser: (json['rate_limit_per_user'] as num?)?.toInt(),
-  icon: json['icon'] as String?,
-  ownerId: json['owner_id'] as String?,
-  nicks: (json['nicks'] as Map<String, dynamic>?)?.map(
-    (k, e) => MapEntry(k, e as String?),
-  ),
-  rtcRegion: json['rtc_region'] as String?,
-  type: ChannelUpdateVoiceRequestTypeType.fromJson(
-    (json['type'] as num).toInt(),
-  ),
-  name: json['name'] as String?,
+      ),
+      rtcRegion: $checkedConvert('rtc_region', (v) => v as String?),
+      type: $checkedConvert(
+        'type',
+        (v) =>
+            GuildVoiceChannelUpdateRequestTypeType.fromJson((v as num).toInt()),
+      ),
+      name: $checkedConvert('name', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'parentId': 'parent_id',
+    'userLimit': 'user_limit',
+    'voiceConnectionLimit': 'voice_connection_limit',
+    'permissionOverwrites': 'permission_overwrites',
+    'nsfwOverride': 'nsfw_override',
+    'contentWarningLevel': 'content_warning_level',
+    'contentWarningText': 'content_warning_text',
+    'rateLimitPerUser': 'rate_limit_per_user',
+    'ownerId': 'owner_id',
+    'rtcRegion': 'rtc_region',
+  },
 );
 
 Map<String, dynamic> _$ChannelUpdateRequest2ToJson(
@@ -104,6 +188,7 @@ Map<String, dynamic> _$ChannelUpdateRequest2ToJson(
   'parent_id': instance.parentId,
   'bitrate': instance.bitrate,
   'user_limit': instance.userLimit,
+  'voice_connection_limit': instance.voiceConnectionLimit,
   'permission_overwrites': instance.permissionOverwrites,
   'nsfw': instance.nsfw,
   'nsfw_override': instance.nsfwOverride,
@@ -120,34 +205,77 @@ Map<String, dynamic> _$ChannelUpdateRequest2ToJson(
 
 ChannelUpdateRequest4 _$ChannelUpdateRequest4FromJson(
   Map<String, dynamic> json,
-) => ChannelUpdateRequest4(
-  topic: json['topic'] as String?,
-  url: json['url'] as String?,
-  parentId: json['parent_id'] as String?,
-  bitrate: (json['bitrate'] as num?)?.toInt(),
-  userLimit: (json['user_limit'] as num?)?.toInt(),
-  permissionOverwrites: (json['permission_overwrites'] as List<dynamic>?)
-      ?.map((e) => ChannelOverwriteRequest.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  nsfw: json['nsfw'] as bool?,
-  nsfwOverride: json['nsfw_override'] as bool?,
-  contentWarningLevel: json['content_warning_level'] == null
-      ? null
-      : ContentWarningLevel.fromJson(
-          (json['content_warning_level'] as num).toInt(),
+) => $checkedCreate(
+  'ChannelUpdateRequest4',
+  json,
+  ($checkedConvert) {
+    final val = ChannelUpdateRequest4(
+      topic: $checkedConvert('topic', (v) => v as String?),
+      url: $checkedConvert('url', (v) => v as String?),
+      parentId: $checkedConvert('parent_id', (v) => v as String?),
+      bitrate: $checkedConvert('bitrate', (v) => (v as num?)?.toInt()),
+      userLimit: $checkedConvert('user_limit', (v) => (v as num?)?.toInt()),
+      voiceConnectionLimit: $checkedConvert(
+        'voice_connection_limit',
+        (v) => (v as num?)?.toInt(),
+      ),
+      permissionOverwrites: $checkedConvert(
+        'permission_overwrites',
+        (v) => (v as List<dynamic>?)
+            ?.map(
+              (e) =>
+                  GuildCategoryChannelUpdateRequestPermissionOverwrites.fromJson(
+                    e as Map<String, dynamic>,
+                  ),
+            )
+            .toList(),
+      ),
+      nsfw: $checkedConvert('nsfw', (v) => v as bool?),
+      nsfwOverride: $checkedConvert('nsfw_override', (v) => v as bool?),
+      contentWarningLevel: $checkedConvert(
+        'content_warning_level',
+        (v) =>
+            v == null ? null : ContentWarningLevel.fromJson((v as num).toInt()),
+      ),
+      contentWarningText: $checkedConvert(
+        'content_warning_text',
+        (v) => v as String?,
+      ),
+      rateLimitPerUser: $checkedConvert(
+        'rate_limit_per_user',
+        (v) => (v as num?)?.toInt(),
+      ),
+      icon: $checkedConvert('icon', (v) => v as String?),
+      ownerId: $checkedConvert('owner_id', (v) => v as String?),
+      nicks: $checkedConvert(
+        'nicks',
+        (v) => (v as Map<String, dynamic>?)?.map(
+          (k, e) => MapEntry(k, e as String?),
         ),
-  contentWarningText: json['content_warning_text'] as String?,
-  rateLimitPerUser: (json['rate_limit_per_user'] as num?)?.toInt(),
-  icon: json['icon'] as String?,
-  ownerId: json['owner_id'] as String?,
-  nicks: (json['nicks'] as Map<String, dynamic>?)?.map(
-    (k, e) => MapEntry(k, e as String?),
-  ),
-  rtcRegion: json['rtc_region'] as String?,
-  type: ChannelUpdateCategoryRequestTypeType.fromJson(
-    (json['type'] as num).toInt(),
-  ),
-  name: json['name'] as String?,
+      ),
+      rtcRegion: $checkedConvert('rtc_region', (v) => v as String?),
+      type: $checkedConvert(
+        'type',
+        (v) => GuildCategoryChannelUpdateRequestTypeType.fromJson(
+          (v as num).toInt(),
+        ),
+      ),
+      name: $checkedConvert('name', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'parentId': 'parent_id',
+    'userLimit': 'user_limit',
+    'voiceConnectionLimit': 'voice_connection_limit',
+    'permissionOverwrites': 'permission_overwrites',
+    'nsfwOverride': 'nsfw_override',
+    'contentWarningLevel': 'content_warning_level',
+    'contentWarningText': 'content_warning_text',
+    'rateLimitPerUser': 'rate_limit_per_user',
+    'ownerId': 'owner_id',
+    'rtcRegion': 'rtc_region',
+  },
 );
 
 Map<String, dynamic> _$ChannelUpdateRequest4ToJson(
@@ -158,6 +286,7 @@ Map<String, dynamic> _$ChannelUpdateRequest4ToJson(
   'parent_id': instance.parentId,
   'bitrate': instance.bitrate,
   'user_limit': instance.userLimit,
+  'voice_connection_limit': instance.voiceConnectionLimit,
   'permission_overwrites': instance.permissionOverwrites,
   'nsfw': instance.nsfw,
   'nsfw_override': instance.nsfwOverride,
@@ -174,34 +303,75 @@ Map<String, dynamic> _$ChannelUpdateRequest4ToJson(
 
 ChannelUpdateRequest998 _$ChannelUpdateRequest998FromJson(
   Map<String, dynamic> json,
-) => ChannelUpdateRequest998(
-  topic: json['topic'] as String?,
-  url: json['url'] as String?,
-  parentId: json['parent_id'] as String?,
-  bitrate: (json['bitrate'] as num?)?.toInt(),
-  userLimit: (json['user_limit'] as num?)?.toInt(),
-  permissionOverwrites: (json['permission_overwrites'] as List<dynamic>?)
-      ?.map((e) => ChannelOverwriteRequest.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  nsfw: json['nsfw'] as bool?,
-  nsfwOverride: json['nsfw_override'] as bool?,
-  contentWarningLevel: json['content_warning_level'] == null
-      ? null
-      : ContentWarningLevel.fromJson(
-          (json['content_warning_level'] as num).toInt(),
+) => $checkedCreate(
+  'ChannelUpdateRequest998',
+  json,
+  ($checkedConvert) {
+    final val = ChannelUpdateRequest998(
+      topic: $checkedConvert('topic', (v) => v as String?),
+      url: $checkedConvert('url', (v) => v as String?),
+      parentId: $checkedConvert('parent_id', (v) => v as String?),
+      bitrate: $checkedConvert('bitrate', (v) => (v as num?)?.toInt()),
+      userLimit: $checkedConvert('user_limit', (v) => (v as num?)?.toInt()),
+      voiceConnectionLimit: $checkedConvert(
+        'voice_connection_limit',
+        (v) => (v as num?)?.toInt(),
+      ),
+      permissionOverwrites: $checkedConvert(
+        'permission_overwrites',
+        (v) => (v as List<dynamic>?)
+            ?.map(
+              (e) => GuildLinkChannelUpdateRequestPermissionOverwrites.fromJson(
+                e as Map<String, dynamic>,
+              ),
+            )
+            .toList(),
+      ),
+      nsfw: $checkedConvert('nsfw', (v) => v as bool?),
+      nsfwOverride: $checkedConvert('nsfw_override', (v) => v as bool?),
+      contentWarningLevel: $checkedConvert(
+        'content_warning_level',
+        (v) =>
+            v == null ? null : ContentWarningLevel.fromJson((v as num).toInt()),
+      ),
+      contentWarningText: $checkedConvert(
+        'content_warning_text',
+        (v) => v as String?,
+      ),
+      rateLimitPerUser: $checkedConvert(
+        'rate_limit_per_user',
+        (v) => (v as num?)?.toInt(),
+      ),
+      icon: $checkedConvert('icon', (v) => v as String?),
+      ownerId: $checkedConvert('owner_id', (v) => v as String?),
+      nicks: $checkedConvert(
+        'nicks',
+        (v) => (v as Map<String, dynamic>?)?.map(
+          (k, e) => MapEntry(k, e as String?),
         ),
-  contentWarningText: json['content_warning_text'] as String?,
-  rateLimitPerUser: (json['rate_limit_per_user'] as num?)?.toInt(),
-  icon: json['icon'] as String?,
-  ownerId: json['owner_id'] as String?,
-  nicks: (json['nicks'] as Map<String, dynamic>?)?.map(
-    (k, e) => MapEntry(k, e as String?),
-  ),
-  rtcRegion: json['rtc_region'] as String?,
-  type: ChannelUpdateLinkRequestTypeType.fromJson(
-    (json['type'] as num).toInt(),
-  ),
-  name: json['name'] as String?,
+      ),
+      rtcRegion: $checkedConvert('rtc_region', (v) => v as String?),
+      type: $checkedConvert(
+        'type',
+        (v) =>
+            GuildLinkChannelUpdateRequestTypeType.fromJson((v as num).toInt()),
+      ),
+      name: $checkedConvert('name', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'parentId': 'parent_id',
+    'userLimit': 'user_limit',
+    'voiceConnectionLimit': 'voice_connection_limit',
+    'permissionOverwrites': 'permission_overwrites',
+    'nsfwOverride': 'nsfw_override',
+    'contentWarningLevel': 'content_warning_level',
+    'contentWarningText': 'content_warning_text',
+    'rateLimitPerUser': 'rate_limit_per_user',
+    'ownerId': 'owner_id',
+    'rtcRegion': 'rtc_region',
+  },
 );
 
 Map<String, dynamic> _$ChannelUpdateRequest998ToJson(
@@ -212,6 +382,7 @@ Map<String, dynamic> _$ChannelUpdateRequest998ToJson(
   'parent_id': instance.parentId,
   'bitrate': instance.bitrate,
   'user_limit': instance.userLimit,
+  'voice_connection_limit': instance.voiceConnectionLimit,
   'permission_overwrites': instance.permissionOverwrites,
   'nsfw': instance.nsfw,
   'nsfw_override': instance.nsfwOverride,
@@ -228,17 +399,24 @@ Map<String, dynamic> _$ChannelUpdateRequest998ToJson(
 
 ChannelUpdateRequest3 _$ChannelUpdateRequest3FromJson(
   Map<String, dynamic> json,
-) => ChannelUpdateRequest3(
-  type: ChannelUpdateGroupDmRequestTypeType.fromJson(
-    (json['type'] as num).toInt(),
-  ),
-  name: json['name'] as String?,
-  icon: json['icon'] as String?,
-  ownerId: json['owner_id'] as String?,
-  nicks: (json['nicks'] as Map<String, dynamic>?)?.map(
-    (k, e) => MapEntry(k, e as String?),
-  ),
-);
+) => $checkedCreate('ChannelUpdateRequest3', json, ($checkedConvert) {
+  final val = ChannelUpdateRequest3(
+    type: $checkedConvert(
+      'type',
+      (v) => GroupDmChannelUpdateRequestTypeType.fromJson((v as num).toInt()),
+    ),
+    name: $checkedConvert('name', (v) => v as String?),
+    icon: $checkedConvert('icon', (v) => v as String?),
+    ownerId: $checkedConvert('owner_id', (v) => v as String?),
+    nicks: $checkedConvert(
+      'nicks',
+      (v) => (v as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, e as String?),
+      ),
+    ),
+  );
+  return val;
+}, fieldKeyMap: const {'ownerId': 'owner_id'});
 
 Map<String, dynamic> _$ChannelUpdateRequest3ToJson(
   ChannelUpdateRequest3 instance,

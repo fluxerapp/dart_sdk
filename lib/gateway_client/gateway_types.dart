@@ -1,3 +1,4 @@
+import 'package:fluxer_dart/gateway_client/custom_status_storage.dart';
 import 'package:fluxer_dart/models/channel_response.dart';
 import 'package:fluxer_dart/models/guild_emoji_response.dart';
 import 'package:fluxer_dart/models/guild_member_response.dart';
@@ -25,6 +26,7 @@ class VoiceState {
     this.deaf = false,
     this.suppress = false,
     this.isMobile = false,
+    this.e2eeCapable,
   });
 
   final String userId;
@@ -40,6 +42,44 @@ class VoiceState {
   final bool deaf;
   final bool suppress;
   final bool isMobile;
+  final bool? e2eeCapable;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is VoiceState &&
+          runtimeType == other.runtimeType &&
+          userId == other.userId &&
+          channelId == other.channelId &&
+          guildId == other.guildId &&
+          sessionId == other.sessionId &&
+          connectionId == other.connectionId &&
+          selfMute == other.selfMute &&
+          selfDeaf == other.selfDeaf &&
+          selfVideo == other.selfVideo &&
+          selfStream == other.selfStream &&
+          mute == other.mute &&
+          deaf == other.deaf &&
+          suppress == other.suppress &&
+          isMobile == other.isMobile &&
+          e2eeCapable == other.e2eeCapable;
+  @override
+  int get hashCode => Object.hash(
+    userId,
+    channelId,
+    guildId,
+    sessionId,
+    connectionId,
+    selfMute,
+    selfDeaf,
+    selfVideo,
+    selfStream,
+    mute,
+    deaf,
+    suppress,
+    isMobile,
+    e2eeCapable,
+  );
 
   factory VoiceState.fromJson(Map<String, dynamic> json) {
     return VoiceState(
@@ -56,6 +96,7 @@ class VoiceState {
       deaf: json['deaf'] as bool? ?? false,
       suppress: json['suppress'] as bool? ?? false,
       isMobile: json['is_mobile'] as bool? ?? false,
+      e2eeCapable: json['e2ee_capable'] as bool?,
     );
   }
 }
@@ -179,7 +220,7 @@ class MemberListMember {
     return MemberListMember(
       member: GuildMemberResponse.fromJson(json),
       status: presenceData?['status'] as String?,
-      customStatus: customStatusMap?['text'] as String?,
+      customStatus: serializeCustomStatusMap(customStatusMap),
     );
   }
 }

@@ -8,8 +8,42 @@ part of 'well_known_fluxer_response_app_public.dart';
 
 WellKnownFluxerResponseAppPublic _$WellKnownFluxerResponseAppPublicFromJson(
   Map<String, dynamic> json,
-) => WellKnownFluxerResponseAppPublic(sentryDsn: json['sentry_dsn'] as String);
+) =>
+    $checkedCreate('WellKnownFluxerResponseAppPublic', json, ($checkedConvert) {
+      final val = WellKnownFluxerResponseAppPublic(
+        branding: $checkedConvert(
+          'branding',
+          (v) => WellKnownFluxerResponseAppPublicBranding.fromJson(
+            v as Map<String, dynamic>,
+          ),
+        ),
+        setup: $checkedConvert(
+          'setup',
+          (v) => WellKnownFluxerResponseAppPublicSetup.fromJson(
+            v as Map<String, dynamic>,
+          ),
+        ),
+        legal: $checkedConvert(
+          'legal',
+          (v) => WellKnownFluxerResponseAppPublicLegal.fromJson(
+            v as Map<String, dynamic>,
+          ),
+        ),
+        registration: $checkedConvert(
+          'registration',
+          (v) => WellKnownFluxerResponseAppPublicRegistration.fromJson(
+            v as Map<String, dynamic>,
+          ),
+        ),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$WellKnownFluxerResponseAppPublicToJson(
   WellKnownFluxerResponseAppPublic instance,
-) => <String, dynamic>{'sentry_dsn': instance.sentryDsn};
+) => <String, dynamic>{
+  'branding': instance.branding,
+  'setup': instance.setup,
+  'legal': instance.legal,
+  'registration': instance.registration,
+};

@@ -8,11 +8,17 @@ part of 'guild_sticker_update_request.dart';
 
 GuildStickerUpdateRequest _$GuildStickerUpdateRequestFromJson(
   Map<String, dynamic> json,
-) => GuildStickerUpdateRequest(
-  name: json['name'] as String,
-  description: json['description'] as String?,
-  tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList(),
-);
+) => $checkedCreate('GuildStickerUpdateRequest', json, ($checkedConvert) {
+  final val = GuildStickerUpdateRequest(
+    name: $checkedConvert('name', (v) => v as String),
+    description: $checkedConvert('description', (v) => v as String?),
+    tags: $checkedConvert(
+      'tags',
+      (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$GuildStickerUpdateRequestToJson(
   GuildStickerUpdateRequest instance,

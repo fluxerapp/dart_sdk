@@ -7,19 +7,37 @@ part of 'user_partial_response.dart';
 // **************************************************************************
 
 UserPartialResponse _$UserPartialResponseFromJson(Map<String, dynamic> json) =>
-    UserPartialResponse(
-      id: json['id'] as String,
-      username: json['username'] as String,
-      discriminator: json['discriminator'] as String,
-      globalName: json['global_name'] as String?,
-      avatar: json['avatar'] as String?,
-      avatarColor: (json['avatar_color'] as num?)?.toInt(),
-      flags: (json['flags'] as num).toInt(),
-      avatarFormats: (json['avatar_formats'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-      bot: json['bot'] as bool?,
-      system: json['system'] as bool?,
+    $checkedCreate(
+      'UserPartialResponse',
+      json,
+      ($checkedConvert) {
+        final val = UserPartialResponse(
+          id: $checkedConvert('id', (v) => v as String),
+          username: $checkedConvert('username', (v) => v as String),
+          discriminator: $checkedConvert('discriminator', (v) => v as String),
+          globalName: $checkedConvert('global_name', (v) => v as String?),
+          avatar: $checkedConvert('avatar', (v) => v as String?),
+          avatarColor: $checkedConvert(
+            'avatar_color',
+            (v) => (v as num?)?.toInt(),
+          ),
+          flags: $checkedConvert('flags', (v) => (v as num).toInt()),
+          bot: $checkedConvert('bot', (v) => v as bool?),
+          system: $checkedConvert('system', (v) => v as bool?),
+          mentionFlags: $checkedConvert(
+            'mention_flags',
+            (v) => v == null
+                ? null
+                : MentionReplyPreferences.fromJson((v as num).toInt()),
+          ),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'globalName': 'global_name',
+        'avatarColor': 'avatar_color',
+        'mentionFlags': 'mention_flags',
+      },
     );
 
 Map<String, dynamic> _$UserPartialResponseToJson(
@@ -31,8 +49,8 @@ Map<String, dynamic> _$UserPartialResponseToJson(
   'global_name': instance.globalName,
   'avatar': instance.avatar,
   'avatar_color': instance.avatarColor,
-  'avatar_formats': ?instance.avatarFormats,
   'bot': ?instance.bot,
   'system': ?instance.system,
   'flags': instance.flags,
+  'mention_flags': ?instance.mentionFlags,
 };

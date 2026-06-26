@@ -5,20 +5,20 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'rich_embed_author_request.dart';
-import 'rich_embed_field_request.dart';
 import 'rich_embed_footer_request.dart';
 import 'rich_embed_media_request.dart';
+import 'rich_embed_request_fields.dart';
 
 part 'rich_embed_request.g.dart';
 
 @JsonSerializable()
 class RichEmbedRequest {
   const RichEmbedRequest({
+    required this.description,
     this.url,
     this.title,
     this.color,
     this.timestamp,
-    this.description,
     this.author,
     this.image,
     this.thumbnail,
@@ -46,7 +46,7 @@ class RichEmbedRequest {
   final dynamic timestamp;
 
   /// Description of the embed (1-4096 characters)
-  @JsonKey(includeIfNull: false)
+  @JsonKey(includeIfNull: true)
   final String? description;
 
   /// Author information
@@ -67,7 +67,7 @@ class RichEmbedRequest {
 
   /// Array of field objects (max 25)
   @JsonKey(includeIfNull: false)
-  final List<RichEmbedFieldRequest>? fields;
+  final List<RichEmbedRequestFields>? fields;
 
   Map<String, Object?> toJson() => _$RichEmbedRequestToJson(this);
 }

@@ -8,8 +8,16 @@ part of 'purge_personal_notes_messages_response.dart';
 
 PurgePersonalNotesMessagesResponse _$PurgePersonalNotesMessagesResponseFromJson(
   Map<String, dynamic> json,
-) => PurgePersonalNotesMessagesResponse(
-  deletedCount: (json['deleted_count'] as num).toInt(),
+) => $checkedCreate(
+  'PurgePersonalNotesMessagesResponse',
+  json,
+  ($checkedConvert) {
+    final val = PurgePersonalNotesMessagesResponse(
+      deletedCount: $checkedConvert('deleted_count', (v) => (v as num).toInt()),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'deletedCount': 'deleted_count'},
 );
 
 Map<String, dynamic> _$PurgePersonalNotesMessagesResponseToJson(

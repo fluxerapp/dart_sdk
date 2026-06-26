@@ -8,7 +8,12 @@ part of 'user_note_update_request.dart';
 
 UserNoteUpdateRequest _$UserNoteUpdateRequestFromJson(
   Map<String, dynamic> json,
-) => UserNoteUpdateRequest(note: json['note'] as String?);
+) => $checkedCreate('UserNoteUpdateRequest', json, ($checkedConvert) {
+  final val = UserNoteUpdateRequest(
+    note: $checkedConvert('note', (v) => v as String?),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$UserNoteUpdateRequestToJson(
   UserNoteUpdateRequest instance,

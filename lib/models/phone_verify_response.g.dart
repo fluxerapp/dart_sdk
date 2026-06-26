@@ -7,8 +7,16 @@ part of 'phone_verify_response.dart';
 // **************************************************************************
 
 PhoneVerifyResponse _$PhoneVerifyResponseFromJson(Map<String, dynamic> json) =>
-    PhoneVerifyResponse(phoneToken: json['phone_token'] as String);
+    $checkedCreate('PhoneVerifyResponse', json, ($checkedConvert) {
+      final val = PhoneVerifyResponse(
+        verified: $checkedConvert(
+          'verified',
+          (v) => PhoneVerifyResponseVerifiedVerified.fromJson(v as bool),
+        ),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$PhoneVerifyResponseToJson(
   PhoneVerifyResponse instance,
-) => <String, dynamic>{'phone_token': instance.phoneToken};
+) => <String, dynamic>{'verified': instance.verified};

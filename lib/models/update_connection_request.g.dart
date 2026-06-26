@@ -8,9 +8,23 @@ part of 'update_connection_request.dart';
 
 UpdateConnectionRequest _$UpdateConnectionRequestFromJson(
   Map<String, dynamic> json,
-) => UpdateConnectionRequest(
-  visibilityFlags: (json['visibility_flags'] as num?)?.toInt(),
-  sortOrder: (json['sort_order'] as num?)?.toInt(),
+) => $checkedCreate(
+  'UpdateConnectionRequest',
+  json,
+  ($checkedConvert) {
+    final val = UpdateConnectionRequest(
+      visibilityFlags: $checkedConvert(
+        'visibility_flags',
+        (v) => (v as num?)?.toInt(),
+      ),
+      sortOrder: $checkedConvert('sort_order', (v) => (v as num?)?.toInt()),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'visibilityFlags': 'visibility_flags',
+    'sortOrder': 'sort_order',
+  },
 );
 
 Map<String, dynamic> _$UpdateConnectionRequestToJson(

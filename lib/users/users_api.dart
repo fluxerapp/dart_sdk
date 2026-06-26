@@ -2,15 +2,17 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, unused_import, invalid_annotation_target, unnecessary_import
 
+import 'dart:convert';
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
 import 'package:retrofit/error_logger.dart';
 
+import '../models/allowed_mentions_request.dart';
+import '../models/bulk_delete_self_messages_request.dart';
 import '../models/bulk_ignore_friend_requests_request.dart';
 import '../models/bulk_ignore_friend_requests_response.dart';
 import '../models/channel_response.dart';
 import '../models/create_private_channel_request.dart';
-import '../models/developer_force_inbound_phone_verification_request.dart';
 import '../models/disable_totp_request.dart';
 import '../models/email_change_apply_request.dart';
 import '../models/email_change_bounced_request_new_request.dart';
@@ -25,23 +27,36 @@ import '../models/email_change_verify_original_response.dart';
 import '../models/email_token_response.dart';
 import '../models/empty_body_request.dart';
 import '../models/enable_mfa_totp_request.dart';
+import '../models/entrance_sound_library_response.dart';
+import '../models/entrance_sound_rename_request.dart';
+import '../models/entrance_sound_response.dart';
+import '../models/entrance_sound_selection_request.dart';
+import '../models/entrance_sound_upload_request.dart';
 import '../models/friend_request_by_tag_request.dart';
 import '../models/friend_request_create_request.dart';
 import '../models/gift_code_metadata_response.dart';
 import '../models/harvest_creation_response_schema.dart';
 import '../models/harvest_download_url_response.dart';
+import '../models/harvest_self_data_request.dart';
 import '../models/harvest_status_response_schema.dart';
 import '../models/harvest_status_response_schema_nullable.dart';
 import '../models/inbound_sms_challenge_start_response.dart';
+import '../models/mark_mentions_read_request.dart';
+import '../models/message_content_request.dart';
+import '../models/message_flags.dart';
 import '../models/message_list_response.dart';
+import '../models/message_nonce_request.dart';
+import '../models/message_reference_request.dart';
 import '../models/mfa_backup_codes_request.dart';
 import '../models/mfa_backup_codes_response.dart';
+import '../models/mobile_devices_list_response.dart';
+import '../models/object4.dart';
 import '../models/password_change_complete_request.dart';
+import '../models/password_change_complete_response.dart';
 import '../models/password_change_start_response.dart';
 import '../models/password_change_ticket_request.dart';
 import '../models/password_change_verify_request.dart';
 import '../models/password_change_verify_response.dart';
-import '../models/phone_add_request.dart';
 import '../models/phone_send_verification_request.dart';
 import '../models/phone_send_verification_response.dart';
 import '../models/phone_verify_request.dart';
@@ -52,9 +67,12 @@ import '../models/push_rotate_request.dart';
 import '../models/push_subscribe_request.dart';
 import '../models/push_subscribe_response.dart';
 import '../models/push_subscriptions_list_response.dart';
+import '../models/register_mobile_device_request.dart';
+import '../models/register_mobile_device_response.dart';
 import '../models/relationship_nickname_update_request.dart';
 import '../models/relationship_response.dart';
 import '../models/relationship_type_put_request.dart';
+import '../models/rich_embed_request.dart';
 import '../models/save_message_request.dart';
 import '../models/saved_message_entry_list_response.dart';
 import '../models/scheduled_message_response_schema.dart';
@@ -62,6 +80,7 @@ import '../models/snowflake_type.dart';
 import '../models/success_response.dart';
 import '../models/sudo_mfa_methods_response.dart';
 import '../models/sudo_verification_schema.dart';
+import '../models/unregister_mobile_device_request.dart';
 import '../models/user_guild_settings_response.dart';
 import '../models/user_guild_settings_update_request.dart';
 import '../models/user_note_response.dart';
@@ -75,6 +94,7 @@ import '../models/user_settings_update_request.dart';
 import '../models/user_tag_check_response.dart';
 import '../models/user_update_with_verification_request.dart';
 import '../models/username_type.dart';
+import '../models/voice_activity_sharing_update_request.dart';
 import '../models/web_authn_challenge_response.dart';
 import '../models/web_authn_credential_list_response.dart';
 import '../models/web_authn_credential_update_request.dart';
@@ -172,16 +192,6 @@ abstract class UsersApi {
   @POST('/users/@me/delete')
   Future<void> deleteCurrentUserAccount({
     @Body() required SudoVerificationSchema body,
-  });
-
-  /// Set force inbound phone verification debugging flag.
-  ///
-  /// Sets an internal current-user debugging flag that forces phone verification through the inbound (expensive-destination) flow regardless of phone prefix.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @POST('/users/@me/developer/force-phone-inbound')
-  Future<UserPrivateResponse> setCurrentUserForcePhoneInbound({
-    @Body() required DeveloperForceInboundPhoneVerificationRequest body,
   });
 
   /// Disable current user account.
@@ -294,6 +304,53 @@ abstract class UsersApi {
     @Body() required EmailChangeVerifyOriginalRequest body,
   });
 
+  /// Set the active entrance sound for a scope.
+  ///
+  /// Assigns one of the user's library sounds to a scope (global, guilds, dms, or guild:<id>). Pass sound_id null to clear.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @PUT('/users/@me/entrance-sound-selections')
+  Future<void> setEntranceSoundSelection({
+    @Body() required EntranceSoundSelectionRequest body,
+  });
+
+  /// List the user's entrance sound library.
+  ///
+  /// Returns the saved entrance sounds owned by the user plus the per-scope active selections.
+  @GET('/users/@me/entrance-sounds')
+  Future<EntranceSoundLibraryResponse> listEntranceSounds();
+
+  /// Upload an entrance sound.
+  ///
+  /// Uploads a short audio clip to the user's entrance sound library. Validates format, duration, and size server-side.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/entrance-sounds')
+  Future<EntranceSoundResponse> uploadEntranceSound({
+    @Body() required EntranceSoundUploadRequest body,
+  });
+
+  /// Rename an entrance sound.
+  ///
+  /// Updates the display label for a sound in the user's library. Audio bytes are unchanged.
+  ///
+  /// [soundId] - The sound id.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @PATCH('/users/@me/entrance-sounds/{sound_id}')
+  Future<EntranceSoundResponse> renameEntranceSound({
+    @Path('sound_id') required String soundId,
+    @Body() required EntranceSoundRenameRequest body,
+  });
+
+  /// Delete an entrance sound.
+  ///
+  /// Removes the sound from the library and clears any per-scope selections that pointed at it.
+  ///
+  /// [soundId] - The sound id.
+  @DELETE('/users/@me/entrance-sounds/{sound_id}')
+  Future<void> deleteEntranceSound({@Path('sound_id') required String soundId});
+
   /// List user gifts.
   ///
   /// Lists all gift codes created by the authenticated user.
@@ -328,6 +385,16 @@ abstract class UsersApi {
   /// Requests a data harvest of all user data and content. Initiates an asynchronous process to compile and prepare all data for download in a portable format. Returns harvest ID and status.
   @POST('/users/@me/harvest')
   Future<HarvestCreationResponseSchema> requestDataHarvest();
+
+  /// Request filtered data harvest.
+  ///
+  /// Requests a data harvest with the same optional scope and date-range filters offered by the bulk-delete endpoint. Settings, memberships, and other non-message data are always included; the filter only constrains which messages end up in the archive. Returns harvest ID and status.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/harvest/filtered')
+  Future<HarvestCreationResponseSchema> requestFilteredDataHarvest({
+    @Body() required HarvestSelfDataRequest body,
+  });
 
   /// Get latest data harvest.
   ///
@@ -367,6 +434,16 @@ abstract class UsersApi {
     @Query('before') SnowflakeType? before,
   });
 
+  /// Mark mentions read.
+  ///
+  /// Removes multiple messages from the current user's recent mention history. Does not delete the original messages.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/mentions/read')
+  Future<void> markMentionsRead({
+    @Body() required MarkMentionsReadRequest body,
+  });
+
   /// Delete mention.
   ///
   /// Removes a mention from the current user's mention history. Does not delete the original message, only removes it from the user's personal mention list.
@@ -375,6 +452,16 @@ abstract class UsersApi {
   @DELETE('/users/@me/mentions/{message_id}')
   Future<void> deleteMention({
     @Path('message_id') required SnowflakeType messageId,
+  });
+
+  /// Delete my messages with optional filters.
+  ///
+  /// Immediately deletes messages the caller has authored, subject to optional date-range and per-context filters (DMs, group DMs, guilds, with optional guild exclusions; or an inaccessible-only mode for contexts the caller is no longer a member of). Requires sudo mode verification. The deletion runs asynchronously; the caller receives a system DM with totals when it completes.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/messages/bulk-delete-mine')
+  Future<void> bulkDeleteMyMessages({
+    @Body() required BulkDeleteSelfMessagesRequest body,
   });
 
   /// Request bulk message deletion.
@@ -391,13 +478,7 @@ abstract class UsersApi {
   ///
   /// Cancels an in-progress bulk message deletion request. Can only be used if the deletion has not yet completed. Returns success status.
   @DELETE('/users/@me/messages/delete')
-  Future<SuccessResponse> cancelBulkMessageDeletion2();
-
-  /// Test bulk message deletion.
-  ///
-  /// Staff-only endpoint for testing bulk message deletion functionality. Creates a test deletion request with a 1-minute delay. Only accessible to users with staff privileges.
-  @POST('/users/@me/messages/delete/test')
-  Future<void> testBulkMessageDeletion();
+  Future<SuccessResponse> cancelBulkMessageDeletion();
 
   /// Get backup codes for multi-factor authentication.
   ///
@@ -408,22 +489,6 @@ abstract class UsersApi {
   Future<MfaBackupCodesResponse> getBackupCodesMfa({
     @Body() required MfaBackupCodesRequest body,
   });
-
-  /// Disable SMS multi-factor authentication.
-  ///
-  /// Disable SMS-based multi-factor authentication on the current account. Requires sudo mode verification for security.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @POST('/users/@me/mfa/sms/disable')
-  Future<void> disableSmsMfa({@Body() required SudoVerificationSchema body});
-
-  /// Enable SMS multi-factor authentication.
-  ///
-  /// Enable SMS-based multi-factor authentication on the current account. Requires sudo mode verification and a verified phone number.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @POST('/users/@me/mfa/sms/enable')
-  Future<void> enableSmsMfa({@Body() required SudoVerificationSchema body});
 
   /// Disable TOTP multi-factor authentication.
   ///
@@ -451,7 +516,7 @@ abstract class UsersApi {
 
   /// Register WebAuthn credential.
   ///
-  /// Complete registration of a new WebAuthn credential (security key or biometric device). Requires sudo mode verification.
+  /// Complete registration of a new WebAuthn credential (security key or biometric device) using a challenge created after sudo mode verification.
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/users/@me/mfa/webauthn/credentials')
@@ -495,6 +560,42 @@ abstract class UsersApi {
     @Body() required SudoVerificationSchema body,
   });
 
+  /// Register mobile push device.
+  ///
+  /// Registers a mobile push device token for APNs, Firebase Cloud Messaging, or UnifiedPush. UnifiedPush registrations include the endpoint URL plus Web Push encryption keys.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/mobile-devices')
+  Future<RegisterMobileDeviceResponse> registerMobilePushDevice({
+    @Body() required RegisterMobileDeviceRequest body,
+  });
+
+  /// List mobile push devices.
+  ///
+  /// Lists mobile push device registrations for the current user.
+  @GET('/users/@me/mobile-devices')
+  Future<MobileDevicesListResponse> listMobilePushDevices();
+
+  /// Unregister mobile push device.
+  ///
+  /// Deletes a registered mobile push device using the platform token known by the client.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/mobile-devices/unregister')
+  Future<SuccessResponse> unregisterMobilePushDevice({
+    @Body() required UnregisterMobileDeviceRequest body,
+  });
+
+  /// Delete mobile push device.
+  ///
+  /// Deletes a registered mobile push device by device ID.
+  ///
+  /// [deviceId] - The device id.
+  @DELETE('/users/@me/mobile-devices/{device_id}')
+  Future<SuccessResponse> deleteMobilePushDevice({
+    @Path('device_id') required String deviceId,
+  });
+
   /// List current user notes.
   ///
   /// Retrieves all notes the current user has written about other users. Returns a record of user IDs to notes. These are private notes visible only to the authenticated user.
@@ -526,11 +627,11 @@ abstract class UsersApi {
 
   /// Complete password change.
   ///
-  /// Completes the password change after email verification. Requires the verification proof and new password. Invalidates all existing sessions.
+  /// Completes the password change after email verification. Requires the verification proof and new password. Invalidates all existing sessions and returns the replacement session token.
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/users/@me/password-change/complete')
-  Future<void> completePasswordChange({
+  Future<PasswordChangeCompleteResponse> completePasswordChange({
     @Body() required PasswordChangeCompleteRequest body,
   });
 
@@ -564,24 +665,6 @@ abstract class UsersApi {
     @Body() required PasswordChangeVerifyRequest body,
   });
 
-  /// Add phone number to account.
-  ///
-  /// Add or update the phone number associated with the current account. Requires sudo mode verification. Phone must be verified before use.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @POST('/users/@me/phone')
-  Future<void> addPhoneToAccount({@Body() required PhoneAddRequest body});
-
-  /// Remove phone number from account.
-  ///
-  /// Remove the phone number from the current account. Requires sudo mode verification. SMS MFA will be disabled if enabled.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @DELETE('/users/@me/phone')
-  Future<void> removePhoneFromAccount({
-    @Body() required SudoVerificationSchema body,
-  });
-
   /// Start an inbound SMS challenge.
   ///
   /// For very-high-risk registrations the platform requires the user to text a one-time code to the platform's number, instead of receiving a code from the platform. This endpoint generates the code and the destination number to display.
@@ -590,7 +673,7 @@ abstract class UsersApi {
 
   /// Send phone verification code.
   ///
-  /// Request phone verification. Most requests return 204 after sending an SMS code. Developer-forced SNA returns a one-use mobile handoff; expensive outbound destinations return an inbound SMS challenge instead.
+  /// Send a one-time code on the requested channel. Defaults to the first available channel from server policy. Pass channel="sms" to request SMS (only honoured for SMS-allowlisted destinations) or channel="inbound_challenge" to receive challenge details to text in. Expensive outbound destinations always downgrade to an inbound challenge.
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/users/@me/phone/send-verification')
@@ -664,7 +747,7 @@ abstract class UsersApi {
   ///
   /// Retrieves all relationships for the current user, including friends, friend requests (incoming and outgoing), and blocked users. Returns list of relationship objects with type and metadata.
   @GET('/users/@me/relationships')
-  Future<List<RelationshipResponse>> listUserRelationships2();
+  Future<List<RelationshipResponse>> listUserRelationships();
 
   /// Send friend request by tag.
   ///
@@ -792,9 +875,56 @@ abstract class UsersApi {
   /// Updates an existing scheduled message before it is sent. Can modify message content, scheduled time, and timezone. Returns updated scheduled message details.
   ///
   /// [scheduledMessageId] - The scheduled message id.
+  ///
+  /// [content] - Name not received - field will be skipped.
+  /// Name not received - field will be skipped.
+  ///
+  /// [embeds] - Array of embed objects to include in the message.
+  /// Name not received - field will be skipped.
+  ///
+  /// [attachments] - Array of attachment objects.
+  /// Name not received - field will be skipped.
+  ///
+  /// [messageReference] - Name not received - field will be skipped.
+  /// Name not received - field will be skipped.
+  ///
+  /// [allowedMentions] - Name not received - field will be skipped.
+  /// Name not received - field will be skipped.
+  ///
+  /// [flags] - Name not received - field will be skipped.
+  ///
+  /// [nonce] - Name not received - field will be skipped.
+  ///
+  /// [favoriteMemeId] - Name not received - field will be skipped.
+  /// Name not received - field will be skipped.
+  ///
+  /// [stickerIds] - Name not received - field will be skipped.
+  /// Name not received - field will be skipped.
+  ///
+  /// [tts] - Whether this is a text-to-speech message.
+  /// Name not received - field will be skipped.
+  ///
+  /// [scheduledLocalAt] - ISO 8601 timestamp expressed in the user local timezone for when the message should be delivered.
+  /// Name not received - field will be skipped.
+  ///
+  /// [timezone] - IANA timezone identifier the schedule_local_at value is anchored to.
+  /// Name not received - field will be skipped.
+  @MultiPart()
   @PATCH('/users/@me/scheduled-messages/{scheduled_message_id}')
   Future<ScheduledMessageResponseSchema> updateScheduledMessage({
     @Path('scheduled_message_id') required String scheduledMessageId,
+    @Part(name: 'scheduled_local_at') required String scheduledLocalAt,
+    @Part(name: 'timezone') required String timezone,
+    @Part(name: 'content') MessageContentRequest? content,
+    @Part(name: 'embeds') List<RichEmbedRequest>? embeds,
+    @Part(name: 'attachments') List<Object4>? attachments,
+    @Part(name: 'message_reference') MessageReferenceRequest? messageReference,
+    @Part(name: 'allowed_mentions') AllowedMentionsRequest? allowedMentions,
+    @Part(name: 'flags') MessageFlags? flags,
+    @Part(name: 'nonce') MessageNonceRequest? nonce,
+    @Part(name: 'favorite_meme_id') SnowflakeType? favoriteMemeId,
+    @Part(name: 'sticker_ids') List<SnowflakeType>? stickerIds,
+    @Part(name: 'tts') bool? tts,
   });
 
   /// Get current user settings.
@@ -813,17 +943,21 @@ abstract class UsersApi {
     @Body() required UserSettingsUpdateRequest body,
   });
 
+  /// Update voice activity sharing default and apply to all friends.
+  ///
+  /// Sets the default share_voice_activity flag for the current user and rewrites every existing friend relationship to the new value. Dispatches RELATIONSHIP_UPDATE to both parties of each friendship plus USER_UPDATE and USER_SETTINGS_UPDATE for the caller. Enforces a 24-hour cooldown tracked via the user's last_voice_activity_sharing_change_at field. Returns the updated user.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @PUT('/users/@me/settings/voice-activity-sharing')
+  Future<UserPrivateResponse> updateVoiceActivitySharingDefault({
+    @Body() required VoiceActivitySharingUpdateRequest body,
+  });
+
   /// List sudo multi-factor authentication methods.
   ///
-  /// Retrieve all available MFA methods for sudo mode verification (TOTP, SMS, WebAuthn). Requires authentication.
+  /// Retrieve all available MFA methods for sudo mode verification (TOTP, WebAuthn). Requires authentication.
   @GET('/users/@me/sudo/mfa-methods')
   Future<SudoMfaMethodsResponse> listSudoMfaMethods();
-
-  /// Send sudo SMS code.
-  ///
-  /// Request an SMS code to be sent for sudo mode verification. Used before entering sensitive account settings.
-  @POST('/users/@me/sudo/mfa/sms/send')
-  Future<void> sendSudoSmsCode();
 
   /// Get sudo WebAuthn authentication options.
   ///

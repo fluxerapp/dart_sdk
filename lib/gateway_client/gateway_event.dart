@@ -11,6 +11,7 @@ import 'package:fluxer_dart/models/user_partial_response.dart';
 import 'package:fluxer_dart/models/user_private_response.dart';
 import 'package:fluxer_dart/models/user_guild_settings_response.dart';
 import 'package:fluxer_dart/models/user_settings_response.dart';
+import 'package:fluxer_dart/models/web_authn_credential_response.dart';
 
 /// Base class for all gateway events.
 sealed class GatewayEvent {
@@ -111,6 +112,12 @@ class UserConnectionsUpdateEvent extends GatewayEvent {
   const UserConnectionsUpdateEvent({required this.data});
 
   final Map<String, dynamic> data;
+}
+
+class WebauthnCredentialsUpdateEvent extends GatewayEvent {
+  const WebauthnCredentialsUpdateEvent({required this.credentials});
+
+  final List<WebAuthnCredentialResponse> credentials;
 }
 
 class AuthSessionChangeEvent extends GatewayEvent {
@@ -365,10 +372,15 @@ class GuildUpdateEvent extends GatewayEvent {
 }
 
 class GuildDeleteEvent extends GatewayEvent {
-  const GuildDeleteEvent({required this.guildId, this.unavailable = false});
+  const GuildDeleteEvent({
+    required this.guildId,
+    this.unavailable = false,
+    this.unavailableHidden = false,
+  });
 
   final String guildId;
   final bool unavailable;
+  final bool unavailableHidden;
 }
 
 class GuildRoleCreateEvent extends GatewayEvent {
@@ -561,7 +573,7 @@ class VoiceServerUpdateEvent extends GatewayEvent {
     required this.connectionId,
     this.guildId,
     this.channelId,
-    this.e2eeEnabled,
+    this.e2eeKey,
   });
 
   final String token;
@@ -569,7 +581,7 @@ class VoiceServerUpdateEvent extends GatewayEvent {
   final String connectionId;
   final String? guildId;
   final String? channelId;
-  final bool? e2eeEnabled;
+  final String? e2eeKey;
 }
 
 // ---------------------------------------------------------------------------
@@ -716,7 +728,7 @@ class SessionsReplaceEvent extends GatewayEvent {
 class GatewayErrorEvent extends GatewayEvent {
   const GatewayErrorEvent({required this.code, required this.message});
 
-  final int code;
+  final String code;
   final String message;
 }
 

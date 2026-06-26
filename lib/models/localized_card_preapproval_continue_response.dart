@@ -4,7 +4,11 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'localized_card_preapproval_continue_response_rejected_reason.dart';
+import 'pending_localized_card_preapproval_continue_response_status_status.dart';
+import 'ready_localized_card_preapproval_continue_response_status_status.dart';
+import 'rejected_localized_card_preapproval_continue_response_status_status.dart';
+import 'rejected_localized_card_preapproval_continue_response_reason_reason.dart';
+import 'expired_localized_card_preapproval_continue_response_status_status.dart';
 
 part 'localized_card_preapproval_continue_response.g.dart';
 
@@ -63,7 +67,7 @@ extension LocalizedCardPreapprovalContinueResponseUnionDeserializer
 @JsonSerializable()
 class LocalizedCardPreapprovalContinueResponsePending
     extends LocalizedCardPreapprovalContinueResponse {
-  final String status;
+  final PendingLocalizedCardPreapprovalContinueResponseStatusStatus status;
 
   const LocalizedCardPreapprovalContinueResponsePending({required this.status});
 
@@ -79,7 +83,7 @@ class LocalizedCardPreapprovalContinueResponsePending
 @JsonSerializable()
 class LocalizedCardPreapprovalContinueResponseReady
     extends LocalizedCardPreapprovalContinueResponse {
-  final String status;
+  final ReadyLocalizedCardPreapprovalContinueResponseStatusStatus status;
   final String url;
 
   const LocalizedCardPreapprovalContinueResponseReady({
@@ -99,8 +103,8 @@ class LocalizedCardPreapprovalContinueResponseReady
 @JsonSerializable()
 class LocalizedCardPreapprovalContinueResponseRejected
     extends LocalizedCardPreapprovalContinueResponse {
-  final String status;
-  final LocalizedCardPreapprovalContinueResponseRejectedReason reason;
+  final RejectedLocalizedCardPreapprovalContinueResponseStatusStatus status;
+  final RejectedLocalizedCardPreapprovalContinueResponseReasonReason reason;
   @JsonKey(name: 'actual_country')
   final String? actualCountry;
 
@@ -122,7 +126,7 @@ class LocalizedCardPreapprovalContinueResponseRejected
 @JsonSerializable()
 class LocalizedCardPreapprovalContinueResponseExpired
     extends LocalizedCardPreapprovalContinueResponse {
-  final String status;
+  final ExpiredLocalizedCardPreapprovalContinueResponseStatusStatus status;
 
   const LocalizedCardPreapprovalContinueResponseExpired({required this.status});
 

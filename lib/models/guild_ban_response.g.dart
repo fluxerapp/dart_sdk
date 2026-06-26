@@ -7,14 +7,33 @@ part of 'guild_ban_response.dart';
 // **************************************************************************
 
 GuildBanResponse _$GuildBanResponseFromJson(Map<String, dynamic> json) =>
-    GuildBanResponse(
-      user: UserPartialResponse.fromJson(json['user'] as Map<String, dynamic>),
-      moderatorId: json['moderator_id'] as String,
-      bannedAt: DateTime.parse(json['banned_at'] as String),
-      reason: json['reason'] as String?,
-      expiresAt: json['expires_at'] == null
-          ? null
-          : DateTime.parse(json['expires_at'] as String),
+    $checkedCreate(
+      'GuildBanResponse',
+      json,
+      ($checkedConvert) {
+        final val = GuildBanResponse(
+          user: $checkedConvert(
+            'user',
+            (v) => UserPartialResponse.fromJson(v as Map<String, dynamic>),
+          ),
+          moderatorId: $checkedConvert('moderator_id', (v) => v as String),
+          bannedAt: $checkedConvert(
+            'banned_at',
+            (v) => DateTime.parse(v as String),
+          ),
+          reason: $checkedConvert('reason', (v) => v as String?),
+          expiresAt: $checkedConvert(
+            'expires_at',
+            (v) => v == null ? null : DateTime.parse(v as String),
+          ),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'moderatorId': 'moderator_id',
+        'bannedAt': 'banned_at',
+        'expiresAt': 'expires_at',
+      },
     );
 
 Map<String, dynamic> _$GuildBanResponseToJson(GuildBanResponse instance) =>

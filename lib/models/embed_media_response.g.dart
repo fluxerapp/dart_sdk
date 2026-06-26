@@ -7,17 +7,29 @@ part of 'embed_media_response.dart';
 // **************************************************************************
 
 EmbedMediaResponse _$EmbedMediaResponseFromJson(Map<String, dynamic> json) =>
-    EmbedMediaResponse(
-      url: json['url'] as String,
-      flags: (json['flags'] as num).toInt(),
-      proxyUrl: json['proxy_url'] as String?,
-      contentType: json['content_type'] as String?,
-      contentHash: json['content_hash'] as String?,
-      width: (json['width'] as num?)?.toInt(),
-      height: (json['height'] as num?)?.toInt(),
-      description: json['description'] as String?,
-      placeholder: json['placeholder'] as String?,
-      duration: (json['duration'] as num?)?.toInt(),
+    $checkedCreate(
+      'EmbedMediaResponse',
+      json,
+      ($checkedConvert) {
+        final val = EmbedMediaResponse(
+          url: $checkedConvert('url', (v) => v as String),
+          flags: $checkedConvert('flags', (v) => (v as num).toInt()),
+          proxyUrl: $checkedConvert('proxy_url', (v) => v as String?),
+          contentType: $checkedConvert('content_type', (v) => v as String?),
+          contentHash: $checkedConvert('content_hash', (v) => v as String?),
+          width: $checkedConvert('width', (v) => (v as num?)?.toInt()),
+          height: $checkedConvert('height', (v) => (v as num?)?.toInt()),
+          description: $checkedConvert('description', (v) => v as String?),
+          placeholder: $checkedConvert('placeholder', (v) => v as String?),
+          duration: $checkedConvert('duration', (v) => (v as num?)?.toInt()),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'proxyUrl': 'proxy_url',
+        'contentType': 'content_type',
+        'contentHash': 'content_hash',
+      },
     );
 
 Map<String, dynamic> _$EmbedMediaResponseToJson(EmbedMediaResponse instance) =>

@@ -8,17 +8,43 @@ part of 'create_checkout_session_request.dart';
 
 CreateCheckoutSessionRequest _$CreateCheckoutSessionRequestFromJson(
   Map<String, dynamic> json,
-) => CreateCheckoutSessionRequest(
-  priceId: json['price_id'] as String,
-  countryCode: json['country_code'] as String?,
-  clientGeoipCountryCode: json['client_geoip_country_code'] as String?,
-  euWithdrawalWaiverAccepted: json['eu_withdrawal_waiver_accepted'] as bool?,
-  pricingMode: json['pricing_mode'] == null
-      ? null
-      : PricingModeEnum.fromJson(json['pricing_mode'] as String),
-  paymentMethod: json['payment_method'] == null
-      ? null
-      : CheckoutPaymentMethodEnum.fromJson(json['payment_method'] as String),
+) => $checkedCreate(
+  'CreateCheckoutSessionRequest',
+  json,
+  ($checkedConvert) {
+    final val = CreateCheckoutSessionRequest(
+      priceId: $checkedConvert('price_id', (v) => v as String),
+      countryCode: $checkedConvert('country_code', (v) => v as String?),
+      clientGeoipCountryCode: $checkedConvert(
+        'client_geoip_country_code',
+        (v) => v as String?,
+      ),
+      euWithdrawalWaiverAccepted: $checkedConvert(
+        'eu_withdrawal_waiver_accepted',
+        (v) => v as bool?,
+      ),
+      pricingMode: $checkedConvert(
+        'pricing_mode',
+        (v) => v == null ? null : PricingModeEnum.fromJson(v as String),
+      ),
+      paymentMethod: $checkedConvert(
+        'payment_method',
+        (v) =>
+            v == null ? null : CheckoutPaymentMethodEnum.fromJson(v as String),
+      ),
+      isBusiness: $checkedConvert('is_business', (v) => v as bool?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'priceId': 'price_id',
+    'countryCode': 'country_code',
+    'clientGeoipCountryCode': 'client_geoip_country_code',
+    'euWithdrawalWaiverAccepted': 'eu_withdrawal_waiver_accepted',
+    'pricingMode': 'pricing_mode',
+    'paymentMethod': 'payment_method',
+    'isBusiness': 'is_business',
+  },
 );
 
 Map<String, dynamic> _$CreateCheckoutSessionRequestToJson(
@@ -30,4 +56,5 @@ Map<String, dynamic> _$CreateCheckoutSessionRequestToJson(
   'eu_withdrawal_waiver_accepted': ?instance.euWithdrawalWaiverAccepted,
   'pricing_mode': ?instance.pricingMode,
   'payment_method': ?instance.paymentMethod,
+  'is_business': ?instance.isBusiness,
 };

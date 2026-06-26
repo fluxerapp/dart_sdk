@@ -4,7 +4,8 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'application_bot_response.dart';
+import 'application_public_response_bot.dart';
+import 'user_partial_response.dart';
 
 part 'application_public_response.g.dart';
 
@@ -19,6 +20,7 @@ class ApplicationPublicResponse {
     required this.scopes,
     required this.botPublic,
     required this.bot,
+    this.currentUser,
   });
 
   factory ApplicationPublicResponse.fromJson(Map<String, Object?> json) =>
@@ -49,9 +51,13 @@ class ApplicationPublicResponse {
   @JsonKey(name: 'bot_public')
   final bool botPublic;
 
-  /// The bot user associated with the application
+  /// Detailed bot user metadata
   @JsonKey(includeIfNull: true)
-  final ApplicationBotResponse? bot;
+  final ApplicationPublicResponseBot? bot;
+
+  /// Partial user data for the authenticated requester, when a session token is present
+  @JsonKey(includeIfNull: false, name: 'current_user')
+  final UserPartialResponse? currentUser;
 
   Map<String, Object?> toJson() => _$ApplicationPublicResponseToJson(this);
 }

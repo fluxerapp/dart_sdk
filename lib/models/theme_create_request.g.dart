@@ -7,7 +7,12 @@ part of 'theme_create_request.dart';
 // **************************************************************************
 
 ThemeCreateRequest _$ThemeCreateRequestFromJson(Map<String, dynamic> json) =>
-    ThemeCreateRequest(css: json['css'] as String);
+    $checkedCreate('ThemeCreateRequest', json, ($checkedConvert) {
+      final val = ThemeCreateRequest(
+        css: $checkedConvert('css', (v) => v as String),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$ThemeCreateRequestToJson(ThemeCreateRequest instance) =>
     <String, dynamic>{'css': instance.css};

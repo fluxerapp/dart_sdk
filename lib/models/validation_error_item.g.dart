@@ -7,16 +7,19 @@ part of 'validation_error_item.dart';
 // **************************************************************************
 
 ValidationErrorItem _$ValidationErrorItemFromJson(Map<String, dynamic> json) =>
-    ValidationErrorItem(
-      path: json['path'] as String,
-      message: json['message'] as String,
-      code: json['code'] as String?,
-    );
+    $checkedCreate('ValidationErrorItem', json, ($checkedConvert) {
+      final val = ValidationErrorItem(
+        field: $checkedConvert('field', (v) => v as String),
+        code: $checkedConvert('code', (v) => v as String),
+        message: $checkedConvert('message', (v) => v as String),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$ValidationErrorItemToJson(
   ValidationErrorItem instance,
 ) => <String, dynamic>{
-  'path': instance.path,
+  'field': instance.field,
+  'code': instance.code,
   'message': instance.message,
-  'code': ?instance.code,
 };

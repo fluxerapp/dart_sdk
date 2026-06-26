@@ -8,12 +8,27 @@ part of 'create_favorite_meme_body_schema.dart';
 
 CreateFavoriteMemeBodySchema _$CreateFavoriteMemeBodySchemaFromJson(
   Map<String, dynamic> json,
-) => CreateFavoriteMemeBodySchema(
-  name: json['name'] as String,
-  altText: json['alt_text'] as String?,
-  tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  attachmentId: json['attachment_id'] as String?,
-  embedIndex: (json['embed_index'] as num?)?.toInt(),
+) => $checkedCreate(
+  'CreateFavoriteMemeBodySchema',
+  json,
+  ($checkedConvert) {
+    final val = CreateFavoriteMemeBodySchema(
+      name: $checkedConvert('name', (v) => v as String),
+      altText: $checkedConvert('alt_text', (v) => v as String?),
+      tags: $checkedConvert(
+        'tags',
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+      ),
+      attachmentId: $checkedConvert('attachment_id', (v) => v as String?),
+      embedIndex: $checkedConvert('embed_index', (v) => (v as num?)?.toInt()),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'altText': 'alt_text',
+    'attachmentId': 'attachment_id',
+    'embedIndex': 'embed_index',
+  },
 );
 
 Map<String, dynamic> _$CreateFavoriteMemeBodySchemaToJson(

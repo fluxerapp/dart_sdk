@@ -8,15 +8,23 @@ part of 'o_auth2_introspect_response.dart';
 
 OAuth2IntrospectResponse _$OAuth2IntrospectResponseFromJson(
   Map<String, dynamic> json,
-) => OAuth2IntrospectResponse(
-  active: json['active'] as bool,
-  scope: json['scope'] as String?,
-  clientId: json['client_id'] as String?,
-  username: json['username'] as String?,
-  tokenType: json['token_type'] as String?,
-  exp: (json['exp'] as num?)?.toInt(),
-  iat: (json['iat'] as num?)?.toInt(),
-  sub: json['sub'] as String?,
+) => $checkedCreate(
+  'OAuth2IntrospectResponse',
+  json,
+  ($checkedConvert) {
+    final val = OAuth2IntrospectResponse(
+      active: $checkedConvert('active', (v) => v as bool),
+      scope: $checkedConvert('scope', (v) => v as String?),
+      clientId: $checkedConvert('client_id', (v) => v as String?),
+      username: $checkedConvert('username', (v) => v as String?),
+      tokenType: $checkedConvert('token_type', (v) => v as String?),
+      exp: $checkedConvert('exp', (v) => (v as num?)?.toInt()),
+      iat: $checkedConvert('iat', (v) => (v as num?)?.toInt()),
+      sub: $checkedConvert('sub', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'clientId': 'client_id', 'tokenType': 'token_type'},
 );
 
 Map<String, dynamic> _$OAuth2IntrospectResponseToJson(

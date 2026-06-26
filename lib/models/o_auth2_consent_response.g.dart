@@ -8,7 +8,12 @@ part of 'o_auth2_consent_response.dart';
 
 OAuth2ConsentResponse _$OAuth2ConsentResponseFromJson(
   Map<String, dynamic> json,
-) => OAuth2ConsentResponse(redirectTo: json['redirect_to'] as String);
+) => $checkedCreate('OAuth2ConsentResponse', json, ($checkedConvert) {
+  final val = OAuth2ConsentResponse(
+    redirectTo: $checkedConvert('redirect_to', (v) => v as String),
+  );
+  return val;
+}, fieldKeyMap: const {'redirectTo': 'redirect_to'});
 
 Map<String, dynamic> _$OAuth2ConsentResponseToJson(
   OAuth2ConsentResponse instance,

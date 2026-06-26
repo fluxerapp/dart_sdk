@@ -7,12 +7,15 @@ part of 'gif_media_format.dart';
 // **************************************************************************
 
 GifMediaFormat _$GifMediaFormatFromJson(Map<String, dynamic> json) =>
-    GifMediaFormat(
-      src: json['src'] as String,
-      proxySrc: json['proxy_src'] as String,
-      width: (json['width'] as num).toInt(),
-      height: (json['height'] as num).toInt(),
-    );
+    $checkedCreate('GifMediaFormat', json, ($checkedConvert) {
+      final val = GifMediaFormat(
+        src: $checkedConvert('src', (v) => v as String),
+        proxySrc: $checkedConvert('proxy_src', (v) => v as String),
+        width: $checkedConvert('width', (v) => (v as num).toInt()),
+        height: $checkedConvert('height', (v) => (v as num).toInt()),
+      );
+      return val;
+    }, fieldKeyMap: const {'proxySrc': 'proxy_src'});
 
 Map<String, dynamic> _$GifMediaFormatToJson(GifMediaFormat instance) =>
     <String, dynamic>{

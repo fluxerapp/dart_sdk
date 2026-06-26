@@ -8,10 +8,15 @@ part of 'email_change_bounced_verify_new_request.dart';
 
 EmailChangeBouncedVerifyNewRequest _$EmailChangeBouncedVerifyNewRequestFromJson(
   Map<String, dynamic> json,
-) => EmailChangeBouncedVerifyNewRequest(
-  ticket: json['ticket'] as String,
-  code: json['code'] as String,
-);
+) => $checkedCreate('EmailChangeBouncedVerifyNewRequest', json, (
+  $checkedConvert,
+) {
+  final val = EmailChangeBouncedVerifyNewRequest(
+    ticket: $checkedConvert('ticket', (v) => v as String),
+    code: $checkedConvert('code', (v) => v as String),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$EmailChangeBouncedVerifyNewRequestToJson(
   EmailChangeBouncedVerifyNewRequest instance,

@@ -9,38 +9,95 @@ part of 'auth_register_response.dart';
 AuthRegisterResponseAuthTokenWithUserIdResponse
 _$AuthRegisterResponseAuthTokenWithUserIdResponseFromJson(
   Map<String, dynamic> json,
-) => AuthRegisterResponseAuthTokenWithUserIdResponse(
-  token: json['token'] as String,
-  userId: json['user_id'] as String,
+) => $checkedCreate(
+  'AuthRegisterResponseAuthTokenWithUserIdResponse',
+  json,
+  ($checkedConvert) {
+    final val = AuthRegisterResponseAuthTokenWithUserIdResponse(
+      token: $checkedConvert('token', (v) => v as String),
+      userId: $checkedConvert('user_id', (v) => v as String),
+      user: $checkedConvert(
+        'user',
+        (v) =>
+            AuthTokenWithUserIdResponseUser.fromJson(v as Map<String, dynamic>),
+      ),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'userId': 'user_id'},
 );
 
 Map<String, dynamic> _$AuthRegisterResponseAuthTokenWithUserIdResponseToJson(
   AuthRegisterResponseAuthTokenWithUserIdResponse instance,
-) => <String, dynamic>{'token': instance.token, 'user_id': instance.userId};
+) => <String, dynamic>{
+  'token': instance.token,
+  'user_id': instance.userId,
+  'user': instance.user,
+};
 
-AuthRegisterResponseAuthMfaRequiredResponse
-_$AuthRegisterResponseAuthMfaRequiredResponseFromJson(
+AuthRegisterResponseVariant2 _$AuthRegisterResponseVariant2FromJson(
   Map<String, dynamic> json,
-) => AuthRegisterResponseAuthMfaRequiredResponse(
-  mfa: AuthMfaRequiredResponseMfaMfa.fromJson(json['mfa'] as bool),
-  ticket: json['ticket'] as String,
-  allowedMethods: (json['allowed_methods'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-  smsPhoneHint: json['sms_phone_hint'] as String?,
-  sms: json['sms'] as bool,
-  totp: json['totp'] as bool,
-  webauthn: json['webauthn'] as bool,
+) => $checkedCreate(
+  'AuthRegisterResponseVariant2',
+  json,
+  ($checkedConvert) {
+    final val = AuthRegisterResponseVariant2(
+      mfa: $checkedConvert(
+        'mfa',
+        (v) => AuthRegisterResponseVariant2MfaMfa.fromJson(v as bool),
+      ),
+      ticket: $checkedConvert('ticket', (v) => v as String),
+      allowedMethods: $checkedConvert(
+        'allowed_methods',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      totp: $checkedConvert('totp', (v) => v as bool),
+      webauthn: $checkedConvert('webauthn', (v) => v as bool),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'allowedMethods': 'allowed_methods'},
 );
 
-Map<String, dynamic> _$AuthRegisterResponseAuthMfaRequiredResponseToJson(
-  AuthRegisterResponseAuthMfaRequiredResponse instance,
+Map<String, dynamic> _$AuthRegisterResponseVariant2ToJson(
+  AuthRegisterResponseVariant2 instance,
 ) => <String, dynamic>{
   'mfa': instance.mfa,
   'ticket': instance.ticket,
   'allowed_methods': instance.allowedMethods,
-  'sms_phone_hint': instance.smsPhoneHint,
-  'sms': instance.sms,
   'totp': instance.totp,
   'webauthn': instance.webauthn,
+};
+
+AuthRegisterResponseAuthRegistrationPendingApprovalResponse
+_$AuthRegisterResponseAuthRegistrationPendingApprovalResponseFromJson(
+  Map<String, dynamic> json,
+) => $checkedCreate(
+  'AuthRegisterResponseAuthRegistrationPendingApprovalResponse',
+  json,
+  ($checkedConvert) {
+    final val = AuthRegisterResponseAuthRegistrationPendingApprovalResponse(
+      registrationPendingApproval: $checkedConvert(
+        'registration_pending_approval',
+        (v) =>
+            AuthRegistrationPendingApprovalResponseRegistrationPendingApprovalRegistrationPendingApproval.fromJson(
+              v as bool,
+            ),
+      ),
+      userId: $checkedConvert('user_id', (v) => v as String),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'registrationPendingApproval': 'registration_pending_approval',
+    'userId': 'user_id',
+  },
+);
+
+Map<String, dynamic>
+_$AuthRegisterResponseAuthRegistrationPendingApprovalResponseToJson(
+  AuthRegisterResponseAuthRegistrationPendingApprovalResponse instance,
+) => <String, dynamic>{
+  'registration_pending_approval': instance.registrationPendingApproval,
+  'user_id': instance.userId,
 };

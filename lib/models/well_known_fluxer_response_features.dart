@@ -9,19 +9,15 @@ part 'well_known_fluxer_response_features.g.dart';
 @JsonSerializable()
 class WellKnownFluxerResponseFeatures {
   const WellKnownFluxerResponseFeatures({
-    required this.smsMfaEnabled,
     required this.voiceEnabled,
     required this.stripeEnabled,
     required this.selfHosted,
     required this.presignedAttachmentUploads,
+    required this.emailsEnabled,
   });
 
   factory WellKnownFluxerResponseFeatures.fromJson(Map<String, Object?> json) =>
       _$WellKnownFluxerResponseFeaturesFromJson(json);
-
-  /// Whether SMS-based MFA is available
-  @JsonKey(name: 'sms_mfa_enabled')
-  final bool smsMfaEnabled;
 
   /// Whether voice/video calling is enabled
   @JsonKey(name: 'voice_enabled')
@@ -38,6 +34,10 @@ class WellKnownFluxerResponseFeatures {
   /// Whether clients can request presigned attachment upload URLs
   @JsonKey(name: 'presigned_attachment_uploads')
   final bool presignedAttachmentUploads;
+
+  /// Whether the instance sends emails (verification, password reset, etc.)
+  @JsonKey(name: 'emails_enabled')
+  final bool emailsEnabled;
 
   Map<String, Object?> toJson() =>
       _$WellKnownFluxerResponseFeaturesToJson(this);

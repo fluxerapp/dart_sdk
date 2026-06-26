@@ -8,7 +8,7 @@ part of 'voice_api.dart';
 // RetrofitGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter,avoid_unused_constructor_parameters,unreachable_from_main
+// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter,avoid_unused_constructor_parameters,unreachable_from_main,avoid_redundant_argument_values
 
 class _VoiceApi implements VoiceApi {
   _VoiceApi(this._dio, {this.baseUrl, this.errorLogger});
@@ -20,30 +20,26 @@ class _VoiceApi implements VoiceApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<UploadVoiceDiagnosticsResponse> uploadVoiceDiagnostics() async {
+  Future<void> playEntranceSound({
+    required String channelId,
+    required EntranceSoundPlayRequest body,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<UploadVoiceDiagnosticsResponse>(
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<void>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/voice-diagnostics/upload',
+            '/voice/channels/${channelId}/entrance-sound',
             queryParameters: queryParameters,
             data: _data,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
-    final _result = await _dio.fetch<Map<String, Object?>>(_options);
-    late UploadVoiceDiagnosticsResponse _value;
-    try {
-      _value = UploadVoiceDiagnosticsResponse.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, response: _result);
-      rethrow;
-    }
-    return _value;
+    await _dio.fetch<void>(_options);
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

@@ -7,11 +7,14 @@ part of 'auth_session_location.dart';
 // **************************************************************************
 
 AuthSessionLocation _$AuthSessionLocationFromJson(Map<String, dynamic> json) =>
-    AuthSessionLocation(
-      city: json['city'] as String?,
-      region: json['region'] as String?,
-      country: json['country'] as String?,
-    );
+    $checkedCreate('AuthSessionLocation', json, ($checkedConvert) {
+      final val = AuthSessionLocation(
+        city: $checkedConvert('city', (v) => v as String?),
+        region: $checkedConvert('region', (v) => v as String?),
+        country: $checkedConvert('country', (v) => v as String?),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$AuthSessionLocationToJson(
   AuthSessionLocation instance,

@@ -8,13 +8,24 @@ part of 'guild_role_update_request.dart';
 
 GuildRoleUpdateRequest _$GuildRoleUpdateRequestFromJson(
   Map<String, dynamic> json,
-) => GuildRoleUpdateRequest(
-  name: json['name'] as String?,
-  color: (json['color'] as num?)?.toInt(),
-  permissions: json['permissions'] as String?,
-  hoist: json['hoist'] as bool?,
-  hoistPosition: (json['hoist_position'] as num?)?.toInt(),
-  mentionable: json['mentionable'] as bool?,
+) => $checkedCreate(
+  'GuildRoleUpdateRequest',
+  json,
+  ($checkedConvert) {
+    final val = GuildRoleUpdateRequest(
+      name: $checkedConvert('name', (v) => v as String?),
+      color: $checkedConvert('color', (v) => (v as num?)?.toInt()),
+      permissions: $checkedConvert('permissions', (v) => v as String?),
+      hoist: $checkedConvert('hoist', (v) => v as bool?),
+      hoistPosition: $checkedConvert(
+        'hoist_position',
+        (v) => (v as num?)?.toInt(),
+      ),
+      mentionable: $checkedConvert('mentionable', (v) => v as bool?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {'hoistPosition': 'hoist_position'},
 );
 
 Map<String, dynamic> _$GuildRoleUpdateRequestToJson(

@@ -24,6 +24,7 @@ import 'package:zstd_dart/zstd_dart.dart';
 ///
 /// Uses zstd compression by default for binary WebSocket frames.
 class GatewayConnection {
+  static const Duration webSocketReadyTimeout = Duration(seconds: 20);
   GatewayConnection({
     required String token,
     required Dio dio,
@@ -59,7 +60,7 @@ class GatewayConnection {
 
   final EventParser _eventParser = const EventParser();
   final SessionManager _session = SessionManager();
-  late HeartbeatManager _heartbeat;
+  HeartbeatManager? _heartbeat;
 
   WebSocketChannel? _channel;
   StreamSubscription<dynamic>? _subscription;
@@ -72,7 +73,10 @@ class GatewayConnection {
   GatewayState _state = GatewayState.disconnected;
   int _reconnectAttempts = 0;
   bool _disposed = false;
+  bool _reconnectSuspended = false;
   String? _gatewayUrl;
+  Timer? _reconnectTimer;
+  int _connectGeneration = 0;
 
   /// Stream of parsed gateway events.
   Stream<GatewayEvent> get events => _eventController.stream;
@@ -83,33 +87,62 @@ class GatewayConnection {
   /// Stream of connection state changes.
   Stream<GatewayState> get stateChanges => _stateController.stream;
 
+  /// True while [suspend] has paused automatic reconnects.
+  bool get isReconnectSuspended => _reconnectSuspended;
+
   /// Connects to the gateway.
   ///
   /// Fetches the gateway URL via the REST API (unless overridden) and
   /// opens a WebSocket connection.
   Future<void> connect() async {
-    if (_disposed) return;
-
+    if (_disposed || _reconnectSuspended) return;
+    final int generation = ++_connectGeneration;
+    _cancelReconnectTimer();
+    await _tearDownSocket();
+    if (_disposed || generation != _connectGeneration) {
+      return;
+    }
     _setState(GatewayState.connecting);
-
-    _heartbeat = HeartbeatManager(
+    _heartbeat ??= HeartbeatManager(
       onSendHeartbeat: _sendHeartbeat,
       onTimeout: _onHeartbeatTimeout,
     );
-
     try {
       _gatewayUrl = _gatewayUrlOverride ?? await _fetchGatewayUrl();
-      await _openWebSocket(_gatewayUrl!);
+      if (generation != _connectGeneration) {
+        return;
+      }
+      await _openWebSocket(_gatewayUrl!, generation: generation);
     } catch (e) {
+      if (generation != _connectGeneration) {
+        return;
+      }
       _setState(GatewayState.disconnected);
       _scheduleReconnect();
     }
   }
 
+  /// Cancels pending backoff and reconnects immediately.
+  Future<void> reconnectNow() async {
+    if (_disposed) return;
+    _connectGeneration++;
+    _cancelReconnectTimer();
+    _reconnectAttempts = 0;
+    await _tearDownSocket();
+    if (_state == GatewayState.failed) {
+      _setState(GatewayState.disconnected);
+    }
+    if (_disposed) {
+      return;
+    }
+    await connect();
+  }
+
   /// Disconnects from the gateway gracefully.
   Future<void> disconnect() async {
+    _cancelReconnectTimer();
     _reconnectAttempts = 0;
-    _heartbeat.stop();
+    _heartbeat?.stop();
     await _subscription?.cancel();
     _subscription = null;
     await _channel?.sink.close(1000);
@@ -118,11 +151,27 @@ class GatewayConnection {
     _setState(GatewayState.disconnected);
   }
 
+  /// Disconnects and suppresses automatic reconnect until [unsuspendAndReconnect].
+  Future<void> suspend() async {
+    if (_disposed) return;
+    _reconnectSuspended = true;
+    _cancelReconnectTimer();
+    await disconnect();
+  }
+
+  /// Clears the suspend flag and reconnects immediately.
+  Future<void> unsuspendAndReconnect() async {
+    if (_disposed) return;
+    _reconnectSuspended = false;
+    await reconnectNow();
+  }
+
   /// Permanently disposes the connection and its stream controllers.
   ///
   /// After calling this, the instance cannot be reused.
   Future<void> dispose() async {
     _disposed = true;
+    _cancelReconnectTimer();
     await disconnect();
     await _eventController.close();
     await _stateController.close();
@@ -146,6 +195,51 @@ class GatewayConnection {
         ),
       },
     });
+  }
+
+  /// Sends opcode 8 to request member payloads for one or more guilds.
+  ///
+  /// The server responds with `GUILD_MEMBERS_CHUNK` events
+  void requestGuildMembers({
+    String? guildId,
+    List<String>? guildIds,
+    String? query,
+    int? limit,
+    List<String>? userIds,
+    bool? presences,
+    String? nonce,
+  }) {
+    if (_state != GatewayState.connected || _channel == null) {
+      return;
+    }
+    final List<String> resolvedGuildIds =
+        guildIds != null && guildIds.isNotEmpty
+        ? guildIds.where((String id) => id.isNotEmpty).toSet().toList()
+        : const <String>[];
+    final Map<String, Object?> d = <String, Object?>{};
+    if (resolvedGuildIds.isNotEmpty) {
+      d['guild_ids'] = resolvedGuildIds;
+    } else if (guildId != null && guildId.isNotEmpty) {
+      d['guild_id'] = guildId;
+    } else {
+      return;
+    }
+    if (query != null) {
+      d['query'] = query;
+    }
+    if (limit != null) {
+      d['limit'] = limit;
+    }
+    if (userIds != null && userIds.isNotEmpty) {
+      d['user_ids'] = userIds.toSet().toList();
+    }
+    if (presences != null) {
+      d['presences'] = presences;
+    }
+    if (nonce != null) {
+      d['nonce'] = nonce;
+    }
+    _send(<String, Object?>{'op': GatewayOpcodes.requestGuildMembers, 'd': d});
   }
 
   /// Join, move, or leave a voice channel. Requires an established gateway
@@ -188,11 +282,22 @@ class GatewayConnection {
     return response.url;
   }
 
-  Future<void> _openWebSocket(String url) async {
+  Future<void> _openWebSocket(String url, {required int generation}) async {
     final wsUrl = Uri.parse('$url?v=1&encoding=json&compress=$_compress');
     _channel = WebSocketChannel.connect(wsUrl);
-    await _channel!.ready;
-
+    await _channel!.ready.timeout(
+      webSocketReadyTimeout,
+      onTimeout: () {
+        throw TimeoutException(
+          'Gateway WebSocket handshake timed out after '
+          '${webSocketReadyTimeout.inSeconds}s',
+        );
+      },
+    );
+    if (generation != _connectGeneration) {
+      await _tearDownSocket();
+      return;
+    }
     _subscription = _channel!.stream.listen(
       _onMessage,
       onError: _onError,
@@ -228,11 +333,15 @@ class GatewayConnection {
       case GatewayOpcodes.hello:
         _handleHello(d as Map<String, dynamic>);
       case GatewayOpcodes.heartbeatAck:
-        _heartbeat.ackReceived();
+        _heartbeat?.ackReceived();
         _session.updateLastAck();
       case GatewayOpcodes.dispatch:
-        if (d is Map<String, dynamic>) {
-          _handleDispatch(t!, d);
+        if (t != null) {
+          if (d is Map<String, dynamic>) {
+            _handleDispatch(t, d);
+          } else if (d is List) {
+            _handleListDispatch(t, d);
+          }
         }
       case GatewayOpcodes.heartbeat:
         _sendHeartbeat();
@@ -252,13 +361,14 @@ class GatewayConnection {
   void _onDone() {
     final closeCode = _channel?.closeCode;
 
-    _heartbeat.stop();
+    _heartbeat?.stop();
 
     if (closeCode != null) {
       final code = GatewayCloseCode.fromCode(closeCode);
       if (code != null && code.isFatal) {
         _session.clear();
-        _setState(GatewayState.disconnected);
+        _cancelReconnectTimer();
+        _setState(GatewayState.failed);
         return;
       }
     }
@@ -274,7 +384,7 @@ class GatewayConnection {
 
   void _handleHello(Map<String, dynamic> data) {
     final intervalMs = data['heartbeat_interval'] as int;
-    _heartbeat.start(Duration(milliseconds: intervalMs));
+    _heartbeat!.start(Duration(milliseconds: intervalMs));
 
     if (_session.canResume) {
       _sendResume();
@@ -305,6 +415,13 @@ class GatewayConnection {
     }
   }
 
+  void _handleListDispatch(String eventType, List<dynamic> data) {
+    final event = _eventParser.parseList(eventType, data);
+    if (event != null) {
+      _eventController.add(event);
+    }
+  }
+
   void _handleReconnect() {
     _closeAndReconnect();
   }
@@ -320,7 +437,8 @@ class GatewayConnection {
   }
 
   void _handleGatewayError(Map<String, dynamic> data) {
-    final code = data['code'] as int;
+    final Object? rawCode = data['code'];
+    final String code = rawCode is String ? rawCode : rawCode.toString();
     final message = data['message'] as String;
     _eventController.add(GatewayErrorEvent(code: code, message: message));
   }
@@ -376,25 +494,41 @@ class GatewayConnection {
   }
 
   void _closeAndReconnect() {
-    _heartbeat.stop();
-    _subscription?.cancel();
-    _subscription = null;
-    _channel?.sink.close(4000);
-    _channel = null;
+    unawaited(_tearDownSocket());
     _scheduleReconnect();
   }
 
-  void _scheduleReconnect() {
-    if (_disposed) return;
-    _setState(GatewayState.reconnecting);
+  Future<void> _tearDownSocket() async {
+    _heartbeat?.stop();
+    await _subscription?.cancel();
+    _subscription = null;
+    final WebSocketChannel? channel = _channel;
+    _channel = null;
+    if (channel == null) {
+      return;
+    }
+    try {
+      await channel.sink
+          .close(4000)
+          .timeout(const Duration(seconds: 3), onTimeout: () {});
+    } catch (_) {}
+  }
 
-    // Exponential backoff: 1s, 2s, 4s, 8s, 16s, 32s cap.
+  void _cancelReconnectTimer() {
+    _reconnectTimer?.cancel();
+    _reconnectTimer = null;
+  }
+
+  void _scheduleReconnect() {
+    if (_disposed || _reconnectSuspended) return;
+    _cancelReconnectTimer();
+    _setState(GatewayState.reconnecting);
     final delaySec = min(1 << _reconnectAttempts, 32);
     _reconnectAttempts++;
-
-    Future<void>.delayed(Duration(seconds: delaySec), () {
+    _reconnectTimer = Timer(Duration(seconds: delaySec), () {
+      _reconnectTimer = null;
       if (!_disposed) {
-        connect();
+        unawaited(connect());
       }
     });
   }

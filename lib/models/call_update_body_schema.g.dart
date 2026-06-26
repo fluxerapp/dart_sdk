@@ -8,11 +8,14 @@ part of 'call_update_body_schema.dart';
 
 CallUpdateBodySchema _$CallUpdateBodySchemaFromJson(
   Map<String, dynamic> json,
-) => CallUpdateBodySchema(
-  region: json['region'] as String?,
-  latitude: json['latitude'] as String?,
-  longitude: json['longitude'] as String?,
-);
+) => $checkedCreate('CallUpdateBodySchema', json, ($checkedConvert) {
+  final val = CallUpdateBodySchema(
+    region: $checkedConvert('region', (v) => v as String?),
+    latitude: $checkedConvert('latitude', (v) => v as String?),
+    longitude: $checkedConvert('longitude', (v) => v as String?),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$CallUpdateBodySchemaToJson(
   CallUpdateBodySchema instance,

@@ -8,13 +8,14 @@ import 'user_partial_response.dart';
 import 'snowflake_type.dart';
 import 'message_search_results_response_messages_type_type.dart';
 import 'message_flags.dart';
+import 'message_channel_mention_response.dart';
 import 'message_embed_response.dart';
 import 'message_attachment_response.dart';
 import 'message_sticker_response.dart';
 import 'message_reaction_response.dart';
-import 'message_reference_response.dart';
+import 'message_search_results_response_messages_message_reference.dart';
 import 'message_snapshot_response.dart';
-import 'message_call_response.dart';
+import 'message_search_results_response_messages_call.dart';
 
 part 'message_search_results_response_messages.g.dart';
 
@@ -30,11 +31,13 @@ class MessageSearchResultsResponseMessages {
     required this.timestamp,
     required this.pinned,
     required this.mentionEveryone,
+    required this.tts,
+    required this.mentions,
+    required this.mentionRoles,
     this.webhookId,
     this.editedTimestamp,
-    this.tts,
-    this.mentions,
-    this.mentionRoles,
+    this.mentionChannels,
+    this.users,
     this.embeds,
     this.attachments,
     this.stickers,
@@ -84,16 +87,22 @@ class MessageSearchResultsResponseMessages {
   final bool mentionEveryone;
 
   /// Whether the message was sent as text-to-speech
-  @JsonKey(includeIfNull: false)
-  final bool? tts;
+  final bool tts;
 
   /// The users mentioned in the message
-  @JsonKey(includeIfNull: false)
-  final List<UserPartialResponse>? mentions;
+  final List<UserPartialResponse> mentions;
 
   /// The role IDs mentioned in the message
-  @JsonKey(includeIfNull: false, name: 'mention_roles')
-  final List<String>? mentionRoles;
+  @JsonKey(name: 'mention_roles')
+  final List<String> mentionRoles;
+
+  /// Channels mentioned in the message that are visible to @everyone
+  @JsonKey(includeIfNull: false, name: 'mention_channels')
+  final List<MessageChannelMentionResponse>? mentionChannels;
+
+  /// Users referenced from non-notifying content, embed, and snapshot text, included for client-side resolution
+  @JsonKey(includeIfNull: false)
+  final List<UserPartialResponse>? users;
 
   /// The embeds attached to the message
   @JsonKey(includeIfNull: false)
@@ -117,7 +126,7 @@ class MessageSearchResultsResponseMessages {
 
   /// Reference data for replies or forwards
   @JsonKey(includeIfNull: false, name: 'message_reference')
-  final MessageReferenceResponse? messageReference;
+  final MessageSearchResultsResponseMessagesMessageReference? messageReference;
 
   /// Snapshots of forwarded messages
   @JsonKey(includeIfNull: false, name: 'message_snapshots')
@@ -129,7 +138,7 @@ class MessageSearchResultsResponseMessages {
 
   /// Call information if this message represents a call
   @JsonKey(includeIfNull: false)
-  final MessageCallResponse? call;
+  final MessageSearchResultsResponseMessagesCall? call;
 
   Map<String, Object?> toJson() =>
       _$MessageSearchResultsResponseMessagesToJson(this);

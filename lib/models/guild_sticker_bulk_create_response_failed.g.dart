@@ -8,10 +8,15 @@ part of 'guild_sticker_bulk_create_response_failed.dart';
 
 GuildStickerBulkCreateResponseFailed
 _$GuildStickerBulkCreateResponseFailedFromJson(Map<String, dynamic> json) =>
-    GuildStickerBulkCreateResponseFailed(
-      name: json['name'] as String,
-      error: json['error'] as String,
-    );
+    $checkedCreate('GuildStickerBulkCreateResponseFailed', json, (
+      $checkedConvert,
+    ) {
+      final val = GuildStickerBulkCreateResponseFailed(
+        name: $checkedConvert('name', (v) => v as String),
+        error: $checkedConvert('error', (v) => v as String),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$GuildStickerBulkCreateResponseFailedToJson(
   GuildStickerBulkCreateResponseFailed instance,

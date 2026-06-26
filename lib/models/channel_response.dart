@@ -27,6 +27,7 @@ class ChannelResponse {
     this.parentId,
     this.bitrate,
     this.userLimit,
+    this.voiceConnectionLimit,
     this.rtcRegion,
     this.lastMessageId,
     this.lastPinTimestamp,
@@ -84,6 +85,10 @@ class ChannelResponse {
   /// The maximum number of users allowed in the voice channel
   @JsonKey(includeIfNull: false, name: 'user_limit')
   final Int32Type? userLimit;
+
+  /// The maximum active voice connections allowed per user in the voice channel
+  @JsonKey(includeIfNull: false, name: 'voice_connection_limit')
+  final Int32Type? voiceConnectionLimit;
 
   /// The voice region ID for the voice channel
   @JsonKey(includeIfNull: false, name: 'rtc_region')

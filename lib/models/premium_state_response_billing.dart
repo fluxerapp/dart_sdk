@@ -1,0 +1,49 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, unused_import, invalid_annotation_target, unnecessary_import
+
+import 'package:json_annotation/json_annotation.dart';
+
+import 'current_subscription_price_response.dart';
+import 'pending_subscription_change_response.dart';
+import 'premium_billing_subscription_response.dart';
+import 'premium_billing_invoice_response.dart';
+import 'premium_billing_payment_method_response.dart';
+import 'self_serve_refund_eligibility_response.dart';
+
+part 'premium_state_response_billing.g.dart';
+
+@JsonSerializable()
+class PremiumStateResponseBilling {
+  const PremiumStateResponseBilling({
+    required this.stripeCustomerId,
+    required this.currentSubscriptionPrice,
+    required this.pendingSubscriptionChange,
+    required this.subscription,
+    required this.invoices,
+    required this.invoicesHasMore,
+    required this.paymentMethods,
+    required this.refundEligibility,
+  });
+
+  factory PremiumStateResponseBilling.fromJson(Map<String, Object?> json) =>
+      _$PremiumStateResponseBillingFromJson(json);
+
+  @JsonKey(includeIfNull: true, name: 'stripe_customer_id')
+  final String? stripeCustomerId;
+  @JsonKey(includeIfNull: true, name: 'current_subscription_price')
+  final CurrentSubscriptionPriceResponse? currentSubscriptionPrice;
+  @JsonKey(includeIfNull: true, name: 'pending_subscription_change')
+  final PendingSubscriptionChangeResponse? pendingSubscriptionChange;
+  @JsonKey(includeIfNull: true)
+  final PremiumBillingSubscriptionResponse? subscription;
+  final List<PremiumBillingInvoiceResponse> invoices;
+  @JsonKey(name: 'invoices_has_more')
+  final bool invoicesHasMore;
+  @JsonKey(name: 'payment_methods')
+  final List<PremiumBillingPaymentMethodResponse> paymentMethods;
+  @JsonKey(name: 'refund_eligibility')
+  final SelfServeRefundEligibilityResponse refundEligibility;
+
+  Map<String, Object?> toJson() => _$PremiumStateResponseBillingToJson(this);
+}

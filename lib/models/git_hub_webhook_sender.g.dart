@@ -7,11 +7,19 @@ part of 'git_hub_webhook_sender.dart';
 // **************************************************************************
 
 GitHubWebhookSender _$GitHubWebhookSenderFromJson(Map<String, dynamic> json) =>
-    GitHubWebhookSender(
-      id: (json['id'] as num).toInt(),
-      login: json['login'] as String,
-      htmlUrl: json['html_url'] as String,
-      avatarUrl: json['avatar_url'] as String,
+    $checkedCreate(
+      'GitHubWebhookSender',
+      json,
+      ($checkedConvert) {
+        final val = GitHubWebhookSender(
+          id: $checkedConvert('id', (v) => (v as num).toInt()),
+          login: $checkedConvert('login', (v) => v as String),
+          htmlUrl: $checkedConvert('html_url', (v) => v as String),
+          avatarUrl: $checkedConvert('avatar_url', (v) => v as String),
+        );
+        return val;
+      },
+      fieldKeyMap: const {'htmlUrl': 'html_url', 'avatarUrl': 'avatar_url'},
     );
 
 Map<String, dynamic> _$GitHubWebhookSenderToJson(

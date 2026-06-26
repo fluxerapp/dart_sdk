@@ -6,32 +6,50 @@ part of 'rich_embed_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-RichEmbedRequest _$RichEmbedRequestFromJson(
-  Map<String, dynamic> json,
-) => RichEmbedRequest(
-  url: json['url'] as String?,
-  title: json['title'] as String?,
-  color: (json['color'] as num?)?.toInt(),
-  timestamp: json['timestamp'],
-  description: json['description'] as String?,
-  author: json['author'] == null
-      ? null
-      : RichEmbedAuthorRequest.fromJson(json['author'] as Map<String, dynamic>),
-  image: json['image'] == null
-      ? null
-      : RichEmbedMediaRequest.fromJson(json['image'] as Map<String, dynamic>),
-  thumbnail: json['thumbnail'] == null
-      ? null
-      : RichEmbedMediaRequest.fromJson(
-          json['thumbnail'] as Map<String, dynamic>,
+RichEmbedRequest _$RichEmbedRequestFromJson(Map<String, dynamic> json) =>
+    $checkedCreate('RichEmbedRequest', json, ($checkedConvert) {
+      final val = RichEmbedRequest(
+        description: $checkedConvert('description', (v) => v as String?),
+        url: $checkedConvert('url', (v) => v as String?),
+        title: $checkedConvert('title', (v) => v as String?),
+        color: $checkedConvert('color', (v) => (v as num?)?.toInt()),
+        timestamp: $checkedConvert('timestamp', (v) => v),
+        author: $checkedConvert(
+          'author',
+          (v) => v == null
+              ? null
+              : RichEmbedAuthorRequest.fromJson(v as Map<String, dynamic>),
         ),
-  footer: json['footer'] == null
-      ? null
-      : RichEmbedFooterRequest.fromJson(json['footer'] as Map<String, dynamic>),
-  fields: (json['fields'] as List<dynamic>?)
-      ?.map((e) => RichEmbedFieldRequest.fromJson(e as Map<String, dynamic>))
-      .toList(),
-);
+        image: $checkedConvert(
+          'image',
+          (v) => v == null
+              ? null
+              : RichEmbedMediaRequest.fromJson(v as Map<String, dynamic>),
+        ),
+        thumbnail: $checkedConvert(
+          'thumbnail',
+          (v) => v == null
+              ? null
+              : RichEmbedMediaRequest.fromJson(v as Map<String, dynamic>),
+        ),
+        footer: $checkedConvert(
+          'footer',
+          (v) => v == null
+              ? null
+              : RichEmbedFooterRequest.fromJson(v as Map<String, dynamic>),
+        ),
+        fields: $checkedConvert(
+          'fields',
+          (v) => (v as List<dynamic>?)
+              ?.map(
+                (e) =>
+                    RichEmbedRequestFields.fromJson(e as Map<String, dynamic>),
+              )
+              .toList(),
+        ),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$RichEmbedRequestToJson(RichEmbedRequest instance) =>
     <String, dynamic>{
@@ -39,7 +57,7 @@ Map<String, dynamic> _$RichEmbedRequestToJson(RichEmbedRequest instance) =>
       'title': ?instance.title,
       'color': ?instance.color,
       'timestamp': ?instance.timestamp,
-      'description': ?instance.description,
+      'description': instance.description,
       'author': ?instance.author,
       'image': ?instance.image,
       'thumbnail': ?instance.thumbnail,

@@ -4,8 +4,8 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+import 'report_user_request_category_category.dart';
 import 'snowflake_type.dart';
-import 'user_report_category_enum.dart';
 
 part 'report_user_request.g.dart';
 
@@ -14,7 +14,6 @@ class ReportUserRequest {
   const ReportUserRequest({
     required this.userId,
     required this.category,
-    this.additionalInfo,
     this.guildId,
   });
 
@@ -23,11 +22,9 @@ class ReportUserRequest {
 
   @JsonKey(name: 'user_id')
   final SnowflakeType userId;
-  final UserReportCategoryEnum category;
 
-  /// Additional context or details about the report
-  @JsonKey(includeIfNull: false, name: 'additional_info')
-  final String? additionalInfo;
+  /// Category of the user report
+  final ReportUserRequestCategoryCategory category;
   @JsonKey(includeIfNull: false, name: 'guild_id')
   final SnowflakeType? guildId;
 

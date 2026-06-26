@@ -5,12 +5,13 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'message_attachment_response.dart';
-import 'message_base_response_schema.dart';
-import 'message_call_response.dart';
+import 'message_channel_mention_response.dart';
 import 'message_embed_response.dart';
 import 'message_flags.dart';
 import 'message_reaction_response.dart';
-import 'message_reference_response.dart';
+import 'message_response_schema_call.dart';
+import 'message_response_schema_message_reference.dart';
+import 'message_response_schema_referenced_message.dart';
 import 'message_response_schema_type_type.dart';
 import 'message_snapshot_response.dart';
 import 'message_sticker_response.dart';
@@ -31,11 +32,13 @@ class MessageResponseSchema {
     required this.timestamp,
     required this.pinned,
     required this.mentionEveryone,
+    required this.tts,
+    required this.mentions,
+    required this.mentionRoles,
     this.webhookId,
     this.editedTimestamp,
-    this.tts,
-    this.mentions,
-    this.mentionRoles,
+    this.mentionChannels,
+    this.users,
     this.embeds,
     this.attachments,
     this.stickers,
@@ -85,16 +88,22 @@ class MessageResponseSchema {
   final bool mentionEveryone;
 
   /// Whether the message was sent as text-to-speech
-  @JsonKey(includeIfNull: false)
-  final bool? tts;
+  final bool tts;
 
   /// The users mentioned in the message
-  @JsonKey(includeIfNull: false)
-  final List<UserPartialResponse>? mentions;
+  final List<UserPartialResponse> mentions;
 
   /// The role IDs mentioned in the message
-  @JsonKey(includeIfNull: false, name: 'mention_roles')
-  final List<String>? mentionRoles;
+  @JsonKey(name: 'mention_roles')
+  final List<String> mentionRoles;
+
+  /// Channels mentioned in the message that are visible to @everyone
+  @JsonKey(includeIfNull: false, name: 'mention_channels')
+  final List<MessageChannelMentionResponse>? mentionChannels;
+
+  /// Users referenced from non-notifying content, embed, and snapshot text, included for client-side resolution
+  @JsonKey(includeIfNull: false)
+  final List<UserPartialResponse>? users;
 
   /// The embeds attached to the message
   @JsonKey(includeIfNull: false)
@@ -118,7 +127,7 @@ class MessageResponseSchema {
 
   /// Reference data for replies or forwards
   @JsonKey(includeIfNull: false, name: 'message_reference')
-  final MessageReferenceResponse? messageReference;
+  final MessageResponseSchemaMessageReference? messageReference;
 
   /// Snapshots of forwarded messages
   @JsonKey(includeIfNull: false, name: 'message_snapshots')
@@ -130,11 +139,11 @@ class MessageResponseSchema {
 
   /// Call information if this message represents a call
   @JsonKey(includeIfNull: false)
-  final MessageCallResponse? call;
+  final MessageResponseSchemaCall? call;
 
   /// The message that this message is replying to or forwarding
   @JsonKey(includeIfNull: false, name: 'referenced_message')
-  final MessageBaseResponseSchema? referencedMessage;
+  final MessageResponseSchemaReferencedMessage? referencedMessage;
 
   Map<String, Object?> toJson() => _$MessageResponseSchemaToJson(this);
 }

@@ -7,15 +7,15 @@ part of 'guild_emoji_response.dart';
 // **************************************************************************
 
 GuildEmojiResponse _$GuildEmojiResponseFromJson(Map<String, dynamic> json) =>
-    GuildEmojiResponse(
-      id: json['id'] as String,
-      name: json['name'] as String,
-      animated: json['animated'] as bool,
-      nsfw: json['nsfw'] as bool,
-      formats: (json['formats'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-    );
+    $checkedCreate('GuildEmojiResponse', json, ($checkedConvert) {
+      final val = GuildEmojiResponse(
+        id: $checkedConvert('id', (v) => v as String),
+        name: $checkedConvert('name', (v) => v as String),
+        animated: $checkedConvert('animated', (v) => v as bool),
+        nsfw: $checkedConvert('nsfw', (v) => v as bool),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$GuildEmojiResponseToJson(GuildEmojiResponse instance) =>
     <String, dynamic>{
@@ -23,5 +23,4 @@ Map<String, dynamic> _$GuildEmojiResponseToJson(GuildEmojiResponse instance) =>
       'name': instance.name,
       'animated': instance.animated,
       'nsfw': instance.nsfw,
-      'formats': ?instance.formats,
     };

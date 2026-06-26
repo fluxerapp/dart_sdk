@@ -7,7 +7,12 @@ part of 'mfa_ticket_request.dart';
 // **************************************************************************
 
 MfaTicketRequest _$MfaTicketRequestFromJson(Map<String, dynamic> json) =>
-    MfaTicketRequest(ticket: json['ticket'] as String);
+    $checkedCreate('MfaTicketRequest', json, ($checkedConvert) {
+      final val = MfaTicketRequest(
+        ticket: $checkedConvert('ticket', (v) => v as String),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$MfaTicketRequestToJson(MfaTicketRequest instance) =>
     <String, dynamic>{'ticket': instance.ticket};

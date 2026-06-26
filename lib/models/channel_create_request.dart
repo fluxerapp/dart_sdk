@@ -5,12 +5,15 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'snowflake_type.dart';
-import 'channel_overwrite_request.dart';
+import 'guild_text_channel_create_request_permission_overwrites.dart';
 import 'content_warning_level.dart';
-import 'channel_create_text_request_type_type.dart';
-import 'channel_create_voice_request_type_type.dart';
-import 'channel_create_category_request_type_type.dart';
-import 'channel_create_link_request_type_type.dart';
+import 'guild_text_channel_create_request_type_type.dart';
+import 'guild_voice_channel_create_request_permission_overwrites.dart';
+import 'guild_voice_channel_create_request_type_type.dart';
+import 'guild_category_channel_create_request_permission_overwrites.dart';
+import 'guild_category_channel_create_request_type_type.dart';
+import 'guild_link_channel_create_request_permission_overwrites.dart';
+import 'guild_link_channel_create_request_type_type.dart';
 
 part 'channel_create_request.g.dart';
 
@@ -63,8 +66,11 @@ class ChannelCreateRequest0 extends ChannelCreateRequest {
   final int? bitrate;
   @JsonKey(name: 'user_limit')
   final int? userLimit;
+  @JsonKey(name: 'voice_connection_limit')
+  final int? voiceConnectionLimit;
   @JsonKey(name: 'permission_overwrites')
-  final List<ChannelOverwriteRequest>? permissionOverwrites;
+  final List<GuildTextChannelCreateRequestPermissionOverwrites>?
+  permissionOverwrites;
   final bool? nsfw;
   @JsonKey(name: 'nsfw_override')
   final bool? nsfwOverride;
@@ -72,7 +78,7 @@ class ChannelCreateRequest0 extends ChannelCreateRequest {
   final ContentWarningLevel? contentWarningLevel;
   @JsonKey(name: 'content_warning_text')
   final String? contentWarningText;
-  final ChannelCreateTextRequestTypeType type;
+  final GuildTextChannelCreateRequestTypeType type;
   final String name;
 
   const ChannelCreateRequest0({
@@ -81,6 +87,7 @@ class ChannelCreateRequest0 extends ChannelCreateRequest {
     required this.parentId,
     required this.bitrate,
     required this.userLimit,
+    required this.voiceConnectionLimit,
     required this.permissionOverwrites,
     required this.nsfw,
     required this.nsfwOverride,
@@ -106,8 +113,11 @@ class ChannelCreateRequest2 extends ChannelCreateRequest {
   final int? bitrate;
   @JsonKey(name: 'user_limit')
   final int? userLimit;
+  @JsonKey(name: 'voice_connection_limit')
+  final int? voiceConnectionLimit;
   @JsonKey(name: 'permission_overwrites')
-  final List<ChannelOverwriteRequest>? permissionOverwrites;
+  final List<GuildVoiceChannelCreateRequestPermissionOverwrites>?
+  permissionOverwrites;
   final bool? nsfw;
   @JsonKey(name: 'nsfw_override')
   final bool? nsfwOverride;
@@ -115,7 +125,7 @@ class ChannelCreateRequest2 extends ChannelCreateRequest {
   final ContentWarningLevel? contentWarningLevel;
   @JsonKey(name: 'content_warning_text')
   final String? contentWarningText;
-  final ChannelCreateVoiceRequestTypeType type;
+  final GuildVoiceChannelCreateRequestTypeType type;
   final String name;
 
   const ChannelCreateRequest2({
@@ -124,6 +134,7 @@ class ChannelCreateRequest2 extends ChannelCreateRequest {
     required this.parentId,
     required this.bitrate,
     required this.userLimit,
+    required this.voiceConnectionLimit,
     required this.permissionOverwrites,
     required this.nsfw,
     required this.nsfwOverride,
@@ -149,8 +160,11 @@ class ChannelCreateRequest4 extends ChannelCreateRequest {
   final int? bitrate;
   @JsonKey(name: 'user_limit')
   final int? userLimit;
+  @JsonKey(name: 'voice_connection_limit')
+  final int? voiceConnectionLimit;
   @JsonKey(name: 'permission_overwrites')
-  final List<ChannelOverwriteRequest>? permissionOverwrites;
+  final List<GuildCategoryChannelCreateRequestPermissionOverwrites>?
+  permissionOverwrites;
   final bool? nsfw;
   @JsonKey(name: 'nsfw_override')
   final bool? nsfwOverride;
@@ -158,7 +172,7 @@ class ChannelCreateRequest4 extends ChannelCreateRequest {
   final ContentWarningLevel? contentWarningLevel;
   @JsonKey(name: 'content_warning_text')
   final String? contentWarningText;
-  final ChannelCreateCategoryRequestTypeType type;
+  final GuildCategoryChannelCreateRequestTypeType type;
   final String name;
 
   const ChannelCreateRequest4({
@@ -167,6 +181,7 @@ class ChannelCreateRequest4 extends ChannelCreateRequest {
     required this.parentId,
     required this.bitrate,
     required this.userLimit,
+    required this.voiceConnectionLimit,
     required this.permissionOverwrites,
     required this.nsfw,
     required this.nsfwOverride,
@@ -192,8 +207,11 @@ class ChannelCreateRequest998 extends ChannelCreateRequest {
   final int? bitrate;
   @JsonKey(name: 'user_limit')
   final int? userLimit;
+  @JsonKey(name: 'voice_connection_limit')
+  final int? voiceConnectionLimit;
   @JsonKey(name: 'permission_overwrites')
-  final List<ChannelOverwriteRequest>? permissionOverwrites;
+  final List<GuildLinkChannelCreateRequestPermissionOverwrites>?
+  permissionOverwrites;
   final bool? nsfw;
   @JsonKey(name: 'nsfw_override')
   final bool? nsfwOverride;
@@ -201,7 +219,7 @@ class ChannelCreateRequest998 extends ChannelCreateRequest {
   final ContentWarningLevel? contentWarningLevel;
   @JsonKey(name: 'content_warning_text')
   final String? contentWarningText;
-  final ChannelCreateLinkRequestTypeType type;
+  final GuildLinkChannelCreateRequestTypeType type;
   final String name;
 
   const ChannelCreateRequest998({
@@ -210,6 +228,7 @@ class ChannelCreateRequest998 extends ChannelCreateRequest {
     required this.parentId,
     required this.bitrate,
     required this.userLimit,
+    required this.voiceConnectionLimit,
     required this.permissionOverwrites,
     required this.nsfw,
     required this.nsfwOverride,

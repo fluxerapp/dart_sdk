@@ -7,9 +7,15 @@ part of 'success_response.dart';
 // **************************************************************************
 
 SuccessResponse _$SuccessResponseFromJson(Map<String, dynamic> json) =>
-    SuccessResponse(
-      success: SuccessResponseSuccessSuccess.fromJson(json['success'] as bool),
-    );
+    $checkedCreate('SuccessResponse', json, ($checkedConvert) {
+      final val = SuccessResponse(
+        success: $checkedConvert(
+          'success',
+          (v) => SuccessResponseSuccessSuccess.fromJson(v as bool),
+        ),
+      );
+      return val;
+    });
 
 Map<String, dynamic> _$SuccessResponseToJson(SuccessResponse instance) =>
     <String, dynamic>{'success': instance.success};

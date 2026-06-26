@@ -7,18 +7,24 @@ part of 'slack_webhook_request.dart';
 // **************************************************************************
 
 SlackWebhookRequest _$SlackWebhookRequestFromJson(Map<String, dynamic> json) =>
-    SlackWebhookRequest(
-      text: json['text'] as String?,
-      username: json['username'] as String?,
-      iconUrl: json['icon_url'] as String?,
-      attachments: (json['attachments'] as List<dynamic>?)
-          ?.map(
-            (e) => SlackWebhookRequestAttachments.fromJson(
-              e as Map<String, dynamic>,
-            ),
-          )
-          .toList(),
-    );
+    $checkedCreate('SlackWebhookRequest', json, ($checkedConvert) {
+      final val = SlackWebhookRequest(
+        text: $checkedConvert('text', (v) => v as String?),
+        username: $checkedConvert('username', (v) => v as String?),
+        iconUrl: $checkedConvert('icon_url', (v) => v as String?),
+        attachments: $checkedConvert(
+          'attachments',
+          (v) => (v as List<dynamic>?)
+              ?.map(
+                (e) => SlackWebhookRequestAttachments.fromJson(
+                  e as Map<String, dynamic>,
+                ),
+              )
+              .toList(),
+        ),
+      );
+      return val;
+    }, fieldKeyMap: const {'iconUrl': 'icon_url'});
 
 Map<String, dynamic> _$SlackWebhookRequestToJson(
   SlackWebhookRequest instance,

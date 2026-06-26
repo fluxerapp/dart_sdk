@@ -8,15 +8,24 @@ part of 'guild_sticker_with_user_response.dart';
 
 GuildStickerWithUserResponse _$GuildStickerWithUserResponseFromJson(
   Map<String, dynamic> json,
-) => GuildStickerWithUserResponse(
-  id: json['id'] as String,
-  name: json['name'] as String,
-  description: json['description'] as String,
-  tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
-  animated: json['animated'] as bool,
-  nsfw: json['nsfw'] as bool,
-  user: UserPartialResponse.fromJson(json['user'] as Map<String, dynamic>),
-);
+) => $checkedCreate('GuildStickerWithUserResponse', json, ($checkedConvert) {
+  final val = GuildStickerWithUserResponse(
+    id: $checkedConvert('id', (v) => v as String),
+    name: $checkedConvert('name', (v) => v as String),
+    description: $checkedConvert('description', (v) => v as String),
+    tags: $checkedConvert(
+      'tags',
+      (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+    ),
+    animated: $checkedConvert('animated', (v) => v as bool),
+    nsfw: $checkedConvert('nsfw', (v) => v as bool),
+    user: $checkedConvert(
+      'user',
+      (v) => UserPartialResponse.fromJson(v as Map<String, dynamic>),
+    ),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$GuildStickerWithUserResponseToJson(
   GuildStickerWithUserResponse instance,

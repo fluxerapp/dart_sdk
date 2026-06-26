@@ -4,7 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'application_bot_response.dart';
+import 'application_response_bot.dart';
 
 part 'application_response.g.dart';
 
@@ -44,8 +44,10 @@ class ApplicationResponse {
   /// The client secret for OAuth2 authentication
   @JsonKey(includeIfNull: false, name: 'client_secret')
   final String? clientSecret;
+
+  /// The bot user associated with the application
   @JsonKey(includeIfNull: false)
-  final ApplicationBotResponse? bot;
+  final ApplicationResponseBot? bot;
 
   Map<String, Object?> toJson() => _$ApplicationResponseToJson(this);
 }

@@ -4,7 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'harvest_status_enum.dart';
+import 'harvest_status_response_schema_status_status.dart';
 
 part 'harvest_status_response_schema.g.dart';
 
@@ -31,7 +31,9 @@ class HarvestStatusResponseSchema {
   /// Unique identifier for the harvest request
   @JsonKey(name: 'harvest_id')
   final String harvestId;
-  final HarvestStatusEnum status;
+
+  /// Current status of the harvest request
+  final HarvestStatusResponseSchemaStatusStatus status;
 
   /// ISO 8601 timestamp when the harvest request was created
   @JsonKey(name: 'created_at')

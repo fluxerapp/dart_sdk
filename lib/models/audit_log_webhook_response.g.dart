@@ -8,13 +8,28 @@ part of 'audit_log_webhook_response.dart';
 
 AuditLogWebhookResponse _$AuditLogWebhookResponseFromJson(
   Map<String, dynamic> json,
-) => AuditLogWebhookResponse(
-  id: json['id'] as String,
-  type: WebhookType.fromJson((json['type'] as num).toInt()),
-  name: json['name'] as String,
-  guildId: json['guild_id'] as String?,
-  channelId: json['channel_id'] as String?,
-  avatarHash: json['avatar_hash'] as String?,
+) => $checkedCreate(
+  'AuditLogWebhookResponse',
+  json,
+  ($checkedConvert) {
+    final val = AuditLogWebhookResponse(
+      id: $checkedConvert('id', (v) => v as String),
+      type: $checkedConvert(
+        'type',
+        (v) => WebhookType.fromJson((v as num).toInt()),
+      ),
+      name: $checkedConvert('name', (v) => v as String),
+      guildId: $checkedConvert('guild_id', (v) => v as String?),
+      channelId: $checkedConvert('channel_id', (v) => v as String?),
+      avatarHash: $checkedConvert('avatar_hash', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'guildId': 'guild_id',
+    'channelId': 'channel_id',
+    'avatarHash': 'avatar_hash',
+  },
 );
 
 Map<String, dynamic> _$AuditLogWebhookResponseToJson(
