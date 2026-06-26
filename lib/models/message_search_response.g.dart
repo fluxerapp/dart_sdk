@@ -54,24 +54,18 @@ Map<String, dynamic> _$MessageSearchResponseMessageSearchResultsResponseToJson(
   'cursor': instance.cursor,
 };
 
-MessageSearchResponseMessageSearchIndexingResponse
-_$MessageSearchResponseMessageSearchIndexingResponseFromJson(
+MessageSearchResponseVariant2 _$MessageSearchResponseVariant2FromJson(
   Map<String, dynamic> json,
-) => $checkedCreate(
-  'MessageSearchResponseMessageSearchIndexingResponse',
-  json,
-  ($checkedConvert) {
-    final val = MessageSearchResponseMessageSearchIndexingResponse(
-      indexing: $checkedConvert(
-        'indexing',
-        (v) =>
-            MessageSearchIndexingResponseIndexingIndexing.fromJson(v as bool),
-      ),
-    );
-    return val;
-  },
-);
+) => $checkedCreate('MessageSearchResponseVariant2', json, ($checkedConvert) {
+  final val = MessageSearchResponseVariant2(
+    indexing: $checkedConvert(
+      'indexing',
+      (v) => MessageSearchResponseVariant2IndexingIndexing.fromJson(v as bool),
+    ),
+  );
+  return val;
+});
 
-Map<String, dynamic> _$MessageSearchResponseMessageSearchIndexingResponseToJson(
-  MessageSearchResponseMessageSearchIndexingResponse instance,
+Map<String, dynamic> _$MessageSearchResponseVariant2ToJson(
+  MessageSearchResponseVariant2 instance,
 ) => <String, dynamic>{'indexing': instance.indexing};

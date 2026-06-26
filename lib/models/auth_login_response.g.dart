@@ -35,32 +35,32 @@ Map<String, dynamic> _$AuthLoginResponseAuthTokenWithUserIdResponseToJson(
   'user': instance.user,
 };
 
-AuthLoginResponseAuthMfaRequiredResponse
-_$AuthLoginResponseAuthMfaRequiredResponseFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      'AuthLoginResponseAuthMfaRequiredResponse',
-      json,
-      ($checkedConvert) {
-        final val = AuthLoginResponseAuthMfaRequiredResponse(
-          mfa: $checkedConvert(
-            'mfa',
-            (v) => AuthMfaRequiredResponseMfaMfa.fromJson(v as bool),
-          ),
-          ticket: $checkedConvert('ticket', (v) => v as String),
-          allowedMethods: $checkedConvert(
-            'allowed_methods',
-            (v) => (v as List<dynamic>).map((e) => e as String).toList(),
-          ),
-          totp: $checkedConvert('totp', (v) => v as bool),
-          webauthn: $checkedConvert('webauthn', (v) => v as bool),
-        );
-        return val;
-      },
-      fieldKeyMap: const {'allowedMethods': 'allowed_methods'},
+AuthLoginResponseVariant2 _$AuthLoginResponseVariant2FromJson(
+  Map<String, dynamic> json,
+) => $checkedCreate(
+  'AuthLoginResponseVariant2',
+  json,
+  ($checkedConvert) {
+    final val = AuthLoginResponseVariant2(
+      mfa: $checkedConvert(
+        'mfa',
+        (v) => AuthLoginResponseVariant2MfaMfa.fromJson(v as bool),
+      ),
+      ticket: $checkedConvert('ticket', (v) => v as String),
+      allowedMethods: $checkedConvert(
+        'allowed_methods',
+        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      ),
+      totp: $checkedConvert('totp', (v) => v as bool),
+      webauthn: $checkedConvert('webauthn', (v) => v as bool),
     );
+    return val;
+  },
+  fieldKeyMap: const {'allowedMethods': 'allowed_methods'},
+);
 
-Map<String, dynamic> _$AuthLoginResponseAuthMfaRequiredResponseToJson(
-  AuthLoginResponseAuthMfaRequiredResponse instance,
+Map<String, dynamic> _$AuthLoginResponseVariant2ToJson(
+  AuthLoginResponseVariant2 instance,
 ) => <String, dynamic>{
   'mfa': instance.mfa,
   'ticket': instance.ticket,

@@ -4,7 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'mobile_device_item_response.dart';
+import 'mobile_devices_list_response_devices.dart';
 
 part 'mobile_devices_list_response.g.dart';
 
@@ -16,7 +16,7 @@ class MobileDevicesListResponse {
       _$MobileDevicesListResponseFromJson(json);
 
   /// Array of registered mobile push devices
-  final List<MobileDeviceItemResponse> devices;
+  final List<MobileDevicesListResponseDevices> devices;
 
   Map<String, Object?> toJson() => _$MobileDevicesListResponseToJson(this);
 }

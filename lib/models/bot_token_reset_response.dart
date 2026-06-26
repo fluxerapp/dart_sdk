@@ -4,7 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'application_bot_response.dart';
+import 'bot_token_reset_response_bot.dart';
 
 part 'bot_token_reset_response.g.dart';
 
@@ -17,7 +17,9 @@ class BotTokenResetResponse {
 
   /// The new bot token
   final String token;
-  final ApplicationBotResponse bot;
+
+  /// Detailed bot user metadata
+  final BotTokenResetResponseBot bot;
 
   Map<String, Object?> toJson() => _$BotTokenResetResponseToJson(this);
 }

@@ -113,5 +113,33 @@ void main() {
       await connection!.disconnect();
       expect(connection!.state, GatewayState.disconnected);
     });
+
+    test('suspend suppresses reconnect until unsuspend', () async {
+      if (skipIfNotConfigured()) return;
+
+      final token = await TestConfig.getToken();
+      final dio = await TestConfig.createDio();
+      connection = GatewayConnection(token: token, dio: dio);
+
+      final connectedFuture = connection!.stateChanges
+          .where((s) => s == GatewayState.connected)
+          .first
+          .timeout(const Duration(seconds: 30));
+
+      await connection!.connect();
+      await connectedFuture;
+
+      await connection!.suspend();
+      expect(connection!.state, GatewayState.disconnected);
+      expect(connection!.isReconnectSuspended, isTrue);
+
+      await connection!.unsuspendAndReconnect();
+      await connection!.stateChanges
+          .where((s) => s == GatewayState.connected)
+          .first
+          .timeout(const Duration(seconds: 30));
+      expect(connection!.isReconnectSuspended, isFalse);
+      expect(connection!.state, GatewayState.connected);
+    });
   });
 }

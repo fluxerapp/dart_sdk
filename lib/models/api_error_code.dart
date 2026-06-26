@@ -185,6 +185,14 @@ enum ApiErrorCode {
   reactionEmailVerificationRequired('REACTION_EMAIL_VERIFICATION_REQUIRED'),
   @JsonValue('REPORT_EMAIL_VERIFICATION_REQUIRED')
   reportEmailVerificationRequired('REPORT_EMAIL_VERIFICATION_REQUIRED'),
+  @JsonValue('REGISTRATION_CLOSED')
+  registrationClosed('REGISTRATION_CLOSED'),
+  @JsonValue('REGISTRATION_PENDING_APPROVAL')
+  registrationPendingApproval('REGISTRATION_PENDING_APPROVAL'),
+  @JsonValue('REGISTRATION_REJECTED')
+  registrationRejected('REGISTRATION_REJECTED'),
+  @JsonValue('REGISTRATION_URL_INVALID')
+  registrationUrlInvalid('REGISTRATION_URL_INVALID'),
   @JsonValue('EMPTY_ENCRYPTED_BODY')
   emptyEncryptedBody('EMPTY_ENCRYPTED_BODY'),
   @JsonValue('ENCRYPTION_FAILED')
@@ -401,8 +409,6 @@ enum ApiErrorCode {
   missingEphemeralKey('MISSING_EPHEMERAL_KEY'),
   @JsonValue('MISSING_IV')
   missingIv('MISSING_IV'),
-  @JsonValue('MISSING_OAUTH_ADMIN_SCOPE')
-  missingOauthAdminScope('MISSING_OAUTH_ADMIN_SCOPE'),
   @JsonValue('MISSING_OAUTH_FIELDS')
   missingOauthFields('MISSING_OAUTH_FIELDS'),
   @JsonValue('MISSING_OAUTH_SCOPE')
@@ -473,6 +479,14 @@ enum ApiErrorCode {
   serviceUnavailable('SERVICE_UNAVAILABLE'),
   @JsonValue('SESSION_TOKEN_MISMATCH')
   sessionTokenMismatch('SESSION_TOKEN_MISMATCH'),
+  @JsonValue('SINGLE_COMMUNITY_CANNOT_CREATE_GUILDS')
+  singleCommunityCannotCreateGuilds('SINGLE_COMMUNITY_CANNOT_CREATE_GUILDS'),
+  @JsonValue('SINGLE_COMMUNITY_CANNOT_DELETE')
+  singleCommunityCannotDelete('SINGLE_COMMUNITY_CANNOT_DELETE'),
+  @JsonValue('SINGLE_COMMUNITY_CANNOT_LEAVE')
+  singleCommunityCannotLeave('SINGLE_COMMUNITY_CANNOT_LEAVE'),
+  @JsonValue('INSTANCE_POLICY_TRANSITION_NOT_ALLOWED')
+  instancePolicyTransitionNotAllowed('INSTANCE_POLICY_TRANSITION_NOT_ALLOWED'),
   @JsonValue('SLOWMODE_RATE_LIMITED')
   slowmodeRateLimited('SLOWMODE_RATE_LIMITED'),
   @JsonValue('SMS_VERIFICATION_UNAVAILABLE')
@@ -517,6 +531,8 @@ enum ApiErrorCode {
   stripeWebhookSignatureInvalid('STRIPE_WEBHOOK_SIGNATURE_INVALID'),
   @JsonValue('STRIPE_WEBHOOK_SIGNATURE_MISSING')
   stripeWebhookSignatureMissing('STRIPE_WEBHOOK_SIGNATURE_MISSING'),
+  @JsonValue('DIRECT_MESSAGES_DISABLED')
+  directMessagesDisabled('DIRECT_MESSAGES_DISABLED'),
   @JsonValue('DONATION_AMOUNT_INVALID')
   donationAmountInvalid('DONATION_AMOUNT_INVALID'),
   @JsonValue('DONATION_MAGIC_LINK_EXPIRED')

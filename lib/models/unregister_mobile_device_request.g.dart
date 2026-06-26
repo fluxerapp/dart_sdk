@@ -24,7 +24,9 @@ UnregisterMobileDeviceRequest _$UnregisterMobileDeviceRequestFromJson(
         'provider_environment',
         (v) => v == null
             ? null
-            : MobilePushProviderEnvironmentSchema.fromJson(v as String),
+            : UnregisterMobileDeviceRequestProviderEnvironmentProviderEnvironment.fromJson(
+                v as String,
+              ),
       ),
     );
     return val;

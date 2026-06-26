@@ -17,6 +17,7 @@ import '../models/guild_create_request.dart';
 import '../models/guild_delete_request.dart';
 import '../models/guild_emoji_bulk_create_request.dart';
 import '../models/guild_emoji_bulk_create_response.dart';
+import '../models/guild_emoji_clone_request.dart';
 import '../models/guild_emoji_create_request.dart';
 import '../models/guild_emoji_response.dart';
 import '../models/guild_emoji_update_request.dart';
@@ -33,11 +34,11 @@ import '../models/guild_role_response.dart';
 import '../models/guild_role_update_request.dart';
 import '../models/guild_sticker_bulk_create_request.dart';
 import '../models/guild_sticker_bulk_create_response.dart';
+import '../models/guild_sticker_clone_request.dart';
 import '../models/guild_sticker_create_request.dart';
 import '../models/guild_sticker_response.dart';
 import '../models/guild_sticker_update_request.dart';
 import '../models/guild_sticker_with_user_list_response.dart';
-import '../models/guild_template_response.dart';
 import '../models/guild_transfer_ownership_request.dart';
 import '../models/guild_update_request.dart';
 import '../models/guild_vanity_url_response.dart';
@@ -62,19 +63,9 @@ abstract class GuildsApi {
   @POST('/guilds')
   Future<GuildResponse> createGuild({@Body() required GuildCreateRequest body});
 
-  /// Get guild template.
-  ///
-  /// Fetches a Discord guild template by its code. Acts as a proxy to avoid CORS issues.
-  ///
-  /// [code] - The code.
-  @GET('/guilds/templates/{code}')
-  Future<GuildTemplateResponse> getGuildTemplate({
-    @Path('code') required String code,
-  });
-
   /// Get guild information.
   ///
-  /// User must be a member of the guild to access this endpoint.
+  /// User must be a member of the guild to access this endpoint. Requires guilds OAuth scope if using bearer token.
   ///
   /// [guildId] - The ID of the guild.
   @GET('/guilds/{guild_id}')
@@ -234,6 +225,19 @@ abstract class GuildsApi {
     @Body() required GuildEmojiBulkCreateRequest body,
   });
 
+  /// Clone guild emoji.
+  ///
+  /// Clone an existing emoji into this guild by referencing its id. Copies the source image server-side, so the client does not need to re-upload it. Requires manage_emojis permission in the target guild, and the source guild must permit cloning.
+  ///
+  /// [guildId] - The ID of the guild.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/guilds/{guild_id}/emojis/clone')
+  Future<GuildEmojiResponse> cloneGuildEmoji({
+    @Path('guild_id') required SnowflakeType guildId,
+    @Body() required GuildEmojiCloneRequest body,
+  });
+
   /// Update guild emoji.
   ///
   /// Update guild emoji. Requires manage_emojis permission. Renames or updates properties of an existing emoji.
@@ -388,7 +392,7 @@ abstract class GuildsApi {
 
   /// List guild roles.
   ///
-  /// List guild roles. Returns all roles defined in the guild including their permissions and settings.
+  /// List guild roles. Requires guilds OAuth scope if using bearer token. Returns all roles defined in the guild including their permissions and settings.
   ///
   /// [guildId] - The ID of the guild.
   @GET('/guilds/{guild_id}/roles')
@@ -510,6 +514,19 @@ abstract class GuildsApi {
     @Body() required GuildStickerBulkCreateRequest body,
   });
 
+  /// Clone guild sticker.
+  ///
+  /// Clone an existing sticker into this guild by referencing its id. Copies the source image server-side, so the client does not need to re-upload it. Requires manage_emojis permission in the target guild, and the source guild must permit cloning.
+  ///
+  /// [guildId] - The ID of the guild.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/guilds/{guild_id}/stickers/clone')
+  Future<GuildStickerResponse> cloneGuildSticker({
+    @Path('guild_id') required SnowflakeType guildId,
+    @Body() required GuildStickerCloneRequest body,
+  });
+
   /// Update guild sticker.
   ///
   /// Update guild sticker. Requires manage_emojis permission. Updates sticker name, description, or tags.
@@ -597,8 +614,8 @@ abstract class GuildsApi {
   @DELETE('/users/@me/guilds/{guild_id}')
   Future<void> leaveGuild({
     @Path('guild_id') required SnowflakeType guildId,
+    @Body() required SudoVerificationSchema body,
     @Query('delete_messages') String? deleteMessages,
-    @Body() SudoVerificationSchema? body,
   });
 
   /// Bulk delete my messages in guild.

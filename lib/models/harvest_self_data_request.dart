@@ -4,8 +4,8 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'bulk_delete_self_messages_scope.dart';
 import 'harvest_self_data_request_guild_filter_mode_guild_filter_mode.dart';
+import 'harvest_self_data_request_scope_scope.dart';
 import 'snowflake_type.dart';
 
 part 'harvest_self_data_request.g.dart';
@@ -28,8 +28,9 @@ class HarvestSelfDataRequest {
   factory HarvestSelfDataRequest.fromJson(Map<String, Object?> json) =>
       _$HarvestSelfDataRequestFromJson(json);
 
+  /// Which set of contexts the deletion targets
   @JsonKey(includeIfNull: false)
-  final BulkDeleteSelfMessagesScope? scope;
+  final HarvestSelfDataRequestScopeScope? scope;
 
   /// Include 1:1 direct messages the caller still has open.
   @JsonKey(includeIfNull: false, name: 'include_dms')

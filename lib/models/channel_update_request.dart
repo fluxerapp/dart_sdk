@@ -5,15 +5,18 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'snowflake_type.dart';
-import 'channel_overwrite_request.dart';
+import 'guild_text_channel_update_request_permission_overwrites.dart';
 import 'content_warning_level.dart';
 import 'base64_image_type.dart';
 import 'channel_nickname_overrides.dart';
-import 'channel_update_text_request_type_type.dart';
-import 'channel_update_voice_request_type_type.dart';
-import 'channel_update_category_request_type_type.dart';
-import 'channel_update_link_request_type_type.dart';
-import 'channel_update_group_dm_request_type_type.dart';
+import 'guild_text_channel_update_request_type_type.dart';
+import 'guild_voice_channel_update_request_permission_overwrites.dart';
+import 'guild_voice_channel_update_request_type_type.dart';
+import 'guild_category_channel_update_request_permission_overwrites.dart';
+import 'guild_category_channel_update_request_type_type.dart';
+import 'guild_link_channel_update_request_permission_overwrites.dart';
+import 'guild_link_channel_update_request_type_type.dart';
+import 'group_dm_channel_update_request_type_type.dart';
 
 part 'channel_update_request.g.dart';
 
@@ -69,8 +72,11 @@ class ChannelUpdateRequest0 extends ChannelUpdateRequest {
   final int? bitrate;
   @JsonKey(name: 'user_limit')
   final int? userLimit;
+  @JsonKey(name: 'voice_connection_limit')
+  final int? voiceConnectionLimit;
   @JsonKey(name: 'permission_overwrites')
-  final List<ChannelOverwriteRequest>? permissionOverwrites;
+  final List<GuildTextChannelUpdateRequestPermissionOverwrites>?
+  permissionOverwrites;
   final bool? nsfw;
   @JsonKey(name: 'nsfw_override')
   final bool? nsfwOverride;
@@ -86,7 +92,7 @@ class ChannelUpdateRequest0 extends ChannelUpdateRequest {
   final ChannelNicknameOverrides? nicks;
   @JsonKey(name: 'rtc_region')
   final String? rtcRegion;
-  final ChannelUpdateTextRequestTypeType type;
+  final GuildTextChannelUpdateRequestTypeType type;
   final String? name;
 
   const ChannelUpdateRequest0({
@@ -95,6 +101,7 @@ class ChannelUpdateRequest0 extends ChannelUpdateRequest {
     required this.parentId,
     required this.bitrate,
     required this.userLimit,
+    required this.voiceConnectionLimit,
     required this.permissionOverwrites,
     required this.nsfw,
     required this.nsfwOverride,
@@ -125,8 +132,11 @@ class ChannelUpdateRequest2 extends ChannelUpdateRequest {
   final int? bitrate;
   @JsonKey(name: 'user_limit')
   final int? userLimit;
+  @JsonKey(name: 'voice_connection_limit')
+  final int? voiceConnectionLimit;
   @JsonKey(name: 'permission_overwrites')
-  final List<ChannelOverwriteRequest>? permissionOverwrites;
+  final List<GuildVoiceChannelUpdateRequestPermissionOverwrites>?
+  permissionOverwrites;
   final bool? nsfw;
   @JsonKey(name: 'nsfw_override')
   final bool? nsfwOverride;
@@ -142,7 +152,7 @@ class ChannelUpdateRequest2 extends ChannelUpdateRequest {
   final ChannelNicknameOverrides? nicks;
   @JsonKey(name: 'rtc_region')
   final String? rtcRegion;
-  final ChannelUpdateVoiceRequestTypeType type;
+  final GuildVoiceChannelUpdateRequestTypeType type;
   final String? name;
 
   const ChannelUpdateRequest2({
@@ -151,6 +161,7 @@ class ChannelUpdateRequest2 extends ChannelUpdateRequest {
     required this.parentId,
     required this.bitrate,
     required this.userLimit,
+    required this.voiceConnectionLimit,
     required this.permissionOverwrites,
     required this.nsfw,
     required this.nsfwOverride,
@@ -181,8 +192,11 @@ class ChannelUpdateRequest4 extends ChannelUpdateRequest {
   final int? bitrate;
   @JsonKey(name: 'user_limit')
   final int? userLimit;
+  @JsonKey(name: 'voice_connection_limit')
+  final int? voiceConnectionLimit;
   @JsonKey(name: 'permission_overwrites')
-  final List<ChannelOverwriteRequest>? permissionOverwrites;
+  final List<GuildCategoryChannelUpdateRequestPermissionOverwrites>?
+  permissionOverwrites;
   final bool? nsfw;
   @JsonKey(name: 'nsfw_override')
   final bool? nsfwOverride;
@@ -198,7 +212,7 @@ class ChannelUpdateRequest4 extends ChannelUpdateRequest {
   final ChannelNicknameOverrides? nicks;
   @JsonKey(name: 'rtc_region')
   final String? rtcRegion;
-  final ChannelUpdateCategoryRequestTypeType type;
+  final GuildCategoryChannelUpdateRequestTypeType type;
   final String? name;
 
   const ChannelUpdateRequest4({
@@ -207,6 +221,7 @@ class ChannelUpdateRequest4 extends ChannelUpdateRequest {
     required this.parentId,
     required this.bitrate,
     required this.userLimit,
+    required this.voiceConnectionLimit,
     required this.permissionOverwrites,
     required this.nsfw,
     required this.nsfwOverride,
@@ -237,8 +252,11 @@ class ChannelUpdateRequest998 extends ChannelUpdateRequest {
   final int? bitrate;
   @JsonKey(name: 'user_limit')
   final int? userLimit;
+  @JsonKey(name: 'voice_connection_limit')
+  final int? voiceConnectionLimit;
   @JsonKey(name: 'permission_overwrites')
-  final List<ChannelOverwriteRequest>? permissionOverwrites;
+  final List<GuildLinkChannelUpdateRequestPermissionOverwrites>?
+  permissionOverwrites;
   final bool? nsfw;
   @JsonKey(name: 'nsfw_override')
   final bool? nsfwOverride;
@@ -254,7 +272,7 @@ class ChannelUpdateRequest998 extends ChannelUpdateRequest {
   final ChannelNicknameOverrides? nicks;
   @JsonKey(name: 'rtc_region')
   final String? rtcRegion;
-  final ChannelUpdateLinkRequestTypeType type;
+  final GuildLinkChannelUpdateRequestTypeType type;
   final String? name;
 
   const ChannelUpdateRequest998({
@@ -263,6 +281,7 @@ class ChannelUpdateRequest998 extends ChannelUpdateRequest {
     required this.parentId,
     required this.bitrate,
     required this.userLimit,
+    required this.voiceConnectionLimit,
     required this.permissionOverwrites,
     required this.nsfw,
     required this.nsfwOverride,
@@ -286,7 +305,7 @@ class ChannelUpdateRequest998 extends ChannelUpdateRequest {
 
 @JsonSerializable()
 class ChannelUpdateRequest3 extends ChannelUpdateRequest {
-  final ChannelUpdateGroupDmRequestTypeType type;
+  final GroupDmChannelUpdateRequestTypeType type;
   final String? name;
   final Base64ImageType? icon;
   @JsonKey(name: 'owner_id')

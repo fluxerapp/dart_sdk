@@ -110,7 +110,9 @@ _$MessageSearchResultsResponseMessagesFromJson(
         'message_reference',
         (v) => v == null
             ? null
-            : MessageReferenceResponse.fromJson(v as Map<String, dynamic>),
+            : MessageSearchResultsResponseMessagesMessageReference.fromJson(
+                v as Map<String, dynamic>,
+              ),
       ),
       messageSnapshots: $checkedConvert(
         'message_snapshots',
@@ -126,7 +128,9 @@ _$MessageSearchResultsResponseMessagesFromJson(
         'call',
         (v) => v == null
             ? null
-            : MessageCallResponse.fromJson(v as Map<String, dynamic>),
+            : MessageSearchResultsResponseMessagesCall.fromJson(
+                v as Map<String, dynamic>,
+              ),
       ),
     );
     return val;

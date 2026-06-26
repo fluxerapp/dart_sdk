@@ -185,7 +185,7 @@ class GuildResponse {
   @JsonKey(includeIfNull: false, name: 'message_history_cutoff')
   final DateTime? messageHistoryCutoff;
 
-  /// The current user permissions in this guild
+  /// The current user permissions in this guild when available
   @JsonKey(includeIfNull: false)
   final String? permissions;
 

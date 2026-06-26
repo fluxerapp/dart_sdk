@@ -49,7 +49,7 @@ _$ScheduledMessageResponseSchemaPayloadFromJson(
         'allowed_mentions',
         (v) => v == null
             ? null
-            : ScheduledMessageAllowedMentionsSchema.fromJson(
+            : ScheduledMessageResponseSchemaPayloadAllowedMentions.fromJson(
                 v as Map<String, dynamic>,
               ),
       ),
@@ -57,7 +57,7 @@ _$ScheduledMessageResponseSchemaPayloadFromJson(
         'message_reference',
         (v) => v == null
             ? null
-            : ScheduledMessageReferenceSchema.fromJson(
+            : ScheduledMessageResponseSchemaPayloadMessageReference.fromJson(
                 v as Map<String, dynamic>,
               ),
       ),

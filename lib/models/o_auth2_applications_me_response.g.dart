@@ -49,7 +49,7 @@ _$OAuth2ApplicationsMeResponseApplicationsMeResponseFromJson(
         'bot',
         (v) => v == null
             ? null
-            : ApplicationBotResponse.fromJson(v as Map<String, dynamic>),
+            : ApplicationsMeResponseBot.fromJson(v as Map<String, dynamic>),
       ),
       redirectUris: $checkedConvert(
         'redirect_uris',

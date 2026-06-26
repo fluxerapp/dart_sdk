@@ -107,7 +107,9 @@ MessageResponseSchema _$MessageResponseSchemaFromJson(
         'message_reference',
         (v) => v == null
             ? null
-            : MessageReferenceResponse.fromJson(v as Map<String, dynamic>),
+            : MessageResponseSchemaMessageReference.fromJson(
+                v as Map<String, dynamic>,
+              ),
       ),
       messageSnapshots: $checkedConvert(
         'message_snapshots',
@@ -123,13 +125,15 @@ MessageResponseSchema _$MessageResponseSchemaFromJson(
         'call',
         (v) => v == null
             ? null
-            : MessageCallResponse.fromJson(v as Map<String, dynamic>),
+            : MessageResponseSchemaCall.fromJson(v as Map<String, dynamic>),
       ),
       referencedMessage: $checkedConvert(
         'referenced_message',
         (v) => v == null
             ? null
-            : MessageBaseResponseSchema.fromJson(v as Map<String, dynamic>),
+            : MessageResponseSchemaReferencedMessage.fromJson(
+                v as Map<String, dynamic>,
+              ),
       ),
     );
     return val;

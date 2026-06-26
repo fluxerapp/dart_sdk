@@ -14,7 +14,9 @@ HandoffInfoResponse _$HandoffInfoResponseFromJson(Map<String, dynamic> json) =>
           'client_info',
           (v) => v == null
               ? null
-              : HandoffInfoClientInfo.fromJson(v as Map<String, dynamic>),
+              : HandoffInfoResponseClientInfo.fromJson(
+                  v as Map<String, dynamic>,
+                ),
         ),
       );
       return val;

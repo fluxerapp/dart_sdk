@@ -284,7 +284,7 @@ class _WebhooksApi implements WebhooksApi {
     String? wait,
     String? content,
     List<RichEmbedRequest>? embeds,
-    List<WebhookAttachmentRequest>? attachments,
+    List<Object5>? attachments,
     MessageReferenceRequest? messageReference,
     AllowedMentionsRequest? allowedMentions,
     int? flags,

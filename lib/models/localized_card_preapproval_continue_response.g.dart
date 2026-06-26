@@ -17,7 +17,13 @@ _$LocalizedCardPreapprovalContinueResponsePendingFromJson(
   $checkedConvert,
 ) {
   final val = LocalizedCardPreapprovalContinueResponsePending(
-    status: $checkedConvert('status', (v) => v as String),
+    status: $checkedConvert(
+      'status',
+      (v) =>
+          PendingLocalizedCardPreapprovalContinueResponseStatusStatus.fromJson(
+            v as String,
+          ),
+    ),
   );
   return val;
 });
@@ -33,7 +39,12 @@ _$LocalizedCardPreapprovalContinueResponseReadyFromJson(
   $checkedConvert,
 ) {
   final val = LocalizedCardPreapprovalContinueResponseReady(
-    status: $checkedConvert('status', (v) => v as String),
+    status: $checkedConvert(
+      'status',
+      (v) => ReadyLocalizedCardPreapprovalContinueResponseStatusStatus.fromJson(
+        v as String,
+      ),
+    ),
     url: $checkedConvert('url', (v) => v as String),
   );
   return val;
@@ -51,12 +62,19 @@ _$LocalizedCardPreapprovalContinueResponseRejectedFromJson(
   json,
   ($checkedConvert) {
     final val = LocalizedCardPreapprovalContinueResponseRejected(
-      status: $checkedConvert('status', (v) => v as String),
+      status: $checkedConvert(
+        'status',
+        (v) =>
+            RejectedLocalizedCardPreapprovalContinueResponseStatusStatus.fromJson(
+              v as String,
+            ),
+      ),
       reason: $checkedConvert(
         'reason',
-        (v) => LocalizedCardPreapprovalContinueResponseRejectedReason.fromJson(
-          v as String,
-        ),
+        (v) =>
+            RejectedLocalizedCardPreapprovalContinueResponseReasonReason.fromJson(
+              v as String,
+            ),
       ),
       actualCountry: $checkedConvert('actual_country', (v) => v as String?),
     );
@@ -80,7 +98,13 @@ _$LocalizedCardPreapprovalContinueResponseExpiredFromJson(
   $checkedConvert,
 ) {
   final val = LocalizedCardPreapprovalContinueResponseExpired(
-    status: $checkedConvert('status', (v) => v as String),
+    status: $checkedConvert(
+      'status',
+      (v) =>
+          ExpiredLocalizedCardPreapprovalContinueResponseStatusStatus.fromJson(
+            v as String,
+          ),
+    ),
   );
   return val;
 });

@@ -5,13 +5,13 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'message_attachment_response.dart';
-import 'message_base_response_schema.dart';
-import 'message_call_response.dart';
 import 'message_channel_mention_response.dart';
 import 'message_embed_response.dart';
 import 'message_flags.dart';
 import 'message_reaction_response.dart';
-import 'message_reference_response.dart';
+import 'message_response_schema_call.dart';
+import 'message_response_schema_message_reference.dart';
+import 'message_response_schema_referenced_message.dart';
 import 'message_response_schema_type_type.dart';
 import 'message_snapshot_response.dart';
 import 'message_sticker_response.dart';
@@ -127,7 +127,7 @@ class MessageResponseSchema {
 
   /// Reference data for replies or forwards
   @JsonKey(includeIfNull: false, name: 'message_reference')
-  final MessageReferenceResponse? messageReference;
+  final MessageResponseSchemaMessageReference? messageReference;
 
   /// Snapshots of forwarded messages
   @JsonKey(includeIfNull: false, name: 'message_snapshots')
@@ -139,11 +139,11 @@ class MessageResponseSchema {
 
   /// Call information if this message represents a call
   @JsonKey(includeIfNull: false)
-  final MessageCallResponse? call;
+  final MessageResponseSchemaCall? call;
 
   /// The message that this message is replying to or forwarding
   @JsonKey(includeIfNull: false, name: 'referenced_message')
-  final MessageBaseResponseSchema? referencedMessage;
+  final MessageResponseSchemaReferencedMessage? referencedMessage;
 
   Map<String, Object?> toJson() => _$MessageResponseSchemaToJson(this);
 }

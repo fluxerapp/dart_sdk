@@ -4,7 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'channel_partial_recipient_response.dart';
+import 'channel_partial_response_recipients.dart';
 
 part 'channel_partial_response.g.dart';
 
@@ -32,7 +32,7 @@ class ChannelPartialResponse {
 
   /// The recipients of the DM channel
   @JsonKey(includeIfNull: false)
-  final List<ChannelPartialRecipientResponse>? recipients;
+  final List<ChannelPartialResponseRecipients>? recipients;
 
   Map<String, Object?> toJson() => _$ChannelPartialResponseToJson(this);
 }

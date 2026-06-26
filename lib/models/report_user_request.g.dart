@@ -15,7 +15,7 @@ ReportUserRequest _$ReportUserRequestFromJson(Map<String, dynamic> json) =>
           userId: $checkedConvert('user_id', (v) => v as String),
           category: $checkedConvert(
             'category',
-            (v) => UserReportCategoryEnum.fromJson(v as String),
+            (v) => ReportUserRequestCategoryCategory.fromJson(v as String),
           ),
           guildId: $checkedConvert('guild_id', (v) => v as String?),
         );

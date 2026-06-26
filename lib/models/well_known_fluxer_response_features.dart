@@ -13,6 +13,7 @@ class WellKnownFluxerResponseFeatures {
     required this.stripeEnabled,
     required this.selfHosted,
     required this.presignedAttachmentUploads,
+    required this.emailsEnabled,
   });
 
   factory WellKnownFluxerResponseFeatures.fromJson(Map<String, Object?> json) =>
@@ -33,6 +34,10 @@ class WellKnownFluxerResponseFeatures {
   /// Whether clients can request presigned attachment upload URLs
   @JsonKey(name: 'presigned_attachment_uploads')
   final bool presignedAttachmentUploads;
+
+  /// Whether the instance sends emails (verification, password reset, etc.)
+  @JsonKey(name: 'emails_enabled')
+  final bool emailsEnabled;
 
   Map<String, Object?> toJson() =>
       _$WellKnownFluxerResponseFeaturesToJson(this);

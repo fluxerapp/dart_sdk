@@ -15,12 +15,7 @@ PhoneSendVerificationResponseSms _$PhoneSendVerificationResponseSmsFromJson(
 ) =>
     $checkedCreate('PhoneSendVerificationResponseSms', json, ($checkedConvert) {
       final val = PhoneSendVerificationResponseSms(
-        channel: $checkedConvert(
-          'channel',
-          (v) => PhoneSendVerificationDeliveredResponseChannelChannel.fromJson(
-            v as String,
-          ),
-        ),
+        channel: $checkedConvert('channel', (v) => v as String),
       );
       return val;
     });
@@ -37,13 +32,7 @@ _$PhoneSendVerificationResponseInboundChallengeFromJson(
   json,
   ($checkedConvert) {
     final val = PhoneSendVerificationResponseInboundChallenge(
-      channel: $checkedConvert(
-        'channel',
-        (v) =>
-            PhoneSendVerificationInboundChallengeResponseChannelChannel.fromJson(
-              v as String,
-            ),
-      ),
+      channel: $checkedConvert('channel', (v) => v as String),
       challengeCode: $checkedConvert('challenge_code', (v) => v as String),
       ourNumber: $checkedConvert('our_number', (v) => v as String),
       expiresAt: $checkedConvert(
@@ -52,10 +41,9 @@ _$PhoneSendVerificationResponseInboundChallengeFromJson(
       ),
       reason: $checkedConvert(
         'reason',
-        (v) =>
-            PhoneSendVerificationInboundChallengeResponseReasonReason.fromJson(
-              v as String,
-            ),
+        (v) => PhoneSendVerificationResponseInboundChallengeReason.fromJson(
+          v as String,
+        ),
       ),
     );
     return val;

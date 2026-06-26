@@ -19,6 +19,7 @@ class AuthorizeConsentRequest {
     this.state,
     this.permissions,
     this.guildId,
+    this.channelId,
     this.codeChallenge,
     this.codeChallengeMethod,
   });
@@ -48,6 +49,8 @@ class AuthorizeConsentRequest {
   final String? permissions;
   @JsonKey(includeIfNull: false, name: 'guild_id')
   final SnowflakeType? guildId;
+  @JsonKey(includeIfNull: false, name: 'channel_id')
+  final SnowflakeType? channelId;
 
   /// The PKCE code challenge
   @JsonKey(includeIfNull: false, name: 'code_challenge')

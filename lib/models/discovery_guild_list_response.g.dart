@@ -14,7 +14,9 @@ DiscoveryGuildListResponse _$DiscoveryGuildListResponseFromJson(
       'guilds',
       (v) => (v as List<dynamic>)
           .map(
-            (e) => DiscoveryGuildResponse.fromJson(e as Map<String, dynamic>),
+            (e) => DiscoveryGuildListResponseGuilds.fromJson(
+              e as Map<String, dynamic>,
+            ),
           )
           .toList(),
     ),

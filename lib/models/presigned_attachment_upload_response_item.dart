@@ -5,9 +5,9 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'int32_type.dart';
-import 'presigned_attachment_upload_singlepart_upload_mode_upload_mode.dart';
-import 'presigned_attachment_upload_multipart_upload_mode_upload_mode.dart';
-import 'presigned_attachment_upload_part.dart';
+import 'singlepart_presigned_attachment_upload_response_item_upload_mode_upload_mode.dart';
+import 'multipart_presigned_attachment_upload_response_item_upload_mode_upload_mode.dart';
+import 'multipart_presigned_attachment_upload_response_item_parts.dart';
 
 part 'presigned_attachment_upload_response_item.g.dart';
 
@@ -65,7 +65,8 @@ class PresignedAttachmentUploadResponseItemSinglepart
   @JsonKey(name: 'content_type')
   final String contentType;
   @JsonKey(name: 'upload_mode')
-  final PresignedAttachmentUploadSinglepartUploadModeUploadMode uploadMode;
+  final SinglepartPresignedAttachmentUploadResponseItemUploadModeUploadMode
+  uploadMode;
   @JsonKey(name: 'upload_url')
   final String uploadUrl;
 
@@ -100,12 +101,13 @@ class PresignedAttachmentUploadResponseItemMultipart
   @JsonKey(name: 'content_type')
   final String contentType;
   @JsonKey(name: 'upload_mode')
-  final PresignedAttachmentUploadMultipartUploadModeUploadMode uploadMode;
+  final MultipartPresignedAttachmentUploadResponseItemUploadModeUploadMode
+  uploadMode;
   @JsonKey(name: 'upload_id')
   final String uploadId;
   @JsonKey(name: 'part_size')
   final Int32Type partSize;
-  final List<PresignedAttachmentUploadPart> parts;
+  final List<MultipartPresignedAttachmentUploadResponseItemParts> parts;
 
   const PresignedAttachmentUploadResponseItemMultipart({
     required this.id,

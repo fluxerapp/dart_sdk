@@ -44,13 +44,22 @@ GlobalSearchMessagesRequest _$GlobalSearchMessagesRequestFromJson(
       authorType: $checkedConvert(
         'author_type',
         (v) => (v as List<dynamic>?)
-            ?.map((e) => MessageAuthorType.fromJson(e as String))
+            ?.map(
+              (e) => GlobalSearchMessagesRequestAuthorTypeAuthorType.fromJson(
+                e as String,
+              ),
+            )
             .toList(),
       ),
       excludeAuthorType: $checkedConvert(
         'exclude_author_type',
         (v) => (v as List<dynamic>?)
-            ?.map((e) => MessageAuthorType.fromJson(e as String))
+            ?.map(
+              (e) =>
+                  GlobalSearchMessagesRequestExcludeAuthorTypeExcludeAuthorType.fromJson(
+                    e as String,
+                  ),
+            )
             .toList(),
       ),
       hitsPerPage: $checkedConvert(
@@ -74,25 +83,40 @@ GlobalSearchMessagesRequest _$GlobalSearchMessagesRequestFromJson(
       has: $checkedConvert(
         'has',
         (v) => (v as List<dynamic>?)
-            ?.map((e) => MessageContentType.fromJson(e as String))
+            ?.map(
+              (e) => GlobalSearchMessagesRequestHasHas.fromJson(e as String),
+            )
             .toList(),
       ),
       excludeHas: $checkedConvert(
         'exclude_has',
         (v) => (v as List<dynamic>?)
-            ?.map((e) => MessageContentType.fromJson(e as String))
+            ?.map(
+              (e) => GlobalSearchMessagesRequestExcludeHasExcludeHas.fromJson(
+                e as String,
+              ),
+            )
             .toList(),
       ),
       embedType: $checkedConvert(
         'embed_type',
         (v) => (v as List<dynamic>?)
-            ?.map((e) => MessageEmbedType.fromJson(e as String))
+            ?.map(
+              (e) => GlobalSearchMessagesRequestEmbedTypeEmbedType.fromJson(
+                e as String,
+              ),
+            )
             .toList(),
       ),
       excludeEmbedType: $checkedConvert(
         'exclude_embed_type',
         (v) => (v as List<dynamic>?)
-            ?.map((e) => MessageEmbedType.fromJson(e as String))
+            ?.map(
+              (e) =>
+                  GlobalSearchMessagesRequestExcludeEmbedTypeExcludeEmbedType.fromJson(
+                    e as String,
+                  ),
+            )
             .toList(),
       ),
       embedProvider: $checkedConvert(
@@ -129,16 +153,24 @@ GlobalSearchMessagesRequest _$GlobalSearchMessagesRequestFromJson(
       ),
       sortBy: $checkedConvert(
         'sort_by',
-        (v) => v == null ? null : MessageSortField.fromJson(v as String),
+        (v) => v == null
+            ? null
+            : GlobalSearchMessagesRequestSortBySortBy.fromJson(v as String),
       ),
       sortOrder: $checkedConvert(
         'sort_order',
-        (v) => v == null ? null : MessageSortOrder.fromJson(v as String),
+        (v) => v == null
+            ? null
+            : GlobalSearchMessagesRequestSortOrderSortOrder.fromJson(
+                v as String,
+              ),
       ),
       includeNsfw: $checkedConvert('include_nsfw', (v) => v as bool?),
       scope: $checkedConvert(
         'scope',
-        (v) => v == null ? null : MessageSearchScope.fromJson(v as String),
+        (v) => v == null
+            ? null
+            : GlobalSearchMessagesRequestScopeScope.fromJson(v as String),
       ),
       contextChannelId: $checkedConvert(
         'context_channel_id',

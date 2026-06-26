@@ -19,6 +19,7 @@ import '../models/bot_profile_update_request.dart';
 import '../models/bot_token_reset_response.dart';
 import '../models/enum0.dart';
 import '../models/o_auth2_applications_me_response.dart';
+import '../models/o_auth2_authorizations_bulk_revoke_request.dart';
 import '../models/o_auth2_authorizations_list_response.dart';
 import '../models/o_auth2_consent_response.dart';
 import '../models/o_auth2_introspect_response.dart';
@@ -51,6 +52,16 @@ abstract class OAuth2Api {
   /// Lists all third-party applications the user has authorized. Shows granted scopes and authorization metadata. Allows user to review and manage delegated access.
   @GET('/oauth2/@me/authorizations')
   Future<OAuth2AuthorizationsListResponse> listUserOauth2Authorizations();
+
+  /// Bulk revoke OAuth2 authorizations.
+  ///
+  /// Revokes user authorizations for multiple third-party applications. Immediately invalidates all tokens issued to those applications.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/oauth2/@me/authorizations/revoke')
+  Future<void> bulkDeleteUserOauth2Authorizations({
+    @Body() required OAuth2AuthorizationsBulkRevokeRequest body,
+  });
 
   /// Revoke OAuth2 authorization.
   ///

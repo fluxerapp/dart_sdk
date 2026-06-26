@@ -25,7 +25,9 @@ RegisterMobileDeviceRequest _$RegisterMobileDeviceRequestFromJson(
         'provider_environment',
         (v) => v == null
             ? null
-            : MobilePushProviderEnvironmentSchema.fromJson(v as String),
+            : RegisterMobileDeviceRequestProviderEnvironmentProviderEnvironment.fromJson(
+                v as String,
+              ),
       ),
       encryptionKey: $checkedConvert('encryption_key', (v) => v as String?),
       authSecret: $checkedConvert('auth_secret', (v) => v as String?),

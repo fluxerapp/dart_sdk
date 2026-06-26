@@ -4,9 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'phone_send_verification_delivered_response_channel_channel.dart';
-import 'phone_send_verification_inbound_challenge_response_channel_channel.dart';
-import 'phone_send_verification_inbound_challenge_response_reason_reason.dart';
+import 'phone_send_verification_response_inbound_challenge_reason.dart';
 
 part 'phone_send_verification_response.g.dart';
 
@@ -49,7 +47,7 @@ extension PhoneSendVerificationResponseUnionDeserializer
 
 @JsonSerializable()
 class PhoneSendVerificationResponseSms extends PhoneSendVerificationResponse {
-  final PhoneSendVerificationDeliveredResponseChannelChannel channel;
+  final String channel;
 
   const PhoneSendVerificationResponseSms({required this.channel});
 
@@ -65,14 +63,14 @@ class PhoneSendVerificationResponseSms extends PhoneSendVerificationResponse {
 @JsonSerializable()
 class PhoneSendVerificationResponseInboundChallenge
     extends PhoneSendVerificationResponse {
-  final PhoneSendVerificationInboundChallengeResponseChannelChannel channel;
+  final String channel;
   @JsonKey(name: 'challenge_code')
   final String challengeCode;
   @JsonKey(name: 'our_number')
   final String ourNumber;
   @JsonKey(name: 'expires_at')
   final DateTime expiresAt;
-  final PhoneSendVerificationInboundChallengeResponseReasonReason reason;
+  final PhoneSendVerificationResponseInboundChallengeReason reason;
 
   const PhoneSendVerificationResponseInboundChallenge({
     required this.channel,

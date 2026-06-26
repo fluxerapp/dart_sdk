@@ -4,8 +4,8 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'mobile_push_provider_environment_schema.dart';
 import 'unregister_mobile_device_request_platform_platform.dart';
+import 'unregister_mobile_device_request_provider_environment_provider_environment.dart';
 
 part 'unregister_mobile_device_request.g.dart';
 
@@ -30,8 +30,11 @@ class UnregisterMobileDeviceRequest {
   /// Client app channel or bundle mapping identifier, such as stable, beta, or canary
   @JsonKey(includeIfNull: false, name: 'app_id')
   final String? appId;
+
+  /// Push provider environment used for this registration
   @JsonKey(includeIfNull: false, name: 'provider_environment')
-  final MobilePushProviderEnvironmentSchema? providerEnvironment;
+  final UnregisterMobileDeviceRequestProviderEnvironmentProviderEnvironment?
+  providerEnvironment;
 
   Map<String, Object?> toJson() => _$UnregisterMobileDeviceRequestToJson(this);
 }

@@ -6,7 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'bulk_delete_self_messages_request_guild_filter_mode_guild_filter_mode.dart';
 import 'bulk_delete_self_messages_request_mfa_method_mfa_method.dart';
-import 'bulk_delete_self_messages_scope.dart';
+import 'bulk_delete_self_messages_request_scope_scope.dart';
 import 'password_type.dart';
 import 'snowflake_type.dart';
 
@@ -35,8 +35,9 @@ class BulkDeleteSelfMessagesRequest {
   factory BulkDeleteSelfMessagesRequest.fromJson(Map<String, Object?> json) =>
       _$BulkDeleteSelfMessagesRequestFromJson(json);
 
+  /// Which set of contexts the deletion targets
   @JsonKey(includeIfNull: false)
-  final BulkDeleteSelfMessagesScope? scope;
+  final BulkDeleteSelfMessagesRequestScopeScope? scope;
 
   /// Include 1:1 direct messages the caller still has open.
   @JsonKey(includeIfNull: false, name: 'include_dms')

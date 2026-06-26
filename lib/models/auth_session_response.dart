@@ -4,7 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'auth_session_client_info.dart';
+import 'auth_session_response_client_info.dart';
 
 part 'auth_session_response.g.dart';
 
@@ -12,6 +12,7 @@ part 'auth_session_response.g.dart';
 class AuthSessionResponse {
   const AuthSessionResponse({
     required this.idHash,
+    required this.maskedIp,
     required this.current,
     this.clientInfo,
     this.approxLastUsedAt,
@@ -26,7 +27,11 @@ class AuthSessionResponse {
 
   /// Client metadata recorded for this session
   @JsonKey(includeIfNull: false, name: 'client_info')
-  final AuthSessionClientInfo? clientInfo;
+  final AuthSessionResponseClientInfo? clientInfo;
+
+  /// Semi-redacted IP address recorded for this session
+  @JsonKey(includeIfNull: true, name: 'masked_ip')
+  final String? maskedIp;
 
   /// Approximate timestamp of the last session activity
   @JsonKey(includeIfNull: false, name: 'approx_last_used_at')

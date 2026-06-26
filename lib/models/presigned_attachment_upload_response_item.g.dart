@@ -25,9 +25,10 @@ _$PresignedAttachmentUploadResponseItemSinglepartFromJson(
       contentType: $checkedConvert('content_type', (v) => v as String),
       uploadMode: $checkedConvert(
         'upload_mode',
-        (v) => PresignedAttachmentUploadSinglepartUploadModeUploadMode.fromJson(
-          v as String,
-        ),
+        (v) =>
+            SinglepartPresignedAttachmentUploadResponseItemUploadModeUploadMode.fromJson(
+              v as String,
+            ),
       ),
       uploadUrl: $checkedConvert('upload_url', (v) => v as String),
     );
@@ -69,9 +70,10 @@ _$PresignedAttachmentUploadResponseItemMultipartFromJson(
       contentType: $checkedConvert('content_type', (v) => v as String),
       uploadMode: $checkedConvert(
         'upload_mode',
-        (v) => PresignedAttachmentUploadMultipartUploadModeUploadMode.fromJson(
-          v as String,
-        ),
+        (v) =>
+            MultipartPresignedAttachmentUploadResponseItemUploadModeUploadMode.fromJson(
+              v as String,
+            ),
       ),
       uploadId: $checkedConvert('upload_id', (v) => v as String),
       partSize: $checkedConvert('part_size', (v) => (v as num).toInt()),
@@ -79,9 +81,10 @@ _$PresignedAttachmentUploadResponseItemMultipartFromJson(
         'parts',
         (v) => (v as List<dynamic>)
             .map(
-              (e) => PresignedAttachmentUploadPart.fromJson(
-                e as Map<String, dynamic>,
-              ),
+              (e) =>
+                  MultipartPresignedAttachmentUploadResponseItemParts.fromJson(
+                    e as Map<String, dynamic>,
+                  ),
             )
             .toList(),
       ),

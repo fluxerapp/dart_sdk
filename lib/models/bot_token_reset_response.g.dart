@@ -13,7 +13,7 @@ BotTokenResetResponse _$BotTokenResetResponseFromJson(
     token: $checkedConvert('token', (v) => v as String),
     bot: $checkedConvert(
       'bot',
-      (v) => ApplicationBotResponse.fromJson(v as Map<String, dynamic>),
+      (v) => BotTokenResetResponseBot.fromJson(v as Map<String, dynamic>),
     ),
   );
   return val;

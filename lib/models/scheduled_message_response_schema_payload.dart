@@ -8,8 +8,8 @@ import 'message_embed_response.dart';
 import 'message_attachment_response.dart';
 import 'message_sticker_response.dart';
 import 'snowflake_type.dart';
-import 'scheduled_message_allowed_mentions_schema.dart';
-import 'scheduled_message_reference_schema.dart';
+import 'scheduled_message_response_schema_payload_allowed_mentions.dart';
+import 'scheduled_message_response_schema_payload_message_reference.dart';
 import 'message_flags.dart';
 import 'message_nonce_request.dart';
 
@@ -58,10 +58,14 @@ class ScheduledMessageResponseSchemaPayload {
   /// Array of sticker IDs to include in the message
   @JsonKey(includeIfNull: false, name: 'sticker_ids')
   final List<SnowflakeType>? stickerIds;
+
+  /// Controls which mentions trigger notifications
   @JsonKey(includeIfNull: false, name: 'allowed_mentions')
-  final ScheduledMessageAllowedMentionsSchema? allowedMentions;
+  final ScheduledMessageResponseSchemaPayloadAllowedMentions? allowedMentions;
+
+  /// Reference to another message (for replies or forwards)
   @JsonKey(includeIfNull: false, name: 'message_reference')
-  final ScheduledMessageReferenceSchema? messageReference;
+  final ScheduledMessageResponseSchemaPayloadMessageReference? messageReference;
   @JsonKey(includeIfNull: false)
   final MessageFlags? flags;
   @JsonKey(includeIfNull: false)

@@ -19,12 +19,26 @@ ChangeSubscriptionRequest _$ChangeSubscriptionRequestFromJson(
           v as String,
         ),
       ),
+      effectiveAt: $checkedConvert(
+        'effective_at',
+        (v) => v == null
+            ? null
+            : ChangeSubscriptionRequestEffectiveAtEffectiveAt.fromJson(
+                v as String,
+              ),
+      ),
     );
     return val;
   },
-  fieldKeyMap: const {'billingCycle': 'billing_cycle'},
+  fieldKeyMap: const {
+    'billingCycle': 'billing_cycle',
+    'effectiveAt': 'effective_at',
+  },
 );
 
 Map<String, dynamic> _$ChangeSubscriptionRequestToJson(
   ChangeSubscriptionRequest instance,
-) => <String, dynamic>{'billing_cycle': instance.billingCycle};
+) => <String, dynamic>{
+  'billing_cycle': instance.billingCycle,
+  'effective_at': ?instance.effectiveAt,
+};

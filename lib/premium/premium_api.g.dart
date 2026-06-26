@@ -20,6 +20,25 @@ class _PremiumApi implements PremiumApi {
   final ParseErrorLogger? errorLogger;
 
   @override
+  Future<void> cancelPendingSubscriptionChange() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<void>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/premium/cancel-pending-subscription-change',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    await _dio.fetch<void>(_options);
+  }
+
+  @override
   Future<void> cancelSubscription() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -139,25 +158,6 @@ class _PremiumApi implements PremiumApi {
       rethrow;
     }
     return _value;
-  }
-
-  @override
-  Future<void> rejoinOperatorGuild() async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<void>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/premium/operator/rejoin',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    await _dio.fetch<void>(_options);
   }
 
   @override

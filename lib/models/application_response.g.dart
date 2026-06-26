@@ -28,7 +28,7 @@ ApplicationResponse _$ApplicationResponseFromJson(Map<String, dynamic> json) =>
             'bot',
             (v) => v == null
                 ? null
-                : ApplicationBotResponse.fromJson(v as Map<String, dynamic>),
+                : ApplicationResponseBot.fromJson(v as Map<String, dynamic>),
           ),
         );
         return val;

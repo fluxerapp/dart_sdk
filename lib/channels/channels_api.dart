@@ -26,10 +26,10 @@ import '../models/message_flags.dart';
 import '../models/message_nonce_request.dart';
 import '../models/message_reference_request.dart';
 import '../models/message_response_schema.dart';
-import '../models/message_snapshot_edit_request.dart';
 import '../models/object0.dart';
 import '../models/object1.dart';
 import '../models/object2.dart';
+import '../models/object3.dart';
 import '../models/permission_overwrite_create_request.dart';
 import '../models/presigned_attachment_upload_request.dart';
 import '../models/presigned_attachment_upload_response.dart';
@@ -41,8 +41,17 @@ import '../models/rtc_region_response.dart';
 import '../models/scheduled_message_response_schema.dart';
 import '../models/snowflake_type.dart';
 import '../models/stream_preview_upload_body_schema.dart';
+import '../models/stream_preview_upload_url_body_schema.dart';
+import '../models/stream_preview_upload_url_response_schema.dart';
 import '../models/stream_update_body_schema.dart';
 import '../models/sudo_verification_schema.dart';
+import '../models/voice_debug_logging_events_body_schema.dart';
+import '../models/voice_debug_logging_events_response.dart';
+import '../models/voice_debug_logging_status_response.dart';
+import '../models/voice_debug_logging_toggle_body_schema.dart';
+import '../models/voice_presence_heartbeat_body_schema.dart';
+import '../models/voice_presence_heartbeat_end_response.dart';
+import '../models/voice_presence_heartbeat_response.dart';
 
 part 'channels_api.g.dart';
 
@@ -93,9 +102,9 @@ abstract class ChannelsApi {
   @DELETE('/channels/{channel_id}')
   Future<void> deleteChannel({
     @Path('channel_id') required SnowflakeType channelId,
+    @Body() required SudoVerificationSchema body,
     @Query('silent') String? silent,
     @Query('delete_messages') String? deleteMessages,
-    @Body() SudoVerificationSchema? body,
   });
 
   /// Request presigned attachment upload URLs.
@@ -408,8 +417,7 @@ abstract class ChannelsApi {
     @Part(name: 'allowed_mentions') AllowedMentionsRequest? allowedMentions,
     @Part(name: 'flags') MessageFlags? flags,
     @Part(name: 'attachments') List<Object2>? attachments,
-    @Part(name: 'message_snapshots')
-    List<MessageSnapshotEditRequest>? messageSnapshots,
+    @Part(name: 'message_snapshots') List<Object3>? messageSnapshots,
   });
 
   /// Delete a message.
@@ -671,9 +679,9 @@ abstract class ChannelsApi {
   Future<void> removeGroupDmRecipient({
     @Path('channel_id') required SnowflakeType channelId,
     @Path('user_id') required SnowflakeType userId,
+    @Body() required SudoVerificationSchema body,
     @Query('silent') String? silent,
     @Query('delete_messages') String? deleteMessages,
-    @Body() SudoVerificationSchema? body,
   });
 
   /// List RTC regions.
@@ -704,6 +712,68 @@ abstract class ChannelsApi {
   @POST('/channels/{channel_id}/typing')
   Future<void> indicateTyping({
     @Path('channel_id') required SnowflakeType channelId,
+  });
+
+  /// Upload voice debug logging events.
+  ///
+  /// Uploads a small batch of client voice diagnostics events for an active staff-enabled debug logging session.
+  ///
+  /// [channelId] - The ID of the channel.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/channels/{channel_id}/voice-debug-logging/events')
+  Future<VoiceDebugLoggingEventsResponse> uploadVoiceDebugLoggingEvents({
+    @Path('channel_id') required SnowflakeType channelId,
+    @Body() required VoiceDebugLoggingEventsBodySchema body,
+  });
+
+  /// Get voice debug logging status.
+  ///
+  /// Returns whether staff-enabled voice debug logging is active for this channel. Clients poll this while connected to decide whether to upload diagnostics.
+  ///
+  /// [channelId] - The ID of the channel.
+  @GET('/channels/{channel_id}/voice-debug-logging/session')
+  Future<VoiceDebugLoggingStatusResponse> getVoiceDebugLoggingStatus({
+    @Path('channel_id') required SnowflakeType channelId,
+  });
+
+  /// Toggle voice debug logging.
+  ///
+  /// Allows staff to start or stop a channel-scoped voice debug logging session. Non-staff users cannot activate or stop sessions.
+  ///
+  /// [channelId] - The ID of the channel.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @PUT('/channels/{channel_id}/voice-debug-logging/session')
+  Future<VoiceDebugLoggingStatusResponse> setVoiceDebugLoggingStatus({
+    @Path('channel_id') required SnowflakeType channelId,
+    @Body() required VoiceDebugLoggingToggleBodySchema body,
+  });
+
+  /// Heartbeat voice presence.
+  ///
+  /// Refreshes the current user voice presence marker for v2 voice reconciliation. Clients call this while connected to voice.
+  ///
+  /// [channelId] - The ID of the channel.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/channels/{channel_id}/voice-presence/heartbeat')
+  Future<VoicePresenceHeartbeatResponse> heartbeatVoicePresence({
+    @Path('channel_id') required SnowflakeType channelId,
+    @Body() required VoicePresenceHeartbeatBodySchema body,
+  });
+
+  /// End voice presence heartbeat.
+  ///
+  /// Clears the current user active v2 voice presence marker for a voice connection while preserving v2 enrollment for fast reconciliation.
+  ///
+  /// [channelId] - The ID of the channel.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @DELETE('/channels/{channel_id}/voice-presence/heartbeat')
+  Future<VoicePresenceHeartbeatEndResponse> endVoicePresenceHeartbeat({
+    @Path('channel_id') required SnowflakeType channelId,
+    @Body() required VoicePresenceHeartbeatBodySchema body,
   });
 
   /// Get stream preview image.
@@ -737,6 +807,19 @@ abstract class ChannelsApi {
   @DELETE('/streams/{stream_key}/preview')
   Future<void> deleteStreamPreview({
     @Path('stream_key') required String streamKey,
+  });
+
+  /// Create stream preview upload URL.
+  ///
+  /// Creates a reusable PUT upload URL for updating the current thumbnail image for the stream.
+  ///
+  /// [streamKey] - The stream key.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/streams/{stream_key}/preview/upload-url')
+  Future<StreamPreviewUploadUrlResponseSchema> createStreamPreviewUploadUrl({
+    @Path('stream_key') required String streamKey,
+    @Body() required StreamPreviewUploadUrlBodySchema body,
   });
 
   /// Update stream region.

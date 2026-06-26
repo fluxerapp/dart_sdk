@@ -41,6 +41,23 @@ WellKnownFluxerResponse _$WellKnownFluxerResponseFromJson(
         'sso',
         (v) => WellKnownFluxerResponseSso.fromJson(v as Map<String, dynamic>),
       ),
+      registration: $checkedConvert(
+        'registration',
+        (v) => WellKnownFluxerResponseRegistration.fromJson(
+          v as Map<String, dynamic>,
+        ),
+      ),
+      community: $checkedConvert(
+        'community',
+        (v) => WellKnownFluxerResponseCommunity.fromJson(
+          v as Map<String, dynamic>,
+        ),
+      ),
+      services: $checkedConvert(
+        'services',
+        (v) =>
+            WellKnownFluxerResponseServices.fromJson(v as Map<String, dynamic>),
+      ),
       limits: $checkedConvert(
         'limits',
         (v) =>
@@ -50,14 +67,11 @@ WellKnownFluxerResponse _$WellKnownFluxerResponseFromJson(
         'push',
         (v) => WellKnownFluxerResponsePush.fromJson(v as Map<String, dynamic>),
       ),
-      appPublic: $checkedConvert('app_public', (v) => v),
-      gateway: $checkedConvert(
-        'gateway',
-        (v) => v == null
-            ? null
-            : WellKnownFluxerResponseGateway.fromJson(
-                v as Map<String, dynamic>,
-              ),
+      appPublic: $checkedConvert(
+        'app_public',
+        (v) => WellKnownFluxerResponseAppPublic.fromJson(
+          v as Map<String, dynamic>,
+        ),
       ),
     );
     return val;
@@ -77,8 +91,10 @@ Map<String, dynamic> _$WellKnownFluxerResponseToJson(
   'features': instance.features,
   'gif': instance.gif,
   'sso': instance.sso,
+  'registration': instance.registration,
+  'community': instance.community,
+  'services': instance.services,
   'limits': instance.limits,
   'push': instance.push,
   'app_public': instance.appPublic,
-  'gateway': ?instance.gateway,
 };

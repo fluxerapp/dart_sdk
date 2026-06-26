@@ -4,7 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'application_bot_response.dart';
+import 'applications_me_response_bot.dart';
 import 'applications_me_response_owner.dart';
 
 part 'applications_me_response.g.dart';
@@ -49,14 +49,16 @@ class ApplicationsMeResponse {
   @JsonKey(name: 'bot_require_code_grant')
   final bool botRequireCodeGrant;
 
-  /// Compatibility placeholder for Discord AppInfo clients until keys are persisted
+  /// Compatibility placeholder for AppInfo clients until keys are persisted
   @JsonKey(name: 'verify_key')
   final String verifyKey;
 
   /// The owner of the application
   final ApplicationsMeResponseOwner owner;
+
+  /// The bot user associated with the application
   @JsonKey(includeIfNull: false)
-  final ApplicationBotResponse? bot;
+  final ApplicationsMeResponseBot? bot;
 
   /// The registered redirect URIs for OAuth2
   @JsonKey(includeIfNull: false, name: 'redirect_uris')

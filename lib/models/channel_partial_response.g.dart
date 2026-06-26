@@ -17,7 +17,7 @@ ChannelPartialResponse _$ChannelPartialResponseFromJson(
       'recipients',
       (v) => (v as List<dynamic>?)
           ?.map(
-            (e) => ChannelPartialRecipientResponse.fromJson(
+            (e) => ChannelPartialResponseRecipients.fromJson(
               e as Map<String, dynamic>,
             ),
           )

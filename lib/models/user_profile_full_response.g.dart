@@ -23,6 +23,10 @@ UserProfileFullResponse _$UserProfileFullResponseFromJson(
           v as Map<String, dynamic>,
         ),
       ),
+      timezoneOffset: $checkedConvert(
+        'timezone_offset',
+        (v) => (v as num?)?.toInt(),
+      ),
       guildMember: $checkedConvert(
         'guild_member',
         (v) => v == null
@@ -58,7 +62,9 @@ UserProfileFullResponse _$UserProfileFullResponseFromJson(
         'mutual_guilds',
         (v) => (v as List<dynamic>?)
             ?.map(
-              (e) => MutualGuildResponse.fromJson(e as Map<String, dynamic>),
+              (e) => UserProfileFullResponseMutualGuilds.fromJson(
+                e as Map<String, dynamic>,
+              ),
             )
             .toList(),
       ),
@@ -74,6 +80,7 @@ UserProfileFullResponse _$UserProfileFullResponseFromJson(
   },
   fieldKeyMap: const {
     'userProfile': 'user_profile',
+    'timezoneOffset': 'timezone_offset',
     'guildMember': 'guild_member',
     'guildMemberProfile': 'guild_member_profile',
     'premiumType': 'premium_type',
@@ -99,5 +106,6 @@ Map<String, dynamic> _$UserProfileFullResponseToJson(
   'mutual_friends': ?instance.mutualFriends,
   'mutual_guilds': ?instance.mutualGuilds,
   'connected_accounts': ?instance.connectedAccounts,
+  'timezone_offset': instance.timezoneOffset,
   'profile_limited': ?instance.profileLimited,
 };

@@ -14,7 +14,7 @@ PushSubscriptionsListResponse _$PushSubscriptionsListResponseFromJson(
       'subscriptions',
       (v) => (v as List<dynamic>)
           .map(
-            (e) => PushSubscriptionItemResponse.fromJson(
+            (e) => PushSubscriptionsListResponseSubscriptions.fromJson(
               e as Map<String, dynamic>,
             ),
           )

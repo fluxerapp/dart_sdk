@@ -1,11 +1,5 @@
 /// Connection state of the gateway WebSocket.
-enum GatewayState {
-  disconnected,
-  connecting,
-  connected,
-  reconnecting,
-  failed,
-}
+enum GatewayState { disconnected, connecting, connected, reconnecting, failed }
 
 /// Properties sent in the IDENTIFY payload.
 class GatewayIdentifyProperties {

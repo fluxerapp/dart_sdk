@@ -5,7 +5,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'well_known_fluxer_response_limits_version_version.dart';
-import 'limit_rule_response.dart';
+import 'well_known_fluxer_response_limits_rules.dart';
 
 part 'well_known_fluxer_response_limits.g.dart';
 
@@ -28,7 +28,7 @@ class WellKnownFluxerResponseLimits {
   final List<String> traitDefinitions;
 
   /// Array of limit rules to evaluate
-  final List<LimitRuleResponse> rules;
+  final List<WellKnownFluxerResponseLimitsRules> rules;
 
   /// Hash of the default limit values for cache invalidation
   final String defaultsHash;

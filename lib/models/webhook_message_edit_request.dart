@@ -23,7 +23,7 @@ class WebhookMessageEditRequest {
   factory WebhookMessageEditRequest.fromJson(Map<String, Object?> json) =>
       _$WebhookMessageEditRequestFromJson(json);
 
-  /// The new message content (up to 2000 characters)
+  /// The new message content (up to 4000 characters)
   @JsonKey(includeIfNull: false)
   final MessageContentRequest? content;
 

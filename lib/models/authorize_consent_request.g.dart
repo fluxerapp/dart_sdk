@@ -20,6 +20,7 @@ AuthorizeConsentRequest _$AuthorizeConsentRequestFromJson(
       state: $checkedConvert('state', (v) => v as String?),
       permissions: $checkedConvert('permissions', (v) => v as String?),
       guildId: $checkedConvert('guild_id', (v) => v as String?),
+      channelId: $checkedConvert('channel_id', (v) => v as String?),
       codeChallenge: $checkedConvert('code_challenge', (v) => v as String?),
       codeChallengeMethod: $checkedConvert(
         'code_challenge_method',
@@ -37,6 +38,7 @@ AuthorizeConsentRequest _$AuthorizeConsentRequestFromJson(
     'responseType': 'response_type',
     'redirectUri': 'redirect_uri',
     'guildId': 'guild_id',
+    'channelId': 'channel_id',
     'codeChallenge': 'code_challenge',
     'codeChallengeMethod': 'code_challenge_method',
   },
@@ -52,6 +54,7 @@ Map<String, dynamic> _$AuthorizeConsentRequestToJson(
   'state': ?instance.state,
   'permissions': ?instance.permissions,
   'guild_id': ?instance.guildId,
+  'channel_id': ?instance.channelId,
   'code_challenge': ?instance.codeChallenge,
   'code_challenge_method': ?instance.codeChallengeMethod,
 };

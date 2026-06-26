@@ -20,6 +20,7 @@ WellKnownFluxerResponseFeatures _$WellKnownFluxerResponseFeaturesFromJson(
         'presigned_attachment_uploads',
         (v) => v as bool,
       ),
+      emailsEnabled: $checkedConvert('emails_enabled', (v) => v as bool),
     );
     return val;
   },
@@ -28,6 +29,7 @@ WellKnownFluxerResponseFeatures _$WellKnownFluxerResponseFeaturesFromJson(
     'stripeEnabled': 'stripe_enabled',
     'selfHosted': 'self_hosted',
     'presignedAttachmentUploads': 'presigned_attachment_uploads',
+    'emailsEnabled': 'emails_enabled',
   },
 );
 
@@ -38,4 +40,5 @@ Map<String, dynamic> _$WellKnownFluxerResponseFeaturesToJson(
   'stripe_enabled': instance.stripeEnabled,
   'self_hosted': instance.selfHosted,
   'presigned_attachment_uploads': instance.presignedAttachmentUploads,
+  'emails_enabled': instance.emailsEnabled,
 };

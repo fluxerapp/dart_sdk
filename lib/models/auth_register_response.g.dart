@@ -35,17 +35,16 @@ Map<String, dynamic> _$AuthRegisterResponseAuthTokenWithUserIdResponseToJson(
   'user': instance.user,
 };
 
-AuthRegisterResponseAuthMfaRequiredResponse
-_$AuthRegisterResponseAuthMfaRequiredResponseFromJson(
+AuthRegisterResponseVariant2 _$AuthRegisterResponseVariant2FromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate(
-  'AuthRegisterResponseAuthMfaRequiredResponse',
+  'AuthRegisterResponseVariant2',
   json,
   ($checkedConvert) {
-    final val = AuthRegisterResponseAuthMfaRequiredResponse(
+    final val = AuthRegisterResponseVariant2(
       mfa: $checkedConvert(
         'mfa',
-        (v) => AuthMfaRequiredResponseMfaMfa.fromJson(v as bool),
+        (v) => AuthRegisterResponseVariant2MfaMfa.fromJson(v as bool),
       ),
       ticket: $checkedConvert('ticket', (v) => v as String),
       allowedMethods: $checkedConvert(
@@ -60,12 +59,45 @@ _$AuthRegisterResponseAuthMfaRequiredResponseFromJson(
   fieldKeyMap: const {'allowedMethods': 'allowed_methods'},
 );
 
-Map<String, dynamic> _$AuthRegisterResponseAuthMfaRequiredResponseToJson(
-  AuthRegisterResponseAuthMfaRequiredResponse instance,
+Map<String, dynamic> _$AuthRegisterResponseVariant2ToJson(
+  AuthRegisterResponseVariant2 instance,
 ) => <String, dynamic>{
   'mfa': instance.mfa,
   'ticket': instance.ticket,
   'allowed_methods': instance.allowedMethods,
   'totp': instance.totp,
   'webauthn': instance.webauthn,
+};
+
+AuthRegisterResponseAuthRegistrationPendingApprovalResponse
+_$AuthRegisterResponseAuthRegistrationPendingApprovalResponseFromJson(
+  Map<String, dynamic> json,
+) => $checkedCreate(
+  'AuthRegisterResponseAuthRegistrationPendingApprovalResponse',
+  json,
+  ($checkedConvert) {
+    final val = AuthRegisterResponseAuthRegistrationPendingApprovalResponse(
+      registrationPendingApproval: $checkedConvert(
+        'registration_pending_approval',
+        (v) =>
+            AuthRegistrationPendingApprovalResponseRegistrationPendingApprovalRegistrationPendingApproval.fromJson(
+              v as bool,
+            ),
+      ),
+      userId: $checkedConvert('user_id', (v) => v as String),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'registrationPendingApproval': 'registration_pending_approval',
+    'userId': 'user_id',
+  },
+);
+
+Map<String, dynamic>
+_$AuthRegisterResponseAuthRegistrationPendingApprovalResponseToJson(
+  AuthRegisterResponseAuthRegistrationPendingApprovalResponse instance,
+) => <String, dynamic>{
+  'registration_pending_approval': instance.registrationPendingApproval,
+  'user_id': instance.userId,
 };

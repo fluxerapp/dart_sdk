@@ -17,7 +17,7 @@ _$HarvestStatusResponseSchemaNullableHarvestStatusResponseSchemaFromJson(
       harvestId: $checkedConvert('harvest_id', (v) => v as String),
       status: $checkedConvert(
         'status',
-        (v) => HarvestStatusEnum.fromJson(v as String),
+        (v) => HarvestStatusResponseSchemaStatusStatus.fromJson(v as String),
       ),
       createdAt: $checkedConvert('created_at', (v) => v as String),
       startedAt: $checkedConvert('started_at', (v) => v as String?),

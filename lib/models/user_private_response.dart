@@ -6,6 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'int32_type.dart';
 import 'mention_reply_preferences.dart';
+import 'profile_field_privacy_flags.dart';
 import 'public_user_flags.dart';
 import 'user_authenticator_types.dart';
 import 'user_premium_types.dart';
@@ -16,33 +17,35 @@ part 'user_private_response.g.dart';
 @JsonSerializable()
 class UserPrivateResponse {
   const UserPrivateResponse({
-    required this.premiumSince,
+    required this.premiumType,
     required this.username,
     required this.discriminator,
     required this.globalName,
     required this.avatar,
     required this.avatarColor,
-    required this.privacyAgreedAt,
     required this.termsAgreedAt,
+    required this.pendingBulkMessageDeletion,
     required this.flags,
-    required this.bio,
+    required this.pronouns,
     required this.isStaff,
     required this.acls,
     required this.traits,
     required this.email,
-    required this.pendingBulkMessageDeletion,
     required this.unreadGiftInventoryCount,
+    required this.hasUnreadGiftInventory,
     required this.hasVerifiedPhone,
+    required this.bio,
     required this.id,
-    required this.pronouns,
     required this.accentColor,
+    required this.hasEverPurchased,
+    required this.hasDismissedPremiumOnboarding,
     required this.banner,
     required this.bannerColor,
     required this.mfaEnabled,
-    required this.hasUnreadGiftInventory,
+    required this.nsfwAllowed,
     required this.verified,
-    required this.premiumType,
-    required this.premiumBadgeTimestampHidden,
+    required this.premiumBadgeMasked,
+    required this.premiumSince,
     required this.premiumUntil,
     required this.premiumWillCancel,
     required this.premiumBillingCycle,
@@ -50,26 +53,25 @@ class UserPrivateResponse {
     required this.premiumGraceEndsAt,
     required this.premiumDiscriminator,
     required this.premiumBadgeHidden,
-    required this.premiumBadgeMasked,
-    required this.hasEverPurchased,
+    required this.privacyAgreedAt,
+    required this.premiumBadgeTimestampHidden,
     required this.premiumBadgeSequenceHidden,
     required this.premiumPurchaseDisabled,
     required this.premiumEnabledOverride,
     required this.premiumPerksDisabled,
-    required this.hasDismissedPremiumOnboarding,
-    required this.passwordLastChangedAt,
     required this.lastVoiceActivitySharingChangeAt,
-    required this.nsfwAllowed,
+    required this.passwordLastChangedAt,
     required this.requiredActions,
-    this.forceInboundPhoneVerification,
-    this.premiumOutOfBandTrialEndsAt,
+    this.mentionFlags,
     this.authenticatorTypes,
+    this.timezonePrivacyFlags,
+    this.timezone,
     this.phone,
     this.emailBounced,
-    this.ageVerifiedAdult,
     this.system,
+    this.ageVerifiedAdult,
     this.bot,
-    this.mentionFlags,
+    this.forceInboundPhoneVerification,
   });
 
   factory UserPrivateResponse.fromJson(Map<String, Object?> json) =>
@@ -147,6 +149,12 @@ class UserPrivateResponse {
   @JsonKey(includeIfNull: true, name: 'accent_color')
   final Int32Type? accentColor;
 
+  /// The IANA timezone identifier saved by the user. Omitted unless the user has staff access.
+  @JsonKey(includeIfNull: false)
+  final String? timezone;
+  @JsonKey(includeIfNull: false, name: 'timezone_privacy_flags')
+  final ProfileFieldPrivacyFlags? timezonePrivacyFlags;
+
   /// The hash of the user profile banner image
   @JsonKey(includeIfNull: true)
   final String? banner;
@@ -174,7 +182,7 @@ class UserPrivateResponse {
   @JsonKey(includeIfNull: true, name: 'premium_since')
   final String? premiumSince;
 
-  /// ISO8601 timestamp of when the current premium period ends
+  /// ISO8601 timestamp of when premium access ends, including stacked gift time
   @JsonKey(includeIfNull: true, name: 'premium_until')
   final String? premiumUntil;
 
@@ -278,10 +286,6 @@ class UserPrivateResponse {
   /// ISO8601 timestamp of when the user last agreed to the privacy policy
   @JsonKey(includeIfNull: true, name: 'privacy_agreed_at')
   final String? privacyAgreedAt;
-
-  /// When the out-of-band premium trial ends
-  @JsonKey(includeIfNull: false, name: 'premium_out_of_band_trial_ends_at')
-  final DateTime? premiumOutOfBandTrialEndsAt;
 
   Map<String, Object?> toJson() => _$UserPrivateResponseToJson(this);
 }

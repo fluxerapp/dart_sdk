@@ -22,12 +22,17 @@ ChannelCreateRequest0 _$ChannelCreateRequest0FromJson(
       parentId: $checkedConvert('parent_id', (v) => v as String?),
       bitrate: $checkedConvert('bitrate', (v) => (v as num?)?.toInt()),
       userLimit: $checkedConvert('user_limit', (v) => (v as num?)?.toInt()),
+      voiceConnectionLimit: $checkedConvert(
+        'voice_connection_limit',
+        (v) => (v as num?)?.toInt(),
+      ),
       permissionOverwrites: $checkedConvert(
         'permission_overwrites',
         (v) => (v as List<dynamic>?)
             ?.map(
-              (e) =>
-                  ChannelOverwriteRequest.fromJson(e as Map<String, dynamic>),
+              (e) => GuildTextChannelCreateRequestPermissionOverwrites.fromJson(
+                e as Map<String, dynamic>,
+              ),
             )
             .toList(),
       ),
@@ -44,7 +49,8 @@ ChannelCreateRequest0 _$ChannelCreateRequest0FromJson(
       ),
       type: $checkedConvert(
         'type',
-        (v) => ChannelCreateTextRequestTypeType.fromJson((v as num).toInt()),
+        (v) =>
+            GuildTextChannelCreateRequestTypeType.fromJson((v as num).toInt()),
       ),
       name: $checkedConvert('name', (v) => v as String),
     );
@@ -53,6 +59,7 @@ ChannelCreateRequest0 _$ChannelCreateRequest0FromJson(
   fieldKeyMap: const {
     'parentId': 'parent_id',
     'userLimit': 'user_limit',
+    'voiceConnectionLimit': 'voice_connection_limit',
     'permissionOverwrites': 'permission_overwrites',
     'nsfwOverride': 'nsfw_override',
     'contentWarningLevel': 'content_warning_level',
@@ -68,6 +75,7 @@ Map<String, dynamic> _$ChannelCreateRequest0ToJson(
   'parent_id': instance.parentId,
   'bitrate': instance.bitrate,
   'user_limit': instance.userLimit,
+  'voice_connection_limit': instance.voiceConnectionLimit,
   'permission_overwrites': instance.permissionOverwrites,
   'nsfw': instance.nsfw,
   'nsfw_override': instance.nsfwOverride,
@@ -89,12 +97,18 @@ ChannelCreateRequest2 _$ChannelCreateRequest2FromJson(
       parentId: $checkedConvert('parent_id', (v) => v as String?),
       bitrate: $checkedConvert('bitrate', (v) => (v as num?)?.toInt()),
       userLimit: $checkedConvert('user_limit', (v) => (v as num?)?.toInt()),
+      voiceConnectionLimit: $checkedConvert(
+        'voice_connection_limit',
+        (v) => (v as num?)?.toInt(),
+      ),
       permissionOverwrites: $checkedConvert(
         'permission_overwrites',
         (v) => (v as List<dynamic>?)
             ?.map(
               (e) =>
-                  ChannelOverwriteRequest.fromJson(e as Map<String, dynamic>),
+                  GuildVoiceChannelCreateRequestPermissionOverwrites.fromJson(
+                    e as Map<String, dynamic>,
+                  ),
             )
             .toList(),
       ),
@@ -111,7 +125,8 @@ ChannelCreateRequest2 _$ChannelCreateRequest2FromJson(
       ),
       type: $checkedConvert(
         'type',
-        (v) => ChannelCreateVoiceRequestTypeType.fromJson((v as num).toInt()),
+        (v) =>
+            GuildVoiceChannelCreateRequestTypeType.fromJson((v as num).toInt()),
       ),
       name: $checkedConvert('name', (v) => v as String),
     );
@@ -120,6 +135,7 @@ ChannelCreateRequest2 _$ChannelCreateRequest2FromJson(
   fieldKeyMap: const {
     'parentId': 'parent_id',
     'userLimit': 'user_limit',
+    'voiceConnectionLimit': 'voice_connection_limit',
     'permissionOverwrites': 'permission_overwrites',
     'nsfwOverride': 'nsfw_override',
     'contentWarningLevel': 'content_warning_level',
@@ -135,6 +151,7 @@ Map<String, dynamic> _$ChannelCreateRequest2ToJson(
   'parent_id': instance.parentId,
   'bitrate': instance.bitrate,
   'user_limit': instance.userLimit,
+  'voice_connection_limit': instance.voiceConnectionLimit,
   'permission_overwrites': instance.permissionOverwrites,
   'nsfw': instance.nsfw,
   'nsfw_override': instance.nsfwOverride,
@@ -156,12 +173,18 @@ ChannelCreateRequest4 _$ChannelCreateRequest4FromJson(
       parentId: $checkedConvert('parent_id', (v) => v as String?),
       bitrate: $checkedConvert('bitrate', (v) => (v as num?)?.toInt()),
       userLimit: $checkedConvert('user_limit', (v) => (v as num?)?.toInt()),
+      voiceConnectionLimit: $checkedConvert(
+        'voice_connection_limit',
+        (v) => (v as num?)?.toInt(),
+      ),
       permissionOverwrites: $checkedConvert(
         'permission_overwrites',
         (v) => (v as List<dynamic>?)
             ?.map(
               (e) =>
-                  ChannelOverwriteRequest.fromJson(e as Map<String, dynamic>),
+                  GuildCategoryChannelCreateRequestPermissionOverwrites.fromJson(
+                    e as Map<String, dynamic>,
+                  ),
             )
             .toList(),
       ),
@@ -178,8 +201,9 @@ ChannelCreateRequest4 _$ChannelCreateRequest4FromJson(
       ),
       type: $checkedConvert(
         'type',
-        (v) =>
-            ChannelCreateCategoryRequestTypeType.fromJson((v as num).toInt()),
+        (v) => GuildCategoryChannelCreateRequestTypeType.fromJson(
+          (v as num).toInt(),
+        ),
       ),
       name: $checkedConvert('name', (v) => v as String),
     );
@@ -188,6 +212,7 @@ ChannelCreateRequest4 _$ChannelCreateRequest4FromJson(
   fieldKeyMap: const {
     'parentId': 'parent_id',
     'userLimit': 'user_limit',
+    'voiceConnectionLimit': 'voice_connection_limit',
     'permissionOverwrites': 'permission_overwrites',
     'nsfwOverride': 'nsfw_override',
     'contentWarningLevel': 'content_warning_level',
@@ -203,6 +228,7 @@ Map<String, dynamic> _$ChannelCreateRequest4ToJson(
   'parent_id': instance.parentId,
   'bitrate': instance.bitrate,
   'user_limit': instance.userLimit,
+  'voice_connection_limit': instance.voiceConnectionLimit,
   'permission_overwrites': instance.permissionOverwrites,
   'nsfw': instance.nsfw,
   'nsfw_override': instance.nsfwOverride,
@@ -224,12 +250,17 @@ ChannelCreateRequest998 _$ChannelCreateRequest998FromJson(
       parentId: $checkedConvert('parent_id', (v) => v as String?),
       bitrate: $checkedConvert('bitrate', (v) => (v as num?)?.toInt()),
       userLimit: $checkedConvert('user_limit', (v) => (v as num?)?.toInt()),
+      voiceConnectionLimit: $checkedConvert(
+        'voice_connection_limit',
+        (v) => (v as num?)?.toInt(),
+      ),
       permissionOverwrites: $checkedConvert(
         'permission_overwrites',
         (v) => (v as List<dynamic>?)
             ?.map(
-              (e) =>
-                  ChannelOverwriteRequest.fromJson(e as Map<String, dynamic>),
+              (e) => GuildLinkChannelCreateRequestPermissionOverwrites.fromJson(
+                e as Map<String, dynamic>,
+              ),
             )
             .toList(),
       ),
@@ -246,7 +277,8 @@ ChannelCreateRequest998 _$ChannelCreateRequest998FromJson(
       ),
       type: $checkedConvert(
         'type',
-        (v) => ChannelCreateLinkRequestTypeType.fromJson((v as num).toInt()),
+        (v) =>
+            GuildLinkChannelCreateRequestTypeType.fromJson((v as num).toInt()),
       ),
       name: $checkedConvert('name', (v) => v as String),
     );
@@ -255,6 +287,7 @@ ChannelCreateRequest998 _$ChannelCreateRequest998FromJson(
   fieldKeyMap: const {
     'parentId': 'parent_id',
     'userLimit': 'user_limit',
+    'voiceConnectionLimit': 'voice_connection_limit',
     'permissionOverwrites': 'permission_overwrites',
     'nsfwOverride': 'nsfw_override',
     'contentWarningLevel': 'content_warning_level',
@@ -270,6 +303,7 @@ Map<String, dynamic> _$ChannelCreateRequest998ToJson(
   'parent_id': instance.parentId,
   'bitrate': instance.bitrate,
   'user_limit': instance.userLimit,
+  'voice_connection_limit': instance.voiceConnectionLimit,
   'permission_overwrites': instance.permissionOverwrites,
   'nsfw': instance.nsfw,
   'nsfw_override': instance.nsfwOverride,

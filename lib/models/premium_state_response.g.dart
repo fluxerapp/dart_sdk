@@ -12,15 +12,15 @@ PremiumStateResponse _$PremiumStateResponseFromJson(
   final val = PremiumStateResponse(
     actual: $checkedConvert(
       'actual',
-      (v) => PremiumActualState.fromJson(v as Map<String, dynamic>),
+      (v) => PremiumStateResponseActual.fromJson(v as Map<String, dynamic>),
     ),
     effective: $checkedConvert(
       'effective',
-      (v) => PremiumEffectiveState.fromJson(v as Map<String, dynamic>),
+      (v) => PremiumStateResponseEffective.fromJson(v as Map<String, dynamic>),
     ),
     billing: $checkedConvert(
       'billing',
-      (v) => PremiumBillingState.fromJson(v as Map<String, dynamic>),
+      (v) => PremiumStateResponseBilling.fromJson(v as Map<String, dynamic>),
     ),
     pricing: $checkedConvert(
       'pricing',

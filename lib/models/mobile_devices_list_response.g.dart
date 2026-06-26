@@ -14,7 +14,9 @@ MobileDevicesListResponse _$MobileDevicesListResponseFromJson(
       'devices',
       (v) => (v as List<dynamic>)
           .map(
-            (e) => MobileDeviceItemResponse.fromJson(e as Map<String, dynamic>),
+            (e) => MobileDevicesListResponseDevices.fromJson(
+              e as Map<String, dynamic>,
+            ),
           )
           .toList(),
     ),

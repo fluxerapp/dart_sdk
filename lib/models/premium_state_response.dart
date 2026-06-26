@@ -4,10 +4,10 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'premium_actual_state.dart';
-import 'premium_billing_state.dart';
-import 'premium_effective_state.dart';
 import 'premium_pricing_state.dart';
+import 'premium_state_response_actual.dart';
+import 'premium_state_response_billing.dart';
+import 'premium_state_response_effective.dart';
 
 part 'premium_state_response.g.dart';
 
@@ -23,9 +23,9 @@ class PremiumStateResponse {
   factory PremiumStateResponse.fromJson(Map<String, Object?> json) =>
       _$PremiumStateResponseFromJson(json);
 
-  final PremiumActualState actual;
-  final PremiumEffectiveState effective;
-  final PremiumBillingState billing;
+  final PremiumStateResponseActual actual;
+  final PremiumStateResponseEffective effective;
+  final PremiumStateResponseBilling billing;
   final PremiumPricingState pricing;
 
   Map<String, Object?> toJson() => _$PremiumStateResponseToJson(this);

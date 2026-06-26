@@ -4,7 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'mfa_backup_code_response.dart';
+import 'mfa_backup_codes_response_backup_codes.dart';
 
 part 'mfa_backup_codes_response.g.dart';
 
@@ -17,7 +17,7 @@ class MfaBackupCodesResponse {
 
   /// List of backup codes
   @JsonKey(name: 'backup_codes')
-  final List<MfaBackupCodeResponse> backupCodes;
+  final List<MfaBackupCodesResponseBackupCodes> backupCodes;
 
   Map<String, Object?> toJson() => _$MfaBackupCodesResponseToJson(this);
 }

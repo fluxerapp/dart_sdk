@@ -25,7 +25,7 @@ DsaReportRequestMessage _$DsaReportRequestMessageFromJson(
       reporterCountryOfResidence: $checkedConvert(
         'reporter_country_of_residence',
         (v) =>
-            DsaReportMessageRequestReporterCountryOfResidenceReporterCountryOfResidence.fromJson(
+            MessageDsaReportRequestReporterCountryOfResidenceReporterCountryOfResidence.fromJson(
               v as String,
             ),
       ),
@@ -36,11 +36,11 @@ DsaReportRequestMessage _$DsaReportRequestMessageFromJson(
       reportType: $checkedConvert(
         'report_type',
         (v) =>
-            DsaReportMessageRequestReportTypeReportType.fromJson(v as String),
+            MessageDsaReportRequestReportTypeReportType.fromJson(v as String),
       ),
       category: $checkedConvert(
         'category',
-        (v) => MessageReportCategoryEnum.fromJson(v as String),
+        (v) => MessageDsaReportRequestCategoryCategory.fromJson(v as String),
       ),
       messageLink: $checkedConvert('message_link', (v) => v as String),
       reportedUserTag: $checkedConvert(
@@ -91,7 +91,7 @@ DsaReportRequestUser _$DsaReportRequestUserFromJson(
       reporterCountryOfResidence: $checkedConvert(
         'reporter_country_of_residence',
         (v) =>
-            DsaReportUserRequestReporterCountryOfResidenceReporterCountryOfResidence.fromJson(
+            UserDsaReportRequestReporterCountryOfResidenceReporterCountryOfResidence.fromJson(
               v as String,
             ),
       ),
@@ -101,11 +101,11 @@ DsaReportRequestUser _$DsaReportRequestUserFromJson(
       ),
       reportType: $checkedConvert(
         'report_type',
-        (v) => DsaReportUserRequestReportTypeReportType.fromJson(v as String),
+        (v) => UserDsaReportRequestReportTypeReportType.fromJson(v as String),
       ),
       category: $checkedConvert(
         'category',
-        (v) => UserReportCategoryEnum.fromJson(v as String),
+        (v) => UserDsaReportRequestCategoryCategory.fromJson(v as String),
       ),
       userId: $checkedConvert('user_id', (v) => v as String?),
       userTag: $checkedConvert('user_tag', (v) => v as String?),
@@ -153,7 +153,7 @@ DsaReportRequestGuild _$DsaReportRequestGuildFromJson(
       reporterCountryOfResidence: $checkedConvert(
         'reporter_country_of_residence',
         (v) =>
-            DsaReportGuildRequestReporterCountryOfResidenceReporterCountryOfResidence.fromJson(
+            GuildDsaReportRequestReporterCountryOfResidenceReporterCountryOfResidence.fromJson(
               v as String,
             ),
       ),
@@ -163,11 +163,11 @@ DsaReportRequestGuild _$DsaReportRequestGuildFromJson(
       ),
       reportType: $checkedConvert(
         'report_type',
-        (v) => DsaReportGuildRequestReportTypeReportType.fromJson(v as String),
+        (v) => GuildDsaReportRequestReportTypeReportType.fromJson(v as String),
       ),
       category: $checkedConvert(
         'category',
-        (v) => GuildReportCategoryEnum.fromJson(v as String),
+        (v) => GuildDsaReportRequestCategoryCategory.fromJson(v as String),
       ),
       guildId: $checkedConvert('guild_id', (v) => v as String),
       inviteCode: $checkedConvert('invite_code', (v) => v as String?),

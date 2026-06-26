@@ -13,8 +13,8 @@ class ReadStateResponse {
   const ReadStateResponse({
     required this.id,
     required this.mentionCount,
-    this.lastMessageId,
-    this.lastPinTimestamp,
+    required this.lastMessageId,
+    required this.lastPinTimestamp,
     this.version,
   });
 
@@ -26,14 +26,14 @@ class ReadStateResponse {
 
   /// Number of unread mentions in the channel
   @JsonKey(name: 'mention_count')
-  final num mentionCount;
+  final int mentionCount;
 
-  /// ID of the last read message
-  @JsonKey(includeIfNull: false, name: 'last_message_id')
+  /// The ID of the last message read
+  @JsonKey(includeIfNull: true, name: 'last_message_id')
   final SnowflakeType? lastMessageId;
 
-  /// Timestamp of the last pinned message
-  @JsonKey(includeIfNull: false, name: 'last_pin_timestamp')
+  /// ISO8601 timestamp of the last pinned message acknowledged
+  @JsonKey(includeIfNull: true, name: 'last_pin_timestamp')
   final String? lastPinTimestamp;
 
   /// Read-state version for ordering updates as a decimal uint64

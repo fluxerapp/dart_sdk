@@ -17,7 +17,7 @@ BulkDeleteSelfMessagesRequest _$BulkDeleteSelfMessagesRequestFromJson(
         'scope',
         (v) => v == null
             ? null
-            : BulkDeleteSelfMessagesScope.fromJson(v as String),
+            : BulkDeleteSelfMessagesRequestScopeScope.fromJson(v as String),
       ),
       includeDms: $checkedConvert('include_dms', (v) => v as bool?),
       includeDmsClosed: $checkedConvert(

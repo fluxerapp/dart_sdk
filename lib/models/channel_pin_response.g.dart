@@ -11,7 +11,7 @@ ChannelPinResponse _$ChannelPinResponseFromJson(Map<String, dynamic> json) =>
       final val = ChannelPinResponse(
         message: $checkedConvert(
           'message',
-          (v) => ChannelPinMessageResponse.fromJson(v as Map<String, dynamic>),
+          (v) => ChannelPinResponseMessage.fromJson(v as Map<String, dynamic>),
         ),
         pinnedAt: $checkedConvert(
           'pinned_at',

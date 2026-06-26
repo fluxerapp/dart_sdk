@@ -23,7 +23,11 @@ WellKnownFluxerResponseLimits _$WellKnownFluxerResponseLimitsFromJson(
     rules: $checkedConvert(
       'rules',
       (v) => (v as List<dynamic>)
-          .map((e) => LimitRuleResponse.fromJson(e as Map<String, dynamic>))
+          .map(
+            (e) => WellKnownFluxerResponseLimitsRules.fromJson(
+              e as Map<String, dynamic>,
+            ),
+          )
           .toList(),
     ),
     defaultsHash: $checkedConvert('defaultsHash', (v) => v as String),

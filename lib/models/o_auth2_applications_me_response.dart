@@ -5,7 +5,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'applications_me_response_owner.dart';
-import 'application_bot_response.dart';
+import 'applications_me_response_bot.dart';
 
 part 'o_auth2_applications_me_response.g.dart';
 
@@ -52,7 +52,7 @@ class OAuth2ApplicationsMeResponseApplicationsMeResponse {
   @JsonKey(name: 'verify_key')
   final String verifyKey;
   final ApplicationsMeResponseOwner owner;
-  final ApplicationBotResponse? bot;
+  final ApplicationsMeResponseBot? bot;
   @JsonKey(name: 'redirect_uris')
   final List<String>? redirectUris;
 

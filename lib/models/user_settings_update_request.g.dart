@@ -16,16 +16,24 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
       gifAutoPlay: $checkedConvert('gif_auto_play', (v) => v as bool?),
       status: $checkedConvert(
         'status',
-        (v) => v == null ? null : UserStatusType.fromJson(v as String),
+        (v) => v == null
+            ? null
+            : UserSettingsUpdateRequestStatusStatus.fromJson(v as String),
       ),
       statusResetsAt: $checkedConvert('status_resets_at', (v) => v),
       statusResetsTo: $checkedConvert(
         'status_resets_to',
-        (v) => v == null ? null : UserStatusType.fromJson(v as String),
+        (v) => v == null
+            ? null
+            : UserSettingsUpdateRequestStatusResetsToStatusResetsTo.fromJson(
+                v as String,
+              ),
       ),
       theme: $checkedConvert(
         'theme',
-        (v) => v == null ? null : UserThemeType.fromJson(v as String),
+        (v) => v == null
+            ? null
+            : UserSettingsUpdateRequestThemeTheme.fromJson(v as String),
       ),
       locale: $checkedConvert(
         'locale',

@@ -10,8 +10,8 @@ part 'handoff_complete_request.g.dart';
 class HandoffCompleteRequest {
   const HandoffCompleteRequest({
     required this.code,
-    required this.token,
     required this.userId,
+    this.token,
   });
 
   factory HandoffCompleteRequest.fromJson(Map<String, Object?> json) =>
@@ -21,9 +21,10 @@ class HandoffCompleteRequest {
   final String code;
 
   /// The authentication token to transfer
-  final String token;
+  @JsonKey(includeIfNull: false)
+  final String? token;
 
-  /// The user ID associated with the token
+  /// The user ID associated with the authenticated session
   @JsonKey(name: 'user_id')
   final String userId;
 

@@ -4,7 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'discovery_guild_response.dart';
+import 'discovery_guild_list_response_guilds.dart';
 
 part 'discovery_guild_list_response.g.dart';
 
@@ -16,7 +16,7 @@ class DiscoveryGuildListResponse {
       _$DiscoveryGuildListResponseFromJson(json);
 
   /// Discovery guild results
-  final List<DiscoveryGuildResponse> guilds;
+  final List<DiscoveryGuildListResponseGuilds> guilds;
 
   /// Total number of matching guilds
   final num total;

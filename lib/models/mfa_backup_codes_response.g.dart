@@ -13,7 +13,11 @@ MfaBackupCodesResponse _$MfaBackupCodesResponseFromJson(
     backupCodes: $checkedConvert(
       'backup_codes',
       (v) => (v as List<dynamic>)
-          .map((e) => MfaBackupCodeResponse.fromJson(e as Map<String, dynamic>))
+          .map(
+            (e) => MfaBackupCodesResponseBackupCodes.fromJson(
+              e as Map<String, dynamic>,
+            ),
+          )
           .toList(),
     ),
   );

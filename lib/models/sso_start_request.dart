@@ -8,7 +8,7 @@ part 'sso_start_request.g.dart';
 
 @JsonSerializable()
 class SsoStartRequest {
-  const SsoStartRequest({this.redirectTo});
+  const SsoStartRequest({this.redirectTo, this.redirectUri});
 
   factory SsoStartRequest.fromJson(Map<String, Object?> json) =>
       _$SsoStartRequestFromJson(json);
@@ -16,6 +16,10 @@ class SsoStartRequest {
   /// URL to redirect to after SSO completion
   @JsonKey(includeIfNull: false, name: 'redirect_to')
   final String? redirectTo;
+
+  /// OAuth redirect URI to use for the SSO provider callback
+  @JsonKey(includeIfNull: false, name: 'redirect_uri')
+  final String? redirectUri;
 
   Map<String, Object?> toJson() => _$SsoStartRequestToJson(this);
 }

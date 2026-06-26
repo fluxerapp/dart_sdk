@@ -4,7 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'guild_report_category_enum.dart';
+import 'report_guild_request_category_category.dart';
 import 'snowflake_type.dart';
 
 part 'report_guild_request.g.dart';
@@ -22,7 +22,9 @@ class ReportGuildRequest {
 
   @JsonKey(name: 'guild_id')
   final SnowflakeType guildId;
-  final GuildReportCategoryEnum category;
+
+  /// Category of the guild report
+  final ReportGuildRequestCategoryCategory category;
 
   /// Invite code proving access to the guild (required when not a member of a non-discoverable guild)
   @JsonKey(includeIfNull: false, name: 'invite_code')

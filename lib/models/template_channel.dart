@@ -4,7 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'template_permission_overwrite.dart';
+import 'template_channel_permission_overwrites.dart';
 
 part 'template_channel.g.dart';
 
@@ -19,6 +19,7 @@ class TemplateChannel {
     this.parentId,
     this.bitrate,
     this.userLimit,
+    this.voiceConnectionLimit,
     this.nsfw,
     this.rateLimitPerUser,
     this.permissionOverwrites,
@@ -56,6 +57,10 @@ class TemplateChannel {
   @JsonKey(includeIfNull: false, name: 'user_limit')
   final num? userLimit;
 
+  /// The per-user voice connection limit for voice channels
+  @JsonKey(includeIfNull: false, name: 'voice_connection_limit')
+  final num? voiceConnectionLimit;
+
   /// Whether the channel is NSFW
   @JsonKey(includeIfNull: false)
   final bool? nsfw;
@@ -66,7 +71,7 @@ class TemplateChannel {
 
   /// Permission overwrites for this channel
   @JsonKey(includeIfNull: false, name: 'permission_overwrites')
-  final List<TemplatePermissionOverwrite>? permissionOverwrites;
+  final List<TemplateChannelPermissionOverwrites>? permissionOverwrites;
 
   Map<String, Object?> toJson() => _$TemplateChannelToJson(this);
 }

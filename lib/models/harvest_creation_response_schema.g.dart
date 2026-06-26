@@ -16,7 +16,7 @@ HarvestCreationResponseSchema _$HarvestCreationResponseSchemaFromJson(
       harvestId: $checkedConvert('harvest_id', (v) => v as String),
       status: $checkedConvert(
         'status',
-        (v) => HarvestStatusEnum.fromJson(v as String),
+        (v) => HarvestCreationResponseSchemaStatusStatus.fromJson(v as String),
       ),
       createdAt: $checkedConvert('created_at', (v) => v as String),
     );

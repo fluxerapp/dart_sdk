@@ -13,9 +13,9 @@ import 'message_embed_response.dart';
 import 'message_attachment_response.dart';
 import 'message_sticker_response.dart';
 import 'message_reaction_response.dart';
-import 'message_reference_response.dart';
+import 'message_search_results_response_messages_message_reference.dart';
 import 'message_snapshot_response.dart';
-import 'message_call_response.dart';
+import 'message_search_results_response_messages_call.dart';
 
 part 'message_search_results_response_messages.g.dart';
 
@@ -126,7 +126,7 @@ class MessageSearchResultsResponseMessages {
 
   /// Reference data for replies or forwards
   @JsonKey(includeIfNull: false, name: 'message_reference')
-  final MessageReferenceResponse? messageReference;
+  final MessageSearchResultsResponseMessagesMessageReference? messageReference;
 
   /// Snapshots of forwarded messages
   @JsonKey(includeIfNull: false, name: 'message_snapshots')
@@ -138,7 +138,7 @@ class MessageSearchResultsResponseMessages {
 
   /// Call information if this message represents a call
   @JsonKey(includeIfNull: false)
-  final MessageCallResponse? call;
+  final MessageSearchResultsResponseMessagesCall? call;
 
   Map<String, Object?> toJson() =>
       _$MessageSearchResultsResponseMessagesToJson(this);

@@ -22,6 +22,14 @@ MessageReferenceRequest _$MessageReferenceRequestFromJson(
             ? null
             : MessageReferenceType.fromJson((v as num).toInt()),
       ),
+      attachmentIds: $checkedConvert(
+        'attachment_ids',
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+      ),
+      embedIndices: $checkedConvert(
+        'embed_indices',
+        (v) => (v as List<dynamic>?)?.map((e) => (e as num).toInt()).toList(),
+      ),
     );
     return val;
   },
@@ -29,6 +37,8 @@ MessageReferenceRequest _$MessageReferenceRequestFromJson(
     'messageId': 'message_id',
     'channelId': 'channel_id',
     'guildId': 'guild_id',
+    'attachmentIds': 'attachment_ids',
+    'embedIndices': 'embed_indices',
   },
 );
 
@@ -39,4 +49,6 @@ Map<String, dynamic> _$MessageReferenceRequestToJson(
   'channel_id': ?instance.channelId,
   'guild_id': ?instance.guildId,
   'type': ?instance.type,
+  'attachment_ids': ?instance.attachmentIds,
+  'embed_indices': ?instance.embedIndices,
 };

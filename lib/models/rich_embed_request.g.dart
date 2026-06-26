@@ -9,11 +9,11 @@ part of 'rich_embed_request.dart';
 RichEmbedRequest _$RichEmbedRequestFromJson(Map<String, dynamic> json) =>
     $checkedCreate('RichEmbedRequest', json, ($checkedConvert) {
       final val = RichEmbedRequest(
+        description: $checkedConvert('description', (v) => v as String?),
         url: $checkedConvert('url', (v) => v as String?),
         title: $checkedConvert('title', (v) => v as String?),
         color: $checkedConvert('color', (v) => (v as num?)?.toInt()),
         timestamp: $checkedConvert('timestamp', (v) => v),
-        description: $checkedConvert('description', (v) => v as String?),
         author: $checkedConvert(
           'author',
           (v) => v == null
@@ -43,7 +43,7 @@ RichEmbedRequest _$RichEmbedRequestFromJson(Map<String, dynamic> json) =>
           (v) => (v as List<dynamic>?)
               ?.map(
                 (e) =>
-                    RichEmbedFieldRequest.fromJson(e as Map<String, dynamic>),
+                    RichEmbedRequestFields.fromJson(e as Map<String, dynamic>),
               )
               .toList(),
         ),
@@ -57,7 +57,7 @@ Map<String, dynamic> _$RichEmbedRequestToJson(RichEmbedRequest instance) =>
       'title': ?instance.title,
       'color': ?instance.color,
       'timestamp': ?instance.timestamp,
-      'description': ?instance.description,
+      'description': instance.description,
       'author': ?instance.author,
       'image': ?instance.image,
       'thumbnail': ?instance.thumbnail,

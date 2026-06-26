@@ -24,6 +24,11 @@ UserUpdateWithVerificationRequest _$UserUpdateWithVerificationRequestFromJson(
       bio: $checkedConvert('bio', (v) => v as String?),
       pronouns: $checkedConvert('pronouns', (v) => v as String?),
       accentColor: $checkedConvert('accent_color', (v) => (v as num?)?.toInt()),
+      timezone: $checkedConvert('timezone', (v) => v as String?),
+      timezonePrivacyFlags: $checkedConvert(
+        'timezone_privacy_flags',
+        (v) => (v as num?)?.toInt(),
+      ),
       premiumBadgeHidden: $checkedConvert(
         'premium_badge_hidden',
         (v) => v as bool?,
@@ -80,6 +85,7 @@ UserUpdateWithVerificationRequest _$UserUpdateWithVerificationRequestFromJson(
     'globalName': 'global_name',
     'newPassword': 'new_password',
     'accentColor': 'accent_color',
+    'timezonePrivacyFlags': 'timezone_privacy_flags',
     'premiumBadgeHidden': 'premium_badge_hidden',
     'premiumBadgeMasked': 'premium_badge_masked',
     'premiumBadgeTimestampHidden': 'premium_badge_timestamp_hidden',
@@ -110,6 +116,8 @@ Map<String, dynamic> _$UserUpdateWithVerificationRequestToJson(
   'bio': ?instance.bio,
   'pronouns': ?instance.pronouns,
   'accent_color': ?instance.accentColor,
+  'timezone': ?instance.timezone,
+  'timezone_privacy_flags': ?instance.timezonePrivacyFlags,
   'premium_badge_hidden': ?instance.premiumBadgeHidden,
   'premium_badge_masked': ?instance.premiumBadgeMasked,
   'premium_badge_timestamp_hidden': ?instance.premiumBadgeTimestampHidden,

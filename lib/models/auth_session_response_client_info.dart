@@ -1,0 +1,40 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, unused_import, invalid_annotation_target, unnecessary_import
+
+import 'package:json_annotation/json_annotation.dart';
+
+import 'auth_session_location.dart';
+
+part 'auth_session_response_client_info.g.dart';
+
+@JsonSerializable()
+class AuthSessionResponseClientInfo {
+  const AuthSessionResponseClientInfo({
+    this.platform,
+    this.os,
+    this.browser,
+    this.location,
+  });
+
+  factory AuthSessionResponseClientInfo.fromJson(Map<String, Object?> json) =>
+      _$AuthSessionResponseClientInfoFromJson(json);
+
+  /// The platform reported by the client
+  @JsonKey(includeIfNull: false)
+  final String? platform;
+
+  /// The operating system reported by the client
+  @JsonKey(includeIfNull: false)
+  final String? os;
+
+  /// The browser reported by the client
+  @JsonKey(includeIfNull: false)
+  final String? browser;
+
+  /// The geolocation data sent by the client
+  @JsonKey(includeIfNull: false)
+  final AuthSessionLocation? location;
+
+  Map<String, Object?> toJson() => _$AuthSessionResponseClientInfoToJson(this);
+}

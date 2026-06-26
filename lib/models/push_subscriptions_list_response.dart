@@ -4,7 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'push_subscription_item_response.dart';
+import 'push_subscriptions_list_response_subscriptions.dart';
 
 part 'push_subscriptions_list_response.g.dart';
 
@@ -16,7 +16,7 @@ class PushSubscriptionsListResponse {
       _$PushSubscriptionsListResponseFromJson(json);
 
   /// Array of push notification subscriptions
-  final List<PushSubscriptionItemResponse> subscriptions;
+  final List<PushSubscriptionsListResponseSubscriptions> subscriptions;
 
   Map<String, Object?> toJson() => _$PushSubscriptionsListResponseToJson(this);
 }

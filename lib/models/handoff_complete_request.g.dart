@@ -11,8 +11,8 @@ HandoffCompleteRequest _$HandoffCompleteRequestFromJson(
 ) => $checkedCreate('HandoffCompleteRequest', json, ($checkedConvert) {
   final val = HandoffCompleteRequest(
     code: $checkedConvert('code', (v) => v as String),
-    token: $checkedConvert('token', (v) => v as String),
     userId: $checkedConvert('user_id', (v) => v as String),
+    token: $checkedConvert('token', (v) => v as String?),
   );
   return val;
 }, fieldKeyMap: const {'userId': 'user_id'});
@@ -21,6 +21,6 @@ Map<String, dynamic> _$HandoffCompleteRequestToJson(
   HandoffCompleteRequest instance,
 ) => <String, dynamic>{
   'code': instance.code,
-  'token': instance.token,
+  'token': ?instance.token,
   'user_id': instance.userId,
 };

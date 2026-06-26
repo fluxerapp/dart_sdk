@@ -30,7 +30,7 @@ ApplicationPublicResponse _$ApplicationPublicResponseFromJson(
         'bot',
         (v) => v == null
             ? null
-            : ApplicationBotResponse.fromJson(v as Map<String, dynamic>),
+            : ApplicationPublicResponseBot.fromJson(v as Map<String, dynamic>),
       ),
       currentUser: $checkedConvert(
         'current_user',

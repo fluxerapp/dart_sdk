@@ -17,7 +17,7 @@ HarvestSelfDataRequest _$HarvestSelfDataRequestFromJson(
         'scope',
         (v) => v == null
             ? null
-            : BulkDeleteSelfMessagesScope.fromJson(v as String),
+            : HarvestSelfDataRequestScopeScope.fromJson(v as String),
       ),
       includeDms: $checkedConvert('include_dms', (v) => v as bool?),
       includeDmsClosed: $checkedConvert(

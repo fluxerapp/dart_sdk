@@ -4,8 +4,8 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'mobile_push_provider_environment_schema.dart';
 import 'register_mobile_device_request_platform_platform.dart';
+import 'register_mobile_device_request_provider_environment_provider_environment.dart';
 
 part 'register_mobile_device_request.g.dart';
 
@@ -37,8 +37,11 @@ class RegisterMobileDeviceRequest {
   /// Client app channel or bundle mapping identifier, such as stable, beta, or canary
   @JsonKey(includeIfNull: false, name: 'app_id')
   final String? appId;
+
+  /// Push provider environment. For APNs, production uses api.push.apple.com and development uses api.sandbox.push.apple.com.
   @JsonKey(includeIfNull: false, name: 'provider_environment')
-  final MobilePushProviderEnvironmentSchema? providerEnvironment;
+  final RegisterMobileDeviceRequestProviderEnvironmentProviderEnvironment?
+  providerEnvironment;
 
   /// The P-256 ECDH public key for UnifiedPush encryption (base64url)
   @JsonKey(includeIfNull: false, name: 'encryption_key')
