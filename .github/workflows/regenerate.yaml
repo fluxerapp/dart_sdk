@@ -1,0 +1,90 @@
+name: Regenerate SDK
+
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: regenerate-canary
+  cancel-in-progress: true
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create token
+        id: create-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1
+        with:
+          client-id: ${{ vars.FLUXER_CI_APP_ID }}
+          private-key: ${{ secrets.FLUXER_CI_APP_KEY }}
+          owner: fluxerapp
+          repositories: dart_sdk
+          permission-contents: write
+
+      - name: Checkout Dart SDK
+        uses: actions/checkout@b9e0990d219a03df7633c93f6f005a8fecbcab22
+        with:
+          token: ${{ steps.create-token.outputs.token }}
+          ref: canary
+          path: dart_sdk
+
+      - name: Checkout fluxer
+        uses: actions/checkout@b9e0990d219a03df7633c93f6f005a8fecbcab22
+        with:
+          repository: fluxerapp/fluxer
+          path: fluxer
+
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@2bd11704788983a6a210731656d0042e2df8b2c1
+        with:
+          sdk: stable
+
+      - name: Copy OpenAPI spec
+        working-directory: dart_sdk
+        run: |
+          cp ../fluxer/fluxer_api/src/api/openapi/openapi.json openapi.json
+          echo "Fetched $(wc -c < openapi.json) bytes from fluxer/main"
+
+      - name: Clean generated SDK
+        working-directory: dart_sdk
+        run: |
+          find lib/ -mindepth 1 -maxdepth 1 ! -name '.*' ! -name 'gateway_client' ! -name 'gateway.dart' -exec rm -rf {} + 2>/dev/null || true
+
+      - name: Resolve Dart dependencies
+        working-directory: dart_sdk
+        run: dart pub get
+
+      - name: Generate SDK
+        working-directory: dart_sdk
+        run: dart run openapi_sdk_gen --file openapi_generator.yaml
+
+      - name: Run build_runner
+        working-directory: dart_sdk
+        run: dart run build_runner build
+
+      - name: Apply Dart fixes
+        working-directory: dart_sdk
+        run: dart fix --apply
+
+      - name: Format
+        working-directory: dart_sdk
+        run: dart format .
+
+      - name: Analyze
+        working-directory: dart_sdk
+        run: dart analyze --no-fatal-warnings
+
+      - name: Commit and push
+        working-directory: dart_sdk
+        run: |
+          git config user.name "fluxer-ci[bot]"
+          git config user.email "${{ vars.FLUXER_CI_APP_ID }}+fluxer-ci[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "chore(sdk): regenerate from OpenAPI"
+          git push origin HEAD:canary
