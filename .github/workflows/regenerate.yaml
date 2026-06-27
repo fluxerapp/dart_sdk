@@ -11,8 +11,9 @@ concurrency:
 
 jobs:
   regenerate:
-    runs-on: ubuntu-latest
+    name: Regenerate
     environment: Regenerate
+    runs-on: ubuntu-latest
     steps:
       - name: Create token
         id: create-token
