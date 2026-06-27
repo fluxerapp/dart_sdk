@@ -6,7 +6,7 @@ on:
 permissions: {}
 
 concurrency:
-  group: regenerate-canary
+  group: regenerate-main
   cancel-in-progress: true
 
 jobs:
@@ -27,7 +27,6 @@ jobs:
         uses: actions/checkout@b9e0990d219a03df7633c93f6f005a8fecbcab22
         with:
           token: ${{ steps.create-token.outputs.token }}
-          ref: canary
           path: dart_sdk
 
       - name: Checkout fluxer
@@ -87,4 +86,4 @@ jobs:
             exit 0
           fi
           git commit -m "chore(sdk): regenerate from OpenAPI"
-          git push origin HEAD:canary
+          git push origin HEAD:main
