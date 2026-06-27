@@ -117,12 +117,7 @@ dio.options.headers['Authorization'] = 'Bot $botToken';
 
 This SDK is generated from the [Fluxer OpenAPI spec](https://github.com/fluxerapp/fluxer) using [`openapi_sdk_gen`](https://github.com/fluxerapp/openapi_sdk_gen) (Retrofit + json_serializable).
 
-```bash
-# Regenerate (requires: dart, curl)
-./generate.sh
-```
-
-The generation pipeline downloads the spec, generates Dart code, runs `build_runner`, and formats.
+The Regenerate SDK workflow is used to synchronise.
 
 ## Testing
 
