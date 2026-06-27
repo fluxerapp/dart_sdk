@@ -604,18 +604,18 @@ void main() {
       },
     );
 
-    test('TYPING_START with null guildId', () {
+    test('TYPING_START without guild member data', () {
       final data = <String, Object?>{
         'channel_id': '200',
         'user_id': '100',
         'timestamp': 1700000000,
-        'guild_id': null,
       };
       final event = parser.parse('TYPING_START', data);
 
       expect(event, isA<TypingStartEvent>());
       final e = event as TypingStartEvent;
       expect(e.guildId, isNull);
+      expect(e.member, isNull);
     });
   });
 
