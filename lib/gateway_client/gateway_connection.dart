@@ -77,6 +77,7 @@ class GatewayConnection {
   String? _gatewayUrl;
   Timer? _reconnectTimer;
   int _connectGeneration = 0;
+  Duration? _lastHeartbeatInterval;
 
   /// Stream of parsed gateway events.
   Stream<GatewayEvent> get events => _eventController.stream;
@@ -89,6 +90,29 @@ class GatewayConnection {
 
   /// True while [suspend] has paused automatic reconnects.
   bool get isReconnectSuspended => _reconnectSuspended;
+
+  /// Time of the last heartbeat ACK, or null if none yet.
+  DateTime? get lastAckAt => _session.lastAckAt;
+
+  /// True when the heartbeat ack is older than the interval + 15s, or unknown.
+  bool get isLikelyStale => computeIsLikelyStale(
+    lastAckAt: _session.lastAckAt,
+    heartbeatInterval: _lastHeartbeatInterval,
+    now: DateTime.now(),
+  );
+
+  /// Pure form of [isLikelyStale], exposed for testing.
+  static bool computeIsLikelyStale({
+    required DateTime? lastAckAt,
+    required Duration? heartbeatInterval,
+    required DateTime now,
+  }) {
+    if (lastAckAt == null || heartbeatInterval == null) {
+      return true;
+    }
+    return now.difference(lastAckAt) >
+        heartbeatInterval + const Duration(seconds: 15);
+  }
 
   /// Connects to the gateway.
   ///
@@ -384,6 +408,7 @@ class GatewayConnection {
 
   void _handleHello(Map<String, dynamic> data) {
     final intervalMs = data['heartbeat_interval'] as int;
+    _lastHeartbeatInterval = Duration(milliseconds: intervalMs);
     _heartbeat!.start(Duration(milliseconds: intervalMs));
 
     if (_session.canResume) {
