@@ -62,12 +62,13 @@ fi
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$REPO_ROOT"
 
-start_group "Checking prerequisites"
 command -v dart >/dev/null 2>&1 || fail "dart not found"
 if [[ "$MODE" == "regenerate" ]]; then
   command -v git >/dev/null 2>&1 || fail "git not found"
+  if [[ -z "${FLUXER_CI_APP_ID:-}" ]]; then
+    fail "FLUXER_CI_APP_ID is required for regenerate"
+  fi
 fi
-end_group
 
 start_group "Fetching upstream spec"
 echo "Source: $SPEC_SOURCE"
@@ -102,14 +103,8 @@ if [[ "$MODE" == "regenerate" ]]; then
   end_group
 
   start_group "Committing generated SDK"
-  git config user.name "${SDK_REGEN_GIT_USER_NAME:-fluxer-ci[bot]}"
-  if [[ -n "${SDK_REGEN_GIT_USER_EMAIL:-}" ]]; then
-    git config user.email "$SDK_REGEN_GIT_USER_EMAIL"
-  elif [[ -n "${FLUXER_CI_APP_ID:-}" ]]; then
-    git config user.email "${FLUXER_CI_APP_ID}+fluxer-ci[bot]@users.noreply.github.com"
-  else
-    git config user.email "fluxer-ci[bot]@users.noreply.github.com"
-  fi
+  git config user.name "fluxer-ci[bot]"
+  git config user.email "${FLUXER_CI_APP_ID}+fluxer-ci[bot]@users.noreply.github.com"
 
   git add -A
   if git diff --staged --quiet; then
@@ -117,8 +112,8 @@ if [[ "$MODE" == "regenerate" ]]; then
     exit 0
   fi
 
-  git commit -m "${SDK_REGEN_COMMIT_MESSAGE:-chore(sdk): regenerate from OpenAPI}"
-  git push origin "${SDK_REGEN_PUSH_REF:-HEAD:main}"
+  git commit -m "chore(sdk): regenerate from OpenAPI"
+  git push origin HEAD:main
   end_group
 
   notice "Regeneration complete: generated SDK changes were pushed."

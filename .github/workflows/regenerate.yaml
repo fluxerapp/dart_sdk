@@ -45,6 +45,5 @@ jobs:
       - name: Regenerate SDK
         working-directory: dart_sdk
         env:
-          SDK_REGEN_GIT_USER_NAME: "fluxer-ci[bot]"
-          SDK_REGEN_GIT_USER_EMAIL: "${{ vars.FLUXER_CI_APP_ID }}+fluxer-ci[bot]@users.noreply.github.com"
+          FLUXER_CI_APP_ID: ${{ vars.FLUXER_CI_APP_ID }}
         run: ./scripts/openapi_sdk.sh regenerate
