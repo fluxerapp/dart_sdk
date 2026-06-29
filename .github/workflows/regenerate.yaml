@@ -42,50 +42,9 @@ jobs:
         with:
           sdk: stable
 
-      - name: Copy OpenAPI spec
+      - name: Regenerate SDK
         working-directory: dart_sdk
-        run: |
-          cp ../fluxer/fluxer_api/src/api/openapi/openapi.json openapi.json
-          echo "Fetched $(wc -c < openapi.json) bytes from fluxer/main"
-
-      - name: Clean generated SDK
-        working-directory: dart_sdk
-        run: |
-          find lib/ -mindepth 1 -maxdepth 1 ! -name '.*' ! -name 'gateway_client' ! -name 'gateway.dart' -exec rm -rf {} + 2>/dev/null || true
-
-      - name: Resolve Dart dependencies
-        working-directory: dart_sdk
-        run: dart pub get
-
-      - name: Generate SDK
-        working-directory: dart_sdk
-        run: dart run openapi_sdk_gen --file openapi_generator.yaml
-
-      - name: Run build_runner
-        working-directory: dart_sdk
-        run: dart run build_runner build
-
-      - name: Apply Dart fixes
-        working-directory: dart_sdk
-        run: dart fix --apply
-
-      - name: Format
-        working-directory: dart_sdk
-        run: dart format .
-
-      - name: Analyze
-        working-directory: dart_sdk
-        run: dart analyze --no-fatal-warnings
-
-      - name: Commit and push
-        working-directory: dart_sdk
-        run: |
-          git config user.name "fluxer-ci[bot]"
-          git config user.email "${{ vars.FLUXER_CI_APP_ID }}+fluxer-ci[bot]@users.noreply.github.com"
-          git add -A
-          if git diff --staged --quiet; then
-            echo "::notice::No changes to commit."
-            exit 0
-          fi
-          git commit -m "chore(sdk): regenerate from OpenAPI"
-          git push origin HEAD:main
+        env:
+          SDK_REGEN_GIT_USER_NAME: "fluxer-ci[bot]"
+          SDK_REGEN_GIT_USER_EMAIL: "${{ vars.FLUXER_CI_APP_ID }}+fluxer-ci[bot]@users.noreply.github.com"
+        run: ./scripts/openapi_sdk.sh regenerate
