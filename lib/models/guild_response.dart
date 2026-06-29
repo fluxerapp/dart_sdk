@@ -26,36 +26,36 @@ part 'guild_response.g.dart';
 @JsonSerializable()
 class GuildResponse {
   const GuildResponse({
-    required this.disabledOperations,
+    required this.contentWarningLevel,
     required this.name,
-    required this.nsfw,
+    required this.afkTimeout,
     required this.splashCardAlignment,
     required this.id,
     required this.ownerId,
-    required this.systemChannelFlags,
-    required this.afkTimeout,
-    required this.features,
-    required this.verificationLevel,
-    required this.mfaLevel,
+    required this.disabledOperations,
     required this.nsfwLevel,
-    required this.contentWarningLevel,
-    required this.explicitContentFilter,
+    required this.mfaLevel,
     required this.defaultMessageNotifications,
+    required this.verificationLevel,
+    required this.features,
+    required this.systemChannelFlags,
+    required this.explicitContentFilter,
+    required this.nsfw,
+    this.systemChannelId,
     this.embedSplashHeight,
-    this.icon,
     this.rulesChannelId,
     this.afkChannelId,
-    this.splashWidth,
-    this.splashHeight,
-    this.banner,
-    this.embedSplash,
-    this.embedSplashWidth,
-    this.onlineCount,
-    this.bannerWidth,
-    this.contentWarningText,
     this.vanityUrlCode,
+    this.embedSplashWidth,
+    this.embedSplash,
+    this.splashHeight,
+    this.splashWidth,
     this.bannerHeight,
-    this.systemChannelId,
+    this.approximatePresenceCount,
+    this.contentWarningText,
+    this.bannerWidth,
+    this.banner,
+    this.icon,
     this.messageHistoryCutoff,
     this.permissions,
     this.roles,
@@ -63,6 +63,8 @@ class GuildResponse {
     this.stickers,
     this.channels,
     this.memberCount,
+    this.onlineCount,
+    this.approximateMemberCount,
     this.splash,
   });
 
@@ -208,6 +210,10 @@ class GuildResponse {
   final Int32Type? memberCount;
   @JsonKey(includeIfNull: false, name: 'online_count')
   final Int32Type? onlineCount;
+  @JsonKey(includeIfNull: false, name: 'approximate_member_count')
+  final Int32Type? approximateMemberCount;
+  @JsonKey(includeIfNull: false, name: 'approximate_presence_count')
+  final Int32Type? approximatePresenceCount;
 
   Map<String, Object?> toJson() => _$GuildResponseToJson(this);
 }
