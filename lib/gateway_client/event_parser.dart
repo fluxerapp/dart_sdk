@@ -350,7 +350,7 @@ class EventParser {
               .toList(),
         ),
         'USER_PINNED_DMS_UPDATE' => UserPinnedDmsUpdateEvent(
-          pinnedDmChannelIds: data.cast<String>(),
+          pinnedDmChannelIds: data.map((dynamic id) => id.toString()).toList(),
         ),
         _ => null,
       };
