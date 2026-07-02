@@ -14,6 +14,7 @@ import '../models/bulk_ignore_friend_requests_response.dart';
 import '../models/channel_response.dart';
 import '../models/create_private_channel_request.dart';
 import '../models/disable_totp_request.dart';
+import '../models/discriminator_type.dart';
 import '../models/email_change_apply_request.dart';
 import '../models/email_change_bounced_request_new_request.dart';
 import '../models/email_change_bounced_verify_new_request.dart';
@@ -146,7 +147,7 @@ abstract class UsersApi {
 
   /// Create private channel.
   ///
-  /// Creates a new private channel (direct message) between the current user and one or more recipients. Returns the newly created channel object.
+  /// Creates a new private channel (direct message) between the current user and one or more recipients. Group DM creation requires CAPTCHA verification. Returns the newly created channel object.
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/users/@me/channels')
@@ -981,7 +982,7 @@ abstract class UsersApi {
   @GET('/users/check-tag')
   Future<UserTagCheckResponse> checkUsernameTagAvailability({
     @Query('username') required UsernameType username,
-    @Query('discriminator') required String discriminator,
+    @Query('discriminator') required DiscriminatorType discriminator,
   });
 
   /// Get user profile.

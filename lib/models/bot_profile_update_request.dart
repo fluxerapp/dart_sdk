@@ -6,6 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'base64_image_type.dart';
 import 'bot_flags.dart';
+import 'discriminator_type.dart';
 import 'username_type.dart';
 
 part 'bot_profile_update_request.g.dart';
@@ -26,10 +27,8 @@ class BotProfileUpdateRequest {
 
   @JsonKey(includeIfNull: false)
   final UsernameType? username;
-
-  /// The discriminator of the bot
   @JsonKey(includeIfNull: false)
-  final String? discriminator;
+  final DiscriminatorType? discriminator;
 
   /// The avatar image as base64
   @JsonKey(includeIfNull: false)

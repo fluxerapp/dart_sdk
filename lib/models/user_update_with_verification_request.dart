@@ -5,6 +5,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'base64_image_type.dart';
+import 'discriminator_type.dart';
 import 'email_type.dart';
 import 'mention_reply_preferences.dart';
 import 'password_type.dart';
@@ -50,10 +51,8 @@ class UserUpdateWithVerificationRequest {
 
   @JsonKey(includeIfNull: false)
   final UsernameType? username;
-
-  /// The 4-digit discriminator tag
   @JsonKey(includeIfNull: false)
-  final String? discriminator;
+  final DiscriminatorType? discriminator;
 
   /// The display name shown to other users
   @JsonKey(includeIfNull: false, name: 'global_name')

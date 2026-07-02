@@ -253,6 +253,7 @@ export 'models/application_list_response.dart';
 export 'models/application_update_request.dart';
 export 'models/bot_profile_response.dart';
 export 'models/bot_profile_update_request.dart';
+export 'models/discriminator_type.dart';
 export 'models/bot_token_reset_response.dart';
 export 'models/application_public_response.dart';
 export 'models/o_auth2_consent_response.dart';

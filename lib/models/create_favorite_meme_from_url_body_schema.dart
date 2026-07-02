@@ -39,7 +39,7 @@ class CreateFavoriteMemeFromUrlBodySchema {
   @JsonKey(includeIfNull: false, name: 'gif_slug')
   final String? gifSlug;
 
-  /// Stable name of the GIF provider that issued gif_slug (e.g. "klipy", "tenor")
+  /// Stable name of the GIF provider that issued gif_slug. New provider GIFs are sourced from KLIPY.
   @JsonKey(includeIfNull: false, name: 'gif_provider')
   final String? gifProvider;
 

@@ -93,7 +93,7 @@ class FavoriteMemeResponse {
   @JsonKey(includeIfNull: false, name: 'gif_slug')
   final String? gifSlug;
 
-  /// Stable name of the GIF provider that issued gif_slug (e.g. "klipy", "tenor"), if any
+  /// Stable name of the GIF provider that issued gif_slug, if any. Legacy records may contain older provider names.
   @JsonKey(includeIfNull: false, name: 'gif_provider')
   final String? gifProvider;
 

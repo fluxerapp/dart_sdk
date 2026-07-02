@@ -17,7 +17,7 @@ class WellKnownFluxerResponseGif {
   factory WellKnownFluxerResponseGif.fromJson(Map<String, Object?> json) =>
       _$WellKnownFluxerResponseGifFromJson(json);
 
-  /// Stable machine name of the active GIF provider (e.g. "klipy", "tenor")
+  /// Stable machine name of the active GIF provider.
   final String provider;
 
   /// Human-readable provider name shown in the UI
