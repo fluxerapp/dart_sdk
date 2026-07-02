@@ -135,13 +135,6 @@ class EventParser {
           guildId: data['guild_id'] as String,
           data: data,
         ),
-        // Note: USER_PINNED_DMS_UPDATE sends `d` as a plain array of strings,
-        // but gateway_connection.dart casts `d` as Map<String, dynamic>.
-        // This means the event will throw and fall through to UnknownGatewayEvent
-        // until special handling is added at the _onMessage level.
-        'USER_PINNED_DMS_UPDATE' => UserPinnedDmsUpdateEvent(
-          pinnedDmChannelIds: (data as List<dynamic>?)?.cast<String>() ?? [],
-        ),
         'USER_NOTE_UPDATE' => UserNoteUpdateEvent(
           userId: data['id'] as String,
           note: data['note'] as String?,
@@ -355,6 +348,9 @@ class EventParser {
                 ),
               )
               .toList(),
+        ),
+        'USER_PINNED_DMS_UPDATE' => UserPinnedDmsUpdateEvent(
+          pinnedDmChannelIds: data.cast<String>(),
         ),
         _ => null,
       };
