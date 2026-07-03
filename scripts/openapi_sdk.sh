@@ -65,8 +65,8 @@ cd "$REPO_ROOT"
 command -v dart >/dev/null 2>&1 || fail "dart not found"
 if [[ "$MODE" == "regenerate" ]]; then
   command -v git >/dev/null 2>&1 || fail "git not found"
-  if [[ -z "${FLUXER_CI_APP_ID:-}" ]]; then
-    fail "FLUXER_CI_APP_ID is required for regenerate"
+  if [[ -z "${FLUXER_CI_APP_USER_ID:-}" ]]; then
+    fail "FLUXER_CI_APP_USER_ID is required for regenerate"
   fi
 fi
 
@@ -104,7 +104,7 @@ if [[ "$MODE" == "regenerate" ]]; then
 
   start_group "Committing generated SDK"
   git config user.name "fluxer-ci[bot]"
-  git config user.email "${FLUXER_CI_APP_ID}+fluxer-ci[bot]@users.noreply.github.com"
+  git config user.email "${FLUXER_CI_APP_USER_ID}+fluxer-ci[bot]@users.noreply.github.com"
 
   git add -A
   if git diff --staged --quiet; then
