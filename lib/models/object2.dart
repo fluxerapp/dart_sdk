@@ -6,6 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'message_attachment_flags.dart';
 import 'int32_type.dart';
+import 'non_negative_safe_integer_type.dart';
 import 'client_attachment_reference_request_id_id.dart';
 
 part 'object2.g.dart';
@@ -39,7 +40,7 @@ class Object2ClientUploadedAttachmentRequest {
   @JsonKey(name: 'upload_filename')
   final String uploadFilename;
   @JsonKey(name: 'file_size')
-  final Int32Type fileSize;
+  final NonNegativeSafeIntegerType fileSize;
   @JsonKey(name: 'content_type')
   final String contentType;
 

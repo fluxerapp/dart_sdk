@@ -23,7 +23,7 @@ FavoriteMemeResponse _$FavoriteMemeResponseFromJson(
       attachmentId: $checkedConvert('attachment_id', (v) => v as String),
       filename: $checkedConvert('filename', (v) => v as String),
       contentType: $checkedConvert('content_type', (v) => v as String),
-      size: $checkedConvert('size', (v) => v as num),
+      size: $checkedConvert('size', (v) => (v as num).toInt()),
       url: $checkedConvert('url', (v) => v as String),
       altText: $checkedConvert('alt_text', (v) => v as String?),
       contentHash: $checkedConvert('content_hash', (v) => v as String?),

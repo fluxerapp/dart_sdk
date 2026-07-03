@@ -5,6 +5,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'object5_id_id.dart';
+import 'non_negative_safe_integer_type.dart';
 import 'message_attachment_flags.dart';
 
 part 'object5.g.dart';
@@ -45,10 +46,8 @@ class Object5 {
   /// MIME type of the file
   @JsonKey(includeIfNull: false, name: 'content_type')
   final String? contentType;
-
-  /// Size of the file in bytes
   @JsonKey(includeIfNull: false)
-  final int? size;
+  final NonNegativeSafeIntegerType? size;
 
   /// URL of the attachment
   @JsonKey(includeIfNull: false)

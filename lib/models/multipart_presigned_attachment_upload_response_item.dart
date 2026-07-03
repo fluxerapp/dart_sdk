@@ -7,6 +7,7 @@ import 'package:json_annotation/json_annotation.dart';
 import 'int32_type.dart';
 import 'multipart_presigned_attachment_upload_response_item_parts.dart';
 import 'multipart_presigned_attachment_upload_response_item_upload_mode_upload_mode.dart';
+import 'non_negative_safe_integer_type.dart';
 import 'presigned_attachment_upload_response_item.dart';
 
 part 'multipart_presigned_attachment_upload_response_item.g.dart';
@@ -38,7 +39,7 @@ class MultipartPresignedAttachmentUploadResponseItem {
   @JsonKey(name: 'upload_filename')
   final String uploadFilename;
   @JsonKey(name: 'file_size')
-  final Int32Type fileSize;
+  final NonNegativeSafeIntegerType fileSize;
 
   /// Expected MIME type for this upload
   @JsonKey(name: 'content_type')
@@ -51,7 +52,7 @@ class MultipartPresignedAttachmentUploadResponseItem {
   @JsonKey(name: 'upload_id')
   final String uploadId;
   @JsonKey(name: 'part_size')
-  final Int32Type partSize;
+  final NonNegativeSafeIntegerType partSize;
 
   /// Per-part presigned URLs for parallel upload
   final List<MultipartPresignedAttachmentUploadResponseItemParts> parts;

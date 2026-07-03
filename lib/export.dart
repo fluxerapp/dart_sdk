@@ -111,6 +111,7 @@ export 'models/sudo_verification_schema.dart';
 export 'models/presigned_attachment_upload_response.dart';
 export 'models/presigned_attachment_upload_response_item.dart';
 export 'models/singlepart_presigned_attachment_upload_response_item.dart';
+export 'models/non_negative_safe_integer_type.dart';
 export 'models/multipart_presigned_attachment_upload_response_item.dart';
 export 'models/presigned_attachment_upload_request.dart';
 export 'models/presigned_attachment_upload_request_item.dart';

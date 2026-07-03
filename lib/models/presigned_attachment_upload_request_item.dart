@@ -5,6 +5,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'int32_type.dart';
+import 'non_negative_safe_integer_type.dart';
 
 part 'presigned_attachment_upload_request_item.g.dart';
 
@@ -26,7 +27,7 @@ class PresignedAttachmentUploadRequestItem {
   /// The name of the file that will be uploaded
   final String filename;
   @JsonKey(name: 'file_size')
-  final Int32Type fileSize;
+  final NonNegativeSafeIntegerType fileSize;
 
   /// MIME type the client will upload
   @JsonKey(name: 'content_type')

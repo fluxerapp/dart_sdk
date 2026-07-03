@@ -68,7 +68,7 @@ class FavoriteMemeResponse {
   final String? contentHash;
 
   /// File size in bytes
-  final num size;
+  final int size;
 
   /// Width of the image or video in pixels
   @JsonKey(includeIfNull: false)
