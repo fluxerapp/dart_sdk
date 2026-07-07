@@ -4,8 +4,6 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'object3_attachments_id_id.dart';
-
 part 'object3_attachments.g.dart';
 
 @JsonSerializable()
@@ -16,7 +14,7 @@ class Object3Attachments {
       _$Object3AttachmentsFromJson(json);
 
   /// The identifier of the snapshot attachment
-  final Object3AttachmentsIdId id;
+  final dynamic id;
 
   /// A title for the attachment (1-1024 characters)
   @JsonKey(includeIfNull: false)

@@ -7,7 +7,6 @@ import 'package:json_annotation/json_annotation.dart';
 import 'message_attachment_flags.dart';
 import 'int32_type.dart';
 import 'non_negative_safe_integer_type.dart';
-import 'client_attachment_reference_request_id_id.dart';
 
 part 'object2.g.dart';
 
@@ -72,7 +71,7 @@ class Object2ClientAttachmentReferenceRequest {
   final MessageAttachmentFlags? flags;
   final Int32Type? duration;
   final String? waveform;
-  final ClientAttachmentReferenceRequestIdId id;
+  final dynamic id;
   final String? filename;
 
   const Object2ClientAttachmentReferenceRequest({

@@ -11,11 +11,7 @@ Object5 _$Object5FromJson(Map<String, dynamic> json) => $checkedCreate(
   json,
   ($checkedConvert) {
     final val = Object5(
-      id: $checkedConvert(
-        'id',
-        (v) =>
-            v == null ? null : Object5IdId.fromJson(v as Map<String, dynamic>),
-      ),
+      id: $checkedConvert('id', (v) => v),
       filename: $checkedConvert('filename', (v) => v as String?),
       description: $checkedConvert('description', (v) => v as String?),
       contentType: $checkedConvert('content_type', (v) => v as String?),
@@ -35,7 +31,7 @@ Object5 _$Object5FromJson(Map<String, dynamic> json) => $checkedCreate(
 );
 
 Map<String, dynamic> _$Object5ToJson(Object5 instance) => <String, dynamic>{
-  'id': ?instance.id,
+  'id': instance.id,
   'filename': ?instance.filename,
   'description': ?instance.description,
   'content_type': ?instance.contentType,

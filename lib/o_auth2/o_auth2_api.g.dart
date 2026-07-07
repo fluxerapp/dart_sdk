@@ -484,11 +484,41 @@ class _OAuth2Api implements OAuth2Api {
   }
 
   @override
-  Future<OAuth2TokenResponse> exchangeOauth2Token() async {
+  Future<OAuth2TokenResponse> exchangeOauth2Token({
+    String? grantType,
+    String? code,
+    String? redirectUri,
+    String? clientId,
+    String? clientSecret,
+    String? codeVerifier,
+    String? refreshToken,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final _data = FormData();
+    if (grantType != null) {
+      _data.fields.add(MapEntry('grant_type', grantType));
+    }
+    if (code != null) {
+      _data.fields.add(MapEntry('code', code));
+    }
+    if (redirectUri != null) {
+      _data.fields.add(MapEntry('redirect_uri', redirectUri));
+    }
+    if (clientId != null) {
+      _data.fields.add(MapEntry('client_id', clientId));
+    }
+    if (clientSecret != null) {
+      _data.fields.add(MapEntry('client_secret', clientSecret));
+    }
+    if (codeVerifier != null) {
+      _data.fields.add(MapEntry('code_verifier', codeVerifier));
+    }
+    if (refreshToken != null) {
+      _data.fields.add(MapEntry('refresh_token', refreshToken));
+    }
     final _options = _setStreamType<OAuth2TokenResponse>(
       Options(
             method: 'POST',

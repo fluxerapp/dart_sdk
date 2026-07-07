@@ -4,7 +4,6 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'client_attachment_reference_request_id_id.dart';
 import 'int32_type.dart';
 import 'message_attachment_flags.dart';
 
@@ -45,7 +44,7 @@ class ClientAttachmentReferenceRequest {
   final String? waveform;
 
   /// The identifier of the attachment being referenced (snowflake ID or file index)
-  final ClientAttachmentReferenceRequestIdId id;
+  final dynamic id;
 
   /// A new filename for the attachment
   @JsonKey(includeIfNull: false)

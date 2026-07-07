@@ -206,9 +206,36 @@ abstract class OAuth2Api {
   /// Exchange OAuth2 token.
   ///
   /// Exchanges authorization code or other grant type for access tokens. Supports authorization code, refresh token, and client credentials flows. Client authentication via authorization header or client credentials.
+  ///
+  /// [grantType] - Name not received - field will be skipped.
+  ///
+  /// [code] - The authorization code received from the authorize endpoint.
+  /// Name not received - field will be skipped.
+  ///
+  /// [redirectUri] - The redirect URI used in the authorization request.
+  /// Name not received - field will be skipped.
+  ///
+  /// [clientId] - Name not received - field will be skipped.
+  ///
+  /// [clientSecret] - The application client secret.
+  /// Name not received - field will be skipped.
+  ///
+  /// [codeVerifier] - The PKCE code verifier for the authorization request.
+  /// Name not received - field will be skipped.
+  ///
+  /// [refreshToken] - The refresh token to exchange for a new access token.
+  /// Name not received - field will be skipped.
   @MultiPart()
   @POST('/oauth2/token')
-  Future<OAuth2TokenResponse> exchangeOauth2Token();
+  Future<OAuth2TokenResponse> exchangeOauth2Token({
+    @Part(name: 'grant_type') String? grantType,
+    @Part(name: 'code') String? code,
+    @Part(name: 'redirect_uri') String? redirectUri,
+    @Part(name: 'client_id') SnowflakeType? clientId,
+    @Part(name: 'client_secret') String? clientSecret,
+    @Part(name: 'code_verifier') String? codeVerifier,
+    @Part(name: 'refresh_token') String? refreshToken,
+  });
 
   /// Revoke OAuth2 token.
   ///

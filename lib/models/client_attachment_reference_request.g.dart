@@ -11,12 +11,7 @@ ClientAttachmentReferenceRequest _$ClientAttachmentReferenceRequestFromJson(
 ) =>
     $checkedCreate('ClientAttachmentReferenceRequest', json, ($checkedConvert) {
       final val = ClientAttachmentReferenceRequest(
-        id: $checkedConvert(
-          'id',
-          (v) => ClientAttachmentReferenceRequestIdId.fromJson(
-            v as Map<String, dynamic>,
-          ),
-        ),
+        id: $checkedConvert('id', (v) => v),
         title: $checkedConvert('title', (v) => v as String?),
         description: $checkedConvert('description', (v) => v as String?),
         flags: $checkedConvert('flags', (v) => (v as num?)?.toInt()),

@@ -4,7 +4,6 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'object5_id_id.dart';
 import 'non_negative_safe_integer_type.dart';
 import 'message_attachment_flags.dart';
 
@@ -32,8 +31,7 @@ class Object5 {
       _$Object5FromJson(json);
 
   /// Attachment ID for referencing uploaded files
-  @JsonKey(includeIfNull: false)
-  final Object5IdId? id;
+  final dynamic id;
 
   /// Name of the file (1-1024 characters)
   @JsonKey(includeIfNull: false)
