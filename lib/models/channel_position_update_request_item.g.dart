@@ -1,18 +1,18 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'channel_position_update_request.dart';
+part of 'channel_position_update_request_item.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-ChannelPositionUpdateRequest _$ChannelPositionUpdateRequestFromJson(
+ChannelPositionUpdateRequestItem _$ChannelPositionUpdateRequestItemFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate(
-  'ChannelPositionUpdateRequest',
+  'ChannelPositionUpdateRequestItem',
   json,
   ($checkedConvert) {
-    final val = ChannelPositionUpdateRequest(
+    final val = ChannelPositionUpdateRequestItem(
       id: $checkedConvert('id', (v) => v as String),
       position: $checkedConvert('position', (v) => (v as num?)?.toInt()),
       parentId: $checkedConvert('parent_id', (v) => v as String?),
@@ -31,8 +31,8 @@ ChannelPositionUpdateRequest _$ChannelPositionUpdateRequestFromJson(
   },
 );
 
-Map<String, dynamic> _$ChannelPositionUpdateRequestToJson(
-  ChannelPositionUpdateRequest instance,
+Map<String, dynamic> _$ChannelPositionUpdateRequestItemToJson(
+  ChannelPositionUpdateRequestItem instance,
 ) => <String, dynamic>{
   'id': instance.id,
   'position': ?instance.position,

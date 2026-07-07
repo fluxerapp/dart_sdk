@@ -292,13 +292,12 @@ class _GuildsApi implements GuildsApi {
   @override
   Future<void> updateGuildChannelPositions({
     required String guildId,
-    required ChannelPositionUpdateRequest body,
+    required List<ChannelPositionUpdateRequestItem> body,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    final _data = body.map((e) => e.toJson()).toList();
     final _options = _setStreamType<void>(
       Options(method: 'PATCH', headers: _headers, extra: _extra)
           .compose(
@@ -844,13 +843,12 @@ class _GuildsApi implements GuildsApi {
   @override
   Future<void> updateGuildRolePositions({
     required String guildId,
-    required GuildRolePositionsRequest body,
+    required List<GuildRolePositionsRequestItem> body,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    final _data = body.map((e) => e.toJson()).toList();
     final _options = _setStreamType<void>(
       Options(method: 'PATCH', headers: _headers, extra: _extra)
           .compose(
@@ -867,13 +865,12 @@ class _GuildsApi implements GuildsApi {
   @override
   Future<void> updateRoleHoistPositions({
     required String guildId,
-    required GuildRoleHoistPositionsRequest body,
+    required List<GuildRoleHoistPositionsRequestItem> body,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    final _data = body.map((e) => e.toJson()).toList();
     final _options = _setStreamType<void>(
       Options(method: 'PATCH', headers: _headers, extra: _extra)
           .compose(
