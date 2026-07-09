@@ -389,6 +389,30 @@ class _WebhooksApi implements WebhooksApi {
   }
 
   @override
+  Future<void> executeInstatusWebhook({
+    required String webhookId,
+    required String token,
+    required InstatusWebhook body,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<void>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/webhooks/${webhookId}/${token}/instatus',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    await _dio.fetch<void>(_options);
+  }
+
+  @override
   Future<MessageResponseSchema> getWebhookMessage({
     required String webhookId,
     required String token,

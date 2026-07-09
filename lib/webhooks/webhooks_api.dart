@@ -3,12 +3,14 @@
 // ignore_for_file: type=lint, unused_import, invalid_annotation_target, unnecessary_import
 
 import 'dart:convert';
+
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
 import 'package:retrofit/error_logger.dart';
 
 import '../models/allowed_mentions_request.dart';
 import '../models/git_hub_webhook.dart';
+import '../models/instatus_webhook.dart';
 import '../models/message_content_request.dart';
 import '../models/message_flags.dart';
 import '../models/message_nonce_request.dart';
@@ -214,6 +216,22 @@ abstract class WebhooksApi {
     @Path('webhook_id') required SnowflakeType webhookId,
     @Path('token') required String token,
     @Body() required GitHubWebhook body,
+  });
+
+  /// Execute Instatus webhook.
+  ///
+  /// Receives and processes Instatus status page webhook events, formatting them as messages in the configured channel.
+  ///
+  /// [webhookId] - The ID of the webhook.
+  ///
+  /// [token] - The token.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/webhooks/{webhook_id}/{token}/instatus')
+  Future<void> executeInstatusWebhook({
+    @Path('webhook_id') required SnowflakeType webhookId,
+    @Path('token') required String token,
+    @Body() required InstatusWebhook body,
   });
 
   /// Get webhook message.
