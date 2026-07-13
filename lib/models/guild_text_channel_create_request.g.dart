@@ -38,6 +38,10 @@ GuildTextChannelCreateRequest _$GuildTextChannelCreateRequestFromJson(
             )
             .toList(),
       ),
+      rateLimitPerUser: $checkedConvert(
+        'rate_limit_per_user',
+        (v) => (v as num?)?.toInt(),
+      ),
       nsfw: $checkedConvert('nsfw', (v) => v as bool?),
       nsfwOverride: $checkedConvert('nsfw_override', (v) => v as bool?),
       contentWarningLevel: $checkedConvert(
@@ -57,6 +61,7 @@ GuildTextChannelCreateRequest _$GuildTextChannelCreateRequestFromJson(
     'userLimit': 'user_limit',
     'voiceConnectionLimit': 'voice_connection_limit',
     'permissionOverwrites': 'permission_overwrites',
+    'rateLimitPerUser': 'rate_limit_per_user',
     'nsfwOverride': 'nsfw_override',
     'contentWarningLevel': 'content_warning_level',
     'contentWarningText': 'content_warning_text',
@@ -73,6 +78,7 @@ Map<String, dynamic> _$GuildTextChannelCreateRequestToJson(
   'user_limit': ?instance.userLimit,
   'voice_connection_limit': ?instance.voiceConnectionLimit,
   'permission_overwrites': ?instance.permissionOverwrites,
+  'rate_limit_per_user': ?instance.rateLimitPerUser,
   'nsfw': ?instance.nsfw,
   'nsfw_override': ?instance.nsfwOverride,
   'content_warning_level': ?instance.contentWarningLevel,

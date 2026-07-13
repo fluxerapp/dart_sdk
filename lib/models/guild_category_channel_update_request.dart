@@ -25,11 +25,11 @@ class GuildCategoryChannelUpdateRequest {
     this.userLimit,
     this.voiceConnectionLimit,
     this.permissionOverwrites,
+    this.rateLimitPerUser,
     this.nsfw,
     this.nsfwOverride,
     this.contentWarningLevel,
     this.contentWarningText,
-    this.rateLimitPerUser,
     this.icon,
     this.ownerId,
     this.nicks,
@@ -70,6 +70,10 @@ class GuildCategoryChannelUpdateRequest {
   final List<GuildCategoryChannelUpdateRequestPermissionOverwrites>?
   permissionOverwrites;
 
+  /// Slowmode delay in seconds (0-21600)
+  @JsonKey(includeIfNull: false, name: 'rate_limit_per_user')
+  final int? rateLimitPerUser;
+
   /// Legacy: setting true maps to nsfw_override=true; setting false maps to nsfw_override=null (inherit). Prefer nsfw_override.
   @JsonKey(includeIfNull: false)
   final bool? nsfw;
@@ -83,10 +87,6 @@ class GuildCategoryChannelUpdateRequest {
   /// Custom channel content warning text (max 200 characters); null inherits from parent or guild
   @JsonKey(includeIfNull: false, name: 'content_warning_text')
   final String? contentWarningText;
-
-  /// Slowmode delay in seconds (0-21600)
-  @JsonKey(includeIfNull: false, name: 'rate_limit_per_user')
-  final int? rateLimitPerUser;
 
   /// Base64-encoded icon image for group DM channels
   @JsonKey(includeIfNull: false)

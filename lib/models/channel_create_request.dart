@@ -71,6 +71,8 @@ class ChannelCreateRequest0 extends ChannelCreateRequest {
   @JsonKey(name: 'permission_overwrites')
   final List<GuildTextChannelCreateRequestPermissionOverwrites>?
   permissionOverwrites;
+  @JsonKey(name: 'rate_limit_per_user')
+  final int? rateLimitPerUser;
   final bool? nsfw;
   @JsonKey(name: 'nsfw_override')
   final bool? nsfwOverride;
@@ -89,6 +91,7 @@ class ChannelCreateRequest0 extends ChannelCreateRequest {
     required this.userLimit,
     required this.voiceConnectionLimit,
     required this.permissionOverwrites,
+    required this.rateLimitPerUser,
     required this.nsfw,
     required this.nsfwOverride,
     required this.contentWarningLevel,
@@ -118,6 +121,8 @@ class ChannelCreateRequest2 extends ChannelCreateRequest {
   @JsonKey(name: 'permission_overwrites')
   final List<GuildVoiceChannelCreateRequestPermissionOverwrites>?
   permissionOverwrites;
+  @JsonKey(name: 'rate_limit_per_user')
+  final int? rateLimitPerUser;
   final bool? nsfw;
   @JsonKey(name: 'nsfw_override')
   final bool? nsfwOverride;
@@ -136,6 +141,7 @@ class ChannelCreateRequest2 extends ChannelCreateRequest {
     required this.userLimit,
     required this.voiceConnectionLimit,
     required this.permissionOverwrites,
+    required this.rateLimitPerUser,
     required this.nsfw,
     required this.nsfwOverride,
     required this.contentWarningLevel,
@@ -165,6 +171,8 @@ class ChannelCreateRequest4 extends ChannelCreateRequest {
   @JsonKey(name: 'permission_overwrites')
   final List<GuildCategoryChannelCreateRequestPermissionOverwrites>?
   permissionOverwrites;
+  @JsonKey(name: 'rate_limit_per_user')
+  final int? rateLimitPerUser;
   final bool? nsfw;
   @JsonKey(name: 'nsfw_override')
   final bool? nsfwOverride;
@@ -183,6 +191,7 @@ class ChannelCreateRequest4 extends ChannelCreateRequest {
     required this.userLimit,
     required this.voiceConnectionLimit,
     required this.permissionOverwrites,
+    required this.rateLimitPerUser,
     required this.nsfw,
     required this.nsfwOverride,
     required this.contentWarningLevel,
@@ -212,6 +221,8 @@ class ChannelCreateRequest998 extends ChannelCreateRequest {
   @JsonKey(name: 'permission_overwrites')
   final List<GuildLinkChannelCreateRequestPermissionOverwrites>?
   permissionOverwrites;
+  @JsonKey(name: 'rate_limit_per_user')
+  final int? rateLimitPerUser;
   final bool? nsfw;
   @JsonKey(name: 'nsfw_override')
   final bool? nsfwOverride;
@@ -230,6 +241,7 @@ class ChannelCreateRequest998 extends ChannelCreateRequest {
     required this.userLimit,
     required this.voiceConnectionLimit,
     required this.permissionOverwrites,
+    required this.rateLimitPerUser,
     required this.nsfw,
     required this.nsfwOverride,
     required this.contentWarningLevel,

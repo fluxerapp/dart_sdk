@@ -77,6 +77,8 @@ class ChannelUpdateRequest0 extends ChannelUpdateRequest {
   @JsonKey(name: 'permission_overwrites')
   final List<GuildTextChannelUpdateRequestPermissionOverwrites>?
   permissionOverwrites;
+  @JsonKey(name: 'rate_limit_per_user')
+  final int? rateLimitPerUser;
   final bool? nsfw;
   @JsonKey(name: 'nsfw_override')
   final bool? nsfwOverride;
@@ -84,8 +86,6 @@ class ChannelUpdateRequest0 extends ChannelUpdateRequest {
   final ContentWarningLevel? contentWarningLevel;
   @JsonKey(name: 'content_warning_text')
   final String? contentWarningText;
-  @JsonKey(name: 'rate_limit_per_user')
-  final int? rateLimitPerUser;
   final Base64ImageType? icon;
   @JsonKey(name: 'owner_id')
   final SnowflakeType? ownerId;
@@ -103,11 +103,11 @@ class ChannelUpdateRequest0 extends ChannelUpdateRequest {
     required this.userLimit,
     required this.voiceConnectionLimit,
     required this.permissionOverwrites,
+    required this.rateLimitPerUser,
     required this.nsfw,
     required this.nsfwOverride,
     required this.contentWarningLevel,
     required this.contentWarningText,
-    required this.rateLimitPerUser,
     required this.icon,
     required this.ownerId,
     required this.nicks,
@@ -137,6 +137,8 @@ class ChannelUpdateRequest2 extends ChannelUpdateRequest {
   @JsonKey(name: 'permission_overwrites')
   final List<GuildVoiceChannelUpdateRequestPermissionOverwrites>?
   permissionOverwrites;
+  @JsonKey(name: 'rate_limit_per_user')
+  final int? rateLimitPerUser;
   final bool? nsfw;
   @JsonKey(name: 'nsfw_override')
   final bool? nsfwOverride;
@@ -144,8 +146,6 @@ class ChannelUpdateRequest2 extends ChannelUpdateRequest {
   final ContentWarningLevel? contentWarningLevel;
   @JsonKey(name: 'content_warning_text')
   final String? contentWarningText;
-  @JsonKey(name: 'rate_limit_per_user')
-  final int? rateLimitPerUser;
   final Base64ImageType? icon;
   @JsonKey(name: 'owner_id')
   final SnowflakeType? ownerId;
@@ -163,11 +163,11 @@ class ChannelUpdateRequest2 extends ChannelUpdateRequest {
     required this.userLimit,
     required this.voiceConnectionLimit,
     required this.permissionOverwrites,
+    required this.rateLimitPerUser,
     required this.nsfw,
     required this.nsfwOverride,
     required this.contentWarningLevel,
     required this.contentWarningText,
-    required this.rateLimitPerUser,
     required this.icon,
     required this.ownerId,
     required this.nicks,
@@ -197,6 +197,8 @@ class ChannelUpdateRequest4 extends ChannelUpdateRequest {
   @JsonKey(name: 'permission_overwrites')
   final List<GuildCategoryChannelUpdateRequestPermissionOverwrites>?
   permissionOverwrites;
+  @JsonKey(name: 'rate_limit_per_user')
+  final int? rateLimitPerUser;
   final bool? nsfw;
   @JsonKey(name: 'nsfw_override')
   final bool? nsfwOverride;
@@ -204,8 +206,6 @@ class ChannelUpdateRequest4 extends ChannelUpdateRequest {
   final ContentWarningLevel? contentWarningLevel;
   @JsonKey(name: 'content_warning_text')
   final String? contentWarningText;
-  @JsonKey(name: 'rate_limit_per_user')
-  final int? rateLimitPerUser;
   final Base64ImageType? icon;
   @JsonKey(name: 'owner_id')
   final SnowflakeType? ownerId;
@@ -223,11 +223,11 @@ class ChannelUpdateRequest4 extends ChannelUpdateRequest {
     required this.userLimit,
     required this.voiceConnectionLimit,
     required this.permissionOverwrites,
+    required this.rateLimitPerUser,
     required this.nsfw,
     required this.nsfwOverride,
     required this.contentWarningLevel,
     required this.contentWarningText,
-    required this.rateLimitPerUser,
     required this.icon,
     required this.ownerId,
     required this.nicks,
@@ -257,6 +257,8 @@ class ChannelUpdateRequest998 extends ChannelUpdateRequest {
   @JsonKey(name: 'permission_overwrites')
   final List<GuildLinkChannelUpdateRequestPermissionOverwrites>?
   permissionOverwrites;
+  @JsonKey(name: 'rate_limit_per_user')
+  final int? rateLimitPerUser;
   final bool? nsfw;
   @JsonKey(name: 'nsfw_override')
   final bool? nsfwOverride;
@@ -264,8 +266,6 @@ class ChannelUpdateRequest998 extends ChannelUpdateRequest {
   final ContentWarningLevel? contentWarningLevel;
   @JsonKey(name: 'content_warning_text')
   final String? contentWarningText;
-  @JsonKey(name: 'rate_limit_per_user')
-  final int? rateLimitPerUser;
   final Base64ImageType? icon;
   @JsonKey(name: 'owner_id')
   final SnowflakeType? ownerId;
@@ -283,11 +283,11 @@ class ChannelUpdateRequest998 extends ChannelUpdateRequest {
     required this.userLimit,
     required this.voiceConnectionLimit,
     required this.permissionOverwrites,
+    required this.rateLimitPerUser,
     required this.nsfw,
     required this.nsfwOverride,
     required this.contentWarningLevel,
     required this.contentWarningText,
-    required this.rateLimitPerUser,
     required this.icon,
     required this.ownerId,
     required this.nicks,

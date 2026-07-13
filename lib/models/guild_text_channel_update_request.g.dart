@@ -37,6 +37,10 @@ GuildTextChannelUpdateRequest _$GuildTextChannelUpdateRequestFromJson(
             )
             .toList(),
       ),
+      rateLimitPerUser: $checkedConvert(
+        'rate_limit_per_user',
+        (v) => (v as num?)?.toInt(),
+      ),
       nsfw: $checkedConvert('nsfw', (v) => v as bool?),
       nsfwOverride: $checkedConvert('nsfw_override', (v) => v as bool?),
       contentWarningLevel: $checkedConvert(
@@ -47,10 +51,6 @@ GuildTextChannelUpdateRequest _$GuildTextChannelUpdateRequestFromJson(
       contentWarningText: $checkedConvert(
         'content_warning_text',
         (v) => v as String?,
-      ),
-      rateLimitPerUser: $checkedConvert(
-        'rate_limit_per_user',
-        (v) => (v as num?)?.toInt(),
       ),
       icon: $checkedConvert('icon', (v) => v as String?),
       ownerId: $checkedConvert('owner_id', (v) => v as String?),
@@ -70,10 +70,10 @@ GuildTextChannelUpdateRequest _$GuildTextChannelUpdateRequestFromJson(
     'userLimit': 'user_limit',
     'voiceConnectionLimit': 'voice_connection_limit',
     'permissionOverwrites': 'permission_overwrites',
+    'rateLimitPerUser': 'rate_limit_per_user',
     'nsfwOverride': 'nsfw_override',
     'contentWarningLevel': 'content_warning_level',
     'contentWarningText': 'content_warning_text',
-    'rateLimitPerUser': 'rate_limit_per_user',
     'ownerId': 'owner_id',
     'rtcRegion': 'rtc_region',
   },
@@ -89,11 +89,11 @@ Map<String, dynamic> _$GuildTextChannelUpdateRequestToJson(
   'user_limit': ?instance.userLimit,
   'voice_connection_limit': ?instance.voiceConnectionLimit,
   'permission_overwrites': ?instance.permissionOverwrites,
+  'rate_limit_per_user': ?instance.rateLimitPerUser,
   'nsfw': ?instance.nsfw,
   'nsfw_override': ?instance.nsfwOverride,
   'content_warning_level': ?instance.contentWarningLevel,
   'content_warning_text': ?instance.contentWarningText,
-  'rate_limit_per_user': ?instance.rateLimitPerUser,
   'icon': ?instance.icon,
   'owner_id': ?instance.ownerId,
   'nicks': ?instance.nicks,

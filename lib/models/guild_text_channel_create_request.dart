@@ -24,6 +24,7 @@ class GuildTextChannelCreateRequest {
     this.userLimit,
     this.voiceConnectionLimit,
     this.permissionOverwrites,
+    this.rateLimitPerUser,
     this.nsfw,
     this.nsfwOverride,
     this.contentWarningLevel,
@@ -61,6 +62,10 @@ class GuildTextChannelCreateRequest {
   @JsonKey(includeIfNull: false, name: 'permission_overwrites')
   final List<GuildTextChannelCreateRequestPermissionOverwrites>?
   permissionOverwrites;
+
+  /// Slowmode delay in seconds (0-21600)
+  @JsonKey(includeIfNull: false, name: 'rate_limit_per_user')
+  final int? rateLimitPerUser;
 
   /// Whether the channel is marked as NSFW
   @JsonKey(includeIfNull: false)
