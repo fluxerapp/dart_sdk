@@ -15,6 +15,7 @@ class GatewayIdentifyProperties {
     this.desktopArch,
     this.desktopOs,
     this.e2eeCapable,
+    this.mobile,
   });
 
   final String os;
@@ -28,6 +29,7 @@ class GatewayIdentifyProperties {
   final String? desktopArch;
   final String? desktopOs;
   final bool? e2eeCapable;
+  final bool? mobile;
 
   Map<String, Object?> toJson() => {
     'os': os,
@@ -41,6 +43,7 @@ class GatewayIdentifyProperties {
     if (desktopArch != null) 'desktop_arch': desktopArch,
     if (desktopOs != null) 'desktop_os': desktopOs,
     if (e2eeCapable != null) 'e2ee_capable': e2eeCapable,
+    if (mobile != null) 'mobile': mobile,
   };
 }
 
