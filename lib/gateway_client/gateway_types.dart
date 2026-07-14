@@ -207,11 +207,13 @@ class MemberListMember {
     required this.member,
     this.status,
     this.customStatus,
+    this.mobile = false,
   });
 
   final GuildMemberResponse member;
   final String? status;
   final String? customStatus;
+  final bool mobile;
 
   factory MemberListMember.fromJson(Map<String, dynamic> json) {
     final presenceData = json['presence'] as Map<String, dynamic>?;
@@ -221,6 +223,7 @@ class MemberListMember {
       member: GuildMemberResponse.fromJson(json),
       status: presenceData?['status'] as String?,
       customStatus: serializeCustomStatusMap(customStatusMap),
+      mobile: presenceData?['mobile'] as bool? ?? false,
     );
   }
 }

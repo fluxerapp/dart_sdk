@@ -524,11 +524,13 @@ class PresenceUpdateEvent extends GatewayEvent {
     required this.userId,
     required this.status,
     this.customStatus,
+    this.mobile = false,
   });
 
   final String userId;
   final String status;
   final String? customStatus;
+  final bool mobile;
 }
 
 class PresenceUpdateBulkEvent extends GatewayEvent {
