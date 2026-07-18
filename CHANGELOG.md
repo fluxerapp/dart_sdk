@@ -1,6 +1,10 @@
+## V2.1.0
+
+- Updated to latest production OpenAPI Spec.
+
 ## V2.0.0
 
-- Updated to latest perduction OpenAPI Spec.
+- Updated to latest production OpenAPI Spec.
 
 ## V1.3.0
 
