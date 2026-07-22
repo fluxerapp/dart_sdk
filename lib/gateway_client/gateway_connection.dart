@@ -17,6 +17,28 @@ import 'package:fluxer_dart/gateway_client/heartbeat_manager.dart';
 import 'package:fluxer_dart/gateway_client/session_manager.dart';
 import 'package:zstd_dart/zstd_dart.dart';
 
+/// Snapshot of zstd traffic observed on the current socket.
+class GatewayCompressionStats {
+  const GatewayCompressionStats({
+    required this.frames,
+    required this.wireBytes,
+    required this.decompressedBytes,
+    required this.compressionNegotiated,
+  });
+
+  /// Number of binary compressed frames decoded.
+  final int frames;
+
+  /// Compressed bytes received in binary frames.
+  final int wireBytes;
+
+  /// Bytes produced by the streaming decoder.
+  final int decompressedBytes;
+
+  /// Whether the first WebSocket frame was binary.
+  final bool compressionNegotiated;
+}
+
 /// Main gateway WebSocket client for the Fluxer platform.
 ///
 /// Manages the full lifecycle: connecting, identifying/resuming,
@@ -32,12 +54,15 @@ class GatewayConnection {
     GatewayIdentifyProperties? properties,
     GatewayPresence? presence,
     String compress = 'zstd-stream',
+    int maxDecompressedMessageSize =
+        ZstdStreamDecoder.defaultMaxDecompressedMessageSize,
     String? initialGuildId,
     int flags = 0,
   }) : _token = token,
        _dio = dio,
        _gatewayUrlOverride = gatewayUrl,
        _compress = compress,
+       _maxDecompressedMessageSize = maxDecompressedMessageSize,
        _initialGuildId = initialGuildId,
        _flags = flags,
        _properties =
@@ -55,6 +80,7 @@ class GatewayConnection {
   final String? _initialGuildId;
   final int _flags;
   final String _compress;
+  final int _maxDecompressedMessageSize;
   final GatewayIdentifyProperties _properties;
   GatewayPresence? _presence;
 
@@ -64,6 +90,9 @@ class GatewayConnection {
 
   WebSocketChannel? _channel;
   StreamSubscription<dynamic>? _subscription;
+  ZstdStreamDecoder? _zstdDecoder;
+  ZstdStreamEncoder? _zstdEncoder;
+  bool _handlingDecodeFailure = false;
 
   final StreamController<GatewayEvent> _eventController =
       StreamController<GatewayEvent>.broadcast();
@@ -78,6 +107,14 @@ class GatewayConnection {
   Timer? _reconnectTimer;
   int _connectGeneration = 0;
   Duration? _lastHeartbeatInterval;
+  int _consecutiveDecodeFailureReconnects = 0;
+  bool _disableCompressionForNextConnection = false;
+  late String _activeCompress;
+  int _compressedFrames = 0;
+  int _compressedWireBytes = 0;
+  int _decompressedBytes = 0;
+  bool _firstFrameSeen = false;
+  bool _compressionNegotiated = false;
 
   /// Stream of parsed gateway events.
   Stream<GatewayEvent> get events => _eventController.stream;
@@ -93,6 +130,14 @@ class GatewayConnection {
 
   /// Time of the last heartbeat ACK, or null if none yet.
   DateTime? get lastAckAt => _session.lastAckAt;
+
+  /// Compression traffic observed on the current socket.
+  GatewayCompressionStats get compressionStats => GatewayCompressionStats(
+    frames: _compressedFrames,
+    wireBytes: _compressedWireBytes,
+    decompressedBytes: _decompressedBytes,
+    compressionNegotiated: _compressionNegotiated,
+  );
 
   /// True when the heartbeat ack is older than the interval + 15s, or unknown.
   bool get isLikelyStale => computeIsLikelyStale(
@@ -171,6 +216,10 @@ class GatewayConnection {
     _subscription = null;
     await _channel?.sink.close(1000);
     _channel = null;
+    _zstdDecoder?.dispose();
+    _zstdDecoder = null;
+    _zstdEncoder?.dispose();
+    _zstdEncoder = null;
     _session.clear();
     _setState(GatewayState.disconnected);
   }
@@ -307,26 +356,54 @@ class GatewayConnection {
   }
 
   Future<void> _openWebSocket(String url, {required int generation}) async {
-    final wsUrl = Uri.parse('$url?v=1&encoding=json&compress=$_compress');
-    _channel = WebSocketChannel.connect(wsUrl);
-    await _channel!.ready.timeout(
-      webSocketReadyTimeout,
-      onTimeout: () {
-        throw TimeoutException(
-          'Gateway WebSocket handshake timed out after '
-          '${webSocketReadyTimeout.inSeconds}s',
-        );
-      },
+    final disableCompression = _disableCompressionForNextConnection;
+    _disableCompressionForNextConnection = false;
+    _activeCompress = disableCompression ? 'none' : _compress;
+    _handlingDecodeFailure = false;
+    _compressedFrames = 0;
+    _compressedWireBytes = 0;
+    _decompressedBytes = 0;
+    _firstFrameSeen = false;
+    _compressionNegotiated = false;
+    _zstdDecoder?.dispose();
+    _zstdDecoder = _activeCompress == 'zstd-stream'
+        ? ZstdStreamDecoder(
+            maxDecompressedMessageSize: _maxDecompressedMessageSize,
+          )
+        : null;
+    _zstdEncoder?.dispose();
+    _zstdEncoder = _activeCompress == 'zstd-stream'
+        ? ZstdStreamEncoder()
+        : null;
+
+    final streamQuery = _activeCompress == 'zstd-stream' ? '&stream=1' : '';
+    final wsUrl = Uri.parse(
+      '$url?v=1&encoding=json&compress=$_activeCompress$streamQuery',
     );
-    if (generation != _connectGeneration) {
+    try {
+      _channel = WebSocketChannel.connect(wsUrl);
+      await _channel!.ready.timeout(
+        webSocketReadyTimeout,
+        onTimeout: () {
+          throw TimeoutException(
+            'Gateway WebSocket handshake timed out after '
+            '${webSocketReadyTimeout.inSeconds}s',
+          );
+        },
+      );
+      if (generation != _connectGeneration) {
+        await _tearDownSocket();
+        return;
+      }
+      _subscription = _channel!.stream.listen(
+        _onMessage,
+        onError: _onError,
+        onDone: _onDone,
+      );
+    } catch (_) {
       await _tearDownSocket();
-      return;
+      rethrow;
     }
-    _subscription = _channel!.stream.listen(
-      _onMessage,
-      onError: _onError,
-      onDone: _onDone,
-    );
   }
 
   // ---------------------------------------------------------------------------
@@ -337,10 +414,26 @@ class GatewayConnection {
     late final Map<String, dynamic> payload;
 
     if (raw is Uint8List) {
-      final decompressed = ZstdCodec.decompress(raw);
-      final jsonString = utf8.decode(decompressed);
-      payload = json.decode(jsonString) as Map<String, dynamic>;
+      _recordFirstFrameType(compressed: true);
+      _compressedFrames++;
+      _compressedWireBytes += raw.length;
+      try {
+        final decoder = _zstdDecoder;
+        if (decoder == null) {
+          throw const ZstdStreamException(
+            'Received compressed data without a streaming decoder',
+          );
+        }
+        final decompressed = decoder.feed(raw);
+        _decompressedBytes += decompressed.length;
+        final jsonString = utf8.decode(decompressed);
+        payload = json.decode(jsonString) as Map<String, dynamic>;
+      } on ZstdException catch (error, stackTrace) {
+        await _handleDecodeFailure(error, stackTrace);
+        return;
+      }
     } else if (raw is String) {
+      _recordFirstFrameType(compressed: false);
       payload = json.decode(raw) as Map<String, dynamic>;
     } else {
       return;
@@ -378,7 +471,41 @@ class GatewayConnection {
     }
   }
 
+  void _recordFirstFrameType({required bool compressed}) {
+    if (_firstFrameSeen) {
+      return;
+    }
+    _firstFrameSeen = true;
+    _compressionNegotiated = compressed;
+  }
+
+  Future<void> _handleDecodeFailure(
+    ZstdException error,
+    StackTrace stackTrace,
+  ) async {
+    if (_handlingDecodeFailure || _disposed) {
+      return;
+    }
+    _handlingDecodeFailure = true;
+    _reportError(error, stackTrace);
+    _consecutiveDecodeFailureReconnects++;
+    if (_consecutiveDecodeFailureReconnects >= 2) {
+      // A text connection keeps the client usable if server negotiation drifts.
+      _disableCompressionForNextConnection = true;
+      _consecutiveDecodeFailureReconnects = 0;
+    }
+    await _tearDownSocket();
+    _scheduleReconnect();
+  }
+
+  void _reportError(Object error, [StackTrace? stackTrace]) {
+    if (!_eventController.isClosed) {
+      _eventController.addError(error, stackTrace);
+    }
+  }
+
   void _onError(Object error) {
+    _reportError(error);
     _scheduleReconnect();
   }
 
@@ -420,6 +547,9 @@ class GatewayConnection {
   }
 
   void _handleDispatch(String eventType, Map<String, dynamic> data) {
+    if (eventType == 'READY' || eventType == 'RESUMED') {
+      _consecutiveDecodeFailureReconnects = 0;
+    }
     if (eventType == 'READY') {
       final sessionId = data['session_id'] as String;
       _session.setSession(sessionId);
@@ -476,7 +606,7 @@ class GatewayConnection {
     final payload = <String, Object?>{
       'token': _token,
       'properties': _properties.toJson(),
-      'compress': _compress,
+      'compress': _activeCompress,
     };
     if (_presence != null) {
       payload['presence'] = _presence!.toJson();
@@ -506,8 +636,18 @@ class GatewayConnection {
   }
 
   void _send(Map<String, Object?> payload) {
-    if (_channel == null) return;
-    _channel!.sink.add(json.encode(payload));
+    final channel = _channel;
+    if (channel == null) return;
+
+    final jsonPayload = jsonEncode(payload);
+    if (_activeCompress == 'zstd-stream') {
+      final encoder = _zstdEncoder;
+      if (encoder == null) return;
+      final bytes = Uint8List.fromList(utf8.encode(jsonPayload));
+      channel.sink.add(encoder.compress(bytes));
+      return;
+    }
+    channel.sink.add(jsonPayload);
   }
 
   // ---------------------------------------------------------------------------
@@ -527,6 +667,10 @@ class GatewayConnection {
     _heartbeat?.stop();
     await _subscription?.cancel();
     _subscription = null;
+    _zstdDecoder?.dispose();
+    _zstdDecoder = null;
+    _zstdEncoder?.dispose();
+    _zstdEncoder = null;
     final WebSocketChannel? channel = _channel;
     _channel = null;
     if (channel == null) {
