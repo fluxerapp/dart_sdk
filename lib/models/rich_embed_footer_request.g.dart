@@ -18,4 +18,4 @@ RichEmbedFooterRequestVariant1 _$RichEmbedFooterRequestVariant1FromJson(
 
 Map<String, dynamic> _$RichEmbedFooterRequestVariant1ToJson(
   RichEmbedFooterRequestVariant1 instance,
-) => <String, dynamic>{'text': instance.text, 'icon_url': instance.iconUrl};
+) => <String, dynamic>{'text': instance.text, 'icon_url': ?instance.iconUrl};

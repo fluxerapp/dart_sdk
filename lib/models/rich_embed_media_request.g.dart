@@ -23,5 +23,5 @@ Map<String, dynamic> _$RichEmbedMediaRequestRichEmbedMediaRequestShapeToJson(
   RichEmbedMediaRequestRichEmbedMediaRequestShape instance,
 ) => <String, dynamic>{
   'url': instance.url,
-  'description': instance.description,
+  'description': ?instance.description,
 };

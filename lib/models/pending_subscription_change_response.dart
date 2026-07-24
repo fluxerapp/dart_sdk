@@ -29,7 +29,7 @@ class PendingSubscriptionChangeResponse {
 class PendingSubscriptionChangeResponseVariant1 {
   @JsonKey(name: 'schedule_id')
   final String scheduleId;
-  @JsonKey(name: 'current_billing_cycle')
+  @JsonKey(includeIfNull: true, name: 'current_billing_cycle')
   final PendingSubscriptionChangeResponseVariant1CurrentBillingCycleCurrentBillingCycle?
   currentBillingCycle;
   @JsonKey(name: 'target_billing_cycle')
@@ -37,16 +37,17 @@ class PendingSubscriptionChangeResponseVariant1 {
   targetBillingCycle;
   @JsonKey(name: 'effective_at')
   final String effectiveAt;
-  @JsonKey(name: 'current_price_id')
+  @JsonKey(includeIfNull: true, name: 'current_price_id')
   final String? currentPriceId;
-  @JsonKey(name: 'target_price_id')
+  @JsonKey(includeIfNull: true, name: 'target_price_id')
   final String? targetPriceId;
+  @JsonKey(includeIfNull: true)
   final PendingSubscriptionChangeResponseVariant1CurrencyCurrency? currency;
-  @JsonKey(name: 'initial_amount_minor')
+  @JsonKey(includeIfNull: true, name: 'initial_amount_minor')
   final int? initialAmountMinor;
-  @JsonKey(name: 'recurring_amount_minor')
+  @JsonKey(includeIfNull: true, name: 'recurring_amount_minor')
   final int? recurringAmountMinor;
-  @JsonKey(name: 'credit_amount_minor')
+  @JsonKey(includeIfNull: true, name: 'credit_amount_minor')
   final int? creditAmountMinor;
 
   const PendingSubscriptionChangeResponseVariant1({

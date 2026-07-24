@@ -43,7 +43,9 @@ class OAuth2ApplicationsMeResponseApplicationListResponse {
 class OAuth2ApplicationsMeResponseApplicationsMeResponse {
   final String id;
   final String name;
+  @JsonKey(includeIfNull: true)
   final String? icon;
+  @JsonKey(includeIfNull: true)
   final String? description;
   @JsonKey(name: 'bot_public')
   final bool botPublic;
@@ -52,8 +54,9 @@ class OAuth2ApplicationsMeResponseApplicationsMeResponse {
   @JsonKey(name: 'verify_key')
   final String verifyKey;
   final ApplicationsMeResponseOwner owner;
+  @JsonKey(includeIfNull: false)
   final ApplicationsMeResponseBot? bot;
-  @JsonKey(name: 'redirect_uris')
+  @JsonKey(includeIfNull: false, name: 'redirect_uris')
   final List<String>? redirectUris;
 
   const OAuth2ApplicationsMeResponseApplicationsMeResponse({

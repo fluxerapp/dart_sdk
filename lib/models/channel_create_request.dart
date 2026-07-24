@@ -59,26 +59,30 @@ extension ChannelCreateRequestUnionDeserializer on ChannelCreateRequest {
 
 @JsonSerializable()
 class ChannelCreateRequest0 extends ChannelCreateRequest {
+  @JsonKey(includeIfNull: false)
   final String? topic;
+  @JsonKey(includeIfNull: false)
   final String? url;
-  @JsonKey(name: 'parent_id')
+  @JsonKey(includeIfNull: false, name: 'parent_id')
   final SnowflakeType? parentId;
+  @JsonKey(includeIfNull: false)
   final int? bitrate;
-  @JsonKey(name: 'user_limit')
+  @JsonKey(includeIfNull: false, name: 'user_limit')
   final int? userLimit;
-  @JsonKey(name: 'voice_connection_limit')
+  @JsonKey(includeIfNull: false, name: 'voice_connection_limit')
   final int? voiceConnectionLimit;
-  @JsonKey(name: 'permission_overwrites')
+  @JsonKey(includeIfNull: false, name: 'permission_overwrites')
   final List<GuildTextChannelCreateRequestPermissionOverwrites>?
   permissionOverwrites;
-  @JsonKey(name: 'rate_limit_per_user')
+  @JsonKey(includeIfNull: false, name: 'rate_limit_per_user')
   final int? rateLimitPerUser;
+  @JsonKey(includeIfNull: false)
   final bool? nsfw;
-  @JsonKey(name: 'nsfw_override')
+  @JsonKey(includeIfNull: false, name: 'nsfw_override')
   final bool? nsfwOverride;
-  @JsonKey(name: 'content_warning_level')
+  @JsonKey(includeIfNull: false, name: 'content_warning_level')
   final ContentWarningLevel? contentWarningLevel;
-  @JsonKey(name: 'content_warning_text')
+  @JsonKey(includeIfNull: false, name: 'content_warning_text')
   final String? contentWarningText;
   final GuildTextChannelCreateRequestTypeType type;
   final String name;
@@ -109,26 +113,30 @@ class ChannelCreateRequest0 extends ChannelCreateRequest {
 
 @JsonSerializable()
 class ChannelCreateRequest2 extends ChannelCreateRequest {
+  @JsonKey(includeIfNull: false)
   final String? topic;
+  @JsonKey(includeIfNull: false)
   final String? url;
-  @JsonKey(name: 'parent_id')
+  @JsonKey(includeIfNull: false, name: 'parent_id')
   final SnowflakeType? parentId;
+  @JsonKey(includeIfNull: false)
   final int? bitrate;
-  @JsonKey(name: 'user_limit')
+  @JsonKey(includeIfNull: false, name: 'user_limit')
   final int? userLimit;
-  @JsonKey(name: 'voice_connection_limit')
+  @JsonKey(includeIfNull: false, name: 'voice_connection_limit')
   final int? voiceConnectionLimit;
-  @JsonKey(name: 'permission_overwrites')
+  @JsonKey(includeIfNull: false, name: 'permission_overwrites')
   final List<GuildVoiceChannelCreateRequestPermissionOverwrites>?
   permissionOverwrites;
-  @JsonKey(name: 'rate_limit_per_user')
+  @JsonKey(includeIfNull: false, name: 'rate_limit_per_user')
   final int? rateLimitPerUser;
+  @JsonKey(includeIfNull: false)
   final bool? nsfw;
-  @JsonKey(name: 'nsfw_override')
+  @JsonKey(includeIfNull: false, name: 'nsfw_override')
   final bool? nsfwOverride;
-  @JsonKey(name: 'content_warning_level')
+  @JsonKey(includeIfNull: false, name: 'content_warning_level')
   final ContentWarningLevel? contentWarningLevel;
-  @JsonKey(name: 'content_warning_text')
+  @JsonKey(includeIfNull: false, name: 'content_warning_text')
   final String? contentWarningText;
   final GuildVoiceChannelCreateRequestTypeType type;
   final String name;
@@ -159,26 +167,30 @@ class ChannelCreateRequest2 extends ChannelCreateRequest {
 
 @JsonSerializable()
 class ChannelCreateRequest4 extends ChannelCreateRequest {
+  @JsonKey(includeIfNull: false)
   final String? topic;
+  @JsonKey(includeIfNull: false)
   final String? url;
-  @JsonKey(name: 'parent_id')
+  @JsonKey(includeIfNull: false, name: 'parent_id')
   final SnowflakeType? parentId;
+  @JsonKey(includeIfNull: false)
   final int? bitrate;
-  @JsonKey(name: 'user_limit')
+  @JsonKey(includeIfNull: false, name: 'user_limit')
   final int? userLimit;
-  @JsonKey(name: 'voice_connection_limit')
+  @JsonKey(includeIfNull: false, name: 'voice_connection_limit')
   final int? voiceConnectionLimit;
-  @JsonKey(name: 'permission_overwrites')
+  @JsonKey(includeIfNull: false, name: 'permission_overwrites')
   final List<GuildCategoryChannelCreateRequestPermissionOverwrites>?
   permissionOverwrites;
-  @JsonKey(name: 'rate_limit_per_user')
+  @JsonKey(includeIfNull: false, name: 'rate_limit_per_user')
   final int? rateLimitPerUser;
+  @JsonKey(includeIfNull: false)
   final bool? nsfw;
-  @JsonKey(name: 'nsfw_override')
+  @JsonKey(includeIfNull: false, name: 'nsfw_override')
   final bool? nsfwOverride;
-  @JsonKey(name: 'content_warning_level')
+  @JsonKey(includeIfNull: false, name: 'content_warning_level')
   final ContentWarningLevel? contentWarningLevel;
-  @JsonKey(name: 'content_warning_text')
+  @JsonKey(includeIfNull: false, name: 'content_warning_text')
   final String? contentWarningText;
   final GuildCategoryChannelCreateRequestTypeType type;
   final String name;
@@ -209,26 +221,30 @@ class ChannelCreateRequest4 extends ChannelCreateRequest {
 
 @JsonSerializable()
 class ChannelCreateRequest998 extends ChannelCreateRequest {
+  @JsonKey(includeIfNull: false)
   final String? topic;
+  @JsonKey(includeIfNull: false)
   final String? url;
-  @JsonKey(name: 'parent_id')
+  @JsonKey(includeIfNull: false, name: 'parent_id')
   final SnowflakeType? parentId;
+  @JsonKey(includeIfNull: false)
   final int? bitrate;
-  @JsonKey(name: 'user_limit')
+  @JsonKey(includeIfNull: false, name: 'user_limit')
   final int? userLimit;
-  @JsonKey(name: 'voice_connection_limit')
+  @JsonKey(includeIfNull: false, name: 'voice_connection_limit')
   final int? voiceConnectionLimit;
-  @JsonKey(name: 'permission_overwrites')
+  @JsonKey(includeIfNull: false, name: 'permission_overwrites')
   final List<GuildLinkChannelCreateRequestPermissionOverwrites>?
   permissionOverwrites;
-  @JsonKey(name: 'rate_limit_per_user')
+  @JsonKey(includeIfNull: false, name: 'rate_limit_per_user')
   final int? rateLimitPerUser;
+  @JsonKey(includeIfNull: false)
   final bool? nsfw;
-  @JsonKey(name: 'nsfw_override')
+  @JsonKey(includeIfNull: false, name: 'nsfw_override')
   final bool? nsfwOverride;
-  @JsonKey(name: 'content_warning_level')
+  @JsonKey(includeIfNull: false, name: 'content_warning_level')
   final ContentWarningLevel? contentWarningLevel;
-  @JsonKey(name: 'content_warning_text')
+  @JsonKey(includeIfNull: false, name: 'content_warning_text')
   final String? contentWarningText;
   final GuildLinkChannelCreateRequestTypeType type;
   final String name;

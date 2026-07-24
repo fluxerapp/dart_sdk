@@ -28,10 +28,15 @@ class Object1 {
 
 @JsonSerializable()
 class Object1ClientUploadedAttachmentRequest {
+  @JsonKey(includeIfNull: false)
   final String? title;
+  @JsonKey(includeIfNull: false)
   final String? description;
+  @JsonKey(includeIfNull: false)
   final MessageAttachmentFlags? flags;
+  @JsonKey(includeIfNull: false)
   final Int32Type? duration;
+  @JsonKey(includeIfNull: false)
   final String? waveform;
   final Int32Type id;
   final String filename;
@@ -65,14 +70,19 @@ class Object1ClientUploadedAttachmentRequest {
 
 @JsonSerializable()
 class Object1ClientAttachmentRequest {
+  @JsonKey(includeIfNull: false)
   final String? title;
+  @JsonKey(includeIfNull: false)
   final String? description;
+  @JsonKey(includeIfNull: false)
   final MessageAttachmentFlags? flags;
+  @JsonKey(includeIfNull: false)
   final Int32Type? duration;
+  @JsonKey(includeIfNull: false)
   final String? waveform;
   final Int32Type id;
   final String filename;
-  @JsonKey(name: 'content_type')
+  @JsonKey(includeIfNull: false, name: 'content_type')
   final String? contentType;
 
   const Object1ClientAttachmentRequest({

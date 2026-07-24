@@ -33,23 +33,23 @@ class HarvestStatusResponseSchemaNullableHarvestStatusResponseSchema {
   final HarvestStatusResponseSchemaStatusStatus status;
   @JsonKey(name: 'created_at')
   final String createdAt;
-  @JsonKey(name: 'started_at')
+  @JsonKey(includeIfNull: true, name: 'started_at')
   final String? startedAt;
-  @JsonKey(name: 'completed_at')
+  @JsonKey(includeIfNull: true, name: 'completed_at')
   final String? completedAt;
-  @JsonKey(name: 'failed_at')
+  @JsonKey(includeIfNull: true, name: 'failed_at')
   final String? failedAt;
-  @JsonKey(name: 'file_size')
+  @JsonKey(includeIfNull: true, name: 'file_size')
   final String? fileSize;
   @JsonKey(name: 'progress_percent')
   final num progressPercent;
-  @JsonKey(name: 'progress_step')
+  @JsonKey(includeIfNull: true, name: 'progress_step')
   final String? progressStep;
-  @JsonKey(name: 'error_message')
+  @JsonKey(includeIfNull: true, name: 'error_message')
   final String? errorMessage;
-  @JsonKey(name: 'download_url_expires_at')
+  @JsonKey(includeIfNull: true, name: 'download_url_expires_at')
   final String? downloadUrlExpiresAt;
-  @JsonKey(name: 'expires_at')
+  @JsonKey(includeIfNull: true, name: 'expires_at')
   final String? expiresAt;
 
   const HarvestStatusResponseSchemaNullableHarvestStatusResponseSchema({

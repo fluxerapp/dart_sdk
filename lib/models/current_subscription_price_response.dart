@@ -36,9 +36,9 @@ class CurrentSubscriptionPriceResponseVariant1 {
   billingCycle;
   @JsonKey(name: 'is_grandfathered')
   final bool isGrandfathered;
-  @JsonKey(name: 'list_amount_minor')
+  @JsonKey(includeIfNull: true, name: 'list_amount_minor')
   final int? listAmountMinor;
-  @JsonKey(name: 'list_price_id')
+  @JsonKey(includeIfNull: true, name: 'list_price_id')
   final String? listPriceId;
 
   const CurrentSubscriptionPriceResponseVariant1({

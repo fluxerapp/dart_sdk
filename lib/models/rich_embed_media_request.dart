@@ -24,6 +24,7 @@ class RichEmbedMediaRequest {
 @JsonSerializable()
 class RichEmbedMediaRequestRichEmbedMediaRequestShape {
   final String url;
+  @JsonKey(includeIfNull: false)
   final String? description;
 
   const RichEmbedMediaRequestRichEmbedMediaRequestShape({

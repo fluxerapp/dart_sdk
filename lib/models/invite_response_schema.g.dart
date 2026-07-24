@@ -62,10 +62,10 @@ Map<String, dynamic> _$InviteResponseSchemaGuildInviteResponseToJson(
   'type': instance.type,
   'guild': instance.guild,
   'channel': instance.channel,
-  'inviter': instance.inviter,
+  'inviter': ?instance.inviter,
   'member_count': instance.memberCount,
   'presence_count': instance.presenceCount,
-  'expires_at': instance.expiresAt?.toIso8601String(),
+  'expires_at': ?instance.expiresAt?.toIso8601String(),
   'temporary': instance.temporary,
 };
 
@@ -110,9 +110,9 @@ Map<String, dynamic> _$InviteResponseSchemaGroupDmInviteResponseToJson(
   'code': instance.code,
   'type': instance.type,
   'channel': instance.channel,
-  'inviter': instance.inviter,
+  'inviter': ?instance.inviter,
   'member_count': instance.memberCount,
-  'expires_at': instance.expiresAt?.toIso8601String(),
+  'expires_at': ?instance.expiresAt?.toIso8601String(),
   'temporary': instance.temporary,
 };
 
@@ -155,7 +155,7 @@ Map<String, dynamic> _$InviteResponseSchemaPackInviteResponseToJson(
   'code': instance.code,
   'type': instance.type,
   'pack': instance.pack,
-  'inviter': instance.inviter,
-  'expires_at': instance.expiresAt?.toIso8601String(),
+  'inviter': ?instance.inviter,
+  'expires_at': ?instance.expiresAt?.toIso8601String(),
   'temporary': instance.temporary,
 };

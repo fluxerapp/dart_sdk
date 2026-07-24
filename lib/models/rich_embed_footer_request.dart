@@ -23,7 +23,7 @@ class RichEmbedFooterRequest {
 @JsonSerializable()
 class RichEmbedFooterRequestVariant1 {
   final String text;
-  @JsonKey(name: 'icon_url')
+  @JsonKey(includeIfNull: false, name: 'icon_url')
   final String? iconUrl;
 
   const RichEmbedFooterRequestVariant1({

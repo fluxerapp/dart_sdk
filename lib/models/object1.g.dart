@@ -39,11 +39,11 @@ _$Object1ClientUploadedAttachmentRequestFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$Object1ClientUploadedAttachmentRequestToJson(
   Object1ClientUploadedAttachmentRequest instance,
 ) => <String, dynamic>{
-  'title': instance.title,
-  'description': instance.description,
-  'flags': instance.flags,
-  'duration': instance.duration,
-  'waveform': instance.waveform,
+  'title': ?instance.title,
+  'description': ?instance.description,
+  'flags': ?instance.flags,
+  'duration': ?instance.duration,
+  'waveform': ?instance.waveform,
   'id': instance.id,
   'filename': instance.filename,
   'upload_filename': instance.uploadFilename,
@@ -75,12 +75,12 @@ Object1ClientAttachmentRequest _$Object1ClientAttachmentRequestFromJson(
 Map<String, dynamic> _$Object1ClientAttachmentRequestToJson(
   Object1ClientAttachmentRequest instance,
 ) => <String, dynamic>{
-  'title': instance.title,
-  'description': instance.description,
-  'flags': instance.flags,
-  'duration': instance.duration,
-  'waveform': instance.waveform,
+  'title': ?instance.title,
+  'description': ?instance.description,
+  'flags': ?instance.flags,
+  'duration': ?instance.duration,
+  'waveform': ?instance.waveform,
   'id': instance.id,
   'filename': instance.filename,
-  'content_type': instance.contentType,
+  'content_type': ?instance.contentType,
 };

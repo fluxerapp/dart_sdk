@@ -105,7 +105,7 @@ class LocalizedCardPreapprovalContinueResponseRejected
     extends LocalizedCardPreapprovalContinueResponse {
   final RejectedLocalizedCardPreapprovalContinueResponseStatusStatus status;
   final RejectedLocalizedCardPreapprovalContinueResponseReasonReason reason;
-  @JsonKey(name: 'actual_country')
+  @JsonKey(includeIfNull: false, name: 'actual_country')
   final String? actualCountry;
 
   const LocalizedCardPreapprovalContinueResponseRejected({

@@ -65,34 +65,41 @@ extension ChannelUpdateRequestUnionDeserializer on ChannelUpdateRequest {
 
 @JsonSerializable()
 class ChannelUpdateRequest0 extends ChannelUpdateRequest {
+  @JsonKey(includeIfNull: false)
   final String? topic;
+  @JsonKey(includeIfNull: false)
   final String? url;
-  @JsonKey(name: 'parent_id')
+  @JsonKey(includeIfNull: false, name: 'parent_id')
   final SnowflakeType? parentId;
+  @JsonKey(includeIfNull: false)
   final int? bitrate;
-  @JsonKey(name: 'user_limit')
+  @JsonKey(includeIfNull: false, name: 'user_limit')
   final int? userLimit;
-  @JsonKey(name: 'voice_connection_limit')
+  @JsonKey(includeIfNull: false, name: 'voice_connection_limit')
   final int? voiceConnectionLimit;
-  @JsonKey(name: 'permission_overwrites')
+  @JsonKey(includeIfNull: false, name: 'permission_overwrites')
   final List<GuildTextChannelUpdateRequestPermissionOverwrites>?
   permissionOverwrites;
-  @JsonKey(name: 'rate_limit_per_user')
+  @JsonKey(includeIfNull: false, name: 'rate_limit_per_user')
   final int? rateLimitPerUser;
+  @JsonKey(includeIfNull: false)
   final bool? nsfw;
-  @JsonKey(name: 'nsfw_override')
+  @JsonKey(includeIfNull: false, name: 'nsfw_override')
   final bool? nsfwOverride;
-  @JsonKey(name: 'content_warning_level')
+  @JsonKey(includeIfNull: false, name: 'content_warning_level')
   final ContentWarningLevel? contentWarningLevel;
-  @JsonKey(name: 'content_warning_text')
+  @JsonKey(includeIfNull: false, name: 'content_warning_text')
   final String? contentWarningText;
+  @JsonKey(includeIfNull: false)
   final Base64ImageType? icon;
-  @JsonKey(name: 'owner_id')
+  @JsonKey(includeIfNull: false, name: 'owner_id')
   final SnowflakeType? ownerId;
+  @JsonKey(includeIfNull: false)
   final ChannelNicknameOverrides? nicks;
-  @JsonKey(name: 'rtc_region')
+  @JsonKey(includeIfNull: false, name: 'rtc_region')
   final String? rtcRegion;
   final GuildTextChannelUpdateRequestTypeType type;
+  @JsonKey(includeIfNull: false)
   final String? name;
 
   const ChannelUpdateRequest0({
@@ -125,34 +132,41 @@ class ChannelUpdateRequest0 extends ChannelUpdateRequest {
 
 @JsonSerializable()
 class ChannelUpdateRequest2 extends ChannelUpdateRequest {
+  @JsonKey(includeIfNull: false)
   final String? topic;
+  @JsonKey(includeIfNull: false)
   final String? url;
-  @JsonKey(name: 'parent_id')
+  @JsonKey(includeIfNull: false, name: 'parent_id')
   final SnowflakeType? parentId;
+  @JsonKey(includeIfNull: false)
   final int? bitrate;
-  @JsonKey(name: 'user_limit')
+  @JsonKey(includeIfNull: false, name: 'user_limit')
   final int? userLimit;
-  @JsonKey(name: 'voice_connection_limit')
+  @JsonKey(includeIfNull: false, name: 'voice_connection_limit')
   final int? voiceConnectionLimit;
-  @JsonKey(name: 'permission_overwrites')
+  @JsonKey(includeIfNull: false, name: 'permission_overwrites')
   final List<GuildVoiceChannelUpdateRequestPermissionOverwrites>?
   permissionOverwrites;
-  @JsonKey(name: 'rate_limit_per_user')
+  @JsonKey(includeIfNull: false, name: 'rate_limit_per_user')
   final int? rateLimitPerUser;
+  @JsonKey(includeIfNull: false)
   final bool? nsfw;
-  @JsonKey(name: 'nsfw_override')
+  @JsonKey(includeIfNull: false, name: 'nsfw_override')
   final bool? nsfwOverride;
-  @JsonKey(name: 'content_warning_level')
+  @JsonKey(includeIfNull: false, name: 'content_warning_level')
   final ContentWarningLevel? contentWarningLevel;
-  @JsonKey(name: 'content_warning_text')
+  @JsonKey(includeIfNull: false, name: 'content_warning_text')
   final String? contentWarningText;
+  @JsonKey(includeIfNull: false)
   final Base64ImageType? icon;
-  @JsonKey(name: 'owner_id')
+  @JsonKey(includeIfNull: false, name: 'owner_id')
   final SnowflakeType? ownerId;
+  @JsonKey(includeIfNull: false)
   final ChannelNicknameOverrides? nicks;
-  @JsonKey(name: 'rtc_region')
+  @JsonKey(includeIfNull: false, name: 'rtc_region')
   final String? rtcRegion;
   final GuildVoiceChannelUpdateRequestTypeType type;
+  @JsonKey(includeIfNull: false)
   final String? name;
 
   const ChannelUpdateRequest2({
@@ -185,34 +199,41 @@ class ChannelUpdateRequest2 extends ChannelUpdateRequest {
 
 @JsonSerializable()
 class ChannelUpdateRequest4 extends ChannelUpdateRequest {
+  @JsonKey(includeIfNull: false)
   final String? topic;
+  @JsonKey(includeIfNull: false)
   final String? url;
-  @JsonKey(name: 'parent_id')
+  @JsonKey(includeIfNull: false, name: 'parent_id')
   final SnowflakeType? parentId;
+  @JsonKey(includeIfNull: false)
   final int? bitrate;
-  @JsonKey(name: 'user_limit')
+  @JsonKey(includeIfNull: false, name: 'user_limit')
   final int? userLimit;
-  @JsonKey(name: 'voice_connection_limit')
+  @JsonKey(includeIfNull: false, name: 'voice_connection_limit')
   final int? voiceConnectionLimit;
-  @JsonKey(name: 'permission_overwrites')
+  @JsonKey(includeIfNull: false, name: 'permission_overwrites')
   final List<GuildCategoryChannelUpdateRequestPermissionOverwrites>?
   permissionOverwrites;
-  @JsonKey(name: 'rate_limit_per_user')
+  @JsonKey(includeIfNull: false, name: 'rate_limit_per_user')
   final int? rateLimitPerUser;
+  @JsonKey(includeIfNull: false)
   final bool? nsfw;
-  @JsonKey(name: 'nsfw_override')
+  @JsonKey(includeIfNull: false, name: 'nsfw_override')
   final bool? nsfwOverride;
-  @JsonKey(name: 'content_warning_level')
+  @JsonKey(includeIfNull: false, name: 'content_warning_level')
   final ContentWarningLevel? contentWarningLevel;
-  @JsonKey(name: 'content_warning_text')
+  @JsonKey(includeIfNull: false, name: 'content_warning_text')
   final String? contentWarningText;
+  @JsonKey(includeIfNull: false)
   final Base64ImageType? icon;
-  @JsonKey(name: 'owner_id')
+  @JsonKey(includeIfNull: false, name: 'owner_id')
   final SnowflakeType? ownerId;
+  @JsonKey(includeIfNull: false)
   final ChannelNicknameOverrides? nicks;
-  @JsonKey(name: 'rtc_region')
+  @JsonKey(includeIfNull: false, name: 'rtc_region')
   final String? rtcRegion;
   final GuildCategoryChannelUpdateRequestTypeType type;
+  @JsonKey(includeIfNull: false)
   final String? name;
 
   const ChannelUpdateRequest4({
@@ -245,34 +266,41 @@ class ChannelUpdateRequest4 extends ChannelUpdateRequest {
 
 @JsonSerializable()
 class ChannelUpdateRequest998 extends ChannelUpdateRequest {
+  @JsonKey(includeIfNull: false)
   final String? topic;
+  @JsonKey(includeIfNull: false)
   final String? url;
-  @JsonKey(name: 'parent_id')
+  @JsonKey(includeIfNull: false, name: 'parent_id')
   final SnowflakeType? parentId;
+  @JsonKey(includeIfNull: false)
   final int? bitrate;
-  @JsonKey(name: 'user_limit')
+  @JsonKey(includeIfNull: false, name: 'user_limit')
   final int? userLimit;
-  @JsonKey(name: 'voice_connection_limit')
+  @JsonKey(includeIfNull: false, name: 'voice_connection_limit')
   final int? voiceConnectionLimit;
-  @JsonKey(name: 'permission_overwrites')
+  @JsonKey(includeIfNull: false, name: 'permission_overwrites')
   final List<GuildLinkChannelUpdateRequestPermissionOverwrites>?
   permissionOverwrites;
-  @JsonKey(name: 'rate_limit_per_user')
+  @JsonKey(includeIfNull: false, name: 'rate_limit_per_user')
   final int? rateLimitPerUser;
+  @JsonKey(includeIfNull: false)
   final bool? nsfw;
-  @JsonKey(name: 'nsfw_override')
+  @JsonKey(includeIfNull: false, name: 'nsfw_override')
   final bool? nsfwOverride;
-  @JsonKey(name: 'content_warning_level')
+  @JsonKey(includeIfNull: false, name: 'content_warning_level')
   final ContentWarningLevel? contentWarningLevel;
-  @JsonKey(name: 'content_warning_text')
+  @JsonKey(includeIfNull: false, name: 'content_warning_text')
   final String? contentWarningText;
+  @JsonKey(includeIfNull: false)
   final Base64ImageType? icon;
-  @JsonKey(name: 'owner_id')
+  @JsonKey(includeIfNull: false, name: 'owner_id')
   final SnowflakeType? ownerId;
+  @JsonKey(includeIfNull: false)
   final ChannelNicknameOverrides? nicks;
-  @JsonKey(name: 'rtc_region')
+  @JsonKey(includeIfNull: false, name: 'rtc_region')
   final String? rtcRegion;
   final GuildLinkChannelUpdateRequestTypeType type;
+  @JsonKey(includeIfNull: false)
   final String? name;
 
   const ChannelUpdateRequest998({
@@ -306,10 +334,13 @@ class ChannelUpdateRequest998 extends ChannelUpdateRequest {
 @JsonSerializable()
 class ChannelUpdateRequest3 extends ChannelUpdateRequest {
   final GroupDmChannelUpdateRequestTypeType type;
+  @JsonKey(includeIfNull: false)
   final String? name;
+  @JsonKey(includeIfNull: false)
   final Base64ImageType? icon;
-  @JsonKey(name: 'owner_id')
+  @JsonKey(includeIfNull: false, name: 'owner_id')
   final SnowflakeType? ownerId;
+  @JsonKey(includeIfNull: false)
   final ChannelNicknameOverrides? nicks;
 
   const ChannelUpdateRequest3({

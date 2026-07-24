@@ -21,6 +21,6 @@ Map<String, dynamic> _$RichEmbedAuthorRequestVariant1ToJson(
   RichEmbedAuthorRequestVariant1 instance,
 ) => <String, dynamic>{
   'name': instance.name,
-  'url': instance.url,
-  'icon_url': instance.iconUrl,
+  'url': ?instance.url,
+  'icon_url': ?instance.iconUrl,
 };

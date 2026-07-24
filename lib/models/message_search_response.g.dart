@@ -51,7 +51,7 @@ Map<String, dynamic> _$MessageSearchResponseMessageSearchResultsResponseToJson(
   'total': instance.total,
   'hits_per_page': instance.hitsPerPage,
   'page': instance.page,
-  'cursor': instance.cursor,
+  'cursor': ?instance.cursor,
 };
 
 MessageSearchResponseVariant2 _$MessageSearchResponseVariant2FromJson(

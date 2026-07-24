@@ -57,21 +57,21 @@ extension DsaReportRequestUnionDeserializer on DsaReportRequest {
 @JsonSerializable()
 class DsaReportRequestMessage extends DsaReportRequest {
   final String ticket;
-  @JsonKey(name: 'additional_info')
+  @JsonKey(includeIfNull: false, name: 'additional_info')
   final String? additionalInfo;
   @JsonKey(name: 'reporter_full_legal_name')
   final String reporterFullLegalName;
   @JsonKey(name: 'reporter_country_of_residence')
   final MessageDsaReportRequestReporterCountryOfResidenceReporterCountryOfResidence
   reporterCountryOfResidence;
-  @JsonKey(name: 'reporter_fluxer_tag')
+  @JsonKey(includeIfNull: false, name: 'reporter_fluxer_tag')
   final String? reporterFluxerTag;
   @JsonKey(name: 'report_type')
   final MessageDsaReportRequestReportTypeReportType reportType;
   final MessageDsaReportRequestCategoryCategory category;
   @JsonKey(name: 'message_link')
   final String messageLink;
-  @JsonKey(name: 'reported_user_tag')
+  @JsonKey(includeIfNull: false, name: 'reported_user_tag')
   final String? reportedUserTag;
 
   const DsaReportRequestMessage({
@@ -96,21 +96,21 @@ class DsaReportRequestMessage extends DsaReportRequest {
 @JsonSerializable()
 class DsaReportRequestUser extends DsaReportRequest {
   final String ticket;
-  @JsonKey(name: 'additional_info')
+  @JsonKey(includeIfNull: false, name: 'additional_info')
   final String? additionalInfo;
   @JsonKey(name: 'reporter_full_legal_name')
   final String reporterFullLegalName;
   @JsonKey(name: 'reporter_country_of_residence')
   final UserDsaReportRequestReporterCountryOfResidenceReporterCountryOfResidence
   reporterCountryOfResidence;
-  @JsonKey(name: 'reporter_fluxer_tag')
+  @JsonKey(includeIfNull: false, name: 'reporter_fluxer_tag')
   final String? reporterFluxerTag;
   @JsonKey(name: 'report_type')
   final UserDsaReportRequestReportTypeReportType reportType;
   final UserDsaReportRequestCategoryCategory category;
-  @JsonKey(name: 'user_id')
+  @JsonKey(includeIfNull: false, name: 'user_id')
   final SnowflakeType? userId;
-  @JsonKey(name: 'user_tag')
+  @JsonKey(includeIfNull: false, name: 'user_tag')
   final String? userTag;
 
   const DsaReportRequestUser({
@@ -135,21 +135,21 @@ class DsaReportRequestUser extends DsaReportRequest {
 @JsonSerializable()
 class DsaReportRequestGuild extends DsaReportRequest {
   final String ticket;
-  @JsonKey(name: 'additional_info')
+  @JsonKey(includeIfNull: false, name: 'additional_info')
   final String? additionalInfo;
   @JsonKey(name: 'reporter_full_legal_name')
   final String reporterFullLegalName;
   @JsonKey(name: 'reporter_country_of_residence')
   final GuildDsaReportRequestReporterCountryOfResidenceReporterCountryOfResidence
   reporterCountryOfResidence;
-  @JsonKey(name: 'reporter_fluxer_tag')
+  @JsonKey(includeIfNull: false, name: 'reporter_fluxer_tag')
   final String? reporterFluxerTag;
   @JsonKey(name: 'report_type')
   final GuildDsaReportRequestReportTypeReportType reportType;
   final GuildDsaReportRequestCategoryCategory category;
   @JsonKey(name: 'guild_id')
   final SnowflakeType guildId;
-  @JsonKey(name: 'invite_code')
+  @JsonKey(includeIfNull: false, name: 'invite_code')
   final String? inviteCode;
 
   const DsaReportRequestGuild({

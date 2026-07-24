@@ -88,7 +88,7 @@ Map<String, dynamic> _$LocalizedCardPreapprovalContinueResponseRejectedToJson(
 ) => <String, dynamic>{
   'status': instance.status,
   'reason': instance.reason,
-  'actual_country': instance.actualCountry,
+  'actual_country': ?instance.actualCountry,
 };
 
 LocalizedCardPreapprovalContinueResponseExpired

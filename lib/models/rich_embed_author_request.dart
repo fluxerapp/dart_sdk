@@ -23,8 +23,9 @@ class RichEmbedAuthorRequest {
 @JsonSerializable()
 class RichEmbedAuthorRequestVariant1 {
   final String name;
+  @JsonKey(includeIfNull: false)
   final String? url;
-  @JsonKey(name: 'icon_url')
+  @JsonKey(includeIfNull: false, name: 'icon_url')
   final String? iconUrl;
 
   const RichEmbedAuthorRequestVariant1({

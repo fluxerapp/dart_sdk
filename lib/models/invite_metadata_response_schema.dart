@@ -41,12 +41,13 @@ class InviteMetadataResponseSchemaGuildInviteMetadataResponse {
   final GuildInviteMetadataResponseTypeType type;
   final GuildInviteMetadataResponseGuild guild;
   final ChannelPartialResponse channel;
+  @JsonKey(includeIfNull: false)
   final UserPartialResponse? inviter;
   @JsonKey(name: 'member_count')
   final int memberCount;
   @JsonKey(name: 'presence_count')
   final int presenceCount;
-  @JsonKey(name: 'expires_at')
+  @JsonKey(includeIfNull: false, name: 'expires_at')
   final DateTime? expiresAt;
   final bool temporary;
   @JsonKey(name: 'created_at')
@@ -86,10 +87,11 @@ class InviteMetadataResponseSchemaGroupDmInviteMetadataResponse {
   final String code;
   final GroupDmInviteMetadataResponseTypeType type;
   final ChannelPartialResponse channel;
+  @JsonKey(includeIfNull: false)
   final UserPartialResponse? inviter;
   @JsonKey(name: 'member_count')
   final int memberCount;
-  @JsonKey(name: 'expires_at')
+  @JsonKey(includeIfNull: false, name: 'expires_at')
   final DateTime? expiresAt;
   final bool temporary;
   @JsonKey(name: 'created_at')
@@ -125,8 +127,9 @@ class InviteMetadataResponseSchemaPackInviteMetadataResponse {
   final String code;
   final PackInviteMetadataResponseTypeType type;
   final PackInviteMetadataResponsePack pack;
+  @JsonKey(includeIfNull: false)
   final UserPartialResponse? inviter;
-  @JsonKey(name: 'expires_at')
+  @JsonKey(includeIfNull: false, name: 'expires_at')
   final DateTime? expiresAt;
   final bool temporary;
   @JsonKey(name: 'created_at')

@@ -65,14 +65,14 @@ Map<String, dynamic> _$DsaReportRequestMessageToJson(
   DsaReportRequestMessage instance,
 ) => <String, dynamic>{
   'ticket': instance.ticket,
-  'additional_info': instance.additionalInfo,
+  'additional_info': ?instance.additionalInfo,
   'reporter_full_legal_name': instance.reporterFullLegalName,
   'reporter_country_of_residence': instance.reporterCountryOfResidence,
-  'reporter_fluxer_tag': instance.reporterFluxerTag,
+  'reporter_fluxer_tag': ?instance.reporterFluxerTag,
   'report_type': instance.reportType,
   'category': instance.category,
   'message_link': instance.messageLink,
-  'reported_user_tag': instance.reportedUserTag,
+  'reported_user_tag': ?instance.reportedUserTag,
 };
 
 DsaReportRequestUser _$DsaReportRequestUserFromJson(
@@ -127,14 +127,14 @@ Map<String, dynamic> _$DsaReportRequestUserToJson(
   DsaReportRequestUser instance,
 ) => <String, dynamic>{
   'ticket': instance.ticket,
-  'additional_info': instance.additionalInfo,
+  'additional_info': ?instance.additionalInfo,
   'reporter_full_legal_name': instance.reporterFullLegalName,
   'reporter_country_of_residence': instance.reporterCountryOfResidence,
-  'reporter_fluxer_tag': instance.reporterFluxerTag,
+  'reporter_fluxer_tag': ?instance.reporterFluxerTag,
   'report_type': instance.reportType,
   'category': instance.category,
-  'user_id': instance.userId,
-  'user_tag': instance.userTag,
+  'user_id': ?instance.userId,
+  'user_tag': ?instance.userTag,
 };
 
 DsaReportRequestGuild _$DsaReportRequestGuildFromJson(
@@ -189,12 +189,12 @@ Map<String, dynamic> _$DsaReportRequestGuildToJson(
   DsaReportRequestGuild instance,
 ) => <String, dynamic>{
   'ticket': instance.ticket,
-  'additional_info': instance.additionalInfo,
+  'additional_info': ?instance.additionalInfo,
   'reporter_full_legal_name': instance.reporterFullLegalName,
   'reporter_country_of_residence': instance.reporterCountryOfResidence,
-  'reporter_fluxer_tag': instance.reporterFluxerTag,
+  'reporter_fluxer_tag': ?instance.reporterFluxerTag,
   'report_type': instance.reportType,
   'category': instance.category,
   'guild_id': instance.guildId,
-  'invite_code': instance.inviteCode,
+  'invite_code': ?instance.inviteCode,
 };

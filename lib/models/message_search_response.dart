@@ -35,6 +35,7 @@ class MessageSearchResponseMessageSearchResultsResponse {
   @JsonKey(name: 'hits_per_page')
   final int hitsPerPage;
   final int page;
+  @JsonKey(includeIfNull: false)
   final List<String>? cursor;
 
   const MessageSearchResponseMessageSearchResultsResponse({

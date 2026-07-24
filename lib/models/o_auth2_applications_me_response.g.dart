@@ -77,6 +77,6 @@ Map<String, dynamic> _$OAuth2ApplicationsMeResponseApplicationsMeResponseToJson(
   'bot_require_code_grant': instance.botRequireCodeGrant,
   'verify_key': instance.verifyKey,
   'owner': instance.owner,
-  'bot': instance.bot,
-  'redirect_uris': instance.redirectUris,
+  'bot': ?instance.bot,
+  'redirect_uris': ?instance.redirectUris,
 };
