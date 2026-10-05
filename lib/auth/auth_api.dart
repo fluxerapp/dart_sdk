@@ -35,6 +35,8 @@ import '../models/passkey_bridge_login_start_request.dart';
 import '../models/passkey_bridge_options_response.dart';
 import '../models/passkey_bridge_redeem_request.dart';
 import '../models/passkey_bridge_start_response.dart';
+import '../models/recover_account_request.dart';
+import '../models/recover_account_response.dart';
 import '../models/register_request.dart';
 import '../models/reset_password_request.dart';
 import '../models/sso_complete_request.dart';
@@ -42,8 +44,10 @@ import '../models/sso_complete_response.dart';
 import '../models/sso_start_request.dart';
 import '../models/sso_start_response.dart';
 import '../models/sso_status_response.dart';
+import '../models/username_availability_response.dart';
 import '../models/username_suggestions_request.dart';
 import '../models/username_suggestions_response.dart';
+import '../models/username_type.dart';
 import '../models/validate_reset_password_token_response.dart';
 import '../models/verify_email_request.dart';
 import '../models/web_authn_authenticate_request.dart';
@@ -162,7 +166,7 @@ abstract class AuthApi {
 
   /// Login account.
   ///
-  /// Authenticate with email and password. Returns authentication token if credentials are valid and MFA is not required. If MFA is enabled, returns a ticket for MFA verification. Requires a solved captcha challenge (X-Captcha-Token).
+  /// Authenticate with a password and either email (or login on email instances) or login (a username on username instances). Returns authentication token if credentials are valid and MFA is not required. If MFA is enabled, returns a ticket for MFA verification. Requires a solved captcha challenge (X-Captcha-Token).
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/auth/login')
@@ -280,9 +284,19 @@ abstract class AuthApi {
     @Body() required PasskeyBridgeRedeemRequest body,
   });
 
+  /// Recover account with recovery kit.
+  ///
+  /// Set a new password using the recovery key from a recovery kit. Only available on instances where people sign in with a username. Ends every session, replaces the recovery kit and returns the new recovery key. Returns an MFA ticket instead of a token when the account has two-factor authentication. Requires a solved captcha challenge (X-Captcha-Token).
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/auth/recover')
+  Future<RecoverAccountResponse> recoverAccount({
+    @Body() required RecoverAccountRequest body,
+  });
+
   /// Register account.
   ///
-  /// Create a new user account with email and password. Requires a solved captcha challenge (X-Captcha-Token). User account is created but must verify email before logging in.
+  /// Create a new user account. Email instances take an email and password, and the account must verify its email before logging in. Username instances take a username and password, and an email sent by an older client is discarded. Requires a solved captcha challenge (X-Captcha-Token).
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/auth/register')
@@ -347,6 +361,16 @@ abstract class AuthApi {
   /// Retrieve the current status of the SSO authentication session without authentication required.
   @GET('/auth/sso/status')
   Future<SsoStatusResponse> getSsoStatus();
+
+  /// Check username availability.
+  ///
+  /// Check whether a username is free for a new account. Only available on instances where people sign in with a username or where usernames are unique. Usernames are compared without regard to case, and bots do not hold names. An invalid or reserved username returns a validation error.
+  ///
+  /// [username] - Username to check (1-32 characters).
+  @GET('/auth/username-availability')
+  Future<UsernameAvailabilityResponse> getUsernameAvailability({
+    @Query('username') required UsernameType username,
+  });
 
   /// Get username suggestions.
   ///

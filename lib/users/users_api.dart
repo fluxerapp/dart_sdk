@@ -69,6 +69,8 @@ import '../models/push_rotate_request.dart';
 import '../models/push_subscribe_request.dart';
 import '../models/push_subscribe_response.dart';
 import '../models/push_subscriptions_list_response.dart';
+import '../models/recovery_kit_create_response.dart';
+import '../models/recovery_kit_status_response.dart';
 import '../models/register_mobile_device_request.dart';
 import '../models/register_mobile_device_response.dart';
 import '../models/relationship_list_response.dart';
@@ -88,6 +90,8 @@ import '../models/user_note_response.dart';
 import '../models/user_note_update_request.dart';
 import '../models/user_notes_record_response.dart';
 import '../models/user_partial_response.dart';
+import '../models/user_password_update_request.dart';
+import '../models/user_password_update_response.dart';
 import '../models/user_private_response.dart';
 import '../models/user_profile_full_response.dart';
 import '../models/user_settings_response.dart';
@@ -732,6 +736,16 @@ abstract class UsersApi {
     @Body() required PasskeyBridgeRedeemRequest body,
   });
 
+  /// Change password.
+  ///
+  /// Changes the password on instances where people sign in with a username. Requires sudo mode verification. Ends every other session, deletes the recovery kit and returns a token for a new session that replaces the current one. Fails with USERNAME_SIGN_IN_ONLY on email instances.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/password')
+  Future<UserPasswordUpdateResponse> updateCurrentUserPassword({
+    @Body() required UserPasswordUpdateRequest body,
+  });
+
   /// Complete password change.
   ///
   /// Completes the password change after email verification. Requires the verification proof and new password. Invalidates all existing sessions and returns the replacement session token.
@@ -822,6 +836,22 @@ abstract class UsersApi {
   @DELETE('/users/@me/push/subscriptions/{subscription_id}')
   Future<SuccessResponse> unsubscribeFromPushNotifications({
     @Path('subscription_id') required String subscriptionId,
+  });
+
+  /// Get recovery kit status.
+  ///
+  /// Check whether the current account has a recovery kit and when it was created. Only available on instances where people sign in with a username. The recovery key itself is never returned here.
+  @GET('/users/@me/recovery-kit')
+  Future<RecoveryKitStatusResponse> getRecoveryKitStatus();
+
+  /// Create recovery kit.
+  ///
+  /// Create a recovery kit for the current account and return its recovery key. The key is shown only once and any previous kit stops working. Only available on instances where people sign in with a username. Requires sudo mode verification.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/recovery-kit')
+  Future<RecoveryKitCreateResponse> createRecoveryKit({
+    @Body() SudoVerificationSchema? body,
   });
 
   /// List user relationships.

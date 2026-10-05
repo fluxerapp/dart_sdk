@@ -30,6 +30,14 @@ InstanceFeaturesSchema _$InstanceFeaturesSchemaFromJson(
         'phone_verification_enabled',
         (v) => v as bool,
       ),
+      accountIdentity: $checkedConvert(
+        'account_identity',
+        (v) => AccountIdentityModeSchema.fromJson(v as String),
+      ),
+      tagStyle: $checkedConvert(
+        'tag_style',
+        (v) => TagStyleSchema.fromJson(v as String),
+      ),
     );
     return val;
   },
@@ -42,6 +50,8 @@ InstanceFeaturesSchema _$InstanceFeaturesSchemaFromJson(
     'presignedAttachmentUploads': 'presigned_attachment_uploads',
     'emailsEnabled': 'emails_enabled',
     'phoneVerificationEnabled': 'phone_verification_enabled',
+    'accountIdentity': 'account_identity',
+    'tagStyle': 'tag_style',
   },
 );
 
@@ -56,4 +66,6 @@ Map<String, dynamic> _$InstanceFeaturesSchemaToJson(
   'presigned_attachment_uploads': instance.presignedAttachmentUploads,
   'emails_enabled': instance.emailsEnabled,
   'phone_verification_enabled': instance.phoneVerificationEnabled,
+  'account_identity': instance.accountIdentity,
+  'tag_style': instance.tagStyle,
 };

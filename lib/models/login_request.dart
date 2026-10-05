@@ -14,14 +14,15 @@ part 'login_request.g.dart';
 @JsonSerializable(constructor: '_')
 class LoginRequest {
   LoginRequest({
-    required this.email,
     required this.password,
+    this.email,
+    this.login,
     JsonNullable<String> inviteCode = const JsonNullable<String>.undefined(),
   }) : inviteCode = inviteCode,
        _inviteCodeValue = inviteCode.value,
        _inviteCodePresent = inviteCode.isPresent;
 
-  const LoginRequest._({required this.email, required this.password})
+  const LoginRequest._({required this.password, this.email, this.login})
     : _inviteCodeValue = null,
       inviteCode = const JsonNullable<String>.undefined(),
       _inviteCodePresent = false;
@@ -31,16 +32,22 @@ class LoginRequest {
   factory LoginRequest.fromJson(Map<String, Object?> json) {
     final value = _$LoginRequestFromJson(json);
     return LoginRequest(
-      email: value.email,
       password: value.password,
+      email: value.email,
+      login: value.login,
       inviteCode: json.containsKey('invite_code')
           ? JsonNullable<String>.of(value._inviteCodeValue)
           : const JsonNullable<String>.undefined(),
     );
   }
 
-  /// Email address for authentication
-  final EmailType email;
+  /// Email address for authentication. Send this or login, not both
+  @JsonKey(includeIfNull: false)
+  final EmailType? email;
+
+  /// Sign-in identifier. An email address on email instances, a username on username instances
+  @JsonKey(includeIfNull: false)
+  final String? login;
 
   /// Account password
   final PasswordType password;

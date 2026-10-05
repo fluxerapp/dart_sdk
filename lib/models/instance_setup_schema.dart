@@ -9,7 +9,11 @@ part 'instance_setup_schema.g.dart';
 /// Initial setup state for self-hosted instances
 @JsonSerializable()
 class InstanceSetupSchema {
-  const InstanceSetupSchema({required this.configured, required this.adminUrl});
+  const InstanceSetupSchema({
+    required this.configured,
+    required this.adminUrl,
+    this.accountIdentityLocked,
+  });
 
   factory InstanceSetupSchema.fromJson(Map<String, Object?> json) =>
       _$InstanceSetupSchemaFromJson(json);
@@ -20,6 +24,10 @@ class InstanceSetupSchema {
   /// Admin panel URL to continue instance setup
   @JsonKey(includeIfNull: true, name: 'admin_url')
   final String? adminUrl;
+
+  /// Present only while a self-hosted instance is unconfigured. True when the sign-in method can no longer change
+  @JsonKey(includeIfNull: false, name: 'account_identity_locked')
+  final bool? accountIdentityLocked;
 
   Map<String, Object?> toJson() => _$InstanceSetupSchemaToJson(this);
 }

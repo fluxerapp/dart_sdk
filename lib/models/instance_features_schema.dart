@@ -4,6 +4,9 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+import 'account_identity_mode_schema.dart';
+import 'tag_style_schema.dart';
+
 part 'instance_features_schema.g.dart';
 
 /// Feature flags for this instance
@@ -18,6 +21,8 @@ class InstanceFeaturesSchema {
     required this.presignedAttachmentUploads,
     required this.emailsEnabled,
     required this.phoneVerificationEnabled,
+    required this.accountIdentity,
+    required this.tagStyle,
   });
 
   factory InstanceFeaturesSchema.fromJson(Map<String, Object?> json) =>
@@ -54,6 +59,14 @@ class InstanceFeaturesSchema {
   /// Deprecated. Always false.
   @JsonKey(name: 'phone_verification_enabled')
   final bool phoneVerificationEnabled;
+
+  /// How people sign in on this instance. Clients treat a missing value as email
+  @JsonKey(name: 'account_identity')
+  final AccountIdentityModeSchema accountIdentity;
+
+  /// How usernames are tagged. Clients treat a missing value as random
+  @JsonKey(name: 'tag_style')
+  final TagStyleSchema tagStyle;
 
   Map<String, Object?> toJson() => _$InstanceFeaturesSchemaToJson(this);
 }
