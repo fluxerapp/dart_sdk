@@ -49,4 +49,6 @@ class GatewayOpcodes {
 
   /// Client requests live member and online counts for channels.
   static const int requestChannelMemberCounts = 16;
+
+  static const int requestForumUnreads = 28;
 }

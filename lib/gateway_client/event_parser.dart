@@ -1,4 +1,5 @@
 import 'package:fluxer_dart/models/channel_response.dart';
+import 'package:fluxer_dart/models/channel_type.dart';
 import 'package:fluxer_dart/models/guild_emoji_response.dart';
 import 'package:fluxer_dart/models/guild_member_response.dart';
 import 'package:fluxer_dart/models/guild_role_response.dart';
@@ -6,6 +7,7 @@ import 'package:fluxer_dart/models/guild_sticker_response.dart';
 import 'package:fluxer_dart/models/message_response_schema.dart';
 import 'package:fluxer_dart/models/relationship_response.dart';
 import 'package:fluxer_dart/models/relationship_types.dart';
+import 'package:fluxer_dart/models/thread_member_response.dart';
 import 'package:fluxer_dart/models/user_partial_response.dart';
 import 'package:fluxer_dart/models/user_private_response.dart';
 import 'package:fluxer_dart/models/user_guild_settings_response.dart';
@@ -31,6 +33,8 @@ class EventParser {
         'RESUMED' => const ResumedEvent(),
         'MESSAGE_CREATE' => MessageCreateEvent(
           message: MessageResponseSchema.fromJson(data),
+          guildId: data['guild_id'] as String?,
+          channelType: (data['channel_type'] as num?)?.toInt(),
         ),
         'MESSAGE_UPDATE' => MessageUpdateEvent(
           message: MessageResponseSchema.fromJson(data),
@@ -158,6 +162,7 @@ class EventParser {
           mentionCount: data['mention_count'] as int?,
           manual: data['manual'] as bool?,
           version: data['version'] as String?,
+          flags: (data['flags'] as num?)?.toInt(),
         ),
         'MESSAGE_REACTION_ADD_MANY' => MessageReactionAddManyEvent(
           channelId: data['channel_id'] as String,
@@ -195,6 +200,65 @@ class EventParser {
           ),
         ),
         'PASSIVE_UPDATES' => _parsePassiveUpdates(data),
+
+        'THREAD_CREATE' => ThreadCreateEvent(
+          channel: ChannelResponse.fromJson(data),
+          newlyCreated: data['newly_created'] as bool? ?? false,
+        ),
+        'THREAD_UPDATE' => ThreadUpdateEvent(
+          channel: ChannelResponse.fromJson(data),
+        ),
+        'THREAD_DELETE' => ThreadDeleteEvent(
+          id: data['id'] as String,
+          guildId: data['guild_id'] as String,
+          parentId: data['parent_id'] as String,
+          type: ChannelType.fromJson((data['type'] as num).toInt()),
+        ),
+        'THREAD_LIST_SYNC' => ThreadListSyncEvent(
+          guildId: data['guild_id'] as String,
+          channelIds: (data['channel_ids'] as List<dynamic>?)?.cast<String>(),
+          threads: _parseListSafe(
+            data['threads'],
+            (e) => ChannelResponse.fromJson(e as Map<String, Object?>),
+          ),
+          members: _parseListSafe(
+            data['members'],
+            (e) => ThreadMemberResponse.fromJson(e as Map<String, Object?>),
+          ),
+        ),
+        'THREAD_MEMBER_UPDATE' => ThreadMemberUpdateEvent(
+          guildId: data['guild_id'] as String,
+          member: ThreadMemberResponse.fromJson(data),
+        ),
+        'THREAD_MEMBERS_UPDATE' => ThreadMembersUpdateEvent(
+          id: data['id'] as String,
+          guildId: data['guild_id'] as String,
+          memberCount: (data['member_count'] as num).toInt(),
+          addedMembers: data['added_members'] is List
+              ? _parseListSafe(
+                  data['added_members'],
+                  (e) => ThreadMemberEntry.fromJson(e as Map<String, dynamic>),
+                )
+              : null,
+          removedMemberIds: (data['removed_member_ids'] as List<dynamic>?)
+              ?.cast<String>(),
+        ),
+        'THREAD_MEMBER_LIST_UPDATE' => ThreadMemberListUpdateEvent(
+          guildId: data['guild_id'] as String,
+          threadId: data['thread_id'] as String,
+          members: _parseListSafe(
+            data['members'],
+            (e) => ThreadMemberEntry.fromJson(e as Map<String, dynamic>),
+          ),
+        ),
+        'FORUM_UNREADS' => ForumUnreadsEvent(
+          guildId: data['guild_id'] as String,
+          channelId: data['channel_id'] as String,
+          threads: _parseListSafe(
+            data['threads'],
+            (e) => ForumUnreadEntry.fromJson(e as Map<String, dynamic>),
+          ),
+        ),
 
         // Guild roles
         'GUILD_ROLE_CREATE' => GuildRoleCreateEvent(

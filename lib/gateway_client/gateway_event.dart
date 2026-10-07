@@ -1,5 +1,6 @@
 import 'package:fluxer_dart/gateway_client/gateway_types.dart';
 import 'package:fluxer_dart/models/channel_response.dart';
+import 'package:fluxer_dart/models/channel_type.dart';
 import 'package:fluxer_dart/models/guild_emoji_response.dart';
 import 'package:fluxer_dart/models/guild_member_response.dart';
 import 'package:fluxer_dart/models/guild_role_response.dart';
@@ -7,6 +8,7 @@ import 'package:fluxer_dart/models/guild_sticker_response.dart';
 import 'package:fluxer_dart/models/message_response_schema.dart';
 import 'package:fluxer_dart/models/relationship_response.dart';
 import 'package:fluxer_dart/models/relationship_types.dart';
+import 'package:fluxer_dart/models/thread_member_response.dart';
 import 'package:fluxer_dart/models/user_partial_response.dart';
 import 'package:fluxer_dart/models/user_private_response.dart';
 import 'package:fluxer_dart/models/user_guild_settings_response.dart';
@@ -133,9 +135,15 @@ class AuthSessionChangeEvent extends GatewayEvent {
 // ---------------------------------------------------------------------------
 
 class MessageCreateEvent extends GatewayEvent {
-  const MessageCreateEvent({required this.message});
+  const MessageCreateEvent({
+    required this.message,
+    this.guildId,
+    this.channelType,
+  });
 
   final MessageResponseSchema message;
+  final String? guildId;
+  final int? channelType;
 }
 
 class MessageUpdateEvent extends GatewayEvent {
@@ -175,6 +183,7 @@ class MessageAckEvent extends GatewayEvent {
     this.mentionCount,
     this.manual,
     this.version,
+    this.flags,
   });
 
   final String channelId;
@@ -182,6 +191,7 @@ class MessageAckEvent extends GatewayEvent {
   final int? mentionCount;
   final bool? manual;
   final String? version;
+  final int? flags;
 }
 
 // ---------------------------------------------------------------------------
@@ -356,6 +366,94 @@ class PassiveUpdatesEvent extends GatewayEvent {
   final List<ChannelResponse>? createdChannels;
   final List<ChannelResponse>? updatedChannels;
   final List<String>? deletedChannelIds;
+}
+
+class ThreadCreateEvent extends GatewayEvent {
+  const ThreadCreateEvent({required this.channel, this.newlyCreated = false});
+
+  final ChannelResponse channel;
+  final bool newlyCreated;
+}
+
+class ThreadUpdateEvent extends GatewayEvent {
+  const ThreadUpdateEvent({required this.channel});
+
+  final ChannelResponse channel;
+}
+
+class ThreadDeleteEvent extends GatewayEvent {
+  const ThreadDeleteEvent({
+    required this.id,
+    required this.guildId,
+    required this.parentId,
+    required this.type,
+  });
+
+  final String id;
+  final String guildId;
+  final String parentId;
+  final ChannelType type;
+}
+
+class ThreadListSyncEvent extends GatewayEvent {
+  const ThreadListSyncEvent({
+    required this.guildId,
+    required this.threads,
+    required this.members,
+    this.channelIds,
+  });
+
+  final String guildId;
+  final List<String>? channelIds;
+  final List<ChannelResponse> threads;
+  final List<ThreadMemberResponse> members;
+}
+
+class ThreadMemberUpdateEvent extends GatewayEvent {
+  const ThreadMemberUpdateEvent({required this.guildId, required this.member});
+
+  final String guildId;
+  final ThreadMemberResponse member;
+}
+
+class ThreadMembersUpdateEvent extends GatewayEvent {
+  const ThreadMembersUpdateEvent({
+    required this.id,
+    required this.guildId,
+    required this.memberCount,
+    this.addedMembers,
+    this.removedMemberIds,
+  });
+
+  final String id;
+  final String guildId;
+  final int memberCount;
+  final List<ThreadMemberEntry>? addedMembers;
+  final List<String>? removedMemberIds;
+}
+
+class ThreadMemberListUpdateEvent extends GatewayEvent {
+  const ThreadMemberListUpdateEvent({
+    required this.guildId,
+    required this.threadId,
+    required this.members,
+  });
+
+  final String guildId;
+  final String threadId;
+  final List<ThreadMemberEntry> members;
+}
+
+class ForumUnreadsEvent extends GatewayEvent {
+  const ForumUnreadsEvent({
+    required this.guildId,
+    required this.channelId,
+    required this.threads,
+  });
+
+  final String guildId;
+  final String channelId;
+  final List<ForumUnreadEntry> threads;
 }
 
 // ---------------------------------------------------------------------------

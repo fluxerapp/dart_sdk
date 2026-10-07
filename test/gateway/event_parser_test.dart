@@ -1,6 +1,7 @@
 import 'package:fluxer_dart/gateway_client/event_parser.dart';
 import 'package:fluxer_dart/gateway_client/gateway_event.dart';
 import 'package:fluxer_dart/gateway_client/gateway_types.dart';
+import 'package:fluxer_dart/models/channel_type.dart';
 import 'package:fluxer_dart/models/relationship_types.dart';
 import 'package:fluxer_dart/models/user_guild_settings_response.dart';
 import 'package:fluxer_dart/models/user_notification_settings.dart';
@@ -266,6 +267,20 @@ void main() {
       expect(e.message.id, '401');
       expect(e.message.channelId, '201');
       expect(e.message.content, 'Hello world');
+      expect(e.guildId, isNull);
+      expect(e.channelType, isNull);
+    });
+
+    test('MESSAGE_CREATE carries guild_id and channel_type', () {
+      final data = {
+        ..._messageJson(id: '403', channelId: '203'),
+        'guild_id': '9',
+        'channel_type': 11,
+      };
+      final e = parser.parse('MESSAGE_CREATE', data) as MessageCreateEvent;
+
+      expect(e.guildId, '9');
+      expect(e.channelType, 11);
     });
 
     test('MESSAGE_UPDATE → MessageUpdateEvent', () {
@@ -405,7 +420,7 @@ void main() {
       expect(event, isA<ChannelCreateEvent>());
       final e = event as ChannelCreateEvent;
       expect(e.channel.id, '500');
-      expect(e.channel.type, 0);
+      expect(e.channel.type, ChannelType.guildText);
     });
 
     test('CHANNEL_UPDATE → ChannelUpdateEvent', () {
@@ -1889,6 +1904,357 @@ void main() {
       expect(event.rtcRegions, isNull);
       expect(event.userGuildSettings, isNull);
       expect(event.readStates, isEmpty);
+    });
+  });
+
+  group('Threads', () {
+    Map<String, Object?> threadJson({String id = '700', int type = 11}) => {
+      'id': id,
+      'type': type,
+      'guild_id': '300',
+      'parent_id': '200',
+      'owner_id': '100',
+      'name': 'thread',
+      'message_count': 2,
+      'member_count': 1,
+      'thread_metadata': {
+        'archived': false,
+        'auto_archive_duration': 1440,
+        'archive_timestamp': '2026-01-01T00:00:00.000Z',
+        'locked': false,
+        'create_timestamp': '2026-01-01T00:00:00.000Z',
+      },
+    };
+
+    Map<String, Object?> threadMemberJson({
+      String id = '700',
+      String userId = '100',
+    }) => {
+      'id': id,
+      'user_id': userId,
+      'join_timestamp': '2026-01-01T00:00:00.000Z',
+      'flags': 1,
+    };
+
+    test('THREAD_CREATE → ThreadCreateEvent with newly_created', () {
+      final event = parser.parse('THREAD_CREATE', {
+        ...threadJson(type: 12),
+        'newly_created': true,
+        'member': threadMemberJson(),
+      });
+
+      expect(event, isA<ThreadCreateEvent>());
+      final e = event as ThreadCreateEvent;
+      expect(e.channel.id, '700');
+      expect(e.channel.type, ChannelType.privateThread);
+      expect(e.channel.parentId, '200');
+      expect(e.channel.threadMetadata!.autoArchiveDuration, 1440);
+      expect(e.channel.member!.flags, 1);
+      expect(e.newlyCreated, true);
+    });
+
+    test('THREAD_CREATE without newly_created defaults to false', () {
+      final e =
+          parser.parse('THREAD_CREATE', threadJson()) as ThreadCreateEvent;
+
+      expect(e.newlyCreated, false);
+      expect(e.channel.type, ChannelType.publicThread);
+    });
+
+    test('THREAD_CREATE of an announcement thread keeps type 10', () {
+      final e =
+          parser.parse('THREAD_CREATE', threadJson(type: 10))
+              as ThreadCreateEvent;
+
+      expect(e.channel.type, ChannelType.announcementThread);
+    });
+
+    test('THREAD_UPDATE → ThreadUpdateEvent', () {
+      final event = parser.parse('THREAD_UPDATE', threadJson(id: '701'));
+
+      expect(event, isA<ThreadUpdateEvent>());
+      expect((event as ThreadUpdateEvent).channel.id, '701');
+    });
+
+    test('THREAD_DELETE → ThreadDeleteEvent', () {
+      final event = parser.parse('THREAD_DELETE', {
+        'id': '700',
+        'guild_id': '300',
+        'parent_id': '200',
+        'type': 11,
+      });
+
+      expect(event, isA<ThreadDeleteEvent>());
+      final e = event as ThreadDeleteEvent;
+      expect(e.id, '700');
+      expect(e.guildId, '300');
+      expect(e.parentId, '200');
+      expect(e.type, ChannelType.publicThread);
+    });
+
+    test('THREAD_LIST_SYNC → ThreadListSyncEvent', () {
+      final event = parser.parse('THREAD_LIST_SYNC', {
+        'guild_id': '300',
+        'channel_ids': ['200'],
+        'threads': [threadJson(), threadJson(id: '701')],
+        'members': [threadMemberJson()],
+      });
+
+      expect(event, isA<ThreadListSyncEvent>());
+      final e = event as ThreadListSyncEvent;
+      expect(e.guildId, '300');
+      expect(e.channelIds, ['200']);
+      expect(e.threads.map((t) => t.id), ['700', '701']);
+      expect(e.members.single.userId, '100');
+    });
+
+    test('THREAD_LIST_SYNC without channel_ids is a full sync', () {
+      final e =
+          parser.parse('THREAD_LIST_SYNC', {
+                'guild_id': '300',
+                'threads': <Object?>[],
+                'members': <Object?>[],
+              })
+              as ThreadListSyncEvent;
+
+      expect(e.channelIds, isNull);
+      expect(e.threads, isEmpty);
+    });
+
+    test('THREAD_MEMBER_UPDATE → ThreadMemberUpdateEvent', () {
+      final event = parser.parse('THREAD_MEMBER_UPDATE', {
+        ...threadMemberJson(),
+        'guild_id': '300',
+        'muted': true,
+        'mute_config': null,
+      });
+
+      expect(event, isA<ThreadMemberUpdateEvent>());
+      final e = event as ThreadMemberUpdateEvent;
+      expect(e.guildId, '300');
+      expect(e.member.id, '700');
+      expect(e.member.muted, true);
+    });
+
+    test('THREAD_MEMBERS_UPDATE → ThreadMembersUpdateEvent', () {
+      final event = parser.parse('THREAD_MEMBERS_UPDATE', {
+        'id': '700',
+        'guild_id': '300',
+        'member_count': 2,
+        'added_members': [
+          {
+            ...threadMemberJson(userId: '101'),
+            'member': _guildMemberJson(userId: '101'),
+            'presence': {
+              'user': {'id': '101'},
+              'status': 'online',
+            },
+          },
+          {
+            ...threadMemberJson(userId: '102'),
+            'member': null,
+            'presence': null,
+          },
+        ],
+        'removed_member_ids': ['103'],
+      });
+
+      expect(event, isA<ThreadMembersUpdateEvent>());
+      final e = event as ThreadMembersUpdateEvent;
+      expect(e.id, '700');
+      expect(e.memberCount, 2);
+      expect(e.addedMembers, hasLength(2));
+      expect(e.addedMembers![0].userId, '101');
+      expect(e.addedMembers![0].threadId, '700');
+      expect(e.addedMembers![0].member!.user.id, '101');
+      expect(e.addedMembers![0].presence!['status'], 'online');
+      expect(e.addedMembers![1].member, isNull);
+      expect(e.addedMembers![1].presence, isNull);
+      expect(e.removedMemberIds, ['103']);
+    });
+
+    test('THREAD_MEMBERS_UPDATE with only a count', () {
+      final e =
+          parser.parse('THREAD_MEMBERS_UPDATE', {
+                'id': '700',
+                'guild_id': '300',
+                'member_count': 0,
+              })
+              as ThreadMembersUpdateEvent;
+
+      expect(e.addedMembers, isNull);
+      expect(e.removedMemberIds, isNull);
+    });
+
+    test('THREAD_MEMBER_LIST_UPDATE → ThreadMemberListUpdateEvent', () {
+      final event = parser.parse('THREAD_MEMBER_LIST_UPDATE', {
+        'guild_id': '300',
+        'thread_id': '700',
+        'members': [
+          {
+            'user_id': '100',
+            'join_timestamp': '2026-01-01T00:00:00.000Z',
+            'flags': 0,
+            'member': _guildMemberJson(),
+            'presence': null,
+          },
+          {'user_id': '101', 'join_timestamp': null, 'flags': 0},
+        ],
+      });
+
+      expect(event, isA<ThreadMemberListUpdateEvent>());
+      final e = event as ThreadMemberListUpdateEvent;
+      expect(e.guildId, '300');
+      expect(e.threadId, '700');
+      expect(e.members.map((m) => m.userId), ['100', '101']);
+      expect(e.members[0].joinTimestamp, '2026-01-01T00:00:00.000Z');
+      expect(e.members[0].member!.user.id, '100');
+      expect(e.members[1].joinTimestamp, isNull);
+    });
+
+    test('FORUM_UNREADS → ForumUnreadsEvent', () {
+      final event = parser.parse('FORUM_UNREADS', {
+        'guild_id': '300',
+        'channel_id': '400',
+        'threads': [
+          {'thread_id': '700', 'count': 3},
+          {'thread_id': '701', 'missing': true},
+          {'thread_id': '702', 'count': 0},
+        ],
+      });
+
+      expect(event, isA<ForumUnreadsEvent>());
+      final e = event as ForumUnreadsEvent;
+      expect(e.guildId, '300');
+      expect(e.channelId, '400');
+      expect(e.threads.map((t) => t.threadId), ['700', '701', '702']);
+      expect(e.threads[0].count, 3);
+      expect(e.threads[0].missing, isFalse);
+      expect(e.threads[1].count, isNull);
+      expect(e.threads[1].missing, isTrue);
+      expect(e.threads[2].count, 0);
+    });
+
+    test('GUILD_CREATE without threads key leaves threads null', () {
+      final e =
+          parser.parse('GUILD_CREATE', _guildCreateJson()) as GuildCreateEvent;
+
+      expect(e.guild.threads, isNull);
+    });
+
+    test('GUILD_CREATE with empty threads is distinct from absent', () {
+      final e =
+          parser.parse('GUILD_CREATE', {
+                ..._guildCreateJson(),
+                'threads': <Object?>[],
+              })
+              as GuildCreateEvent;
+
+      expect(e.guild.threads, isNotNull);
+      expect(e.guild.threads, isEmpty);
+    });
+
+    test('GUILD_CREATE parses threads with the own member', () {
+      final e =
+          parser.parse('GUILD_CREATE', {
+                ..._guildCreateJson(),
+                'threads': [
+                  {
+                    ...threadJson(),
+                    'member': {
+                      'join_timestamp': '2026-01-01T00:00:00.000Z',
+                      'flags': 0,
+                    },
+                  },
+                ],
+              })
+              as GuildCreateEvent;
+
+      expect(e.guild.threads, hasLength(1));
+      expect(e.guild.threads![0].id, '700');
+      expect(e.guild.threads![0].member!.userId, isNull);
+    });
+
+    test('GUILD_SYNC carries threads', () {
+      final e =
+          parser.parse('GUILD_SYNC', {
+                ..._guildCreateJson(),
+                'threads': [threadJson()],
+              })
+              as GuildSyncEvent;
+
+      expect(e.guild.threads, hasLength(1));
+    });
+
+    test('MESSAGE_ACK carries read state flags', () {
+      final e =
+          parser.parse('MESSAGE_ACK', {
+                'channel_id': '700',
+                'message_id': 'msg1',
+                'flags': 1,
+              })
+              as MessageAckEvent;
+
+      expect(e.flags, 1);
+    });
+
+    test('READY read state flags and last_viewed', () {
+      final event =
+          parser.parse('READY', {
+                'session_id': 'sess-test',
+                'user': _userPrivateJson(),
+                'guilds': <Object?>[],
+                'private_channels': <Object?>[],
+                'relationships': <Object?>[],
+                'presences': <Object?>[],
+                'read_states': [
+                  {
+                    'id': '700',
+                    'mention_count': 0,
+                    'flags': 1,
+                    'last_viewed': 4200,
+                  },
+                  {'id': '200', 'mention_count': 0},
+                ],
+              })
+              as ReadyEvent;
+
+      expect(event.readStates[0].flags, 1);
+      expect(event.readStates[0].lastViewed, 4200);
+      expect(event.readStates[1].flags, isNull);
+      expect(event.readStates[1].lastViewed, isNull);
+    });
+  });
+
+  group('LazyRequestSubscription', () {
+    test('omits thread keys when null', () {
+      const sub = LazyRequestSubscription(active: true);
+
+      expect(sub.toJson(), {'active': true});
+    });
+
+    test('emits threads and thread_member_lists when set', () {
+      const sub = LazyRequestSubscription(
+        threads: true,
+        threadMemberLists: ['700'],
+      );
+
+      expect(sub.toJson(), {
+        'threads': true,
+        'thread_member_lists': ['700'],
+      });
+    });
+
+    test('emits threads false and empty lists explicitly', () {
+      const sub = LazyRequestSubscription(
+        threads: false,
+        threadMemberLists: <String>[],
+      );
+
+      expect(sub.toJson(), {
+        'threads': false,
+        'thread_member_lists': <String>[],
+      });
     });
   });
 }

@@ -75,10 +75,8 @@ class GatewayCompressionStats {
 }
 
 /// Main gateway WebSocket client for the Fluxer platform.
-///
 /// Manages the full lifecycle: connecting, identifying/resuming,
 /// heartbeating, event dispatching, and automatic reconnection.
-///
 /// Uses zstd compression by default for binary WebSocket frames.
 class GatewayConnection {
   static const Duration webSocketReadyTimeout = Duration(seconds: 20);
@@ -221,7 +219,6 @@ class GatewayConnection {
   }
 
   /// Connects to the gateway.
-  ///
   /// Fetches the gateway URL via the REST API (unless overridden) and
   /// opens a WebSocket connection. A connect already in progress is reused.
   Future<void> connect() {
@@ -271,7 +268,6 @@ class GatewayConnection {
   }
 
   /// Cancels pending backoff and reconnects immediately.
-  ///
   /// Does not reset the attempt counter. READY and RESUMED do that.
   /// An attempt that is already connecting is left in place.
   Future<void> reconnectNow() async {
@@ -356,7 +352,6 @@ class GatewayConnection {
   }
 
   /// Permanently disposes the connection and its stream controllers.
-  ///
   /// After calling this, the instance cannot be reused.
   Future<void> dispose() async {
     _disposed = true;
@@ -387,7 +382,6 @@ class GatewayConnection {
   }
 
   /// Sends opcode 8 to request member payloads for one or more guilds.
-  ///
   /// The server responds with `GUILD_MEMBERS_CHUNK` events
   void requestGuildMembers({
     String? guildId,
@@ -440,7 +434,6 @@ class GatewayConnection {
   }
 
   /// Sends opcode 15 to request live member/online counts for [guildIds].
-  ///
   /// The server responds with `GUILD_COUNTS_UPDATE`.
   void requestGuildCounts(List<String> guildIds) {
     if (_state != GatewayState.connected || _channel == null) {
@@ -460,7 +453,6 @@ class GatewayConnection {
   }
 
   /// Sends opcode 16 to request live member/online counts for channels.
-  ///
   /// The server responds with `CHANNEL_MEMBER_COUNTS_UPDATE`.
   void requestChannelMemberCounts({
     required String guildId,
@@ -493,13 +485,38 @@ class GatewayConnection {
     });
   }
 
+  void requestForumUnreads({
+    required String guildId,
+    required String channelId,
+    required Map<String, String> ackMessageIds,
+  }) {
+    if (_state != GatewayState.connected || _channel == null) {
+      return;
+    }
+    if (guildId.isEmpty || channelId.isEmpty || ackMessageIds.isEmpty) {
+      return;
+    }
+    _send(<String, Object?>{
+      'op': GatewayOpcodes.requestForumUnreads,
+      'd': <String, Object?>{
+        'guild_id': guildId,
+        'channel_id': channelId,
+        'threads': <Map<String, String>>[
+          for (final MapEntry<String, String> entry in ackMessageIds.entries)
+            <String, String>{
+              'thread_id': entry.key,
+              'ack_message_id': entry.value,
+            },
+        ],
+      },
+    });
+  }
+
   /// Join, move, or leave a voice channel. Requires an established gateway
   /// session ([state] is [GatewayState.connected]).
-  ///
   /// The server answers with [VoiceServerUpdateEvent] and voice state
   /// dispatches; the client should connect to the LiveKit [endpoint] and
   /// [token] from that event.
-  ///
   /// Returns whether the opcode was queued (socket open and connected).
   bool updateVoiceState(GatewayVoiceStateUpdate update) {
     if (_state != GatewayState.connected || _channel == null) {
@@ -532,7 +549,6 @@ class GatewayConnection {
   }
 
   /// Derives the gateway WebSocket URL from the Dio base URL.
-  ///
   /// Replaces `api.` with `gateway.` and switches to `wss://`.
   /// Falls back to `/gateway/bot` REST endpoint if derivation fails.
   Future<String> _fetchGatewayUrl() async {

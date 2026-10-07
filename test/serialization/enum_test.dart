@@ -61,36 +61,21 @@ void main() {
     });
   });
 
-  group('MessageResponseSchemaTypeType (int enum)', () {
+  group('MessageType (int enum)', () {
     test('deserializes common message types', () {
-      expect(
-        MessageResponseSchemaTypeType.fromJson(0),
-        MessageResponseSchemaTypeType.valueDefault,
-      );
-      expect(
-        MessageResponseSchemaTypeType.fromJson(6),
-        MessageResponseSchemaTypeType.channelPinnedMessage,
-      );
-      expect(
-        MessageResponseSchemaTypeType.fromJson(7),
-        MessageResponseSchemaTypeType.userJoin,
-      );
-      expect(
-        MessageResponseSchemaTypeType.fromJson(19),
-        MessageResponseSchemaTypeType.reply,
-      );
+      expect(MessageType.fromJson(0), MessageType.valueDefault);
+      expect(MessageType.fromJson(6), MessageType.channelPinnedMessage);
+      expect(MessageType.fromJson(7), MessageType.userJoin);
+      expect(MessageType.fromJson(19), MessageType.reply);
     });
 
     test('unknown values fall back to \$unknown', () {
-      expect(
-        MessageResponseSchemaTypeType.fromJson(999),
-        MessageResponseSchemaTypeType.$unknown,
-      );
+      expect(MessageType.fromJson(999), MessageType.$unknown);
     });
 
     test('serializes back to int', () {
-      expect(MessageResponseSchemaTypeType.valueDefault.toJson(), 0);
-      expect(MessageResponseSchemaTypeType.reply.toJson(), 19);
+      expect(MessageType.valueDefault.toJson(), 0);
+      expect(MessageType.reply.toJson(), 19);
     });
   });
 
@@ -129,6 +114,48 @@ void main() {
         'url': 'https://example.com/img.png',
       });
       expect(embed.type, 'image');
+    });
+  });
+
+  group('ChannelType thread and forum values', () {
+    test('deserializes thread, forum and media types', () {
+      expect(ChannelType.fromJson(10), ChannelType.announcementThread);
+      expect(ChannelType.fromJson(11), ChannelType.publicThread);
+      expect(ChannelType.fromJson(12), ChannelType.privateThread);
+      expect(ChannelType.fromJson(15), ChannelType.guildForum);
+      expect(ChannelType.fromJson(16), ChannelType.guildMedia);
+    });
+
+    test('unassigned thread types fall back to \$unknown', () {
+      expect(ChannelType.fromJson(9), ChannelType.$unknown);
+    });
+
+    test('thread create types include announcement threads', () {
+      expect(
+        ThreadChannelType.fromJson(10),
+        ThreadChannelType.announcementThread,
+      );
+      expect(ThreadChannelType.announcementThread.toJson(), 10);
+    });
+
+    test('serializes back to int', () {
+      expect(ChannelType.announcementThread.toJson(), 10);
+      expect(ChannelType.publicThread.toJson(), 11);
+      expect(ChannelType.privateThread.toJson(), 12);
+      expect(ChannelType.guildForum.toJson(), 15);
+      expect(ChannelType.guildMedia.toJson(), 16);
+    });
+  });
+
+  group('MessageType thread values', () {
+    test('deserializes thread created and starter message', () {
+      expect(MessageType.fromJson(18), MessageType.threadCreated);
+      expect(MessageType.fromJson(21), MessageType.threadStarterMessage);
+    });
+
+    test('serializes back to int', () {
+      expect(MessageType.threadCreated.toJson(), 18);
+      expect(MessageType.threadStarterMessage.toJson(), 21);
     });
   });
 }

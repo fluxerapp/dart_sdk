@@ -261,6 +261,59 @@ class MemberListOp {
   }
 }
 
+class ForumUnreadEntry {
+  const ForumUnreadEntry({
+    required this.threadId,
+    this.count,
+    this.missing = false,
+  });
+
+  final String threadId;
+  final int? count;
+  final bool missing;
+
+  factory ForumUnreadEntry.fromJson(Map<String, dynamic> json) {
+    return ForumUnreadEntry(
+      threadId: json['thread_id'] as String,
+      count: (json['count'] as num?)?.toInt(),
+      missing: json['missing'] == true,
+    );
+  }
+}
+
+class ThreadMemberEntry {
+  const ThreadMemberEntry({
+    required this.userId,
+    this.threadId,
+    this.joinTimestamp,
+    this.flags = 0,
+    this.member,
+    this.presence,
+  });
+
+  final String userId;
+  final String? threadId;
+  final String? joinTimestamp;
+  final int flags;
+  final GuildMemberResponse? member;
+  final Map<String, dynamic>? presence;
+
+  factory ThreadMemberEntry.fromJson(Map<String, dynamic> json) {
+    final member = json['member'];
+    final presence = json['presence'];
+    return ThreadMemberEntry(
+      userId: json['user_id'] as String,
+      threadId: json['id'] as String?,
+      joinTimestamp: json['join_timestamp'] as String?,
+      flags: (json['flags'] as num?)?.toInt() ?? 0,
+      member: member is Map
+          ? GuildMemberResponse.fromJson(member.cast<String, Object?>())
+          : null,
+      presence: presence is Map ? presence.cast<String, dynamic>() : null,
+    );
+  }
+}
+
 // ---------------------------------------------------------------------------
 // Lazy request
 // ---------------------------------------------------------------------------
@@ -273,6 +326,8 @@ class LazyRequestSubscription {
     this.sync,
     this.members,
     this.memberListChannels,
+    this.threads,
+    this.threadMemberLists,
   });
 
   final bool? active;
@@ -280,6 +335,8 @@ class LazyRequestSubscription {
   final bool? sync;
   final List<String>? members;
   final Map<String, List<List<int>>>? memberListChannels;
+  final bool? threads;
+  final List<String>? threadMemberLists;
 
   Map<String, Object?> toJson() {
     final json = <String, Object?>{};
@@ -290,12 +347,15 @@ class LazyRequestSubscription {
     if (memberListChannels != null) {
       json['member_list_channels'] = memberListChannels;
     }
+    if (threads != null) json['threads'] = threads;
+    if (threadMemberLists != null) {
+      json['thread_member_lists'] = threadMemberLists;
+    }
     return json;
   }
 }
 
 /// Partial guild data from the READY event.
-///
 /// The gateway sends a minimal guild representation in the READY payload,
 /// containing only identification and availability information.
 class GuildReadyData {
@@ -347,6 +407,8 @@ class GatewayReadState {
     this.mentionCount = 0,
     this.lastPinTimestamp,
     this.version,
+    this.flags,
+    this.lastViewed,
   });
 
   factory GatewayReadState.fromJson(Map<String, dynamic> json) {
@@ -356,6 +418,8 @@ class GatewayReadState {
       mentionCount: json['mention_count'] as int? ?? 0,
       lastPinTimestamp: json['last_pin_timestamp'] as String?,
       version: json['version'] as String?,
+      flags: (json['flags'] as num?)?.toInt(),
+      lastViewed: (json['last_viewed'] as num?)?.toInt(),
     );
   }
 
@@ -364,10 +428,11 @@ class GatewayReadState {
   final int mentionCount;
   final String? lastPinTimestamp;
   final String? version;
+  final int? flags;
+  final int? lastViewed;
 }
 
 /// Full guild data from GUILD_CREATE / GUILD_UPDATE events.
-///
 /// The gateway wraps guild metadata under a `properties` key and includes
 /// associated collections (channels, members, roles, etc.) at the top level.
 class GuildCreateData {
@@ -384,6 +449,7 @@ class GuildCreateData {
     this.memberCount,
     this.unavailable = false,
     this.hasCompletePayload = true,
+    this.threads,
   });
 
   factory GuildCreateData.fromJson(Map<String, dynamic> json) {
@@ -421,6 +487,12 @@ class GuildCreateData {
       memberCount: json['member_count'] as int?,
       unavailable: json['unavailable'] as bool? ?? false,
       hasCompletePayload: _hasCompletePayload(json),
+      threads: json['threads'] is List
+          ? _parseListSafe(
+              json['threads'],
+              (e) => ChannelResponse.fromJson(e as Map<String, Object?>),
+            )
+          : null,
     );
   }
 
@@ -436,6 +508,7 @@ class GuildCreateData {
   final int? memberCount;
   final bool unavailable;
   final bool hasCompletePayload;
+  final List<ChannelResponse>? threads;
 
   bool get shouldTreatAsUnavailable => unavailable || !hasCompletePayload;
 
