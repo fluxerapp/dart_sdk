@@ -89,11 +89,11 @@ start_group "Running build_runner"
 dart run build_runner build
 end_group
 
-if [[ "$MODE" == "regenerate" ]]; then
-  start_group "Applying Dart fixes"
-  dart fix --apply
-  end_group
+start_group "Applying Dart fixes"
+dart fix --apply
+end_group
 
+if [[ "$MODE" == "regenerate" ]]; then
   start_group "Formatting generated SDK"
   dart format .
   end_group
