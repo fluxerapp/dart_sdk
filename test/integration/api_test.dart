@@ -85,12 +85,6 @@ void main() {
       final mentions = await client.users.listMentionsForCurrentUser();
       expect(mentions, isNotNull);
     });
-
-    test('listScheduledMessages returns list', () async {
-      if (skipIfNotConfigured()) return;
-      final messages = await client.users.listScheduledMessages();
-      expect(messages, isA<List<ScheduledMessageResponseSchema>>());
-    });
   });
 
   // ---------------------------------------------------------------------------
@@ -467,7 +461,7 @@ void main() {
         return;
       }
       for (final msg in messages.take(5)) {
-        expect(msg.type, isA<MessageResponseSchemaTypeType>());
+        expect(msg.type, isA<MessageType>());
         expect(msg.type.json, isNotNull);
         expect(msg.timestamp, isA<DateTime>());
         expect(msg.author.id, isNotEmpty);

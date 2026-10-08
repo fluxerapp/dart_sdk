@@ -197,6 +197,8 @@ Map<String, Object?> _userSettingsJson() => {
   'profile_privacy': 0,
   'synced_preferences': '{}',
   'default_share_voice_activity': false,
+  'privacy_setup_version': 0,
+  'privacy_setup_completed_at': null,
   'sensitive_content_friend_dm_filter': 0,
   'sensitive_content_non_friend_dm_filter': 0,
   'sensitive_content_guild_filter': 0,

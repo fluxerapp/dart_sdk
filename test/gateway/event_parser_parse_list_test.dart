@@ -13,12 +13,14 @@ void main() {
           'name': 'Key',
           'created_at': '2026-01-01T00:00:00Z',
           'last_used_at': null,
+          'rp_id': 'fluxer.app',
         },
         {
           'id': 'b',
           'name': 'Phone',
           'created_at': '2026-01-02T00:00:00Z',
           'last_used_at': '2026-01-03T00:00:00Z',
+          'rp_id': 'fluxer.app',
         },
       ]);
 
@@ -29,6 +31,7 @@ void main() {
       expect(credentials[0].id, 'a');
       expect(credentials[0].name, 'Key');
       expect(credentials[0].lastUsedAt, isNull);
+      expect(credentials[0].rpId, 'fluxer.app');
       expect(credentials[1].id, 'b');
       expect(credentials[1].lastUsedAt, '2026-01-03T00:00:00Z');
     });

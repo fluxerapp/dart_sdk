@@ -320,19 +320,19 @@ void main() {
       final json = <String, dynamic>{
         'mfa': true,
         'ticket': 'mfa-ticket-abc',
-        'allowed_methods': ['totp', 'sms'],
-        'sms_phone_hint': null,
-        'sms': true,
+        'allowed_methods': ['totp', 'backup_codes'],
         'totp': true,
         'webauthn': false,
+        'backup_codes': true,
       };
 
       final response = AuthLoginResponse.fromJson(json);
       final mfaResponse = response.toVariant2();
       expect(mfaResponse.ticket, 'mfa-ticket-abc');
-      expect(mfaResponse.allowedMethods, ['totp', 'sms']);
+      expect(mfaResponse.allowedMethods, ['totp', 'backup_codes']);
       expect(mfaResponse.totp, true);
       expect(mfaResponse.webauthn, false);
+      expect(mfaResponse.backupCodes, true);
     });
 
     test('preserves raw json through toJson', () {
