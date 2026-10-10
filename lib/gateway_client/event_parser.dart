@@ -491,9 +491,17 @@ class EventParser {
       (e) => ChannelResponse.fromJson(e as Map<String, Object?>),
     );
 
+    final Map<String, Object?> usersById = <String, Object?>{
+      for (final Object? user in data['users'] as List<dynamic>? ?? const [])
+        if (user is Map && user['id'] is String) user['id'] as String: user,
+    };
     final relationships = _parseListSafe(
       data['relationships'],
-      _parseRelationship,
+      (dynamic raw) => _parseRelationship(
+        raw is Map && raw['user'] == null && usersById[raw['id']] != null
+            ? <dynamic, dynamic>{...raw, 'user': usersById[raw['id']]}
+            : raw,
+      ),
     );
 
     final readStates = _parseListSafe(

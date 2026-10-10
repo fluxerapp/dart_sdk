@@ -1726,6 +1726,19 @@ void main() {
       expect(ready.guilds, isEmpty);
     });
 
+    test('relationships without an inline user take it from READY users', () {
+      final data = minimalReadyPayload({
+        'relationships': [
+          {'id': '100', 'type': 1, 'nickname': null},
+        ],
+        'users': [_userPartialJson(id: '100')],
+      });
+      final event = parser.parse('READY', data) as ReadyEvent;
+
+      expect(event.relationships, hasLength(1));
+      expect(event.relationships.single.user.id, '100');
+    });
+
     test('notes — Map<String, String> parsed correctly', () {
       final data = minimalReadyPayload({
         'notes': {'user1': 'A friend', 'user2': 'A colleague'},
