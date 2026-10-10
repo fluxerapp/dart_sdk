@@ -1406,6 +1406,33 @@ void main() {
       expect(e.state.suppress, false);
     });
 
+    test('VOICE_STATE_UPDATE carries the embedded member', () {
+      final data = <String, Object?>{
+        'user_id': '100',
+        'channel_id': 'ch1',
+        'guild_id': 'g1',
+        'member': _guildMemberJson(),
+      };
+      final e =
+          parser.parse('VOICE_STATE_UPDATE', data) as VoiceStateUpdateEvent;
+
+      expect(e.member?.user.id, '100');
+    });
+
+    test('VOICE_STATE_UPDATE with a null member still parses', () {
+      final data = <String, Object?>{
+        'user_id': '100',
+        'channel_id': null,
+        'guild_id': 'g1',
+        'member': null,
+      };
+      final e =
+          parser.parse('VOICE_STATE_UPDATE', data) as VoiceStateUpdateEvent;
+
+      expect(e.state.userId, '100');
+      expect(e.member, isNull);
+    });
+
     test('VOICE_STATE_UPDATE with null optional fields', () {
       final data = <String, Object?>{'user_id': 'u1'};
       final event = parser.parse('VOICE_STATE_UPDATE', data);

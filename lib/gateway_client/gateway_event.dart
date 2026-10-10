@@ -671,9 +671,10 @@ class TypingStartEvent extends GatewayEvent {
 // ---------------------------------------------------------------------------
 
 class VoiceStateUpdateEvent extends GatewayEvent {
-  const VoiceStateUpdateEvent({required this.state});
+  const VoiceStateUpdateEvent({required this.state, this.member});
 
   final VoiceState state;
+  final GuildMemberResponse? member;
 }
 
 class VoiceServerUpdateEvent extends GatewayEvent {

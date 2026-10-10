@@ -343,6 +343,7 @@ class EventParser {
         // Voice
         'VOICE_STATE_UPDATE' => VoiceStateUpdateEvent(
           state: VoiceState.fromJson(data),
+          member: _parseEmbeddedMember(data['member']),
         ),
         'VOICE_STATE_ACK' => VoiceStateAckEvent(
           mutationId: data['mutation_id'] as String?,
