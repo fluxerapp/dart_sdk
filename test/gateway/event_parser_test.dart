@@ -1650,6 +1650,44 @@ void main() {
       expect(e.ringing, isEmpty);
     });
 
+    test('CALL_UPDATE voice_states keep the per-connection version', () {
+      final data = <String, Object?>{
+        'channel_id': 'ch1',
+        'message_id': 'msg2',
+        'region': 'eu-west',
+        'ringing': <String>[],
+        'voice_states': [
+          {
+            'guild_id': null,
+            'channel_id': 'ch1',
+            'user_id': 'u1',
+            'connection_id': 'conn-1',
+            'session_id': 's1',
+            'member': null,
+            'mute': false,
+            'deaf': false,
+            'self_mute': true,
+            'self_deaf': false,
+            'self_video': false,
+            'self_stream': false,
+            'is_mobile': false,
+            'suppress': false,
+            'viewer_stream_keys': <String>[],
+            'e2ee_capable': false,
+            'region_id': null,
+            'server_id': null,
+            'version': 4,
+          },
+        ],
+      };
+      final event = parser.parse('CALL_UPDATE', data);
+
+      final e = event as CallUpdateEvent;
+      expect(e.voiceStates, hasLength(1));
+      expect(e.voiceStates![0].connectionId, 'conn-1');
+      expect(e.voiceStates![0].version, 4);
+    });
+
     test('CALL_DELETE → CallDeleteEvent', () {
       final data = <String, Object?>{'channel_id': 'ch1'};
       final event = parser.parse('CALL_DELETE', data);

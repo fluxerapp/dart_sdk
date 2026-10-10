@@ -28,6 +28,7 @@ class VoiceState {
     this.isMobile = false,
     this.e2eeCapable,
     this.p2p = false,
+    this.version,
   });
 
   final String userId;
@@ -45,6 +46,7 @@ class VoiceState {
   final bool isMobile;
   final bool? e2eeCapable;
   final bool p2p;
+  final int? version;
 
   @override
   bool operator ==(Object other) =>
@@ -65,7 +67,8 @@ class VoiceState {
           suppress == other.suppress &&
           isMobile == other.isMobile &&
           e2eeCapable == other.e2eeCapable &&
-          p2p == other.p2p;
+          p2p == other.p2p &&
+          version == other.version;
   @override
   int get hashCode => Object.hash(
     userId,
@@ -83,6 +86,7 @@ class VoiceState {
     isMobile,
     e2eeCapable,
     p2p,
+    version,
   );
 
   factory VoiceState.fromJson(Map<String, dynamic> json) {
@@ -102,6 +106,7 @@ class VoiceState {
       isMobile: json['is_mobile'] as bool? ?? false,
       e2eeCapable: json['e2ee_capable'] as bool?,
       p2p: json['p2p'] as bool? ?? false,
+      version: (json['version'] as num?)?.toInt(),
     );
   }
 }
