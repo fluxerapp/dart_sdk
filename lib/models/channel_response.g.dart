@@ -33,6 +33,7 @@ ChannelResponse _$ChannelResponseFromJson(
         (v) => (v as num?)?.toInt(),
       ),
       name: $checkedConvert('name', (v) => v as String?),
+      rtcP2p: $checkedConvert('rtc_p2p', (v) => v as bool?),
       lastMessageId: $checkedConvert('last_message_id', (v) => v as String?),
       lastPinTimestamp: $checkedConvert(
         'last_pin_timestamp',
@@ -76,7 +77,6 @@ ChannelResponse _$ChannelResponseFromJson(
           (k, e) => MapEntry(k, e as String),
         ),
       ),
-      flags: $checkedConvert('flags', (v) => (v as num?)?.toInt()),
       defaultTagSetting: $checkedConvert(
         'default_tag_setting',
         (v) => v == null
@@ -84,6 +84,12 @@ ChannelResponse _$ChannelResponseFromJson(
             : ChannelResponseDefaultTagSettingDefaultTagSetting.fromJson(
                 v as String,
               ),
+      ),
+      threadMetadata: $checkedConvert(
+        'thread_metadata',
+        (v) => v == null
+            ? null
+            : ThreadMetadataResponse.fromJson(v as Map<String, dynamic>),
       ),
       appliedTags: $checkedConvert(
         'applied_tags',
@@ -136,12 +142,7 @@ ChannelResponse _$ChannelResponseFromJson(
         'default_forum_layout',
         (v) => (v as num?)?.toInt(),
       ),
-      threadMetadata: $checkedConvert(
-        'thread_metadata',
-        (v) => v == null
-            ? null
-            : ThreadMetadataResponse.fromJson(v as Map<String, dynamic>),
-      ),
+      flags: $checkedConvert('flags', (v) => (v as num?)?.toInt()),
     );
     return val;
   },
@@ -152,6 +153,7 @@ ChannelResponse _$ChannelResponseFromJson(
     'parentId': 'parent_id',
     'userLimit': 'user_limit',
     'voiceConnectionLimit': 'voice_connection_limit',
+    'rtcP2p': 'rtc_p2p',
     'lastMessageId': 'last_message_id',
     'lastPinTimestamp': 'last_pin_timestamp',
     'permissionOverwrites': 'permission_overwrites',
@@ -160,6 +162,7 @@ ChannelResponse _$ChannelResponseFromJson(
     'contentWarningText': 'content_warning_text',
     'rateLimitPerUser': 'rate_limit_per_user',
     'defaultTagSetting': 'default_tag_setting',
+    'threadMetadata': 'thread_metadata',
     'appliedTags': 'applied_tags',
     'messageCount': 'message_count',
     'totalMessageSent': 'total_message_sent',
@@ -171,7 +174,6 @@ ChannelResponse _$ChannelResponseFromJson(
     'defaultReactionEmoji': 'default_reaction_emoji',
     'defaultSortOrder': 'default_sort_order',
     'defaultForumLayout': 'default_forum_layout',
-    'threadMetadata': 'thread_metadata',
   },
 );
 
@@ -192,6 +194,7 @@ Map<String, dynamic> _$ChannelResponseToJson(
   'user_limit': ?instance.userLimit,
   'voice_connection_limit': ?instance.voiceConnectionLimit,
   'rtc_region': ?instance.rtcRegion,
+  'rtc_p2p': ?instance.rtcP2p,
   'last_message_id': ?instance.lastMessageId,
   'last_pin_timestamp': ?instance.lastPinTimestamp?.toIso8601String(),
   'permission_overwrites': ?instance.permissionOverwrites,

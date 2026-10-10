@@ -35,6 +35,7 @@ ChannelUpdateForumRequestBody _$ChannelUpdateForumRequestBodyFromJson(
           (k, e) => MapEntry(k, e as String?),
         ),
       ),
+      rtcP2p: $checkedConvert('rtc_p2p', (v) => v as bool?),
       availableTags: $checkedConvert(
         'available_tags',
         (v) => (v as List<dynamic>?)
@@ -50,6 +51,7 @@ ChannelUpdateForumRequestBody _$ChannelUpdateForumRequestBodyFromJson(
   fieldKeyMap: const {
     'permissionOverwrites': 'permission_overwrites',
     'contentWarningLevel': 'content_warning_level',
+    'rtcP2p': 'rtc_p2p',
     'availableTags': 'available_tags',
   },
 );
@@ -60,6 +62,7 @@ Map<String, dynamic> _$ChannelUpdateForumRequestBodyToJson(
   'permission_overwrites': ?instance.permissionOverwrites,
   'content_warning_level': ?instance.contentWarningLevel,
   'nicks': ?instance.nicks,
+  'rtc_p2p': ?instance.rtcP2p,
   'available_tags': ?instance.availableTags,
   'flags': ?instance.flags,
 };

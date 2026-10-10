@@ -35,6 +35,7 @@ class ChannelResponse {
     this.userLimit,
     this.voiceConnectionLimit,
     this.name,
+    this.rtcP2p,
     this.lastMessageId,
     this.lastPinTimestamp,
     this.permissionOverwrites,
@@ -45,8 +46,8 @@ class ChannelResponse {
     this.contentWarningText,
     this.rateLimitPerUser,
     this.nicks,
-    this.flags,
     this.defaultTagSetting,
+    this.threadMetadata,
     this.appliedTags,
     this.messageCount,
     this.totalMessageSent,
@@ -59,7 +60,7 @@ class ChannelResponse {
     this.defaultReactionEmoji,
     this.defaultSortOrder,
     this.defaultForumLayout,
-    this.threadMetadata,
+    this.flags,
   });
 
   factory ChannelResponse.fromJson(Map<String, Object?> json) =>
@@ -116,6 +117,10 @@ class ChannelResponse {
   /// The voice region ID for the voice channel
   @JsonKey(includeIfNull: false, name: 'rtc_region')
   final String? rtcRegion;
+
+  /// Whether calls in the voice channel connect participants directly instead of through a voice server
+  @JsonKey(includeIfNull: false, name: 'rtc_p2p')
+  final bool? rtcP2p;
 
   /// The ID of the last message sent in this channel
   @JsonKey(includeIfNull: false, name: 'last_message_id')

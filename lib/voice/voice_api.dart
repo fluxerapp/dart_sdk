@@ -8,6 +8,7 @@ import 'package:retrofit/error_logger.dart';
 
 import '../models/entrance_sound_play_request.dart';
 import '../models/snowflake_type.dart';
+import '../models/voice_p2p_connection_reports_request.dart';
 
 part 'voice_api.g.dart';
 
@@ -26,5 +27,15 @@ abstract class VoiceApi {
   Future<void> playEntranceSound({
     @Path('channel_id') required SnowflakeType channelId,
     @Body() required EntranceSoundPlayRequest body,
+  });
+
+  /// Report peer-to-peer connection outcomes.
+  ///
+  /// Records how peer connections of a peer-to-peer voice call settled, one report for each remote peer. Fluxer adds the request address, its country and the client platform of the session.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/voice/p2p/connection-reports')
+  Future<void> createVoiceP2pConnectionReports({
+    @Body() required VoiceP2pConnectionReportsRequest body,
   });
 }

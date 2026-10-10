@@ -27,6 +27,7 @@ class VoiceState {
     this.suppress = false,
     this.isMobile = false,
     this.e2eeCapable,
+    this.p2p = false,
   });
 
   final String userId;
@@ -43,6 +44,7 @@ class VoiceState {
   final bool suppress;
   final bool isMobile;
   final bool? e2eeCapable;
+  final bool p2p;
 
   @override
   bool operator ==(Object other) =>
@@ -62,7 +64,8 @@ class VoiceState {
           deaf == other.deaf &&
           suppress == other.suppress &&
           isMobile == other.isMobile &&
-          e2eeCapable == other.e2eeCapable;
+          e2eeCapable == other.e2eeCapable &&
+          p2p == other.p2p;
   @override
   int get hashCode => Object.hash(
     userId,
@@ -79,6 +82,7 @@ class VoiceState {
     suppress,
     isMobile,
     e2eeCapable,
+    p2p,
   );
 
   factory VoiceState.fromJson(Map<String, dynamic> json) {
@@ -97,6 +101,7 @@ class VoiceState {
       suppress: json['suppress'] as bool? ?? false,
       isMobile: json['is_mobile'] as bool? ?? false,
       e2eeCapable: json['e2ee_capable'] as bool?,
+      p2p: json['p2p'] as bool? ?? false,
     );
   }
 }
@@ -118,6 +123,7 @@ class GatewayVoiceStateUpdate {
     this.isMobile,
     this.latitude,
     this.longitude,
+    this.p2p,
   });
 
   final String? guildId;
@@ -133,6 +139,7 @@ class GatewayVoiceStateUpdate {
   final bool? isMobile;
   final String? latitude;
   final String? longitude;
+  final bool? p2p;
 
   /// JSON object for the gateway `d` field. Omits optional keys when null.
   Map<String, Object?> toJson() {
@@ -160,6 +167,9 @@ class GatewayVoiceStateUpdate {
     }
     if (longitude != null) {
       map['longitude'] = longitude;
+    }
+    if (p2p != null) {
+      map['p2p'] = p2p;
     }
     return map;
   }

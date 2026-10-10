@@ -526,6 +526,27 @@ class GatewayConnection {
     return true;
   }
 
+  bool sendVoiceSignal({
+    String? guildId,
+    required String channelId,
+    required String to,
+    required Map<String, Object?> data,
+  }) {
+    if (_state != GatewayState.connected || _channel == null) {
+      return false;
+    }
+    _send({
+      'op': GatewayOpcodes.voiceSignal,
+      'd': <String, Object?>{
+        'guild_id': guildId,
+        'channel_id': channelId,
+        'to': to,
+        'data': data,
+      },
+    });
+    return true;
+  }
+
   // ---------------------------------------------------------------------------
   // Internal: connection
   // ---------------------------------------------------------------------------

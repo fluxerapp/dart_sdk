@@ -105,6 +105,8 @@ class ChannelUpdateRequestBodyVariant1 {
   final ChannelNicknameOverrides? nicks;
   @JsonKey(includeIfNull: false, name: 'rtc_region')
   final String? rtcRegion;
+  @JsonKey(includeIfNull: false, name: 'rtc_p2p')
+  final bool? rtcP2p;
   @JsonKey(includeIfNull: false)
   final String? name;
   @JsonKey(includeIfNull: false)
@@ -127,6 +129,7 @@ class ChannelUpdateRequestBodyVariant1 {
     this.ownerId,
     this.nicks,
     this.rtcRegion,
+    this.rtcP2p,
     this.name,
     this.type,
   });
@@ -174,6 +177,8 @@ class ChannelUpdateRequestBodyVariant2 {
   final ChannelNicknameOverrides? nicks;
   @JsonKey(includeIfNull: false, name: 'rtc_region')
   final String? rtcRegion;
+  @JsonKey(includeIfNull: false, name: 'rtc_p2p')
+  final bool? rtcP2p;
   @JsonKey(includeIfNull: false)
   final String? name;
   @JsonKey(includeIfNull: false)
@@ -196,6 +201,7 @@ class ChannelUpdateRequestBodyVariant2 {
     this.ownerId,
     this.nicks,
     this.rtcRegion,
+    this.rtcP2p,
     this.name,
     this.type,
   });
@@ -243,6 +249,8 @@ class ChannelUpdateRequestBodyVariant3 {
   final ChannelNicknameOverrides? nicks;
   @JsonKey(includeIfNull: false, name: 'rtc_region')
   final String? rtcRegion;
+  @JsonKey(includeIfNull: false, name: 'rtc_p2p')
+  final bool? rtcP2p;
   @JsonKey(includeIfNull: false)
   final String? name;
 
@@ -263,6 +271,7 @@ class ChannelUpdateRequestBodyVariant3 {
     this.ownerId,
     this.nicks,
     this.rtcRegion,
+    this.rtcP2p,
     this.name,
   });
 
@@ -309,6 +318,8 @@ class ChannelUpdateRequestBodyVariant4 {
   final ChannelNicknameOverrides? nicks;
   @JsonKey(includeIfNull: false, name: 'rtc_region')
   final String? rtcRegion;
+  @JsonKey(includeIfNull: false, name: 'rtc_p2p')
+  final bool? rtcP2p;
   @JsonKey(includeIfNull: false)
   final String? name;
 
@@ -329,6 +340,7 @@ class ChannelUpdateRequestBodyVariant4 {
     this.ownerId,
     this.nicks,
     this.rtcRegion,
+    this.rtcP2p,
     this.name,
   });
 
@@ -375,6 +387,8 @@ class ChannelUpdateRequestBodyVariant5 {
   final ChannelNicknameOverrides? nicks;
   @JsonKey(includeIfNull: false, name: 'rtc_region')
   final String? rtcRegion;
+  @JsonKey(includeIfNull: false, name: 'rtc_p2p')
+  final bool? rtcP2p;
   @JsonKey(includeIfNull: false)
   final String? name;
 
@@ -395,6 +409,7 @@ class ChannelUpdateRequestBodyVariant5 {
     this.ownerId,
     this.nicks,
     this.rtcRegion,
+    this.rtcP2p,
     this.name,
   });
 
@@ -572,6 +587,8 @@ class ChannelUpdateRequestBodyChannelUpdateForumRequestBody {
   final ChannelNicknameOverrides? nicks;
   @JsonKey(includeIfNull: false, name: 'rtc_region')
   final String? rtcRegion;
+  @JsonKey(includeIfNull: false, name: 'rtc_p2p')
+  final bool? rtcP2p;
   @JsonKey(includeIfNull: false)
   final String? name;
   @JsonKey(includeIfNull: false, name: 'default_auto_archive_duration')
@@ -608,6 +625,7 @@ class ChannelUpdateRequestBodyChannelUpdateForumRequestBody {
     this.ownerId,
     this.nicks,
     this.rtcRegion,
+    this.rtcP2p,
     this.name,
     this.defaultAutoArchiveDuration,
     this.defaultThreadRateLimitPerUser,
@@ -662,6 +680,8 @@ class ChannelUpdateRequestBodyChannelUpdateMediaRequestBody {
   final ChannelNicknameOverrides? nicks;
   @JsonKey(includeIfNull: false, name: 'rtc_region')
   final String? rtcRegion;
+  @JsonKey(includeIfNull: false, name: 'rtc_p2p')
+  final bool? rtcP2p;
   @JsonKey(includeIfNull: false)
   final String? name;
   @JsonKey(includeIfNull: false, name: 'default_auto_archive_duration')
@@ -696,6 +716,7 @@ class ChannelUpdateRequestBodyChannelUpdateMediaRequestBody {
     this.ownerId,
     this.nicks,
     this.rtcRegion,
+    this.rtcP2p,
     this.name,
     this.defaultAutoArchiveDuration,
     this.defaultThreadRateLimitPerUser,

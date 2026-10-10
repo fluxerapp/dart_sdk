@@ -26,6 +26,7 @@ class ChannelUpdateMediaRequestBody {
     this.permissionOverwrites,
     this.contentWarningLevel,
     this.nicks,
+    this.rtcP2p,
     this.availableTags,
     this.flags,
     JsonNullable<String> topic = const JsonNullable<String>.undefined(),
@@ -122,6 +123,7 @@ class ChannelUpdateMediaRequestBody {
     this.permissionOverwrites,
     this.contentWarningLevel,
     this.nicks,
+    this.rtcP2p,
     this.availableTags,
     this.flags,
   }) : _urlValue = null,
@@ -233,6 +235,7 @@ class ChannelUpdateMediaRequestBody {
       rtcRegion: json.containsKey('rtc_region')
           ? JsonNullable<String>.of(value._rtcRegionValue)
           : const JsonNullable<String>.undefined(),
+      rtcP2p: value.rtcP2p,
       name: json.containsKey('name')
           ? JsonNullable<String>.of(value._nameValue)
           : const JsonNullable<String>.undefined(),
@@ -278,6 +281,10 @@ class ChannelUpdateMediaRequestBody {
   /// Custom nicknames for users in this channel
   @JsonKey(includeIfNull: false)
   final ChannelNicknameOverrides? nicks;
+
+  /// Whether calls in the voice channel connect participants directly instead of through a voice server
+  @JsonKey(includeIfNull: false, name: 'rtc_p2p')
+  final bool? rtcP2p;
 
   /// Tags that can be applied to posts (max 20)
   @JsonKey(includeIfNull: false, name: 'available_tags')

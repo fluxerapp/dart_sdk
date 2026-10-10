@@ -37,6 +37,14 @@ _$ExperimentAssignmentsResponseAssignmentsFromJson(Map<String, dynamic> json) =>
                     v as Map<String, dynamic>,
                   ),
           ),
+          voiceP2p: $checkedConvert(
+            'voice_p2p',
+            (v) => v == null
+                ? null
+                : VoiceP2pAssignmentResponse.fromJson(
+                    v as Map<String, dynamic>,
+                  ),
+          ),
         );
         return val;
       },
@@ -44,6 +52,7 @@ _$ExperimentAssignmentsResponseAssignmentsFromJson(Map<String, dynamic> json) =>
         'domainMigration': 'domain_migration',
         'channelThreads': 'channel_threads',
         'plutoniumPage': 'plutonium_page',
+        'voiceP2p': 'voice_p2p',
       },
     );
 
@@ -53,4 +62,5 @@ Map<String, dynamic> _$ExperimentAssignmentsResponseAssignmentsToJson(
   'domain_migration': ?instance.domainMigration,
   'channel_threads': ?instance.channelThreads,
   'plutonium_page': ?instance.plutoniumPage,
+  'voice_p2p': ?instance.voiceP2p,
 };

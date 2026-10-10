@@ -687,6 +687,42 @@ class VoiceServerUpdateEvent extends GatewayEvent {
   final String? e2eeKey;
 }
 
+class VoiceIceServer {
+  const VoiceIceServer({required this.urls});
+
+  final List<String> urls;
+}
+
+class VoiceServerP2pUpdateEvent extends GatewayEvent {
+  const VoiceServerP2pUpdateEvent({
+    required this.connectionId,
+    required this.iceServers,
+    this.guildId,
+    this.channelId,
+  });
+
+  final String connectionId;
+  final List<VoiceIceServer> iceServers;
+  final String? guildId;
+  final String? channelId;
+}
+
+class VoiceSignalEvent extends GatewayEvent {
+  const VoiceSignalEvent({
+    required this.channelId,
+    required this.from,
+    required this.userId,
+    required this.data,
+    this.guildId,
+  });
+
+  final String channelId;
+  final String from;
+  final String userId;
+  final Map<String, dynamic> data;
+  final String? guildId;
+}
+
 class VoiceStateAckEvent extends GatewayEvent {
   const VoiceStateAckEvent({
     this.mutationId,

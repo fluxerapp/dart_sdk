@@ -58,6 +58,7 @@ ChannelUpdateRequestBodyVariant1 _$ChannelUpdateRequestBodyVariant1FromJson(
         ),
       ),
       rtcRegion: $checkedConvert('rtc_region', (v) => v as String?),
+      rtcP2p: $checkedConvert('rtc_p2p', (v) => v as bool?),
       name: $checkedConvert('name', (v) => v as String?),
       type: $checkedConvert('type', (v) => v as num?),
     );
@@ -74,6 +75,7 @@ ChannelUpdateRequestBodyVariant1 _$ChannelUpdateRequestBodyVariant1FromJson(
     'contentWarningText': 'content_warning_text',
     'ownerId': 'owner_id',
     'rtcRegion': 'rtc_region',
+    'rtcP2p': 'rtc_p2p',
   },
 );
 
@@ -96,6 +98,7 @@ Map<String, dynamic> _$ChannelUpdateRequestBodyVariant1ToJson(
   'owner_id': ?instance.ownerId,
   'nicks': ?instance.nicks,
   'rtc_region': ?instance.rtcRegion,
+  'rtc_p2p': ?instance.rtcP2p,
   'name': ?instance.name,
   'type': ?instance.type,
 };
@@ -152,6 +155,7 @@ ChannelUpdateRequestBodyVariant2 _$ChannelUpdateRequestBodyVariant2FromJson(
         ),
       ),
       rtcRegion: $checkedConvert('rtc_region', (v) => v as String?),
+      rtcP2p: $checkedConvert('rtc_p2p', (v) => v as bool?),
       name: $checkedConvert('name', (v) => v as String?),
       type: $checkedConvert('type', (v) => v as num?),
     );
@@ -168,6 +172,7 @@ ChannelUpdateRequestBodyVariant2 _$ChannelUpdateRequestBodyVariant2FromJson(
     'contentWarningText': 'content_warning_text',
     'ownerId': 'owner_id',
     'rtcRegion': 'rtc_region',
+    'rtcP2p': 'rtc_p2p',
   },
 );
 
@@ -190,6 +195,7 @@ Map<String, dynamic> _$ChannelUpdateRequestBodyVariant2ToJson(
   'owner_id': ?instance.ownerId,
   'nicks': ?instance.nicks,
   'rtc_region': ?instance.rtcRegion,
+  'rtc_p2p': ?instance.rtcP2p,
   'name': ?instance.name,
   'type': ?instance.type,
 };
@@ -246,6 +252,7 @@ ChannelUpdateRequestBodyVariant3 _$ChannelUpdateRequestBodyVariant3FromJson(
         ),
       ),
       rtcRegion: $checkedConvert('rtc_region', (v) => v as String?),
+      rtcP2p: $checkedConvert('rtc_p2p', (v) => v as bool?),
       name: $checkedConvert('name', (v) => v as String?),
     );
     return val;
@@ -261,6 +268,7 @@ ChannelUpdateRequestBodyVariant3 _$ChannelUpdateRequestBodyVariant3FromJson(
     'contentWarningText': 'content_warning_text',
     'ownerId': 'owner_id',
     'rtcRegion': 'rtc_region',
+    'rtcP2p': 'rtc_p2p',
   },
 );
 
@@ -283,6 +291,7 @@ Map<String, dynamic> _$ChannelUpdateRequestBodyVariant3ToJson(
   'owner_id': ?instance.ownerId,
   'nicks': ?instance.nicks,
   'rtc_region': ?instance.rtcRegion,
+  'rtc_p2p': ?instance.rtcP2p,
   'name': ?instance.name,
 };
 
@@ -338,6 +347,7 @@ ChannelUpdateRequestBodyVariant4 _$ChannelUpdateRequestBodyVariant4FromJson(
         ),
       ),
       rtcRegion: $checkedConvert('rtc_region', (v) => v as String?),
+      rtcP2p: $checkedConvert('rtc_p2p', (v) => v as bool?),
       name: $checkedConvert('name', (v) => v as String?),
     );
     return val;
@@ -353,6 +363,7 @@ ChannelUpdateRequestBodyVariant4 _$ChannelUpdateRequestBodyVariant4FromJson(
     'contentWarningText': 'content_warning_text',
     'ownerId': 'owner_id',
     'rtcRegion': 'rtc_region',
+    'rtcP2p': 'rtc_p2p',
   },
 );
 
@@ -375,6 +386,7 @@ Map<String, dynamic> _$ChannelUpdateRequestBodyVariant4ToJson(
   'owner_id': ?instance.ownerId,
   'nicks': ?instance.nicks,
   'rtc_region': ?instance.rtcRegion,
+  'rtc_p2p': ?instance.rtcP2p,
   'name': ?instance.name,
 };
 
@@ -430,6 +442,7 @@ ChannelUpdateRequestBodyVariant5 _$ChannelUpdateRequestBodyVariant5FromJson(
         ),
       ),
       rtcRegion: $checkedConvert('rtc_region', (v) => v as String?),
+      rtcP2p: $checkedConvert('rtc_p2p', (v) => v as bool?),
       name: $checkedConvert('name', (v) => v as String?),
     );
     return val;
@@ -445,6 +458,7 @@ ChannelUpdateRequestBodyVariant5 _$ChannelUpdateRequestBodyVariant5FromJson(
     'contentWarningText': 'content_warning_text',
     'ownerId': 'owner_id',
     'rtcRegion': 'rtc_region',
+    'rtcP2p': 'rtc_p2p',
   },
 );
 
@@ -467,6 +481,7 @@ Map<String, dynamic> _$ChannelUpdateRequestBodyVariant5ToJson(
   'owner_id': ?instance.ownerId,
   'nicks': ?instance.nicks,
   'rtc_region': ?instance.rtcRegion,
+  'rtc_p2p': ?instance.rtcP2p,
   'name': ?instance.name,
 };
 
@@ -680,6 +695,7 @@ _$ChannelUpdateRequestBodyChannelUpdateForumRequestBodyFromJson(
         ),
       ),
       rtcRegion: $checkedConvert('rtc_region', (v) => v as String?),
+      rtcP2p: $checkedConvert('rtc_p2p', (v) => v as bool?),
       name: $checkedConvert('name', (v) => v as String?),
       defaultAutoArchiveDuration: $checkedConvert(
         'default_auto_archive_duration',
@@ -735,6 +751,7 @@ _$ChannelUpdateRequestBodyChannelUpdateForumRequestBodyFromJson(
     'contentWarningText': 'content_warning_text',
     'ownerId': 'owner_id',
     'rtcRegion': 'rtc_region',
+    'rtcP2p': 'rtc_p2p',
     'defaultAutoArchiveDuration': 'default_auto_archive_duration',
     'defaultThreadRateLimitPerUser': 'default_thread_rate_limit_per_user',
     'availableTags': 'available_tags',
@@ -765,6 +782,7 @@ _$ChannelUpdateRequestBodyChannelUpdateForumRequestBodyToJson(
   'owner_id': ?instance.ownerId,
   'nicks': ?instance.nicks,
   'rtc_region': ?instance.rtcRegion,
+  'rtc_p2p': ?instance.rtcP2p,
   'name': ?instance.name,
   'default_auto_archive_duration': ?instance.defaultAutoArchiveDuration,
   'default_thread_rate_limit_per_user': ?instance.defaultThreadRateLimitPerUser,
@@ -828,6 +846,7 @@ _$ChannelUpdateRequestBodyChannelUpdateMediaRequestBodyFromJson(
         ),
       ),
       rtcRegion: $checkedConvert('rtc_region', (v) => v as String?),
+      rtcP2p: $checkedConvert('rtc_p2p', (v) => v as bool?),
       name: $checkedConvert('name', (v) => v as String?),
       defaultAutoArchiveDuration: $checkedConvert(
         'default_auto_archive_duration',
@@ -878,6 +897,7 @@ _$ChannelUpdateRequestBodyChannelUpdateMediaRequestBodyFromJson(
     'contentWarningText': 'content_warning_text',
     'ownerId': 'owner_id',
     'rtcRegion': 'rtc_region',
+    'rtcP2p': 'rtc_p2p',
     'defaultAutoArchiveDuration': 'default_auto_archive_duration',
     'defaultThreadRateLimitPerUser': 'default_thread_rate_limit_per_user',
     'availableTags': 'available_tags',
@@ -907,6 +927,7 @@ _$ChannelUpdateRequestBodyChannelUpdateMediaRequestBodyToJson(
   'owner_id': ?instance.ownerId,
   'nicks': ?instance.nicks,
   'rtc_region': ?instance.rtcRegion,
+  'rtc_p2p': ?instance.rtcP2p,
   'name': ?instance.name,
   'default_auto_archive_duration': ?instance.defaultAutoArchiveDuration,
   'default_thread_rate_limit_per_user': ?instance.defaultThreadRateLimitPerUser,

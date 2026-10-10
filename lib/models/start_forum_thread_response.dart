@@ -24,7 +24,7 @@ class StartForumThreadResponse {
   const StartForumThreadResponse({
     required this.id,
     required this.type,
-    this.rtcRegion,
+    this.rtcP2p,
     this.topic,
     this.url,
     this.icon,
@@ -35,6 +35,7 @@ class StartForumThreadResponse {
     this.bitrate,
     this.userLimit,
     this.voiceConnectionLimit,
+    this.rtcRegion,
     this.name,
     this.lastMessageId,
     this.lastPinTimestamp,
@@ -118,6 +119,10 @@ class StartForumThreadResponse {
   /// The voice region ID for the voice channel
   @JsonKey(includeIfNull: false, name: 'rtc_region')
   final String? rtcRegion;
+
+  /// Whether calls in the voice channel connect participants directly instead of through a voice server
+  @JsonKey(includeIfNull: false, name: 'rtc_p2p')
+  final bool? rtcP2p;
 
   /// The ID of the last message sent in this channel
   @JsonKey(includeIfNull: false, name: 'last_message_id')
