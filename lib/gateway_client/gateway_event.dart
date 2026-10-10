@@ -138,17 +138,21 @@ class MessageCreateEvent extends GatewayEvent {
     required this.message,
     this.guildId,
     this.channelType,
+    this.member,
   });
 
   final MessageResponseSchema message;
   final String? guildId;
   final int? channelType;
+  final GuildMemberResponse? member;
 }
 
 class MessageUpdateEvent extends GatewayEvent {
-  const MessageUpdateEvent({required this.message});
+  const MessageUpdateEvent({required this.message, this.guildId, this.member});
 
   final MessageResponseSchema message;
+  final String? guildId;
+  final GuildMemberResponse? member;
 }
 
 class MessageDeleteEvent extends GatewayEvent {
@@ -220,6 +224,7 @@ class MessageReactionAddEvent extends GatewayEvent {
     required this.userId,
     required this.emoji,
     this.guildId,
+    this.member,
   });
 
   final String channelId;
@@ -227,6 +232,7 @@ class MessageReactionAddEvent extends GatewayEvent {
   final String userId;
   final ReactionEmoji emoji;
   final String? guildId;
+  final GuildMemberResponse? member;
 }
 
 class MessageReactionRemoveEvent extends GatewayEvent {
@@ -236,6 +242,7 @@ class MessageReactionRemoveEvent extends GatewayEvent {
     required this.userId,
     required this.emoji,
     this.guildId,
+    this.member,
   });
 
   final String channelId;
@@ -243,6 +250,7 @@ class MessageReactionRemoveEvent extends GatewayEvent {
   final String userId;
   final ReactionEmoji emoji;
   final String? guildId;
+  final GuildMemberResponse? member;
 }
 
 class MessageReactionRemoveAllEvent extends GatewayEvent {

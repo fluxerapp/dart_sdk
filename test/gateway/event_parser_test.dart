@@ -285,6 +285,46 @@ void main() {
       expect(e.channelType, 11);
     });
 
+    test('guild MESSAGE_CREATE joins the embedded member with the author', () {
+      final Map<String, Object?> member = _guildMemberJson()..remove('user');
+      final data = {
+        ..._messageJson(id: '404', channelId: '204'),
+        'guild_id': '9',
+        'member': {...member, 'nick': 'Nick'},
+      };
+      final e = parser.parse('MESSAGE_CREATE', data) as MessageCreateEvent;
+
+      expect(e.member, isNotNull);
+      expect(e.member!.nick, 'Nick');
+      expect(e.member!.user.id, e.message.author.id);
+    });
+
+    test('guild MESSAGE_UPDATE carries guild_id and the embedded member', () {
+      final Map<String, Object?> member = _guildMemberJson()..remove('user');
+      final data = {
+        ..._messageJson(id: '405', channelId: '205'),
+        'guild_id': '9',
+        'member': member,
+      };
+      final e = parser.parse('MESSAGE_UPDATE', data) as MessageUpdateEvent;
+
+      expect(e.guildId, '9');
+      expect(e.member, isNotNull);
+      expect(e.member!.user.id, e.message.author.id);
+    });
+
+    test('a malformed embedded member does not drop the message', () {
+      final data = {
+        ..._messageJson(id: '406', channelId: '206'),
+        'guild_id': '9',
+        'member': <String, Object?>{'roles': 'not-a-list'},
+      };
+      final event = parser.parse('MESSAGE_CREATE', data);
+
+      expect(event, isA<MessageCreateEvent>());
+      expect((event as MessageCreateEvent).member, isNull);
+    });
+
     test('MESSAGE_UPDATE → MessageUpdateEvent', () {
       final data = _messageJson(id: '402', channelId: '202');
       final event = parser.parse('MESSAGE_UPDATE', data);
@@ -355,6 +395,25 @@ void main() {
         expect(e.guildId, '300');
       },
     );
+
+    test('guild reaction events carry the reacting member', () {
+      final data = <String, Object?>{
+        'channel_id': '200',
+        'message_id': '400',
+        'user_id': '100',
+        'emoji': {'name': 'fire'},
+        'guild_id': '300',
+        'member': _guildMemberJson(),
+      };
+      final add =
+          parser.parse('MESSAGE_REACTION_ADD', data) as MessageReactionAddEvent;
+      final remove =
+          parser.parse('MESSAGE_REACTION_REMOVE', data)
+              as MessageReactionRemoveEvent;
+
+      expect(add.member?.user.id, '100');
+      expect(remove.member?.user.id, '100');
+    });
 
     test('MESSAGE_REACTION_REMOVE → MessageReactionRemoveEvent', () {
       final data = <String, Object?>{

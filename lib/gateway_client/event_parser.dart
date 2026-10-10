@@ -34,9 +34,12 @@ class EventParser {
           message: MessageResponseSchema.fromJson(data),
           guildId: data['guild_id'] as String?,
           channelType: (data['channel_type'] as num?)?.toInt(),
+          member: _parseEmbeddedMember(data['member'], user: data['author']),
         ),
         'MESSAGE_UPDATE' => MessageUpdateEvent(
           message: MessageResponseSchema.fromJson(data),
+          guildId: data['guild_id'] as String?,
+          member: _parseEmbeddedMember(data['member'], user: data['author']),
         ),
         'MESSAGE_DELETE' => MessageDeleteEvent(
           channelId: data['channel_id'] as String,
@@ -49,6 +52,7 @@ class EventParser {
           userId: data['user_id'] as String,
           emoji: ReactionEmoji.fromJson(data['emoji'] as Map<String, dynamic>),
           guildId: data['guild_id'] as String?,
+          member: _parseEmbeddedMember(data['member']),
         ),
         'MESSAGE_REACTION_REMOVE' => MessageReactionRemoveEvent(
           channelId: data['channel_id'] as String,
@@ -56,6 +60,7 @@ class EventParser {
           userId: data['user_id'] as String,
           emoji: ReactionEmoji.fromJson(data['emoji'] as Map<String, dynamic>),
           guildId: data['guild_id'] as String?,
+          member: _parseEmbeddedMember(data['member']),
         ),
         'MESSAGE_REACTION_REMOVE_ALL' => MessageReactionRemoveAllEvent(
           channelId: data['channel_id'] as String,
@@ -470,6 +475,20 @@ class EventParser {
         ),
         _ => null,
       };
+    } catch (_) {
+      return null;
+    }
+  }
+
+  GuildMemberResponse? _parseEmbeddedMember(Object? member, {Object? user}) {
+    if (member is! Map<String, dynamic>) {
+      return null;
+    }
+    try {
+      return GuildMemberResponse.fromJson(<String, Object?>{
+        ...member,
+        'user': ?user,
+      });
     } catch (_) {
       return null;
     }
