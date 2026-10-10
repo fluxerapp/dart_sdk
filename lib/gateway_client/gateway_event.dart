@@ -362,17 +362,11 @@ class PassiveUpdatesEvent extends GatewayEvent {
     required this.guildId,
     required this.channels,
     this.voiceStates,
-    this.createdChannels,
-    this.updatedChannels,
-    this.deletedChannelIds,
   });
 
   final String guildId;
   final Map<String, String> channels;
   final List<VoiceState>? voiceStates;
-  final List<ChannelResponse>? createdChannels;
-  final List<ChannelResponse>? updatedChannels;
-  final List<String>? deletedChannelIds;
 }
 
 class ThreadCreateEvent extends GatewayEvent {

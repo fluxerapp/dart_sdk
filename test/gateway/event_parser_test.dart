@@ -1042,7 +1042,6 @@ void main() {
       final data = <String, Object?>{
         'guild_id': 'g1',
         'channels': {'ch1': 'msg123', 'ch2': 'msg456'},
-        'deleted_channel_ids': ['ch3'],
       };
       final event = parser.parse('PASSIVE_UPDATES', data);
 
@@ -1051,30 +1050,55 @@ void main() {
       expect(e.guildId, 'g1');
       expect(e.channels['ch1'], 'msg123');
       expect(e.channels['ch2'], 'msg456');
-      expect(e.deletedChannelIds, ['ch3']);
+      expect(e.voiceStates, isNull);
     });
 
-    test('PASSIVE_UPDATES with voice states and channel lists', () {
+    test('PASSIVE_UPDATES voice_states hold changed and removed states', () {
       final data = <String, Object?>{
         'guild_id': 'g1',
         'channels': <String, dynamic>{},
         'voice_states': [
-          {'user_id': 'u1', 'channel_id': 'ch1'},
+          {
+            'guild_id': 'g1',
+            'channel_id': 'ch1',
+            'user_id': 'u1',
+            'connection_id': 'conn-1',
+            'session_id': 's1',
+            'member': null,
+            'mute': false,
+            'deaf': false,
+            'self_mute': true,
+            'self_deaf': false,
+            'self_video': false,
+            'self_stream': false,
+            'is_mobile': false,
+            'suppress': false,
+            'viewer_stream_keys': <String>[],
+            'e2ee_capable': false,
+            'version': 2,
+          },
+          {
+            'guild_id': 'g1',
+            'channel_id': null,
+            'user_id': 'u2',
+            'connection_id': 'conn-2',
+            'session_id': 's2',
+            'member': null,
+            'version': 1,
+          },
         ],
-        'created_channels': [_channelJson(id: '700', type: 0)],
-        'updated_channels': [_channelJson(id: '701', type: 2)],
-        'deleted_channel_ids': <String>[],
       };
       final event = parser.parse('PASSIVE_UPDATES', data);
 
       expect(event, isA<PassiveUpdatesEvent>());
       final e = event as PassiveUpdatesEvent;
-      expect(e.voiceStates, hasLength(1));
+      expect(e.voiceStates, hasLength(2));
       expect(e.voiceStates![0].userId, 'u1');
-      expect(e.createdChannels, hasLength(1));
-      expect(e.createdChannels![0].id, '700');
-      expect(e.updatedChannels, hasLength(1));
-      expect(e.updatedChannels![0].id, '701');
+      expect(e.voiceStates![0].channelId, 'ch1');
+      expect(e.voiceStates![0].selfMute, isTrue);
+      expect(e.voiceStates![1].connectionId, 'conn-2');
+      expect(e.voiceStates![1].channelId, isNull);
+      expect(e.voiceStates![1].guildId, 'g1');
     });
   });
 

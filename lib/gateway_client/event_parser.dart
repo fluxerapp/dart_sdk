@@ -730,14 +730,6 @@ class EventParser {
       voiceStates: (data['voice_states'] as List<dynamic>?)
           ?.map((e) => VoiceState.fromJson(e as Map<String, dynamic>))
           .toList(),
-      createdChannels: (data['created_channels'] as List<dynamic>?)
-          ?.map((e) => ChannelResponse.fromJson(e as Map<String, Object?>))
-          .toList(),
-      updatedChannels: (data['updated_channels'] as List<dynamic>?)
-          ?.map((e) => ChannelResponse.fromJson(e as Map<String, Object?>))
-          .toList(),
-      deletedChannelIds: (data['deleted_channel_ids'] as List<dynamic>?)
-          ?.cast<String>(),
     );
   }
 }
