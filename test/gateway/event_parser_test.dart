@@ -688,14 +688,12 @@ void main() {
       expect(event.relationship.friendSharesVoiceActivity, isTrue);
     });
 
-    test('RELATIONSHIP_REMOVE → RelationshipRemoveEvent with userId, type', () {
-      final data = <String, Object?>{'id': '101', 'type': 2};
+    test('RELATIONSHIP_REMOVE carries only the user id', () {
+      final data = <String, Object?>{'id': '101'};
       final event = parser.parse('RELATIONSHIP_REMOVE', data);
 
       expect(event, isA<RelationshipRemoveEvent>());
-      final e = event as RelationshipRemoveEvent;
-      expect(e.userId, '101');
-      expect(e.type, RelationshipTypes.blocked);
+      expect((event as RelationshipRemoveEvent).userId, '101');
     });
   });
 
@@ -733,6 +731,14 @@ void main() {
       final e = event as UserGuildSettingsUpdateEvent;
       expect(e.guildId, 'g1');
       expect(e.data['muted'], true);
+    });
+
+    test('USER_GUILD_SETTINGS_UPDATE for DMs has a null guild_id', () {
+      final data = <String, Object?>{'guild_id': null, 'muted': true};
+      final event = parser.parse('USER_GUILD_SETTINGS_UPDATE', data);
+
+      expect(event, isA<UserGuildSettingsUpdateEvent>());
+      expect((event as UserGuildSettingsUpdateEvent).guildId, isNull);
     });
 
     test('USER_NOTE_UPDATE → UserNoteUpdateEvent', () {
@@ -934,14 +940,14 @@ void main() {
     test('CHANNEL_PINS_ACK → ChannelPinsAckEvent', () {
       final data = <String, Object?>{
         'channel_id': 'ch1',
-        'last_pin_timestamp': '2026-03-21T00:00:00Z',
+        'timestamp': '2026-03-21T00:00:00Z',
       };
       final event = parser.parse('CHANNEL_PINS_ACK', data);
 
       expect(event, isA<ChannelPinsAckEvent>());
       final e = event as ChannelPinsAckEvent;
       expect(e.channelId, 'ch1');
-      expect(e.lastPinTimestamp, '2026-03-21T00:00:00Z');
+      expect(e.timestamp, '2026-03-21T00:00:00Z');
     });
 
     test('CHANNEL_RECIPIENT_ADD → ChannelRecipientAddEvent', () {
@@ -1077,28 +1083,27 @@ void main() {
     test('GUILD_BAN_ADD → GuildBanAddEvent', () {
       final data = <String, Object?>{
         'guild_id': 'g1',
-        'user': _userPartialJson(id: 'u1'),
+        'user': <String, Object?>{'id': 'u1'},
       };
       final event = parser.parse('GUILD_BAN_ADD', data);
 
       expect(event, isA<GuildBanAddEvent>());
       final e = event as GuildBanAddEvent;
       expect(e.guildId, 'g1');
-      expect(e.user.id, 'u1');
-      expect(e.user.username, 'testuser');
+      expect(e.userId, 'u1');
     });
 
     test('GUILD_BAN_REMOVE → GuildBanRemoveEvent', () {
       final data = <String, Object?>{
         'guild_id': 'g1',
-        'user': _userPartialJson(id: 'u2'),
+        'user': <String, Object?>{'id': 'u2'},
       };
       final event = parser.parse('GUILD_BAN_REMOVE', data);
 
       expect(event, isA<GuildBanRemoveEvent>());
       final e = event as GuildBanRemoveEvent;
       expect(e.guildId, 'g1');
-      expect(e.user.id, 'u2');
+      expect(e.userId, 'u2');
     });
   });
 
@@ -1677,6 +1682,7 @@ void main() {
       final e = event as UnknownGatewayEvent;
       expect(e.eventType, 'TOTALLY_UNKNOWN_EVENT');
       expect(e.data, data);
+      expect(e.parseError, isNull);
     });
 
     test('Malformed payload → UnknownGatewayEvent (fallback via catch)', () {
@@ -1690,6 +1696,7 @@ void main() {
       final e = event as UnknownGatewayEvent;
       expect(e.eventType, 'MESSAGE_CREATE');
       expect(e.data, data);
+      expect(e.parseError, isNotNull);
     });
   });
 

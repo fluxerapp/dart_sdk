@@ -6,7 +6,6 @@ import 'package:fluxer_dart/models/guild_role_response.dart';
 import 'package:fluxer_dart/models/guild_sticker_response.dart';
 import 'package:fluxer_dart/models/message_response_schema.dart';
 import 'package:fluxer_dart/models/relationship_response.dart';
-import 'package:fluxer_dart/models/relationship_types.dart';
 import 'package:fluxer_dart/models/thread_member_response.dart';
 import 'package:fluxer_dart/models/user_partial_response.dart';
 import 'package:fluxer_dart/models/user_private_response.dart';
@@ -125,7 +124,6 @@ class EventParser {
         ),
         'RELATIONSHIP_REMOVE' => RelationshipRemoveEvent(
           userId: data['id'] as String,
-          type: RelationshipTypes.fromJson(data['type'] as int),
         ),
 
         // User
@@ -137,7 +135,7 @@ class EventParser {
           data: data,
         ),
         'USER_GUILD_SETTINGS_UPDATE' => UserGuildSettingsUpdateEvent(
-          guildId: data['guild_id'] as String,
+          guildId: data['guild_id'] as String?,
           data: data,
         ),
         'USER_NOTE_UPDATE' => UserNoteUpdateEvent(
@@ -185,7 +183,7 @@ class EventParser {
         ),
         'CHANNEL_PINS_ACK' => ChannelPinsAckEvent(
           channelId: data['channel_id'] as String,
-          lastPinTimestamp: data['last_pin_timestamp'] as String?,
+          timestamp: data['timestamp'] as String?,
         ),
         'CHANNEL_RECIPIENT_ADD' => ChannelRecipientAddEvent(
           channelId: data['channel_id'] as String,
@@ -287,15 +285,11 @@ class EventParser {
         // Guild bans
         'GUILD_BAN_ADD' => GuildBanAddEvent(
           guildId: data['guild_id'] as String,
-          user: UserPartialResponse.fromJson(
-            data['user'] as Map<String, Object?>,
-          ),
+          userId: (data['user'] as Map)['id'] as String,
         ),
         'GUILD_BAN_REMOVE' => GuildBanRemoveEvent(
           guildId: data['guild_id'] as String,
-          user: UserPartialResponse.fromJson(
-            data['user'] as Map<String, Object?>,
-          ),
+          userId: (data['user'] as Map)['id'] as String,
         ),
 
         // Guild emojis & stickers
@@ -446,8 +440,12 @@ class EventParser {
 
         _ => UnknownGatewayEvent(eventType: eventType, data: data),
       };
-    } catch (_) {
-      return UnknownGatewayEvent(eventType: eventType, data: data);
+    } catch (error) {
+      return UnknownGatewayEvent(
+        eventType: eventType,
+        data: data,
+        parseError: error,
+      );
     }
   }
 

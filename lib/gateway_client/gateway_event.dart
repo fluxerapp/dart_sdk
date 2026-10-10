@@ -7,7 +7,6 @@ import 'package:fluxer_dart/models/guild_role_response.dart';
 import 'package:fluxer_dart/models/guild_sticker_response.dart';
 import 'package:fluxer_dart/models/message_response_schema.dart';
 import 'package:fluxer_dart/models/relationship_response.dart';
-import 'package:fluxer_dart/models/relationship_types.dart';
 import 'package:fluxer_dart/models/thread_member_response.dart';
 import 'package:fluxer_dart/models/user_partial_response.dart';
 import 'package:fluxer_dart/models/user_private_response.dart';
@@ -94,7 +93,7 @@ class UserGuildSettingsUpdateEvent extends GatewayEvent {
     required this.data,
   });
 
-  final String guildId;
+  final String? guildId;
   final Map<String, dynamic> data;
 }
 
@@ -327,10 +326,10 @@ class ChannelPinsUpdateEvent extends GatewayEvent {
 }
 
 class ChannelPinsAckEvent extends GatewayEvent {
-  const ChannelPinsAckEvent({required this.channelId, this.lastPinTimestamp});
+  const ChannelPinsAckEvent({required this.channelId, this.timestamp});
 
   final String channelId;
-  final String? lastPinTimestamp;
+  final String? timestamp;
 }
 
 class ChannelRecipientAddEvent extends GatewayEvent {
@@ -513,17 +512,17 @@ class GuildRoleUpdateBulkEvent extends GatewayEvent {
 }
 
 class GuildBanAddEvent extends GatewayEvent {
-  const GuildBanAddEvent({required this.guildId, required this.user});
+  const GuildBanAddEvent({required this.guildId, required this.userId});
 
   final String guildId;
-  final UserPartialResponse user;
+  final String userId;
 }
 
 class GuildBanRemoveEvent extends GatewayEvent {
-  const GuildBanRemoveEvent({required this.guildId, required this.user});
+  const GuildBanRemoveEvent({required this.guildId, required this.userId});
 
   final String guildId;
-  final UserPartialResponse user;
+  final String userId;
 }
 
 class GuildEmojisUpdateEvent extends GatewayEvent {
@@ -868,10 +867,9 @@ class RelationshipUpdateEvent extends GatewayEvent {
 }
 
 class RelationshipRemoveEvent extends GatewayEvent {
-  const RelationshipRemoveEvent({required this.userId, required this.type});
+  const RelationshipRemoveEvent({required this.userId});
 
   final String userId;
-  final RelationshipTypes type;
 }
 
 // ---------------------------------------------------------------------------
@@ -962,8 +960,13 @@ class GatewayErrorEvent extends GatewayEvent {
 // ---------------------------------------------------------------------------
 
 class UnknownGatewayEvent extends GatewayEvent {
-  const UnknownGatewayEvent({required this.eventType, required this.data});
+  const UnknownGatewayEvent({
+    required this.eventType,
+    required this.data,
+    this.parseError,
+  });
 
   final String eventType;
   final Map<String, dynamic> data;
+  final Object? parseError;
 }
