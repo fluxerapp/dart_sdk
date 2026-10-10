@@ -41,6 +41,8 @@ class GatewayOpcodes {
   /// Server sends a gateway error.
   static const int gatewayError = 12;
 
+  static const int voiceSignal = 13;
+
   /// Client sends a lazy request for guild member list.
   static const int lazyRequest = 14;
 

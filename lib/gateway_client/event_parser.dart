@@ -361,6 +361,20 @@ class EventParser {
           errorCode: data['error_code'] as String?,
           errorMessage: data['error_message'] as String?,
         ),
+        'VOICE_SERVER_UPDATE' when data['p2p'] == true =>
+          VoiceServerP2pUpdateEvent(
+            connectionId: data['connection_id'] as String,
+            iceServers: (data['ice_servers'] as List<dynamic>)
+                .cast<Map<String, dynamic>>()
+                .map(
+                  (server) => VoiceIceServer(
+                    urls: (server['urls'] as List<dynamic>).cast<String>(),
+                  ),
+                )
+                .toList(),
+            guildId: data['guild_id'] as String?,
+            channelId: data['channel_id'] as String?,
+          ),
         'VOICE_SERVER_UPDATE' => VoiceServerUpdateEvent(
           token: data['token'] as String,
           endpoint: data['endpoint'] as String,
@@ -368,6 +382,13 @@ class EventParser {
           guildId: data['guild_id'] as String?,
           channelId: data['channel_id'] as String?,
           e2eeKey: data['e2ee_key'] as String?,
+        ),
+        'VOICE_SIGNAL' => VoiceSignalEvent(
+          channelId: data['channel_id'] as String,
+          from: data['from'] as String,
+          userId: data['user_id'] as String,
+          data: data['data'] as Map<String, dynamic>,
+          guildId: data['guild_id'] as String?,
         ),
 
         // Calls
