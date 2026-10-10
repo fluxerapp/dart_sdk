@@ -344,22 +344,6 @@ class EventParser {
           state: VoiceState.fromJson(data),
           member: _parseEmbeddedMember(data['member']),
         ),
-        'VOICE_STATE_ACK' => VoiceStateAckEvent(
-          mutationId: data['mutation_id'] as String?,
-          runtimeEpoch: data['runtime_epoch'] as String?,
-          connectionId: data['connection_id'] as String?,
-          guildId: data['guild_id'] as String?,
-          channelId: data['channel_id'] as String?,
-          status: data['status'] as String?,
-          serverVersion: (data['server_version'] as num?)?.toInt(),
-          canonicalState: data['canonical_state'] == null
-              ? null
-              : VoiceState.fromJson(
-                  data['canonical_state'] as Map<String, dynamic>,
-                ),
-          errorCode: data['error_code'] as String?,
-          errorMessage: data['error_message'] as String?,
-        ),
         'VOICE_SERVER_UPDATE' when data['p2p'] == true =>
           VoiceServerP2pUpdateEvent(
             connectionId: data['connection_id'] as String,

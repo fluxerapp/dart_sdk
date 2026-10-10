@@ -723,32 +723,6 @@ class VoiceSignalEvent extends GatewayEvent {
   final String? guildId;
 }
 
-class VoiceStateAckEvent extends GatewayEvent {
-  const VoiceStateAckEvent({
-    this.mutationId,
-    this.runtimeEpoch,
-    this.connectionId,
-    this.guildId,
-    this.channelId,
-    this.status,
-    this.serverVersion,
-    this.canonicalState,
-    this.errorCode,
-    this.errorMessage,
-  });
-
-  final String? mutationId;
-  final String? runtimeEpoch;
-  final String? connectionId;
-  final String? guildId;
-  final String? channelId;
-  final String? status;
-  final int? serverVersion;
-  final VoiceState? canonicalState;
-  final String? errorCode;
-  final String? errorMessage;
-}
-
 class EntranceSoundPlayEvent extends GatewayEvent {
   const EntranceSoundPlayEvent({
     required this.userId,
