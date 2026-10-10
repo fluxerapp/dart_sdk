@@ -131,6 +131,54 @@ void main() {
       isFalse,
     );
   });
+
+  test('sessionId is the READY session_id once the server sends it', () async {
+    final HttpServer server = await HttpServer.bind(
+      InternetAddress.loopbackIPv4,
+      0,
+    );
+    final List<WebSocket> sockets = <WebSocket>[];
+    server.listen((HttpRequest request) async {
+      final WebSocket socket = await WebSocketTransformer.upgrade(request);
+      sockets.add(socket);
+      socket
+        ..add(
+          jsonEncode(<String, Object?>{
+            'op': GatewayOpcodes.hello,
+            'd': <String, Object?>{'heartbeat_interval': 60000},
+          }),
+        )
+        ..add(
+          jsonEncode(<String, Object?>{
+            'op': GatewayOpcodes.dispatch,
+            't': 'READY',
+            's': 1,
+            'd': <String, Object?>{'session_id': 'session-1'},
+          }),
+        );
+    });
+
+    final GatewayConnection connection = GatewayConnection(
+      token: 'token',
+      dio: Dio(),
+      gatewayUrl: 'ws://${server.address.address}:${server.port}',
+      compress: 'none',
+    );
+
+    addTearDown(() async {
+      await connection.dispose();
+      for (final WebSocket socket in sockets) {
+        await socket.close();
+      }
+      await server.close(force: true);
+    });
+
+    expect(connection.sessionId, isNull);
+    await connection.connect();
+    await _waitFor(() => connection.sessionId != null);
+
+    expect(connection.sessionId, 'session-1');
+  });
 }
 
 Future<void> _waitFor(bool Function() condition) async {

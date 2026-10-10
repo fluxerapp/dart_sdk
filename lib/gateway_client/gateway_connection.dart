@@ -182,6 +182,8 @@ class GatewayConnection {
   /// Time of the last heartbeat ACK, or null if none yet.
   DateTime? get lastAckAt => _session.lastAckAt;
 
+  String? get sessionId => _session.sessionId;
+
   /// Compression traffic observed on the current socket.
   GatewayCompressionStats get compressionStats => GatewayCompressionStats(
     frames: _compressedFrames,
