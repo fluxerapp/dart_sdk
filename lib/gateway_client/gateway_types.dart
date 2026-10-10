@@ -457,6 +457,7 @@ class GuildCreateData {
     this.stickers = const [],
     this.joinedAt,
     this.memberCount,
+    this.onlineCount,
     this.unavailable = false,
     this.hasCompletePayload = true,
     this.threads,
@@ -495,6 +496,7 @@ class GuildCreateData {
       ),
       joinedAt: json['joined_at'] as String?,
       memberCount: json['member_count'] as int?,
+      onlineCount: json['online_count'] as int?,
       unavailable: json['unavailable'] as bool? ?? false,
       hasCompletePayload: _hasCompletePayload(json),
       threads: json['threads'] is List
@@ -516,6 +518,7 @@ class GuildCreateData {
   final List<GuildStickerResponse> stickers;
   final String? joinedAt;
   final int? memberCount;
+  final int? onlineCount;
   final bool unavailable;
   final bool hasCompletePayload;
   final List<ChannelResponse>? threads;

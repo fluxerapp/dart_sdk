@@ -126,6 +126,7 @@ Map<String, Object?> _guildCreateJson({String id = '300'}) => {
   'voice_states': <Object?>[],
   'joined_at': '2026-01-01T00:00:00.000Z',
   'member_count': 5,
+  'online_count': 3,
 };
 
 /// Minimal JSON for a MessageResponseSchema.
@@ -525,6 +526,7 @@ void main() {
       expect(e.guild.roles[0].id, '900');
       expect(e.guild.joinedAt, '2026-01-01T00:00:00.000Z');
       expect(e.guild.memberCount, 5);
+      expect(e.guild.onlineCount, 3);
     });
 
     test('GUILD_CREATE without properties wrapper (fallback)', () {
