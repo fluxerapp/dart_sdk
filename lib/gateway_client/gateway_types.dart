@@ -116,7 +116,7 @@ class GatewayVoiceStateUpdate {
     required this.selfDeaf,
     required this.selfVideo,
     required this.selfStream,
-    this.viewerStreamKeys = const <String>[],
+    this.viewerStreamKeys,
     this.connectionId,
     this.voiceE2eePublicKey,
     this.voiceE2eePublicKeySignature,
@@ -132,7 +132,7 @@ class GatewayVoiceStateUpdate {
   final bool selfDeaf;
   final bool selfVideo;
   final bool selfStream;
-  final List<String> viewerStreamKeys;
+  final List<String>? viewerStreamKeys;
   final String? connectionId;
   final String? voiceE2eePublicKey;
   final String? voiceE2eePublicKeySignature;
@@ -150,9 +150,11 @@ class GatewayVoiceStateUpdate {
       'self_deaf': selfDeaf,
       'self_video': selfVideo,
       'self_stream': selfStream,
-      'viewer_stream_keys': viewerStreamKeys,
       'connection_id': connectionId,
     };
+    if (viewerStreamKeys != null) {
+      map['viewer_stream_keys'] = viewerStreamKeys;
+    }
     if (voiceE2eePublicKey != null) {
       map['voice_e2ee_public_key'] = voiceE2eePublicKey;
     }
