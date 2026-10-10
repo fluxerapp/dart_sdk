@@ -1264,7 +1264,6 @@ void main() {
         'members': [_guildMemberJson(userId: 'u1')],
         'chunk_index': 0,
         'chunk_count': 1,
-        'not_found': ['u99'],
         'nonce': 'nonce123',
       };
       final event = parser.parse('GUILD_MEMBERS_CHUNK', data);
@@ -1276,7 +1275,6 @@ void main() {
       expect(e.members[0].user.id, 'u1');
       expect(e.chunkIndex, 0);
       expect(e.chunkCount, 1);
-      expect(e.notFound, ['u99']);
       expect(e.nonce, 'nonce123');
     });
 

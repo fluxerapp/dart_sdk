@@ -556,7 +556,6 @@ class GuildMembersChunkEvent extends GatewayEvent {
     required this.members,
     required this.chunkIndex,
     required this.chunkCount,
-    this.notFound,
     this.presences,
     this.nonce,
   });
@@ -565,7 +564,6 @@ class GuildMembersChunkEvent extends GatewayEvent {
   final List<GuildMemberResponse> members;
   final int chunkIndex;
   final int chunkCount;
-  final List<String>? notFound;
   final List<Map<String, dynamic>>? presences;
   final String? nonce;
 }

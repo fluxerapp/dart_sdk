@@ -326,7 +326,6 @@ class EventParser {
               .toList(),
           chunkIndex: data['chunk_index'] as int,
           chunkCount: data['chunk_count'] as int,
-          notFound: (data['not_found'] as List<dynamic>?)?.cast<String>(),
           presences: (data['presences'] as List<dynamic>?)
               ?.cast<Map<String, dynamic>>(),
           nonce: data['nonce'] as String?,
