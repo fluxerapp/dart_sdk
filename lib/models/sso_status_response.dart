@@ -19,9 +19,11 @@ class SsoStatusResponse {
       _$SsoStatusResponseFromJson(json);
 
   /// Whether SSO is enabled for this instance
+  @JsonKey(defaultValue: false)
   final bool enabled;
 
   /// Whether SSO is required for all users
+  @JsonKey(defaultValue: false)
   final bool enforced;
 
   /// Display name of the SSO provider
@@ -29,7 +31,7 @@ class SsoStatusResponse {
   final String? displayName;
 
   /// OAuth redirect URI for SSO
-  @JsonKey(name: 'redirect_uri')
+  @JsonKey(name: 'redirect_uri', defaultValue: '')
   final String redirectUri;
 
   Map<String, Object?> toJson() => _$SsoStatusResponseToJson(this);

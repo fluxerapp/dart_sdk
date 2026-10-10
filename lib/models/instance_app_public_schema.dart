@@ -23,14 +23,31 @@ class InstanceAppPublicSchema {
   factory InstanceAppPublicSchema.fromJson(Map<String, Object?> json) =>
       _$InstanceAppPublicSchemaFromJson(json);
 
+  @JsonKey(defaultValue: _$missingInstanceBrandingSchema)
   final InstanceBrandingSchema branding;
+  @JsonKey(defaultValue: _$missingInstanceSetupSchema)
   final InstanceSetupSchema setup;
 
   /// Optional legal and policy document URLs shown to users
+  @JsonKey(defaultValue: _$missingInstanceAppPublicSchemaLegal)
   final InstanceAppPublicSchemaLegal legal;
 
   /// Public registration field collection policy
+  @JsonKey(defaultValue: _$missingInstanceAppPublicSchemaRegistration)
   final InstanceAppPublicSchemaRegistration registration;
 
   Map<String, Object?> toJson() => _$InstanceAppPublicSchemaToJson(this);
 }
+
+InstanceAppPublicSchemaLegal _$missingInstanceAppPublicSchemaLegal() =>
+    InstanceAppPublicSchemaLegal.fromJson(const <String, dynamic>{});
+
+InstanceAppPublicSchemaRegistration
+_$missingInstanceAppPublicSchemaRegistration() =>
+    InstanceAppPublicSchemaRegistration.fromJson(const <String, dynamic>{});
+
+InstanceBrandingSchema _$missingInstanceBrandingSchema() =>
+    InstanceBrandingSchema.fromJson(const <String, dynamic>{});
+
+InstanceSetupSchema _$missingInstanceSetupSchema() =>
+    InstanceSetupSchema.fromJson(const <String, dynamic>{});

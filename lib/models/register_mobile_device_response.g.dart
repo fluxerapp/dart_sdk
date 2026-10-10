@@ -10,7 +10,7 @@ RegisterMobileDeviceResponse _$RegisterMobileDeviceResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('RegisterMobileDeviceResponse', json, ($checkedConvert) {
   final val = RegisterMobileDeviceResponse(
-    deviceId: $checkedConvert('device_id', (v) => v as String),
+    deviceId: $checkedConvert('device_id', (v) => v as String? ?? ''),
   );
   return val;
 }, fieldKeyMap: const {'deviceId': 'device_id'});

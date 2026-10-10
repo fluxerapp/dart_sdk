@@ -11,14 +11,15 @@ OAuth2MeResponse _$OAuth2MeResponseFromJson(Map<String, dynamic> json) =>
       final val = OAuth2MeResponse(
         application: $checkedConvert(
           'application',
-          (v) =>
-              OAuth2MeResponseApplication.fromJson(v as Map<String, dynamic>),
+          (v) => v == null
+              ? _$missingOAuth2MeResponseApplication()
+              : OAuth2MeResponseApplication.fromJson(v as Map<String, dynamic>),
         ),
         scopes: $checkedConvert(
           'scopes',
-          (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+          (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
         ),
-        expires: $checkedConvert('expires', (v) => v as String),
+        expires: $checkedConvert('expires', (v) => v as String? ?? ''),
         user: $checkedConvert(
           'user',
           (v) => v == null

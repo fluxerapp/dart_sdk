@@ -39,9 +39,11 @@ class GeolocationResponse {
   final String? longitude;
 
   /// Locations where age restricted content requires an age check
+  @JsonKey(defaultValue: <GeoEntry>[])
   final List<GeoEntry> ageRestrictedGeos;
 
   /// Locations where age restricted content is unavailable
+  @JsonKey(defaultValue: <GeoEntry>[])
   final List<GeoEntry> ageBlockedGeos;
 
   Map<String, Object?> toJson() => _$GeolocationResponseToJson(this);

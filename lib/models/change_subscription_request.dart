@@ -20,7 +20,10 @@ class ChangeSubscriptionRequest {
       _$ChangeSubscriptionRequestFromJson(json);
 
   /// The recurring billing cycle to switch the active subscription to
-  @JsonKey(name: 'billing_cycle')
+  @JsonKey(
+    name: 'billing_cycle',
+    defaultValue: ChangeSubscriptionRequestBillingCycleBillingCycle.$unknown,
+  )
   final ChangeSubscriptionRequestBillingCycleBillingCycle billingCycle;
 
   /// When the billing cycle change should take effect

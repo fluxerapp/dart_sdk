@@ -15,10 +15,13 @@ GuildVoiceChannelCreateRequest _$GuildVoiceChannelCreateRequestFromJson(
     final val = GuildVoiceChannelCreateRequest._(
       type: $checkedConvert(
         'type',
-        (v) =>
-            GuildVoiceChannelCreateRequestTypeType.fromJson((v as num).toInt()),
+        (v) => v == null
+            ? GuildVoiceChannelCreateRequestTypeType.$unknown
+            : GuildVoiceChannelCreateRequestTypeType.fromJson(
+                (v as num).toInt(),
+              ),
       ),
-      name: $checkedConvert('name', (v) => v as String),
+      name: $checkedConvert('name', (v) => v as String? ?? ''),
       nsfw: $checkedConvert('nsfw', (v) => v as bool? ?? false),
       permissionOverwrites: $checkedConvert(
         'permission_overwrites',

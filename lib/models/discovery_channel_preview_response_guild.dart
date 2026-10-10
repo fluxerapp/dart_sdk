@@ -21,9 +21,11 @@ class DiscoveryChannelPreviewResponseGuild {
   ) => _$DiscoveryChannelPreviewResponseGuildFromJson(json);
 
   /// Guild ID
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
 
   /// Guild name
+  @JsonKey(defaultValue: '')
   final String name;
 
   /// Guild icon hash

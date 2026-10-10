@@ -13,7 +13,7 @@ class MessagePurgeResponse {
   factory MessagePurgeResponse.fromJson(Map<String, Object?> json) =>
       _$MessagePurgeResponseFromJson(json);
 
-  @JsonKey(name: 'deleted_count')
+  @JsonKey(name: 'deleted_count', defaultValue: 0)
   final int deletedCount;
 
   Map<String, Object?> toJson() => _$MessagePurgeResponseToJson(this);

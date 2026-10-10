@@ -10,9 +10,9 @@ RecoverAccountRequest _$RecoverAccountRequestFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('RecoverAccountRequest', json, ($checkedConvert) {
   final val = RecoverAccountRequest(
-    login: $checkedConvert('login', (v) => v as String),
-    recoveryKey: $checkedConvert('recovery_key', (v) => v as String),
-    password: $checkedConvert('password', (v) => v as String),
+    login: $checkedConvert('login', (v) => v as String? ?? ''),
+    recoveryKey: $checkedConvert('recovery_key', (v) => v as String? ?? ''),
+    password: $checkedConvert('password', (v) => v as String? ?? ''),
   );
   return val;
 }, fieldKeyMap: const {'recoveryKey': 'recovery_key'});

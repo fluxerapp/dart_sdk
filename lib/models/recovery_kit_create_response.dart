@@ -17,12 +17,15 @@ class RecoveryKitCreateResponse {
       _$RecoveryKitCreateResponseFromJson(json);
 
   /// New recovery key as 8 groups of 4 joined by dashes, shown only once. Any previous kit stops working
-  @JsonKey(name: 'recovery_key')
+  @JsonKey(name: 'recovery_key', defaultValue: '')
   final String recoveryKey;
 
   /// ISO 8601 timestamp when the recovery kit was created
-  @JsonKey(name: 'created_at')
+  @JsonKey(name: 'created_at', defaultValue: _$missingDateTime)
   final DateTime createdAt;
 
   Map<String, Object?> toJson() => _$RecoveryKitCreateResponseToJson(this);
 }
+
+DateTime _$missingDateTime() =>
+    DateTime.fromMillisecondsSinceEpoch(0, isUtc: true);

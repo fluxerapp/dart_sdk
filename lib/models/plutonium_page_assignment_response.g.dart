@@ -10,7 +10,7 @@ PlutoniumPageAssignmentResponse _$PlutoniumPageAssignmentResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('PlutoniumPageAssignmentResponse', json, ($checkedConvert) {
   final val = PlutoniumPageAssignmentResponse(
-    enabled: $checkedConvert('enabled', (v) => v as bool),
+    enabled: $checkedConvert('enabled', (v) => v as bool? ?? false),
   );
   return val;
 });

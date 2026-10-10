@@ -20,13 +20,19 @@ class WebAuthnRegisterRequest {
       _$WebAuthnRegisterRequestFromJson(json);
 
   /// WebAuthn registration response
+  @JsonKey(defaultValue: _$missingWebAuthnRegistrationResponse)
   final WebAuthnRegistrationResponse response;
 
   /// The challenge from registration options
+  @JsonKey(defaultValue: '')
   final String challenge;
 
   /// User-assigned name for the credential
+  @JsonKey(defaultValue: '')
   final String name;
 
   Map<String, Object?> toJson() => _$WebAuthnRegisterRequestToJson(this);
 }
+
+WebAuthnRegistrationResponse _$missingWebAuthnRegistrationResponse() =>
+    WebAuthnRegistrationResponse.fromJson(const <String, dynamic>{});

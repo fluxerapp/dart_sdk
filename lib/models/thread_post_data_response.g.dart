@@ -12,12 +12,14 @@ ThreadPostDataResponse _$ThreadPostDataResponseFromJson(
   final val = ThreadPostDataResponse(
     threads: $checkedConvert(
       'threads',
-      (v) => (v as Map<String, dynamic>).map(
-        (k, e) => MapEntry(
-          k,
-          ThreadPostDataEntryResponse.fromJson(e as Map<String, dynamic>),
-        ),
-      ),
+      (v) =>
+          (v as Map<String, dynamic>?)?.map(
+            (k, e) => MapEntry(
+              k,
+              ThreadPostDataEntryResponse.fromJson(e as Map<String, dynamic>),
+            ),
+          ) ??
+          {},
     ),
   );
   return val;

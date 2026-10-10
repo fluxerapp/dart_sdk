@@ -12,9 +12,11 @@ PasskeyBridgeOptionsResponse _$PasskeyBridgeOptionsResponseFromJson(
   final val = PasskeyBridgeOptionsResponse(
     options: $checkedConvert(
       'options',
-      (v) => WebAuthnAuthenticationOptionsResponse.fromJson(
-        v as Map<String, dynamic>,
-      ),
+      (v) => v == null
+          ? _$missingWebAuthnAuthenticationOptionsResponse()
+          : WebAuthnAuthenticationOptionsResponse.fromJson(
+              v as Map<String, dynamic>,
+            ),
     ),
   );
   return val;

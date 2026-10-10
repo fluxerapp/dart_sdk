@@ -12,11 +12,11 @@ _$OAuth2AuthorizationResponseApplicationFromJson(Map<String, dynamic> json) =>
       $checkedConvert,
     ) {
       final val = OAuth2AuthorizationResponseApplication(
-        id: $checkedConvert('id', (v) => v as String),
-        name: $checkedConvert('name', (v) => v as String),
+        id: $checkedConvert('id', (v) => v as String? ?? ''),
+        name: $checkedConvert('name', (v) => v as String? ?? ''),
         icon: $checkedConvert('icon', (v) => v as String?),
         description: $checkedConvert('description', (v) => v as String?),
-        botPublic: $checkedConvert('bot_public', (v) => v as bool),
+        botPublic: $checkedConvert('bot_public', (v) => v as bool? ?? false),
       );
       return val;
     }, fieldKeyMap: const {'botPublic': 'bot_public'});

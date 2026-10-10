@@ -16,10 +16,11 @@ class ChannelPinsResponse {
       _$ChannelPinsResponseFromJson(json);
 
   /// Pinned messages in this channel
+  @JsonKey(defaultValue: <ChannelPinResponse>[])
   final List<ChannelPinResponse> items;
 
   /// Whether more pins can be fetched with pagination
-  @JsonKey(name: 'has_more')
+  @JsonKey(name: 'has_more', defaultValue: false)
   final bool hasMore;
 
   Map<String, Object?> toJson() => _$ChannelPinsResponseToJson(this);

@@ -22,7 +22,9 @@ class PasskeyBridgeLoginStartRequest {
       _$PasskeyBridgeLoginStartRequestFromJson(json);
 
   /// Whether the passkey signs in or completes two-factor sign in
+  @JsonKey(defaultValue: PasskeyBridgeLoginStartRequestPurposePurpose.$unknown)
   final PasskeyBridgeLoginStartRequestPurposePurpose purpose;
+  @JsonKey(defaultValue: PasskeyBridgeRunner.$unknown)
   final PasskeyBridgeRunner runner;
 
   /// The MFA ticket from the login response, for login_mfa
@@ -30,7 +32,7 @@ class PasskeyBridgeLoginStartRequest {
   final String? ticket;
 
   /// Lowercase hex SHA-256 digest of the nonce the starting page keeps
-  @JsonKey(name: 'nonce_hash')
+  @JsonKey(name: 'nonce_hash', defaultValue: '')
   final String nonceHash;
 
   Map<String, Object?> toJson() => _$PasskeyBridgeLoginStartRequestToJson(this);

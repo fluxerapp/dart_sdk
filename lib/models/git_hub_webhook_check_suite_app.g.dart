@@ -10,7 +10,7 @@ GitHubWebhookCheckSuiteApp _$GitHubWebhookCheckSuiteAppFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('GitHubWebhookCheckSuiteApp', json, ($checkedConvert) {
   final val = GitHubWebhookCheckSuiteApp(
-    name: $checkedConvert('name', (v) => v as String),
+    name: $checkedConvert('name', (v) => v as String? ?? ''),
   );
   return val;
 });

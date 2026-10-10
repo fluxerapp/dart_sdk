@@ -10,7 +10,7 @@ WebhookReceivedResponse _$WebhookReceivedResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('WebhookReceivedResponse', json, ($checkedConvert) {
   final val = WebhookReceivedResponse(
-    received: $checkedConvert('received', (v) => v as bool),
+    received: $checkedConvert('received', (v) => v as bool? ?? false),
   );
   return val;
 });

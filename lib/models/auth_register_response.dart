@@ -31,9 +31,11 @@ class AuthRegisterResponse {
 
 @JsonSerializable()
 class AuthRegisterResponseAuthTokenWithUserIdResponse {
+  @JsonKey(defaultValue: '')
   final String token;
-  @JsonKey(name: 'user_id')
+  @JsonKey(name: 'user_id', defaultValue: '')
   final SnowflakeStringType userId;
+  @JsonKey(defaultValue: _$missingUserPartialResponse)
   final UserPartialResponse user;
 
   const AuthRegisterResponseAuthTokenWithUserIdResponse({
@@ -52,9 +54,9 @@ class AuthRegisterResponseAuthTokenWithUserIdResponse {
 
 @JsonSerializable()
 class AuthRegisterResponseAuthRegistrationPendingApprovalResponse {
-  @JsonKey(name: 'registration_pending_approval')
+  @JsonKey(name: 'registration_pending_approval', defaultValue: false)
   final bool registrationPendingApproval;
-  @JsonKey(name: 'user_id')
+  @JsonKey(name: 'user_id', defaultValue: '')
   final SnowflakeStringType userId;
 
   const AuthRegisterResponseAuthRegistrationPendingApprovalResponse({
@@ -71,3 +73,6 @@ class AuthRegisterResponseAuthRegistrationPendingApprovalResponse {
   Map<String, dynamic> toJson() =>
       _$AuthRegisterResponseAuthRegistrationPendingApprovalResponseToJson(this);
 }
+
+UserPartialResponse _$missingUserPartialResponse() =>
+    UserPartialResponse.fromJson(const <String, dynamic>{});

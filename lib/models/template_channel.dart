@@ -105,12 +105,15 @@ class TemplateChannel {
   }
 
   /// The template-local channel ID
+  @JsonKey(defaultValue: '')
   final String id;
 
   /// The channel type (0 = text, 2 = voice, 4 = category)
+  @JsonKey(defaultValue: 0)
   final num type;
 
   /// The position of the channel
+  @JsonKey(defaultValue: 0)
   final Int32Type position;
 
   /// Whether the channel is NSFW

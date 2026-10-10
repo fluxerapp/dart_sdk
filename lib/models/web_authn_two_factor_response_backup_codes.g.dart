@@ -12,8 +12,8 @@ _$WebAuthnTwoFactorResponseBackupCodesFromJson(Map<String, dynamic> json) =>
       $checkedConvert,
     ) {
       final val = WebAuthnTwoFactorResponseBackupCodes(
-        code: $checkedConvert('code', (v) => v as String),
-        consumed: $checkedConvert('consumed', (v) => v as bool),
+        code: $checkedConvert('code', (v) => v as String? ?? ''),
+        consumed: $checkedConvert('consumed', (v) => v as bool? ?? false),
       );
       return val;
     });

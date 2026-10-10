@@ -10,9 +10,9 @@ MessageChannelMentionResponse _$MessageChannelMentionResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('MessageChannelMentionResponse', json, ($checkedConvert) {
   final val = MessageChannelMentionResponse(
-    id: $checkedConvert('id', (v) => v as String),
-    name: $checkedConvert('name', (v) => v as String),
-    type: $checkedConvert('type', (v) => (v as num).toInt()),
+    id: $checkedConvert('id', (v) => v as String? ?? ''),
+    name: $checkedConvert('name', (v) => v as String? ?? ''),
+    type: $checkedConvert('type', (v) => (v as num?)?.toInt() ?? 0),
   );
   return val;
 });

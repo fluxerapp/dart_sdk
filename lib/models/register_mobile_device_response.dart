@@ -16,7 +16,7 @@ class RegisterMobileDeviceResponse {
       _$RegisterMobileDeviceResponseFromJson(json);
 
   /// The unique identifier for the registered device
-  @JsonKey(name: 'device_id')
+  @JsonKey(name: 'device_id', defaultValue: '')
   final HexString32Type deviceId;
 
   Map<String, Object?> toJson() => _$RegisterMobileDeviceResponseToJson(this);

@@ -14,9 +14,11 @@ class DiscoveryCategoryResponse {
       _$DiscoveryCategoryResponseFromJson(json);
 
   /// Category ID
+  @JsonKey(defaultValue: 0)
   final num id;
 
   /// Category display name
+  @JsonKey(defaultValue: '')
   final String name;
 
   Map<String, Object?> toJson() => _$DiscoveryCategoryResponseToJson(this);

@@ -39,6 +39,7 @@ class GifRegisterShareRequest {
   }
 
   /// Provider-issued share identifier (slug or slug-id token).
+  @JsonKey(defaultValue: '')
   final String id;
   final Locale locale;
   @JsonKey(includeFromJson: false, includeToJson: false)

@@ -15,9 +15,11 @@ ChangeSubscriptionRequest _$ChangeSubscriptionRequestFromJson(
     final val = ChangeSubscriptionRequest(
       billingCycle: $checkedConvert(
         'billing_cycle',
-        (v) => ChangeSubscriptionRequestBillingCycleBillingCycle.fromJson(
-          v as String,
-        ),
+        (v) => v == null
+            ? ChangeSubscriptionRequestBillingCycleBillingCycle.$unknown
+            : ChangeSubscriptionRequestBillingCycleBillingCycle.fromJson(
+                v as String,
+              ),
       ),
       effectiveAt: $checkedConvert(
         'effective_at',

@@ -32,7 +32,7 @@ class AuthorizeConsentRequest {
   final String? responseType;
 
   /// The application client ID
-  @JsonKey(name: 'client_id')
+  @JsonKey(name: 'client_id', defaultValue: '')
   final SnowflakeType clientId;
 
   /// The URI to redirect to after authorization
@@ -40,6 +40,7 @@ class AuthorizeConsentRequest {
   final String? redirectUri;
 
   /// The space-separated list of requested scopes
+  @JsonKey(defaultValue: '')
   final String scope;
 
   /// A random string for CSRF protection

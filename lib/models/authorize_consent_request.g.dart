@@ -13,8 +13,8 @@ AuthorizeConsentRequest _$AuthorizeConsentRequestFromJson(
   json,
   ($checkedConvert) {
     final val = AuthorizeConsentRequest(
-      clientId: $checkedConvert('client_id', (v) => v as String),
-      scope: $checkedConvert('scope', (v) => v as String),
+      clientId: $checkedConvert('client_id', (v) => v as String? ?? ''),
+      scope: $checkedConvert('scope', (v) => v as String? ?? ''),
       responseType: $checkedConvert('response_type', (v) => v as String?),
       redirectUri: $checkedConvert('redirect_uri', (v) => v as String?),
       state: $checkedConvert('state', (v) => v as String?),

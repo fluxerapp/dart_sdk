@@ -9,7 +9,7 @@ part of 'ticket_response.dart';
 TicketResponse _$TicketResponseFromJson(Map<String, dynamic> json) =>
     $checkedCreate('TicketResponse', json, ($checkedConvert) {
       final val = TicketResponse(
-        ticket: $checkedConvert('ticket', (v) => v as String),
+        ticket: $checkedConvert('ticket', (v) => v as String? ?? ''),
       );
       return val;
     });

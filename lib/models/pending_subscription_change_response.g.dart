@@ -14,10 +14,12 @@ _$PendingSubscriptionChangeResponseVariant1FromJson(
   json,
   ($checkedConvert) {
     final val = PendingSubscriptionChangeResponseVariant1(
-      scheduleId: $checkedConvert('schedule_id', (v) => v as String),
+      scheduleId: $checkedConvert('schedule_id', (v) => v as String? ?? ''),
       changeKind: $checkedConvert(
         'change_kind',
-        (v) => PendingSubscriptionChangeKind.fromJson(v as String),
+        (v) => v == null
+            ? PendingSubscriptionChangeKind.$unknown
+            : PendingSubscriptionChangeKind.fromJson(v as String),
       ),
       currentBillingCycle: $checkedConvert(
         'current_billing_cycle',
@@ -29,12 +31,14 @@ _$PendingSubscriptionChangeResponseVariant1FromJson(
       ),
       targetBillingCycle: $checkedConvert(
         'target_billing_cycle',
-        (v) =>
-            PendingSubscriptionChangeResponseVariant1TargetBillingCycleTargetBillingCycle.fromJson(
-              v as String,
-            ),
+        (v) => v == null
+            ? PendingSubscriptionChangeResponseVariant1TargetBillingCycleTargetBillingCycle
+                  .$unknown
+            : PendingSubscriptionChangeResponseVariant1TargetBillingCycleTargetBillingCycle.fromJson(
+                v as String,
+              ),
       ),
-      effectiveAt: $checkedConvert('effective_at', (v) => v as String),
+      effectiveAt: $checkedConvert('effective_at', (v) => v as String? ?? ''),
       currentPriceId: $checkedConvert('current_price_id', (v) => v as String?),
       targetPriceId: $checkedConvert('target_price_id', (v) => v as String?),
       targetAmountMinor: $checkedConvert(

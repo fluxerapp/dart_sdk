@@ -31,25 +31,31 @@ class InviteMetadataResponseSchema {
 
 @JsonSerializable()
 class InviteMetadataResponseSchemaGuildInviteMetadataResponse {
+  @JsonKey(defaultValue: '')
   final String code;
   @JsonKey(includeIfNull: false)
   final UserPartialResponse? inviter;
   @JsonKey(includeIfNull: false, name: 'expires_at')
   final DateTime? expiresAt;
+  @JsonKey(defaultValue: false)
   final bool temporary;
+  @JsonKey(defaultValue: 0)
   final num type;
+  @JsonKey(defaultValue: _$missingGuildPartialResponse)
   final GuildPartialResponse guild;
+  @JsonKey(defaultValue: _$missingChannelPartialResponse)
   final ChannelPartialResponse channel;
-  @JsonKey(name: 'member_count')
+  @JsonKey(name: 'member_count', defaultValue: 0)
   final Int32Type memberCount;
-  @JsonKey(name: 'presence_count')
+  @JsonKey(name: 'presence_count', defaultValue: 0)
   final Int32Type presenceCount;
-  @JsonKey(name: 'created_at')
+  @JsonKey(name: 'created_at', defaultValue: _$missingDateTime)
   final DateTime createdAt;
+  @JsonKey(defaultValue: 0)
   final Int32Type uses;
-  @JsonKey(name: 'max_uses')
+  @JsonKey(name: 'max_uses', defaultValue: 0)
   final Int32Type maxUses;
-  @JsonKey(name: 'max_age')
+  @JsonKey(name: 'max_age', defaultValue: 0)
   final Int32Type maxAge;
 
   const InviteMetadataResponseSchemaGuildInviteMetadataResponse({
@@ -78,20 +84,25 @@ class InviteMetadataResponseSchemaGuildInviteMetadataResponse {
 
 @JsonSerializable()
 class InviteMetadataResponseSchemaGroupDmInviteMetadataResponse {
+  @JsonKey(defaultValue: '')
   final String code;
   @JsonKey(includeIfNull: false)
   final UserPartialResponse? inviter;
   @JsonKey(includeIfNull: false, name: 'expires_at')
   final DateTime? expiresAt;
+  @JsonKey(defaultValue: false)
   final bool temporary;
+  @JsonKey(defaultValue: 0)
   final num type;
+  @JsonKey(defaultValue: _$missingChannelPartialResponse)
   final ChannelPartialResponse channel;
-  @JsonKey(name: 'member_count')
+  @JsonKey(name: 'member_count', defaultValue: 0)
   final Int32Type memberCount;
-  @JsonKey(name: 'created_at')
+  @JsonKey(name: 'created_at', defaultValue: _$missingDateTime)
   final DateTime createdAt;
+  @JsonKey(defaultValue: 0)
   final Int32Type uses;
-  @JsonKey(name: 'max_uses')
+  @JsonKey(name: 'max_uses', defaultValue: 0)
   final Int32Type maxUses;
 
   const InviteMetadataResponseSchemaGroupDmInviteMetadataResponse({
@@ -115,3 +126,12 @@ class InviteMetadataResponseSchemaGroupDmInviteMetadataResponse {
   Map<String, dynamic> toJson() =>
       _$InviteMetadataResponseSchemaGroupDmInviteMetadataResponseToJson(this);
 }
+
+ChannelPartialResponse _$missingChannelPartialResponse() =>
+    ChannelPartialResponse.fromJson(const <String, dynamic>{});
+
+DateTime _$missingDateTime() =>
+    DateTime.fromMillisecondsSinceEpoch(0, isUtc: true);
+
+GuildPartialResponse _$missingGuildPartialResponse() =>
+    GuildPartialResponse.fromJson(const <String, dynamic>{});

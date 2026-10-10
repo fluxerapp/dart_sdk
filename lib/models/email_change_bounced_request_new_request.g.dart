@@ -12,7 +12,7 @@ _$EmailChangeBouncedRequestNewRequestFromJson(Map<String, dynamic> json) =>
       $checkedConvert,
     ) {
       final val = EmailChangeBouncedRequestNewRequest(
-        newEmail: $checkedConvert('new_email', (v) => v as String),
+        newEmail: $checkedConvert('new_email', (v) => v as String? ?? ''),
       );
       return val;
     }, fieldKeyMap: const {'newEmail': 'new_email'});

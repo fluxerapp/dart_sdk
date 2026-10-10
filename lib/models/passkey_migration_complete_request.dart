@@ -19,11 +19,16 @@ class PasskeyMigrationCompleteRequest {
       _$PasskeyMigrationCompleteRequestFromJson(json);
 
   /// WebAuthn registration response
+  @JsonKey(defaultValue: _$missingWebAuthnRegistrationResponse)
   final WebAuthnRegistrationResponse response;
 
   /// The challenge from registration options
+  @JsonKey(defaultValue: '')
   final String challenge;
 
   Map<String, Object?> toJson() =>
       _$PasskeyMigrationCompleteRequestToJson(this);
 }
+
+WebAuthnRegistrationResponse _$missingWebAuthnRegistrationResponse() =>
+    WebAuthnRegistrationResponse.fromJson(const <String, dynamic>{});

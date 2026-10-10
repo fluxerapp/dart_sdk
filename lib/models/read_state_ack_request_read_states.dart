@@ -22,11 +22,11 @@ class ReadStateAckRequestReadStates {
       _$ReadStateAckRequestReadStatesFromJson(json);
 
   /// The ID of the channel
-  @JsonKey(name: 'channel_id')
+  @JsonKey(name: 'channel_id', defaultValue: '')
   final SnowflakeType channelId;
 
   /// The ID of the message to acknowledge
-  @JsonKey(name: 'message_id')
+  @JsonKey(name: 'message_id', defaultValue: '')
   final SnowflakeType messageId;
 
   /// Number of unread mentions after this acknowledgement

@@ -22,12 +22,15 @@ class OAuth2MeResponse {
       _$OAuth2MeResponseFromJson(json);
 
   /// The application associated with the token
+  @JsonKey(defaultValue: _$missingOAuth2MeResponseApplication)
   final OAuth2MeResponseApplication application;
 
   /// The list of granted OAuth2 scopes
+  @JsonKey(defaultValue: <String>[])
   final List<String> scopes;
 
   /// The expiration timestamp of the token
+  @JsonKey(defaultValue: '')
   final String expires;
 
   /// The user associated with the token
@@ -36,3 +39,6 @@ class OAuth2MeResponse {
 
   Map<String, Object?> toJson() => _$OAuth2MeResponseToJson(this);
 }
+
+OAuth2MeResponseApplication _$missingOAuth2MeResponseApplication() =>
+    OAuth2MeResponseApplication.fromJson(const <String, dynamic>{});

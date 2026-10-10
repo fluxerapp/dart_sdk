@@ -12,15 +12,17 @@ OAuth2AuthorizationResponse _$OAuth2AuthorizationResponseFromJson(
   final val = OAuth2AuthorizationResponse(
     application: $checkedConvert(
       'application',
-      (v) => OAuth2AuthorizationResponseApplication.fromJson(
-        v as Map<String, dynamic>,
-      ),
+      (v) => v == null
+          ? _$missingOAuth2AuthorizationResponseApplication()
+          : OAuth2AuthorizationResponseApplication.fromJson(
+              v as Map<String, dynamic>,
+            ),
     ),
     scopes: $checkedConvert(
       'scopes',
-      (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
     ),
-    authorizedAt: $checkedConvert('authorized_at', (v) => v as String),
+    authorizedAt: $checkedConvert('authorized_at', (v) => v as String? ?? ''),
   );
   return val;
 }, fieldKeyMap: const {'authorizedAt': 'authorized_at'});

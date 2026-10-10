@@ -13,19 +13,19 @@ ApplicationPublicResponse _$ApplicationPublicResponseFromJson(
   json,
   ($checkedConvert) {
     final val = ApplicationPublicResponse(
-      id: $checkedConvert('id', (v) => v as String),
-      name: $checkedConvert('name', (v) => v as String),
+      id: $checkedConvert('id', (v) => v as String? ?? ''),
+      name: $checkedConvert('name', (v) => v as String? ?? ''),
       icon: $checkedConvert('icon', (v) => v as String?),
       description: $checkedConvert('description', (v) => v as String?),
       redirectUris: $checkedConvert(
         'redirect_uris',
-        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
       ),
       scopes: $checkedConvert(
         'scopes',
-        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
       ),
-      botPublic: $checkedConvert('bot_public', (v) => v as bool),
+      botPublic: $checkedConvert('bot_public', (v) => v as bool? ?? false),
       bot: $checkedConvert(
         'bot',
         (v) => v == null

@@ -25,11 +25,15 @@ class ReportFlowScreen {
   factory ReportFlowScreen.fromJson(Map<String, Object?> json) =>
       _$ReportFlowScreenFromJson(json);
 
+  @JsonKey(defaultValue: '')
   final String id;
+  @JsonKey(defaultValue: '')
   final String title;
   @JsonKey(includeIfNull: true)
   final String? subtitle;
+  @JsonKey(defaultValue: false)
   final bool urgent;
+  @JsonKey(defaultValue: <ReportFlowOption>[])
   final List<ReportFlowOption> options;
   @JsonKey(includeIfNull: true, name: 'options_heading')
   final String? optionsHeading;

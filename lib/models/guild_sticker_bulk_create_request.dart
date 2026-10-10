@@ -16,6 +16,7 @@ class GuildStickerBulkCreateRequest {
       _$GuildStickerBulkCreateRequestFromJson(json);
 
   /// Array of sticker objects to create (1-50 stickers per batch)
+  @JsonKey(defaultValue: <GuildStickerCreateRequest>[])
   final List<GuildStickerCreateRequest> stickers;
 
   Map<String, Object?> toJson() => _$GuildStickerBulkCreateRequestToJson(this);

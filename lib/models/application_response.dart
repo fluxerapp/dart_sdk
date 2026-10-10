@@ -25,21 +25,23 @@ class ApplicationResponse {
       _$ApplicationResponseFromJson(json);
 
   /// The unique identifier of the application
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
 
   /// The name of the application
+  @JsonKey(defaultValue: '')
   final String name;
 
   /// The registered redirect URIs for OAuth2
-  @JsonKey(name: 'redirect_uris')
+  @JsonKey(name: 'redirect_uris', defaultValue: <String>[])
   final List<String> redirectUris;
 
   /// Whether the bot can be invited by anyone
-  @JsonKey(name: 'bot_public')
+  @JsonKey(name: 'bot_public', defaultValue: false)
   final bool botPublic;
 
   /// Whether the bot requires OAuth2 code grant
-  @JsonKey(name: 'bot_require_code_grant')
+  @JsonKey(name: 'bot_require_code_grant', defaultValue: false)
   final bool botRequireCodeGrant;
 
   /// The client secret for OAuth2 authentication

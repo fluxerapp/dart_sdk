@@ -16,7 +16,7 @@ class MarkMentionsReadRequest {
       _$MarkMentionsReadRequestFromJson(json);
 
   /// Recent mention message IDs to remove from the current user mention list
-  @JsonKey(name: 'message_ids')
+  @JsonKey(name: 'message_ids', defaultValue: <String>[])
   final List<SnowflakeType> messageIds;
 
   Map<String, Object?> toJson() => _$MarkMentionsReadRequestToJson(this);

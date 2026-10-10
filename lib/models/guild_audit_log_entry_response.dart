@@ -27,8 +27,9 @@ class GuildAuditLogEntryResponse {
       _$GuildAuditLogEntryResponseFromJson(json);
 
   /// The unique identifier for this audit log entry
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
-  @JsonKey(name: 'action_type')
+  @JsonKey(name: 'action_type', defaultValue: AuditLogActionType.$unknown)
   final AuditLogActionType actionType;
 
   /// The user ID of the user who performed the action

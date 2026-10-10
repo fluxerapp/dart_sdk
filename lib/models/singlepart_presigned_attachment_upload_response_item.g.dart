@@ -14,13 +14,16 @@ _$SinglepartPresignedAttachmentUploadResponseItemFromJson(
   json,
   ($checkedConvert) {
     final val = SinglepartPresignedAttachmentUploadResponseItem(
-      id: $checkedConvert('id', (v) => (v as num).toInt()),
-      filename: $checkedConvert('filename', (v) => v as String),
-      fileSize: $checkedConvert('file_size', (v) => (v as num).toInt()),
-      contentType: $checkedConvert('content_type', (v) => v as String),
-      uploadFilename: $checkedConvert('upload_filename', (v) => v as String),
-      uploadMode: $checkedConvert('upload_mode', (v) => v as String),
-      uploadUrl: $checkedConvert('upload_url', (v) => v as String),
+      id: $checkedConvert('id', (v) => (v as num?)?.toInt() ?? 0),
+      filename: $checkedConvert('filename', (v) => v as String? ?? ''),
+      fileSize: $checkedConvert('file_size', (v) => (v as num?)?.toInt() ?? 0),
+      contentType: $checkedConvert('content_type', (v) => v as String? ?? ''),
+      uploadFilename: $checkedConvert(
+        'upload_filename',
+        (v) => v as String? ?? '',
+      ),
+      uploadMode: $checkedConvert('upload_mode', (v) => v as String? ?? ''),
+      uploadUrl: $checkedConvert('upload_url', (v) => v as String? ?? ''),
     );
     return val;
   },

@@ -18,6 +18,7 @@ class MessageResponseSchemaReferencedMessageCall {
   ) => _$MessageResponseSchemaReferencedMessageCallFromJson(json);
 
   /// The user IDs of participants in the call
+  @JsonKey(defaultValue: <String>[])
   final List<String> participants;
 
   /// The ISO 8601 timestamp of when the call ended

@@ -13,8 +13,8 @@ HarvestDownloadUrlResponse _$HarvestDownloadUrlResponseFromJson(
   json,
   ($checkedConvert) {
     final val = HarvestDownloadUrlResponse(
-      downloadUrl: $checkedConvert('download_url', (v) => v as String),
-      expiresAt: $checkedConvert('expires_at', (v) => v as String),
+      downloadUrl: $checkedConvert('download_url', (v) => v as String? ?? ''),
+      expiresAt: $checkedConvert('expires_at', (v) => v as String? ?? ''),
     );
     return val;
   },

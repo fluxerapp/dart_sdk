@@ -10,8 +10,8 @@ CallEligibilityResponse _$CallEligibilityResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('CallEligibilityResponse', json, ($checkedConvert) {
   final val = CallEligibilityResponse(
-    ringable: $checkedConvert('ringable', (v) => v as bool),
-    silent: $checkedConvert('silent', (v) => v as bool),
+    ringable: $checkedConvert('ringable', (v) => v as bool? ?? false),
+    silent: $checkedConvert('silent', (v) => v as bool? ?? false),
   );
   return val;
 });

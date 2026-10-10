@@ -24,25 +24,27 @@ class ScheduledSwitchToListPriceResponse {
   ) => _$ScheduledSwitchToListPriceResponseFromJson(json);
 
   /// ISO timestamp the switch takes effect
-  @JsonKey(name: 'effective_at')
+  @JsonKey(name: 'effective_at', defaultValue: '')
   final String effectiveAt;
 
   /// Stripe price ID the subscription will be billed against after the switch
-  @JsonKey(name: 'target_price_id')
+  @JsonKey(name: 'target_price_id', defaultValue: '')
   final String targetPriceId;
 
   /// Amount billed after the switch, in the currency minor unit
-  @JsonKey(name: 'target_amount_minor')
+  @JsonKey(name: 'target_amount_minor', defaultValue: 0)
   final int targetAmountMinor;
 
   /// Amount billed before the switch, in the currency minor unit
-  @JsonKey(name: 'current_amount_minor')
+  @JsonKey(name: 'current_amount_minor', defaultValue: 0)
   final int currentAmountMinor;
 
   /// Currency of both amounts
+  @JsonKey(defaultValue: '')
   final PremiumCurrency currency;
 
   /// The switch was scheduled for the end of the current billing period
+  @JsonKey(defaultValue: '')
   final String status;
 
   Map<String, Object?> toJson() =>

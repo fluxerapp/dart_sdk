@@ -10,8 +10,8 @@ DsaReportEmailVerifyRequest _$DsaReportEmailVerifyRequestFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('DsaReportEmailVerifyRequest', json, ($checkedConvert) {
   final val = DsaReportEmailVerifyRequest(
-    email: $checkedConvert('email', (v) => v as String),
-    code: $checkedConvert('code', (v) => v as String),
+    email: $checkedConvert('email', (v) => v as String? ?? ''),
+    code: $checkedConvert('code', (v) => v as String? ?? ''),
   );
   return val;
 });

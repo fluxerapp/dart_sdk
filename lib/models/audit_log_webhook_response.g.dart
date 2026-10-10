@@ -13,12 +13,14 @@ AuditLogWebhookResponse _$AuditLogWebhookResponseFromJson(
   json,
   ($checkedConvert) {
     final val = AuditLogWebhookResponse(
-      id: $checkedConvert('id', (v) => v as String),
+      id: $checkedConvert('id', (v) => v as String? ?? ''),
       type: $checkedConvert(
         'type',
-        (v) => WebhookType.fromJson((v as num).toInt()),
+        (v) => v == null
+            ? WebhookType.$unknown
+            : WebhookType.fromJson((v as num).toInt()),
       ),
-      name: $checkedConvert('name', (v) => v as String),
+      name: $checkedConvert('name', (v) => v as String? ?? ''),
       guildId: $checkedConvert('guild_id', (v) => v as String?),
       channelId: $checkedConvert('channel_id', (v) => v as String?),
       avatarHash: $checkedConvert('avatar_hash', (v) => v as String?),

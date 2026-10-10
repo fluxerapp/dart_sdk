@@ -9,7 +9,7 @@ part of 'theme_create_request.dart';
 ThemeCreateRequest _$ThemeCreateRequestFromJson(Map<String, dynamic> json) =>
     $checkedCreate('ThemeCreateRequest', json, ($checkedConvert) {
       final val = ThemeCreateRequest(
-        css: $checkedConvert('css', (v) => v as String),
+        css: $checkedConvert('css', (v) => v as String? ?? ''),
       );
       return val;
     });

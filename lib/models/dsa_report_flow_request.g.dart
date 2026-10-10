@@ -14,30 +14,37 @@ _$DsaReportFlowRequestMessageDsaReportFlowRequestFromJson(
   json,
   ($checkedConvert) {
     final val = DsaReportFlowRequestMessageDsaReportFlowRequest(
-      ticket: $checkedConvert('ticket', (v) => v as String),
+      ticket: $checkedConvert('ticket', (v) => v as String? ?? ''),
       reporterCountryOfResidence: $checkedConvert(
         'reporter_country_of_residence',
-        (v) => EuCountryCode.fromJson(v as String),
+        (v) => v == null
+            ? EuCountryCode.$unknown
+            : EuCountryCode.fromJson(v as String),
       ),
-      revisionHash: $checkedConvert('revision_hash', (v) => v as String),
+      revisionHash: $checkedConvert('revision_hash', (v) => v as String? ?? ''),
       steps: $checkedConvert(
         'steps',
-        (v) => (v as List<dynamic>)
-            .map((e) => ReportFlowStep.fromJson(e as Map<String, dynamic>))
-            .toList(),
+        (v) =>
+            (v as List<dynamic>?)
+                ?.map((e) => ReportFlowStep.fromJson(e as Map<String, dynamic>))
+                .toList() ??
+            [],
       ),
       goodFaithConfirmed: $checkedConvert(
         'good_faith_confirmed',
-        (v) => v as bool,
+        (v) => v as bool? ?? false,
       ),
       locale: $checkedConvert('locale', (v) => v as String?),
-      additionalInfo: $checkedConvert('additional_info', (v) => v as String),
+      additionalInfo: $checkedConvert(
+        'additional_info',
+        (v) => v as String? ?? '',
+      ),
       reporterFullLegalName: $checkedConvert(
         'reporter_full_legal_name',
         (v) => v as String?,
       ),
-      reportType: $checkedConvert('report_type', (v) => v as String),
-      messageLink: $checkedConvert('message_link', (v) => v as String),
+      reportType: $checkedConvert('report_type', (v) => v as String? ?? ''),
+      messageLink: $checkedConvert('message_link', (v) => v as String? ?? ''),
       reportedUserTag: $checkedConvert(
         'reported_user_tag',
         (v) => v as String?,
@@ -81,29 +88,36 @@ _$DsaReportFlowRequestUserDsaReportFlowRequestFromJson(
   json,
   ($checkedConvert) {
     final val = DsaReportFlowRequestUserDsaReportFlowRequest(
-      ticket: $checkedConvert('ticket', (v) => v as String),
+      ticket: $checkedConvert('ticket', (v) => v as String? ?? ''),
       reporterCountryOfResidence: $checkedConvert(
         'reporter_country_of_residence',
-        (v) => EuCountryCode.fromJson(v as String),
+        (v) => v == null
+            ? EuCountryCode.$unknown
+            : EuCountryCode.fromJson(v as String),
       ),
-      revisionHash: $checkedConvert('revision_hash', (v) => v as String),
+      revisionHash: $checkedConvert('revision_hash', (v) => v as String? ?? ''),
       steps: $checkedConvert(
         'steps',
-        (v) => (v as List<dynamic>)
-            .map((e) => ReportFlowStep.fromJson(e as Map<String, dynamic>))
-            .toList(),
+        (v) =>
+            (v as List<dynamic>?)
+                ?.map((e) => ReportFlowStep.fromJson(e as Map<String, dynamic>))
+                .toList() ??
+            [],
       ),
       goodFaithConfirmed: $checkedConvert(
         'good_faith_confirmed',
-        (v) => v as bool,
+        (v) => v as bool? ?? false,
       ),
       locale: $checkedConvert('locale', (v) => v as String?),
-      additionalInfo: $checkedConvert('additional_info', (v) => v as String),
+      additionalInfo: $checkedConvert(
+        'additional_info',
+        (v) => v as String? ?? '',
+      ),
       reporterFullLegalName: $checkedConvert(
         'reporter_full_legal_name',
         (v) => v as String?,
       ),
-      reportType: $checkedConvert('report_type', (v) => v as String),
+      reportType: $checkedConvert('report_type', (v) => v as String? ?? ''),
       userId: $checkedConvert('user_id', (v) => v as String?),
       userTag: $checkedConvert('user_tag', (v) => v as String?),
     );
@@ -145,30 +159,37 @@ _$DsaReportFlowRequestGuildDsaReportFlowRequestFromJson(
   json,
   ($checkedConvert) {
     final val = DsaReportFlowRequestGuildDsaReportFlowRequest(
-      ticket: $checkedConvert('ticket', (v) => v as String),
+      ticket: $checkedConvert('ticket', (v) => v as String? ?? ''),
       reporterCountryOfResidence: $checkedConvert(
         'reporter_country_of_residence',
-        (v) => EuCountryCode.fromJson(v as String),
+        (v) => v == null
+            ? EuCountryCode.$unknown
+            : EuCountryCode.fromJson(v as String),
       ),
-      revisionHash: $checkedConvert('revision_hash', (v) => v as String),
+      revisionHash: $checkedConvert('revision_hash', (v) => v as String? ?? ''),
       steps: $checkedConvert(
         'steps',
-        (v) => (v as List<dynamic>)
-            .map((e) => ReportFlowStep.fromJson(e as Map<String, dynamic>))
-            .toList(),
+        (v) =>
+            (v as List<dynamic>?)
+                ?.map((e) => ReportFlowStep.fromJson(e as Map<String, dynamic>))
+                .toList() ??
+            [],
       ),
       goodFaithConfirmed: $checkedConvert(
         'good_faith_confirmed',
-        (v) => v as bool,
+        (v) => v as bool? ?? false,
       ),
       locale: $checkedConvert('locale', (v) => v as String?),
-      additionalInfo: $checkedConvert('additional_info', (v) => v as String),
+      additionalInfo: $checkedConvert(
+        'additional_info',
+        (v) => v as String? ?? '',
+      ),
       reporterFullLegalName: $checkedConvert(
         'reporter_full_legal_name',
         (v) => v as String?,
       ),
-      reportType: $checkedConvert('report_type', (v) => v as String),
-      guildId: $checkedConvert('guild_id', (v) => v as String),
+      reportType: $checkedConvert('report_type', (v) => v as String? ?? ''),
+      guildId: $checkedConvert('guild_id', (v) => v as String? ?? ''),
       inviteCode: $checkedConvert('invite_code', (v) => v as String?),
     );
     return val;

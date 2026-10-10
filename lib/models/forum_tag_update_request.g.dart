@@ -10,7 +10,7 @@ ForumTagUpdateRequest _$ForumTagUpdateRequestFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('ForumTagUpdateRequest', json, ($checkedConvert) {
   final val = ForumTagUpdateRequest._(
-    name: $checkedConvert('name', (v) => v as String),
+    name: $checkedConvert('name', (v) => v as String? ?? ''),
     moderated: $checkedConvert('moderated', (v) => v as bool?),
     id: $checkedConvert('id', (v) => v as String?),
   );

@@ -13,9 +13,9 @@ AuthorizationCodeTokenRequest _$AuthorizationCodeTokenRequestFromJson(
   json,
   ($checkedConvert) {
     final val = AuthorizationCodeTokenRequest(
-      grantType: $checkedConvert('grant_type', (v) => v as String),
-      code: $checkedConvert('code', (v) => v as String),
-      redirectUri: $checkedConvert('redirect_uri', (v) => v as String),
+      grantType: $checkedConvert('grant_type', (v) => v as String? ?? ''),
+      code: $checkedConvert('code', (v) => v as String? ?? ''),
+      redirectUri: $checkedConvert('redirect_uri', (v) => v as String? ?? ''),
       clientId: $checkedConvert('client_id', (v) => v as String?),
       clientSecret: $checkedConvert('client_secret', (v) => v as String?),
       codeVerifier: $checkedConvert('code_verifier', (v) => v as String?),

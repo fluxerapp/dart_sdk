@@ -22,9 +22,11 @@ class UnregisterMobileDeviceRequest {
       _$UnregisterMobileDeviceRequestFromJson(json);
 
   /// The mobile push notification platform
+  @JsonKey(defaultValue: UnregisterMobileDeviceRequestPlatformPlatform.$unknown)
   final UnregisterMobileDeviceRequestPlatformPlatform platform;
 
   /// The Web Push endpoint URL or raw platform push token used at registration
+  @JsonKey(defaultValue: '')
   final String token;
 
   /// Client app channel or bundle mapping identifier, such as stable, beta, or canary

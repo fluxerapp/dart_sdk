@@ -10,7 +10,7 @@ RichEmbedFooterRequestVariant1 _$RichEmbedFooterRequestVariant1FromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('RichEmbedFooterRequestVariant1', json, ($checkedConvert) {
   final val = RichEmbedFooterRequestVariant1(
-    text: $checkedConvert('text', (v) => v as String),
+    text: $checkedConvert('text', (v) => v as String? ?? ''),
     iconUrl: $checkedConvert('icon_url', (v) => v as String?),
   );
   return val;

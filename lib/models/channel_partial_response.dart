@@ -23,11 +23,13 @@ class ChannelPartialResponse {
       _$ChannelPartialResponseFromJson(json);
 
   /// The unique identifier (snowflake) for this channel
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
 
   /// The name of the channel
   @JsonKey(includeIfNull: false)
   final String? name;
+  @JsonKey(defaultValue: ChannelType.$unknown)
   final ChannelType type;
 
   /// The recipients of the DM channel

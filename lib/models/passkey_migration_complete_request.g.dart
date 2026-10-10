@@ -12,9 +12,11 @@ PasskeyMigrationCompleteRequest _$PasskeyMigrationCompleteRequestFromJson(
   final val = PasskeyMigrationCompleteRequest(
     response: $checkedConvert(
       'response',
-      (v) => WebAuthnRegistrationResponse.fromJson(v as Map<String, dynamic>),
+      (v) => v == null
+          ? _$missingWebAuthnRegistrationResponse()
+          : WebAuthnRegistrationResponse.fromJson(v as Map<String, dynamic>),
     ),
-    challenge: $checkedConvert('challenge', (v) => v as String),
+    challenge: $checkedConvert('challenge', (v) => v as String? ?? ''),
   );
   return val;
 });

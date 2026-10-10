@@ -14,7 +14,9 @@ _$InstanceAccountIdentityUpdateRequestFromJson(Map<String, dynamic> json) =>
       final val = InstanceAccountIdentityUpdateRequest(
         mode: $checkedConvert(
           'mode',
-          (v) => AccountIdentityModeSchema.fromJson(v as String),
+          (v) => v == null
+              ? AccountIdentityModeSchema.$unknown
+              : AccountIdentityModeSchema.fromJson(v as String),
         ),
         tagStyle: $checkedConvert(
           'tag_style',

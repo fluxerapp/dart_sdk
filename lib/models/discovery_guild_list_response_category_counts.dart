@@ -18,10 +18,11 @@ class DiscoveryGuildListResponseCategoryCounts {
   ) => _$DiscoveryGuildListResponseCategoryCountsFromJson(json);
 
   /// Discovery category type
-  @JsonKey(name: 'category_type')
+  @JsonKey(name: 'category_type', defaultValue: 0)
   final num categoryType;
 
   /// Number of matching guilds in this category
+  @JsonKey(defaultValue: 0)
   final num count;
 
   Map<String, Object?> toJson() =>

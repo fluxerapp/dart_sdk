@@ -16,7 +16,10 @@ class ReadStateAckBulkRequest {
       _$ReadStateAckBulkRequestFromJson(json);
 
   /// Array of channel/message pairs to acknowledge
-  @JsonKey(name: 'read_states')
+  @JsonKey(
+    name: 'read_states',
+    defaultValue: <ReadStateAckBulkRequestReadStates>[],
+  )
   final List<ReadStateAckBulkRequestReadStates> readStates;
 
   Map<String, Object?> toJson() => _$ReadStateAckBulkRequestToJson(this);

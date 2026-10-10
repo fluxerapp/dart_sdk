@@ -10,7 +10,7 @@ HandoffCompleteResponse _$HandoffCompleteResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('HandoffCompleteResponse', json, ($checkedConvert) {
   final val = HandoffCompleteResponse(
-    returnUrl: $checkedConvert('return_url', (v) => v as String),
+    returnUrl: $checkedConvert('return_url', (v) => v as String? ?? ''),
   );
   return val;
 }, fieldKeyMap: const {'returnUrl': 'return_url'});

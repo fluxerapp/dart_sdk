@@ -12,10 +12,12 @@ _$IneligibleSwitchToListPriceResponseFromJson(Map<String, dynamic> json) =>
       $checkedConvert,
     ) {
       final val = IneligibleSwitchToListPriceResponse(
-        status: $checkedConvert('status', (v) => v as String),
+        status: $checkedConvert('status', (v) => v as String? ?? ''),
         reason: $checkedConvert(
           'reason',
-          (v) => ListPriceSwitchIneligibilityReason.fromJson(v as String),
+          (v) => v == null
+              ? ListPriceSwitchIneligibilityReason.$unknown
+              : ListPriceSwitchIneligibilityReason.fromJson(v as String),
         ),
       );
       return val;

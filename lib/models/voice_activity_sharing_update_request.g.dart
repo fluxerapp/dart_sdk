@@ -14,7 +14,7 @@ VoiceActivitySharingUpdateRequest _$VoiceActivitySharingUpdateRequestFromJson(
   final val = VoiceActivitySharingUpdateRequest(
     shareVoiceActivity: $checkedConvert(
       'share_voice_activity',
-      (v) => v as bool,
+      (v) => v as bool? ?? false,
     ),
   );
   return val;

@@ -27,9 +27,13 @@ class PremiumStateResponse {
   factory PremiumStateResponse.fromJson(Map<String, Object?> json) =>
       _$PremiumStateResponseFromJson(json);
 
+  @JsonKey(defaultValue: _$missingPremiumStateResponseActual)
   final PremiumStateResponseActual actual;
+  @JsonKey(defaultValue: _$missingPremiumStateResponseEffective)
   final PremiumStateResponseEffective effective;
+  @JsonKey(defaultValue: _$missingPremiumStateResponseBilling)
   final PremiumStateResponseBilling billing;
+  @JsonKey(defaultValue: _$missingPremiumPricingState)
   final PremiumPricingState pricing;
 
   /// Active App Store or Google Play subscription, null when no store subscription is active
@@ -42,3 +46,15 @@ class PremiumStateResponse {
 
   Map<String, Object?> toJson() => _$PremiumStateResponseToJson(this);
 }
+
+PremiumPricingState _$missingPremiumPricingState() =>
+    PremiumPricingState.fromJson(const <String, dynamic>{});
+
+PremiumStateResponseActual _$missingPremiumStateResponseActual() =>
+    PremiumStateResponseActual.fromJson(const <String, dynamic>{});
+
+PremiumStateResponseBilling _$missingPremiumStateResponseBilling() =>
+    PremiumStateResponseBilling.fromJson(const <String, dynamic>{});
+
+PremiumStateResponseEffective _$missingPremiumStateResponseEffective() =>
+    PremiumStateResponseEffective.fromJson(const <String, dynamic>{});

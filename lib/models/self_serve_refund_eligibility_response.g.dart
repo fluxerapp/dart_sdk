@@ -13,7 +13,7 @@ SelfServeRefundEligibilityResponse _$SelfServeRefundEligibilityResponseFromJson(
   json,
   ($checkedConvert) {
     final val = SelfServeRefundEligibilityResponse(
-      eligible: $checkedConvert('eligible', (v) => v as bool),
+      eligible: $checkedConvert('eligible', (v) => v as bool? ?? false),
       reason: $checkedConvert(
         'reason',
         (v) => v == null
@@ -37,7 +37,7 @@ SelfServeRefundEligibilityResponse _$SelfServeRefundEligibilityResponseFromJson(
       ),
       cancelsSubscription: $checkedConvert(
         'cancels_subscription',
-        (v) => v as bool,
+        (v) => v as bool? ?? false,
       ),
     );
     return val;

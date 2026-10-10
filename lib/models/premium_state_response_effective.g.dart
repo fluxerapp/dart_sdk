@@ -13,7 +13,7 @@ PremiumStateResponseEffective _$PremiumStateResponseEffectiveFromJson(
   json,
   ($checkedConvert) {
     final val = PremiumStateResponseEffective(
-      isPremium: $checkedConvert('is_premium', (v) => v as bool),
+      isPremium: $checkedConvert('is_premium', (v) => v as bool? ?? false),
       premiumType: $checkedConvert(
         'premium_type',
         (v) => v == null ? null : UserPremiumTypes.fromJson((v as num).toInt()),
@@ -22,7 +22,7 @@ PremiumStateResponseEffective _$PremiumStateResponseEffectiveFromJson(
       premiumUntil: $checkedConvert('premium_until', (v) => v as String?),
       premiumWillCancel: $checkedConvert(
         'premium_will_cancel',
-        (v) => v as bool,
+        (v) => v as bool? ?? false,
       ),
       premiumBillingCycle: $checkedConvert(
         'premium_billing_cycle',
@@ -42,18 +42,18 @@ PremiumStateResponseEffective _$PremiumStateResponseEffectiveFromJson(
       ),
       premiumEnabledOverride: $checkedConvert(
         'premium_enabled_override',
-        (v) => v as bool,
+        (v) => v as bool? ?? false,
       ),
       premiumPurchaseDisabled: $checkedConvert(
         'premium_purchase_disabled',
-        (v) => v as bool,
+        (v) => v as bool? ?? false,
       ),
       premiumPerksDisabled: $checkedConvert(
         'premium_perks_disabled',
-        (v) => v as bool,
+        (v) => v as bool? ?? false,
       ),
-      selfHosted: $checkedConvert('self_hosted', (v) => v as bool),
-      bot: $checkedConvert('bot', (v) => v as bool),
+      selfHosted: $checkedConvert('self_hosted', (v) => v as bool? ?? false),
+      bot: $checkedConvert('bot', (v) => v as bool? ?? false),
     );
     return val;
   },

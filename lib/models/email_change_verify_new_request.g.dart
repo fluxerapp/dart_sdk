@@ -10,9 +10,9 @@ EmailChangeVerifyNewRequest _$EmailChangeVerifyNewRequestFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('EmailChangeVerifyNewRequest', json, ($checkedConvert) {
   final val = EmailChangeVerifyNewRequest(
-    ticket: $checkedConvert('ticket', (v) => v as String),
-    code: $checkedConvert('code', (v) => v as String),
-    originalProof: $checkedConvert('original_proof', (v) => v as String),
+    ticket: $checkedConvert('ticket', (v) => v as String? ?? ''),
+    code: $checkedConvert('code', (v) => v as String? ?? ''),
+    originalProof: $checkedConvert('original_proof', (v) => v as String? ?? ''),
   );
   return val;
 }, fieldKeyMap: const {'originalProof': 'original_proof'});

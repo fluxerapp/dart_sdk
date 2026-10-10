@@ -16,9 +16,11 @@ class WebhookResponseSourceChannel {
       _$WebhookResponseSourceChannelFromJson(json);
 
   /// The ID of the followed announcement channel
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
 
   /// The name of the followed announcement channel
+  @JsonKey(defaultValue: '')
   final String name;
 
   Map<String, Object?> toJson() => _$WebhookResponseSourceChannelToJson(this);

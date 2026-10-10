@@ -14,8 +14,8 @@ _$WebAuthnAuthenticationOptionsResponseAllowCredentialsFromJson(
   json,
   ($checkedConvert) {
     final val = WebAuthnAuthenticationOptionsResponseAllowCredentials(
-      id: $checkedConvert('id', (v) => v as String),
-      type: $checkedConvert('type', (v) => v as String),
+      id: $checkedConvert('id', (v) => v as String? ?? ''),
+      type: $checkedConvert('type', (v) => v as String? ?? ''),
       transports: $checkedConvert(
         'transports',
         (v) => (v as List<dynamic>?)

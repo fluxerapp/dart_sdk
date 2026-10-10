@@ -21,6 +21,7 @@ class DiscoveryChannelPreviewResponseChannel {
   ) => _$DiscoveryChannelPreviewResponseChannelFromJson(json);
 
   /// Channel ID
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
 
   /// Channel name
@@ -28,6 +29,7 @@ class DiscoveryChannelPreviewResponseChannel {
   final String? name;
 
   /// Channel type
+  @JsonKey(defaultValue: 0)
   final num type;
 
   Map<String, Object?> toJson() =>

@@ -21,6 +21,7 @@ class GuildRoleCreateRequest {
       _$GuildRoleCreateRequestFromJson(json);
 
   /// The name of the role (1-100 characters)
+  @JsonKey(defaultValue: '')
   final String name;
 
   /// The color of the role as an integer (default: 0)

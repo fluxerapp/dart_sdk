@@ -52,27 +52,33 @@ class ChannelPinResponseMessage {
       _$ChannelPinResponseMessageFromJson(json);
 
   /// The unique identifier (snowflake) for this message
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
 
   /// The ID of the channel this message was sent in
-  @JsonKey(name: 'channel_id')
+  @JsonKey(name: 'channel_id', defaultValue: '')
   final SnowflakeStringType channelId;
 
   /// The author of the message
+  @JsonKey(defaultValue: _$missingUserPartialResponse)
   final UserPartialResponse author;
 
   /// The ID of the webhook that sent this message
   @JsonKey(includeIfNull: false, name: 'webhook_id')
   final SnowflakeStringType? webhookId;
+  @JsonKey(defaultValue: MessageType.$unknown)
   final MessageType type;
 
   /// The bitwise flags for this message
+  @JsonKey(defaultValue: 0)
   final MessageFlags flags;
 
   /// The text content of the message
+  @JsonKey(defaultValue: '')
   final String content;
 
   /// The ISO 8601 timestamp of when the message was created
+  @JsonKey(defaultValue: _$missingDateTime)
   final DateTime timestamp;
 
   /// The ISO 8601 timestamp of when the message was last edited
@@ -80,20 +86,23 @@ class ChannelPinResponseMessage {
   final DateTime? editedTimestamp;
 
   /// Whether the message is pinned
+  @JsonKey(defaultValue: false)
   final bool pinned;
 
   /// Whether the message mentions @everyone
-  @JsonKey(name: 'mention_everyone')
+  @JsonKey(name: 'mention_everyone', defaultValue: false)
   final bool mentionEveryone;
 
   /// Whether the message was sent as text-to-speech
+  @JsonKey(defaultValue: false)
   final bool tts;
 
   /// The users mentioned in the message
+  @JsonKey(defaultValue: <UserPartialResponse>[])
   final List<UserPartialResponse> mentions;
 
   /// The role IDs mentioned in the message
-  @JsonKey(name: 'mention_roles')
+  @JsonKey(name: 'mention_roles', defaultValue: <String>[])
   final List<String> mentionRoles;
 
   /// Channels mentioned in the message that are visible to @everyone
@@ -138,3 +147,9 @@ class ChannelPinResponseMessage {
 
   Map<String, Object?> toJson() => _$ChannelPinResponseMessageToJson(this);
 }
+
+DateTime _$missingDateTime() =>
+    DateTime.fromMillisecondsSinceEpoch(0, isUtc: true);
+
+UserPartialResponse _$missingUserPartialResponse() =>
+    UserPartialResponse.fromJson(const <String, dynamic>{});

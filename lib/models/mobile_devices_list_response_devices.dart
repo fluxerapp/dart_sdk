@@ -23,10 +23,11 @@ class MobileDevicesListResponseDevices {
   ) => _$MobileDevicesListResponseDevicesFromJson(json);
 
   /// The unique identifier for the device
-  @JsonKey(name: 'device_id')
+  @JsonKey(name: 'device_id', defaultValue: '')
   final HexString32Type deviceId;
 
   /// The mobile push notification platform
+  @JsonKey(defaultValue: '')
   final String platform;
 
   /// Client app channel or bundle mapping identifier for this device

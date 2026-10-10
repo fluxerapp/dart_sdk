@@ -14,6 +14,7 @@ class SuccessResponse {
       _$SuccessResponseFromJson(json);
 
   /// Whether the operation succeeded
+  @JsonKey(defaultValue: false)
   final bool success;
 
   Map<String, Object?> toJson() => _$SuccessResponseToJson(this);

@@ -13,18 +13,20 @@ GuildPartialResponse _$GuildPartialResponseFromJson(
   json,
   ($checkedConvert) {
     final val = GuildPartialResponse(
-      id: $checkedConvert('id', (v) => v as String),
-      name: $checkedConvert('name', (v) => v as String),
+      id: $checkedConvert('id', (v) => v as String? ?? ''),
+      name: $checkedConvert('name', (v) => v as String? ?? ''),
       splashCardAlignment: $checkedConvert(
         'splash_card_alignment',
-        (v) =>
-            GuildPartialResponseSplashCardAlignmentSplashCardAlignment.fromJson(
-              (v as num).toInt(),
-            ),
+        (v) => v == null
+            ? GuildPartialResponseSplashCardAlignmentSplashCardAlignment
+                  .$unknown
+            : GuildPartialResponseSplashCardAlignmentSplashCardAlignment.fromJson(
+                (v as num).toInt(),
+              ),
       ),
       features: $checkedConvert(
         'features',
-        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
       ),
       icon: $checkedConvert('icon', (v) => v as String?),
       banner: $checkedConvert('banner', (v) => v as String?),

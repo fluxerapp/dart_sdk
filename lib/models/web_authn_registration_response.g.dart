@@ -10,20 +10,24 @@ WebAuthnRegistrationResponse _$WebAuthnRegistrationResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('WebAuthnRegistrationResponse', json, ($checkedConvert) {
   final val = WebAuthnRegistrationResponse(
-    id: $checkedConvert('id', (v) => v as String),
-    rawId: $checkedConvert('rawId', (v) => v as String),
-    type: $checkedConvert('type', (v) => v as String),
+    id: $checkedConvert('id', (v) => v as String? ?? ''),
+    rawId: $checkedConvert('rawId', (v) => v as String? ?? ''),
+    type: $checkedConvert('type', (v) => v as String? ?? ''),
     clientExtensionResults: $checkedConvert(
       'clientExtensionResults',
-      (v) => WebAuthnRegistrationResponseClientExtensionResults.fromJson(
-        v as Map<String, dynamic>,
-      ),
+      (v) => v == null
+          ? _$missingWebAuthnRegistrationResponseClientExtensionResults()
+          : WebAuthnRegistrationResponseClientExtensionResults.fromJson(
+              v as Map<String, dynamic>,
+            ),
     ),
     response: $checkedConvert(
       'response',
-      (v) => WebAuthnRegistrationResponseResponse.fromJson(
-        v as Map<String, dynamic>,
-      ),
+      (v) => v == null
+          ? _$missingWebAuthnRegistrationResponseResponse()
+          : WebAuthnRegistrationResponseResponse.fromJson(
+              v as Map<String, dynamic>,
+            ),
     ),
     authenticatorAttachment: $checkedConvert(
       'authenticatorAttachment',

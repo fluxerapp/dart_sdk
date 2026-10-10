@@ -13,10 +13,12 @@ _$StartThreadRequestBodyStartThreadRequestFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = StartThreadRequestBodyStartThreadRequest(
-          name: $checkedConvert('name', (v) => v as String),
+          name: $checkedConvert('name', (v) => v as String? ?? ''),
           type: $checkedConvert(
             'type',
-            (v) => ThreadChannelType.fromJson((v as num).toInt()),
+            (v) => v == null
+                ? ThreadChannelType.$unknown
+                : ThreadChannelType.fromJson((v as num).toInt()),
           ),
           autoArchiveDuration: $checkedConvert(
             'auto_archive_duration',
@@ -56,7 +58,7 @@ _$StartThreadRequestBodyStartForumThreadRequestFromJson(
   json,
   ($checkedConvert) {
     final val = StartThreadRequestBodyStartForumThreadRequest(
-      name: $checkedConvert('name', (v) => v as String),
+      name: $checkedConvert('name', (v) => v as String? ?? ''),
       type: $checkedConvert('type', (v) => (v as num?)?.toInt()),
       autoArchiveDuration: $checkedConvert(
         'auto_archive_duration',
@@ -74,7 +76,9 @@ _$StartThreadRequestBodyStartForumThreadRequestFromJson(
       ),
       message: $checkedConvert(
         'message',
-        (v) => ForumThreadMessageRequest.fromJson(v as Map<String, dynamic>),
+        (v) => v == null
+            ? _$missingForumThreadMessageRequest()
+            : ForumThreadMessageRequest.fromJson(v as Map<String, dynamic>),
       ),
     );
     return val;

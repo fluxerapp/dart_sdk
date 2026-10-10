@@ -29,6 +29,7 @@ class GroupDmInviteMetadataResponse {
       _$GroupDmInviteMetadataResponseFromJson(json);
 
   /// The unique invite code
+  @JsonKey(defaultValue: '')
   final String code;
 
   /// The user who created the invite
@@ -40,28 +41,38 @@ class GroupDmInviteMetadataResponse {
   final DateTime? expiresAt;
 
   /// Whether the invite grants temporary membership
+  @JsonKey(defaultValue: false)
   final bool temporary;
 
   /// The type of invite (group DM)
+  @JsonKey(defaultValue: 0)
   final num type;
 
   /// The group DM channel this invite is for
+  @JsonKey(defaultValue: _$missingChannelPartialResponse)
   final ChannelPartialResponse channel;
 
   /// The current member count of the group DM
-  @JsonKey(name: 'member_count')
+  @JsonKey(name: 'member_count', defaultValue: 0)
   final Int32Type memberCount;
 
   /// ISO8601 timestamp of when the invite was created
-  @JsonKey(name: 'created_at')
+  @JsonKey(name: 'created_at', defaultValue: _$missingDateTime)
   final DateTime createdAt;
 
   /// The number of times this invite has been used
+  @JsonKey(defaultValue: 0)
   final Int32Type uses;
 
   /// The maximum number of times this invite can be used
-  @JsonKey(name: 'max_uses')
+  @JsonKey(name: 'max_uses', defaultValue: 0)
   final Int32Type maxUses;
 
   Map<String, Object?> toJson() => _$GroupDmInviteMetadataResponseToJson(this);
 }
+
+ChannelPartialResponse _$missingChannelPartialResponse() =>
+    ChannelPartialResponse.fromJson(const <String, dynamic>{});
+
+DateTime _$missingDateTime() =>
+    DateTime.fromMillisecondsSinceEpoch(0, isUtc: true);

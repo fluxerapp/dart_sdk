@@ -12,7 +12,7 @@ _$GitHubWebhookCheckSuitePullRequestsFromJson(Map<String, dynamic> json) =>
       $checkedConvert,
     ) {
       final val = GitHubWebhookCheckSuitePullRequests(
-        number: $checkedConvert('number', (v) => (v as num).toInt()),
+        number: $checkedConvert('number', (v) => (v as num?)?.toInt() ?? 0),
       );
       return val;
     });

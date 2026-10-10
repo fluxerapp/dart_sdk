@@ -15,7 +15,7 @@ class EntranceSoundPlayRequest {
   factory EntranceSoundPlayRequest.fromJson(Map<String, Object?> json) =>
       _$EntranceSoundPlayRequestFromJson(json);
 
-  @JsonKey(name: 'sound_id')
+  @JsonKey(name: 'sound_id', defaultValue: '')
   final SnowflakeType soundId;
 
   Map<String, Object?> toJson() => _$EntranceSoundPlayRequestToJson(this);

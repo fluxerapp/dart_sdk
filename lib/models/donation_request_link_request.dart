@@ -14,6 +14,7 @@ class DonationRequestLinkRequest {
       _$DonationRequestLinkRequestFromJson(json);
 
   /// Email address to send the magic link to
+  @JsonKey(defaultValue: '')
   final String email;
 
   Map<String, Object?> toJson() => _$DonationRequestLinkRequestToJson(this);

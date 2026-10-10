@@ -12,20 +12,22 @@ _$StoreBillingContextResponseAppStoreFromJson(Map<String, dynamic> json) =>
       $checkedConvert,
     ) {
       final val = StoreBillingContextResponseAppStore(
-        enabled: $checkedConvert('enabled', (v) => v as bool),
+        enabled: $checkedConvert('enabled', (v) => v as bool? ?? false),
         bundleIds: $checkedConvert(
           'bundle_ids',
-          (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+          (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
         ),
         products: $checkedConvert(
           'products',
-          (v) => (v as List<dynamic>)
-              .map(
-                (e) => StoreBillingAppStoreProductResponse.fromJson(
-                  e as Map<String, dynamic>,
-                ),
-              )
-              .toList(),
+          (v) =>
+              (v as List<dynamic>?)
+                  ?.map(
+                    (e) => StoreBillingAppStoreProductResponse.fromJson(
+                      e as Map<String, dynamic>,
+                    ),
+                  )
+                  .toList() ??
+              [],
         ),
       );
       return val;

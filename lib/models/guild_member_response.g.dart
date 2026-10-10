@@ -14,18 +14,22 @@ GuildMemberResponse _$GuildMemberResponseFromJson(Map<String, dynamic> json) =>
         final val = GuildMemberResponse(
           user: $checkedConvert(
             'user',
-            (v) => UserPartialResponse.fromJson(v as Map<String, dynamic>),
+            (v) => v == null
+                ? _$missingUserPartialResponse()
+                : UserPartialResponse.fromJson(v as Map<String, dynamic>),
           ),
           roles: $checkedConvert(
             'roles',
-            (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+            (v) =>
+                (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
           ),
           joinedAt: $checkedConvert(
             'joined_at',
-            (v) => DateTime.parse(v as String),
+            (v) =>
+                v == null ? _$missingDateTime() : DateTime.parse(v as String),
           ),
-          mute: $checkedConvert('mute', (v) => v as bool),
-          deaf: $checkedConvert('deaf', (v) => v as bool),
+          mute: $checkedConvert('mute', (v) => v as bool? ?? false),
+          deaf: $checkedConvert('deaf', (v) => v as bool? ?? false),
           nick: $checkedConvert('nick', (v) => v as String?),
           avatar: $checkedConvert('avatar', (v) => v as String?),
           banner: $checkedConvert('banner', (v) => v as String?),

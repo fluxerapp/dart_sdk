@@ -27,13 +27,15 @@ class RecoverAccountResponse {
 
 @JsonSerializable()
 class RecoverAccountResponseVariant1 {
+  @JsonKey(defaultValue: '')
   final String token;
-  @JsonKey(name: 'user_id')
+  @JsonKey(name: 'user_id', defaultValue: '')
   final SnowflakeStringType userId;
+  @JsonKey(defaultValue: _$missingUserPartialResponse)
   final UserPartialResponse user;
-  @JsonKey(name: 'recovery_key')
+  @JsonKey(name: 'recovery_key', defaultValue: '')
   final String recoveryKey;
-  @JsonKey(name: 'recovery_kit_created_at')
+  @JsonKey(name: 'recovery_kit_created_at', defaultValue: _$missingDateTime)
   final DateTime recoveryKitCreatedAt;
 
   const RecoverAccountResponseVariant1({
@@ -52,17 +54,21 @@ class RecoverAccountResponseVariant1 {
 
 @JsonSerializable()
 class RecoverAccountResponseVariant2 {
+  @JsonKey(defaultValue: false)
   final bool mfa;
+  @JsonKey(defaultValue: '')
   final String ticket;
-  @JsonKey(name: 'allowed_methods')
+  @JsonKey(name: 'allowed_methods', defaultValue: <String>[])
   final List<String> allowedMethods;
+  @JsonKey(defaultValue: false)
   final bool totp;
+  @JsonKey(defaultValue: false)
   final bool webauthn;
-  @JsonKey(name: 'backup_codes')
+  @JsonKey(name: 'backup_codes', defaultValue: false)
   final bool backupCodes;
-  @JsonKey(name: 'recovery_key')
+  @JsonKey(name: 'recovery_key', defaultValue: '')
   final String recoveryKey;
-  @JsonKey(name: 'recovery_kit_created_at')
+  @JsonKey(name: 'recovery_kit_created_at', defaultValue: _$missingDateTime)
   final DateTime recoveryKitCreatedAt;
 
   const RecoverAccountResponseVariant2({
@@ -81,3 +87,9 @@ class RecoverAccountResponseVariant2 {
 
   Map<String, dynamic> toJson() => _$RecoverAccountResponseVariant2ToJson(this);
 }
+
+DateTime _$missingDateTime() =>
+    DateTime.fromMillisecondsSinceEpoch(0, isUtc: true);
+
+UserPartialResponse _$missingUserPartialResponse() =>
+    UserPartialResponse.fromJson(const <String, dynamic>{});

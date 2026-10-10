@@ -12,7 +12,7 @@ ClaimAppStoreTransactionRequest _$ClaimAppStoreTransactionRequestFromJson(
   final val = ClaimAppStoreTransactionRequest(
     signedTransaction: $checkedConvert(
       'signed_transaction',
-      (v) => v as String,
+      (v) => v as String? ?? '',
     ),
   );
   return val;

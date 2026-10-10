@@ -13,8 +13,8 @@ RefreshTokenTokenRequest _$RefreshTokenTokenRequestFromJson(
   json,
   ($checkedConvert) {
     final val = RefreshTokenTokenRequest(
-      grantType: $checkedConvert('grant_type', (v) => v as String),
-      refreshToken: $checkedConvert('refresh_token', (v) => v as String),
+      grantType: $checkedConvert('grant_type', (v) => v as String? ?? ''),
+      refreshToken: $checkedConvert('refresh_token', (v) => v as String? ?? ''),
       clientId: $checkedConvert('client_id', (v) => v as String?),
       clientSecret: $checkedConvert('client_secret', (v) => v as String?),
     );

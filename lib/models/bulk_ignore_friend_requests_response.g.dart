@@ -8,14 +8,16 @@ part of 'bulk_ignore_friend_requests_response.dart';
 
 BulkIgnoreFriendRequestsResponse _$BulkIgnoreFriendRequestsResponseFromJson(
   Map<String, dynamic> json,
-) => $checkedCreate('BulkIgnoreFriendRequestsResponse', json, (
-  $checkedConvert,
-) {
-  final val = BulkIgnoreFriendRequestsResponse(
-    ignoredCount: $checkedConvert('ignored_count', (v) => (v as num).toInt()),
-  );
-  return val;
-}, fieldKeyMap: const {'ignoredCount': 'ignored_count'});
+) =>
+    $checkedCreate('BulkIgnoreFriendRequestsResponse', json, ($checkedConvert) {
+      final val = BulkIgnoreFriendRequestsResponse(
+        ignoredCount: $checkedConvert(
+          'ignored_count',
+          (v) => (v as num?)?.toInt() ?? 0,
+        ),
+      );
+      return val;
+    }, fieldKeyMap: const {'ignoredCount': 'ignored_count'});
 
 Map<String, dynamic> _$BulkIgnoreFriendRequestsResponseToJson(
   BulkIgnoreFriendRequestsResponse instance,

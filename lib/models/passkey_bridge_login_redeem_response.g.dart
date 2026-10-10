@@ -15,7 +15,7 @@ _$PasskeyBridgeLoginRedeemResponseCancelledPasskeyBridgeLoginRedeemResponseFromJ
   ($checkedConvert) {
     final val =
         PasskeyBridgeLoginRedeemResponseCancelledPasskeyBridgeLoginRedeemResponse(
-          status: $checkedConvert('status', (v) => v as String),
+          status: $checkedConvert('status', (v) => v as String? ?? ''),
         );
     return val;
   },
@@ -36,12 +36,14 @@ _$PasskeyBridgeLoginRedeemResponseCompletedPasskeyBridgeLoginRedeemResponseFromJ
   ($checkedConvert) {
     final val =
         PasskeyBridgeLoginRedeemResponseCompletedPasskeyBridgeLoginRedeemResponse(
-          status: $checkedConvert('status', (v) => v as String),
-          token: $checkedConvert('token', (v) => v as String),
-          userId: $checkedConvert('user_id', (v) => v as String),
+          status: $checkedConvert('status', (v) => v as String? ?? ''),
+          token: $checkedConvert('token', (v) => v as String? ?? ''),
+          userId: $checkedConvert('user_id', (v) => v as String? ?? ''),
           user: $checkedConvert(
             'user',
-            (v) => UserPartialResponse.fromJson(v as Map<String, dynamic>),
+            (v) => v == null
+                ? _$missingUserPartialResponse()
+                : UserPartialResponse.fromJson(v as Map<String, dynamic>),
           ),
         );
     return val;

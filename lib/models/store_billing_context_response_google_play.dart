@@ -21,13 +21,15 @@ class StoreBillingContextResponseGooglePlay {
   ) => _$StoreBillingContextResponseGooglePlayFromJson(json);
 
   /// Whether Google Play purchases are accepted
+  @JsonKey(defaultValue: false)
   final bool enabled;
 
   /// App package names whose purchases are accepted
-  @JsonKey(name: 'package_names')
+  @JsonKey(name: 'package_names', defaultValue: <String>[])
   final List<String> packageNames;
 
   /// Google Play products on sale
+  @JsonKey(defaultValue: <StoreBillingGooglePlayProductResponse>[])
   final List<StoreBillingGooglePlayProductResponse> products;
 
   Map<String, Object?> toJson() =>

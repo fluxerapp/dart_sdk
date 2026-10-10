@@ -13,10 +13,10 @@ RecoveryKitCreateResponse _$RecoveryKitCreateResponseFromJson(
   json,
   ($checkedConvert) {
     final val = RecoveryKitCreateResponse(
-      recoveryKey: $checkedConvert('recovery_key', (v) => v as String),
+      recoveryKey: $checkedConvert('recovery_key', (v) => v as String? ?? ''),
       createdAt: $checkedConvert(
         'created_at',
-        (v) => DateTime.parse(v as String),
+        (v) => v == null ? _$missingDateTime() : DateTime.parse(v as String),
       ),
     );
     return val;

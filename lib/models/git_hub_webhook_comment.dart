@@ -22,13 +22,19 @@ class GitHubWebhookComment {
   factory GitHubWebhookComment.fromJson(Map<String, Object?> json) =>
       _$GitHubWebhookCommentFromJson(json);
 
+  @JsonKey(defaultValue: '')
   final Int64Type id;
-  @JsonKey(name: 'html_url')
+  @JsonKey(name: 'html_url', defaultValue: '')
   final String htmlUrl;
+  @JsonKey(defaultValue: _$missingGitHubWebhookCommentUser)
   final GitHubWebhookCommentUser user;
   @JsonKey(includeIfNull: false, name: 'commit_id')
   final String? commitId;
+  @JsonKey(defaultValue: '')
   final String body;
 
   Map<String, Object?> toJson() => _$GitHubWebhookCommentToJson(this);
 }
+
+GitHubWebhookCommentUser _$missingGitHubWebhookCommentUser() =>
+    GitHubWebhookCommentUser.fromJson(const <String, dynamic>{});

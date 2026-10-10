@@ -24,17 +24,19 @@ class SavedMessageEntryResponse {
       _$SavedMessageEntryResponseFromJson(json);
 
   /// Unique identifier for the saved message entry
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
 
   /// ID of the channel containing the message
-  @JsonKey(name: 'channel_id')
+  @JsonKey(name: 'channel_id', defaultValue: '')
   final SnowflakeStringType channelId;
 
   /// ID of the saved message
-  @JsonKey(name: 'message_id')
+  @JsonKey(name: 'message_id', defaultValue: '')
   final SnowflakeStringType messageId;
 
   /// Availability status of the saved message
+  @JsonKey(defaultValue: SavedMessageStatusSchema.$unknown)
   final SavedMessageStatusSchema status;
 
   /// The message content if available

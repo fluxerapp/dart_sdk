@@ -23,17 +23,22 @@ class GiftCodeResponse {
       _$GiftCodeResponseFromJson(json);
 
   /// The unique gift code string
+  @JsonKey(defaultValue: '')
   final String code;
 
   /// Duration unit for the gift entitlement
-  @JsonKey(name: 'duration_type')
+  @JsonKey(
+    name: 'duration_type',
+    defaultValue: GiftCodeDurationTypeSchema.$unknown,
+  )
   final GiftCodeDurationTypeSchema durationType;
 
   /// Duration quantity for the selected duration unit
-  @JsonKey(name: 'duration_quantity')
+  @JsonKey(name: 'duration_quantity', defaultValue: 0)
   final int durationQuantity;
 
   /// Whether the gift code has been redeemed
+  @JsonKey(defaultValue: false)
   final bool redeemed;
 
   /// The user who created the gift code

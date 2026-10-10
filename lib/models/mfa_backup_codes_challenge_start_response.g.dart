@@ -13,11 +13,14 @@ _$MfaBackupCodesChallengeStartResponseFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = MfaBackupCodesChallengeStartResponse(
-          ticket: $checkedConvert('ticket', (v) => v as String),
-          codeExpiresAt: $checkedConvert('code_expires_at', (v) => v as String),
+          ticket: $checkedConvert('ticket', (v) => v as String? ?? ''),
+          codeExpiresAt: $checkedConvert(
+            'code_expires_at',
+            (v) => v as String? ?? '',
+          ),
           resendAvailableAt: $checkedConvert(
             'resend_available_at',
-            (v) => v as String,
+            (v) => v as String? ?? '',
           ),
         );
         return val;

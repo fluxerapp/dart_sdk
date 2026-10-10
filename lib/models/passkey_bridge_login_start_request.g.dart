@@ -12,13 +12,17 @@ PasskeyBridgeLoginStartRequest _$PasskeyBridgeLoginStartRequestFromJson(
   final val = PasskeyBridgeLoginStartRequest(
     purpose: $checkedConvert(
       'purpose',
-      (v) => PasskeyBridgeLoginStartRequestPurposePurpose.fromJson(v as String),
+      (v) => v == null
+          ? PasskeyBridgeLoginStartRequestPurposePurpose.$unknown
+          : PasskeyBridgeLoginStartRequestPurposePurpose.fromJson(v as String),
     ),
     runner: $checkedConvert(
       'runner',
-      (v) => PasskeyBridgeRunner.fromJson(v as String),
+      (v) => v == null
+          ? PasskeyBridgeRunner.$unknown
+          : PasskeyBridgeRunner.fromJson(v as String),
     ),
-    nonceHash: $checkedConvert('nonce_hash', (v) => v as String),
+    nonceHash: $checkedConvert('nonce_hash', (v) => v as String? ?? ''),
     ticket: $checkedConvert('ticket', (v) => v as String?),
   );
   return val;

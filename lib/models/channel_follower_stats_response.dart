@@ -19,11 +19,11 @@ class ChannelFollowerStatsResponse {
       _$ChannelFollowerStatsResponseFromJson(json);
 
   /// The number of channels following this announcement channel
-  @JsonKey(name: 'channel_count')
+  @JsonKey(name: 'channel_count', defaultValue: 0)
   final Int32Type channelCount;
 
   /// The number of distinct guilds following this announcement channel
-  @JsonKey(name: 'guild_count')
+  @JsonKey(name: 'guild_count', defaultValue: 0)
   final Int32Type guildCount;
 
   Map<String, Object?> toJson() => _$ChannelFollowerStatsResponseToJson(this);

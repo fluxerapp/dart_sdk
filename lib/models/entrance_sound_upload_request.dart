@@ -16,9 +16,11 @@ class EntranceSoundUploadRequest {
       _$EntranceSoundUploadRequestFromJson(json);
 
   /// Display label for the sound
+  @JsonKey(defaultValue: '')
   final String name;
 
   /// Base64-encoded audio bytes
+  @JsonKey(defaultValue: '')
   final Base64ImageType audio;
 
   Map<String, Object?> toJson() => _$EntranceSoundUploadRequestToJson(this);

@@ -9,7 +9,7 @@ part of 'email_token_response.dart';
 EmailTokenResponse _$EmailTokenResponseFromJson(Map<String, dynamic> json) =>
     $checkedCreate('EmailTokenResponse', json, ($checkedConvert) {
       final val = EmailTokenResponse(
-        emailToken: $checkedConvert('email_token', (v) => v as String),
+        emailToken: $checkedConvert('email_token', (v) => v as String? ?? ''),
       );
       return val;
     }, fieldKeyMap: const {'emailToken': 'email_token'});

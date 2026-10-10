@@ -26,6 +26,7 @@ class PremiumBillingSubscriptionResponse {
     Map<String, Object?> json,
   ) => _$PremiumBillingSubscriptionResponseFromJson(json);
 
+  @JsonKey(defaultValue: '')
   final String id;
   @JsonKey(includeIfNull: true)
   final String? status;
@@ -33,7 +34,7 @@ class PremiumBillingSubscriptionResponse {
   final String? currentPeriodStart;
   @JsonKey(includeIfNull: true, name: 'current_period_end')
   final String? currentPeriodEnd;
-  @JsonKey(name: 'cancel_at_period_end')
+  @JsonKey(name: 'cancel_at_period_end', defaultValue: false)
   final bool cancelAtPeriodEnd;
   @JsonKey(includeIfNull: true, name: 'cancel_at')
   final String? cancelAt;

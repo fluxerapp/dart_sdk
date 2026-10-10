@@ -48,23 +48,33 @@ class WellKnownFluxerResponse {
   final String? codename;
 
   /// Version of the API server code
-  @JsonKey(name: 'api_code_version')
+  @JsonKey(name: 'api_code_version', defaultValue: 0)
   final int apiCodeVersion;
+  @JsonKey(defaultValue: _$missingInstanceEndpointsSchema)
   final InstanceEndpointsSchema endpoints;
+  @JsonKey(defaultValue: _$missingInstanceCaptchaSchema)
   final InstanceCaptchaSchema captcha;
+  @JsonKey(defaultValue: _$missingInstanceFeaturesSchema)
   final InstanceFeaturesSchema features;
+  @JsonKey(defaultValue: _$missingInstanceGifSchema)
   final InstanceGifSchema gif;
+  @JsonKey(defaultValue: _$missingInstanceSsoSchema)
   final InstanceSsoSchema sso;
+  @JsonKey(defaultValue: _$missingInstanceRegistrationSchema)
   final InstanceRegistrationSchema registration;
+  @JsonKey(defaultValue: _$missingInstanceCommunitySchema)
   final InstanceCommunitySchema community;
+  @JsonKey(defaultValue: _$missingInstanceServicesSchema)
   final InstanceServicesSchema services;
 
   /// Limit configuration with rules and trait definitions
+  @JsonKey(defaultValue: _$missingWellKnownFluxerResponseLimits)
   final WellKnownFluxerResponseLimits limits;
+  @JsonKey(defaultValue: _$missingInstancePushSchema)
   final InstancePushSchema push;
 
   /// Public application configuration for client-side features
-  @JsonKey(name: 'app_public')
+  @JsonKey(name: 'app_public', defaultValue: _$missingInstanceAppPublicSchema)
   final InstanceAppPublicSchema appPublic;
   @JsonKey(includeIfNull: false, name: 'age_policy')
   final InstanceAgePolicySchema? agePolicy;
@@ -75,3 +85,36 @@ class WellKnownFluxerResponse {
 
   Map<String, Object?> toJson() => _$WellKnownFluxerResponseToJson(this);
 }
+
+InstanceAppPublicSchema _$missingInstanceAppPublicSchema() =>
+    InstanceAppPublicSchema.fromJson(const <String, dynamic>{});
+
+InstanceCaptchaSchema _$missingInstanceCaptchaSchema() =>
+    InstanceCaptchaSchema.fromJson(const <String, dynamic>{});
+
+InstanceCommunitySchema _$missingInstanceCommunitySchema() =>
+    InstanceCommunitySchema.fromJson(const <String, dynamic>{});
+
+InstanceEndpointsSchema _$missingInstanceEndpointsSchema() =>
+    InstanceEndpointsSchema.fromJson(const <String, dynamic>{});
+
+InstanceFeaturesSchema _$missingInstanceFeaturesSchema() =>
+    InstanceFeaturesSchema.fromJson(const <String, dynamic>{});
+
+InstanceGifSchema _$missingInstanceGifSchema() =>
+    InstanceGifSchema.fromJson(const <String, dynamic>{});
+
+InstancePushSchema _$missingInstancePushSchema() =>
+    InstancePushSchema.fromJson(const <String, dynamic>{});
+
+InstanceRegistrationSchema _$missingInstanceRegistrationSchema() =>
+    InstanceRegistrationSchema.fromJson(const <String, dynamic>{});
+
+InstanceServicesSchema _$missingInstanceServicesSchema() =>
+    InstanceServicesSchema.fromJson(const <String, dynamic>{});
+
+InstanceSsoSchema _$missingInstanceSsoSchema() =>
+    InstanceSsoSchema.fromJson(const <String, dynamic>{});
+
+WellKnownFluxerResponseLimits _$missingWellKnownFluxerResponseLimits() =>
+    WellKnownFluxerResponseLimits.fromJson(const <String, dynamic>{});

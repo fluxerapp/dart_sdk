@@ -24,6 +24,7 @@ class MessageReactionResponseEmoji {
   final SnowflakeStringType? id;
 
   /// The name of the emoji (or Unicode character for standard emojis)
+  @JsonKey(defaultValue: '')
   final String name;
 
   /// Whether the emoji is animated

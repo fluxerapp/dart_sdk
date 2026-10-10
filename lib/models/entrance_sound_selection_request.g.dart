@@ -10,7 +10,7 @@ EntranceSoundSelectionRequest _$EntranceSoundSelectionRequestFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('EntranceSoundSelectionRequest', json, ($checkedConvert) {
   final val = EntranceSoundSelectionRequest(
-    scopeId: $checkedConvert('scope_id', (v) => v as String),
+    scopeId: $checkedConvert('scope_id', (v) => v as String? ?? ''),
     soundId: $checkedConvert('sound_id', (v) => v as String?),
   );
   return val;

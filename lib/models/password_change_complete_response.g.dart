@@ -10,10 +10,10 @@ PasswordChangeCompleteResponse _$PasswordChangeCompleteResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('PasswordChangeCompleteResponse', json, ($checkedConvert) {
   final val = PasswordChangeCompleteResponse(
-    token: $checkedConvert('token', (v) => v as String),
+    token: $checkedConvert('token', (v) => v as String? ?? ''),
     authSessionIdHash: $checkedConvert(
       'auth_session_id_hash',
-      (v) => v as String,
+      (v) => v as String? ?? '',
     ),
   );
   return val;

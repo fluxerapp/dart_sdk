@@ -24,9 +24,14 @@ class ChannelUpdateRequestBodyVariant1PermissionOverwrites {
   ) => _$ChannelUpdateRequestBodyVariant1PermissionOverwritesFromJson(json);
 
   /// The ID of the role or user to overwrite permissions for
+  @JsonKey(defaultValue: '')
   final SnowflakeType id;
 
   /// The type of overwrite (0 = role, 1 = member)
+  @JsonKey(
+    defaultValue:
+        ChannelUpdateRequestBodyVariant1PermissionOverwritesTypeType.$unknown,
+  )
   final ChannelUpdateRequestBodyVariant1PermissionOverwritesTypeType type;
 
   /// Bitwise value of allowed permissions

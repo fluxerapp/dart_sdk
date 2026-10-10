@@ -13,7 +13,7 @@ HandoffInfoResponse _$HandoffInfoResponseFromJson(
   json,
   ($checkedConvert) {
     final val = HandoffInfoResponse(
-      status: $checkedConvert('status', (v) => v as String),
+      status: $checkedConvert('status', (v) => v as String? ?? ''),
       clientInfo: $checkedConvert(
         'client_info',
         (v) => v == null

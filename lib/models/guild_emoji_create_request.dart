@@ -16,9 +16,11 @@ class GuildEmojiCreateRequest {
       _$GuildEmojiCreateRequestFromJson(json);
 
   /// The name of the emoji (2-32 characters, alphanumeric and underscores only)
+  @JsonKey(defaultValue: '')
   final String name;
 
   /// Base64-encoded image data for the emoji
+  @JsonKey(defaultValue: '')
   final Base64ImageType image;
 
   Map<String, Object?> toJson() => _$GuildEmojiCreateRequestToJson(this);

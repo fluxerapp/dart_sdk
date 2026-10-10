@@ -10,8 +10,8 @@ PasswordChangeVerifyRequest _$PasswordChangeVerifyRequestFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('PasswordChangeVerifyRequest', json, ($checkedConvert) {
   final val = PasswordChangeVerifyRequest(
-    ticket: $checkedConvert('ticket', (v) => v as String),
-    code: $checkedConvert('code', (v) => v as String),
+    ticket: $checkedConvert('ticket', (v) => v as String? ?? ''),
+    code: $checkedConvert('code', (v) => v as String? ?? ''),
   );
   return val;
 });

@@ -12,13 +12,15 @@ BulkMessageFetchRequest _$BulkMessageFetchRequestFromJson(
   final val = BulkMessageFetchRequest(
     requests: $checkedConvert(
       'requests',
-      (v) => (v as List<dynamic>)
-          .map(
-            (e) => BulkMessageFetchRequestRequests.fromJson(
-              e as Map<String, dynamic>,
-            ),
-          )
-          .toList(),
+      (v) =>
+          (v as List<dynamic>?)
+              ?.map(
+                (e) => BulkMessageFetchRequestRequests.fromJson(
+                  e as Map<String, dynamic>,
+                ),
+              )
+              .toList() ??
+          [],
     ),
   );
   return val;

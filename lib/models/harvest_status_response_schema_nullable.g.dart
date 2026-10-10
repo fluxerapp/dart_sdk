@@ -14,17 +14,22 @@ _$HarvestStatusResponseSchemaNullableVariant1FromJson(
   json,
   ($checkedConvert) {
     final val = HarvestStatusResponseSchemaNullableVariant1(
-      harvestId: $checkedConvert('harvest_id', (v) => v as String),
+      harvestId: $checkedConvert('harvest_id', (v) => v as String? ?? ''),
       status: $checkedConvert(
         'status',
-        (v) => HarvestStatus.fromJson(v as String),
+        (v) => v == null
+            ? HarvestStatus.$unknown
+            : HarvestStatus.fromJson(v as String),
       ),
-      createdAt: $checkedConvert('created_at', (v) => v as String),
+      createdAt: $checkedConvert('created_at', (v) => v as String? ?? ''),
       startedAt: $checkedConvert('started_at', (v) => v as String?),
       completedAt: $checkedConvert('completed_at', (v) => v as String?),
       failedAt: $checkedConvert('failed_at', (v) => v as String?),
       fileSize: $checkedConvert('file_size', (v) => v as String?),
-      progressPercent: $checkedConvert('progress_percent', (v) => v as num),
+      progressPercent: $checkedConvert(
+        'progress_percent',
+        (v) => v as num? ?? 0,
+      ),
       progressStep: $checkedConvert('progress_step', (v) => v as String?),
       errorMessage: $checkedConvert('error_message', (v) => v as String?),
       downloadUrlExpiresAt: $checkedConvert(

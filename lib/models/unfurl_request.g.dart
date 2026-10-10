@@ -9,7 +9,7 @@ part of 'unfurl_request.dart';
 UnfurlRequest _$UnfurlRequestFromJson(Map<String, dynamic> json) =>
     $checkedCreate('UnfurlRequest', json, ($checkedConvert) {
       final val = UnfurlRequest(
-        url: $checkedConvert('url', (v) => v as String),
+        url: $checkedConvert('url', (v) => v as String? ?? ''),
       );
       return val;
     });

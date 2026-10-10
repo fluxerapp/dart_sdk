@@ -13,7 +13,7 @@ WebAuthnCredentialUpdateRequest _$WebAuthnCredentialUpdateRequestFromJson(
   json,
   ($checkedConvert) {
     final val = WebAuthnCredentialUpdateRequest(
-      name: $checkedConvert('name', (v) => v as String),
+      name: $checkedConvert('name', (v) => v as String? ?? ''),
       password: $checkedConvert('password', (v) => v as String?),
       mfaMethod: $checkedConvert(
         'mfa_method',

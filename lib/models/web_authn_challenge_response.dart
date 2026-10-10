@@ -14,6 +14,7 @@ class WebAuthnChallengeResponse {
       _$WebAuthnChallengeResponseFromJson(json);
 
   /// The WebAuthn challenge
+  @JsonKey(defaultValue: '')
   final String challenge;
 
   Map<String, Object?> toJson() => _$WebAuthnChallengeResponseToJson(this);

@@ -14,7 +14,7 @@ class BulkIgnoreFriendRequestsResponse {
     Map<String, Object?> json,
   ) => _$BulkIgnoreFriendRequestsResponseFromJson(json);
 
-  @JsonKey(name: 'ignored_count')
+  @JsonKey(name: 'ignored_count', defaultValue: 0)
   final int ignoredCount;
 
   Map<String, Object?> toJson() =>

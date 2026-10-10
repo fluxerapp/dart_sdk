@@ -17,6 +17,7 @@ class InstanceAgePolicySchema {
       _$InstanceAgePolicySchemaFromJson(json);
 
   /// Regions with an age policy
+  @JsonKey(defaultValue: <InstanceAgePolicyGeoSchema>[])
   final List<InstanceAgePolicyGeoSchema> geos;
 
   Map<String, Object?> toJson() => _$InstanceAgePolicySchemaToJson(this);

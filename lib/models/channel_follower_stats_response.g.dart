@@ -13,8 +13,14 @@ ChannelFollowerStatsResponse _$ChannelFollowerStatsResponseFromJson(
   json,
   ($checkedConvert) {
     final val = ChannelFollowerStatsResponse(
-      channelCount: $checkedConvert('channel_count', (v) => (v as num).toInt()),
-      guildCount: $checkedConvert('guild_count', (v) => (v as num).toInt()),
+      channelCount: $checkedConvert(
+        'channel_count',
+        (v) => (v as num?)?.toInt() ?? 0,
+      ),
+      guildCount: $checkedConvert(
+        'guild_count',
+        (v) => (v as num?)?.toInt() ?? 0,
+      ),
     );
     return val;
   },

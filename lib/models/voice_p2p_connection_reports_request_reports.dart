@@ -34,7 +34,7 @@ class VoiceP2pConnectionReportsRequestReports {
   ) => _$VoiceP2pConnectionReportsRequestReportsFromJson(json);
 
   /// The voice channel or private channel of the call
-  @JsonKey(name: 'channel_id')
+  @JsonKey(name: 'channel_id', defaultValue: '')
   final SnowflakeType channelId;
 
   /// The guild of the voice channel, null for a call
@@ -42,10 +42,14 @@ class VoiceP2pConnectionReportsRequestReports {
   final SnowflakeType? guildId;
 
   /// Participants in the call when the peer connection settled
-  @JsonKey(name: 'participant_count')
+  @JsonKey(name: 'participant_count', defaultValue: 0)
   final int participantCount;
 
   /// How the peer connection settled
+  @JsonKey(
+    defaultValue:
+        VoiceP2pConnectionReportsRequestReportsOutcomeOutcome.$unknown,
+  )
   final VoiceP2pConnectionReportsRequestReportsOutcomeOutcome outcome;
 
   /// ICE candidate type of one end of the selected candidate pair
@@ -71,7 +75,7 @@ class VoiceP2pConnectionReportsRequestReports {
   final Int32Type? setupMs;
 
   /// Whether the peer connection ran an ICE restart
-  @JsonKey(name: 'ice_restarted')
+  @JsonKey(name: 'ice_restarted', defaultValue: false)
   final bool iceRestarted;
 
   Map<String, Object?> toJson() =>

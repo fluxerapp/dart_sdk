@@ -30,6 +30,7 @@ class HandoffInfoResponseClientInfo {
   final String? os;
 
   /// Device class of the requesting device, decided by the server
+  @JsonKey(defaultValue: HandoffInfoResponseClientInfoDeviceDevice.$unknown)
   final HandoffInfoResponseClientInfoDeviceDevice device;
 
   /// The approximate location of the requesting device

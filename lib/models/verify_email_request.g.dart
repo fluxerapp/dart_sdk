@@ -9,7 +9,7 @@ part of 'verify_email_request.dart';
 VerifyEmailRequest _$VerifyEmailRequestFromJson(Map<String, dynamic> json) =>
     $checkedCreate('VerifyEmailRequest', json, ($checkedConvert) {
       final val = VerifyEmailRequest(
-        token: $checkedConvert('token', (v) => v as String),
+        token: $checkedConvert('token', (v) => v as String? ?? ''),
       );
       return val;
     });

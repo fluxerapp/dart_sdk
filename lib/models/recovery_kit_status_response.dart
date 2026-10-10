@@ -17,7 +17,7 @@ class RecoveryKitStatusResponse {
       _$RecoveryKitStatusResponseFromJson(json);
 
   /// Whether the account has a recovery kit
-  @JsonKey(name: 'has_recovery_kit')
+  @JsonKey(name: 'has_recovery_kit', defaultValue: false)
   final bool hasRecoveryKit;
 
   /// ISO 8601 timestamp when the current recovery kit was created

@@ -30,7 +30,9 @@ class StartThreadRequestBody {
 
 @JsonSerializable()
 class StartThreadRequestBodyStartThreadRequest {
+  @JsonKey(defaultValue: '')
   final String name;
+  @JsonKey(defaultValue: ThreadChannelType.$unknown)
   final ThreadChannelType type;
   @JsonKey(includeIfNull: false, name: 'auto_archive_duration')
   final ThreadAutoArchiveDurationSchema? autoArchiveDuration;
@@ -57,6 +59,7 @@ class StartThreadRequestBodyStartThreadRequest {
 
 @JsonSerializable()
 class StartThreadRequestBodyStartForumThreadRequest {
+  @JsonKey(defaultValue: '')
   final String name;
   @JsonKey(includeIfNull: false)
   final Int32Type? type;
@@ -66,6 +69,7 @@ class StartThreadRequestBodyStartForumThreadRequest {
   final Int32Type? rateLimitPerUser;
   @JsonKey(includeIfNull: false, name: 'applied_tags')
   final List<SnowflakeType>? appliedTags;
+  @JsonKey(defaultValue: _$missingForumThreadMessageRequest)
   final ForumThreadMessageRequest message;
 
   const StartThreadRequestBodyStartForumThreadRequest({
@@ -84,3 +88,6 @@ class StartThreadRequestBodyStartForumThreadRequest {
   Map<String, dynamic> toJson() =>
       _$StartThreadRequestBodyStartForumThreadRequestToJson(this);
 }
+
+ForumThreadMessageRequest _$missingForumThreadMessageRequest() =>
+    ForumThreadMessageRequest.fromJson(const <String, dynamic>{});

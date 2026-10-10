@@ -37,6 +37,7 @@ class MessageSnapshotResponse {
   final String? content;
 
   /// The ISO 8601 timestamp of when the original message was created
+  @JsonKey(defaultValue: _$missingDateTime)
   final DateTime timestamp;
 
   /// The ISO 8601 timestamp of when the original message was last edited
@@ -66,8 +67,13 @@ class MessageSnapshotResponse {
   /// The stickers included in the snapshot
   @JsonKey(includeIfNull: false)
   final List<MessageStickerResponse>? stickers;
+  @JsonKey(defaultValue: MessageType.$unknown)
   final MessageType type;
+  @JsonKey(defaultValue: 0)
   final MessageFlags flags;
 
   Map<String, Object?> toJson() => _$MessageSnapshotResponseToJson(this);
 }
+
+DateTime _$missingDateTime() =>
+    DateTime.fromMillisecondsSinceEpoch(0, isUtc: true);

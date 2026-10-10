@@ -14,13 +14,15 @@ _$ChannelUpdateRequestBodyVariant1PermissionOverwritesFromJson(
   json,
   ($checkedConvert) {
     final val = ChannelUpdateRequestBodyVariant1PermissionOverwrites(
-      id: $checkedConvert('id', (v) => v as String),
+      id: $checkedConvert('id', (v) => v as String? ?? ''),
       type: $checkedConvert(
         'type',
-        (v) =>
-            ChannelUpdateRequestBodyVariant1PermissionOverwritesTypeType.fromJson(
-              (v as num).toInt(),
-            ),
+        (v) => v == null
+            ? ChannelUpdateRequestBodyVariant1PermissionOverwritesTypeType
+                  .$unknown
+            : ChannelUpdateRequestBodyVariant1PermissionOverwritesTypeType.fromJson(
+                (v as num).toInt(),
+              ),
       ),
       allow: $checkedConvert('allow', (v) => v as String?),
       deny: $checkedConvert('deny', (v) => v as String?),

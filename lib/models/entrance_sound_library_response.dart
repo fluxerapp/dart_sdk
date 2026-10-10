@@ -19,7 +19,9 @@ class EntranceSoundLibraryResponse {
   factory EntranceSoundLibraryResponse.fromJson(Map<String, Object?> json) =>
       _$EntranceSoundLibraryResponseFromJson(json);
 
+  @JsonKey(defaultValue: <EntranceSoundResponse>[])
   final List<EntranceSoundResponse> sounds;
+  @JsonKey(defaultValue: <EntranceSoundLibraryResponseSelections>[])
   final List<EntranceSoundLibraryResponseSelections> selections;
 
   Map<String, Object?> toJson() => _$EntranceSoundLibraryResponseToJson(this);

@@ -85,12 +85,21 @@ dart pub get
 dart run openapi_sdk_gen --file openapi_generator.yaml
 end_group
 
+start_group "Tolerating missing response fields"
+dart run scripts/tolerate_missing_fields.dart
+end_group
+
 start_group "Running build_runner"
 dart run build_runner build
 end_group
 
 start_group "Applying Dart fixes"
 dart fix --apply
+end_group
+
+start_group "Checking that models parse sparse responses"
+dart format test/serialization/model_factories.dart
+dart test test/serialization
 end_group
 
 if [[ "$MODE" == "regenerate" ]]; then

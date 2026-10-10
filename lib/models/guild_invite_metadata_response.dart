@@ -33,6 +33,7 @@ class GuildInviteMetadataResponse {
       _$GuildInviteMetadataResponseFromJson(json);
 
   /// The unique invite code
+  @JsonKey(defaultValue: '')
   final String code;
 
   /// The user who created the invite
@@ -44,39 +45,53 @@ class GuildInviteMetadataResponse {
   final DateTime? expiresAt;
 
   /// Whether the invite grants temporary membership
+  @JsonKey(defaultValue: false)
   final bool temporary;
 
   /// The type of invite (guild)
+  @JsonKey(defaultValue: 0)
   final num type;
 
   /// The guild this invite is for
+  @JsonKey(defaultValue: _$missingGuildPartialResponse)
   final GuildPartialResponse guild;
 
   /// The channel this invite is for
+  @JsonKey(defaultValue: _$missingChannelPartialResponse)
   final ChannelPartialResponse channel;
 
   /// The approximate total member count of the guild
-  @JsonKey(name: 'member_count')
+  @JsonKey(name: 'member_count', defaultValue: 0)
   final Int32Type memberCount;
 
   /// The approximate online member count of the guild
-  @JsonKey(name: 'presence_count')
+  @JsonKey(name: 'presence_count', defaultValue: 0)
   final Int32Type presenceCount;
 
   /// ISO8601 timestamp of when the invite was created
-  @JsonKey(name: 'created_at')
+  @JsonKey(name: 'created_at', defaultValue: _$missingDateTime)
   final DateTime createdAt;
 
   /// The number of times this invite has been used
+  @JsonKey(defaultValue: 0)
   final Int32Type uses;
 
   /// The maximum number of times this invite can be used
-  @JsonKey(name: 'max_uses')
+  @JsonKey(name: 'max_uses', defaultValue: 0)
   final Int32Type maxUses;
 
   /// The duration in seconds before the invite expires
-  @JsonKey(name: 'max_age')
+  @JsonKey(name: 'max_age', defaultValue: 0)
   final Int32Type maxAge;
 
   Map<String, Object?> toJson() => _$GuildInviteMetadataResponseToJson(this);
 }
+
+ChannelPartialResponse _$missingChannelPartialResponse() =>
+    ChannelPartialResponse.fromJson(const <String, dynamic>{});
+
+DateTime _$missingDateTime() =>
+    DateTime.fromMillisecondsSinceEpoch(0, isUtc: true);
+
+GuildPartialResponse _$missingGuildPartialResponse() =>
+    GuildPartialResponse.fromJson(const <String, dynamic>{});

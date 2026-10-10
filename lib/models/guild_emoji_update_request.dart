@@ -14,6 +14,7 @@ class GuildEmojiUpdateRequest {
       _$GuildEmojiUpdateRequestFromJson(json);
 
   /// The name of the emoji (2-32 characters, alphanumeric and underscores only)
+  @JsonKey(defaultValue: '')
   final String name;
 
   Map<String, Object?> toJson() => _$GuildEmojiUpdateRequestToJson(this);

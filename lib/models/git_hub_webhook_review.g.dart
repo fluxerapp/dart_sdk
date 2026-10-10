@@ -11,10 +11,12 @@ GitHubWebhookReview _$GitHubWebhookReviewFromJson(Map<String, dynamic> json) =>
       final val = GitHubWebhookReview(
         user: $checkedConvert(
           'user',
-          (v) => GitHubWebhookReviewUser.fromJson(v as Map<String, dynamic>),
+          (v) => v == null
+              ? _$missingGitHubWebhookReviewUser()
+              : GitHubWebhookReviewUser.fromJson(v as Map<String, dynamic>),
         ),
-        htmlUrl: $checkedConvert('html_url', (v) => v as String),
-        state: $checkedConvert('state', (v) => v as String),
+        htmlUrl: $checkedConvert('html_url', (v) => v as String? ?? ''),
+        state: $checkedConvert('state', (v) => v as String? ?? ''),
         body: $checkedConvert('body', (v) => v as String?),
       );
       return val;

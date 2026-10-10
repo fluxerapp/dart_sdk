@@ -12,7 +12,7 @@ InstanceSetupSchema _$InstanceSetupSchemaFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = InstanceSetupSchema(
-          configured: $checkedConvert('configured', (v) => v as bool),
+          configured: $checkedConvert('configured', (v) => v as bool? ?? false),
           adminUrl: $checkedConvert('admin_url', (v) => v as String?),
           accountIdentityLocked: $checkedConvert(
             'account_identity_locked',

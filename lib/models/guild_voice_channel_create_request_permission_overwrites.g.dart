@@ -9,25 +9,24 @@ part of 'guild_voice_channel_create_request_permission_overwrites.dart';
 GuildVoiceChannelCreateRequestPermissionOverwrites
 _$GuildVoiceChannelCreateRequestPermissionOverwritesFromJson(
   Map<String, dynamic> json,
-) => $checkedCreate(
-  'GuildVoiceChannelCreateRequestPermissionOverwrites',
-  json,
-  ($checkedConvert) {
-    final val = GuildVoiceChannelCreateRequestPermissionOverwrites(
-      id: $checkedConvert('id', (v) => v as String),
-      type: $checkedConvert(
-        'type',
-        (v) =>
-            GuildVoiceChannelCreateRequestPermissionOverwritesTypeType.fromJson(
+) => $checkedCreate('GuildVoiceChannelCreateRequestPermissionOverwrites', json, (
+  $checkedConvert,
+) {
+  final val = GuildVoiceChannelCreateRequestPermissionOverwrites(
+    id: $checkedConvert('id', (v) => v as String? ?? ''),
+    type: $checkedConvert(
+      'type',
+      (v) => v == null
+          ? GuildVoiceChannelCreateRequestPermissionOverwritesTypeType.$unknown
+          : GuildVoiceChannelCreateRequestPermissionOverwritesTypeType.fromJson(
               (v as num).toInt(),
             ),
-      ),
-      allow: $checkedConvert('allow', (v) => v as String?),
-      deny: $checkedConvert('deny', (v) => v as String?),
-    );
-    return val;
-  },
-);
+    ),
+    allow: $checkedConvert('allow', (v) => v as String?),
+    deny: $checkedConvert('deny', (v) => v as String?),
+  );
+  return val;
+});
 
 Map<String, dynamic> _$GuildVoiceChannelCreateRequestPermissionOverwritesToJson(
   GuildVoiceChannelCreateRequestPermissionOverwrites instance,

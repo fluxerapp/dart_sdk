@@ -13,10 +13,12 @@ ChannelResponse _$ChannelResponseFromJson(
   json,
   ($checkedConvert) {
     final val = ChannelResponse(
-      id: $checkedConvert('id', (v) => v as String),
+      id: $checkedConvert('id', (v) => v as String? ?? ''),
       type: $checkedConvert(
         'type',
-        (v) => ChannelType.fromJson((v as num).toInt()),
+        (v) => v == null
+            ? ChannelType.$unknown
+            : ChannelType.fromJson((v as num).toInt()),
       ),
       rtcRegion: $checkedConvert('rtc_region', (v) => v as String?),
       topic: $checkedConvert('topic', (v) => v as String?),

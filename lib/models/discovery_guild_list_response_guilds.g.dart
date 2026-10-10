@@ -13,20 +13,23 @@ DiscoveryGuildListResponseGuilds _$DiscoveryGuildListResponseGuildsFromJson(
   json,
   ($checkedConvert) {
     final val = DiscoveryGuildListResponseGuilds(
-      id: $checkedConvert('id', (v) => v as String),
-      name: $checkedConvert('name', (v) => v as String),
-      categoryType: $checkedConvert('category_type', (v) => v as num),
+      id: $checkedConvert('id', (v) => v as String? ?? ''),
+      name: $checkedConvert('name', (v) => v as String? ?? ''),
+      categoryType: $checkedConvert('category_type', (v) => v as num? ?? 0),
       customTags: $checkedConvert(
         'custom_tags',
-        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
       ),
-      memberCount: $checkedConvert('member_count', (v) => v as num),
-      onlineCount: $checkedConvert('online_count', (v) => v as num),
+      memberCount: $checkedConvert('member_count', (v) => v as num? ?? 0),
+      onlineCount: $checkedConvert('online_count', (v) => v as num? ?? 0),
       features: $checkedConvert(
         'features',
-        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
       ),
-      verificationLevel: $checkedConvert('verification_level', (v) => v as num),
+      verificationLevel: $checkedConvert(
+        'verification_level',
+        (v) => v as num? ?? 0,
+      ),
       icon: $checkedConvert('icon', (v) => v as String?),
       banner: $checkedConvert('banner', (v) => v as String?),
       description: $checkedConvert('description', (v) => v as String?),

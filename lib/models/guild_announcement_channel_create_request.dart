@@ -185,9 +185,11 @@ class GuildAnnouncementChannelCreateRequest {
   /// Channel-level content warning override (0=inherit, 1=force-warn)
   @JsonKey(includeIfNull: false, name: 'content_warning_level')
   final ContentWarningLevelInput? contentWarningLevel;
+  @JsonKey(defaultValue: GuildAnnouncementChannelCreateRequestTypeType.$unknown)
   final GuildAnnouncementChannelCreateRequestTypeType type;
 
   /// The name of the channel
+  @JsonKey(defaultValue: '')
   final String name;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> topic;

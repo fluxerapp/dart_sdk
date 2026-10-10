@@ -12,13 +12,15 @@ BulkMessageFetchResponse _$BulkMessageFetchResponseFromJson(
   final val = BulkMessageFetchResponse(
     channels: $checkedConvert(
       'channels',
-      (v) => (v as List<dynamic>)
-          .map(
-            (e) => BulkMessageFetchResponseChannels.fromJson(
-              e as Map<String, dynamic>,
-            ),
-          )
-          .toList(),
+      (v) =>
+          (v as List<dynamic>?)
+              ?.map(
+                (e) => BulkMessageFetchResponseChannels.fromJson(
+                  e as Map<String, dynamic>,
+                ),
+              )
+              .toList() ??
+          [],
     ),
   );
   return val;

@@ -7,53 +7,57 @@ part of 'thread_search_result.dart';
 // **************************************************************************
 
 ThreadSearchResultThreadSearchResponse
-_$ThreadSearchResultThreadSearchResponseFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      'ThreadSearchResultThreadSearchResponse',
-      json,
-      ($checkedConvert) {
-        final val = ThreadSearchResultThreadSearchResponse(
-          threads: $checkedConvert(
-            'threads',
-            (v) => (v as List<dynamic>)
-                .map(
+_$ThreadSearchResultThreadSearchResponseFromJson(
+  Map<String, dynamic> json,
+) => $checkedCreate(
+  'ThreadSearchResultThreadSearchResponse',
+  json,
+  ($checkedConvert) {
+    final val = ThreadSearchResultThreadSearchResponse(
+      threads: $checkedConvert(
+        'threads',
+        (v) =>
+            (v as List<dynamic>?)
+                ?.map(
                   (e) =>
                       ThreadChannelResponse.fromJson(e as Map<String, dynamic>),
                 )
-                .toList(),
-          ),
-          members: $checkedConvert(
-            'members',
-            (v) => (v as List<dynamic>)
-                .map(
+                .toList() ??
+            [],
+      ),
+      members: $checkedConvert(
+        'members',
+        (v) =>
+            (v as List<dynamic>?)
+                ?.map(
                   (e) =>
                       ThreadMemberResponse.fromJson(e as Map<String, dynamic>),
                 )
-                .toList(),
-          ),
-          hasMore: $checkedConvert('has_more', (v) => v as bool),
-          totalResults: $checkedConvert(
-            'total_results',
-            (v) => (v as num).toInt(),
-          ),
-          firstMessages: $checkedConvert(
-            'first_messages',
-            (v) => (v as List<dynamic>?)
-                ?.map(
-                  (e) =>
-                      MessageResponseSchema.fromJson(e as Map<String, dynamic>),
-                )
-                .toList(),
-          ),
-        );
-        return val;
-      },
-      fieldKeyMap: const {
-        'hasMore': 'has_more',
-        'totalResults': 'total_results',
-        'firstMessages': 'first_messages',
-      },
+                .toList() ??
+            [],
+      ),
+      hasMore: $checkedConvert('has_more', (v) => v as bool? ?? false),
+      totalResults: $checkedConvert(
+        'total_results',
+        (v) => (v as num?)?.toInt() ?? 0,
+      ),
+      firstMessages: $checkedConvert(
+        'first_messages',
+        (v) => (v as List<dynamic>?)
+            ?.map(
+              (e) => MessageResponseSchema.fromJson(e as Map<String, dynamic>),
+            )
+            .toList(),
+      ),
     );
+    return val;
+  },
+  fieldKeyMap: const {
+    'hasMore': 'has_more',
+    'totalResults': 'total_results',
+    'firstMessages': 'first_messages',
+  },
+);
 
 Map<String, dynamic> _$ThreadSearchResultThreadSearchResponseToJson(
   ThreadSearchResultThreadSearchResponse instance,
@@ -73,13 +77,13 @@ _$ThreadSearchResultSearchIndexNotReadyResponseFromJson(
   json,
   ($checkedConvert) {
     final val = ThreadSearchResultSearchIndexNotReadyResponse(
-      code: $checkedConvert('code', (v) => v as String),
-      message: $checkedConvert('message', (v) => v as String),
+      code: $checkedConvert('code', (v) => v as String? ?? ''),
+      message: $checkedConvert('message', (v) => v as String? ?? ''),
       documentsIndexed: $checkedConvert(
         'documents_indexed',
-        (v) => (v as num).toInt(),
+        (v) => (v as num?)?.toInt() ?? 0,
       ),
-      retryAfter: $checkedConvert('retry_after', (v) => v as num),
+      retryAfter: $checkedConvert('retry_after', (v) => v as num? ?? 0),
     );
     return val;
   },

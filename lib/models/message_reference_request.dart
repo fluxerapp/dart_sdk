@@ -25,7 +25,7 @@ class MessageReferenceRequest {
       _$MessageReferenceRequestFromJson(json);
 
   /// ID of the message being referenced
-  @JsonKey(name: 'message_id')
+  @JsonKey(name: 'message_id', defaultValue: '')
   final SnowflakeType messageId;
 
   /// ID of the channel containing the referenced message

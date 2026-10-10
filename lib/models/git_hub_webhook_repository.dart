@@ -20,11 +20,13 @@ class GitHubWebhookRepository {
   factory GitHubWebhookRepository.fromJson(Map<String, Object?> json) =>
       _$GitHubWebhookRepositoryFromJson(json);
 
+  @JsonKey(defaultValue: 0)
   final Int32Type id;
-  @JsonKey(name: 'html_url')
+  @JsonKey(name: 'html_url', defaultValue: '')
   final String htmlUrl;
+  @JsonKey(defaultValue: '')
   final String name;
-  @JsonKey(name: 'full_name')
+  @JsonKey(name: 'full_name', defaultValue: '')
   final String fullName;
 
   Map<String, Object?> toJson() => _$GitHubWebhookRepositoryToJson(this);

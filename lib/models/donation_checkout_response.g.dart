@@ -10,7 +10,7 @@ DonationCheckoutResponse _$DonationCheckoutResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('DonationCheckoutResponse', json, ($checkedConvert) {
   final val = DonationCheckoutResponse(
-    url: $checkedConvert('url', (v) => v as String),
+    url: $checkedConvert('url', (v) => v as String? ?? ''),
   );
   return val;
 });

@@ -30,12 +30,15 @@ class UserPartialResponse {
       _$UserPartialResponseFromJson(json);
 
   /// The unique identifier (snowflake) for this user
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
 
   /// The username of the user, not unique across the platform
+  @JsonKey(defaultValue: '')
   final String username;
 
   /// The four-digit discriminator tag of the user
+  @JsonKey(defaultValue: '')
   final String discriminator;
 
   /// The display name of the user, if set
@@ -57,6 +60,7 @@ class UserPartialResponse {
   /// Whether the user is an official system user
   @JsonKey(includeIfNull: false)
   final bool? system;
+  @JsonKey(defaultValue: 0)
   final PublicUserFlags flags;
 
   /// The user's account-wide reply mention preference. Omitted when the user has no preference set (treated as NO_PREFERENCE).

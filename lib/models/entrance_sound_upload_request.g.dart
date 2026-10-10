@@ -10,8 +10,8 @@ EntranceSoundUploadRequest _$EntranceSoundUploadRequestFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('EntranceSoundUploadRequest', json, ($checkedConvert) {
   final val = EntranceSoundUploadRequest(
-    name: $checkedConvert('name', (v) => v as String),
-    audio: $checkedConvert('audio', (v) => v as String),
+    name: $checkedConvert('name', (v) => v as String? ?? ''),
+    audio: $checkedConvert('audio', (v) => v as String? ?? ''),
   );
   return val;
 });

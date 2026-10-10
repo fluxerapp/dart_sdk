@@ -25,12 +25,15 @@ class BotProfileResponse {
       _$BotProfileResponseFromJson(json);
 
   /// The unique identifier of the bot user
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
 
   /// The username of the bot
+  @JsonKey(defaultValue: '')
   final String username;
 
   /// The discriminator of the bot
+  @JsonKey(defaultValue: '')
   final String discriminator;
 
   /// The avatar hash of the bot
@@ -44,6 +47,7 @@ class BotProfileResponse {
   /// The bio or description of the bot
   @JsonKey(includeIfNull: true)
   final String? bio;
+  @JsonKey(defaultValue: 0)
   final BotFlags flags;
 
   Map<String, Object?> toJson() => _$BotProfileResponseToJson(this);

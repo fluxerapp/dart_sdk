@@ -50,6 +50,7 @@ class PermissionOverwriteCreateRequest {
   }
 
   /// The type of overwrite (0 = role, 1 = member)
+  @JsonKey(defaultValue: ChannelOverwriteType.$unknown)
   final ChannelOverwriteType type;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<UnsignedInt64Type> allow;

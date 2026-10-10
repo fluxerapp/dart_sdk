@@ -13,12 +13,12 @@ CrosspostSourceGuildResponse _$CrosspostSourceGuildResponseFromJson(
   json,
   ($checkedConvert) {
     final val = CrosspostSourceGuildResponse(
-      id: $checkedConvert('id', (v) => v as String),
-      name: $checkedConvert('name', (v) => v as String),
+      id: $checkedConvert('id', (v) => v as String? ?? ''),
+      name: $checkedConvert('name', (v) => v as String? ?? ''),
       description: $checkedConvert('description', (v) => v as String?),
       features: $checkedConvert(
         'features',
-        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
       ),
       approximateMemberCount: $checkedConvert(
         'approximate_member_count',
@@ -28,7 +28,7 @@ CrosspostSourceGuildResponse _$CrosspostSourceGuildResponseFromJson(
         'approximate_presence_count',
         (v) => (v as num?)?.toInt(),
       ),
-      discoverable: $checkedConvert('discoverable', (v) => v as bool),
+      discoverable: $checkedConvert('discoverable', (v) => v as bool? ?? false),
       icon: $checkedConvert('icon', (v) => v as String?),
       banner: $checkedConvert('banner', (v) => v as String?),
     );

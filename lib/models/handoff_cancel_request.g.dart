@@ -10,7 +10,7 @@ HandoffCancelRequest _$HandoffCancelRequestFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('HandoffCancelRequest', json, ($checkedConvert) {
   final val = HandoffCancelRequest(
-    pollSecret: $checkedConvert('poll_secret', (v) => v as String),
+    pollSecret: $checkedConvert('poll_secret', (v) => v as String? ?? ''),
   );
   return val;
 }, fieldKeyMap: const {'pollSecret': 'poll_secret'});

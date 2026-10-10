@@ -10,7 +10,7 @@ EntranceSoundRenameRequest _$EntranceSoundRenameRequestFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('EntranceSoundRenameRequest', json, ($checkedConvert) {
   final val = EntranceSoundRenameRequest(
-    name: $checkedConvert('name', (v) => v as String),
+    name: $checkedConvert('name', (v) => v as String? ?? ''),
   );
   return val;
 });

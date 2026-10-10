@@ -19,11 +19,11 @@ class FollowedChannelResponse {
       _$FollowedChannelResponseFromJson(json);
 
   /// The ID of the followed announcement channel
-  @JsonKey(name: 'channel_id')
+  @JsonKey(name: 'channel_id', defaultValue: '')
   final SnowflakeStringType channelId;
 
   /// The ID of the channel follower webhook created in the target channel
-  @JsonKey(name: 'webhook_id')
+  @JsonKey(name: 'webhook_id', defaultValue: '')
   final SnowflakeStringType webhookId;
 
   Map<String, Object?> toJson() => _$FollowedChannelResponseToJson(this);

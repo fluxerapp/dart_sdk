@@ -20,9 +20,11 @@ class GuildStickerBulkCreateResponse {
       _$GuildStickerBulkCreateResponseFromJson(json);
 
   /// Successfully created stickers
+  @JsonKey(defaultValue: <GuildStickerResponse>[])
   final List<GuildStickerResponse> success;
 
   /// Stickers that failed to create
+  @JsonKey(defaultValue: <GuildStickerBulkCreateResponseFailed>[])
   final List<GuildStickerBulkCreateResponseFailed> failed;
 
   Map<String, Object?> toJson() => _$GuildStickerBulkCreateResponseToJson(this);

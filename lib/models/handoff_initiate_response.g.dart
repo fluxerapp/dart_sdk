@@ -13,10 +13,10 @@ HandoffInitiateResponse _$HandoffInitiateResponseFromJson(
   json,
   ($checkedConvert) {
     final val = HandoffInitiateResponse(
-      code: $checkedConvert('code', (v) => v as String),
+      code: $checkedConvert('code', (v) => v as String? ?? ''),
       expiresAt: $checkedConvert(
         'expires_at',
-        (v) => DateTime.parse(v as String),
+        (v) => v == null ? _$missingDateTime() : DateTime.parse(v as String),
       ),
       pollSecret: $checkedConvert('poll_secret', (v) => v as String?),
       returnMethod: $checkedConvert(

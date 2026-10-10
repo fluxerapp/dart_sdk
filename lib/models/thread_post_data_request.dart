@@ -16,7 +16,7 @@ class ThreadPostDataRequest {
       _$ThreadPostDataRequestFromJson(json);
 
   /// The IDs of the posts to get data for (max 100)
-  @JsonKey(name: 'thread_ids')
+  @JsonKey(name: 'thread_ids', defaultValue: <String>[])
   final List<SnowflakeType> threadIds;
 
   Map<String, Object?> toJson() => _$ThreadPostDataRequestToJson(this);

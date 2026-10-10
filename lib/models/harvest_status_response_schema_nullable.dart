@@ -26,10 +26,11 @@ class HarvestStatusResponseSchemaNullable {
 
 @JsonSerializable()
 class HarvestStatusResponseSchemaNullableVariant1 {
-  @JsonKey(name: 'harvest_id')
+  @JsonKey(name: 'harvest_id', defaultValue: '')
   final SnowflakeStringType harvestId;
+  @JsonKey(defaultValue: HarvestStatus.$unknown)
   final HarvestStatus status;
-  @JsonKey(name: 'created_at')
+  @JsonKey(name: 'created_at', defaultValue: '')
   final String createdAt;
   @JsonKey(includeIfNull: true, name: 'started_at')
   final String? startedAt;
@@ -39,7 +40,7 @@ class HarvestStatusResponseSchemaNullableVariant1 {
   final String? failedAt;
   @JsonKey(includeIfNull: true, name: 'file_size')
   final String? fileSize;
-  @JsonKey(name: 'progress_percent')
+  @JsonKey(name: 'progress_percent', defaultValue: 0)
   final num progressPercent;
   @JsonKey(includeIfNull: true, name: 'progress_step')
   final String? progressStep;

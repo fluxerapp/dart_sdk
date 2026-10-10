@@ -10,10 +10,10 @@ UserPasswordUpdateResponse _$UserPasswordUpdateResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('UserPasswordUpdateResponse', json, ($checkedConvert) {
   final val = UserPasswordUpdateResponse(
-    token: $checkedConvert('token', (v) => v as String),
+    token: $checkedConvert('token', (v) => v as String? ?? ''),
     authSessionIdHash: $checkedConvert(
       'auth_session_id_hash',
-      (v) => v as String,
+      (v) => v as String? ?? '',
     ),
   );
   return val;

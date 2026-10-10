@@ -13,7 +13,7 @@ class ReportFlowStep {
   factory ReportFlowStep.fromJson(Map<String, Object?> json) =>
       _$ReportFlowStepFromJson(json);
 
-  @JsonKey(name: 'screen_id')
+  @JsonKey(name: 'screen_id', defaultValue: '')
   final String screenId;
   @JsonKey(includeIfNull: false, name: 'option_id')
   final String? optionId;

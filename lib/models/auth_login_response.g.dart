@@ -13,11 +13,13 @@ _$AuthLoginResponseAuthTokenWithUserIdResponseFromJson(
   $checkedConvert,
 ) {
   final val = AuthLoginResponseAuthTokenWithUserIdResponse(
-    token: $checkedConvert('token', (v) => v as String),
-    userId: $checkedConvert('user_id', (v) => v as String),
+    token: $checkedConvert('token', (v) => v as String? ?? ''),
+    userId: $checkedConvert('user_id', (v) => v as String? ?? ''),
     user: $checkedConvert(
       'user',
-      (v) => UserPartialResponse.fromJson(v as Map<String, dynamic>),
+      (v) => v == null
+          ? _$missingUserPartialResponse()
+          : UserPartialResponse.fromJson(v as Map<String, dynamic>),
     ),
   );
   return val;
@@ -38,15 +40,15 @@ AuthLoginResponseVariant2 _$AuthLoginResponseVariant2FromJson(
   json,
   ($checkedConvert) {
     final val = AuthLoginResponseVariant2(
-      mfa: $checkedConvert('mfa', (v) => v as bool),
-      ticket: $checkedConvert('ticket', (v) => v as String),
+      mfa: $checkedConvert('mfa', (v) => v as bool? ?? false),
+      ticket: $checkedConvert('ticket', (v) => v as String? ?? ''),
       allowedMethods: $checkedConvert(
         'allowed_methods',
-        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
       ),
-      totp: $checkedConvert('totp', (v) => v as bool),
-      webauthn: $checkedConvert('webauthn', (v) => v as bool),
-      backupCodes: $checkedConvert('backup_codes', (v) => v as bool),
+      totp: $checkedConvert('totp', (v) => v as bool? ?? false),
+      webauthn: $checkedConvert('webauthn', (v) => v as bool? ?? false),
+      backupCodes: $checkedConvert('backup_codes', (v) => v as bool? ?? false),
     );
     return val;
   },

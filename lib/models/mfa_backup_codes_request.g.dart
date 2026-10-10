@@ -13,7 +13,7 @@ MfaBackupCodesRequest _$MfaBackupCodesRequestFromJson(
   json,
   ($checkedConvert) {
     final val = MfaBackupCodesRequest(
-      regenerate: $checkedConvert('regenerate', (v) => v as bool),
+      regenerate: $checkedConvert('regenerate', (v) => v as bool? ?? false),
       password: $checkedConvert('password', (v) => v as String?),
       mfaMethod: $checkedConvert(
         'mfa_method',

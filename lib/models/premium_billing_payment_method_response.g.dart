@@ -13,7 +13,7 @@ _$PremiumBillingPaymentMethodResponseFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = PremiumBillingPaymentMethodResponse(
-          id: $checkedConvert('id', (v) => v as String),
+          id: $checkedConvert('id', (v) => v as String? ?? ''),
           type: $checkedConvert('type', (v) => v as String?),
           cardBrand: $checkedConvert('card_brand', (v) => v as String?),
           cardLast4: $checkedConvert('card_last4', (v) => v as String?),
@@ -25,7 +25,7 @@ _$PremiumBillingPaymentMethodResponseFromJson(Map<String, dynamic> json) =>
             'card_exp_year',
             (v) => (v as num?)?.toInt(),
           ),
-          isDefault: $checkedConvert('is_default', (v) => v as bool),
+          isDefault: $checkedConvert('is_default', (v) => v as bool? ?? false),
         );
         return val;
       },

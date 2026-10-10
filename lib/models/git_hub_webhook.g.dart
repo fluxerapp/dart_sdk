@@ -11,7 +11,9 @@ GitHubWebhook _$GitHubWebhookFromJson(Map<String, dynamic> json) =>
       final val = GitHubWebhook._(
         sender: $checkedConvert(
           'sender',
-          (v) => GitHubWebhookSender.fromJson(v as Map<String, dynamic>),
+          (v) => v == null
+              ? _$missingGitHubWebhookSender()
+              : GitHubWebhookSender.fromJson(v as Map<String, dynamic>),
         ),
       );
       return val;

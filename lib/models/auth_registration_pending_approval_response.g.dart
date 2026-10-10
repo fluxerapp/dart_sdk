@@ -15,9 +15,9 @@ _$AuthRegistrationPendingApprovalResponseFromJson(Map<String, dynamic> json) =>
         final val = AuthRegistrationPendingApprovalResponse(
           registrationPendingApproval: $checkedConvert(
             'registration_pending_approval',
-            (v) => v as bool,
+            (v) => v as bool? ?? false,
           ),
-          userId: $checkedConvert('user_id', (v) => v as String),
+          userId: $checkedConvert('user_id', (v) => v as String? ?? ''),
         );
         return val;
       },

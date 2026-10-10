@@ -19,17 +19,19 @@ class SudoMfaMethodsResponse {
       _$SudoMfaMethodsResponseFromJson(json);
 
   /// Whether TOTP is enabled
+  @JsonKey(defaultValue: false)
   final bool totp;
 
   /// Whether the account has at least one registered WebAuthn credential
+  @JsonKey(defaultValue: false)
   final bool webauthn;
 
   /// Whether the account has at least one unconsumed backup code
-  @JsonKey(name: 'backup_codes')
+  @JsonKey(name: 'backup_codes', defaultValue: false)
   final bool backupCodes;
 
   /// Whether the account can satisfy a sudo mode challenge
-  @JsonKey(name: 'has_mfa')
+  @JsonKey(name: 'has_mfa', defaultValue: false)
   final bool hasMfa;
 
   Map<String, Object?> toJson() => _$SudoMfaMethodsResponseToJson(this);

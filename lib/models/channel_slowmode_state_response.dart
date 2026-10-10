@@ -21,11 +21,11 @@ class ChannelSlowmodeStateResponse {
       _$ChannelSlowmodeStateResponseFromJson(json);
 
   /// The configured slowmode interval in seconds (0 if disabled)
-  @JsonKey(name: 'rate_limit_per_user')
+  @JsonKey(name: 'rate_limit_per_user', defaultValue: 0)
   final Int32Type rateLimitPerUser;
 
   /// Milliseconds the current user must wait before sending the next message (0 if allowed now)
-  @JsonKey(name: 'retry_after_ms')
+  @JsonKey(name: 'retry_after_ms', defaultValue: 0)
   final Int32Type retryAfterMs;
 
   /// Absolute timestamp at which the current user is next allowed to send a message, or null if allowed now
@@ -33,7 +33,7 @@ class ChannelSlowmodeStateResponse {
   final DateTime? nextSendAllowedAt;
 
   /// Whether the current user has permission to bypass slowmode
-  @JsonKey(name: 'can_bypass')
+  @JsonKey(name: 'can_bypass', defaultValue: false)
   final bool canBypass;
 
   Map<String, Object?> toJson() => _$ChannelSlowmodeStateResponseToJson(this);

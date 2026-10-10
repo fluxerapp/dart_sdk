@@ -9,8 +9,8 @@ part of 'sso_complete_request.dart';
 SsoCompleteRequest _$SsoCompleteRequestFromJson(Map<String, dynamic> json) =>
     $checkedCreate('SsoCompleteRequest', json, ($checkedConvert) {
       final val = SsoCompleteRequest(
-        code: $checkedConvert('code', (v) => v as String),
-        state: $checkedConvert('state', (v) => v as String),
+        code: $checkedConvert('code', (v) => v as String? ?? ''),
+        state: $checkedConvert('state', (v) => v as String? ?? ''),
       );
       return val;
     });

@@ -21,10 +21,11 @@ class EmailChangeStartResponse {
       _$EmailChangeStartResponseFromJson(json);
 
   /// Ticket returned for email change actions
+  @JsonKey(defaultValue: '')
   final String ticket;
 
   /// Whether verification of the original email is required
-  @JsonKey(name: 'require_original')
+  @JsonKey(name: 'require_original', defaultValue: false)
   final bool requireOriginal;
 
   /// The original email address on record

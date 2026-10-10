@@ -9,7 +9,7 @@ part of 'success_response.dart';
 SuccessResponse _$SuccessResponseFromJson(Map<String, dynamic> json) =>
     $checkedCreate('SuccessResponse', json, ($checkedConvert) {
       final val = SuccessResponse(
-        success: $checkedConvert('success', (v) => v as bool),
+        success: $checkedConvert('success', (v) => v as bool? ?? false),
       );
       return val;
     });

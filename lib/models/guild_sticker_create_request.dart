@@ -44,12 +44,14 @@ class GuildStickerCreateRequest {
   }
 
   /// The name of the sticker (2-30 characters)
+  @JsonKey(defaultValue: '')
   final String name;
 
   /// Array of autocomplete/suggestion tags (max 10 tags, each 1-30 characters)
   final List<String> tags;
 
   /// Base64-encoded image data for the sticker
+  @JsonKey(defaultValue: '')
   final Base64ImageType image;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> description;

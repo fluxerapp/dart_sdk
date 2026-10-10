@@ -18,11 +18,11 @@ class ClaimGooglePlayPurchaseRequest {
       _$ClaimGooglePlayPurchaseRequestFromJson(json);
 
   /// Purchase token from Google Play Billing
-  @JsonKey(name: 'purchase_token')
+  @JsonKey(name: 'purchase_token', defaultValue: '')
   final String purchaseToken;
 
   /// Google Play product identifier of the purchase
-  @JsonKey(name: 'product_id')
+  @JsonKey(name: 'product_id', defaultValue: '')
   final String productId;
 
   /// Package name of the app that made the purchase. Must be one of the accepted package names

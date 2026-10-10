@@ -13,9 +13,9 @@ PasskeyMigrationResponsePending _$PasskeyMigrationResponsePendingFromJson(
   json,
   ($checkedConvert) {
     final val = PasskeyMigrationResponsePending(
-      credentialId: $checkedConvert('credential_id', (v) => v as String),
-      name: $checkedConvert('name', (v) => v as String),
-      crossDevice: $checkedConvert('cross_device', (v) => v as bool),
+      credentialId: $checkedConvert('credential_id', (v) => v as String? ?? ''),
+      name: $checkedConvert('name', (v) => v as String? ?? ''),
+      crossDevice: $checkedConvert('cross_device', (v) => v as bool? ?? false),
     );
     return val;
   },

@@ -31,7 +31,7 @@ class PremiumStateResponseEffective {
       _$PremiumStateResponseEffectiveFromJson(json);
 
   /// Whether premium perks are currently effective for product gating
-  @JsonKey(name: 'is_premium')
+  @JsonKey(name: 'is_premium', defaultValue: false)
   final bool isPremium;
 
   /// Effective premium type used by product gates
@@ -47,7 +47,7 @@ class PremiumStateResponseEffective {
   final String? premiumUntil;
 
   /// Effective cancellation status exposed to the client
-  @JsonKey(name: 'premium_will_cancel')
+  @JsonKey(name: 'premium_will_cancel', defaultValue: false)
   final bool premiumWillCancel;
 
   /// Effective recurring billing cycle, when known
@@ -64,22 +64,23 @@ class PremiumStateResponseEffective {
   final String? premiumGraceEndsAt;
 
   /// Whether backend premium override is enabled
-  @JsonKey(name: 'premium_enabled_override')
+  @JsonKey(name: 'premium_enabled_override', defaultValue: false)
   final bool premiumEnabledOverride;
 
   /// Whether premium purchase is disabled for this account
-  @JsonKey(name: 'premium_purchase_disabled')
+  @JsonKey(name: 'premium_purchase_disabled', defaultValue: false)
   final bool premiumPurchaseDisabled;
 
   /// Whether the user temporarily disabled premium perks
-  @JsonKey(name: 'premium_perks_disabled')
+  @JsonKey(name: 'premium_perks_disabled', defaultValue: false)
   final bool premiumPerksDisabled;
 
   /// Whether the instance treats all users as premium because it is self-hosted
-  @JsonKey(name: 'self_hosted')
+  @JsonKey(name: 'self_hosted', defaultValue: false)
   final bool selfHosted;
 
   /// Whether the account is a bot account with premium-equivalent service access
+  @JsonKey(defaultValue: false)
   final bool bot;
 
   Map<String, Object?> toJson() => _$PremiumStateResponseEffectiveToJson(this);

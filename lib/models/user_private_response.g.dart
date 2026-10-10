@@ -15,36 +15,42 @@ UserPrivateResponse _$UserPrivateResponseFromJson(
     final val = UserPrivateResponse(
       requiredActions: $checkedConvert(
         'required_actions',
-        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
       ),
-      username: $checkedConvert('username', (v) => v as String),
-      discriminator: $checkedConvert('discriminator', (v) => v as String),
+      username: $checkedConvert('username', (v) => v as String? ?? ''),
+      discriminator: $checkedConvert(
+        'discriminator',
+        (v) => v as String? ?? '',
+      ),
       globalName: $checkedConvert('global_name', (v) => v as String?),
       avatar: $checkedConvert('avatar', (v) => v as String?),
       avatarColor: $checkedConvert('avatar_color', (v) => (v as num?)?.toInt()),
-      flags: $checkedConvert('flags', (v) => (v as num).toInt()),
+      flags: $checkedConvert('flags', (v) => (v as num?)?.toInt() ?? 0),
       pronouns: $checkedConvert('pronouns', (v) => v as String?),
-      isStaff: $checkedConvert('is_staff', (v) => v as bool),
+      isStaff: $checkedConvert('is_staff', (v) => v as bool? ?? false),
       acls: $checkedConvert(
         'acls',
-        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
       ),
       traits: $checkedConvert(
         'traits',
-        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
       ),
       email: $checkedConvert('email', (v) => v as String?),
-      hasVerifiedPhone: $checkedConvert('has_verified_phone', (v) => v as bool),
+      hasVerifiedPhone: $checkedConvert(
+        'has_verified_phone',
+        (v) => v as bool? ?? false,
+      ),
       bio: $checkedConvert('bio', (v) => v as String?),
-      id: $checkedConvert('id', (v) => v as String),
+      id: $checkedConvert('id', (v) => v as String? ?? ''),
       accentColor: $checkedConvert('accent_color', (v) => (v as num?)?.toInt()),
       banner: $checkedConvert('banner', (v) => v as String?),
       bannerColor: $checkedConvert('banner_color', (v) => (v as num?)?.toInt()),
-      mfaEnabled: $checkedConvert('mfa_enabled', (v) => v as bool),
-      verified: $checkedConvert('verified', (v) => v as bool),
+      mfaEnabled: $checkedConvert('mfa_enabled', (v) => v as bool? ?? false),
+      verified: $checkedConvert('verified', (v) => v as bool? ?? false),
       premiumBadgeHidden: $checkedConvert(
         'premium_badge_hidden',
-        (v) => v as bool,
+        (v) => v as bool? ?? false,
       ),
       premiumType: $checkedConvert(
         'premium_type',
@@ -54,7 +60,7 @@ UserPrivateResponse _$UserPrivateResponseFromJson(
       premiumUntil: $checkedConvert('premium_until', (v) => v as String?),
       premiumWillCancel: $checkedConvert(
         'premium_will_cancel',
-        (v) => v as bool,
+        (v) => v as bool? ?? false,
       ),
       premiumBillingCycle: $checkedConvert(
         'premium_billing_cycle',
@@ -70,7 +76,7 @@ UserPrivateResponse _$UserPrivateResponseFromJson(
       ),
       premiumDiscriminator: $checkedConvert(
         'premium_discriminator',
-        (v) => v as bool,
+        (v) => v as bool? ?? false,
       ),
       privacyAgreedAt: $checkedConvert(
         'privacy_agreed_at',
@@ -78,27 +84,27 @@ UserPrivateResponse _$UserPrivateResponseFromJson(
       ),
       premiumBadgeMasked: $checkedConvert(
         'premium_badge_masked',
-        (v) => v as bool,
+        (v) => v as bool? ?? false,
       ),
       premiumBadgeTimestampHidden: $checkedConvert(
         'premium_badge_timestamp_hidden',
-        (v) => v as bool,
+        (v) => v as bool? ?? false,
       ),
       premiumBadgeSequenceHidden: $checkedConvert(
         'premium_badge_sequence_hidden',
-        (v) => v as bool,
+        (v) => v as bool? ?? false,
       ),
       premiumPurchaseDisabled: $checkedConvert(
         'premium_purchase_disabled',
-        (v) => v as bool,
+        (v) => v as bool? ?? false,
       ),
       premiumEnabledOverride: $checkedConvert(
         'premium_enabled_override',
-        (v) => v as bool,
+        (v) => v as bool? ?? false,
       ),
       premiumPerksDisabled: $checkedConvert(
         'premium_perks_disabled',
-        (v) => v as bool,
+        (v) => v as bool? ?? false,
       ),
       passwordLastChangedAt: $checkedConvert(
         'password_last_changed_at',
@@ -108,7 +114,10 @@ UserPrivateResponse _$UserPrivateResponseFromJson(
         'last_voice_activity_sharing_change_at',
         (v) => v as String?,
       ),
-      hasEverPurchased: $checkedConvert('has_ever_purchased', (v) => v as bool),
+      hasEverPurchased: $checkedConvert(
+        'has_ever_purchased',
+        (v) => v as bool? ?? false,
+      ),
       pendingBulkMessageDeletion: $checkedConvert(
         'pending_bulk_message_deletion',
         (v) => v == null
@@ -119,18 +128,18 @@ UserPrivateResponse _$UserPrivateResponseFromJson(
       ),
       unreadGiftInventoryCount: $checkedConvert(
         'unread_gift_inventory_count',
-        (v) => (v as num).toInt(),
+        (v) => (v as num?)?.toInt() ?? 0,
       ),
       termsAgreedAt: $checkedConvert('terms_agreed_at', (v) => v as String?),
       hasDismissedPremiumOnboarding: $checkedConvert(
         'has_dismissed_premium_onboarding',
-        (v) => v as bool,
+        (v) => v as bool? ?? false,
       ),
       hasUnreadGiftInventory: $checkedConvert(
         'has_unread_gift_inventory',
-        (v) => v as bool,
+        (v) => v as bool? ?? false,
       ),
-      nsfwAllowed: $checkedConvert('nsfw_allowed', (v) => v as bool),
+      nsfwAllowed: $checkedConvert('nsfw_allowed', (v) => v as bool? ?? false),
       mentionFlags: $checkedConvert(
         'mention_flags',
         (v) => v == null

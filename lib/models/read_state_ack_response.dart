@@ -16,7 +16,7 @@ class ReadStateAckResponse {
       _$ReadStateAckResponseFromJson(json);
 
   /// Authoritative read states after applying the acknowledgement
-  @JsonKey(name: 'read_states')
+  @JsonKey(name: 'read_states', defaultValue: <ReadStateResponse>[])
   final List<ReadStateResponse> readStates;
 
   Map<String, Object?> toJson() => _$ReadStateAckResponseToJson(this);

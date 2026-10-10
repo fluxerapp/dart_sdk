@@ -23,17 +23,19 @@ class ThreadMetadataResponse {
       _$ThreadMetadataResponseFromJson(json);
 
   /// Whether the thread is archived
+  @JsonKey(defaultValue: false)
   final bool archived;
 
   /// Minutes of inactivity before the thread stops showing in the channel list
-  @JsonKey(name: 'auto_archive_duration')
+  @JsonKey(name: 'auto_archive_duration', defaultValue: 0)
   final Int32Type autoArchiveDuration;
 
   /// When the archive status of the thread last changed
-  @JsonKey(name: 'archive_timestamp')
+  @JsonKey(name: 'archive_timestamp', defaultValue: _$missingDateTime)
   final DateTime archiveTimestamp;
 
   /// Whether only moderators can interact with the thread
+  @JsonKey(defaultValue: false)
   final bool locked;
 
   /// Whether non-moderators can add other non-moderators (private threads)
@@ -41,8 +43,11 @@ class ThreadMetadataResponse {
   final bool? invitable;
 
   /// When the thread was created
-  @JsonKey(name: 'create_timestamp')
+  @JsonKey(name: 'create_timestamp', defaultValue: _$missingDateTime)
   final DateTime createTimestamp;
 
   Map<String, Object?> toJson() => _$ThreadMetadataResponseToJson(this);
 }
+
+DateTime _$missingDateTime() =>
+    DateTime.fromMillisecondsSinceEpoch(0, isUtc: true);

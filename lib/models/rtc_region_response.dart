@@ -18,12 +18,15 @@ class RtcRegionResponse {
       _$RtcRegionResponseFromJson(json);
 
   /// The unique identifier for this RTC region
+  @JsonKey(defaultValue: '')
   final String id;
 
   /// The display name of the RTC region
+  @JsonKey(defaultValue: '')
   final String name;
 
   /// The emoji associated with this RTC region
+  @JsonKey(defaultValue: '')
   final String emoji;
 
   Map<String, Object?> toJson() => _$RtcRegionResponseToJson(this);

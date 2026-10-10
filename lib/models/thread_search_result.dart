@@ -30,11 +30,13 @@ class ThreadSearchResult {
 
 @JsonSerializable()
 class ThreadSearchResultThreadSearchResponse {
+  @JsonKey(defaultValue: <ThreadChannelResponse>[])
   final List<ThreadChannelResponse> threads;
+  @JsonKey(defaultValue: <ThreadMemberResponse>[])
   final List<ThreadMemberResponse> members;
-  @JsonKey(name: 'has_more')
+  @JsonKey(name: 'has_more', defaultValue: false)
   final bool hasMore;
-  @JsonKey(name: 'total_results')
+  @JsonKey(name: 'total_results', defaultValue: 0)
   final Int32Type totalResults;
   @JsonKey(includeIfNull: false, name: 'first_messages')
   final List<MessageResponseSchema>? firstMessages;
@@ -57,11 +59,13 @@ class ThreadSearchResultThreadSearchResponse {
 
 @JsonSerializable()
 class ThreadSearchResultSearchIndexNotReadyResponse {
+  @JsonKey(defaultValue: '')
   final String code;
+  @JsonKey(defaultValue: '')
   final String message;
-  @JsonKey(name: 'documents_indexed')
+  @JsonKey(name: 'documents_indexed', defaultValue: 0)
   final Int32Type documentsIndexed;
-  @JsonKey(name: 'retry_after')
+  @JsonKey(name: 'retry_after', defaultValue: 0)
   final num retryAfter;
 
   const ThreadSearchResultSearchIndexNotReadyResponse({

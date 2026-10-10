@@ -34,9 +34,11 @@ class GuildPartialResponse {
       _$GuildPartialResponseFromJson(json);
 
   /// The unique identifier for this guild
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
 
   /// The name of the guild
+  @JsonKey(defaultValue: '')
   final String name;
 
   /// The hash of the guild icon
@@ -68,7 +70,11 @@ class GuildPartialResponse {
   final Int32Type? splashHeight;
 
   /// The alignment of the splash card
-  @JsonKey(name: 'splash_card_alignment')
+  @JsonKey(
+    name: 'splash_card_alignment',
+    defaultValue:
+        GuildPartialResponseSplashCardAlignmentSplashCardAlignment.$unknown,
+  )
   final GuildPartialResponseSplashCardAlignmentSplashCardAlignment
   splashCardAlignment;
 
@@ -85,6 +91,7 @@ class GuildPartialResponse {
   final Int32Type? embedSplashHeight;
 
   /// Array of guild feature flags
+  @JsonKey(defaultValue: <String>[])
   final List<GuildFeatureSchema> features;
 
   Map<String, Object?> toJson() => _$GuildPartialResponseToJson(this);

@@ -23,9 +23,11 @@ class OAuth2AuthorizationResponseApplication {
   ) => _$OAuth2AuthorizationResponseApplicationFromJson(json);
 
   /// The unique identifier of the application
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
 
   /// The name of the application
+  @JsonKey(defaultValue: '')
   final String name;
 
   /// The icon hash of the application
@@ -37,7 +39,7 @@ class OAuth2AuthorizationResponseApplication {
   final String? description;
 
   /// Whether the bot can be invited by anyone
-  @JsonKey(name: 'bot_public')
+  @JsonKey(name: 'bot_public', defaultValue: false)
   final bool botPublic;
 
   Map<String, Object?> toJson() =>

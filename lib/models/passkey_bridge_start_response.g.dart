@@ -10,7 +10,7 @@ PasskeyBridgeStartResponse _$PasskeyBridgeStartResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('PasskeyBridgeStartResponse', json, ($checkedConvert) {
   final val = PasskeyBridgeStartResponse(
-    ceremonyId: $checkedConvert('ceremony_id', (v) => v as String),
+    ceremonyId: $checkedConvert('ceremony_id', (v) => v as String? ?? ''),
     bridgeUrl: $checkedConvert('bridge_url', (v) => v as String?),
   );
   return val;

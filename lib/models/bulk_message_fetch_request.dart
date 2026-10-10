@@ -16,6 +16,7 @@ class BulkMessageFetchRequest {
       _$BulkMessageFetchRequestFromJson(json);
 
   /// Per-channel message windows to fetch in one request
+  @JsonKey(defaultValue: <BulkMessageFetchRequestRequests>[])
   final List<BulkMessageFetchRequestRequests> requests;
 
   Map<String, Object?> toJson() => _$BulkMessageFetchRequestToJson(this);

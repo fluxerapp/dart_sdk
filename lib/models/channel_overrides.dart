@@ -25,13 +25,18 @@ class ChannelOverrides {
       _$ChannelOverridesFromJson(json);
 
   /// Channel category collapsed
+  @JsonKey(defaultValue: false)
   final bool collapsed;
 
   /// Channel notification level
-  @JsonKey(name: 'message_notifications')
+  @JsonKey(
+    name: 'message_notifications',
+    defaultValue: UserNotificationSettingsInput.$unknown,
+  )
   final UserNotificationSettingsInput messageNotifications;
 
   /// Channel muted
+  @JsonKey(defaultValue: false)
   final bool muted;
 
   /// Channel mute configuration

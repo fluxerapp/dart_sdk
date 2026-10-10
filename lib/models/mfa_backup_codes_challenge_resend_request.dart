@@ -15,6 +15,7 @@ class MfaBackupCodesChallengeResendRequest {
   ) => _$MfaBackupCodesChallengeResendRequestFromJson(json);
 
   /// Backup codes challenge ticket identifier
+  @JsonKey(defaultValue: '')
   final String ticket;
 
   Map<String, Object?> toJson() =>

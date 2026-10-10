@@ -20,13 +20,15 @@ class RecoverAccountRequest {
       _$RecoverAccountRequestFromJson(json);
 
   /// Username of the account to recover
+  @JsonKey(defaultValue: '')
   final String login;
 
   /// Recovery key from the recovery kit. Spaces and dashes are ignored
-  @JsonKey(name: 'recovery_key')
+  @JsonKey(name: 'recovery_key', defaultValue: '')
   final String recoveryKey;
 
   /// New password to set
+  @JsonKey(defaultValue: '')
   final PasswordType password;
 
   Map<String, Object?> toJson() => _$RecoverAccountRequestToJson(this);

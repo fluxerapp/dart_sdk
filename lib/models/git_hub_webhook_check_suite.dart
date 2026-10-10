@@ -26,11 +26,15 @@ class GitHubWebhookCheckSuite {
   final String? conclusion;
   @JsonKey(includeIfNull: false, name: 'head_branch')
   final String? headBranch;
-  @JsonKey(name: 'head_sha')
+  @JsonKey(name: 'head_sha', defaultValue: '')
   final String headSha;
   @JsonKey(includeIfNull: false, name: 'pull_requests')
   final List<GitHubWebhookCheckSuitePullRequests>? pullRequests;
+  @JsonKey(defaultValue: _$missingGitHubWebhookCheckSuiteApp)
   final GitHubWebhookCheckSuiteApp app;
 
   Map<String, Object?> toJson() => _$GitHubWebhookCheckSuiteToJson(this);
 }
+
+GitHubWebhookCheckSuiteApp _$missingGitHubWebhookCheckSuiteApp() =>
+    GitHubWebhookCheckSuiteApp.fromJson(const <String, dynamic>{});

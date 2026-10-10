@@ -22,6 +22,7 @@ class RichEmbedFooterRequest {
 
 @JsonSerializable()
 class RichEmbedFooterRequestVariant1 {
+  @JsonKey(defaultValue: '')
   final String text;
   @JsonKey(includeIfNull: false, name: 'icon_url')
   final String? iconUrl;

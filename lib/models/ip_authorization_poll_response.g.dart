@@ -10,7 +10,7 @@ IpAuthorizationPollResponse _$IpAuthorizationPollResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('IpAuthorizationPollResponse', json, ($checkedConvert) {
   final val = IpAuthorizationPollResponse(
-    completed: $checkedConvert('completed', (v) => v as bool),
+    completed: $checkedConvert('completed', (v) => v as bool? ?? false),
     token: $checkedConvert('token', (v) => v as String?),
     userId: $checkedConvert('user_id', (v) => v as String?),
     user: $checkedConvert(

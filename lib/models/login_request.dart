@@ -50,6 +50,7 @@ class LoginRequest {
   final String? login;
 
   /// Account password
+  @JsonKey(defaultValue: '')
   final PasswordType password;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> inviteCode;

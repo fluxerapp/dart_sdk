@@ -13,29 +13,36 @@ GuildInviteMetadataResponse _$GuildInviteMetadataResponseFromJson(
   json,
   ($checkedConvert) {
     final val = GuildInviteMetadataResponse(
-      code: $checkedConvert('code', (v) => v as String),
-      temporary: $checkedConvert('temporary', (v) => v as bool),
-      type: $checkedConvert('type', (v) => v as num),
+      code: $checkedConvert('code', (v) => v as String? ?? ''),
+      temporary: $checkedConvert('temporary', (v) => v as bool? ?? false),
+      type: $checkedConvert('type', (v) => v as num? ?? 0),
       guild: $checkedConvert(
         'guild',
-        (v) => GuildPartialResponse.fromJson(v as Map<String, dynamic>),
+        (v) => v == null
+            ? _$missingGuildPartialResponse()
+            : GuildPartialResponse.fromJson(v as Map<String, dynamic>),
       ),
       channel: $checkedConvert(
         'channel',
-        (v) => ChannelPartialResponse.fromJson(v as Map<String, dynamic>),
+        (v) => v == null
+            ? _$missingChannelPartialResponse()
+            : ChannelPartialResponse.fromJson(v as Map<String, dynamic>),
       ),
-      memberCount: $checkedConvert('member_count', (v) => (v as num).toInt()),
+      memberCount: $checkedConvert(
+        'member_count',
+        (v) => (v as num?)?.toInt() ?? 0,
+      ),
       presenceCount: $checkedConvert(
         'presence_count',
-        (v) => (v as num).toInt(),
+        (v) => (v as num?)?.toInt() ?? 0,
       ),
       createdAt: $checkedConvert(
         'created_at',
-        (v) => DateTime.parse(v as String),
+        (v) => v == null ? _$missingDateTime() : DateTime.parse(v as String),
       ),
-      uses: $checkedConvert('uses', (v) => (v as num).toInt()),
-      maxUses: $checkedConvert('max_uses', (v) => (v as num).toInt()),
-      maxAge: $checkedConvert('max_age', (v) => (v as num).toInt()),
+      uses: $checkedConvert('uses', (v) => (v as num?)?.toInt() ?? 0),
+      maxUses: $checkedConvert('max_uses', (v) => (v as num?)?.toInt() ?? 0),
+      maxAge: $checkedConvert('max_age', (v) => (v as num?)?.toInt() ?? 0),
       inviter: $checkedConvert(
         'inviter',
         (v) => v == null

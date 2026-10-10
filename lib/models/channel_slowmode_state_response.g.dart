@@ -15,17 +15,17 @@ ChannelSlowmodeStateResponse _$ChannelSlowmodeStateResponseFromJson(
     final val = ChannelSlowmodeStateResponse(
       rateLimitPerUser: $checkedConvert(
         'rate_limit_per_user',
-        (v) => (v as num).toInt(),
+        (v) => (v as num?)?.toInt() ?? 0,
       ),
       retryAfterMs: $checkedConvert(
         'retry_after_ms',
-        (v) => (v as num).toInt(),
+        (v) => (v as num?)?.toInt() ?? 0,
       ),
       nextSendAllowedAt: $checkedConvert(
         'next_send_allowed_at',
         (v) => v == null ? null : DateTime.parse(v as String),
       ),
-      canBypass: $checkedConvert('can_bypass', (v) => v as bool),
+      canBypass: $checkedConvert('can_bypass', (v) => v as bool? ?? false),
     );
     return val;
   },

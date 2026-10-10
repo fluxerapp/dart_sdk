@@ -10,15 +10,15 @@ GuildStickerResponse _$GuildStickerResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('GuildStickerResponse', json, ($checkedConvert) {
   final val = GuildStickerResponse(
-    id: $checkedConvert('id', (v) => v as String),
-    name: $checkedConvert('name', (v) => v as String),
-    description: $checkedConvert('description', (v) => v as String),
+    id: $checkedConvert('id', (v) => v as String? ?? ''),
+    name: $checkedConvert('name', (v) => v as String? ?? ''),
+    description: $checkedConvert('description', (v) => v as String? ?? ''),
     tags: $checkedConvert(
       'tags',
-      (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
     ),
-    animated: $checkedConvert('animated', (v) => v as bool),
-    nsfw: $checkedConvert('nsfw', (v) => v as bool),
+    animated: $checkedConvert('animated', (v) => v as bool? ?? false),
+    nsfw: $checkedConvert('nsfw', (v) => v as bool? ?? false),
   );
   return val;
 });

@@ -16,7 +16,11 @@ class CrosspostSourceResponse {
       _$CrosspostSourceResponseFromJson(json);
 
   /// The community the message was published from
+  @JsonKey(defaultValue: _$missingCrosspostSourceGuildResponse)
   final CrosspostSourceGuildResponse guild;
 
   Map<String, Object?> toJson() => _$CrosspostSourceResponseToJson(this);
 }
+
+CrosspostSourceGuildResponse _$missingCrosspostSourceGuildResponse() =>
+    CrosspostSourceGuildResponse.fromJson(const <String, dynamic>{});

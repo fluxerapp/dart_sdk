@@ -23,13 +23,17 @@ class ChannelOverwriteResponse {
       _$ChannelOverwriteResponseFromJson(json);
 
   /// The unique identifier for the role or user this overwrite applies to
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
+  @JsonKey(defaultValue: ChannelOverwriteType.$unknown)
   final ChannelOverwriteType type;
 
   /// The bitwise value of allowed permissions
+  @JsonKey(defaultValue: '')
   final Permissions allow;
 
   /// The bitwise value of denied permissions
+  @JsonKey(defaultValue: '')
   final Permissions deny;
 
   Map<String, Object?> toJson() => _$ChannelOverwriteResponseToJson(this);

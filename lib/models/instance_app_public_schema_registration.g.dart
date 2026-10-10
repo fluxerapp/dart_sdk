@@ -14,7 +14,7 @@ _$InstanceAppPublicSchemaRegistrationFromJson(Map<String, dynamic> json) =>
       final val = InstanceAppPublicSchemaRegistration(
         collectDateOfBirth: $checkedConvert(
           'collect_date_of_birth',
-          (v) => v as bool,
+          (v) => v as bool? ?? false,
         ),
       );
       return val;

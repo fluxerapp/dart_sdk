@@ -10,7 +10,10 @@ MessagePurgeResponse _$MessagePurgeResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('MessagePurgeResponse', json, ($checkedConvert) {
   final val = MessagePurgeResponse(
-    deletedCount: $checkedConvert('deleted_count', (v) => (v as num).toInt()),
+    deletedCount: $checkedConvert(
+      'deleted_count',
+      (v) => (v as num?)?.toInt() ?? 0,
+    ),
   );
   return val;
 }, fieldKeyMap: const {'deletedCount': 'deleted_count'});

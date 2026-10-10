@@ -13,6 +13,7 @@ class EntranceSoundRenameRequest {
   factory EntranceSoundRenameRequest.fromJson(Map<String, Object?> json) =>
       _$EntranceSoundRenameRequestFromJson(json);
 
+  @JsonKey(defaultValue: '')
   final String name;
 
   Map<String, Object?> toJson() => _$EntranceSoundRenameRequestToJson(this);

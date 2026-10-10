@@ -13,8 +13,8 @@ ReadStateAckRequestReadStates _$ReadStateAckRequestReadStatesFromJson(
   json,
   ($checkedConvert) {
     final val = ReadStateAckRequestReadStates(
-      channelId: $checkedConvert('channel_id', (v) => v as String),
-      messageId: $checkedConvert('message_id', (v) => v as String),
+      channelId: $checkedConvert('channel_id', (v) => v as String? ?? ''),
+      messageId: $checkedConvert('message_id', (v) => v as String? ?? ''),
       mentionCount: $checkedConvert(
         'mention_count',
         (v) => (v as num?)?.toInt(),

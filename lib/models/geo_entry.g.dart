@@ -9,7 +9,7 @@ part of 'geo_entry.dart';
 GeoEntry _$GeoEntryFromJson(Map<String, dynamic> json) =>
     $checkedCreate('GeoEntry', json, ($checkedConvert) {
       final val = GeoEntry(
-        countryCode: $checkedConvert('countryCode', (v) => v as String),
+        countryCode: $checkedConvert('countryCode', (v) => v as String? ?? ''),
         regionCode: $checkedConvert('regionCode', (v) => v as String?),
       );
       return val;

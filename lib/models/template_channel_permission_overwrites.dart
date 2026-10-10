@@ -20,15 +20,19 @@ class TemplateChannelPermissionOverwrites {
   ) => _$TemplateChannelPermissionOverwritesFromJson(json);
 
   /// The ID of the role or user for this overwrite
+  @JsonKey(defaultValue: '')
   final String id;
 
   /// The type of overwrite (0/role = role, 1/member = member)
+  @JsonKey(defaultValue: '')
   final String type;
 
   /// The allowed permissions bitfield as a string
+  @JsonKey(defaultValue: '')
   final String allow;
 
   /// The denied permissions bitfield as a string
+  @JsonKey(defaultValue: '')
   final String deny;
 
   Map<String, Object?> toJson() =>

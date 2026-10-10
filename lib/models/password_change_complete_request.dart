@@ -20,14 +20,15 @@ class PasswordChangeCompleteRequest {
       _$PasswordChangeCompleteRequestFromJson(json);
 
   /// Password change ticket identifier
+  @JsonKey(defaultValue: '')
   final String ticket;
 
   /// Proof token obtained from verifying the email code
-  @JsonKey(name: 'verification_proof')
+  @JsonKey(name: 'verification_proof', defaultValue: '')
   final String verificationProof;
 
   /// The new password to set
-  @JsonKey(name: 'new_password')
+  @JsonKey(name: 'new_password', defaultValue: '')
   final PasswordType newPassword;
 
   Map<String, Object?> toJson() => _$PasswordChangeCompleteRequestToJson(this);

@@ -14,18 +14,21 @@ _$SwitchToListPriceResponseScheduledSwitchToListPriceResponseFromJson(
   json,
   ($checkedConvert) {
     final val = SwitchToListPriceResponseScheduledSwitchToListPriceResponse(
-      effectiveAt: $checkedConvert('effective_at', (v) => v as String),
-      targetPriceId: $checkedConvert('target_price_id', (v) => v as String),
+      effectiveAt: $checkedConvert('effective_at', (v) => v as String? ?? ''),
+      targetPriceId: $checkedConvert(
+        'target_price_id',
+        (v) => v as String? ?? '',
+      ),
       targetAmountMinor: $checkedConvert(
         'target_amount_minor',
-        (v) => (v as num).toInt(),
+        (v) => (v as num?)?.toInt() ?? 0,
       ),
       currentAmountMinor: $checkedConvert(
         'current_amount_minor',
-        (v) => (v as num).toInt(),
+        (v) => (v as num?)?.toInt() ?? 0,
       ),
-      currency: $checkedConvert('currency', (v) => v as String),
-      status: $checkedConvert('status', (v) => v as String),
+      currency: $checkedConvert('currency', (v) => v as String? ?? ''),
+      status: $checkedConvert('status', (v) => v as String? ?? ''),
     );
     return val;
   },
@@ -58,18 +61,24 @@ _$SwitchToListPriceResponseAlreadyScheduledSwitchToListPriceResponseFromJson(
   ($checkedConvert) {
     final val =
         SwitchToListPriceResponseAlreadyScheduledSwitchToListPriceResponse(
-          effectiveAt: $checkedConvert('effective_at', (v) => v as String),
-          targetPriceId: $checkedConvert('target_price_id', (v) => v as String),
+          effectiveAt: $checkedConvert(
+            'effective_at',
+            (v) => v as String? ?? '',
+          ),
+          targetPriceId: $checkedConvert(
+            'target_price_id',
+            (v) => v as String? ?? '',
+          ),
           targetAmountMinor: $checkedConvert(
             'target_amount_minor',
-            (v) => (v as num).toInt(),
+            (v) => (v as num?)?.toInt() ?? 0,
           ),
           currentAmountMinor: $checkedConvert(
             'current_amount_minor',
-            (v) => (v as num).toInt(),
+            (v) => (v as num?)?.toInt() ?? 0,
           ),
-          currency: $checkedConvert('currency', (v) => v as String),
-          status: $checkedConvert('status', (v) => v as String),
+          currency: $checkedConvert('currency', (v) => v as String? ?? ''),
+          status: $checkedConvert('status', (v) => v as String? ?? ''),
         );
     return val;
   },
@@ -101,10 +110,12 @@ _$SwitchToListPriceResponseIneligibleSwitchToListPriceResponseFromJson(
   json,
   ($checkedConvert) {
     final val = SwitchToListPriceResponseIneligibleSwitchToListPriceResponse(
-      status: $checkedConvert('status', (v) => v as String),
+      status: $checkedConvert('status', (v) => v as String? ?? ''),
       reason: $checkedConvert(
         'reason',
-        (v) => ListPriceSwitchIneligibilityReason.fromJson(v as String),
+        (v) => v == null
+            ? ListPriceSwitchIneligibilityReason.$unknown
+            : ListPriceSwitchIneligibilityReason.fromJson(v as String),
       ),
     );
     return val;

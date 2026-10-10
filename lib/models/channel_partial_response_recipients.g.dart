@@ -11,7 +11,7 @@ ChannelPartialResponseRecipients _$ChannelPartialResponseRecipientsFromJson(
 ) =>
     $checkedCreate('ChannelPartialResponseRecipients', json, ($checkedConvert) {
       final val = ChannelPartialResponseRecipients(
-        username: $checkedConvert('username', (v) => v as String),
+        username: $checkedConvert('username', (v) => v as String? ?? ''),
       );
       return val;
     });

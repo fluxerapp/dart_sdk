@@ -9,7 +9,7 @@ part of 'user_note_response.dart';
 UserNoteResponse _$UserNoteResponseFromJson(Map<String, dynamic> json) =>
     $checkedCreate('UserNoteResponse', json, ($checkedConvert) {
       final val = UserNoteResponse(
-        note: $checkedConvert('note', (v) => v as String),
+        note: $checkedConvert('note', (v) => v as String? ?? ''),
       );
       return val;
     });

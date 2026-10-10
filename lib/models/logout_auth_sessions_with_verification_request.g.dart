@@ -16,7 +16,7 @@ _$LogoutAuthSessionsWithVerificationRequestFromJson(
     final val = LogoutAuthSessionsWithVerificationRequest(
       sessionIdHashes: $checkedConvert(
         'session_id_hashes',
-        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
       ),
       password: $checkedConvert('password', (v) => v as String?),
       mfaMethod: $checkedConvert(

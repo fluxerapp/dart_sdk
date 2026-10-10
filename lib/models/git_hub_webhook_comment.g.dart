@@ -10,13 +10,15 @@ GitHubWebhookComment _$GitHubWebhookCommentFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('GitHubWebhookComment', json, ($checkedConvert) {
   final val = GitHubWebhookComment(
-    id: $checkedConvert('id', (v) => v as String),
-    htmlUrl: $checkedConvert('html_url', (v) => v as String),
+    id: $checkedConvert('id', (v) => v as String? ?? ''),
+    htmlUrl: $checkedConvert('html_url', (v) => v as String? ?? ''),
     user: $checkedConvert(
       'user',
-      (v) => GitHubWebhookCommentUser.fromJson(v as Map<String, dynamic>),
+      (v) => v == null
+          ? _$missingGitHubWebhookCommentUser()
+          : GitHubWebhookCommentUser.fromJson(v as Map<String, dynamic>),
     ),
-    body: $checkedConvert('body', (v) => v as String),
+    body: $checkedConvert('body', (v) => v as String? ?? ''),
     commitId: $checkedConvert('commit_id', (v) => v as String?),
   );
   return val;

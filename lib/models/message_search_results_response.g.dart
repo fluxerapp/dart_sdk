@@ -12,23 +12,30 @@ MessageSearchResultsResponse _$MessageSearchResultsResponseFromJson(
   final val = MessageSearchResultsResponse(
     messages: $checkedConvert(
       'messages',
-      (v) => (v as List<dynamic>)
-          .map(
-            (e) => MessageSearchResultsResponseMessages.fromJson(
-              e as Map<String, dynamic>,
-            ),
-          )
-          .toList(),
+      (v) =>
+          (v as List<dynamic>?)
+              ?.map(
+                (e) => MessageSearchResultsResponseMessages.fromJson(
+                  e as Map<String, dynamic>,
+                ),
+              )
+              .toList() ??
+          [],
     ),
     channels: $checkedConvert(
       'channels',
-      (v) => (v as List<dynamic>)
-          .map((e) => ChannelResponse.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      (v) =>
+          (v as List<dynamic>?)
+              ?.map((e) => ChannelResponse.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
     ),
-    total: $checkedConvert('total', (v) => (v as num).toInt()),
-    hitsPerPage: $checkedConvert('hits_per_page', (v) => (v as num).toInt()),
-    page: $checkedConvert('page', (v) => (v as num).toInt()),
+    total: $checkedConvert('total', (v) => (v as num?)?.toInt() ?? 0),
+    hitsPerPage: $checkedConvert(
+      'hits_per_page',
+      (v) => (v as num?)?.toInt() ?? 0,
+    ),
+    page: $checkedConvert('page', (v) => (v as num?)?.toInt() ?? 0),
     cursor: $checkedConvert(
       'cursor',
       (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),

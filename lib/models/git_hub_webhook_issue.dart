@@ -24,14 +24,21 @@ class GitHubWebhookIssue {
   factory GitHubWebhookIssue.fromJson(Map<String, Object?> json) =>
       _$GitHubWebhookIssueFromJson(json);
 
+  @JsonKey(defaultValue: '')
   final Int64Type id;
+  @JsonKey(defaultValue: 0)
   final Int32Type number;
-  @JsonKey(name: 'html_url')
+  @JsonKey(name: 'html_url', defaultValue: '')
   final String htmlUrl;
+  @JsonKey(defaultValue: _$missingGitHubWebhookIssueUser)
   final GitHubWebhookIssueUser user;
+  @JsonKey(defaultValue: '')
   final String title;
   @JsonKey(includeIfNull: false)
   final String? body;
 
   Map<String, Object?> toJson() => _$GitHubWebhookIssueToJson(this);
 }
+
+GitHubWebhookIssueUser _$missingGitHubWebhookIssueUser() =>
+    GitHubWebhookIssueUser.fromJson(const <String, dynamic>{});

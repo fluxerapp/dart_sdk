@@ -12,21 +12,29 @@ InstanceAppPublicSchema _$InstanceAppPublicSchemaFromJson(
   final val = InstanceAppPublicSchema(
     branding: $checkedConvert(
       'branding',
-      (v) => InstanceBrandingSchema.fromJson(v as Map<String, dynamic>),
+      (v) => v == null
+          ? _$missingInstanceBrandingSchema()
+          : InstanceBrandingSchema.fromJson(v as Map<String, dynamic>),
     ),
     setup: $checkedConvert(
       'setup',
-      (v) => InstanceSetupSchema.fromJson(v as Map<String, dynamic>),
+      (v) => v == null
+          ? _$missingInstanceSetupSchema()
+          : InstanceSetupSchema.fromJson(v as Map<String, dynamic>),
     ),
     legal: $checkedConvert(
       'legal',
-      (v) => InstanceAppPublicSchemaLegal.fromJson(v as Map<String, dynamic>),
+      (v) => v == null
+          ? _$missingInstanceAppPublicSchemaLegal()
+          : InstanceAppPublicSchemaLegal.fromJson(v as Map<String, dynamic>),
     ),
     registration: $checkedConvert(
       'registration',
-      (v) => InstanceAppPublicSchemaRegistration.fromJson(
-        v as Map<String, dynamic>,
-      ),
+      (v) => v == null
+          ? _$missingInstanceAppPublicSchemaRegistration()
+          : InstanceAppPublicSchemaRegistration.fromJson(
+              v as Map<String, dynamic>,
+            ),
     ),
   );
   return val;

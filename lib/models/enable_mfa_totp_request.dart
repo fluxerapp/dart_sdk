@@ -26,9 +26,11 @@ class EnableMfaTotpRequest {
       _$EnableMfaTotpRequestFromJson(json);
 
   /// The TOTP secret key
+  @JsonKey(defaultValue: '')
   final String secret;
 
   /// The TOTP verification code
+  @JsonKey(defaultValue: '')
   final String code;
 
   /// Account password for sudo verification

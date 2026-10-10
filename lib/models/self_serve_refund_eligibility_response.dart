@@ -27,6 +27,7 @@ class SelfServeRefundEligibilityResponse {
   ) => _$SelfServeRefundEligibilityResponseFromJson(json);
 
   /// Whether the authenticated user can self-serve refund their latest purchase right now
+  @JsonKey(defaultValue: false)
   final bool eligible;
 
   /// Why the user is not eligible, when eligible is false
@@ -58,7 +59,7 @@ class SelfServeRefundEligibilityResponse {
   final String? cooldownExpiresAt;
 
   /// Whether issuing the refund will also cancel the active subscription
-  @JsonKey(name: 'cancels_subscription')
+  @JsonKey(name: 'cancels_subscription', defaultValue: false)
   final bool cancelsSubscription;
 
   Map<String, Object?> toJson() =>

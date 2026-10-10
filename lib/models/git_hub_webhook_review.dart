@@ -20,12 +20,17 @@ class GitHubWebhookReview {
   factory GitHubWebhookReview.fromJson(Map<String, Object?> json) =>
       _$GitHubWebhookReviewFromJson(json);
 
+  @JsonKey(defaultValue: _$missingGitHubWebhookReviewUser)
   final GitHubWebhookReviewUser user;
   @JsonKey(includeIfNull: false)
   final String? body;
-  @JsonKey(name: 'html_url')
+  @JsonKey(name: 'html_url', defaultValue: '')
   final String htmlUrl;
+  @JsonKey(defaultValue: '')
   final String state;
 
   Map<String, Object?> toJson() => _$GitHubWebhookReviewToJson(this);
 }
+
+GitHubWebhookReviewUser _$missingGitHubWebhookReviewUser() =>
+    GitHubWebhookReviewUser.fromJson(const <String, dynamic>{});

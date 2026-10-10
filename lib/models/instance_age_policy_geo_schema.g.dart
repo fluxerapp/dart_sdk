@@ -13,15 +13,17 @@ InstanceAgePolicyGeoSchema _$InstanceAgePolicyGeoSchemaFromJson(
   json,
   ($checkedConvert) {
     final val = InstanceAgePolicyGeoSchema(
-      countryCode: $checkedConvert('country_code', (v) => v as String),
+      countryCode: $checkedConvert('country_code', (v) => v as String? ?? ''),
       regionCode: $checkedConvert('region_code', (v) => v as String?),
       action: $checkedConvert(
         'action',
-        (v) => InstanceAgePolicyActionSchema.fromJson(v as String),
+        (v) => v == null
+            ? InstanceAgePolicyActionSchema.$unknown
+            : InstanceAgePolicyActionSchema.fromJson(v as String),
       ),
       cardVerificationAvailable: $checkedConvert(
         'card_verification_available',
-        (v) => v as bool,
+        (v) => v as bool? ?? false,
       ),
     );
     return val;

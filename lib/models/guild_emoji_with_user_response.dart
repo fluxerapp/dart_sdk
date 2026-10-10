@@ -23,19 +23,27 @@ class GuildEmojiWithUserResponse {
       _$GuildEmojiWithUserResponseFromJson(json);
 
   /// The unique identifier for this emoji
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
 
   /// The name of the emoji
+  @JsonKey(defaultValue: '')
   final String name;
 
   /// Whether this emoji is animated
+  @JsonKey(defaultValue: false)
   final bool animated;
 
   /// Deprecated; always false. Retained for compatibility with older clients
+  @JsonKey(defaultValue: false)
   final bool nsfw;
 
   /// The user who uploaded this emoji
+  @JsonKey(defaultValue: _$missingUserPartialResponse)
   final UserPartialResponse user;
 
   Map<String, Object?> toJson() => _$GuildEmojiWithUserResponseToJson(this);
 }
+
+UserPartialResponse _$missingUserPartialResponse() =>
+    UserPartialResponse.fromJson(const <String, dynamic>{});

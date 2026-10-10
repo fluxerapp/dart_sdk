@@ -11,11 +11,13 @@ ChannelPinResponse _$ChannelPinResponseFromJson(Map<String, dynamic> json) =>
       final val = ChannelPinResponse(
         message: $checkedConvert(
           'message',
-          (v) => ChannelPinResponseMessage.fromJson(v as Map<String, dynamic>),
+          (v) => v == null
+              ? _$missingChannelPinResponseMessage()
+              : ChannelPinResponseMessage.fromJson(v as Map<String, dynamic>),
         ),
         pinnedAt: $checkedConvert(
           'pinned_at',
-          (v) => DateTime.parse(v as String),
+          (v) => v == null ? _$missingDateTime() : DateTime.parse(v as String),
         ),
       );
       return val;

@@ -18,10 +18,11 @@ class PasskeyBridgeSudoStartRequest {
   factory PasskeyBridgeSudoStartRequest.fromJson(Map<String, Object?> json) =>
       _$PasskeyBridgeSudoStartRequestFromJson(json);
 
+  @JsonKey(defaultValue: PasskeyBridgeRunner.$unknown)
   final PasskeyBridgeRunner runner;
 
   /// Lowercase hex SHA-256 digest of the nonce the starting page keeps
-  @JsonKey(name: 'nonce_hash')
+  @JsonKey(name: 'nonce_hash', defaultValue: '')
   final String nonceHash;
 
   Map<String, Object?> toJson() => _$PasskeyBridgeSudoStartRequestToJson(this);

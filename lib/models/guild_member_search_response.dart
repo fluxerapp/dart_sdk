@@ -22,21 +22,23 @@ class GuildMemberSearchResponse {
       _$GuildMemberSearchResponseFromJson(json);
 
   /// Guild ID
-  @JsonKey(name: 'guild_id')
+  @JsonKey(name: 'guild_id', defaultValue: '')
   final String guildId;
 
   /// Matching members
+  @JsonKey(defaultValue: <GuildMemberSearchResult>[])
   final List<GuildMemberSearchResult> members;
 
   /// Number of results in this page
-  @JsonKey(name: 'page_result_count')
+  @JsonKey(name: 'page_result_count', defaultValue: 0)
   final int pageResultCount;
 
   /// Total number of matching results
-  @JsonKey(name: 'total_result_count')
+  @JsonKey(name: 'total_result_count', defaultValue: 0)
   final int totalResultCount;
 
   /// Whether the guild members are currently being indexed
+  @JsonKey(defaultValue: false)
   final bool indexing;
 
   Map<String, Object?> toJson() => _$GuildMemberSearchResponseToJson(this);

@@ -12,7 +12,9 @@ PasskeyBridgeCompleteRequest _$PasskeyBridgeCompleteRequestFromJson(
   final val = PasskeyBridgeCompleteRequest(
     response: $checkedConvert(
       'response',
-      (v) => WebAuthnAuthenticationResponse.fromJson(v as Map<String, dynamic>),
+      (v) => v == null
+          ? _$missingWebAuthnAuthenticationResponse()
+          : WebAuthnAuthenticationResponse.fromJson(v as Map<String, dynamic>),
     ),
   );
   return val;

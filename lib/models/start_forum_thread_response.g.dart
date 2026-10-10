@@ -13,10 +13,12 @@ StartForumThreadResponse _$StartForumThreadResponseFromJson(
   json,
   ($checkedConvert) {
     final val = StartForumThreadResponse(
-      id: $checkedConvert('id', (v) => v as String),
+      id: $checkedConvert('id', (v) => v as String? ?? ''),
       type: $checkedConvert(
         'type',
-        (v) => ChannelType.fromJson((v as num).toInt()),
+        (v) => v == null
+            ? ChannelType.$unknown
+            : ChannelType.fromJson((v as num).toInt()),
       ),
       rtcP2p: $checkedConvert('rtc_p2p', (v) => v as bool?),
       topic: $checkedConvert('topic', (v) => v as String?),

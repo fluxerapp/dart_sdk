@@ -20,9 +20,11 @@ class GuildEmojiBulkCreateResponse {
       _$GuildEmojiBulkCreateResponseFromJson(json);
 
   /// Successfully created emojis
+  @JsonKey(defaultValue: <GuildEmojiResponse>[])
   final List<GuildEmojiResponse> success;
 
   /// Emojis that failed to create
+  @JsonKey(defaultValue: <GuildEmojiBulkCreateResponseFailed>[])
   final List<GuildEmojiBulkCreateResponseFailed> failed;
 
   Map<String, Object?> toJson() => _$GuildEmojiBulkCreateResponseToJson(this);

@@ -24,7 +24,9 @@ class StartThreadRequest {
       _$StartThreadRequestFromJson(json);
 
   /// The name of the thread (1-100 characters)
+  @JsonKey(defaultValue: '')
   final String name;
+  @JsonKey(defaultValue: ThreadChannelType.$unknown)
   final ThreadChannelType type;
   @JsonKey(includeIfNull: false, name: 'auto_archive_duration')
   final ThreadAutoArchiveDurationSchema? autoArchiveDuration;

@@ -13,21 +13,28 @@ EntranceSoundResponse _$EntranceSoundResponseFromJson(
   json,
   ($checkedConvert) {
     final val = EntranceSoundResponse(
-      id: $checkedConvert('id', (v) => v as String),
-      name: $checkedConvert('name', (v) => v as String),
-      hash: $checkedConvert('hash', (v) => v as String),
+      id: $checkedConvert('id', (v) => v as String? ?? ''),
+      name: $checkedConvert('name', (v) => v as String? ?? ''),
+      hash: $checkedConvert('hash', (v) => v as String? ?? ''),
       extensionEnum: $checkedConvert(
         'extension',
-        (v) =>
-            EntranceSoundResponseExtensionExtensionEnum.fromJson(v as String),
+        (v) => v == null
+            ? EntranceSoundResponseExtensionExtensionEnum.$unknown
+            : EntranceSoundResponseExtensionExtensionEnum.fromJson(v as String),
       ),
-      contentType: $checkedConvert('content_type', (v) => v as String),
-      durationMs: $checkedConvert('duration_ms', (v) => (v as num).toInt()),
-      sizeBytes: $checkedConvert('size_bytes', (v) => (v as num).toInt()),
-      url: $checkedConvert('url', (v) => v as String),
+      contentType: $checkedConvert('content_type', (v) => v as String? ?? ''),
+      durationMs: $checkedConvert(
+        'duration_ms',
+        (v) => (v as num?)?.toInt() ?? 0,
+      ),
+      sizeBytes: $checkedConvert(
+        'size_bytes',
+        (v) => (v as num?)?.toInt() ?? 0,
+      ),
+      url: $checkedConvert('url', (v) => v as String? ?? ''),
       createdAt: $checkedConvert(
         'created_at',
-        (v) => DateTime.parse(v as String),
+        (v) => v == null ? _$missingDateTime() : DateTime.parse(v as String),
       ),
     );
     return val;

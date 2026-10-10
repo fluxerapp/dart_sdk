@@ -10,7 +10,10 @@ ChannelFollowRequest _$ChannelFollowRequestFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('ChannelFollowRequest', json, ($checkedConvert) {
   final val = ChannelFollowRequest(
-    webhookChannelId: $checkedConvert('webhook_channel_id', (v) => v as String),
+    webhookChannelId: $checkedConvert(
+      'webhook_channel_id',
+      (v) => v as String? ?? '',
+    ),
   );
   return val;
 }, fieldKeyMap: const {'webhookChannelId': 'webhook_channel_id'});

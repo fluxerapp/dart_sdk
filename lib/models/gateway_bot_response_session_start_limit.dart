@@ -20,17 +20,19 @@ class GatewayBotResponseSessionStartLimit {
   ) => _$GatewayBotResponseSessionStartLimitFromJson(json);
 
   /// Total number of session starts allowed
+  @JsonKey(defaultValue: 0)
   final int total;
 
   /// Remaining number of session starts
+  @JsonKey(defaultValue: 0)
   final int remaining;
 
   /// Milliseconds until the limit resets
-  @JsonKey(name: 'reset_after')
+  @JsonKey(name: 'reset_after', defaultValue: 0)
   final int resetAfter;
 
   /// Maximum number of concurrent IDENTIFY requests
-  @JsonKey(name: 'max_concurrency')
+  @JsonKey(name: 'max_concurrency', defaultValue: 0)
   final int maxConcurrency;
 
   Map<String, Object?> toJson() =>

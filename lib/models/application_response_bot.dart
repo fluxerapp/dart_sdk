@@ -29,12 +29,15 @@ class ApplicationResponseBot {
       _$ApplicationResponseBotFromJson(json);
 
   /// The unique identifier of the bot user
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
 
   /// The username of the bot
+  @JsonKey(defaultValue: '')
   final String username;
 
   /// The discriminator of the bot
+  @JsonKey(defaultValue: '')
   final String discriminator;
 
   /// The avatar hash of the bot
@@ -60,6 +63,7 @@ class ApplicationResponseBot {
   /// The types of authenticators enabled
   @JsonKey(includeIfNull: false, name: 'authenticator_types')
   final List<AuthenticatorType>? authenticatorTypes;
+  @JsonKey(defaultValue: 0)
   final BotFlags flags;
 
   Map<String, Object?> toJson() => _$ApplicationResponseBotToJson(this);

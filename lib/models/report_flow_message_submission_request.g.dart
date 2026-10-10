@@ -13,15 +13,17 @@ ReportFlowMessageSubmissionRequest _$ReportFlowMessageSubmissionRequestFromJson(
   json,
   ($checkedConvert) {
     final val = ReportFlowMessageSubmissionRequest(
-      revisionHash: $checkedConvert('revision_hash', (v) => v as String),
+      revisionHash: $checkedConvert('revision_hash', (v) => v as String? ?? ''),
       steps: $checkedConvert(
         'steps',
-        (v) => (v as List<dynamic>)
-            .map((e) => ReportFlowStep.fromJson(e as Map<String, dynamic>))
-            .toList(),
+        (v) =>
+            (v as List<dynamic>?)
+                ?.map((e) => ReportFlowStep.fromJson(e as Map<String, dynamic>))
+                .toList() ??
+            [],
       ),
-      channelId: $checkedConvert('channel_id', (v) => v as String),
-      messageId: $checkedConvert('message_id', (v) => v as String),
+      channelId: $checkedConvert('channel_id', (v) => v as String? ?? ''),
+      messageId: $checkedConvert('message_id', (v) => v as String? ?? ''),
       locale: $checkedConvert('locale', (v) => v as String?),
     );
     return val;

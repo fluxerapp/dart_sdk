@@ -12,9 +12,11 @@ PasskeyBridgeSudoStartRequest _$PasskeyBridgeSudoStartRequestFromJson(
   final val = PasskeyBridgeSudoStartRequest(
     runner: $checkedConvert(
       'runner',
-      (v) => PasskeyBridgeRunner.fromJson(v as String),
+      (v) => v == null
+          ? PasskeyBridgeRunner.$unknown
+          : PasskeyBridgeRunner.fromJson(v as String),
     ),
-    nonceHash: $checkedConvert('nonce_hash', (v) => v as String),
+    nonceHash: $checkedConvert('nonce_hash', (v) => v as String? ?? ''),
   );
   return val;
 }, fieldKeyMap: const {'nonceHash': 'nonce_hash'});

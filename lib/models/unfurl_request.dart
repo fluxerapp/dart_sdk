@@ -14,6 +14,7 @@ class UnfurlRequest {
       _$UnfurlRequestFromJson(json);
 
   /// The URL to unfurl
+  @JsonKey(defaultValue: '')
   final String url;
 
   Map<String, Object?> toJson() => _$UnfurlRequestToJson(this);

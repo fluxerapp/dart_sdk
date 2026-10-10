@@ -37,6 +37,7 @@ class GuildStickerUpdateRequest {
   }
 
   /// The name of the sticker (2-30 characters)
+  @JsonKey(defaultValue: '')
   final String name;
 
   /// Array of autocomplete/suggestion tags (max 10 tags, each 1-30 characters)

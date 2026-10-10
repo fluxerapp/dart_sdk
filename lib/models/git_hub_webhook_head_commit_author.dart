@@ -15,6 +15,7 @@ class GitHubWebhookHeadCommitAuthor {
 
   @JsonKey(includeIfNull: false)
   final String? username;
+  @JsonKey(defaultValue: '')
   final String name;
 
   Map<String, Object?> toJson() => _$GitHubWebhookHeadCommitAuthorToJson(this);

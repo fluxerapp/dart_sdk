@@ -12,10 +12,10 @@ _$UserSettingsUpdateRequestGuildFoldersFromJson(Map<String, dynamic> json) =>
       $checkedConvert,
     ) {
       final val = UserSettingsUpdateRequestGuildFolders(
-        id: $checkedConvert('id', (v) => (v as num).toInt()),
+        id: $checkedConvert('id', (v) => (v as num?)?.toInt() ?? 0),
         guildIds: $checkedConvert(
           'guild_ids',
-          (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+          (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
         ),
         color: $checkedConvert('color', (v) => (v as num?)?.toInt() ?? 0),
         flags: $checkedConvert('flags', (v) => (v as num?)?.toInt() ?? 0),

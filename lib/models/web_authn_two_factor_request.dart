@@ -25,6 +25,7 @@ class WebAuthnTwoFactorRequest {
       _$WebAuthnTwoFactorRequestFromJson(json);
 
   /// Whether registered passkeys count as a second factor when logging in
+  @JsonKey(defaultValue: false)
   final bool enabled;
 
   /// Account password for sudo verification

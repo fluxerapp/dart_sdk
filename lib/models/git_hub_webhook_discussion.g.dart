@@ -13,12 +13,14 @@ GitHubWebhookDiscussion _$GitHubWebhookDiscussionFromJson(
   json,
   ($checkedConvert) {
     final val = GitHubWebhookDiscussion(
-      title: $checkedConvert('title', (v) => v as String),
-      number: $checkedConvert('number', (v) => (v as num).toInt()),
-      htmlUrl: $checkedConvert('html_url', (v) => v as String),
+      title: $checkedConvert('title', (v) => v as String? ?? ''),
+      number: $checkedConvert('number', (v) => (v as num?)?.toInt() ?? 0),
+      htmlUrl: $checkedConvert('html_url', (v) => v as String? ?? ''),
       user: $checkedConvert(
         'user',
-        (v) => GitHubWebhookDiscussionUser.fromJson(v as Map<String, dynamic>),
+        (v) => v == null
+            ? _$missingGitHubWebhookDiscussionUser()
+            : GitHubWebhookDiscussionUser.fromJson(v as Map<String, dynamic>),
       ),
       answerHtmlUrl: $checkedConvert('answer_html_url', (v) => v as String?),
       body: $checkedConvert('body', (v) => v as String?),

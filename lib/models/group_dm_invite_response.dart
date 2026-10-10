@@ -26,6 +26,7 @@ class GroupDmInviteResponse {
       _$GroupDmInviteResponseFromJson(json);
 
   /// The unique invite code
+  @JsonKey(defaultValue: '')
   final String code;
 
   /// The user who created the invite
@@ -37,17 +38,23 @@ class GroupDmInviteResponse {
   final DateTime? expiresAt;
 
   /// Whether the invite grants temporary membership
+  @JsonKey(defaultValue: false)
   final bool temporary;
 
   /// The type of invite (group DM)
+  @JsonKey(defaultValue: 0)
   final num type;
 
   /// The group DM channel this invite is for
+  @JsonKey(defaultValue: _$missingChannelPartialResponse)
   final ChannelPartialResponse channel;
 
   /// The current member count of the group DM
-  @JsonKey(name: 'member_count')
+  @JsonKey(name: 'member_count', defaultValue: 0)
   final Int32Type memberCount;
 
   Map<String, Object?> toJson() => _$GroupDmInviteResponseToJson(this);
 }
+
+ChannelPartialResponse _$missingChannelPartialResponse() =>
+    ChannelPartialResponse.fromJson(const <String, dynamic>{});

@@ -19,10 +19,15 @@ class WebAuthnAuthenticateRequest {
       _$WebAuthnAuthenticateRequestFromJson(json);
 
   /// WebAuthn authentication response
+  @JsonKey(defaultValue: _$missingWebAuthnAuthenticationResponse)
   final WebAuthnAuthenticationResponse response;
 
   /// The challenge string from authentication options
+  @JsonKey(defaultValue: '')
   final String challenge;
 
   Map<String, Object?> toJson() => _$WebAuthnAuthenticateRequestToJson(this);
 }
+
+WebAuthnAuthenticationResponse _$missingWebAuthnAuthenticationResponse() =>
+    WebAuthnAuthenticationResponse.fromJson(const <String, dynamic>{});

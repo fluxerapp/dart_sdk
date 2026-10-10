@@ -21,12 +21,13 @@ class HarvestCreationResponseSchema {
       _$HarvestCreationResponseSchemaFromJson(json);
 
   /// Unique identifier for the harvest request
-  @JsonKey(name: 'harvest_id')
+  @JsonKey(name: 'harvest_id', defaultValue: '')
   final SnowflakeStringType harvestId;
+  @JsonKey(defaultValue: HarvestStatus.$unknown)
   final HarvestStatus status;
 
   /// ISO 8601 timestamp when the harvest request was created
-  @JsonKey(name: 'created_at')
+  @JsonKey(name: 'created_at', defaultValue: '')
   final String createdAt;
 
   Map<String, Object?> toJson() => _$HarvestCreationResponseSchemaToJson(this);

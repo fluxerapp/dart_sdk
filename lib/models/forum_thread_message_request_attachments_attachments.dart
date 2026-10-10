@@ -45,13 +45,15 @@ class ForumThreadMessageRequestAttachmentsAttachmentsClientUploadedAttachmentReq
   final Int32Type? duration;
   @JsonKey(includeIfNull: false)
   final String? waveform;
+  @JsonKey(defaultValue: 0)
   final Int32Type id;
+  @JsonKey(defaultValue: '')
   final String filename;
-  @JsonKey(name: 'content_type')
+  @JsonKey(name: 'content_type', defaultValue: '')
   final String contentType;
-  @JsonKey(name: 'upload_filename')
+  @JsonKey(name: 'upload_filename', defaultValue: '')
   final String uploadFilename;
-  @JsonKey(name: 'file_size')
+  @JsonKey(name: 'file_size', defaultValue: 0)
   final NonNegativeSafeIntegerType fileSize;
 
   const ForumThreadMessageRequestAttachmentsAttachmentsClientUploadedAttachmentRequest({
@@ -92,7 +94,9 @@ class ForumThreadMessageRequestAttachmentsAttachmentsClientAttachmentRequest {
   final Int32Type? duration;
   @JsonKey(includeIfNull: false)
   final String? waveform;
+  @JsonKey(defaultValue: 0)
   final Int32Type id;
+  @JsonKey(defaultValue: '')
   final String filename;
   @JsonKey(includeIfNull: false, name: 'content_type')
   final String? contentType;

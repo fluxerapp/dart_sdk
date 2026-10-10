@@ -14,7 +14,10 @@ _$PushSubscriptionsListResponseSubscriptionsFromJson(
   json,
   ($checkedConvert) {
     final val = PushSubscriptionsListResponseSubscriptions(
-      subscriptionId: $checkedConvert('subscription_id', (v) => v as String),
+      subscriptionId: $checkedConvert(
+        'subscription_id',
+        (v) => v as String? ?? '',
+      ),
       userAgent: $checkedConvert('user_agent', (v) => v as String?),
     );
     return val;

@@ -17,10 +17,11 @@ class PasskeyBridgeRedeemRequest {
       _$PasskeyBridgeRedeemRequestFromJson(json);
 
   /// Nonce whose SHA-256 digest was sent when the ceremony started
+  @JsonKey(defaultValue: '')
   final String nonce;
 
   /// Code handed back when the ceremony finished
-  @JsonKey(name: 'completion_code')
+  @JsonKey(name: 'completion_code', defaultValue: '')
   final String completionCode;
 
   Map<String, Object?> toJson() => _$PasskeyBridgeRedeemRequestToJson(this);

@@ -22,22 +22,23 @@ class OAuth2TokenResponse {
       _$OAuth2TokenResponseFromJson(json);
 
   /// The access token for API authorization
-  @JsonKey(name: 'access_token')
+  @JsonKey(name: 'access_token', defaultValue: '')
   final String accessToken;
 
   /// The type of token, typically "Bearer"
-  @JsonKey(name: 'token_type')
+  @JsonKey(name: 'token_type', defaultValue: '')
   final String tokenType;
 
   /// The number of seconds until the access token expires
-  @JsonKey(name: 'expires_in')
+  @JsonKey(name: 'expires_in', defaultValue: 0)
   final Int32Type expiresIn;
 
   /// The refresh token for obtaining new access tokens
-  @JsonKey(name: 'refresh_token')
+  @JsonKey(name: 'refresh_token', defaultValue: '')
   final String refreshToken;
 
   /// The space-separated list of granted scopes
+  @JsonKey(defaultValue: '')
   final String scope;
 
   Map<String, Object?> toJson() => _$OAuth2TokenResponseToJson(this);

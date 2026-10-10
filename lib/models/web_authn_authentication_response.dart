@@ -24,15 +24,32 @@ class WebAuthnAuthenticationResponse {
   factory WebAuthnAuthenticationResponse.fromJson(Map<String, Object?> json) =>
       _$WebAuthnAuthenticationResponseFromJson(json);
 
+  @JsonKey(defaultValue: '')
   final String id;
+  @JsonKey(defaultValue: '')
   final String rawId;
+  @JsonKey(defaultValue: '')
   final String type;
   @JsonKey(includeIfNull: false)
   final WebAuthnAuthenticationResponseAuthenticatorAttachmentAuthenticatorAttachment?
   authenticatorAttachment;
+  @JsonKey(
+    defaultValue: _$missingWebAuthnAuthenticationResponseClientExtensionResults,
+  )
   final WebAuthnAuthenticationResponseClientExtensionResults
   clientExtensionResults;
+  @JsonKey(defaultValue: _$missingWebAuthnAuthenticationResponseResponse)
   final WebAuthnAuthenticationResponseResponse response;
 
   Map<String, Object?> toJson() => _$WebAuthnAuthenticationResponseToJson(this);
 }
+
+WebAuthnAuthenticationResponseClientExtensionResults
+_$missingWebAuthnAuthenticationResponseClientExtensionResults() =>
+    WebAuthnAuthenticationResponseClientExtensionResults.fromJson(
+      const <String, dynamic>{},
+    );
+
+WebAuthnAuthenticationResponseResponse
+_$missingWebAuthnAuthenticationResponseResponse() =>
+    WebAuthnAuthenticationResponseResponse.fromJson(const <String, dynamic>{});

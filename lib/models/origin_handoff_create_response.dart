@@ -14,7 +14,7 @@ class OriginHandoffCreateResponse {
       _$OriginHandoffCreateResponseFromJson(json);
 
   /// Single-use identifier the receiving origin redeems
-  @JsonKey(name: 'handoff_id')
+  @JsonKey(name: 'handoff_id', defaultValue: '')
   final String handoffId;
 
   Map<String, Object?> toJson() => _$OriginHandoffCreateResponseToJson(this);

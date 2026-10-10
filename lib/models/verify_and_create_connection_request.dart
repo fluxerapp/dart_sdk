@@ -20,7 +20,7 @@ class VerifyAndCreateConnectionRequest {
   ) => _$VerifyAndCreateConnectionRequestFromJson(json);
 
   /// The signed initiation token returned from the create endpoint
-  @JsonKey(name: 'initiation_token')
+  @JsonKey(name: 'initiation_token', defaultValue: '')
   final String initiationToken;
 
   /// Bitfield controlling who can see this connection

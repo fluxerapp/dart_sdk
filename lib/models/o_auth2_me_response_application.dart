@@ -25,9 +25,11 @@ class OAuth2MeResponseApplication {
       _$OAuth2MeResponseApplicationFromJson(json);
 
   /// The unique identifier of the application
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
 
   /// The name of the application
+  @JsonKey(defaultValue: '')
   final String name;
 
   /// The icon hash of the application
@@ -39,12 +41,13 @@ class OAuth2MeResponseApplication {
   final String? description;
 
   /// Whether the bot can be invited by anyone
-  @JsonKey(name: 'bot_public')
+  @JsonKey(name: 'bot_public', defaultValue: false)
   final bool botPublic;
 
   /// Whether the bot requires OAuth2 code grant
-  @JsonKey(name: 'bot_require_code_grant')
+  @JsonKey(name: 'bot_require_code_grant', defaultValue: false)
   final bool botRequireCodeGrant;
+  @JsonKey(defaultValue: 0)
   final ApplicationFlags flags;
 
   Map<String, Object?> toJson() => _$OAuth2MeResponseApplicationToJson(this);

@@ -27,7 +27,7 @@ class GuildTransferOwnershipWithVerificationRequest {
   ) => _$GuildTransferOwnershipWithVerificationRequestFromJson(json);
 
   /// The ID of the user to transfer ownership to
-  @JsonKey(name: 'new_owner_id')
+  @JsonKey(name: 'new_owner_id', defaultValue: '')
   final SnowflakeType newOwnerId;
 
   /// Account password for sudo verification

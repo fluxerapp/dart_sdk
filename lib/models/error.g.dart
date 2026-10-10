@@ -9,8 +9,8 @@ part of 'error.dart';
 Error _$ErrorFromJson(Map<String, dynamic> json) =>
     $checkedCreate('Error', json, ($checkedConvert) {
       final val = Error(
-        code: $checkedConvert('code', (v) => v as String),
-        message: $checkedConvert('message', (v) => v as String),
+        code: $checkedConvert('code', (v) => v as String? ?? ''),
+        message: $checkedConvert('message', (v) => v as String? ?? ''),
         errors: $checkedConvert(
           'errors',
           (v) => (v as List<dynamic>?)

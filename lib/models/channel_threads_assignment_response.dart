@@ -17,8 +17,9 @@ class ChannelThreadsAssignmentResponse {
     Map<String, Object?> json,
   ) => _$ChannelThreadsAssignmentResponseFromJson(json);
 
+  @JsonKey(defaultValue: false)
   final bool active;
-  @JsonKey(name: 'config_version')
+  @JsonKey(name: 'config_version', defaultValue: 0)
   final int configVersion;
 
   Map<String, Object?> toJson() =>

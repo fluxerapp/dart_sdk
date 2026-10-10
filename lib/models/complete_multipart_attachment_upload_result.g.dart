@@ -12,7 +12,10 @@ _$CompleteMultipartAttachmentUploadResultFromJson(Map<String, dynamic> json) =>
       $checkedConvert,
     ) {
       final val = CompleteMultipartAttachmentUploadResult(
-        uploadFilename: $checkedConvert('upload_filename', (v) => v as String),
+        uploadFilename: $checkedConvert(
+          'upload_filename',
+          (v) => v as String? ?? '',
+        ),
       );
       return val;
     }, fieldKeyMap: const {'uploadFilename': 'upload_filename'});

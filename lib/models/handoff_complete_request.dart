@@ -21,6 +21,7 @@ class HandoffCompleteRequest {
       _$HandoffCompleteRequestFromJson(json);
 
   /// The handoff code from the initiating session
+  @JsonKey(defaultValue: '')
   final String code;
 
   /// The authentication token to transfer
@@ -28,7 +29,7 @@ class HandoffCompleteRequest {
   final String? token;
 
   /// The user ID associated with the authenticated session
-  @JsonKey(name: 'user_id')
+  @JsonKey(name: 'user_id', defaultValue: '')
   final String userId;
 
   /// deep_link returns a one-time grant the initiating app must present, code releases the token to the poll secret alone

@@ -14,13 +14,15 @@ _$CompleteMultipartAttachmentUploadRequestFromJson(Map<String, dynamic> json) =>
       final val = CompleteMultipartAttachmentUploadRequest(
         uploads: $checkedConvert(
           'uploads',
-          (v) => (v as List<dynamic>)
-              .map(
-                (e) => CompleteMultipartAttachmentUploadItem.fromJson(
-                  e as Map<String, dynamic>,
-                ),
-              )
-              .toList(),
+          (v) =>
+              (v as List<dynamic>?)
+                  ?.map(
+                    (e) => CompleteMultipartAttachmentUploadItem.fromJson(
+                      e as Map<String, dynamic>,
+                    ),
+                  )
+                  .toList() ??
+              [],
         ),
       );
       return val;

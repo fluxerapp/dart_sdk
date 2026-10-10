@@ -14,12 +14,18 @@ GuildBanResponse _$GuildBanResponseFromJson(Map<String, dynamic> json) =>
         final val = GuildBanResponse(
           user: $checkedConvert(
             'user',
-            (v) => UserPartialResponse.fromJson(v as Map<String, dynamic>),
+            (v) => v == null
+                ? _$missingUserPartialResponse()
+                : UserPartialResponse.fromJson(v as Map<String, dynamic>),
           ),
-          moderatorId: $checkedConvert('moderator_id', (v) => v as String),
+          moderatorId: $checkedConvert(
+            'moderator_id',
+            (v) => v as String? ?? '',
+          ),
           bannedAt: $checkedConvert(
             'banned_at',
-            (v) => DateTime.parse(v as String),
+            (v) =>
+                v == null ? _$missingDateTime() : DateTime.parse(v as String),
           ),
           reason: $checkedConvert('reason', (v) => v as String?),
           expiresAt: $checkedConvert(

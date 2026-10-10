@@ -16,6 +16,7 @@ class ForgotPasswordRequest {
       _$ForgotPasswordRequestFromJson(json);
 
   /// Email address to send password reset link
+  @JsonKey(defaultValue: '')
   final EmailType email;
 
   Map<String, Object?> toJson() => _$ForgotPasswordRequestToJson(this);

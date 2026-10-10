@@ -12,10 +12,10 @@ _$MfaBackupCodesChallengeRegenerateRequestFromJson(Map<String, dynamic> json) =>
       $checkedConvert,
     ) {
       final val = MfaBackupCodesChallengeRegenerateRequest(
-        ticket: $checkedConvert('ticket', (v) => v as String),
+        ticket: $checkedConvert('ticket', (v) => v as String? ?? ''),
         verificationProof: $checkedConvert(
           'verification_proof',
-          (v) => v as String,
+          (v) => v as String? ?? '',
         ),
       );
       return val;

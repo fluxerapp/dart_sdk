@@ -14,7 +14,7 @@ _$InviteMetadataResponseSchemaGuildInviteMetadataResponseFromJson(
   json,
   ($checkedConvert) {
     final val = InviteMetadataResponseSchemaGuildInviteMetadataResponse(
-      code: $checkedConvert('code', (v) => v as String),
+      code: $checkedConvert('code', (v) => v as String? ?? ''),
       inviter: $checkedConvert(
         'inviter',
         (v) => v == null
@@ -25,28 +25,35 @@ _$InviteMetadataResponseSchemaGuildInviteMetadataResponseFromJson(
         'expires_at',
         (v) => v == null ? null : DateTime.parse(v as String),
       ),
-      temporary: $checkedConvert('temporary', (v) => v as bool),
-      type: $checkedConvert('type', (v) => v as num),
+      temporary: $checkedConvert('temporary', (v) => v as bool? ?? false),
+      type: $checkedConvert('type', (v) => v as num? ?? 0),
       guild: $checkedConvert(
         'guild',
-        (v) => GuildPartialResponse.fromJson(v as Map<String, dynamic>),
+        (v) => v == null
+            ? _$missingGuildPartialResponse()
+            : GuildPartialResponse.fromJson(v as Map<String, dynamic>),
       ),
       channel: $checkedConvert(
         'channel',
-        (v) => ChannelPartialResponse.fromJson(v as Map<String, dynamic>),
+        (v) => v == null
+            ? _$missingChannelPartialResponse()
+            : ChannelPartialResponse.fromJson(v as Map<String, dynamic>),
       ),
-      memberCount: $checkedConvert('member_count', (v) => (v as num).toInt()),
+      memberCount: $checkedConvert(
+        'member_count',
+        (v) => (v as num?)?.toInt() ?? 0,
+      ),
       presenceCount: $checkedConvert(
         'presence_count',
-        (v) => (v as num).toInt(),
+        (v) => (v as num?)?.toInt() ?? 0,
       ),
       createdAt: $checkedConvert(
         'created_at',
-        (v) => DateTime.parse(v as String),
+        (v) => v == null ? _$missingDateTime() : DateTime.parse(v as String),
       ),
-      uses: $checkedConvert('uses', (v) => (v as num).toInt()),
-      maxUses: $checkedConvert('max_uses', (v) => (v as num).toInt()),
-      maxAge: $checkedConvert('max_age', (v) => (v as num).toInt()),
+      uses: $checkedConvert('uses', (v) => (v as num?)?.toInt() ?? 0),
+      maxUses: $checkedConvert('max_uses', (v) => (v as num?)?.toInt() ?? 0),
+      maxAge: $checkedConvert('max_age', (v) => (v as num?)?.toInt() ?? 0),
     );
     return val;
   },
@@ -87,7 +94,7 @@ _$InviteMetadataResponseSchemaGroupDmInviteMetadataResponseFromJson(
   json,
   ($checkedConvert) {
     final val = InviteMetadataResponseSchemaGroupDmInviteMetadataResponse(
-      code: $checkedConvert('code', (v) => v as String),
+      code: $checkedConvert('code', (v) => v as String? ?? ''),
       inviter: $checkedConvert(
         'inviter',
         (v) => v == null
@@ -98,19 +105,24 @@ _$InviteMetadataResponseSchemaGroupDmInviteMetadataResponseFromJson(
         'expires_at',
         (v) => v == null ? null : DateTime.parse(v as String),
       ),
-      temporary: $checkedConvert('temporary', (v) => v as bool),
-      type: $checkedConvert('type', (v) => v as num),
+      temporary: $checkedConvert('temporary', (v) => v as bool? ?? false),
+      type: $checkedConvert('type', (v) => v as num? ?? 0),
       channel: $checkedConvert(
         'channel',
-        (v) => ChannelPartialResponse.fromJson(v as Map<String, dynamic>),
+        (v) => v == null
+            ? _$missingChannelPartialResponse()
+            : ChannelPartialResponse.fromJson(v as Map<String, dynamic>),
       ),
-      memberCount: $checkedConvert('member_count', (v) => (v as num).toInt()),
+      memberCount: $checkedConvert(
+        'member_count',
+        (v) => (v as num?)?.toInt() ?? 0,
+      ),
       createdAt: $checkedConvert(
         'created_at',
-        (v) => DateTime.parse(v as String),
+        (v) => v == null ? _$missingDateTime() : DateTime.parse(v as String),
       ),
-      uses: $checkedConvert('uses', (v) => (v as num).toInt()),
-      maxUses: $checkedConvert('max_uses', (v) => (v as num).toInt()),
+      uses: $checkedConvert('uses', (v) => (v as num?)?.toInt() ?? 0),
+      maxUses: $checkedConvert('max_uses', (v) => (v as num?)?.toInt() ?? 0),
     );
     return val;
   },

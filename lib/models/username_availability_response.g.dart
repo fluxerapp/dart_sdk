@@ -10,7 +10,7 @@ UsernameAvailabilityResponse _$UsernameAvailabilityResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('UsernameAvailabilityResponse', json, ($checkedConvert) {
   final val = UsernameAvailabilityResponse(
-    available: $checkedConvert('available', (v) => v as bool),
+    available: $checkedConvert('available', (v) => v as bool? ?? false),
   );
   return val;
 });

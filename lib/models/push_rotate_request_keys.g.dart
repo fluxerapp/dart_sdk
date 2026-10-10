@@ -10,8 +10,8 @@ PushRotateRequestKeys _$PushRotateRequestKeysFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('PushRotateRequestKeys', json, ($checkedConvert) {
   final val = PushRotateRequestKeys(
-    p256dh: $checkedConvert('p256dh', (v) => v as String),
-    auth: $checkedConvert('auth', (v) => v as String),
+    p256dh: $checkedConvert('p256dh', (v) => v as String? ?? ''),
+    auth: $checkedConvert('auth', (v) => v as String? ?? ''),
   );
   return val;
 });

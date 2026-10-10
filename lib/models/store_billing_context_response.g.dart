@@ -13,18 +13,25 @@ StoreBillingContextResponse _$StoreBillingContextResponseFromJson(
   json,
   ($checkedConvert) {
     final val = StoreBillingContextResponse(
-      appAccountToken: $checkedConvert('app_account_token', (v) => v as String),
+      appAccountToken: $checkedConvert(
+        'app_account_token',
+        (v) => v as String? ?? '',
+      ),
       appStore: $checkedConvert(
         'app_store',
-        (v) => StoreBillingContextResponseAppStore.fromJson(
-          v as Map<String, dynamic>,
-        ),
+        (v) => v == null
+            ? _$missingStoreBillingContextResponseAppStore()
+            : StoreBillingContextResponseAppStore.fromJson(
+                v as Map<String, dynamic>,
+              ),
       ),
       googlePlay: $checkedConvert(
         'google_play',
-        (v) => StoreBillingContextResponseGooglePlay.fromJson(
-          v as Map<String, dynamic>,
-        ),
+        (v) => v == null
+            ? _$missingStoreBillingContextResponseGooglePlay()
+            : StoreBillingContextResponseGooglePlay.fromJson(
+                v as Map<String, dynamic>,
+              ),
       ),
       purchaseBlockedReason: $checkedConvert(
         'purchase_blocked_reason',

@@ -10,7 +10,7 @@ GitHubWebhookCommitsAuthor _$GitHubWebhookCommitsAuthorFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('GitHubWebhookCommitsAuthor', json, ($checkedConvert) {
   final val = GitHubWebhookCommitsAuthor(
-    name: $checkedConvert('name', (v) => v as String),
+    name: $checkedConvert('name', (v) => v as String? ?? ''),
     username: $checkedConvert('username', (v) => v as String?),
   );
   return val;

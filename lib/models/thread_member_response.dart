@@ -35,10 +35,11 @@ class ThreadMemberResponse {
   final SnowflakeStringType? userId;
 
   /// When the user last joined the thread
-  @JsonKey(name: 'join_timestamp')
+  @JsonKey(name: 'join_timestamp', defaultValue: _$missingDateTime)
   final DateTime joinTimestamp;
 
   /// Thread member flags
+  @JsonKey(defaultValue: 0)
   final Int32Type flags;
 
   /// Whether the user has muted the thread (current user only)
@@ -55,3 +56,6 @@ class ThreadMemberResponse {
 
   Map<String, Object?> toJson() => _$ThreadMemberResponseToJson(this);
 }
+
+DateTime _$missingDateTime() =>
+    DateTime.fromMillisecondsSinceEpoch(0, isUtc: true);

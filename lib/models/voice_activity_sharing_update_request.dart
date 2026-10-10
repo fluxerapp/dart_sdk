@@ -16,7 +16,7 @@ class VoiceActivitySharingUpdateRequest {
   ) => _$VoiceActivitySharingUpdateRequestFromJson(json);
 
   /// New default for sharing voice activity with friends; also applied to every existing friend relationship
-  @JsonKey(name: 'share_voice_activity')
+  @JsonKey(name: 'share_voice_activity', defaultValue: false)
   final bool shareVoiceActivity;
 
   Map<String, Object?> toJson() =>

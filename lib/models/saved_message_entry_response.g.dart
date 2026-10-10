@@ -10,12 +10,14 @@ SavedMessageEntryResponse _$SavedMessageEntryResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('SavedMessageEntryResponse', json, ($checkedConvert) {
   final val = SavedMessageEntryResponse(
-    id: $checkedConvert('id', (v) => v as String),
-    channelId: $checkedConvert('channel_id', (v) => v as String),
-    messageId: $checkedConvert('message_id', (v) => v as String),
+    id: $checkedConvert('id', (v) => v as String? ?? ''),
+    channelId: $checkedConvert('channel_id', (v) => v as String? ?? ''),
+    messageId: $checkedConvert('message_id', (v) => v as String? ?? ''),
     status: $checkedConvert(
       'status',
-      (v) => SavedMessageStatusSchema.fromJson(v as String),
+      (v) => v == null
+          ? SavedMessageStatusSchema.$unknown
+          : SavedMessageStatusSchema.fromJson(v as String),
     ),
     message: $checkedConvert(
       'message',

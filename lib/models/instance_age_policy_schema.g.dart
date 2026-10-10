@@ -12,12 +12,15 @@ InstanceAgePolicySchema _$InstanceAgePolicySchemaFromJson(
   final val = InstanceAgePolicySchema(
     geos: $checkedConvert(
       'geos',
-      (v) => (v as List<dynamic>)
-          .map(
-            (e) =>
-                InstanceAgePolicyGeoSchema.fromJson(e as Map<String, dynamic>),
-          )
-          .toList(),
+      (v) =>
+          (v as List<dynamic>?)
+              ?.map(
+                (e) => InstanceAgePolicyGeoSchema.fromJson(
+                  e as Map<String, dynamic>,
+                ),
+              )
+              .toList() ??
+          [],
     ),
   );
   return val;

@@ -13,7 +13,7 @@ ApplicationCreateRequest _$ApplicationCreateRequestFromJson(
   json,
   ($checkedConvert) {
     final val = ApplicationCreateRequest._(
-      name: $checkedConvert('name', (v) => v as String),
+      name: $checkedConvert('name', (v) => v as String? ?? ''),
       botPublic: $checkedConvert('bot_public', (v) => v as bool?),
       botRequireCodeGrant: $checkedConvert(
         'bot_require_code_grant',

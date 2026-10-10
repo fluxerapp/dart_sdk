@@ -32,6 +32,7 @@ class GuildMemberResponse {
       _$GuildMemberResponseFromJson(json);
 
   /// The user this guild member represents
+  @JsonKey(defaultValue: _$missingUserPartialResponse)
   final UserPartialResponse user;
 
   /// The nickname of the member in this guild
@@ -51,16 +52,19 @@ class GuildMemberResponse {
   final Int32Type? accentColor;
 
   /// Array of role IDs the member has
+  @JsonKey(defaultValue: <String>[])
   final List<String> roles;
 
   /// ISO8601 timestamp of when the user joined the guild
-  @JsonKey(name: 'joined_at')
+  @JsonKey(name: 'joined_at', defaultValue: _$missingDateTime)
   final DateTime joinedAt;
 
   /// Whether the member is muted in voice channels
+  @JsonKey(defaultValue: false)
   final bool mute;
 
   /// Whether the member is deafened in voice channels
+  @JsonKey(defaultValue: false)
   final bool deaf;
 
   /// ISO8601 timestamp until which the member is timed out
@@ -75,3 +79,9 @@ class GuildMemberResponse {
 
   Map<String, Object?> toJson() => _$GuildMemberResponseToJson(this);
 }
+
+DateTime _$missingDateTime() =>
+    DateTime.fromMillisecondsSinceEpoch(0, isUtc: true);
+
+UserPartialResponse _$missingUserPartialResponse() =>
+    UserPartialResponse.fromJson(const <String, dynamic>{});

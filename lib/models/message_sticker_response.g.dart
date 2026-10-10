@@ -10,9 +10,9 @@ MessageStickerResponse _$MessageStickerResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('MessageStickerResponse', json, ($checkedConvert) {
   final val = MessageStickerResponse(
-    id: $checkedConvert('id', (v) => v as String),
-    name: $checkedConvert('name', (v) => v as String),
-    animated: $checkedConvert('animated', (v) => v as bool),
+    id: $checkedConvert('id', (v) => v as String? ?? ''),
+    name: $checkedConvert('name', (v) => v as String? ?? ''),
+    animated: $checkedConvert('animated', (v) => v as bool? ?? false),
   );
   return val;
 });

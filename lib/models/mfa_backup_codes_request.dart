@@ -25,6 +25,7 @@ class MfaBackupCodesRequest {
       _$MfaBackupCodesRequestFromJson(json);
 
   /// Whether to regenerate backup codes
+  @JsonKey(defaultValue: false)
   final bool regenerate;
 
   /// Account password for sudo verification

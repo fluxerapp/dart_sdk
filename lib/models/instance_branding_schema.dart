@@ -27,7 +27,7 @@ class InstanceBrandingSchema {
       _$InstanceBrandingSchemaFromJson(json);
 
   /// Public product name shown by client applications
-  @JsonKey(name: 'product_name')
+  @JsonKey(name: 'product_name', defaultValue: '')
   final String productName;
 
   /// Optional image URL for the full application icon
@@ -63,7 +63,7 @@ class InstanceBrandingSchema {
   final String? statusPageIncidentHistoryUrl;
 
   /// Name of the premium tier shown by client applications
-  @JsonKey(name: 'premium_product_name')
+  @JsonKey(name: 'premium_product_name', defaultValue: '')
   final String premiumProductName;
 
   /// Optional absolute URL of a page describing the premium tier

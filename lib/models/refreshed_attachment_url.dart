@@ -17,9 +17,11 @@ class RefreshedAttachmentUrl {
       _$RefreshedAttachmentUrlFromJson(json);
 
   /// The requested URL, echoed back unchanged
+  @JsonKey(defaultValue: '')
   final String original;
 
   /// The same URL with a fresh signature, or the original when it is not an attachment URL of ours
+  @JsonKey(defaultValue: '')
   final String refreshed;
 
   Map<String, Object?> toJson() => _$RefreshedAttachmentUrlToJson(this);

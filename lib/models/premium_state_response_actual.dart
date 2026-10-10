@@ -40,7 +40,7 @@ class PremiumStateResponseActual {
   final String? premiumUntil;
 
   /// Whether the subscription is set to cancel at period end
-  @JsonKey(name: 'premium_will_cancel')
+  @JsonKey(name: 'premium_will_cancel', defaultValue: false)
   final bool premiumWillCancel;
 
   /// The actual recurring billing cycle, when known
@@ -57,15 +57,15 @@ class PremiumStateResponseActual {
   final String? premiumGraceEndsAt;
 
   /// Whether paid premium access is currently active before local disabling
-  @JsonKey(name: 'has_active_paid_premium')
+  @JsonKey(name: 'has_active_paid_premium', defaultValue: false)
   final bool hasActivePaidPremium;
 
   /// Whether the actual premium entitlement is lifetime Visionary access
-  @JsonKey(name: 'is_visionary')
+  @JsonKey(name: 'is_visionary', defaultValue: false)
   final bool isVisionary;
 
   /// Whether the user has ever completed a premium purchase
-  @JsonKey(name: 'has_ever_purchased')
+  @JsonKey(name: 'has_ever_purchased', defaultValue: false)
   final bool hasEverPurchased;
 
   Map<String, Object?> toJson() => _$PremiumStateResponseActualToJson(this);

@@ -12,7 +12,7 @@ UsernameSuggestionsResponse _$UsernameSuggestionsResponseFromJson(
   final val = UsernameSuggestionsResponse(
     suggestions: $checkedConvert(
       'suggestions',
-      (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
     ),
   );
   return val;

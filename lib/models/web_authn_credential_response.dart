@@ -20,13 +20,15 @@ class WebAuthnCredentialResponse {
       _$WebAuthnCredentialResponseFromJson(json);
 
   /// The credential ID
+  @JsonKey(defaultValue: '')
   final String id;
 
   /// User-assigned name for the credential
+  @JsonKey(defaultValue: '')
   final String name;
 
   /// When the credential was registered
-  @JsonKey(name: 'created_at')
+  @JsonKey(name: 'created_at', defaultValue: '')
   final String createdAt;
 
   /// When the credential was last used
@@ -34,7 +36,7 @@ class WebAuthnCredentialResponse {
   final String? lastUsedAt;
 
   /// Relying party ID the passkey belongs to
-  @JsonKey(name: 'rp_id')
+  @JsonKey(name: 'rp_id', defaultValue: '')
   final String rpId;
 
   Map<String, Object?> toJson() => _$WebAuthnCredentialResponseToJson(this);

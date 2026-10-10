@@ -14,7 +14,7 @@ class UsernameSuggestionsRequest {
       _$UsernameSuggestionsRequestFromJson(json);
 
   /// Display name to generate username suggestions from
-  @JsonKey(name: 'global_name')
+  @JsonKey(name: 'global_name', defaultValue: '')
   final String globalName;
 
   Map<String, Object?> toJson() => _$UsernameSuggestionsRequestToJson(this);

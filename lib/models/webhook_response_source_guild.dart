@@ -20,9 +20,11 @@ class WebhookResponseSourceGuild {
       _$WebhookResponseSourceGuildFromJson(json);
 
   /// The ID of the guild that owns the followed announcement channel
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
 
   /// The name of the guild that owns the followed announcement channel
+  @JsonKey(defaultValue: '')
   final String name;
 
   /// The icon hash of the guild that owns the followed announcement channel

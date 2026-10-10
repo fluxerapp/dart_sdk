@@ -21,13 +21,15 @@ class GifCategoryTagResponse {
       _$GifCategoryTagResponseFromJson(json);
 
   /// Category search term (locale-translated label suitable for display).
+  @JsonKey(defaultValue: '')
   final String name;
 
   /// Category preview image URL from the top GIF for this category search term.
+  @JsonKey(defaultValue: '')
   final String src;
 
   /// Proxied category preview image URL from the top GIF for this category search term.
-  @JsonKey(name: 'proxy_src')
+  @JsonKey(name: 'proxy_src', defaultValue: '')
   final String proxySrc;
 
   /// Enriched category preview GIF from the top search result for this category. Null only when no preview GIF was available.

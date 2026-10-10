@@ -12,7 +12,7 @@ ValidateResetPasswordTokenResponse _$ValidateResetPasswordTokenResponseFromJson(
   $checkedConvert,
 ) {
   final val = ValidateResetPasswordTokenResponse(
-    valid: $checkedConvert('valid', (v) => v as bool),
+    valid: $checkedConvert('valid', (v) => v as bool? ?? false),
   );
   return val;
 });

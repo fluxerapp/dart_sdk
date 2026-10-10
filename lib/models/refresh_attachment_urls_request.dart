@@ -14,7 +14,7 @@ class RefreshAttachmentUrlsRequest {
       _$RefreshAttachmentUrlsRequestFromJson(json);
 
   /// Attachment URLs to refresh (1-50 entries, each at most 2048 characters)
-  @JsonKey(name: 'attachment_urls')
+  @JsonKey(name: 'attachment_urls', defaultValue: <String>[])
   final List<String> attachmentUrls;
 
   Map<String, Object?> toJson() => _$RefreshAttachmentUrlsRequestToJson(this);

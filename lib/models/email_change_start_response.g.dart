@@ -13,8 +13,11 @@ EmailChangeStartResponse _$EmailChangeStartResponseFromJson(
   json,
   ($checkedConvert) {
     final val = EmailChangeStartResponse(
-      ticket: $checkedConvert('ticket', (v) => v as String),
-      requireOriginal: $checkedConvert('require_original', (v) => v as bool),
+      ticket: $checkedConvert('ticket', (v) => v as String? ?? ''),
+      requireOriginal: $checkedConvert(
+        'require_original',
+        (v) => v as bool? ?? false,
+      ),
       originalEmail: $checkedConvert('original_email', (v) => v as String?),
       originalProof: $checkedConvert('original_proof', (v) => v as String?),
       originalCodeExpiresAt: $checkedConvert(

@@ -13,10 +13,10 @@ MessageAttachmentResponse _$MessageAttachmentResponseFromJson(
   json,
   ($checkedConvert) {
     final val = MessageAttachmentResponse(
-      id: $checkedConvert('id', (v) => v as String),
-      filename: $checkedConvert('filename', (v) => v as String),
-      size: $checkedConvert('size', (v) => (v as num).toInt()),
-      flags: $checkedConvert('flags', (v) => (v as num).toInt()),
+      id: $checkedConvert('id', (v) => v as String? ?? ''),
+      filename: $checkedConvert('filename', (v) => v as String? ?? ''),
+      size: $checkedConvert('size', (v) => (v as num?)?.toInt() ?? 0),
+      flags: $checkedConvert('flags', (v) => (v as num?)?.toInt() ?? 0),
       title: $checkedConvert('title', (v) => v as String?),
       description: $checkedConvert('description', (v) => v as String?),
       contentType: $checkedConvert('content_type', (v) => v as String?),

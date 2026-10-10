@@ -13,12 +13,12 @@ PasswordChangeCompleteRequest _$PasswordChangeCompleteRequestFromJson(
   json,
   ($checkedConvert) {
     final val = PasswordChangeCompleteRequest(
-      ticket: $checkedConvert('ticket', (v) => v as String),
+      ticket: $checkedConvert('ticket', (v) => v as String? ?? ''),
       verificationProof: $checkedConvert(
         'verification_proof',
-        (v) => v as String,
+        (v) => v as String? ?? '',
       ),
-      newPassword: $checkedConvert('new_password', (v) => v as String),
+      newPassword: $checkedConvert('new_password', (v) => v as String? ?? ''),
     );
     return val;
   },

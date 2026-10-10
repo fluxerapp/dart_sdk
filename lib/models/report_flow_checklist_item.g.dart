@@ -10,8 +10,8 @@ ReportFlowChecklistItem _$ReportFlowChecklistItemFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('ReportFlowChecklistItem', json, ($checkedConvert) {
   final val = ReportFlowChecklistItem(
-    id: $checkedConvert('id', (v) => v as String),
-    label: $checkedConvert('label', (v) => v as String),
+    id: $checkedConvert('id', (v) => v as String? ?? ''),
+    label: $checkedConvert('label', (v) => v as String? ?? ''),
     description: $checkedConvert('description', (v) => v as String?),
   );
   return val;

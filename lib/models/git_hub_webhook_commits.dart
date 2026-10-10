@@ -20,10 +20,17 @@ class GitHubWebhookCommits {
   factory GitHubWebhookCommits.fromJson(Map<String, Object?> json) =>
       _$GitHubWebhookCommitsFromJson(json);
 
+  @JsonKey(defaultValue: '')
   final String id;
+  @JsonKey(defaultValue: '')
   final String url;
+  @JsonKey(defaultValue: '')
   final String message;
+  @JsonKey(defaultValue: _$missingGitHubWebhookCommitsAuthor)
   final GitHubWebhookCommitsAuthor author;
 
   Map<String, Object?> toJson() => _$GitHubWebhookCommitsToJson(this);
 }
+
+GitHubWebhookCommitsAuthor _$missingGitHubWebhookCommitsAuthor() =>
+    GitHubWebhookCommitsAuthor.fromJson(const <String, dynamic>{});

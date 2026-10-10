@@ -10,7 +10,7 @@ RichEmbedAuthorRequestVariant1 _$RichEmbedAuthorRequestVariant1FromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('RichEmbedAuthorRequestVariant1', json, ($checkedConvert) {
   final val = RichEmbedAuthorRequestVariant1(
-    name: $checkedConvert('name', (v) => v as String),
+    name: $checkedConvert('name', (v) => v as String? ?? ''),
     url: $checkedConvert('url', (v) => v as String?),
     iconUrl: $checkedConvert('icon_url', (v) => v as String?),
   );

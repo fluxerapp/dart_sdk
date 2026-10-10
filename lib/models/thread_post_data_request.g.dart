@@ -12,7 +12,7 @@ ThreadPostDataRequest _$ThreadPostDataRequestFromJson(
   final val = ThreadPostDataRequest(
     threadIds: $checkedConvert(
       'thread_ids',
-      (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
     ),
   );
   return val;

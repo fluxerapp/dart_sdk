@@ -19,11 +19,18 @@ class ExperimentAssignmentsResponse {
   factory ExperimentAssignmentsResponse.fromJson(Map<String, Object?> json) =>
       _$ExperimentAssignmentsResponseFromJson(json);
 
-  @JsonKey(name: 'poll_interval_seconds')
+  @JsonKey(name: 'poll_interval_seconds', defaultValue: 0)
   final int pollIntervalSeconds;
-  @JsonKey(name: 'poll_jitter_percent')
+  @JsonKey(name: 'poll_jitter_percent', defaultValue: 0)
   final int pollJitterPercent;
+  @JsonKey(defaultValue: _$missingExperimentAssignmentsResponseAssignments)
   final ExperimentAssignmentsResponseAssignments assignments;
 
   Map<String, Object?> toJson() => _$ExperimentAssignmentsResponseToJson(this);
 }
+
+ExperimentAssignmentsResponseAssignments
+_$missingExperimentAssignmentsResponseAssignments() =>
+    ExperimentAssignmentsResponseAssignments.fromJson(
+      const <String, dynamic>{},
+    );

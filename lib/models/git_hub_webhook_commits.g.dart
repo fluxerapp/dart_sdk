@@ -10,12 +10,14 @@ GitHubWebhookCommits _$GitHubWebhookCommitsFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('GitHubWebhookCommits', json, ($checkedConvert) {
   final val = GitHubWebhookCommits(
-    id: $checkedConvert('id', (v) => v as String),
-    url: $checkedConvert('url', (v) => v as String),
-    message: $checkedConvert('message', (v) => v as String),
+    id: $checkedConvert('id', (v) => v as String? ?? ''),
+    url: $checkedConvert('url', (v) => v as String? ?? ''),
+    message: $checkedConvert('message', (v) => v as String? ?? ''),
     author: $checkedConvert(
       'author',
-      (v) => GitHubWebhookCommitsAuthor.fromJson(v as Map<String, dynamic>),
+      (v) => v == null
+          ? _$missingGitHubWebhookCommitsAuthor()
+          : GitHubWebhookCommitsAuthor.fromJson(v as Map<String, dynamic>),
     ),
   );
   return val;

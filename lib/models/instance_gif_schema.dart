@@ -19,14 +19,15 @@ class InstanceGifSchema {
       _$InstanceGifSchemaFromJson(json);
 
   /// Stable machine name of the active GIF provider.
+  @JsonKey(defaultValue: '')
   final String provider;
 
   /// Human-readable provider name shown in the UI
-  @JsonKey(name: 'display_name')
+  @JsonKey(name: 'display_name', defaultValue: '')
   final String displayName;
 
   /// Whether the client must show a "Powered by …" watermark for this provider
-  @JsonKey(name: 'attribution_required')
+  @JsonKey(name: 'attribution_required', defaultValue: false)
   final bool attributionRequired;
 
   Map<String, Object?> toJson() => _$InstanceGifSchemaToJson(this);

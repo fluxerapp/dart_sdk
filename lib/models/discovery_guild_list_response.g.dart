@@ -12,24 +12,28 @@ DiscoveryGuildListResponse _$DiscoveryGuildListResponseFromJson(
   final val = DiscoveryGuildListResponse(
     guilds: $checkedConvert(
       'guilds',
-      (v) => (v as List<dynamic>)
-          .map(
-            (e) => DiscoveryGuildListResponseGuilds.fromJson(
-              e as Map<String, dynamic>,
-            ),
-          )
-          .toList(),
+      (v) =>
+          (v as List<dynamic>?)
+              ?.map(
+                (e) => DiscoveryGuildListResponseGuilds.fromJson(
+                  e as Map<String, dynamic>,
+                ),
+              )
+              .toList() ??
+          [],
     ),
-    total: $checkedConvert('total', (v) => v as num),
+    total: $checkedConvert('total', (v) => v as num? ?? 0),
     categoryCounts: $checkedConvert(
       'category_counts',
-      (v) => (v as List<dynamic>)
-          .map(
-            (e) => DiscoveryGuildListResponseCategoryCounts.fromJson(
-              e as Map<String, dynamic>,
-            ),
-          )
-          .toList(),
+      (v) =>
+          (v as List<dynamic>?)
+              ?.map(
+                (e) => DiscoveryGuildListResponseCategoryCounts.fromJson(
+                  e as Map<String, dynamic>,
+                ),
+              )
+              .toList() ??
+          [],
     ),
   );
   return val;

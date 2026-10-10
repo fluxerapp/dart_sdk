@@ -25,17 +25,19 @@ class ThreadSearchResponse {
       _$ThreadSearchResponseFromJson(json);
 
   /// The threads that match the search
+  @JsonKey(defaultValue: <ThreadChannelResponse>[])
   final List<ThreadChannelResponse> threads;
 
   /// A thread member object for each returned thread the user joined
+  @JsonKey(defaultValue: <ThreadMemberResponse>[])
   final List<ThreadMemberResponse> members;
 
   /// Whether more threads could be returned by a later request
-  @JsonKey(name: 'has_more')
+  @JsonKey(name: 'has_more', defaultValue: false)
   final bool hasMore;
 
   /// The total number of threads that match the search
-  @JsonKey(name: 'total_results')
+  @JsonKey(name: 'total_results', defaultValue: 0)
   final Int32Type totalResults;
 
   /// The first message of each returned post, in forum and media channels only

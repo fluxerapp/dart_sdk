@@ -12,8 +12,8 @@ MfaBackupCodesResponseBackupCodes _$MfaBackupCodesResponseBackupCodesFromJson(
   $checkedConvert,
 ) {
   final val = MfaBackupCodesResponseBackupCodes(
-    code: $checkedConvert('code', (v) => v as String),
-    consumed: $checkedConvert('consumed', (v) => v as bool),
+    code: $checkedConvert('code', (v) => v as String? ?? ''),
+    consumed: $checkedConvert('consumed', (v) => v as bool? ?? false),
   );
   return val;
 });

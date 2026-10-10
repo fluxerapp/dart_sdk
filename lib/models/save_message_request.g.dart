@@ -12,8 +12,8 @@ SaveMessageRequest _$SaveMessageRequestFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = SaveMessageRequest(
-          channelId: $checkedConvert('channel_id', (v) => v as String),
-          messageId: $checkedConvert('message_id', (v) => v as String),
+          channelId: $checkedConvert('channel_id', (v) => v as String? ?? ''),
+          messageId: $checkedConvert('message_id', (v) => v as String? ?? ''),
         );
         return val;
       },

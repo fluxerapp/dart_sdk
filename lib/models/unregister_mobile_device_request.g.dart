@@ -15,10 +15,13 @@ UnregisterMobileDeviceRequest _$UnregisterMobileDeviceRequestFromJson(
     final val = UnregisterMobileDeviceRequest(
       platform: $checkedConvert(
         'platform',
-        (v) =>
-            UnregisterMobileDeviceRequestPlatformPlatform.fromJson(v as String),
+        (v) => v == null
+            ? UnregisterMobileDeviceRequestPlatformPlatform.$unknown
+            : UnregisterMobileDeviceRequestPlatformPlatform.fromJson(
+                v as String,
+              ),
       ),
-      token: $checkedConvert('token', (v) => v as String),
+      token: $checkedConvert('token', (v) => v as String? ?? ''),
       appId: $checkedConvert('app_id', (v) => v as String?),
       providerEnvironment: $checkedConvert(
         'provider_environment',

@@ -16,6 +16,7 @@ class DsaReportEmailSendRequest {
       _$DsaReportEmailSendRequestFromJson(json);
 
   /// Email address to send the DSA verification code to
+  @JsonKey(defaultValue: '')
   final EmailType email;
 
   Map<String, Object?> toJson() => _$DsaReportEmailSendRequestToJson(this);

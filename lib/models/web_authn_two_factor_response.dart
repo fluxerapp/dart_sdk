@@ -20,6 +20,7 @@ class WebAuthnTwoFactorResponse {
       _$WebAuthnTwoFactorResponseFromJson(json);
 
   /// The updated account
+  @JsonKey(defaultValue: _$missingUserPrivateResponse)
   final UserPrivateResponse user;
 
   /// Backup codes minted by this call, or null when none were minted
@@ -28,3 +29,6 @@ class WebAuthnTwoFactorResponse {
 
   Map<String, Object?> toJson() => _$WebAuthnTwoFactorResponseToJson(this);
 }
+
+UserPrivateResponse _$missingUserPrivateResponse() =>
+    UserPrivateResponse.fromJson(const <String, dynamic>{});

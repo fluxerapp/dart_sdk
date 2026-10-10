@@ -16,7 +16,7 @@ class RefreshAttachmentUrlsResponse {
       _$RefreshAttachmentUrlsResponseFromJson(json);
 
   /// One entry per requested URL, in the order they were requested
-  @JsonKey(name: 'refreshed_urls')
+  @JsonKey(name: 'refreshed_urls', defaultValue: <RefreshedAttachmentUrl>[])
   final List<RefreshedAttachmentUrl> refreshedUrls;
 
   Map<String, Object?> toJson() => _$RefreshAttachmentUrlsResponseToJson(this);

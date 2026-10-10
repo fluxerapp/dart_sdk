@@ -13,7 +13,7 @@ SelfServeRefundResponse _$SelfServeRefundResponseFromJson(
   json,
   ($checkedConvert) {
     final val = SelfServeRefundResponse(
-      invoiceId: $checkedConvert('invoice_id', (v) => v as String),
+      invoiceId: $checkedConvert('invoice_id', (v) => v as String? ?? ''),
       paymentIntentId: $checkedConvert(
         'payment_intent_id',
         (v) => v as String?,
@@ -22,13 +22,13 @@ SelfServeRefundResponse _$SelfServeRefundResponseFromJson(
       refundId: $checkedConvert('refund_id', (v) => v as String?),
       refundedAmountCents: $checkedConvert(
         'refunded_amount_cents',
-        (v) => (v as num).toInt(),
+        (v) => (v as num?)?.toInt() ?? 0,
       ),
       invoiceAmountPaidCents: $checkedConvert(
         'invoice_amount_paid_cents',
-        (v) => (v as num).toInt(),
+        (v) => (v as num?)?.toInt() ?? 0,
       ),
-      currency: $checkedConvert('currency', (v) => v as String),
+      currency: $checkedConvert('currency', (v) => v as String? ?? ''),
       subscriptionId: $checkedConvert('subscription_id', (v) => v as String?),
       status: $checkedConvert('status', (v) => v as String?),
     );

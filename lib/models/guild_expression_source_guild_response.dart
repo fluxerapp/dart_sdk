@@ -24,9 +24,11 @@ class GuildExpressionSourceGuildResponse {
   ) => _$GuildExpressionSourceGuildResponseFromJson(json);
 
   /// The ID of the source guild
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
 
   /// The name of the source guild
+  @JsonKey(defaultValue: '')
   final String name;
 
   /// The hash of the source guild icon
@@ -34,6 +36,7 @@ class GuildExpressionSourceGuildResponse {
   final String? icon;
 
   /// The badge feature flags of the source guild, limited to VERIFIED, PARTNERED, and DISCOVERABLE
+  @JsonKey(defaultValue: <GuildExpressionSourceGuildResponseFeaturesFeatures>[])
   final List<GuildExpressionSourceGuildResponseFeaturesFeatures> features;
 
   Map<String, Object?> toJson() =>

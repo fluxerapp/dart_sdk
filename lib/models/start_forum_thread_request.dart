@@ -26,6 +26,7 @@ class StartForumThreadRequest {
       _$StartForumThreadRequestFromJson(json);
 
   /// The name of the post (1-100 characters)
+  @JsonKey(defaultValue: '')
   final String name;
 
   /// The type of thread, which is always a public thread in a forum
@@ -43,7 +44,11 @@ class StartForumThreadRequest {
   final List<SnowflakeType>? appliedTags;
 
   /// The first message of the post
+  @JsonKey(defaultValue: _$missingForumThreadMessageRequest)
   final ForumThreadMessageRequest message;
 
   Map<String, Object?> toJson() => _$StartForumThreadRequestToJson(this);
 }
+
+ForumThreadMessageRequest _$missingForumThreadMessageRequest() =>
+    ForumThreadMessageRequest.fromJson(const <String, dynamic>{});

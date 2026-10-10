@@ -25,6 +25,7 @@ class DisableTotpRequest {
       _$DisableTotpRequestFromJson(json);
 
   /// The TOTP code to verify
+  @JsonKey(defaultValue: '')
   final String code;
 
   /// Account password for sudo verification

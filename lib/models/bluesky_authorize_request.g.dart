@@ -10,7 +10,7 @@ BlueskyAuthorizeRequest _$BlueskyAuthorizeRequestFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('BlueskyAuthorizeRequest', json, ($checkedConvert) {
   final val = BlueskyAuthorizeRequest(
-    handle: $checkedConvert('handle', (v) => v as String),
+    handle: $checkedConvert('handle', (v) => v as String? ?? ''),
   );
   return val;
 });

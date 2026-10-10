@@ -12,13 +12,15 @@ ReadStateAckBulkRequest _$ReadStateAckBulkRequestFromJson(
   final val = ReadStateAckBulkRequest(
     readStates: $checkedConvert(
       'read_states',
-      (v) => (v as List<dynamic>)
-          .map(
-            (e) => ReadStateAckBulkRequestReadStates.fromJson(
-              e as Map<String, dynamic>,
-            ),
-          )
-          .toList(),
+      (v) =>
+          (v as List<dynamic>?)
+              ?.map(
+                (e) => ReadStateAckBulkRequestReadStates.fromJson(
+                  e as Map<String, dynamic>,
+                ),
+              )
+              .toList() ??
+          [],
     ),
   );
   return val;

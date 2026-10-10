@@ -9,8 +9,8 @@ part of 'mfa_totp_request.dart';
 MfaTotpRequest _$MfaTotpRequestFromJson(Map<String, dynamic> json) =>
     $checkedCreate('MfaTotpRequest', json, ($checkedConvert) {
       final val = MfaTotpRequest(
-        code: $checkedConvert('code', (v) => v as String),
-        ticket: $checkedConvert('ticket', (v) => v as String),
+        code: $checkedConvert('code', (v) => v as String? ?? ''),
+        ticket: $checkedConvert('ticket', (v) => v as String? ?? ''),
       );
       return val;
     });

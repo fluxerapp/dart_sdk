@@ -12,20 +12,22 @@ _$StoreBillingContextResponseGooglePlayFromJson(Map<String, dynamic> json) =>
       $checkedConvert,
     ) {
       final val = StoreBillingContextResponseGooglePlay(
-        enabled: $checkedConvert('enabled', (v) => v as bool),
+        enabled: $checkedConvert('enabled', (v) => v as bool? ?? false),
         packageNames: $checkedConvert(
           'package_names',
-          (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+          (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
         ),
         products: $checkedConvert(
           'products',
-          (v) => (v as List<dynamic>)
-              .map(
-                (e) => StoreBillingGooglePlayProductResponse.fromJson(
-                  e as Map<String, dynamic>,
-                ),
-              )
-              .toList(),
+          (v) =>
+              (v as List<dynamic>?)
+                  ?.map(
+                    (e) => StoreBillingGooglePlayProductResponse.fromJson(
+                      e as Map<String, dynamic>,
+                    ),
+                  )
+                  .toList() ??
+              [],
         ),
       );
       return val;

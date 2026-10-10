@@ -37,10 +37,14 @@ class UserProfileFullResponse {
       _$UserProfileFullResponseFromJson(json);
 
   /// The user object
+  @JsonKey(defaultValue: _$missingUserPartialResponse)
   final UserPartialResponse user;
 
   /// The user profile data
-  @JsonKey(name: 'user_profile')
+  @JsonKey(
+    name: 'user_profile',
+    defaultValue: _$missingUserProfileFullResponseUserProfile,
+  )
   final UserProfileFullResponseUserProfile userProfile;
 
   /// The guild member data if guild_id was provided
@@ -85,3 +89,10 @@ class UserProfileFullResponse {
 
   Map<String, Object?> toJson() => _$UserProfileFullResponseToJson(this);
 }
+
+UserPartialResponse _$missingUserPartialResponse() =>
+    UserPartialResponse.fromJson(const <String, dynamic>{});
+
+UserProfileFullResponseUserProfile
+_$missingUserProfileFullResponseUserProfile() =>
+    UserProfileFullResponseUserProfile.fromJson(const <String, dynamic>{});

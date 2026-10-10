@@ -20,11 +20,21 @@ class DiscoveryChannelPreviewResponse {
       _$DiscoveryChannelPreviewResponseFromJson(json);
 
   /// The discoverable guild the channel belongs to
+  @JsonKey(defaultValue: _$missingDiscoveryChannelPreviewResponseGuild)
   final DiscoveryChannelPreviewResponseGuild guild;
 
   /// A channel that new members can view
+  @JsonKey(defaultValue: _$missingDiscoveryChannelPreviewResponseChannel)
   final DiscoveryChannelPreviewResponseChannel channel;
 
   Map<String, Object?> toJson() =>
       _$DiscoveryChannelPreviewResponseToJson(this);
 }
+
+DiscoveryChannelPreviewResponseChannel
+_$missingDiscoveryChannelPreviewResponseChannel() =>
+    DiscoveryChannelPreviewResponseChannel.fromJson(const <String, dynamic>{});
+
+DiscoveryChannelPreviewResponseGuild
+_$missingDiscoveryChannelPreviewResponseGuild() =>
+    DiscoveryChannelPreviewResponseGuild.fromJson(const <String, dynamic>{});

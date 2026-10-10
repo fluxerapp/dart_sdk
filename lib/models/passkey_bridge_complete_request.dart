@@ -16,7 +16,11 @@ class PasskeyBridgeCompleteRequest {
       _$PasskeyBridgeCompleteRequestFromJson(json);
 
   /// WebAuthn authentication response
+  @JsonKey(defaultValue: _$missingWebAuthnAuthenticationResponse)
   final WebAuthnAuthenticationResponse response;
 
   Map<String, Object?> toJson() => _$PasskeyBridgeCompleteRequestToJson(this);
 }
+
+WebAuthnAuthenticationResponse _$missingWebAuthnAuthenticationResponse() =>
+    WebAuthnAuthenticationResponse.fromJson(const <String, dynamic>{});

@@ -10,7 +10,7 @@ OAuth2ConsentResponse _$OAuth2ConsentResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('OAuth2ConsentResponse', json, ($checkedConvert) {
   final val = OAuth2ConsentResponse(
-    redirectTo: $checkedConvert('redirect_to', (v) => v as String),
+    redirectTo: $checkedConvert('redirect_to', (v) => v as String? ?? ''),
   );
   return val;
 }, fieldKeyMap: const {'redirectTo': 'redirect_to'});

@@ -22,7 +22,7 @@ class ThreadMemberSettingsRequestMuteConfig {
   final String? endTime;
 
   /// Selected mute duration
-  @JsonKey(name: 'selected_time_window')
+  @JsonKey(name: 'selected_time_window', defaultValue: 0)
   final int selectedTimeWindow;
 
   Map<String, Object?> toJson() =>

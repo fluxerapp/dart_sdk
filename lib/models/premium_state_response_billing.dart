@@ -37,17 +37,34 @@ class PremiumStateResponseBilling {
   final CurrentSubscriptionPriceResponse? currentSubscriptionPrice;
   @JsonKey(includeIfNull: true, name: 'pending_subscription_change')
   final PendingSubscriptionChangeResponse? pendingSubscriptionChange;
-  @JsonKey(name: 'list_price_switch')
+  @JsonKey(
+    name: 'list_price_switch',
+    defaultValue: _$missingListPriceSwitchState,
+  )
   final ListPriceSwitchState listPriceSwitch;
   @JsonKey(includeIfNull: true)
   final PremiumBillingSubscriptionResponse? subscription;
+  @JsonKey(defaultValue: <PremiumBillingInvoiceResponse>[])
   final List<PremiumBillingInvoiceResponse> invoices;
-  @JsonKey(name: 'invoices_has_more')
+  @JsonKey(name: 'invoices_has_more', defaultValue: false)
   final bool invoicesHasMore;
-  @JsonKey(name: 'payment_methods')
+  @JsonKey(
+    name: 'payment_methods',
+    defaultValue: <PremiumBillingPaymentMethodResponse>[],
+  )
   final List<PremiumBillingPaymentMethodResponse> paymentMethods;
-  @JsonKey(name: 'refund_eligibility')
+  @JsonKey(
+    name: 'refund_eligibility',
+    defaultValue: _$missingSelfServeRefundEligibilityResponse,
+  )
   final SelfServeRefundEligibilityResponse refundEligibility;
 
   Map<String, Object?> toJson() => _$PremiumStateResponseBillingToJson(this);
 }
+
+ListPriceSwitchState _$missingListPriceSwitchState() =>
+    ListPriceSwitchState.fromJson(const <String, dynamic>{});
+
+SelfServeRefundEligibilityResponse
+_$missingSelfServeRefundEligibilityResponse() =>
+    SelfServeRefundEligibilityResponse.fromJson(const <String, dynamic>{});

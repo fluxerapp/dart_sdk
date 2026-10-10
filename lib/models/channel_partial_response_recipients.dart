@@ -15,6 +15,7 @@ class ChannelPartialResponseRecipients {
   ) => _$ChannelPartialResponseRecipientsFromJson(json);
 
   /// The username of the recipient
+  @JsonKey(defaultValue: '')
   final String username;
 
   Map<String, Object?> toJson() =>

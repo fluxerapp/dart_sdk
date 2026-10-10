@@ -22,13 +22,19 @@ class GitHubWebhookAnswer {
   factory GitHubWebhookAnswer.fromJson(Map<String, Object?> json) =>
       _$GitHubWebhookAnswerFromJson(json);
 
+  @JsonKey(defaultValue: '')
   final Int64Type id;
-  @JsonKey(name: 'html_url')
+  @JsonKey(name: 'html_url', defaultValue: '')
   final String htmlUrl;
+  @JsonKey(defaultValue: _$missingGitHubWebhookAnswerUser)
   final GitHubWebhookAnswerUser user;
   @JsonKey(includeIfNull: false, name: 'commit_id')
   final String? commitId;
+  @JsonKey(defaultValue: '')
   final String body;
 
   Map<String, Object?> toJson() => _$GitHubWebhookAnswerToJson(this);
 }
+
+GitHubWebhookAnswerUser _$missingGitHubWebhookAnswerUser() =>
+    GitHubWebhookAnswerUser.fromJson(const <String, dynamic>{});

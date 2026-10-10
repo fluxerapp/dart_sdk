@@ -14,10 +14,12 @@ _$ChannelPinResponseMessageMessageReferenceFromJson(
   json,
   ($checkedConvert) {
     final val = ChannelPinResponseMessageMessageReference(
-      channelId: $checkedConvert('channel_id', (v) => v as String),
+      channelId: $checkedConvert('channel_id', (v) => v as String? ?? ''),
       type: $checkedConvert(
         'type',
-        (v) => MessageReferenceType.fromJson((v as num).toInt()),
+        (v) => v == null
+            ? MessageReferenceType.$unknown
+            : MessageReferenceType.fromJson((v as num).toInt()),
       ),
       messageId: $checkedConvert('message_id', (v) => v as String?),
       guildId: $checkedConvert('guild_id', (v) => v as String?),

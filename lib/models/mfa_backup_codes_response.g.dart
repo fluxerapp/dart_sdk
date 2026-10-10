@@ -12,13 +12,15 @@ MfaBackupCodesResponse _$MfaBackupCodesResponseFromJson(
   final val = MfaBackupCodesResponse(
     backupCodes: $checkedConvert(
       'backup_codes',
-      (v) => (v as List<dynamic>)
-          .map(
-            (e) => MfaBackupCodesResponseBackupCodes.fromJson(
-              e as Map<String, dynamic>,
-            ),
-          )
-          .toList(),
+      (v) =>
+          (v as List<dynamic>?)
+              ?.map(
+                (e) => MfaBackupCodesResponseBackupCodes.fromJson(
+                  e as Map<String, dynamic>,
+                ),
+              )
+              .toList() ??
+          [],
     ),
   );
   return val;

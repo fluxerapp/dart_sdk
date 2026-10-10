@@ -16,10 +16,15 @@ class BotTokenResetResponse {
       _$BotTokenResetResponseFromJson(json);
 
   /// The new bot token
+  @JsonKey(defaultValue: '')
   final String token;
 
   /// Detailed bot user metadata
+  @JsonKey(defaultValue: _$missingBotTokenResetResponseBot)
   final BotTokenResetResponseBot bot;
 
   Map<String, Object?> toJson() => _$BotTokenResetResponseToJson(this);
 }
+
+BotTokenResetResponseBot _$missingBotTokenResetResponseBot() =>
+    BotTokenResetResponseBot.fromJson(const <String, dynamic>{});

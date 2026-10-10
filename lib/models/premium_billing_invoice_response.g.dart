@@ -13,11 +13,17 @@ PremiumBillingInvoiceResponse _$PremiumBillingInvoiceResponseFromJson(
   json,
   ($checkedConvert) {
     final val = PremiumBillingInvoiceResponse(
-      id: $checkedConvert('id', (v) => v as String),
+      id: $checkedConvert('id', (v) => v as String? ?? ''),
       number: $checkedConvert('number', (v) => v as String?),
-      amountDue: $checkedConvert('amount_due', (v) => (v as num).toInt()),
-      amountPaid: $checkedConvert('amount_paid', (v) => (v as num).toInt()),
-      currency: $checkedConvert('currency', (v) => v as String),
+      amountDue: $checkedConvert(
+        'amount_due',
+        (v) => (v as num?)?.toInt() ?? 0,
+      ),
+      amountPaid: $checkedConvert(
+        'amount_paid',
+        (v) => (v as num?)?.toInt() ?? 0,
+      ),
+      currency: $checkedConvert('currency', (v) => v as String? ?? ''),
       status: $checkedConvert('status', (v) => v as String?),
       createdAt: $checkedConvert('created_at', (v) => v as String?),
       paidAt: $checkedConvert('paid_at', (v) => v as String?),

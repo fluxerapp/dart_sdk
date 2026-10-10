@@ -14,6 +14,7 @@ class DonationCheckoutResponse {
       _$DonationCheckoutResponseFromJson(json);
 
   /// Stripe checkout URL to redirect the user to
+  @JsonKey(defaultValue: '')
   final String url;
 
   Map<String, Object?> toJson() => _$DonationCheckoutResponseToJson(this);

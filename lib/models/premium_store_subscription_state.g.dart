@@ -15,34 +15,44 @@ PremiumStoreSubscriptionState _$PremiumStoreSubscriptionStateFromJson(
     final val = PremiumStoreSubscriptionState(
       provider: $checkedConvert(
         'provider',
-        (v) => StoreProvider.fromJson(v as String),
+        (v) => v == null
+            ? StoreProvider.$unknown
+            : StoreProvider.fromJson(v as String),
       ),
-      purchaseId: $checkedConvert('purchase_id', (v) => v as String),
+      purchaseId: $checkedConvert('purchase_id', (v) => v as String? ?? ''),
       slot: $checkedConvert(
         'slot',
-        (v) => StoreSubscriptionSlot.fromJson(v as String),
+        (v) => v == null
+            ? StoreSubscriptionSlot.$unknown
+            : StoreSubscriptionSlot.fromJson(v as String),
       ),
       billingCycle: $checkedConvert(
         'billing_cycle',
-        (v) => StoreBillingCycle.fromJson(v as String),
+        (v) => v == null
+            ? StoreBillingCycle.$unknown
+            : StoreBillingCycle.fromJson(v as String),
       ),
       state: $checkedConvert(
         'state',
-        (v) => StorePurchaseState.fromJson(v as String),
+        (v) => v == null
+            ? StorePurchaseState.$unknown
+            : StorePurchaseState.fromJson(v as String),
       ),
       expiresAt: $checkedConvert(
         'expires_at',
-        (v) => DateTime.parse(v as String),
+        (v) => v == null ? _$missingDateTime() : DateTime.parse(v as String),
       ),
       graceEndsAt: $checkedConvert(
         'grace_ends_at',
         (v) => v == null ? null : DateTime.parse(v as String),
       ),
-      willRenew: $checkedConvert('will_renew', (v) => v as bool),
-      manageUrl: $checkedConvert('manage_url', (v) => v as String),
+      willRenew: $checkedConvert('will_renew', (v) => v as bool? ?? false),
+      manageUrl: $checkedConvert('manage_url', (v) => v as String? ?? ''),
       environment: $checkedConvert(
         'environment',
-        (v) => StoreEnvironment.fromJson(v as String),
+        (v) => v == null
+            ? StoreEnvironment.$unknown
+            : StoreEnvironment.fromJson(v as String),
       ),
     );
     return val;

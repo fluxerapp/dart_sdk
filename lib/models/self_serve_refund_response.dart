@@ -23,7 +23,7 @@ class SelfServeRefundResponse {
   factory SelfServeRefundResponse.fromJson(Map<String, Object?> json) =>
       _$SelfServeRefundResponseFromJson(json);
 
-  @JsonKey(name: 'invoice_id')
+  @JsonKey(name: 'invoice_id', defaultValue: '')
   final String invoiceId;
   @JsonKey(includeIfNull: true, name: 'payment_intent_id')
   final String? paymentIntentId;
@@ -33,10 +33,11 @@ class SelfServeRefundResponse {
   final String? refundId;
 
   /// Amount actually refunded so far, in the currency minor unit; 0 until the provider confirms success
-  @JsonKey(name: 'refunded_amount_cents')
+  @JsonKey(name: 'refunded_amount_cents', defaultValue: 0)
   final int refundedAmountCents;
-  @JsonKey(name: 'invoice_amount_paid_cents')
+  @JsonKey(name: 'invoice_amount_paid_cents', defaultValue: 0)
   final int invoiceAmountPaidCents;
+  @JsonKey(defaultValue: '')
   final String currency;
 
   /// Subscription that was cancelled along with the refund, when applicable

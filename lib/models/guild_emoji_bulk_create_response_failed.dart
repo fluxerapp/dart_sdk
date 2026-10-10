@@ -18,9 +18,11 @@ class GuildEmojiBulkCreateResponseFailed {
   ) => _$GuildEmojiBulkCreateResponseFailedFromJson(json);
 
   /// The name of the emoji that failed to create
+  @JsonKey(defaultValue: '')
   final String name;
 
   /// The error message explaining why the emoji failed to create
+  @JsonKey(defaultValue: '')
   final String error;
 
   Map<String, Object?> toJson() =>

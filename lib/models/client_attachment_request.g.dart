@@ -10,8 +10,8 @@ ClientAttachmentRequest _$ClientAttachmentRequestFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('ClientAttachmentRequest', json, ($checkedConvert) {
   final val = ClientAttachmentRequest(
-    id: $checkedConvert('id', (v) => (v as num).toInt()),
-    filename: $checkedConvert('filename', (v) => v as String),
+    id: $checkedConvert('id', (v) => (v as num?)?.toInt() ?? 0),
+    filename: $checkedConvert('filename', (v) => v as String? ?? ''),
     title: $checkedConvert('title', (v) => v as String?),
     description: $checkedConvert('description', (v) => v as String?),
     flags: $checkedConvert('flags', (v) => (v as num?)?.toInt()),

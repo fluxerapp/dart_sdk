@@ -16,7 +16,7 @@ class ReadStateAckRequest {
       _$ReadStateAckRequestFromJson(json);
 
   /// Read-state acknowledgements to apply. Supports normal and manual acknowledgements.
-  @JsonKey(name: 'read_states')
+  @JsonKey(name: 'read_states', defaultValue: <ReadStateAckRequestReadStates>[])
   final List<ReadStateAckRequestReadStates> readStates;
 
   Map<String, Object?> toJson() => _$ReadStateAckRequestToJson(this);

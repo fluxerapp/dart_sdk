@@ -17,9 +17,11 @@ class ActiveThreadsResponse {
       _$ActiveThreadsResponseFromJson(json);
 
   /// The active threads
+  @JsonKey(defaultValue: <ThreadChannelResponse>[])
   final List<ThreadChannelResponse> threads;
 
   /// A thread member object for each returned thread the user joined
+  @JsonKey(defaultValue: <ThreadMemberResponse>[])
   final List<ThreadMemberResponse> members;
 
   Map<String, Object?> toJson() => _$ActiveThreadsResponseToJson(this);

@@ -16,9 +16,11 @@ class DsaReportEmailVerifyRequest {
       _$DsaReportEmailVerifyRequestFromJson(json);
 
   /// Email address that received the verification code
+  @JsonKey(defaultValue: '')
   final EmailType email;
 
   /// Verification code received via email
+  @JsonKey(defaultValue: '')
   final String code;
 
   Map<String, Object?> toJson() => _$DsaReportEmailVerifyRequestToJson(this);

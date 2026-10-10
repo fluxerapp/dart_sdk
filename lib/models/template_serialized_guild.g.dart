@@ -13,18 +13,24 @@ TemplateSerializedGuild _$TemplateSerializedGuildFromJson(
   json,
   ($checkedConvert) {
     final val = TemplateSerializedGuild._(
-      name: $checkedConvert('name', (v) => v as String),
+      name: $checkedConvert('name', (v) => v as String? ?? ''),
       roles: $checkedConvert(
         'roles',
-        (v) => (v as List<dynamic>)
-            .map((e) => TemplateRole.fromJson(e as Map<String, dynamic>))
-            .toList(),
+        (v) =>
+            (v as List<dynamic>?)
+                ?.map((e) => TemplateRole.fromJson(e as Map<String, dynamic>))
+                .toList() ??
+            [],
       ),
       channels: $checkedConvert(
         'channels',
-        (v) => (v as List<dynamic>)
-            .map((e) => TemplateChannel.fromJson(e as Map<String, dynamic>))
-            .toList(),
+        (v) =>
+            (v as List<dynamic>?)
+                ?.map(
+                  (e) => TemplateChannel.fromJson(e as Map<String, dynamic>),
+                )
+                .toList() ??
+            [],
       ),
       verificationLevel: $checkedConvert(
         'verification_level',

@@ -14,24 +14,29 @@ _$MultipartPresignedAttachmentUploadResponseItemFromJson(
   json,
   ($checkedConvert) {
     final val = MultipartPresignedAttachmentUploadResponseItem(
-      id: $checkedConvert('id', (v) => (v as num).toInt()),
-      filename: $checkedConvert('filename', (v) => v as String),
-      fileSize: $checkedConvert('file_size', (v) => (v as num).toInt()),
-      contentType: $checkedConvert('content_type', (v) => v as String),
-      uploadFilename: $checkedConvert('upload_filename', (v) => v as String),
-      uploadMode: $checkedConvert('upload_mode', (v) => v as String),
-      uploadId: $checkedConvert('upload_id', (v) => v as String),
-      partSize: $checkedConvert('part_size', (v) => (v as num).toInt()),
+      id: $checkedConvert('id', (v) => (v as num?)?.toInt() ?? 0),
+      filename: $checkedConvert('filename', (v) => v as String? ?? ''),
+      fileSize: $checkedConvert('file_size', (v) => (v as num?)?.toInt() ?? 0),
+      contentType: $checkedConvert('content_type', (v) => v as String? ?? ''),
+      uploadFilename: $checkedConvert(
+        'upload_filename',
+        (v) => v as String? ?? '',
+      ),
+      uploadMode: $checkedConvert('upload_mode', (v) => v as String? ?? ''),
+      uploadId: $checkedConvert('upload_id', (v) => v as String? ?? ''),
+      partSize: $checkedConvert('part_size', (v) => (v as num?)?.toInt() ?? 0),
       parts: $checkedConvert(
         'parts',
-        (v) => (v as List<dynamic>)
-            .map(
-              (e) =>
-                  MultipartPresignedAttachmentUploadResponseItemParts.fromJson(
-                    e as Map<String, dynamic>,
-                  ),
-            )
-            .toList(),
+        (v) =>
+            (v as List<dynamic>?)
+                ?.map(
+                  (e) =>
+                      MultipartPresignedAttachmentUploadResponseItemParts.fromJson(
+                        e as Map<String, dynamic>,
+                      ),
+                )
+                .toList() ??
+            [],
       ),
     );
     return val;

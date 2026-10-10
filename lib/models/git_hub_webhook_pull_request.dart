@@ -24,14 +24,21 @@ class GitHubWebhookPullRequest {
   factory GitHubWebhookPullRequest.fromJson(Map<String, Object?> json) =>
       _$GitHubWebhookPullRequestFromJson(json);
 
+  @JsonKey(defaultValue: '')
   final Int64Type id;
+  @JsonKey(defaultValue: 0)
   final Int32Type number;
-  @JsonKey(name: 'html_url')
+  @JsonKey(name: 'html_url', defaultValue: '')
   final String htmlUrl;
+  @JsonKey(defaultValue: _$missingGitHubWebhookPullRequestUser)
   final GitHubWebhookPullRequestUser user;
+  @JsonKey(defaultValue: '')
   final String title;
   @JsonKey(includeIfNull: false)
   final String? body;
 
   Map<String, Object?> toJson() => _$GitHubWebhookPullRequestToJson(this);
 }
+
+GitHubWebhookPullRequestUser _$missingGitHubWebhookPullRequestUser() =>
+    GitHubWebhookPullRequestUser.fromJson(const <String, dynamic>{});

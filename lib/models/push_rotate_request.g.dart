@@ -12,11 +12,16 @@ PushRotateRequest _$PushRotateRequestFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = PushRotateRequest(
-          oldEndpoint: $checkedConvert('old_endpoint', (v) => v as String),
-          endpoint: $checkedConvert('endpoint', (v) => v as String),
+          oldEndpoint: $checkedConvert(
+            'old_endpoint',
+            (v) => v as String? ?? '',
+          ),
+          endpoint: $checkedConvert('endpoint', (v) => v as String? ?? ''),
           keys: $checkedConvert(
             'keys',
-            (v) => PushRotateRequestKeys.fromJson(v as Map<String, dynamic>),
+            (v) => v == null
+                ? _$missingPushRotateRequestKeys()
+                : PushRotateRequestKeys.fromJson(v as Map<String, dynamic>),
           ),
           userAgent: $checkedConvert('user_agent', (v) => v as String?),
           installedApp: $checkedConvert('installed_app', (v) => v as bool?),

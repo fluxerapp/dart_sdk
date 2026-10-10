@@ -19,10 +19,11 @@ class DiscoveryApplicationRequest {
       _$DiscoveryApplicationRequestFromJson(json);
 
   /// Description for discovery listing
+  @JsonKey(defaultValue: '')
   final String description;
 
   /// Discovery category type
-  @JsonKey(name: 'category_type')
+  @JsonKey(name: 'category_type', defaultValue: 0)
   final int categoryType;
 
   /// Primary community language (BCP-47 code)

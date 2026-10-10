@@ -13,7 +13,7 @@ MessageReferenceRequest _$MessageReferenceRequestFromJson(
   json,
   ($checkedConvert) {
     final val = MessageReferenceRequest(
-      messageId: $checkedConvert('message_id', (v) => v as String),
+      messageId: $checkedConvert('message_id', (v) => v as String? ?? ''),
       channelId: $checkedConvert('channel_id', (v) => v as String?),
       guildId: $checkedConvert('guild_id', (v) => v as String?),
       type: $checkedConvert(

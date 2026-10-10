@@ -14,6 +14,7 @@ class MfaTicketRequest {
       _$MfaTicketRequestFromJson(json);
 
   /// The MFA ticket from the login response
+  @JsonKey(defaultValue: '')
   final String ticket;
 
   Map<String, Object?> toJson() => _$MfaTicketRequestToJson(this);

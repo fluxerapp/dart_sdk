@@ -80,12 +80,15 @@ class UserUpdateResponse {
       _$UserUpdateResponseFromJson(json);
 
   /// The unique identifier (snowflake) for this user
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
 
   /// The username of the user, not unique across the platform
+  @JsonKey(defaultValue: '')
   final String username;
 
   /// The four-digit discriminator tag of the user
+  @JsonKey(defaultValue: '')
   final String discriminator;
 
   /// The display name of the user, if set
@@ -107,6 +110,7 @@ class UserUpdateResponse {
   /// Whether the user is an official system user
   @JsonKey(includeIfNull: false)
   final bool? system;
+  @JsonKey(defaultValue: 0)
   final PublicUserFlags flags;
 
   /// The user's account-wide reply mention preference. Omitted when the user has no preference set (treated as NO_PREFERENCE).
@@ -114,13 +118,15 @@ class UserUpdateResponse {
   final MentionReplyPreferences? mentionFlags;
 
   /// Whether the user has staff permissions
-  @JsonKey(name: 'is_staff')
+  @JsonKey(name: 'is_staff', defaultValue: false)
   final bool isStaff;
 
   /// Access control list entries for the user
+  @JsonKey(defaultValue: <String>[])
   final List<String> acls;
 
   /// Special traits assigned to the user account
+  @JsonKey(defaultValue: <String>[])
   final List<String> traits;
 
   /// The email address associated with the account
@@ -132,7 +138,7 @@ class UserUpdateResponse {
   final bool? emailBounced;
 
   /// Deprecated. Always false.
-  @JsonKey(name: 'has_verified_phone')
+  @JsonKey(name: 'has_verified_phone', defaultValue: false)
   final bool hasVerifiedPhone;
 
   /// The user biography text
@@ -162,7 +168,7 @@ class UserUpdateResponse {
   final Int32Type? bannerColor;
 
   /// Whether multi-factor authentication is enabled
-  @JsonKey(name: 'mfa_enabled')
+  @JsonKey(name: 'mfa_enabled', defaultValue: false)
   final bool mfaEnabled;
 
   /// The types of authenticators configured for MFA
@@ -170,6 +176,7 @@ class UserUpdateResponse {
   final List<UserAuthenticatorTypes>? authenticatorTypes;
 
   /// Whether the email address has been verified
+  @JsonKey(defaultValue: false)
   final bool verified;
 
   /// Whether the account is limited
@@ -189,7 +196,7 @@ class UserUpdateResponse {
   final String? premiumUntil;
 
   /// Whether premium is set to cancel at the end of the billing period
-  @JsonKey(name: 'premium_will_cancel')
+  @JsonKey(name: 'premium_will_cancel', defaultValue: false)
   final bool premiumWillCancel;
 
   /// The billing cycle for the premium subscription
@@ -205,35 +212,35 @@ class UserUpdateResponse {
   final String? premiumGraceEndsAt;
 
   /// Whether the user selected a premium-only discriminator that will be rerolled when non-lifetime premium access ends
-  @JsonKey(name: 'premium_discriminator')
+  @JsonKey(name: 'premium_discriminator', defaultValue: false)
   final bool premiumDiscriminator;
 
   /// Whether the premium badge is hidden on the profile
-  @JsonKey(name: 'premium_badge_hidden')
+  @JsonKey(name: 'premium_badge_hidden', defaultValue: false)
   final bool premiumBadgeHidden;
 
   /// Whether the premium badge shows a masked appearance
-  @JsonKey(name: 'premium_badge_masked')
+  @JsonKey(name: 'premium_badge_masked', defaultValue: false)
   final bool premiumBadgeMasked;
 
   /// Whether the premium start timestamp is hidden
-  @JsonKey(name: 'premium_badge_timestamp_hidden')
+  @JsonKey(name: 'premium_badge_timestamp_hidden', defaultValue: false)
   final bool premiumBadgeTimestampHidden;
 
   /// Whether the lifetime sequence number is hidden
-  @JsonKey(name: 'premium_badge_sequence_hidden')
+  @JsonKey(name: 'premium_badge_sequence_hidden', defaultValue: false)
   final bool premiumBadgeSequenceHidden;
 
   /// Whether premium purchases are disabled for this account
-  @JsonKey(name: 'premium_purchase_disabled')
+  @JsonKey(name: 'premium_purchase_disabled', defaultValue: false)
   final bool premiumPurchaseDisabled;
 
   /// Whether premium features are enabled via override
-  @JsonKey(name: 'premium_enabled_override')
+  @JsonKey(name: 'premium_enabled_override', defaultValue: false)
   final bool premiumEnabledOverride;
 
   /// Whether premium perks are temporarily disabled for this account
-  @JsonKey(name: 'premium_perks_disabled')
+  @JsonKey(name: 'premium_perks_disabled', defaultValue: false)
   final bool premiumPerksDisabled;
 
   /// ISO8601 timestamp of the last password change
@@ -245,27 +252,27 @@ class UserUpdateResponse {
   final String? lastVoiceActivitySharingChangeAt;
 
   /// Deprecated. Always empty.
-  @JsonKey(name: 'required_actions')
+  @JsonKey(name: 'required_actions', defaultValue: <String>[])
   final List<String> requiredActions;
 
   /// Whether the user is allowed to view NSFW content
-  @JsonKey(name: 'nsfw_allowed')
+  @JsonKey(name: 'nsfw_allowed', defaultValue: false)
   final bool nsfwAllowed;
 
   /// Whether the user has dismissed the premium onboarding flow
-  @JsonKey(name: 'has_dismissed_premium_onboarding')
+  @JsonKey(name: 'has_dismissed_premium_onboarding', defaultValue: false)
   final bool hasDismissedPremiumOnboarding;
 
   /// Whether the user has ever made a purchase
-  @JsonKey(name: 'has_ever_purchased')
+  @JsonKey(name: 'has_ever_purchased', defaultValue: false)
   final bool hasEverPurchased;
 
   /// Whether there are unread items in the gift inventory
-  @JsonKey(name: 'has_unread_gift_inventory')
+  @JsonKey(name: 'has_unread_gift_inventory', defaultValue: false)
   final bool hasUnreadGiftInventory;
 
   /// The number of unread gift inventory items
-  @JsonKey(name: 'unread_gift_inventory_count')
+  @JsonKey(name: 'unread_gift_inventory_count', defaultValue: 0)
   final Int32Type unreadGiftInventoryCount;
 
   /// Information about a pending bulk message deletion request. Only populated when the legacy delayed-deletion flow is in progress; the new immediate-deletion flow does not surface a pending state here.

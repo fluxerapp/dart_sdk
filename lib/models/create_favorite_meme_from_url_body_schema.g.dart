@@ -12,7 +12,7 @@ _$CreateFavoriteMemeFromUrlBodySchemaFromJson(Map<String, dynamic> json) =>
       $checkedConvert,
     ) {
       final val = CreateFavoriteMemeFromUrlBodySchema._(
-        url: $checkedConvert('url', (v) => v as String),
+        url: $checkedConvert('url', (v) => v as String? ?? ''),
         tags: $checkedConvert(
           'tags',
           (v) =>

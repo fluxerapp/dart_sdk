@@ -13,10 +13,12 @@ StartForumThreadRequest _$StartForumThreadRequestFromJson(
   json,
   ($checkedConvert) {
     final val = StartForumThreadRequest(
-      name: $checkedConvert('name', (v) => v as String),
+      name: $checkedConvert('name', (v) => v as String? ?? ''),
       message: $checkedConvert(
         'message',
-        (v) => ForumThreadMessageRequest.fromJson(v as Map<String, dynamic>),
+        (v) => v == null
+            ? _$missingForumThreadMessageRequest()
+            : ForumThreadMessageRequest.fromJson(v as Map<String, dynamic>),
       ),
       type: $checkedConvert('type', (v) => (v as num?)?.toInt()),
       autoArchiveDuration: $checkedConvert(

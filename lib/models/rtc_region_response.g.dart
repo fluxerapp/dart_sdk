@@ -9,9 +9,9 @@ part of 'rtc_region_response.dart';
 RtcRegionResponse _$RtcRegionResponseFromJson(Map<String, dynamic> json) =>
     $checkedCreate('RtcRegionResponse', json, ($checkedConvert) {
       final val = RtcRegionResponse(
-        id: $checkedConvert('id', (v) => v as String),
-        name: $checkedConvert('name', (v) => v as String),
-        emoji: $checkedConvert('emoji', (v) => v as String),
+        id: $checkedConvert('id', (v) => v as String? ?? ''),
+        name: $checkedConvert('name', (v) => v as String? ?? ''),
+        emoji: $checkedConvert('emoji', (v) => v as String? ?? ''),
       );
       return val;
     });

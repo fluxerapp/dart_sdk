@@ -15,7 +15,7 @@ _$ThreadMemberSettingsRequestMuteConfigFromJson(Map<String, dynamic> json) =>
         final val = ThreadMemberSettingsRequestMuteConfig(
           selectedTimeWindow: $checkedConvert(
             'selected_time_window',
-            (v) => (v as num).toInt(),
+            (v) => (v as num?)?.toInt() ?? 0,
           ),
           endTime: $checkedConvert('end_time', (v) => v as String?),
         );

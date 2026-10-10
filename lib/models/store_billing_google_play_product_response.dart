@@ -21,7 +21,7 @@ class StoreBillingGooglePlayProductResponse {
   ) => _$StoreBillingGooglePlayProductResponseFromJson(json);
 
   /// Google Play product identifier
-  @JsonKey(name: 'product_id')
+  @JsonKey(name: 'product_id', defaultValue: '')
   final String productId;
 
   /// Google Play base plan identifier, null for one-time products
@@ -29,6 +29,7 @@ class StoreBillingGooglePlayProductResponse {
   final String? basePlanId;
 
   /// Fluxer product this Google Play product sells
+  @JsonKey(defaultValue: StoreSlot.$unknown)
   final StoreSlot slot;
 
   Map<String, Object?> toJson() =>

@@ -12,8 +12,12 @@ _$StoreBillingAppStoreProductResponseFromJson(Map<String, dynamic> json) =>
       $checkedConvert,
     ) {
       final val = StoreBillingAppStoreProductResponse(
-        productId: $checkedConvert('product_id', (v) => v as String),
-        slot: $checkedConvert('slot', (v) => StoreSlot.fromJson(v as String)),
+        productId: $checkedConvert('product_id', (v) => v as String? ?? ''),
+        slot: $checkedConvert(
+          'slot',
+          (v) =>
+              v == null ? StoreSlot.$unknown : StoreSlot.fromJson(v as String),
+        ),
       );
       return val;
     }, fieldKeyMap: const {'productId': 'product_id'});

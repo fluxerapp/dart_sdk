@@ -9,10 +9,10 @@ part of 'git_hub_webhook_forkee.dart';
 GitHubWebhookForkee _$GitHubWebhookForkeeFromJson(Map<String, dynamic> json) =>
     $checkedCreate('GitHubWebhookForkee', json, ($checkedConvert) {
       final val = GitHubWebhookForkee(
-        id: $checkedConvert('id', (v) => (v as num).toInt()),
-        htmlUrl: $checkedConvert('html_url', (v) => v as String),
-        name: $checkedConvert('name', (v) => v as String),
-        fullName: $checkedConvert('full_name', (v) => v as String),
+        id: $checkedConvert('id', (v) => (v as num?)?.toInt() ?? 0),
+        htmlUrl: $checkedConvert('html_url', (v) => v as String? ?? ''),
+        name: $checkedConvert('name', (v) => v as String? ?? ''),
+        fullName: $checkedConvert('full_name', (v) => v as String? ?? ''),
       );
       return val;
     }, fieldKeyMap: const {'htmlUrl': 'html_url', 'fullName': 'full_name'});

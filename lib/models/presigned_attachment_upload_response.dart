@@ -17,6 +17,7 @@ class PresignedAttachmentUploadResponse {
   ) => _$PresignedAttachmentUploadResponseFromJson(json);
 
   /// Presigned upload details for each attachment
+  @JsonKey(defaultValue: <PresignedAttachmentUploadResponseItem>[])
   final List<PresignedAttachmentUploadResponseItem> attachments;
 
   Map<String, Object?> toJson() =>

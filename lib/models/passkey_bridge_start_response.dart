@@ -17,7 +17,7 @@ class PasskeyBridgeStartResponse {
       _$PasskeyBridgeStartResponseFromJson(json);
 
   /// Identifier of the passkey ceremony
-  @JsonKey(name: 'ceremony_id')
+  @JsonKey(name: 'ceremony_id', defaultValue: '')
   final String ceremonyId;
 
   /// Page that runs the ceremony, or null for the native runner

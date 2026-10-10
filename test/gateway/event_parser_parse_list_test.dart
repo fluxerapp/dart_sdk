@@ -42,7 +42,7 @@ void main() {
 
     test('returns null when an item fails to deserialize', () {
       final event = parser.parseList('WEBAUTHN_CREDENTIALS_UPDATE', [
-        {'unexpected': true},
+        {'id': true},
       ]);
       expect(event, isNull);
     });

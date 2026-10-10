@@ -12,7 +12,7 @@ RefreshAttachmentUrlsRequest _$RefreshAttachmentUrlsRequestFromJson(
   final val = RefreshAttachmentUrlsRequest(
     attachmentUrls: $checkedConvert(
       'attachment_urls',
-      (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
     ),
   );
   return val;

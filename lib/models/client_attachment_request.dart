@@ -46,9 +46,11 @@ class ClientAttachmentRequest {
   final String? waveform;
 
   /// The client-side identifier for this attachment
+  @JsonKey(defaultValue: 0)
   final Int32Type id;
 
   /// The name of the file being uploaded
+  @JsonKey(defaultValue: '')
   final String filename;
 
   /// Optional MIME type for the uploaded file

@@ -18,9 +18,11 @@ class RichEmbedRequestFields {
       _$RichEmbedRequestFieldsFromJson(json);
 
   /// Name of the field
+  @JsonKey(defaultValue: '')
   final String name;
 
   /// Value of the field (0-1024 characters)
+  @JsonKey(defaultValue: '')
   final String value;
 
   /// Whether the field should display inline

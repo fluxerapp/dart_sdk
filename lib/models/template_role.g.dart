@@ -9,7 +9,7 @@ part of 'template_role.dart';
 TemplateRole _$TemplateRoleFromJson(Map<String, dynamic> json) =>
     $checkedCreate('TemplateRole', json, ($checkedConvert) {
       final val = TemplateRole._(
-        id: $checkedConvert('id', (v) => v as String),
+        id: $checkedConvert('id', (v) => v as String? ?? ''),
         permissions: $checkedConvert('permissions', (v) => v as String?),
         permissionsNew: $checkedConvert('permissions_new', (v) => v as String?),
         color: $checkedConvert('color', (v) => (v as num?)?.toInt()),

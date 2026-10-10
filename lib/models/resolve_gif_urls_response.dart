@@ -16,6 +16,7 @@ class ResolveGifUrlsResponse {
       _$ResolveGifUrlsResponseFromJson(json);
 
   /// Resolved GIF entries with proxy metadata
+  @JsonKey(defaultValue: <ResolvedGifEntrySchema>[])
   final List<ResolvedGifEntrySchema> entries;
 
   Map<String, Object?> toJson() => _$ResolveGifUrlsResponseToJson(this);

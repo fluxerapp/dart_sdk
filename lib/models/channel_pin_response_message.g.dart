@@ -13,34 +13,46 @@ ChannelPinResponseMessage _$ChannelPinResponseMessageFromJson(
   json,
   ($checkedConvert) {
     final val = ChannelPinResponseMessage(
-      id: $checkedConvert('id', (v) => v as String),
-      channelId: $checkedConvert('channel_id', (v) => v as String),
+      id: $checkedConvert('id', (v) => v as String? ?? ''),
+      channelId: $checkedConvert('channel_id', (v) => v as String? ?? ''),
       author: $checkedConvert(
         'author',
-        (v) => UserPartialResponse.fromJson(v as Map<String, dynamic>),
+        (v) => v == null
+            ? _$missingUserPartialResponse()
+            : UserPartialResponse.fromJson(v as Map<String, dynamic>),
       ),
       type: $checkedConvert(
         'type',
-        (v) => MessageType.fromJson((v as num).toInt()),
+        (v) => v == null
+            ? MessageType.$unknown
+            : MessageType.fromJson((v as num).toInt()),
       ),
-      flags: $checkedConvert('flags', (v) => (v as num).toInt()),
-      content: $checkedConvert('content', (v) => v as String),
+      flags: $checkedConvert('flags', (v) => (v as num?)?.toInt() ?? 0),
+      content: $checkedConvert('content', (v) => v as String? ?? ''),
       timestamp: $checkedConvert(
         'timestamp',
-        (v) => DateTime.parse(v as String),
+        (v) => v == null ? _$missingDateTime() : DateTime.parse(v as String),
       ),
-      pinned: $checkedConvert('pinned', (v) => v as bool),
-      mentionEveryone: $checkedConvert('mention_everyone', (v) => v as bool),
-      tts: $checkedConvert('tts', (v) => v as bool),
+      pinned: $checkedConvert('pinned', (v) => v as bool? ?? false),
+      mentionEveryone: $checkedConvert(
+        'mention_everyone',
+        (v) => v as bool? ?? false,
+      ),
+      tts: $checkedConvert('tts', (v) => v as bool? ?? false),
       mentions: $checkedConvert(
         'mentions',
-        (v) => (v as List<dynamic>)
-            .map((e) => UserPartialResponse.fromJson(e as Map<String, dynamic>))
-            .toList(),
+        (v) =>
+            (v as List<dynamic>?)
+                ?.map(
+                  (e) =>
+                      UserPartialResponse.fromJson(e as Map<String, dynamic>),
+                )
+                .toList() ??
+            [],
       ),
       mentionRoles: $checkedConvert(
         'mention_roles',
-        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
       ),
       webhookId: $checkedConvert('webhook_id', (v) => v as String?),
       editedTimestamp: $checkedConvert(

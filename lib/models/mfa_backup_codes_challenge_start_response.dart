@@ -19,14 +19,15 @@ class MfaBackupCodesChallengeStartResponse {
   ) => _$MfaBackupCodesChallengeStartResponseFromJson(json);
 
   /// Ticket for backup codes challenge actions
+  @JsonKey(defaultValue: '')
   final String ticket;
 
   /// ISO8601 timestamp when the verification code expires
-  @JsonKey(name: 'code_expires_at')
+  @JsonKey(name: 'code_expires_at', defaultValue: '')
   final String codeExpiresAt;
 
   /// ISO8601 timestamp when the code can be resent
-  @JsonKey(name: 'resend_available_at')
+  @JsonKey(name: 'resend_available_at', defaultValue: '')
   final String resendAvailableAt;
 
   Map<String, Object?> toJson() =>

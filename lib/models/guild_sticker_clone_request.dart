@@ -16,7 +16,7 @@ class GuildStickerCloneRequest {
       _$GuildStickerCloneRequestFromJson(json);
 
   /// The ID of the existing sticker to clone. Its name, description, tags, and image are copied as-is; no other fields are accepted
-  @JsonKey(name: 'source_sticker_id')
+  @JsonKey(name: 'source_sticker_id', defaultValue: '')
   final SnowflakeType sourceStickerId;
 
   Map<String, Object?> toJson() => _$GuildStickerCloneRequestToJson(this);

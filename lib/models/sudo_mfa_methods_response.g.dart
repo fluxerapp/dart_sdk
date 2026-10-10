@@ -10,10 +10,10 @@ SudoMfaMethodsResponse _$SudoMfaMethodsResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('SudoMfaMethodsResponse', json, ($checkedConvert) {
   final val = SudoMfaMethodsResponse(
-    totp: $checkedConvert('totp', (v) => v as bool),
-    webauthn: $checkedConvert('webauthn', (v) => v as bool),
-    backupCodes: $checkedConvert('backup_codes', (v) => v as bool),
-    hasMfa: $checkedConvert('has_mfa', (v) => v as bool),
+    totp: $checkedConvert('totp', (v) => v as bool? ?? false),
+    webauthn: $checkedConvert('webauthn', (v) => v as bool? ?? false),
+    backupCodes: $checkedConvert('backup_codes', (v) => v as bool? ?? false),
+    hasMfa: $checkedConvert('has_mfa', (v) => v as bool? ?? false),
   );
   return val;
 }, fieldKeyMap: const {'backupCodes': 'backup_codes', 'hasMfa': 'has_mfa'});

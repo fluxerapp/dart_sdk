@@ -14,6 +14,7 @@ class VerifyEmailRequest {
       _$VerifyEmailRequestFromJson(json);
 
   /// Email verification token from email
+  @JsonKey(defaultValue: '')
   final String token;
 
   Map<String, Object?> toJson() => _$VerifyEmailRequestToJson(this);

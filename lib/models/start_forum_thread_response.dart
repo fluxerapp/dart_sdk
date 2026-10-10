@@ -69,6 +69,7 @@ class StartForumThreadResponse {
       _$StartForumThreadResponseFromJson(json);
 
   /// The unique identifier (snowflake) for this channel
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
 
   /// The ID of the guild this channel belongs to
@@ -94,6 +95,7 @@ class StartForumThreadResponse {
   /// The ID of the owner of the channel (for group DMs)
   @JsonKey(includeIfNull: false, name: 'owner_id')
   final SnowflakeStringType? ownerId;
+  @JsonKey(defaultValue: ChannelType.$unknown)
   final ChannelType type;
 
   /// The sorting position of the channel

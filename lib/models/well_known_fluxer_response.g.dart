@@ -15,52 +15,73 @@ WellKnownFluxerResponse _$WellKnownFluxerResponseFromJson(
     final val = WellKnownFluxerResponse(
       apiCodeVersion: $checkedConvert(
         'api_code_version',
-        (v) => (v as num).toInt(),
+        (v) => (v as num?)?.toInt() ?? 0,
       ),
       endpoints: $checkedConvert(
         'endpoints',
-        (v) => InstanceEndpointsSchema.fromJson(v as Map<String, dynamic>),
+        (v) => v == null
+            ? _$missingInstanceEndpointsSchema()
+            : InstanceEndpointsSchema.fromJson(v as Map<String, dynamic>),
       ),
       captcha: $checkedConvert(
         'captcha',
-        (v) => InstanceCaptchaSchema.fromJson(v as Map<String, dynamic>),
+        (v) => v == null
+            ? _$missingInstanceCaptchaSchema()
+            : InstanceCaptchaSchema.fromJson(v as Map<String, dynamic>),
       ),
       features: $checkedConvert(
         'features',
-        (v) => InstanceFeaturesSchema.fromJson(v as Map<String, dynamic>),
+        (v) => v == null
+            ? _$missingInstanceFeaturesSchema()
+            : InstanceFeaturesSchema.fromJson(v as Map<String, dynamic>),
       ),
       gif: $checkedConvert(
         'gif',
-        (v) => InstanceGifSchema.fromJson(v as Map<String, dynamic>),
+        (v) => v == null
+            ? _$missingInstanceGifSchema()
+            : InstanceGifSchema.fromJson(v as Map<String, dynamic>),
       ),
       sso: $checkedConvert(
         'sso',
-        (v) => InstanceSsoSchema.fromJson(v as Map<String, dynamic>),
+        (v) => v == null
+            ? _$missingInstanceSsoSchema()
+            : InstanceSsoSchema.fromJson(v as Map<String, dynamic>),
       ),
       registration: $checkedConvert(
         'registration',
-        (v) => InstanceRegistrationSchema.fromJson(v as Map<String, dynamic>),
+        (v) => v == null
+            ? _$missingInstanceRegistrationSchema()
+            : InstanceRegistrationSchema.fromJson(v as Map<String, dynamic>),
       ),
       community: $checkedConvert(
         'community',
-        (v) => InstanceCommunitySchema.fromJson(v as Map<String, dynamic>),
+        (v) => v == null
+            ? _$missingInstanceCommunitySchema()
+            : InstanceCommunitySchema.fromJson(v as Map<String, dynamic>),
       ),
       services: $checkedConvert(
         'services',
-        (v) => InstanceServicesSchema.fromJson(v as Map<String, dynamic>),
+        (v) => v == null
+            ? _$missingInstanceServicesSchema()
+            : InstanceServicesSchema.fromJson(v as Map<String, dynamic>),
       ),
       limits: $checkedConvert(
         'limits',
-        (v) =>
-            WellKnownFluxerResponseLimits.fromJson(v as Map<String, dynamic>),
+        (v) => v == null
+            ? _$missingWellKnownFluxerResponseLimits()
+            : WellKnownFluxerResponseLimits.fromJson(v as Map<String, dynamic>),
       ),
       push: $checkedConvert(
         'push',
-        (v) => InstancePushSchema.fromJson(v as Map<String, dynamic>),
+        (v) => v == null
+            ? _$missingInstancePushSchema()
+            : InstancePushSchema.fromJson(v as Map<String, dynamic>),
       ),
       appPublic: $checkedConvert(
         'app_public',
-        (v) => InstanceAppPublicSchema.fromJson(v as Map<String, dynamic>),
+        (v) => v == null
+            ? _$missingInstanceAppPublicSchema()
+            : InstanceAppPublicSchema.fromJson(v as Map<String, dynamic>),
       ),
       codename: $checkedConvert('codename', (v) => v as String?),
       agePolicy: $checkedConvert(

@@ -12,7 +12,7 @@ EmailChangeVerifyOriginalResponse _$EmailChangeVerifyOriginalResponseFromJson(
   $checkedConvert,
 ) {
   final val = EmailChangeVerifyOriginalResponse(
-    originalProof: $checkedConvert('original_proof', (v) => v as String),
+    originalProof: $checkedConvert('original_proof', (v) => v as String? ?? ''),
   );
   return val;
 }, fieldKeyMap: const {'originalProof': 'original_proof'});

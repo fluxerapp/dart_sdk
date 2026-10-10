@@ -10,7 +10,7 @@ EmbedProviderResponse _$EmbedProviderResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('EmbedProviderResponse', json, ($checkedConvert) {
   final val = EmbedProviderResponse(
-    name: $checkedConvert('name', (v) => v as String),
+    name: $checkedConvert('name', (v) => v as String? ?? ''),
     url: $checkedConvert('url', (v) => v as String?),
   );
   return val;

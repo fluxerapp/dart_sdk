@@ -22,12 +22,15 @@ class ForumTagResponse {
       _$ForumTagResponseFromJson(json);
 
   /// The ID of the tag
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
 
   /// The name of the tag
+  @JsonKey(defaultValue: '')
   final String name;
 
   /// Whether only moderators can add or remove this tag
+  @JsonKey(defaultValue: false)
   final bool moderated;
 
   /// The ID of a custom guild emoji

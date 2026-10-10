@@ -14,6 +14,7 @@ class OkResponse {
       _$OkResponseFromJson(json);
 
   /// Whether the operation was successful
+  @JsonKey(defaultValue: false)
   final bool ok;
 
   Map<String, Object?> toJson() => _$OkResponseToJson(this);

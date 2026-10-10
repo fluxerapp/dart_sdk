@@ -10,7 +10,10 @@ PushSubscribeResponse _$PushSubscribeResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('PushSubscribeResponse', json, ($checkedConvert) {
   final val = PushSubscribeResponse(
-    subscriptionId: $checkedConvert('subscription_id', (v) => v as String),
+    subscriptionId: $checkedConvert(
+      'subscription_id',
+      (v) => v as String? ?? '',
+    ),
   );
   return val;
 }, fieldKeyMap: const {'subscriptionId': 'subscription_id'});

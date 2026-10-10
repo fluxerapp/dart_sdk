@@ -10,7 +10,7 @@ DsaReportEmailSendRequest _$DsaReportEmailSendRequestFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('DsaReportEmailSendRequest', json, ($checkedConvert) {
   final val = DsaReportEmailSendRequest(
-    email: $checkedConvert('email', (v) => v as String),
+    email: $checkedConvert('email', (v) => v as String? ?? ''),
   );
   return val;
 });

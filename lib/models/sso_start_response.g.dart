@@ -14,10 +14,13 @@ SsoStartResponse _$SsoStartResponseFromJson(Map<String, dynamic> json) =>
         final val = SsoStartResponse(
           authorizationUrl: $checkedConvert(
             'authorization_url',
-            (v) => v as String,
+            (v) => v as String? ?? '',
           ),
-          state: $checkedConvert('state', (v) => v as String),
-          redirectUri: $checkedConvert('redirect_uri', (v) => v as String),
+          state: $checkedConvert('state', (v) => v as String? ?? ''),
+          redirectUri: $checkedConvert(
+            'redirect_uri',
+            (v) => v as String? ?? '',
+          ),
         );
         return val;
       },

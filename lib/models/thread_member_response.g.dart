@@ -15,9 +15,9 @@ ThreadMemberResponse _$ThreadMemberResponseFromJson(
     final val = ThreadMemberResponse(
       joinTimestamp: $checkedConvert(
         'join_timestamp',
-        (v) => DateTime.parse(v as String),
+        (v) => v == null ? _$missingDateTime() : DateTime.parse(v as String),
       ),
-      flags: $checkedConvert('flags', (v) => (v as num).toInt()),
+      flags: $checkedConvert('flags', (v) => (v as num?)?.toInt() ?? 0),
       id: $checkedConvert('id', (v) => v as String?),
       userId: $checkedConvert('user_id', (v) => v as String?),
       muted: $checkedConvert('muted', (v) => v as bool?),

@@ -12,7 +12,9 @@ StorePurchaseClaimResponse _$StorePurchaseClaimResponseFromJson(
   final val = StorePurchaseClaimResponse(
     purchase: $checkedConvert(
       'purchase',
-      (v) => StorePurchaseResponse.fromJson(v as Map<String, dynamic>),
+      (v) => v == null
+          ? _$missingStorePurchaseResponse()
+          : StorePurchaseResponse.fromJson(v as Map<String, dynamic>),
     ),
     giftCode: $checkedConvert('gift_code', (v) => v as String?),
   );

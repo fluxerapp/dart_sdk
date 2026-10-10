@@ -10,8 +10,8 @@ DiscoveryCategoryResponse _$DiscoveryCategoryResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('DiscoveryCategoryResponse', json, ($checkedConvert) {
   final val = DiscoveryCategoryResponse(
-    id: $checkedConvert('id', (v) => v as num),
-    name: $checkedConvert('name', (v) => v as String),
+    id: $checkedConvert('id', (v) => v as num? ?? 0),
+    name: $checkedConvert('name', (v) => v as String? ?? ''),
   );
   return val;
 });

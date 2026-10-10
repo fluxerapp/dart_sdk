@@ -18,13 +18,15 @@ class EmailChangeVerifyNewRequest {
       _$EmailChangeVerifyNewRequestFromJson(json);
 
   /// Email change ticket identifier
+  @JsonKey(defaultValue: '')
   final String ticket;
 
   /// Verification code sent to the original email address
+  @JsonKey(defaultValue: '')
   final String code;
 
   /// Proof token obtained from verifying the original email
-  @JsonKey(name: 'original_proof')
+  @JsonKey(name: 'original_proof', defaultValue: '')
   final String originalProof;
 
   Map<String, Object?> toJson() => _$EmailChangeVerifyNewRequestToJson(this);

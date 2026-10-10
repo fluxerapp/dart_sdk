@@ -9,7 +9,7 @@ part of 'forum_tag_request.dart';
 ForumTagRequest _$ForumTagRequestFromJson(Map<String, dynamic> json) =>
     $checkedCreate('ForumTagRequest', json, ($checkedConvert) {
       final val = ForumTagRequest._(
-        name: $checkedConvert('name', (v) => v as String),
+        name: $checkedConvert('name', (v) => v as String? ?? ''),
         moderated: $checkedConvert('moderated', (v) => v as bool?),
       );
       return val;

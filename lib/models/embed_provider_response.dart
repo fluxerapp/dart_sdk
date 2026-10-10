@@ -14,6 +14,7 @@ class EmbedProviderResponse {
       _$EmbedProviderResponseFromJson(json);
 
   /// The name of the provider
+  @JsonKey(defaultValue: '')
   final String name;
 
   /// The URL of the provider

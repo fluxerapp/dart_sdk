@@ -13,7 +13,7 @@ UserSettingsResponseGuildFolders _$UserSettingsResponseGuildFoldersFromJson(
       final val = UserSettingsResponseGuildFolders(
         guildIds: $checkedConvert(
           'guild_ids',
-          (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+          (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
         ),
         flags: $checkedConvert('flags', (v) => (v as num?)?.toInt() ?? 0),
         icon: $checkedConvert(

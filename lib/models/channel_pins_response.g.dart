@@ -11,13 +11,16 @@ ChannelPinsResponse _$ChannelPinsResponseFromJson(Map<String, dynamic> json) =>
       final val = ChannelPinsResponse(
         items: $checkedConvert(
           'items',
-          (v) => (v as List<dynamic>)
-              .map(
-                (e) => ChannelPinResponse.fromJson(e as Map<String, dynamic>),
-              )
-              .toList(),
+          (v) =>
+              (v as List<dynamic>?)
+                  ?.map(
+                    (e) =>
+                        ChannelPinResponse.fromJson(e as Map<String, dynamic>),
+                  )
+                  .toList() ??
+              [],
         ),
-        hasMore: $checkedConvert('has_more', (v) => v as bool),
+        hasMore: $checkedConvert('has_more', (v) => v as bool? ?? false),
       );
       return val;
     }, fieldKeyMap: const {'hasMore': 'has_more'});

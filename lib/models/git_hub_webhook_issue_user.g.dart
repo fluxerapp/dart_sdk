@@ -10,10 +10,10 @@ GitHubWebhookIssueUser _$GitHubWebhookIssueUserFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('GitHubWebhookIssueUser', json, ($checkedConvert) {
   final val = GitHubWebhookIssueUser(
-    id: $checkedConvert('id', (v) => (v as num).toInt()),
-    login: $checkedConvert('login', (v) => v as String),
-    htmlUrl: $checkedConvert('html_url', (v) => v as String),
-    avatarUrl: $checkedConvert('avatar_url', (v) => v as String),
+    id: $checkedConvert('id', (v) => (v as num?)?.toInt() ?? 0),
+    login: $checkedConvert('login', (v) => v as String? ?? ''),
+    htmlUrl: $checkedConvert('html_url', (v) => v as String? ?? ''),
+    avatarUrl: $checkedConvert('avatar_url', (v) => v as String? ?? ''),
   );
   return val;
 }, fieldKeyMap: const {'htmlUrl': 'html_url', 'avatarUrl': 'avatar_url'});

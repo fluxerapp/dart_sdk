@@ -74,9 +74,11 @@ class GuildResponse {
       _$GuildResponseFromJson(json);
 
   /// The unique identifier for this guild
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
 
   /// The name of the guild
+  @JsonKey(defaultValue: '')
   final String name;
 
   /// The hash of the guild icon
@@ -108,7 +110,10 @@ class GuildResponse {
   final Int32Type? splashHeight;
 
   /// The alignment of the splash card
-  @JsonKey(name: 'splash_card_alignment')
+  @JsonKey(
+    name: 'splash_card_alignment',
+    defaultValue: GuildResponseSplashCardAlignmentSplashCardAlignment.$unknown,
+  )
   final GuildResponseSplashCardAlignmentSplashCardAlignment splashCardAlignment;
 
   /// The hash of the embedded invite splash
@@ -128,13 +133,13 @@ class GuildResponse {
   final String? vanityUrlCode;
 
   /// The ID of the guild owner
-  @JsonKey(name: 'owner_id')
+  @JsonKey(name: 'owner_id', defaultValue: '')
   final SnowflakeStringType ownerId;
 
   /// The ID of the channel where system messages are sent
   @JsonKey(includeIfNull: false, name: 'system_channel_id')
   final SnowflakeStringType? systemChannelId;
-  @JsonKey(name: 'system_channel_flags')
+  @JsonKey(name: 'system_channel_flags', defaultValue: 0)
   final SystemChannelFlags systemChannelFlags;
 
   /// The ID of the rules channel
@@ -146,37 +151,51 @@ class GuildResponse {
   final SnowflakeStringType? afkChannelId;
 
   /// AFK timeout in seconds before moving users to the AFK channel
-  @JsonKey(name: 'afk_timeout')
+  @JsonKey(name: 'afk_timeout', defaultValue: 0)
   final Int32Type afkTimeout;
 
   /// Array of guild feature flags
+  @JsonKey(defaultValue: <String>[])
   final List<GuildFeatureSchema> features;
 
   /// Required verification level for members to participate
-  @JsonKey(name: 'verification_level')
+  @JsonKey(
+    name: 'verification_level',
+    defaultValue: GuildVerificationLevel.$unknown,
+  )
   final GuildVerificationLevel verificationLevel;
-  @JsonKey(name: 'mfa_level')
+  @JsonKey(name: 'mfa_level', defaultValue: GuildMfaLevel.$unknown)
   final GuildMfaLevel mfaLevel;
 
   /// The NSFW level of the guild (legacy; derived from nsfw)
-  @JsonKey(name: 'nsfw_level')
+  @JsonKey(name: 'nsfw_level', defaultValue: NsfwLevel.$unknown)
   final NsfwLevel nsfwLevel;
 
   /// Whether the guild is marked as adult (18+) content
+  @JsonKey(defaultValue: false)
   final bool nsfw;
 
   /// Whether the guild displays a content warning before entering
-  @JsonKey(name: 'content_warning_level')
+  @JsonKey(
+    name: 'content_warning_level',
+    defaultValue: ContentWarningLevel.$unknown,
+  )
   final ContentWarningLevel contentWarningLevel;
 
   /// Custom guild-wide content warning text; null falls back to a localized default
   @JsonKey(includeIfNull: false, name: 'content_warning_text')
   final String? contentWarningText;
-  @JsonKey(name: 'explicit_content_filter')
+  @JsonKey(
+    name: 'explicit_content_filter',
+    defaultValue: GuildExplicitContentFilter.$unknown,
+  )
   final GuildExplicitContentFilter explicitContentFilter;
-  @JsonKey(name: 'default_message_notifications')
+  @JsonKey(
+    name: 'default_message_notifications',
+    defaultValue: DefaultMessageNotifications.$unknown,
+  )
   final DefaultMessageNotifications defaultMessageNotifications;
-  @JsonKey(name: 'disabled_operations')
+  @JsonKey(name: 'disabled_operations', defaultValue: 0)
   final GuildOperations disabledOperations;
 
   /// ISO8601 timestamp controlling how far back members without Read Message History can access messages. When null, no historical access is allowed.

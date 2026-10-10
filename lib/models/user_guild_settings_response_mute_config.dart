@@ -24,7 +24,7 @@ class UserGuildSettingsResponseMuteConfig {
   final String? endTime;
 
   /// The selected mute duration in seconds
-  @JsonKey(name: 'selected_time_window')
+  @JsonKey(name: 'selected_time_window', defaultValue: 0)
   final Int32Type selectedTimeWindow;
 
   Map<String, Object?> toJson() =>

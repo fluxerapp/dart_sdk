@@ -26,13 +26,15 @@ class PremiumBillingInvoiceResponse {
   factory PremiumBillingInvoiceResponse.fromJson(Map<String, Object?> json) =>
       _$PremiumBillingInvoiceResponseFromJson(json);
 
+  @JsonKey(defaultValue: '')
   final String id;
   @JsonKey(includeIfNull: true)
   final String? number;
-  @JsonKey(name: 'amount_due')
+  @JsonKey(name: 'amount_due', defaultValue: 0)
   final int amountDue;
-  @JsonKey(name: 'amount_paid')
+  @JsonKey(name: 'amount_paid', defaultValue: 0)
   final int amountPaid;
+  @JsonKey(defaultValue: '')
   final String currency;
   @JsonKey(includeIfNull: true)
   final String? status;

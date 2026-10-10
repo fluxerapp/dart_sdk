@@ -30,21 +30,26 @@ class GuildDsaReportFlowRequest {
       _$GuildDsaReportFlowRequestFromJson(json);
 
   /// Verification ticket obtained from email verification
+  @JsonKey(defaultValue: '')
   final String ticket;
 
   /// EU country code of the reporter residence
-  @JsonKey(name: 'reporter_country_of_residence')
+  @JsonKey(
+    name: 'reporter_country_of_residence',
+    defaultValue: EuCountryCode.$unknown,
+  )
   final EuCountryCode reporterCountryOfResidence;
 
   /// revision_hash of the DSA report flow the reporter answered
-  @JsonKey(name: 'revision_hash')
+  @JsonKey(name: 'revision_hash', defaultValue: '')
   final String revisionHash;
 
   /// Screens of the DSA report flow and the answers chosen on each, in order
+  @JsonKey(defaultValue: <ReportFlowStep>[])
   final List<ReportFlowStep> steps;
 
   /// Confirms in good faith that the information and allegations in the notice are accurate and complete
-  @JsonKey(name: 'good_faith_confirmed')
+  @JsonKey(name: 'good_faith_confirmed', defaultValue: false)
   final bool goodFaithConfirmed;
 
   /// Language tag the reporter saw the flow in
@@ -52,7 +57,7 @@ class GuildDsaReportFlowRequest {
   final String? locale;
 
   /// Explanation of the problem. If the reporter believes the content is illegal, which law it breaks and why
-  @JsonKey(name: 'additional_info')
+  @JsonKey(name: 'additional_info', defaultValue: '')
   final String additionalInfo;
 
   /// Full legal name of the person filing the report, required unless the report is about child sexual abuse
@@ -60,11 +65,11 @@ class GuildDsaReportFlowRequest {
   final String? reporterFullLegalName;
 
   /// Type of report
-  @JsonKey(name: 'report_type')
+  @JsonKey(name: 'report_type', defaultValue: '')
   final String reportType;
 
   /// ID of the guild being reported
-  @JsonKey(name: 'guild_id')
+  @JsonKey(name: 'guild_id', defaultValue: '')
   final SnowflakeType guildId;
 
   /// Invite code used to access the guild

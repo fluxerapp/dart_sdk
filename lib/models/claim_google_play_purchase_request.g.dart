@@ -13,8 +13,11 @@ ClaimGooglePlayPurchaseRequest _$ClaimGooglePlayPurchaseRequestFromJson(
   json,
   ($checkedConvert) {
     final val = ClaimGooglePlayPurchaseRequest(
-      purchaseToken: $checkedConvert('purchase_token', (v) => v as String),
-      productId: $checkedConvert('product_id', (v) => v as String),
+      purchaseToken: $checkedConvert(
+        'purchase_token',
+        (v) => v as String? ?? '',
+      ),
+      productId: $checkedConvert('product_id', (v) => v as String? ?? ''),
       packageName: $checkedConvert('package_name', (v) => v as String?),
     );
     return val;

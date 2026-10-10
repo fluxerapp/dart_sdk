@@ -12,17 +12,26 @@ ArchivedThreadsResponse _$ArchivedThreadsResponseFromJson(
   final val = ArchivedThreadsResponse(
     threads: $checkedConvert(
       'threads',
-      (v) => (v as List<dynamic>)
-          .map((e) => ThreadChannelResponse.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      (v) =>
+          (v as List<dynamic>?)
+              ?.map(
+                (e) =>
+                    ThreadChannelResponse.fromJson(e as Map<String, dynamic>),
+              )
+              .toList() ??
+          [],
     ),
     members: $checkedConvert(
       'members',
-      (v) => (v as List<dynamic>)
-          .map((e) => ThreadMemberResponse.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      (v) =>
+          (v as List<dynamic>?)
+              ?.map(
+                (e) => ThreadMemberResponse.fromJson(e as Map<String, dynamic>),
+              )
+              .toList() ??
+          [],
     ),
-    hasMore: $checkedConvert('has_more', (v) => v as bool),
+    hasMore: $checkedConvert('has_more', (v) => v as bool? ?? false),
   );
   return val;
 }, fieldKeyMap: const {'hasMore': 'has_more'});

@@ -21,9 +21,11 @@ class CreateConnectionRequest {
       _$CreateConnectionRequestFromJson(json);
 
   /// The type of connection to create
+  @JsonKey(defaultValue: ConnectionType.$unknown)
   final ConnectionType type;
 
   /// The connection identifier (handle or domain)
+  @JsonKey(defaultValue: '')
   final String identifier;
 
   /// Bitfield controlling who can see this connection

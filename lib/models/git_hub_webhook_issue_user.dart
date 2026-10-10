@@ -20,11 +20,13 @@ class GitHubWebhookIssueUser {
   factory GitHubWebhookIssueUser.fromJson(Map<String, Object?> json) =>
       _$GitHubWebhookIssueUserFromJson(json);
 
+  @JsonKey(defaultValue: 0)
   final Int32Type id;
+  @JsonKey(defaultValue: '')
   final String login;
-  @JsonKey(name: 'html_url')
+  @JsonKey(name: 'html_url', defaultValue: '')
   final String htmlUrl;
-  @JsonKey(name: 'avatar_url')
+  @JsonKey(name: 'avatar_url', defaultValue: '')
   final String avatarUrl;
 
   Map<String, Object?> toJson() => _$GitHubWebhookIssueUserToJson(this);

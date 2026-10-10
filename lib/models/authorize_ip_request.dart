@@ -14,6 +14,7 @@ class AuthorizeIpRequest {
       _$AuthorizeIpRequestFromJson(json);
 
   /// The IP authorization token from email
+  @JsonKey(defaultValue: '')
   final String token;
 
   Map<String, Object?> toJson() => _$AuthorizeIpRequestToJson(this);

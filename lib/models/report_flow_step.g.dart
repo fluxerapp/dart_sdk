@@ -12,7 +12,7 @@ ReportFlowStep _$ReportFlowStepFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = ReportFlowStep(
-          screenId: $checkedConvert('screen_id', (v) => v as String),
+          screenId: $checkedConvert('screen_id', (v) => v as String? ?? ''),
           optionId: $checkedConvert('option_id', (v) => v as String?),
           itemIds: $checkedConvert(
             'item_ids',

@@ -24,10 +24,11 @@ class DiscoveryStatusResponse {
   final DiscoveryApplicationResponse? application;
 
   /// Whether the guild meets the requirements to apply for discovery
+  @JsonKey(defaultValue: false)
   final bool eligible;
 
   /// Minimum member count required for discovery eligibility
-  @JsonKey(name: 'min_member_count')
+  @JsonKey(name: 'min_member_count', defaultValue: 0)
   final num minMemberCount;
 
   Map<String, Object?> toJson() => _$DiscoveryStatusResponseToJson(this);

@@ -14,7 +14,7 @@ class BlueskyAuthorizeResponse {
       _$BlueskyAuthorizeResponseFromJson(json);
 
   /// The URL to redirect the user to for Bluesky authorisation
-  @JsonKey(name: 'authorize_url')
+  @JsonKey(name: 'authorize_url', defaultValue: '')
   final String authorizeUrl;
 
   Map<String, Object?> toJson() => _$BlueskyAuthorizeResponseToJson(this);

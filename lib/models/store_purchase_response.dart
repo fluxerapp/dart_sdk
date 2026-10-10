@@ -35,28 +35,35 @@ class StorePurchaseResponse {
       _$StorePurchaseResponseFromJson(json);
 
   /// The unique identifier (snowflake) for this store purchase
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
 
   /// Store the purchase was made in
+  @JsonKey(defaultValue: StoreProvider.$unknown)
   final StoreProvider provider;
 
   /// Whether the purchase is a subscription or a gift
+  @JsonKey(defaultValue: StorePurchaseKind.$unknown)
   final StorePurchaseKind kind;
 
   /// Fluxer product the purchase is for
+  @JsonKey(defaultValue: StoreSlot.$unknown)
   final StoreSlot slot;
 
   /// Store product identifier
-  @JsonKey(name: 'product_id')
+  @JsonKey(name: 'product_id', defaultValue: '')
   final String productId;
 
   /// Whether the purchase was a real purchase or a test purchase
+  @JsonKey(defaultValue: StoreEnvironment.$unknown)
   final StoreEnvironment environment;
 
   /// Current state of the purchase
+  @JsonKey(defaultValue: StorePurchaseState.$unknown)
   final StorePurchaseState state;
 
   /// Whether the purchase currently grants Plutonium
+  @JsonKey(defaultValue: false)
   final bool entitled;
 
   /// When the paid period ends, null for gifts
@@ -76,8 +83,11 @@ class StorePurchaseResponse {
   final String? giftCode;
 
   /// When Fluxer first saw the purchase
-  @JsonKey(name: 'created_at')
+  @JsonKey(name: 'created_at', defaultValue: _$missingDateTime)
   final DateTime createdAt;
 
   Map<String, Object?> toJson() => _$StorePurchaseResponseToJson(this);
 }
+
+DateTime _$missingDateTime() =>
+    DateTime.fromMillisecondsSinceEpoch(0, isUtc: true);

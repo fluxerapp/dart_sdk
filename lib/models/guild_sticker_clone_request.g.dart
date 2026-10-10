@@ -10,7 +10,10 @@ GuildStickerCloneRequest _$GuildStickerCloneRequestFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('GuildStickerCloneRequest', json, ($checkedConvert) {
   final val = GuildStickerCloneRequest(
-    sourceStickerId: $checkedConvert('source_sticker_id', (v) => v as String),
+    sourceStickerId: $checkedConvert(
+      'source_sticker_id',
+      (v) => v as String? ?? '',
+    ),
   );
   return val;
 }, fieldKeyMap: const {'sourceStickerId': 'source_sticker_id'});

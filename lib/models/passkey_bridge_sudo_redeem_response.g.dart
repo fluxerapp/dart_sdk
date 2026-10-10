@@ -15,7 +15,7 @@ _$PasskeyBridgeSudoRedeemResponseCancelledPasskeyBridgeSudoRedeemResponseFromJso
   ($checkedConvert) {
     final val =
         PasskeyBridgeSudoRedeemResponseCancelledPasskeyBridgeSudoRedeemResponse(
-          status: $checkedConvert('status', (v) => v as String),
+          status: $checkedConvert('status', (v) => v as String? ?? ''),
         );
     return val;
   },
@@ -36,8 +36,8 @@ _$PasskeyBridgeSudoRedeemResponseCompletedPasskeyBridgeSudoRedeemResponseFromJso
   ($checkedConvert) {
     final val =
         PasskeyBridgeSudoRedeemResponseCompletedPasskeyBridgeSudoRedeemResponse(
-          status: $checkedConvert('status', (v) => v as String),
-          sudoToken: $checkedConvert('sudo_token', (v) => v as String),
+          status: $checkedConvert('status', (v) => v as String? ?? ''),
+          sudoToken: $checkedConvert('sudo_token', (v) => v as String? ?? ''),
         );
     return val;
   },

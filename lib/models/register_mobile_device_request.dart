@@ -25,9 +25,11 @@ class RegisterMobileDeviceRequest {
       _$RegisterMobileDeviceRequestFromJson(json);
 
   /// The mobile push notification platform
+  @JsonKey(defaultValue: RegisterMobileDeviceRequestPlatformPlatform.$unknown)
   final RegisterMobileDeviceRequestPlatformPlatform platform;
 
   /// The Web Push endpoint URL when encryption keys are supplied, otherwise the raw platform push token
+  @JsonKey(defaultValue: '')
   final String token;
 
   /// The user agent string identifying the device

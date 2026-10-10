@@ -18,12 +18,15 @@ class EmbedFieldResponse {
       _$EmbedFieldResponseFromJson(json);
 
   /// The name of the field
+  @JsonKey(defaultValue: '')
   final String name;
 
   /// The value of the field
+  @JsonKey(defaultValue: '')
   final String value;
 
   /// Whether the field should be displayed inline
+  @JsonKey(defaultValue: false)
   final bool inline;
 
   Map<String, Object?> toJson() => _$EmbedFieldResponseToJson(this);

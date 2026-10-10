@@ -13,10 +13,12 @@ PushSubscribeRequest _$PushSubscribeRequestFromJson(
   json,
   ($checkedConvert) {
     final val = PushSubscribeRequest(
-      endpoint: $checkedConvert('endpoint', (v) => v as String),
+      endpoint: $checkedConvert('endpoint', (v) => v as String? ?? ''),
       keys: $checkedConvert(
         'keys',
-        (v) => PushSubscribeRequestKeys.fromJson(v as Map<String, dynamic>),
+        (v) => v == null
+            ? _$missingPushSubscribeRequestKeys()
+            : PushSubscribeRequestKeys.fromJson(v as Map<String, dynamic>),
       ),
       userAgent: $checkedConvert('user_agent', (v) => v as String?),
       installedApp: $checkedConvert('installed_app', (v) => v as bool?),

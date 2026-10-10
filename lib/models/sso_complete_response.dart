@@ -22,18 +22,23 @@ class SsoCompleteResponse {
       _$SsoCompleteResponseFromJson(json);
 
   /// Authentication token for the session
+  @JsonKey(defaultValue: '')
   final String token;
 
   /// ID of the authenticated user
-  @JsonKey(name: 'user_id')
+  @JsonKey(name: 'user_id', defaultValue: '')
   final SnowflakeStringType userId;
 
   /// Partial user data for the authenticated account
+  @JsonKey(defaultValue: _$missingUserPartialResponse)
   final UserPartialResponse user;
 
   /// URL to redirect the user to after completion
-  @JsonKey(name: 'redirect_to')
+  @JsonKey(name: 'redirect_to', defaultValue: '')
   final String redirectTo;
 
   Map<String, Object?> toJson() => _$SsoCompleteResponseToJson(this);
 }
+
+UserPartialResponse _$missingUserPartialResponse() =>
+    UserPartialResponse.fromJson(const <String, dynamic>{});

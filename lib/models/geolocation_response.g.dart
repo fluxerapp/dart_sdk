@@ -15,15 +15,19 @@ GeolocationResponse _$GeolocationResponseFromJson(Map<String, dynamic> json) =>
         longitude: $checkedConvert('longitude', (v) => v as String?),
         ageRestrictedGeos: $checkedConvert(
           'ageRestrictedGeos',
-          (v) => (v as List<dynamic>)
-              .map((e) => GeoEntry.fromJson(e as Map<String, dynamic>))
-              .toList(),
+          (v) =>
+              (v as List<dynamic>?)
+                  ?.map((e) => GeoEntry.fromJson(e as Map<String, dynamic>))
+                  .toList() ??
+              [],
         ),
         ageBlockedGeos: $checkedConvert(
           'ageBlockedGeos',
-          (v) => (v as List<dynamic>)
-              .map((e) => GeoEntry.fromJson(e as Map<String, dynamic>))
-              .toList(),
+          (v) =>
+              (v as List<dynamic>?)
+                  ?.map((e) => GeoEntry.fromJson(e as Map<String, dynamic>))
+                  .toList() ??
+              [],
         ),
       );
       return val;

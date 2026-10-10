@@ -13,13 +13,15 @@ VoiceP2pConnectionReportsRequest _$VoiceP2pConnectionReportsRequestFromJson(
       final val = VoiceP2pConnectionReportsRequest(
         reports: $checkedConvert(
           'reports',
-          (v) => (v as List<dynamic>)
-              .map(
-                (e) => VoiceP2pConnectionReportsRequestReports.fromJson(
-                  e as Map<String, dynamic>,
-                ),
-              )
-              .toList(),
+          (v) =>
+              (v as List<dynamic>?)
+                  ?.map(
+                    (e) => VoiceP2pConnectionReportsRequestReports.fromJson(
+                      e as Map<String, dynamic>,
+                    ),
+                  )
+                  .toList() ??
+              [],
         ),
       );
       return val;

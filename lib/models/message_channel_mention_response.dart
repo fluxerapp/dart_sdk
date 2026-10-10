@@ -21,12 +21,15 @@ class MessageChannelMentionResponse {
       _$MessageChannelMentionResponseFromJson(json);
 
   /// The ID of the mentioned channel
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
 
   /// The name of the mentioned channel
+  @JsonKey(defaultValue: '')
   final String name;
 
   /// The type of the mentioned channel
+  @JsonKey(defaultValue: 0)
   final Int32Type type;
 
   Map<String, Object?> toJson() => _$MessageChannelMentionResponseToJson(this);

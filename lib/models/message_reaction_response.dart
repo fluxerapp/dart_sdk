@@ -21,9 +21,11 @@ class MessageReactionResponse {
       _$MessageReactionResponseFromJson(json);
 
   /// The emoji used for the reaction
+  @JsonKey(defaultValue: _$missingMessageReactionResponseEmoji)
   final MessageReactionResponseEmoji emoji;
 
   /// The total number of times this reaction has been used
+  @JsonKey(defaultValue: 0)
   final Int32Type count;
 
   /// Whether the current user has reacted with this emoji
@@ -32,3 +34,6 @@ class MessageReactionResponse {
 
   Map<String, Object?> toJson() => _$MessageReactionResponseToJson(this);
 }
+
+MessageReactionResponseEmoji _$missingMessageReactionResponseEmoji() =>
+    MessageReactionResponseEmoji.fromJson(const <String, dynamic>{});

@@ -9,10 +9,10 @@ part of 'gif_media_format_input.dart';
 GifMediaFormatInput _$GifMediaFormatInputFromJson(Map<String, dynamic> json) =>
     $checkedCreate('GifMediaFormatInput', json, ($checkedConvert) {
       final val = GifMediaFormatInput(
-        src: $checkedConvert('src', (v) => v as String),
-        proxySrc: $checkedConvert('proxy_src', (v) => v as String),
-        width: $checkedConvert('width', (v) => (v as num).toInt()),
-        height: $checkedConvert('height', (v) => (v as num).toInt()),
+        src: $checkedConvert('src', (v) => v as String? ?? ''),
+        proxySrc: $checkedConvert('proxy_src', (v) => v as String? ?? ''),
+        width: $checkedConvert('width', (v) => (v as num?)?.toInt() ?? 0),
+        height: $checkedConvert('height', (v) => (v as num?)?.toInt() ?? 0),
       );
       return val;
     }, fieldKeyMap: const {'proxySrc': 'proxy_src'});

@@ -26,12 +26,15 @@ class ApplicationPublicResponseBot {
       _$ApplicationPublicResponseBotFromJson(json);
 
   /// The unique identifier of the bot user
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
 
   /// The username of the bot
+  @JsonKey(defaultValue: '')
   final String username;
 
   /// The discriminator of the bot
+  @JsonKey(defaultValue: '')
   final String discriminator;
 
   /// The avatar hash of the bot
@@ -49,6 +52,7 @@ class ApplicationPublicResponseBot {
   /// The bot token for authentication
   @JsonKey(includeIfNull: false)
   final String? token;
+  @JsonKey(defaultValue: 0)
   final BotFlags flags;
 
   Map<String, Object?> toJson() => _$ApplicationPublicResponseBotToJson(this);

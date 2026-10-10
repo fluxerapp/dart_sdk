@@ -18,7 +18,7 @@ class PushSubscriptionsListResponseSubscriptions {
   ) => _$PushSubscriptionsListResponseSubscriptionsFromJson(json);
 
   /// The unique identifier for the push subscription
-  @JsonKey(name: 'subscription_id')
+  @JsonKey(name: 'subscription_id', defaultValue: '')
   final String subscriptionId;
 
   /// The user agent that created this subscription

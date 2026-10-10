@@ -10,8 +10,8 @@ HandoffCompleteRequest _$HandoffCompleteRequestFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('HandoffCompleteRequest', json, ($checkedConvert) {
   final val = HandoffCompleteRequest(
-    code: $checkedConvert('code', (v) => v as String),
-    userId: $checkedConvert('user_id', (v) => v as String),
+    code: $checkedConvert('code', (v) => v as String? ?? ''),
+    userId: $checkedConvert('user_id', (v) => v as String? ?? ''),
     token: $checkedConvert('token', (v) => v as String?),
     returnMethod: $checkedConvert(
       'return_method',

@@ -17,6 +17,7 @@ class CompleteMultipartAttachmentUploadRequest {
   ) => _$CompleteMultipartAttachmentUploadRequestFromJson(json);
 
   /// Multipart uploads to finalize
+  @JsonKey(defaultValue: <CompleteMultipartAttachmentUploadItem>[])
   final List<CompleteMultipartAttachmentUploadItem> uploads;
 
   Map<String, Object?> toJson() =>

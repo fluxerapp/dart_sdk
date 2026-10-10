@@ -15,6 +15,7 @@ class ValidateResetPasswordTokenResponse {
   ) => _$ValidateResetPasswordTokenResponseFromJson(json);
 
   /// Whether the password reset token is valid and unexpired
+  @JsonKey(defaultValue: false)
   final bool valid;
 
   Map<String, Object?> toJson() =>

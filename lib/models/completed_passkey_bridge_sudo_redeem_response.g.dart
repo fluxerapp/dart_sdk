@@ -12,8 +12,8 @@ _$CompletedPasskeyBridgeSudoRedeemResponseFromJson(Map<String, dynamic> json) =>
       $checkedConvert,
     ) {
       final val = CompletedPasskeyBridgeSudoRedeemResponse(
-        status: $checkedConvert('status', (v) => v as String),
-        sudoToken: $checkedConvert('sudo_token', (v) => v as String),
+        status: $checkedConvert('status', (v) => v as String? ?? ''),
+        sudoToken: $checkedConvert('sudo_token', (v) => v as String? ?? ''),
       );
       return val;
     }, fieldKeyMap: const {'sudoToken': 'sudo_token'});

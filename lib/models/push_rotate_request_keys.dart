@@ -14,9 +14,11 @@ class PushRotateRequestKeys {
       _$PushRotateRequestKeysFromJson(json);
 
   /// The P-256 ECDH public key (base64url)
+  @JsonKey(defaultValue: '')
   final String p256dh;
 
   /// The authentication secret (base64url)
+  @JsonKey(defaultValue: '')
   final String auth;
 
   Map<String, Object?> toJson() => _$PushRotateRequestKeysToJson(this);

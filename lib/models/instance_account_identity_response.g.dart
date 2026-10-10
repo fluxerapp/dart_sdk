@@ -12,11 +12,15 @@ InstanceAccountIdentityResponse _$InstanceAccountIdentityResponseFromJson(
   final val = InstanceAccountIdentityResponse(
     mode: $checkedConvert(
       'mode',
-      (v) => AccountIdentityModeSchema.fromJson(v as String),
+      (v) => v == null
+          ? AccountIdentityModeSchema.$unknown
+          : AccountIdentityModeSchema.fromJson(v as String),
     ),
     tagStyle: $checkedConvert(
       'tag_style',
-      (v) => TagStyleSchema.fromJson(v as String),
+      (v) => v == null
+          ? TagStyleSchema.$unknown
+          : TagStyleSchema.fromJson(v as String),
     ),
   );
   return val;

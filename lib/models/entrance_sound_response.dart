@@ -26,20 +26,30 @@ class EntranceSoundResponse {
   factory EntranceSoundResponse.fromJson(Map<String, Object?> json) =>
       _$EntranceSoundResponseFromJson(json);
 
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
+  @JsonKey(defaultValue: '')
   final String name;
+  @JsonKey(defaultValue: '')
   final String hash;
-  @JsonKey(name: 'extension')
+  @JsonKey(
+    name: 'extension',
+    defaultValue: EntranceSoundResponseExtensionExtensionEnum.$unknown,
+  )
   final EntranceSoundResponseExtensionExtensionEnum extensionEnum;
-  @JsonKey(name: 'content_type')
+  @JsonKey(name: 'content_type', defaultValue: '')
   final String contentType;
-  @JsonKey(name: 'duration_ms')
+  @JsonKey(name: 'duration_ms', defaultValue: 0)
   final int durationMs;
-  @JsonKey(name: 'size_bytes')
+  @JsonKey(name: 'size_bytes', defaultValue: 0)
   final int sizeBytes;
+  @JsonKey(defaultValue: '')
   final String url;
-  @JsonKey(name: 'created_at')
+  @JsonKey(name: 'created_at', defaultValue: _$missingDateTime)
   final DateTime createdAt;
 
   Map<String, Object?> toJson() => _$EntranceSoundResponseToJson(this);
 }
+
+DateTime _$missingDateTime() =>
+    DateTime.fromMillisecondsSinceEpoch(0, isUtc: true);

@@ -14,7 +14,7 @@ class PushSubscribeResponse {
       _$PushSubscribeResponseFromJson(json);
 
   /// The unique identifier for the push subscription
-  @JsonKey(name: 'subscription_id')
+  @JsonKey(name: 'subscription_id', defaultValue: '')
   final String subscriptionId;
 
   Map<String, Object?> toJson() => _$PushSubscribeResponseToJson(this);

@@ -12,9 +12,13 @@ ReadStateAckResponse _$ReadStateAckResponseFromJson(
   final val = ReadStateAckResponse(
     readStates: $checkedConvert(
       'read_states',
-      (v) => (v as List<dynamic>)
-          .map((e) => ReadStateResponse.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      (v) =>
+          (v as List<dynamic>?)
+              ?.map(
+                (e) => ReadStateResponse.fromJson(e as Map<String, dynamic>),
+              )
+              .toList() ??
+          [],
     ),
   );
   return val;

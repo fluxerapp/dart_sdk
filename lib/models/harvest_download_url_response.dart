@@ -17,11 +17,11 @@ class HarvestDownloadUrlResponse {
       _$HarvestDownloadUrlResponseFromJson(json);
 
   /// The temporary URL to download the harvest archive
-  @JsonKey(name: 'download_url')
+  @JsonKey(name: 'download_url', defaultValue: '')
   final String downloadUrl;
 
   /// ISO 8601 timestamp when the harvest download expires
-  @JsonKey(name: 'expires_at')
+  @JsonKey(name: 'expires_at', defaultValue: '')
   final String expiresAt;
 
   Map<String, Object?> toJson() => _$HarvestDownloadUrlResponseToJson(this);

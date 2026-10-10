@@ -11,13 +11,15 @@ ReadStateAckRequest _$ReadStateAckRequestFromJson(Map<String, dynamic> json) =>
       final val = ReadStateAckRequest(
         readStates: $checkedConvert(
           'read_states',
-          (v) => (v as List<dynamic>)
-              .map(
-                (e) => ReadStateAckRequestReadStates.fromJson(
-                  e as Map<String, dynamic>,
-                ),
-              )
-              .toList(),
+          (v) =>
+              (v as List<dynamic>?)
+                  ?.map(
+                    (e) => ReadStateAckRequestReadStates.fromJson(
+                      e as Map<String, dynamic>,
+                    ),
+                  )
+                  .toList() ??
+              [],
         ),
       );
       return val;

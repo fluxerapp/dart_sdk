@@ -14,6 +14,7 @@ class EmailChangeTicketRequest {
       _$EmailChangeTicketRequestFromJson(json);
 
   /// Email change ticket identifier
+  @JsonKey(defaultValue: '')
   final String ticket;
 
   Map<String, Object?> toJson() => _$EmailChangeTicketRequestToJson(this);

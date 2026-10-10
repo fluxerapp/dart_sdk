@@ -9,10 +9,10 @@ part of 'guild_emoji_response.dart';
 GuildEmojiResponse _$GuildEmojiResponseFromJson(Map<String, dynamic> json) =>
     $checkedCreate('GuildEmojiResponse', json, ($checkedConvert) {
       final val = GuildEmojiResponse(
-        id: $checkedConvert('id', (v) => v as String),
-        name: $checkedConvert('name', (v) => v as String),
-        animated: $checkedConvert('animated', (v) => v as bool),
-        nsfw: $checkedConvert('nsfw', (v) => v as bool),
+        id: $checkedConvert('id', (v) => v as String? ?? ''),
+        name: $checkedConvert('name', (v) => v as String? ?? ''),
+        animated: $checkedConvert('animated', (v) => v as bool? ?? false),
+        nsfw: $checkedConvert('nsfw', (v) => v as bool? ?? false),
       );
       return val;
     });

@@ -16,6 +16,7 @@ class GuildEmojiBulkCreateRequest {
       _$GuildEmojiBulkCreateRequestFromJson(json);
 
   /// Array of emoji objects to create (1-50 emojis per batch)
+  @JsonKey(defaultValue: <GuildEmojiCreateRequest>[])
   final List<GuildEmojiCreateRequest> emojis;
 
   Map<String, Object?> toJson() => _$GuildEmojiBulkCreateRequestToJson(this);

@@ -16,6 +16,7 @@ class GuildRolePositionsRequestItem {
       _$GuildRolePositionsRequestItemFromJson(json);
 
   /// The ID of the role
+  @JsonKey(defaultValue: '')
   final SnowflakeType id;
 
   /// The new position for the role

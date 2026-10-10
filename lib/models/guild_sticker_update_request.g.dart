@@ -10,7 +10,7 @@ GuildStickerUpdateRequest _$GuildStickerUpdateRequestFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('GuildStickerUpdateRequest', json, ($checkedConvert) {
   final val = GuildStickerUpdateRequest._(
-    name: $checkedConvert('name', (v) => v as String),
+    name: $checkedConvert('name', (v) => v as String? ?? ''),
     tags: $checkedConvert(
       'tags',
       (v) =>

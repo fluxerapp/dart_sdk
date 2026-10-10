@@ -12,9 +12,12 @@ TemplateChannel _$TemplateChannelFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = TemplateChannel._(
-          id: $checkedConvert('id', (v) => v as String),
-          type: $checkedConvert('type', (v) => v as num),
-          position: $checkedConvert('position', (v) => (v as num).toInt()),
+          id: $checkedConvert('id', (v) => v as String? ?? ''),
+          type: $checkedConvert('type', (v) => v as num? ?? 0),
+          position: $checkedConvert(
+            'position',
+            (v) => (v as num?)?.toInt() ?? 0,
+          ),
           nsfw: $checkedConvert('nsfw', (v) => v as bool?),
           rateLimitPerUser: $checkedConvert(
             'rate_limit_per_user',

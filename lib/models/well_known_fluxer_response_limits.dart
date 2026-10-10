@@ -21,15 +21,19 @@ class WellKnownFluxerResponseLimits {
       _$WellKnownFluxerResponseLimitsFromJson(json);
 
   /// Wire format version
+  @JsonKey(defaultValue: 0)
   final num version;
 
   /// Available trait definitions (e.g., "premium")
+  @JsonKey(defaultValue: <String>[])
   final List<String> traitDefinitions;
 
   /// Array of limit rules to evaluate
+  @JsonKey(defaultValue: <WellKnownFluxerResponseLimitsRules>[])
   final List<WellKnownFluxerResponseLimitsRules> rules;
 
   /// Hash of the default limit values for cache invalidation
+  @JsonKey(defaultValue: '')
   final String defaultsHash;
 
   Map<String, Object?> toJson() => _$WellKnownFluxerResponseLimitsToJson(this);

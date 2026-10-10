@@ -13,11 +13,11 @@ WebAuthnCredentialResponse _$WebAuthnCredentialResponseFromJson(
   json,
   ($checkedConvert) {
     final val = WebAuthnCredentialResponse(
-      id: $checkedConvert('id', (v) => v as String),
-      name: $checkedConvert('name', (v) => v as String),
-      createdAt: $checkedConvert('created_at', (v) => v as String),
+      id: $checkedConvert('id', (v) => v as String? ?? ''),
+      name: $checkedConvert('name', (v) => v as String? ?? ''),
+      createdAt: $checkedConvert('created_at', (v) => v as String? ?? ''),
       lastUsedAt: $checkedConvert('last_used_at', (v) => v as String?),
-      rpId: $checkedConvert('rp_id', (v) => v as String),
+      rpId: $checkedConvert('rp_id', (v) => v as String? ?? ''),
     );
     return val;
   },

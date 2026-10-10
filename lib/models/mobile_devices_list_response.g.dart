@@ -12,13 +12,15 @@ MobileDevicesListResponse _$MobileDevicesListResponseFromJson(
   final val = MobileDevicesListResponse(
     devices: $checkedConvert(
       'devices',
-      (v) => (v as List<dynamic>)
-          .map(
-            (e) => MobileDevicesListResponseDevices.fromJson(
-              e as Map<String, dynamic>,
-            ),
-          )
-          .toList(),
+      (v) =>
+          (v as List<dynamic>?)
+              ?.map(
+                (e) => MobileDevicesListResponseDevices.fromJson(
+                  e as Map<String, dynamic>,
+                ),
+              )
+              .toList() ??
+          [],
     ),
   );
   return val;

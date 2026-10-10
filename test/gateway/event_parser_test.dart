@@ -1681,8 +1681,9 @@ void main() {
 
     test('Malformed payload → UnknownGatewayEvent (fallback via catch)', () {
       // MESSAGE_CREATE expects a valid MessageResponseSchema JSON.
-      // Passing an empty map should cause fromJson to throw, triggering fallback.
-      final data = <String, Object?>{};
+      // A field of the wrong type should cause fromJson to throw, triggering
+      // fallback. Missing fields alone do not: they parse to fallbacks.
+      final data = <String, Object?>{'id': 1};
       final event = parser.parse('MESSAGE_CREATE', data);
 
       expect(event, isA<UnknownGatewayEvent>());
@@ -1709,6 +1710,21 @@ void main() {
       'presences': <Object?>[],
       ...overrides,
     };
+
+    test('READY from an older instance parses without newer fields', () {
+      final event = parser.parse('READY', {
+        'session_id': 'sess-test',
+        'user': <String, Object?>{'id': '42', 'username': 'old'},
+        'user_settings': <String, Object?>{'theme': 'dark'},
+      });
+
+      expect(event, isA<ReadyEvent>());
+      final ready = event as ReadyEvent;
+      expect(ready.user.id, '42');
+      expect(ready.user.username, 'old');
+      expect(ready.userSettings?.theme, 'dark');
+      expect(ready.guilds, isEmpty);
+    });
 
     test('notes — Map<String, String> parsed correctly', () {
       final data = minimalReadyPayload({

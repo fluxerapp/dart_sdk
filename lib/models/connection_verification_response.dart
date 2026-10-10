@@ -22,19 +22,23 @@ class ConnectionVerificationResponse {
       _$ConnectionVerificationResponseFromJson(json);
 
   /// The verification token to place in DNS or profile
+  @JsonKey(defaultValue: '')
   final String token;
 
   /// The type of connection being verified
+  @JsonKey(defaultValue: ConnectionType.$unknown)
   final ConnectionType type;
 
   /// The connection identifier (handle or domain)
+  @JsonKey(defaultValue: '')
   final String id;
 
   /// Human-readable instructions for completing verification
+  @JsonKey(defaultValue: '')
   final String instructions;
 
   /// Signed token the client sends back at verify time
-  @JsonKey(name: 'initiation_token')
+  @JsonKey(name: 'initiation_token', defaultValue: '')
   final String initiationToken;
 
   Map<String, Object?> toJson() => _$ConnectionVerificationResponseToJson(this);

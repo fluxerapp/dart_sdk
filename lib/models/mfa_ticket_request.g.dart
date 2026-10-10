@@ -9,7 +9,7 @@ part of 'mfa_ticket_request.dart';
 MfaTicketRequest _$MfaTicketRequestFromJson(Map<String, dynamic> json) =>
     $checkedCreate('MfaTicketRequest', json, ($checkedConvert) {
       final val = MfaTicketRequest(
-        ticket: $checkedConvert('ticket', (v) => v as String),
+        ticket: $checkedConvert('ticket', (v) => v as String? ?? ''),
       );
       return val;
     });

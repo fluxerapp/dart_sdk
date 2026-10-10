@@ -13,7 +13,10 @@ CustomStatusResponse _$CustomStatusResponseFromJson(
   json,
   ($checkedConvert) {
     final val = CustomStatusResponse(
-      emojiAnimated: $checkedConvert('emoji_animated', (v) => v as bool),
+      emojiAnimated: $checkedConvert(
+        'emoji_animated',
+        (v) => v as bool? ?? false,
+      ),
       text: $checkedConvert('text', (v) => v as String?),
       expiresAt: $checkedConvert(
         'expires_at',

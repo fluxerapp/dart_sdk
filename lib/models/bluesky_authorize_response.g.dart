@@ -10,7 +10,7 @@ BlueskyAuthorizeResponse _$BlueskyAuthorizeResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('BlueskyAuthorizeResponse', json, ($checkedConvert) {
   final val = BlueskyAuthorizeResponse(
-    authorizeUrl: $checkedConvert('authorize_url', (v) => v as String),
+    authorizeUrl: $checkedConvert('authorize_url', (v) => v as String? ?? ''),
   );
   return val;
 }, fieldKeyMap: const {'authorizeUrl': 'authorize_url'});

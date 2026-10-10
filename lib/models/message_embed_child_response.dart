@@ -40,6 +40,7 @@ class MessageEmbedChildResponse {
       _$MessageEmbedChildResponseFromJson(json);
 
   /// The type of embed (e.g., rich, image, video, gifv, article, link)
+  @JsonKey(defaultValue: '')
   final String type;
 
   /// The URL of the embed

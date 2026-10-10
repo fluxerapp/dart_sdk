@@ -14,17 +14,25 @@ _$CurrentSubscriptionPriceResponseVariant1FromJson(
   json,
   ($checkedConvert) {
     final val = CurrentSubscriptionPriceResponseVariant1(
-      priceId: $checkedConvert('price_id', (v) => v as String),
-      amountMinor: $checkedConvert('amount_minor', (v) => (v as num).toInt()),
-      currency: $checkedConvert('currency', (v) => v as String),
+      priceId: $checkedConvert('price_id', (v) => v as String? ?? ''),
+      amountMinor: $checkedConvert(
+        'amount_minor',
+        (v) => (v as num?)?.toInt() ?? 0,
+      ),
+      currency: $checkedConvert('currency', (v) => v as String? ?? ''),
       billingCycle: $checkedConvert(
         'billing_cycle',
-        (v) =>
-            CurrentSubscriptionPriceResponseVariant1BillingCycleBillingCycle.fromJson(
-              v as String,
-            ),
+        (v) => v == null
+            ? CurrentSubscriptionPriceResponseVariant1BillingCycleBillingCycle
+                  .$unknown
+            : CurrentSubscriptionPriceResponseVariant1BillingCycleBillingCycle.fromJson(
+                v as String,
+              ),
       ),
-      isGrandfathered: $checkedConvert('is_grandfathered', (v) => v as bool),
+      isGrandfathered: $checkedConvert(
+        'is_grandfathered',
+        (v) => v as bool? ?? false,
+      ),
       listAmountMinor: $checkedConvert(
         'list_amount_minor',
         (v) => (v as num?)?.toInt(),

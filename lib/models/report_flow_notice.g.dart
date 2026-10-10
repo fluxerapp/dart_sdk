@@ -9,9 +9,9 @@ part of 'report_flow_notice.dart';
 ReportFlowNotice _$ReportFlowNoticeFromJson(Map<String, dynamic> json) =>
     $checkedCreate('ReportFlowNotice', json, ($checkedConvert) {
       final val = ReportFlowNotice(
-        id: $checkedConvert('id', (v) => v as String),
-        title: $checkedConvert('title', (v) => v as String),
-        body: $checkedConvert('body', (v) => v as String),
+        id: $checkedConvert('id', (v) => v as String? ?? ''),
+        title: $checkedConvert('title', (v) => v as String? ?? ''),
+        body: $checkedConvert('body', (v) => v as String? ?? ''),
       );
       return val;
     });

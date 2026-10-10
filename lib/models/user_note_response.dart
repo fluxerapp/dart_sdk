@@ -14,6 +14,7 @@ class UserNoteResponse {
       _$UserNoteResponseFromJson(json);
 
   /// The note text for this user
+  @JsonKey(defaultValue: '')
   final String note;
 
   Map<String, Object?> toJson() => _$UserNoteResponseToJson(this);

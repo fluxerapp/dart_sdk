@@ -14,7 +14,7 @@ class HandoffCompleteResponse {
       _$HandoffCompleteResponseFromJson(json);
 
   /// Deep link that returns the sign-in to the initiating app, with its one-time grant
-  @JsonKey(name: 'return_url')
+  @JsonKey(name: 'return_url', defaultValue: '')
   final String returnUrl;
 
   Map<String, Object?> toJson() => _$HandoffCompleteResponseToJson(this);

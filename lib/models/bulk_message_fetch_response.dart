@@ -15,6 +15,7 @@ class BulkMessageFetchResponse {
   factory BulkMessageFetchResponse.fromJson(Map<String, Object?> json) =>
       _$BulkMessageFetchResponseFromJson(json);
 
+  @JsonKey(defaultValue: <BulkMessageFetchResponseChannels>[])
   final List<BulkMessageFetchResponseChannels> channels;
 
   Map<String, Object?> toJson() => _$BulkMessageFetchResponseToJson(this);

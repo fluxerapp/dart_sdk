@@ -12,19 +12,27 @@ PremiumStateResponse _$PremiumStateResponseFromJson(
   final val = PremiumStateResponse(
     actual: $checkedConvert(
       'actual',
-      (v) => PremiumStateResponseActual.fromJson(v as Map<String, dynamic>),
+      (v) => v == null
+          ? _$missingPremiumStateResponseActual()
+          : PremiumStateResponseActual.fromJson(v as Map<String, dynamic>),
     ),
     effective: $checkedConvert(
       'effective',
-      (v) => PremiumStateResponseEffective.fromJson(v as Map<String, dynamic>),
+      (v) => v == null
+          ? _$missingPremiumStateResponseEffective()
+          : PremiumStateResponseEffective.fromJson(v as Map<String, dynamic>),
     ),
     billing: $checkedConvert(
       'billing',
-      (v) => PremiumStateResponseBilling.fromJson(v as Map<String, dynamic>),
+      (v) => v == null
+          ? _$missingPremiumStateResponseBilling()
+          : PremiumStateResponseBilling.fromJson(v as Map<String, dynamic>),
     ),
     pricing: $checkedConvert(
       'pricing',
-      (v) => PremiumPricingState.fromJson(v as Map<String, dynamic>),
+      (v) => v == null
+          ? _$missingPremiumPricingState()
+          : PremiumPricingState.fromJson(v as Map<String, dynamic>),
     ),
     subscriptionProvider: $checkedConvert(
       'subscription_provider',

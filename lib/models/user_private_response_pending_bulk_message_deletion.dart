@@ -21,15 +21,15 @@ class UserPrivateResponsePendingBulkMessageDeletion {
   ) => _$UserPrivateResponsePendingBulkMessageDeletionFromJson(json);
 
   /// ISO8601 timestamp of when the deletion was scheduled
-  @JsonKey(name: 'scheduled_at')
+  @JsonKey(name: 'scheduled_at', defaultValue: '')
   final String scheduledAt;
 
   /// The number of channels with messages to delete
-  @JsonKey(name: 'channel_count')
+  @JsonKey(name: 'channel_count', defaultValue: 0)
   final Int32Type channelCount;
 
   /// The total number of messages to delete
-  @JsonKey(name: 'message_count')
+  @JsonKey(name: 'message_count', defaultValue: 0)
   final Int32Type messageCount;
 
   Map<String, Object?> toJson() =>

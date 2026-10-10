@@ -14,9 +14,11 @@ class SsoCompleteRequest {
       _$SsoCompleteRequestFromJson(json);
 
   /// Authorization code from the SSO provider
+  @JsonKey(defaultValue: '')
   final String code;
 
   /// State parameter for CSRF protection
+  @JsonKey(defaultValue: '')
   final String state;
 
   Map<String, Object?> toJson() => _$SsoCompleteRequestToJson(this);

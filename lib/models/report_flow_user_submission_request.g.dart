@@ -13,14 +13,16 @@ ReportFlowUserSubmissionRequest _$ReportFlowUserSubmissionRequestFromJson(
   json,
   ($checkedConvert) {
     final val = ReportFlowUserSubmissionRequest(
-      revisionHash: $checkedConvert('revision_hash', (v) => v as String),
+      revisionHash: $checkedConvert('revision_hash', (v) => v as String? ?? ''),
       steps: $checkedConvert(
         'steps',
-        (v) => (v as List<dynamic>)
-            .map((e) => ReportFlowStep.fromJson(e as Map<String, dynamic>))
-            .toList(),
+        (v) =>
+            (v as List<dynamic>?)
+                ?.map((e) => ReportFlowStep.fromJson(e as Map<String, dynamic>))
+                .toList() ??
+            [],
       ),
-      userId: $checkedConvert('user_id', (v) => v as String),
+      userId: $checkedConvert('user_id', (v) => v as String? ?? ''),
       locale: $checkedConvert('locale', (v) => v as String?),
       guildId: $checkedConvert('guild_id', (v) => v as String?),
     );

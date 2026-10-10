@@ -29,6 +29,7 @@ class ListPriceSwitchState {
       _$ListPriceSwitchStateFromJson(json);
 
   /// Whether the authenticated user can move their subscription down to the current list price right now
+  @JsonKey(defaultValue: false)
   final bool available;
 
   /// Why the switch is unavailable, when available is false
@@ -36,6 +37,7 @@ class ListPriceSwitchState {
   final ListPriceSwitchIneligibilityReason? reason;
 
   /// Whether a switch to the current list price is already scheduled
+  @JsonKey(defaultValue: false)
   final bool pending;
 
   /// Stripe price ID the subscription is billed against today

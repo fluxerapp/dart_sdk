@@ -12,18 +12,23 @@ ConnectionResponse _$ConnectionResponseFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = ConnectionResponse(
-          id: $checkedConvert('id', (v) => v as String),
+          id: $checkedConvert('id', (v) => v as String? ?? ''),
           type: $checkedConvert(
             'type',
-            (v) => ConnectionType.fromJson(v as String),
+            (v) => v == null
+                ? ConnectionType.$unknown
+                : ConnectionType.fromJson(v as String),
           ),
-          name: $checkedConvert('name', (v) => v as String),
-          verified: $checkedConvert('verified', (v) => v as bool),
+          name: $checkedConvert('name', (v) => v as String? ?? ''),
+          verified: $checkedConvert('verified', (v) => v as bool? ?? false),
           visibilityFlags: $checkedConvert(
             'visibility_flags',
-            (v) => (v as num).toInt(),
+            (v) => (v as num?)?.toInt() ?? 0,
           ),
-          sortOrder: $checkedConvert('sort_order', (v) => (v as num).toInt()),
+          sortOrder: $checkedConvert(
+            'sort_order',
+            (v) => (v as num?)?.toInt() ?? 0,
+          ),
         );
         return val;
       },

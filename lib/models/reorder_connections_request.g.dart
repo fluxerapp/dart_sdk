@@ -12,7 +12,7 @@ ReorderConnectionsRequest _$ReorderConnectionsRequestFromJson(
   final val = ReorderConnectionsRequest(
     connectionIds: $checkedConvert(
       'connection_ids',
-      (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
     ),
   );
   return val;

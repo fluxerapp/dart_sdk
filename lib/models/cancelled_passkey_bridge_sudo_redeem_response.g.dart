@@ -12,7 +12,7 @@ _$CancelledPasskeyBridgeSudoRedeemResponseFromJson(Map<String, dynamic> json) =>
       $checkedConvert,
     ) {
       final val = CancelledPasskeyBridgeSudoRedeemResponse(
-        status: $checkedConvert('status', (v) => v as String),
+        status: $checkedConvert('status', (v) => v as String? ?? ''),
       );
       return val;
     });

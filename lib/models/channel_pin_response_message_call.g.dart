@@ -12,7 +12,7 @@ ChannelPinResponseMessageCall _$ChannelPinResponseMessageCallFromJson(
   final val = ChannelPinResponseMessageCall(
     participants: $checkedConvert(
       'participants',
-      (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
     ),
     endedTimestamp: $checkedConvert(
       'ended_timestamp',

@@ -12,8 +12,8 @@ _$GuildStickerBulkCreateResponseFailedFromJson(Map<String, dynamic> json) =>
       $checkedConvert,
     ) {
       final val = GuildStickerBulkCreateResponseFailed(
-        name: $checkedConvert('name', (v) => v as String),
-        error: $checkedConvert('error', (v) => v as String),
+        name: $checkedConvert('name', (v) => v as String? ?? ''),
+        error: $checkedConvert('error', (v) => v as String? ?? ''),
       );
       return val;
     });

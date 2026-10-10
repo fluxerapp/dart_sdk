@@ -16,7 +16,7 @@ class ChannelFollowRequest {
       _$ChannelFollowRequestFromJson(json);
 
   /// The ID of the text channel that receives published messages
-  @JsonKey(name: 'webhook_channel_id')
+  @JsonKey(name: 'webhook_channel_id', defaultValue: '')
   final SnowflakeType webhookChannelId;
 
   Map<String, Object?> toJson() => _$ChannelFollowRequestToJson(this);

@@ -11,17 +11,25 @@ ReportFlowChecklist _$ReportFlowChecklistFromJson(Map<String, dynamic> json) =>
       final val = ReportFlowChecklist(
         items: $checkedConvert(
           'items',
-          (v) => (v as List<dynamic>)
-              .map(
-                (e) =>
-                    ReportFlowChecklistItem.fromJson(e as Map<String, dynamic>),
-              )
-              .toList(),
+          (v) =>
+              (v as List<dynamic>?)
+                  ?.map(
+                    (e) => ReportFlowChecklistItem.fromJson(
+                      e as Map<String, dynamic>,
+                    ),
+                  )
+                  .toList() ??
+              [],
         ),
-        minChecked: $checkedConvert('min_checked', (v) => (v as num).toInt()),
+        minChecked: $checkedConvert(
+          'min_checked',
+          (v) => (v as num?)?.toInt() ?? 0,
+        ),
         outcome: $checkedConvert(
           'outcome',
-          (v) => ReportFlowOutcome.fromJson(v as Map<String, dynamic>),
+          (v) => v == null
+              ? _$missingReportFlowOutcome()
+              : ReportFlowOutcome.fromJson(v as Map<String, dynamic>),
         ),
       );
       return val;

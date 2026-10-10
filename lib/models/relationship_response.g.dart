@@ -13,23 +13,27 @@ RelationshipResponse _$RelationshipResponseFromJson(
   json,
   ($checkedConvert) {
     final val = RelationshipResponse(
-      id: $checkedConvert('id', (v) => v as String),
+      id: $checkedConvert('id', (v) => v as String? ?? ''),
       type: $checkedConvert(
         'type',
-        (v) => RelationshipTypes.fromJson((v as num).toInt()),
+        (v) => v == null
+            ? RelationshipTypes.$unknown
+            : RelationshipTypes.fromJson((v as num).toInt()),
       ),
       user: $checkedConvert(
         'user',
-        (v) => UserPartialResponse.fromJson(v as Map<String, dynamic>),
+        (v) => v == null
+            ? _$missingUserPartialResponse()
+            : UserPartialResponse.fromJson(v as Map<String, dynamic>),
       ),
       nickname: $checkedConvert('nickname', (v) => v as String?),
       shareVoiceActivity: $checkedConvert(
         'share_voice_activity',
-        (v) => v as bool,
+        (v) => v as bool? ?? false,
       ),
       friendSharesVoiceActivity: $checkedConvert(
         'friend_shares_voice_activity',
-        (v) => v as bool,
+        (v) => v as bool? ?? false,
       ),
       since: $checkedConvert(
         'since',

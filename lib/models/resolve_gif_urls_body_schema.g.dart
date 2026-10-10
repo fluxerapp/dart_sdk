@@ -12,7 +12,7 @@ ResolveGifUrlsBodySchema _$ResolveGifUrlsBodySchemaFromJson(
   final val = ResolveGifUrlsBodySchema(
     urls: $checkedConvert(
       'urls',
-      (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
     ),
   );
   return val;

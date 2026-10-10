@@ -13,16 +13,16 @@ OAuth2MeResponseApplication _$OAuth2MeResponseApplicationFromJson(
   json,
   ($checkedConvert) {
     final val = OAuth2MeResponseApplication(
-      id: $checkedConvert('id', (v) => v as String),
-      name: $checkedConvert('name', (v) => v as String),
+      id: $checkedConvert('id', (v) => v as String? ?? ''),
+      name: $checkedConvert('name', (v) => v as String? ?? ''),
       icon: $checkedConvert('icon', (v) => v as String?),
       description: $checkedConvert('description', (v) => v as String?),
-      botPublic: $checkedConvert('bot_public', (v) => v as bool),
+      botPublic: $checkedConvert('bot_public', (v) => v as bool? ?? false),
       botRequireCodeGrant: $checkedConvert(
         'bot_require_code_grant',
-        (v) => v as bool,
+        (v) => v as bool? ?? false,
       ),
-      flags: $checkedConvert('flags', (v) => (v as num).toInt()),
+      flags: $checkedConvert('flags', (v) => (v as num?)?.toInt() ?? 0),
     );
     return val;
   },

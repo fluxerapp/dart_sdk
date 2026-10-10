@@ -10,7 +10,7 @@ DonationRequestLinkRequest _$DonationRequestLinkRequestFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('DonationRequestLinkRequest', json, ($checkedConvert) {
   final val = DonationRequestLinkRequest(
-    email: $checkedConvert('email', (v) => v as String),
+    email: $checkedConvert('email', (v) => v as String? ?? ''),
   );
   return val;
 });

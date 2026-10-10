@@ -18,14 +18,15 @@ class SsoStartResponse {
       _$SsoStartResponseFromJson(json);
 
   /// URL to redirect user to for SSO authentication
-  @JsonKey(name: 'authorization_url')
+  @JsonKey(name: 'authorization_url', defaultValue: '')
   final String authorizationUrl;
 
   /// State parameter for CSRF protection
+  @JsonKey(defaultValue: '')
   final String state;
 
   /// OAuth redirect URI used for the SSO provider callback
-  @JsonKey(name: 'redirect_uri')
+  @JsonKey(name: 'redirect_uri', defaultValue: '')
   final String redirectUri;
 
   Map<String, Object?> toJson() => _$SsoStartResponseToJson(this);

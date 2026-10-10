@@ -14,6 +14,7 @@ class Object2Attachments {
       _$Object2AttachmentsFromJson(json);
 
   /// The identifier of the snapshot attachment
+  @JsonKey(defaultValue: '')
   final String id;
 
   /// A title for the attachment (1-1024 characters)

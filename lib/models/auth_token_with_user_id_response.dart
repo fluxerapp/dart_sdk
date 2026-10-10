@@ -21,14 +21,19 @@ class AuthTokenWithUserIdResponse {
       _$AuthTokenWithUserIdResponseFromJson(json);
 
   /// Authentication token for API requests
+  @JsonKey(defaultValue: '')
   final String token;
 
   /// ID of the authenticated user
-  @JsonKey(name: 'user_id')
+  @JsonKey(name: 'user_id', defaultValue: '')
   final SnowflakeStringType userId;
 
   /// Partial user data for the authenticated account
+  @JsonKey(defaultValue: _$missingUserPartialResponse)
   final UserPartialResponse user;
 
   Map<String, Object?> toJson() => _$AuthTokenWithUserIdResponseToJson(this);
 }
+
+UserPartialResponse _$missingUserPartialResponse() =>
+    UserPartialResponse.fromJson(const <String, dynamic>{});

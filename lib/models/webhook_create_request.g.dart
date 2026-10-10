@@ -10,7 +10,7 @@ WebhookCreateRequest _$WebhookCreateRequestFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('WebhookCreateRequest', json, ($checkedConvert) {
   final val = WebhookCreateRequest._(
-    name: $checkedConvert('name', (v) => v as String),
+    name: $checkedConvert('name', (v) => v as String? ?? ''),
   );
   return val;
 });

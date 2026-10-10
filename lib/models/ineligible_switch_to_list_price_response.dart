@@ -20,9 +20,11 @@ class IneligibleSwitchToListPriceResponse {
   ) => _$IneligibleSwitchToListPriceResponseFromJson(json);
 
   /// The subscription cannot be moved to the current list price
+  @JsonKey(defaultValue: '')
   final String status;
 
   /// Why the switch was refused
+  @JsonKey(defaultValue: ListPriceSwitchIneligibilityReason.$unknown)
   final ListPriceSwitchIneligibilityReason reason;
 
   Map<String, Object?> toJson() =>

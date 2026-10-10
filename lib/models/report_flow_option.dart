@@ -19,9 +19,15 @@ class ReportFlowOption {
   factory ReportFlowOption.fromJson(Map<String, Object?> json) =>
       _$ReportFlowOptionFromJson(json);
 
+  @JsonKey(defaultValue: '')
   final String id;
+  @JsonKey(defaultValue: '')
   final String label;
+  @JsonKey(defaultValue: _$missingReportFlowOutcome)
   final ReportFlowOutcome outcome;
 
   Map<String, Object?> toJson() => _$ReportFlowOptionToJson(this);
 }
+
+ReportFlowOutcome _$missingReportFlowOutcome() =>
+    ReportFlowOutcome.fromJson(const <String, dynamic>{});

@@ -10,7 +10,7 @@ WebAuthnChallengeResponse _$WebAuthnChallengeResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('WebAuthnChallengeResponse', json, ($checkedConvert) {
   final val = WebAuthnChallengeResponse(
-    challenge: $checkedConvert('challenge', (v) => v as String),
+    challenge: $checkedConvert('challenge', (v) => v as String? ?? ''),
   );
   return val;
 });

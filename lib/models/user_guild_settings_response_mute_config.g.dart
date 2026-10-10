@@ -16,7 +16,7 @@ _$UserGuildSettingsResponseMuteConfigFromJson(Map<String, dynamic> json) =>
           endTime: $checkedConvert('end_time', (v) => v as String?),
           selectedTimeWindow: $checkedConvert(
             'selected_time_window',
-            (v) => (v as num).toInt(),
+            (v) => (v as num?)?.toInt() ?? 0,
           ),
         );
         return val;

@@ -16,7 +16,12 @@ class PasskeyBridgeOptionsResponse {
       _$PasskeyBridgeOptionsResponseFromJson(json);
 
   /// WebAuthn authentication options for the ceremony
+  @JsonKey(defaultValue: _$missingWebAuthnAuthenticationOptionsResponse)
   final WebAuthnAuthenticationOptionsResponse options;
 
   Map<String, Object?> toJson() => _$PasskeyBridgeOptionsResponseToJson(this);
 }
+
+WebAuthnAuthenticationOptionsResponse
+_$missingWebAuthnAuthenticationOptionsResponse() =>
+    WebAuthnAuthenticationOptionsResponse.fromJson(const <String, dynamic>{});

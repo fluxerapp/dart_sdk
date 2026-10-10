@@ -59,6 +59,7 @@ class PriceIdsResponse {
   final int? gift1YearAmountMinor;
 
   /// Currency for the prices
+  @JsonKey(defaultValue: '')
   final PremiumCurrency currency;
 
   /// Currency for gift prices, null when no gift prices are configured

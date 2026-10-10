@@ -14,6 +14,7 @@ class OriginHandoffRedeemResponse {
       _$OriginHandoffRedeemResponseFromJson(json);
 
   /// Encrypted client state encoded as base64url
+  @JsonKey(defaultValue: '')
   final String payload;
 
   Map<String, Object?> toJson() => _$OriginHandoffRedeemResponseToJson(this);

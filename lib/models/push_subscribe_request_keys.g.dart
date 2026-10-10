@@ -10,8 +10,8 @@ PushSubscribeRequestKeys _$PushSubscribeRequestKeysFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('PushSubscribeRequestKeys', json, ($checkedConvert) {
   final val = PushSubscribeRequestKeys(
-    p256dh: $checkedConvert('p256dh', (v) => v as String),
-    auth: $checkedConvert('auth', (v) => v as String),
+    p256dh: $checkedConvert('p256dh', (v) => v as String? ?? ''),
+    auth: $checkedConvert('auth', (v) => v as String? ?? ''),
   );
   return val;
 });

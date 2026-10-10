@@ -15,7 +15,7 @@ _$MessageResponseSchemaReferencedMessageCallFromJson(
   final val = MessageResponseSchemaReferencedMessageCall(
     participants: $checkedConvert(
       'participants',
-      (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
     ),
     endedTimestamp: $checkedConvert(
       'ended_timestamp',

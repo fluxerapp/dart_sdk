@@ -13,7 +13,7 @@ _$InviteResponseSchemaGuildInviteResponseFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = InviteResponseSchemaGuildInviteResponse(
-          code: $checkedConvert('code', (v) => v as String),
+          code: $checkedConvert('code', (v) => v as String? ?? ''),
           inviter: $checkedConvert(
             'inviter',
             (v) => v == null
@@ -24,23 +24,27 @@ _$InviteResponseSchemaGuildInviteResponseFromJson(Map<String, dynamic> json) =>
             'expires_at',
             (v) => v == null ? null : DateTime.parse(v as String),
           ),
-          temporary: $checkedConvert('temporary', (v) => v as bool),
-          type: $checkedConvert('type', (v) => v as num),
+          temporary: $checkedConvert('temporary', (v) => v as bool? ?? false),
+          type: $checkedConvert('type', (v) => v as num? ?? 0),
           guild: $checkedConvert(
             'guild',
-            (v) => GuildPartialResponse.fromJson(v as Map<String, dynamic>),
+            (v) => v == null
+                ? _$missingGuildPartialResponse()
+                : GuildPartialResponse.fromJson(v as Map<String, dynamic>),
           ),
           channel: $checkedConvert(
             'channel',
-            (v) => ChannelPartialResponse.fromJson(v as Map<String, dynamic>),
+            (v) => v == null
+                ? _$missingChannelPartialResponse()
+                : ChannelPartialResponse.fromJson(v as Map<String, dynamic>),
           ),
           memberCount: $checkedConvert(
             'member_count',
-            (v) => (v as num).toInt(),
+            (v) => (v as num?)?.toInt() ?? 0,
           ),
           presenceCount: $checkedConvert(
             'presence_count',
-            (v) => (v as num).toInt(),
+            (v) => (v as num?)?.toInt() ?? 0,
           ),
         );
         return val;
@@ -74,7 +78,7 @@ _$InviteResponseSchemaGroupDmInviteResponseFromJson(
   json,
   ($checkedConvert) {
     final val = InviteResponseSchemaGroupDmInviteResponse(
-      code: $checkedConvert('code', (v) => v as String),
+      code: $checkedConvert('code', (v) => v as String? ?? ''),
       inviter: $checkedConvert(
         'inviter',
         (v) => v == null
@@ -85,13 +89,18 @@ _$InviteResponseSchemaGroupDmInviteResponseFromJson(
         'expires_at',
         (v) => v == null ? null : DateTime.parse(v as String),
       ),
-      temporary: $checkedConvert('temporary', (v) => v as bool),
-      type: $checkedConvert('type', (v) => v as num),
+      temporary: $checkedConvert('temporary', (v) => v as bool? ?? false),
+      type: $checkedConvert('type', (v) => v as num? ?? 0),
       channel: $checkedConvert(
         'channel',
-        (v) => ChannelPartialResponse.fromJson(v as Map<String, dynamic>),
+        (v) => v == null
+            ? _$missingChannelPartialResponse()
+            : ChannelPartialResponse.fromJson(v as Map<String, dynamic>),
       ),
-      memberCount: $checkedConvert('member_count', (v) => (v as num).toInt()),
+      memberCount: $checkedConvert(
+        'member_count',
+        (v) => (v as num?)?.toInt() ?? 0,
+      ),
     );
     return val;
   },

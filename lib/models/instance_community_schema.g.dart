@@ -13,18 +13,21 @@ InstanceCommunitySchema _$InstanceCommunitySchemaFromJson(
   json,
   ($checkedConvert) {
     final val = InstanceCommunitySchema(
-      singleCommunity: $checkedConvert('single_community', (v) => v as bool),
+      singleCommunity: $checkedConvert(
+        'single_community',
+        (v) => v as bool? ?? false,
+      ),
       singleCommunityGuildId: $checkedConvert(
         'single_community_guild_id',
         (v) => v as String?,
       ),
       directMessagesDisabled: $checkedConvert(
         'direct_messages_disabled',
-        (v) => v as bool,
+        (v) => v as bool? ?? false,
       ),
       guildCreateAccess: $checkedConvert(
         'guild_create_access',
-        (v) => v as bool,
+        (v) => v as bool? ?? false,
       ),
     );
     return val;

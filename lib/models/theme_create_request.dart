@@ -14,6 +14,7 @@ class ThemeCreateRequest {
       _$ThemeCreateRequestFromJson(json);
 
   /// CSS text to store and share
+  @JsonKey(defaultValue: '')
   final String css;
 
   Map<String, Object?> toJson() => _$ThemeCreateRequestToJson(this);

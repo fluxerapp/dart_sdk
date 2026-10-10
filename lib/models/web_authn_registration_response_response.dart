@@ -23,8 +23,9 @@ class WebAuthnRegistrationResponseResponse {
     Map<String, Object?> json,
   ) => _$WebAuthnRegistrationResponseResponseFromJson(json);
 
-  @JsonKey(name: 'clientDataJSON')
+  @JsonKey(name: 'clientDataJSON', defaultValue: '')
   final String clientDataJson;
+  @JsonKey(defaultValue: '')
   final String attestationObject;
   @JsonKey(includeIfNull: false)
   final String? authenticatorData;

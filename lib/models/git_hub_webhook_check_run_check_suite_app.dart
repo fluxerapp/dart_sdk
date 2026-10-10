@@ -14,6 +14,7 @@ class GitHubWebhookCheckRunCheckSuiteApp {
     Map<String, Object?> json,
   ) => _$GitHubWebhookCheckRunCheckSuiteAppFromJson(json);
 
+  @JsonKey(defaultValue: '')
   final String name;
 
   Map<String, Object?> toJson() =>

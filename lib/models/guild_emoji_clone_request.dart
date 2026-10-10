@@ -16,7 +16,7 @@ class GuildEmojiCloneRequest {
       _$GuildEmojiCloneRequestFromJson(json);
 
   /// The ID of the existing emoji to clone. Its name and image are copied as-is; no other fields are accepted
-  @JsonKey(name: 'source_emoji_id')
+  @JsonKey(name: 'source_emoji_id', defaultValue: '')
   final SnowflakeType sourceEmojiId;
 
   Map<String, Object?> toJson() => _$GuildEmojiCloneRequestToJson(this);

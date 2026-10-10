@@ -13,13 +13,15 @@ PresignedAttachmentUploadRequest _$PresignedAttachmentUploadRequestFromJson(
       final val = PresignedAttachmentUploadRequest(
         attachments: $checkedConvert(
           'attachments',
-          (v) => (v as List<dynamic>)
-              .map(
-                (e) => PresignedAttachmentUploadRequestItem.fromJson(
-                  e as Map<String, dynamic>,
-                ),
-              )
-              .toList(),
+          (v) =>
+              (v as List<dynamic>?)
+                  ?.map(
+                    (e) => PresignedAttachmentUploadRequestItem.fromJson(
+                      e as Map<String, dynamic>,
+                    ),
+                  )
+                  .toList() ??
+              [],
         ),
       );
       return val;

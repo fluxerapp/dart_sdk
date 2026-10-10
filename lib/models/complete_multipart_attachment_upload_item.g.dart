@@ -15,9 +15,9 @@ _$CompleteMultipartAttachmentUploadItemFromJson(Map<String, dynamic> json) =>
         final val = CompleteMultipartAttachmentUploadItem(
           uploadFilename: $checkedConvert(
             'upload_filename',
-            (v) => v as String,
+            (v) => v as String? ?? '',
           ),
-          uploadId: $checkedConvert('upload_id', (v) => v as String),
+          uploadId: $checkedConvert('upload_id', (v) => v as String? ?? ''),
         );
         return val;
       },

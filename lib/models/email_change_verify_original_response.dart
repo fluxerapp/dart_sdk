@@ -15,7 +15,7 @@ class EmailChangeVerifyOriginalResponse {
   ) => _$EmailChangeVerifyOriginalResponseFromJson(json);
 
   /// Proof token issued after verifying the original email
-  @JsonKey(name: 'original_proof')
+  @JsonKey(name: 'original_proof', defaultValue: '')
   final String originalProof;
 
   Map<String, Object?> toJson() =>

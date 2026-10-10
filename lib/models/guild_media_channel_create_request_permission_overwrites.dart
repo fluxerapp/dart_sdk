@@ -24,9 +24,14 @@ class GuildMediaChannelCreateRequestPermissionOverwrites {
   ) => _$GuildMediaChannelCreateRequestPermissionOverwritesFromJson(json);
 
   /// The ID of the role or user to overwrite permissions for
+  @JsonKey(defaultValue: '')
   final SnowflakeType id;
 
   /// The type of overwrite (0 = role, 1 = member)
+  @JsonKey(
+    defaultValue:
+        GuildMediaChannelCreateRequestPermissionOverwritesTypeType.$unknown,
+  )
   final GuildMediaChannelCreateRequestPermissionOverwritesTypeType type;
 
   /// Bitwise value of allowed permissions

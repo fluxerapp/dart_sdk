@@ -32,24 +32,27 @@ class PremiumStoreSubscriptionState {
       _$PremiumStoreSubscriptionStateFromJson(json);
 
   /// Store that bills the subscription
+  @JsonKey(defaultValue: StoreProvider.$unknown)
   final StoreProvider provider;
 
   /// ID of the store purchase that grants the subscription
-  @JsonKey(name: 'purchase_id')
+  @JsonKey(name: 'purchase_id', defaultValue: '')
   final SnowflakeStringType purchaseId;
 
   /// Fluxer subscription product
+  @JsonKey(defaultValue: StoreSubscriptionSlot.$unknown)
   final StoreSubscriptionSlot slot;
 
   /// Billing cycle of the subscription
-  @JsonKey(name: 'billing_cycle')
+  @JsonKey(name: 'billing_cycle', defaultValue: StoreBillingCycle.$unknown)
   final StoreBillingCycle billingCycle;
 
   /// Current state of the store subscription
+  @JsonKey(defaultValue: StorePurchaseState.$unknown)
   final StorePurchaseState state;
 
   /// When the paid period ends
-  @JsonKey(name: 'expires_at')
+  @JsonKey(name: 'expires_at', defaultValue: _$missingDateTime)
   final DateTime expiresAt;
 
   /// When the billing grace period ends, null outside grace
@@ -57,15 +60,19 @@ class PremiumStoreSubscriptionState {
   final DateTime? graceEndsAt;
 
   /// Whether the subscription renews automatically
-  @JsonKey(name: 'will_renew')
+  @JsonKey(name: 'will_renew', defaultValue: false)
   final bool willRenew;
 
   /// Store page where the subscription can be managed or canceled
-  @JsonKey(name: 'manage_url')
+  @JsonKey(name: 'manage_url', defaultValue: '')
   final String manageUrl;
 
   /// Whether the subscription is a real purchase or a test purchase
+  @JsonKey(defaultValue: StoreEnvironment.$unknown)
   final StoreEnvironment environment;
 
   Map<String, Object?> toJson() => _$PremiumStoreSubscriptionStateToJson(this);
 }
+
+DateTime _$missingDateTime() =>
+    DateTime.fromMillisecondsSinceEpoch(0, isUtc: true);

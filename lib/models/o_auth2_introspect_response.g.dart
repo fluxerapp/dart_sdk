@@ -10,7 +10,7 @@ OAuth2IntrospectResponse _$OAuth2IntrospectResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('OAuth2IntrospectResponse', json, ($checkedConvert) {
   final val = OAuth2IntrospectResponse(
-    active: $checkedConvert('active', (v) => v as bool),
+    active: $checkedConvert('active', (v) => v as bool? ?? false),
     scope: $checkedConvert('scope', (v) => v as String?),
     clientId: $checkedConvert('client_id', (v) => v as String?),
     username: $checkedConvert('username', (v) => v as String?),

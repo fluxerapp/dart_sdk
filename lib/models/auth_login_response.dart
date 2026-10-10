@@ -28,9 +28,11 @@ class AuthLoginResponse {
 
 @JsonSerializable()
 class AuthLoginResponseAuthTokenWithUserIdResponse {
+  @JsonKey(defaultValue: '')
   final String token;
-  @JsonKey(name: 'user_id')
+  @JsonKey(name: 'user_id', defaultValue: '')
   final SnowflakeStringType userId;
+  @JsonKey(defaultValue: _$missingUserPartialResponse)
   final UserPartialResponse user;
 
   const AuthLoginResponseAuthTokenWithUserIdResponse({
@@ -49,13 +51,17 @@ class AuthLoginResponseAuthTokenWithUserIdResponse {
 
 @JsonSerializable()
 class AuthLoginResponseVariant2 {
+  @JsonKey(defaultValue: false)
   final bool mfa;
+  @JsonKey(defaultValue: '')
   final String ticket;
-  @JsonKey(name: 'allowed_methods')
+  @JsonKey(name: 'allowed_methods', defaultValue: <String>[])
   final List<String> allowedMethods;
+  @JsonKey(defaultValue: false)
   final bool totp;
+  @JsonKey(defaultValue: false)
   final bool webauthn;
-  @JsonKey(name: 'backup_codes')
+  @JsonKey(name: 'backup_codes', defaultValue: false)
   final bool backupCodes;
 
   const AuthLoginResponseVariant2({
@@ -72,3 +78,6 @@ class AuthLoginResponseVariant2 {
 
   Map<String, dynamic> toJson() => _$AuthLoginResponseVariant2ToJson(this);
 }
+
+UserPartialResponse _$missingUserPartialResponse() =>
+    UserPartialResponse.fromJson(const <String, dynamic>{});

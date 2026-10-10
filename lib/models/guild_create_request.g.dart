@@ -9,7 +9,7 @@ part of 'guild_create_request.dart';
 GuildCreateRequest _$GuildCreateRequestFromJson(Map<String, dynamic> json) =>
     $checkedCreate('GuildCreateRequest', json, ($checkedConvert) {
       final val = GuildCreateRequest._(
-        name: $checkedConvert('name', (v) => v as String),
+        name: $checkedConvert('name', (v) => v as String? ?? ''),
         emptyFeatures: $checkedConvert('empty_features', (v) => v as bool?),
         template: $checkedConvert(
           'template',

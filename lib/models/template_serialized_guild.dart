@@ -71,6 +71,7 @@ class TemplateSerializedGuild {
   }
 
   /// The name of the template guild
+  @JsonKey(defaultValue: '')
   final String name;
 
   /// The verification level
@@ -94,9 +95,11 @@ class TemplateSerializedGuild {
   final num? systemChannelFlags;
 
   /// The roles in the template
+  @JsonKey(defaultValue: <TemplateRole>[])
   final List<TemplateRole> roles;
 
   /// The channels in the template
+  @JsonKey(defaultValue: <TemplateChannel>[])
   final List<TemplateChannel> channels;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> description;

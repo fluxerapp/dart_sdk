@@ -14,9 +14,11 @@ class CallEligibilityResponse {
       _$CallEligibilityResponseFromJson(json);
 
   /// Whether the current user can ring this call
+  @JsonKey(defaultValue: false)
   final bool ringable;
 
   /// Whether the call should be joined silently
+  @JsonKey(defaultValue: false)
   final bool silent;
 
   Map<String, Object?> toJson() => _$CallEligibilityResponseToJson(this);

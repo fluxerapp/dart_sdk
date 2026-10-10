@@ -18,9 +18,11 @@ class MfaBackupCodesResponseBackupCodes {
   ) => _$MfaBackupCodesResponseBackupCodesFromJson(json);
 
   /// The backup code
+  @JsonKey(defaultValue: '')
   final String code;
 
   /// Whether the code has been used
+  @JsonKey(defaultValue: false)
   final bool consumed;
 
   Map<String, Object?> toJson() =>

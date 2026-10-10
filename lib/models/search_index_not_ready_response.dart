@@ -21,17 +21,19 @@ class SearchIndexNotReadyResponse {
       _$SearchIndexNotReadyResponseFromJson(json);
 
   /// Machine-readable code of the response
+  @JsonKey(defaultValue: '')
   final String code;
 
   /// Human-readable description of the response
+  @JsonKey(defaultValue: '')
   final String message;
 
   /// Always 0 while the index is being built
-  @JsonKey(name: 'documents_indexed')
+  @JsonKey(name: 'documents_indexed', defaultValue: 0)
   final Int32Type documentsIndexed;
 
   /// Seconds to wait before retrying the search
-  @JsonKey(name: 'retry_after')
+  @JsonKey(name: 'retry_after', defaultValue: 0)
   final num retryAfter;
 
   Map<String, Object?> toJson() => _$SearchIndexNotReadyResponseToJson(this);

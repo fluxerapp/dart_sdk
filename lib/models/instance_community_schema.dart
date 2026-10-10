@@ -20,7 +20,7 @@ class InstanceCommunitySchema {
       _$InstanceCommunitySchemaFromJson(json);
 
   /// Whether this instance runs as a single community that every user automatically joins
-  @JsonKey(name: 'single_community')
+  @JsonKey(name: 'single_community', defaultValue: false)
   final bool singleCommunity;
 
   /// The stock community guild ID when single-community mode is enabled
@@ -28,11 +28,11 @@ class InstanceCommunitySchema {
   final String? singleCommunityGuildId;
 
   /// Whether direct messages and friend requests are disabled instance-wide
-  @JsonKey(name: 'direct_messages_disabled')
+  @JsonKey(name: 'direct_messages_disabled', defaultValue: false)
   final bool directMessagesDisabled;
 
   /// Whether every account can create communities. When false, only admins and accounts granted the feature_guild_create limit can
-  @JsonKey(name: 'guild_create_access')
+  @JsonKey(name: 'guild_create_access', defaultValue: false)
   final bool guildCreateAccess;
 
   Map<String, Object?> toJson() => _$InstanceCommunitySchemaToJson(this);

@@ -12,19 +12,25 @@ GuildEmojiBulkCreateResponse _$GuildEmojiBulkCreateResponseFromJson(
   final val = GuildEmojiBulkCreateResponse(
     success: $checkedConvert(
       'success',
-      (v) => (v as List<dynamic>)
-          .map((e) => GuildEmojiResponse.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      (v) =>
+          (v as List<dynamic>?)
+              ?.map(
+                (e) => GuildEmojiResponse.fromJson(e as Map<String, dynamic>),
+              )
+              .toList() ??
+          [],
     ),
     failed: $checkedConvert(
       'failed',
-      (v) => (v as List<dynamic>)
-          .map(
-            (e) => GuildEmojiBulkCreateResponseFailed.fromJson(
-              e as Map<String, dynamic>,
-            ),
-          )
-          .toList(),
+      (v) =>
+          (v as List<dynamic>?)
+              ?.map(
+                (e) => GuildEmojiBulkCreateResponseFailed.fromJson(
+                  e as Map<String, dynamic>,
+                ),
+              )
+              .toList() ??
+          [],
     ),
   );
   return val;

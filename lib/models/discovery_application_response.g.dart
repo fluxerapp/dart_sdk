@@ -13,15 +13,15 @@ DiscoveryApplicationResponse _$DiscoveryApplicationResponseFromJson(
   json,
   ($checkedConvert) {
     final val = DiscoveryApplicationResponse(
-      guildId: $checkedConvert('guild_id', (v) => v as String),
-      status: $checkedConvert('status', (v) => v as String),
-      description: $checkedConvert('description', (v) => v as String),
-      categoryType: $checkedConvert('category_type', (v) => v as num),
+      guildId: $checkedConvert('guild_id', (v) => v as String? ?? ''),
+      status: $checkedConvert('status', (v) => v as String? ?? ''),
+      description: $checkedConvert('description', (v) => v as String? ?? ''),
+      categoryType: $checkedConvert('category_type', (v) => v as num? ?? 0),
       customTags: $checkedConvert(
         'custom_tags',
-        (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
       ),
-      appliedAt: $checkedConvert('applied_at', (v) => v as String),
+      appliedAt: $checkedConvert('applied_at', (v) => v as String? ?? ''),
       guildNsfwLevel: $checkedConvert(
         'guild_nsfw_level',
         (v) => v == null ? null : NsfwLevel.fromJson((v as num).toInt()),

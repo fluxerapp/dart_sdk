@@ -13,15 +13,15 @@ DomainMigrationDiscoveryResponse _$DomainMigrationDiscoveryResponseFromJson(
   json,
   ($checkedConvert) {
     final val = DomainMigrationDiscoveryResponse(
-      enabled: $checkedConvert('enabled', (v) => v as bool),
+      enabled: $checkedConvert('enabled', (v) => v as bool? ?? false),
       anonymousRolloutBasisPoints: $checkedConvert(
         'anonymous_rollout_basis_points',
-        (v) => (v as num).toInt(),
+        (v) => (v as num?)?.toInt() ?? 0,
       ),
-      rolloutSalt: $checkedConvert('rollout_salt', (v) => v as String),
+      rolloutSalt: $checkedConvert('rollout_salt', (v) => v as String? ?? ''),
       standaloneForwarding: $checkedConvert(
         'standalone_forwarding',
-        (v) => v as bool,
+        (v) => v as bool? ?? false,
       ),
     );
     return val;

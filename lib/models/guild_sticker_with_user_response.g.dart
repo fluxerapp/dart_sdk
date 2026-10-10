@@ -10,18 +10,20 @@ GuildStickerWithUserResponse _$GuildStickerWithUserResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('GuildStickerWithUserResponse', json, ($checkedConvert) {
   final val = GuildStickerWithUserResponse(
-    id: $checkedConvert('id', (v) => v as String),
-    name: $checkedConvert('name', (v) => v as String),
-    description: $checkedConvert('description', (v) => v as String),
+    id: $checkedConvert('id', (v) => v as String? ?? ''),
+    name: $checkedConvert('name', (v) => v as String? ?? ''),
+    description: $checkedConvert('description', (v) => v as String? ?? ''),
     tags: $checkedConvert(
       'tags',
-      (v) => (v as List<dynamic>).map((e) => e as String).toList(),
+      (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
     ),
-    animated: $checkedConvert('animated', (v) => v as bool),
-    nsfw: $checkedConvert('nsfw', (v) => v as bool),
+    animated: $checkedConvert('animated', (v) => v as bool? ?? false),
+    nsfw: $checkedConvert('nsfw', (v) => v as bool? ?? false),
     user: $checkedConvert(
       'user',
-      (v) => UserPartialResponse.fromJson(v as Map<String, dynamic>),
+      (v) => v == null
+          ? _$missingUserPartialResponse()
+          : UserPartialResponse.fromJson(v as Map<String, dynamic>),
     ),
   );
   return val;

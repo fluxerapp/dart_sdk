@@ -13,10 +13,12 @@ GuildAuditLogEntryResponse _$GuildAuditLogEntryResponseFromJson(
   json,
   ($checkedConvert) {
     final val = GuildAuditLogEntryResponse(
-      id: $checkedConvert('id', (v) => v as String),
+      id: $checkedConvert('id', (v) => v as String? ?? ''),
       actionType: $checkedConvert(
         'action_type',
-        (v) => AuditLogActionType.fromJson((v as num).toInt()),
+        (v) => v == null
+            ? AuditLogActionType.$unknown
+            : AuditLogActionType.fromJson((v as num).toInt()),
       ),
       userId: $checkedConvert('user_id', (v) => v as String?),
       targetId: $checkedConvert('target_id', (v) => v as String?),

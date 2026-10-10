@@ -10,9 +10,9 @@ GitHubWebhookRelease _$GitHubWebhookReleaseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('GitHubWebhookRelease', json, ($checkedConvert) {
   final val = GitHubWebhookRelease(
-    id: $checkedConvert('id', (v) => (v as num).toInt()),
-    tagName: $checkedConvert('tag_name', (v) => v as String),
-    htmlUrl: $checkedConvert('html_url', (v) => v as String),
+    id: $checkedConvert('id', (v) => (v as num?)?.toInt() ?? 0),
+    tagName: $checkedConvert('tag_name', (v) => v as String? ?? ''),
+    htmlUrl: $checkedConvert('html_url', (v) => v as String? ?? ''),
     body: $checkedConvert('body', (v) => v as String?),
   );
   return val;

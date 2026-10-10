@@ -12,13 +12,15 @@ PushSubscriptionsListResponse _$PushSubscriptionsListResponseFromJson(
   final val = PushSubscriptionsListResponse(
     subscriptions: $checkedConvert(
       'subscriptions',
-      (v) => (v as List<dynamic>)
-          .map(
-            (e) => PushSubscriptionsListResponseSubscriptions.fromJson(
-              e as Map<String, dynamic>,
-            ),
-          )
-          .toList(),
+      (v) =>
+          (v as List<dynamic>?)
+              ?.map(
+                (e) => PushSubscriptionsListResponseSubscriptions.fromJson(
+                  e as Map<String, dynamic>,
+                ),
+              )
+              .toList() ??
+          [],
     ),
   );
   return val;

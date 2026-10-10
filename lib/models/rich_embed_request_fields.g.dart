@@ -10,8 +10,8 @@ RichEmbedRequestFields _$RichEmbedRequestFieldsFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('RichEmbedRequestFields', json, ($checkedConvert) {
   final val = RichEmbedRequestFields(
-    name: $checkedConvert('name', (v) => v as String),
-    value: $checkedConvert('value', (v) => v as String),
+    name: $checkedConvert('name', (v) => v as String? ?? ''),
+    value: $checkedConvert('value', (v) => v as String? ?? ''),
     inline: $checkedConvert('inline', (v) => v as bool? ?? false),
   );
   return val;

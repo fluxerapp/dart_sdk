@@ -42,18 +42,21 @@ class OAuth2ApplicationsMeResponseApplicationListResponse {
 
 @JsonSerializable()
 class OAuth2ApplicationsMeResponseApplicationsMeResponse {
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
+  @JsonKey(defaultValue: '')
   final String name;
   @JsonKey(includeIfNull: true)
   final String? icon;
   @JsonKey(includeIfNull: true)
   final String? description;
-  @JsonKey(name: 'bot_public')
+  @JsonKey(name: 'bot_public', defaultValue: false)
   final bool botPublic;
-  @JsonKey(name: 'bot_require_code_grant')
+  @JsonKey(name: 'bot_require_code_grant', defaultValue: false)
   final bool botRequireCodeGrant;
-  @JsonKey(name: 'verify_key')
+  @JsonKey(name: 'verify_key', defaultValue: '')
   final String verifyKey;
+  @JsonKey(defaultValue: _$missingUserPartialResponse)
   final UserPartialResponse owner;
   @JsonKey(includeIfNull: false)
   final ApplicationsMeResponseBot? bot;
@@ -80,3 +83,6 @@ class OAuth2ApplicationsMeResponseApplicationsMeResponse {
   Map<String, dynamic> toJson() =>
       _$OAuth2ApplicationsMeResponseApplicationsMeResponseToJson(this);
 }
+
+UserPartialResponse _$missingUserPartialResponse() =>
+    UserPartialResponse.fromJson(const <String, dynamic>{});

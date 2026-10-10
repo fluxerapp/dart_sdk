@@ -14,7 +14,7 @@ class EmailTokenResponse {
       _$EmailTokenResponseFromJson(json);
 
   /// The email change token to use for updating email
-  @JsonKey(name: 'email_token')
+  @JsonKey(name: 'email_token', defaultValue: '')
   final String emailToken;
 
   Map<String, Object?> toJson() => _$EmailTokenResponseToJson(this);

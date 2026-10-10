@@ -38,15 +38,17 @@ class SwitchToListPriceResponse {
 
 @JsonSerializable()
 class SwitchToListPriceResponseScheduledSwitchToListPriceResponse {
-  @JsonKey(name: 'effective_at')
+  @JsonKey(name: 'effective_at', defaultValue: '')
   final String effectiveAt;
-  @JsonKey(name: 'target_price_id')
+  @JsonKey(name: 'target_price_id', defaultValue: '')
   final String targetPriceId;
-  @JsonKey(name: 'target_amount_minor')
+  @JsonKey(name: 'target_amount_minor', defaultValue: 0)
   final int targetAmountMinor;
-  @JsonKey(name: 'current_amount_minor')
+  @JsonKey(name: 'current_amount_minor', defaultValue: 0)
   final int currentAmountMinor;
+  @JsonKey(defaultValue: '')
   final PremiumCurrency currency;
+  @JsonKey(defaultValue: '')
   final String status;
 
   const SwitchToListPriceResponseScheduledSwitchToListPriceResponse({
@@ -70,15 +72,17 @@ class SwitchToListPriceResponseScheduledSwitchToListPriceResponse {
 
 @JsonSerializable()
 class SwitchToListPriceResponseAlreadyScheduledSwitchToListPriceResponse {
-  @JsonKey(name: 'effective_at')
+  @JsonKey(name: 'effective_at', defaultValue: '')
   final String effectiveAt;
-  @JsonKey(name: 'target_price_id')
+  @JsonKey(name: 'target_price_id', defaultValue: '')
   final String targetPriceId;
-  @JsonKey(name: 'target_amount_minor')
+  @JsonKey(name: 'target_amount_minor', defaultValue: 0)
   final int targetAmountMinor;
-  @JsonKey(name: 'current_amount_minor')
+  @JsonKey(name: 'current_amount_minor', defaultValue: 0)
   final int currentAmountMinor;
+  @JsonKey(defaultValue: '')
   final PremiumCurrency currency;
+  @JsonKey(defaultValue: '')
   final String status;
 
   const SwitchToListPriceResponseAlreadyScheduledSwitchToListPriceResponse({
@@ -105,7 +109,9 @@ class SwitchToListPriceResponseAlreadyScheduledSwitchToListPriceResponse {
 
 @JsonSerializable()
 class SwitchToListPriceResponseIneligibleSwitchToListPriceResponse {
+  @JsonKey(defaultValue: '')
   final String status;
+  @JsonKey(defaultValue: ListPriceSwitchIneligibilityReason.$unknown)
   final ListPriceSwitchIneligibilityReason reason;
 
   const SwitchToListPriceResponseIneligibleSwitchToListPriceResponse({

@@ -10,15 +10,17 @@ WebhookTokenResponse _$WebhookTokenResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('WebhookTokenResponse', json, ($checkedConvert) {
   final val = WebhookTokenResponse(
-    id: $checkedConvert('id', (v) => v as String),
-    guildId: $checkedConvert('guild_id', (v) => v as String),
-    channelId: $checkedConvert('channel_id', (v) => v as String),
-    name: $checkedConvert('name', (v) => v as String),
+    id: $checkedConvert('id', (v) => v as String? ?? ''),
+    guildId: $checkedConvert('guild_id', (v) => v as String? ?? ''),
+    channelId: $checkedConvert('channel_id', (v) => v as String? ?? ''),
+    name: $checkedConvert('name', (v) => v as String? ?? ''),
     type: $checkedConvert(
       'type',
-      (v) => WebhookType.fromJson((v as num).toInt()),
+      (v) => v == null
+          ? WebhookType.$unknown
+          : WebhookType.fromJson((v as num).toInt()),
     ),
-    token: $checkedConvert('token', (v) => v as String),
+    token: $checkedConvert('token', (v) => v as String? ?? ''),
     avatar: $checkedConvert('avatar', (v) => v as String?),
   );
   return val;

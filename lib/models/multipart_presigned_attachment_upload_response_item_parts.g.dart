@@ -14,8 +14,11 @@ _$MultipartPresignedAttachmentUploadResponseItemPartsFromJson(
   json,
   ($checkedConvert) {
     final val = MultipartPresignedAttachmentUploadResponseItemParts(
-      partNumber: $checkedConvert('part_number', (v) => (v as num).toInt()),
-      uploadUrl: $checkedConvert('upload_url', (v) => v as String),
+      partNumber: $checkedConvert(
+        'part_number',
+        (v) => (v as num?)?.toInt() ?? 0,
+      ),
+      uploadUrl: $checkedConvert('upload_url', (v) => v as String? ?? ''),
     );
     return val;
   },

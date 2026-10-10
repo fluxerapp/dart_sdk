@@ -13,7 +13,7 @@ _$WebAuthnAuthenticationOptionsResponseFromJson(
   $checkedConvert,
 ) {
   final val = WebAuthnAuthenticationOptionsResponse(
-    challenge: $checkedConvert('challenge', (v) => v as String),
+    challenge: $checkedConvert('challenge', (v) => v as String? ?? ''),
     timeout: $checkedConvert('timeout', (v) => v as num?),
     rpId: $checkedConvert('rpId', (v) => v as String?),
     allowCredentials: $checkedConvert(

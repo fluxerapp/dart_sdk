@@ -10,7 +10,7 @@ CreateFavoriteMemeBodySchema _$CreateFavoriteMemeBodySchemaFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('CreateFavoriteMemeBodySchema', json, ($checkedConvert) {
   final val = CreateFavoriteMemeBodySchema._(
-    name: $checkedConvert('name', (v) => v as String),
+    name: $checkedConvert('name', (v) => v as String? ?? ''),
     tags: $checkedConvert(
       'tags',
       (v) =>

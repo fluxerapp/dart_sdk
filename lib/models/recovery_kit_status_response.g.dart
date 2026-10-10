@@ -13,7 +13,10 @@ RecoveryKitStatusResponse _$RecoveryKitStatusResponseFromJson(
   json,
   ($checkedConvert) {
     final val = RecoveryKitStatusResponse(
-      hasRecoveryKit: $checkedConvert('has_recovery_kit', (v) => v as bool),
+      hasRecoveryKit: $checkedConvert(
+        'has_recovery_kit',
+        (v) => v as bool? ?? false,
+      ),
       createdAt: $checkedConvert(
         'created_at',
         (v) => v == null ? null : DateTime.parse(v as String),

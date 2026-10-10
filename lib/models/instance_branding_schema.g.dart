@@ -13,7 +13,7 @@ InstanceBrandingSchema _$InstanceBrandingSchemaFromJson(
   json,
   ($checkedConvert) {
     final val = InstanceBrandingSchema(
-      productName: $checkedConvert('product_name', (v) => v as String),
+      productName: $checkedConvert('product_name', (v) => v as String? ?? ''),
       iconUrl: $checkedConvert('icon_url', (v) => v as String?),
       symbolUrl: $checkedConvert('symbol_url', (v) => v as String?),
       logoUrl: $checkedConvert('logo_url', (v) => v as String?),
@@ -27,7 +27,7 @@ InstanceBrandingSchema _$InstanceBrandingSchemaFromJson(
       ),
       premiumProductName: $checkedConvert(
         'premium_product_name',
-        (v) => v as String,
+        (v) => v as String? ?? '',
       ),
       premiumInfoUrl: $checkedConvert('premium_info_url', (v) => v as String?),
     );

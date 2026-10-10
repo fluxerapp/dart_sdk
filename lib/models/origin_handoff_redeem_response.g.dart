@@ -10,7 +10,7 @@ OriginHandoffRedeemResponse _$OriginHandoffRedeemResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('OriginHandoffRedeemResponse', json, ($checkedConvert) {
   final val = OriginHandoffRedeemResponse(
-    payload: $checkedConvert('payload', (v) => v as String),
+    payload: $checkedConvert('payload', (v) => v as String? ?? ''),
   );
   return val;
 });

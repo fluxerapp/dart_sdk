@@ -15,11 +15,13 @@ InstanceRegistrationSchema _$InstanceRegistrationSchemaFromJson(
     final val = InstanceRegistrationSchema(
       mode: $checkedConvert(
         'mode',
-        (v) => InstanceRegistrationModeSchema.fromJson(v as String),
+        (v) => v == null
+            ? InstanceRegistrationModeSchema.$unknown
+            : InstanceRegistrationModeSchema.fromJson(v as String),
       ),
       adminRegistrationUrlsEnabled: $checkedConvert(
         'admin_registration_urls_enabled',
-        (v) => v as bool,
+        (v) => v as bool? ?? false,
       ),
     );
     return val;

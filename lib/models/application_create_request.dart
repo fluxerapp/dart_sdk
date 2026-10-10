@@ -43,6 +43,7 @@ class ApplicationCreateRequest {
   }
 
   /// The name of the application
+  @JsonKey(defaultValue: '')
   final String name;
 
   /// Whether the bot can be invited by anyone

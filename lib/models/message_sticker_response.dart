@@ -20,12 +20,15 @@ class MessageStickerResponse {
       _$MessageStickerResponseFromJson(json);
 
   /// The unique identifier of the sticker
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
 
   /// The name of the sticker
+  @JsonKey(defaultValue: '')
   final String name;
 
   /// Whether the sticker is animated
+  @JsonKey(defaultValue: false)
   final bool animated;
 
   Map<String, Object?> toJson() => _$MessageStickerResponseToJson(this);

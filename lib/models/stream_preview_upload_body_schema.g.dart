@@ -13,8 +13,8 @@ StreamPreviewUploadBodySchema _$StreamPreviewUploadBodySchemaFromJson(
   json,
   ($checkedConvert) {
     final val = StreamPreviewUploadBodySchema(
-      channelId: $checkedConvert('channel_id', (v) => v as String),
-      thumbnail: $checkedConvert('thumbnail', (v) => v as String),
+      channelId: $checkedConvert('channel_id', (v) => v as String? ?? ''),
+      thumbnail: $checkedConvert('thumbnail', (v) => v as String? ?? ''),
       contentType: $checkedConvert('content_type', (v) => v as String?),
     );
     return val;

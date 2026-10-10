@@ -22,7 +22,7 @@ class AuthSessionResponse {
       _$AuthSessionResponseFromJson(json);
 
   /// The base64url-encoded session id hash
-  @JsonKey(name: 'id_hash')
+  @JsonKey(name: 'id_hash', defaultValue: '')
   final String idHash;
 
   /// Client metadata recorded for this session
@@ -38,6 +38,7 @@ class AuthSessionResponse {
   final DateTime? approxLastUsedAt;
 
   /// Whether this is the current session making the request
+  @JsonKey(defaultValue: false)
   final bool current;
 
   Map<String, Object?> toJson() => _$AuthSessionResponseToJson(this);

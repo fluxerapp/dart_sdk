@@ -18,6 +18,7 @@ class EmbedFooterResponse {
       _$EmbedFooterResponseFromJson(json);
 
   /// The footer text
+  @JsonKey(defaultValue: '')
   final String text;
 
   /// The URL of the footer icon

@@ -10,10 +10,12 @@ BotTokenResetResponse _$BotTokenResetResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('BotTokenResetResponse', json, ($checkedConvert) {
   final val = BotTokenResetResponse(
-    token: $checkedConvert('token', (v) => v as String),
+    token: $checkedConvert('token', (v) => v as String? ?? ''),
     bot: $checkedConvert(
       'bot',
-      (v) => BotTokenResetResponseBot.fromJson(v as Map<String, dynamic>),
+      (v) => v == null
+          ? _$missingBotTokenResetResponseBot()
+          : BotTokenResetResponseBot.fromJson(v as Map<String, dynamic>),
     ),
   );
   return val;

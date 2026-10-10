@@ -22,6 +22,7 @@ class HandoffStatusResponse {
       _$HandoffStatusResponseFromJson(json);
 
   /// Current status of the handoff (pending, completed, denied, expired)
+  @JsonKey(defaultValue: '')
   final String status;
 
   /// Authentication token if handoff is complete

@@ -27,15 +27,19 @@ class OAuth2UserInfoResponse {
       _$OAuth2UserInfoResponseFromJson(json);
 
   /// The subject identifier of the user
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType sub;
 
   /// The unique identifier of the user
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
 
   /// The username of the user
+  @JsonKey(defaultValue: '')
   final String username;
 
   /// The discriminator of the user
+  @JsonKey(defaultValue: '')
   final String discriminator;
 
   /// The global display name of the user

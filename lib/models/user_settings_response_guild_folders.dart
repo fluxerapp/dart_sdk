@@ -44,7 +44,7 @@ class UserSettingsResponseGuildFolders {
   final GuildFolderIconType icon;
 
   /// The IDs of guilds contained in this folder
-  @JsonKey(name: 'guild_ids')
+  @JsonKey(name: 'guild_ids', defaultValue: <String>[])
   final List<SnowflakeStringType> guildIds;
 
   Map<String, Object?> toJson() =>

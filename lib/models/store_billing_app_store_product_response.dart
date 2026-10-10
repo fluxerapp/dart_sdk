@@ -20,10 +20,11 @@ class StoreBillingAppStoreProductResponse {
   ) => _$StoreBillingAppStoreProductResponseFromJson(json);
 
   /// App Store product identifier
-  @JsonKey(name: 'product_id')
+  @JsonKey(name: 'product_id', defaultValue: '')
   final String productId;
 
   /// Fluxer product this App Store product sells
+  @JsonKey(defaultValue: StoreSlot.$unknown)
   final StoreSlot slot;
 
   Map<String, Object?> toJson() =>

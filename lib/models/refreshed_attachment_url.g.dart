@@ -10,8 +10,8 @@ RefreshedAttachmentUrl _$RefreshedAttachmentUrlFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('RefreshedAttachmentUrl', json, ($checkedConvert) {
   final val = RefreshedAttachmentUrl(
-    original: $checkedConvert('original', (v) => v as String),
-    refreshed: $checkedConvert('refreshed', (v) => v as String),
+    original: $checkedConvert('original', (v) => v as String? ?? ''),
+    refreshed: $checkedConvert('refreshed', (v) => v as String? ?? ''),
   );
   return val;
 });

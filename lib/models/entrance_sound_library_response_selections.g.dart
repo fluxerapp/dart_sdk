@@ -12,8 +12,8 @@ _$EntranceSoundLibraryResponseSelectionsFromJson(Map<String, dynamic> json) =>
       $checkedConvert,
     ) {
       final val = EntranceSoundLibraryResponseSelections(
-        scopeId: $checkedConvert('scope_id', (v) => v as String),
-        soundId: $checkedConvert('sound_id', (v) => v as String),
+        scopeId: $checkedConvert('scope_id', (v) => v as String? ?? ''),
+        soundId: $checkedConvert('sound_id', (v) => v as String? ?? ''),
       );
       return val;
     }, fieldKeyMap: const {'scopeId': 'scope_id', 'soundId': 'sound_id'});

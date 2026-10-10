@@ -12,7 +12,9 @@ CrosspostSourceResponse _$CrosspostSourceResponseFromJson(
   final val = CrosspostSourceResponse(
     guild: $checkedConvert(
       'guild',
-      (v) => CrosspostSourceGuildResponse.fromJson(v as Map<String, dynamic>),
+      (v) => v == null
+          ? _$missingCrosspostSourceGuildResponse()
+          : CrosspostSourceGuildResponse.fromJson(v as Map<String, dynamic>),
     ),
   );
   return val;

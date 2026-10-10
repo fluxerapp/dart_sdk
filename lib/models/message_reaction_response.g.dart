@@ -12,9 +12,11 @@ MessageReactionResponse _$MessageReactionResponseFromJson(
   final val = MessageReactionResponse(
     emoji: $checkedConvert(
       'emoji',
-      (v) => MessageReactionResponseEmoji.fromJson(v as Map<String, dynamic>),
+      (v) => v == null
+          ? _$missingMessageReactionResponseEmoji()
+          : MessageReactionResponseEmoji.fromJson(v as Map<String, dynamic>),
     ),
-    count: $checkedConvert('count', (v) => (v as num).toInt()),
+    count: $checkedConvert('count', (v) => (v as num?)?.toInt() ?? 0),
     me: $checkedConvert('me', (v) => v as bool?),
   );
   return val;

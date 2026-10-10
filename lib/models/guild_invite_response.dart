@@ -29,6 +29,7 @@ class GuildInviteResponse {
       _$GuildInviteResponseFromJson(json);
 
   /// The unique invite code
+  @JsonKey(defaultValue: '')
   final String code;
 
   /// The user who created the invite
@@ -40,24 +41,34 @@ class GuildInviteResponse {
   final DateTime? expiresAt;
 
   /// Whether the invite grants temporary membership
+  @JsonKey(defaultValue: false)
   final bool temporary;
 
   /// The type of invite (guild)
+  @JsonKey(defaultValue: 0)
   final num type;
 
   /// The guild this invite is for
+  @JsonKey(defaultValue: _$missingGuildPartialResponse)
   final GuildPartialResponse guild;
 
   /// The channel this invite is for
+  @JsonKey(defaultValue: _$missingChannelPartialResponse)
   final ChannelPartialResponse channel;
 
   /// The approximate total member count of the guild
-  @JsonKey(name: 'member_count')
+  @JsonKey(name: 'member_count', defaultValue: 0)
   final Int32Type memberCount;
 
   /// The approximate online member count of the guild
-  @JsonKey(name: 'presence_count')
+  @JsonKey(name: 'presence_count', defaultValue: 0)
   final Int32Type presenceCount;
 
   Map<String, Object?> toJson() => _$GuildInviteResponseToJson(this);
 }
+
+ChannelPartialResponse _$missingChannelPartialResponse() =>
+    ChannelPartialResponse.fromJson(const <String, dynamic>{});
+
+GuildPartialResponse _$missingGuildPartialResponse() =>
+    GuildPartialResponse.fromJson(const <String, dynamic>{});

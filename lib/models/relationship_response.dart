@@ -26,12 +26,15 @@ class RelationshipResponse {
       _$RelationshipResponseFromJson(json);
 
   /// The unique identifier for the relationship
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
 
   /// The type of relationship (friend, blocked, pending, etc.)
+  @JsonKey(defaultValue: RelationshipTypes.$unknown)
   final RelationshipTypes type;
 
   /// The user involved in this relationship
+  @JsonKey(defaultValue: _$missingUserPartialResponse)
   final UserPartialResponse user;
 
   /// ISO8601 timestamp of when the relationship was established
@@ -43,12 +46,15 @@ class RelationshipResponse {
   final String? nickname;
 
   /// Whether the current user has chosen to share their voice activity with this friend on the Active Now panel
-  @JsonKey(name: 'share_voice_activity')
+  @JsonKey(name: 'share_voice_activity', defaultValue: false)
   final bool shareVoiceActivity;
 
   /// Whether this friend has chosen to share their voice activity with the current user; for non-friend types this is always true
-  @JsonKey(name: 'friend_shares_voice_activity')
+  @JsonKey(name: 'friend_shares_voice_activity', defaultValue: false)
   final bool friendSharesVoiceActivity;
 
   Map<String, Object?> toJson() => _$RelationshipResponseToJson(this);
 }
+
+UserPartialResponse _$missingUserPartialResponse() =>
+    UserPartialResponse.fromJson(const <String, dynamic>{});

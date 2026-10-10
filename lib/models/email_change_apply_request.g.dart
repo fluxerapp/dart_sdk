@@ -13,7 +13,7 @@ EmailChangeApplyRequest _$EmailChangeApplyRequestFromJson(
   json,
   ($checkedConvert) {
     final val = EmailChangeApplyRequest(
-      emailToken: $checkedConvert('email_token', (v) => v as String),
+      emailToken: $checkedConvert('email_token', (v) => v as String? ?? ''),
       password: $checkedConvert('password', (v) => v as String?),
       mfaMethod: $checkedConvert(
         'mfa_method',

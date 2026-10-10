@@ -38,9 +38,11 @@ class MessageAttachmentResponse {
       _$MessageAttachmentResponseFromJson(json);
 
   /// The unique identifier for this attachment
+  @JsonKey(defaultValue: '')
   final SnowflakeStringType id;
 
   /// The name of the attached file
+  @JsonKey(defaultValue: '')
   final String filename;
 
   /// The title of the attachment
@@ -60,6 +62,7 @@ class MessageAttachmentResponse {
   final String? contentHash;
 
   /// The size of the attachment in bytes
+  @JsonKey(defaultValue: 0)
   final NonNegativeSafeIntegerType size;
 
   /// The URL of the attachment
@@ -81,6 +84,7 @@ class MessageAttachmentResponse {
   /// The base64 encoded placeholder image for lazy loading
   @JsonKey(includeIfNull: false)
   final String? placeholder;
+  @JsonKey(defaultValue: 0)
   final MessageAttachmentFlags flags;
 
   /// Whether the attachment is flagged as NSFW

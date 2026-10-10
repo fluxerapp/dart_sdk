@@ -12,9 +12,9 @@ ReportResponse _$ReportResponseFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = ReportResponse(
-          reportId: $checkedConvert('report_id', (v) => v as String),
-          status: $checkedConvert('status', (v) => v as String),
-          reportedAt: $checkedConvert('reported_at', (v) => v as String),
+          reportId: $checkedConvert('report_id', (v) => v as String? ?? ''),
+          status: $checkedConvert('status', (v) => v as String? ?? ''),
+          reportedAt: $checkedConvert('reported_at', (v) => v as String? ?? ''),
         );
         return val;
       },

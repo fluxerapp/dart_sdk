@@ -49,21 +49,23 @@ class ClientUploadedAttachmentRequest {
   final String? waveform;
 
   /// The client-side identifier for this attachment
+  @JsonKey(defaultValue: 0)
   final Int32Type id;
 
   /// The name of the file being uploaded
+  @JsonKey(defaultValue: '')
   final String filename;
 
   /// MIME type of the uploaded file
-  @JsonKey(name: 'content_type')
+  @JsonKey(name: 'content_type', defaultValue: '')
   final String contentType;
 
   /// Temporary upload key returned by the attachment upload endpoint
-  @JsonKey(name: 'upload_filename')
+  @JsonKey(name: 'upload_filename', defaultValue: '')
   final String uploadFilename;
 
   /// Uploaded file size in bytes
-  @JsonKey(name: 'file_size')
+  @JsonKey(name: 'file_size', defaultValue: 0)
   final NonNegativeSafeIntegerType fileSize;
 
   Map<String, Object?> toJson() =>

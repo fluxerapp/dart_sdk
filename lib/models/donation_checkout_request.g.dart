@@ -13,11 +13,16 @@ DonationCheckoutRequest _$DonationCheckoutRequestFromJson(
   json,
   ($checkedConvert) {
     final val = DonationCheckoutRequest(
-      email: $checkedConvert('email', (v) => v as String),
-      amountCents: $checkedConvert('amount_cents', (v) => (v as num).toInt()),
+      email: $checkedConvert('email', (v) => v as String? ?? ''),
+      amountCents: $checkedConvert(
+        'amount_cents',
+        (v) => (v as num?)?.toInt() ?? 0,
+      ),
       currency: $checkedConvert(
         'currency',
-        (v) => DonationCurrency.fromJson(v as String),
+        (v) => v == null
+            ? DonationCurrency.$unknown
+            : DonationCurrency.fromJson(v as String),
       ),
       interval: $checkedConvert(
         'interval',

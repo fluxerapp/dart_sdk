@@ -28,6 +28,7 @@ class EmbedMediaResponse {
       _$EmbedMediaResponseFromJson(json);
 
   /// The URL of the media
+  @JsonKey(defaultValue: '')
   final String url;
 
   /// The proxied URL of the media
@@ -61,6 +62,7 @@ class EmbedMediaResponse {
   /// The duration of the media in seconds
   @JsonKey(includeIfNull: false)
   final Int32Type? duration;
+  @JsonKey(defaultValue: 0)
   final EmbedMediaFlags flags;
 
   Map<String, Object?> toJson() => _$EmbedMediaResponseToJson(this);

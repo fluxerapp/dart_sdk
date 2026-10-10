@@ -10,7 +10,7 @@ MessageReactionResponseEmoji _$MessageReactionResponseEmojiFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('MessageReactionResponseEmoji', json, ($checkedConvert) {
   final val = MessageReactionResponseEmoji(
-    name: $checkedConvert('name', (v) => v as String),
+    name: $checkedConvert('name', (v) => v as String? ?? ''),
     id: $checkedConvert('id', (v) => v as String?),
     animated: $checkedConvert('animated', (v) => v as bool?),
   );

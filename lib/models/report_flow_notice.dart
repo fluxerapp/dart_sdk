@@ -17,8 +17,11 @@ class ReportFlowNotice {
   factory ReportFlowNotice.fromJson(Map<String, Object?> json) =>
       _$ReportFlowNoticeFromJson(json);
 
+  @JsonKey(defaultValue: '')
   final String id;
+  @JsonKey(defaultValue: '')
   final String title;
+  @JsonKey(defaultValue: '')
   final String body;
 
   Map<String, Object?> toJson() => _$ReportFlowNoticeToJson(this);

@@ -13,8 +13,8 @@ _$MfaBackupCodesChallengeVerifyResponseBackupCodesFromJson(
   $checkedConvert,
 ) {
   final val = MfaBackupCodesChallengeVerifyResponseBackupCodes(
-    code: $checkedConvert('code', (v) => v as String),
-    consumed: $checkedConvert('consumed', (v) => v as bool),
+    code: $checkedConvert('code', (v) => v as String? ?? ''),
+    consumed: $checkedConvert('consumed', (v) => v as bool? ?? false),
   );
   return val;
 });

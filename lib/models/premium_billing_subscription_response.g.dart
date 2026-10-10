@@ -13,7 +13,7 @@ PremiumBillingSubscriptionResponse _$PremiumBillingSubscriptionResponseFromJson(
   json,
   ($checkedConvert) {
     final val = PremiumBillingSubscriptionResponse(
-      id: $checkedConvert('id', (v) => v as String),
+      id: $checkedConvert('id', (v) => v as String? ?? ''),
       status: $checkedConvert('status', (v) => v as String?),
       currentPeriodStart: $checkedConvert(
         'current_period_start',
@@ -25,7 +25,7 @@ PremiumBillingSubscriptionResponse _$PremiumBillingSubscriptionResponseFromJson(
       ),
       cancelAtPeriodEnd: $checkedConvert(
         'cancel_at_period_end',
-        (v) => v as bool,
+        (v) => v as bool? ?? false,
       ),
       cancelAt: $checkedConvert('cancel_at', (v) => v as String?),
       canceledAt: $checkedConvert('canceled_at', (v) => v as String?),

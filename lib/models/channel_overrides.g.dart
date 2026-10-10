@@ -12,12 +12,14 @@ ChannelOverrides _$ChannelOverridesFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = ChannelOverrides(
-          collapsed: $checkedConvert('collapsed', (v) => v as bool),
+          collapsed: $checkedConvert('collapsed', (v) => v as bool? ?? false),
           messageNotifications: $checkedConvert(
             'message_notifications',
-            (v) => UserNotificationSettingsInput.fromJson((v as num).toInt()),
+            (v) => v == null
+                ? UserNotificationSettingsInput.$unknown
+                : UserNotificationSettingsInput.fromJson((v as num).toInt()),
           ),
-          muted: $checkedConvert('muted', (v) => v as bool),
+          muted: $checkedConvert('muted', (v) => v as bool? ?? false),
           muteConfig: $checkedConvert(
             'mute_config',
             (v) => v == null

@@ -10,7 +10,7 @@ HandoffStatusResponse _$HandoffStatusResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('HandoffStatusResponse', json, ($checkedConvert) {
   final val = HandoffStatusResponse(
-    status: $checkedConvert('status', (v) => v as String),
+    status: $checkedConvert('status', (v) => v as String? ?? ''),
     token: $checkedConvert('token', (v) => v as String?),
     userId: $checkedConvert('user_id', (v) => v as String?),
     user: $checkedConvert(

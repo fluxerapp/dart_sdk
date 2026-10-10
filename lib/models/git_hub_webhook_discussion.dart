@@ -23,15 +23,21 @@ class GitHubWebhookDiscussion {
   factory GitHubWebhookDiscussion.fromJson(Map<String, Object?> json) =>
       _$GitHubWebhookDiscussionFromJson(json);
 
+  @JsonKey(defaultValue: '')
   final String title;
+  @JsonKey(defaultValue: 0)
   final Int32Type number;
-  @JsonKey(name: 'html_url')
+  @JsonKey(name: 'html_url', defaultValue: '')
   final String htmlUrl;
   @JsonKey(includeIfNull: false, name: 'answer_html_url')
   final String? answerHtmlUrl;
   @JsonKey(includeIfNull: false)
   final String? body;
+  @JsonKey(defaultValue: _$missingGitHubWebhookDiscussionUser)
   final GitHubWebhookDiscussionUser user;
 
   Map<String, Object?> toJson() => _$GitHubWebhookDiscussionToJson(this);
 }
+
+GitHubWebhookDiscussionUser _$missingGitHubWebhookDiscussionUser() =>
+    GitHubWebhookDiscussionUser.fromJson(const <String, dynamic>{});

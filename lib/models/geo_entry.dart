@@ -14,6 +14,7 @@ class GeoEntry {
       _$GeoEntryFromJson(json);
 
   /// ISO 3166-1 alpha-2 country code
+  @JsonKey(defaultValue: '')
   final String countryCode;
 
   /// ISO 3166-2 subdivision code, or null when the entry covers the whole country

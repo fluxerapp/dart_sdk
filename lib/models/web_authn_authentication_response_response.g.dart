@@ -12,12 +12,15 @@ _$WebAuthnAuthenticationResponseResponseFromJson(Map<String, dynamic> json) =>
       $checkedConvert,
     ) {
       final val = WebAuthnAuthenticationResponseResponse(
-        clientDataJson: $checkedConvert('clientDataJSON', (v) => v as String),
+        clientDataJson: $checkedConvert(
+          'clientDataJSON',
+          (v) => v as String? ?? '',
+        ),
         authenticatorData: $checkedConvert(
           'authenticatorData',
-          (v) => v as String,
+          (v) => v as String? ?? '',
         ),
-        signature: $checkedConvert('signature', (v) => v as String),
+        signature: $checkedConvert('signature', (v) => v as String? ?? ''),
         userHandle: $checkedConvert('userHandle', (v) => v as String?),
       );
       return val;

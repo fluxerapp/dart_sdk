@@ -10,8 +10,8 @@ GuildEmojiCreateRequest _$GuildEmojiCreateRequestFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('GuildEmojiCreateRequest', json, ($checkedConvert) {
   final val = GuildEmojiCreateRequest(
-    name: $checkedConvert('name', (v) => v as String),
-    image: $checkedConvert('image', (v) => v as String),
+    name: $checkedConvert('name', (v) => v as String? ?? ''),
+    image: $checkedConvert('image', (v) => v as String? ?? ''),
   );
   return val;
 });

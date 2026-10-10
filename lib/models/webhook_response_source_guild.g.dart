@@ -10,8 +10,8 @@ WebhookResponseSourceGuild _$WebhookResponseSourceGuildFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('WebhookResponseSourceGuild', json, ($checkedConvert) {
   final val = WebhookResponseSourceGuild(
-    id: $checkedConvert('id', (v) => v as String),
-    name: $checkedConvert('name', (v) => v as String),
+    id: $checkedConvert('id', (v) => v as String? ?? ''),
+    name: $checkedConvert('name', (v) => v as String? ?? ''),
     icon: $checkedConvert('icon', (v) => v as String?),
   );
   return val;

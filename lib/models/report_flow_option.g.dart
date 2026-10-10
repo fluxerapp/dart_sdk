@@ -9,11 +9,13 @@ part of 'report_flow_option.dart';
 ReportFlowOption _$ReportFlowOptionFromJson(Map<String, dynamic> json) =>
     $checkedCreate('ReportFlowOption', json, ($checkedConvert) {
       final val = ReportFlowOption(
-        id: $checkedConvert('id', (v) => v as String),
-        label: $checkedConvert('label', (v) => v as String),
+        id: $checkedConvert('id', (v) => v as String? ?? ''),
+        label: $checkedConvert('label', (v) => v as String? ?? ''),
         outcome: $checkedConvert(
           'outcome',
-          (v) => ReportFlowOutcome.fromJson(v as Map<String, dynamic>),
+          (v) => v == null
+              ? _$missingReportFlowOutcome()
+              : ReportFlowOutcome.fromJson(v as Map<String, dynamic>),
         ),
       );
       return val;

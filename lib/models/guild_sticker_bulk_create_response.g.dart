@@ -12,19 +12,25 @@ GuildStickerBulkCreateResponse _$GuildStickerBulkCreateResponseFromJson(
   final val = GuildStickerBulkCreateResponse(
     success: $checkedConvert(
       'success',
-      (v) => (v as List<dynamic>)
-          .map((e) => GuildStickerResponse.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      (v) =>
+          (v as List<dynamic>?)
+              ?.map(
+                (e) => GuildStickerResponse.fromJson(e as Map<String, dynamic>),
+              )
+              .toList() ??
+          [],
     ),
     failed: $checkedConvert(
       'failed',
-      (v) => (v as List<dynamic>)
-          .map(
-            (e) => GuildStickerBulkCreateResponseFailed.fromJson(
-              e as Map<String, dynamic>,
-            ),
-          )
-          .toList(),
+      (v) =>
+          (v as List<dynamic>?)
+              ?.map(
+                (e) => GuildStickerBulkCreateResponseFailed.fromJson(
+                  e as Map<String, dynamic>,
+                ),
+              )
+              .toList() ??
+          [],
     ),
   );
   return val;

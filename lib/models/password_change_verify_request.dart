@@ -14,9 +14,11 @@ class PasswordChangeVerifyRequest {
       _$PasswordChangeVerifyRequestFromJson(json);
 
   /// Password change ticket identifier
+  @JsonKey(defaultValue: '')
   final String ticket;
 
   /// Verification code sent to the email address
+  @JsonKey(defaultValue: '')
   final String code;
 
   Map<String, Object?> toJson() => _$PasswordChangeVerifyRequestToJson(this);

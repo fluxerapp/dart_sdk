@@ -31,11 +31,15 @@ class MessageSearchResponse {
 
 @JsonSerializable()
 class MessageSearchResponseMessageSearchResultsResponse {
+  @JsonKey(defaultValue: <MessageSearchResultsResponseMessages>[])
   final List<MessageSearchResultsResponseMessages> messages;
+  @JsonKey(defaultValue: <ChannelResponse>[])
   final List<ChannelResponse> channels;
+  @JsonKey(defaultValue: 0)
   final Int32Type total;
-  @JsonKey(name: 'hits_per_page')
+  @JsonKey(name: 'hits_per_page', defaultValue: 0)
   final Int32Type hitsPerPage;
+  @JsonKey(defaultValue: 0)
   final Int32Type page;
   @JsonKey(includeIfNull: false)
   final List<String>? cursor;
@@ -65,6 +69,7 @@ class MessageSearchResponseMessageSearchResultsResponse {
 
 @JsonSerializable()
 class MessageSearchResponseVariant2 {
+  @JsonKey(defaultValue: false)
   final bool indexing;
 
   const MessageSearchResponseVariant2({required this.indexing});

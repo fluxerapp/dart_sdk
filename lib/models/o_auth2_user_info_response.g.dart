@@ -10,10 +10,10 @@ OAuth2UserInfoResponse _$OAuth2UserInfoResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('OAuth2UserInfoResponse', json, ($checkedConvert) {
   final val = OAuth2UserInfoResponse(
-    sub: $checkedConvert('sub', (v) => v as String),
-    id: $checkedConvert('id', (v) => v as String),
-    username: $checkedConvert('username', (v) => v as String),
-    discriminator: $checkedConvert('discriminator', (v) => v as String),
+    sub: $checkedConvert('sub', (v) => v as String? ?? ''),
+    id: $checkedConvert('id', (v) => v as String? ?? ''),
+    username: $checkedConvert('username', (v) => v as String? ?? ''),
+    discriminator: $checkedConvert('discriminator', (v) => v as String? ?? ''),
     globalName: $checkedConvert('global_name', (v) => v as String?),
     avatar: $checkedConvert('avatar', (v) => v as String?),
     email: $checkedConvert('email', (v) => v as String?),

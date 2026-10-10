@@ -14,6 +14,7 @@ class WebhookReceivedResponse {
       _$WebhookReceivedResponseFromJson(json);
 
   /// Whether the webhook was successfully received
+  @JsonKey(defaultValue: false)
   final bool received;
 
   Map<String, Object?> toJson() => _$WebhookReceivedResponseToJson(this);

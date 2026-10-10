@@ -12,12 +12,15 @@ GuildStickerBulkCreateRequest _$GuildStickerBulkCreateRequestFromJson(
   final val = GuildStickerBulkCreateRequest(
     stickers: $checkedConvert(
       'stickers',
-      (v) => (v as List<dynamic>)
-          .map(
-            (e) =>
-                GuildStickerCreateRequest.fromJson(e as Map<String, dynamic>),
-          )
-          .toList(),
+      (v) =>
+          (v as List<dynamic>?)
+              ?.map(
+                (e) => GuildStickerCreateRequest.fromJson(
+                  e as Map<String, dynamic>,
+                ),
+              )
+              .toList() ??
+          [],
     ),
   );
   return val;

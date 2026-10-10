@@ -20,14 +20,20 @@ class OAuth2AuthorizationResponse {
       _$OAuth2AuthorizationResponseFromJson(json);
 
   /// The application that was authorized
+  @JsonKey(defaultValue: _$missingOAuth2AuthorizationResponseApplication)
   final OAuth2AuthorizationResponseApplication application;
 
   /// The list of granted OAuth2 scopes
+  @JsonKey(defaultValue: <String>[])
   final List<String> scopes;
 
   /// The timestamp when the authorization was granted
-  @JsonKey(name: 'authorized_at')
+  @JsonKey(name: 'authorized_at', defaultValue: '')
   final String authorizedAt;
 
   Map<String, Object?> toJson() => _$OAuth2AuthorizationResponseToJson(this);
 }
+
+OAuth2AuthorizationResponseApplication
+_$missingOAuth2AuthorizationResponseApplication() =>
+    OAuth2AuthorizationResponseApplication.fromJson(const <String, dynamic>{});

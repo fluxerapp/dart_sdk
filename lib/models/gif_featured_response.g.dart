@@ -11,18 +11,23 @@ GifFeaturedResponse _$GifFeaturedResponseFromJson(Map<String, dynamic> json) =>
       final val = GifFeaturedResponse(
         gifs: $checkedConvert(
           'gifs',
-          (v) => (v as List<dynamic>)
-              .map((e) => GifResponse.fromJson(e as Map<String, dynamic>))
-              .toList(),
+          (v) =>
+              (v as List<dynamic>?)
+                  ?.map((e) => GifResponse.fromJson(e as Map<String, dynamic>))
+                  .toList() ??
+              [],
         ),
         categories: $checkedConvert(
           'categories',
-          (v) => (v as List<dynamic>)
-              .map(
-                (e) =>
-                    GifCategoryTagResponse.fromJson(e as Map<String, dynamic>),
-              )
-              .toList(),
+          (v) =>
+              (v as List<dynamic>?)
+                  ?.map(
+                    (e) => GifCategoryTagResponse.fromJson(
+                      e as Map<String, dynamic>,
+                    ),
+                  )
+                  .toList() ??
+              [],
         ),
       );
       return val;

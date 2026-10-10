@@ -10,13 +10,15 @@ ChannelOverwriteResponse _$ChannelOverwriteResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('ChannelOverwriteResponse', json, ($checkedConvert) {
   final val = ChannelOverwriteResponse(
-    id: $checkedConvert('id', (v) => v as String),
+    id: $checkedConvert('id', (v) => v as String? ?? ''),
     type: $checkedConvert(
       'type',
-      (v) => ChannelOverwriteType.fromJson((v as num).toInt()),
+      (v) => v == null
+          ? ChannelOverwriteType.$unknown
+          : ChannelOverwriteType.fromJson((v as num).toInt()),
     ),
-    allow: $checkedConvert('allow', (v) => v as String),
-    deny: $checkedConvert('deny', (v) => v as String),
+    allow: $checkedConvert('allow', (v) => v as String? ?? ''),
+    deny: $checkedConvert('deny', (v) => v as String? ?? ''),
   );
   return val;
 });

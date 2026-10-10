@@ -21,9 +21,11 @@ class InstanceSsoSchema {
       _$InstanceSsoSchemaFromJson(json);
 
   /// Whether SSO is enabled for this instance
+  @JsonKey(defaultValue: false)
   final bool enabled;
 
   /// Whether SSO is required for all users
+  @JsonKey(defaultValue: false)
   final bool enforced;
 
   /// Display name of the SSO provider
@@ -31,7 +33,7 @@ class InstanceSsoSchema {
   final String? displayName;
 
   /// OAuth redirect URI for SSO
-  @JsonKey(name: 'redirect_uri')
+  @JsonKey(name: 'redirect_uri', defaultValue: '')
   final String redirectUri;
 
   /// Whether an SSO provider is configured for this instance

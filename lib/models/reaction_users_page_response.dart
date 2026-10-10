@@ -21,10 +21,11 @@ class ReactionUsersPageResponse {
       _$ReactionUsersPageResponseFromJson(json);
 
   /// Users who reacted with the requested emoji
+  @JsonKey(defaultValue: <UserPartialResponse>[])
   final List<UserPartialResponse> items;
 
   /// Whether more reaction users can be fetched
-  @JsonKey(name: 'has_more')
+  @JsonKey(name: 'has_more', defaultValue: false)
   final bool hasMore;
 
   /// Cursor for the next page, or null when there are no more users

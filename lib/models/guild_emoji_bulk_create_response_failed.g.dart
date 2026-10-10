@@ -12,8 +12,8 @@ GuildEmojiBulkCreateResponseFailed _$GuildEmojiBulkCreateResponseFailedFromJson(
   $checkedConvert,
 ) {
   final val = GuildEmojiBulkCreateResponseFailed(
-    name: $checkedConvert('name', (v) => v as String),
-    error: $checkedConvert('error', (v) => v as String),
+    name: $checkedConvert('name', (v) => v as String? ?? ''),
+    error: $checkedConvert('error', (v) => v as String? ?? ''),
   );
   return val;
 });

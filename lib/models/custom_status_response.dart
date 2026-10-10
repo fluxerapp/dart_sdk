@@ -38,7 +38,7 @@ class CustomStatusResponse {
   final String? emojiName;
 
   /// Whether the status emoji is animated
-  @JsonKey(name: 'emoji_animated')
+  @JsonKey(name: 'emoji_animated', defaultValue: false)
   final bool emojiAnimated;
 
   Map<String, Object?> toJson() => _$CustomStatusResponseToJson(this);

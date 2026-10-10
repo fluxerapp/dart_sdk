@@ -19,6 +19,7 @@ class EmbedAuthorResponse {
       _$EmbedAuthorResponseFromJson(json);
 
   /// The name of the author
+  @JsonKey(defaultValue: '')
   final String name;
 
   /// The URL of the author

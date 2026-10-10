@@ -12,7 +12,7 @@ _$UserProfileFullResponseMutualGuildsFromJson(Map<String, dynamic> json) =>
       $checkedConvert,
     ) {
       final val = UserProfileFullResponseMutualGuilds(
-        id: $checkedConvert('id', (v) => v as String),
+        id: $checkedConvert('id', (v) => v as String? ?? ''),
         nick: $checkedConvert('nick', (v) => v as String?),
       );
       return val;

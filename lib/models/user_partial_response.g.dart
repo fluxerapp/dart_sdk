@@ -12,16 +12,19 @@ UserPartialResponse _$UserPartialResponseFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = UserPartialResponse(
-          id: $checkedConvert('id', (v) => v as String),
-          username: $checkedConvert('username', (v) => v as String),
-          discriminator: $checkedConvert('discriminator', (v) => v as String),
+          id: $checkedConvert('id', (v) => v as String? ?? ''),
+          username: $checkedConvert('username', (v) => v as String? ?? ''),
+          discriminator: $checkedConvert(
+            'discriminator',
+            (v) => v as String? ?? '',
+          ),
           globalName: $checkedConvert('global_name', (v) => v as String?),
           avatar: $checkedConvert('avatar', (v) => v as String?),
           avatarColor: $checkedConvert(
             'avatar_color',
             (v) => (v as num?)?.toInt(),
           ),
-          flags: $checkedConvert('flags', (v) => (v as num).toInt()),
+          flags: $checkedConvert('flags', (v) => (v as num?)?.toInt() ?? 0),
           bot: $checkedConvert('bot', (v) => v as bool?),
           system: $checkedConvert('system', (v) => v as bool?),
           mentionFlags: $checkedConvert(

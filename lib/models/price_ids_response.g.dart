@@ -12,7 +12,7 @@ PriceIdsResponse _$PriceIdsResponseFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = PriceIdsResponse(
-          currency: $checkedConvert('currency', (v) => v as String),
+          currency: $checkedConvert('currency', (v) => v as String? ?? ''),
           giftCurrency: $checkedConvert('gift_currency', (v) => v as String?),
           monthly: $checkedConvert('monthly', (v) => v as String?),
           yearly: $checkedConvert('yearly', (v) => v as String?),

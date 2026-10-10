@@ -15,7 +15,7 @@ class InstanceAppPublicSchemaRegistration {
   ) => _$InstanceAppPublicSchemaRegistrationFromJson(json);
 
   /// Whether public registration collects and validates date of birth
-  @JsonKey(name: 'collect_date_of_birth')
+  @JsonKey(name: 'collect_date_of_birth', defaultValue: false)
   final bool collectDateOfBirth;
 
   Map<String, Object?> toJson() =>

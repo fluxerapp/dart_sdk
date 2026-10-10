@@ -21,7 +21,7 @@ PremiumStateResponseActual _$PremiumStateResponseActualFromJson(
       premiumUntil: $checkedConvert('premium_until', (v) => v as String?),
       premiumWillCancel: $checkedConvert(
         'premium_will_cancel',
-        (v) => v as bool,
+        (v) => v as bool? ?? false,
       ),
       premiumBillingCycle: $checkedConvert(
         'premium_billing_cycle',
@@ -41,10 +41,13 @@ PremiumStateResponseActual _$PremiumStateResponseActualFromJson(
       ),
       hasActivePaidPremium: $checkedConvert(
         'has_active_paid_premium',
-        (v) => v as bool,
+        (v) => v as bool? ?? false,
       ),
-      isVisionary: $checkedConvert('is_visionary', (v) => v as bool),
-      hasEverPurchased: $checkedConvert('has_ever_purchased', (v) => v as bool),
+      isVisionary: $checkedConvert('is_visionary', (v) => v as bool? ?? false),
+      hasEverPurchased: $checkedConvert(
+        'has_ever_purchased',
+        (v) => v as bool? ?? false,
+      ),
     );
     return val;
   },

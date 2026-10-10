@@ -21,9 +21,11 @@ class PushSubscribeRequest {
       _$PushSubscribeRequestFromJson(json);
 
   /// The push subscription endpoint URL
+  @JsonKey(defaultValue: '')
   final String endpoint;
 
   /// Encryption keys for the push subscription
+  @JsonKey(defaultValue: _$missingPushSubscribeRequestKeys)
   final PushSubscribeRequestKeys keys;
 
   /// The user agent string identifying the client
@@ -36,3 +38,6 @@ class PushSubscribeRequest {
 
   Map<String, Object?> toJson() => _$PushSubscribeRequestToJson(this);
 }
+
+PushSubscribeRequestKeys _$missingPushSubscribeRequestKeys() =>
+    PushSubscribeRequestKeys.fromJson(const <String, dynamic>{});

@@ -10,7 +10,7 @@ HandoffStatusRequest _$HandoffStatusRequestFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('HandoffStatusRequest', json, ($checkedConvert) {
   final val = HandoffStatusRequest(
-    pollSecret: $checkedConvert('poll_secret', (v) => v as String),
+    pollSecret: $checkedConvert('poll_secret', (v) => v as String? ?? ''),
     grant: $checkedConvert('grant', (v) => v as String?),
   );
   return val;

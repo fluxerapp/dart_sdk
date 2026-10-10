@@ -17,10 +17,11 @@ class UserPasswordUpdateResponse {
       _$UserPasswordUpdateResponseFromJson(json);
 
   /// Authentication token for the newly created session
+  @JsonKey(defaultValue: '')
   final String token;
 
   /// Base64url-encoded hash of the newly created authentication session
-  @JsonKey(name: 'auth_session_id_hash')
+  @JsonKey(name: 'auth_session_id_hash', defaultValue: '')
   final String authSessionIdHash;
 
   Map<String, Object?> toJson() => _$UserPasswordUpdateResponseToJson(this);

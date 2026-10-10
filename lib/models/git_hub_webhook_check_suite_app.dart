@@ -13,6 +13,7 @@ class GitHubWebhookCheckSuiteApp {
   factory GitHubWebhookCheckSuiteApp.fromJson(Map<String, Object?> json) =>
       _$GitHubWebhookCheckSuiteAppFromJson(json);
 
+  @JsonKey(defaultValue: '')
   final String name;
 
   Map<String, Object?> toJson() => _$GitHubWebhookCheckSuiteAppToJson(this);

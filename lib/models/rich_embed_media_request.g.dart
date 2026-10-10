@@ -10,7 +10,7 @@ RichEmbedMediaRequestVariant1 _$RichEmbedMediaRequestVariant1FromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('RichEmbedMediaRequestVariant1', json, ($checkedConvert) {
   final val = RichEmbedMediaRequestVariant1(
-    url: $checkedConvert('url', (v) => v as String),
+    url: $checkedConvert('url', (v) => v as String? ?? ''),
     description: $checkedConvert('description', (v) => v as String?),
   );
   return val;

@@ -20,11 +20,14 @@ class MfaBackupCodesChallengeVerifyResponse {
   ) => _$MfaBackupCodesChallengeVerifyResponseFromJson(json);
 
   /// List of backup codes
-  @JsonKey(name: 'backup_codes')
+  @JsonKey(
+    name: 'backup_codes',
+    defaultValue: <MfaBackupCodesChallengeVerifyResponseBackupCodes>[],
+  )
   final List<MfaBackupCodesChallengeVerifyResponseBackupCodes> backupCodes;
 
   /// Proof token authorizing backup code regeneration on this ticket
-  @JsonKey(name: 'verification_proof')
+  @JsonKey(name: 'verification_proof', defaultValue: '')
   final String verificationProof;
 
   Map<String, Object?> toJson() =>

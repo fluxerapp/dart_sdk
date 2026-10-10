@@ -10,7 +10,7 @@ MessageEmbedChildResponse _$MessageEmbedChildResponseFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('MessageEmbedChildResponse', json, ($checkedConvert) {
   final val = MessageEmbedChildResponse(
-    type: $checkedConvert('type', (v) => v as String),
+    type: $checkedConvert('type', (v) => v as String? ?? ''),
     url: $checkedConvert('url', (v) => v as String?),
     title: $checkedConvert('title', (v) => v as String?),
     color: $checkedConvert('color', (v) => (v as num?)?.toInt()),

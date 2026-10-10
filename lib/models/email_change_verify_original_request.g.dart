@@ -11,8 +11,8 @@ EmailChangeVerifyOriginalRequest _$EmailChangeVerifyOriginalRequestFromJson(
 ) =>
     $checkedCreate('EmailChangeVerifyOriginalRequest', json, ($checkedConvert) {
       final val = EmailChangeVerifyOriginalRequest(
-        ticket: $checkedConvert('ticket', (v) => v as String),
-        code: $checkedConvert('code', (v) => v as String),
+        ticket: $checkedConvert('ticket', (v) => v as String? ?? ''),
+        code: $checkedConvert('code', (v) => v as String? ?? ''),
       );
       return val;
     });

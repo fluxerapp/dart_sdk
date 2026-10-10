@@ -30,12 +30,13 @@ class HarvestStatusResponseSchema {
       _$HarvestStatusResponseSchemaFromJson(json);
 
   /// Unique identifier for the harvest request
-  @JsonKey(name: 'harvest_id')
+  @JsonKey(name: 'harvest_id', defaultValue: '')
   final SnowflakeStringType harvestId;
+  @JsonKey(defaultValue: HarvestStatus.$unknown)
   final HarvestStatus status;
 
   /// ISO 8601 timestamp when the harvest request was created
-  @JsonKey(name: 'created_at')
+  @JsonKey(name: 'created_at', defaultValue: '')
   final String createdAt;
 
   /// ISO 8601 timestamp when the harvest started, or null if pending
@@ -55,7 +56,7 @@ class HarvestStatusResponseSchema {
   final String? fileSize;
 
   /// Harvest progress as a percentage value between 0 and 100
-  @JsonKey(name: 'progress_percent')
+  @JsonKey(name: 'progress_percent', defaultValue: 0)
   final num progressPercent;
 
   /// Textual description of the current harvest step, if available

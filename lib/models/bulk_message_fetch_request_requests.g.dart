@@ -10,8 +10,8 @@ BulkMessageFetchRequestRequests _$BulkMessageFetchRequestRequestsFromJson(
   Map<String, dynamic> json,
 ) => $checkedCreate('BulkMessageFetchRequestRequests', json, ($checkedConvert) {
   final val = BulkMessageFetchRequestRequests(
-    channelId: $checkedConvert('channel_id', (v) => v as String),
-    limit: $checkedConvert('limit', (v) => (v as num).toInt()),
+    channelId: $checkedConvert('channel_id', (v) => v as String? ?? ''),
+    limit: $checkedConvert('limit', (v) => (v as num?)?.toInt() ?? 0),
     before: $checkedConvert('before', (v) => v as String?),
     after: $checkedConvert('after', (v) => v as String?),
     around: $checkedConvert('around', (v) => v as String?),

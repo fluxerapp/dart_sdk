@@ -14,6 +14,7 @@ class ErrorErrors {
       _$ErrorErrorsFromJson(json);
 
   /// Field path that failed validation
+  @JsonKey(defaultValue: '')
   final String path;
 
   /// Machine-readable validation error code
@@ -21,6 +22,7 @@ class ErrorErrors {
   final String? code;
 
   /// Human-readable validation error message
+  @JsonKey(defaultValue: '')
   final String message;
 
   Map<String, Object?> toJson() => _$ErrorErrorsToJson(this);

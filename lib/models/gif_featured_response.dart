@@ -17,9 +17,11 @@ class GifFeaturedResponse {
       _$GifFeaturedResponseFromJson(json);
 
   /// Array of featured GIFs.
+  @JsonKey(defaultValue: <GifResponse>[])
   final List<GifResponse> gifs;
 
   /// Array of GIF categories.
+  @JsonKey(defaultValue: <GifCategoryTagResponse>[])
   final List<GifCategoryTagResponse> categories;
 
   Map<String, Object?> toJson() => _$GifFeaturedResponseToJson(this);

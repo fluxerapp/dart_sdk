@@ -16,8 +16,9 @@ class VoiceP2pAssignmentResponse {
   factory VoiceP2pAssignmentResponse.fromJson(Map<String, Object?> json) =>
       _$VoiceP2pAssignmentResponseFromJson(json);
 
+  @JsonKey(defaultValue: false)
   final bool enabled;
-  @JsonKey(name: 'max_participants')
+  @JsonKey(name: 'max_participants', defaultValue: 0)
   final int maxParticipants;
 
   Map<String, Object?> toJson() => _$VoiceP2pAssignmentResponseToJson(this);

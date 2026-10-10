@@ -19,6 +19,7 @@ class StorePurchaseClaimResponse {
       _$StorePurchaseClaimResponseFromJson(json);
 
   /// The claimed purchase
+  @JsonKey(defaultValue: _$missingStorePurchaseResponse)
   final StorePurchaseResponse purchase;
 
   /// Gift code minted by a gift purchase, null otherwise
@@ -27,3 +28,6 @@ class StorePurchaseClaimResponse {
 
   Map<String, Object?> toJson() => _$StorePurchaseClaimResponseToJson(this);
 }
+
+StorePurchaseResponse _$missingStorePurchaseResponse() =>
+    StorePurchaseResponse.fromJson(const <String, dynamic>{});

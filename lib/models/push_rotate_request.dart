@@ -22,13 +22,15 @@ class PushRotateRequest {
       _$PushRotateRequestFromJson(json);
 
   /// The previous push subscription endpoint URL being rotated out
-  @JsonKey(name: 'old_endpoint')
+  @JsonKey(name: 'old_endpoint', defaultValue: '')
   final String oldEndpoint;
 
   /// The new push subscription endpoint URL
+  @JsonKey(defaultValue: '')
   final String endpoint;
 
   /// Encryption keys for the new push subscription
+  @JsonKey(defaultValue: _$missingPushRotateRequestKeys)
   final PushRotateRequestKeys keys;
 
   /// The user agent string identifying the client
@@ -41,3 +43,6 @@ class PushRotateRequest {
 
   Map<String, Object?> toJson() => _$PushRotateRequestToJson(this);
 }
+
+PushRotateRequestKeys _$missingPushRotateRequestKeys() =>
+    PushRotateRequestKeys.fromJson(const <String, dynamic>{});

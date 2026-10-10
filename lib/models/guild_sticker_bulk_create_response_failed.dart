@@ -18,9 +18,11 @@ class GuildStickerBulkCreateResponseFailed {
   ) => _$GuildStickerBulkCreateResponseFailedFromJson(json);
 
   /// The name of the sticker that failed to create
+  @JsonKey(defaultValue: '')
   final String name;
 
   /// The error message explaining why the sticker failed to create
+  @JsonKey(defaultValue: '')
   final String error;
 
   Map<String, Object?> toJson() =>
