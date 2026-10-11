@@ -310,7 +310,7 @@ class GatewayConnection {
     return Future<void>.value();
   }
 
-  Future<void> _closeTransport({required bool clearSession}) async {
+  Future<void> _closeTransport() async {
     _heartbeat?.stop();
     await _subscription?.cancel();
     _subscription = null;
@@ -320,11 +320,7 @@ class GatewayConnection {
     _zstdDecoder = null;
     _zstdEncoder?.dispose();
     _zstdEncoder = null;
-    if (clearSession) {
-      _session.clear();
-    } else {
-      _session.noteSuspendedForResume();
-    }
+    _session.clear();
     _connectedAt = null;
   }
 
@@ -332,7 +328,7 @@ class GatewayConnection {
   Future<void> disconnect() async {
     _cancelReconnectTimer();
     _reconnectAttempts = 0;
-    await _closeTransport(clearSession: true);
+    await _closeTransport();
     _setState(GatewayState.disconnected);
   }
 
@@ -342,7 +338,7 @@ class GatewayConnection {
     _reconnectSuspended = true;
     _cancelReconnectTimer();
     _reconnectAttempts = 0;
-    await _closeTransport(clearSession: false);
+    await _closeTransport();
     _setState(GatewayState.disconnected);
   }
 
@@ -794,12 +790,10 @@ class GatewayConnection {
     if (eventType == 'READY') {
       final sessionId = data['session_id'] as String;
       _session.setSession(sessionId);
-      _session.clearResumeGrace();
       _reconnectAttempts = 0;
       _connectedAt = DateTime.now();
       _setState(GatewayState.connected);
     } else if (eventType == 'RESUMED') {
-      _session.clearResumeGrace();
       _reconnectAttempts = 0;
       _connectedAt = DateTime.now();
       _setState(GatewayState.connected);
