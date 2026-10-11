@@ -761,6 +761,9 @@ class GatewayConnection {
         _setState(GatewayState.failed);
         return;
       }
+      if (code == GatewayCloseCode.invalidSequence) {
+        _session.clear();
+      }
     }
 
     if (!_disposed) {

@@ -1,3 +1,4 @@
+import 'package:fluxer_dart/gateway_client/gateway_close_code.dart';
 import 'package:fluxer_dart/gateway_client/gateway_opcodes.dart';
 import 'package:test/test.dart';
 
@@ -50,4 +51,22 @@ void main() {
       });
     },
   );
+
+  test('close 4007 invalid sequence identifies instead of resending the '
+      'rejected RESUME', () async {
+    await gateway.connectReady();
+    await gateway.socket.serverClose(4000);
+    await waitFor(() => gateway.sockets.length == 2);
+    gateway.socket.hello();
+    await pump();
+    expect(gateway.socket.sentOps, <int>[GatewayOpcodes.resume]);
+
+    await gateway.socket.serverClose(GatewayCloseCode.invalidSequence.code);
+    await waitFor(() => gateway.sockets.length == 3);
+    gateway.socket.hello();
+    await pump();
+
+    expect(gateway.connection.sessionId, isNull);
+    expect(gateway.socket.sentOps, <int>[GatewayOpcodes.identify]);
+  });
 }
