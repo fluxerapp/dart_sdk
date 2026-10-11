@@ -1,8 +1,11 @@
 /// Tracks in-memory gateway session state for resume support.
 class SessionManager {
+  static const Duration resumeWindow = Duration(seconds: 55);
+
   String? _sessionId;
   int? _lastSequence;
   DateTime? _lastAckAt;
+  DateTime? _lastActivityAt;
 
   /// The current session ID, or `null` if no session is active.
   String? get sessionId => _sessionId;
@@ -14,16 +17,14 @@ class SessionManager {
   DateTime? get lastAckAt => _lastAckAt;
 
   /// Whether the session can be resumed.
-  ///
-  bool get canResume {
-    if (_sessionId == null || _lastSequence == null) {
+  bool get canResume => canResumeAt(DateTime.now());
+
+  bool canResumeAt(DateTime now) {
+    final DateTime? lastActivityAt = _lastActivityAt;
+    if (_sessionId == null || _lastSequence == null || lastActivityAt == null) {
       return false;
     }
-    if (_lastAckAt == null) {
-      return false;
-    }
-    final elapsed = DateTime.now().difference(_lastAckAt!);
-    return elapsed.inSeconds < 180;
+    return now.difference(lastActivityAt) < resumeWindow;
   }
 
   /// Updates the last received sequence number.
@@ -43,10 +44,15 @@ class SessionManager {
     _lastAckAt = DateTime.now();
   }
 
+  void noteActivity() {
+    _lastActivityAt = DateTime.now();
+  }
+
   /// Clears all session state.
   void clear() {
     _sessionId = null;
     _lastSequence = null;
     _lastAckAt = null;
+    _lastActivityAt = null;
   }
 }

@@ -17,11 +17,12 @@ void main() {
     });
 
     test(
-      'after setSession + updateSequence + updateLastAck → canResume is true',
+      'after setSession + updateSequence + noteActivity → canResume is true',
       () {
         session.setSession('sess-123');
         session.updateSequence(42);
         session.updateLastAck();
+        session.noteActivity();
 
         expect(session.canResume, isTrue);
         expect(session.sessionId, 'sess-123');
@@ -35,16 +36,39 @@ void main() {
       expect(session.canResume, isFalse);
     });
 
-    test('canResume is false when sessionId and sequence set but no ack', () {
+    test('canResume is false when sessionId and sequence set but no frame', () {
       session.setSession('sess-123');
       session.updateSequence(1);
       expect(session.canResume, isFalse);
+    });
+
+    test('canResume is true after READY before the first heartbeat ack', () {
+      session
+        ..setSession('sess-123')
+        ..updateSequence(1)
+        ..noteActivity();
+      expect(session.canResume, isTrue);
+    });
+
+    test('canResume ends inside the 60s the gateway holds a session', () {
+      session
+        ..setSession('sess-123')
+        ..updateSequence(1)
+        ..updateLastAck()
+        ..noteActivity();
+      final DateTime now = DateTime.now();
+      expect(session.canResumeAt(now.add(const Duration(seconds: 54))), isTrue);
+      expect(
+        session.canResumeAt(now.add(const Duration(seconds: 56))),
+        isFalse,
+      );
     });
 
     test('clear() resets everything, canResume returns false', () {
       session.setSession('sess-123');
       session.updateSequence(42);
       session.updateLastAck();
+      session.noteActivity();
       expect(session.canResume, isTrue);
 
       session.clear();

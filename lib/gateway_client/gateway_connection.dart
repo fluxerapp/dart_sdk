@@ -675,7 +675,9 @@ class GatewayConnection {
     final s = payload['s'] as int?;
     final t = payload['t'] as String?;
 
-    _session.updateSequence(s);
+    _session
+      ..noteActivity()
+      ..updateSequence(s);
 
     switch (op) {
       case GatewayOpcodes.hello:
