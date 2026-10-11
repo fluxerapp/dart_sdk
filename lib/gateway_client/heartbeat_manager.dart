@@ -19,6 +19,7 @@ class HeartbeatManager {
 
   final Random _random = Random();
 
+  Duration? _interval;
   Timer? _heartbeatTimer;
   Timer? _ackTimer;
   DateTime? _lastAckAt;
@@ -29,11 +30,17 @@ class HeartbeatManager {
 
   /// Starts the heartbeat loop with the given [interval].
   ///
-  /// The first heartbeat is sent after a jittered delay, then repeats
-  /// at the full [interval].
   void start(Duration interval) {
     stop();
-    _scheduleHeartbeat(interval);
+    _interval = interval;
+    _scheduleHeartbeat();
+  }
+
+  void sendRequested() {
+    _waitingForAck = true;
+    onSendHeartbeat();
+    _startAckTimer();
+    _scheduleHeartbeat();
   }
 
   /// Records that a heartbeat ACK was received from the server.
@@ -46,6 +53,7 @@ class HeartbeatManager {
 
   /// Stops the heartbeat loop and cancels any pending timers.
   void stop() {
+    _interval = null;
     _heartbeatTimer?.cancel();
     _heartbeatTimer = null;
     _ackTimer?.cancel();
@@ -54,14 +62,16 @@ class HeartbeatManager {
     _lastAckAt = null;
   }
 
-  void _scheduleHeartbeat(Duration interval) {
-    final jittered = _applyJitter(interval);
-    _heartbeatTimer = Timer(jittered, () {
+  void _scheduleHeartbeat() {
+    final Duration? interval = _interval;
+    if (interval == null) {
+      return;
+    }
+    _heartbeatTimer?.cancel();
+    _heartbeatTimer = Timer(_applyJitter(interval), () {
+      _heartbeatTimer = null;
       _sendHeartbeat();
-      // After the first jittered beat, repeat at full interval.
-      _heartbeatTimer = Timer.periodic(interval, (_) {
-        _sendHeartbeat();
-      });
+      _scheduleHeartbeat();
     });
   }
 
@@ -72,6 +82,10 @@ class HeartbeatManager {
     }
     _waitingForAck = true;
     onSendHeartbeat();
+    _startAckTimer();
+  }
+
+  void _startAckTimer() {
     _ackTimer?.cancel();
     _ackTimer = Timer(_ackTimeout, () {
       if (_waitingForAck) {

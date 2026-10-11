@@ -699,7 +699,7 @@ class GatewayConnection {
           }
         }
       case GatewayOpcodes.heartbeat:
-        _sendHeartbeat();
+        _heartbeat?.sendRequested();
       case GatewayOpcodes.reconnect:
         _handleReconnect();
       case GatewayOpcodes.invalidSession:
