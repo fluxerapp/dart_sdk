@@ -49,6 +49,13 @@ Duration gatewayReconnectSpreadDelay({required double spreadUnit}) {
   return kGatewayMinReconnect + Duration(milliseconds: spread);
 }
 
+Duration gatewayServerReconnectDelay({required double spreadUnit}) {
+  return Duration(
+    milliseconds: (spreadUnit.clamp(0.0, 1.0) * kGatewayReconnectSpreadMs)
+        .floor(),
+  );
+}
+
 typedef GatewaySocketConnect =
     WebSocketChannel Function(Uri uri, {Map<String, String>? headers});
 
@@ -829,7 +836,7 @@ class GatewayConnection {
   }
 
   void _handleReconnect() {
-    _closeAndReconnect();
+    _closeAndReconnect(serverRequested: true);
   }
 
   void _handleInvalidSession(bool resumable) {
@@ -846,7 +853,7 @@ class GatewayConnection {
       if (_disposed) {
         return;
       }
-      _closeAndReconnect();
+      _closeAndReconnect(serverRequested: true);
     });
   }
 
@@ -955,9 +962,9 @@ class GatewayConnection {
     _closeAndReconnect();
   }
 
-  void _closeAndReconnect() {
+  void _closeAndReconnect({bool serverRequested = false}) {
     unawaited(_tearDownSocket());
-    _scheduleReconnect();
+    _scheduleReconnect(serverRequested: serverRequested);
   }
 
   Future<void> _tearDownSocket() async {
@@ -988,7 +995,7 @@ class GatewayConnection {
     _invalidSessionTimer = null;
   }
 
-  void _scheduleReconnect() {
+  void _scheduleReconnect({bool serverRequested = false}) {
     if (_disposed || _reconnectSuspended) return;
     if (_reconnectTimer != null) return;
     _invalidSessionTimer?.cancel();
@@ -997,7 +1004,9 @@ class GatewayConnection {
     final DateTime now = DateTime.now();
     final DateTime? last = _lastReconnectScheduledAt;
     final Duration delay;
-    if (last != null && now.difference(last) < kGatewayMinReconnect) {
+    if (serverRequested) {
+      delay = gatewayServerReconnectDelay(spreadUnit: _nextJitter());
+    } else if (last != null && now.difference(last) < kGatewayMinReconnect) {
       delay = gatewayReconnectSpreadDelay(spreadUnit: _nextJitter());
     } else {
       _lastReconnectScheduledAt = now;
