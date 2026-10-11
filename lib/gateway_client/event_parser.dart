@@ -80,7 +80,8 @@ class EventParser {
           channel: ChannelResponse.fromJson(data),
         ),
         'CHANNEL_DELETE' => ChannelDeleteEvent(
-          channel: ChannelResponse.fromJson(data),
+          channelId: data['id'] as String,
+          guildId: data['guild_id'] as String?,
         ),
         'GUILD_CREATE' => GuildCreateEvent(
           guild: GuildCreateData.fromJson(data),

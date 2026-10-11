@@ -310,9 +310,10 @@ class ChannelUpdateEvent extends GatewayEvent {
 }
 
 class ChannelDeleteEvent extends GatewayEvent {
-  const ChannelDeleteEvent({required this.channel});
+  const ChannelDeleteEvent({required this.channelId, this.guildId});
 
-  final ChannelResponse channel;
+  final String channelId;
+  final String? guildId;
 }
 
 class ChannelUpdateBulkEvent extends GatewayEvent {

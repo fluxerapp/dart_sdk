@@ -500,7 +500,19 @@ void main() {
 
       expect(event, isA<ChannelDeleteEvent>());
       final e = event as ChannelDeleteEvent;
-      expect(e.channel.id, '502');
+      expect(e.channelId, '502');
+    });
+
+    test('CHANNEL_DELETE for a channel the user can no longer view', () {
+      final event = parser.parse('CHANNEL_DELETE', <String, dynamic>{
+        'guild_id': '600',
+        'id': '503',
+      });
+
+      expect(event, isA<ChannelDeleteEvent>());
+      final e = event as ChannelDeleteEvent;
+      expect(e.channelId, '503');
+      expect(e.guildId, '600');
     });
   });
 
