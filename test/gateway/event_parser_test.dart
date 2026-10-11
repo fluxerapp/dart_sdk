@@ -661,6 +661,44 @@ void main() {
       expect(e.customStatus, isNull);
     });
 
+    test('PRESENCE_UPDATE keeps the partial user the gateway sends', () {
+      final data = <String, Object?>{
+        'user': {
+          'id': '103',
+          'username': 'renamed',
+          'discriminator': '0042',
+          'global_name': 'Renamed',
+          'avatar': 'abc',
+          'avatar_color': 123,
+          'flags': 0,
+        },
+        'status': 'online',
+        'mobile': false,
+        'afk': false,
+        'custom_status': null,
+      };
+      final event = parser.parse('PRESENCE_UPDATE', data);
+
+      expect(event, isA<PresenceUpdateEvent>());
+      final e = event as PresenceUpdateEvent;
+      expect(e.userId, '103');
+      expect(e.user?.username, 'renamed');
+      expect(e.user?.globalName, 'Renamed');
+      expect(e.user?.avatar, 'abc');
+    });
+
+    test('PRESENCE_UPDATE with only a user id has no user', () {
+      final event = parser.parse('PRESENCE_UPDATE', <String, Object?>{
+        'user': {'id': '104'},
+        'status': 'idle',
+      });
+
+      expect(event, isA<PresenceUpdateEvent>());
+      final e = event as PresenceUpdateEvent;
+      expect(e.userId, '104');
+      expect(e.user, isNull);
+    });
+
     test('PRESENCE_UPDATE with user_id fallback', () {
       final data = <String, Object?>{'user_id': '102', 'status': 'dnd'};
       final event = parser.parse('PRESENCE_UPDATE', data);

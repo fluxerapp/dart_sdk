@@ -662,7 +662,19 @@ class EventParser {
       status: data['status'] as String,
       customStatus: serializeCustomStatusMap(customStatusMap),
       mobile: data['mobile'] as bool? ?? false,
+      user: _parsePresenceUser(user),
     );
+  }
+
+  static UserPartialResponse? _parsePresenceUser(Map<String, dynamic>? user) {
+    if (user == null || user['username'] == null) {
+      return null;
+    }
+    try {
+      return UserPartialResponse.fromJson(user);
+    } catch (_) {
+      return null;
+    }
   }
 
   GuildMemberListUpdateEvent _parseMemberListUpdate(Map<String, dynamic> data) {
