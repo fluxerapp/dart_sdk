@@ -23,6 +23,7 @@ const Duration kGatewayMinReconnect = Duration(milliseconds: 1000);
 const Duration kGatewayMaxReconnect = Duration(seconds: 10);
 const int kGatewayReconnectSpreadMs = 2000;
 const double kGatewayReconnectJitterFactor = 0.25;
+const Duration kGatewayLivenessTimeout = Duration(seconds: 3);
 
 Duration gatewayReconnectDelay({
   required int attempt,
@@ -167,6 +168,7 @@ class GatewayConnection {
   Timer? _reconnectTimer;
   Timer? _invalidSessionTimer;
   Timer? _resumeTimer;
+  Completer<void>? _livenessAck;
   Future<void>? _connectInFlight;
   DateTime? _lastReconnectScheduledAt;
   int _connectGeneration = 0;
@@ -321,6 +323,34 @@ class GatewayConnection {
     _zstdEncoder = null;
     _session.clear();
     _connectedAt = null;
+  }
+
+  Future<bool> verifyLiveness({
+    Duration timeout = kGatewayLivenessTimeout,
+  }) async {
+    final WebSocketChannel? channel = _channel;
+    final HeartbeatManager? heartbeat = _heartbeat;
+    if (_disposed ||
+        _state != GatewayState.connected ||
+        channel == null ||
+        heartbeat == null) {
+      return false;
+    }
+    final Completer<void> ack = _livenessAck ??= Completer<void>();
+    heartbeat.sendRequested();
+    try {
+      await ack.future.timeout(timeout);
+      return true;
+    } on TimeoutException {
+      if (identical(_channel, channel) && _state == GatewayState.connected) {
+        await reconnectNow();
+      }
+      return false;
+    } finally {
+      if (identical(_livenessAck, ack)) {
+        _livenessAck = null;
+      }
+    }
   }
 
   /// Disconnects from the gateway gracefully.
@@ -697,6 +727,8 @@ class GatewayConnection {
       case GatewayOpcodes.heartbeatAck:
         _heartbeat?.ackReceived();
         _session.updateLastAck();
+        _livenessAck?.complete();
+        _livenessAck = null;
       case GatewayOpcodes.dispatch:
         if (t != null) {
           if (d is Map<String, dynamic>) {
