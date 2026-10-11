@@ -120,6 +120,18 @@ void main() {
       expect(held.socket.sentOps, <int>[GatewayOpcodes.identify]);
     });
 
+    test('a close while the RESUME is pending identifies instead of '
+        'resending it, since the gateway closes 4000 when the session is '
+        'unavailable', () async {
+      await held.socket.serverClose(4000);
+      await waitFor(() => held.sockets.length == 3);
+      held.socket.hello();
+      await pump();
+
+      expect(held.connection.sessionId, isNull);
+      expect(held.socket.sentOps, <int>[GatewayOpcodes.identify]);
+    });
+
     test('RESUMED stops the resume response timer', () async {
       held.socket.resumed();
       await Future<void>.delayed(const Duration(milliseconds: 600));

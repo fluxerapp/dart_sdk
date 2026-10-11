@@ -766,8 +766,12 @@ class GatewayConnection {
   }
 
   void _onSocketClosed(int? closeCode) {
+    final bool resumeWasPending = _resumeTimer != null;
     _cancelResumeTimer();
     _heartbeat?.stop();
+    if (resumeWasPending) {
+      _session.clear();
+    }
 
     if (closeCode != null) {
       final code = GatewayCloseCode.fromCode(closeCode);
