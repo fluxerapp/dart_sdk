@@ -358,9 +358,11 @@ class GatewayConnection {
     await _stateController.close();
   }
 
-  /// Updates the client's presence on the gateway.
   void updatePresence(GatewayPresence presence) {
     _presence = presence;
+    if (_state != GatewayState.connected || _channel == null) {
+      return;
+    }
     _send({'op': GatewayOpcodes.presenceUpdate, 'd': presence.toJson()});
   }
 
@@ -368,6 +370,9 @@ class GatewayConnection {
   void sendLazyRequest({
     required Map<String, LazyRequestSubscription> subscriptions,
   }) {
+    if (_state != GatewayState.connected || _channel == null) {
+      return;
+    }
     _send({
       'op': GatewayOpcodes.lazyRequest,
       'd': {

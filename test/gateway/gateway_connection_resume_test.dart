@@ -1,5 +1,7 @@
 import 'package:fluxer_dart/gateway_client/gateway_close_code.dart';
+import 'package:fluxer_dart/gateway_client/gateway_models.dart';
 import 'package:fluxer_dart/gateway_client/gateway_opcodes.dart';
+import 'package:fluxer_dart/gateway_client/gateway_types.dart';
 import 'package:test/test.dart';
 
 import 'fake_gateway_socket.dart';
@@ -70,6 +72,24 @@ void main() {
     expect(offline.connection.sessionId, isNull);
     expect(offline.socket.sentOps, <int>[GatewayOpcodes.identify]);
   });
+
+  test(
+    'a presence update while the new socket is connecting waits for the '
+    'session, since the gateway closes 4003 on ops sent before RESUME',
+    () async {
+      await gateway.connectReady();
+      await gateway.socket.serverClose(4000);
+      await waitFor(() => gateway.sockets.length == 2);
+
+      gateway.connection
+        ..updatePresence(const GatewayPresence(status: 'online'))
+        ..sendLazyRequest(subscriptions: <String, LazyRequestSubscription>{});
+      gateway.socket.hello();
+      await pump();
+
+      expect(gateway.socket.sentOps, <int>[GatewayOpcodes.resume]);
+    },
+  );
 
   test('close 4007 invalid sequence identifies instead of resending the '
       'rejected RESUME', () async {
