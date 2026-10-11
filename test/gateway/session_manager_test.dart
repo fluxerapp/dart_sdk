@@ -51,17 +51,16 @@ void main() {
     });
 
     test('canResume ends inside the 60s the gateway holds a session', () {
-      session
+      DateTime clock = DateTime.utc(2026, 10, 11);
+      final SessionManager timed = SessionManager(now: () => clock)
         ..setSession('sess-123')
         ..updateSequence(1)
         ..updateLastAck()
         ..noteActivity();
-      final DateTime now = DateTime.now();
-      expect(session.canResumeAt(now.add(const Duration(seconds: 54))), isTrue);
-      expect(
-        session.canResumeAt(now.add(const Duration(seconds: 56))),
-        isFalse,
-      );
+      clock = clock.add(const Duration(seconds: 54));
+      expect(timed.canResume, isTrue);
+      clock = clock.add(const Duration(seconds: 2));
+      expect(timed.canResume, isFalse);
     });
 
     test('clear() resets everything, canResume returns false', () {

@@ -104,6 +104,7 @@ class GatewayConnection {
     double Function()? nextJitter,
     GatewaySocketConnect? openSocket,
     Duration resumeResponseTimeout = const Duration(seconds: 15),
+    DateTime Function()? now,
   }) : _token = token,
        _dio = dio,
        _gatewayUrlOverride = gatewayUrl,
@@ -123,7 +124,8 @@ class GatewayConnection {
        _presence = presence,
        _nextJitter = nextJitter ?? Random().nextDouble,
        _openSocket = openSocket ?? openGatewayWebSocket,
-       _resumeResponseTimeout = resumeResponseTimeout;
+       _resumeResponseTimeout = resumeResponseTimeout,
+       _session = SessionManager(now: now);
 
   String _token;
   final Dio _dio;
@@ -142,7 +144,7 @@ class GatewayConnection {
   final Duration _resumeResponseTimeout;
 
   final EventParser _eventParser = const EventParser();
-  final SessionManager _session = SessionManager();
+  final SessionManager _session;
   HeartbeatManager? _heartbeat;
 
   WebSocketChannel? _channel;
@@ -687,9 +689,10 @@ class GatewayConnection {
     final s = payload['s'] as int?;
     final t = payload['t'] as String?;
 
-    _session
-      ..noteActivity()
-      ..updateSequence(s);
+    if (op != GatewayOpcodes.hello) {
+      _session.noteActivity();
+    }
+    _session.updateSequence(s);
 
     switch (op) {
       case GatewayOpcodes.hello:

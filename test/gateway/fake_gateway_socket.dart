@@ -98,7 +98,11 @@ class FakeGatewaySink implements WebSocketSink {
 }
 
 class FakeGateway {
-  FakeGateway({double jitter = 0.5, Duration? resumeResponseTimeout}) {
+  FakeGateway({
+    double jitter = 0.5,
+    Duration? resumeResponseTimeout,
+    DateTime Function()? now,
+  }) {
     connection = GatewayConnection(
       token: 'token',
       dio: Dio(),
@@ -107,6 +111,7 @@ class FakeGateway {
       nextJitter: () => jitter,
       resumeResponseTimeout:
           resumeResponseTimeout ?? const Duration(seconds: 15),
+      now: now,
       openSocket: (Uri uri, {Map<String, String>? headers}) {
         final FakeGatewaySocket socket = FakeGatewaySocket();
         sockets.add(socket);
