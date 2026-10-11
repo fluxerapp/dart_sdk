@@ -69,4 +69,45 @@ void main() {
     expect(gateway.connection.sessionId, isNull);
     expect(gateway.socket.sentOps, <int>[GatewayOpcodes.identify]);
   });
+
+  group('unanswered RESUME', () {
+    late FakeGateway held;
+
+    setUp(() async {
+      held = FakeGateway(
+        resumeResponseTimeout: const Duration(milliseconds: 300),
+      );
+      await held.connectReady();
+      await held.socket.serverClose(4000);
+      await waitFor(() => held.sockets.length == 2);
+      held.socket.hello();
+      await pump();
+      expect(held.socket.sentOps, <int>[GatewayOpcodes.resume]);
+    });
+
+    tearDown(() async {
+      await held.connection.dispose();
+    });
+
+    test('the gateway holding a rate limited RESUME without a reply makes '
+        'the client close and identify', () async {
+      held.socket.heartbeatAck();
+      await waitFor(() => held.sockets.length == 3);
+      expect(held.sockets[1].clientCloseCode, 4000);
+      held.socket.hello();
+      await pump();
+
+      expect(held.connection.sessionId, isNull);
+      expect(held.socket.sentOps, <int>[GatewayOpcodes.identify]);
+    });
+
+    test('RESUMED stops the resume response timer', () async {
+      held.socket.resumed();
+      await Future<void>.delayed(const Duration(milliseconds: 600));
+
+      expect(held.sockets, hasLength(2));
+      expect(held.sockets[1].clientCloseCode, isNull);
+      expect(held.connection.sessionId, 'session-1');
+    });
+  });
 }

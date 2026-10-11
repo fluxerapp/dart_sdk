@@ -61,7 +61,7 @@ class FakeGatewaySocket implements WebSocketChannel {
       'op': GatewayOpcodes.dispatch,
       't': 'RESUMED',
       's': seq,
-      'd': null,
+      'd': <String, Object?>{},
     });
   }
 
@@ -98,13 +98,15 @@ class FakeGatewaySink implements WebSocketSink {
 }
 
 class FakeGateway {
-  FakeGateway({double jitter = 0.5}) {
+  FakeGateway({double jitter = 0.5, Duration? resumeResponseTimeout}) {
     connection = GatewayConnection(
       token: 'token',
       dio: Dio(),
       gatewayUrl: 'wss://gateway.test',
       compress: 'none',
       nextJitter: () => jitter,
+      resumeResponseTimeout:
+          resumeResponseTimeout ?? const Duration(seconds: 15),
       openSocket: (Uri uri, {Map<String, String>? headers}) {
         final FakeGatewaySocket socket = FakeGatewaySocket();
         sockets.add(socket);

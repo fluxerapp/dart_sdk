@@ -96,6 +96,7 @@ class GatewayConnection {
     void Function(String name, void Function() body)? traceSync,
     double Function()? nextJitter,
     GatewaySocketConnect? openSocket,
+    Duration resumeResponseTimeout = const Duration(seconds: 15),
   }) : _token = token,
        _dio = dio,
        _gatewayUrlOverride = gatewayUrl,
@@ -114,7 +115,8 @@ class GatewayConnection {
            ),
        _presence = presence,
        _nextJitter = nextJitter ?? Random().nextDouble,
-       _openSocket = openSocket ?? openGatewayWebSocket;
+       _openSocket = openSocket ?? openGatewayWebSocket,
+       _resumeResponseTimeout = resumeResponseTimeout;
 
   String _token;
   final Dio _dio;
@@ -130,6 +132,7 @@ class GatewayConnection {
   GatewayPresence? _presence;
   final double Function() _nextJitter;
   final GatewaySocketConnect _openSocket;
+  final Duration _resumeResponseTimeout;
 
   final EventParser _eventParser = const EventParser();
   final SessionManager _session = SessionManager();
@@ -153,6 +156,7 @@ class GatewayConnection {
   String? _gatewayUrl;
   Timer? _reconnectTimer;
   Timer? _invalidSessionTimer;
+  Timer? _resumeTimer;
   Future<void>? _connectInFlight;
   DateTime? _lastReconnectScheduledAt;
   int _connectGeneration = 0;
@@ -311,6 +315,7 @@ class GatewayConnection {
   }
 
   Future<void> _closeTransport() async {
+    _cancelResumeTimer();
     _heartbeat?.stop();
     await _subscription?.cancel();
     _subscription = null;
@@ -751,6 +756,7 @@ class GatewayConnection {
   }
 
   void _onSocketClosed(int? closeCode) {
+    _cancelResumeTimer();
     _heartbeat?.stop();
 
     if (closeCode != null) {
@@ -799,6 +805,7 @@ class GatewayConnection {
       _connectedAt = DateTime.now();
       _setState(GatewayState.connected);
     } else if (eventType == 'RESUMED') {
+      _cancelResumeTimer();
       _reconnectAttempts = 0;
       _connectedAt = DateTime.now();
       _setState(GatewayState.connected);
@@ -826,6 +833,7 @@ class GatewayConnection {
   }
 
   void _handleInvalidSession(bool resumable) {
+    _cancelResumeTimer();
     if (!resumable) {
       _session.clear();
     }
@@ -902,6 +910,22 @@ class GatewayConnection {
         'seq': _session.lastSequence,
       },
     });
+    _resumeTimer?.cancel();
+    _resumeTimer = Timer(_resumeResponseTimeout, _onResumeTimeout);
+  }
+
+  void _onResumeTimeout() {
+    _resumeTimer = null;
+    if (_disposed) {
+      return;
+    }
+    _session.clear();
+    _closeAndReconnect();
+  }
+
+  void _cancelResumeTimer() {
+    _resumeTimer?.cancel();
+    _resumeTimer = null;
   }
 
   void _sendHeartbeat() {
@@ -937,6 +961,7 @@ class GatewayConnection {
   }
 
   Future<void> _tearDownSocket() async {
+    _cancelResumeTimer();
     _heartbeat?.stop();
     await _subscription?.cancel();
     _subscription = null;
