@@ -20,7 +20,7 @@ import 'package:fluxer_dart/gateway_client/session_manager.dart';
 import 'package:zstd_dart/zstd_dart.dart';
 
 const Duration kGatewayMinReconnect = Duration(milliseconds: 1000);
-const Duration kGatewayMaxReconnect = Duration(seconds: 60);
+const Duration kGatewayMaxReconnect = Duration(seconds: 10);
 const int kGatewayReconnectSpreadMs = 2000;
 const double kGatewayReconnectJitterFactor = 0.25;
 
@@ -162,6 +162,7 @@ class GatewayConnection {
   int _reconnectAttempts = 0;
   bool _disposed = false;
   bool _reconnectSuspended = false;
+  bool _reconnectThrottledByServer = false;
   String? _gatewayUrl;
   Timer? _reconnectTimer;
   Timer? _invalidSessionTimer;
@@ -284,8 +285,6 @@ class GatewayConnection {
     }
   }
 
-  /// Cancels pending backoff and reconnects immediately.
-  /// Does not reset the attempt counter. READY and RESUMED do that.
   /// An attempt that is already connecting is left in place.
   Future<void> reconnectNow() async {
     if (_disposed) return;
@@ -293,6 +292,10 @@ class GatewayConnection {
     if (inFlight != null) {
       return inFlight;
     }
+    if (_reconnectThrottledByServer && _reconnectTimer != null) {
+      return;
+    }
+    _reconnectAttempts = 0;
     _connectGeneration++;
     _cancelReconnectTimer();
     await _tearDownSocket();
@@ -303,26 +306,6 @@ class GatewayConnection {
       return;
     }
     await connect();
-  }
-
-  Future<void> nudgeReconnect() {
-    if (_disposed) {
-      return Future<void>.value();
-    }
-    _reconnectSuspended = false;
-    final Future<void>? inFlight = _connectInFlight;
-    if (inFlight != null) {
-      return inFlight;
-    }
-    if (_reconnectTimer != null ||
-        _state == GatewayState.connecting ||
-        _state == GatewayState.reconnecting ||
-        _state == GatewayState.connected ||
-        _state == GatewayState.failed) {
-      return Future<void>.value();
-    }
-    _scheduleReconnect();
-    return Future<void>.value();
   }
 
   Future<void> _closeTransport() async {
@@ -782,6 +765,8 @@ class GatewayConnection {
       _session.clear();
     }
 
+    _reconnectThrottledByServer =
+        closeCode == GatewayCloseCode.rateLimited.code;
     if (closeCode != null) {
       final code = GatewayCloseCode.fromCode(closeCode);
       if (code != null && code.isFatal) {
@@ -1040,6 +1025,7 @@ class GatewayConnection {
     }
     _reconnectTimer = Timer(delay, () {
       _reconnectTimer = null;
+      _reconnectThrottledByServer = false;
       if (!_disposed && !_reconnectSuspended) {
         unawaited(connect());
       }
