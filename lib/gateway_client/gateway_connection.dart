@@ -171,6 +171,8 @@ class GatewayConnection {
   int _connectGeneration = 0;
   Duration? _lastHeartbeatInterval;
   DateTime? _connectedAt;
+  String? _readyLatitude;
+  String? _readyLongitude;
   int _consecutiveDecodeFailureReconnects = 0;
   bool _disableCompressionForNextConnection = false;
   late String _activeCompress;
@@ -534,7 +536,14 @@ class GatewayConnection {
     if (_state != GatewayState.connected || _channel == null) {
       return false;
     }
-    _send({'op': GatewayOpcodes.voiceStateUpdate, 'd': update.toJson()});
+    final Map<String, Object?> data = update.toJson();
+    if (_readyLatitude case final String latitude) {
+      data.putIfAbsent('latitude', () => latitude);
+    }
+    if (_readyLongitude case final String longitude) {
+      data.putIfAbsent('longitude', () => longitude);
+    }
+    _send({'op': GatewayOpcodes.voiceStateUpdate, 'd': data});
     return true;
   }
 
@@ -815,6 +824,12 @@ class GatewayConnection {
     if (eventType == 'READY') {
       final sessionId = data['session_id'] as String;
       _session.setSession(sessionId);
+      if (data['latitude'] case final String latitude) {
+        _readyLatitude = latitude;
+      }
+      if (data['longitude'] case final String longitude) {
+        _readyLongitude = longitude;
+      }
       _reconnectAttempts = 0;
       _connectedAt = DateTime.now();
       _setState(GatewayState.connected);
