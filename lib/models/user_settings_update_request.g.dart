@@ -18,6 +18,14 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
         'status',
         (v) => v == null ? null : UserStatusType.fromJson(v as String),
       ),
+      statusResetsAtValue: $checkedConvert(
+        'status_resets_at',
+        (v) => v as String?,
+      ),
+      statusResetsToValue: $checkedConvert(
+        'status_resets_to',
+        (v) => v == null ? null : UserStatusType.fromJson(v as String),
+      ),
       theme: $checkedConvert(
         'theme',
         (v) => v == null ? null : UserThemeType.fromJson(v as String),
@@ -95,6 +103,16 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
             )
             .toList(),
       ),
+      customStatusValue: $checkedConvert(
+        'custom_status',
+        (v) => v == null
+            ? null
+            : CustomStatusPayload.fromJson(v as Map<String, dynamic>),
+      ),
+      syncedPreferencesValue: $checkedConvert(
+        'synced_preferences',
+        (v) => v as String?,
+      ),
       timeFormat: $checkedConvert(
         'time_format',
         (v) => v == null
@@ -132,6 +150,14 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
         'suppress_unprivileged_self_mentions',
         (v) => v as bool?,
       ),
+      suppressUnprivilegedSelfMentionsBypassUserIdsValue: $checkedConvert(
+        'suppress_unprivileged_self_mentions_bypass_user_ids',
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+      ),
+      staffDmAccessUserIdsValue: $checkedConvert(
+        'staff_dm_access_user_ids',
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+      ),
       profilePrivacy: $checkedConvert(
         'profile_privacy',
         (v) => v == null
@@ -152,6 +178,8 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
   },
   fieldKeyMap: const {
     'gifAutoPlay': 'gif_auto_play',
+    'statusResetsAtValue': 'status_resets_at',
+    'statusResetsToValue': 'status_resets_to',
     'guildPositions': 'guild_positions',
     'restrictedGuilds': 'restricted_guilds',
     'botRestrictedGuilds': 'bot_restricted_guilds',
@@ -169,6 +197,8 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
     'incomingCallFlags': 'incoming_call_flags',
     'groupDmAddPermissionFlags': 'group_dm_add_permission_flags',
     'guildFolders': 'guild_folders',
+    'customStatusValue': 'custom_status',
+    'syncedPreferencesValue': 'synced_preferences',
     'timeFormat': 'time_format',
     'developerMode': 'developer_mode',
     'trustedDomains': 'trusted_domains',
@@ -178,6 +208,9 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
         'sensitive_content_non_friend_dm_filter',
     'sensitiveContentGuildFilter': 'sensitive_content_guild_filter',
     'suppressUnprivilegedSelfMentions': 'suppress_unprivileged_self_mentions',
+    'suppressUnprivilegedSelfMentionsBypassUserIdsValue':
+        'suppress_unprivileged_self_mentions_bypass_user_ids',
+    'staffDmAccessUserIdsValue': 'staff_dm_access_user_ids',
     'profilePrivacy': 'profile_privacy',
     'defaultShareVoiceActivity': 'default_share_voice_activity',
     'privacySetupVersion': 'privacy_setup_version',
@@ -225,4 +258,11 @@ Map<String, dynamic> _$UserSettingsUpdateRequestToJson(
   'profile_privacy': ?instance.profilePrivacy,
   'default_share_voice_activity': ?instance.defaultShareVoiceActivity,
   'privacy_setup_version': ?instance.privacySetupVersion,
+  'status_resets_at': ?instance.statusResetsAtValue,
+  'status_resets_to': ?instance.statusResetsToValue,
+  'custom_status': ?instance.customStatusValue,
+  'suppress_unprivileged_self_mentions_bypass_user_ids':
+      ?instance.suppressUnprivilegedSelfMentionsBypassUserIdsValue,
+  'staff_dm_access_user_ids': ?instance.staffDmAccessUserIdsValue,
+  'synced_preferences': ?instance.syncedPreferencesValue,
 };

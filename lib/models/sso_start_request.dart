@@ -14,16 +14,14 @@ class SsoStartRequest {
     JsonNullable<String> redirectTo = const JsonNullable<String>.undefined(),
     JsonNullable<String> redirectUri = const JsonNullable<String>.undefined(),
   }) : redirectTo = redirectTo,
-       _redirectToValue = redirectTo.value,
+       redirectToValue = redirectTo.value,
        _redirectToPresent = redirectTo.isPresent,
        redirectUri = redirectUri,
-       _redirectUriValue = redirectUri.value,
+       redirectUriValue = redirectUri.value,
        _redirectUriPresent = redirectUri.isPresent;
 
-  const SsoStartRequest._()
-    : _redirectUriValue = null,
-      _redirectToValue = null,
-      redirectTo = const JsonNullable<String>.undefined(),
+  const SsoStartRequest._({this.redirectToValue, this.redirectUriValue})
+    : redirectTo = const JsonNullable<String>.undefined(),
       _redirectToPresent = false,
       redirectUri = const JsonNullable<String>.undefined(),
       _redirectUriPresent = false;
@@ -34,10 +32,10 @@ class SsoStartRequest {
     final value = _$SsoStartRequestFromJson(json);
     return SsoStartRequest(
       redirectTo: json.containsKey('redirect_to')
-          ? JsonNullable<String>.of(value._redirectToValue)
+          ? JsonNullable<String>.of(value.redirectToValue)
           : const JsonNullable<String>.undefined(),
       redirectUri: json.containsKey('redirect_uri')
-          ? JsonNullable<String>.of(value._redirectUriValue)
+          ? JsonNullable<String>.of(value.redirectUriValue)
           : const JsonNullable<String>.undefined(),
     );
   }
@@ -45,21 +43,21 @@ class SsoStartRequest {
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> redirectTo;
   @JsonKey(includeIfNull: false, name: 'redirect_to')
-  final String? _redirectToValue;
+  final String? redirectToValue;
   final bool _redirectToPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> redirectUri;
   @JsonKey(includeIfNull: false, name: 'redirect_uri')
-  final String? _redirectUriValue;
+  final String? redirectUriValue;
   final bool _redirectUriPresent;
 
   Map<String, Object?> toJson() {
     final json = _$SsoStartRequestToJson(this);
     if (_redirectToPresent) {
-      json.putIfAbsent('redirect_to', () => _redirectToValue);
+      json.putIfAbsent('redirect_to', () => redirectToValue);
     }
     if (_redirectUriPresent) {
-      json.putIfAbsent('redirect_uri', () => _redirectUriValue);
+      json.putIfAbsent('redirect_uri', () => redirectUriValue);
     }
     return json;
   }

@@ -18,15 +18,15 @@ class GuildStickerCreateRequest {
     this.tags = const [],
     JsonNullable<String> description = const JsonNullable<String>.undefined(),
   }) : description = description,
-       _descriptionValue = description.value,
+       descriptionValue = description.value,
        _descriptionPresent = description.isPresent;
 
   const GuildStickerCreateRequest._({
     required this.name,
     required this.image,
     this.tags = const [],
-  }) : _descriptionValue = null,
-       description = const JsonNullable<String>.undefined(),
+    this.descriptionValue,
+  }) : description = const JsonNullable<String>.undefined(),
        _descriptionPresent = false;
   factory GuildStickerCreateRequest.patch(Map<String, Object?> json) =>
       GuildStickerCreateRequest.fromJson(json);
@@ -38,7 +38,7 @@ class GuildStickerCreateRequest {
       image: value.image,
       tags: value.tags,
       description: json.containsKey('description')
-          ? JsonNullable<String>.of(value._descriptionValue)
+          ? JsonNullable<String>.of(value.descriptionValue)
           : const JsonNullable<String>.undefined(),
     );
   }
@@ -56,13 +56,13 @@ class GuildStickerCreateRequest {
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> description;
   @JsonKey(includeIfNull: false, name: 'description')
-  final String? _descriptionValue;
+  final String? descriptionValue;
   final bool _descriptionPresent;
 
   Map<String, Object?> toJson() {
     final json = _$GuildStickerCreateRequestToJson(this);
     if (_descriptionPresent) {
-      json.putIfAbsent('description', () => _descriptionValue);
+      json.putIfAbsent('description', () => descriptionValue);
     }
     return json;
   }

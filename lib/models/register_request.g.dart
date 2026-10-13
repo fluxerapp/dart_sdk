@@ -24,12 +24,21 @@ RegisterRequest _$RegisterRequestFromJson(Map<String, dynamic> json) =>
                 ? null
                 : RegisterRequestThemeTheme.fromJson(v as String),
           ),
+          inviteCodeValue: $checkedConvert('invite_code', (v) => v as String?),
+          registrationUrlCodeValue: $checkedConvert(
+            'registration_url_code',
+            (v) => v as String?,
+          ),
+          setupTokenValue: $checkedConvert('setup_token', (v) => v as String?),
         );
         return val;
       },
       fieldKeyMap: const {
         'globalName': 'global_name',
         'dateOfBirth': 'date_of_birth',
+        'inviteCodeValue': 'invite_code',
+        'registrationUrlCodeValue': 'registration_url_code',
+        'setupTokenValue': 'setup_token',
       },
     );
 
@@ -42,4 +51,7 @@ Map<String, dynamic> _$RegisterRequestToJson(RegisterRequest instance) =>
       'date_of_birth': ?instance.dateOfBirth,
       'consent': instance.consent,
       'theme': ?instance.theme,
+      'invite_code': ?instance.inviteCodeValue,
+      'registration_url_code': ?instance.registrationUrlCodeValue,
+      'setup_token': ?instance.setupTokenValue,
     };

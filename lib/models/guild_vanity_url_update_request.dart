@@ -13,12 +13,11 @@ class GuildVanityUrlUpdateRequest {
   GuildVanityUrlUpdateRequest({
     JsonNullable<String> code = const JsonNullable<String>.undefined(),
   }) : code = code,
-       _codeValue = code.value,
+       codeValue = code.value,
        _codePresent = code.isPresent;
 
-  const GuildVanityUrlUpdateRequest._()
-    : _codeValue = null,
-      code = const JsonNullable<String>.undefined(),
+  const GuildVanityUrlUpdateRequest._({this.codeValue})
+    : code = const JsonNullable<String>.undefined(),
       _codePresent = false;
   factory GuildVanityUrlUpdateRequest.patch(Map<String, Object?> json) =>
       GuildVanityUrlUpdateRequest.fromJson(json);
@@ -27,7 +26,7 @@ class GuildVanityUrlUpdateRequest {
     final value = _$GuildVanityUrlUpdateRequestFromJson(json);
     return GuildVanityUrlUpdateRequest(
       code: json.containsKey('code')
-          ? JsonNullable<String>.of(value._codeValue)
+          ? JsonNullable<String>.of(value.codeValue)
           : const JsonNullable<String>.undefined(),
     );
   }
@@ -35,13 +34,13 @@ class GuildVanityUrlUpdateRequest {
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> code;
   @JsonKey(includeIfNull: false, name: 'code')
-  final String? _codeValue;
+  final String? codeValue;
   final bool _codePresent;
 
   Map<String, Object?> toJson() {
     final json = _$GuildVanityUrlUpdateRequestToJson(this);
     if (_codePresent) {
-      json.putIfAbsent('code', () => _codeValue);
+      json.putIfAbsent('code', () => codeValue);
     }
     return json;
   }

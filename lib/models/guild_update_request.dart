@@ -60,33 +60,36 @@ class GuildUpdateRequest {
     JsonNullable<DateTime> messageHistoryCutoff =
         const JsonNullable<DateTime>.undefined(),
   }) : icon = icon,
-       _iconValue = icon.value,
+       iconValue = icon.value,
        _iconPresent = icon.isPresent,
        systemChannelId = systemChannelId,
-       _systemChannelIdValue = systemChannelId.value,
+       systemChannelIdValue = systemChannelId.value,
        _systemChannelIdPresent = systemChannelId.isPresent,
        afkChannelId = afkChannelId,
-       _afkChannelIdValue = afkChannelId.value,
+       afkChannelIdValue = afkChannelId.value,
        _afkChannelIdPresent = afkChannelId.isPresent,
        contentWarningText = contentWarningText,
-       _contentWarningTextValue = contentWarningText.value,
+       contentWarningTextValue = contentWarningText.value,
        _contentWarningTextPresent = contentWarningText.isPresent,
        banner = banner,
-       _bannerValue = banner.value,
+       bannerValue = banner.value,
        _bannerPresent = banner.isPresent,
        splash = splash,
-       _splashValue = splash.value,
+       splashValue = splash.value,
        _splashPresent = splash.isPresent,
        embedSplash = embedSplash,
-       _embedSplashValue = embedSplash.value,
+       embedSplashValue = embedSplash.value,
        _embedSplashPresent = embedSplash.isPresent,
        messageHistoryCutoff = messageHistoryCutoff,
-       _messageHistoryCutoffValue = messageHistoryCutoff.value,
+       messageHistoryCutoffValue = messageHistoryCutoff.value,
        _messageHistoryCutoffPresent = messageHistoryCutoff.isPresent;
 
   const GuildUpdateRequest._({
     this.name,
+    this.iconValue,
+    this.systemChannelIdValue,
     this.systemChannelFlags,
+    this.afkChannelIdValue,
     this.afkTimeout,
     this.defaultMessageNotifications,
     this.verificationLevel,
@@ -94,23 +97,20 @@ class GuildUpdateRequest {
     this.nsfwLevel,
     this.nsfw,
     this.contentWarningLevel,
+    this.contentWarningTextValue,
     this.explicitContentFilter,
+    this.bannerValue,
+    this.splashValue,
+    this.embedSplashValue,
     this.splashCardAlignment,
     this.features,
+    this.messageHistoryCutoffValue,
     this.password,
     this.mfaMethod,
     this.mfaCode,
     this.webauthnResponse,
     this.webauthnChallenge,
-  }) : _iconValue = null,
-       _systemChannelIdValue = null,
-       _afkChannelIdValue = null,
-       _contentWarningTextValue = null,
-       _bannerValue = null,
-       _splashValue = null,
-       _embedSplashValue = null,
-       _messageHistoryCutoffValue = null,
-       icon = const JsonNullable<Base64ImageType>.undefined(),
+  }) : icon = const JsonNullable<Base64ImageType>.undefined(),
        _iconPresent = false,
        systemChannelId = const JsonNullable<SnowflakeType>.undefined(),
        _systemChannelIdPresent = false,
@@ -134,14 +134,14 @@ class GuildUpdateRequest {
     return GuildUpdateRequest(
       name: value.name,
       icon: json.containsKey('icon')
-          ? JsonNullable<Base64ImageType>.of(value._iconValue)
+          ? JsonNullable<Base64ImageType>.of(value.iconValue)
           : const JsonNullable<Base64ImageType>.undefined(),
       systemChannelId: json.containsKey('system_channel_id')
-          ? JsonNullable<SnowflakeType>.of(value._systemChannelIdValue)
+          ? JsonNullable<SnowflakeType>.of(value.systemChannelIdValue)
           : const JsonNullable<SnowflakeType>.undefined(),
       systemChannelFlags: value.systemChannelFlags,
       afkChannelId: json.containsKey('afk_channel_id')
-          ? JsonNullable<SnowflakeType>.of(value._afkChannelIdValue)
+          ? JsonNullable<SnowflakeType>.of(value.afkChannelIdValue)
           : const JsonNullable<SnowflakeType>.undefined(),
       afkTimeout: value.afkTimeout,
       defaultMessageNotifications: value.defaultMessageNotifications,
@@ -151,22 +151,22 @@ class GuildUpdateRequest {
       nsfw: value.nsfw,
       contentWarningLevel: value.contentWarningLevel,
       contentWarningText: json.containsKey('content_warning_text')
-          ? JsonNullable<String>.of(value._contentWarningTextValue)
+          ? JsonNullable<String>.of(value.contentWarningTextValue)
           : const JsonNullable<String>.undefined(),
       explicitContentFilter: value.explicitContentFilter,
       banner: json.containsKey('banner')
-          ? JsonNullable<Base64ImageType>.of(value._bannerValue)
+          ? JsonNullable<Base64ImageType>.of(value.bannerValue)
           : const JsonNullable<Base64ImageType>.undefined(),
       splash: json.containsKey('splash')
-          ? JsonNullable<Base64ImageType>.of(value._splashValue)
+          ? JsonNullable<Base64ImageType>.of(value.splashValue)
           : const JsonNullable<Base64ImageType>.undefined(),
       embedSplash: json.containsKey('embed_splash')
-          ? JsonNullable<Base64ImageType>.of(value._embedSplashValue)
+          ? JsonNullable<Base64ImageType>.of(value.embedSplashValue)
           : const JsonNullable<Base64ImageType>.undefined(),
       splashCardAlignment: value.splashCardAlignment,
       features: value.features,
       messageHistoryCutoff: json.containsKey('message_history_cutoff')
-          ? JsonNullable<DateTime>.of(value._messageHistoryCutoffValue)
+          ? JsonNullable<DateTime>.of(value.messageHistoryCutoffValue)
           : const JsonNullable<DateTime>.undefined(),
       password: value.password,
       mfaMethod: value.mfaMethod,
@@ -241,71 +241,71 @@ class GuildUpdateRequest {
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<Base64ImageType> icon;
   @JsonKey(includeIfNull: false, name: 'icon')
-  final Base64ImageType? _iconValue;
+  final Base64ImageType? iconValue;
   final bool _iconPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<SnowflakeType> systemChannelId;
   @JsonKey(includeIfNull: false, name: 'system_channel_id')
-  final SnowflakeType? _systemChannelIdValue;
+  final SnowflakeType? systemChannelIdValue;
   final bool _systemChannelIdPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<SnowflakeType> afkChannelId;
   @JsonKey(includeIfNull: false, name: 'afk_channel_id')
-  final SnowflakeType? _afkChannelIdValue;
+  final SnowflakeType? afkChannelIdValue;
   final bool _afkChannelIdPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> contentWarningText;
   @JsonKey(includeIfNull: false, name: 'content_warning_text')
-  final String? _contentWarningTextValue;
+  final String? contentWarningTextValue;
   final bool _contentWarningTextPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<Base64ImageType> banner;
   @JsonKey(includeIfNull: false, name: 'banner')
-  final Base64ImageType? _bannerValue;
+  final Base64ImageType? bannerValue;
   final bool _bannerPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<Base64ImageType> splash;
   @JsonKey(includeIfNull: false, name: 'splash')
-  final Base64ImageType? _splashValue;
+  final Base64ImageType? splashValue;
   final bool _splashPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<Base64ImageType> embedSplash;
   @JsonKey(includeIfNull: false, name: 'embed_splash')
-  final Base64ImageType? _embedSplashValue;
+  final Base64ImageType? embedSplashValue;
   final bool _embedSplashPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<DateTime> messageHistoryCutoff;
   @JsonKey(includeIfNull: false, name: 'message_history_cutoff')
-  final DateTime? _messageHistoryCutoffValue;
+  final DateTime? messageHistoryCutoffValue;
   final bool _messageHistoryCutoffPresent;
 
   Map<String, Object?> toJson() {
     final json = _$GuildUpdateRequestToJson(this);
     if (_iconPresent) {
-      json.putIfAbsent('icon', () => _iconValue);
+      json.putIfAbsent('icon', () => iconValue);
     }
     if (_systemChannelIdPresent) {
-      json.putIfAbsent('system_channel_id', () => _systemChannelIdValue);
+      json.putIfAbsent('system_channel_id', () => systemChannelIdValue);
     }
     if (_afkChannelIdPresent) {
-      json.putIfAbsent('afk_channel_id', () => _afkChannelIdValue);
+      json.putIfAbsent('afk_channel_id', () => afkChannelIdValue);
     }
     if (_contentWarningTextPresent) {
-      json.putIfAbsent('content_warning_text', () => _contentWarningTextValue);
+      json.putIfAbsent('content_warning_text', () => contentWarningTextValue);
     }
     if (_bannerPresent) {
-      json.putIfAbsent('banner', () => _bannerValue);
+      json.putIfAbsent('banner', () => bannerValue);
     }
     if (_splashPresent) {
-      json.putIfAbsent('splash', () => _splashValue);
+      json.putIfAbsent('splash', () => splashValue);
     }
     if (_embedSplashPresent) {
-      json.putIfAbsent('embed_splash', () => _embedSplashValue);
+      json.putIfAbsent('embed_splash', () => embedSplashValue);
     }
     if (_messageHistoryCutoffPresent) {
       json.putIfAbsent(
         'message_history_cutoff',
-        () => _messageHistoryCutoffValue,
+        () => messageHistoryCutoffValue,
       );
     }
     return json;

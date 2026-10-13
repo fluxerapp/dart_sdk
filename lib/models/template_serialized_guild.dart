@@ -26,24 +26,24 @@ class TemplateSerializedGuild {
     JsonNullable<String> systemChannelId =
         const JsonNullable<String>.undefined(),
   }) : description = description,
-       _descriptionValue = description.value,
+       descriptionValue = description.value,
        _descriptionPresent = description.isPresent,
        systemChannelId = systemChannelId,
-       _systemChannelIdValue = systemChannelId.value,
+       systemChannelIdValue = systemChannelId.value,
        _systemChannelIdPresent = systemChannelId.isPresent;
 
   const TemplateSerializedGuild._({
     required this.name,
     required this.roles,
     required this.channels,
+    this.descriptionValue,
     this.verificationLevel,
     this.defaultMessageNotifications,
     this.explicitContentFilter,
+    this.systemChannelIdValue,
     this.afkTimeout,
     this.systemChannelFlags,
-  }) : _descriptionValue = null,
-       _systemChannelIdValue = null,
-       description = const JsonNullable<String>.undefined(),
+  }) : description = const JsonNullable<String>.undefined(),
        _descriptionPresent = false,
        systemChannelId = const JsonNullable<String>.undefined(),
        _systemChannelIdPresent = false;
@@ -57,13 +57,13 @@ class TemplateSerializedGuild {
       roles: value.roles,
       channels: value.channels,
       description: json.containsKey('description')
-          ? JsonNullable<String>.of(value._descriptionValue)
+          ? JsonNullable<String>.of(value.descriptionValue)
           : const JsonNullable<String>.undefined(),
       verificationLevel: value.verificationLevel,
       defaultMessageNotifications: value.defaultMessageNotifications,
       explicitContentFilter: value.explicitContentFilter,
       systemChannelId: json.containsKey('system_channel_id')
-          ? JsonNullable<String>.of(value._systemChannelIdValue)
+          ? JsonNullable<String>.of(value.systemChannelIdValue)
           : const JsonNullable<String>.undefined(),
       afkTimeout: value.afkTimeout,
       systemChannelFlags: value.systemChannelFlags,
@@ -104,21 +104,21 @@ class TemplateSerializedGuild {
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> description;
   @JsonKey(includeIfNull: false, name: 'description')
-  final String? _descriptionValue;
+  final String? descriptionValue;
   final bool _descriptionPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> systemChannelId;
   @JsonKey(includeIfNull: false, name: 'system_channel_id')
-  final String? _systemChannelIdValue;
+  final String? systemChannelIdValue;
   final bool _systemChannelIdPresent;
 
   Map<String, Object?> toJson() {
     final json = _$TemplateSerializedGuildToJson(this);
     if (_descriptionPresent) {
-      json.putIfAbsent('description', () => _descriptionValue);
+      json.putIfAbsent('description', () => descriptionValue);
     }
     if (_systemChannelIdPresent) {
-      json.putIfAbsent('system_channel_id', () => _systemChannelIdValue);
+      json.putIfAbsent('system_channel_id', () => systemChannelIdValue);
     }
     return json;
   }

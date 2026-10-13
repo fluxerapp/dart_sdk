@@ -25,23 +25,23 @@ class BotProfileUpdateRequest {
         const JsonNullable<Base64ImageType>.undefined(),
     JsonNullable<String> bio = const JsonNullable<String>.undefined(),
   }) : avatar = avatar,
-       _avatarValue = avatar.value,
+       avatarValue = avatar.value,
        _avatarPresent = avatar.isPresent,
        banner = banner,
-       _bannerValue = banner.value,
+       bannerValue = banner.value,
        _bannerPresent = banner.isPresent,
        bio = bio,
-       _bioValue = bio.value,
+       bioValue = bio.value,
        _bioPresent = bio.isPresent;
 
   const BotProfileUpdateRequest._({
     this.username,
     this.discriminator,
+    this.avatarValue,
+    this.bannerValue,
+    this.bioValue,
     this.botFlags,
-  }) : _avatarValue = null,
-       _bannerValue = null,
-       _bioValue = null,
-       avatar = const JsonNullable<Base64ImageType>.undefined(),
+  }) : avatar = const JsonNullable<Base64ImageType>.undefined(),
        _avatarPresent = false,
        banner = const JsonNullable<Base64ImageType>.undefined(),
        _bannerPresent = false,
@@ -56,13 +56,13 @@ class BotProfileUpdateRequest {
       username: value.username,
       discriminator: value.discriminator,
       avatar: json.containsKey('avatar')
-          ? JsonNullable<Base64ImageType>.of(value._avatarValue)
+          ? JsonNullable<Base64ImageType>.of(value.avatarValue)
           : const JsonNullable<Base64ImageType>.undefined(),
       banner: json.containsKey('banner')
-          ? JsonNullable<Base64ImageType>.of(value._bannerValue)
+          ? JsonNullable<Base64ImageType>.of(value.bannerValue)
           : const JsonNullable<Base64ImageType>.undefined(),
       bio: json.containsKey('bio')
-          ? JsonNullable<String>.of(value._bioValue)
+          ? JsonNullable<String>.of(value.bioValue)
           : const JsonNullable<String>.undefined(),
       botFlags: value.botFlags,
     );
@@ -80,29 +80,29 @@ class BotProfileUpdateRequest {
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<Base64ImageType> avatar;
   @JsonKey(includeIfNull: false, name: 'avatar')
-  final Base64ImageType? _avatarValue;
+  final Base64ImageType? avatarValue;
   final bool _avatarPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<Base64ImageType> banner;
   @JsonKey(includeIfNull: false, name: 'banner')
-  final Base64ImageType? _bannerValue;
+  final Base64ImageType? bannerValue;
   final bool _bannerPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> bio;
   @JsonKey(includeIfNull: false, name: 'bio')
-  final String? _bioValue;
+  final String? bioValue;
   final bool _bioPresent;
 
   Map<String, Object?> toJson() {
     final json = _$BotProfileUpdateRequestToJson(this);
     if (_avatarPresent) {
-      json.putIfAbsent('avatar', () => _avatarValue);
+      json.putIfAbsent('avatar', () => avatarValue);
     }
     if (_bannerPresent) {
-      json.putIfAbsent('banner', () => _bannerValue);
+      json.putIfAbsent('banner', () => bannerValue);
     }
     if (_bioPresent) {
-      json.putIfAbsent('bio', () => _bioValue);
+      json.putIfAbsent('bio', () => bioValue);
     }
     return json;
   }

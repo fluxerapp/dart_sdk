@@ -19,13 +19,16 @@ class LoginRequest {
     this.login,
     JsonNullable<String> inviteCode = const JsonNullable<String>.undefined(),
   }) : inviteCode = inviteCode,
-       _inviteCodeValue = inviteCode.value,
+       inviteCodeValue = inviteCode.value,
        _inviteCodePresent = inviteCode.isPresent;
 
-  const LoginRequest._({required this.password, this.email, this.login})
-    : _inviteCodeValue = null,
-      inviteCode = const JsonNullable<String>.undefined(),
-      _inviteCodePresent = false;
+  const LoginRequest._({
+    required this.password,
+    this.email,
+    this.login,
+    this.inviteCodeValue,
+  }) : inviteCode = const JsonNullable<String>.undefined(),
+       _inviteCodePresent = false;
   factory LoginRequest.patch(Map<String, Object?> json) =>
       LoginRequest.fromJson(json);
 
@@ -36,7 +39,7 @@ class LoginRequest {
       email: value.email,
       login: value.login,
       inviteCode: json.containsKey('invite_code')
-          ? JsonNullable<String>.of(value._inviteCodeValue)
+          ? JsonNullable<String>.of(value.inviteCodeValue)
           : const JsonNullable<String>.undefined(),
     );
   }
@@ -55,13 +58,13 @@ class LoginRequest {
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> inviteCode;
   @JsonKey(includeIfNull: false, name: 'invite_code')
-  final String? _inviteCodeValue;
+  final String? inviteCodeValue;
   final bool _inviteCodePresent;
 
   Map<String, Object?> toJson() {
     final json = _$LoginRequestToJson(this);
     if (_inviteCodePresent) {
-      json.putIfAbsent('invite_code', () => _inviteCodeValue);
+      json.putIfAbsent('invite_code', () => inviteCodeValue);
     }
     return json;
   }

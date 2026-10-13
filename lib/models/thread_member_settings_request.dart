@@ -19,14 +19,18 @@ class ThreadMemberSettingsRequest {
     JsonNullable<ThreadMemberSettingsRequestMuteConfig> muteConfig =
         const JsonNullable<ThreadMemberSettingsRequestMuteConfig>.undefined(),
   }) : muteConfig = muteConfig,
-       _muteConfigValue = muteConfig.value,
+       muteConfigValue = muteConfig.value,
        _muteConfigPresent = muteConfig.isPresent;
 
-  const ThreadMemberSettingsRequest._({this.flags, this.muted})
-    : _muteConfigValue = null,
-      muteConfig =
-          const JsonNullable<ThreadMemberSettingsRequestMuteConfig>.undefined(),
-      _muteConfigPresent = false;
+  const ThreadMemberSettingsRequest._({
+    this.flags,
+    this.muted,
+    this.muteConfigValue,
+  }) : muteConfig =
+           const JsonNullable<
+             ThreadMemberSettingsRequestMuteConfig
+           >.undefined(),
+       _muteConfigPresent = false;
   factory ThreadMemberSettingsRequest.patch(Map<String, Object?> json) =>
       ThreadMemberSettingsRequest.fromJson(json);
 
@@ -37,7 +41,7 @@ class ThreadMemberSettingsRequest {
       muted: value.muted,
       muteConfig: json.containsKey('mute_config')
           ? JsonNullable<ThreadMemberSettingsRequestMuteConfig>.of(
-              value._muteConfigValue,
+              value.muteConfigValue,
             )
           : const JsonNullable<
               ThreadMemberSettingsRequestMuteConfig
@@ -55,13 +59,13 @@ class ThreadMemberSettingsRequest {
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<ThreadMemberSettingsRequestMuteConfig> muteConfig;
   @JsonKey(includeIfNull: false, name: 'mute_config')
-  final ThreadMemberSettingsRequestMuteConfig? _muteConfigValue;
+  final ThreadMemberSettingsRequestMuteConfig? muteConfigValue;
   final bool _muteConfigPresent;
 
   Map<String, Object?> toJson() {
     final json = _$ThreadMemberSettingsRequestToJson(this);
     if (_muteConfigPresent) {
-      json.putIfAbsent('mute_config', () => _muteConfigValue);
+      json.putIfAbsent('mute_config', () => muteConfigValue);
     }
     return json;
   }

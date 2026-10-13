@@ -20,15 +20,15 @@ class GuildCreateRequest {
     JsonNullable<Base64ImageType> icon =
         const JsonNullable<Base64ImageType>.undefined(),
   }) : icon = icon,
-       _iconValue = icon.value,
+       iconValue = icon.value,
        _iconPresent = icon.isPresent;
 
   const GuildCreateRequest._({
     required this.name,
+    this.iconValue,
     this.emptyFeatures,
     this.template,
-  }) : _iconValue = null,
-       icon = const JsonNullable<Base64ImageType>.undefined(),
+  }) : icon = const JsonNullable<Base64ImageType>.undefined(),
        _iconPresent = false;
   factory GuildCreateRequest.patch(Map<String, Object?> json) =>
       GuildCreateRequest.fromJson(json);
@@ -38,7 +38,7 @@ class GuildCreateRequest {
     return GuildCreateRequest(
       name: value.name,
       icon: json.containsKey('icon')
-          ? JsonNullable<Base64ImageType>.of(value._iconValue)
+          ? JsonNullable<Base64ImageType>.of(value.iconValue)
           : const JsonNullable<Base64ImageType>.undefined(),
       emptyFeatures: value.emptyFeatures,
       template: value.template,
@@ -59,13 +59,13 @@ class GuildCreateRequest {
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<Base64ImageType> icon;
   @JsonKey(includeIfNull: false, name: 'icon')
-  final Base64ImageType? _iconValue;
+  final Base64ImageType? iconValue;
   final bool _iconPresent;
 
   Map<String, Object?> toJson() {
     final json = _$GuildCreateRequestToJson(this);
     if (_iconPresent) {
-      json.putIfAbsent('icon', () => _iconValue);
+      json.putIfAbsent('icon', () => iconValue);
     }
     return json;
   }

@@ -17,6 +17,7 @@ GuildBanCreateRequest _$GuildBanCreateRequestFromJson(
         'delete_message_seconds',
         (v) => (v as num?)?.toInt(),
       ),
+      reasonValue: $checkedConvert('reason', (v) => v as String?),
       banDurationSeconds: $checkedConvert(
         'ban_duration_seconds',
         (v) => (v as num?)?.toInt(),
@@ -30,6 +31,7 @@ GuildBanCreateRequest _$GuildBanCreateRequestFromJson(
   },
   fieldKeyMap: const {
     'deleteMessageSeconds': 'delete_message_seconds',
+    'reasonValue': 'reason',
     'banDurationSeconds': 'ban_duration_seconds',
     'deleteMessageDays': 'delete_message_days',
   },
@@ -41,4 +43,5 @@ Map<String, dynamic> _$GuildBanCreateRequestToJson(
   'delete_message_days': instance.deleteMessageDays,
   'delete_message_seconds': ?instance.deleteMessageSeconds,
   'ban_duration_seconds': ?instance.banDurationSeconds,
+  'reason': ?instance.reasonValue,
 };

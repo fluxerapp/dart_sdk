@@ -19,12 +19,17 @@ ApplicationUpdateRequest _$ApplicationUpdateRequestFromJson(
         'bot_require_code_grant',
         (v) => v as bool?,
       ),
+      redirectUrisValue: $checkedConvert(
+        'redirect_uris',
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+      ),
     );
     return val;
   },
   fieldKeyMap: const {
     'botPublic': 'bot_public',
     'botRequireCodeGrant': 'bot_require_code_grant',
+    'redirectUrisValue': 'redirect_uris',
   },
 );
 
@@ -34,4 +39,5 @@ Map<String, dynamic> _$ApplicationUpdateRequestToJson(
   'name': ?instance.name,
   'bot_public': ?instance.botPublic,
   'bot_require_code_grant': ?instance.botRequireCodeGrant,
+  'redirect_uris': ?instance.redirectUrisValue,
 };

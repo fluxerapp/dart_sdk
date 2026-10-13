@@ -15,10 +15,15 @@ GifRegisterShareRequest _$GifRegisterShareRequestFromJson(
       'locale',
       (v) => v == null ? Locale.enUs : Locale.fromJson(v as String),
     ),
+    qValue: $checkedConvert('q', (v) => v as String?),
   );
   return val;
-});
+}, fieldKeyMap: const {'qValue': 'q'});
 
 Map<String, dynamic> _$GifRegisterShareRequestToJson(
   GifRegisterShareRequest instance,
-) => <String, dynamic>{'id': instance.id, 'locale': instance.locale};
+) => <String, dynamic>{
+  'id': instance.id,
+  'locale': instance.locale,
+  'q': ?instance.qValue,
+};

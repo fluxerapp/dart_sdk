@@ -13,12 +13,11 @@ class UserNoteUpdateRequest {
   UserNoteUpdateRequest({
     JsonNullable<String> note = const JsonNullable<String>.undefined(),
   }) : note = note,
-       _noteValue = note.value,
+       noteValue = note.value,
        _notePresent = note.isPresent;
 
-  const UserNoteUpdateRequest._()
-    : _noteValue = null,
-      note = const JsonNullable<String>.undefined(),
+  const UserNoteUpdateRequest._({this.noteValue})
+    : note = const JsonNullable<String>.undefined(),
       _notePresent = false;
   factory UserNoteUpdateRequest.patch(Map<String, Object?> json) =>
       UserNoteUpdateRequest.fromJson(json);
@@ -27,7 +26,7 @@ class UserNoteUpdateRequest {
     final value = _$UserNoteUpdateRequestFromJson(json);
     return UserNoteUpdateRequest(
       note: json.containsKey('note')
-          ? JsonNullable<String>.of(value._noteValue)
+          ? JsonNullable<String>.of(value.noteValue)
           : const JsonNullable<String>.undefined(),
     );
   }
@@ -35,13 +34,13 @@ class UserNoteUpdateRequest {
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> note;
   @JsonKey(includeIfNull: false, name: 'note')
-  final String? _noteValue;
+  final String? noteValue;
   final bool _notePresent;
 
   Map<String, Object?> toJson() {
     final json = _$UserNoteUpdateRequestToJson(this);
     if (_notePresent) {
-      json.putIfAbsent('note', () => _noteValue);
+      json.putIfAbsent('note', () => noteValue);
     }
     return json;
   }

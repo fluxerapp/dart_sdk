@@ -18,6 +18,18 @@ TemplateChannel _$TemplateChannelFromJson(Map<String, dynamic> json) =>
             'position',
             (v) => (v as num?)?.toInt() ?? 0,
           ),
+          nameValue: $checkedConvert('name', (v) => v as String?),
+          topicValue: $checkedConvert('topic', (v) => v as String?),
+          parentIdValue: $checkedConvert('parent_id', (v) => v as String?),
+          bitrateValue: $checkedConvert('bitrate', (v) => (v as num?)?.toInt()),
+          userLimitValue: $checkedConvert(
+            'user_limit',
+            (v) => (v as num?)?.toInt(),
+          ),
+          voiceConnectionLimitValue: $checkedConvert(
+            'voice_connection_limit',
+            (v) => (v as num?)?.toInt(),
+          ),
           nsfw: $checkedConvert('nsfw', (v) => v as bool?),
           rateLimitPerUser: $checkedConvert(
             'rate_limit_per_user',
@@ -37,6 +49,12 @@ TemplateChannel _$TemplateChannelFromJson(Map<String, dynamic> json) =>
         return val;
       },
       fieldKeyMap: const {
+        'nameValue': 'name',
+        'topicValue': 'topic',
+        'parentIdValue': 'parent_id',
+        'bitrateValue': 'bitrate',
+        'userLimitValue': 'user_limit',
+        'voiceConnectionLimitValue': 'voice_connection_limit',
         'rateLimitPerUser': 'rate_limit_per_user',
         'permissionOverwrites': 'permission_overwrites',
       },
@@ -50,4 +68,10 @@ Map<String, dynamic> _$TemplateChannelToJson(TemplateChannel instance) =>
       'nsfw': ?instance.nsfw,
       'rate_limit_per_user': ?instance.rateLimitPerUser,
       'permission_overwrites': ?instance.permissionOverwrites,
+      'name': ?instance.nameValue,
+      'topic': ?instance.topicValue,
+      'parent_id': ?instance.parentIdValue,
+      'bitrate': ?instance.bitrateValue,
+      'user_limit': ?instance.userLimitValue,
+      'voice_connection_limit': ?instance.voiceConnectionLimitValue,
     };

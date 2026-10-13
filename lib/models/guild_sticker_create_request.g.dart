@@ -17,9 +17,10 @@ GuildStickerCreateRequest _$GuildStickerCreateRequestFromJson(
       (v) =>
           (v as List<dynamic>?)?.map((e) => e as String).toList() ?? const [],
     ),
+    descriptionValue: $checkedConvert('description', (v) => v as String?),
   );
   return val;
-});
+}, fieldKeyMap: const {'descriptionValue': 'description'});
 
 Map<String, dynamic> _$GuildStickerCreateRequestToJson(
   GuildStickerCreateRequest instance,
@@ -27,4 +28,5 @@ Map<String, dynamic> _$GuildStickerCreateRequestToJson(
   'name': instance.name,
   'tags': instance.tags,
   'image': instance.image,
+  'description': ?instance.descriptionValue,
 };

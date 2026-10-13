@@ -16,15 +16,15 @@ class GuildBanCreateRequest {
     this.deleteMessageDays = 0,
     JsonNullable<String> reason = const JsonNullable<String>.undefined(),
   }) : reason = reason,
-       _reasonValue = reason.value,
+       reasonValue = reason.value,
        _reasonPresent = reason.isPresent;
 
   const GuildBanCreateRequest._({
     this.deleteMessageSeconds,
+    this.reasonValue,
     this.banDurationSeconds,
     this.deleteMessageDays = 0,
-  }) : _reasonValue = null,
-       reason = const JsonNullable<String>.undefined(),
+  }) : reason = const JsonNullable<String>.undefined(),
        _reasonPresent = false;
   factory GuildBanCreateRequest.patch(Map<String, Object?> json) =>
       GuildBanCreateRequest.fromJson(json);
@@ -34,7 +34,7 @@ class GuildBanCreateRequest {
     return GuildBanCreateRequest(
       deleteMessageSeconds: value.deleteMessageSeconds,
       reason: json.containsKey('reason')
-          ? JsonNullable<String>.of(value._reasonValue)
+          ? JsonNullable<String>.of(value.reasonValue)
           : const JsonNullable<String>.undefined(),
       banDurationSeconds: value.banDurationSeconds,
       deleteMessageDays: value.deleteMessageDays,
@@ -55,13 +55,13 @@ class GuildBanCreateRequest {
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> reason;
   @JsonKey(includeIfNull: false, name: 'reason')
-  final String? _reasonValue;
+  final String? reasonValue;
   final bool _reasonPresent;
 
   Map<String, Object?> toJson() {
     final json = _$GuildBanCreateRequestToJson(this);
     if (_reasonPresent) {
-      json.putIfAbsent('reason', () => _reasonValue);
+      json.putIfAbsent('reason', () => reasonValue);
     }
     return json;
   }

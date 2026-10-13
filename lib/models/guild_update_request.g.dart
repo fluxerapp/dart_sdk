@@ -14,10 +14,16 @@ GuildUpdateRequest _$GuildUpdateRequestFromJson(
   ($checkedConvert) {
     final val = GuildUpdateRequest._(
       name: $checkedConvert('name', (v) => v as String?),
+      iconValue: $checkedConvert('icon', (v) => v as String?),
+      systemChannelIdValue: $checkedConvert(
+        'system_channel_id',
+        (v) => v as String?,
+      ),
       systemChannelFlags: $checkedConvert(
         'system_channel_flags',
         (v) => (v as num?)?.toInt(),
       ),
+      afkChannelIdValue: $checkedConvert('afk_channel_id', (v) => v as String?),
       afkTimeout: $checkedConvert('afk_timeout', (v) => (v as num?)?.toInt()),
       defaultMessageNotifications: $checkedConvert(
         'default_message_notifications',
@@ -47,12 +53,19 @@ GuildUpdateRequest _$GuildUpdateRequestFromJson(
             ? null
             : ContentWarningLevelInput.fromJson((v as num).toInt()),
       ),
+      contentWarningTextValue: $checkedConvert(
+        'content_warning_text',
+        (v) => v as String?,
+      ),
       explicitContentFilter: $checkedConvert(
         'explicit_content_filter',
         (v) => v == null
             ? null
             : GuildExplicitContentFilterInput.fromJson((v as num).toInt()),
       ),
+      bannerValue: $checkedConvert('banner', (v) => v as String?),
+      splashValue: $checkedConvert('splash', (v) => v as String?),
+      embedSplashValue: $checkedConvert('embed_splash', (v) => v as String?),
       splashCardAlignment: $checkedConvert(
         'splash_card_alignment',
         (v) => v == null
@@ -64,6 +77,10 @@ GuildUpdateRequest _$GuildUpdateRequestFromJson(
       features: $checkedConvert(
         'features',
         (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+      ),
+      messageHistoryCutoffValue: $checkedConvert(
+        'message_history_cutoff',
+        (v) => v == null ? null : DateTime.parse(v as String),
       ),
       password: $checkedConvert('password', (v) => v as String?),
       mfaMethod: $checkedConvert(
@@ -89,15 +106,23 @@ GuildUpdateRequest _$GuildUpdateRequestFromJson(
     return val;
   },
   fieldKeyMap: const {
+    'iconValue': 'icon',
+    'systemChannelIdValue': 'system_channel_id',
     'systemChannelFlags': 'system_channel_flags',
+    'afkChannelIdValue': 'afk_channel_id',
     'afkTimeout': 'afk_timeout',
     'defaultMessageNotifications': 'default_message_notifications',
     'verificationLevel': 'verification_level',
     'mfaLevel': 'mfa_level',
     'nsfwLevel': 'nsfw_level',
     'contentWarningLevel': 'content_warning_level',
+    'contentWarningTextValue': 'content_warning_text',
     'explicitContentFilter': 'explicit_content_filter',
+    'bannerValue': 'banner',
+    'splashValue': 'splash',
+    'embedSplashValue': 'embed_splash',
     'splashCardAlignment': 'splash_card_alignment',
+    'messageHistoryCutoffValue': 'message_history_cutoff',
     'mfaMethod': 'mfa_method',
     'mfaCode': 'mfa_code',
     'webauthnResponse': 'webauthn_response',
@@ -124,4 +149,13 @@ Map<String, dynamic> _$GuildUpdateRequestToJson(GuildUpdateRequest instance) =>
       'mfa_code': ?instance.mfaCode,
       'webauthn_response': ?instance.webauthnResponse,
       'webauthn_challenge': ?instance.webauthnChallenge,
+      'icon': ?instance.iconValue,
+      'system_channel_id': ?instance.systemChannelIdValue,
+      'afk_channel_id': ?instance.afkChannelIdValue,
+      'content_warning_text': ?instance.contentWarningTextValue,
+      'banner': ?instance.bannerValue,
+      'splash': ?instance.splashValue,
+      'embed_splash': ?instance.embedSplashValue,
+      'message_history_cutoff': ?instance.messageHistoryCutoffValue
+          ?.toIso8601String(),
     };

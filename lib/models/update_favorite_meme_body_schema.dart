@@ -16,19 +16,20 @@ class UpdateFavoriteMemeBodySchema {
     JsonNullable<List<String>> tags =
         const JsonNullable<List<String>>.undefined(),
   }) : altText = altText,
-       _altTextValue = altText.value,
+       altTextValue = altText.value,
        _altTextPresent = altText.isPresent,
        tags = tags,
-       _tagsValue = tags.value,
+       tagsValue = tags.value,
        _tagsPresent = tags.isPresent;
 
-  const UpdateFavoriteMemeBodySchema._({this.name})
-    : _altTextValue = null,
-      _tagsValue = null,
-      altText = const JsonNullable<String>.undefined(),
-      _altTextPresent = false,
-      tags = const JsonNullable<List<String>>.undefined(),
-      _tagsPresent = false;
+  const UpdateFavoriteMemeBodySchema._({
+    this.name,
+    this.altTextValue,
+    this.tagsValue,
+  }) : altText = const JsonNullable<String>.undefined(),
+       _altTextPresent = false,
+       tags = const JsonNullable<List<String>>.undefined(),
+       _tagsPresent = false;
   factory UpdateFavoriteMemeBodySchema.patch(Map<String, Object?> json) =>
       UpdateFavoriteMemeBodySchema.fromJson(json);
 
@@ -37,10 +38,10 @@ class UpdateFavoriteMemeBodySchema {
     return UpdateFavoriteMemeBodySchema(
       name: value.name,
       altText: json.containsKey('alt_text')
-          ? JsonNullable<String>.of(value._altTextValue)
+          ? JsonNullable<String>.of(value.altTextValue)
           : const JsonNullable<String>.undefined(),
       tags: json.containsKey('tags')
-          ? JsonNullable<List<String>>.of(value._tagsValue)
+          ? JsonNullable<List<String>>.of(value.tagsValue)
           : const JsonNullable<List<String>>.undefined(),
     );
   }
@@ -51,21 +52,21 @@ class UpdateFavoriteMemeBodySchema {
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> altText;
   @JsonKey(includeIfNull: false, name: 'alt_text')
-  final String? _altTextValue;
+  final String? altTextValue;
   final bool _altTextPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<List<String>> tags;
   @JsonKey(includeIfNull: false, name: 'tags')
-  final List<String>? _tagsValue;
+  final List<String>? tagsValue;
   final bool _tagsPresent;
 
   Map<String, Object?> toJson() {
     final json = _$UpdateFavoriteMemeBodySchemaToJson(this);
     if (_altTextPresent) {
-      json.putIfAbsent('alt_text', () => _altTextValue);
+      json.putIfAbsent('alt_text', () => altTextValue);
     }
     if (_tagsPresent) {
-      json.putIfAbsent('tags', () => _tagsValue);
+      json.putIfAbsent('tags', () => tagsValue);
     }
     return json;
   }

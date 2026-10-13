@@ -18,14 +18,14 @@ class InstanceAccountIdentityUpdateRequest {
     this.tagStyle,
     JsonNullable<String> setupToken = const JsonNullable<String>.undefined(),
   }) : setupToken = setupToken,
-       _setupTokenValue = setupToken.value,
+       setupTokenValue = setupToken.value,
        _setupTokenPresent = setupToken.isPresent;
 
   const InstanceAccountIdentityUpdateRequest._({
     required this.mode,
     this.tagStyle,
-  }) : _setupTokenValue = null,
-       setupToken = const JsonNullable<String>.undefined(),
+    this.setupTokenValue,
+  }) : setupToken = const JsonNullable<String>.undefined(),
        _setupTokenPresent = false;
   factory InstanceAccountIdentityUpdateRequest.patch(
     Map<String, Object?> json,
@@ -39,7 +39,7 @@ class InstanceAccountIdentityUpdateRequest {
       mode: value.mode,
       tagStyle: value.tagStyle,
       setupToken: json.containsKey('setup_token')
-          ? JsonNullable<String>.of(value._setupTokenValue)
+          ? JsonNullable<String>.of(value.setupTokenValue)
           : const JsonNullable<String>.undefined(),
     );
   }
@@ -54,13 +54,13 @@ class InstanceAccountIdentityUpdateRequest {
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> setupToken;
   @JsonKey(includeIfNull: false, name: 'setup_token')
-  final String? _setupTokenValue;
+  final String? setupTokenValue;
   final bool _setupTokenPresent;
 
   Map<String, Object?> toJson() {
     final json = _$InstanceAccountIdentityUpdateRequestToJson(this);
     if (_setupTokenPresent) {
-      json.putIfAbsent('setup_token', () => _setupTokenValue);
+      json.putIfAbsent('setup_token', () => setupTokenValue);
     }
     return json;
   }

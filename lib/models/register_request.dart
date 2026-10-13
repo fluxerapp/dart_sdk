@@ -28,13 +28,13 @@ class RegisterRequest {
         const JsonNullable<String>.undefined(),
     JsonNullable<String> setupToken = const JsonNullable<String>.undefined(),
   }) : inviteCode = inviteCode,
-       _inviteCodeValue = inviteCode.value,
+       inviteCodeValue = inviteCode.value,
        _inviteCodePresent = inviteCode.isPresent,
        registrationUrlCode = registrationUrlCode,
-       _registrationUrlCodeValue = registrationUrlCode.value,
+       registrationUrlCodeValue = registrationUrlCode.value,
        _registrationUrlCodePresent = registrationUrlCode.isPresent,
        setupToken = setupToken,
-       _setupTokenValue = setupToken.value,
+       setupTokenValue = setupToken.value,
        _setupTokenPresent = setupToken.isPresent;
 
   const RegisterRequest._({
@@ -45,10 +45,10 @@ class RegisterRequest {
     this.password,
     this.dateOfBirth,
     this.theme,
-  }) : _inviteCodeValue = null,
-       _registrationUrlCodeValue = null,
-       _setupTokenValue = null,
-       inviteCode = const JsonNullable<String>.undefined(),
+    this.inviteCodeValue,
+    this.registrationUrlCodeValue,
+    this.setupTokenValue,
+  }) : inviteCode = const JsonNullable<String>.undefined(),
        _inviteCodePresent = false,
        registrationUrlCode = const JsonNullable<String>.undefined(),
        _registrationUrlCodePresent = false,
@@ -67,14 +67,14 @@ class RegisterRequest {
       password: value.password,
       dateOfBirth: value.dateOfBirth,
       inviteCode: json.containsKey('invite_code')
-          ? JsonNullable<String>.of(value._inviteCodeValue)
+          ? JsonNullable<String>.of(value.inviteCodeValue)
           : const JsonNullable<String>.undefined(),
       registrationUrlCode: json.containsKey('registration_url_code')
-          ? JsonNullable<String>.of(value._registrationUrlCodeValue)
+          ? JsonNullable<String>.of(value.registrationUrlCodeValue)
           : const JsonNullable<String>.undefined(),
       theme: value.theme,
       setupToken: json.containsKey('setup_token')
-          ? JsonNullable<String>.of(value._setupTokenValue)
+          ? JsonNullable<String>.of(value.setupTokenValue)
           : const JsonNullable<String>.undefined(),
     );
   }
@@ -108,32 +108,29 @@ class RegisterRequest {
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> inviteCode;
   @JsonKey(includeIfNull: false, name: 'invite_code')
-  final String? _inviteCodeValue;
+  final String? inviteCodeValue;
   final bool _inviteCodePresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> registrationUrlCode;
   @JsonKey(includeIfNull: false, name: 'registration_url_code')
-  final String? _registrationUrlCodeValue;
+  final String? registrationUrlCodeValue;
   final bool _registrationUrlCodePresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> setupToken;
   @JsonKey(includeIfNull: false, name: 'setup_token')
-  final String? _setupTokenValue;
+  final String? setupTokenValue;
   final bool _setupTokenPresent;
 
   Map<String, Object?> toJson() {
     final json = _$RegisterRequestToJson(this);
     if (_inviteCodePresent) {
-      json.putIfAbsent('invite_code', () => _inviteCodeValue);
+      json.putIfAbsent('invite_code', () => inviteCodeValue);
     }
     if (_registrationUrlCodePresent) {
-      json.putIfAbsent(
-        'registration_url_code',
-        () => _registrationUrlCodeValue,
-      );
+      json.putIfAbsent('registration_url_code', () => registrationUrlCodeValue);
     }
     if (_setupTokenPresent) {
-      json.putIfAbsent('setup_token', () => _setupTokenValue);
+      json.putIfAbsent('setup_token', () => setupTokenValue);
     }
     return json;
   }

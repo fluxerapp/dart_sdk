@@ -20,19 +20,20 @@ class PermissionOverwriteCreateRequest {
     JsonNullable<UnsignedInt64Type> deny =
         const JsonNullable<UnsignedInt64Type>.undefined(),
   }) : allow = allow,
-       _allowValue = allow.value,
+       allowValue = allow.value,
        _allowPresent = allow.isPresent,
        deny = deny,
-       _denyValue = deny.value,
+       denyValue = deny.value,
        _denyPresent = deny.isPresent;
 
-  const PermissionOverwriteCreateRequest._({required this.type})
-    : _allowValue = null,
-      _denyValue = null,
-      allow = const JsonNullable<UnsignedInt64Type>.undefined(),
-      _allowPresent = false,
-      deny = const JsonNullable<UnsignedInt64Type>.undefined(),
-      _denyPresent = false;
+  const PermissionOverwriteCreateRequest._({
+    required this.type,
+    this.allowValue,
+    this.denyValue,
+  }) : allow = const JsonNullable<UnsignedInt64Type>.undefined(),
+       _allowPresent = false,
+       deny = const JsonNullable<UnsignedInt64Type>.undefined(),
+       _denyPresent = false;
   factory PermissionOverwriteCreateRequest.patch(Map<String, Object?> json) =>
       PermissionOverwriteCreateRequest.fromJson(json);
 
@@ -41,10 +42,10 @@ class PermissionOverwriteCreateRequest {
     return PermissionOverwriteCreateRequest(
       type: value.type,
       allow: json.containsKey('allow')
-          ? JsonNullable<UnsignedInt64Type>.of(value._allowValue)
+          ? JsonNullable<UnsignedInt64Type>.of(value.allowValue)
           : const JsonNullable<UnsignedInt64Type>.undefined(),
       deny: json.containsKey('deny')
-          ? JsonNullable<UnsignedInt64Type>.of(value._denyValue)
+          ? JsonNullable<UnsignedInt64Type>.of(value.denyValue)
           : const JsonNullable<UnsignedInt64Type>.undefined(),
     );
   }
@@ -55,21 +56,21 @@ class PermissionOverwriteCreateRequest {
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<UnsignedInt64Type> allow;
   @JsonKey(includeIfNull: false, name: 'allow')
-  final UnsignedInt64Type? _allowValue;
+  final UnsignedInt64Type? allowValue;
   final bool _allowPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<UnsignedInt64Type> deny;
   @JsonKey(includeIfNull: false, name: 'deny')
-  final UnsignedInt64Type? _denyValue;
+  final UnsignedInt64Type? denyValue;
   final bool _denyPresent;
 
   Map<String, Object?> toJson() {
     final json = _$PermissionOverwriteCreateRequestToJson(this);
     if (_allowPresent) {
-      json.putIfAbsent('allow', () => _allowValue);
+      json.putIfAbsent('allow', () => allowValue);
     }
     if (_denyPresent) {
-      json.putIfAbsent('deny', () => _denyValue);
+      json.putIfAbsent('deny', () => denyValue);
     }
     return json;
   }

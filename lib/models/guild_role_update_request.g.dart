@@ -14,10 +14,14 @@ GuildRoleUpdateRequest _$GuildRoleUpdateRequestFromJson(
     color: $checkedConvert('color', (v) => (v as num?)?.toInt()),
     permissions: $checkedConvert('permissions', (v) => v as String?),
     hoist: $checkedConvert('hoist', (v) => v as bool?),
+    hoistPositionValue: $checkedConvert(
+      'hoist_position',
+      (v) => (v as num?)?.toInt(),
+    ),
     mentionable: $checkedConvert('mentionable', (v) => v as bool?),
   );
   return val;
-});
+}, fieldKeyMap: const {'hoistPositionValue': 'hoist_position'});
 
 Map<String, dynamic> _$GuildRoleUpdateRequestToJson(
   GuildRoleUpdateRequest instance,
@@ -27,4 +31,5 @@ Map<String, dynamic> _$GuildRoleUpdateRequestToJson(
   'permissions': ?instance.permissions,
   'hoist': ?instance.hoist,
   'mentionable': ?instance.mentionable,
+  'hoist_position': ?instance.hoistPositionValue,
 };

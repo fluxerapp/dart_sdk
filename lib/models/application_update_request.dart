@@ -17,15 +17,15 @@ class ApplicationUpdateRequest {
     JsonNullable<List<String>> redirectUris =
         const JsonNullable<List<String>>.undefined(),
   }) : redirectUris = redirectUris,
-       _redirectUrisValue = redirectUris.value,
+       redirectUrisValue = redirectUris.value,
        _redirectUrisPresent = redirectUris.isPresent;
 
   const ApplicationUpdateRequest._({
     this.name,
     this.botPublic,
     this.botRequireCodeGrant,
-  }) : _redirectUrisValue = null,
-       redirectUris = const JsonNullable<List<String>>.undefined(),
+    this.redirectUrisValue,
+  }) : redirectUris = const JsonNullable<List<String>>.undefined(),
        _redirectUrisPresent = false;
   factory ApplicationUpdateRequest.patch(Map<String, Object?> json) =>
       ApplicationUpdateRequest.fromJson(json);
@@ -37,7 +37,7 @@ class ApplicationUpdateRequest {
       botPublic: value.botPublic,
       botRequireCodeGrant: value.botRequireCodeGrant,
       redirectUris: json.containsKey('redirect_uris')
-          ? JsonNullable<List<String>>.of(value._redirectUrisValue)
+          ? JsonNullable<List<String>>.of(value.redirectUrisValue)
           : const JsonNullable<List<String>>.undefined(),
     );
   }
@@ -56,13 +56,13 @@ class ApplicationUpdateRequest {
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<List<String>> redirectUris;
   @JsonKey(includeIfNull: false, name: 'redirect_uris')
-  final List<String>? _redirectUrisValue;
+  final List<String>? redirectUrisValue;
   final bool _redirectUrisPresent;
 
   Map<String, Object?> toJson() {
     final json = _$ApplicationUpdateRequestToJson(this);
     if (_redirectUrisPresent) {
-      json.putIfAbsent('redirect_uris', () => _redirectUrisValue);
+      json.putIfAbsent('redirect_uris', () => redirectUrisValue);
     }
     return json;
   }

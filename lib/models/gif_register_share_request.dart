@@ -17,13 +17,15 @@ class GifRegisterShareRequest {
     this.locale = Locale.enUs,
     JsonNullable<String> q = const JsonNullable<String>.undefined(),
   }) : q = q,
-       _qValue = q.value,
+       qValue = q.value,
        _qPresent = q.isPresent;
 
-  const GifRegisterShareRequest._({required this.id, this.locale = Locale.enUs})
-    : _qValue = null,
-      q = const JsonNullable<String>.undefined(),
-      _qPresent = false;
+  const GifRegisterShareRequest._({
+    required this.id,
+    this.locale = Locale.enUs,
+    this.qValue,
+  }) : q = const JsonNullable<String>.undefined(),
+       _qPresent = false;
   factory GifRegisterShareRequest.patch(Map<String, Object?> json) =>
       GifRegisterShareRequest.fromJson(json);
 
@@ -33,7 +35,7 @@ class GifRegisterShareRequest {
       id: value.id,
       locale: value.locale,
       q: json.containsKey('q')
-          ? JsonNullable<String>.of(value._qValue)
+          ? JsonNullable<String>.of(value.qValue)
           : const JsonNullable<String>.undefined(),
     );
   }
@@ -45,13 +47,13 @@ class GifRegisterShareRequest {
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> q;
   @JsonKey(includeIfNull: false, name: 'q')
-  final String? _qValue;
+  final String? qValue;
   final bool _qPresent;
 
   Map<String, Object?> toJson() {
     final json = _$GifRegisterShareRequestToJson(this);
     if (_qPresent) {
-      json.putIfAbsent('q', () => _qValue);
+      json.putIfAbsent('q', () => qValue);
     }
     return json;
   }

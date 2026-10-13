@@ -23,27 +23,27 @@ class ChannelUpdatePrivateThreadRequestBody {
         const JsonNullable<Int32Type>.undefined(),
     JsonNullable<bool> invitable = const JsonNullable<bool>.undefined(),
   }) : archived = archived,
-       _archivedValue = archived.value,
+       archivedValue = archived.value,
        _archivedPresent = archived.isPresent,
        locked = locked,
-       _lockedValue = locked.value,
+       lockedValue = locked.value,
        _lockedPresent = locked.isPresent,
        rateLimitPerUser = rateLimitPerUser,
-       _rateLimitPerUserValue = rateLimitPerUser.value,
+       rateLimitPerUserValue = rateLimitPerUser.value,
        _rateLimitPerUserPresent = rateLimitPerUser.isPresent,
        invitable = invitable,
-       _invitableValue = invitable.value,
+       invitableValue = invitable.value,
        _invitablePresent = invitable.isPresent;
 
   const ChannelUpdatePrivateThreadRequestBody._({
     this.name,
+    this.archivedValue,
     this.autoArchiveDuration,
+    this.lockedValue,
+    this.rateLimitPerUserValue,
     this.flags,
-  }) : _archivedValue = null,
-       _lockedValue = null,
-       _rateLimitPerUserValue = null,
-       _invitableValue = null,
-       archived = const JsonNullable<bool>.undefined(),
+    this.invitableValue,
+  }) : archived = const JsonNullable<bool>.undefined(),
        _archivedPresent = false,
        locked = const JsonNullable<bool>.undefined(),
        _lockedPresent = false,
@@ -62,18 +62,18 @@ class ChannelUpdatePrivateThreadRequestBody {
     return ChannelUpdatePrivateThreadRequestBody(
       name: value.name,
       archived: json.containsKey('archived')
-          ? JsonNullable<bool>.of(value._archivedValue)
+          ? JsonNullable<bool>.of(value.archivedValue)
           : const JsonNullable<bool>.undefined(),
       autoArchiveDuration: value.autoArchiveDuration,
       locked: json.containsKey('locked')
-          ? JsonNullable<bool>.of(value._lockedValue)
+          ? JsonNullable<bool>.of(value.lockedValue)
           : const JsonNullable<bool>.undefined(),
       rateLimitPerUser: json.containsKey('rate_limit_per_user')
-          ? JsonNullable<Int32Type>.of(value._rateLimitPerUserValue)
+          ? JsonNullable<Int32Type>.of(value.rateLimitPerUserValue)
           : const JsonNullable<Int32Type>.undefined(),
       flags: value.flags,
       invitable: json.containsKey('invitable')
-          ? JsonNullable<bool>.of(value._invitableValue)
+          ? JsonNullable<bool>.of(value.invitableValue)
           : const JsonNullable<bool>.undefined(),
     );
   }
@@ -90,37 +90,37 @@ class ChannelUpdatePrivateThreadRequestBody {
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<bool> archived;
   @JsonKey(includeIfNull: false, name: 'archived')
-  final bool? _archivedValue;
+  final bool? archivedValue;
   final bool _archivedPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<bool> locked;
   @JsonKey(includeIfNull: false, name: 'locked')
-  final bool? _lockedValue;
+  final bool? lockedValue;
   final bool _lockedPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<Int32Type> rateLimitPerUser;
   @JsonKey(includeIfNull: false, name: 'rate_limit_per_user')
-  final Int32Type? _rateLimitPerUserValue;
+  final Int32Type? rateLimitPerUserValue;
   final bool _rateLimitPerUserPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<bool> invitable;
   @JsonKey(includeIfNull: false, name: 'invitable')
-  final bool? _invitableValue;
+  final bool? invitableValue;
   final bool _invitablePresent;
 
   Map<String, Object?> toJson() {
     final json = _$ChannelUpdatePrivateThreadRequestBodyToJson(this);
     if (_archivedPresent) {
-      json.putIfAbsent('archived', () => _archivedValue);
+      json.putIfAbsent('archived', () => archivedValue);
     }
     if (_lockedPresent) {
-      json.putIfAbsent('locked', () => _lockedValue);
+      json.putIfAbsent('locked', () => lockedValue);
     }
     if (_rateLimitPerUserPresent) {
-      json.putIfAbsent('rate_limit_per_user', () => _rateLimitPerUserValue);
+      json.putIfAbsent('rate_limit_per_user', () => rateLimitPerUserValue);
     }
     if (_invitablePresent) {
-      json.putIfAbsent('invitable', () => _invitableValue);
+      json.putIfAbsent('invitable', () => invitableValue);
     }
     return json;
   }

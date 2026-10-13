@@ -32,6 +32,7 @@ TemplateSerializedGuild _$TemplateSerializedGuildFromJson(
                 .toList() ??
             [],
       ),
+      descriptionValue: $checkedConvert('description', (v) => v as String?),
       verificationLevel: $checkedConvert(
         'verification_level',
         (v) => v as num?,
@@ -44,6 +45,10 @@ TemplateSerializedGuild _$TemplateSerializedGuildFromJson(
         'explicit_content_filter',
         (v) => v as num?,
       ),
+      systemChannelIdValue: $checkedConvert(
+        'system_channel_id',
+        (v) => v as String?,
+      ),
       afkTimeout: $checkedConvert('afk_timeout', (v) => v as num?),
       systemChannelFlags: $checkedConvert(
         'system_channel_flags',
@@ -53,9 +58,11 @@ TemplateSerializedGuild _$TemplateSerializedGuildFromJson(
     return val;
   },
   fieldKeyMap: const {
+    'descriptionValue': 'description',
     'verificationLevel': 'verification_level',
     'defaultMessageNotifications': 'default_message_notifications',
     'explicitContentFilter': 'explicit_content_filter',
+    'systemChannelIdValue': 'system_channel_id',
     'afkTimeout': 'afk_timeout',
     'systemChannelFlags': 'system_channel_flags',
   },
@@ -72,4 +79,6 @@ Map<String, dynamic> _$TemplateSerializedGuildToJson(
   'system_channel_flags': ?instance.systemChannelFlags,
   'roles': instance.roles,
   'channels': instance.channels,
+  'description': ?instance.descriptionValue,
+  'system_channel_id': ?instance.systemChannelIdValue,
 };

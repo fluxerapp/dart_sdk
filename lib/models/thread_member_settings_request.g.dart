@@ -12,10 +12,22 @@ ThreadMemberSettingsRequest _$ThreadMemberSettingsRequestFromJson(
   final val = ThreadMemberSettingsRequest._(
     flags: $checkedConvert('flags', (v) => (v as num?)?.toInt()),
     muted: $checkedConvert('muted', (v) => v as bool?),
+    muteConfigValue: $checkedConvert(
+      'mute_config',
+      (v) => v == null
+          ? null
+          : ThreadMemberSettingsRequestMuteConfig.fromJson(
+              v as Map<String, dynamic>,
+            ),
+    ),
   );
   return val;
-});
+}, fieldKeyMap: const {'muteConfigValue': 'mute_config'});
 
 Map<String, dynamic> _$ThreadMemberSettingsRequestToJson(
   ThreadMemberSettingsRequest instance,
-) => <String, dynamic>{'flags': ?instance.flags, 'muted': ?instance.muted};
+) => <String, dynamic>{
+  'flags': ?instance.flags,
+  'muted': ?instance.muted,
+  'mute_config': ?instance.muteConfigValue,
+};

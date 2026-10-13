@@ -56,78 +56,77 @@ class GuildForumChannelCreateRequest {
     JsonNullable<ForumLayoutSchema> defaultForumLayout =
         const JsonNullable<ForumLayoutSchema>.undefined(),
   }) : topic = topic,
-       _topicValue = topic.value,
+       topicValue = topic.value,
        _topicPresent = topic.isPresent,
        url = url,
-       _urlValue = url.value,
+       urlValue = url.value,
        _urlPresent = url.isPresent,
        parentId = parentId,
-       _parentIdValue = parentId.value,
+       parentIdValue = parentId.value,
        _parentIdPresent = parentId.isPresent,
        bitrate = bitrate,
-       _bitrateValue = bitrate.value,
+       bitrateValue = bitrate.value,
        _bitratePresent = bitrate.isPresent,
        userLimit = userLimit,
-       _userLimitValue = userLimit.value,
+       userLimitValue = userLimit.value,
        _userLimitPresent = userLimit.isPresent,
        voiceConnectionLimit = voiceConnectionLimit,
-       _voiceConnectionLimitValue = voiceConnectionLimit.value,
+       voiceConnectionLimitValue = voiceConnectionLimit.value,
        _voiceConnectionLimitPresent = voiceConnectionLimit.isPresent,
        rateLimitPerUser = rateLimitPerUser,
-       _rateLimitPerUserValue = rateLimitPerUser.value,
+       rateLimitPerUserValue = rateLimitPerUser.value,
        _rateLimitPerUserPresent = rateLimitPerUser.isPresent,
        nsfwOverride = nsfwOverride,
-       _nsfwOverrideValue = nsfwOverride.value,
+       nsfwOverrideValue = nsfwOverride.value,
        _nsfwOverridePresent = nsfwOverride.isPresent,
        contentWarningText = contentWarningText,
-       _contentWarningTextValue = contentWarningText.value,
+       contentWarningTextValue = contentWarningText.value,
        _contentWarningTextPresent = contentWarningText.isPresent,
        defaultAutoArchiveDuration = defaultAutoArchiveDuration,
-       _defaultAutoArchiveDurationValue = defaultAutoArchiveDuration.value,
+       defaultAutoArchiveDurationValue = defaultAutoArchiveDuration.value,
        _defaultAutoArchiveDurationPresent =
            defaultAutoArchiveDuration.isPresent,
        defaultThreadRateLimitPerUser = defaultThreadRateLimitPerUser,
-       _defaultThreadRateLimitPerUserValue =
-           defaultThreadRateLimitPerUser.value,
+       defaultThreadRateLimitPerUserValue = defaultThreadRateLimitPerUser.value,
        _defaultThreadRateLimitPerUserPresent =
            defaultThreadRateLimitPerUser.isPresent,
        defaultReactionEmoji = defaultReactionEmoji,
-       _defaultReactionEmojiValue = defaultReactionEmoji.value,
+       defaultReactionEmojiValue = defaultReactionEmoji.value,
        _defaultReactionEmojiPresent = defaultReactionEmoji.isPresent,
        defaultSortOrder = defaultSortOrder,
-       _defaultSortOrderValue = defaultSortOrder.value,
+       defaultSortOrderValue = defaultSortOrder.value,
        _defaultSortOrderPresent = defaultSortOrder.isPresent,
        defaultTagSetting = defaultTagSetting,
-       _defaultTagSettingValue = defaultTagSetting.value,
+       defaultTagSettingValue = defaultTagSetting.value,
        _defaultTagSettingPresent = defaultTagSetting.isPresent,
        defaultForumLayout = defaultForumLayout,
-       _defaultForumLayoutValue = defaultForumLayout.value,
+       defaultForumLayoutValue = defaultForumLayout.value,
        _defaultForumLayoutPresent = defaultForumLayout.isPresent;
 
   const GuildForumChannelCreateRequest._({
     required this.type,
     required this.name,
     this.nsfw = false,
+    this.topicValue,
+    this.urlValue,
+    this.parentIdValue,
+    this.bitrateValue,
+    this.userLimitValue,
+    this.voiceConnectionLimitValue,
     this.permissionOverwrites,
+    this.rateLimitPerUserValue,
+    this.nsfwOverrideValue,
     this.contentWarningLevel,
+    this.contentWarningTextValue,
+    this.defaultAutoArchiveDurationValue,
+    this.defaultThreadRateLimitPerUserValue,
     this.availableTags,
+    this.defaultReactionEmojiValue,
+    this.defaultSortOrderValue,
+    this.defaultTagSettingValue,
     this.flags,
-  }) : _topicValue = null,
-       _urlValue = null,
-       _parentIdValue = null,
-       _bitrateValue = null,
-       _userLimitValue = null,
-       _voiceConnectionLimitValue = null,
-       _rateLimitPerUserValue = null,
-       _nsfwOverrideValue = null,
-       _contentWarningTextValue = null,
-       _defaultAutoArchiveDurationValue = null,
-       _defaultThreadRateLimitPerUserValue = null,
-       _defaultReactionEmojiValue = null,
-       _defaultSortOrderValue = null,
-       _defaultTagSettingValue = null,
-       _defaultForumLayoutValue = null,
-       topic = const JsonNullable<String>.undefined(),
+    this.defaultForumLayoutValue,
+  }) : topic = const JsonNullable<String>.undefined(),
        _topicPresent = false,
        url = const JsonNullable<String>.undefined(),
        _urlPresent = false,
@@ -171,63 +170,59 @@ class GuildForumChannelCreateRequest {
       name: value.name,
       nsfw: value.nsfw,
       topic: json.containsKey('topic')
-          ? JsonNullable<String>.of(value._topicValue)
+          ? JsonNullable<String>.of(value.topicValue)
           : const JsonNullable<String>.undefined(),
       url: json.containsKey('url')
-          ? JsonNullable<String>.of(value._urlValue)
+          ? JsonNullable<String>.of(value.urlValue)
           : const JsonNullable<String>.undefined(),
       parentId: json.containsKey('parent_id')
-          ? JsonNullable<SnowflakeType>.of(value._parentIdValue)
+          ? JsonNullable<SnowflakeType>.of(value.parentIdValue)
           : const JsonNullable<SnowflakeType>.undefined(),
       bitrate: json.containsKey('bitrate')
-          ? JsonNullable<int>.of(value._bitrateValue)
+          ? JsonNullable<int>.of(value.bitrateValue)
           : const JsonNullable<int>.undefined(),
       userLimit: json.containsKey('user_limit')
-          ? JsonNullable<int>.of(value._userLimitValue)
+          ? JsonNullable<int>.of(value.userLimitValue)
           : const JsonNullable<int>.undefined(),
       voiceConnectionLimit: json.containsKey('voice_connection_limit')
-          ? JsonNullable<int>.of(value._voiceConnectionLimitValue)
+          ? JsonNullable<int>.of(value.voiceConnectionLimitValue)
           : const JsonNullable<int>.undefined(),
       permissionOverwrites: value.permissionOverwrites,
       rateLimitPerUser: json.containsKey('rate_limit_per_user')
-          ? JsonNullable<int>.of(value._rateLimitPerUserValue)
+          ? JsonNullable<int>.of(value.rateLimitPerUserValue)
           : const JsonNullable<int>.undefined(),
       nsfwOverride: json.containsKey('nsfw_override')
-          ? JsonNullable<bool>.of(value._nsfwOverrideValue)
+          ? JsonNullable<bool>.of(value.nsfwOverrideValue)
           : const JsonNullable<bool>.undefined(),
       contentWarningLevel: value.contentWarningLevel,
       contentWarningText: json.containsKey('content_warning_text')
-          ? JsonNullable<String>.of(value._contentWarningTextValue)
+          ? JsonNullable<String>.of(value.contentWarningTextValue)
           : const JsonNullable<String>.undefined(),
       defaultAutoArchiveDuration:
           json.containsKey('default_auto_archive_duration')
           ? JsonNullable<ThreadAutoArchiveDurationSchema>.of(
-              value._defaultAutoArchiveDurationValue,
+              value.defaultAutoArchiveDurationValue,
             )
           : const JsonNullable<ThreadAutoArchiveDurationSchema>.undefined(),
       defaultThreadRateLimitPerUser:
           json.containsKey('default_thread_rate_limit_per_user')
-          ? JsonNullable<Int32Type>.of(
-              value._defaultThreadRateLimitPerUserValue,
-            )
+          ? JsonNullable<Int32Type>.of(value.defaultThreadRateLimitPerUserValue)
           : const JsonNullable<Int32Type>.undefined(),
       availableTags: value.availableTags,
       defaultReactionEmoji: json.containsKey('default_reaction_emoji')
           ? JsonNullable<DefaultReactionEmojiRequest>.of(
-              value._defaultReactionEmojiValue,
+              value.defaultReactionEmojiValue,
             )
           : const JsonNullable<DefaultReactionEmojiRequest>.undefined(),
       defaultSortOrder: json.containsKey('default_sort_order')
-          ? JsonNullable<ForumSortOrderSchema>.of(value._defaultSortOrderValue)
+          ? JsonNullable<ForumSortOrderSchema>.of(value.defaultSortOrderValue)
           : const JsonNullable<ForumSortOrderSchema>.undefined(),
       defaultTagSetting: json.containsKey('default_tag_setting')
-          ? JsonNullable<ForumTagSettingSchema>.of(
-              value._defaultTagSettingValue,
-            )
+          ? JsonNullable<ForumTagSettingSchema>.of(value.defaultTagSettingValue)
           : const JsonNullable<ForumTagSettingSchema>.undefined(),
       flags: value.flags,
       defaultForumLayout: json.containsKey('default_forum_layout')
-          ? JsonNullable<ForumLayoutSchema>.of(value._defaultForumLayoutValue)
+          ? JsonNullable<ForumLayoutSchema>.of(value.defaultForumLayoutValue)
           : const JsonNullable<ForumLayoutSchema>.undefined(),
     );
   }
@@ -260,138 +255,138 @@ class GuildForumChannelCreateRequest {
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> topic;
   @JsonKey(includeIfNull: false, name: 'topic')
-  final String? _topicValue;
+  final String? topicValue;
   final bool _topicPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> url;
   @JsonKey(includeIfNull: false, name: 'url')
-  final String? _urlValue;
+  final String? urlValue;
   final bool _urlPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<SnowflakeType> parentId;
   @JsonKey(includeIfNull: false, name: 'parent_id')
-  final SnowflakeType? _parentIdValue;
+  final SnowflakeType? parentIdValue;
   final bool _parentIdPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<int> bitrate;
   @JsonKey(includeIfNull: false, name: 'bitrate')
-  final int? _bitrateValue;
+  final int? bitrateValue;
   final bool _bitratePresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<int> userLimit;
   @JsonKey(includeIfNull: false, name: 'user_limit')
-  final int? _userLimitValue;
+  final int? userLimitValue;
   final bool _userLimitPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<int> voiceConnectionLimit;
   @JsonKey(includeIfNull: false, name: 'voice_connection_limit')
-  final int? _voiceConnectionLimitValue;
+  final int? voiceConnectionLimitValue;
   final bool _voiceConnectionLimitPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<int> rateLimitPerUser;
   @JsonKey(includeIfNull: false, name: 'rate_limit_per_user')
-  final int? _rateLimitPerUserValue;
+  final int? rateLimitPerUserValue;
   final bool _rateLimitPerUserPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<bool> nsfwOverride;
   @JsonKey(includeIfNull: false, name: 'nsfw_override')
-  final bool? _nsfwOverrideValue;
+  final bool? nsfwOverrideValue;
   final bool _nsfwOverridePresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> contentWarningText;
   @JsonKey(includeIfNull: false, name: 'content_warning_text')
-  final String? _contentWarningTextValue;
+  final String? contentWarningTextValue;
   final bool _contentWarningTextPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<ThreadAutoArchiveDurationSchema>
   defaultAutoArchiveDuration;
   @JsonKey(includeIfNull: false, name: 'default_auto_archive_duration')
-  final ThreadAutoArchiveDurationSchema? _defaultAutoArchiveDurationValue;
+  final ThreadAutoArchiveDurationSchema? defaultAutoArchiveDurationValue;
   final bool _defaultAutoArchiveDurationPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<Int32Type> defaultThreadRateLimitPerUser;
   @JsonKey(includeIfNull: false, name: 'default_thread_rate_limit_per_user')
-  final Int32Type? _defaultThreadRateLimitPerUserValue;
+  final Int32Type? defaultThreadRateLimitPerUserValue;
   final bool _defaultThreadRateLimitPerUserPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<DefaultReactionEmojiRequest> defaultReactionEmoji;
   @JsonKey(includeIfNull: false, name: 'default_reaction_emoji')
-  final DefaultReactionEmojiRequest? _defaultReactionEmojiValue;
+  final DefaultReactionEmojiRequest? defaultReactionEmojiValue;
   final bool _defaultReactionEmojiPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<ForumSortOrderSchema> defaultSortOrder;
   @JsonKey(includeIfNull: false, name: 'default_sort_order')
-  final ForumSortOrderSchema? _defaultSortOrderValue;
+  final ForumSortOrderSchema? defaultSortOrderValue;
   final bool _defaultSortOrderPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<ForumTagSettingSchema> defaultTagSetting;
   @JsonKey(includeIfNull: false, name: 'default_tag_setting')
-  final ForumTagSettingSchema? _defaultTagSettingValue;
+  final ForumTagSettingSchema? defaultTagSettingValue;
   final bool _defaultTagSettingPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<ForumLayoutSchema> defaultForumLayout;
   @JsonKey(includeIfNull: false, name: 'default_forum_layout')
-  final ForumLayoutSchema? _defaultForumLayoutValue;
+  final ForumLayoutSchema? defaultForumLayoutValue;
   final bool _defaultForumLayoutPresent;
 
   Map<String, Object?> toJson() {
     final json = _$GuildForumChannelCreateRequestToJson(this);
     if (_topicPresent) {
-      json.putIfAbsent('topic', () => _topicValue);
+      json.putIfAbsent('topic', () => topicValue);
     }
     if (_urlPresent) {
-      json.putIfAbsent('url', () => _urlValue);
+      json.putIfAbsent('url', () => urlValue);
     }
     if (_parentIdPresent) {
-      json.putIfAbsent('parent_id', () => _parentIdValue);
+      json.putIfAbsent('parent_id', () => parentIdValue);
     }
     if (_bitratePresent) {
-      json.putIfAbsent('bitrate', () => _bitrateValue);
+      json.putIfAbsent('bitrate', () => bitrateValue);
     }
     if (_userLimitPresent) {
-      json.putIfAbsent('user_limit', () => _userLimitValue);
+      json.putIfAbsent('user_limit', () => userLimitValue);
     }
     if (_voiceConnectionLimitPresent) {
       json.putIfAbsent(
         'voice_connection_limit',
-        () => _voiceConnectionLimitValue,
+        () => voiceConnectionLimitValue,
       );
     }
     if (_rateLimitPerUserPresent) {
-      json.putIfAbsent('rate_limit_per_user', () => _rateLimitPerUserValue);
+      json.putIfAbsent('rate_limit_per_user', () => rateLimitPerUserValue);
     }
     if (_nsfwOverridePresent) {
-      json.putIfAbsent('nsfw_override', () => _nsfwOverrideValue);
+      json.putIfAbsent('nsfw_override', () => nsfwOverrideValue);
     }
     if (_contentWarningTextPresent) {
-      json.putIfAbsent('content_warning_text', () => _contentWarningTextValue);
+      json.putIfAbsent('content_warning_text', () => contentWarningTextValue);
     }
     if (_defaultAutoArchiveDurationPresent) {
       json.putIfAbsent(
         'default_auto_archive_duration',
-        () => _defaultAutoArchiveDurationValue,
+        () => defaultAutoArchiveDurationValue,
       );
     }
     if (_defaultThreadRateLimitPerUserPresent) {
       json.putIfAbsent(
         'default_thread_rate_limit_per_user',
-        () => _defaultThreadRateLimitPerUserValue,
+        () => defaultThreadRateLimitPerUserValue,
       );
     }
     if (_defaultReactionEmojiPresent) {
       json.putIfAbsent(
         'default_reaction_emoji',
-        () => _defaultReactionEmojiValue,
+        () => defaultReactionEmojiValue,
       );
     }
     if (_defaultSortOrderPresent) {
-      json.putIfAbsent('default_sort_order', () => _defaultSortOrderValue);
+      json.putIfAbsent('default_sort_order', () => defaultSortOrderValue);
     }
     if (_defaultTagSettingPresent) {
-      json.putIfAbsent('default_tag_setting', () => _defaultTagSettingValue);
+      json.putIfAbsent('default_tag_setting', () => defaultTagSettingValue);
     }
     if (_defaultForumLayoutPresent) {
-      json.putIfAbsent('default_forum_layout', () => _defaultForumLayoutValue);
+      json.putIfAbsent('default_forum_layout', () => defaultForumLayoutValue);
     }
     return json;
   }

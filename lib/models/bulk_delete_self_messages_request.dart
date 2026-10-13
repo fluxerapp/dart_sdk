@@ -34,15 +34,17 @@ class BulkDeleteSelfMessagesRequest {
     JsonNullable<DateTime> startDate = const JsonNullable<DateTime>.undefined(),
     JsonNullable<DateTime> endDate = const JsonNullable<DateTime>.undefined(),
   }) : startDate = startDate,
-       _startDateValue = startDate.value,
+       startDateValue = startDate.value,
        _startDatePresent = startDate.isPresent,
        endDate = endDate,
-       _endDateValue = endDate.value,
+       endDateValue = endDate.value,
        _endDatePresent = endDate.isPresent;
 
   const BulkDeleteSelfMessagesRequest._({
     this.excludedGuildIds,
     this.includedGuildIds,
+    this.startDateValue,
+    this.endDateValue,
     this.password,
     this.mfaMethod,
     this.mfaCode,
@@ -54,9 +56,7 @@ class BulkDeleteSelfMessagesRequest {
     this.includeGroupDms = true,
     this.includeGuilds = true,
     this.guildFilterMode = BulkDeleteSelfMessagesGuildFilterMode.exclude,
-  }) : _startDateValue = null,
-       _endDateValue = null,
-       startDate = const JsonNullable<DateTime>.undefined(),
+  }) : startDate = const JsonNullable<DateTime>.undefined(),
        _startDatePresent = false,
        endDate = const JsonNullable<DateTime>.undefined(),
        _endDatePresent = false;
@@ -69,10 +69,10 @@ class BulkDeleteSelfMessagesRequest {
       excludedGuildIds: value.excludedGuildIds,
       includedGuildIds: value.includedGuildIds,
       startDate: json.containsKey('start_date')
-          ? JsonNullable<DateTime>.of(value._startDateValue)
+          ? JsonNullable<DateTime>.of(value.startDateValue)
           : const JsonNullable<DateTime>.undefined(),
       endDate: json.containsKey('end_date')
-          ? JsonNullable<DateTime>.of(value._endDateValue)
+          ? JsonNullable<DateTime>.of(value.endDateValue)
           : const JsonNullable<DateTime>.undefined(),
       password: value.password,
       mfaMethod: value.mfaMethod,
@@ -138,21 +138,21 @@ class BulkDeleteSelfMessagesRequest {
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<DateTime> startDate;
   @JsonKey(includeIfNull: false, name: 'start_date')
-  final DateTime? _startDateValue;
+  final DateTime? startDateValue;
   final bool _startDatePresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<DateTime> endDate;
   @JsonKey(includeIfNull: false, name: 'end_date')
-  final DateTime? _endDateValue;
+  final DateTime? endDateValue;
   final bool _endDatePresent;
 
   Map<String, Object?> toJson() {
     final json = _$BulkDeleteSelfMessagesRequestToJson(this);
     if (_startDatePresent) {
-      json.putIfAbsent('start_date', () => _startDateValue);
+      json.putIfAbsent('start_date', () => startDateValue);
     }
     if (_endDatePresent) {
-      json.putIfAbsent('end_date', () => _endDateValue);
+      json.putIfAbsent('end_date', () => endDateValue);
     }
     return json;
   }

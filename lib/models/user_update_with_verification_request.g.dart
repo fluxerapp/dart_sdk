@@ -15,9 +15,19 @@ UserUpdateWithVerificationRequest _$UserUpdateWithVerificationRequestFromJson(
     final val = UserUpdateWithVerificationRequest._(
       username: $checkedConvert('username', (v) => v as String?),
       discriminator: $checkedConvert('discriminator', (v) => v as String?),
+      globalNameValue: $checkedConvert('global_name', (v) => v as String?),
       email: $checkedConvert('email', (v) => v as String?),
       newPassword: $checkedConvert('new_password', (v) => v as String?),
       password: $checkedConvert('password', (v) => v as String?),
+      avatarValue: $checkedConvert('avatar', (v) => v as String?),
+      bannerValue: $checkedConvert('banner', (v) => v as String?),
+      bioValue: $checkedConvert('bio', (v) => v as String?),
+      pronounsValue: $checkedConvert('pronouns', (v) => v as String?),
+      accentColorValue: $checkedConvert(
+        'accent_color',
+        (v) => (v as num?)?.toInt(),
+      ),
+      timezoneValue: $checkedConvert('timezone', (v) => v as String?),
       timezonePrivacyFlags: $checkedConvert(
         'timezone_privacy_flags',
         (v) => (v as num?)?.toInt(),
@@ -82,7 +92,14 @@ UserUpdateWithVerificationRequest _$UserUpdateWithVerificationRequestFromJson(
     return val;
   },
   fieldKeyMap: const {
+    'globalNameValue': 'global_name',
     'newPassword': 'new_password',
+    'avatarValue': 'avatar',
+    'bannerValue': 'banner',
+    'bioValue': 'bio',
+    'pronounsValue': 'pronouns',
+    'accentColorValue': 'accent_color',
+    'timezoneValue': 'timezone',
     'timezonePrivacyFlags': 'timezone_privacy_flags',
     'premiumBadgeHidden': 'premium_badge_hidden',
     'premiumBadgeMasked': 'premium_badge_masked',
@@ -122,4 +139,11 @@ Map<String, dynamic> _$UserUpdateWithVerificationRequestToJson(
   'mfa_code': ?instance.mfaCode,
   'webauthn_response': ?instance.webauthnResponse,
   'webauthn_challenge': ?instance.webauthnChallenge,
+  'global_name': ?instance.globalNameValue,
+  'avatar': ?instance.avatarValue,
+  'banner': ?instance.bannerValue,
+  'bio': ?instance.bioValue,
+  'pronouns': ?instance.pronounsValue,
+  'accent_color': ?instance.accentColorValue,
+  'timezone': ?instance.timezoneValue,
 };

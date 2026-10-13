@@ -22,30 +22,30 @@ class CreateFavoriteMemeFromUrlBodySchema {
         const JsonNullable<Map<String, GifMediaFormatInput>>.undefined(),
     JsonNullable<String> name = const JsonNullable<String>.undefined(),
   }) : altText = altText,
-       _altTextValue = altText.value,
+       altTextValue = altText.value,
        _altTextPresent = altText.isPresent,
        gifSlug = gifSlug,
-       _gifSlugValue = gifSlug.value,
+       gifSlugValue = gifSlug.value,
        _gifSlugPresent = gifSlug.isPresent,
        gifProvider = gifProvider,
-       _gifProviderValue = gifProvider.value,
+       gifProviderValue = gifProvider.value,
        _gifProviderPresent = gifProvider.isPresent,
        media = media,
-       _mediaValue = media.value,
+       mediaValue = media.value,
        _mediaPresent = media.isPresent,
        name = name,
-       _nameValue = name.value,
+       nameValue = name.value,
        _namePresent = name.isPresent;
 
   const CreateFavoriteMemeFromUrlBodySchema._({
     required this.url,
     this.tags = const [],
-  }) : _altTextValue = null,
-       _gifSlugValue = null,
-       _gifProviderValue = null,
-       _mediaValue = null,
-       _nameValue = null,
-       altText = const JsonNullable<String>.undefined(),
+    this.altTextValue,
+    this.gifSlugValue,
+    this.gifProviderValue,
+    this.mediaValue,
+    this.nameValue,
+  }) : altText = const JsonNullable<String>.undefined(),
        _altTextPresent = false,
        gifSlug = const JsonNullable<String>.undefined(),
        _gifSlugPresent = false,
@@ -67,19 +67,19 @@ class CreateFavoriteMemeFromUrlBodySchema {
       url: value.url,
       tags: value.tags,
       altText: json.containsKey('alt_text')
-          ? JsonNullable<String>.of(value._altTextValue)
+          ? JsonNullable<String>.of(value.altTextValue)
           : const JsonNullable<String>.undefined(),
       gifSlug: json.containsKey('gif_slug')
-          ? JsonNullable<String>.of(value._gifSlugValue)
+          ? JsonNullable<String>.of(value.gifSlugValue)
           : const JsonNullable<String>.undefined(),
       gifProvider: json.containsKey('gif_provider')
-          ? JsonNullable<String>.of(value._gifProviderValue)
+          ? JsonNullable<String>.of(value.gifProviderValue)
           : const JsonNullable<String>.undefined(),
       media: json.containsKey('media')
-          ? JsonNullable<Map<String, GifMediaFormatInput>>.of(value._mediaValue)
+          ? JsonNullable<Map<String, GifMediaFormatInput>>.of(value.mediaValue)
           : const JsonNullable<Map<String, GifMediaFormatInput>>.undefined(),
       name: json.containsKey('name')
-          ? JsonNullable<String>.of(value._nameValue)
+          ? JsonNullable<String>.of(value.nameValue)
           : const JsonNullable<String>.undefined(),
     );
   }
@@ -94,45 +94,45 @@ class CreateFavoriteMemeFromUrlBodySchema {
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> altText;
   @JsonKey(includeIfNull: false, name: 'alt_text')
-  final String? _altTextValue;
+  final String? altTextValue;
   final bool _altTextPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> gifSlug;
   @JsonKey(includeIfNull: false, name: 'gif_slug')
-  final String? _gifSlugValue;
+  final String? gifSlugValue;
   final bool _gifSlugPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> gifProvider;
   @JsonKey(includeIfNull: false, name: 'gif_provider')
-  final String? _gifProviderValue;
+  final String? gifProviderValue;
   final bool _gifProviderPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<Map<String, GifMediaFormatInput>> media;
   @JsonKey(includeIfNull: false, name: 'media')
-  final Map<String, GifMediaFormatInput>? _mediaValue;
+  final Map<String, GifMediaFormatInput>? mediaValue;
   final bool _mediaPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> name;
   @JsonKey(includeIfNull: false, name: 'name')
-  final String? _nameValue;
+  final String? nameValue;
   final bool _namePresent;
 
   Map<String, Object?> toJson() {
     final json = _$CreateFavoriteMemeFromUrlBodySchemaToJson(this);
     if (_altTextPresent) {
-      json.putIfAbsent('alt_text', () => _altTextValue);
+      json.putIfAbsent('alt_text', () => altTextValue);
     }
     if (_gifSlugPresent) {
-      json.putIfAbsent('gif_slug', () => _gifSlugValue);
+      json.putIfAbsent('gif_slug', () => gifSlugValue);
     }
     if (_gifProviderPresent) {
-      json.putIfAbsent('gif_provider', () => _gifProviderValue);
+      json.putIfAbsent('gif_provider', () => gifProviderValue);
     }
     if (_mediaPresent) {
-      json.putIfAbsent('media', () => _mediaValue);
+      json.putIfAbsent('media', () => mediaValue);
     }
     if (_namePresent) {
-      json.putIfAbsent('name', () => _nameValue);
+      json.putIfAbsent('name', () => nameValue);
     }
     return json;
   }

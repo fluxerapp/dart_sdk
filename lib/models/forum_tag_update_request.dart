@@ -20,19 +20,22 @@ class ForumTagUpdateRequest {
         const JsonNullable<SnowflakeType>.undefined(),
     JsonNullable<String> emojiName = const JsonNullable<String>.undefined(),
   }) : emojiId = emojiId,
-       _emojiIdValue = emojiId.value,
+       emojiIdValue = emojiId.value,
        _emojiIdPresent = emojiId.isPresent,
        emojiName = emojiName,
-       _emojiNameValue = emojiName.value,
+       emojiNameValue = emojiName.value,
        _emojiNamePresent = emojiName.isPresent;
 
-  const ForumTagUpdateRequest._({required this.name, this.moderated, this.id})
-    : _emojiIdValue = null,
-      _emojiNameValue = null,
-      emojiId = const JsonNullable<SnowflakeType>.undefined(),
-      _emojiIdPresent = false,
-      emojiName = const JsonNullable<String>.undefined(),
-      _emojiNamePresent = false;
+  const ForumTagUpdateRequest._({
+    required this.name,
+    this.moderated,
+    this.emojiIdValue,
+    this.emojiNameValue,
+    this.id,
+  }) : emojiId = const JsonNullable<SnowflakeType>.undefined(),
+       _emojiIdPresent = false,
+       emojiName = const JsonNullable<String>.undefined(),
+       _emojiNamePresent = false;
   factory ForumTagUpdateRequest.patch(Map<String, Object?> json) =>
       ForumTagUpdateRequest.fromJson(json);
 
@@ -42,10 +45,10 @@ class ForumTagUpdateRequest {
       name: value.name,
       moderated: value.moderated,
       emojiId: json.containsKey('emoji_id')
-          ? JsonNullable<SnowflakeType>.of(value._emojiIdValue)
+          ? JsonNullable<SnowflakeType>.of(value.emojiIdValue)
           : const JsonNullable<SnowflakeType>.undefined(),
       emojiName: json.containsKey('emoji_name')
-          ? JsonNullable<String>.of(value._emojiNameValue)
+          ? JsonNullable<String>.of(value.emojiNameValue)
           : const JsonNullable<String>.undefined(),
       id: value.id,
     );
@@ -65,21 +68,21 @@ class ForumTagUpdateRequest {
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<SnowflakeType> emojiId;
   @JsonKey(includeIfNull: false, name: 'emoji_id')
-  final SnowflakeType? _emojiIdValue;
+  final SnowflakeType? emojiIdValue;
   final bool _emojiIdPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> emojiName;
   @JsonKey(includeIfNull: false, name: 'emoji_name')
-  final String? _emojiNameValue;
+  final String? emojiNameValue;
   final bool _emojiNamePresent;
 
   Map<String, Object?> toJson() {
     final json = _$ForumTagUpdateRequestToJson(this);
     if (_emojiIdPresent) {
-      json.putIfAbsent('emoji_id', () => _emojiIdValue);
+      json.putIfAbsent('emoji_id', () => emojiIdValue);
     }
     if (_emojiNamePresent) {
-      json.putIfAbsent('emoji_name', () => _emojiNameValue);
+      json.putIfAbsent('emoji_name', () => emojiNameValue);
     }
     return json;
   }

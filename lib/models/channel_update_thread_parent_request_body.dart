@@ -19,23 +19,23 @@ class ChannelUpdateThreadParentRequestBody {
     JsonNullable<Int32Type> defaultThreadRateLimitPerUser =
         const JsonNullable<Int32Type>.undefined(),
   }) : defaultAutoArchiveDuration = defaultAutoArchiveDuration,
-       _defaultAutoArchiveDurationValue = defaultAutoArchiveDuration.value,
+       defaultAutoArchiveDurationValue = defaultAutoArchiveDuration.value,
        _defaultAutoArchiveDurationPresent =
            defaultAutoArchiveDuration.isPresent,
        defaultThreadRateLimitPerUser = defaultThreadRateLimitPerUser,
-       _defaultThreadRateLimitPerUserValue =
-           defaultThreadRateLimitPerUser.value,
+       defaultThreadRateLimitPerUserValue = defaultThreadRateLimitPerUser.value,
        _defaultThreadRateLimitPerUserPresent =
            defaultThreadRateLimitPerUser.isPresent;
 
-  const ChannelUpdateThreadParentRequestBody._()
-    : _defaultThreadRateLimitPerUserValue = null,
-      _defaultAutoArchiveDurationValue = null,
-      defaultAutoArchiveDuration =
-          const JsonNullable<ThreadAutoArchiveDurationSchema>.undefined(),
-      _defaultAutoArchiveDurationPresent = false,
-      defaultThreadRateLimitPerUser = const JsonNullable<Int32Type>.undefined(),
-      _defaultThreadRateLimitPerUserPresent = false;
+  const ChannelUpdateThreadParentRequestBody._({
+    this.defaultAutoArchiveDurationValue,
+    this.defaultThreadRateLimitPerUserValue,
+  }) : defaultAutoArchiveDuration =
+           const JsonNullable<ThreadAutoArchiveDurationSchema>.undefined(),
+       _defaultAutoArchiveDurationPresent = false,
+       defaultThreadRateLimitPerUser =
+           const JsonNullable<Int32Type>.undefined(),
+       _defaultThreadRateLimitPerUserPresent = false;
   factory ChannelUpdateThreadParentRequestBody.patch(
     Map<String, Object?> json,
   ) => ChannelUpdateThreadParentRequestBody.fromJson(json);
@@ -48,14 +48,12 @@ class ChannelUpdateThreadParentRequestBody {
       defaultAutoArchiveDuration:
           json.containsKey('default_auto_archive_duration')
           ? JsonNullable<ThreadAutoArchiveDurationSchema>.of(
-              value._defaultAutoArchiveDurationValue,
+              value.defaultAutoArchiveDurationValue,
             )
           : const JsonNullable<ThreadAutoArchiveDurationSchema>.undefined(),
       defaultThreadRateLimitPerUser:
           json.containsKey('default_thread_rate_limit_per_user')
-          ? JsonNullable<Int32Type>.of(
-              value._defaultThreadRateLimitPerUserValue,
-            )
+          ? JsonNullable<Int32Type>.of(value.defaultThreadRateLimitPerUserValue)
           : const JsonNullable<Int32Type>.undefined(),
     );
   }
@@ -64,12 +62,12 @@ class ChannelUpdateThreadParentRequestBody {
   final JsonNullable<ThreadAutoArchiveDurationSchema>
   defaultAutoArchiveDuration;
   @JsonKey(includeIfNull: false, name: 'default_auto_archive_duration')
-  final ThreadAutoArchiveDurationSchema? _defaultAutoArchiveDurationValue;
+  final ThreadAutoArchiveDurationSchema? defaultAutoArchiveDurationValue;
   final bool _defaultAutoArchiveDurationPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<Int32Type> defaultThreadRateLimitPerUser;
   @JsonKey(includeIfNull: false, name: 'default_thread_rate_limit_per_user')
-  final Int32Type? _defaultThreadRateLimitPerUserValue;
+  final Int32Type? defaultThreadRateLimitPerUserValue;
   final bool _defaultThreadRateLimitPerUserPresent;
 
   Map<String, Object?> toJson() {
@@ -77,13 +75,13 @@ class ChannelUpdateThreadParentRequestBody {
     if (_defaultAutoArchiveDurationPresent) {
       json.putIfAbsent(
         'default_auto_archive_duration',
-        () => _defaultAutoArchiveDurationValue,
+        () => defaultAutoArchiveDurationValue,
       );
     }
     if (_defaultThreadRateLimitPerUserPresent) {
       json.putIfAbsent(
         'default_thread_rate_limit_per_user',
-        () => _defaultThreadRateLimitPerUserValue,
+        () => defaultThreadRateLimitPerUserValue,
       );
     }
     return json;

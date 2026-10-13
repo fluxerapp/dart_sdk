@@ -8,24 +8,35 @@ part of 'instance_account_identity_update_request.dart';
 
 InstanceAccountIdentityUpdateRequest
 _$InstanceAccountIdentityUpdateRequestFromJson(Map<String, dynamic> json) =>
-    $checkedCreate('InstanceAccountIdentityUpdateRequest', json, (
-      $checkedConvert,
-    ) {
-      final val = InstanceAccountIdentityUpdateRequest._(
-        mode: $checkedConvert(
-          'mode',
-          (v) => v == null
-              ? AccountIdentityModeSchema.$unknown
-              : AccountIdentityModeSchema.fromJson(v as String),
-        ),
-        tagStyle: $checkedConvert(
-          'tag_style',
-          (v) => v == null ? null : TagStyleSchema.fromJson(v as String),
-        ),
-      );
-      return val;
-    }, fieldKeyMap: const {'tagStyle': 'tag_style'});
+    $checkedCreate(
+      'InstanceAccountIdentityUpdateRequest',
+      json,
+      ($checkedConvert) {
+        final val = InstanceAccountIdentityUpdateRequest._(
+          mode: $checkedConvert(
+            'mode',
+            (v) => v == null
+                ? AccountIdentityModeSchema.$unknown
+                : AccountIdentityModeSchema.fromJson(v as String),
+          ),
+          tagStyle: $checkedConvert(
+            'tag_style',
+            (v) => v == null ? null : TagStyleSchema.fromJson(v as String),
+          ),
+          setupTokenValue: $checkedConvert('setup_token', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'tagStyle': 'tag_style',
+        'setupTokenValue': 'setup_token',
+      },
+    );
 
 Map<String, dynamic> _$InstanceAccountIdentityUpdateRequestToJson(
   InstanceAccountIdentityUpdateRequest instance,
-) => <String, dynamic>{'mode': instance.mode, 'tag_style': ?instance.tagStyle};
+) => <String, dynamic>{
+  'mode': instance.mode,
+  'tag_style': ?instance.tagStyle,
+  'setup_token': ?instance.setupTokenValue,
+};

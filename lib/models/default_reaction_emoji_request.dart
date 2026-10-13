@@ -17,16 +17,14 @@ class DefaultReactionEmojiRequest {
         const JsonNullable<SnowflakeType>.undefined(),
     JsonNullable<String> emojiName = const JsonNullable<String>.undefined(),
   }) : emojiId = emojiId,
-       _emojiIdValue = emojiId.value,
+       emojiIdValue = emojiId.value,
        _emojiIdPresent = emojiId.isPresent,
        emojiName = emojiName,
-       _emojiNameValue = emojiName.value,
+       emojiNameValue = emojiName.value,
        _emojiNamePresent = emojiName.isPresent;
 
-  const DefaultReactionEmojiRequest._()
-    : _emojiNameValue = null,
-      _emojiIdValue = null,
-      emojiId = const JsonNullable<SnowflakeType>.undefined(),
+  const DefaultReactionEmojiRequest._({this.emojiIdValue, this.emojiNameValue})
+    : emojiId = const JsonNullable<SnowflakeType>.undefined(),
       _emojiIdPresent = false,
       emojiName = const JsonNullable<String>.undefined(),
       _emojiNamePresent = false;
@@ -37,10 +35,10 @@ class DefaultReactionEmojiRequest {
     final value = _$DefaultReactionEmojiRequestFromJson(json);
     return DefaultReactionEmojiRequest(
       emojiId: json.containsKey('emoji_id')
-          ? JsonNullable<SnowflakeType>.of(value._emojiIdValue)
+          ? JsonNullable<SnowflakeType>.of(value.emojiIdValue)
           : const JsonNullable<SnowflakeType>.undefined(),
       emojiName: json.containsKey('emoji_name')
-          ? JsonNullable<String>.of(value._emojiNameValue)
+          ? JsonNullable<String>.of(value.emojiNameValue)
           : const JsonNullable<String>.undefined(),
     );
   }
@@ -48,21 +46,21 @@ class DefaultReactionEmojiRequest {
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<SnowflakeType> emojiId;
   @JsonKey(includeIfNull: false, name: 'emoji_id')
-  final SnowflakeType? _emojiIdValue;
+  final SnowflakeType? emojiIdValue;
   final bool _emojiIdPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> emojiName;
   @JsonKey(includeIfNull: false, name: 'emoji_name')
-  final String? _emojiNameValue;
+  final String? emojiNameValue;
   final bool _emojiNamePresent;
 
   Map<String, Object?> toJson() {
     final json = _$DefaultReactionEmojiRequestToJson(this);
     if (_emojiIdPresent) {
-      json.putIfAbsent('emoji_id', () => _emojiIdValue);
+      json.putIfAbsent('emoji_id', () => emojiIdValue);
     }
     if (_emojiNamePresent) {
-      json.putIfAbsent('emoji_name', () => _emojiNameValue);
+      json.putIfAbsent('emoji_name', () => emojiNameValue);
     }
     return json;
   }

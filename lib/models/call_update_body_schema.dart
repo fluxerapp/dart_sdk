@@ -15,13 +15,15 @@ class CallUpdateBodySchema {
     this.longitude,
     JsonNullable<String> region = const JsonNullable<String>.undefined(),
   }) : region = region,
-       _regionValue = region.value,
+       regionValue = region.value,
        _regionPresent = region.isPresent;
 
-  const CallUpdateBodySchema._({this.latitude, this.longitude})
-    : _regionValue = null,
-      region = const JsonNullable<String>.undefined(),
-      _regionPresent = false;
+  const CallUpdateBodySchema._({
+    this.regionValue,
+    this.latitude,
+    this.longitude,
+  }) : region = const JsonNullable<String>.undefined(),
+       _regionPresent = false;
   factory CallUpdateBodySchema.patch(Map<String, Object?> json) =>
       CallUpdateBodySchema.fromJson(json);
 
@@ -29,7 +31,7 @@ class CallUpdateBodySchema {
     final value = _$CallUpdateBodySchemaFromJson(json);
     return CallUpdateBodySchema(
       region: json.containsKey('region')
-          ? JsonNullable<String>.of(value._regionValue)
+          ? JsonNullable<String>.of(value.regionValue)
           : const JsonNullable<String>.undefined(),
       latitude: value.latitude,
       longitude: value.longitude,
@@ -46,13 +48,13 @@ class CallUpdateBodySchema {
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> region;
   @JsonKey(includeIfNull: false, name: 'region')
-  final String? _regionValue;
+  final String? regionValue;
   final bool _regionPresent;
 
   Map<String, Object?> toJson() {
     final json = _$CallUpdateBodySchemaToJson(this);
     if (_regionPresent) {
-      json.putIfAbsent('region', () => _regionValue);
+      json.putIfAbsent('region', () => regionValue);
     }
     return json;
   }

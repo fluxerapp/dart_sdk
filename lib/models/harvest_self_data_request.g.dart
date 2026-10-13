@@ -21,6 +21,14 @@ HarvestSelfDataRequest _$HarvestSelfDataRequestFromJson(
         'included_guild_ids',
         (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
       ),
+      startDateValue: $checkedConvert(
+        'start_date',
+        (v) => v == null ? null : DateTime.parse(v as String),
+      ),
+      endDateValue: $checkedConvert(
+        'end_date',
+        (v) => v == null ? null : DateTime.parse(v as String),
+      ),
       scope: $checkedConvert(
         'scope',
         (v) => v == null
@@ -52,6 +60,8 @@ HarvestSelfDataRequest _$HarvestSelfDataRequestFromJson(
   fieldKeyMap: const {
     'excludedGuildIds': 'excluded_guild_ids',
     'includedGuildIds': 'included_guild_ids',
+    'startDateValue': 'start_date',
+    'endDateValue': 'end_date',
     'includeDms': 'include_dms',
     'includeDmsClosed': 'include_dms_closed',
     'includeGroupDms': 'include_group_dms',
@@ -71,4 +81,6 @@ Map<String, dynamic> _$HarvestSelfDataRequestToJson(
   'guild_filter_mode': instance.guildFilterMode,
   'excluded_guild_ids': ?instance.excludedGuildIds,
   'included_guild_ids': ?instance.includedGuildIds,
+  'start_date': ?instance.startDateValue?.toIso8601String(),
+  'end_date': ?instance.endDateValue?.toIso8601String(),
 };

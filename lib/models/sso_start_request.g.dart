@@ -7,10 +7,27 @@ part of 'sso_start_request.dart';
 // **************************************************************************
 
 SsoStartRequest _$SsoStartRequestFromJson(Map<String, dynamic> json) =>
-    $checkedCreate('SsoStartRequest', json, ($checkedConvert) {
-      final val = SsoStartRequest._();
-      return val;
-    });
+    $checkedCreate(
+      'SsoStartRequest',
+      json,
+      ($checkedConvert) {
+        final val = SsoStartRequest._(
+          redirectToValue: $checkedConvert('redirect_to', (v) => v as String?),
+          redirectUriValue: $checkedConvert(
+            'redirect_uri',
+            (v) => v as String?,
+          ),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'redirectToValue': 'redirect_to',
+        'redirectUriValue': 'redirect_uri',
+      },
+    );
 
 Map<String, dynamic> _$SsoStartRequestToJson(SsoStartRequest instance) =>
-    <String, dynamic>{};
+    <String, dynamic>{
+      'redirect_to': ?instance.redirectToValue,
+      'redirect_uri': ?instance.redirectUriValue,
+    };

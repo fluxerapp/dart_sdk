@@ -22,22 +22,22 @@ class TemplateRole {
     JsonNullable<String> name = const JsonNullable<String>.undefined(),
     JsonNullable<String> unicodeEmoji = const JsonNullable<String>.undefined(),
   }) : name = name,
-       _nameValue = name.value,
+       nameValue = name.value,
        _namePresent = name.isPresent,
        unicodeEmoji = unicodeEmoji,
-       _unicodeEmojiValue = unicodeEmoji.value,
+       unicodeEmojiValue = unicodeEmoji.value,
        _unicodeEmojiPresent = unicodeEmoji.isPresent;
 
   const TemplateRole._({
     required this.id,
+    this.nameValue,
     this.permissions,
     this.permissionsNew,
     this.color,
     this.hoist,
     this.mentionable,
-  }) : _nameValue = null,
-       _unicodeEmojiValue = null,
-       name = const JsonNullable<String>.undefined(),
+    this.unicodeEmojiValue,
+  }) : name = const JsonNullable<String>.undefined(),
        _namePresent = false,
        unicodeEmoji = const JsonNullable<String>.undefined(),
        _unicodeEmojiPresent = false;
@@ -49,7 +49,7 @@ class TemplateRole {
     return TemplateRole(
       id: value.id,
       name: json.containsKey('name')
-          ? JsonNullable<String>.of(value._nameValue)
+          ? JsonNullable<String>.of(value.nameValue)
           : const JsonNullable<String>.undefined(),
       permissions: value.permissions,
       permissionsNew: value.permissionsNew,
@@ -57,7 +57,7 @@ class TemplateRole {
       hoist: value.hoist,
       mentionable: value.mentionable,
       unicodeEmoji: json.containsKey('unicode_emoji')
-          ? JsonNullable<String>.of(value._unicodeEmojiValue)
+          ? JsonNullable<String>.of(value.unicodeEmojiValue)
           : const JsonNullable<String>.undefined(),
     );
   }
@@ -88,21 +88,21 @@ class TemplateRole {
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> name;
   @JsonKey(includeIfNull: false, name: 'name')
-  final String? _nameValue;
+  final String? nameValue;
   final bool _namePresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> unicodeEmoji;
   @JsonKey(includeIfNull: false, name: 'unicode_emoji')
-  final String? _unicodeEmojiValue;
+  final String? unicodeEmojiValue;
   final bool _unicodeEmojiPresent;
 
   Map<String, Object?> toJson() {
     final json = _$TemplateRoleToJson(this);
     if (_namePresent) {
-      json.putIfAbsent('name', () => _nameValue);
+      json.putIfAbsent('name', () => nameValue);
     }
     if (_unicodeEmojiPresent) {
-      json.putIfAbsent('unicode_emoji', () => _unicodeEmojiValue);
+      json.putIfAbsent('unicode_emoji', () => unicodeEmojiValue);
     }
     return json;
   }

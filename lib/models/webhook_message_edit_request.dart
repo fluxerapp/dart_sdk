@@ -23,19 +23,21 @@ class WebhookMessageEditRequest {
     JsonNullable<AllowedMentionsRequest> allowedMentions =
         const JsonNullable<AllowedMentionsRequest>.undefined(),
   }) : content = content,
-       _contentValue = content.value,
+       contentValue = content.value,
        _contentPresent = content.isPresent,
        allowedMentions = allowedMentions,
-       _allowedMentionsValue = allowedMentions.value,
+       allowedMentionsValue = allowedMentions.value,
        _allowedMentionsPresent = allowedMentions.isPresent;
 
-  const WebhookMessageEditRequest._({this.embeds, this.flags})
-    : _contentValue = null,
-      _allowedMentionsValue = null,
-      content = const JsonNullable<MessageContentRequest>.undefined(),
-      _contentPresent = false,
-      allowedMentions = const JsonNullable<AllowedMentionsRequest>.undefined(),
-      _allowedMentionsPresent = false;
+  const WebhookMessageEditRequest._({
+    this.contentValue,
+    this.embeds,
+    this.flags,
+    this.allowedMentionsValue,
+  }) : content = const JsonNullable<MessageContentRequest>.undefined(),
+       _contentPresent = false,
+       allowedMentions = const JsonNullable<AllowedMentionsRequest>.undefined(),
+       _allowedMentionsPresent = false;
   factory WebhookMessageEditRequest.patch(Map<String, Object?> json) =>
       WebhookMessageEditRequest.fromJson(json);
 
@@ -43,12 +45,12 @@ class WebhookMessageEditRequest {
     final value = _$WebhookMessageEditRequestFromJson(json);
     return WebhookMessageEditRequest(
       content: json.containsKey('content')
-          ? JsonNullable<MessageContentRequest>.of(value._contentValue)
+          ? JsonNullable<MessageContentRequest>.of(value.contentValue)
           : const JsonNullable<MessageContentRequest>.undefined(),
       embeds: value.embeds,
       flags: value.flags,
       allowedMentions: json.containsKey('allowed_mentions')
-          ? JsonNullable<AllowedMentionsRequest>.of(value._allowedMentionsValue)
+          ? JsonNullable<AllowedMentionsRequest>.of(value.allowedMentionsValue)
           : const JsonNullable<AllowedMentionsRequest>.undefined(),
     );
   }
@@ -63,21 +65,21 @@ class WebhookMessageEditRequest {
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<MessageContentRequest> content;
   @JsonKey(includeIfNull: false, name: 'content')
-  final MessageContentRequest? _contentValue;
+  final MessageContentRequest? contentValue;
   final bool _contentPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<AllowedMentionsRequest> allowedMentions;
   @JsonKey(includeIfNull: false, name: 'allowed_mentions')
-  final AllowedMentionsRequest? _allowedMentionsValue;
+  final AllowedMentionsRequest? allowedMentionsValue;
   final bool _allowedMentionsPresent;
 
   Map<String, Object?> toJson() {
     final json = _$WebhookMessageEditRequestToJson(this);
     if (_contentPresent) {
-      json.putIfAbsent('content', () => _contentValue);
+      json.putIfAbsent('content', () => contentValue);
     }
     if (_allowedMentionsPresent) {
-      json.putIfAbsent('allowed_mentions', () => _allowedMentionsValue);
+      json.putIfAbsent('allowed_mentions', () => allowedMentionsValue);
     }
     return json;
   }

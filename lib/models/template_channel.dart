@@ -28,38 +28,38 @@ class TemplateChannel {
     JsonNullable<int> voiceConnectionLimit =
         const JsonNullable<int>.undefined(),
   }) : name = name,
-       _nameValue = name.value,
+       nameValue = name.value,
        _namePresent = name.isPresent,
        topic = topic,
-       _topicValue = topic.value,
+       topicValue = topic.value,
        _topicPresent = topic.isPresent,
        parentId = parentId,
-       _parentIdValue = parentId.value,
+       parentIdValue = parentId.value,
        _parentIdPresent = parentId.isPresent,
        bitrate = bitrate,
-       _bitrateValue = bitrate.value,
+       bitrateValue = bitrate.value,
        _bitratePresent = bitrate.isPresent,
        userLimit = userLimit,
-       _userLimitValue = userLimit.value,
+       userLimitValue = userLimit.value,
        _userLimitPresent = userLimit.isPresent,
        voiceConnectionLimit = voiceConnectionLimit,
-       _voiceConnectionLimitValue = voiceConnectionLimit.value,
+       voiceConnectionLimitValue = voiceConnectionLimit.value,
        _voiceConnectionLimitPresent = voiceConnectionLimit.isPresent;
 
   const TemplateChannel._({
     required this.id,
     required this.type,
     required this.position,
+    this.nameValue,
+    this.topicValue,
+    this.parentIdValue,
+    this.bitrateValue,
+    this.userLimitValue,
+    this.voiceConnectionLimitValue,
     this.nsfw,
     this.rateLimitPerUser,
     this.permissionOverwrites,
-  }) : _nameValue = null,
-       _topicValue = null,
-       _parentIdValue = null,
-       _bitrateValue = null,
-       _userLimitValue = null,
-       _voiceConnectionLimitValue = null,
-       name = const JsonNullable<String>.undefined(),
+  }) : name = const JsonNullable<String>.undefined(),
        _namePresent = false,
        topic = const JsonNullable<String>.undefined(),
        _topicPresent = false,
@@ -81,22 +81,22 @@ class TemplateChannel {
       type: value.type,
       position: value.position,
       name: json.containsKey('name')
-          ? JsonNullable<String>.of(value._nameValue)
+          ? JsonNullable<String>.of(value.nameValue)
           : const JsonNullable<String>.undefined(),
       topic: json.containsKey('topic')
-          ? JsonNullable<String>.of(value._topicValue)
+          ? JsonNullable<String>.of(value.topicValue)
           : const JsonNullable<String>.undefined(),
       parentId: json.containsKey('parent_id')
-          ? JsonNullable<String>.of(value._parentIdValue)
+          ? JsonNullable<String>.of(value.parentIdValue)
           : const JsonNullable<String>.undefined(),
       bitrate: json.containsKey('bitrate')
-          ? JsonNullable<int>.of(value._bitrateValue)
+          ? JsonNullable<int>.of(value.bitrateValue)
           : const JsonNullable<int>.undefined(),
       userLimit: json.containsKey('user_limit')
-          ? JsonNullable<int>.of(value._userLimitValue)
+          ? JsonNullable<int>.of(value.userLimitValue)
           : const JsonNullable<int>.undefined(),
       voiceConnectionLimit: json.containsKey('voice_connection_limit')
-          ? JsonNullable<int>.of(value._voiceConnectionLimitValue)
+          ? JsonNullable<int>.of(value.voiceConnectionLimitValue)
           : const JsonNullable<int>.undefined(),
       nsfw: value.nsfw,
       rateLimitPerUser: value.rateLimitPerUser,
@@ -130,55 +130,55 @@ class TemplateChannel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> name;
   @JsonKey(includeIfNull: false, name: 'name')
-  final String? _nameValue;
+  final String? nameValue;
   final bool _namePresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> topic;
   @JsonKey(includeIfNull: false, name: 'topic')
-  final String? _topicValue;
+  final String? topicValue;
   final bool _topicPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> parentId;
   @JsonKey(includeIfNull: false, name: 'parent_id')
-  final String? _parentIdValue;
+  final String? parentIdValue;
   final bool _parentIdPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<int> bitrate;
   @JsonKey(includeIfNull: false, name: 'bitrate')
-  final int? _bitrateValue;
+  final int? bitrateValue;
   final bool _bitratePresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<int> userLimit;
   @JsonKey(includeIfNull: false, name: 'user_limit')
-  final int? _userLimitValue;
+  final int? userLimitValue;
   final bool _userLimitPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<int> voiceConnectionLimit;
   @JsonKey(includeIfNull: false, name: 'voice_connection_limit')
-  final int? _voiceConnectionLimitValue;
+  final int? voiceConnectionLimitValue;
   final bool _voiceConnectionLimitPresent;
 
   Map<String, Object?> toJson() {
     final json = _$TemplateChannelToJson(this);
     if (_namePresent) {
-      json.putIfAbsent('name', () => _nameValue);
+      json.putIfAbsent('name', () => nameValue);
     }
     if (_topicPresent) {
-      json.putIfAbsent('topic', () => _topicValue);
+      json.putIfAbsent('topic', () => topicValue);
     }
     if (_parentIdPresent) {
-      json.putIfAbsent('parent_id', () => _parentIdValue);
+      json.putIfAbsent('parent_id', () => parentIdValue);
     }
     if (_bitratePresent) {
-      json.putIfAbsent('bitrate', () => _bitrateValue);
+      json.putIfAbsent('bitrate', () => bitrateValue);
     }
     if (_userLimitPresent) {
-      json.putIfAbsent('user_limit', () => _userLimitValue);
+      json.putIfAbsent('user_limit', () => userLimitValue);
     }
     if (_voiceConnectionLimitPresent) {
       json.putIfAbsent(
         'voice_connection_limit',
-        () => _voiceConnectionLimitValue,
+        () => voiceConnectionLimitValue,
       );
     }
     return json;

@@ -6,18 +6,30 @@ part of 'template_role.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-TemplateRole _$TemplateRoleFromJson(Map<String, dynamic> json) =>
-    $checkedCreate('TemplateRole', json, ($checkedConvert) {
-      final val = TemplateRole._(
-        id: $checkedConvert('id', (v) => v as String? ?? ''),
-        permissions: $checkedConvert('permissions', (v) => v as String?),
-        permissionsNew: $checkedConvert('permissions_new', (v) => v as String?),
-        color: $checkedConvert('color', (v) => (v as num?)?.toInt()),
-        hoist: $checkedConvert('hoist', (v) => v as bool?),
-        mentionable: $checkedConvert('mentionable', (v) => v as bool?),
-      );
-      return val;
-    }, fieldKeyMap: const {'permissionsNew': 'permissions_new'});
+TemplateRole _$TemplateRoleFromJson(
+  Map<String, dynamic> json,
+) => $checkedCreate(
+  'TemplateRole',
+  json,
+  ($checkedConvert) {
+    final val = TemplateRole._(
+      id: $checkedConvert('id', (v) => v as String? ?? ''),
+      nameValue: $checkedConvert('name', (v) => v as String?),
+      permissions: $checkedConvert('permissions', (v) => v as String?),
+      permissionsNew: $checkedConvert('permissions_new', (v) => v as String?),
+      color: $checkedConvert('color', (v) => (v as num?)?.toInt()),
+      hoist: $checkedConvert('hoist', (v) => v as bool?),
+      mentionable: $checkedConvert('mentionable', (v) => v as bool?),
+      unicodeEmojiValue: $checkedConvert('unicode_emoji', (v) => v as String?),
+    );
+    return val;
+  },
+  fieldKeyMap: const {
+    'nameValue': 'name',
+    'permissionsNew': 'permissions_new',
+    'unicodeEmojiValue': 'unicode_emoji',
+  },
+);
 
 Map<String, dynamic> _$TemplateRoleToJson(TemplateRole instance) =>
     <String, dynamic>{
@@ -27,4 +39,6 @@ Map<String, dynamic> _$TemplateRoleToJson(TemplateRole instance) =>
       'color': ?instance.color,
       'hoist': ?instance.hoist,
       'mentionable': ?instance.mentionable,
+      'name': ?instance.nameValue,
+      'unicode_emoji': ?instance.unicodeEmojiValue,
     };

@@ -21,6 +21,14 @@ BulkDeleteSelfMessagesRequest _$BulkDeleteSelfMessagesRequestFromJson(
         'included_guild_ids',
         (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
       ),
+      startDateValue: $checkedConvert(
+        'start_date',
+        (v) => v == null ? null : DateTime.parse(v as String),
+      ),
+      endDateValue: $checkedConvert(
+        'end_date',
+        (v) => v == null ? null : DateTime.parse(v as String),
+      ),
       password: $checkedConvert('password', (v) => v as String?),
       mfaMethod: $checkedConvert(
         'mfa_method',
@@ -74,6 +82,8 @@ BulkDeleteSelfMessagesRequest _$BulkDeleteSelfMessagesRequestFromJson(
   fieldKeyMap: const {
     'excludedGuildIds': 'excluded_guild_ids',
     'includedGuildIds': 'included_guild_ids',
+    'startDateValue': 'start_date',
+    'endDateValue': 'end_date',
     'mfaMethod': 'mfa_method',
     'mfaCode': 'mfa_code',
     'webauthnResponse': 'webauthn_response',
@@ -102,4 +112,6 @@ Map<String, dynamic> _$BulkDeleteSelfMessagesRequestToJson(
   'mfa_code': ?instance.mfaCode,
   'webauthn_response': ?instance.webauthnResponse,
   'webauthn_challenge': ?instance.webauthnChallenge,
+  'start_date': ?instance.startDateValue?.toIso8601String(),
+  'end_date': ?instance.endDateValue?.toIso8601String(),
 };

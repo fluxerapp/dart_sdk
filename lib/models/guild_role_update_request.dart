@@ -21,7 +21,7 @@ class GuildRoleUpdateRequest {
     this.mentionable,
     JsonNullable<int> hoistPosition = const JsonNullable<int>.undefined(),
   }) : hoistPosition = hoistPosition,
-       _hoistPositionValue = hoistPosition.value,
+       hoistPositionValue = hoistPosition.value,
        _hoistPositionPresent = hoistPosition.isPresent;
 
   const GuildRoleUpdateRequest._({
@@ -29,9 +29,9 @@ class GuildRoleUpdateRequest {
     this.color,
     this.permissions,
     this.hoist,
+    this.hoistPositionValue,
     this.mentionable,
-  }) : _hoistPositionValue = null,
-       hoistPosition = const JsonNullable<int>.undefined(),
+  }) : hoistPosition = const JsonNullable<int>.undefined(),
        _hoistPositionPresent = false;
   factory GuildRoleUpdateRequest.patch(Map<String, Object?> json) =>
       GuildRoleUpdateRequest.fromJson(json);
@@ -44,7 +44,7 @@ class GuildRoleUpdateRequest {
       permissions: value.permissions,
       hoist: value.hoist,
       hoistPosition: json.containsKey('hoist_position')
-          ? JsonNullable<int>.of(value._hoistPositionValue)
+          ? JsonNullable<int>.of(value.hoistPositionValue)
           : const JsonNullable<int>.undefined(),
       mentionable: value.mentionable,
     );
@@ -72,13 +72,13 @@ class GuildRoleUpdateRequest {
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<int> hoistPosition;
   @JsonKey(includeIfNull: false, name: 'hoist_position')
-  final int? _hoistPositionValue;
+  final int? hoistPositionValue;
   final bool _hoistPositionPresent;
 
   Map<String, Object?> toJson() {
     final json = _$GuildRoleUpdateRequestToJson(this);
     if (_hoistPositionPresent) {
-      json.putIfAbsent('hoist_position', () => _hoistPositionValue);
+      json.putIfAbsent('hoist_position', () => hoistPositionValue);
     }
     return json;
   }

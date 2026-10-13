@@ -89,6 +89,10 @@ start_group "Tolerating missing response fields"
 dart run scripts/tolerate_missing_fields.dart
 end_group
 
+start_group "Reading explicit-null fields in fromJson"
+dart run scripts/read_nullable_fields.dart
+end_group
+
 start_group "Running build_runner"
 dart run build_runner build
 end_group

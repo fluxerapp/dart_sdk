@@ -30,26 +30,26 @@ class UserGuildSettingsUpdateRequest {
     JsonNullable<UserNotificationSettingsInput> unreadBadges =
         const JsonNullable<UserNotificationSettingsInput>.undefined(),
   }) : muteConfig = muteConfig,
-       _muteConfigValue = muteConfig.value,
+       muteConfigValue = muteConfig.value,
        _muteConfigPresent = muteConfig.isPresent,
        channelOverrides = channelOverrides,
-       _channelOverridesValue = channelOverrides.value,
+       channelOverridesValue = channelOverrides.value,
        _channelOverridesPresent = channelOverrides.isPresent,
        unreadBadges = unreadBadges,
-       _unreadBadgesValue = unreadBadges.value,
+       unreadBadgesValue = unreadBadges.value,
        _unreadBadgesPresent = unreadBadges.isPresent;
 
   const UserGuildSettingsUpdateRequest._({
     this.messageNotifications,
     this.muted,
+    this.muteConfigValue,
     this.mobilePush,
     this.suppressEveryone,
     this.suppressRoles,
     this.hideMutedChannels,
-  }) : _muteConfigValue = null,
-       _channelOverridesValue = null,
-       _unreadBadgesValue = null,
-       muteConfig =
+    this.channelOverridesValue,
+    this.unreadBadgesValue,
+  }) : muteConfig =
            const JsonNullable<
              UserGuildSettingsUpdateRequestMuteConfig
            >.undefined(),
@@ -70,7 +70,7 @@ class UserGuildSettingsUpdateRequest {
       muted: value.muted,
       muteConfig: json.containsKey('mute_config')
           ? JsonNullable<UserGuildSettingsUpdateRequestMuteConfig>.of(
-              value._muteConfigValue,
+              value.muteConfigValue,
             )
           : const JsonNullable<
               UserGuildSettingsUpdateRequestMuteConfig
@@ -81,12 +81,12 @@ class UserGuildSettingsUpdateRequest {
       hideMutedChannels: value.hideMutedChannels,
       channelOverrides: json.containsKey('channel_overrides')
           ? JsonNullable<Map<String, ChannelOverrides>>.of(
-              value._channelOverridesValue,
+              value.channelOverridesValue,
             )
           : const JsonNullable<Map<String, ChannelOverrides>>.undefined(),
       unreadBadges: json.containsKey('unread_badges')
           ? JsonNullable<UserNotificationSettingsInput>.of(
-              value._unreadBadgesValue,
+              value.unreadBadgesValue,
             )
           : const JsonNullable<UserNotificationSettingsInput>.undefined(),
     );
@@ -118,29 +118,29 @@ class UserGuildSettingsUpdateRequest {
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<UserGuildSettingsUpdateRequestMuteConfig> muteConfig;
   @JsonKey(includeIfNull: false, name: 'mute_config')
-  final UserGuildSettingsUpdateRequestMuteConfig? _muteConfigValue;
+  final UserGuildSettingsUpdateRequestMuteConfig? muteConfigValue;
   final bool _muteConfigPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<Map<String, ChannelOverrides>> channelOverrides;
   @JsonKey(includeIfNull: false, name: 'channel_overrides')
-  final Map<String, ChannelOverrides>? _channelOverridesValue;
+  final Map<String, ChannelOverrides>? channelOverridesValue;
   final bool _channelOverridesPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<UserNotificationSettingsInput> unreadBadges;
   @JsonKey(includeIfNull: false, name: 'unread_badges')
-  final UserNotificationSettingsInput? _unreadBadgesValue;
+  final UserNotificationSettingsInput? unreadBadgesValue;
   final bool _unreadBadgesPresent;
 
   Map<String, Object?> toJson() {
     final json = _$UserGuildSettingsUpdateRequestToJson(this);
     if (_muteConfigPresent) {
-      json.putIfAbsent('mute_config', () => _muteConfigValue);
+      json.putIfAbsent('mute_config', () => muteConfigValue);
     }
     if (_channelOverridesPresent) {
-      json.putIfAbsent('channel_overrides', () => _channelOverridesValue);
+      json.putIfAbsent('channel_overrides', () => channelOverridesValue);
     }
     if (_unreadBadgesPresent) {
-      json.putIfAbsent('unread_badges', () => _unreadBadgesValue);
+      json.putIfAbsent('unread_badges', () => unreadBadgesValue);
     }
     return json;
   }

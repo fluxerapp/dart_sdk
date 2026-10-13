@@ -17,12 +17,11 @@ class WebhookTokenUpdateRequest {
     JsonNullable<Base64ImageType> avatar =
         const JsonNullable<Base64ImageType>.undefined(),
   }) : avatar = avatar,
-       _avatarValue = avatar.value,
+       avatarValue = avatar.value,
        _avatarPresent = avatar.isPresent;
 
-  const WebhookTokenUpdateRequest._({this.name})
-    : _avatarValue = null,
-      avatar = const JsonNullable<Base64ImageType>.undefined(),
+  const WebhookTokenUpdateRequest._({this.name, this.avatarValue})
+    : avatar = const JsonNullable<Base64ImageType>.undefined(),
       _avatarPresent = false;
   factory WebhookTokenUpdateRequest.patch(Map<String, Object?> json) =>
       WebhookTokenUpdateRequest.fromJson(json);
@@ -32,7 +31,7 @@ class WebhookTokenUpdateRequest {
     return WebhookTokenUpdateRequest(
       name: value.name,
       avatar: json.containsKey('avatar')
-          ? JsonNullable<Base64ImageType>.of(value._avatarValue)
+          ? JsonNullable<Base64ImageType>.of(value.avatarValue)
           : const JsonNullable<Base64ImageType>.undefined(),
     );
   }
@@ -43,13 +42,13 @@ class WebhookTokenUpdateRequest {
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<Base64ImageType> avatar;
   @JsonKey(includeIfNull: false, name: 'avatar')
-  final Base64ImageType? _avatarValue;
+  final Base64ImageType? avatarValue;
   final bool _avatarPresent;
 
   Map<String, Object?> toJson() {
     final json = _$WebhookTokenUpdateRequestToJson(this);
     if (_avatarPresent) {
-      json.putIfAbsent('avatar', () => _avatarValue);
+      json.putIfAbsent('avatar', () => avatarValue);
     }
     return json;
   }
