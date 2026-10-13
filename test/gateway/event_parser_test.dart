@@ -7,7 +7,6 @@ import 'package:fluxer_dart/models/user_guild_settings_response.dart';
 import 'package:fluxer_dart/models/user_notification_settings.dart';
 import 'package:test/test.dart';
 
-/// Minimal JSON for a UserPartialResponse.
 Map<String, Object?> _userPartialJson({String id = '100'}) => {
   'id': id,
   'username': 'testuser',
@@ -18,7 +17,6 @@ Map<String, Object?> _userPartialJson({String id = '100'}) => {
   'flags': 0,
 };
 
-/// Minimal JSON for a UserPrivateResponse.
 Map<String, Object?> _userPrivateJson({String id = '100'}) => {
   'id': id,
   'username': 'testuser',
@@ -68,13 +66,11 @@ Map<String, Object?> _userPrivateJson({String id = '100'}) => {
   'privacy_agreed_at': null,
 };
 
-/// Minimal JSON for a ChannelResponse.
 Map<String, Object?> _channelJson({String id = '200', int type = 0}) => {
   'id': id,
   'type': type,
 };
 
-/// Minimal JSON for a GuildReadyData (partial guild from READY).
 Map<String, Object?> _guildReadyJson({String id = '300'}) => {
   'id': id,
   'name': 'Test Guild',
@@ -85,7 +81,6 @@ Map<String, Object?> _guildReadyJson({String id = '300'}) => {
   'joined_at': '2026-01-01T00:00:00.000Z',
 };
 
-/// Minimal JSON for a GuildResponse (full guild properties).
 Map<String, Object?> _guildJson({String id = '300'}) => {
   'id': id,
   'name': 'Test Guild',
@@ -104,7 +99,6 @@ Map<String, Object?> _guildJson({String id = '300'}) => {
   'nsfw': false,
 };
 
-/// Minimal JSON for a GuildRoleResponse.
 Map<String, Object?> _guildRoleJson({String id = '900'}) => {
   'id': id,
   'name': 'Test Role',
@@ -115,7 +109,6 @@ Map<String, Object?> _guildRoleJson({String id = '900'}) => {
   'mentionable': false,
 };
 
-/// Builds a GUILD_CREATE payload with properties wrapper and collections.
 Map<String, Object?> _guildCreateJson({String id = '300'}) => {
   'id': id,
   'properties': _guildJson(id: id),
@@ -129,7 +122,6 @@ Map<String, Object?> _guildCreateJson({String id = '300'}) => {
   'online_count': 3,
 };
 
-/// Minimal JSON for a MessageResponseSchema.
 Map<String, Object?> _messageJson({
   String id = '400',
   String channelId = '200',
@@ -148,7 +140,6 @@ Map<String, Object?> _messageJson({
   'mention_roles': <String>[],
 };
 
-/// Minimal JSON for a GuildMemberResponse.
 Map<String, Object?> _guildMemberJson({String userId = '100'}) => {
   'user': _userPartialJson(id: userId),
   'roles': <String>[],
@@ -157,7 +148,6 @@ Map<String, Object?> _guildMemberJson({String userId = '100'}) => {
   'deaf': false,
 };
 
-/// Minimal JSON for a RelationshipResponse.
 Map<String, Object?> _relationshipJson({String id = '100', int type = 1}) => {
   'id': id,
   'type': type,
@@ -167,7 +157,6 @@ Map<String, Object?> _relationshipJson({String id = '100', int type = 1}) => {
   'friend_shares_voice_activity': true,
 };
 
-/// Minimal JSON for a UserSettingsResponse.
 Map<String, Object?> _userSettingsJson() => {
   'status': 'online',
   'theme': 'dark',
@@ -211,10 +200,6 @@ Map<String, Object?> _userSettingsJson() => {
 void main() {
   const parser = EventParser();
 
-  // ---------------------------------------------------------------------------
-  // Connection lifecycle
-  // ---------------------------------------------------------------------------
-
   group('Connection lifecycle', () {
     test('READY → ReadyEvent with GuildReadyData guilds', () {
       final data = {
@@ -255,10 +240,6 @@ void main() {
       expect(event, isA<ResumedEvent>());
     });
   });
-
-  // ---------------------------------------------------------------------------
-  // Messages
-  // ---------------------------------------------------------------------------
 
   group('Messages', () {
     test('MESSAGE_CREATE → MessageCreateEvent', () {
@@ -368,10 +349,6 @@ void main() {
     });
   });
 
-  // ---------------------------------------------------------------------------
-  // Reactions
-  // ---------------------------------------------------------------------------
-
   group('Reactions', () {
     test(
       'MESSAGE_REACTION_ADD → MessageReactionAddEvent with emoji fields',
@@ -470,10 +447,6 @@ void main() {
     });
   });
 
-  // ---------------------------------------------------------------------------
-  // Channels
-  // ---------------------------------------------------------------------------
-
   group('Channels', () {
     test('CHANNEL_CREATE → ChannelCreateEvent', () {
       final data = _channelJson(id: '500', type: 0);
@@ -515,10 +488,6 @@ void main() {
       expect(e.guildId, '600');
     });
   });
-
-  // ---------------------------------------------------------------------------
-  // Guilds
-  // ---------------------------------------------------------------------------
 
   group('Guilds', () {
     test('GUILD_CREATE → GuildCreateEvent with GuildCreateData', () {
@@ -580,10 +549,6 @@ void main() {
     });
   });
 
-  // ---------------------------------------------------------------------------
-  // Guild members
-  // ---------------------------------------------------------------------------
-
   group('Guild members', () {
     test('GUILD_MEMBER_ADD → GuildMemberAddEvent with guildId, member', () {
       final data = <String, Object?>{
@@ -637,10 +602,6 @@ void main() {
       expect(e.userId, '104');
     });
   });
-
-  // ---------------------------------------------------------------------------
-  // Presence
-  // ---------------------------------------------------------------------------
 
   group('Presence', () {
     test('PRESENCE_UPDATE → PresenceUpdateEvent with userId, status', () {
@@ -722,10 +683,6 @@ void main() {
     });
   });
 
-  // ---------------------------------------------------------------------------
-  // Typing
-  // ---------------------------------------------------------------------------
-
   group('Typing', () {
     test(
       'TYPING_START → TypingStartEvent with channelId, userId, timestamp',
@@ -769,10 +726,6 @@ void main() {
     });
   });
 
-  // ---------------------------------------------------------------------------
-  // Relationships
-  // ---------------------------------------------------------------------------
-
   group('Relationships', () {
     test('RELATIONSHIP_ADD → RelationshipAddEvent', () {
       final data = _relationshipJson(id: '100', type: 1);
@@ -807,10 +760,6 @@ void main() {
       expect((event as RelationshipRemoveEvent).userId, '101');
     });
   });
-
-  // ---------------------------------------------------------------------------
-  // User
-  // ---------------------------------------------------------------------------
 
   group('User', () {
     test('USER_UPDATE → UserUpdateEvent with full user data', () {
@@ -906,10 +855,6 @@ void main() {
     });
   });
 
-  // ---------------------------------------------------------------------------
-  // Messages (new events)
-  // ---------------------------------------------------------------------------
-
   group('Messages (new events)', () {
     test('MESSAGE_DELETE_BULK → MessageDeleteBulkEvent', () {
       final data = <String, Object?>{
@@ -997,10 +942,6 @@ void main() {
       expect(e.guildId, '300');
     });
   });
-
-  // ---------------------------------------------------------------------------
-  // Channels (new events)
-  // ---------------------------------------------------------------------------
 
   group('Channels (new events)', () {
     test('CHANNEL_UPDATE_BULK → ChannelUpdateBulkEvent', () {
@@ -1152,10 +1093,6 @@ void main() {
     });
   });
 
-  // ---------------------------------------------------------------------------
-  // Guild roles
-  // ---------------------------------------------------------------------------
-
   group('Guild roles', () {
     test('GUILD_ROLE_CREATE → GuildRoleCreateEvent', () {
       final data = <String, Object?>{
@@ -1210,10 +1147,6 @@ void main() {
     });
   });
 
-  // ---------------------------------------------------------------------------
-  // Guild bans
-  // ---------------------------------------------------------------------------
-
   group('Guild bans', () {
     test('GUILD_BAN_ADD → GuildBanAddEvent', () {
       final data = <String, Object?>{
@@ -1241,10 +1174,6 @@ void main() {
       expect(e.userId, 'u2');
     });
   });
-
-  // ---------------------------------------------------------------------------
-  // Guild emojis & stickers
-  // ---------------------------------------------------------------------------
 
   group('Guild emojis & stickers', () {
     test('GUILD_EMOJIS_UPDATE → GuildEmojisUpdateEvent', () {
@@ -1292,10 +1221,6 @@ void main() {
       expect(e.stickers[0].name, 'cool');
     });
   });
-
-  // ---------------------------------------------------------------------------
-  // Guild sync & members chunk
-  // ---------------------------------------------------------------------------
 
   group('Guild sync & members chunk', () {
     test('GUILD_SYNC → GuildSyncEvent with GuildCreateData', () {
@@ -1416,10 +1341,6 @@ void main() {
     });
   });
 
-  // ---------------------------------------------------------------------------
-  // Presence (new events)
-  // ---------------------------------------------------------------------------
-
   group('Presence (new events)', () {
     test('PRESENCE_UPDATE_BULK → PresenceUpdateBulkEvent', () {
       final data = <String, Object?>{
@@ -1443,10 +1364,6 @@ void main() {
       expect(e.guildId, 'g1');
     });
   });
-
-  // ---------------------------------------------------------------------------
-  // Voice
-  // ---------------------------------------------------------------------------
 
   group('Voice', () {
     test('VOICE_STATE_UPDATE → VoiceStateUpdateEvent', () {
@@ -1613,10 +1530,6 @@ void main() {
     });
   });
 
-  // ---------------------------------------------------------------------------
-  // Calls
-  // ---------------------------------------------------------------------------
-
   group('Calls', () {
     test('CALL_CREATE → CallCreateEvent', () {
       final data = <String, Object?>{
@@ -1723,10 +1636,6 @@ void main() {
     });
   });
 
-  // ---------------------------------------------------------------------------
-  // Invites
-  // ---------------------------------------------------------------------------
-
   group('Invites', () {
     test('INVITE_CREATE → InviteCreateEvent', () {
       final data = <String, Object?>{
@@ -1751,10 +1660,6 @@ void main() {
       expect(e.guildId, 'g1');
     });
   });
-
-  // ---------------------------------------------------------------------------
-  // Saved messages & mentions
-  // ---------------------------------------------------------------------------
 
   group('Saved messages & mentions', () {
     test('SAVED_MESSAGE_CREATE → SavedMessageCreateEvent', () {
@@ -1784,10 +1689,6 @@ void main() {
       expect(e.messageId, 'msg2');
     });
   });
-
-  // ---------------------------------------------------------------------------
-  // Misc
-  // ---------------------------------------------------------------------------
 
   group('Misc', () {
     test('WEBHOOKS_UPDATE → WebhooksUpdateEvent', () {
@@ -1842,10 +1743,6 @@ void main() {
     });
   });
 
-  // ---------------------------------------------------------------------------
-  // Unknown / fallback
-  // ---------------------------------------------------------------------------
-
   group('Unknown / fallback', () {
     test('Unknown event type → UnknownGatewayEvent', () {
       final data = <String, Object?>{'foo': 'bar'};
@@ -1859,9 +1756,6 @@ void main() {
     });
 
     test('Malformed payload → UnknownGatewayEvent (fallback via catch)', () {
-      // MESSAGE_CREATE expects a valid MessageResponseSchema JSON.
-      // A field of the wrong type should cause fromJson to throw, triggering
-      // fallback. Missing fields alone do not: they parse to fallbacks.
       final data = <String, Object?>{'id': 1};
       final event = parser.parse('MESSAGE_CREATE', data);
 
@@ -1873,12 +1767,7 @@ void main() {
     });
   });
 
-  // ---------------------------------------------------------------------------
-  // READY extended fields
-  // ---------------------------------------------------------------------------
-
   group('READY extended fields', () {
-    /// Builds a minimal READY payload with only the required fields.
     Map<String, Object?> minimalReadyPayload([
       Map<String, Object?> overrides = const {},
     ]) => {

@@ -6,7 +6,6 @@ import 'package:test/test.dart';
 
 import 'test_config.dart';
 
-/// Helper to skip tests when credentials are not configured. Returns true if skipped.
 bool skipIfNotConfigured() {
   if (!TestConfig.isConfigured) {
     markTestSkipped(
@@ -26,9 +25,6 @@ void main() {
     client = FluxerClient(dio, baseUrl: TestConfig.baseUrl);
   });
 
-  // ---------------------------------------------------------------------------
-  // UsersApi
-  // ---------------------------------------------------------------------------
   group('UsersApi', () {
     test('getCurrentUser returns valid user', () async {
       if (skipIfNotConfigured()) return;
@@ -87,9 +83,6 @@ void main() {
     });
   });
 
-  // ---------------------------------------------------------------------------
-  // GuildsApi
-  // ---------------------------------------------------------------------------
   group('GuildsApi', () {
     test('listGuilds returns list', () async {
       if (skipIfNotConfigured()) return;
@@ -212,9 +205,6 @@ void main() {
     });
   });
 
-  // ---------------------------------------------------------------------------
-  // ChannelsApi
-  // ---------------------------------------------------------------------------
   group('ChannelsApi', () {
     test('getChannel returns channel details', () async {
       if (skipIfNotConfigured()) return;
@@ -246,7 +236,6 @@ void main() {
       final channels = await client.guilds.listGuildChannels(
         guildId: guilds.first.id,
       );
-      // Find a text channel
       final textChannel = channels.cast<ChannelResponse?>().firstWhere(
         (c) => c?.type == 0,
         orElse: () => null,
@@ -292,9 +281,6 @@ void main() {
     });
   });
 
-  // ---------------------------------------------------------------------------
-  // ConnectionsApi
-  // ---------------------------------------------------------------------------
   group('ConnectionsApi', () {
     test('listConnections returns connections', () async {
       if (skipIfNotConfigured()) return;
@@ -303,9 +289,6 @@ void main() {
     });
   });
 
-  // ---------------------------------------------------------------------------
-  // InstanceApi
-  // ---------------------------------------------------------------------------
   group('InstanceApi', () {
     test('getWellKnownFluxer returns server info', () async {
       if (skipIfNotConfigured()) return;
@@ -320,9 +303,6 @@ void main() {
     });
   });
 
-  // ---------------------------------------------------------------------------
-  // GatewayApi
-  // ---------------------------------------------------------------------------
   group('GatewayApi', () {
     test('getGatewayBot returns gateway info', () async {
       if (skipIfNotConfigured()) return;
@@ -339,9 +319,6 @@ void main() {
     });
   });
 
-  // ---------------------------------------------------------------------------
-  // ReadStatesApi
-  // ---------------------------------------------------------------------------
   group('ReadStatesApi', () {
     test('ackBulkReadStates accepts empty list', () async {
       if (skipIfNotConfigured()) return;
@@ -351,7 +328,6 @@ void main() {
         );
       } on DioException catch (e) {
         if (e.response?.statusCode == 400) {
-          // Expected — empty body may be rejected, but proves endpoint is reachable
           return;
         }
         rethrow;
@@ -359,9 +335,6 @@ void main() {
     });
   });
 
-  // ---------------------------------------------------------------------------
-  // Deep field validation on live data
-  // ---------------------------------------------------------------------------
   group('Field validation', () {
     test('GuildResponse has correct enum types from API', () async {
       if (skipIfNotConfigured()) return;
@@ -371,12 +344,10 @@ void main() {
         return;
       }
       final guild = await client.guilds.getGuild(guildId: guilds.first.id);
-      // Verify enums deserialized to real enum values (not $unknown)
       expect(guild.verificationLevel, isA<GuildVerificationLevel>());
       expect(guild.nsfwLevel, isA<NsfwLevel>());
       expect(guild.mfaLevel, isA<GuildMfaLevel>());
       expect(guild.explicitContentFilter, isA<GuildExplicitContentFilter>());
-      // Features should be a list of strings
       expect(guild.features, isA<List<GuildFeatureSchema>>());
     });
 
@@ -413,7 +384,6 @@ void main() {
       for (final ch in channels) {
         expect(ch.id, isNotEmpty);
         expect(ch.type, isA<int>());
-        // Guild channels have positions
         if (ch.type == 0 || ch.type == 2 || ch.type == 4) {
           expect(ch.position, isNotNull);
         }
@@ -429,7 +399,6 @@ void main() {
       }
       for (final rel in relationships) {
         expect(rel.type, isA<RelationshipTypes>());
-        // Type should deserialize to a known value, not $unknown
         expect(rel.type.json, isNotNull);
         expect(rel.user.id, isNotEmpty);
       }
@@ -502,7 +471,7 @@ void main() {
         return;
       }
       for (final ch in channels.take(3)) {
-        expect(ch.type, anyOf(1, 3)); // DM or Group DM
+        expect(ch.type, anyOf(1, 3));
         if (ch.recipients != null && ch.recipients!.isNotEmpty) {
           expect(ch.recipients!.first.id, isNotEmpty);
           expect(ch.recipients!.first.username, isNotEmpty);
@@ -511,9 +480,6 @@ void main() {
     });
   });
 
-  // ---------------------------------------------------------------------------
-  // Cross-API: serialization roundtrip via live data
-  // ---------------------------------------------------------------------------
   group('Serialization via live API', () {
     test('GuildResponse serializes to JSON and back', () async {
       if (skipIfNotConfigured()) return;
@@ -523,7 +489,6 @@ void main() {
         return;
       }
       final guild = await client.guilds.getGuild(guildId: guilds.first.id);
-      // Full roundtrip through JSON string to ensure raw serialization
       final jsonString = jsonEncode(guild.toJson());
       final rawJson = jsonDecode(jsonString) as Map<String, Object?>;
       final roundtripped = GuildResponse.fromJson(rawJson);

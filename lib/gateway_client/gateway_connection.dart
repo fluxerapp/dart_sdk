@@ -60,7 +60,6 @@ Duration gatewayServerReconnectDelay({required double spreadUnit}) {
 typedef GatewaySocketConnect =
     WebSocketChannel Function(Uri uri, {Map<String, String>? headers});
 
-/// Snapshot of zstd traffic observed on the current socket.
 class GatewayCompressionStats {
   const GatewayCompressionStats({
     required this.frames,
@@ -69,23 +68,15 @@ class GatewayCompressionStats {
     required this.compressionNegotiated,
   });
 
-  /// Number of binary compressed frames decoded.
   final int frames;
 
-  /// Compressed bytes received in binary frames.
   final int wireBytes;
 
-  /// Bytes produced by the streaming decoder.
   final int decompressedBytes;
 
-  /// Whether the first WebSocket frame was binary.
   final bool compressionNegotiated;
 }
 
-/// Main gateway WebSocket client for the Fluxer platform.
-/// Manages the full lifecycle: connecting, identifying/resuming,
-/// heartbeating, event dispatching, and automatic reconnection.
-/// Uses zstd compression by default for binary WebSocket frames.
 class GatewayConnection {
   static const Duration webSocketReadyTimeout = Duration(seconds: 20);
   GatewayConnection({
@@ -185,24 +176,18 @@ class GatewayConnection {
   bool _firstFrameSeen = false;
   bool _compressionNegotiated = false;
 
-  /// Stream of parsed gateway events.
   Stream<GatewayEvent> get events => _eventController.stream;
 
-  /// The current connection state.
   GatewayState get state => _state;
 
-  /// Stream of connection state changes.
   Stream<GatewayState> get stateChanges => _stateController.stream;
 
-  /// True while [suspend] has paused automatic reconnects.
   bool get isReconnectSuspended => _reconnectSuspended;
 
-  /// Time of the last heartbeat ACK, or null if none yet.
   DateTime? get lastAckAt => _session.lastAckAt;
 
   String? get sessionId => _session.sessionId;
 
-  /// Compression traffic observed on the current socket.
   GatewayCompressionStats get compressionStats => GatewayCompressionStats(
     frames: _compressedFrames,
     wireBytes: _compressedWireBytes,
@@ -210,7 +195,6 @@ class GatewayConnection {
     compressionNegotiated: _compressionNegotiated,
   );
 
-  /// True when the heartbeat ack is older than the interval + 15s.
   bool get isLikelyStale => computeIsLikelyStale(
     lastAckAt: _session.lastAckAt,
     heartbeatInterval: _lastHeartbeatInterval,
@@ -218,7 +202,6 @@ class GatewayConnection {
     now: DateTime.now(),
   );
 
-  /// Pure form of [isLikelyStale], exposed for testing.
   static bool computeIsLikelyStale({
     required DateTime? lastAckAt,
     required Duration? heartbeatInterval,
@@ -238,9 +221,6 @@ class GatewayConnection {
     return now.difference(connectedAt) > staleAfter;
   }
 
-  /// Connects to the gateway.
-  /// Fetches the gateway URL via the REST API (unless overridden) and
-  /// opens a WebSocket connection. A connect already in progress is reused.
   Future<void> connect() {
     if (_disposed || _reconnectSuspended) {
       return Future<void>.value();
@@ -287,7 +267,6 @@ class GatewayConnection {
     }
   }
 
-  /// An attempt that is already connecting is left in place.
   Future<void> reconnectNow() async {
     if (_disposed) return;
     final Future<void>? inFlight = _connectInFlight;
@@ -353,7 +332,6 @@ class GatewayConnection {
     }
   }
 
-  /// Disconnects from the gateway gracefully.
   Future<void> disconnect() async {
     _cancelReconnectTimer();
     _reconnectAttempts = 0;
@@ -361,7 +339,6 @@ class GatewayConnection {
     _setState(GatewayState.disconnected);
   }
 
-  /// Disconnects and suppresses automatic reconnect until [unsuspendAndReconnect].
   Future<void> suspend() async {
     if (_disposed) return;
     _reconnectSuspended = true;
@@ -371,15 +348,12 @@ class GatewayConnection {
     _setState(GatewayState.disconnected);
   }
 
-  /// Clears the suspend flag and reconnects immediately.
   Future<void> unsuspendAndReconnect() async {
     if (_disposed) return;
     _reconnectSuspended = false;
     await reconnectNow();
   }
 
-  /// Permanently disposes the connection and its stream controllers.
-  /// After calling this, the instance cannot be reused.
   Future<void> dispose() async {
     _disposed = true;
     _cancelReconnectTimer();
@@ -396,7 +370,6 @@ class GatewayConnection {
     _send({'op': GatewayOpcodes.presenceUpdate, 'd': presence.toJson()});
   }
 
-  /// Sends a lazy request to subscribe to guild member lists and presence.
   void sendLazyRequest({
     required Map<String, LazyRequestSubscription> subscriptions,
   }) {
@@ -413,8 +386,6 @@ class GatewayConnection {
     });
   }
 
-  /// Sends opcode 8 to request member payloads for one or more guilds.
-  /// The server responds with `GUILD_MEMBERS_CHUNK` events
   void requestGuildMembers({
     String? guildId,
     List<String>? guildIds,
@@ -457,7 +428,6 @@ class GatewayConnection {
     _send(<String, Object?>{'op': GatewayOpcodes.requestGuildMembers, 'd': d});
   }
 
-  /// Updates the auth token used for later identify/resume without reconnecting.
   void setToken(String token) {
     if (token.isEmpty) {
       return;
@@ -465,8 +435,6 @@ class GatewayConnection {
     _token = token;
   }
 
-  /// Sends opcode 15 to request live member/online counts for [guildIds].
-  /// The server responds with `GUILD_COUNTS_UPDATE`.
   void requestGuildCounts(List<String> guildIds) {
     if (_state != GatewayState.connected || _channel == null) {
       return;
@@ -484,8 +452,6 @@ class GatewayConnection {
     });
   }
 
-  /// Sends opcode 16 to request live member/online counts for channels.
-  /// The server responds with `CHANNEL_MEMBER_COUNTS_UPDATE`.
   void requestChannelMemberCounts({
     required String guildId,
     required List<String> channelIds,
@@ -544,12 +510,6 @@ class GatewayConnection {
     });
   }
 
-  /// Join, move, or leave a voice channel. Requires an established gateway
-  /// session ([state] is [GatewayState.connected]).
-  /// The server answers with [VoiceServerUpdateEvent] and voice state
-  /// dispatches; the client should connect to the LiveKit [endpoint] and
-  /// [token] from that event.
-  /// Returns whether the opcode was queued (socket open and connected).
   bool updateVoiceState(GatewayVoiceStateUpdate update) {
     if (_state != GatewayState.connected || _channel == null) {
       return false;
@@ -586,10 +546,6 @@ class GatewayConnection {
     return true;
   }
 
-  // ---------------------------------------------------------------------------
-  // Internal: connection
-  // ---------------------------------------------------------------------------
-
   Map<String, String>? _webSocketHeaders() {
     final String? userAgent =
         _trimmedHeader(_dio.options.headers['User-Agent']) ??
@@ -608,9 +564,6 @@ class GatewayConnection {
     return trimmed.isEmpty ? null : trimmed;
   }
 
-  /// Derives the gateway WebSocket URL from the Dio base URL.
-  /// Replaces `api.` with `gateway.` and switches to `wss://`.
-  /// Falls back to `/gateway/bot` REST endpoint if derivation fails.
   Future<String> _fetchGatewayUrl() async {
     final baseUrl = _dio.options.baseUrl;
     if (baseUrl.isNotEmpty) {
@@ -621,7 +574,6 @@ class GatewayConnection {
       }
     }
 
-    // Fallback: try the REST endpoint (requires bot token).
     final api = GatewayApi(_dio);
     final response = await api.getGatewayBot();
     return response.url;
@@ -677,10 +629,6 @@ class GatewayConnection {
       rethrow;
     }
   }
-
-  // ---------------------------------------------------------------------------
-  // Internal: message handling
-  // ---------------------------------------------------------------------------
 
   Future<void> _onMessage(dynamic raw) async {
     late final Map<String, dynamic> payload;
@@ -767,7 +715,6 @@ class GatewayConnection {
     _reportError(error, stackTrace);
     _consecutiveDecodeFailureReconnects++;
     if (_consecutiveDecodeFailureReconnects >= 2) {
-      // A text connection keeps the client usable if server negotiation drifts.
       _disableCompressionForNextConnection = true;
       _consecutiveDecodeFailureReconnects = 0;
     }
@@ -821,10 +768,6 @@ class GatewayConnection {
       _scheduleReconnect();
     }
   }
-
-  // ---------------------------------------------------------------------------
-  // Internal: opcode handlers
-  // ---------------------------------------------------------------------------
 
   void _handleHello(Map<String, dynamic> data) {
     final intervalMs = data['heartbeat_interval'] as int;
@@ -888,7 +831,6 @@ class GatewayConnection {
     if (!resumable) {
       _session.clear();
     }
-    // Delay 2.5s + jitter before reconnecting, per protocol spec.
     _invalidSessionTimer?.cancel();
     final int jitterMs = (_nextJitter() * 1000).round();
     final Duration delay = Duration(milliseconds: 2500 + jitterMs);
@@ -907,10 +849,6 @@ class GatewayConnection {
     final message = data['message'] as String;
     _eventController.add(GatewayErrorEvent(code: code, message: message));
   }
-
-  // ---------------------------------------------------------------------------
-  // Internal: send helpers
-  // ---------------------------------------------------------------------------
 
   void _sendIdentify() {
     _traceSyncPhase('gateway.identify', () {
@@ -997,10 +935,6 @@ class GatewayConnection {
     }
     channel.sink.add(jsonPayload);
   }
-
-  // ---------------------------------------------------------------------------
-  // Internal: reconnection
-  // ---------------------------------------------------------------------------
 
   void _onHeartbeatTimeout() {
     _closeAndReconnect();

@@ -6,11 +6,6 @@ import 'package:fluxer_dart/models/guild_response.dart';
 import 'package:fluxer_dart/models/guild_role_response.dart';
 import 'package:fluxer_dart/models/guild_sticker_response.dart';
 
-// ---------------------------------------------------------------------------
-// Voice state
-// ---------------------------------------------------------------------------
-
-/// Represents a user's voice connection state in a guild.
 class VoiceState {
   const VoiceState({
     required this.userId,
@@ -111,8 +106,6 @@ class VoiceState {
   }
 }
 
-/// Outbound payload for [GatewayOpcodes.voiceStateUpdate] (client joins, moves,
-/// or leaves a voice channel).
 class GatewayVoiceStateUpdate {
   const GatewayVoiceStateUpdate({
     this.guildId,
@@ -146,7 +139,6 @@ class GatewayVoiceStateUpdate {
   final String? longitude;
   final bool? p2p;
 
-  /// JSON object for the gateway `d` field. Omits optional keys when null.
   Map<String, Object?> toJson() {
     final map = <String, Object?>{
       'guild_id': guildId,
@@ -182,11 +174,6 @@ class GatewayVoiceStateUpdate {
   }
 }
 
-// ---------------------------------------------------------------------------
-// Member list (lazy request responses)
-// ---------------------------------------------------------------------------
-
-/// A group header in a member list (e.g., a role group).
 class MemberListGroup {
   const MemberListGroup({required this.id, required this.count});
 
@@ -201,7 +188,6 @@ class MemberListGroup {
   }
 }
 
-/// A single item in a member list — either a member or a group header.
 class MemberListItem {
   const MemberListItem({this.member, this.group});
 
@@ -218,7 +204,6 @@ class MemberListItem {
   }
 }
 
-/// A member entry in a member list, with optional presence data.
 class MemberListMember {
   const MemberListMember({
     required this.member,
@@ -245,7 +230,6 @@ class MemberListMember {
   }
 }
 
-/// An operation in a member list update (SYNC, INSERT, UPDATE, DELETE, INVALIDATE).
 class MemberListOp {
   const MemberListOp({
     required this.op,
@@ -331,11 +315,6 @@ class ThreadMemberEntry {
   }
 }
 
-// ---------------------------------------------------------------------------
-// Lazy request
-// ---------------------------------------------------------------------------
-
-/// Subscription payload for a lazy request (opcode 14).
 class LazyRequestSubscription {
   const LazyRequestSubscription({
     this.active,
@@ -372,9 +351,6 @@ class LazyRequestSubscription {
   }
 }
 
-/// Partial guild data from the READY event.
-/// The gateway sends a minimal guild representation in the READY payload,
-/// containing only identification and availability information.
 class GuildReadyData {
   const GuildReadyData({
     required this.id,
@@ -388,7 +364,6 @@ class GuildReadyData {
   });
 
   factory GuildReadyData.fromJson(Map<String, dynamic> json) {
-    // Gateway wraps guild metadata under `properties`.
     final props = json['properties'] as Map<String, dynamic>? ?? json;
     return GuildReadyData(
       id: json['id'] as String,
@@ -416,7 +391,6 @@ class GuildReadyData {
   final List<String> features;
 }
 
-/// Read state from the READY event payload.
 class GatewayReadState {
   const GatewayReadState({
     required this.id,
@@ -449,9 +423,6 @@ class GatewayReadState {
   final int? lastViewed;
 }
 
-/// Full guild data from GUILD_CREATE / GUILD_UPDATE events.
-/// The gateway wraps guild metadata under a `properties` key and includes
-/// associated collections (channels, members, roles, etc.) at the top level.
 class GuildCreateData {
   const GuildCreateData({
     required this.guild,
@@ -541,14 +512,12 @@ class GuildCreateData {
     return true;
   }
 
-  /// Extracts guild data, unwrapping `properties` if present.
   static Map<String, Object?> _guildData(Map<String, dynamic> raw) {
     final properties = raw['properties'] as Map<String, dynamic>?;
     final data = properties != null
         ? <String, Object?>{...properties, 'id': raw['id'] ?? properties['id']}
         : Map<String, Object?>.from(raw);
 
-    // Coerce numeric fields that may arrive as strings.
     for (final key in _numericGuildFields) {
       final v = data[key];
       if (v is String) {
@@ -571,7 +540,6 @@ class GuildCreateData {
     'disabled_operations',
   ];
 
-  /// Safely parses a JSON list, skipping items that fail deserialization.
   static List<T> _parseListSafe<T>(
     dynamic rawList,
     T Function(dynamic) parser,
@@ -581,9 +549,7 @@ class GuildCreateData {
     for (final item in rawList) {
       try {
         result.add(parser(item));
-      } catch (_) {
-        // Skip items that fail to parse.
-      }
+      } catch (_) {}
     }
     return result;
   }

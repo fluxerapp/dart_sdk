@@ -14,14 +14,9 @@ import 'package:fluxer_dart/models/user_guild_settings_response.dart';
 import 'package:fluxer_dart/models/user_settings_response.dart';
 import 'package:fluxer_dart/models/web_authn_credential_response.dart';
 
-/// Base class for all gateway events.
 sealed class GatewayEvent {
   const GatewayEvent();
 }
-
-// ---------------------------------------------------------------------------
-// Connection lifecycle
-// ---------------------------------------------------------------------------
 
 class ReadyEvent extends GatewayEvent {
   const ReadyEvent({
@@ -48,8 +43,6 @@ class ReadyEvent extends GatewayEvent {
   final UserPrivateResponse user;
   final List<GuildReadyData> guilds;
 
-  /// Raw guild JSON maps from the READY payload, for extracting full guild
-  /// data (channels, roles, members) that [GuildReadyData] omits.
   final List<Map<String, dynamic>> rawGuilds;
   final List<ChannelResponse> privateChannels;
   final List<RelationshipResponse> relationships;
@@ -69,10 +62,6 @@ class ReadyEvent extends GatewayEvent {
 class ResumedEvent extends GatewayEvent {
   const ResumedEvent();
 }
-
-// ---------------------------------------------------------------------------
-// User
-// ---------------------------------------------------------------------------
 
 class UserUpdateEvent extends GatewayEvent {
   const UserUpdateEvent({required this.user});
@@ -128,10 +117,6 @@ class AuthSessionChangeEvent extends GatewayEvent {
   final String? newToken;
   final String? newAuthSessionIdHash;
 }
-
-// ---------------------------------------------------------------------------
-// Messages
-// ---------------------------------------------------------------------------
 
 class MessageCreateEvent extends GatewayEvent {
   const MessageCreateEvent({
@@ -196,10 +181,6 @@ class MessageAckEvent extends GatewayEvent {
   final String? version;
   final int? flags;
 }
-
-// ---------------------------------------------------------------------------
-// Reactions
-// ---------------------------------------------------------------------------
 
 class ReactionEmoji {
   const ReactionEmoji({required this.name, this.id, this.animated = false});
@@ -292,10 +273,6 @@ class MessageReactionAddManyEvent extends GatewayEvent {
   final List<Map<String, dynamic>> reactions;
   final String? guildId;
 }
-
-// ---------------------------------------------------------------------------
-// Channels
-// ---------------------------------------------------------------------------
 
 class ChannelCreateEvent extends GatewayEvent {
   const ChannelCreateEvent({required this.channel});
@@ -458,10 +435,6 @@ class ForumUnreadsEvent extends GatewayEvent {
   final List<ForumUnreadEntry> threads;
 }
 
-// ---------------------------------------------------------------------------
-// Guilds
-// ---------------------------------------------------------------------------
-
 class GuildCreateEvent extends GatewayEvent {
   const GuildCreateEvent({required this.guild});
 
@@ -589,10 +562,6 @@ class GuildMemberListUpdateEvent extends GatewayEvent {
   final List<MemberListOp> ops;
 }
 
-// ---------------------------------------------------------------------------
-// Guild members
-// ---------------------------------------------------------------------------
-
 class GuildMemberAddEvent extends GatewayEvent {
   const GuildMemberAddEvent({required this.guildId, required this.member});
 
@@ -613,10 +582,6 @@ class GuildMemberRemoveEvent extends GatewayEvent {
   final String guildId;
   final String userId;
 }
-
-// ---------------------------------------------------------------------------
-// Presence
-// ---------------------------------------------------------------------------
 
 class PresenceUpdateEvent extends GatewayEvent {
   const PresenceUpdateEvent({
@@ -641,10 +606,6 @@ class PresenceUpdateBulkEvent extends GatewayEvent {
   final String? guildId;
 }
 
-// ---------------------------------------------------------------------------
-// Typing
-// ---------------------------------------------------------------------------
-
 class TypingStartEvent extends GatewayEvent {
   const TypingStartEvent({
     required this.channelId,
@@ -660,10 +621,6 @@ class TypingStartEvent extends GatewayEvent {
   final GuildMemberResponse? member;
   final String? guildId;
 }
-
-// ---------------------------------------------------------------------------
-// Voice
-// ---------------------------------------------------------------------------
 
 class VoiceStateUpdateEvent extends GatewayEvent {
   const VoiceStateUpdateEvent({required this.state, this.member});
@@ -786,10 +743,6 @@ class ChannelMemberCountsUpdateEvent extends GatewayEvent {
   final List<ChannelMemberCountEntry> counts;
 }
 
-// ---------------------------------------------------------------------------
-// Calls
-// ---------------------------------------------------------------------------
-
 class CallCreateEvent extends GatewayEvent {
   const CallCreateEvent({
     required this.channelId,
@@ -828,10 +781,6 @@ class CallDeleteEvent extends GatewayEvent {
   final String channelId;
 }
 
-// ---------------------------------------------------------------------------
-// Relationships
-// ---------------------------------------------------------------------------
-
 class RelationshipAddEvent extends GatewayEvent {
   const RelationshipAddEvent({required this.relationship});
 
@@ -850,10 +799,6 @@ class RelationshipRemoveEvent extends GatewayEvent {
   final String userId;
 }
 
-// ---------------------------------------------------------------------------
-// Invites
-// ---------------------------------------------------------------------------
-
 class InviteCreateEvent extends GatewayEvent {
   const InviteCreateEvent({required this.data});
 
@@ -866,10 +811,6 @@ class InviteDeleteEvent extends GatewayEvent {
   final String code;
   final String guildId;
 }
-
-// ---------------------------------------------------------------------------
-// Saved messages & mentions
-// ---------------------------------------------------------------------------
 
 class SavedMessageCreateEvent extends GatewayEvent {
   const SavedMessageCreateEvent({required this.message});
@@ -888,10 +829,6 @@ class RecentMentionDeleteEvent extends GatewayEvent {
 
   final String messageId;
 }
-
-// ---------------------------------------------------------------------------
-// Misc
-// ---------------------------------------------------------------------------
 
 class WebhooksUpdateEvent extends GatewayEvent {
   const WebhooksUpdateEvent({required this.channelId, required this.guildId});
@@ -922,20 +859,12 @@ class SessionsReplaceEvent extends GatewayEvent {
   const SessionsReplaceEvent();
 }
 
-// ---------------------------------------------------------------------------
-// Gateway error (op 12)
-// ---------------------------------------------------------------------------
-
 class GatewayErrorEvent extends GatewayEvent {
   const GatewayErrorEvent({required this.code, required this.message});
 
   final String code;
   final String message;
 }
-
-// ---------------------------------------------------------------------------
-// Unknown / fallback
-// ---------------------------------------------------------------------------
 
 class UnknownGatewayEvent extends GatewayEvent {
   const UnknownGatewayEvent({

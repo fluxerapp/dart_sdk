@@ -7,7 +7,6 @@ import 'package:test/test.dart';
 
 import 'test_config.dart';
 
-/// Helper to skip tests when credentials are not configured. Returns true if skipped.
 bool skipIfNotConfigured() {
   if (!TestConfig.isConfigured) {
     markTestSkipped(
@@ -35,7 +34,6 @@ void main() {
 
       connection = GatewayConnection(token: token, dio: dio);
 
-      // Listen for READY before connecting
       final readyFuture = connection!.events
           .where((e) => e is ReadyEvent)
           .cast<ReadyEvent>()
@@ -51,7 +49,6 @@ void main() {
 
       final ready = await readyFuture;
 
-      // Verify READY contains expected data
       expect(ready.sessionId, isNotEmpty);
       expect(ready.user.id, isNotEmpty);
       expect(ready.user.username, isNotEmpty);
@@ -70,7 +67,6 @@ void main() {
 
       expect(connection!.state, GatewayState.disconnected);
 
-      // Listen for connected state before connecting
       final connectedFuture = connection!.stateChanges
           .where((s) => s == GatewayState.connected)
           .first
@@ -96,7 +92,6 @@ void main() {
 
       connection = GatewayConnection(token: token, dio: dio);
 
-      // Wait for connection before disconnecting
       final connectedFuture = connection!.stateChanges
           .where((s) => s == GatewayState.connected)
           .first

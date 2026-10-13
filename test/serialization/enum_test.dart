@@ -2,9 +2,6 @@ import 'package:fluxer_dart/export.dart';
 import 'package:test/test.dart';
 
 void main() {
-  // ---------------------------------------------------------------------------
-  // Integer enums
-  // ---------------------------------------------------------------------------
   group('NsfwLevel (int enum)', () {
     test('deserializes from int values', () {
       expect(NsfwLevel.fromJson(0), NsfwLevel.safe);
@@ -104,9 +101,6 @@ void main() {
     });
   });
 
-  // ---------------------------------------------------------------------------
-  // String embed types
-  // ---------------------------------------------------------------------------
   group('MessageEmbedResponse type (string)', () {
     test('deserializes embed type as string', () {
       final embed = MessageEmbedResponse.fromJson(<String, Object?>{

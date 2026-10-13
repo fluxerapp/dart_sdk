@@ -17,14 +17,9 @@ import 'package:fluxer_dart/gateway_client/custom_status_storage.dart';
 import 'package:fluxer_dart/gateway_client/gateway_event.dart';
 import 'package:fluxer_dart/gateway_client/gateway_types.dart';
 
-/// Parses raw gateway dispatch event data into typed [GatewayEvent] objects.
 class EventParser {
   const EventParser();
 
-  /// Parses a dispatch [eventType] with its associated [data] payload.
-  ///
-  /// Returns an [UnknownGatewayEvent] if the event type is unrecognized or
-  /// if deserialization fails.
   GatewayEvent parse(String eventType, Map<String, dynamic> data) {
     try {
       return switch (eventType) {
@@ -132,7 +127,6 @@ class EventParser {
           userId: data['id'] as String,
         ),
 
-        // User
         'USER_UPDATE' => UserUpdateEvent(
           user: UserPrivateResponse.fromJson(data),
         ),
@@ -154,7 +148,6 @@ class EventParser {
           newAuthSessionIdHash: data['new_auth_session_id_hash'] as String?,
         ),
 
-        // Messages
         'MESSAGE_DELETE_BULK' => MessageDeleteBulkEvent(
           channelId: data['channel_id'] as String,
           ids: (data['ids'] as List<dynamic>).cast<String>(),
@@ -176,7 +169,6 @@ class EventParser {
           guildId: data['guild_id'] as String?,
         ),
 
-        // Channels
         'CHANNEL_UPDATE_BULK' => ChannelUpdateBulkEvent(
           channels: (data['channels'] as List<dynamic>)
               .map((e) => ChannelResponse.fromJson(e as Map<String, Object?>))
@@ -264,7 +256,6 @@ class EventParser {
           ),
         ),
 
-        // Guild roles
         'GUILD_ROLE_CREATE' => GuildRoleCreateEvent(
           guildId: data['guild_id'] as String,
           role: GuildRoleResponse.fromJson(
@@ -288,7 +279,6 @@ class EventParser {
               .toList(),
         ),
 
-        // Guild bans
         'GUILD_BAN_ADD' => GuildBanAddEvent(
           guildId: data['guild_id'] as String,
           userId: (data['user'] as Map)['id'] as String,
@@ -298,7 +288,6 @@ class EventParser {
           userId: (data['user'] as Map)['id'] as String,
         ),
 
-        // Guild emojis & stickers
         'GUILD_EMOJIS_UPDATE' => GuildEmojisUpdateEvent(
           guildId: data['guild_id'] as String,
           emojis: (data['emojis'] as List<dynamic>)
@@ -316,7 +305,6 @@ class EventParser {
               .toList(),
         ),
 
-        // Guild sync & members
         'GUILD_SYNC' => GuildSyncEvent(guild: GuildCreateData.fromJson(data)),
         'GUILD_MEMBERS_CHUNK' => GuildMembersChunkEvent(
           guildId: data['guild_id'] as String,
@@ -333,14 +321,12 @@ class EventParser {
         ),
         'GUILD_MEMBER_LIST_UPDATE' => _parseMemberListUpdate(data),
 
-        // Presence
         'PRESENCE_UPDATE_BULK' => PresenceUpdateBulkEvent(
           presences: (data['presences'] as List<dynamic>)
               .cast<Map<String, dynamic>>(),
           guildId: data['guild_id'] as String?,
         ),
 
-        // Voice
         'VOICE_STATE_UPDATE' => VoiceStateUpdateEvent(
           state: VoiceState.fromJson(data),
           member: _parseEmbeddedMember(data['member']),
@@ -375,7 +361,6 @@ class EventParser {
           guildId: data['guild_id'] as String?,
         ),
 
-        // Calls
         'CALL_CREATE' => _parseCallCreate(data),
         'CALL_UPDATE' => _parseCallUpdate(data),
         'CALL_DELETE' => CallDeleteEvent(
@@ -398,14 +383,12 @@ class EventParser {
           counts: _parseChannelMemberCountEntries(data['counts']),
         ),
 
-        // Invites
         'INVITE_CREATE' => InviteCreateEvent(data: data),
         'INVITE_DELETE' => InviteDeleteEvent(
           code: data['code'] as String,
           guildId: data['guild_id'] as String,
         ),
 
-        // Saved messages & mentions
         'SAVED_MESSAGE_CREATE' => SavedMessageCreateEvent(
           message: MessageResponseSchema.fromJson(data),
         ),
@@ -416,7 +399,6 @@ class EventParser {
           messageId: data['message_id'] as String,
         ),
 
-        // Misc
         'WEBHOOKS_UPDATE' => WebhooksUpdateEvent(
           channelId: data['channel_id'] as String,
           guildId: data['guild_id'] as String,
@@ -439,10 +421,6 @@ class EventParser {
     }
   }
 
-  /// Parses a dispatch [eventType] whose payload is a JSON array.
-  ///
-  /// Returns `null` for unrecognized event types or when deserialization
-  /// fails, so the caller can skip emitting an event.
   GatewayEvent? parseList(String eventType, List<dynamic> data) {
     try {
       return switch (eventType) {
@@ -575,7 +553,6 @@ class EventParser {
     return RelationshipResponse.fromJson(json);
   }
 
-  /// Safely parses a JSON list, skipping items that fail deserialization.
   static List<T> _parseListSafe<T>(
     dynamic rawList,
     T Function(dynamic) parser,
@@ -585,9 +562,7 @@ class EventParser {
     for (final item in rawList) {
       try {
         result.add(parser(item));
-      } catch (_) {
-        // Skip items that fail to parse.
-      }
+      } catch (_) {}
     }
     return result;
   }

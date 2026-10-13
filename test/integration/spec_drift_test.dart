@@ -6,7 +6,6 @@ import 'package:test/test.dart';
 
 import 'test_config.dart';
 
-/// Loads the OpenAPI spec and extracts schema field definitions.
 class SpecSchema {
   SpecSchema._(this._spec);
 
@@ -18,7 +17,6 @@ class SpecSchema {
 
   final Map<String, Object?> _spec;
 
-  /// Get field definitions for a top-level schema.
   SchemaInfo? getSchema(String name) {
     final schemas =
         (_spec['components'] as Map?)?['schemas'] as Map<String, Object?>?;
@@ -28,8 +26,6 @@ class SpecSchema {
     return _parseSchema(schema);
   }
 
-  /// Get field definitions for an inline object property within a parent schema.
-  /// e.g. getInlineSchema('WellKnownFluxerResponse', 'features')
   SchemaInfo? getInlineSchema(String parentName, String propertyName) {
     final schemas =
         (_spec['components'] as Map?)?['schemas'] as Map<String, Object?>?;
@@ -40,9 +36,7 @@ class SpecSchema {
     if (properties == null) return null;
     final prop = properties[propertyName] as Map<String, Object?>?;
     if (prop == null) return null;
-    // Inline object: has its own 'properties'
     if (prop.containsKey('properties')) return _parseSchema(prop);
-    // $ref: resolve to top-level schema
     if (prop.containsKey('\$ref')) {
       final ref = prop['\$ref'] as String;
       return getSchema(ref.split('/').last);
@@ -50,7 +44,6 @@ class SpecSchema {
     return null;
   }
 
-  /// Resolve an inline object schema (e.g. a property that is type: object with its own properties).
   SchemaInfo? _parseSchema(Map<String, Object?> schema) {
     final properties = schema['properties'] as Map<String, Object?>?;
     if (properties == null) return null;
@@ -89,31 +82,25 @@ class SpecSchema {
     return (prop['type'] as String?) ?? 'unknown';
   }
 
-  /// Resolve the schema name for a property definition.
-  /// Returns the $ref schema name, or null if it's a primitive / unresolvable.
   String? resolveRefName(Map<String, Object?> prop) {
     if (prop.containsKey('\$ref')) {
       return (prop['\$ref'] as String).split('/').last;
     }
-    // anyOf: [SomeSchema, null] — common nullable pattern
     if (prop.containsKey('anyOf')) {
       final anyOf = (prop['anyOf'] as List).cast<Map<String, Object?>>();
       final nonNull = anyOf.where((e) => e['type'] != 'null').toList();
       if (nonNull.length == 1) return resolveRefName(nonNull.first);
     }
-    // array with $ref items
     if (prop['type'] == 'array') {
       final items = prop['items'] as Map<String, Object?>?;
       if (items != null) return resolveRefName(items);
     }
-    // inline object with properties
     if (prop['type'] == 'object' && prop.containsKey('properties')) {
-      return null; // handled separately via getInlineSchema
+      return null;
     }
     return null;
   }
 
-  /// Get the raw property definition from a top-level schema.
   Map<String, Object?>? getPropertyDef(String schemaName, String fieldName) {
     final schemas =
         (_spec['components'] as Map?)?['schemas'] as Map<String, Object?>?;
@@ -124,10 +111,8 @@ class SpecSchema {
     return props?[fieldName] as Map<String, Object?>?;
   }
 
-  /// Check if a property is an array type.
   bool isArray(Map<String, Object?> prop) {
     if (prop['type'] == 'array') return true;
-    // anyOf with array
     if (prop.containsKey('anyOf')) {
       final anyOf = (prop['anyOf'] as List).cast<Map<String, Object?>>();
       return anyOf.any((e) => e['type'] == 'array');
@@ -135,7 +120,6 @@ class SpecSchema {
     return false;
   }
 
-  /// Check if a property is an inline object (has properties directly).
   bool isInlineObject(Map<String, Object?> prop) {
     return prop['type'] == 'object' && prop.containsKey('properties');
   }
@@ -177,7 +161,7 @@ class Discrepancy {
 
   final String endpoint;
   final String schema;
-  final String kind; // 'extra_field', 'missing_required', 'type_mismatch'
+  final String kind;
   final String field;
   final String detail;
 
@@ -185,7 +169,6 @@ class Discrepancy {
   String toString() => '[$kind] $schema.$field ($endpoint) $detail';
 }
 
-/// Compare actual JSON response keys against spec schema.
 List<Discrepancy> compareResponseToSpec({
   required String endpoint,
   required String schemaName,
@@ -208,7 +191,6 @@ List<Discrepancy> compareResponseToSpec({
     return discrepancies;
   }
 
-  // Check for fields in API response not in spec
   for (final key in actual.keys) {
     if (!schemaInfo.fields.containsKey(key)) {
       discrepancies.add(
@@ -224,7 +206,6 @@ List<Discrepancy> compareResponseToSpec({
     }
   }
 
-  // Check for required spec fields missing from API response
   for (final entry in schemaInfo.fields.entries) {
     if (entry.value.required && !actual.containsKey(entry.key)) {
       discrepancies.add(
@@ -240,7 +221,6 @@ List<Discrepancy> compareResponseToSpec({
     }
   }
 
-  // Check for required non-nullable fields that are null in response
   for (final entry in schemaInfo.fields.entries) {
     if (entry.value.required &&
         !entry.value.nullable &&
@@ -262,8 +242,6 @@ List<Discrepancy> compareResponseToSpec({
   return discrepancies;
 }
 
-/// Recursively compare a JSON response against the spec, walking into nested
-/// objects and array items. [depth] prevents infinite recursion on circular refs.
 List<Discrepancy> compareDeep({
   required String endpoint,
   required String schemaName,
@@ -272,12 +250,11 @@ List<Discrepancy> compareDeep({
   int depth = 0,
   Set<String>? visited,
 }) {
-  if (depth > 4) return []; // prevent deep recursion
+  if (depth > 4) return [];
   visited ??= {};
-  if (visited.contains(schemaName)) return []; // circular ref guard
+  if (visited.contains(schemaName)) return [];
   visited = {...visited, schemaName};
 
-  // First do the flat comparison
   final discrepancies = compareResponseToSpec(
     endpoint: endpoint,
     schemaName: schemaName,
@@ -288,7 +265,6 @@ List<Discrepancy> compareDeep({
   final schemaInfo = spec.getSchema(schemaName);
   if (schemaInfo == null) return discrepancies;
 
-  // Walk each field that exists in the response and has a resolvable schema
   for (final entry in schemaInfo.fields.entries) {
     final fieldName = entry.key;
     final value = actual[fieldName];
@@ -297,7 +273,6 @@ List<Discrepancy> compareDeep({
     final propDef = spec.getPropertyDef(schemaName, fieldName);
     if (propDef == null) continue;
 
-    // Case 1: nested object with $ref schema
     final refName = spec.resolveRefName(propDef);
     if (refName != null && value is Map<String, Object?>) {
       discrepancies.addAll(
@@ -313,7 +288,6 @@ List<Discrepancy> compareDeep({
       continue;
     }
 
-    // Case 2: array of $ref objects
     if (spec.isArray(propDef) && value is List && value.isNotEmpty) {
       final first = value.first;
       if (first is Map<String, Object?> && refName != null) {
@@ -331,11 +305,9 @@ List<Discrepancy> compareDeep({
       continue;
     }
 
-    // Case 3: inline object (properties defined directly on the property)
     if (spec.isInlineObject(propDef) && value is Map<String, Object?>) {
       final inlineSchema = spec.getInlineSchema(schemaName, fieldName);
       if (inlineSchema != null) {
-        // Check extra fields
         for (final key in value.keys) {
           if (!inlineSchema.fields.containsKey(key)) {
             discrepancies.add(
@@ -350,7 +322,6 @@ List<Discrepancy> compareDeep({
             );
           }
         }
-        // Check missing required
         for (final e in inlineSchema.fields.entries) {
           if (e.value.required && !value.containsKey(e.key)) {
             discrepancies.add(
@@ -410,7 +381,6 @@ void main() {
     return false;
   }
 
-  // Collect all discrepancies across endpoints
   final allDiscrepancies = <Discrepancy>[];
 
   group('Spec drift detection', () {
@@ -538,7 +508,6 @@ void main() {
           markTestSkipped('No messages');
           return;
         }
-        // Deep check walks into author, embeds[], attachments[], mentions[], etc.
         allDiscrepancies.addAll(
           compareDeep(
             endpoint: 'GET /channels/{id}/messages',
@@ -558,7 +527,6 @@ void main() {
         markTestSkipped('No DM channels');
         return;
       }
-      // Deep check walks into recipients[] -> UserPartialResponse
       allDiscrepancies.addAll(
         compareDeep(
           endpoint: 'GET /users/@me/channels',
@@ -581,7 +549,6 @@ void main() {
           markTestSkipped('No relationships');
           return;
         }
-        // Deep check walks into user -> UserPartialResponse
         allDiscrepancies.addAll(
           compareDeep(
             endpoint: 'GET /users/@me/relationships',
@@ -598,8 +565,6 @@ void main() {
       final response = await dio.get<Map<String, Object?>>(
         '/.well-known/fluxer',
       );
-      // Deep check walks into endpoints, captcha, features, gif, sso, limits,
-      // push, app_public, gateway (all inline or $ref objects)
       allDiscrepancies.addAll(
         compareDeep(
           endpoint: 'GET /.well-known/fluxer',
@@ -627,7 +592,6 @@ void main() {
         markTestSkipped('No members');
         return;
       }
-      // Deep check walks into user -> UserPartialResponse, roles[], etc.
       allDiscrepancies.addAll(
         compareDeep(
           endpoint: 'GET /guilds/{id}/members',
@@ -727,7 +691,6 @@ void main() {
     });
   });
 
-  // Print summary at the end
   tearDownAll(() {
     if (allDiscrepancies.isEmpty) {
       print('\n=== SPEC DRIFT REPORT ===');
@@ -738,7 +701,6 @@ void main() {
     print('\n=== SPEC DRIFT REPORT ===');
     print('Found ${allDiscrepancies.length} discrepancy(ies):\n');
 
-    // Group by kind
     final grouped = <String, List<Discrepancy>>{};
     for (final d in allDiscrepancies) {
       grouped.putIfAbsent(d.kind, () => []).add(d);

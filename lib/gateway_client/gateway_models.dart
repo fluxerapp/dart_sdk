@@ -1,7 +1,5 @@
-/// Connection state of the gateway WebSocket.
 enum GatewayState { disconnected, connecting, connected, reconnecting, failed }
 
-/// Properties sent in the IDENTIFY payload.
 class GatewayIdentifyProperties {
   const GatewayIdentifyProperties({
     required this.os,
@@ -68,7 +66,6 @@ class GatewayIdentifyProperties {
   };
 }
 
-/// Presence data sent in the IDENTIFY or PRESENCE_UPDATE payload.
 class GatewayPresence {
   const GatewayPresence({
     required this.status,
@@ -92,7 +89,6 @@ class GatewayPresence {
   }
 }
 
-/// Custom status data for presence updates.
 class GatewayCustomStatus {
   const GatewayCustomStatus({
     this.text,

@@ -1,4 +1,3 @@
-/// Gateway WebSocket close codes for the Fluxer protocol.
 enum GatewayCloseCode {
   unknownError(4000),
   unknownOpcode(4001),
@@ -17,8 +16,6 @@ enum GatewayCloseCode {
 
   final int code;
 
-  /// Whether this close code indicates a fatal error that should not
-  /// be retried (e.g. bad auth, invalid shard config, bad API version).
   bool get isFatal {
     switch (this) {
       case GatewayCloseCode.authenticationFailed:
@@ -31,8 +28,6 @@ enum GatewayCloseCode {
     }
   }
 
-  /// Looks up a [GatewayCloseCode] by its integer [code].
-  /// Returns `null` if no matching code is found.
   static GatewayCloseCode? fromCode(int code) {
     for (final value in values) {
       if (value.code == code) {
