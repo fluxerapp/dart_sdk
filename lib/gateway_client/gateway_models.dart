@@ -11,6 +11,8 @@ class GatewayIdentifyProperties {
     this.browserVersion,
     this.buildTimestamp,
     this.buildVersion,
+    this.buildNumber,
+    this.betaNumber,
     this.userAgent,
     this.releaseChannel,
     this.clientPlatform,
@@ -32,6 +34,8 @@ class GatewayIdentifyProperties {
   final String? browserVersion;
   final String? buildTimestamp;
   final String? buildVersion;
+  final int? buildNumber;
+  final int? betaNumber;
   final String? userAgent;
   final String? releaseChannel;
   final String? clientPlatform;
@@ -53,6 +57,8 @@ class GatewayIdentifyProperties {
     if (browserVersion != null) 'browser_version': browserVersion,
     if (buildTimestamp != null) 'build_timestamp': buildTimestamp,
     if (buildVersion != null) 'build_version': buildVersion,
+    if (buildNumber != null) 'build_number': buildNumber,
+    if (betaNumber != null) 'beta_number': betaNumber,
     if (userAgent != null) 'user_agent': userAgent,
     if (releaseChannel != null) 'release_channel': releaseChannel,
     if (clientPlatform != null) 'client_platform': clientPlatform,
