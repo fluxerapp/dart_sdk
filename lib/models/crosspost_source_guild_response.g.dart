@@ -24,6 +24,14 @@ CrosspostSourceGuildResponse _$CrosspostSourceGuildResponseFromJson(
                 .toList() ??
             [],
       ),
+      badgeIds: $checkedConvert(
+        'badge_ids',
+        (v) =>
+            (v as List<dynamic>?)
+                ?.map((e) => e as SnowflakeStringType)
+                .toList() ??
+            [],
+      ),
       approximateMemberCount: $checkedConvert(
         'approximate_member_count',
         (v) => (v as num?)?.toInt(),
@@ -39,6 +47,7 @@ CrosspostSourceGuildResponse _$CrosspostSourceGuildResponseFromJson(
     return val;
   },
   fieldKeyMap: const {
+    'badgeIds': 'badge_ids',
     'approximateMemberCount': 'approximate_member_count',
     'approximatePresenceCount': 'approximate_presence_count',
   },
@@ -53,6 +62,7 @@ Map<String, dynamic> _$CrosspostSourceGuildResponseToJson(
   'banner': ?instance.banner,
   'description': instance.description,
   'features': instance.features,
+  'badge_ids': instance.badgeIds,
   'approximate_member_count': instance.approximateMemberCount,
   'approximate_presence_count': instance.approximatePresenceCount,
   'discoverable': instance.discoverable,

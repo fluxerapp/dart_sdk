@@ -113,6 +113,14 @@ WellKnownFluxerResponse _$WellKnownFluxerResponseFromJson(
             )
             .toList(),
       ),
+      builtInGuildBadgeImages: $checkedConvert(
+        'built_in_guild_badge_images',
+        (v) => v == null
+            ? null
+            : InstanceBuiltInGuildBadgeImagesSchema.fromJson(
+                v as Map<String, dynamic>,
+              ),
+      ),
       voiceOrigins: $checkedConvert(
         'voice_origins',
         (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
@@ -126,6 +134,7 @@ WellKnownFluxerResponse _$WellKnownFluxerResponseFromJson(
     'agePolicy': 'age_policy',
     'domainMigration': 'domain_migration',
     'guildBadges': 'guild_badges',
+    'builtInGuildBadgeImages': 'built_in_guild_badge_images',
     'voiceOrigins': 'voice_origins',
   },
 );
@@ -150,5 +159,6 @@ Map<String, dynamic> _$WellKnownFluxerResponseToJson(
   'notice': ?instance.notice,
   'domain_migration': ?instance.domainMigration,
   'guild_badges': ?instance.guildBadges,
+  'built_in_guild_badge_images': ?instance.builtInGuildBadgeImages,
   'voice_origins': ?instance.voiceOrigins,
 };

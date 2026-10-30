@@ -442,6 +442,7 @@ export 'models/refresh_attachment_urls_request.dart';
 export 'models/refresh_attachment_urls_response.dart';
 export 'models/applications_me_response.dart';
 export 'models/well_known_fluxer_response.dart';
+export 'models/instance_built_in_guild_badge_images_schema.dart';
 export 'models/instance_guild_badge_schema.dart';
 export 'models/domain_migration_discovery_response.dart';
 export 'models/instance_notice_schema.dart';

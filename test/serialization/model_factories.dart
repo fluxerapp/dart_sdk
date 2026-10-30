@@ -423,6 +423,8 @@ tolerantModelFactories = <String, Object Function(Map<String, Object?>)>{
   'InstanceAppPublicSchemaRegistration':
       InstanceAppPublicSchemaRegistration.fromJson,
   'InstanceBrandingSchema': InstanceBrandingSchema.fromJson,
+  'InstanceBuiltInGuildBadgeImagesSchema':
+      InstanceBuiltInGuildBadgeImagesSchema.fromJson,
   'InstanceCaptchaSchema': InstanceCaptchaSchema.fromJson,
   'InstanceCommunitySchema': InstanceCommunitySchema.fromJson,
   'InstanceEndpointsSchema': InstanceEndpointsSchema.fromJson,

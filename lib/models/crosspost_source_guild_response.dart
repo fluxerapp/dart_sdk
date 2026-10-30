@@ -4,6 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+import 'custom_badge_id_list_response.dart';
 import 'guild_feature_schema.dart';
 import 'int32_type.dart';
 import 'snowflake_string_type.dart';
@@ -17,6 +18,7 @@ class CrosspostSourceGuildResponse {
     required this.name,
     required this.description,
     required this.features,
+    required this.badgeIds,
     required this.approximateMemberCount,
     required this.approximatePresenceCount,
     required this.discoverable,
@@ -50,6 +52,10 @@ class CrosspostSourceGuildResponse {
   /// The public badge features of the source community: VERIFIED, PARTNERED and DISCOVERABLE only
   @JsonKey(defaultValue: <String>[])
   final List<GuildFeatureSchema> features;
+
+  /// IDs of the custom badges assigned to the source community. Look them up in guild_badges of the instance discovery document
+  @JsonKey(name: 'badge_ids', defaultValue: <String>[])
+  final CustomBadgeIdListResponse badgeIds;
 
   /// Approximate number of members in the source community, or null when unavailable
   @JsonKey(includeIfNull: true, name: 'approximate_member_count')

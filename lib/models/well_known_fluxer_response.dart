@@ -7,6 +7,7 @@ import 'package:json_annotation/json_annotation.dart';
 import 'domain_migration_discovery_response.dart';
 import 'instance_age_policy_schema.dart';
 import 'instance_app_public_schema.dart';
+import 'instance_built_in_guild_badge_images_schema.dart';
 import 'instance_captcha_schema.dart';
 import 'instance_community_schema.dart';
 import 'instance_endpoints_schema.dart';
@@ -42,6 +43,7 @@ class WellKnownFluxerResponse {
     this.notice,
     this.domainMigration,
     this.guildBadges,
+    this.builtInGuildBadgeImages,
     this.voiceOrigins,
   });
 
@@ -95,6 +97,10 @@ class WellKnownFluxerResponse {
   /// Custom badges that communities on this instance can show next to their name, in display order
   @JsonKey(includeIfNull: false, name: 'guild_badges')
   final List<InstanceGuildBadgeSchema>? guildBadges;
+
+  /// Images this instance shows in place of the built-in verified, partnered and discoverable community badges
+  @JsonKey(includeIfNull: false, name: 'built_in_guild_badge_images')
+  final InstanceBuiltInGuildBadgeImagesSchema? builtInGuildBadgeImages;
 
   /// Origins of every voice server endpoint, such as wss://voice.example.com, for content security policies
   @JsonKey(includeIfNull: false, name: 'voice_origins')
