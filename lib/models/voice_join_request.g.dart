@@ -24,6 +24,7 @@ VoiceJoinRequest _$VoiceJoinRequestFromJson(Map<String, dynamic> json) =>
             (v) => (v as num?)?.toInt(),
           ),
           publicIpv4: $checkedConvert('public_ipv4', (v) => v as String?),
+          publicIpv6: $checkedConvert('public_ipv6', (v) => v as String?),
         );
         return val;
       },
@@ -34,6 +35,7 @@ VoiceJoinRequest _$VoiceJoinRequestFromJson(Map<String, dynamic> json) =>
         'regionId': 'region_id',
         'softConnectionLimit': 'soft_connection_limit',
         'publicIpv4': 'public_ipv4',
+        'publicIpv6': 'public_ipv6',
       },
     );
 
@@ -48,4 +50,5 @@ Map<String, dynamic> _$VoiceJoinRequestToJson(VoiceJoinRequest instance) =>
       'longitude': ?instance.longitude,
       'soft_connection_limit': ?instance.softConnectionLimit,
       'public_ipv4': ?instance.publicIpv4,
+      'public_ipv6': ?instance.publicIpv6,
     };

@@ -13,6 +13,8 @@ class UpdateVoiceNodeRequest {
   UpdateVoiceNodeRequest({
     this.endpoint,
     this.draining,
+    this.publicIpv4,
+    this.publicIpv6,
     JsonNullable<num> latitude = const JsonNullable<num>.undefined(),
     JsonNullable<num> longitude = const JsonNullable<num>.undefined(),
     JsonNullable<int> softConnectionLimit = const JsonNullable<int>.undefined(),
@@ -32,6 +34,8 @@ class UpdateVoiceNodeRequest {
     this.latitudeValue,
     this.longitudeValue,
     this.softConnectionLimitValue,
+    this.publicIpv4,
+    this.publicIpv6,
   }) : latitude = const JsonNullable<num>.undefined(),
        _latitudePresent = false,
        longitude = const JsonNullable<num>.undefined(),
@@ -55,6 +59,8 @@ class UpdateVoiceNodeRequest {
       softConnectionLimit: json.containsKey('soft_connection_limit')
           ? JsonNullable<int>.of(value.softConnectionLimitValue)
           : const JsonNullable<int>.undefined(),
+      publicIpv4: value.publicIpv4,
+      publicIpv6: value.publicIpv6,
     );
   }
 
@@ -65,6 +71,14 @@ class UpdateVoiceNodeRequest {
   /// Whether placement sends new calls elsewhere
   @JsonKey(includeIfNull: false)
   final bool? draining;
+
+  /// Public IPv4 address, or an empty string for none
+  @JsonKey(includeIfNull: false, name: 'public_ipv4')
+  final String? publicIpv4;
+
+  /// Public IPv6 address, or an empty string for none
+  @JsonKey(includeIfNull: false, name: 'public_ipv6')
+  final String? publicIpv6;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<num> latitude;
   @JsonKey(includeIfNull: false, name: 'latitude')

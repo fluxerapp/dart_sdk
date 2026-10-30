@@ -4,6 +4,8 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+import 'voice_turn_server.dart';
+
 part 'voice_join_response.g.dart';
 
 @JsonSerializable()
@@ -14,6 +16,7 @@ class VoiceJoinResponse {
     required this.endpoint,
     required this.webhookUrl,
     required this.nodeUrl,
+    required this.turnServers,
   });
 
   factory VoiceJoinResponse.fromJson(Map<String, Object?> json) =>
@@ -38,6 +41,10 @@ class VoiceJoinResponse {
   /// URL of the node routes for this server
   @JsonKey(name: 'node_url', defaultValue: '')
   final String nodeUrl;
+
+  /// TURN servers of the instance, for the LiveKit configuration of the voice server
+  @JsonKey(name: 'turn_servers', defaultValue: <VoiceTurnServer>[])
+  final List<VoiceTurnServer> turnServers;
 
   Map<String, Object?> toJson() => _$VoiceJoinResponseToJson(this);
 }

@@ -16,18 +16,25 @@ class VoiceJoinPreviewRequest {
     this.memoryBytes,
     this.rexctlVersion,
     JsonNullable<String> publicIpv4 = const JsonNullable<String>.undefined(),
+    JsonNullable<String> publicIpv6 = const JsonNullable<String>.undefined(),
   }) : publicIpv4 = publicIpv4,
        publicIpv4Value = publicIpv4.value,
-       _publicIpv4Present = publicIpv4.isPresent;
+       _publicIpv4Present = publicIpv4.isPresent,
+       publicIpv6 = publicIpv6,
+       publicIpv6Value = publicIpv6.value,
+       _publicIpv6Present = publicIpv6.isPresent;
 
   const VoiceJoinPreviewRequest._({
     this.publicIpv4Value,
+    this.publicIpv6Value,
     this.regionId,
     this.cpuCount,
     this.memoryBytes,
     this.rexctlVersion,
   }) : publicIpv4 = const JsonNullable<String>.undefined(),
-       _publicIpv4Present = false;
+       _publicIpv4Present = false,
+       publicIpv6 = const JsonNullable<String>.undefined(),
+       _publicIpv6Present = false;
   factory VoiceJoinPreviewRequest.patch(Map<String, Object?> json) =>
       VoiceJoinPreviewRequest.fromJson(json);
 
@@ -36,6 +43,9 @@ class VoiceJoinPreviewRequest {
     return VoiceJoinPreviewRequest(
       publicIpv4: json.containsKey('public_ipv4')
           ? JsonNullable<String>.of(value.publicIpv4Value)
+          : const JsonNullable<String>.undefined(),
+      publicIpv6: json.containsKey('public_ipv6')
+          ? JsonNullable<String>.of(value.publicIpv6Value)
           : const JsonNullable<String>.undefined(),
       regionId: value.regionId,
       cpuCount: value.cpuCount,
@@ -64,11 +74,19 @@ class VoiceJoinPreviewRequest {
   @JsonKey(includeIfNull: false, name: 'public_ipv4')
   final String? publicIpv4Value;
   final bool _publicIpv4Present;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final JsonNullable<String> publicIpv6;
+  @JsonKey(includeIfNull: false, name: 'public_ipv6')
+  final String? publicIpv6Value;
+  final bool _publicIpv6Present;
 
   Map<String, Object?> toJson() {
     final json = _$VoiceJoinPreviewRequestToJson(this);
     if (_publicIpv4Present) {
       json.putIfAbsent('public_ipv4', () => publicIpv4Value);
+    }
+    if (_publicIpv6Present) {
+      json.putIfAbsent('public_ipv6', () => publicIpv6Value);
     }
     return json;
   }

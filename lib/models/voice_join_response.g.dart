@@ -17,6 +17,17 @@ VoiceJoinResponse _$VoiceJoinResponseFromJson(Map<String, dynamic> json) =>
           endpoint: $checkedConvert('endpoint', (v) => v as String? ?? ''),
           webhookUrl: $checkedConvert('webhook_url', (v) => v as String? ?? ''),
           nodeUrl: $checkedConvert('node_url', (v) => v as String? ?? ''),
+          turnServers: $checkedConvert(
+            'turn_servers',
+            (v) =>
+                (v as List<dynamic>?)
+                    ?.map(
+                      (e) =>
+                          VoiceTurnServer.fromJson(e as Map<String, dynamic>),
+                    )
+                    .toList() ??
+                [],
+          ),
         );
         return val;
       },
@@ -25,6 +36,7 @@ VoiceJoinResponse _$VoiceJoinResponseFromJson(Map<String, dynamic> json) =>
         'regionId': 'region_id',
         'webhookUrl': 'webhook_url',
         'nodeUrl': 'node_url',
+        'turnServers': 'turn_servers',
       },
     );
 
@@ -35,4 +47,5 @@ Map<String, dynamic> _$VoiceJoinResponseToJson(VoiceJoinResponse instance) =>
       'endpoint': instance.endpoint,
       'webhook_url': instance.webhookUrl,
       'node_url': instance.nodeUrl,
+      'turn_servers': instance.turnServers,
     };

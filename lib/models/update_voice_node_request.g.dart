@@ -21,6 +21,8 @@ UpdateVoiceNodeRequest _$UpdateVoiceNodeRequestFromJson(
         'soft_connection_limit',
         (v) => (v as num?)?.toInt(),
       ),
+      publicIpv4: $checkedConvert('public_ipv4', (v) => v as String?),
+      publicIpv6: $checkedConvert('public_ipv6', (v) => v as String?),
     );
     return val;
   },
@@ -28,6 +30,8 @@ UpdateVoiceNodeRequest _$UpdateVoiceNodeRequestFromJson(
     'latitudeValue': 'latitude',
     'longitudeValue': 'longitude',
     'softConnectionLimitValue': 'soft_connection_limit',
+    'publicIpv4': 'public_ipv4',
+    'publicIpv6': 'public_ipv6',
   },
 );
 
@@ -36,6 +40,8 @@ Map<String, dynamic> _$UpdateVoiceNodeRequestToJson(
 ) => <String, dynamic>{
   'endpoint': ?instance.endpoint,
   'draining': ?instance.draining,
+  'public_ipv4': ?instance.publicIpv4,
+  'public_ipv6': ?instance.publicIpv6,
   'latitude': ?instance.latitudeValue,
   'longitude': ?instance.longitudeValue,
   'soft_connection_limit': ?instance.softConnectionLimitValue,

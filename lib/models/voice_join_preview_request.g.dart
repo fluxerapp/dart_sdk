@@ -14,6 +14,7 @@ VoiceJoinPreviewRequest _$VoiceJoinPreviewRequestFromJson(
   ($checkedConvert) {
     final val = VoiceJoinPreviewRequest._(
       publicIpv4Value: $checkedConvert('public_ipv4', (v) => v as String?),
+      publicIpv6Value: $checkedConvert('public_ipv6', (v) => v as String?),
       regionId: $checkedConvert('region_id', (v) => v as String?),
       cpuCount: $checkedConvert('cpu_count', (v) => (v as num?)?.toInt()),
       memoryBytes: $checkedConvert('memory_bytes', (v) => (v as num?)?.toInt()),
@@ -23,6 +24,7 @@ VoiceJoinPreviewRequest _$VoiceJoinPreviewRequestFromJson(
   },
   fieldKeyMap: const {
     'publicIpv4Value': 'public_ipv4',
+    'publicIpv6Value': 'public_ipv6',
     'regionId': 'region_id',
     'cpuCount': 'cpu_count',
     'memoryBytes': 'memory_bytes',
@@ -38,4 +40,5 @@ Map<String, dynamic> _$VoiceJoinPreviewRequestToJson(
   'memory_bytes': ?instance.memoryBytes,
   'rexctl_version': ?instance.rexctlVersion,
   'public_ipv4': ?instance.publicIpv4Value,
+  'public_ipv6': ?instance.publicIpv6Value,
 };

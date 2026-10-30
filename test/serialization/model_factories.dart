@@ -886,6 +886,7 @@ tolerantModelFactories = <String, Object Function(Map<String, Object?>)>{
   'VoiceP2pConnectionReportsRequestReports':
       VoiceP2pConnectionReportsRequestReports.fromJson,
   'VoiceServerHealthResponse': VoiceServerHealthResponse.fromJson,
+  'VoiceTurnServer': VoiceTurnServer.fromJson,
   'WebAuthnAuthenticateRequest': WebAuthnAuthenticateRequest.fromJson,
   'WebAuthnAuthenticationOptionsResponse':
       WebAuthnAuthenticationOptionsResponse.fromJson,

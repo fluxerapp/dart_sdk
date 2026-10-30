@@ -23,6 +23,19 @@ VoiceNodeResponse _$VoiceNodeResponseFromJson(Map<String, dynamic> json) =>
             'soft_connection_limit',
             (v) => v as num?,
           ),
+          publicIpv4: $checkedConvert('public_ipv4', (v) => v as String?),
+          publicIpv6: $checkedConvert('public_ipv6', (v) => v as String?),
+          turnServers: $checkedConvert(
+            'turn_servers',
+            (v) =>
+                (v as List<dynamic>?)
+                    ?.map(
+                      (e) =>
+                          VoiceTurnServer.fromJson(e as Map<String, dynamic>),
+                    )
+                    .toList() ??
+                [],
+          ),
           health: $checkedConvert(
             'health',
             (v) => v == null
@@ -37,6 +50,9 @@ VoiceNodeResponse _$VoiceNodeResponseFromJson(Map<String, dynamic> json) =>
         'serverId': 'server_id',
         'isActive': 'is_active',
         'softConnectionLimit': 'soft_connection_limit',
+        'publicIpv4': 'public_ipv4',
+        'publicIpv6': 'public_ipv6',
+        'turnServers': 'turn_servers',
       },
     );
 
@@ -50,5 +66,8 @@ Map<String, dynamic> _$VoiceNodeResponseToJson(VoiceNodeResponse instance) =>
       'is_active': instance.isActive,
       'draining': instance.draining,
       'soft_connection_limit': instance.softConnectionLimit,
+      'public_ipv4': instance.publicIpv4,
+      'public_ipv6': instance.publicIpv6,
+      'turn_servers': instance.turnServers,
       'health': instance.health,
     };

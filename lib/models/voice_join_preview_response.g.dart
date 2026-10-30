@@ -44,6 +44,16 @@ VoiceJoinPreviewResponse _$VoiceJoinPreviewResponseFromJson(
       ),
       release: $checkedConvert('release', (v) => v as String? ?? ''),
       expiresAt: $checkedConvert('expires_at', (v) => v as String? ?? ''),
+      turnServers: $checkedConvert(
+        'turn_servers',
+        (v) =>
+            (v as List<dynamic>?)
+                ?.map(
+                  (e) => VoiceTurnServer.fromJson(e as Map<String, dynamic>),
+                )
+                .toList() ??
+            [],
+      ),
     );
     return val;
   },
@@ -55,6 +65,7 @@ VoiceJoinPreviewResponse _$VoiceJoinPreviewResponseFromJson(
     'webhookUrl': 'webhook_url',
     'apiCodeVersion': 'api_code_version',
     'expiresAt': 'expires_at',
+    'turnServers': 'turn_servers',
   },
 );
 
@@ -73,4 +84,5 @@ Map<String, dynamic> _$VoiceJoinPreviewResponseToJson(
   'api_code_version': instance.apiCodeVersion,
   'release': instance.release,
   'expires_at': instance.expiresAt,
+  'turn_servers': instance.turnServers,
 };

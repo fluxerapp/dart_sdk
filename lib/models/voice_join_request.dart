@@ -18,6 +18,7 @@ class VoiceJoinRequest {
     this.longitude,
     this.softConnectionLimit,
     this.publicIpv4,
+    this.publicIpv6,
   });
 
   factory VoiceJoinRequest.fromJson(Map<String, Object?> json) =>
@@ -52,6 +53,10 @@ class VoiceJoinRequest {
   /// Public IPv4 address of the voice machine
   @JsonKey(includeIfNull: false, name: 'public_ipv4')
   final String? publicIpv4;
+
+  /// Public IPv6 address of the voice machine
+  @JsonKey(includeIfNull: false, name: 'public_ipv6')
+  final String? publicIpv6;
 
   Map<String, Object?> toJson() => _$VoiceJoinRequestToJson(this);
 }

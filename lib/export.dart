@@ -742,7 +742,10 @@ export 'models/render_spoilers_input.dart';
 export 'models/sticker_animation_options_input.dart';
 export 'models/user_theme_type.dart';
 export 'models/user_status_type.dart';
+export 'models/voice_turn_server.dart';
 export 'models/voice_server_health_response.dart';
+export 'models/voice_public_ipv6_type.dart';
+export 'models/voice_public_ipv4_type.dart';
 export 'models/int64_type.dart';
 export 'models/api_error_code.dart';
 export 'models/object0.dart';
@@ -990,6 +993,7 @@ export 'models/pending_subscription_change_response_variant1_current_billing_cyc
 export 'models/pending_subscription_change_response_variant1_target_billing_cycle_target_billing_cycle.dart';
 export 'models/web_authn_registration_response_authenticator_attachment_authenticator_attachment.dart';
 export 'models/web_authn_registration_response_response_transports_transports.dart';
+export 'models/voice_turn_server_protocol_protocol.dart';
 export 'models/voice_server_health_response_status_status.dart';
 export 'models/json_nullable.dart';
 // Root client

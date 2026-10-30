@@ -5,6 +5,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'voice_join_preview_response_region.dart';
+import 'voice_turn_server.dart';
 
 part 'voice_join_preview_response.g.dart';
 
@@ -23,6 +24,7 @@ class VoiceJoinPreviewResponse {
     required this.apiCodeVersion,
     required this.release,
     required this.expiresAt,
+    required this.turnServers,
   });
 
   factory VoiceJoinPreviewResponse.fromJson(Map<String, Object?> json) =>
@@ -73,6 +75,10 @@ class VoiceJoinPreviewResponse {
   /// ISO 8601 timestamp when the token stops working
   @JsonKey(name: 'expires_at', defaultValue: '')
   final String expiresAt;
+
+  /// TURN servers of the instance, for the LiveKit configuration of the voice server
+  @JsonKey(name: 'turn_servers', defaultValue: <VoiceTurnServer>[])
+  final List<VoiceTurnServer> turnServers;
 
   Map<String, Object?> toJson() => _$VoiceJoinPreviewResponseToJson(this);
 }
