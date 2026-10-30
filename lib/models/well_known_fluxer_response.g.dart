@@ -113,6 +113,10 @@ WellKnownFluxerResponse _$WellKnownFluxerResponseFromJson(
             )
             .toList(),
       ),
+      voiceOrigins: $checkedConvert(
+        'voice_origins',
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
+      ),
     );
     return val;
   },
@@ -122,6 +126,7 @@ WellKnownFluxerResponse _$WellKnownFluxerResponseFromJson(
     'agePolicy': 'age_policy',
     'domainMigration': 'domain_migration',
     'guildBadges': 'guild_badges',
+    'voiceOrigins': 'voice_origins',
   },
 );
 
@@ -145,4 +150,5 @@ Map<String, dynamic> _$WellKnownFluxerResponseToJson(
   'notice': ?instance.notice,
   'domain_migration': ?instance.domainMigration,
   'guild_badges': ?instance.guildBadges,
+  'voice_origins': ?instance.voiceOrigins,
 };

@@ -44,6 +44,143 @@ class _VoiceApi implements VoiceApi {
   }
 
   @override
+  Future<VoiceJoinResponse> createVoiceJoin({
+    required VoiceJoinRequest body,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<VoiceJoinResponse>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/voice/join',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late VoiceJoinResponse _value;
+    try {
+      _value = VoiceJoinResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<VoiceJoinPreviewResponse> previewVoiceJoin({
+    VoiceJoinPreviewRequest? body,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body?.toJson() ?? <String, dynamic>{});
+    final _options = _setStreamType<VoiceJoinPreviewResponse>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/voice/join/preview',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late VoiceJoinPreviewResponse _value;
+    try {
+      _value = VoiceJoinPreviewResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<VoiceNodeResponse> getVoiceNode() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<VoiceNodeResponse>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/voice/node',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late VoiceNodeResponse _value;
+    try {
+      _value = VoiceNodeResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<VoiceNodeResponse> updateVoiceNode({
+    required UpdateVoiceNodeRequest body,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<VoiceNodeResponse>(
+      Options(method: 'PATCH', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/voice/node',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late VoiceNodeResponse _value;
+    try {
+      _value = VoiceNodeResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<void> deleteVoiceNode() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<void>(
+      Options(method: 'DELETE', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/voice/node',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    await _dio.fetch<void>(_options);
+  }
+
+  @override
   Future<void> createVoiceP2pConnectionReports({
     required VoiceP2pConnectionReportsRequest body,
   }) async {

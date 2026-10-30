@@ -42,6 +42,7 @@ class WellKnownFluxerResponse {
     this.notice,
     this.domainMigration,
     this.guildBadges,
+    this.voiceOrigins,
   });
 
   factory WellKnownFluxerResponse.fromJson(Map<String, Object?> json) =>
@@ -94,6 +95,10 @@ class WellKnownFluxerResponse {
   /// Custom badges that communities on this instance can show next to their name, in display order
   @JsonKey(includeIfNull: false, name: 'guild_badges')
   final List<InstanceGuildBadgeSchema>? guildBadges;
+
+  /// Origins of every voice server endpoint, such as wss://voice.example.com, for content security policies
+  @JsonKey(includeIfNull: false, name: 'voice_origins')
+  final List<String>? voiceOrigins;
 
   Map<String, Object?> toJson() => _$WellKnownFluxerResponseToJson(this);
 }

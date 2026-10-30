@@ -727,6 +727,26 @@ enum ApiErrorCode {
   validationError('VALIDATION_ERROR'),
   @JsonValue('VOICE_CHANNEL_FULL')
   voiceChannelFull('VOICE_CHANNEL_FULL'),
+  @JsonValue('VOICE_JOIN_ENDPOINT_INVALID')
+  voiceJoinEndpointInvalid('VOICE_JOIN_ENDPOINT_INVALID'),
+  @JsonValue('VOICE_JOIN_ENDPOINT_UNREACHABLE')
+  voiceJoinEndpointUnreachable('VOICE_JOIN_ENDPOINT_UNREACHABLE'),
+  @JsonValue('VOICE_JOIN_KEY_MISMATCH')
+  voiceJoinKeyMismatch('VOICE_JOIN_KEY_MISMATCH'),
+  @JsonValue('VOICE_JOIN_TOKEN_BUSY')
+  voiceJoinTokenBusy('VOICE_JOIN_TOKEN_BUSY'),
+  @JsonValue('VOICE_JOIN_TOKEN_INVALID')
+  voiceJoinTokenInvalid('VOICE_JOIN_TOKEN_INVALID'),
+  @JsonValue('VOICE_NODE_SIGNATURE_INVALID')
+  voiceNodeSignatureInvalid('VOICE_NODE_SIGNATURE_INVALID'),
+  @JsonValue('VOICE_NODE_TOKEN_EXPIRED')
+  voiceNodeTokenExpired('VOICE_NODE_TOKEN_EXPIRED'),
+  @JsonValue('VOICE_NODE_UNKNOWN')
+  voiceNodeUnknown('VOICE_NODE_UNKNOWN'),
+  @JsonValue('VOICE_SERVER_API_KEY_IN_USE')
+  voiceServerApiKeyInUse('VOICE_SERVER_API_KEY_IN_USE'),
+  @JsonValue('VOICE_SERVER_ID_IN_USE')
+  voiceServerIdInUse('VOICE_SERVER_ID_IN_USE'),
   @JsonValue('WEBAUTHN_CREDENTIAL_LIMIT_REACHED')
   webauthnCredentialLimitReached('WEBAUTHN_CREDENTIAL_LIMIT_REACHED'),
   @JsonValue('ACCOUNT_VERIFICATION_REQUIRED')

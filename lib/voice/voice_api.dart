@@ -8,6 +8,12 @@ import 'package:retrofit/error_logger.dart';
 
 import '../models/entrance_sound_play_request.dart';
 import '../models/snowflake_type.dart';
+import '../models/update_voice_node_request.dart';
+import '../models/voice_join_preview_request.dart';
+import '../models/voice_join_preview_response.dart';
+import '../models/voice_join_request.dart';
+import '../models/voice_join_response.dart';
+import '../models/voice_node_response.dart';
 import '../models/voice_p2p_connection_reports_request.dart';
 
 part 'voice_api.g.dart';
@@ -28,6 +34,48 @@ abstract class VoiceApi {
     @Path('channel_id') required SnowflakeType channelId,
     @Body() required EntranceSoundPlayRequest body,
   });
+
+  /// Join a voice server to the instance.
+  ///
+  /// Registers a new voice server with a join token. Send Authorization: VoiceJoin with the token. Fluxer checks that the endpoint answers and that the key and secret match before it saves the server, then the token stops working.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/voice/join')
+  Future<VoiceJoinResponse> createVoiceJoin({
+    @Body() required VoiceJoinRequest body,
+  });
+
+  /// Preview joining a voice server.
+  ///
+  /// Shows the server id, region, coordinates and webhook URL a new voice server would get from a join token. Send Authorization: VoiceJoin with the token. The call changes nothing and does not use the token.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/voice/join/preview')
+  Future<VoiceJoinPreviewResponse> previewVoiceJoin({
+    @Body() VoiceJoinPreviewRequest? body,
+  });
+
+  /// Get the calling voice server.
+  ///
+  /// Returns the voice server that signed the request, with its health as the API sees it. Send Authorization: Bearer with an HS256 JWT signed with the API secret of the server, with iss set to its API key, aud set to fluxer-voice-node, method and path of the request, an exp at most 5 minutes ahead and sha256 holding the base64 SHA-256 of the body, or an empty string for a request without a body.
+  @GET('/voice/node')
+  Future<VoiceNodeResponse> getVoiceNode();
+
+  /// Update the calling voice server.
+  ///
+  /// Changes the endpoint, draining flag, coordinates or soft connection limit of the voice server that signed the request. A new endpoint is checked before it is saved. Send Authorization: Bearer with an HS256 JWT signed with the API secret of the server, with iss set to its API key, aud set to fluxer-voice-node, method and path of the request, an exp at most 5 minutes ahead and sha256 holding the base64 SHA-256 of the body, or an empty string for a request without a body.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @PATCH('/voice/node')
+  Future<VoiceNodeResponse> updateVoiceNode({
+    @Body() required UpdateVoiceNodeRequest body,
+  });
+
+  /// Remove the calling voice server.
+  ///
+  /// Deletes the voice server that signed the request. Send Authorization: Bearer with an HS256 JWT signed with the API secret of the server, with iss set to its API key, aud set to fluxer-voice-node, method and path of the request, an exp at most 5 minutes ahead and sha256 holding the base64 SHA-256 of the body, or an empty string for a request without a body.
+  @DELETE('/voice/node')
+  Future<void> deleteVoiceNode();
 
   /// Report peer-to-peer connection outcomes.
   ///
