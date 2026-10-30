@@ -23,6 +23,7 @@ class VoiceNodeResponse {
     required this.publicIpv4,
     required this.publicIpv6,
     required this.turnServers,
+    required this.features,
     required this.health,
   });
 
@@ -72,6 +73,10 @@ class VoiceNodeResponse {
   /// TURN servers of the instance, for the LiveKit configuration of the voice server
   @JsonKey(name: 'turn_servers', defaultValue: <VoiceTurnServer>[])
   final List<VoiceTurnServer> turnServers;
+
+  /// What this API supports for voice servers. server_addresses means it accepts public_ipv4 and public_ipv6 in updates
+  @JsonKey(defaultValue: <String>[])
+  final List<String> features;
 
   /// Health of the server as this API node last saw it
   @JsonKey(defaultValue: _$missingVoiceServerHealthResponse)

@@ -36,6 +36,11 @@ VoiceNodeResponse _$VoiceNodeResponseFromJson(Map<String, dynamic> json) =>
                     .toList() ??
                 [],
           ),
+          features: $checkedConvert(
+            'features',
+            (v) =>
+                (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
+          ),
           health: $checkedConvert(
             'health',
             (v) => v == null
@@ -69,5 +74,6 @@ Map<String, dynamic> _$VoiceNodeResponseToJson(VoiceNodeResponse instance) =>
       'public_ipv4': instance.publicIpv4,
       'public_ipv6': instance.publicIpv6,
       'turn_servers': instance.turnServers,
+      'features': instance.features,
       'health': instance.health,
     };
