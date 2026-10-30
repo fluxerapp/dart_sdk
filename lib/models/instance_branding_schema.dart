@@ -19,6 +19,7 @@ class InstanceBrandingSchema {
     required this.faviconDarkUrl,
     required this.themeColor,
     required this.statusPageUrl,
+    required this.statusPageInstatus,
     required this.statusPageIncidentHistoryUrl,
     required this.premiumProductName,
     required this.premiumInfoUrl,
@@ -66,6 +67,10 @@ class InstanceBrandingSchema {
   /// Optional public status page URL
   @JsonKey(includeIfNull: true, name: 'status_page_url')
   final String? statusPageUrl;
+
+  /// Whether the server detected that the status page is an Instatus page that clients can read current incidents from
+  @JsonKey(name: 'status_page_instatus', defaultValue: false)
+  final bool statusPageInstatus;
 
   /// Optional public status page incident history URL
   @JsonKey(includeIfNull: true, name: 'status_page_incident_history_url')
