@@ -15,6 +15,7 @@ InstanceGuildBadgeSchema _$InstanceGuildBadgeSchemaFromJson(
     description: $checkedConvert('description', (v) => v as String?),
     assetUrl: $checkedConvert('asset_url', (v) => v as String? ?? ''),
     href: $checkedConvert('href', (v) => v as String?),
+    position: $checkedConvert('position', (v) => v as CustomBadgePositionType?),
   );
   return val;
 }, fieldKeyMap: const {'assetUrl': 'asset_url'});
@@ -27,4 +28,5 @@ Map<String, dynamic> _$InstanceGuildBadgeSchemaToJson(
   'description': instance.description,
   'asset_url': instance.assetUrl,
   'href': instance.href,
+  'position': ?instance.position,
 };

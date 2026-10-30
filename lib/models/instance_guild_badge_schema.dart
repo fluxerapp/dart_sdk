@@ -4,6 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+import 'custom_badge_position_type.dart';
 import 'snowflake_string_type.dart';
 
 part 'instance_guild_badge_schema.g.dart';
@@ -16,6 +17,7 @@ class InstanceGuildBadgeSchema {
     required this.description,
     required this.assetUrl,
     required this.href,
+    this.position,
   });
 
   factory InstanceGuildBadgeSchema.fromJson(Map<String, Object?> json) =>
@@ -40,6 +42,8 @@ class InstanceGuildBadgeSchema {
   /// URL opened when the badge is clicked, or null
   @JsonKey(includeIfNull: true)
   final String? href;
+  @JsonKey(includeIfNull: false)
+  final CustomBadgePositionType? position;
 
   Map<String, Object?> toJson() => _$InstanceGuildBadgeSchemaToJson(this);
 }

@@ -43,6 +43,8 @@ class WellKnownFluxerResponse {
     this.notice,
     this.domainMigration,
     this.guildBadges,
+    this.guildBadgesPartial,
+    this.customBadgesVersion,
     this.builtInGuildBadgeImages,
     this.voiceOrigins,
   });
@@ -94,9 +96,17 @@ class WellKnownFluxerResponse {
   @JsonKey(includeIfNull: false, name: 'domain_migration')
   final DomainMigrationDiscoveryResponse? domainMigration;
 
-  /// Custom badges that communities on this instance can show next to their name, in display order
+  /// The first 100 custom badges that communities on this instance can show next to their name, in display order. GET /instance/badges serves every badge
   @JsonKey(includeIfNull: false, name: 'guild_badges')
   final List<InstanceGuildBadgeSchema>? guildBadges;
+
+  /// True when the instance has more community badges than guild_badges lists
+  @JsonKey(includeIfNull: false, name: 'guild_badges_partial')
+  final bool? guildBadgesPartial;
+
+  /// Version of the badge catalog. It changes whenever a badge is created, edited, deleted or moved
+  @JsonKey(includeIfNull: false, name: 'custom_badges_version')
+  final String? customBadgesVersion;
 
   /// Images this instance shows in place of the built-in verified, partnered and discoverable community badges
   @JsonKey(includeIfNull: false, name: 'built_in_guild_badge_images')

@@ -48,6 +48,44 @@ class _InstanceApi implements InstanceApi {
   }
 
   @override
+  Future<InstanceBadgesResponse> listInstanceBadges({
+    String? limit = '100',
+    String? ids,
+    String? after,
+    String? version,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'limit': limit,
+      r'ids': ids,
+      r'after': after,
+      r'version': version,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<InstanceBadgesResponse>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/instance/badges',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late InstanceBadgesResponse _value;
+    try {
+      _value = InstanceBadgesResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<InstanceAccountIdentityResponse> setInstanceAccountIdentity({
     required InstanceAccountIdentityUpdateRequest body,
   }) async {

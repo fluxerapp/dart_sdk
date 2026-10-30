@@ -113,6 +113,14 @@ WellKnownFluxerResponse _$WellKnownFluxerResponseFromJson(
             )
             .toList(),
       ),
+      guildBadgesPartial: $checkedConvert(
+        'guild_badges_partial',
+        (v) => v as bool?,
+      ),
+      customBadgesVersion: $checkedConvert(
+        'custom_badges_version',
+        (v) => v as String?,
+      ),
       builtInGuildBadgeImages: $checkedConvert(
         'built_in_guild_badge_images',
         (v) => v == null
@@ -134,6 +142,8 @@ WellKnownFluxerResponse _$WellKnownFluxerResponseFromJson(
     'agePolicy': 'age_policy',
     'domainMigration': 'domain_migration',
     'guildBadges': 'guild_badges',
+    'guildBadgesPartial': 'guild_badges_partial',
+    'customBadgesVersion': 'custom_badges_version',
     'builtInGuildBadgeImages': 'built_in_guild_badge_images',
     'voiceOrigins': 'voice_origins',
   },
@@ -159,6 +169,8 @@ Map<String, dynamic> _$WellKnownFluxerResponseToJson(
   'notice': ?instance.notice,
   'domain_migration': ?instance.domainMigration,
   'guild_badges': ?instance.guildBadges,
+  'guild_badges_partial': ?instance.guildBadgesPartial,
+  'custom_badges_version': ?instance.customBadgesVersion,
   'built_in_guild_badge_images': ?instance.builtInGuildBadgeImages,
   'voice_origins': ?instance.voiceOrigins,
 };

@@ -97,7 +97,7 @@ class GuildPartialResponse {
   @JsonKey(defaultValue: <String>[])
   final List<GuildFeatureSchema> features;
 
-  /// IDs of the custom badges assigned to the community. Look them up in guild_badges of the instance discovery document and skip IDs that are not there
+  /// IDs of the custom badges assigned to the community. Look them up in guild_badges of the instance discovery document. When guild_badges_partial is true, look up the IDs that are not there with GET /instance/badges?ids=...&version=custom_badges_version, and skip IDs that it does not return
   @JsonKey(name: 'badge_ids', defaultValue: <String>[])
   final CustomBadgeIdListResponse badgeIds;
 
