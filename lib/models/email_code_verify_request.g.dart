@@ -21,12 +21,15 @@ EmailCodeVerifyRequest _$EmailCodeVerifyRequestFromJson(
         (v) => v as String?,
       ),
       inviteCodeValue: $checkedConvert('invite_code', (v) => v as String?),
+      username: $checkedConvert('username', (v) => v as UsernameType?),
+      globalName: $checkedConvert('global_name', (v) => v as String?),
     );
     return val;
   },
   fieldKeyMap: const {
     'registrationUrlCodeValue': 'registration_url_code',
     'inviteCodeValue': 'invite_code',
+    'globalName': 'global_name',
   },
 );
 
@@ -36,6 +39,8 @@ Map<String, dynamic> _$EmailCodeVerifyRequestToJson(
   'ticket': instance.ticket,
   'code': instance.code,
   'consent': ?instance.consent,
+  'username': ?instance.username,
+  'global_name': ?instance.globalName,
   'registration_url_code': ?instance.registrationUrlCodeValue,
   'invite_code': ?instance.inviteCodeValue,
 };

@@ -6,6 +6,8 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'json_nullable.dart';
 
+import 'username_type.dart';
+
 part 'email_code_verify_request.g.dart';
 
 @JsonSerializable(constructor: '_')
@@ -14,6 +16,8 @@ class EmailCodeVerifyRequest {
     required this.ticket,
     required this.code,
     this.consent,
+    this.username,
+    this.globalName,
     JsonNullable<String> registrationUrlCode =
         const JsonNullable<String>.undefined(),
     JsonNullable<String> inviteCode = const JsonNullable<String>.undefined(),
@@ -30,6 +34,8 @@ class EmailCodeVerifyRequest {
     this.consent,
     this.registrationUrlCodeValue,
     this.inviteCodeValue,
+    this.username,
+    this.globalName,
   }) : registrationUrlCode = const JsonNullable<String>.undefined(),
        _registrationUrlCodePresent = false,
        inviteCode = const JsonNullable<String>.undefined(),
@@ -49,6 +55,8 @@ class EmailCodeVerifyRequest {
       inviteCode: json.containsKey('invite_code')
           ? JsonNullable<String>.of(value.inviteCodeValue)
           : const JsonNullable<String>.undefined(),
+      username: value.username,
+      globalName: value.globalName,
     );
   }
 
@@ -63,6 +71,14 @@ class EmailCodeVerifyRequest {
   /// For sign-ups, whether the person submitted the step that says creating the account accepts the terms of service. Must be true when the instance publishes terms or a privacy policy
   @JsonKey(includeIfNull: false)
   final bool? consent;
+
+  /// For sign-ups, the username for the new account. Ignored when signing in
+  @JsonKey(includeIfNull: false)
+  final UsernameType? username;
+
+  /// For sign-ups, the display name shown to other people. Ignored when signing in
+  @JsonKey(includeIfNull: false, name: 'global_name')
+  final String? globalName;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<String> registrationUrlCode;
   @JsonKey(includeIfNull: false, name: 'registration_url_code')
