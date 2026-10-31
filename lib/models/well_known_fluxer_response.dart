@@ -14,6 +14,7 @@ import 'instance_endpoints_schema.dart';
 import 'instance_features_schema.dart';
 import 'instance_gif_schema.dart';
 import 'instance_guild_badge_schema.dart';
+import 'instance_hidden_built_in_guild_badges_schema.dart';
 import 'instance_notice_schema.dart';
 import 'instance_push_schema.dart';
 import 'instance_registration_schema.dart';
@@ -46,6 +47,7 @@ class WellKnownFluxerResponse {
     this.guildBadgesPartial,
     this.customBadgesVersion,
     this.builtInGuildBadgeImages,
+    this.hiddenBuiltInGuildBadges,
     this.voiceOrigins,
   });
 
@@ -111,6 +113,8 @@ class WellKnownFluxerResponse {
   /// Images this instance shows in place of the built-in verified, partnered and discoverable community badges
   @JsonKey(includeIfNull: false, name: 'built_in_guild_badge_images')
   final InstanceBuiltInGuildBadgeImagesSchema? builtInGuildBadgeImages;
+  @JsonKey(includeIfNull: false, name: 'hidden_built_in_guild_badges')
+  final InstanceHiddenBuiltInGuildBadgesSchema? hiddenBuiltInGuildBadges;
 
   /// Origins of every voice server endpoint, such as wss://voice.example.com, for content security policies
   @JsonKey(includeIfNull: false, name: 'voice_origins')

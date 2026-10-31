@@ -129,6 +129,12 @@ WellKnownFluxerResponse _$WellKnownFluxerResponseFromJson(
                 v as Map<String, dynamic>,
               ),
       ),
+      hiddenBuiltInGuildBadges: $checkedConvert(
+        'hidden_built_in_guild_badges',
+        (v) => v == null
+            ? null
+            : InstanceHiddenBuiltInGuildBadgesSchema.fromJson(v as String),
+      ),
       voiceOrigins: $checkedConvert(
         'voice_origins',
         (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
@@ -145,6 +151,7 @@ WellKnownFluxerResponse _$WellKnownFluxerResponseFromJson(
     'guildBadgesPartial': 'guild_badges_partial',
     'customBadgesVersion': 'custom_badges_version',
     'builtInGuildBadgeImages': 'built_in_guild_badge_images',
+    'hiddenBuiltInGuildBadges': 'hidden_built_in_guild_badges',
     'voiceOrigins': 'voice_origins',
   },
 );
@@ -172,5 +179,6 @@ Map<String, dynamic> _$WellKnownFluxerResponseToJson(
   'guild_badges_partial': ?instance.guildBadgesPartial,
   'custom_badges_version': ?instance.customBadgesVersion,
   'built_in_guild_badge_images': ?instance.builtInGuildBadgeImages,
+  'hidden_built_in_guild_badges': ?instance.hiddenBuiltInGuildBadges,
   'voice_origins': ?instance.voiceOrigins,
 };
