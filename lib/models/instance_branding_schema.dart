@@ -88,7 +88,7 @@ class InstanceBrandingSchema {
   @JsonKey(includeIfNull: true, name: 'sign_in_backdrop_url')
   final String? signInBackdropUrl;
 
-  /// Optional stylesheet a self-hosted instance applies to every page of its web and desktop app
+  /// Optional stylesheet a self-hosted instance applies to its web and desktop app, except on sign-in pages
   @JsonKey(includeIfNull: true, name: 'custom_css')
   final String? customCss;
 
