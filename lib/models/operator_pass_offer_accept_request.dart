@@ -15,6 +15,7 @@ class OperatorPassOfferAcceptRequest {
   OperatorPassOfferAcceptRequest({
     required this.acceptTerms,
     this.wallOptOut,
+    this.labsGreeting,
     JsonNullable<OperatorPassWallNameType> wallName =
         const JsonNullable<OperatorPassWallNameType>.undefined(),
   }) : wallName = wallName,
@@ -25,6 +26,7 @@ class OperatorPassOfferAcceptRequest {
     required this.acceptTerms,
     this.wallNameValue,
     this.wallOptOut,
+    this.labsGreeting,
   }) : wallName = const JsonNullable<OperatorPassWallNameType>.undefined(),
        _wallNamePresent = false;
   factory OperatorPassOfferAcceptRequest.patch(Map<String, Object?> json) =>
@@ -38,6 +40,7 @@ class OperatorPassOfferAcceptRequest {
           ? JsonNullable<OperatorPassWallNameType>.of(value.wallNameValue)
           : const JsonNullable<OperatorPassWallNameType>.undefined(),
       wallOptOut: value.wallOptOut,
+      labsGreeting: value.labsGreeting,
     );
   }
 
@@ -48,6 +51,10 @@ class OperatorPassOfferAcceptRequest {
   /// Whether the recipient chose not to be listed on the Operators' wall
   @JsonKey(includeIfNull: false, name: 'wall_opt_out')
   final bool? wallOptOut;
+
+  /// Whether the system user welcomes the recipient by name in #operators in Fluxer Labs once the pass reaches them. Left out, the choice the account made before stays, and a new account is welcomed
+  @JsonKey(includeIfNull: false, name: 'labs_greeting')
+  final bool? labsGreeting;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<OperatorPassWallNameType> wallName;
   @JsonKey(includeIfNull: false, name: 'wall_name')

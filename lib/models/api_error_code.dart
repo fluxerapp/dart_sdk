@@ -461,6 +461,10 @@ enum ApiErrorCode {
   streamKeyChannelMismatch('STREAM_KEY_CHANNEL_MISMATCH'),
   @JsonValue('STREAM_KEY_SCOPE_MISMATCH')
   streamKeyScopeMismatch('STREAM_KEY_SCOPE_MISMATCH'),
+  @JsonValue('STRIPE_BILLING_CYCLE_CHANGE_NEEDS_RESUBSCRIBE')
+  stripeBillingCycleChangeNeedsResubscribe(
+    'STRIPE_BILLING_CYCLE_CHANGE_NEEDS_RESUBSCRIBE',
+  ),
   @JsonValue('STRIPE_ERROR')
   stripeError('STRIPE_ERROR'),
   @JsonValue('STRIPE_GIFT_REDEMPTION_IN_PROGRESS')
@@ -507,8 +511,14 @@ enum ApiErrorCode {
   donationMagicLinkInvalid('DONATION_MAGIC_LINK_INVALID'),
   @JsonValue('DONATION_MAGIC_LINK_USED')
   donationMagicLinkUsed('DONATION_MAGIC_LINK_USED'),
-  @JsonValue('OPERATOR_PASS_WAIVER_REQUIRED')
-  operatorPassWaiverRequired('OPERATOR_PASS_WAIVER_REQUIRED'),
+  @JsonValue('OPERATOR_PASS_DELIVERY_CONSENT_REQUIRED')
+  operatorPassDeliveryConsentRequired(
+    'OPERATOR_PASS_DELIVERY_CONSENT_REQUIRED',
+  ),
+  @JsonValue('OPERATOR_PASS_CERTIFICATE_NAME_REJECTED')
+  operatorPassCertificateNameRejected(
+    'OPERATOR_PASS_CERTIFICATE_NAME_REJECTED',
+  ),
   @JsonValue('OPERATOR_PASS_AGE_CONFIRMATION_REQUIRED')
   operatorPassAgeConfirmationRequired(
     'OPERATOR_PASS_AGE_CONFIRMATION_REQUIRED',
@@ -529,10 +539,10 @@ enum ApiErrorCode {
   unknownOperatorPassOffer('UNKNOWN_OPERATOR_PASS_OFFER'),
   @JsonValue('UNKNOWN_OPERATOR_PASS_UNIT')
   unknownOperatorPassUnit('UNKNOWN_OPERATOR_PASS_UNIT'),
-  @JsonValue('OPERATOR_PASS_COUNTRY_UNAVAILABLE')
-  operatorPassCountryUnavailable('OPERATOR_PASS_COUNTRY_UNAVAILABLE'),
   @JsonValue('OPERATOR_PASS_WALL_NAME_REQUIRED')
   operatorPassWallNameRequired('OPERATOR_PASS_WALL_NAME_REQUIRED'),
+  @JsonValue('OPERATOR_PASS_WALL_NAME_REJECTED')
+  operatorPassWallNameRejected('OPERATOR_PASS_WALL_NAME_REJECTED'),
   @JsonValue('OPERATOR_PASS_NOT_HELD')
   operatorPassNotHeld('OPERATOR_PASS_NOT_HELD'),
   @JsonValue('UNKNOWN_OPERATOR_PASS_WALL_ENTRY')
@@ -567,10 +577,14 @@ enum ApiErrorCode {
   operatorPassRemovalLimitedFirst('OPERATOR_PASS_REMOVAL_LIMITED_FIRST'),
   @JsonValue('OPERATOR_PASS_REMOVAL_NOTICE_REQUIRED')
   operatorPassRemovalNoticeRequired('OPERATOR_PASS_REMOVAL_NOTICE_REQUIRED'),
+  @JsonValue('OPERATOR_PASS_EMAIL_UNDELIVERABLE')
+  operatorPassEmailUndeliverable('OPERATOR_PASS_EMAIL_UNDELIVERABLE'),
   @JsonValue('OPERATOR_PASS_REMOVED')
   operatorPassRemoved('OPERATOR_PASS_REMOVED'),
   @JsonValue('OPERATOR_PASS_TERMS_NOT_ACCEPTED')
   operatorPassTermsNotAccepted('OPERATOR_PASS_TERMS_NOT_ACCEPTED'),
+  @JsonValue('OPERATOR_PASS_VISIONARY_UNAVAILABLE')
+  operatorPassVisionaryUnavailable('OPERATOR_PASS_VISIONARY_UNAVAILABLE'),
   @JsonValue('OPERATOR_PASS_WITHDRAWAL_UNAVAILABLE')
   operatorPassWithdrawalUnavailable('OPERATOR_PASS_WITHDRAWAL_UNAVAILABLE'),
   @JsonValue('PAYMENT_DISPUTE_EXEMPT')

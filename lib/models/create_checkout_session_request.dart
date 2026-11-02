@@ -5,6 +5,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'checkout_payment_method_enum.dart';
+import 'cnpj_schema.dart';
 
 part 'create_checkout_session_request.g.dart';
 
@@ -17,6 +18,7 @@ class CreateCheckoutSessionRequest {
     this.euWithdrawalWaiverAccepted,
     this.paymentMethod,
     this.isBusiness,
+    this.cnpj,
   });
 
   factory CreateCheckoutSessionRequest.fromJson(Map<String, Object?> json) =>
@@ -42,9 +44,11 @@ class CreateCheckoutSessionRequest {
   @JsonKey(includeIfNull: false, name: 'payment_method')
   final CheckoutPaymentMethodEnum? paymentMethod;
 
-  /// Whether the purchase is for a business. When true, Stripe Checkout requires a billing address (needed for tax invoicing). When false or omitted, billing address collection is left to Stripe (auto).
+  /// Whether the purchase is for a business. When true, Stripe Checkout requires a billing address for the invoice. When false or omitted, billing address collection is left to Stripe (auto).
   @JsonKey(includeIfNull: false, name: 'is_business')
   final bool? isBusiness;
+  @JsonKey(includeIfNull: false)
+  final CnpjSchema? cnpj;
 
   Map<String, Object?> toJson() => _$CreateCheckoutSessionRequestToJson(this);
 }

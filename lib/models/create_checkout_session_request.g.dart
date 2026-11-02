@@ -29,6 +29,7 @@ CreateCheckoutSessionRequest _$CreateCheckoutSessionRequestFromJson(
             v == null ? null : CheckoutPaymentMethodEnum.fromJson(v as String),
       ),
       isBusiness: $checkedConvert('is_business', (v) => v as bool?),
+      cnpj: $checkedConvert('cnpj', (v) => v as CnpjSchema?),
     );
     return val;
   },
@@ -51,4 +52,5 @@ Map<String, dynamic> _$CreateCheckoutSessionRequestToJson(
   'eu_withdrawal_waiver_accepted': ?instance.euWithdrawalWaiverAccepted,
   'payment_method': ?instance.paymentMethod,
   'is_business': ?instance.isBusiness,
+  'cnpj': ?instance.cnpj,
 };

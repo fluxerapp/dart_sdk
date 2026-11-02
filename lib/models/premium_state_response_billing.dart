@@ -8,7 +8,7 @@ import 'current_subscription_price_response.dart';
 import 'pending_subscription_change_response.dart';
 import 'list_price_switch_state.dart';
 import 'premium_billing_subscription_response.dart';
-import 'premium_billing_invoice_response.dart';
+import 'billing_document_response.dart';
 import 'premium_billing_payment_method_response.dart';
 import 'self_serve_refund_eligibility_response.dart';
 
@@ -22,8 +22,7 @@ class PremiumStateResponseBilling {
     required this.pendingSubscriptionChange,
     required this.listPriceSwitch,
     required this.subscription,
-    required this.invoices,
-    required this.invoicesHasMore,
+    required this.documents,
     required this.paymentMethods,
     required this.refundEligibility,
   });
@@ -44,10 +43,10 @@ class PremiumStateResponseBilling {
   final ListPriceSwitchState listPriceSwitch;
   @JsonKey(includeIfNull: true)
   final PremiumBillingSubscriptionResponse? subscription;
-  @JsonKey(defaultValue: <PremiumBillingInvoiceResponse>[])
-  final List<PremiumBillingInvoiceResponse> invoices;
-  @JsonKey(name: 'invoices_has_more', defaultValue: false)
-  final bool invoicesHasMore;
+
+  /// Invoices, receipts, credit notes and refund notes Fluxer issued to the account, newest first
+  @JsonKey(defaultValue: <BillingDocumentResponse>[])
+  final List<BillingDocumentResponse> documents;
   @JsonKey(
     name: 'payment_methods',
     defaultValue: <PremiumBillingPaymentMethodResponse>[],

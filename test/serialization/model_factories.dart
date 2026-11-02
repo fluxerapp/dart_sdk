@@ -42,6 +42,7 @@ tolerantModelFactories = <String, Object Function(Map<String, Object?>)>{
   'AuthorizationCodeTokenRequest': AuthorizationCodeTokenRequest.fromJson,
   'AuthorizeConsentRequest': AuthorizeConsentRequest.fromJson,
   'AuthorizeIpRequest': AuthorizeIpRequest.fromJson,
+  'BillingDocumentResponse': BillingDocumentResponse.fromJson,
   'BlueskyAuthorizeRequest': BlueskyAuthorizeRequest.fromJson,
   'BlueskyAuthorizeResponse': BlueskyAuthorizeResponse.fromJson,
   'BotProfileResponse': BotProfileResponse.fromJson,
@@ -572,11 +573,15 @@ tolerantModelFactories = <String, Object Function(Map<String, Object?>)>{
   'OperatorPassAltchaChallenge': OperatorPassAltchaChallenge.fromJson,
   'OperatorPassAltchaChallengeParameters':
       OperatorPassAltchaChallengeParameters.fromJson,
+  'OperatorPassCertificateLinkResponse':
+      OperatorPassCertificateLinkResponse.fromJson,
+  'OperatorPassCertificateResponse': OperatorPassCertificateResponse.fromJson,
   'OperatorPassCheckoutRequest': OperatorPassCheckoutRequest.fromJson,
   'OperatorPassCheckoutResponse': OperatorPassCheckoutResponse.fromJson,
-  'OperatorPassDonationOptionsResponse':
-      OperatorPassDonationOptionsResponse.fromJson,
   'OperatorPassHolderResponse': OperatorPassHolderResponse.fromJson,
+  'OperatorPassLabsGreetingRequest': OperatorPassLabsGreetingRequest.fromJson,
+  'OperatorPassLabsJoinResponse': OperatorPassLabsJoinResponse.fromJson,
+  'OperatorPassLabsResponse': OperatorPassLabsResponse.fromJson,
   'OperatorPassLatestReleaseResponse':
       OperatorPassLatestReleaseResponse.fromJson,
   'OperatorPassListingResponse': OperatorPassListingResponse.fromJson,
@@ -587,9 +592,20 @@ tolerantModelFactories = <String, Object Function(Map<String, Object?>)>{
   'OperatorPassOfferUserResponse': OperatorPassOfferUserResponse.fromJson,
   'OperatorPassPassesResponse': OperatorPassPassesResponse.fromJson,
   'OperatorPassPurchaseResponse': OperatorPassPurchaseResponse.fromJson,
+  'OperatorPassPurchaseResponsePages':
+      OperatorPassPurchaseResponsePages.fromJson,
   'OperatorPassReleaseResponse': OperatorPassReleaseResponse.fromJson,
   'OperatorPassStateResponse': OperatorPassStateResponse.fromJson,
   'OperatorPassUnitResponse': OperatorPassUnitResponse.fromJson,
+  'OperatorPassVisionaryResponse': OperatorPassVisionaryResponse.fromJson,
+  'OperatorPassVisionaryTurnOnRequest':
+      OperatorPassVisionaryTurnOnRequest.fromJson,
+  'OperatorPassVisionaryTurnOnRequestWallWall':
+      OperatorPassVisionaryTurnOnRequestWallWall.fromJson,
+  'OperatorPassVisionaryTurnOnRequestWallWallVariant1':
+      OperatorPassVisionaryTurnOnRequestWallWallVariant1.fromJson,
+  'OperatorPassVisionaryTurnOnRequestWallWallVariant2':
+      OperatorPassVisionaryTurnOnRequestWallWallVariant2.fromJson,
   'OperatorPassWaitlistChallengeResponse':
       OperatorPassWaitlistChallengeResponse.fromJson,
   'OperatorPassWaitlistConfirmRequest':
@@ -649,8 +665,9 @@ tolerantModelFactories = <String, Object Function(Map<String, Object?>)>{
       PendingSubscriptionChangeResponseVariant1.fromJson,
   'PermissionOverwriteCreateRequest': PermissionOverwriteCreateRequest.fromJson,
   'PlutoniumPageAssignmentResponse': PlutoniumPageAssignmentResponse.fromJson,
+  'PlutoniumWithdrawRequest': PlutoniumWithdrawRequest.fromJson,
+  'PlutoniumWithdrawalResponse': PlutoniumWithdrawalResponse.fromJson,
   'PreloadMessagesRequest': PreloadMessagesRequest.fromJson,
-  'PremiumBillingInvoiceResponse': PremiumBillingInvoiceResponse.fromJson,
   'PremiumBillingPaymentMethodResponse':
       PremiumBillingPaymentMethodResponse.fromJson,
   'PremiumBillingSubscriptionResponse':

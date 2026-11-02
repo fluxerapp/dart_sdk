@@ -50,6 +50,12 @@ OperatorPassPassesResponse _$OperatorPassPassesResponseFromJson(
                 .toList() ??
             [],
       ),
+      labs: $checkedConvert(
+        'labs',
+        (v) => v == null
+            ? _$missingOperatorPassLabsResponse()
+            : OperatorPassLabsResponse.fromJson(v as Map<String, dynamic>),
+      ),
       recognitionCount: $checkedConvert(
         'recognition_count',
         (v) => (v as num?)?.toInt(),
@@ -62,6 +68,12 @@ OperatorPassPassesResponse _$OperatorPassPassesResponseFromJson(
                   OperatorPassOfferResponse.fromJson(e as Map<String, dynamic>),
             )
             .toList(),
+      ),
+      visionary: $checkedConvert(
+        'visionary',
+        (v) => v == null
+            ? null
+            : OperatorPassVisionaryResponse.fromJson(v as Map<String, dynamic>),
       ),
     );
     return val;
@@ -83,4 +95,6 @@ Map<String, dynamic> _$OperatorPassPassesResponseToJson(
   'incoming_offers': instance.incomingOffers,
   'outgoing_offers': instance.outgoingOffers,
   'passed_on': ?instance.passedOn,
+  'visionary': ?instance.visionary,
+  'labs': instance.labs,
 };

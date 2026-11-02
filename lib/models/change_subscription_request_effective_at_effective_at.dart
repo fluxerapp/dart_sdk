@@ -4,7 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-/// When the billing cycle change should take effect
+/// When the billing cycle change should take effect. A switch from yearly to monthly always takes effect at the end of the paid year
 @JsonEnum()
 enum ChangeSubscriptionRequestEffectiveAtEffectiveAt {
   @JsonValue('now')

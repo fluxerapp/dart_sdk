@@ -14,25 +14,24 @@ OperatorPassWaitlistRequest _$OperatorPassWaitlistRequestFromJson(
   ($checkedConvert) {
     final val = OperatorPassWaitlistRequest(
       email: $checkedConvert('email', (v) => v as String? ?? ''),
+      countryCode: $checkedConvert('country_code', (v) => v as String?),
       priceFeedback: $checkedConvert(
         'price_feedback',
         (v) => v == null
-            ? OperatorPassPriceFeedbackSchema.$unknown
+            ? null
             : OperatorPassPriceFeedbackSchema.fromJson(v as String),
       ),
       currency: $checkedConvert(
         'currency',
-        (v) => v == null
-            ? OperatorPassCurrencySchema.$unknown
-            : OperatorPassCurrencySchema.fromJson(v as String),
+        (v) =>
+            v == null ? null : OperatorPassCurrencySchema.fromJson(v as String),
       ),
-      countryCode: $checkedConvert('country_code', (v) => v as String?),
     );
     return val;
   },
   fieldKeyMap: const {
-    'priceFeedback': 'price_feedback',
     'countryCode': 'country_code',
+    'priceFeedback': 'price_feedback',
   },
 );
 
@@ -41,6 +40,6 @@ Map<String, dynamic> _$OperatorPassWaitlistRequestToJson(
 ) => <String, dynamic>{
   'email': instance.email,
   'country_code': ?instance.countryCode,
-  'price_feedback': instance.priceFeedback,
-  'currency': instance.currency,
+  'price_feedback': ?instance.priceFeedback,
+  'currency': ?instance.currency,
 };

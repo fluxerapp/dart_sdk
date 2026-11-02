@@ -39,8 +39,8 @@ class WellKnownFluxerResponse {
     required this.limits,
     required this.push,
     required this.appPublic,
+    required this.agePolicy,
     this.codename,
-    this.agePolicy,
     this.notice,
     this.domainMigration,
     this.guildBadges,
@@ -87,8 +87,8 @@ class WellKnownFluxerResponse {
   /// Public application configuration for client-side features
   @JsonKey(name: 'app_public', defaultValue: _$missingInstanceAppPublicSchema)
   final InstanceAppPublicSchema appPublic;
-  @JsonKey(includeIfNull: false, name: 'age_policy')
-  final InstanceAgePolicySchema? agePolicy;
+  @JsonKey(name: 'age_policy', defaultValue: _$missingInstanceAgePolicySchema)
+  final InstanceAgePolicySchema agePolicy;
 
   /// Notice from the instance administrator, or null when there is none
   @JsonKey(includeIfNull: false)
@@ -122,6 +122,9 @@ class WellKnownFluxerResponse {
 
   Map<String, Object?> toJson() => _$WellKnownFluxerResponseToJson(this);
 }
+
+InstanceAgePolicySchema _$missingInstanceAgePolicySchema() =>
+    InstanceAgePolicySchema.fromJson(const <String, dynamic>{});
 
 InstanceAppPublicSchema _$missingInstanceAppPublicSchema() =>
     InstanceAppPublicSchema.fromJson(const <String, dynamic>{});

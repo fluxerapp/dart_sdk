@@ -26,7 +26,7 @@ class OperatorPassWallOperatorResponse {
   @JsonKey(defaultValue: '')
   final String id;
 
-  /// The name shown: the approved name, or the username or Operator as fallback
+  /// The name shown: the approved name, or Operator as fallback
   @JsonKey(defaultValue: '')
   final String name;
 

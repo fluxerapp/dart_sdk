@@ -13,9 +13,9 @@ part 'operator_pass_waitlist_request.g.dart';
 class OperatorPassWaitlistRequest {
   const OperatorPassWaitlistRequest({
     required this.email,
-    required this.priceFeedback,
-    required this.currency,
     this.countryCode,
+    this.priceFeedback,
+    this.currency,
   });
 
   factory OperatorPassWaitlistRequest.fromJson(Map<String, Object?> json) =>
@@ -28,15 +28,14 @@ class OperatorPassWaitlistRequest {
   /// Two-letter country code used to pick the price currency. The request GeoIP country is used when omitted.
   @JsonKey(includeIfNull: false, name: 'country_code')
   final String? countryCode;
-  @JsonKey(
-    name: 'price_feedback',
-    defaultValue: OperatorPassPriceFeedbackSchema.$unknown,
-  )
-  final OperatorPassPriceFeedbackSchema priceFeedback;
 
-  /// Currency of the early bird price the visitor was shown
-  @JsonKey(defaultValue: OperatorPassCurrencySchema.$unknown)
-  final OperatorPassCurrencySchema currency;
+  /// How the visitor feels about the early bird price. Left out where the pass is not on sale yet
+  @JsonKey(includeIfNull: false, name: 'price_feedback')
+  final OperatorPassPriceFeedbackSchema? priceFeedback;
+
+  /// Currency of the early bird price the visitor was shown. Left out with price_feedback
+  @JsonKey(includeIfNull: false)
+  final OperatorPassCurrencySchema? currency;
 
   Map<String, Object?> toJson() => _$OperatorPassWaitlistRequestToJson(this);
 }

@@ -8,7 +8,11 @@ part 'operator_pass_checkout_response.g.dart';
 
 @JsonSerializable()
 class OperatorPassCheckoutResponse {
-  const OperatorPassCheckoutResponse({required this.url});
+  const OperatorPassCheckoutResponse({
+    required this.url,
+    required this.sessionId,
+    required this.expiresAt,
+  });
 
   factory OperatorPassCheckoutResponse.fromJson(Map<String, Object?> json) =>
       _$OperatorPassCheckoutResponseFromJson(json);
@@ -17,5 +21,16 @@ class OperatorPassCheckoutResponse {
   @JsonKey(defaultValue: '')
   final String url;
 
+  /// ID of the Stripe checkout session, to look the purchase up with GET /operator-pass/purchases
+  @JsonKey(name: 'session_id', defaultValue: '')
+  final String sessionId;
+
+  /// When the checkout session expires if nobody pays
+  @JsonKey(name: 'expires_at', defaultValue: _$missingDateTime)
+  final DateTime expiresAt;
+
   Map<String, Object?> toJson() => _$OperatorPassCheckoutResponseToJson(this);
 }
+
+DateTime _$missingDateTime() =>
+    DateTime.fromMillisecondsSinceEpoch(0, isUtc: true);

@@ -47,21 +47,17 @@ PremiumStateResponseBilling _$PremiumStateResponseBillingFromJson(
                 v as Map<String, dynamic>,
               ),
       ),
-      invoices: $checkedConvert(
-        'invoices',
+      documents: $checkedConvert(
+        'documents',
         (v) =>
             (v as List<dynamic>?)
                 ?.map(
-                  (e) => PremiumBillingInvoiceResponse.fromJson(
+                  (e) => BillingDocumentResponse.fromJson(
                     e as Map<String, dynamic>,
                   ),
                 )
                 .toList() ??
             [],
-      ),
-      invoicesHasMore: $checkedConvert(
-        'invoices_has_more',
-        (v) => v as bool? ?? false,
       ),
       paymentMethods: $checkedConvert(
         'payment_methods',
@@ -91,7 +87,6 @@ PremiumStateResponseBilling _$PremiumStateResponseBillingFromJson(
     'currentSubscriptionPrice': 'current_subscription_price',
     'pendingSubscriptionChange': 'pending_subscription_change',
     'listPriceSwitch': 'list_price_switch',
-    'invoicesHasMore': 'invoices_has_more',
     'paymentMethods': 'payment_methods',
     'refundEligibility': 'refund_eligibility',
   },
@@ -105,8 +100,7 @@ Map<String, dynamic> _$PremiumStateResponseBillingToJson(
   'pending_subscription_change': instance.pendingSubscriptionChange,
   'list_price_switch': instance.listPriceSwitch,
   'subscription': instance.subscription,
-  'invoices': instance.invoices,
-  'invoices_has_more': instance.invoicesHasMore,
+  'documents': instance.documents,
   'payment_methods': instance.paymentMethods,
   'refund_eligibility': instance.refundEligibility,
 };

@@ -83,13 +83,13 @@ WellKnownFluxerResponse _$WellKnownFluxerResponseFromJson(
             ? _$missingInstanceAppPublicSchema()
             : InstanceAppPublicSchema.fromJson(v as Map<String, dynamic>),
       ),
-      codename: $checkedConvert('codename', (v) => v as String?),
       agePolicy: $checkedConvert(
         'age_policy',
         (v) => v == null
-            ? null
+            ? _$missingInstanceAgePolicySchema()
             : InstanceAgePolicySchema.fromJson(v as Map<String, dynamic>),
       ),
+      codename: $checkedConvert('codename', (v) => v as String?),
       notice: $checkedConvert(
         'notice',
         (v) => v == null
@@ -176,7 +176,7 @@ Map<String, dynamic> _$WellKnownFluxerResponseToJson(
   'limits': instance.limits,
   'push': instance.push,
   'app_public': instance.appPublic,
-  'age_policy': ?instance.agePolicy,
+  'age_policy': instance.agePolicy,
   'notice': ?instance.notice,
   'domain_migration': ?instance.domainMigration,
   'guild_badges': ?instance.guildBadges,

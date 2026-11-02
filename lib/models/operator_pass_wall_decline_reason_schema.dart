@@ -4,7 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-/// Why staff declined a name or avatar on the Operators' wall, under section 2.1 of the Operator Pass terms
+/// Why staff declined a name or avatar on the Operators' wall, under section 3.1 of the Operator Pass terms
 @JsonEnum()
 enum OperatorPassWallDeclineReasonSchema {
   @JsonValue('guidelines')

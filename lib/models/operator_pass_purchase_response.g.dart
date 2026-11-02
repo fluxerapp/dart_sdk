@@ -20,6 +20,7 @@ OperatorPassPurchaseResponse _$OperatorPassPurchaseResponseFromJson(
             ? OperatorPassPurchaseStatusSchema.$unknown
             : OperatorPassPurchaseStatusSchema.fromJson(v as String),
       ),
+      orderNumber: $checkedConvert('order_number', (v) => v as String?),
       quantity: $checkedConvert('quantity', (v) => (v as num?)?.toInt() ?? 0),
       amountMinor: $checkedConvert(
         'amount_minor',
@@ -51,12 +52,43 @@ OperatorPassPurchaseResponse _$OperatorPassPurchaseResponseFromJson(
         'withdrawal_ends_at',
         (v) => v == null ? null : DateTime.parse(v as String),
       ),
+      certificateAvailable: $checkedConvert(
+        'certificate_available',
+        (v) => v as bool? ?? false,
+      ),
       withdrawnAt: $checkedConvert(
         'withdrawn_at',
         (v) => v == null ? null : DateTime.parse(v as String),
       ),
-      hasDonation: $checkedConvert('has_donation', (v) => v as bool? ?? false),
+      pages: $checkedConvert(
+        'pages',
+        (v) =>
+            (v as List<dynamic>?)
+                ?.map(
+                  (e) => OperatorPassPurchaseResponsePages.fromJson(
+                    e as Map<String, dynamic>,
+                  ),
+                )
+                .toList() ??
+            [],
+      ),
       canWithdraw: $checkedConvert('can_withdraw', (v) => v as bool? ?? false),
+      refundableMinor: $checkedConvert(
+        'refundable_minor',
+        (v) => (v as num?)?.toInt() ?? 0,
+      ),
+      certificateEmailed: $checkedConvert(
+        'certificate_emailed',
+        (v) => v as bool? ?? false,
+      ),
+      refusalReason: $checkedConvert(
+        'refusal_reason',
+        (v) => v == null
+            ? null
+            : OperatorPassPurchaseResponseRefusalReasonRefusalReason.fromJson(
+                v as String,
+              ),
+      ),
       withdrawalEndsOn: $checkedConvert(
         'withdrawal_ends_on',
         (v) => v == null ? null : DateTime.parse(v as String),
@@ -65,15 +97,19 @@ OperatorPassPurchaseResponse _$OperatorPassPurchaseResponseFromJson(
     return val;
   },
   fieldKeyMap: const {
+    'orderNumber': 'order_number',
     'amountMinor': 'amount_minor',
     'purchasedAt': 'purchased_at',
     'deliveredAt': 'delivered_at',
     'waiverConsentAt': 'waiver_consent_at',
     'withdrawalCountry': 'withdrawal_country',
     'withdrawalEndsAt': 'withdrawal_ends_at',
+    'certificateAvailable': 'certificate_available',
     'withdrawnAt': 'withdrawn_at',
-    'hasDonation': 'has_donation',
     'canWithdraw': 'can_withdraw',
+    'refundableMinor': 'refundable_minor',
+    'certificateEmailed': 'certificate_emailed',
+    'refusalReason': 'refusal_reason',
     'withdrawalEndsOn': 'withdrawal_ends_on',
   },
 );
@@ -83,6 +119,7 @@ Map<String, dynamic> _$OperatorPassPurchaseResponseToJson(
 ) => <String, dynamic>{
   'id': instance.id,
   'status': instance.status,
+  'order_number': instance.orderNumber,
   'quantity': instance.quantity,
   'amount_minor': instance.amountMinor,
   'currency': instance.currency,
@@ -92,7 +129,11 @@ Map<String, dynamic> _$OperatorPassPurchaseResponseToJson(
   'withdrawal_country': instance.withdrawalCountry,
   'withdrawal_ends_at': instance.withdrawalEndsAt?.toIso8601String(),
   'withdrawal_ends_on': ?instance.withdrawalEndsOn?.toIso8601String(),
+  'certificate_available': instance.certificateAvailable,
   'withdrawn_at': instance.withdrawnAt?.toIso8601String(),
-  'has_donation': instance.hasDonation,
+  'pages': instance.pages,
   'can_withdraw': instance.canWithdraw,
+  'refundable_minor': instance.refundableMinor,
+  'certificate_emailed': instance.certificateEmailed,
+  'refusal_reason': instance.refusalReason,
 };

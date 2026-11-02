@@ -26,7 +26,7 @@ class ChangeSubscriptionRequest {
   )
   final ChangeSubscriptionRequestBillingCycleBillingCycle billingCycle;
 
-  /// When the billing cycle change should take effect
+  /// When the billing cycle change should take effect. A switch from yearly to monthly always takes effect at the end of the paid year
   @JsonKey(includeIfNull: false, name: 'effective_at')
   final ChangeSubscriptionRequestEffectiveAtEffectiveAt? effectiveAt;
 

@@ -35,7 +35,7 @@ class SelfServeRefundResponse {
   @JsonKey(includeIfNull: true, name: 'refund_id')
   final String? refundId;
 
-  /// Amount actually refunded so far, in the currency minor unit; 0 until the provider confirms success, null when the store does not report it
+  /// Amount actually refunded so far across every refunded payment, in the currency minor unit; 0 until the provider confirms success, null when the store does not report it
   @JsonKey(includeIfNull: true, name: 'refunded_amount_cents')
   final int? refundedAmountCents;
   @JsonKey(includeIfNull: true, name: 'invoice_amount_paid_cents')

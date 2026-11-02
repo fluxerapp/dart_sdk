@@ -48,6 +48,10 @@ OperatorPassUnitResponse _$OperatorPassUnitResponseFromJson(
             ? null
             : OperatorPassOfferResponse.fromJson(v as Map<String, dynamic>),
       ),
+      purchasedAt: $checkedConvert(
+        'purchased_at',
+        (v) => v == null ? null : DateTime.parse(v as String),
+      ),
       withdrawalEndsOn: $checkedConvert(
         'withdrawal_ends_on',
         (v) => v == null ? null : DateTime.parse(v as String),
@@ -68,6 +72,7 @@ OperatorPassUnitResponse _$OperatorPassUnitResponseFromJson(
     'transferLockEndsAt': 'transfer_lock_ends_at',
     'canWithdraw': 'can_withdraw',
     'withdrawalEndsAt': 'withdrawal_ends_at',
+    'purchasedAt': 'purchased_at',
     'withdrawalEndsOn': 'withdrawal_ends_on',
     'receivedFrom': 'received_from',
   },
@@ -81,6 +86,7 @@ Map<String, dynamic> _$OperatorPassUnitResponseToJson(
   'status': instance.status,
   'purchase_id': instance.purchaseId,
   'delivered_at': instance.deliveredAt.toIso8601String(),
+  'purchased_at': ?instance.purchasedAt?.toIso8601String(),
   'paused': instance.paused,
   'can_pass_on': instance.canPassOn,
   'transfer_lock_ends_at': instance.transferLockEndsAt?.toIso8601String(),

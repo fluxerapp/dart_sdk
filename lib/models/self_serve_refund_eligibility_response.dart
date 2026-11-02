@@ -28,7 +28,7 @@ class SelfServeRefundEligibilityResponse {
     Map<String, Object?> json,
   ) => _$SelfServeRefundEligibilityResponseFromJson(json);
 
-  /// Whether the authenticated user can self-serve refund their latest purchase right now
+  /// Whether the authenticated user can self-serve refund their recent purchases right now
   @JsonKey(defaultValue: false)
   final bool eligible;
 
@@ -40,7 +40,7 @@ class SelfServeRefundEligibilityResponse {
   @JsonKey(includeIfNull: true, name: 'invoice_id')
   final String? invoiceId;
 
-  /// Amount paid on the latest invoice in the currency minor unit
+  /// Amount a self-serve refund would return in the currency minor unit: every payment made in the last 3 days when they share a currency, otherwise the latest one
   @JsonKey(includeIfNull: true, name: 'invoice_amount_paid_cents')
   final int? invoiceAmountPaidCents;
 

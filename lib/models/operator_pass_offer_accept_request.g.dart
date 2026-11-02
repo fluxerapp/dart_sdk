@@ -19,6 +19,7 @@ OperatorPassOfferAcceptRequest _$OperatorPassOfferAcceptRequestFromJson(
         (v) => v as OperatorPassWallNameType?,
       ),
       wallOptOut: $checkedConvert('wall_opt_out', (v) => v as bool?),
+      labsGreeting: $checkedConvert('labs_greeting', (v) => v as bool?),
     );
     return val;
   },
@@ -26,6 +27,7 @@ OperatorPassOfferAcceptRequest _$OperatorPassOfferAcceptRequestFromJson(
     'acceptTerms': 'accept_terms',
     'wallNameValue': 'wall_name',
     'wallOptOut': 'wall_opt_out',
+    'labsGreeting': 'labs_greeting',
   },
 );
 
@@ -34,5 +36,6 @@ Map<String, dynamic> _$OperatorPassOfferAcceptRequestToJson(
 ) => <String, dynamic>{
   'accept_terms': instance.acceptTerms,
   'wall_opt_out': ?instance.wallOptOut,
+  'labs_greeting': ?instance.labsGreeting,
   'wall_name': ?instance.wallNameValue,
 };

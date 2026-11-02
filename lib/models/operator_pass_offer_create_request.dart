@@ -34,7 +34,7 @@ class OperatorPassOfferCreateRequest {
   @JsonKey(includeIfNull: false)
   final DiscriminatorType? discriminator;
 
-  /// Must be true when this is the last pass on the account, because passing it on removes the badge and the wall listing
+  /// Must be true when this is the last pass on the account, because passing it on removes the badge, the wall listing and #operators from the account
   @JsonKey(includeIfNull: false, name: 'confirm_last_pass')
   final bool? confirmLastPass;
 

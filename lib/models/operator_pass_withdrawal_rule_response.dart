@@ -21,7 +21,7 @@ class OperatorPassWithdrawalRuleResponse {
   @JsonKey(defaultValue: '')
   final String country;
 
-  /// Days after payment the buyer can withdraw for a full refund
+  /// Days the buyer can withdraw for a full refund, even after delivery. The period ends on the last of these days counted from the day the certificate is delivered, and withdrawal_ends_at and withdrawal_ends_on on each purchase give the exact deadline
   @JsonKey(defaultValue: 0)
   final int days;
 

@@ -25,6 +25,7 @@ class OperatorPassUnitResponse {
     required this.canWithdraw,
     required this.withdrawalEndsAt,
     required this.offer,
+    this.purchasedAt,
     this.withdrawalEndsOn,
     this.receivedFrom,
   });
@@ -42,13 +43,17 @@ class OperatorPassUnitResponse {
   @JsonKey(defaultValue: OperatorPassUnitStatusSchema.$unknown)
   final OperatorPassUnitStatusSchema status;
 
-  /// The purchase that paid for the pass, null for a staff grant
+  /// The purchase that paid for the pass, null for a staff grant or the pass that came with Visionary
   @JsonKey(includeIfNull: true, name: 'purchase_id')
   final String? purchaseId;
 
   /// When the pass reached this account
   @JsonKey(name: 'delivered_at', defaultValue: _$missingDateTime)
   final DateTime deliveredAt;
+
+  /// When the payment for the purchase settled, null when the account did not buy this pass itself
+  @JsonKey(includeIfNull: false, name: 'purchased_at')
+  final DateTime? purchasedAt;
 
   /// Whether the pass is paused while a payment dispute is open
   @JsonKey(defaultValue: false)
@@ -66,11 +71,11 @@ class OperatorPassUnitResponse {
   @JsonKey(name: 'can_withdraw', defaultValue: false)
   final bool canWithdraw;
 
-  /// When the cancel window for this pass closes, null when it has none. Under a country rule this is the end of withdrawal_ends_on in America/Rio_Branco
+  /// When the withdrawal window for this pass closes, null when it has none. Under a country rule this is the end of withdrawal_ends_on in America/Rio_Branco
   @JsonKey(includeIfNull: true, name: 'withdrawal_ends_at')
   final DateTime? withdrawalEndsAt;
 
-  /// The last day of the cancel window under a country rule, as YYYY-MM-DD in America/Rio_Branco. Show it as is, without converting time zones
+  /// The last day of the withdrawal window under a country rule, as YYYY-MM-DD in America/Rio_Branco. Show it as is, without converting time zones
   @JsonKey(includeIfNull: false, name: 'withdrawal_ends_on')
   final DateTime? withdrawalEndsOn;
 

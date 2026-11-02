@@ -53,6 +53,10 @@ OperatorPassStateResponse _$OperatorPassStateResponseFromJson(
                 v as Map<String, dynamic>,
               ),
       ),
+      standardPriceMinor: $checkedConvert(
+        'standard_price_minor',
+        (v) => (v as num?)?.toInt(),
+      ),
       quote: $checkedConvert('quote', (v) => v as String? ?? ''),
       holder: $checkedConvert(
         'holder',
@@ -66,14 +70,6 @@ OperatorPassStateResponse _$OperatorPassStateResponseFromJson(
             ? null
             : OperatorPassPurchaseBlockedReasonSchema.fromJson(v as String),
       ),
-      donation: $checkedConvert(
-        'donation',
-        (v) => v == null
-            ? _$missingOperatorPassDonationOptionsResponse()
-            : OperatorPassDonationOptionsResponse.fromJson(
-                v as Map<String, dynamic>,
-              ),
-      ),
     );
     return val;
   },
@@ -83,6 +79,7 @@ OperatorPassStateResponse _$OperatorPassStateResponseFromJson(
     'priceMinor': 'price_minor',
     'maxQuantity': 'max_quantity',
     'withdrawalRule': 'withdrawal_rule',
+    'standardPriceMinor': 'standard_price_minor',
     'purchaseBlockedReason': 'purchase_blocked_reason',
   },
 );
@@ -98,8 +95,8 @@ Map<String, dynamic> _$OperatorPassStateResponseToJson(
   'price_minor': instance.priceMinor,
   'max_quantity': instance.maxQuantity,
   'withdrawal_rule': instance.withdrawalRule,
+  'standard_price_minor': instance.standardPriceMinor,
   'quote': instance.quote,
   'holder': instance.holder,
   'purchase_blocked_reason': instance.purchaseBlockedReason,
-  'donation': instance.donation,
 };

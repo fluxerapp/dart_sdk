@@ -5,7 +5,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'operator_pass_currency_schema.dart';
-import 'operator_pass_donation_options_response.dart';
 import 'operator_pass_holder_response.dart';
 import 'operator_pass_phase_schema.dart';
 import 'operator_pass_purchase_blocked_reason_schema.dart';
@@ -24,10 +23,10 @@ class OperatorPassStateResponse {
     required this.priceMinor,
     required this.maxQuantity,
     required this.withdrawalRule,
+    required this.standardPriceMinor,
     required this.quote,
     required this.holder,
     required this.purchaseBlockedReason,
-    required this.donation,
   });
 
   factory OperatorPassStateResponse.fromJson(Map<String, Object?> json) =>
@@ -58,9 +57,13 @@ class OperatorPassStateResponse {
   @JsonKey(name: 'max_quantity', defaultValue: 0)
   final int maxQuantity;
 
-  /// A withdrawal right that cannot be waived, for buyers in a country that has one, null otherwise. Checkout shows the matching box text then
+  /// A country rule that keeps the right of withdrawal after delivery, null when the right ends once the certificate is delivered
   @JsonKey(includeIfNull: true, name: 'withdrawal_rule')
   final OperatorPassWithdrawalRuleResponse? withdrawalRule;
+
+  /// Price of one pass after the early bird phase in minor units, null when no standard price is set
+  @JsonKey(includeIfNull: true, name: 'standard_price_minor')
+  final int? standardPriceMinor;
 
   /// Signed price quote to send back with checkout
   @JsonKey(defaultValue: '')
@@ -73,15 +76,9 @@ class OperatorPassStateResponse {
   /// Why the current account cannot buy passes, null when it can
   @JsonKey(includeIfNull: true, name: 'purchase_blocked_reason')
   final OperatorPassPurchaseBlockedReasonSchema? purchaseBlockedReason;
-  @JsonKey(defaultValue: _$missingOperatorPassDonationOptionsResponse)
-  final OperatorPassDonationOptionsResponse donation;
 
   Map<String, Object?> toJson() => _$OperatorPassStateResponseToJson(this);
 }
 
 DateTime _$missingDateTime() =>
     DateTime.fromMillisecondsSinceEpoch(0, isUtc: true);
-
-OperatorPassDonationOptionsResponse
-_$missingOperatorPassDonationOptionsResponse() =>
-    OperatorPassDonationOptionsResponse.fromJson(const <String, dynamic>{});

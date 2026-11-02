@@ -11,6 +11,8 @@ enum OperatorPassHolderSourceSchema {
   purchase('purchase'),
   @JsonValue('transfer')
   transfer('transfer'),
+  @JsonValue('visionary')
+  visionary('visionary'),
   @JsonValue('admin')
   admin('admin'),
 

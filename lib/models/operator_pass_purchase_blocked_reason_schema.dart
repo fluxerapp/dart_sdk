@@ -9,8 +9,6 @@ import 'package:json_annotation/json_annotation.dart';
 enum OperatorPassPurchaseBlockedReasonSchema {
   @JsonValue('not_on_sale')
   notOnSale('not_on_sale'),
-  @JsonValue('country_unavailable')
-  countryUnavailable('country_unavailable'),
   @JsonValue('email_unverified')
   emailUnverified('email_unverified'),
   @JsonValue('unclaimed')
@@ -19,6 +17,8 @@ enum OperatorPassPurchaseBlockedReasonSchema {
   purchaseDisabled('purchase_disabled'),
   @JsonValue('payment_dispute_open')
   paymentDisputeOpen('payment_dispute_open'),
+  @JsonValue('email_undeliverable')
+  emailUndeliverable('email_undeliverable'),
   @JsonValue('removed')
   removed('removed'),
 
