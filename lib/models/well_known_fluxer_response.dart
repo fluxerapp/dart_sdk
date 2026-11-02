@@ -116,7 +116,7 @@ class WellKnownFluxerResponse {
   @JsonKey(includeIfNull: false, name: 'hidden_built_in_guild_badges')
   final InstanceHiddenBuiltInGuildBadgesSchema? hiddenBuiltInGuildBadges;
 
-  /// Origins of every voice server endpoint, such as wss://voice.example.com, for content security policies
+  /// Origins of every voice server endpoint, such as wss://voice.example.com, for content security policies. Voice servers that share a domain are listed once as a wildcard, such as wss://*.example.com
   @JsonKey(includeIfNull: false, name: 'voice_origins')
   final List<String>? voiceOrigins;
 
