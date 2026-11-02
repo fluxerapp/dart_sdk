@@ -131,9 +131,13 @@ WellKnownFluxerResponse _$WellKnownFluxerResponseFromJson(
       ),
       hiddenBuiltInGuildBadges: $checkedConvert(
         'hidden_built_in_guild_badges',
-        (v) => v == null
-            ? null
-            : InstanceHiddenBuiltInGuildBadgesSchema.fromJson(v as String),
+        (v) => (v as List<dynamic>?)
+            ?.map(
+              (e) => InstanceHiddenBuiltInGuildBadgesSchemaItem.fromJson(
+                e as String,
+              ),
+            )
+            .toList(),
       ),
       voiceOrigins: $checkedConvert(
         'voice_origins',

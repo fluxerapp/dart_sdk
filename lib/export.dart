@@ -973,6 +973,7 @@ export 'models/identify_response_sign_in_method_sign_in_method.dart';
 export 'models/identify_response_registration_mode_mode.dart';
 export 'models/handoff_info_response_client_info_device_device.dart';
 export 'models/email_code_send_response_purpose_purpose.dart';
+export 'models/instance_hidden_built_in_guild_badges_schema_item.dart';
 export 'models/web_authn_authentication_response_authenticator_attachment_authenticator_attachment.dart';
 export 'models/guild_entry_result_mode_mode.dart';
 export 'models/auth_session_response_client_info_device_device.dart';
