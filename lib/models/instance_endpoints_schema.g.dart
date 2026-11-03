@@ -24,6 +24,7 @@ InstanceEndpointsSchema _$InstanceEndpointsSchemaFromJson(
       invite: $checkedConvert('invite', (v) => v as String? ?? ''),
       gift: $checkedConvert('gift', (v) => v as String? ?? ''),
       webapp: $checkedConvert('webapp', (v) => v as String? ?? ''),
+      apiTransport: $checkedConvert('api_transport', (v) => v as String?),
       uploadRelay: $checkedConvert('upload_relay', (v) => v as String?),
       docs: $checkedConvert('docs', (v) => v as String?),
     );
@@ -33,6 +34,7 @@ InstanceEndpointsSchema _$InstanceEndpointsSchemaFromJson(
     'apiClient': 'api_client',
     'apiPublic': 'api_public',
     'staticCdn': 'static_cdn',
+    'apiTransport': 'api_transport',
     'uploadRelay': 'upload_relay',
   },
 );
@@ -43,6 +45,7 @@ Map<String, dynamic> _$InstanceEndpointsSchemaToJson(
   'api': instance.api,
   'api_client': instance.apiClient,
   'api_public': instance.apiPublic,
+  'api_transport': ?instance.apiTransport,
   'gateway': instance.gateway,
   'media': instance.media,
   'upload_relay': ?instance.uploadRelay,

@@ -21,6 +21,7 @@ class InstanceEndpointsSchema {
     required this.invite,
     required this.gift,
     required this.webapp,
+    this.apiTransport,
     this.uploadRelay,
     this.docs,
   });
@@ -39,6 +40,10 @@ class InstanceEndpointsSchema {
   /// Base URL for public API requests
   @JsonKey(name: 'api_public', defaultValue: '')
   final String apiPublic;
+
+  /// Base URL that official desktop clients send API requests to instead of api_client
+  @JsonKey(includeIfNull: false, name: 'api_transport')
+  final String? apiTransport;
 
   /// WebSocket URL for the gateway
   @JsonKey(defaultValue: '')
