@@ -252,10 +252,13 @@ abstract class AuthApi {
   ///
   /// Retrieve WebAuthn challenge and options for multi-factor authentication. Requires the MFA ticket from initial login.
   ///
+  /// [rpId] - Relying party ID to use instead of the one picked from the Origin header. Only the instance relying party and the migration relying party are honoured, and only on the official instance. Any other value is ignored.
+  ///
   /// [body] - Name not received - field will be skipped.
   @POST('/auth/login/mfa/webauthn/authentication-options')
   Future<WebAuthnAuthenticationOptionsResponse> getWebauthnMfaOptions({
     @Body() required MfaTicketRequest body,
+    @Query('rp_id') String? rpId,
   });
 
   /// Logout account.
@@ -501,7 +504,9 @@ abstract class AuthApi {
   /// Get WebAuthn authentication options.
   ///
   /// Retrieve WebAuthn authentication challenge and options for passwordless login with biometrics or security keys.
+  ///
+  /// [rpId] - Relying party ID to use instead of the one picked from the Origin header. Only the instance relying party and the migration relying party are honoured, and only on the official instance. Any other value is ignored.
   @POST('/auth/webauthn/authentication-options')
   Future<WebAuthnAuthenticationOptionsResponse>
-  getWebauthnAuthenticationOptions();
+  getWebauthnAuthenticationOptions({@Query('rp_id') String? rpId});
 }

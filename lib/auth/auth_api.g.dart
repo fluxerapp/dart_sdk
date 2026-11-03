@@ -509,9 +509,11 @@ class _AuthApi implements AuthApi {
   @override
   Future<WebAuthnAuthenticationOptionsResponse> getWebauthnMfaOptions({
     required MfaTicketRequest body,
+    String? rpId,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'rp_id': rpId};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
@@ -1270,9 +1272,10 @@ class _AuthApi implements AuthApi {
 
   @override
   Future<WebAuthnAuthenticationOptionsResponse>
-  getWebauthnAuthenticationOptions() async {
+  getWebauthnAuthenticationOptions({String? rpId}) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'rp_id': rpId};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<WebAuthnAuthenticationOptionsResponse>(

@@ -661,9 +661,12 @@ abstract class UsersApi {
   ///
   /// Generate challenge and options to register a new WebAuthn credential. Requires sudo mode verification.
   ///
+  /// [rpId] - Relying party ID to use instead of the one picked from the Origin header. Only the instance relying party and the migration relying party are honoured, and only on the official instance. Any other value is ignored.
+  ///
   /// [body] - Name not received - field will be skipped.
   @POST('/users/@me/mfa/webauthn/credentials/registration-options')
   Future<WebAuthnChallengeResponse> getWebauthnRegistrationOptions({
+    @Query('rp_id') String? rpId,
     @Body() SudoVerificationSchema? body,
   });
 
@@ -1096,8 +1099,12 @@ abstract class UsersApi {
   /// Get sudo WebAuthn authentication options.
   ///
   /// Generate WebAuthn challenge for sudo mode verification using a registered security key or biometric device.
+  ///
+  /// [rpId] - Relying party ID to use instead of the one picked from the Origin header. Only the instance relying party and the migration relying party are honoured, and only on the official instance. Any other value is ignored.
   @POST('/users/@me/sudo/webauthn/authentication-options')
-  Future<WebAuthnChallengeResponse> getSudoWebauthnAuthenticationOptions();
+  Future<WebAuthnChallengeResponse> getSudoWebauthnAuthenticationOptions({
+    @Query('rp_id') String? rpId,
+  });
 
   /// Accept updated terms of service.
   ///

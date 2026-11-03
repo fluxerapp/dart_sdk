@@ -1551,10 +1551,11 @@ class _UsersApi implements UsersApi {
 
   @override
   Future<WebAuthnChallengeResponse> getWebauthnRegistrationOptions({
+    String? rpId,
     SudoVerificationSchema? body,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'rp_id': rpId};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
@@ -2848,10 +2849,12 @@ class _UsersApi implements UsersApi {
   }
 
   @override
-  Future<WebAuthnChallengeResponse>
-  getSudoWebauthnAuthenticationOptions() async {
+  Future<WebAuthnChallengeResponse> getSudoWebauthnAuthenticationOptions({
+    String? rpId,
+  }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'rp_id': rpId};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<WebAuthnChallengeResponse>(
