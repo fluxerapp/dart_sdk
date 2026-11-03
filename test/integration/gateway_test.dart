@@ -52,7 +52,7 @@ void main() {
       expect(ready.sessionId, isNotEmpty);
       expect(ready.user.id, isNotEmpty);
       expect(ready.user.username, isNotEmpty);
-      expect(ready.guilds, isA<List>());
+      expect(ready.rawGuilds, isA<List>());
       expect(ready.privateChannels, isA<List>());
       expect(ready.relationships, isA<List>());
     });

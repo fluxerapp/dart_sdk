@@ -153,7 +153,10 @@ void main() {
             'op': GatewayOpcodes.dispatch,
             't': 'READY',
             's': 1,
-            'd': <String, Object?>{'session_id': 'session-1'},
+            'd': <String, Object?>{
+              'session_id': 'session-1',
+              'user': <String, Object?>{'id': '1', 'username': 'u'},
+            },
           }),
         );
     });
