@@ -26,15 +26,15 @@ class OperatorPassWallOperatorResponse {
   @JsonKey(defaultValue: '')
   final String id;
 
-  /// The name shown: the approved name, or Operator as fallback
+  /// The name shown: the name the holder chose, or Operator as fallback
   @JsonKey(defaultValue: '')
   final String name;
 
-  /// SHA-256 of the approved avatar snapshot, null for the default avatar
+  /// SHA-256 of the avatar snapshot, null for the default avatar
   @JsonKey(includeIfNull: true)
   final String? avatar;
 
-  /// The approved avatar snapshot at the largest size, null for the default avatar
+  /// The avatar snapshot at the largest size, null for the default avatar
   @JsonKey(includeIfNull: true, name: 'avatar_url')
   final String? avatarUrl;
 

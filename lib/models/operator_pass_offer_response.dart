@@ -19,7 +19,6 @@ class OperatorPassOfferResponse {
     required this.recipient,
     required this.createdAt,
     required this.acceptedAt,
-    required this.arrivesAt,
     required this.endedAt,
   });
 
@@ -51,10 +50,6 @@ class OperatorPassOfferResponse {
   /// When the recipient accepted
   @JsonKey(includeIfNull: true, name: 'accepted_at')
   final DateTime? acceptedAt;
-
-  /// The earliest time the pass can move to the recipient once accepted, when the transfer lock ends
-  @JsonKey(name: 'arrives_at', defaultValue: _$missingDateTime)
-  final DateTime arrivesAt;
 
   /// When the offer completed or ended
   @JsonKey(includeIfNull: true, name: 'ended_at')

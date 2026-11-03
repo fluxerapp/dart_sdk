@@ -570,9 +570,6 @@ tolerantModelFactories = <String, Object Function(Map<String, Object?>)>{
   'Object2Attachments': Object2Attachments.fromJson,
   'Object3': Object3.fromJson,
   'OkResponse': OkResponse.fromJson,
-  'OperatorPassAltchaChallenge': OperatorPassAltchaChallenge.fromJson,
-  'OperatorPassAltchaChallengeParameters':
-      OperatorPassAltchaChallengeParameters.fromJson,
   'OperatorPassCertificateLinkResponse':
       OperatorPassCertificateLinkResponse.fromJson,
   'OperatorPassCertificateResponse': OperatorPassCertificateResponse.fromJson,
@@ -606,16 +603,6 @@ tolerantModelFactories = <String, Object Function(Map<String, Object?>)>{
       OperatorPassVisionaryTurnOnRequestWallWallVariant1.fromJson,
   'OperatorPassVisionaryTurnOnRequestWallWallVariant2':
       OperatorPassVisionaryTurnOnRequestWallWallVariant2.fromJson,
-  'OperatorPassWaitlistChallengeResponse':
-      OperatorPassWaitlistChallengeResponse.fromJson,
-  'OperatorPassWaitlistConfirmRequest':
-      OperatorPassWaitlistConfirmRequest.fromJson,
-  'OperatorPassWaitlistConfirmResponse':
-      OperatorPassWaitlistConfirmResponse.fromJson,
-  'OperatorPassWaitlistFollowupRequest':
-      OperatorPassWaitlistFollowupRequest.fromJson,
-  'OperatorPassWaitlistRequest': OperatorPassWaitlistRequest.fromJson,
-  'OperatorPassWaitlistResponse': OperatorPassWaitlistResponse.fromJson,
   'OperatorPassWaitlistUnsubscribeResponse':
       OperatorPassWaitlistUnsubscribeResponse.fromJson,
   'OperatorPassWallOperatorResponse': OperatorPassWallOperatorResponse.fromJson,

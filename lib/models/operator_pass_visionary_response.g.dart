@@ -21,11 +21,7 @@ OperatorPassVisionaryResponse _$OperatorPassVisionaryResponseFromJson(
       ),
       reason: $checkedConvert(
         'reason',
-        (v) => v == null
-            ? null
-            : OperatorPassVisionaryUnavailableReasonSchema.fromJson(
-                v as String,
-              ),
+        (v) => v as OperatorPassVisionaryUnavailableReasonSchema?,
       ),
       since: $checkedConvert(
         'since',

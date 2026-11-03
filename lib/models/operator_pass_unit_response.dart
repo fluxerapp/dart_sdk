@@ -21,10 +21,10 @@ class OperatorPassUnitResponse {
     required this.deliveredAt,
     required this.paused,
     required this.canPassOn,
-    required this.transferLockEndsAt,
     required this.canWithdraw,
     required this.withdrawalEndsAt,
     required this.offer,
+    required this.certificateNumber,
     this.purchasedAt,
     this.withdrawalEndsOn,
     this.receivedFrom,
@@ -63,10 +63,6 @@ class OperatorPassUnitResponse {
   @JsonKey(name: 'can_pass_on', defaultValue: false)
   final bool canPassOn;
 
-  /// The earliest time a passed on pass can move to the recipient, null when it cannot be passed on
-  @JsonKey(includeIfNull: true, name: 'transfer_lock_ends_at')
-  final DateTime? transferLockEndsAt;
-
   /// Whether the withdraw button for this pass is available now
   @JsonKey(name: 'can_withdraw', defaultValue: false)
   final bool canWithdraw;
@@ -86,6 +82,10 @@ class OperatorPassUnitResponse {
   /// Who passed this pass on to the account, null when the account bought it or that account is gone
   @JsonKey(includeIfNull: false, name: 'received_from')
   final OperatorPassOfferUserResponse? receivedFrom;
+
+  /// Number of the certificate page of this pass, null when the pass has no page
+  @JsonKey(includeIfNull: true, name: 'certificate_number')
+  final int? certificateNumber;
 
   Map<String, Object?> toJson() => _$OperatorPassUnitResponseToJson(this);
 }

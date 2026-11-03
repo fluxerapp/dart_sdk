@@ -17,7 +17,6 @@ class OperatorPassStateResponse {
   const OperatorPassStateResponse({
     required this.phase,
     required this.now,
-    required this.saleOpensAt,
     required this.priceRisesAt,
     required this.currency,
     required this.priceMinor,
@@ -38,10 +37,6 @@ class OperatorPassStateResponse {
   /// The server time the state was computed at
   @JsonKey(defaultValue: _$missingDateTime)
   final DateTime now;
-
-  /// When sales open, null while no sale date is set
-  @JsonKey(includeIfNull: true, name: 'sale_opens_at')
-  final DateTime? saleOpensAt;
 
   /// When the early bird price ends, null while no sale date is set
   @JsonKey(includeIfNull: true, name: 'price_rises_at')

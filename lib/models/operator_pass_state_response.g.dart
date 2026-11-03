@@ -23,10 +23,6 @@ OperatorPassStateResponse _$OperatorPassStateResponseFromJson(
         'now',
         (v) => v == null ? _$missingDateTime() : DateTime.parse(v as String),
       ),
-      saleOpensAt: $checkedConvert(
-        'sale_opens_at',
-        (v) => v == null ? null : DateTime.parse(v as String),
-      ),
       priceRisesAt: $checkedConvert(
         'price_rises_at',
         (v) => v == null ? null : DateTime.parse(v as String),
@@ -74,7 +70,6 @@ OperatorPassStateResponse _$OperatorPassStateResponseFromJson(
     return val;
   },
   fieldKeyMap: const {
-    'saleOpensAt': 'sale_opens_at',
     'priceRisesAt': 'price_rises_at',
     'priceMinor': 'price_minor',
     'maxQuantity': 'max_quantity',
@@ -89,7 +84,6 @@ Map<String, dynamic> _$OperatorPassStateResponseToJson(
 ) => <String, dynamic>{
   'phase': instance.phase,
   'now': instance.now.toIso8601String(),
-  'sale_opens_at': instance.saleOpensAt?.toIso8601String(),
   'price_rises_at': instance.priceRisesAt?.toIso8601String(),
   'currency': instance.currency,
   'price_minor': instance.priceMinor,

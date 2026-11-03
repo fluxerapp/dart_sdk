@@ -7,8 +7,6 @@ import 'package:json_annotation/json_annotation.dart';
 /// Why the current account cannot buy passes
 @JsonEnum()
 enum OperatorPassPurchaseBlockedReasonSchema {
-  @JsonValue('not_on_sale')
-  notOnSale('not_on_sale'),
   @JsonValue('email_unverified')
   emailUnverified('email_unverified'),
   @JsonValue('unclaimed')

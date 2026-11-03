@@ -7,8 +7,6 @@ import 'package:json_annotation/json_annotation.dart';
 /// Operator Pass sale phase
 @JsonEnum()
 enum OperatorPassPhaseSchema {
-  @JsonValue('waitlist')
-  waitlist('waitlist'),
   @JsonValue('early_bird')
   earlyBird('early_bird'),
   @JsonValue('standard')

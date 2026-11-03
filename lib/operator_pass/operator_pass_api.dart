@@ -24,12 +24,6 @@ import '../models/operator_pass_purchase_list_response.dart';
 import '../models/operator_pass_purchase_response.dart';
 import '../models/operator_pass_state_response.dart';
 import '../models/operator_pass_visionary_turn_on_request.dart';
-import '../models/operator_pass_waitlist_challenge_response.dart';
-import '../models/operator_pass_waitlist_confirm_request.dart';
-import '../models/operator_pass_waitlist_confirm_response.dart';
-import '../models/operator_pass_waitlist_followup_request.dart';
-import '../models/operator_pass_waitlist_request.dart';
-import '../models/operator_pass_waitlist_response.dart';
 import '../models/operator_pass_waitlist_unsubscribe_response.dart';
 import '../models/operator_pass_wall_response.dart';
 import '../models/operator_pass_withdraw_request.dart';
@@ -88,13 +82,13 @@ abstract class OperatorPassApi {
 
   /// Get Operators' wall listing.
   ///
-  /// Returns what the Operators' wall shows for the current account right now, the name it submitted, the review state, why staff declined a name or avatar, and how many passes the account holds. The review state and the reason are only for the holder, the public wall never shows them.
+  /// Returns what the Operators' wall shows for the current account right now, the name it chose and how many passes the account holds.
   @GET('/operator-pass/listing')
   Future<OperatorPassListingResponse> getOperatorPassListing();
 
   /// Update Operators' wall listing.
   ///
-  /// Submits a new name for the Operators' wall, takes the listing off the wall, or sets keep_as_is or release_list_opt_in. A new name, together with the current profile avatar, waits for review and the wall keeps showing the last approved version, or the fallback, until staff approve it. A declined name can be replaced at any time. An already listed holder can send only keep_as_is or release_list_opt_in.
+  /// Submits a new name for the Operators' wall, takes the listing off the wall, or sets keep_as_is or release_list_opt_in. A new name goes on the wall at once, together with the current profile avatar. An already listed holder can send only keep_as_is or release_list_opt_in.
   ///
   /// [body] - Name not received - field will be skipped.
   @PUT('/operator-pass/listing')
@@ -124,7 +118,7 @@ abstract class OperatorPassApi {
 
   /// Accept Pass it on offer.
   ///
-  /// Accepts an offer to the current account with the Operator Pass terms and a choice for the Operators' wall. The pass moves at arrives_at, at once when the transfer lock has already ended. Once it moves, the account is added to Fluxer Labs unless it left or was removed from Labs before, and is welcomed in #operators when labs_greeting allows. A received pass cannot be passed on again, and it ends if the payment for it is reversed.
+  /// Accepts an offer to the current account with the Operator Pass terms and a choice for the Operators' wall. The pass moves at once. Once it moves, the account is added to Fluxer Labs unless it left or was removed from Labs before, and is welcomed in #operators when labs_greeting allows. A received pass cannot be passed on again, and it ends if the payment for it is reversed.
   ///
   /// [offerId] - The offer ID.
   ///
@@ -163,7 +157,7 @@ abstract class OperatorPassApi {
 
   /// Pass an Operator Pass on.
   ///
-  /// Offers a pass the current account bought to another user. The offer stays pending until the recipient accepts or declines, and the sender can withdraw it until then. Once accepted, the pass moves when the transfer lock ends, and only while the payment has no early fraud warning, open dispute or refund. Passing on the last pass needs confirm_last_pass, because it removes the badge, the wall listing and #operators from the account.
+  /// Offers a pass the current account bought to another user. The offer stays pending until the recipient accepts or declines, and the sender can withdraw it until then. The pass moves as soon as the recipient accepts, and only while the payment has no early fraud warning, open dispute or refund. Passing on the last pass needs confirm_last_pass, because it removes the badge, the wall listing and #operators from the account.
   ///
   /// [passId] - The pass ID.
   ///
@@ -218,7 +212,7 @@ abstract class OperatorPassApi {
 
   /// Get Operator Pass state.
   ///
-  /// Returns the sale phase, the price of one pass in the buyer currency, the most passes one checkout can buy, the withdrawal rule of the buyer country and a signed quote. Signed-in callers also get their holder status with the number of passes they hold, and why they cannot buy passes.
+  /// Returns whether the early bird or the standard price applies, the price of one pass in the buyer currency, the most passes one checkout can buy, the withdrawal rule of the buyer country and a signed quote. Signed-in callers also get their holder status with the number of passes they hold, and why they cannot buy passes.
   ///
   /// [countryCode] - Two-letter country code used to pick the price currency. The request GeoIP country is used when omitted.
   @GET('/operator-pass/state')
@@ -236,56 +230,15 @@ abstract class OperatorPassApi {
     @Body() required OperatorPassVisionaryTurnOnRequest body,
   });
 
-  /// Join Operator Pass waitlist.
-  ///
-  /// Sends a confirmation email to the address and stores how the visitor feels about the early bird price they were shown, if the page asked. The response is the same whether or not the address is already on the waitlist, and always carries a followup_token for the follow-up question. Addresses are matched without plus tags, and Gmail addresses without dots. A later signup by the same pending address replaces the stored answer, a confirmed address keeps its first answer, a bounced address gets no email and an unsubscribed address gets at most one new confirmation email every 30 days. Requires a solved captcha challenge (X-Captcha-Token).
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @POST('/operator-pass/waitlist')
-  Future<OperatorPassWaitlistResponse> joinOperatorPassWaitlist({
-    @Body() required OperatorPassWaitlistRequest body,
-  });
-
-  /// Get Operator Pass waitlist captcha challenge.
-  ///
-  /// Returns the captcha challenge to solve before joining the Operator Pass waitlist.
-  @GET('/operator-pass/waitlist/challenge')
-  Future<OperatorPassWaitlistChallengeResponse>
-  getOperatorPassWaitlistChallenge();
-
-  /// Confirm Operator Pass waitlist email.
-  ///
-  /// Confirms a waitlist email address with the token from the confirmation email.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @POST('/operator-pass/waitlist/confirm')
-  Future<OperatorPassWaitlistConfirmResponse> confirmOperatorPassWaitlist({
-    @Body() required OperatorPassWaitlistConfirmRequest body,
-  });
-
-  /// Answer Operator Pass waitlist follow-up question.
-  ///
-  /// Stores what is most important to the visitor about the Operator Pass and which descriptions fit them, with the followup_token from the waitlist signup response. A new answer replaces the stored one while the token is valid, for 30 minutes after the signup. An answer without about keeps the descriptions stored before. A token from a signup whose address was already on the waitlist is accepted and stores nothing, so the response never shows whether an address is on the waitlist. other_text is plain text and only goes with other in picks.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @POST('/operator-pass/waitlist/followup')
-  Future<void> answerOperatorPassWaitlistFollowup({
-    @Body() required OperatorPassWaitlistFollowupRequest body,
-  });
-
   /// Open Operator Pass waitlist unsubscribe page.
   ///
-  /// Redirects a mail client that opens the unsubscribe link to the page where the address can leave the waitlist. Nothing changes until that page is submitted.
-  ///
-  /// [token] - Unsubscribe token from the email.
+  /// Redirects a mail client that opens the unsubscribe link of the Operator Pass launch email to the unsubscribe page. Nothing changes until a mail client sends the one-click POST.
   @GET('/operator-pass/waitlist/unsubscribe')
-  Future<void> openOperatorPassWaitlistUnsubscribe({
-    @Query('token') String? token,
-  });
+  Future<void> openOperatorPassWaitlistUnsubscribe();
 
   /// Leave Operator Pass waitlist.
   ///
-  /// Removes an address from the waitlist with the token from a waitlist email. Supports one-click unsubscribe from mail clients.
+  /// Deletes the waitlist entry that the token from the Operator Pass launch email belongs to. Supports one-click unsubscribe from mail clients.
   ///
   /// [token] - Unsubscribe token from the email.
   @POST('/operator-pass/waitlist/unsubscribe')
@@ -294,7 +247,7 @@ abstract class OperatorPassApi {
 
   /// Get Operators' wall.
   ///
-  /// Lists every Operator on the Operators' wall with the name and avatar the wall shows, the time the listing went up, the time of the first pass, how many passes the Operator holds and the size tier, with the highest tier first and the earliest first pass first within a tier. A declined name or avatar shows as the last accepted version, or as Operator with the default avatar. Review states and reasons are never included. Holders who chose not to be listed and paused or removed passes are left out. The response is cached for up to a minute.
+  /// Lists every Operator on the Operators' wall with the name and avatar the wall shows, the time the listing went up, the time of the first pass, how many passes the Operator holds and the size tier, with the highest tier first and the earliest first pass first within a tier. A listing whose name or avatar staff took off shows the holder's earlier name and avatar, or Operator with the default avatar. Holders who chose not to be listed and paused or removed passes are left out. The response is cached for up to a minute.
   @GET('/operator-pass/wall')
   Future<OperatorPassWallResponse> getOperatorPassWall();
 }
