@@ -14,6 +14,10 @@ OperatorPassLabsResponse _$OperatorPassLabsResponseFromJson(
   ($checkedConvert) {
     final val = OperatorPassLabsResponse(
       greeting: $checkedConvert('greeting', (v) => v as bool? ?? false),
+      showOperators: $checkedConvert(
+        'show_operators',
+        (v) => v as bool? ?? false,
+      ),
       greeted: $checkedConvert('greeted', (v) => v as bool? ?? false),
       left: $checkedConvert('left', (v) => v as bool? ?? false),
       member: $checkedConvert('member', (v) => v as bool? ?? false),
@@ -26,6 +30,7 @@ OperatorPassLabsResponse _$OperatorPassLabsResponseFromJson(
     return val;
   },
   fieldKeyMap: const {
+    'showOperators': 'show_operators',
     'guildId': 'guild_id',
     'operatorsChannelId': 'operators_channel_id',
   },
@@ -35,6 +40,7 @@ Map<String, dynamic> _$OperatorPassLabsResponseToJson(
   OperatorPassLabsResponse instance,
 ) => <String, dynamic>{
   'greeting': instance.greeting,
+  'show_operators': instance.showOperators,
   'greeted': instance.greeted,
   'left': instance.left,
   'member': instance.member,

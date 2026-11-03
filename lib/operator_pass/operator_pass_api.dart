@@ -13,6 +13,7 @@ import '../models/operator_pass_checkout_request.dart';
 import '../models/operator_pass_checkout_response.dart';
 import '../models/operator_pass_labs_greeting_request.dart';
 import '../models/operator_pass_labs_join_response.dart';
+import '../models/operator_pass_labs_operators_request.dart';
 import '../models/operator_pass_latest_release_response.dart';
 import '../models/operator_pass_listing_response.dart';
 import '../models/operator_pass_listing_update_request.dart';
@@ -74,9 +75,19 @@ abstract class OperatorPassApi {
     @Body() required OperatorPassLabsGreetingRequest body,
   });
 
+  /// Show or hide #operators.
+  ///
+  /// Turns the Fluxer Labs roles that open #operators on or off for the current account. These are the Operator role, the Visionary role and the access role. Turning it off removes them at once, and no later role update adds them back. Turning it on gives back the roles the account is entitled to at once. It does not change passes, badges, the Operators wall, Fluxer Labs membership or other roles.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @PUT('/operator-pass/labs-operators')
+  Future<OperatorPassPassesResponse> updateOperatorPassLabsOperators({
+    @Body() required OperatorPassLabsOperatorsRequest body,
+  });
+
   /// Join Fluxer Labs with the Operator Pass.
   ///
-  /// Adds the current account to Fluxer Labs with the Operator role, the same way a delivered pass does, and returns the IDs of the community and #operators. Needs at least one pass. An account that is already in Fluxer Labs gets the Operator role if it is missing. An account that left Fluxer Labs or was removed from it is never added again and gets status left, so it can join with the invite. A banned account gets status banned.
+  /// Adds the current account to Fluxer Labs with the Operator role, the same way a delivered pass does, and returns the IDs of the community and #operators. Needs at least one pass. An account that is already in Fluxer Labs gets the Operator role if it is missing, unless it turned off #operators. An account that left Fluxer Labs or was removed from it is never added again and gets status left, so it can join with the invite. A banned account gets status banned.
   @POST('/operator-pass/labs/join')
   Future<OperatorPassLabsJoinResponse> joinOperatorPassLabs();
 

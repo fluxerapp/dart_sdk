@@ -12,6 +12,7 @@ part 'operator_pass_labs_response.g.dart';
 class OperatorPassLabsResponse {
   const OperatorPassLabsResponse({
     required this.greeting,
+    required this.showOperators,
     required this.greeted,
     required this.left,
     required this.member,
@@ -25,6 +26,10 @@ class OperatorPassLabsResponse {
   /// Whether the system user welcomes the account by name in #operators in Fluxer Labs when a pass is delivered. On unless the account turned it off
   @JsonKey(defaultValue: false)
   final bool greeting;
+
+  /// Whether the account gets the Fluxer Labs roles that open #operators. On unless the account turned it off. When off, no role update adds them back
+  @JsonKey(name: 'show_operators', defaultValue: false)
+  final bool showOperators;
 
   /// Whether the account was already welcomed in #operators. Nobody is welcomed twice
   @JsonKey(defaultValue: false)

@@ -578,6 +578,7 @@ tolerantModelFactories = <String, Object Function(Map<String, Object?>)>{
   'OperatorPassHolderResponse': OperatorPassHolderResponse.fromJson,
   'OperatorPassLabsGreetingRequest': OperatorPassLabsGreetingRequest.fromJson,
   'OperatorPassLabsJoinResponse': OperatorPassLabsJoinResponse.fromJson,
+  'OperatorPassLabsOperatorsRequest': OperatorPassLabsOperatorsRequest.fromJson,
   'OperatorPassLabsResponse': OperatorPassLabsResponse.fromJson,
   'OperatorPassLatestReleaseResponse':
       OperatorPassLatestReleaseResponse.fromJson,
