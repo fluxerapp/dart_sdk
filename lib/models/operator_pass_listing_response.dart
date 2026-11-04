@@ -13,6 +13,7 @@ part 'operator_pass_listing_response.g.dart';
 class OperatorPassListingResponse {
   const OperatorPassListingResponse({
     required this.wallName,
+    required this.wallQuote,
     required this.wallOptOut,
     required this.keepAsIs,
     required this.releaseListOptIn,
@@ -32,6 +33,10 @@ class OperatorPassListingResponse {
   /// The name the holder chose for the wall, null when not listed
   @JsonKey(includeIfNull: true, name: 'wall_name')
   final String? wallName;
+
+  /// The quote the holder set for their wall listing, null when there is none or the holder is not listed
+  @JsonKey(includeIfNull: true, name: 'wall_quote')
+  final String? wallQuote;
 
   /// Whether the holder chose not to be listed
   @JsonKey(name: 'wall_opt_out', defaultValue: false)

@@ -18,6 +18,7 @@ OperatorPassWallOperatorResponse _$OperatorPassWallOperatorResponseFromJson(
         tier: $checkedConvert('tier', (v) => (v as num?)?.toInt() ?? 0),
         count: $checkedConvert('count', (v) => (v as num?)?.toInt()),
         business: $checkedConvert('business', (v) => v as bool?),
+        quote: $checkedConvert('quote', (v) => v as String?),
       );
       return val;
     }, fieldKeyMap: const {'avatarUrl': 'avatar_url'});
@@ -32,4 +33,5 @@ Map<String, dynamic> _$OperatorPassWallOperatorResponseToJson(
   'count': ?instance.count,
   'tier': instance.tier,
   'business': ?instance.business,
+  'quote': ?instance.quote,
 };

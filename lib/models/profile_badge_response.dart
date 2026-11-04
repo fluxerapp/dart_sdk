@@ -24,6 +24,7 @@ class ProfileBadgeResponse {
     this.count,
     this.accessibleLabel,
     this.details,
+    this.quote,
   });
 
   factory ProfileBadgeResponse.fromJson(Map<String, Object?> json) =>
@@ -76,6 +77,10 @@ class ProfileBadgeResponse {
   /// Content for the richer vertical tooltip, null or absent when label is the whole tooltip
   @JsonKey(includeIfNull: false)
   final ProfileBadgeResponseDetails? details;
+
+  /// The quote from the holder's Operators' wall listing, plain text to show in straight double quotes after the other tooltip lines and never parse as markup. Absent while the wall does not show it
+  @JsonKey(includeIfNull: false)
+  final String? quote;
 
   Map<String, Object?> toJson() => _$ProfileBadgeResponseToJson(this);
 }

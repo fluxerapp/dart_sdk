@@ -16,6 +16,7 @@ class OperatorPassWallOperatorResponse {
     required this.tier,
     this.count,
     this.business,
+    this.quote,
   });
 
   factory OperatorPassWallOperatorResponse.fromJson(
@@ -49,6 +50,10 @@ class OperatorPassWallOperatorResponse {
   /// Present on a business listing, which shows a company name and logo at one fixed size after every listing of a person, ordered by first pass date
   @JsonKey(includeIfNull: false)
   final bool? business;
+
+  /// The quote the Operator set for their listing, plain text to show in straight double quotes and never parse as markup. Left out when there is none
+  @JsonKey(includeIfNull: false)
+  final String? quote;
 
   Map<String, Object?> toJson() =>
       _$OperatorPassWallOperatorResponseToJson(this);

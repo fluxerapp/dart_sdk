@@ -30,6 +30,7 @@ ProfileBadgeResponse _$ProfileBadgeResponseFromJson(
             ? null
             : ProfileBadgeResponseDetails.fromJson(v as Map<String, dynamic>),
       ),
+      quote: $checkedConvert('quote', (v) => v as String?),
     );
     return val;
   },
@@ -56,4 +57,5 @@ Map<String, dynamic> _$ProfileBadgeResponseToJson(
   'count': ?instance.count,
   'accessible_label': ?instance.accessibleLabel,
   'details': ?instance.details,
+  'quote': ?instance.quote,
 };

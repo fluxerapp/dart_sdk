@@ -543,6 +543,10 @@ enum ApiErrorCode {
   operatorPassWallNameRequired('OPERATOR_PASS_WALL_NAME_REQUIRED'),
   @JsonValue('OPERATOR_PASS_WALL_NAME_REJECTED')
   operatorPassWallNameRejected('OPERATOR_PASS_WALL_NAME_REJECTED'),
+  @JsonValue('OPERATOR_PASS_WALL_QUOTE_INVALID')
+  operatorPassWallQuoteInvalid('OPERATOR_PASS_WALL_QUOTE_INVALID'),
+  @JsonValue('OPERATOR_PASS_WALL_QUOTE_REJECTED')
+  operatorPassWallQuoteRejected('OPERATOR_PASS_WALL_QUOTE_REJECTED'),
   @JsonValue('OPERATOR_PASS_NOT_HELD')
   operatorPassNotHeld('OPERATOR_PASS_NOT_HELD'),
   @JsonValue('UNKNOWN_OPERATOR_PASS_WALL_ENTRY')

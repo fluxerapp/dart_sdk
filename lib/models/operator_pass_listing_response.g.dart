@@ -14,6 +14,7 @@ OperatorPassListingResponse _$OperatorPassListingResponseFromJson(
   ($checkedConvert) {
     final val = OperatorPassListingResponse(
       wallName: $checkedConvert('wall_name', (v) => v as String?),
+      wallQuote: $checkedConvert('wall_quote', (v) => v as String?),
       wallOptOut: $checkedConvert('wall_opt_out', (v) => v as bool? ?? false),
       keepAsIs: $checkedConvert('keep_as_is', (v) => v as bool? ?? false),
       releaseListOptIn: $checkedConvert(
@@ -49,6 +50,7 @@ OperatorPassListingResponse _$OperatorPassListingResponseFromJson(
   },
   fieldKeyMap: const {
     'wallName': 'wall_name',
+    'wallQuote': 'wall_quote',
     'wallOptOut': 'wall_opt_out',
     'keepAsIs': 'keep_as_is',
     'releaseListOptIn': 'release_list_opt_in',
@@ -66,6 +68,7 @@ Map<String, dynamic> _$OperatorPassListingResponseToJson(
   OperatorPassListingResponse instance,
 ) => <String, dynamic>{
   'wall_name': instance.wallName,
+  'wall_quote': instance.wallQuote,
   'wall_opt_out': instance.wallOptOut,
   'keep_as_is': instance.keepAsIs,
   'release_list_opt_in': instance.releaseListOptIn,

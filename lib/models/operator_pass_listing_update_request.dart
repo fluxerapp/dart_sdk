@@ -18,17 +18,24 @@ class OperatorPassListingUpdateRequest {
     this.releaseListOptIn,
     JsonNullable<OperatorPassWallNameType> wallName =
         const JsonNullable<OperatorPassWallNameType>.undefined(),
+    JsonNullable<String> wallQuote = const JsonNullable<String>.undefined(),
   }) : wallName = wallName,
        wallNameValue = wallName.value,
-       _wallNamePresent = wallName.isPresent;
+       _wallNamePresent = wallName.isPresent,
+       wallQuote = wallQuote,
+       wallQuoteValue = wallQuote.value,
+       _wallQuotePresent = wallQuote.isPresent;
 
   const OperatorPassListingUpdateRequest._({
     required this.wallOptOut,
     this.wallNameValue,
+    this.wallQuoteValue,
     this.keepAsIs,
     this.releaseListOptIn,
   }) : wallName = const JsonNullable<OperatorPassWallNameType>.undefined(),
-       _wallNamePresent = false;
+       _wallNamePresent = false,
+       wallQuote = const JsonNullable<String>.undefined(),
+       _wallQuotePresent = false;
   factory OperatorPassListingUpdateRequest.patch(Map<String, Object?> json) =>
       OperatorPassListingUpdateRequest.fromJson(json);
 
@@ -39,6 +46,9 @@ class OperatorPassListingUpdateRequest {
       wallName: json.containsKey('wall_name')
           ? JsonNullable<OperatorPassWallNameType>.of(value.wallNameValue)
           : const JsonNullable<OperatorPassWallNameType>.undefined(),
+      wallQuote: json.containsKey('wall_quote')
+          ? JsonNullable<String>.of(value.wallQuoteValue)
+          : const JsonNullable<String>.undefined(),
       keepAsIs: value.keepAsIs,
       releaseListOptIn: value.releaseListOptIn,
     );
@@ -60,11 +70,19 @@ class OperatorPassListingUpdateRequest {
   @JsonKey(includeIfNull: false, name: 'wall_name')
   final OperatorPassWallNameType? wallNameValue;
   final bool _wallNamePresent;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final JsonNullable<String> wallQuote;
+  @JsonKey(includeIfNull: false, name: 'wall_quote')
+  final String? wallQuoteValue;
+  final bool _wallQuotePresent;
 
   Map<String, Object?> toJson() {
     final json = _$OperatorPassListingUpdateRequestToJson(this);
     if (_wallNamePresent) {
       json.putIfAbsent('wall_name', () => wallNameValue);
+    }
+    if (_wallQuotePresent) {
+      json.putIfAbsent('wall_quote', () => wallQuoteValue);
     }
     return json;
   }

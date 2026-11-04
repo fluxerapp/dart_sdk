@@ -18,6 +18,7 @@ OperatorPassListingUpdateRequest _$OperatorPassListingUpdateRequestFromJson(
         'wall_name',
         (v) => v as OperatorPassWallNameType?,
       ),
+      wallQuoteValue: $checkedConvert('wall_quote', (v) => v as String?),
       keepAsIs: $checkedConvert('keep_as_is', (v) => v as bool?),
       releaseListOptIn: $checkedConvert(
         'release_list_opt_in',
@@ -29,6 +30,7 @@ OperatorPassListingUpdateRequest _$OperatorPassListingUpdateRequestFromJson(
   fieldKeyMap: const {
     'wallOptOut': 'wall_opt_out',
     'wallNameValue': 'wall_name',
+    'wallQuoteValue': 'wall_quote',
     'keepAsIs': 'keep_as_is',
     'releaseListOptIn': 'release_list_opt_in',
   },
@@ -41,4 +43,5 @@ Map<String, dynamic> _$OperatorPassListingUpdateRequestToJson(
   'keep_as_is': ?instance.keepAsIs,
   'release_list_opt_in': ?instance.releaseListOptIn,
   'wall_name': ?instance.wallNameValue,
+  'wall_quote': ?instance.wallQuoteValue,
 };

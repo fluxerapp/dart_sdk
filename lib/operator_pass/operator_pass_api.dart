@@ -99,7 +99,7 @@ abstract class OperatorPassApi {
 
   /// Update Operators' wall listing.
   ///
-  /// Submits a new name for the Operators' wall, takes the listing off the wall, or sets keep_as_is or release_list_opt_in. A new name goes on the wall at once, together with the current profile avatar. An already listed holder can send only keep_as_is or release_list_opt_in.
+  /// Submits a new name for the Operators' wall, takes the listing off the wall, or sets keep_as_is, release_list_opt_in or wall_quote. A new name or quote goes on the wall at once, the name together with the current profile avatar. An already listed holder can leave out wall_name and send only keep_as_is, release_list_opt_in or wall_quote.
   ///
   /// [body] - Name not received - field will be skipped.
   @PUT('/operator-pass/listing')
