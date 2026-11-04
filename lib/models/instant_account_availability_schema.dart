@@ -17,6 +17,8 @@ enum InstantAccountAvailabilitySchema {
   registrationClosed('registration_closed'),
   @JsonValue('approval_required')
   approvalRequired('approval_required'),
+  @JsonValue('email_domains_restricted')
+  emailDomainsRestricted('email_domains_restricted'),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
   $unknown(null);
