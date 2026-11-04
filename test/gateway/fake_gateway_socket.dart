@@ -52,7 +52,10 @@ class FakeGatewaySocket implements WebSocketChannel {
       'op': GatewayOpcodes.dispatch,
       't': 'READY',
       's': seq,
-      'd': <String, Object?>{'session_id': sessionId},
+      'd': <String, Object?>{
+        'session_id': sessionId,
+        'user': <String, Object?>{'id': '1', 'username': 'u'},
+      },
     });
   }
 

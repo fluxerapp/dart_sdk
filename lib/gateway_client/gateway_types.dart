@@ -351,46 +351,6 @@ class LazyRequestSubscription {
   }
 }
 
-class GuildReadyData {
-  const GuildReadyData({
-    required this.id,
-    this.name,
-    this.icon,
-    this.ownerId,
-    this.memberCount,
-    this.unavailable,
-    this.joinedAt,
-    this.features = const [],
-  });
-
-  factory GuildReadyData.fromJson(Map<String, dynamic> json) {
-    final props = json['properties'] as Map<String, dynamic>? ?? json;
-    return GuildReadyData(
-      id: json['id'] as String,
-      name: props['name'] as String?,
-      icon: props['icon'] as String?,
-      ownerId: props['owner_id'] as String?,
-      memberCount: json['member_count'] as int?,
-      unavailable: json['unavailable'] as bool?,
-      joinedAt: json['joined_at'] as String?,
-      features:
-          (props['features'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const [],
-    );
-  }
-
-  final String id;
-  final String? name;
-  final String? icon;
-  final String? ownerId;
-  final int? memberCount;
-  final bool? unavailable;
-  final String? joinedAt;
-  final List<String> features;
-}
-
 class GatewayReadState {
   const GatewayReadState({
     required this.id,

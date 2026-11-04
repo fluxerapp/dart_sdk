@@ -56,7 +56,11 @@ void main() {
           'op': 0,
           't': 'READY',
           's': 1,
-          'd': {'session_id': 'stream-session', 'padding': 'x' * 10000},
+          'd': {
+            'session_id': 'stream-session',
+            'user': <String, Object?>{'id': '1', 'username': 'u'},
+            'padding': 'x' * 10000,
+          },
         },
         {'op': 1, 'd': null},
       ];
@@ -193,7 +197,10 @@ void main() {
             'op': 0,
             't': 'READY',
             's': 1,
-            'd': {'session_id': 'test-session'},
+            'd': {
+              'session_id': 'test-session',
+              'user': <String, Object?>{'id': '1', 'username': 'u'},
+            },
           }),
         )
         ..add(jsonEncode({'op': 1, 'd': null}));

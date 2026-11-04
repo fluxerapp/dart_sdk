@@ -201,12 +201,15 @@ void main() {
   const parser = EventParser();
 
   group('Connection lifecycle', () {
-    test('READY → ReadyEvent with GuildReadyData guilds', () {
+    test('READY → ReadyEvent with raw guilds and counted drops', () {
       final data = {
         'session_id': 'sess-abc-123',
         'user': _userPrivateJson(id: '42'),
         'guilds': [_guildReadyJson(id: '300'), _guildReadyJson(id: '301')],
-        'private_channels': [_channelJson(id: '500', type: 1)],
+        'private_channels': [
+          _channelJson(id: '500', type: 1),
+          <String, Object?>{'id': 501},
+        ],
         'relationships': [_relationshipJson(id: '100', type: 1)],
         'user_settings': null,
         'read_state': <Object?>[],
@@ -219,14 +222,9 @@ void main() {
       final ready = event as ReadyEvent;
       expect(ready.sessionId, 'sess-abc-123');
       expect(ready.user.id, '42');
-      expect(ready.guilds, hasLength(2));
-      expect(ready.guilds[0], isA<GuildReadyData>());
-      expect(ready.guilds[0].id, '300');
-      expect(ready.guilds[0].name, 'Test Guild');
-      expect(ready.guilds[0].memberCount, 5);
-      expect(ready.guilds[0].unavailable, false);
-      expect(ready.guilds[1].id, '301');
+      expect(ready.rawGuilds.map((guild) => guild['id']), ['300', '301']);
       expect(ready.privateChannels, hasLength(1));
+      expect(ready.droppedItems, 1);
       expect(ready.privateChannels[0].id, '500');
       expect(ready.relationships, hasLength(1));
       expect(ready.relationships[0].id, '100');
@@ -1806,7 +1804,7 @@ void main() {
       expect(ready.user.id, '42');
       expect(ready.user.username, 'old');
       expect(ready.userSettings?.theme, 'dark');
-      expect(ready.guilds, isEmpty);
+      expect(ready.rawGuilds, isEmpty);
     });
 
     test('relationships without an inline user take it from READY users', () {

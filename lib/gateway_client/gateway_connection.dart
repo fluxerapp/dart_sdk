@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:isolate';
 import 'dart:math';
 import 'dart:typed_data';
 
@@ -24,6 +25,37 @@ const Duration kGatewayMaxReconnect = Duration(seconds: 10);
 const int kGatewayReconnectSpreadMs = 2000;
 const double kGatewayReconnectJitterFactor = 0.25;
 const Duration kGatewayLivenessTimeout = Duration(seconds: 3);
+const int kGatewayWorkerFrameBytes = 32 * 1024;
+const int kGatewayMaxReadyParseFailures = 3;
+
+final Converter<List<int>, Object?> _utf8JsonDecoder = utf8.decoder.fuse(
+  json.decoder,
+);
+
+typedef GatewayFrame = ({Map<String, dynamic> payload, GatewayEvent? event});
+
+GatewayFrame decodeGatewayFrame(Object data) {
+  final Map<String, dynamic> payload =
+      (data is String
+              ? json.decode(data)
+              : _utf8JsonDecoder.convert(data as List<int>))
+          as Map<String, dynamic>;
+  final Object? type = payload['t'];
+  if (payload['op'] != GatewayOpcodes.dispatch || type is! String) {
+    return (payload: payload, event: null);
+  }
+  const EventParser parser = EventParser();
+  final Object? d = payload['d'];
+  final GatewayEvent? event = switch (d) {
+    final Map<String, dynamic> map => parser.parse(type, map),
+    final List<dynamic> list => parser.parseList(type, list),
+    _ => null,
+  };
+  return (payload: payload, event: event);
+}
+
+Future<GatewayFrame> _decodeGatewayFrameOnWorker(Object data) =>
+    Isolate.run(() => decodeGatewayFrame(data), debugName: 'gateway-frame');
 
 Duration gatewayReconnectDelay({
   required int attempt,
@@ -135,7 +167,6 @@ class GatewayConnection {
   final GatewaySocketConnect _openSocket;
   final Duration _resumeResponseTimeout;
 
-  final EventParser _eventParser = const EventParser();
   final SessionManager _session;
   HeartbeatManager? _heartbeat;
 
@@ -168,6 +199,7 @@ class GatewayConnection {
   String? _readyLatitude;
   String? _readyLongitude;
   int _consecutiveDecodeFailureReconnects = 0;
+  int _consecutiveReadyParseFailures = 0;
   bool _disableCompressionForNextConnection = false;
   late String _activeCompress;
   int _compressedFrames = 0;
@@ -631,8 +663,7 @@ class GatewayConnection {
   }
 
   Future<void> _onMessage(dynamic raw) async {
-    late final Map<String, dynamic> payload;
-
+    final Object data;
     if (raw is Uint8List) {
       _recordFirstFrameType(compressed: true);
       _compressedFrames++;
@@ -644,21 +675,40 @@ class GatewayConnection {
             'Received compressed data without a streaming decoder',
           );
         }
-        final decompressed = decoder.feed(raw);
+        final Uint8List decompressed = decoder.feed(raw);
         _decompressedBytes += decompressed.length;
-        final jsonString = utf8.decode(decompressed);
-        payload = json.decode(jsonString) as Map<String, dynamic>;
+        data = decompressed;
       } on ZstdException catch (error, stackTrace) {
         await _handleDecodeFailure(error, stackTrace);
         return;
       }
     } else if (raw is String) {
       _recordFirstFrameType(compressed: false);
-      payload = json.decode(raw) as Map<String, dynamic>;
+      data = raw;
     } else {
       return;
     }
 
+    final int size = data is String ? data.length : (data as Uint8List).length;
+    if (size < kGatewayWorkerFrameBytes) {
+      _handleFrame(decodeGatewayFrame(data));
+      return;
+    }
+    final StreamSubscription<dynamic>? subscription = _subscription;
+    subscription?.pause();
+    try {
+      final GatewayFrame frame = await _decodeGatewayFrameOnWorker(data);
+      if (_disposed || !identical(subscription, _subscription)) {
+        return;
+      }
+      _handleFrame(frame);
+    } finally {
+      subscription?.resume();
+    }
+  }
+
+  void _handleFrame(GatewayFrame frame) {
+    final Map<String, dynamic> payload = frame.payload;
     final op = payload['op'] as int;
     final d = payload['d'];
     final s = payload['s'] as int?;
@@ -678,12 +728,11 @@ class GatewayConnection {
         _livenessAck?.complete();
         _livenessAck = null;
       case GatewayOpcodes.dispatch:
-        if (t != null) {
-          if (d is Map<String, dynamic>) {
-            _handleDispatch(t, d);
-          } else if (d is List) {
-            _handleListDispatch(t, d);
-          }
+        final GatewayEvent? event = frame.event;
+        if (t != null && d is Map<String, dynamic> && event != null) {
+          _handleDispatch(t, d, event);
+        } else if (event != null) {
+          _eventController.add(event);
         }
       case GatewayOpcodes.heartbeat:
         _heartbeat?.sendRequested();
@@ -781,11 +830,20 @@ class GatewayConnection {
     }
   }
 
-  void _handleDispatch(String eventType, Map<String, dynamic> data) {
+  void _handleDispatch(
+    String eventType,
+    Map<String, dynamic> data,
+    GatewayEvent event,
+  ) {
+    if (eventType == 'READY' && event is! ReadyEvent) {
+      _handleReadyParseFailure(event);
+      return;
+    }
     if (eventType == 'READY' || eventType == 'RESUMED') {
       _consecutiveDecodeFailureReconnects = 0;
     }
     if (eventType == 'READY') {
+      _consecutiveReadyParseFailures = 0;
       final sessionId = data['session_id'] as String;
       _session.setSession(sessionId);
       if (data['latitude'] case final String latitude) {
@@ -804,21 +862,26 @@ class GatewayConnection {
       _setState(GatewayState.connected);
     }
 
-    try {
-      final event = _eventParser.parse(eventType, data);
-      _eventController.add(event);
-    } catch (e) {
-      _eventController.add(
-        UnknownGatewayEvent(eventType: eventType, data: data),
-      );
-    }
+    _eventController.add(event);
   }
 
-  void _handleListDispatch(String eventType, List<dynamic> data) {
-    final event = _eventParser.parseList(eventType, data);
-    if (event != null) {
-      _eventController.add(event);
+  void _handleReadyParseFailure(GatewayEvent event) {
+    final Object? parseError = event is UnknownGatewayEvent
+        ? event.parseError
+        : null;
+    _reportError(
+      StateError('READY could not be parsed: ${parseError ?? event}'),
+    );
+    _session.clear();
+    _consecutiveReadyParseFailures++;
+    if (_consecutiveReadyParseFailures >= kGatewayMaxReadyParseFailures) {
+      _consecutiveReadyParseFailures = 0;
+      _cancelReconnectTimer();
+      unawaited(_tearDownSocket());
+      _setState(GatewayState.failed);
+      return;
     }
+    _closeAndReconnect();
   }
 
   void _handleReconnect() {

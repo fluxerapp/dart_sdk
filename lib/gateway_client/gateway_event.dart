@@ -22,7 +22,6 @@ class ReadyEvent extends GatewayEvent {
   const ReadyEvent({
     required this.sessionId,
     required this.user,
-    required this.guilds,
     required this.rawGuilds,
     required this.privateChannels,
     required this.relationships,
@@ -37,11 +36,11 @@ class ReadyEvent extends GatewayEvent {
     this.users,
     this.authSessionIdHash,
     this.rtcRegions,
+    this.droppedItems = 0,
   });
 
   final String sessionId;
   final UserPrivateResponse user;
-  final List<GuildReadyData> guilds;
 
   final List<Map<String, dynamic>> rawGuilds;
   final List<ChannelResponse> privateChannels;
@@ -57,6 +56,7 @@ class ReadyEvent extends GatewayEvent {
   final List<Map<String, dynamic>>? users;
   final String? authSessionIdHash;
   final List<Map<String, dynamic>>? rtcRegions;
+  final int droppedItems;
 }
 
 class ResumedEvent extends GatewayEvent {

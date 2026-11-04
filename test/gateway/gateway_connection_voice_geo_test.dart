@@ -47,7 +47,10 @@ Future<Map<String, dynamic>> _sendVoiceStateAfterReady(
           'op': GatewayOpcodes.dispatch,
           't': 'READY',
           's': 1,
-          'd': ready,
+          'd': <String, Object?>{
+            ...ready,
+            'user': <String, Object?>{'id': '1', 'username': 'u'},
+          },
         }),
       );
   });

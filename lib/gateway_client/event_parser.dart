@@ -462,14 +462,11 @@ class EventParser {
     final rawGuildsList = data['guilds'] as List<dynamic>? ?? [];
     final rawGuilds = rawGuildsList.whereType<Map<String, dynamic>>().toList();
 
-    final guilds = _parseListSafe(
-      data['guilds'],
-      (e) => GuildReadyData.fromJson(e as Map<String, dynamic>),
-    );
-
+    final _DropCounter drops = _DropCounter();
     final privateChannels = _parseListSafe(
       data['private_channels'],
       (e) => ChannelResponse.fromJson(e as Map<String, Object?>),
+      drops: drops,
     );
 
     final Map<String, Object?> usersById = <String, Object?>{
@@ -483,11 +480,13 @@ class EventParser {
             ? <dynamic, dynamic>{...raw, 'user': usersById[raw['id']]}
             : raw,
       ),
+      drops: drops,
     );
 
     final readStates = _parseListSafe(
       data['read_states'],
       (e) => GatewayReadState.fromJson(e as Map<String, dynamic>),
+      drops: drops,
     );
 
     final presencesRaw = data['presences'] as List<dynamic>? ?? [];
@@ -527,7 +526,6 @@ class EventParser {
     return ReadyEvent(
       sessionId: data['session_id'] as String,
       user: UserPrivateResponse.fromJson(data['user'] as Map<String, dynamic>),
-      guilds: guilds,
       rawGuilds: rawGuilds,
       privateChannels: privateChannels,
       relationships: relationships,
@@ -542,6 +540,7 @@ class EventParser {
       users: users,
       authSessionIdHash: data['auth_session_id_hash'] as String?,
       rtcRegions: rtcRegions,
+      droppedItems: drops.count,
     );
   }
 
@@ -556,14 +555,17 @@ class EventParser {
 
   static List<T> _parseListSafe<T>(
     dynamic rawList,
-    T Function(dynamic) parser,
-  ) {
+    T Function(dynamic) parser, {
+    _DropCounter? drops,
+  }) {
     if (rawList is! List) return [];
     final result = <T>[];
     for (final item in rawList) {
       try {
         result.add(parser(item));
-      } catch (_) {}
+      } catch (_) {
+        drops?.count++;
+      }
     }
     return result;
   }
@@ -718,4 +720,8 @@ String? _snowflakeId(Object? value) {
     return value.toString();
   }
   return null;
+}
+
+class _DropCounter {
+  int count = 0;
 }
