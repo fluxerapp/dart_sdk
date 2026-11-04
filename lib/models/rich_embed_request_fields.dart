@@ -17,7 +17,7 @@ class RichEmbedRequestFields {
   factory RichEmbedRequestFields.fromJson(Map<String, Object?> json) =>
       _$RichEmbedRequestFieldsFromJson(json);
 
-  /// Name of the field
+  /// Name of the field (0-256 characters)
   @JsonKey(defaultValue: '')
   final String name;
 
