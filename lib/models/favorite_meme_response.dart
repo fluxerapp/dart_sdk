@@ -23,6 +23,7 @@ class FavoriteMemeResponse {
     required this.size,
     required this.url,
     this.isGifv = false,
+    this.nsfw = false,
     this.altText,
     this.contentHash,
     this.width,
@@ -112,6 +113,9 @@ class FavoriteMemeResponse {
   /// Compact thumbhash placeholder produced by the media proxy at favorite-time. Clients render it as a low-res preview while the full media loads. Null when the proxy did not emit one.
   @JsonKey(includeIfNull: false)
   final String? placeholder;
+
+  /// Whether the media is flagged as explicit. Clients apply the same sensitive media rules as for chat media.
+  final bool nsfw;
 
   Map<String, Object?> toJson() => _$FavoriteMemeResponseToJson(this);
 }

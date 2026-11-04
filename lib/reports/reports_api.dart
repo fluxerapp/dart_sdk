@@ -10,6 +10,7 @@ import '../models/dsa_report_email_send_request.dart';
 import '../models/dsa_report_email_verify_request.dart';
 import '../models/dsa_report_flow_request.dart';
 import '../models/ok_response.dart';
+import '../models/report_flow_guild_submission_request.dart';
 import '../models/report_flow_message_submission_request.dart';
 import '../models/report_flow_response.dart';
 import '../models/report_flow_surface.dart';
@@ -54,6 +55,16 @@ abstract class ReportsApi {
     @Body() required DsaReportEmailVerifyRequest body,
   });
 
+  /// Submit community report flow.
+  ///
+  /// Files a report about a community from the answers given in the in-app community report flow. The reporter must be a member, the community must be discoverable, or the request must include an invite code.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/reports/flows/guild/submissions')
+  Future<ReportResponse> submitGuildReportFlow({
+    @Body() required ReportFlowGuildSubmissionRequest body,
+  });
+
   /// Submit message report flow.
   ///
   /// Files a report about a message from the answers given in the in-app message report flow. The reporter must be able to access the channel and target message.
@@ -76,7 +87,7 @@ abstract class ReportsApi {
 
   /// Get report flow.
   ///
-  /// Returns every screen of the report flow for a target type, rendered in the requested locale. Message and user flows are available in app and on the DSA form, the guild flow only on the DSA form.
+  /// Returns every screen of the report flow for a target type, rendered in the requested locale. Message, user and community flows are available in the app and on the DSA form.
   ///
   /// [targetType] - Kind of entity a report flow is about.
   ///

@@ -13,7 +13,7 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
   json,
   ($checkedConvert) {
     final val = UserSettingsUpdateRequest._(
-      renderEmbeds: $checkedConvert('render_embeds', (v) => v as bool?),
+      gifAutoPlay: $checkedConvert('gif_auto_play', (v) => v as bool?),
       status: $checkedConvert(
         'status',
         (v) => v == null ? null : UserStatusType.fromJson(v as String),
@@ -62,8 +62,8 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
         'inline_embed_media',
         (v) => v as bool?,
       ),
-      gifAutoPlay: $checkedConvert('gif_auto_play', (v) => v as bool?),
       flags: $checkedConvert('flags', (v) => (v as num?)?.toInt()),
+      renderEmbeds: $checkedConvert('render_embeds', (v) => v as bool?),
       renderReactions: $checkedConvert('render_reactions', (v) => v as bool?),
       animateEmoji: $checkedConvert('animate_emoji', (v) => v as bool?),
       animateStickers: $checkedConvert(
@@ -110,11 +110,16 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
             : CustomStatusPayload.fromJson(v as Map<String, dynamic>),
       ),
       afkTimeout: $checkedConvert('afk_timeout', (v) => (v as num?)?.toInt()),
+      timeFormat: $checkedConvert(
+        'time_format',
+        (v) => v == null
+            ? null
+            : TimeFormatTypesInput.fromJson((v as num).toInt()),
+      ),
       syncedPreferencesBaseHash: $checkedConvert(
         'synced_preferences_base_hash',
         (v) => v as String?,
       ),
-      developerMode: $checkedConvert('developer_mode', (v) => v as bool?),
       trustedDomains: $checkedConvert(
         'trusted_domains',
         (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
@@ -140,6 +145,10 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
         (v) => v == null
             ? null
             : SensitiveMediaGuildFilterLevelInput.fromJson((v as num).toInt()),
+      ),
+      allowMatureContentOnIos: $checkedConvert(
+        'allow_mature_content_on_ios',
+        (v) => v as bool?,
       ),
       suppressUnprivilegedSelfMentions: $checkedConvert(
         'suppress_unprivileged_self_mentions',
@@ -171,17 +180,12 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
         'synced_preferences',
         (v) => v as String?,
       ),
-      timeFormat: $checkedConvert(
-        'time_format',
-        (v) => v == null
-            ? null
-            : TimeFormatTypesInput.fromJson((v as num).toInt()),
-      ),
+      developerMode: $checkedConvert('developer_mode', (v) => v as bool?),
     );
     return val;
   },
   fieldKeyMap: const {
-    'renderEmbeds': 'render_embeds',
+    'gifAutoPlay': 'gif_auto_play',
     'statusResetsAtValue': 'status_resets_at',
     'statusResetsToValue': 'status_resets_to',
     'guildPositions': 'guild_positions',
@@ -191,7 +195,7 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
     'botDefaultGuildsRestricted': 'bot_default_guilds_restricted',
     'inlineAttachmentMedia': 'inline_attachment_media',
     'inlineEmbedMedia': 'inline_embed_media',
-    'gifAutoPlay': 'gif_auto_play',
+    'renderEmbeds': 'render_embeds',
     'renderReactions': 'render_reactions',
     'animateEmoji': 'animate_emoji',
     'animateStickers': 'animate_stickers',
@@ -203,14 +207,15 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
     'guildFolders': 'guild_folders',
     'customStatusValue': 'custom_status',
     'afkTimeout': 'afk_timeout',
+    'timeFormat': 'time_format',
     'syncedPreferencesBaseHash': 'synced_preferences_base_hash',
-    'developerMode': 'developer_mode',
     'trustedDomains': 'trusted_domains',
     'defaultHideMutedChannels': 'default_hide_muted_channels',
     'sensitiveContentFriendDmFilter': 'sensitive_content_friend_dm_filter',
     'sensitiveContentNonFriendDmFilter':
         'sensitive_content_non_friend_dm_filter',
     'sensitiveContentGuildFilter': 'sensitive_content_guild_filter',
+    'allowMatureContentOnIos': 'allow_mature_content_on_ios',
     'suppressUnprivilegedSelfMentions': 'suppress_unprivileged_self_mentions',
     'suppressUnprivilegedSelfMentionsBypassUserIdsValue':
         'suppress_unprivileged_self_mentions_bypass_user_ids',
@@ -219,7 +224,7 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
     'defaultShareVoiceActivity': 'default_share_voice_activity',
     'privacySetupVersion': 'privacy_setup_version',
     'syncedPreferencesValue': 'synced_preferences',
-    'timeFormat': 'time_format',
+    'developerMode': 'developer_mode',
   },
 );
 
@@ -258,6 +263,7 @@ Map<String, dynamic> _$UserSettingsUpdateRequestToJson(
   'sensitive_content_non_friend_dm_filter':
       ?instance.sensitiveContentNonFriendDmFilter,
   'sensitive_content_guild_filter': ?instance.sensitiveContentGuildFilter,
+  'allow_mature_content_on_ios': ?instance.allowMatureContentOnIos,
   'suppress_unprivileged_self_mentions':
       ?instance.suppressUnprivilegedSelfMentions,
   'profile_privacy': ?instance.profilePrivacy,

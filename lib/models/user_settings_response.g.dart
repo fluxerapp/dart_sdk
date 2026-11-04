@@ -158,6 +158,10 @@ UserSettingsResponse _$UserSettingsResponseFromJson(
             ? SensitiveMediaGuildFilterLevel.$unknown
             : SensitiveMediaGuildFilterLevel.fromJson((v as num).toInt()),
       ),
+      allowMatureContentOnIos: $checkedConvert(
+        'allow_mature_content_on_ios',
+        (v) => v as bool? ?? false,
+      ),
       suppressUnprivilegedSelfMentions: $checkedConvert(
         'suppress_unprivileged_self_mentions',
         (v) => v as bool? ?? false,
@@ -230,6 +234,7 @@ UserSettingsResponse _$UserSettingsResponseFromJson(
     'sensitiveContentNonFriendDmFilter':
         'sensitive_content_non_friend_dm_filter',
     'sensitiveContentGuildFilter': 'sensitive_content_guild_filter',
+    'allowMatureContentOnIos': 'allow_mature_content_on_ios',
     'suppressUnprivilegedSelfMentions': 'suppress_unprivileged_self_mentions',
     'suppressUnprivilegedSelfMentionsBypassUserIds':
         'suppress_unprivileged_self_mentions_bypass_user_ids',
@@ -277,6 +282,7 @@ Map<String, dynamic> _$UserSettingsResponseToJson(
   'sensitive_content_non_friend_dm_filter':
       instance.sensitiveContentNonFriendDmFilter,
   'sensitive_content_guild_filter': instance.sensitiveContentGuildFilter,
+  'allow_mature_content_on_ios': instance.allowMatureContentOnIos,
   'suppress_unprivileged_self_mentions':
       instance.suppressUnprivilegedSelfMentions,
   'suppress_unprivileged_self_mentions_bypass_user_ids':

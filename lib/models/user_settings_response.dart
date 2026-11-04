@@ -55,6 +55,7 @@ class UserSettingsResponse {
     required this.sensitiveContentFriendDmFilter,
     required this.sensitiveContentNonFriendDmFilter,
     required this.sensitiveContentGuildFilter,
+    required this.allowMatureContentOnIos,
     required this.suppressUnprivilegedSelfMentions,
     required this.suppressUnprivilegedSelfMentionsBypassUserIds,
     required this.staffDmAccessUserIds,
@@ -196,6 +197,10 @@ class UserSettingsResponse {
     defaultValue: SensitiveMediaGuildFilterLevel.$unknown,
   )
   final SensitiveMediaGuildFilterLevel sensitiveContentGuildFilter;
+
+  /// Whether 18+ communities, channels and the "Show" sensitive media option are allowed in the iOS app. Only adults can turn this on. The iOS app never offers this setting.
+  @JsonKey(name: 'allow_mature_content_on_ios', defaultValue: false)
+  final bool allowMatureContentOnIos;
 
   /// Whether direct mentions and reply mentions from unprivileged users are suppressed
   @JsonKey(name: 'suppress_unprivileged_self_mentions', defaultValue: false)

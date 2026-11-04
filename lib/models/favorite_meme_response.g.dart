@@ -32,6 +32,7 @@ FavoriteMemeResponse _$FavoriteMemeResponseFromJson(
       size: $checkedConvert('size', (v) => (v as num?)?.toInt() ?? 0),
       url: $checkedConvert('url', (v) => v as String? ?? ''),
       isGifv: $checkedConvert('is_gifv', (v) => v as bool? ?? false),
+      nsfw: $checkedConvert('nsfw', (v) => v as bool? ?? false),
       altText: $checkedConvert('alt_text', (v) => v as String?),
       contentHash: $checkedConvert('content_hash', (v) => v as String?),
       width: $checkedConvert('width', (v) => (v as num?)?.toInt()),
@@ -84,4 +85,5 @@ Map<String, dynamic> _$FavoriteMemeResponseToJson(
   'gif_provider': ?instance.gifProvider,
   'media': ?instance.media,
   'placeholder': ?instance.placeholder,
+  'nsfw': instance.nsfw,
 };

@@ -27,7 +27,7 @@ part 'user_settings_update_request.g.dart';
 @JsonSerializable(constructor: '_')
 class UserSettingsUpdateRequest {
   UserSettingsUpdateRequest({
-    this.renderEmbeds,
+    this.gifAutoPlay,
     this.status,
     this.theme,
     this.guildPositions,
@@ -38,8 +38,8 @@ class UserSettingsUpdateRequest {
     this.botDefaultGuildsRestricted,
     this.inlineAttachmentMedia,
     this.inlineEmbedMedia,
-    this.gifAutoPlay,
     this.flags,
+    this.renderEmbeds,
     this.renderReactions,
     this.animateEmoji,
     this.animateStickers,
@@ -49,19 +49,20 @@ class UserSettingsUpdateRequest {
     this.incomingCallFlags,
     this.groupDmAddPermissionFlags,
     this.guildFolders,
+    this.afkTimeout,
     this.syncedPreferencesBaseHash,
-    this.timeFormat,
     this.developerMode,
     this.trustedDomains,
     this.defaultHideMutedChannels,
     this.sensitiveContentFriendDmFilter,
     this.sensitiveContentNonFriendDmFilter,
     this.sensitiveContentGuildFilter,
+    this.allowMatureContentOnIos,
     this.suppressUnprivilegedSelfMentions,
     this.profilePrivacy,
     this.defaultShareVoiceActivity,
     this.privacySetupVersion,
-    this.afkTimeout,
+    this.timeFormat,
     JsonNullable<String> statusResetsAt =
         const JsonNullable<String>.undefined(),
     JsonNullable<UserStatusType> statusResetsTo =
@@ -98,7 +99,7 @@ class UserSettingsUpdateRequest {
        _syncedPreferencesPresent = syncedPreferences.isPresent;
 
   const UserSettingsUpdateRequest._({
-    this.renderEmbeds,
+    this.gifAutoPlay,
     this.status,
     this.statusResetsAtValue,
     this.statusResetsToValue,
@@ -111,8 +112,8 @@ class UserSettingsUpdateRequest {
     this.botDefaultGuildsRestricted,
     this.inlineAttachmentMedia,
     this.inlineEmbedMedia,
-    this.gifAutoPlay,
     this.flags,
+    this.renderEmbeds,
     this.renderReactions,
     this.animateEmoji,
     this.animateStickers,
@@ -124,13 +125,14 @@ class UserSettingsUpdateRequest {
     this.guildFolders,
     this.customStatusValue,
     this.afkTimeout,
+    this.timeFormat,
     this.syncedPreferencesBaseHash,
-    this.developerMode,
     this.trustedDomains,
     this.defaultHideMutedChannels,
     this.sensitiveContentFriendDmFilter,
     this.sensitiveContentNonFriendDmFilter,
     this.sensitiveContentGuildFilter,
+    this.allowMatureContentOnIos,
     this.suppressUnprivilegedSelfMentions,
     this.suppressUnprivilegedSelfMentionsBypassUserIdsValue,
     this.staffDmAccessUserIdsValue,
@@ -138,7 +140,7 @@ class UserSettingsUpdateRequest {
     this.defaultShareVoiceActivity,
     this.privacySetupVersion,
     this.syncedPreferencesValue,
-    this.timeFormat,
+    this.developerMode,
   }) : statusResetsAt = const JsonNullable<String>.undefined(),
        _statusResetsAtPresent = false,
        statusResetsTo = const JsonNullable<UserStatusType>.undefined(),
@@ -159,7 +161,7 @@ class UserSettingsUpdateRequest {
   factory UserSettingsUpdateRequest.fromJson(Map<String, Object?> json) {
     final value = _$UserSettingsUpdateRequestFromJson(json);
     return UserSettingsUpdateRequest(
-      renderEmbeds: value.renderEmbeds,
+      gifAutoPlay: value.gifAutoPlay,
       status: value.status,
       statusResetsAt: json.containsKey('status_resets_at')
           ? JsonNullable<String>.of(value.statusResetsAtValue)
@@ -176,8 +178,8 @@ class UserSettingsUpdateRequest {
       botDefaultGuildsRestricted: value.botDefaultGuildsRestricted,
       inlineAttachmentMedia: value.inlineAttachmentMedia,
       inlineEmbedMedia: value.inlineEmbedMedia,
-      gifAutoPlay: value.gifAutoPlay,
       flags: value.flags,
+      renderEmbeds: value.renderEmbeds,
       renderReactions: value.renderReactions,
       animateEmoji: value.animateEmoji,
       animateStickers: value.animateStickers,
@@ -191,14 +193,15 @@ class UserSettingsUpdateRequest {
           ? JsonNullable<CustomStatusPayload>.of(value.customStatusValue)
           : const JsonNullable<CustomStatusPayload>.undefined(),
       afkTimeout: value.afkTimeout,
+      timeFormat: value.timeFormat,
       syncedPreferencesBaseHash: value.syncedPreferencesBaseHash,
-      developerMode: value.developerMode,
       trustedDomains: value.trustedDomains,
       defaultHideMutedChannels: value.defaultHideMutedChannels,
       sensitiveContentFriendDmFilter: value.sensitiveContentFriendDmFilter,
       sensitiveContentNonFriendDmFilter:
           value.sensitiveContentNonFriendDmFilter,
       sensitiveContentGuildFilter: value.sensitiveContentGuildFilter,
+      allowMatureContentOnIos: value.allowMatureContentOnIos,
       suppressUnprivilegedSelfMentions: value.suppressUnprivilegedSelfMentions,
       suppressUnprivilegedSelfMentionsBypassUserIds:
           json.containsKey(
@@ -219,7 +222,7 @@ class UserSettingsUpdateRequest {
       syncedPreferences: json.containsKey('synced_preferences')
           ? JsonNullable<String>.of(value.syncedPreferencesValue)
           : const JsonNullable<String>.undefined(),
-      timeFormat: value.timeFormat,
+      developerMode: value.developerMode,
     );
   }
 
@@ -328,6 +331,10 @@ class UserSettingsUpdateRequest {
   final SensitiveMediaFilterLevelInput? sensitiveContentNonFriendDmFilter;
   @JsonKey(includeIfNull: false, name: 'sensitive_content_guild_filter')
   final SensitiveMediaGuildFilterLevelInput? sensitiveContentGuildFilter;
+
+  /// Whether 18+ communities, channels and the "Show" sensitive media option are allowed in the iOS app. Only adults can turn this on. The iOS app never offers this setting.
+  @JsonKey(includeIfNull: false, name: 'allow_mature_content_on_ios')
+  final bool? allowMatureContentOnIos;
 
   /// Suppress direct mentions and reply mentions from unprivileged users
   @JsonKey(includeIfNull: false, name: 'suppress_unprivileged_self_mentions')

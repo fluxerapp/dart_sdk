@@ -323,14 +323,16 @@ class _UsersApi implements UsersApi {
   }
 
   @override
-  Future<void> deleteCurrentUserAccount({SudoVerificationSchema? body}) async {
+  Future<UserAccountDeleteResponse> deleteCurrentUserAccount({
+    UserAccountDeleteRequest? body,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body?.toJson() ?? <String, dynamic>{});
-    final _options = _setStreamType<void>(
+    final _options = _setStreamType<UserAccountDeleteResponse>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -340,7 +342,15 @@ class _UsersApi implements UsersApi {
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
-    await _dio.fetch<void>(_options);
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late UserAccountDeleteResponse _value;
+    try {
+      _value = UserAccountDeleteResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
   }
 
   @override
