@@ -6,6 +6,11 @@ import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
 import 'package:retrofit/error_logger.dart';
 
+import '../models/age_assurance_submit_request.dart';
+import '../models/age_assurance_submit_response.dart';
+import '../models/app_attest_challenge_request.dart';
+import '../models/app_attest_challenge_response.dart';
+import '../models/app_attest_key_register_request.dart';
 import '../models/bulk_delete_self_messages_request.dart';
 import '../models/bulk_ignore_friend_requests_request.dart';
 import '../models/bulk_ignore_friend_requests_response.dart';
@@ -155,6 +160,36 @@ abstract class UsersApi {
   @PATCH('/users/@me')
   Future<UserUpdateResponse> updateCurrentUser({
     @Body() UserUpdateWithVerificationRequest? body,
+  });
+
+  /// Submit attested age floor.
+  ///
+  /// Submits the age floor the device reported, signed by a registered App Attest key. client_data holds the exact JSON bytes the app signed, with the challenge from a challenge with purpose assert and the age_floor. The newest accepted floor replaces the stored one. The stored floor decides the age of the account in place of its date of birth: adult makes age-restricted content available, and minor or under_minimum makes it unavailable. An adult or minor floor also counts as a date of birth for routes that need one. Returns APP_ATTEST_KEY_NOT_REGISTERED when the key is unknown, in which case the app should register a new key. Returns APP_ATTEST_NOT_AVAILABLE with status 404 when this instance does not accept App Attest.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/age-assurance')
+  Future<AgeAssuranceSubmitResponse> submitAgeAssurance({
+    @Body() required AgeAssuranceSubmitRequest body,
+  });
+
+  /// Create App Attest challenge.
+  ///
+  /// Creates a single use challenge for the iOS app, valid for 5 minutes. Use purpose attest before registering a new App Attest key, and purpose assert before submitting an age floor. Returns APP_ATTEST_NOT_AVAILABLE with status 404 when this instance does not accept App Attest.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/app-attest/challenge')
+  Future<AppAttestChallengeResponse> createAppAttestChallenge({
+    @Body() required AppAttestChallengeRequest body,
+  });
+
+  /// Register App Attest key.
+  ///
+  /// Registers an App Attest key for the current user. The attestation must be made with clientDataHash set to the SHA-256 of the UTF-8 challenge string from a challenge with purpose attest. The server keeps the key id, public key, environment, App ID and counter, and does not keep the attestation itself. Registering the same key again for the same user succeeds and changes nothing. Returns APP_ATTEST_NOT_AVAILABLE with status 404 when this instance does not accept App Attest.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/app-attest/keys')
+  Future<void> registerAppAttestKey({
+    @Body() required AppAttestKeyRegisterRequest body,
   });
 
   /// Forget authorized IPs for current user.
