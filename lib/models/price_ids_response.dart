@@ -5,6 +5,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'premium_currency.dart';
+import 'price_distribution_response.dart';
 
 part 'price_ids_response.g.dart';
 
@@ -13,6 +14,7 @@ class PriceIdsResponse {
   const PriceIdsResponse({
     required this.currency,
     required this.giftCurrency,
+    required this.distribution,
     this.monthly,
     this.yearly,
     this.gift1Month,
@@ -65,6 +67,10 @@ class PriceIdsResponse {
   /// Currency for gift prices, null when no gift prices are configured
   @JsonKey(includeIfNull: true, name: 'gift_currency')
   final PremiumCurrency? giftCurrency;
+
+  /// Distribution whose channel price the amounts include, or null for the standard price
+  @JsonKey(includeIfNull: true)
+  final PriceDistributionResponse? distribution;
 
   Map<String, Object?> toJson() => _$PriceIdsResponseToJson(this);
 }

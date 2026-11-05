@@ -679,6 +679,7 @@ tolerantModelFactories = <String, Object Function(Map<String, Object?>)>{
   'PresignedAttachmentUploadResponseItemSinglepartPresignedAttachmentUploadResponseItem':
       PresignedAttachmentUploadResponseItemSinglepartPresignedAttachmentUploadResponseItem
           .fromJson,
+  'PriceDistributionResponse': PriceDistributionResponse.fromJson,
   'PriceIdsResponse': PriceIdsResponse.fromJson,
   'ProfileBadgePreviewRequest': ProfileBadgePreviewRequest.fromJson,
   'ProfileBadgePreviewResponse': ProfileBadgePreviewResponse.fromJson,

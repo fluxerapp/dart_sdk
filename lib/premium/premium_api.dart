@@ -10,6 +10,7 @@ import '../models/change_subscription_request.dart';
 import '../models/claim_app_store_transaction_request.dart';
 import '../models/claim_google_play_purchase_request.dart';
 import '../models/current_subscription_price_response.dart';
+import '../models/distribution_query_param.dart';
 import '../models/premium_state_response.dart';
 import '../models/price_ids_response.dart';
 import '../models/snowflake_type.dart';
@@ -83,9 +84,12 @@ abstract class PremiumApi {
   /// Retrieves Stripe price IDs for premium subscriptions based on geographic location.
   ///
   /// [countryCode] - Two-letter country code for regional pricing. Only used when the server cannot geolocate the request; otherwise the request GeoIP country wins.
+  ///
+  /// [distribution] - Distribution the client build was sold through. Unknown or inactive values fall back to the standard price.
   @GET('/premium/price-ids')
   Future<PriceIdsResponse> getPriceIds({
     @Query('country_code') String? countryCode,
+    @Query('distribution') DistributionQueryParam? distribution,
   });
 
   /// Reactivate subscription.
@@ -99,9 +103,12 @@ abstract class PremiumApi {
   /// Returns the authenticated user actual premium entitlement, effective perk state, and mirrored billing data. When Stripe is enabled, missing payment-method mirror data may be repaired lazily.
   ///
   /// [countryCode] - Two-letter country code for regional pricing. Only used when the server cannot geolocate the request; otherwise the request GeoIP country wins.
+  ///
+  /// [distribution] - Distribution the client build was sold through. Unknown or inactive values fall back to the standard price.
   @GET('/premium/state')
   Future<PremiumStateResponse> getPremiumState({
     @Query('country_code') String? countryCode,
+    @Query('distribution') DistributionQueryParam? distribution,
   });
 
   /// Get in-app purchase context.
