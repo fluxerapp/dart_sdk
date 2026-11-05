@@ -768,6 +768,11 @@ export 'models/voice_public_ipv6_type.dart';
 export 'models/voice_public_ipv4_type.dart';
 export 'models/int64_type.dart';
 export 'models/api_error_code.dart';
+export 'models/app_attest_challenge_request.dart';
+export 'models/app_attest_challenge_response.dart';
+export 'models/app_attest_key_register_request.dart';
+export 'models/age_assurance_submit_request.dart';
+export 'models/age_assurance_submit_response.dart';
 export 'models/object0.dart';
 export 'models/object1.dart';
 export 'models/object2_attachments.dart';
@@ -1023,6 +1028,8 @@ export 'models/web_authn_registration_response_authenticator_attachment_authenti
 export 'models/web_authn_registration_response_response_transports_transports.dart';
 export 'models/voice_turn_server_protocol_protocol.dart';
 export 'models/voice_server_health_response_status_status.dart';
+export 'models/app_attest_challenge_request_purpose_purpose.dart';
+export 'models/age_assurance_submit_response_age_floor_age_floor.dart';
 export 'models/json_nullable.dart';
 // Root client
 export 'fluxer_client.dart';

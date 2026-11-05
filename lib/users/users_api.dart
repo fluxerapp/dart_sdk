@@ -6,6 +6,11 @@ import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
 import 'package:retrofit/error_logger.dart';
 
+import '../models/age_assurance_submit_request.dart';
+import '../models/age_assurance_submit_response.dart';
+import '../models/app_attest_challenge_request.dart';
+import '../models/app_attest_challenge_response.dart';
+import '../models/app_attest_key_register_request.dart';
 import '../models/bulk_delete_self_messages_request.dart';
 import '../models/bulk_ignore_friend_requests_request.dart';
 import '../models/bulk_ignore_friend_requests_response.dart';
@@ -1160,5 +1165,35 @@ abstract class UsersApi {
   @GET('/users/{user_id}')
   Future<UserPartialResponse> getUserById({
     @Path('user_id') required SnowflakeType userId,
+  });
+
+  /// Create App Attest challenge.
+  ///
+  /// Creates a single-use challenge for App Attest key registration or an age assurance assertion. It expires after five minutes. Responds with 404 when the instance does not support App Attest.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/app-attest/challenge')
+  Future<AppAttestChallengeResponse> createAppAttestChallenge({
+    @Body() required AppAttestChallengeRequest body,
+  });
+
+  /// Register App Attest key.
+  ///
+  /// Verifies an App Attest attestation for a new key and links the key to the current account. Responds with 404 when the instance does not support App Attest.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/app-attest/keys')
+  Future<void> registerAppAttestKey({
+    @Body() required AppAttestKeyRegisterRequest body,
+  });
+
+  /// Submit age assurance.
+  ///
+  /// Verifies an App Attest assertion over the age range the device reported and stores it. A stored minor age range limits mature content even when the date of birth says otherwise. Responds with 404 when the instance does not support App Attest.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/age-assurance')
+  Future<AgeAssuranceSubmitResponse> submitAgeAssurance({
+    @Body() required AgeAssuranceSubmitRequest body,
   });
 }
