@@ -6,7 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 /// Age floor reported by the device
 @JsonEnum()
-enum AgeAssuranceSubmitResponseAgeFloorAgeFloor {
+enum AttestedAgeFloorSchema {
   @JsonValue('adult')
   adult('adult'),
   @JsonValue('minor')
@@ -17,9 +17,9 @@ enum AgeAssuranceSubmitResponseAgeFloorAgeFloor {
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
   $unknown(null);
 
-  const AgeAssuranceSubmitResponseAgeFloorAgeFloor(this.json);
+  const AttestedAgeFloorSchema(this.json);
 
-  factory AgeAssuranceSubmitResponseAgeFloorAgeFloor.fromJson(String json) =>
+  factory AttestedAgeFloorSchema.fromJson(String json) =>
       values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
@@ -30,6 +30,6 @@ enum AgeAssuranceSubmitResponseAgeFloorAgeFloor {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<AgeAssuranceSubmitResponseAgeFloorAgeFloor> get $valuesDefined =>
+  static List<AttestedAgeFloorSchema> get $valuesDefined =>
       values.where((value) => value != $unknown).toList();
 }

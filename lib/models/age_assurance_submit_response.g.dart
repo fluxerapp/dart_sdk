@@ -13,8 +13,8 @@ AgeAssuranceSubmitResponse _$AgeAssuranceSubmitResponseFromJson(
     ageFloor: $checkedConvert(
       'age_floor',
       (v) => v == null
-          ? AgeAssuranceSubmitResponseAgeFloorAgeFloor.$unknown
-          : AgeAssuranceSubmitResponseAgeFloorAgeFloor.fromJson(v as String),
+          ? AttestedAgeFloorSchema.$unknown
+          : AttestedAgeFloorSchema.fromJson(v as String),
     ),
   );
   return val;

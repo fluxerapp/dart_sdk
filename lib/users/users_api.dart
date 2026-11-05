@@ -162,6 +162,36 @@ abstract class UsersApi {
     @Body() UserUpdateWithVerificationRequest? body,
   });
 
+  /// Submit attested age floor.
+  ///
+  /// Submits the age floor the device reported, signed by a registered App Attest key. client_data holds the exact JSON bytes the app signed, with the challenge from a challenge with purpose assert and the age_floor. The newest accepted floor replaces the stored one. When the floor is minor or under_minimum, age-restricted content is unavailable to the account even when its date of birth says otherwise. A floor never makes an account older than its date of birth. Returns APP_ATTEST_KEY_NOT_REGISTERED when the key is unknown, in which case the app should register a new key. Returns APP_ATTEST_NOT_AVAILABLE with status 404 when this instance does not accept App Attest.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/age-assurance')
+  Future<AgeAssuranceSubmitResponse> submitAgeAssurance({
+    @Body() required AgeAssuranceSubmitRequest body,
+  });
+
+  /// Create App Attest challenge.
+  ///
+  /// Creates a single use challenge for the iOS app, valid for 5 minutes. Use purpose attest before registering a new App Attest key, and purpose assert before submitting an age floor. Returns APP_ATTEST_NOT_AVAILABLE with status 404 when this instance does not accept App Attest.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/app-attest/challenge')
+  Future<AppAttestChallengeResponse> createAppAttestChallenge({
+    @Body() required AppAttestChallengeRequest body,
+  });
+
+  /// Register App Attest key.
+  ///
+  /// Registers an App Attest key for the current user. The attestation must be made with clientDataHash set to the SHA-256 of the UTF-8 challenge string from a challenge with purpose attest. The server keeps the key id, public key, environment, App ID and counter, and does not keep the attestation itself. Registering the same key again for the same user succeeds and changes nothing. Returns APP_ATTEST_NOT_AVAILABLE with status 404 when this instance does not accept App Attest.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/app-attest/keys')
+  Future<void> registerAppAttestKey({
+    @Body() required AppAttestKeyRegisterRequest body,
+  });
+
   /// Forget authorized IPs for current user.
   ///
   /// Clears all authorized IP addresses for the current user. After calling this endpoint, the user will be required to re-authorize any new IP addresses they log in from. Requires sudo mode verification.
@@ -1165,35 +1195,5 @@ abstract class UsersApi {
   @GET('/users/{user_id}')
   Future<UserPartialResponse> getUserById({
     @Path('user_id') required SnowflakeType userId,
-  });
-
-  /// Create App Attest challenge.
-  ///
-  /// Creates a single-use challenge for App Attest key registration or an age assurance assertion. It expires after five minutes. Responds with 404 when the instance does not support App Attest.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @POST('/users/@me/app-attest/challenge')
-  Future<AppAttestChallengeResponse> createAppAttestChallenge({
-    @Body() required AppAttestChallengeRequest body,
-  });
-
-  /// Register App Attest key.
-  ///
-  /// Verifies an App Attest attestation for a new key and links the key to the current account. Responds with 404 when the instance does not support App Attest.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @POST('/users/@me/app-attest/keys')
-  Future<void> registerAppAttestKey({
-    @Body() required AppAttestKeyRegisterRequest body,
-  });
-
-  /// Submit age assurance.
-  ///
-  /// Verifies an App Attest assertion over the age range the device reported and stores it. A stored minor age range limits mature content even when the date of birth says otherwise. Responds with 404 when the instance does not support App Attest.
-  ///
-  /// [body] - Name not received - field will be skipped.
-  @POST('/users/@me/age-assurance')
-  Future<AgeAssuranceSubmitResponse> submitAgeAssurance({
-    @Body() required AgeAssuranceSubmitRequest body,
   });
 }

@@ -4,7 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'age_assurance_submit_response_age_floor_age_floor.dart';
+import 'attested_age_floor_schema.dart';
 
 part 'age_assurance_submit_response.g.dart';
 
@@ -15,12 +15,8 @@ class AgeAssuranceSubmitResponse {
   factory AgeAssuranceSubmitResponse.fromJson(Map<String, Object?> json) =>
       _$AgeAssuranceSubmitResponseFromJson(json);
 
-  /// Age floor reported by the device
-  @JsonKey(
-    name: 'age_floor',
-    defaultValue: AgeAssuranceSubmitResponseAgeFloorAgeFloor.$unknown,
-  )
-  final AgeAssuranceSubmitResponseAgeFloorAgeFloor ageFloor;
+  @JsonKey(name: 'age_floor', defaultValue: AttestedAgeFloorSchema.$unknown)
+  final AttestedAgeFloorSchema ageFloor;
 
   Map<String, Object?> toJson() => _$AgeAssuranceSubmitResponseToJson(this);
 }

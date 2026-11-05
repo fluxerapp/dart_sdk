@@ -35,6 +35,20 @@ enum ApiErrorCode {
   adminApiKeyNotFound('ADMIN_API_KEY_NOT_FOUND'),
   @JsonValue('ALREADY_FRIENDS')
   alreadyFriends('ALREADY_FRIENDS'),
+  @JsonValue('APP_ATTEST_NOT_AVAILABLE')
+  appAttestNotAvailable('APP_ATTEST_NOT_AVAILABLE'),
+  @JsonValue('APP_ATTEST_KEY_NOT_REGISTERED')
+  appAttestKeyNotRegistered('APP_ATTEST_KEY_NOT_REGISTERED'),
+  @JsonValue('APP_ATTEST_KEY_IN_USE')
+  appAttestKeyInUse('APP_ATTEST_KEY_IN_USE'),
+  @JsonValue('APP_ATTEST_CHALLENGE_INVALID')
+  appAttestChallengeInvalid('APP_ATTEST_CHALLENGE_INVALID'),
+  @JsonValue('APP_ATTEST_ATTESTATION_INVALID')
+  appAttestAttestationInvalid('APP_ATTEST_ATTESTATION_INVALID'),
+  @JsonValue('APP_ATTEST_ASSERTION_INVALID')
+  appAttestAssertionInvalid('APP_ATTEST_ASSERTION_INVALID'),
+  @JsonValue('APP_ATTEST_REQUEST_INVALID')
+  appAttestRequestInvalid('APP_ATTEST_REQUEST_INVALID'),
   @JsonValue('BOTS_CANNOT_CREATE_GUILDS')
   botsCannotCreateGuilds('BOTS_CANNOT_CREATE_GUILDS'),
   @JsonValue('BOTS_CANNOT_SEND_FRIEND_REQUESTS')
