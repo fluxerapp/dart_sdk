@@ -30,6 +30,14 @@ CreateCheckoutSessionRequest _$CreateCheckoutSessionRequestFromJson(
       ),
       isBusiness: $checkedConvert('is_business', (v) => v as bool?),
       cnpj: $checkedConvert('cnpj', (v) => v as CnpjSchema?),
+      distribution: $checkedConvert(
+        'distribution',
+        (v) => v as DistributionQueryParam?,
+      ),
+      distributionToken: $checkedConvert(
+        'distribution_token',
+        (v) => v as DistributionTokenParam?,
+      ),
     );
     return val;
   },
@@ -40,6 +48,7 @@ CreateCheckoutSessionRequest _$CreateCheckoutSessionRequestFromJson(
     'euWithdrawalWaiverAccepted': 'eu_withdrawal_waiver_accepted',
     'paymentMethod': 'payment_method',
     'isBusiness': 'is_business',
+    'distributionToken': 'distribution_token',
   },
 );
 
@@ -53,4 +62,6 @@ Map<String, dynamic> _$CreateCheckoutSessionRequestToJson(
   'payment_method': ?instance.paymentMethod,
   'is_business': ?instance.isBusiness,
   'cnpj': ?instance.cnpj,
+  'distribution': ?instance.distribution,
+  'distribution_token': ?instance.distributionToken,
 };

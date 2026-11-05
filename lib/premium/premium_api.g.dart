@@ -195,9 +195,15 @@ class _PremiumApi implements PremiumApi {
   }
 
   @override
-  Future<PriceIdsResponse> getPriceIds({String? countryCode}) async {
+  Future<PriceIdsResponse> getPriceIds({
+    String? countryCode,
+    String? distribution,
+  }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'country_code': countryCode};
+    final queryParameters = <String, dynamic>{
+      r'country_code': countryCode,
+      r'distribution': distribution,
+    };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -242,9 +248,15 @@ class _PremiumApi implements PremiumApi {
   }
 
   @override
-  Future<PremiumStateResponse> getPremiumState({String? countryCode}) async {
+  Future<PremiumStateResponse> getPremiumState({
+    String? countryCode,
+    String? distribution,
+  }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'country_code': countryCode};
+    final queryParameters = <String, dynamic>{
+      r'country_code': countryCode,
+      r'distribution': distribution,
+    };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;

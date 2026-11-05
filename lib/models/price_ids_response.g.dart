@@ -20,6 +20,12 @@ PriceIdsResponse _$PriceIdsResponseFromJson(Map<String, dynamic> json) =>
             'gift_currency',
             (v) => v as PremiumCurrency?,
           ),
+          distribution: $checkedConvert(
+            'distribution',
+            (v) => v == null
+                ? null
+                : PriceDistributionResponse.fromJson(v as Map<String, dynamic>),
+          ),
           monthly: $checkedConvert('monthly', (v) => v as String?),
           yearly: $checkedConvert('yearly', (v) => v as String?),
           gift1Month: $checkedConvert('gift_1_month', (v) => v as String?),
@@ -66,4 +72,5 @@ Map<String, dynamic> _$PriceIdsResponseToJson(PriceIdsResponse instance) =>
       'gift_1_year_amount_minor': ?instance.gift1YearAmountMinor,
       'currency': instance.currency,
       'gift_currency': instance.giftCurrency,
+      'distribution': instance.distribution,
     };

@@ -6,6 +6,8 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'checkout_payment_method_enum.dart';
 import 'cnpj_schema.dart';
+import 'distribution_query_param.dart';
+import 'distribution_token_param.dart';
 
 part 'create_checkout_session_request.g.dart';
 
@@ -19,6 +21,8 @@ class CreateCheckoutSessionRequest {
     this.paymentMethod,
     this.isBusiness,
     this.cnpj,
+    this.distribution,
+    this.distributionToken,
   });
 
   factory CreateCheckoutSessionRequest.fromJson(Map<String, Object?> json) =>
@@ -49,6 +53,10 @@ class CreateCheckoutSessionRequest {
   final bool? isBusiness;
   @JsonKey(includeIfNull: false)
   final CnpjSchema? cnpj;
+  @JsonKey(includeIfNull: false)
+  final DistributionQueryParam? distribution;
+  @JsonKey(includeIfNull: false, name: 'distribution_token')
+  final DistributionTokenParam? distributionToken;
 
   Map<String, Object?> toJson() => _$CreateCheckoutSessionRequestToJson(this);
 }
