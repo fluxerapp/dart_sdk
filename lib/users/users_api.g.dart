@@ -139,6 +139,36 @@ class _UsersApi implements UsersApi {
   }
 
   @override
+  Future<AgeAssuranceSubmitResponse> submitPlayIntegrityAgeAssurance({
+    required PlayIntegrityAgeSubmitRequest body,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<AgeAssuranceSubmitResponse>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/users/@me/age-assurance/play-integrity',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late AgeAssuranceSubmitResponse _value;
+    try {
+      _value = AgeAssuranceSubmitResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<AppAttestChallengeResponse> createAppAttestChallenge({
     required AppAttestChallengeRequest body,
   }) async {
@@ -2218,6 +2248,33 @@ class _UsersApi implements UsersApi {
     late PasswordChangeVerifyResponse _value;
     try {
       _value = PasswordChangeVerifyResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<AppAttestChallengeResponse> createPlayIntegrityChallenge() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<AppAttestChallengeResponse>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/users/@me/play-integrity/challenge',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late AppAttestChallengeResponse _value;
+    try {
+      _value = AppAttestChallengeResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;

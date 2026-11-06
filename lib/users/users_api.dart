@@ -76,6 +76,7 @@ import '../models/password_change_start_response.dart';
 import '../models/password_change_ticket_request.dart';
 import '../models/password_change_verify_request.dart';
 import '../models/password_change_verify_response.dart';
+import '../models/play_integrity_age_submit_request.dart';
 import '../models/preload_messages_request.dart';
 import '../models/preload_messages_response.dart';
 import '../models/profile_badge_preview_request.dart';
@@ -170,6 +171,16 @@ abstract class UsersApi {
   @POST('/users/@me/age-assurance')
   Future<AgeAssuranceSubmitResponse> submitAgeAssurance({
     @Body() required AgeAssuranceSubmitRequest body,
+  });
+
+  /// Submit Play age range.
+  ///
+  /// Submits the age range that the Google Play Age Signals API reported, bound to a standard Play Integrity token. client_data holds the exact JSON bytes the app hashed, with the challenge from the Play Integrity challenge endpoint, age_lower, age_upper and age_range_source. The token must be requested with requestHash set to the SHA-256 of those bytes as unpadded base64url. Fluxer checks the token with Google Play and works out the age floor from the range: adult when age_lower is 18, minor when age_lower is 13 or more, and under_minimum otherwise. The newest accepted floor replaces the stored one, as with the iOS age check. Returns PLAY_INTEGRITY_APP_NOT_RECOGNIZED when the app was not installed from Google Play, and PLAY_INTEGRITY_DEVICE_NOT_TRUSTED when the device fails the Play device check. Returns PLAY_INTEGRITY_UNAVAILABLE with status 503 when Google Play could not be asked, in which case the app should try again later with a new challenge. Returns PLAY_INTEGRITY_NOT_AVAILABLE with status 404 when this instance does not accept Play Integrity.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @POST('/users/@me/age-assurance/play-integrity')
+  Future<AgeAssuranceSubmitResponse> submitPlayIntegrityAgeAssurance({
+    @Body() required PlayIntegrityAgeSubmitRequest body,
   });
 
   /// Create App Attest challenge.
@@ -904,6 +915,12 @@ abstract class UsersApi {
   Future<PasswordChangeVerifyResponse> verifyPasswordChangeCode({
     @Body() required PasswordChangeVerifyRequest body,
   });
+
+  /// Create Play Integrity challenge.
+  ///
+  /// Creates a single use challenge for the Android app, valid for 5 minutes. Put it in client_data before submitting an age range with a Play Integrity token. Returns PLAY_INTEGRITY_NOT_AVAILABLE with status 404 when this instance does not accept Play Integrity.
+  @POST('/users/@me/play-integrity/challenge')
+  Future<AppAttestChallengeResponse> createPlayIntegrityChallenge();
 
   /// Preload messages for channels.
   ///

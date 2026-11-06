@@ -657,6 +657,7 @@ tolerantModelFactories = <String, Object Function(Map<String, Object?>)>{
   'PendingSubscriptionChangeResponseVariant1':
       PendingSubscriptionChangeResponseVariant1.fromJson,
   'PermissionOverwriteCreateRequest': PermissionOverwriteCreateRequest.fromJson,
+  'PlayIntegrityAgeSubmitRequest': PlayIntegrityAgeSubmitRequest.fromJson,
   'PlutoniumPageAssignmentResponse': PlutoniumPageAssignmentResponse.fromJson,
   'PlutoniumWithdrawRequest': PlutoniumWithdrawRequest.fromJson,
   'PlutoniumWithdrawalResponse': PlutoniumWithdrawalResponse.fromJson,
