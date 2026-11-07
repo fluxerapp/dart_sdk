@@ -17,13 +17,13 @@ part 'guild_link_channel_create_request.g.dart';
 @JsonSerializable(constructor: '_')
 class GuildLinkChannelCreateRequest {
   GuildLinkChannelCreateRequest({
+    required this.url,
     required this.type,
     required this.name,
     this.nsfw = false,
     this.permissionOverwrites,
     this.contentWarningLevel,
     JsonNullable<String> topic = const JsonNullable<String>.undefined(),
-    JsonNullable<String> url = const JsonNullable<String>.undefined(),
     JsonNullable<SnowflakeType> parentId =
         const JsonNullable<SnowflakeType>.undefined(),
     JsonNullable<int> bitrate = const JsonNullable<int>.undefined(),
@@ -37,9 +37,6 @@ class GuildLinkChannelCreateRequest {
   }) : topic = topic,
        topicValue = topic.value,
        _topicPresent = topic.isPresent,
-       url = url,
-       urlValue = url.value,
-       _urlPresent = url.isPresent,
        parentId = parentId,
        parentIdValue = parentId.value,
        _parentIdPresent = parentId.isPresent,
@@ -63,11 +60,11 @@ class GuildLinkChannelCreateRequest {
        _contentWarningTextPresent = contentWarningText.isPresent;
 
   const GuildLinkChannelCreateRequest._({
+    required this.url,
     required this.type,
     required this.name,
     this.nsfw = false,
     this.topicValue,
-    this.urlValue,
     this.parentIdValue,
     this.bitrateValue,
     this.userLimitValue,
@@ -79,8 +76,6 @@ class GuildLinkChannelCreateRequest {
     this.contentWarningTextValue,
   }) : topic = const JsonNullable<String>.undefined(),
        _topicPresent = false,
-       url = const JsonNullable<String>.undefined(),
-       _urlPresent = false,
        parentId = const JsonNullable<SnowflakeType>.undefined(),
        _parentIdPresent = false,
        bitrate = const JsonNullable<int>.undefined(),
@@ -101,14 +96,12 @@ class GuildLinkChannelCreateRequest {
   factory GuildLinkChannelCreateRequest.fromJson(Map<String, Object?> json) {
     final value = _$GuildLinkChannelCreateRequestFromJson(json);
     return GuildLinkChannelCreateRequest(
+      url: value.url,
       type: value.type,
       name: value.name,
       nsfw: value.nsfw,
       topic: json.containsKey('topic')
           ? JsonNullable<String>.of(value.topicValue)
-          : const JsonNullable<String>.undefined(),
-      url: json.containsKey('url')
-          ? JsonNullable<String>.of(value.urlValue)
           : const JsonNullable<String>.undefined(),
       parentId: json.containsKey('parent_id')
           ? JsonNullable<SnowflakeType>.of(value.parentIdValue)
@@ -136,6 +129,10 @@ class GuildLinkChannelCreateRequest {
     );
   }
 
+  /// External URL for link channels
+  @JsonKey(defaultValue: '')
+  final String url;
+
   /// Permission overwrites for roles and members
   @JsonKey(includeIfNull: false, name: 'permission_overwrites')
   final List<GuildLinkChannelCreateRequestPermissionOverwrites>?
@@ -158,11 +155,6 @@ class GuildLinkChannelCreateRequest {
   @JsonKey(includeIfNull: false, name: 'topic')
   final String? topicValue;
   final bool _topicPresent;
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  final JsonNullable<String> url;
-  @JsonKey(includeIfNull: false, name: 'url')
-  final String? urlValue;
-  final bool _urlPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<SnowflakeType> parentId;
   @JsonKey(includeIfNull: false, name: 'parent_id')
@@ -203,9 +195,6 @@ class GuildLinkChannelCreateRequest {
     final json = _$GuildLinkChannelCreateRequestToJson(this);
     if (_topicPresent) {
       json.putIfAbsent('topic', () => topicValue);
-    }
-    if (_urlPresent) {
-      json.putIfAbsent('url', () => urlValue);
     }
     if (_parentIdPresent) {
       json.putIfAbsent('parent_id', () => parentIdValue);

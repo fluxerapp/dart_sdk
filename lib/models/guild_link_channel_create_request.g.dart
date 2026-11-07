@@ -13,6 +13,7 @@ GuildLinkChannelCreateRequest _$GuildLinkChannelCreateRequestFromJson(
   json,
   ($checkedConvert) {
     final val = GuildLinkChannelCreateRequest._(
+      url: $checkedConvert('url', (v) => v as String? ?? ''),
       type: $checkedConvert(
         'type',
         (v) => v == null
@@ -24,7 +25,6 @@ GuildLinkChannelCreateRequest _$GuildLinkChannelCreateRequestFromJson(
       name: $checkedConvert('name', (v) => v as String? ?? ''),
       nsfw: $checkedConvert('nsfw', (v) => v as bool? ?? false),
       topicValue: $checkedConvert('topic', (v) => v as String?),
-      urlValue: $checkedConvert('url', (v) => v as String?),
       parentIdValue: $checkedConvert('parent_id', (v) => v as SnowflakeType?),
       bitrateValue: $checkedConvert('bitrate', (v) => (v as num?)?.toInt()),
       userLimitValue: $checkedConvert(
@@ -65,7 +65,6 @@ GuildLinkChannelCreateRequest _$GuildLinkChannelCreateRequestFromJson(
   },
   fieldKeyMap: const {
     'topicValue': 'topic',
-    'urlValue': 'url',
     'parentIdValue': 'parent_id',
     'bitrateValue': 'bitrate',
     'userLimitValue': 'user_limit',
@@ -81,13 +80,13 @@ GuildLinkChannelCreateRequest _$GuildLinkChannelCreateRequestFromJson(
 Map<String, dynamic> _$GuildLinkChannelCreateRequestToJson(
   GuildLinkChannelCreateRequest instance,
 ) => <String, dynamic>{
+  'url': instance.url,
   'permission_overwrites': ?instance.permissionOverwrites,
   'nsfw': instance.nsfw,
   'content_warning_level': ?instance.contentWarningLevel,
   'type': instance.type,
   'name': instance.name,
   'topic': ?instance.topicValue,
-  'url': ?instance.urlValue,
   'parent_id': ?instance.parentIdValue,
   'bitrate': ?instance.bitrateValue,
   'user_limit': ?instance.userLimitValue,

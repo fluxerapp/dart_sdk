@@ -322,8 +322,7 @@ class ChannelCreateRequest4 extends ChannelCreateRequest {
 class ChannelCreateRequest998 extends ChannelCreateRequest {
   @JsonKey(includeIfNull: false)
   final String? topic;
-  @JsonKey(includeIfNull: false)
-  final String? url;
+  final String url;
   @JsonKey(includeIfNull: false, name: 'parent_id')
   final SnowflakeType? parentId;
   @JsonKey(includeIfNull: false)
@@ -349,7 +348,7 @@ class ChannelCreateRequest998 extends ChannelCreateRequest {
 
   const ChannelCreateRequest998({
     this.topic,
-    this.url,
+    required this.url,
     this.parentId,
     this.bitrate,
     this.userLimit,

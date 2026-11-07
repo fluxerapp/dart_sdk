@@ -379,7 +379,7 @@ ChannelCreateRequest998 _$ChannelCreateRequest998FromJson(
   ($checkedConvert) {
     final val = ChannelCreateRequest998(
       topic: $checkedConvert('topic', (v) => v as String?),
-      url: $checkedConvert('url', (v) => v as String?),
+      url: $checkedConvert('url', (v) => v as String),
       parentId: $checkedConvert('parent_id', (v) => v as SnowflakeType?),
       bitrate: $checkedConvert('bitrate', (v) => (v as num?)?.toInt()),
       userLimit: $checkedConvert('user_limit', (v) => (v as num?)?.toInt()),
@@ -438,7 +438,7 @@ Map<String, dynamic> _$ChannelCreateRequest998ToJson(
   ChannelCreateRequest998 instance,
 ) => <String, dynamic>{
   'topic': ?instance.topic,
-  'url': ?instance.url,
+  'url': instance.url,
   'parent_id': ?instance.parentId,
   'bitrate': ?instance.bitrate,
   'user_limit': ?instance.userLimit,
