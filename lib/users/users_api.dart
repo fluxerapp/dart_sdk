@@ -6,8 +6,8 @@ import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
 import 'package:retrofit/error_logger.dart';
 
-import '../models/age_assurance_submit_request.dart';
-import '../models/age_assurance_submit_response.dart';
+import '../models/age_range_submit_request.dart';
+import '../models/age_range_submit_response.dart';
 import '../models/app_attest_challenge_request.dart';
 import '../models/app_attest_challenge_response.dart';
 import '../models/app_attest_key_register_request.dart';
@@ -165,27 +165,33 @@ abstract class UsersApi {
 
   /// Submit attested age floor.
   ///
-  /// Submits the age floor the device reported, signed by a registered App Attest key. client_data holds the exact JSON bytes the app signed, with the challenge from a challenge with purpose assert and the age_floor. The newest accepted floor replaces the stored one. The stored floor decides the age of the account in place of its date of birth: adult makes age-restricted content available, and minor or under_minimum makes it unavailable. An adult or minor floor also counts as a date of birth for routes that need one. Returns APP_ATTEST_KEY_NOT_REGISTERED when the key is unknown, in which case the app should register a new key. Returns APP_ATTEST_NOT_AVAILABLE with status 404 when this instance does not accept App Attest.
+  /// Submits the age floor the device reported, signed by a registered App Attest key. client_data holds the exact JSON bytes the app signed, with the challenge from a challenge with purpose assert and the age_floor. Only the adult floor is accepted. It stores that the account's age range is 18 or over, with the time it was received, which unlocks mature content in regions where a date of birth typed in is not enough for mature content. It does not change the date of birth or any setting. Any other floor returns AGE_RANGE_NOT_ADULT with status 403 and nothing is stored. When the request ends, whatever the outcome, every App Attest key registered to the current user is deleted, so the app registers a new key before each submit. Returns APP_ATTEST_KEY_NOT_REGISTERED when the key is unknown, in which case the app should register a new key. Returns APP_ATTEST_NOT_AVAILABLE with status 404 when this instance does not accept App Attest. Returns FEATURE_NOT_AVAILABLE_SELF_HOSTED with status 403 on a self-hosted instance, and AGE_RANGE_NOT_NEEDED with status 403 when the request does not come from a region where a date of birth typed in is not enough for mature content.
   ///
   /// [body] - Name not received - field will be skipped.
-  @POST('/users/@me/age-assurance')
-  Future<AgeAssuranceSubmitResponse> submitAgeAssurance({
-    @Body() required AgeAssuranceSubmitRequest body,
+  @POST('/users/@me/age-range')
+  Future<AgeRangeSubmitResponse> submitAgeRange({
+    @Body() required AgeRangeSubmitRequest body,
   });
+
+  /// Remove the stored age range.
+  ///
+  /// Removes the stored age range with the time it was received, and deletes every App Attest key registered to the current user. After that, mature content is locked again in regions where a date of birth typed in is not enough for mature content. The date of birth and settings do not change. When no age range is stored, the request still succeeds. Returns the updated user.
+  @DELETE('/users/@me/age-range')
+  Future<UserPrivateResponse> removeAgeRange();
 
   /// Submit Play age range.
   ///
-  /// Submits the age range that the Google Play Age Signals API reported, bound to a standard Play Integrity token. client_data holds the exact JSON bytes the app hashed, with the challenge from the Play Integrity challenge endpoint, age_lower, age_upper and age_range_source. The token must be requested with requestHash set to the SHA-256 of those bytes as unpadded base64url. Fluxer checks the token with Google Play and works out the age floor from the range: adult when age_lower is 18, minor when age_lower is 13 or more, and under_minimum otherwise. The newest accepted floor replaces the stored one, as with the iOS age check. Returns PLAY_INTEGRITY_APP_NOT_RECOGNIZED when the app was not installed from Google Play, and PLAY_INTEGRITY_DEVICE_NOT_TRUSTED when the device fails the Play device check. Returns PLAY_INTEGRITY_UNAVAILABLE with status 503 when Google Play could not be asked, in which case the app should try again later with a new challenge. Returns PLAY_INTEGRITY_NOT_AVAILABLE with status 404 when this instance does not accept Play Integrity.
+  /// Submits the age range that the Google Play Age Signals API reported, bound to a standard Play Integrity token. client_data holds the exact JSON bytes the app hashed, with the challenge from the Play Integrity challenge endpoint, age_lower, age_upper and age_range_source. The token must be requested with requestHash set to the SHA-256 of those bytes as unpadded base64url. Fluxer checks the token with Google Play and accepts the range only when age_lower is 18. An accepted range is stored as the adult floor with the time it was received, as with the iOS app. The token, the verdict, the range and its source are not stored. Any other range returns AGE_RANGE_NOT_ADULT with status 403 and nothing is stored. Returns PLAY_INTEGRITY_APP_NOT_RECOGNIZED when the app was not installed from Google Play, and PLAY_INTEGRITY_DEVICE_NOT_TRUSTED when the device fails the Play device check. Returns PLAY_INTEGRITY_UNAVAILABLE with status 503 when Google Play could not be asked, in which case the app should try again later with a new challenge. Returns PLAY_INTEGRITY_NOT_AVAILABLE with status 404 when this instance does not accept Play Integrity. Returns FEATURE_NOT_AVAILABLE_SELF_HOSTED with status 403 on a self-hosted instance, and AGE_RANGE_NOT_NEEDED with status 403 when the request does not come from a region where a date of birth typed in is not enough for mature content.
   ///
   /// [body] - Name not received - field will be skipped.
-  @POST('/users/@me/age-assurance/play-integrity')
-  Future<AgeAssuranceSubmitResponse> submitPlayIntegrityAgeAssurance({
+  @POST('/users/@me/age-range/play-integrity')
+  Future<AgeRangeSubmitResponse> submitPlayIntegrityAgeRange({
     @Body() required PlayIntegrityAgeSubmitRequest body,
   });
 
   /// Create App Attest challenge.
   ///
-  /// Creates a single use challenge for the iOS app, valid for 5 minutes. Use purpose attest before registering a new App Attest key, and purpose assert before submitting an age floor. Returns APP_ATTEST_NOT_AVAILABLE with status 404 when this instance does not accept App Attest.
+  /// Creates a single use challenge for the iOS app, valid for 5 minutes. Use purpose attest before registering a new App Attest key, and purpose assert before submitting an age range. Returns APP_ATTEST_NOT_AVAILABLE with status 404 when this instance does not accept App Attest. Returns FEATURE_NOT_AVAILABLE_SELF_HOSTED with status 403 on a self-hosted instance, and AGE_RANGE_NOT_NEEDED with status 403 when the request does not come from a region where a date of birth typed in is not enough for mature content.
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/users/@me/app-attest/challenge')
@@ -195,7 +201,7 @@ abstract class UsersApi {
 
   /// Register App Attest key.
   ///
-  /// Registers an App Attest key for the current user. The attestation must be made with clientDataHash set to the SHA-256 of the UTF-8 challenge string from a challenge with purpose attest. The server keeps the key id, public key, environment, App ID and counter, and does not keep the attestation itself. Registering the same key again for the same user succeeds and changes nothing. Returns APP_ATTEST_NOT_AVAILABLE with status 404 when this instance does not accept App Attest.
+  /// Registers an App Attest key for the current user. The attestation must be made with clientDataHash set to the SHA-256 of the UTF-8 challenge string from a challenge with purpose attest. The server keeps the key id, public key, environment, App ID and counter for at most one hour, or until the next age range submit, and does not keep the attestation itself. Registering the same key again for the same user succeeds and changes nothing. Returns APP_ATTEST_NOT_AVAILABLE with status 404 when this instance does not accept App Attest. Returns FEATURE_NOT_AVAILABLE_SELF_HOSTED with status 403 on a self-hosted instance, and AGE_RANGE_NOT_NEEDED with status 403 when the request does not come from a region where a date of birth typed in is not enough for mature content.
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/users/@me/app-attest/keys')
@@ -918,7 +924,7 @@ abstract class UsersApi {
 
   /// Create Play Integrity challenge.
   ///
-  /// Creates a single use challenge for the Android app, valid for 5 minutes. Put it in client_data before submitting an age range with a Play Integrity token. Returns PLAY_INTEGRITY_NOT_AVAILABLE with status 404 when this instance does not accept Play Integrity.
+  /// Creates a single use challenge for the Android app, valid for 5 minutes. Put it in client_data before submitting an age range with a Play Integrity token. Returns PLAY_INTEGRITY_NOT_AVAILABLE with status 404 when this instance does not accept Play Integrity. Returns FEATURE_NOT_AVAILABLE_SELF_HOSTED with status 403 on a self-hosted instance, and AGE_RANGE_NOT_NEEDED with status 403 when the request does not come from a region where a date of birth typed in is not enough for mature content.
   @POST('/users/@me/play-integrity/challenge')
   Future<AppAttestChallengeResponse> createPlayIntegrityChallenge();
 

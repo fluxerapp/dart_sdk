@@ -2,34 +2,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, unused_import, invalid_annotation_target, unnecessary_import
 
-import 'package:json_annotation/json_annotation.dart';
-
-/// Age floor reported by the device
-@JsonEnum()
-enum AttestedAgeFloorSchema {
-  @JsonValue('adult')
-  adult('adult'),
-  @JsonValue('minor')
-  minor('minor'),
-  @JsonValue('under_minimum')
-  underMinimum('under_minimum'),
-
-  /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
-  $unknown(null);
-
-  const AttestedAgeFloorSchema(this.json);
-
-  factory AttestedAgeFloorSchema.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
-
-  final String? json;
-
-  String toJson() => json ?? 'null';
-
-  @override
-  String toString() => json ?? super.toString();
-
-  /// Returns all defined enum values excluding the $unknown value.
-  static List<AttestedAgeFloorSchema> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
-}
+/// Age floor that was accepted, which is always adult
+typedef AttestedAgeFloorSchema = String;

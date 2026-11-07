@@ -22,16 +22,7 @@ UserUpdateResponse _$UserUpdateResponseFromJson(
       globalName: $checkedConvert('global_name', (v) => v as String?),
       avatar: $checkedConvert('avatar', (v) => v as String?),
       avatarColor: $checkedConvert('avatar_color', (v) => (v as num?)?.toInt()),
-      privacyAgreedAt: $checkedConvert(
-        'privacy_agreed_at',
-        (v) => v as String?,
-      ),
-      termsAgreedAt: $checkedConvert('terms_agreed_at', (v) => v as String?),
       flags: $checkedConvert('flags', (v) => (v as num?)?.toInt() ?? 0),
-      unreadGiftInventoryCount: $checkedConvert(
-        'unread_gift_inventory_count',
-        (v) => (v as num?)?.toInt() ?? 0,
-      ),
       isStaff: $checkedConvert('is_staff', (v) => v as bool? ?? false),
       acls: $checkedConvert(
         'acls',
@@ -42,10 +33,6 @@ UserUpdateResponse _$UserUpdateResponseFromJson(
         (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
       ),
       email: $checkedConvert('email', (v) => v as String?),
-      hasUnreadGiftInventory: $checkedConvert(
-        'has_unread_gift_inventory',
-        (v) => v as bool? ?? false,
-      ),
       hasVerifiedPhone: $checkedConvert(
         'has_verified_phone',
         (v) => v as bool? ?? false,
@@ -53,23 +40,10 @@ UserUpdateResponse _$UserUpdateResponseFromJson(
       bio: $checkedConvert('bio', (v) => v as String?),
       pronouns: $checkedConvert('pronouns', (v) => v as String?),
       accentColor: $checkedConvert('accent_color', (v) => (v as num?)?.toInt()),
-      hasEverPurchased: $checkedConvert(
-        'has_ever_purchased',
-        (v) => v as bool? ?? false,
-      ),
-      hasDismissedPremiumOnboarding: $checkedConvert(
-        'has_dismissed_premium_onboarding',
-        (v) => v as bool? ?? false,
-      ),
       banner: $checkedConvert('banner', (v) => v as String?),
       id: $checkedConvert('id', (v) => v as SnowflakeStringType? ?? ''),
       mfaEnabled: $checkedConvert('mfa_enabled', (v) => v as bool? ?? false),
-      nsfwAllowed: $checkedConvert('nsfw_allowed', (v) => v as bool? ?? false),
       verified: $checkedConvert('verified', (v) => v as bool? ?? false),
-      requiredActions: $checkedConvert(
-        'required_actions',
-        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
-      ),
       premiumType: $checkedConvert(
         'premium_type',
         (v) => v == null ? null : UserPremiumTypes.fromJson((v as num).toInt()),
@@ -128,8 +102,16 @@ UserUpdateResponse _$UserUpdateResponseFromJson(
         'premium_perks_disabled',
         (v) => v as bool? ?? false,
       ),
-      lastVoiceActivitySharingChangeAt: $checkedConvert(
-        'last_voice_activity_sharing_change_at',
+      hasUnreadGiftInventory: $checkedConvert(
+        'has_unread_gift_inventory',
+        (v) => v as bool? ?? false,
+      ),
+      hasEverPurchased: $checkedConvert(
+        'has_ever_purchased',
+        (v) => v as bool? ?? false,
+      ),
+      privacyAgreedAt: $checkedConvert(
+        'privacy_agreed_at',
         (v) => v as String?,
       ),
       pendingBulkMessageDeletion: $checkedConvert(
@@ -140,6 +122,24 @@ UserUpdateResponse _$UserUpdateResponseFromJson(
                 v as Map<String, dynamic>,
               ),
       ),
+      termsAgreedAt: $checkedConvert('terms_agreed_at', (v) => v as String?),
+      hasDismissedPremiumOnboarding: $checkedConvert(
+        'has_dismissed_premium_onboarding',
+        (v) => v as bool? ?? false,
+      ),
+      unreadGiftInventoryCount: $checkedConvert(
+        'unread_gift_inventory_count',
+        (v) => (v as num?)?.toInt() ?? 0,
+      ),
+      nsfwAllowed: $checkedConvert('nsfw_allowed', (v) => v as bool? ?? false),
+      requiredActions: $checkedConvert(
+        'required_actions',
+        (v) => (v as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
+      ),
+      lastVoiceActivitySharingChangeAt: $checkedConvert(
+        'last_voice_activity_sharing_change_at',
+        (v) => v as String?,
+      ),
       passwordLastChangedAt: $checkedConvert(
         'password_last_changed_at',
         (v) => v as String?,
@@ -147,6 +147,10 @@ UserUpdateResponse _$UserUpdateResponseFromJson(
       operatorPassSince: $checkedConvert(
         'operator_pass_since',
         (v) => v as String?,
+      ),
+      operatorPassBadgeCountHidden: $checkedConvert(
+        'operator_pass_badge_count_hidden',
+        (v) => v as bool?,
       ),
       authSessionIdHash: $checkedConvert(
         'auth_session_id_hash',
@@ -175,12 +179,8 @@ UserUpdateResponse _$UserUpdateResponseFromJson(
             ? null
             : MentionReplyPreferences.fromJson((v as num).toInt()),
       ),
-      operatorPassBadgeTimestampHidden: $checkedConvert(
-        'operator_pass_badge_timestamp_hidden',
-        (v) => v as bool?,
-      ),
-      ageVerifiedAdult: $checkedConvert(
-        'age_verified_adult',
+      matureContentUnlocked: $checkedConvert(
+        'mature_content_unlocked',
         (v) => v as bool?,
       ),
       system: $checkedConvert('system', (v) => v as bool?),
@@ -201,13 +201,14 @@ UserUpdateResponse _$UserUpdateResponseFromJson(
         'date_of_birth_required',
         (v) => v as bool?,
       ),
+      hasAgeRange: $checkedConvert('has_age_range', (v) => v as bool?),
       profileRestricted: $checkedConvert(
         'profile_restricted',
         (v) => v as bool?,
       ),
       token: $checkedConvert('token', (v) => v as String?),
-      operatorPassBadgeCountHidden: $checkedConvert(
-        'operator_pass_badge_count_hidden',
+      operatorPassBadgeTimestampHidden: $checkedConvert(
+        'operator_pass_badge_timestamp_hidden',
         (v) => v as bool?,
       ),
     );
@@ -217,18 +218,10 @@ UserUpdateResponse _$UserUpdateResponseFromJson(
     'bannerColor': 'banner_color',
     'globalName': 'global_name',
     'avatarColor': 'avatar_color',
-    'privacyAgreedAt': 'privacy_agreed_at',
-    'termsAgreedAt': 'terms_agreed_at',
-    'unreadGiftInventoryCount': 'unread_gift_inventory_count',
     'isStaff': 'is_staff',
-    'hasUnreadGiftInventory': 'has_unread_gift_inventory',
     'hasVerifiedPhone': 'has_verified_phone',
     'accentColor': 'accent_color',
-    'hasEverPurchased': 'has_ever_purchased',
-    'hasDismissedPremiumOnboarding': 'has_dismissed_premium_onboarding',
     'mfaEnabled': 'mfa_enabled',
-    'nsfwAllowed': 'nsfw_allowed',
-    'requiredActions': 'required_actions',
     'premiumType': 'premium_type',
     'premiumSince': 'premium_since',
     'premiumUntil': 'premium_until',
@@ -245,10 +238,19 @@ UserUpdateResponse _$UserUpdateResponseFromJson(
     'premiumPurchaseDisabled': 'premium_purchase_disabled',
     'premiumEnabledOverride': 'premium_enabled_override',
     'premiumPerksDisabled': 'premium_perks_disabled',
-    'lastVoiceActivitySharingChangeAt': 'last_voice_activity_sharing_change_at',
+    'hasUnreadGiftInventory': 'has_unread_gift_inventory',
+    'hasEverPurchased': 'has_ever_purchased',
+    'privacyAgreedAt': 'privacy_agreed_at',
     'pendingBulkMessageDeletion': 'pending_bulk_message_deletion',
+    'termsAgreedAt': 'terms_agreed_at',
+    'hasDismissedPremiumOnboarding': 'has_dismissed_premium_onboarding',
+    'unreadGiftInventoryCount': 'unread_gift_inventory_count',
+    'nsfwAllowed': 'nsfw_allowed',
+    'requiredActions': 'required_actions',
+    'lastVoiceActivitySharingChangeAt': 'last_voice_activity_sharing_change_at',
     'passwordLastChangedAt': 'password_last_changed_at',
     'operatorPassSince': 'operator_pass_since',
+    'operatorPassBadgeCountHidden': 'operator_pass_badge_count_hidden',
     'authSessionIdHash': 'auth_session_id_hash',
     'operatorPassBadgeHidden': 'operator_pass_badge_hidden',
     'accountLimited': 'account_limited',
@@ -256,14 +258,14 @@ UserUpdateResponse _$UserUpdateResponseFromJson(
     'timezonePrivacyFlags': 'timezone_privacy_flags',
     'emailBounced': 'email_bounced',
     'mentionFlags': 'mention_flags',
-    'operatorPassBadgeTimestampHidden': 'operator_pass_badge_timestamp_hidden',
-    'ageVerifiedAdult': 'age_verified_adult',
+    'matureContentUnlocked': 'mature_content_unlocked',
     'accountTier': 'account_tier',
     'verificationNeed': 'verification_need',
     'hasPassword': 'has_password',
     'dateOfBirthRequired': 'date_of_birth_required',
+    'hasAgeRange': 'has_age_range',
     'profileRestricted': 'profile_restricted',
-    'operatorPassBadgeCountHidden': 'operator_pass_badge_count_hidden',
+    'operatorPassBadgeTimestampHidden': 'operator_pass_badge_timestamp_hidden',
   },
 );
 
@@ -328,7 +330,7 @@ Map<String, dynamic> _$UserUpdateResponseToJson(
   'has_unread_gift_inventory': instance.hasUnreadGiftInventory,
   'unread_gift_inventory_count': instance.unreadGiftInventoryCount,
   'pending_bulk_message_deletion': instance.pendingBulkMessageDeletion,
-  'age_verified_adult': ?instance.ageVerifiedAdult,
+  'mature_content_unlocked': ?instance.matureContentUnlocked,
   'terms_agreed_at': instance.termsAgreedAt,
   'privacy_agreed_at': instance.privacyAgreedAt,
   'claimed': ?instance.claimed,
@@ -336,6 +338,7 @@ Map<String, dynamic> _$UserUpdateResponseToJson(
   'verification_need': ?instance.verificationNeed,
   'has_password': ?instance.hasPassword,
   'date_of_birth_required': ?instance.dateOfBirthRequired,
+  'has_age_range': ?instance.hasAgeRange,
   'profile_restricted': ?instance.profileRestricted,
   'token': ?instance.token,
   'auth_session_id_hash': ?instance.authSessionIdHash,

@@ -9,8 +9,8 @@ tolerantModelFactories = <String, Object Function(Map<String, Object?>)>{
   'AccountHandoffRequest': AccountHandoffRequest.fromJson,
   'AccountHandoffResponse': AccountHandoffResponse.fromJson,
   'ActiveThreadsResponse': ActiveThreadsResponse.fromJson,
-  'AgeAssuranceSubmitRequest': AgeAssuranceSubmitRequest.fromJson,
-  'AgeAssuranceSubmitResponse': AgeAssuranceSubmitResponse.fromJson,
+  'AgeRangeSubmitRequest': AgeRangeSubmitRequest.fromJson,
+  'AgeRangeSubmitResponse': AgeRangeSubmitResponse.fromJson,
   'AllowedMentionsRequest': AllowedMentionsRequest.fromJson,
   'AlreadyScheduledSwitchToListPriceResponse':
       AlreadyScheduledSwitchToListPriceResponse.fromJson,

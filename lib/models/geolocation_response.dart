@@ -38,7 +38,7 @@ class GeolocationResponse {
   @JsonKey(includeIfNull: true)
   final String? longitude;
 
-  /// Locations where age restricted content requires an age check
+  /// Locations where a date of birth typed in is not enough for mature content
   @JsonKey(defaultValue: <GeoEntry>[])
   final List<GeoEntry> ageRestrictedGeos;
 

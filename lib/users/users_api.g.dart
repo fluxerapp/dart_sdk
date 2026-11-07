@@ -109,28 +109,28 @@ class _UsersApi implements UsersApi {
   }
 
   @override
-  Future<AgeAssuranceSubmitResponse> submitAgeAssurance({
-    required AgeAssuranceSubmitRequest body,
+  Future<AgeRangeSubmitResponse> submitAgeRange({
+    required AgeRangeSubmitRequest body,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _options = _setStreamType<AgeAssuranceSubmitResponse>(
+    final _options = _setStreamType<AgeRangeSubmitResponse>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/users/@me/age-assurance',
+            '/users/@me/age-range',
             queryParameters: queryParameters,
             data: _data,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, Object?>>(_options);
-    late AgeAssuranceSubmitResponse _value;
+    late AgeRangeSubmitResponse _value;
     try {
-      _value = AgeAssuranceSubmitResponse.fromJson(_result.data!);
+      _value = AgeRangeSubmitResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
@@ -139,7 +139,34 @@ class _UsersApi implements UsersApi {
   }
 
   @override
-  Future<AgeAssuranceSubmitResponse> submitPlayIntegrityAgeAssurance({
+  Future<UserPrivateResponse> removeAgeRange() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<UserPrivateResponse>(
+      Options(method: 'DELETE', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/users/@me/age-range',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late UserPrivateResponse _value;
+    try {
+      _value = UserPrivateResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<AgeRangeSubmitResponse> submitPlayIntegrityAgeRange({
     required PlayIntegrityAgeSubmitRequest body,
   }) async {
     final _extra = <String, dynamic>{};
@@ -147,20 +174,20 @@ class _UsersApi implements UsersApi {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _options = _setStreamType<AgeAssuranceSubmitResponse>(
+    final _options = _setStreamType<AgeRangeSubmitResponse>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/users/@me/age-assurance/play-integrity',
+            '/users/@me/age-range/play-integrity',
             queryParameters: queryParameters,
             data: _data,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, Object?>>(_options);
-    late AgeAssuranceSubmitResponse _value;
+    late AgeRangeSubmitResponse _value;
     try {
-      _value = AgeAssuranceSubmitResponse.fromJson(_result.data!);
+      _value = AgeRangeSubmitResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;

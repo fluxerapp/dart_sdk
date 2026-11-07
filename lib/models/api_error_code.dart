@@ -35,6 +35,10 @@ enum ApiErrorCode {
   adminApiKeyNotFound('ADMIN_API_KEY_NOT_FOUND'),
   @JsonValue('ALREADY_FRIENDS')
   alreadyFriends('ALREADY_FRIENDS'),
+  @JsonValue('AGE_RANGE_NOT_ADULT')
+  ageRangeNotAdult('AGE_RANGE_NOT_ADULT'),
+  @JsonValue('AGE_RANGE_NOT_NEEDED')
+  ageRangeNotNeeded('AGE_RANGE_NOT_NEEDED'),
   @JsonValue('APP_ATTEST_NOT_AVAILABLE')
   appAttestNotAvailable('APP_ATTEST_NOT_AVAILABLE'),
   @JsonValue('APP_ATTEST_KEY_NOT_REGISTERED')

@@ -4,18 +4,18 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-part 'age_assurance_submit_request.g.dart';
+part 'age_range_submit_request.g.dart';
 
 @JsonSerializable()
-class AgeAssuranceSubmitRequest {
-  const AgeAssuranceSubmitRequest({
+class AgeRangeSubmitRequest {
+  const AgeRangeSubmitRequest({
     required this.keyId,
     required this.assertion,
     required this.clientData,
   });
 
-  factory AgeAssuranceSubmitRequest.fromJson(Map<String, Object?> json) =>
-      _$AgeAssuranceSubmitRequestFromJson(json);
+  factory AgeRangeSubmitRequest.fromJson(Map<String, Object?> json) =>
+      _$AgeRangeSubmitRequestFromJson(json);
 
   /// App Attest key identifier from DCAppAttestService, 32 bytes as standard base64
   @JsonKey(name: 'key_id', defaultValue: '')
@@ -29,5 +29,5 @@ class AgeAssuranceSubmitRequest {
   @JsonKey(name: 'client_data', defaultValue: '')
   final String clientData;
 
-  Map<String, Object?> toJson() => _$AgeAssuranceSubmitRequestToJson(this);
+  Map<String, Object?> toJson() => _$AgeRangeSubmitRequestToJson(this);
 }

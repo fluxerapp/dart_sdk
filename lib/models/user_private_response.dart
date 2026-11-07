@@ -20,7 +20,7 @@ part 'user_private_response.g.dart';
 @JsonSerializable()
 class UserPrivateResponse {
   const UserPrivateResponse({
-    required this.bannerColor,
+    required this.banner,
     required this.username,
     required this.discriminator,
     required this.globalName,
@@ -34,19 +34,19 @@ class UserPrivateResponse {
     required this.acls,
     required this.traits,
     required this.email,
-    required this.unreadGiftInventoryCount,
+    required this.hasUnreadGiftInventory,
     required this.hasVerifiedPhone,
     required this.bio,
     required this.pronouns,
     required this.accentColor,
-    required this.hasUnreadGiftInventory,
     required this.hasEverPurchased,
-    required this.banner,
-    required this.id,
-    required this.mfaEnabled,
     required this.hasDismissedPremiumOnboarding,
-    required this.verified,
+    required this.id,
+    required this.bannerColor,
+    required this.mfaEnabled,
     required this.nsfwAllowed,
+    required this.verified,
+    required this.requiredActions,
     required this.premiumType,
     required this.premiumSince,
     required this.premiumUntil,
@@ -62,21 +62,21 @@ class UserPrivateResponse {
     required this.premiumBadgeSequenceHidden,
     required this.premiumPurchaseDisabled,
     required this.premiumEnabledOverride,
-    required this.requiredActions,
-    required this.lastVoiceActivitySharingChangeAt,
     required this.premiumPerksDisabled,
+    required this.lastVoiceActivitySharingChangeAt,
+    required this.unreadGiftInventoryCount,
     required this.passwordLastChangedAt,
     this.operatorPassSince,
     this.operatorPassBadgeTimestampHidden,
-    this.operatorPassBadgeHidden,
     this.profileRestricted,
     this.accountLimited,
     this.authenticatorTypes,
     this.timezonePrivacyFlags,
     this.timezone,
     this.emailBounced,
+    this.operatorPassBadgeHidden,
     this.mentionFlags,
-    this.ageVerifiedAdult,
+    this.matureContentUnlocked,
     this.system,
     this.bot,
     this.claimed,
@@ -84,6 +84,7 @@ class UserPrivateResponse {
     this.verificationNeed,
     this.hasPassword,
     this.dateOfBirthRequired,
+    this.hasAgeRange,
     this.operatorPassBadgeCountHidden,
   });
 
@@ -311,9 +312,9 @@ class UserPrivateResponse {
   final UserPrivateResponsePendingBulkMessageDeletion?
   pendingBulkMessageDeletion;
 
-  /// Whether the user has verified their age as an adult
-  @JsonKey(includeIfNull: false, name: 'age_verified_adult')
-  final bool? ageVerifiedAdult;
+  /// Whether mature content is unlocked for the account in regions where a date of birth typed in is not enough for mature content. It is true when the iOS or Android app sent an age range of 18 or over, when staff set it, or when the account already had mature content unlocked before. Never true from an age range on a self-hosted instance
+  @JsonKey(includeIfNull: false, name: 'mature_content_unlocked')
+  final bool? matureContentUnlocked;
 
   /// ISO8601 timestamp of when the user last agreed to the terms of service
   @JsonKey(includeIfNull: true, name: 'terms_agreed_at')
@@ -342,6 +343,10 @@ class UserPrivateResponse {
   /// Whether the account still has to enter its date of birth, which clients ask for before anything else
   @JsonKey(includeIfNull: false, name: 'date_of_birth_required')
   final bool? dateOfBirthRequired;
+
+  /// Whether Fluxer keeps an age range for the account that the iOS or Android app sent from the Apple or Google account. The range itself is not included
+  @JsonKey(includeIfNull: false, name: 'has_age_range')
+  final bool? hasAgeRange;
 
   /// Whether other people see only the username and tag of this account until it has a confirmed email address
   @JsonKey(includeIfNull: false, name: 'profile_restricted')
