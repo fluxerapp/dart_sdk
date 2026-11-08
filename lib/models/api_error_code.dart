@@ -39,6 +39,8 @@ enum ApiErrorCode {
   ageRangeNotAdult('AGE_RANGE_NOT_ADULT'),
   @JsonValue('AGE_RANGE_NOT_NEEDED')
   ageRangeNotNeeded('AGE_RANGE_NOT_NEEDED'),
+  @JsonValue('AGE_RANGE_SOURCE_NOT_VERIFIED')
+  ageRangeSourceNotVerified('AGE_RANGE_SOURCE_NOT_VERIFIED'),
   @JsonValue('APP_ATTEST_NOT_AVAILABLE')
   appAttestNotAvailable('APP_ATTEST_NOT_AVAILABLE'),
   @JsonValue('APP_ATTEST_KEY_NOT_REGISTERED')
