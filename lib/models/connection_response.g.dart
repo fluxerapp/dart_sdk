@@ -29,12 +29,15 @@ ConnectionResponse _$ConnectionResponseFromJson(Map<String, dynamic> json) =>
             'sort_order',
             (v) => (v as num?)?.toInt() ?? 0,
           ),
+          providerId: $checkedConvert('provider_id', (v) => v as String?),
+          url: $checkedConvert('url', (v) => v as String?),
         );
         return val;
       },
       fieldKeyMap: const {
         'visibilityFlags': 'visibility_flags',
         'sortOrder': 'sort_order',
+        'providerId': 'provider_id',
       },
     );
 
@@ -46,4 +49,6 @@ Map<String, dynamic> _$ConnectionResponseToJson(ConnectionResponse instance) =>
       'verified': instance.verified,
       'visibility_flags': instance.visibilityFlags,
       'sort_order': instance.sortOrder,
+      'provider_id': instance.providerId,
+      'url': instance.url,
     };

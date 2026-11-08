@@ -22,6 +22,18 @@ InstanceServicesSchema _$InstanceServicesSchemaFromJson(
         'bluesky_enabled',
         (v) => v as bool? ?? false,
       ),
+      connectionProviders: $checkedConvert(
+        'connection_providers',
+        (v) =>
+            (v as List<dynamic>?)
+                ?.map(
+                  (e) => InstanceConnectionProviderSchema.fromJson(
+                    e as Map<String, dynamic>,
+                  ),
+                )
+                .toList() ??
+            [],
+      ),
     );
     return val;
   },
@@ -29,6 +41,7 @@ InstanceServicesSchema _$InstanceServicesSchemaFromJson(
     'gifEnabled': 'gif_enabled',
     'youtubeEnabled': 'youtube_enabled',
     'blueskyEnabled': 'bluesky_enabled',
+    'connectionProviders': 'connection_providers',
   },
 );
 
@@ -38,4 +51,5 @@ Map<String, dynamic> _$InstanceServicesSchemaToJson(
   'gif_enabled': instance.gifEnabled,
   'youtube_enabled': instance.youtubeEnabled,
   'bluesky_enabled': instance.blueskyEnabled,
+  'connection_providers': instance.connectionProviders,
 };

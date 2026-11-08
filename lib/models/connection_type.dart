@@ -11,6 +11,8 @@ enum ConnectionType {
   bluesky('bsky'),
   @JsonValue('domain')
   domain('domain'),
+  @JsonValue('oauth')
+  oauth('oauth'),
 
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
   $unknown(null);

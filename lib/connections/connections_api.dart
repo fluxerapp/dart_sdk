@@ -9,10 +9,12 @@ import 'package:retrofit/error_logger.dart';
 import '../models/bluesky_authorize_request.dart';
 import '../models/bluesky_authorize_response.dart';
 import '../models/connection_list_response.dart';
+import '../models/connection_provider_id_type.dart';
 import '../models/connection_response.dart';
 import '../models/connection_type.dart';
 import '../models/connection_verification_response.dart';
 import '../models/create_connection_request.dart';
+import '../models/o_auth_connection_authorize_response.dart';
 import '../models/reorder_connections_request.dart';
 import '../models/update_connection_request.dart';
 import '../models/verify_and_create_connection_request.dart';
@@ -47,6 +49,16 @@ abstract class ConnectionsApi {
   @POST('/users/@me/connections/bluesky/authorize')
   Future<BlueskyAuthorizeResponse> authorizeBlueskyConnection({
     @Body() required BlueskyAuthorizeRequest body,
+  });
+
+  /// Start a provider connection.
+  ///
+  /// Starts connecting an account at one of the OAuth or OpenID Connect providers listed in the instance discovery document under services.connection_providers. Open authorize_url in a browser. The provider sends the browser back to the API, which adds the connection and redirects to the web app.
+  ///
+  /// [providerId] - Connection provider id: lowercase letters, digits, hyphens and underscores, up to 32 characters.
+  @POST('/users/@me/connections/oauth/{provider_id}/authorize')
+  Future<OAuthConnectionAuthorizeResponse> authorizeOauthConnection({
+    @Path('provider_id') required ConnectionProviderIdType providerId,
   });
 
   /// Reorder connections.

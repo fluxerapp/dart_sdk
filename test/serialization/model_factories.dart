@@ -435,6 +435,7 @@ tolerantModelFactories = <String, Object Function(Map<String, Object?>)>{
       InstanceBuiltInGuildBadgeImagesSchema.fromJson,
   'InstanceCaptchaSchema': InstanceCaptchaSchema.fromJson,
   'InstanceCommunitySchema': InstanceCommunitySchema.fromJson,
+  'InstanceConnectionProviderSchema': InstanceConnectionProviderSchema.fromJson,
   'InstanceEndpointsSchema': InstanceEndpointsSchema.fromJson,
   'InstanceFeaturesSchema': InstanceFeaturesSchema.fromJson,
   'InstanceGifSchema': InstanceGifSchema.fromJson,
@@ -562,6 +563,7 @@ tolerantModelFactories = <String, Object Function(Map<String, Object?>)>{
   'OAuth2MeResponseUser': OAuth2MeResponseUser.fromJson,
   'OAuth2TokenResponse': OAuth2TokenResponse.fromJson,
   'OAuth2UserInfoResponse': OAuth2UserInfoResponse.fromJson,
+  'OAuthConnectionAuthorizeResponse': OAuthConnectionAuthorizeResponse.fromJson,
   'Object0': Object0.fromJson,
   'Object0ClientAttachmentRequest': Object0ClientAttachmentRequest.fromJson,
   'Object0ClientUploadedAttachmentRequest':
