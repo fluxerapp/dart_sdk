@@ -13,8 +13,8 @@ UserSettingsResponse _$UserSettingsResponseFromJson(
   json,
   ($checkedConvert) {
     final val = UserSettingsResponse(
-      renderReactions: $checkedConvert(
-        'render_reactions',
+      renderEmbeds: $checkedConvert(
+        'render_embeds',
         (v) => v as bool? ?? false,
       ),
       privacySetupVersion: $checkedConvert(
@@ -30,6 +30,7 @@ UserSettingsResponse _$UserSettingsResponseFromJson(
         'locale',
         (v) => v == null ? Locale.$unknown : Locale.fromJson(v as String),
       ),
+      regionalFormat: $checkedConvert('regional_format', (v) => v as String?),
       restrictedGuilds: $checkedConvert(
         'restricted_guilds',
         (v) =>
@@ -63,11 +64,11 @@ UserSettingsResponse _$UserSettingsResponseFromJson(
         (v) => v as bool? ?? false,
       ),
       gifAutoPlay: $checkedConvert('gif_auto_play', (v) => v as bool? ?? false),
-      renderEmbeds: $checkedConvert(
-        'render_embeds',
+      status: $checkedConvert('status', (v) => v as String? ?? ''),
+      renderReactions: $checkedConvert(
+        'render_reactions',
         (v) => v as bool? ?? false,
       ),
-      status: $checkedConvert('status', (v) => v as String? ?? ''),
       animateEmoji: $checkedConvert(
         'animate_emoji',
         (v) => v as bool? ?? false,
@@ -127,6 +128,12 @@ UserSettingsResponse _$UserSettingsResponseFromJson(
         (v) => v == null
             ? TimeFormatTypes.$unknown
             : TimeFormatTypes.fromJson((v as num).toInt()),
+      ),
+      timestampFormat: $checkedConvert(
+        'timestamp_format',
+        (v) => v == null
+            ? TimestampFormatTypes.$unknown
+            : TimestampFormatTypes.fromJson((v as num).toInt()),
       ),
       privacySetupCompletedAt: $checkedConvert(
         'privacy_setup_completed_at',
@@ -205,9 +212,10 @@ UserSettingsResponse _$UserSettingsResponseFromJson(
     return val;
   },
   fieldKeyMap: const {
-    'renderReactions': 'render_reactions',
+    'renderEmbeds': 'render_embeds',
     'privacySetupVersion': 'privacy_setup_version',
     'defaultShareVoiceActivity': 'default_share_voice_activity',
+    'regionalFormat': 'regional_format',
     'restrictedGuilds': 'restricted_guilds',
     'botRestrictedGuilds': 'bot_restricted_guilds',
     'defaultGuildsRestricted': 'default_guilds_restricted',
@@ -215,7 +223,7 @@ UserSettingsResponse _$UserSettingsResponseFromJson(
     'inlineAttachmentMedia': 'inline_attachment_media',
     'inlineEmbedMedia': 'inline_embed_media',
     'gifAutoPlay': 'gif_auto_play',
-    'renderEmbeds': 'render_embeds',
+    'renderReactions': 'render_reactions',
     'animateEmoji': 'animate_emoji',
     'animateStickers': 'animate_stickers',
     'renderSpoilers': 'render_spoilers',
@@ -227,6 +235,7 @@ UserSettingsResponse _$UserSettingsResponseFromJson(
     'customStatus': 'custom_status',
     'afkTimeout': 'afk_timeout',
     'timeFormat': 'time_format',
+    'timestampFormat': 'timestamp_format',
     'privacySetupCompletedAt': 'privacy_setup_completed_at',
     'trustedDomains': 'trusted_domains',
     'defaultHideMutedChannels': 'default_hide_muted_channels',
@@ -255,6 +264,7 @@ Map<String, dynamic> _$UserSettingsResponseToJson(
   'status_resets_to': ?instance.statusResetsTo,
   'theme': instance.theme,
   'locale': instance.locale,
+  'regional_format': instance.regionalFormat,
   'restricted_guilds': instance.restrictedGuilds,
   'bot_restricted_guilds': instance.botRestrictedGuilds,
   'default_guilds_restricted': instance.defaultGuildsRestricted,
@@ -275,6 +285,7 @@ Map<String, dynamic> _$UserSettingsResponseToJson(
   'custom_status': instance.customStatus,
   'afk_timeout': instance.afkTimeout,
   'time_format': instance.timeFormat,
+  'timestamp_format': instance.timestampFormat,
   'developer_mode': instance.developerMode,
   'trusted_domains': instance.trustedDomains,
   'default_hide_muted_channels': instance.defaultHideMutedChannels,

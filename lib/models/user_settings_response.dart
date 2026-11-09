@@ -17,6 +17,7 @@ import 'sensitive_media_guild_filter_level.dart';
 import 'snowflake_string_type.dart';
 import 'sticker_animation_options.dart';
 import 'time_format_types.dart';
+import 'timestamp_format_types.dart';
 import 'user_settings_response_guild_folders.dart';
 
 part 'user_settings_response.g.dart';
@@ -24,11 +25,12 @@ part 'user_settings_response.g.dart';
 @JsonSerializable()
 class UserSettingsResponse {
   const UserSettingsResponse({
-    required this.renderReactions,
+    required this.renderEmbeds,
     required this.privacySetupVersion,
     required this.defaultShareVoiceActivity,
     required this.theme,
     required this.locale,
+    required this.regionalFormat,
     required this.restrictedGuilds,
     required this.botRestrictedGuilds,
     required this.defaultGuildsRestricted,
@@ -36,8 +38,8 @@ class UserSettingsResponse {
     required this.inlineAttachmentMedia,
     required this.inlineEmbedMedia,
     required this.gifAutoPlay,
-    required this.renderEmbeds,
     required this.status,
+    required this.renderReactions,
     required this.animateEmoji,
     required this.animateStickers,
     required this.renderSpoilers,
@@ -49,6 +51,7 @@ class UserSettingsResponse {
     required this.customStatus,
     required this.afkTimeout,
     required this.timeFormat,
+    required this.timestampFormat,
     required this.privacySetupCompletedAt,
     required this.trustedDomains,
     required this.defaultHideMutedChannels,
@@ -86,6 +89,10 @@ class UserSettingsResponse {
   final String theme;
   @JsonKey(defaultValue: Locale.$unknown)
   final Locale locale;
+
+  /// The locale used to write dates, times and numbers, such as de-DE, or "system" for the device locale. Null follows the interface language. Currency follows the billing country either way.
+  @JsonKey(includeIfNull: true, name: 'regional_format')
+  final String? regionalFormat;
 
   /// Guild IDs where direct messages are restricted
   @JsonKey(name: 'restricted_guilds', defaultValue: <String>[])
@@ -166,6 +173,13 @@ class UserSettingsResponse {
   /// The preferred time format setting
   @JsonKey(name: 'time_format', defaultValue: TimeFormatTypes.$unknown)
   final TimeFormatTypes timeFormat;
+
+  /// The preferred timestamp format preset
+  @JsonKey(
+    name: 'timestamp_format',
+    defaultValue: TimestampFormatTypes.$unknown,
+  )
+  final TimestampFormatTypes timestampFormat;
 
   /// Whether developer mode is enabled
   @JsonKey(name: 'developer_mode', defaultValue: false)

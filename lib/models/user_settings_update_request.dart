@@ -18,6 +18,7 @@ import 'sensitive_media_guild_filter_level_input.dart';
 import 'snowflake_type.dart';
 import 'sticker_animation_options_input.dart';
 import 'time_format_types_input.dart';
+import 'timestamp_format_types_input.dart';
 import 'user_settings_update_request_guild_folders.dart';
 import 'user_status_type.dart';
 import 'user_theme_type.dart';
@@ -27,7 +28,7 @@ part 'user_settings_update_request.g.dart';
 @JsonSerializable(constructor: '_')
 class UserSettingsUpdateRequest {
   UserSettingsUpdateRequest({
-    this.gifAutoPlay,
+    this.renderEmbeds,
     this.status,
     this.theme,
     this.guildPositions,
@@ -38,8 +39,8 @@ class UserSettingsUpdateRequest {
     this.botDefaultGuildsRestricted,
     this.inlineAttachmentMedia,
     this.inlineEmbedMedia,
+    this.gifAutoPlay,
     this.flags,
-    this.renderEmbeds,
     this.renderReactions,
     this.animateEmoji,
     this.animateStickers,
@@ -50,6 +51,7 @@ class UserSettingsUpdateRequest {
     this.groupDmAddPermissionFlags,
     this.guildFolders,
     this.afkTimeout,
+    this.timeFormat,
     this.syncedPreferencesBaseHash,
     this.developerMode,
     this.trustedDomains,
@@ -62,11 +64,13 @@ class UserSettingsUpdateRequest {
     this.profilePrivacy,
     this.defaultShareVoiceActivity,
     this.privacySetupVersion,
-    this.timeFormat,
+    this.timestampFormat,
     JsonNullable<String> statusResetsAt =
         const JsonNullable<String>.undefined(),
     JsonNullable<UserStatusType> statusResetsTo =
         const JsonNullable<UserStatusType>.undefined(),
+    JsonNullable<String> regionalFormat =
+        const JsonNullable<String>.undefined(),
     JsonNullable<CustomStatusPayload> customStatus =
         const JsonNullable<CustomStatusPayload>.undefined(),
     JsonNullable<List<SnowflakeType>>
@@ -82,6 +86,9 @@ class UserSettingsUpdateRequest {
        statusResetsTo = statusResetsTo,
        statusResetsToValue = statusResetsTo.value,
        _statusResetsToPresent = statusResetsTo.isPresent,
+       regionalFormat = regionalFormat,
+       regionalFormatValue = regionalFormat.value,
+       _regionalFormatPresent = regionalFormat.isPresent,
        customStatus = customStatus,
        customStatusValue = customStatus.value,
        _customStatusPresent = customStatus.isPresent,
@@ -106,6 +113,7 @@ class UserSettingsUpdateRequest {
     this.theme,
     this.guildPositions,
     this.locale,
+    this.regionalFormatValue,
     this.restrictedGuilds,
     this.botRestrictedGuilds,
     this.defaultGuildsRestricted,
@@ -127,6 +135,7 @@ class UserSettingsUpdateRequest {
     this.afkTimeout,
     this.timeFormat,
     this.syncedPreferencesBaseHash,
+    this.developerMode,
     this.trustedDomains,
     this.defaultHideMutedChannels,
     this.sensitiveContentFriendDmFilter,
@@ -140,11 +149,13 @@ class UserSettingsUpdateRequest {
     this.defaultShareVoiceActivity,
     this.privacySetupVersion,
     this.syncedPreferencesValue,
-    this.developerMode,
+    this.timestampFormat,
   }) : statusResetsAt = const JsonNullable<String>.undefined(),
        _statusResetsAtPresent = false,
        statusResetsTo = const JsonNullable<UserStatusType>.undefined(),
        _statusResetsToPresent = false,
+       regionalFormat = const JsonNullable<String>.undefined(),
+       _regionalFormatPresent = false,
        customStatus = const JsonNullable<CustomStatusPayload>.undefined(),
        _customStatusPresent = false,
        suppressUnprivilegedSelfMentionsBypassUserIds =
@@ -172,6 +183,9 @@ class UserSettingsUpdateRequest {
       theme: value.theme,
       guildPositions: value.guildPositions,
       locale: value.locale,
+      regionalFormat: json.containsKey('regional_format')
+          ? JsonNullable<String>.of(value.regionalFormatValue)
+          : const JsonNullable<String>.undefined(),
       restrictedGuilds: value.restrictedGuilds,
       botRestrictedGuilds: value.botRestrictedGuilds,
       defaultGuildsRestricted: value.defaultGuildsRestricted,
@@ -195,6 +209,7 @@ class UserSettingsUpdateRequest {
       afkTimeout: value.afkTimeout,
       timeFormat: value.timeFormat,
       syncedPreferencesBaseHash: value.syncedPreferencesBaseHash,
+      developerMode: value.developerMode,
       trustedDomains: value.trustedDomains,
       defaultHideMutedChannels: value.defaultHideMutedChannels,
       sensitiveContentFriendDmFilter: value.sensitiveContentFriendDmFilter,
@@ -222,7 +237,7 @@ class UserSettingsUpdateRequest {
       syncedPreferences: json.containsKey('synced_preferences')
           ? JsonNullable<String>.of(value.syncedPreferencesValue)
           : const JsonNullable<String>.undefined(),
-      developerMode: value.developerMode,
+      timestampFormat: value.timestampFormat,
     );
   }
 
@@ -310,6 +325,10 @@ class UserSettingsUpdateRequest {
   @JsonKey(includeIfNull: false, name: 'time_format')
   final TimeFormatTypesInput? timeFormat;
 
+  /// Timestamp format preset
+  @JsonKey(includeIfNull: false, name: 'timestamp_format')
+  final TimestampFormatTypesInput? timestampFormat;
+
   /// Developer mode enabled
   @JsonKey(includeIfNull: false, name: 'developer_mode')
   final bool? developerMode;
@@ -366,6 +385,11 @@ class UserSettingsUpdateRequest {
   final UserStatusType? statusResetsToValue;
   final bool _statusResetsToPresent;
   @JsonKey(includeFromJson: false, includeToJson: false)
+  final JsonNullable<String> regionalFormat;
+  @JsonKey(includeIfNull: false, name: 'regional_format')
+  final String? regionalFormatValue;
+  final bool _regionalFormatPresent;
+  @JsonKey(includeFromJson: false, includeToJson: false)
   final JsonNullable<CustomStatusPayload> customStatus;
   @JsonKey(includeIfNull: false, name: 'custom_status')
   final CustomStatusPayload? customStatusValue;
@@ -397,6 +421,9 @@ class UserSettingsUpdateRequest {
     }
     if (_statusResetsToPresent) {
       json.putIfAbsent('status_resets_to', () => statusResetsToValue);
+    }
+    if (_regionalFormatPresent) {
+      json.putIfAbsent('regional_format', () => regionalFormatValue);
     }
     if (_customStatusPresent) {
       json.putIfAbsent('custom_status', () => customStatusValue);

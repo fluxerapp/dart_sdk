@@ -38,6 +38,10 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
         'locale',
         (v) => v == null ? null : Locale.fromJson(v as String),
       ),
+      regionalFormatValue: $checkedConvert(
+        'regional_format',
+        (v) => v as String?,
+      ),
       restrictedGuilds: $checkedConvert(
         'restricted_guilds',
         (v) => (v as List<dynamic>?)?.map((e) => e as SnowflakeType).toList(),
@@ -120,6 +124,7 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
         'synced_preferences_base_hash',
         (v) => v as String?,
       ),
+      developerMode: $checkedConvert('developer_mode', (v) => v as bool?),
       trustedDomains: $checkedConvert(
         'trusted_domains',
         (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
@@ -180,7 +185,12 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
         'synced_preferences',
         (v) => v as String?,
       ),
-      developerMode: $checkedConvert('developer_mode', (v) => v as bool?),
+      timestampFormat: $checkedConvert(
+        'timestamp_format',
+        (v) => v == null
+            ? null
+            : TimestampFormatTypesInput.fromJson((v as num).toInt()),
+      ),
     );
     return val;
   },
@@ -189,6 +199,7 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
     'statusResetsAtValue': 'status_resets_at',
     'statusResetsToValue': 'status_resets_to',
     'guildPositions': 'guild_positions',
+    'regionalFormatValue': 'regional_format',
     'restrictedGuilds': 'restricted_guilds',
     'botRestrictedGuilds': 'bot_restricted_guilds',
     'defaultGuildsRestricted': 'default_guilds_restricted',
@@ -209,6 +220,7 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
     'afkTimeout': 'afk_timeout',
     'timeFormat': 'time_format',
     'syncedPreferencesBaseHash': 'synced_preferences_base_hash',
+    'developerMode': 'developer_mode',
     'trustedDomains': 'trusted_domains',
     'defaultHideMutedChannels': 'default_hide_muted_channels',
     'sensitiveContentFriendDmFilter': 'sensitive_content_friend_dm_filter',
@@ -224,7 +236,7 @@ UserSettingsUpdateRequest _$UserSettingsUpdateRequestFromJson(
     'defaultShareVoiceActivity': 'default_share_voice_activity',
     'privacySetupVersion': 'privacy_setup_version',
     'syncedPreferencesValue': 'synced_preferences',
-    'developerMode': 'developer_mode',
+    'timestampFormat': 'timestamp_format',
   },
 );
 
@@ -255,6 +267,7 @@ Map<String, dynamic> _$UserSettingsUpdateRequestToJson(
   'guild_folders': ?instance.guildFolders,
   'afk_timeout': ?instance.afkTimeout,
   'time_format': ?instance.timeFormat,
+  'timestamp_format': ?instance.timestampFormat,
   'developer_mode': ?instance.developerMode,
   'trusted_domains': ?instance.trustedDomains,
   'default_hide_muted_channels': ?instance.defaultHideMutedChannels,
@@ -272,6 +285,7 @@ Map<String, dynamic> _$UserSettingsUpdateRequestToJson(
   'synced_preferences_base_hash': ?instance.syncedPreferencesBaseHash,
   'status_resets_at': ?instance.statusResetsAtValue,
   'status_resets_to': ?instance.statusResetsToValue,
+  'regional_format': ?instance.regionalFormatValue,
   'custom_status': ?instance.customStatusValue,
   'suppress_unprivileged_self_mentions_bypass_user_ids':
       ?instance.suppressUnprivilegedSelfMentionsBypassUserIdsValue,
