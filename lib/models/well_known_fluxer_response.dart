@@ -20,7 +20,6 @@ import 'instance_push_schema.dart';
 import 'instance_registration_schema.dart';
 import 'instance_services_schema.dart';
 import 'instance_sso_schema.dart';
-import 'snowflake_string_type.dart';
 import 'well_known_fluxer_response_limits.dart';
 
 part 'well_known_fluxer_response.g.dart';
@@ -49,7 +48,6 @@ class WellKnownFluxerResponse {
     this.customBadgesVersion,
     this.builtInGuildBadgeImages,
     this.hiddenBuiltInGuildBadges,
-    this.hiddenRoleIds,
     this.voiceOrigins,
   });
 
@@ -117,10 +115,6 @@ class WellKnownFluxerResponse {
   final InstanceBuiltInGuildBadgeImagesSchema? builtInGuildBadgeImages;
   @JsonKey(includeIfNull: false, name: 'hidden_built_in_guild_badges')
   final InstanceHiddenBuiltInGuildBadgesSchema? hiddenBuiltInGuildBadges;
-
-  /// IDs of roles that clients leave out wherever a member's roles are shown to other people. The roles still count for permissions and stay in role settings
-  @JsonKey(includeIfNull: false, name: 'hidden_role_ids')
-  final List<SnowflakeStringType>? hiddenRoleIds;
 
   /// Origins of every voice server endpoint, such as wss://voice.example.com, for content security policies. Voice servers that share a domain are listed once as a wildcard, such as wss://*.example.com
   @JsonKey(includeIfNull: false, name: 'voice_origins')

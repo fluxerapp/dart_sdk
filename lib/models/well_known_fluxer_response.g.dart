@@ -139,12 +139,6 @@ WellKnownFluxerResponse _$WellKnownFluxerResponseFromJson(
             )
             .toList(),
       ),
-      hiddenRoleIds: $checkedConvert(
-        'hidden_role_ids',
-        (v) => (v as List<dynamic>?)
-            ?.map((e) => e as SnowflakeStringType)
-            .toList(),
-      ),
       voiceOrigins: $checkedConvert(
         'voice_origins',
         (v) => (v as List<dynamic>?)?.map((e) => e as String).toList(),
@@ -162,7 +156,6 @@ WellKnownFluxerResponse _$WellKnownFluxerResponseFromJson(
     'customBadgesVersion': 'custom_badges_version',
     'builtInGuildBadgeImages': 'built_in_guild_badge_images',
     'hiddenBuiltInGuildBadges': 'hidden_built_in_guild_badges',
-    'hiddenRoleIds': 'hidden_role_ids',
     'voiceOrigins': 'voice_origins',
   },
 );
@@ -191,6 +184,5 @@ Map<String, dynamic> _$WellKnownFluxerResponseToJson(
   'custom_badges_version': ?instance.customBadgesVersion,
   'built_in_guild_badge_images': ?instance.builtInGuildBadgeImages,
   'hidden_built_in_guild_badges': ?instance.hiddenBuiltInGuildBadges,
-  'hidden_role_ids': ?instance.hiddenRoleIds,
   'voice_origins': ?instance.voiceOrigins,
 };
