@@ -9,8 +9,14 @@ import 'package:json_annotation/json_annotation.dart';
 enum Locale {
   @JsonValue('ar')
   ar('ar'),
+  @JsonValue('be')
+  be('be'),
   @JsonValue('bg')
   bg('bg'),
+  @JsonValue('bn')
+  bn('bn'),
+  @JsonValue('ca')
+  ca('ca'),
   @JsonValue('cs')
   cs('cs'),
   @JsonValue('da')
@@ -29,6 +35,8 @@ enum Locale {
   es419('es-419'),
   @JsonValue('fi')
   fi('fi'),
+  @JsonValue('fil')
+  fil('fil'),
   @JsonValue('fr')
   fr('fr'),
   @JsonValue('he')
@@ -49,6 +57,8 @@ enum Locale {
   ko('ko'),
   @JsonValue('lt')
   lt('lt'),
+  @JsonValue('lv')
+  lv('lv'),
   @JsonValue('nl')
   nl('nl'),
   @JsonValue('no')
@@ -57,14 +67,24 @@ enum Locale {
   pl('pl'),
   @JsonValue('pt-BR')
   ptBr('pt-BR'),
+  @JsonValue('pt-PT')
+  ptPt('pt-PT'),
   @JsonValue('ro')
   ro('ro'),
   @JsonValue('ru')
   ru('ru'),
+  @JsonValue('sk')
+  sk('sk'),
+  @JsonValue('sl')
+  sl('sl'),
+  @JsonValue('sq')
+  sq('sq'),
   @JsonValue('sv-SE')
   svSe('sv-SE'),
   @JsonValue('th')
   th('th'),
+  @JsonValue('tok')
+  tok('tok'),
   @JsonValue('tr')
   tr('tr'),
   @JsonValue('uk')
