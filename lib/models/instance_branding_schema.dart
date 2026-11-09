@@ -113,7 +113,7 @@ class InstanceBrandingSchema {
   @JsonKey(includeIfNull: true, name: 'premium_showcase_upload_url')
   final String? premiumShowcaseUploadUrl;
 
-  /// Optional stylesheet a self-hosted instance applies to its web and desktop app, except on sign-in pages
+  /// Optional stylesheet a self-hosted instance applies to its web and desktop app, including on sign-in pages
   @JsonKey(includeIfNull: true, name: 'custom_css')
   final String? customCss;
 
