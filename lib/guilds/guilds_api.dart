@@ -14,6 +14,7 @@ import '../models/channel_response.dart';
 import '../models/guild_audit_log_list_response.dart';
 import '../models/guild_ban_create_request.dart';
 import '../models/guild_ban_list_response.dart';
+import '../models/guild_ban_response.dart';
 import '../models/guild_create_request.dart';
 import '../models/guild_delete_request.dart';
 import '../models/guild_emoji_bulk_create_request.dart';
@@ -123,6 +124,19 @@ abstract class GuildsApi {
   @GET('/guilds/{guild_id}/bans')
   Future<GuildBanListResponse> listGuildBans({
     @Path('guild_id') required SnowflakeType guildId,
+  });
+
+  /// Get guild ban.
+  ///
+  /// Get guild ban. Requires ban_members permission. Returns the ban for the specified user including the ban reason and expiry time.
+  ///
+  /// [guildId] - The ID of the guild.
+  ///
+  /// [userId] - The ID of the user.
+  @GET('/guilds/{guild_id}/bans/{user_id}')
+  Future<GuildBanResponse> getGuildBan({
+    @Path('guild_id') required SnowflakeType guildId,
+    @Path('user_id') required SnowflakeType userId,
   });
 
   /// Ban guild member.

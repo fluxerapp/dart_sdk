@@ -687,6 +687,8 @@ enum ApiErrorCode {
   ),
   @JsonValue('UNKNOWN_BADGE')
   unknownBadge('UNKNOWN_BADGE'),
+  @JsonValue('UNKNOWN_BAN')
+  unknownBan('UNKNOWN_BAN'),
   @JsonValue('UNKNOWN_CHANNEL')
   unknownChannel('UNKNOWN_CHANNEL'),
   @JsonValue('UNKNOWN_CONNECTION_PROVIDER')
