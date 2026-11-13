@@ -26,6 +26,7 @@ class InstanceFeaturesSchema {
     required this.presignedAttachmentUploads,
     required this.emailsEnabled,
     required this.phoneVerificationEnabled,
+    this.proxyAttachmentsThroughApi,
     this.discoveryEnabled,
     this.desktopModulesEnabled,
     this.accountDeletionGracePeriodHours,
@@ -68,6 +69,10 @@ class InstanceFeaturesSchema {
   /// Whether clients can request presigned attachment upload URLs
   @JsonKey(name: 'presigned_attachment_uploads', defaultValue: false)
   final bool presignedAttachmentUploads;
+
+  /// Whether attachment links point at the API and need the viewer to be signed in. Missing means false
+  @JsonKey(includeIfNull: false, name: 'proxy_attachments_through_api')
+  final bool? proxyAttachmentsThroughApi;
 
   /// Whether the instance sends emails (verification, password reset, etc.)
   @JsonKey(name: 'emails_enabled', defaultValue: false)

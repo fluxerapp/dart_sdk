@@ -193,6 +193,8 @@ export 'models/channel_response.dart';
 export 'models/channel_list_response.dart';
 export 'models/billing_document_file_response.dart';
 export 'models/billing_document_list_response.dart';
+export 'models/attachment_access_token_request.dart';
+export 'models/attachment_access_token_response.dart';
 export 'models/application_list_response.dart';
 export 'models/app_attest_key_register_request.dart';
 export 'models/app_attest_challenge_request.dart';

@@ -26,6 +26,8 @@ tolerantModelFactories = <String, Object Function(Map<String, Object?>)>{
   'ApplicationsMeResponse': ApplicationsMeResponse.fromJson,
   'ApplicationsMeResponseBot': ApplicationsMeResponseBot.fromJson,
   'ArchivedThreadsResponse': ArchivedThreadsResponse.fromJson,
+  'AttachmentAccessTokenRequest': AttachmentAccessTokenRequest.fromJson,
+  'AttachmentAccessTokenResponse': AttachmentAccessTokenResponse.fromJson,
   'AuditLogChangeSchema': AuditLogChangeSchema.fromJson,
   'AuditLogWebhookResponse': AuditLogWebhookResponse.fromJson,
   'AuthLoginResponse': AuthLoginResponse.fromJson,

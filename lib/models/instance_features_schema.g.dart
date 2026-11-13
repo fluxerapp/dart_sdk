@@ -42,6 +42,10 @@ InstanceFeaturesSchema _$InstanceFeaturesSchemaFromJson(
         'phone_verification_enabled',
         (v) => v as bool? ?? false,
       ),
+      proxyAttachmentsThroughApi: $checkedConvert(
+        'proxy_attachments_through_api',
+        (v) => v as bool?,
+      ),
       discoveryEnabled: $checkedConvert('discovery_enabled', (v) => v as bool?),
       desktopModulesEnabled: $checkedConvert(
         'desktop_modules_enabled',
@@ -102,6 +106,7 @@ InstanceFeaturesSchema _$InstanceFeaturesSchemaFromJson(
     'presignedAttachmentUploads': 'presigned_attachment_uploads',
     'emailsEnabled': 'emails_enabled',
     'phoneVerificationEnabled': 'phone_verification_enabled',
+    'proxyAttachmentsThroughApi': 'proxy_attachments_through_api',
     'discoveryEnabled': 'discovery_enabled',
     'desktopModulesEnabled': 'desktop_modules_enabled',
     'accountDeletionGracePeriodHours': 'account_deletion_grace_period_hours',
@@ -128,6 +133,7 @@ Map<String, dynamic> _$InstanceFeaturesSchemaToJson(
   'stripe_serviceable': instance.stripeServiceable,
   'self_hosted': instance.selfHosted,
   'presigned_attachment_uploads': instance.presignedAttachmentUploads,
+  'proxy_attachments_through_api': ?instance.proxyAttachmentsThroughApi,
   'emails_enabled': instance.emailsEnabled,
   'phone_verification_enabled': instance.phoneVerificationEnabled,
   'discovery_enabled': ?instance.discoveryEnabled,
