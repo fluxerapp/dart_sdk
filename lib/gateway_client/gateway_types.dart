@@ -24,6 +24,7 @@ class VoiceState {
     this.e2eeCapable,
     this.p2p = false,
     this.version,
+    this.member,
   });
 
   final String userId;
@@ -42,6 +43,7 @@ class VoiceState {
   final bool? e2eeCapable;
   final bool p2p;
   final int? version;
+  final GuildMemberResponse? member;
 
   @override
   bool operator ==(Object other) =>
@@ -102,7 +104,19 @@ class VoiceState {
       e2eeCapable: json['e2ee_capable'] as bool?,
       p2p: json['p2p'] as bool? ?? false,
       version: (json['version'] as num?)?.toInt(),
+      member: _voiceStateMember(json['member']),
     );
+  }
+}
+
+GuildMemberResponse? _voiceStateMember(Object? member) {
+  if (member is! Map) {
+    return null;
+  }
+  try {
+    return GuildMemberResponse.fromJson(member.cast<String, Object?>());
+  } on Object {
+    return null;
   }
 }
 
