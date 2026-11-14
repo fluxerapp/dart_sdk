@@ -24,6 +24,7 @@ SsoStatusResponse _$SsoStatusResponseFromJson(Map<String, dynamic> json) =>
             'redirect_uri',
             (v) => v as String? ?? '',
           ),
+          providerTrait: $checkedConvert('provider_trait', (v) => v as String?),
         );
         return val;
       },
@@ -32,6 +33,7 @@ SsoStatusResponse _$SsoStatusResponseFromJson(Map<String, dynamic> json) =>
         'displayName': 'display_name',
         'buttonLabel': 'button_label',
         'redirectUri': 'redirect_uri',
+        'providerTrait': 'provider_trait',
       },
     );
 
@@ -43,4 +45,5 @@ Map<String, dynamic> _$SsoStatusResponseToJson(SsoStatusResponse instance) =>
       'display_name': instance.displayName,
       'button_label': instance.buttonLabel,
       'redirect_uri': instance.redirectUri,
+      'provider_trait': ?instance.providerTrait,
     };

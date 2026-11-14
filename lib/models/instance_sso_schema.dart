@@ -16,6 +16,7 @@ class InstanceSsoSchema {
     required this.displayName,
     required this.buttonLabel,
     required this.redirectUri,
+    this.providerTrait,
     this.available,
   });
 
@@ -45,6 +46,10 @@ class InstanceSsoSchema {
   /// OAuth redirect URI for SSO
   @JsonKey(name: 'redirect_uri', defaultValue: '')
   final String redirectUri;
+
+  /// User trait that marks an account as linked to the current SSO provider
+  @JsonKey(includeIfNull: false, name: 'provider_trait')
+  final String? providerTrait;
 
   /// Whether an SSO provider is configured for this instance
   @JsonKey(includeIfNull: false)

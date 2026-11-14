@@ -15,6 +15,7 @@ class SsoStatusResponse {
     required this.displayName,
     required this.buttonLabel,
     required this.redirectUri,
+    this.providerTrait,
   });
 
   factory SsoStatusResponse.fromJson(Map<String, Object?> json) =>
@@ -43,6 +44,10 @@ class SsoStatusResponse {
   /// OAuth redirect URI for SSO
   @JsonKey(name: 'redirect_uri', defaultValue: '')
   final String redirectUri;
+
+  /// User trait that marks an account as linked to the current SSO provider
+  @JsonKey(includeIfNull: false, name: 'provider_trait')
+  final String? providerTrait;
 
   Map<String, Object?> toJson() => _$SsoStatusResponseToJson(this);
 }
