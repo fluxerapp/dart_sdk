@@ -133,6 +133,8 @@ enum ApiErrorCode {
   channelTypeConversionNotSupported('CHANNEL_TYPE_CONVERSION_NOT_SUPPORTED'),
   @JsonValue('COMMUNICATION_DISABLED')
   communicationDisabled('COMMUNICATION_DISABLED'),
+  @JsonValue('COMMUNITY_MEMBER_DMS_DISABLED')
+  communityMemberDmsDisabled('COMMUNITY_MEMBER_DMS_DISABLED'),
   @JsonValue('CONNECTION_ALREADY_EXISTS')
   connectionAlreadyExists('CONNECTION_ALREADY_EXISTS'),
   @JsonValue('CONNECTION_INITIATION_TOKEN_INVALID')
