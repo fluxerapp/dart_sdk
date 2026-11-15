@@ -574,9 +574,12 @@ abstract class UsersApi {
   /// [guilds] - Whether to include guild mentions.
   ///
   /// [before] - Get mentions before this message ID.
+  ///
+  /// [guildId] - Community to list mentions from when guilds is false.
   @GET('/users/@me/mentions')
   Future<MessageListResponse> listMentionsForCurrentUser({
     @Query('before') SnowflakeType? before,
+    @Query('guild_id') SnowflakeType? guildId,
     @Query('limit') String? limit = '25',
     @Query('roles') String? roles = 'false',
     @Query('everyone') String? everyone = 'false',
@@ -1137,6 +1140,14 @@ abstract class UsersApi {
   Future<UserPrivateResponse> updateVoiceActivitySharingDefault({
     @Body() required VoiceActivitySharingUpdateRequest body,
   });
+
+  /// Disconnect single sign-on.
+  ///
+  /// Disconnects the instance's single sign-on provider from the current account. Needs sudo mode and a password, a passkey or email code sign-in, otherwise the route returns LOCAL_SIGN_IN_METHOD_REQUIRED.
+  ///
+  /// [body] - Name not received - field will be skipped.
+  @DELETE('/users/@me/sso')
+  Future<void> unlinkSso({@Body() SudoVerificationSchema? body});
 
   /// Start connecting SSO.
   ///

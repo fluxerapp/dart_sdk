@@ -483,6 +483,8 @@ enum ApiErrorCode {
   ssoProviderUnavailable('SSO_PROVIDER_UNAVAILABLE'),
   @JsonValue('SSO_REQUIRED')
   ssoRequired('SSO_REQUIRED'),
+  @JsonValue('LOCAL_SIGN_IN_METHOD_REQUIRED')
+  localSignInMethodRequired('LOCAL_SIGN_IN_METHOD_REQUIRED'),
   @JsonValue('STORE_BILLING_UNAVAILABLE')
   storeBillingUnavailable('STORE_BILLING_UNAVAILABLE'),
   @JsonValue('STORE_NOTIFICATION_UNAUTHORIZED')

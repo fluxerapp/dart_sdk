@@ -1297,6 +1297,7 @@ class _UsersApi implements UsersApi {
   @override
   Future<List<MessageResponseSchema>> listMentionsForCurrentUser({
     String? before,
+    String? guildId,
     String? limit = '25',
     String? roles = 'false',
     String? everyone = 'false',
@@ -1305,6 +1306,7 @@ class _UsersApi implements UsersApi {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'before': before,
+      r'guild_id': guildId,
       r'limit': limit,
       r'roles': roles,
       r'everyone': everyone,
@@ -2939,6 +2941,27 @@ class _UsersApi implements UsersApi {
       rethrow;
     }
     return _value;
+  }
+
+  @override
+  Future<void> unlinkSso({SudoVerificationSchema? body}) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body?.toJson() ?? <String, dynamic>{});
+    final _options = _setStreamType<void>(
+      Options(method: 'DELETE', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/users/@me/sso',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    await _dio.fetch<void>(_options);
   }
 
   @override
