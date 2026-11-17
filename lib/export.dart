@@ -981,7 +981,6 @@ export 'models/change_subscription_request_billing_cycle_billing_cycle.dart';
 export 'models/change_subscription_request_effective_at_effective_at.dart';
 export 'models/operator_pass_purchase_response_refusal_reason_refusal_reason.dart';
 export 'models/operator_pass_labs_join_response_status_status.dart';
-export 'models/authorize_consent_request_code_challenge_method_code_challenge_method.dart';
 export 'models/guild_transfer_ownership_with_verification_request_mfa_method_mfa_method.dart';
 export 'models/guild_member_search_request_sort_by_sort_by.dart';
 export 'models/guild_member_search_request_sort_order_sort_order.dart';

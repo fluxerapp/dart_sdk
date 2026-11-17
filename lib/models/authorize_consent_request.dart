@@ -4,7 +4,6 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'authorize_consent_request_code_challenge_method_code_challenge_method.dart';
 import 'snowflake_type.dart';
 
 part 'authorize_consent_request.g.dart';
@@ -63,10 +62,9 @@ class AuthorizeConsentRequest {
   @JsonKey(includeIfNull: false, name: 'code_challenge')
   final String? codeChallenge;
 
-  /// The PKCE code challenge method
+  /// The PKCE code challenge method, must be "S256"
   @JsonKey(includeIfNull: false, name: 'code_challenge_method')
-  final AuthorizeConsentRequestCodeChallengeMethodCodeChallengeMethod?
-  codeChallengeMethod;
+  final String? codeChallengeMethod;
 
   Map<String, Object?> toJson() => _$AuthorizeConsentRequestToJson(this);
 }

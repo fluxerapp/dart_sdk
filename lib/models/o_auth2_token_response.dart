@@ -14,8 +14,8 @@ class OAuth2TokenResponse {
     required this.accessToken,
     required this.tokenType,
     required this.expiresIn,
-    required this.refreshToken,
     required this.scope,
+    this.refreshToken,
   });
 
   factory OAuth2TokenResponse.fromJson(Map<String, Object?> json) =>
@@ -33,9 +33,9 @@ class OAuth2TokenResponse {
   @JsonKey(name: 'expires_in', defaultValue: 0)
   final Int32Type expiresIn;
 
-  /// The refresh token for obtaining new access tokens
-  @JsonKey(name: 'refresh_token', defaultValue: '')
-  final String refreshToken;
+  /// The refresh token for obtaining new access tokens. Not issued to every client
+  @JsonKey(includeIfNull: false, name: 'refresh_token')
+  final String? refreshToken;
 
   /// The space-separated list of granted scopes
   @JsonKey(defaultValue: '')

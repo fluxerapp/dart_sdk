@@ -24,11 +24,7 @@ AuthorizeConsentRequest _$AuthorizeConsentRequestFromJson(
       codeChallenge: $checkedConvert('code_challenge', (v) => v as String?),
       codeChallengeMethod: $checkedConvert(
         'code_challenge_method',
-        (v) => v == null
-            ? null
-            : AuthorizeConsentRequestCodeChallengeMethodCodeChallengeMethod.fromJson(
-                v as String,
-              ),
+        (v) => v as String?,
       ),
     );
     return val;
